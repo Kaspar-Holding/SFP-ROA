@@ -2,8 +2,7 @@ import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 // import './Invest.css';
-import './Styles/CustomNotification.css'
-import './Styles/CustomButton.css'
+
 const Fiduciary = () => {
   const location = useLocation();
   const { state } = location;
@@ -42,8 +41,6 @@ const Fiduciary = () => {
         console.log(error)
     }
   }
-  const [SuccessMessage, setSuccessMessage] = useState("")
-  const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
   const updateForm = async() => {
     const config = {
         headers: {
@@ -57,8 +54,6 @@ const Fiduciary = () => {
         const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/updatefiduciarydata/`, Body ,config)
         // console.log(response.data['formData'])
         setFormData(response.data['formData'])
-        setSuccessMessage("Fiduciary data is successfully updated")
-        setSuccessMessageVisibility("block")
         // setSubmissionMessageVisibility("block")
     } catch (error) {
         console.log(error)
@@ -73,20 +68,11 @@ const Fiduciary = () => {
   useEffect(() => {
     createFiduciaryForm(FormData)
   }, []);
-  setTimeout(() => {
-    setSuccessMessageVisibility("none")
-  }, 5000);
   
   // console.log(JSON.stringify(localStorage.getItem('access')))
   return(
       <>
       <br/>
-      <div className="notification_container">
-        <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
-          {SuccessMessage}
-          {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
-        </div>
-      </div>
       <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Fiduciary</b></div>
       <hr/>
           <form onSubmit={e => onSubmit(e)}>
@@ -158,14 +144,7 @@ const Fiduciary = () => {
                                   <input spellCheck="true" id="fiduciaryConsequencesExplained" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryConsequencesExplained']}  name="fiduciaryConsequencesExplained" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
                                 </div>
                             </div>
-                            <div className="container1">
-                                <div className="icon1 update">
-                                    <div className="tooltip1">
-                                        Update
-                                    </div>
-                                    <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
-                                </div>
-                            </div>
+                            {/* <button className='btn btn-primary'>Update Data</button> */}
 
                         </div>
                       </div>

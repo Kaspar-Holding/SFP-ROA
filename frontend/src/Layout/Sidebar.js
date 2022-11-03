@@ -36,9 +36,9 @@ const Sidebar = ({LogOut, isAuthenticated, user}) => {
                 </NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/form">
+                <NavLink className="nav-link" to="/print">
                 <span data-feather="file"></span>
-                Form
+                Print
                 </NavLink>
             </li>
             {

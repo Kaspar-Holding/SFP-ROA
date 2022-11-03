@@ -1,21 +1,39 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import './Styles/Form.css'
-import Risk from './Risk';
-import Invest from './Invest';
-import AssuranceRisk from './AssuranceRisk';
-import AssuranceInvestment from './AssuranceInvestment';
-import Employee from './Employee';
-import Fiduciary from './Fiduciary';
+import Risk from './PrintedComponents/Risk';
+import Invest from './PrintedComponents/Invest';
+import AssuranceRisk from './PrintedComponents/AssuranceRisk';
+import AssuranceInvestment from './PrintedComponents/AssuranceInvestment';
+import Employee from './PrintedComponents/Employee';
+import Fiduciary from './PrintedComponents/Fiduciary';
 import Short_term_Commercial from './Short-term Commercial';
 import Short_term_Personal from './Short-term Personal';
 import {Navigate, NavLink, useLocation} from 'react-router-dom'
 import axios from 'axios';
 import Loader from '../Loader/Loader';
-import GapCover from './GapCover';
-const CompleteForm = () => {
+import Footer from '../Footer';
+import html2canvas from 'html2canvas'
+import { jsPDF } from 'jspdf'
+
+const PrintForm = () => {
     const location = useLocation();
     const { state } = location;
-    const [stateData, setstateData] = useState({});
+    const [stateData, setstateData] = useState({})
+    const printRef = useRef()
+    const handleDownloadPdf = async () => {
+        const element = printRef.current
+        const canvas = await html2canvas(element)
+        const data = canvas.toDataURL('image/png')
+    
+        const pdf = new jsPDF()
+        const imgProperties = pdf.getImageProperties(data)
+        const pdfWidth = pdf.internal.pageSize.getWidth()
+        const pdfHeight =
+          (imgProperties.height * pdfWidth) / imgProperties.width
+    
+        pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight)
+        pdf.save('print.pdf')
+      }
     const [LoaderVisibility, setLoaderVisibility] = useState("none")
     const [dataVisibility, setDataVisibility] = useState("none")
     const [FormData, setFormData] = useState({
@@ -203,40 +221,19 @@ const CompleteForm = () => {
             <Loader />
         </div>
         <div style={{display: dataVisibility}}>
+        {/* <button type="button" className='btn btn-primary' onClick={handleDownloadPdf}>
+            Download as PDF
+        </button> */}
         <main className="container">
-          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          {/* <h2 className="fw-bold h2_1">SECTION A: LONG-TERM INSURANCE </h2> */}
-          </div>
+          {/* <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h2 className="fw-bold h2_1">SECTION A: LONG-TERM INSURANCE </h2>
+          </div> */}
           <div className="bg-white p-1 rounded">
                 <div className='row'>
                     <div className='col-8'>
                         <h2 className="fw-bold h2_1">RECORD OF ADVICE</h2>
                     </div>
-                    {
-                        FormData['status'] == 1 ?
-                        <>
-                            <div className='col-4'>
-                                <div className='row'>
-                                    <div className='col-6'>
-                                        <form onSubmit={e => changeFormStatus(e,0)}>
-                                            <button className='btn btn-primary col-12'>Edit</button>
-                                        </form>
-                                    </div>                        
-                                    <div className='col-6'>
-                                        <NavLink to={{pathname:"/printform"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-12'>Print</NavLink>
-                                    </div> 
-                                </div>        
-                            </div>                   
-                        </> : 
-                        <>
-                            <div className='col-4'>
-                                <form onSubmit={e => changeFormStatus(e,1)}>
-                                    <button className='btn btn-primary col-8'>Mark Form Complete</button>
-                                </form>
-                            </div>    
-                        
-                        </>
-                    }
+                    
                     
                 </div>
                 <hr/>
@@ -550,57 +547,27 @@ const CompleteForm = () => {
           </div>
 
         <br/>
-        <ul className="nav nav-tabs" id="myTab" role="tablist">
-            <li className="nav-item" role="presentation">
-                <button className="nav-link" id="risk-tab" data-bs-toggle="tab" data-bs-target="#risk" type="button" role="tab" aria-controls="risk" aria-selected="true">Risk Planning</button>
-            </li>
-            <li className="nav-item" role="presentation">
-                <button className="nav-link" id="invest-tab" data-bs-toggle="tab" data-bs-target="#invest" type="button" role="tab" aria-controls="invest" aria-selected="false">Investment Planning</button>
-            </li>
-            <li className="nav-item" role="presentation">
-                <button className="nav-link" id="assurance1-tab" data-bs-toggle="tab" data-bs-target="#assurance1" type="button" role="tab" aria-controls="assurance1" aria-selected="false">Assurance Risk</button>
-            </li>
-            <li className="nav-item" role="presentation">
-                <button className="nav-link" id="assurance2-tab" data-bs-toggle="tab" data-bs-target="#assurance2" type="button" role="tab" aria-controls="assurance2" aria-selected="false">Assurance Invesment</button>
-            </li>
-            <li className="nav-item" role="presentation">
-                <button className="nav-link" id="employee-tab" data-bs-toggle="tab" data-bs-target="#employee" type="button" role="tab" aria-controls="employee" aria-selected="false">Employee Benefits</button>
-            </li>
-            <li className="nav-item" role="presentation">
-                <button className="nav-link" id="fiduciary-tab" data-bs-toggle="tab" data-bs-target="#fiduciary" type="button" role="tab" aria-controls="fiduciary" aria-selected="false">Fiduciary</button>
-            </li>
-            <li className="nav-item" role="presentation">
-                <button className="nav-link" id="Short-term-Commercial-tab" data-bs-toggle="tab" data-bs-target="#Short-term-Commercial" type="button" role="tab" aria-controls="Short-term-Commercial" aria-selected="false">Short-term Commercial</button>
-            </li>
-            <li className="nav-item" role="presentation">
-                <button className="nav-link" id="Short-term-Personal-tab" data-bs-toggle="tab" data-bs-target="#Short-term-Personal" type="button" role="tab" aria-controls="Short-term-Personal" aria-selected="false">Short-term Personal</button>
-            </li>
-            <li className="nav-item" role="presentation">
-                <button className="nav-link" id="Gap-Cover-tab" data-bs-toggle="tab" data-bs-target="#Gap-Cover" type="button" role="tab" aria-controls="Gap-Cover" aria-selected="false">Gap Cover</button>
-            </li>
-            <br/>
-            </ul>
-            <div className="tab-content" id="myTabContent">
-            <div className="tab-pane fade" id="risk" role="tabpanel" aria-labelledby="risk-tab"><Risk data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}}/></div>
-            <div className="tab-pane fade" id="invest" role="tabpanel" aria-labelledby="invest-tab"><Invest data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}}/></div>
-            <div className="tab-pane fade" id="assurance1" role="tabpanel" aria-labelledby="assurance1-tab"><AssuranceRisk data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} /></div>
-            <div className="tab-pane fade" id="assurance2" role="tabpanel" aria-labelledby="assurance2-tab"><AssuranceInvestment  data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}}/></div>
-            <div className="tab-pane fade" id="employee" role="tabpanel" aria-labelledby="employee-tab"><Employee data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} /></div>
-            {/* {
-                state['clientIdNumber']!== undefined ? 
-                <div className="tab-pane fade" id="fiduciary" role="tabpanel" aria-labelledby="fiduciary-tab"><Fiduciary data={{formId: state['formId'],advisorId: state['advisorId'], clientIdNumber: state['clientIdNumber']}}/></div>
-                : <></>
-            } */}
-            <div className="tab-pane fade" id="fiduciary" role="tabpanel" aria-labelledby="fiduciary-tab"><Fiduciary data={{formId: state['formId'],advisorId: state['advisorId']}} /></div>
-            {/* <div className="tab-pane fade" id="fiduciary" role="tabpanel" aria-labelledby="fiduciary-tab"><Fiduciary FormData={FiduciaryFormData} setFormData={setFiduciaryFormData} /></div> */}
-            <div className="tab-pane fade" id="Short-term-Commercial" role="tabpanel" aria-labelledby="Short-term-Commercial-tab"><Short_term_Commercial/></div>
-            <div className="tab-pane fade" id="Gap-Cover" role="tabpanel" aria-labelledby="Gap-Cover-tab"><GapCover /></div>
-            {/* <div className="tab-pane fade" id="Short-term-Personal" role="tabpanel" aria-labelledby="Short-term-Personal-tab"><Short_term_Personal/></div> */}
-        </div>
+            <Risk data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}}/>
+            <Invest data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}}/>
+            <AssuranceRisk data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} />
+            <AssuranceInvestment  data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}}/>
+            <Employee data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} />
+            <Fiduciary data={{formId: state['formId'],advisorId: state['advisorId']}} />
+            {/* <div className="tab-content" id="myTabContent"> */}
+                {/* {
+                    state['clientIdNumber']!== undefined ? 
+                    <div className="tab-pane fade" id="fiduciary" role="tabpanel" aria-labelledby="fiduciary-tab"><Fiduciary data={{formId: state['formId'],advisorId: state['advisorId'], clientIdNumber: state['clientIdNumber']}}/></div>
+                    : <></>
+                } */}
+                {/* <div className="tab-pane fade" id="fiduciary" role="tabpanel" aria-labelledby="fiduciary-tab"><Fiduciary FormData={FiduciaryFormData} setFormData={setFiduciaryFormData} /></div> */}
+                {/* <div className="tab-pane fade" id="Short-term-Commercial" role="tabpanel" aria-labelledby="Short-term-Commercial-tab"><Short_term_Commercial/></div> */}
+                {/* <div className="tab-pane fade" id="Short-term-Personal" role="tabpanel" aria-labelledby="Short-term-Personal-tab"><Short_term_Personal/></div> */}
+            {/* </div> */}
+            {/* <Footer /> */}
       </main>
         </div>
       </>
     )
 }
 
-export default CompleteForm
+export default PrintForm

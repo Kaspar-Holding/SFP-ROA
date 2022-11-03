@@ -1,8 +1,6 @@
 import axios from 'axios';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef, useLayoutEffect} from 'react';
 import { useLocation } from 'react-router-dom';
-import './Styles/CustomNotification.css'
-import './Styles/CustomButton.css'
 function AssuranceInvestment()
 {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
@@ -415,59 +413,26 @@ function AssuranceInvestment()
             setResponseErrorVisibility("block")
         }
       }
-      const [SuccessMessage, setSuccessMessage] = useState("")
-      const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
-      const updateAIForm = async() => {
-          const config = {
-              headers: {
-                  'Content-Type' : 'application/json',
-                  'Accept' : 'application/json',
-                  'Authorization' : `JWT ${localStorage.getItem('access')}`
-              }
-          }
-          const Body = JSON.stringify(FormData)
-          try {
-              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_assurance_investment_data/`, Body ,config)
-              // console.log(response.data['formData'])
-              setFormData(response.data['formData'])
-              setSuccessMessage("Assurance Investment data is successfully updated")
-              setSuccessMessageVisibility("block")
-
-              // setSubmissionMessageVisibility("block")
-          } catch (error) {
-              console.log(error)
-              
-              setUpdateErrorData({
-                status: error.response.status,
-                message: error.response.statusText
-              })
-              setUpdateErrorVisibility("block")
-          }
-      }
-      const onSubmit = e => {
-          e.preventDefault()
-          updateAIForm()
-          // window.location.reload();
-      }
+      const MIN_TEXTAREA_HEIGHT = 32;
+      const textareaRef = useRef(null);
+      useLayoutEffect(() => {
+          textareaRef.current.style.height = "inherit";
+          // Set height
+          textareaRef.current.style.height = `${Math.max(
+            textareaRef.current.scrollHeight,
+            MIN_TEXTAREA_HEIGHT
+          )}px`;
+      }, [FormData])
       useEffect(() => {
           createAIForm(FormData)
           // setInterval(updateIPForm, 20000);
       }, []);
       // console.log(JSON.stringify(FormData))
-            
-        setTimeout(() => {
-            setSuccessMessageVisibility("none")
-        }, 5000);
+
       return(
           <>
           <hr/>
-        
-      <div className="notification_container">
-        <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
-          {SuccessMessage}
-          {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
-        </div>
-      </div>
+
     <h4><b>PART II: INVESTMENT & SAVINGS</b></h4>
     <br/>
     <h5 className="section_class"><b>SECTION B:</b></h5>
@@ -483,7 +448,7 @@ function AssuranceInvestment()
     <div className="alert alert-success" style={{display: UpdateMessageVisibility}} role="alert">
         {UpdateMessage}
     </div>
-    <form onSubmit={e => onSubmit(e)}>
+    <form>
       
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
         <div className="row">
@@ -538,7 +503,7 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         name='AI_TermDetails' value={FormData['AI_TermDetails']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus14}
         onBlur={backgroundInfo_onBlur14}
@@ -589,7 +554,7 @@ function AssuranceInvestment()
                         </> : 
                         null
                     }
-                    <textarea   onFocus={sica1_onFocus} onBlur={sica1_onBlur} className="form-control" placeholder="Notes" aria-describedby="" ></textarea>
+                    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   onFocus={sica1_onFocus} onBlur={sica1_onBlur} className="form-control" placeholder="Notes" aria-describedby="" ></textarea>
                     </div>
                     <hr/>
                     </>
@@ -612,9 +577,9 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea  
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  
         id="AI_PremiumDetails" name='AI_PremiumDetails' value={FormData['AI_PremiumDetails']} onChange={(e) => {onChange(e)}}
-        className="form-control"  style={{height: '80px'}} 
+        className="form-control" 
         onFocus={backgroundInfo_onFocus15}
         onBlur={backgroundInfo_onBlur15}
         placeholder={
@@ -651,8 +616,8 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea id="AI_StrategyDetails" name='AI_StrategyDetails' value={FormData['AI_StrategyDetails']} onChange={(e) => {onChange(e)}}
-        className="form-control"  style={{height: '80px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="AI_StrategyDetails" name='AI_StrategyDetails' value={FormData['AI_StrategyDetails']} onChange={(e) => {onChange(e)}}
+        className="form-control" 
         onFocus={backgroundInfo_onFocus16}
         onBlur={backgroundInfo_onBlur16}
         placeholder={
@@ -689,7 +654,7 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}}
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_ReturnRequiredDetails" name='AI_ReturnRequiredDetails' value={FormData['AI_ReturnRequiredDetails']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus17}
         onBlur={backgroundInfo_onBlur17}
@@ -728,7 +693,7 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_RiskProfileDetails" name='AI_RiskProfileDetails' value={FormData['AI_RiskProfileDetails']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus18}
         onBlur={backgroundInfo_onBlur18}
@@ -886,7 +851,7 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '150px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_FinancialSolutions" name='AI_FinancialSolutions' value={FormData['AI_FinancialSolutions']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus19}
         onBlur={backgroundInfo_onBlur19}
@@ -919,7 +884,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_AltS_1" name='AI_AltS_1' value={FormData['AI_AltS_1']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus20}
         onBlur={backgroundInfo_onBlur20}
@@ -945,7 +910,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea className="form-control" 
         id="AI_AltS_2" name='AI_AltS_2' value={FormData['AI_AltS_2']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus21}
         onBlur={backgroundInfo_onBlur21}
@@ -971,7 +936,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"  
         id="AI_AltS_3" name='AI_AltS_3' value={FormData['AI_AltS_3']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus22}
         onBlur={backgroundInfo_onBlur22}
@@ -1176,7 +1141,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '300px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_Portfolio" name='AI_Portfolio' value={FormData['AI_Portfolio']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus23}
         onBlur={backgroundInfo_onBlur23}
@@ -1440,7 +1405,7 @@ o	meeting the investment objectives of the clients
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '100px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_PF_Reasons" name='AI_PF_Reasons' value={FormData['AI_PF_Reasons']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus24}
         onBlur={backgroundInfo_onBlur24}
@@ -1470,7 +1435,7 @@ o	meeting the investment objectives of the clients
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '150px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_PF_MaterialAspects" name='AI_PF_MaterialAspects' value={FormData['AI_PF_MaterialAspects']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus25}
         onBlur={backgroundInfo_onBlur25}
@@ -1507,7 +1472,7 @@ The tax implications, i.e. estate duty, income tax (e.g. interest received), CGT
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '300px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_PF_Pr_Details" name='AI_PF_Pr_Details' value={FormData['AI_PF_Pr_Details']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus26}
         onBlur={backgroundInfo_onBlur26}
@@ -1543,7 +1508,7 @@ Other relevant information
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '150px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_PF_NominationOfBeneficiaries" name='AI_PF_NominationOfBeneficiaries' value={FormData['AI_PF_NominationOfBeneficiaries']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus27}
         onBlur={backgroundInfo_onBlur27}
@@ -1553,14 +1518,6 @@ Other relevant information
 
 
 `}  aria-describedby=""  ></textarea>
-        <div className="container1">
-            <div className="icon1 update">
-                <div className="tooltip1">
-                    Update
-                </div>
-                <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
-            </div>
-        </div>
 
     </form>
           </>

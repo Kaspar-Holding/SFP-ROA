@@ -8,6 +8,7 @@ const NonSidebarLayout = ({isAuthenticated}) => {
   }
   return (
     <>
+    
       <Outlet />
 
     </>

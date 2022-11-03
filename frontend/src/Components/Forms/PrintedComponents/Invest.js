@@ -1,10 +1,8 @@
 import axios from 'axios';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect, useRef} from 'react';
 import { useLocation } from 'react-router-dom';
-import Form from './Form';
-import './Styles/CustomNotification.css';
-import './Styles/CustomButton.css';
-import './Invest.css';
+// import Form from '../Form';
+import '../Invest.css';
 const Invest = (props) => 
 {
     const location = useLocation();
@@ -297,55 +295,27 @@ const Invest = (props) =>
             console.log(error)
         }
     }
-    const [SuccessMessage, setSuccessMessage] = useState("")
-    const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
-    const updateIPForm = async() => {
-        const config = {
-            headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json',
-                'Authorization' : `JWT ${localStorage.getItem('access')}`
-            }
-        }
-        const Body = JSON.stringify(FormData)
-        try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_investment_planning_data/`, Body ,config)
-            // console.log(response.data['formData'])
-            setFormData(response.data['formData'])
-            
-            setSuccessMessage("Investment Planning data is successfully updated")
-            setSuccessMessageVisibility("block")
-            // setSubmissionMessageVisibility("block")
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    const onSubmit = e => {
-        e.preventDefault()
-        updateIPForm()
-        // window.location.reload();
-    }
+    const MIN_TEXTAREA_HEIGHT = 32;
+    const textareaRef = useRef(null);
+    useLayoutEffect(() => {
+        textareaRef.current.style.height = "inherit";
+        // Set height
+        textareaRef.current.style.height = `${Math.max(
+          textareaRef.current.scrollHeight,
+          MIN_TEXTAREA_HEIGHT
+        )}px`;
+    }, [FormData])
     useEffect(() => {
         createIPForm(FormData)
         // setInterval(updateIPForm, 20000);
     }, []);
     // console.log(JSON.stringify(FormData))
-    
-    setTimeout(() => {
-        setSuccessMessageVisibility("none")
-    }, 5000);
+
     
     
     return(
         <>
-        
-      <div className="notification_container">
-        <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
-          {SuccessMessage}
-          {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
-        </div>
-      </div>
-            <form onSubmit={e => onSubmit(e)}>
+            <form>
                 
                 <br/>
                     <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>INVESTMENT AND SAVINGS</b></div>
@@ -387,7 +357,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info10" className="form-control"  style={{height: '100px'}} 
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info10" className="form-control"
                 name='IP_OtherSourceOfIncome' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_OtherSourceOfIncome']}
                 onFocus={backgroundInfo_onFocus10}
@@ -440,7 +410,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info11" className="form-control"
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
                 name='IP_InvestmentTermDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_InvestmentTermDetails']}
                 onFocus={backgroundInfo_onFocus11}
@@ -498,7 +468,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info11" className="form-control"
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
                 name='IP_LiquidityDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_LiquidityDetails']}
                 onFocus={backgroundInfo_onFocus12}
@@ -554,7 +524,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info11" className="form-control" 
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control" 
                 name='IP_TypeDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_TypeDetails']}
                 onFocus={backgroundInfo_onFocus13}
@@ -611,7 +581,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info11" className="form-control"
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
                 name='IP_PremiumTypeDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_PremiumTypeDetails']}
                 onFocus={backgroundInfo_onFocus14}
@@ -666,7 +636,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info11" className="form-control"
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
                 name='IP_IncomeRequiredDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_IncomeRequiredDetails']}
                 onFocus={backgroundInfo_onFocus15}
@@ -709,7 +679,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info1" className="form-control"  style={{height: '80px'}}
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info1" className="form-control" 
                 name='IP_InvestmentStrategyDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_InvestmentStrategyDetails']}
                 onFocus={backgroundInfo_onFocus1}
@@ -751,7 +721,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info2" className="form-control"  style={{height: '80px'}} 
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info2" className="form-control"  
                 name='IP_ReturnRequiredDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_ReturnRequiredDetails']}
                 onFocus={backgroundInfo_onFocus2}
@@ -796,7 +766,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info3" className="form-control"  style={{height: '80px'}} 
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info3" className="form-control"  
                 name='IP_RiskProfileDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_RiskProfileDetails']} 
                 onFocus={backgroundInfo_onFocus3}
@@ -835,7 +805,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info" className="form-control"  style={{height: '120px'}} 
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info" className="form-control"
                 name='IP_RecommendationSummary' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_RecommendationSummary']}
                 onFocus={backgroundInfo_onFocus}
@@ -867,7 +837,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info4" className="form-control"  style={{height: '60px'}} 
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info4" className="form-control"  
                 name='IP_AltS_1' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_1']}
                 onFocus={backgroundInfo_onFocus4}
@@ -893,7 +863,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info5" className="form-control"  style={{height: '60px'}} 
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info5" className="form-control"  
                 name='IP_AltS_2' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_2']}
                 onFocus={backgroundInfo_onFocus5}
@@ -919,7 +889,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info6" className="form-control"  style={{height: '60px'}} 
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info6" className="form-control"  
                 name='IP_AltS_3' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_3']}
                 onFocus={backgroundInfo_onFocus6}
@@ -1151,7 +1121,7 @@ const Invest = (props) =>
                             </> : 
                         null
                     }
-                        <textarea  id="provided_identity2" name="IP_SFPSolutionFundsDetailsDetails" onChange={(e) => {onChange(e)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" placeholder="State the motivation" aria-describedby="" ></textarea>
+                        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="provided_identity2" name="IP_SFPSolutionFundsDetailsDetails" onChange={(e) => {onChange(e)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" placeholder="State the motivation" aria-describedby="" ></textarea>
                     </div>
             </div>
             <hr/>
@@ -1181,7 +1151,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info7" className="form-control"  style={{height: '400px'}} 
+            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info7" className="form-control" 
                 name='IP_ItP' value={FormData['IP_ItP']} onChange={(e) => {onChange(e)}} 
                 onFocus={backgroundInfo_onFocus7}
                 onBlur={backgroundInfo_onBlur7}
@@ -1466,7 +1436,7 @@ const Invest = (props) =>
             </>: 
             null
         }
-        <textarea  id="background_info8" className="form-control"  style={{height: '60px'}} 
+        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info8" className="form-control"  
             name='IP_ItP_FundsReasons' value={FormData['IP_ItP_FundsReasons']} onChange={(e) => {onChange(e)}} 
             onFocus={backgroundInfo_onFocus8}
             onBlur={backgroundInfo_onBlur8}
@@ -1506,7 +1476,7 @@ const Invest = (props) =>
             </>: 
             null
         }
-        <textarea  id="background_info9" className="form-control"  style={{height: '400px'}} 
+        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info9" className="form-control" 
             name='IP_ItP_FundsMaterialAspects' value={FormData['IP_ItP_FundsMaterialAspects']} onChange={(e) => {onChange(e)}} 
             onFocus={backgroundInfo_onFocus9}
             onBlur={backgroundInfo_onBlur9}
@@ -1534,14 +1504,7 @@ const Invest = (props) =>
 
         
 
-                            <div className="container1">
-                                <div className="icon1 update">
-                                    <div className="tooltip1">
-                                        Update
-                                    </div>
-                                    <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
-                                </div>
-                            </div>
+                {/* <button className='btn btn-primary'>Update Data</button> */}
             
             </form>
         </>

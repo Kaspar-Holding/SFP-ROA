@@ -7,6 +7,12 @@ This project is built on the following Stack
 - PostgreSQL (User)
 
 ## Updates
+### 3 November 2022:
+- Deployed Version 1 on Azure Server with Ngnix and Gunicorn
+- Added floating button on side for data save
+- Added Update floating notification on data save
+- Created the model and serializer for Gap Cover
+
 ### 30 October 2022:
 - Created all Serializers and Models of remaining tab (except Short Term)
 - Created APIs for those tabs

@@ -1,8 +1,7 @@
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import { useLocation } from 'react-router-dom';
-import './Styles/CustomNotification.css';
-import './Styles/CustomButton.css';
+// import './Invest.css';
  function  Employee()
  {
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
@@ -293,63 +292,28 @@ import './Styles/CustomButton.css';
             setResponseErrorVisibility("block")
         }
       }
-      const [SuccessMessage, setSuccessMessage] = useState("")
-      const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
-      const updateEBForm = async() => {
-          const config = {
-              headers: {
-                  'Content-Type' : 'application/json',
-                  'Accept' : 'application/json',
-                  'Authorization' : `JWT ${localStorage.getItem('access')}`
-              }
-          }
-          const Body = JSON.stringify(FormData)
-          try {
-                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_employee_benefits_data/`, Body ,config)
-                // console.log(response.data['formData'])
-                setFormData(response.data['formData'])
-                    
-                setSuccessMessage("Employee Benefits data is successfully updated")
-                setSuccessMessageVisibility("block")
-
-              // setSubmissionMessageVisibility("block")
-          } catch (error) {
-              console.log(error)
-              
-              setUpdateErrorData({
-                status: error.response.status,
-                message: error.response.statusText
-              })
-              setUpdateErrorVisibility("block")
-          }
-      }
-      const onSubmit = e => {
-          e.preventDefault()
-          updateEBForm()
-          // window.location.reload();
-      }
+      
+        const MIN_TEXTAREA_HEIGHT = 32;
+        const textareaRef = useRef(null);
+        useLayoutEffect(() => {
+            textareaRef.current.style.height = "inherit";
+            // Set height
+            textareaRef.current.style.height = `${Math.max(
+            textareaRef.current.scrollHeight,
+            MIN_TEXTAREA_HEIGHT
+            )}px`;
+        }, [FormData])
       useEffect(() => {
           createEBForm(FormData)
           // setInterval(updateIPForm, 20000);
       }, []);
     //   console.log(JSON.stringify(FormData))
-    
-    setTimeout(() => {
-        setSuccessMessageVisibility("none")
-    }, 5000);
     return(
         <>
         <br/>
-            
-            <div className="notification_container">
-                <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
-                {SuccessMessage}
-                {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
-                </div>
-            </div>
              <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>EMPLOYEE BENEFITS</b></div>
              <hr/>
-             <form onSubmit={e => onSubmit(e)}>
+             <form>
                 <div className="alert alert-danger" style={{display: responseErrorVisibility}} role="alert">
                     {errorData.status} : {errorData.message}
                 </div>
@@ -780,7 +744,7 @@ import './Styles/CustomButton.css';
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '100px'}}
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="EB_BusB_CoverDetails" name='EB_BusB_CoverDetails' value={FormData['EB_BusB_CoverDetails']} onChange={(e) => {onChange(e)}}  
         onFocus={backgroundInfo_onFocus1}
         onBlur={backgroundInfo_onBlur1}
@@ -1779,7 +1743,7 @@ import './Styles/CustomButton.css';
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '140px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="EB_BusRB_AccidentBenefitReason" name='EB_BusRB_AccidentBenefitReason' value={FormData['EB_BusRB_AccidentBenefitReason']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus2}
         onBlur={backgroundInfo_onBlur2}
@@ -1812,7 +1776,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '140px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
         id="EB_BusRB_DiC_Reason" name='EB_BusRB_DiC_Reason' value={FormData['EB_BusRB_DiC_Reason']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus4}
         onBlur={backgroundInfo_onBlur4}
@@ -1846,7 +1810,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '140px'}} 
+    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="EB_BusRB_DrC_Reason" name='EB_BusRB_DrC_Reason' value={FormData['EB_BusRB_DrC_Reason']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus3}
         onBlur={backgroundInfo_onBlur3}
@@ -1875,7 +1839,7 @@ Record the client's instructions, deviations and implications thereof.
             null
         }
 
-        <textarea className="form-control"  style={{height: '140px'}} 
+        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"  
         id="EB_BusRB_DrC_Summary" name='EB_BusRB_DrC_Summary' value={FormData['EB_BusRB_DrC_Summary']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus5}
         onBlur={backgroundInfo_onBlur5}
@@ -2736,14 +2700,7 @@ Record the client's instructions, deviations and implications thereof.
                         <hr/>
                         </div>
                     </div>
-                    <div className="container1">
-                        <div className="icon1 update">
-                            <div className="tooltip1">
-                                Update
-                            </div>
-                            <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
-                        </div>
-                    </div>
+                    {/* <button className='btn btn-primary'>Update Data</button> */}
                 
                 <br/>
                 <h5 style={{color: '#00788A'}}><b>Section H: Clients Declarations</b></h5>

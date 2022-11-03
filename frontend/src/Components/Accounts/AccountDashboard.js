@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {NavLink} from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import Loader from '../Loader/Loader'
 
 
 const AccountDashboard = ({isAuthenticated, user}) => {
@@ -9,6 +10,8 @@ const AccountDashboard = ({isAuthenticated, user}) => {
     const [data, setData] = useState([])
     const [userStats, setUserStats] = useState([]);
     const [responseError, setResponseError] = useState("");
+    const [LoaderVisibility, setLoaderVisibility] = useState("none")
+    const [dataVisibility, setDataVisibility] = useState("none")
     const loadUsers = async() => {
         const config = {
           headers: {
@@ -44,13 +47,20 @@ const AccountDashboard = ({isAuthenticated, user}) => {
         }
     }
     useEffect(() => {
+        setLoaderVisibility("block")
+        setDataVisibility("none")
         loadUsers()
         loadUserStats()
+        setLoaderVisibility("none")
+        setDataVisibility("block")
     }, [])
     // console.log(data)
   return (
     <>
-        <div className='container'>
+        <div style={{display: LoaderVisibility}}>
+            <Loader />
+        </div>
+        <div className='container' style={{display: dataVisibility}}>
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 className="h2">User Management</h1>
                 {/* <div className="btn-toolbar mb-2 mb-md-0">

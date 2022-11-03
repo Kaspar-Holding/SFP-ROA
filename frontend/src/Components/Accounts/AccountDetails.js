@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react'
 import { useLocation } from "react-router-dom"
+import Loader from '../Loader/Loader';
 
 const AccountDetails = (props) => {
     const location = useLocation();
@@ -29,6 +30,9 @@ const AccountDetails = (props) => {
         e.preventDefault()
         updateUser()
     }
+    
+    const [LoaderVisibility, setLoaderVisibility] = useState("none")
+    const [dataVisibility, setDataVisibility] = useState("none")
     const loadUser = async() => {
         const config = {
           headers: {
@@ -80,11 +84,18 @@ const AccountDetails = (props) => {
         }
     }
     useEffect(() => {
+        setLoaderVisibility("blokc")
+        setDataVisibility("none")
         loadUser()
+        setLoaderVisibility("none")
+        setDataVisibility("block")
     }, []);
   return (
     <>
-        <div className='container'>
+        <div style={{display: LoaderVisibility}}>
+            <Loader />
+        </div>
+        <div className='container' style={{display: dataVisibility}}>
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 className="h2">
                     {

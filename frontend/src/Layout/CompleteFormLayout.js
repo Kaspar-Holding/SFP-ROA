@@ -1,15 +1,14 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom';
-import CompleteForm from '../Components/Forms/CompleteForm';
+// import CompleteForm from '../Components/Forms/CompleteForm';
 
 
-const CompleteFormLayout = () => {
+const PrintFormLayout = () => {
   return (
     <>
-      <CompleteForm />
       <Outlet />
     </>
   )
 }
 
-export default CompleteFormLayout
+export default PrintFormLayout

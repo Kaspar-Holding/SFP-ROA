@@ -5,10 +5,13 @@ import {
     USER_LOADED_FAILED,
     AUTHENTICATED_SUCCESS,
     AUTHENTICATED_FAILED,
-    LOGOUT
+    SERVER_DOWN,
+    LOGOUT,
+    SERVER_UP
 } from '../Actions/Types'
 
 const initalState = {
+    server_down : false,
     access : localStorage.getItem('access'),
     refresh : localStorage.getItem('refresh'),
     isAuthenticated: null,
@@ -44,7 +47,9 @@ export default function (state=initalState, action) {
             localStorage.removeItem('refresh')
             return {
                 ...state,
-                isAuthenticated: false
+                access: null,
+                refresh: null,
+                isAuthenticated: false,
             }
         case LOGIN_FAILED:
             localStorage.removeItem('access')
@@ -60,6 +65,16 @@ export default function (state=initalState, action) {
             return{
                 ...state,
                 user: null
+            }
+        case SERVER_DOWN:
+            return{
+                ...state,
+                server_down: true
+            }
+        case SERVER_UP:
+            return{
+                ...state,
+                server_down: false
             }
         case LOGOUT:
             localStorage.removeItem('access')
