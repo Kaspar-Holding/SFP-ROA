@@ -7,11 +7,19 @@ This project is built on the following Stack
 - PostgreSQL (User)
 
 ## Updates
+### 4 November 2022:
+- Deployed backend server on Azure Server with Ngnix and Gunicorn while REACT JS on XAMPP
+- Handed over Version 0.1 to SFP (Aakifah and Mohammad) for testing
+- Completed the model, serializer and views for Gap Cover
+- Created APIs for Gap Cover
+- Completed the form for Gap Cover according to APIs
+- Data is inserting and updating
+
 ### 3 November 2022:
 - Deployed Version 1 on Azure Server with Ngnix and Gunicorn
 - Added floating button on side for data save
 - Added Update floating notification on data save
-- Created the model and serializer for Gap Cover
+- Started work on model and serializer for Gap Cover
 
 ### 30 October 2022:
 - Created all Serializers and Models of remaining tab (except Short Term)

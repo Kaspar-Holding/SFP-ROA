@@ -531,7 +531,9 @@ const CompleteForm = () => {
                             </>: 
                             null
                         }
-                        <textarea  id="clientBackgroundInfo" name="clientBackgroundInfo" value={FormData['clientBackgroundInfo']} className="form-control" 
+                        <div className="col-11" >
+
+                        <textarea id="clientBackgroundInfo" name="clientBackgroundInfo" value={FormData['clientBackgroundInfo']} className="form-control" 
                         onFocus={backgroundInfo_onFocus}
                         onBlur={backgroundInfo_onBlur} disabled
                         placeholder={
@@ -544,6 +546,7 @@ const CompleteForm = () => {
                         {/* <NavLink to="/remaining_form" className='btn btn-primary' value="Next" /> */}
                         {/* <NavLink to="/remaining_form" className='btn btn-primary'>Next</NavLink> */}
                         <br />
+                        </div>
                     </div>
                 </div>
               
@@ -552,7 +555,7 @@ const CompleteForm = () => {
         <br/>
         <ul className="nav nav-tabs" id="myTab" role="tablist">
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="risk-tab" data-bs-toggle="tab" data-bs-target="#risk" type="button" role="tab" aria-controls="risk" aria-selected="true">Risk Planning</button>
+                <button className="nav-link active" id="risk-tab" data-bs-toggle="tab" data-bs-target="#risk" type="button" role="tab" aria-controls="risk" aria-selected="true">Risk Planning</button>
             </li>
             <li className="nav-item" role="presentation">
                 <button className="nav-link" id="invest-tab" data-bs-toggle="tab" data-bs-target="#invest" type="button" role="tab" aria-controls="invest" aria-selected="false">Investment Planning</button>
@@ -595,7 +598,7 @@ const CompleteForm = () => {
             {/* <div className="tab-pane fade" id="fiduciary" role="tabpanel" aria-labelledby="fiduciary-tab"><Fiduciary FormData={FiduciaryFormData} setFormData={setFiduciaryFormData} /></div> */}
             <div className="tab-pane fade" id="Short-term-Commercial" role="tabpanel" aria-labelledby="Short-term-Commercial-tab"><Short_term_Commercial/></div>
             <div className="tab-pane fade" id="Gap-Cover" role="tabpanel" aria-labelledby="Gap-Cover-tab"><GapCover /></div>
-            {/* <div className="tab-pane fade" id="Short-term-Personal" role="tabpanel" aria-labelledby="Short-term-Personal-tab"><Short_term_Personal/></div> */}
+            <div className="tab-pane fade" id="Short-term-Personal" role="tabpanel" aria-labelledby="Short-term-Personal-tab"><Short_term_Personal/></div>
         </div>
       </main>
         </div>

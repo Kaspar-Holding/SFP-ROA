@@ -13,6 +13,8 @@ const AccountDashboard = ({isAuthenticated, user}) => {
     const [LoaderVisibility, setLoaderVisibility] = useState("none")
     const [dataVisibility, setDataVisibility] = useState("none")
     const loadUsers = async() => {
+        setLoaderVisibility("block")
+        setDataVisibility("none")
         const config = {
           headers: {
               'Content-Type' : 'application/json',
@@ -45,14 +47,12 @@ const AccountDashboard = ({isAuthenticated, user}) => {
           console.log('first', error.response.statusText)
           setResponseError(error.response.statusText)
         }
-    }
-    useEffect(() => {
-        setLoaderVisibility("block")
-        setDataVisibility("none")
-        loadUsers()
-        loadUserStats()
         setLoaderVisibility("none")
         setDataVisibility("block")
+    }
+    useEffect(() => {
+        loadUsers()
+        loadUserStats()
     }, [])
     // console.log(data)
   return (

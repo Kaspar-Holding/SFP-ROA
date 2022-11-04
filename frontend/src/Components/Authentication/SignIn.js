@@ -26,6 +26,8 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
   })
   const [ResponseStatus, setResponseStatus] = useState(401);
   const validUser = async(status) => {
+    setLoadingVisibility("block")
+    setDataVisibility("none")
       
     const config = {
         headers: {
@@ -50,18 +52,15 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
 
         setSubmissionErrorVisibilty("block")
     }
+    setLoadingVisibility("none")
+    setDataVisibility("block")
     
 }
   const [response, setResponse] = useState([]);
   const [SubmissionErrorVisibilty, setSubmissionErrorVisibilty] = useState("none")
   const onSubmit = e => {
     e.preventDefault()
-    
-    setLoadingVisibility("block")
-    setDataVisibility("none")
     validUser()
-    setLoadingVisibility("none")
-    setDataVisibility("block")
     
     // setResponse(LoginUser(FormData))
     // console.log(response)

@@ -35,12 +35,12 @@ const Sidebar = ({LogOut, isAuthenticated, user}) => {
                 Create Form
                 </NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
                 <NavLink className="nav-link" to="/print">
                 <span data-feather="file"></span>
                 Print
                 </NavLink>
-            </li>
+            </li> */}
             {
                 isSuperuser == true ?
                     <li className="nav-item">

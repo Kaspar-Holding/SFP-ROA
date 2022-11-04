@@ -1,7 +1,7 @@
 
 from datetime import datetime, timezone
 from rest_framework import serializers
-from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, InvestmentPlanning, RiskPlanning, UserAccount, Form, Fiduciary
+from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, InvestmentPlanning, RiskPlanning, UserAccount, Form, Fiduciary, GapCover
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
 
@@ -864,6 +864,99 @@ class EmployeeBenefitsSerializers(serializers.ModelSerializer):
         instance.EB_BusFReplace_InvestCh_Existing = validated_data.get('EB_BusFReplace_InvestCh_Existing', instance.EB_BusFReplace_InvestCh_Existing)
 
 
+        
+        instance.updated_at = datetime.now(timezone.utc)
+
+        
+        instance.save()
+        return instance
+
+class GapCoverSerializers(serializers.ModelSerializer):
+    class Meta():
+        model = GapCover
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return GapCover.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.advisorId = validated_data.get('advisorId', instance.advisorId)
+        instance.formId = validated_data.get('formId', instance.formId)
+        
+        instance.GP_ClientName = validated_data.get('GP_ClientName', instance.GP_ClientName)
+        instance.GP_ClientIdNumber = validated_data.get('GP_ClientIdNumber', instance.GP_ClientIdNumber)
+        instance.GP_ClientAddress = validated_data.get('GP_ClientAddress', instance.GP_ClientAddress)
+        instance.GP_ClientEmail = validated_data.get('GP_ClientEmail', instance.GP_ClientEmail)
+        instance.GP_ClientPhoneNumber = validated_data.get('GP_ClientPhoneNumber', instance.GP_ClientPhoneNumber)
+        instance.GP_ClientMedicalAidName = validated_data.get('GP_ClientMedicalAidName', instance.GP_ClientMedicalAidName)
+        instance.GP_ClientInceptionDate = validated_data.get('GP_ClientInceptionDate', instance.GP_ClientInceptionDate)
+        instance.GP_Date = validated_data.get('GP_Date', instance.GP_Date)
+            
+        instance.GP_Benefits = validated_data.get('GP_Benefits', instance.GP_Benefits)
+        instance.GP_MedicalDependent = validated_data.get('GP_MedicalDependent', instance.GP_MedicalDependent)
+
+        instance.GP_MemberName1 = validated_data.get('GP_MemberName1', instance.GP_MemberName1)
+        instance.GP_MemberRelationship1 = validated_data.get('GP_MemberRelationship1', instance.GP_MemberRelationship1)
+        instance.GP_MemberAidPlan1 = validated_data.get('GP_MemberAidPlan1', instance.GP_MemberAidPlan1)
+        instance.GP_MemberName2 = validated_data.get('GP_MemberName2', instance.GP_MemberName2)
+        instance.GP_MemberRelationship2 = validated_data.get('GP_MemberRelationship2', instance.GP_MemberRelationship2)
+        instance.GP_MemberAidPlan2 = validated_data.get('GP_MemberAidPlan2', instance.GP_MemberAidPlan2)
+        instance.GP_MemberName3 = validated_data.get('GP_MemberName3', instance.GP_MemberName3)
+        instance.GP_MemberRelationship3 = validated_data.get('GP_MemberRelationship3', instance.GP_MemberRelationship3)
+        instance.GP_MemberAidPlan3 = validated_data.get('GP_MemberAidPlan3', instance.GP_MemberAidPlan3)
+        instance.GP_MemberName4 = validated_data.get('GP_MemberName4', instance.GP_MemberName4)
+        instance.GP_MemberRelationship4 = validated_data.get('GP_MemberRelationship4', instance.GP_MemberRelationship4)
+        instance.GP_MemberAidPlan4 = validated_data.get('GP_MemberAidPlan4', instance.GP_MemberAidPlan4)
+
+        instance.GP_Provider = validated_data.get('GP_Provider', instance.GP_Provider)
+        instance.GP_Option = validated_data.get('GP_Option', instance.GP_Option)
+        instance.GP_Motivation = validated_data.get('GP_Motivation', instance.GP_Motivation)
+        instance.GP_TotalPremium = validated_data.get('GP_TotalPremium', instance.GP_TotalPremium)
+        instance.GP_BrokerFee = validated_data.get('GP_BrokerFee', instance.GP_BrokerFee)
+        instance.GP_Commission = validated_data.get('GP_Commission', instance.GP_Commission)
+
+        instance.GP_CP_Rate = validated_data.get('GP_CP_Rate', instance.GP_CP_Rate)
+        instance.GP_NP_Rate = validated_data.get('GP_NP_Rate', instance.GP_NP_Rate)
+        instance.GP_CP_Overall = validated_data.get('GP_CP_Overall', instance.GP_CP_Overall)
+        instance.GP_NP_Overall = validated_data.get('GP_NP_Overall', instance.GP_NP_Overall)
+        instance.GP_CP_CoPayment_B = validated_data.get('GP_CP_CoPayment_B', instance.GP_CP_CoPayment_B)
+        instance.GP_NP_CoPayment_B = validated_data.get('GP_NP_CoPayment_B', instance.GP_NP_CoPayment_B)
+        instance.GP_CP_SubLimit_B = validated_data.get('GP_CP_SubLimit_B', instance.GP_CP_SubLimit_B)
+        instance.GP_NP_SubLimit_B = validated_data.get('GP_NP_SubLimit_B', instance.GP_NP_SubLimit_B)
+        instance.GP_CP_Cancer_B = validated_data.get('GP_CP_Cancer_B', instance.GP_CP_Cancer_B)
+        instance.GP_NP_Cancer_B = validated_data.get('GP_NP_Cancer_B', instance.GP_NP_Cancer_B)
+        instance.GP_CP_CancerD_B = validated_data.get('GP_CP_CancerD_B', instance.GP_CP_CancerD_B)
+        instance.GP_NP_CancerD_B = validated_data.get('GP_NP_CancerD_B', instance.GP_NP_CancerD_B)
+        instance.GP_CP_Other_B = validated_data.get('GP_CP_Other_B', instance.GP_CP_Other_B)
+        instance.GP_NP_Other_B = validated_data.get('GP_NP_Other_B', instance.GP_NP_Other_B)
+        instance.GP_CP_CasualB = validated_data.get('GP_CP_CasualB', instance.GP_CP_CasualB)
+        instance.GP_NP_CasualB = validated_data.get('GP_NP_CasualB', instance.GP_NP_CasualB)
+        instance.GP_CP_TraumaB = validated_data.get('GP_CP_TraumaB', instance.GP_CP_TraumaB)
+        instance.GP_NP_TraumaB = validated_data.get('GP_NP_TraumaB', instance.GP_NP_TraumaB)
+        instance.GP_CP_PreW_B = validated_data.get('GP_CP_PreW_B', instance.GP_CP_PreW_B)
+        instance.GP_NP_PreW_B = validated_data.get('GP_NP_PreW_B', instance.GP_NP_PreW_B)
+        instance.GP_CP_Med_SW_B = validated_data.get('GP_CP_Med_SW_B', instance.GP_CP_Med_SW_B)
+        instance.GP_NP_Med_SW_B = validated_data.get('GP_NP_Med_SW_B', instance.GP_NP_Med_SW_B)
+        instance.GP_CP_Accidental_DC_B = validated_data.get('GP_CP_Accidental_DC_B', instance.GP_CP_Accidental_DC_B)
+        instance.GP_NP_Accidental_DC_B = validated_data.get('GP_NP_Accidental_DC_B', instance.GP_NP_Accidental_DC_B)
+        instance.GP_CP_GenWait_P = validated_data.get('GP_CP_GenWait_P', instance.GP_CP_GenWait_P)
+        instance.GP_NP_GenWait_P = validated_data.get('GP_NP_GenWait_P', instance.GP_NP_GenWait_P)
+        instance.GP_CP_PreExist_P = validated_data.get('GP_CP_PreExist_P', instance.GP_CP_PreExist_P)
+        instance.GP_NP_PreExist_P = validated_data.get('GP_NP_PreExist_P', instance.GP_NP_PreExist_P)
+        instance.GP_CP_Specific_P = validated_data.get('GP_CP_Specific_P', instance.GP_CP_Specific_P)
+        instance.GP_NP_Specific_P = validated_data.get('GP_NP_Specific_P', instance.GP_NP_Specific_P)
+
+        instance.GP_Exclusions = validated_data.get('GP_Exclusions', instance.GP_Exclusions)
+        instance.GP_Other_Exclusions = validated_data.get('GP_Other_Exclusions', instance.GP_Other_Exclusions)
+        instance.GP_GeneralComments = validated_data.get('GP_GeneralComments', instance.GP_GeneralComments)
+            
+        instance.GP_FinanAdvisor_ProdRecomm = validated_data.get('GP_FinanAdvisor_ProdRecomm', instance.GP_FinanAdvisor_ProdRecomm)
+        instance.GP_FinanAdvisor_Reasons = validated_data.get('GP_FinanAdvisor_Reasons', instance.GP_FinanAdvisor_Reasons)
+        instance.GP_FinanAdvisor_Consequences = validated_data.get('GP_FinanAdvisor_Consequences', instance.GP_FinanAdvisor_Consequences)
+        instance.GP_FinanAdvisor_FeeCommission = validated_data.get('GP_FinanAdvisor_FeeCommission', instance.GP_FinanAdvisor_FeeCommission)
+        instance.GP_FinanAdvisor_OtherComments = validated_data.get('GP_FinanAdvisor_OtherComments', instance.GP_FinanAdvisor_OtherComments)
+        instance.GP_FinanAdvisor_Date = validated_data.get('GP_FinanAdvisor_Date', instance.GP_FinanAdvisor_Date)
         
         instance.updated_at = datetime.now(timezone.utc)
 

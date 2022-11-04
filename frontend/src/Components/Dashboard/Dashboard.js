@@ -21,8 +21,9 @@ const Dashboard = ({user}) => {
               'Accept' : 'application/json'
           }
         }
+        const Body = JSON.stringify({"advisorId" : user['id']})
         try {
-          const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/forms_stats/`, config)
+          const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/forms_stats/`, Body,config)
           setFormStats(response.data)
           setFormList(response.data['forms'])
         //   console.log('Users', JSON.stringify(response.data.Data))
@@ -36,7 +37,8 @@ const Dashboard = ({user}) => {
     // console.log(formStats)
     useEffect(() => {
         loadFormsStats()
-    }, [])
+    }, [user])
+    console.log(localStorage.getItem('access'))
   return (
     <>
         <div style={{display: Loader}}>

@@ -13,6 +13,7 @@ urlpatterns = [
     path('updateformdata/' , views.viewFormData, name="Update form data details"),
     path('deleteformdata/' , views.deleteFormData, name="Delete form data details"),
     path('forms_stats/' , views.formStats, name="Forms Data"),
+    path('update_form_status/' , views.changeFormStatus, name="Completed Form"),
     # Fiduciary Form Data
     path('addfiduciarydata/' , views.insertFiduciaryData, name="Insert data into Fiduciary Collection"),
     path('viewfiduciarydata/' , views.viewFormData, name="Fiduciary data details"),
@@ -39,4 +40,8 @@ urlpatterns = [
     path('add_employee_benefits_data/' , views.insertEmployeeBenefitsData, name="Insert data into Assurance Risk Collection"),
     path('view_employee_benefits_data/' , views.viewEmployeeBenefitsData, name="Assurance Risk data details"),
     path('update_employee_benefits_data/' , views.updateEmployeeBenefitsData, name="Assurance Risk data details"),
+    # Gap Cover
+    path('add_gap_cover_data/' , views.insertGapCoverData, name="Insert data into Gap Cover Collection"),
+    path('view_gap_cover_data/' , views.viewGapCoverData, name="Gap Cover data details"),
+    path('update_gap_cover_data/' , views.updateGapCoverData, name="Gap Cover data details"),
 ]

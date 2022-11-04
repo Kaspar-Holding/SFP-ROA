@@ -8,7 +8,7 @@ import { Content } from './Components/Content';
 import CreateForm from './Components/Forms/CreateForm';
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Link,
@@ -39,6 +39,7 @@ import PrintForm from './Components/Forms/PrintForm';
 import PrintFormLayout from './Layout/CompleteFormLayout';
 import PrintStuff from './Components/PrintStuff';
 import ServerDown from './Components/ServerDown';
+import SuperUserLayout from './Layout/SuperUserLayout';
 
 function App() {
   return (
@@ -52,13 +53,13 @@ function App() {
                     <Route exact path="/" element={<Dashboard name="" /> } />
                     <Route exact path="/createform" element={<CreateForm name="" /> } />
                     <Route exact path="/completeform" element={<CompleteForm name="" /> } />
-                    {/* <Route element={<PrintFormLayout /> }>
-                      <Route exact path="/printform" element={<PrintForm name="" /> } />
-                    </Route> */}
                     <Route exact path="/form" element={<Form name="" /> } />
-                    <Route exact path="/users" element={<AccountDashboard name="" /> } />
-                    <Route exact path="/newuser" element={<CreateNewAccount name="" /> } />
-                    <Route exact path="/userdetails" element={<AccountDetails name="" /> } />
+                    <Route element={<SuperUserLayout /> }>
+                      {/* <Route exact path="/printform" element={<PrintForm name="" /> } /> */}
+                      <Route exact path="/users" element={<AccountDashboard name="" /> } />
+                      <Route exact path="/newuser" element={<CreateNewAccount name="" /> } />
+                      <Route exact path="/userdetails" element={<AccountDetails name="" /> } />
+                    </Route>
                     <Route exact path="/profile" element={<UserProfile name="" /> } />
                     <Route exact path="/print" element={<PrintStuff name="" /> } />
                     {/* <Route exact path="/printform" element={<PrintForm name="" /> } /> */}

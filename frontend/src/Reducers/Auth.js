@@ -50,6 +50,7 @@ export default function (state=initalState, action) {
                 access: null,
                 refresh: null,
                 isAuthenticated: false,
+                user: null
             }
         case LOGIN_FAILED:
             localStorage.removeItem('access')
@@ -59,7 +60,6 @@ export default function (state=initalState, action) {
                 access: null,
                 refresh: null,
                 isAuthenticated: false,
-
             }
         case USER_LOADED_FAILED:
             return{

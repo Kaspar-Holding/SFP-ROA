@@ -195,7 +195,7 @@ class InvestmentPlanning(models.Model):
 
     IP_ItP_FundsMaterialAspects = models.CharField(max_length=500, default="", blank=True)
 
-    status = models.IntegerField(default=0)
+    status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
@@ -302,7 +302,7 @@ class AssuranceInvestment(models.Model):
     AI_PF_Pr_Details = models.CharField(max_length=500, default="", blank=True)
     AI_PF_NominationOfBeneficiaries = models.CharField(max_length=500, default="", blank=True)
 
-    status = models.IntegerField(default=0)
+    status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
@@ -438,7 +438,7 @@ class RiskPlanning(models.Model):
     RP_NominationOfBeneficiaries = models.CharField(max_length=500, default="", blank=True)
     RP_InformationExplained = models.CharField(max_length=500, default="", blank=True)
 
-    status = models.IntegerField(default=0)
+    status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
@@ -643,7 +643,7 @@ class AssuranceRisk(models.Model):
     AR_Cessionaries = models.CharField(max_length=500, default="", blank=True)
     AR_InformationExplained = models.CharField(max_length=500, default="", blank=True)
 
-    status = models.IntegerField(default=0)
+    status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
@@ -846,7 +846,7 @@ class EmployeeBenefits(models.Model):
     EB_BusFReplace_InvestCh_Proposed = models.CharField(max_length=256, default="", blank=True)
     EB_BusFReplace_InvestCh_Existing = models.CharField(max_length=256, default="", blank=True)
 
-    status = models.IntegerField(default=0)
+    status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
@@ -974,7 +974,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_BusInt_Sum = models.CharField(max_length=256, default="", blank=True)
     STIC_BusInt_Suppliers = models.IntegerField(default="0")
 
-    status = models.IntegerField(default=0)
+    status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
@@ -997,6 +997,90 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_Applicant_Title = models.CharField(max_length=256, default="", blank=True)
     
 
-    status = models.IntegerField(default=0)
+    status = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+class GapCover(models.Model):   
+    advisorId = models.IntegerField()
+    formId = models.IntegerField()
+    # form_type = models.IntegerField(default=1)
+    # clientIdNumber = models.CharField(max_length=256, default="", blank=True)
+        
+    GP_ClientName = models.CharField(max_length=256, default="", blank=True)
+    GP_ClientIdNumber = models.CharField(max_length=256, default="", blank=True)
+    GP_ClientAddress = models.CharField(max_length=256, default="", blank=True)
+    GP_ClientEmail = models.CharField(max_length=256, default="", blank=True)
+    GP_ClientPhoneNumber = models.CharField(max_length=256, default="", blank=True)
+    GP_ClientMedicalAidName = models.CharField(max_length=256, default="", blank=True)
+    GP_ClientInceptionDate = models.CharField(max_length=256, default="", blank=True)
+    GP_Date = models.CharField(max_length=256, default="", blank=True)
+    
+    GP_Benefits = models.CharField(max_length=1000, default="", blank=True)
+    GP_MedicalDependent = models.IntegerField(default=1)
+
+    GP_MemberName1 = models.CharField(max_length=1000, default="", blank=True)
+    GP_MemberRelationship1 = models.CharField(max_length=1000, default="", blank=True)
+    GP_MemberAidPlan1 = models.CharField(max_length=1000, default="", blank=True)
+    GP_MemberName2 = models.CharField(max_length=1000, default="", blank=True)
+    GP_MemberRelationship2 = models.CharField(max_length=1000, default="", blank=True)
+    GP_MemberAidPlan2 = models.CharField(max_length=1000, default="", blank=True)
+    GP_MemberName3 = models.CharField(max_length=1000, default="", blank=True)
+    GP_MemberRelationship3 = models.CharField(max_length=1000, default="", blank=True)
+    GP_MemberAidPlan3 = models.CharField(max_length=1000, default="", blank=True)
+    GP_MemberName4 = models.CharField(max_length=1000, default="", blank=True)
+    GP_MemberRelationship4 = models.CharField(max_length=1000, default="", blank=True)
+    GP_MemberAidPlan4 = models.CharField(max_length=1000, default="", blank=True)
+
+    GP_Provider = models.CharField(max_length=1000, default="", blank=True)
+    GP_Option = models.CharField(max_length=1000, default="", blank=True)
+    GP_Motivation = models.CharField(max_length=1000, default="", blank=True)
+    GP_TotalPremium = models.CharField(max_length=1000, default="", blank=True)
+    GP_BrokerFee = models.CharField(max_length=1000, default="", blank=True)
+    GP_Commission = models.CharField(max_length=1000, default="", blank=True)
+
+    GP_CP_Rate = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_Rate = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_Overall = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_Overall = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_CoPayment_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_CoPayment_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_SubLimit_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_SubLimit_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_Cancer_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_Cancer_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_CancerD_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_CancerD_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_Other_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_Other_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_CasualB = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_CasualB = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_TraumaB = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_TraumaB = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_PreW_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_PreW_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_Med_SW_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_Med_SW_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_Accidental_DC_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_Accidental_DC_B = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_GenWait_P = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_GenWait_P = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_PreExist_P = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_PreExist_P = models.CharField(max_length=1000, default="", blank=True)
+    GP_CP_Specific_P = models.CharField(max_length=1000, default="", blank=True)
+    GP_NP_Specific_P = models.CharField(max_length=1000, default="", blank=True)
+
+    GP_Exclusions = models.IntegerField(default=1)
+    GP_Other_Exclusions = models.CharField(max_length=1000, default="", blank=True)
+    GP_GeneralComments = models.CharField(max_length=1000, default="", blank=True)
+    
+    GP_FinanAdvisor_ProdRecomm = models.CharField(max_length=1000, default="", blank=True)
+    GP_FinanAdvisor_Reasons = models.CharField(max_length=1000, default="", blank=True)
+    GP_FinanAdvisor_Consequences = models.IntegerField(default=1)
+    GP_FinanAdvisor_FeeCommission = models.IntegerField(default=1)
+    GP_FinanAdvisor_OtherComments = models.IntegerField(default=1)
+    GP_FinanAdvisor_Date = models.IntegerField(default=1)
+
+    status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)

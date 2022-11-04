@@ -10,8 +10,8 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from uritemplate import partial
-from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, InvestmentPlanningSerializers, RiskPlanningSerializers, UserAccountsSerializers, FormSerializers
-from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, InvestmentPlanning, RiskPlanning, UserAccount, Form
+from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskPlanningSerializers, UserAccountsSerializers, FormSerializers
+from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskPlanning, UserAccount, Form
 from django.http import FileResponse, HttpResponse
 
 @api_view(['GET'])
@@ -110,6 +110,16 @@ def updateFormData(request):
     else:
         return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
 
+@api_view(['POST'])
+def changeFormStatus(request):
+    form = Form.objects.filter(id=request.data['formId']).first()
+    serializer = FormSerializers(instance=form, data={'status': request.data['formStatus']}, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Found","code":200,"Data": serializer.data},200)
+    else:
+        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
 @api_view(['DELETE'])
 def deleteFormData(request):
     form = Form.objects.get(id=request.data['formId'])
@@ -148,13 +158,13 @@ def sampleFile(request):
     doc.save(response)
     return response
 
-@api_view(['GET'])
+@api_view(['POST'])
 def formStats(request):
-    forms = Form.objects.all()
+    forms = Form.objects.filter(advisorId = request.data['advisorId'])
     formSerializer = FormSerializers(forms, many=True)
-    complete_forms = Form.objects.filter(status = 1)
+    complete_forms = Form.objects.filter(advisorId = request.data['advisorId'],status = 1)
     complete_serializer = FormSerializers(complete_forms, many=True)
-    incomplete_forms = Form.objects.filter(status = 0)
+    incomplete_forms = Form.objects.filter(advisorId = request.data['advisorId'],status = 0)
     incomplete_serializer = FormSerializers(incomplete_forms, many=True)
 
     return Response({
@@ -467,6 +477,59 @@ def viewEmployeeBenefitsData(request):
 def updateEmployeeBenefitsData(request):
     form = EmployeeBenefits.objects.get(id=request.data['id'])
     serializer = EmployeeBenefitsSerializers(instance=form, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    else:
+        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+
+
+# Employee Benefits
+@api_view(['POST'])
+def insertGapCoverData(request):
+    serializer = GapCoverSerializers(data=request.data, many=False)
+    if serializer.is_valid():
+        old_form = GapCover.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
+        # old_form = RiskPlanning.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId'],clientIdNumber = request.data['clientIdNumber']).first()
+        serializer1 = GapCoverSerializers(old_form, many=False)
+        data = serializer1.data
+        # return Response({"data":serializer1.data, "length": str(serializer1.data['advisorId'])})
+        if str(serializer1.data['advisorId']) == "None":
+            serializer.create(serializer.validated_data)
+            latest = GapCover.objects.latest('id')
+            serializer2 = GapCoverSerializers(latest, many=False)
+            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+        else :
+            del data['status']
+            del data['created_at']
+            del data['updated_at']
+            return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
+        #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
+    return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
+
+    
+
+@api_view(['POST'])
+def viewGapCoverData(request):
+    form = GapCover.objects.get(id=request.data['formId'])
+    formSerializer = GapCoverSerializers(form, many=False)
+    
+    formData = formSerializer.data
+    
+    advisorName = GapCover.objects.get(id=formData.data['advisorId'])
+    advisorNameSerializer = GapCoverSerializers(advisorName, many=False)
+
+    formData['advisorName'] = advisorNameSerializer.data['name']
+    # if serializer.is_valid():
+    return Response({"message": "Found","code":200,"Data": formData},200)
+    # else:
+    #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+@api_view(['POST'])
+def updateGapCoverData(request):
+    form = GapCover.objects.get(id=request.data['id'])
+    serializer = GapCoverSerializers(instance=form, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
         return Response({"message": "Updated","code":200,"formData": serializer.data},200)
