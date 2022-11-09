@@ -22,7 +22,7 @@ const GapCover = () => {
         GP_Date : "",
         
         GP_Benefits : "",
-        GP_MedicalDependent : "1",
+        GP_MedicalDependent : 1,
 
         GP_MemberName1 : "",
         GP_MemberRelationship1 : "",
@@ -75,13 +75,13 @@ const GapCover = () => {
         GP_CP_Specific_P : "",
         GP_NP_Specific_P : "",
 
-        GP_Exclusions : "1",
+        GP_Exclusions : 1,
         GP_Other_Exclusions : "",
         GP_GeneralComments : "",
         
         GP_FinanAdvisor_ProdRecomm : "",
         GP_FinanAdvisor_Reasons : "",
-        GP_FinanAdvisor_Consequences : "1",
+        GP_FinanAdvisor_Consequences : 1,
         GP_FinanAdvisor_FeeCommission : "",
         GP_FinanAdvisor_OtherComments : "",
         GP_FinanAdvisor_Date : "",
@@ -627,11 +627,34 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Are claims whereby the medical aid requires a co-payment for not using a specific medical service provider excluded?</b></label>
                         </div>
                         <div className="col-6">
-                            <input type="radio" id="GP_Exclusions" onChange={(e) => {onChange(e)}} name="GP_Exclusions" selected={FormData['GP_Exclusions'] == 1 ? true : false} value="1"/>
-                                <label for="yes15">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" id="GP_Exclusions" onChange={(e) => {onChange(e)}} name="GP_Exclusions" selected={FormData['GP_Exclusions'] == 1 ? false : true} value="0"/>
-                                <label for="no15">No</label>
+                            <div className="row">
+                                <div className="row col-3 align-items-center">
+                                    <div className="col-2">
+                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="GP_Exclusions" name="GP_Exclusions" />
+                                    </div>
+                                    <div className="col-8">
+                                        <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <div className="row col-3 align-items-center">
+                                    <div className="col-2">
+                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="GP_Exclusions" name="GP_Exclusions" />
+                                    </div>
+                                    <div className="col-8">
+                                        <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
+                        
+
+
                     </div>
                     <hr/>
 
@@ -704,11 +727,32 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label">The consequences thereof have been clearly explained to you.</label>
                         </div>
                         <div className="col-6">
-                            <input type="radio" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" selected={FormData['GP_FinanAdvisor_Consequences' == 1 ? true : false]} value="1"/>
-                                <label for="GP_FinanAdvisor_Consequences">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" selected={FormData['GP_FinanAdvisor_Consequences' == 1 ? false : true]} value="0"/>
-                                <label for="GP_FinanAdvisor_Consequences">No</label>
+                        <div className="row">
+                            <div className="row col-3 align-items-center">
+                                <div className="col-2">
+                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                </div>
+                                <div className="col-8">
+                                    <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
+                                        Yes
+                                    </label>
+                                </div>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div className="row col-3 align-items-center">
+                                <div className="col-2">
+                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                </div>
+                                <div className="col-8">
+                                    <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
+                                        No
+                                    </label>
+                                </div>
+                            </div>
                         </div>
+                        
+                    </div>
+
                     </div>
 
                     <hr/>

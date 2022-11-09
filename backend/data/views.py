@@ -10,8 +10,8 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from uritemplate import partial
-from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskPlanningSerializers, UserAccountsSerializers, FormSerializers
-from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskPlanning, UserAccount, Form
+from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskPlanningSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers
+from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskPlanning, ShortTermInsurancePersonal, UserAccount, Form
 from django.http import FileResponse, HttpResponse
 
 @api_view(['GET'])
@@ -530,6 +530,58 @@ def viewGapCoverData(request):
 def updateGapCoverData(request):
     form = GapCover.objects.get(id=request.data['id'])
     serializer = GapCoverSerializers(instance=form, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    else:
+        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+
+# Employee Benefits
+@api_view(['POST'])
+def insertShortTermInsurancePersonalData(request):
+    serializer = ShortTermInsurancePersonalSerializers(data=request.data, many=False)
+    if serializer.is_valid():
+        old_form = ShortTermInsurancePersonal.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
+        # old_form = RiskPlanning.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId'],clientIdNumber = request.data['clientIdNumber']).first()
+        serializer1 = ShortTermInsurancePersonalSerializers(old_form, many=False)
+        data = serializer1.data
+        # return Response({"data":serializer1.data, "length": str(serializer1.data['advisorId'])})
+        if str(serializer1.data['advisorId']) == "None":
+            serializer.create(serializer.validated_data)
+            latest = ShortTermInsurancePersonal.objects.latest('id')
+            serializer2 = ShortTermInsurancePersonalSerializers(latest, many=False)
+            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+        else :
+            del data['status']
+            del data['created_at']
+            del data['updated_at']
+            return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
+        #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
+    return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
+
+    
+
+@api_view(['POST'])
+def viewShortTermInsurancePersonalData(request):
+    form = ShortTermInsurancePersonal.objects.get(id=request.data['formId'])
+    formSerializer = ShortTermInsurancePersonalSerializers(form, many=False)
+    
+    formData = formSerializer.data
+    
+    advisorName = ShortTermInsurancePersonal.objects.get(id=formData.data['advisorId'])
+    advisorNameSerializer = ShortTermInsurancePersonalSerializers(advisorName, many=False)
+
+    formData['advisorName'] = advisorNameSerializer.data['name']
+    # if serializer.is_valid():
+    return Response({"message": "Found","code":200,"Data": formData},200)
+    # else:
+    #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+@api_view(['POST'])
+def updateShortTermInsurancePersonalData(request):
+    form = ShortTermInsurancePersonal.objects.get(id=request.data['id'])
+    serializer = ShortTermInsurancePersonalSerializers(instance=form, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
         return Response({"message": "Updated","code":200,"formData": serializer.data},200)

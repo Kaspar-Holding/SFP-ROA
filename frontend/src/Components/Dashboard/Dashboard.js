@@ -96,7 +96,7 @@ const Dashboard = ({user}) => {
                 </div>
                 <hr />
                 <h5 className="h3">Form List</h5>
-                <div className='row'>
+                <div className='table-responsive'>
                     <table className="table table-hover">
                         <thead>
                             <tr>

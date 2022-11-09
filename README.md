@@ -7,6 +7,12 @@ This project is built on the following Stack
 - PostgreSQL (User)
 
 ## Updates
+### 9 November 2022:
+- Created APIs for Gap Cover and integrated those in Form Data
+- Data is inserting and updating for Gap Cover
+- Created 550+ fields model and APIs for Short Term Personal
+- Working on Update Serializer for Short Term Personal
+
 ### 4 November 2022:
 - Deployed backend server on Azure Server with Ngnix and Gunicorn while REACT JS on XAMPP
 - Handed over Version 0.1 to SFP (Aakifah and Mohammad) for testing

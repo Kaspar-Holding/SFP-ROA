@@ -60,7 +60,7 @@ import React, {useState} from 'react';
     return(
         <>
          <br/>
-        <div class="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SHORT-TERM INSURANCE: PERSONAL LINES</b></div>
+        <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SHORT-TERM INSURANCE: PERSONAL LINES</b></div>
        <hr/>
 
        <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence and storage of your personal information relating to your financial matters. Ts&Cs on  <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  </p>
@@ -158,7 +158,7 @@ import React, {useState} from 'react';
     </div>
 
     <br/>
-    <div class="text-start "style={{fontSize:'20px',fontFamily:'Arial Bold'}}>
+    <div className="text-start "style={{fontSize:'20px',fontFamily:'Arial Bold'}}>
         <b>INFORMATION ON ITEMS AND RISKS TO BE INSURED</b>
     </div>
 
@@ -179,7 +179,7 @@ import React, {useState} from 'react';
         </div>
         <hr/>
 
-        <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>DETAILS OF APPLICANT</b></div>
+        <div className="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>DETAILS OF APPLICANT</b></div>
         <hr/>
         <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
         <div className="row">
@@ -283,7 +283,7 @@ import React, {useState} from 'react';
         </div>
     </div>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>GENERAL</b></div>
+    <div className="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>GENERAL</b></div>
     <hr/>
 
     <div className="row g-3 align-items-center">
@@ -485,823 +485,864 @@ import React, {useState} from 'react';
   <hr/>
 <h6 align="left" style={{ color: "#14848A"}}><b>COVER AND REPLACEMENT OF INSURANCE</b></h6>
 <hr/>
-<div class="container-fluid">
-  <table id="productSizes" class="table table-bordered border dark">
+<div className="container-fluid">
+  <div className='table-responsive'>
+  <table id="productSizes" className="table table-bordered border dark">
   <tbody>
-          {/* <tr class="d-flex">
-              <td class="col-2"></td>
-              <td class="col-2"></td>
-              <td class="col-2"></td>
-              <td class="col-3">Existing Product</td>
-              <td class="col-3">Replacement Product</td>
+          {/* <tr className="d-flex">
+              <td className="col-2"></td>
+              <td className="col-2"></td>
+              <td className="col-2"></td>
+              <td className="col-3">Existing Product</td>
+              <td className="col-3">Replacement Product</td>
           </tr> */}
       
       
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}><b>Cover</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Recommended</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Accepted</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Cover amount</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Premium</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Excess</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Premium</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Excess</b></td>
+              <td><h6 align="center" style={{ color: "#14848A", width:"1110px"}}><b>PRODUCT COMPARISON AND REPLACEMENT</b></h6></td>
+            
+          </tr>
+          <tr className="d-flex">
+              
+              <td className="col-8" style={{width:"590px"}}></td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <b>Existing Product</b>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <b>Replacement Product</b>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
+          <tr className="d-flex">
+              
+              <td className="col-8" style={{width:"590px"}}></td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
+          <tr className="d-flex">
+              
+              <td className="col-8" style={{width:"590px"}}></td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <input spellCheck="true"  id="product" name="product" className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <input spellCheck="true"  id="product" name="product" className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
+          <tr className="d-flex">
+              
+              <td className="col-2" style={{width:"200px"}}><b>Cover</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Recommended</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Accepted</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Cover amount</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Premium</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Excess</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Premium</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Excess</b></td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>House content</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>House content</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Buildings</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Buildings</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Subsidence and landslip</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Subsidence and landslip</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Accidental damage</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Accidental damage</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>All Risk(General)</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>All Risk(General)</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Clothing and personal</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Clothing and personal</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Keys and locks</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Keys and locks</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Wheelchairs</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Wheelchairs</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Bicycles</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Bicycles</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Cellular telephones</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Cellular telephones</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; TV,VCR,Decoders</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; TV,VCR,Decoders</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>All Risk Specified</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>All Risk Specified</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Computer equipment</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Computer equipment</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Items in bank vault</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Items in bank vault</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Jewellery(All jewellery)</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Jewellery(All jewellery)</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Photographic equipment</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Photographic equipment</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Sound Equipment</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Sound Equipment</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Other specify</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Other specify</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Personal legal liability</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Personal legal liability</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>(PLIP)</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>(PLIP)</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Vehicles(Refer to quote/policy)</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Vehicles(Refer to quote/policy)</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Car hire</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Car hire</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Excess waiver</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Excess waiver</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Credit shortfall</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Credit shortfall</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
@@ -1309,112 +1350,136 @@ import React, {useState} from 'react';
 
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Watercraft</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Watercraft</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Sasria</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Sasria</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Legal access</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Legal access</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
-
+          <tr className="d-flex">
+              
+              <td className="col-2" style={{width:"200px"}}>Fees and charges</td>
+              <td className="col-2" style={{width:"910px"}}>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
+          <tr className="d-flex">
+              
+              <td className="col-2" style={{width:"200px"}}>Commissions</td>
+              <td className="col-2" style={{width:"910px"}}>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
+          <tr className="d-flex">
+              
+              <td className="col-2" style={{width:"200px"}}>Total premium</td>
+              <td className="col-2" style={{width:"910px"}}>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
 
           
           
       </tbody>
   </table>
+  </div>
   </div>
 
 
@@ -1422,823 +1487,863 @@ import React, {useState} from 'react';
   <hr/>
 <h6 align="left" style={{ color: "#14848A"}}><b>COVER AND RENEWAL OF INSURANCE</b></h6>
 <hr/>
-<div class="container-fluid">
-  <table id="productSizes" class="table table-bordered border dark">
+<div className="container-fluid">
+<div className='table-responsive'>
+  <table id="productSizes" className="table table-bordered border dark">
   <tbody>
-          {/* <tr class="d-flex">
-              <td class="col-2"></td>
-              <td class="col-2"></td>
-              <td class="col-2"></td>
-              <td class="col-3">Existing Product</td>
-              <td class="col-3">Replacement Product</td>
+          {/* <tr className="d-flex">
+              <td className="col-2"></td>
+              <td className="col-2"></td>
+              <td className="col-2"></td>
+              <td className="col-3">Existing Product</td>
+              <td className="col-3">Replacement Product</td>
           </tr> */}
+          <tr className="d-flex">
+              
+              <td><h6 align="center" style={{ color: "#14848A", width:"1110px"}}><b>COVER COMPARISON AT RENEWAL</b></h6></td>
+            
+          </tr>
+          <tr className="d-flex">
+              
+              <td className="col-8" style={{width:"590px"}}></td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <b>Existing Product</b>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <b>Replacement Product</b>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
+          <tr className="d-flex">
+              
+              <td className="col-8" style={{width:"590px"}}></td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
+          <tr className="d-flex">
+              
+              <td className="col-8" style={{width:"590px"}}></td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <input spellCheck="true"  id="product" name="product" className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+              <td className="col-2" align="center" style={{width:"260px"}}>
+                <input spellCheck="true"  id="product" name="product" className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
       
-      
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}><b>Cover</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Recommended</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Accepted</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Cover amount</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Premium</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Excess</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Premium</b></td>
-              <td class="col-2" style={{width:"130px"}}><b>Excess</b></td>
+              <td className="col-2" style={{width:"200px"}}><b>Cover</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Recommended</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Accepted</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Cover amount</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Premium</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Excess</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Premium</b></td>
+              <td className="col-2" style={{width:"130px"}}><b>Excess</b></td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>House content</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>House content</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Buildings</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Buildings</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Subsidence and landslip</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Subsidence and landslip</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Accidental damage</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Accidental damage</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>All Risk(General)</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>All Risk(General)</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Clothing and personal</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Clothing and personal</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Keys and locks</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Keys and locks</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Wheelchairs</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Wheelchairs</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Bicycles</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Bicycles</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Cellular telephones</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Cellular telephones</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; TV,VCR,Decoders</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; TV,VCR,Decoders</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>All Risk Specified</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>All Risk Specified</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Computer equipment</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Computer equipment</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Items in bank vault</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Items in bank vault</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Jewellery(All jewellery)</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Jewellery(All jewellery)</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Photographic equipment</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Photographic equipment</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Sound Equipment</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Sound Equipment</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Other specify</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Other specify</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Personal legal liability</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Personal legal liability</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>(PLIP)</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>(PLIP)</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Vehicles(Refer to quote/policy)</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Vehicles(Refer to quote/policy)</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Car hire</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Car hire</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Excess waiver</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Excess waiver</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Credit shortfall</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Credit shortfall</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
@@ -2246,110 +2351,134 @@ import React, {useState} from 'react';
 
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Watercraft</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Watercraft</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Sasria</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Sasria</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
 
 
-          <tr class="d-flex">
+          <tr className="d-flex">
               
-              <td class="col-2" style={{width:"200px"}}>Legal access</td>
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"200px"}}>Legal access</td>
+              <td className="col-2" style={{width:"130px"}}>
                   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" align="centre"/>
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
-              <td class="col-2" style={{width:"130px"}}>
+              <td className="col-2" style={{width:"130px"}}>
                 <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
-
+          <tr className="d-flex">
+              
+              <td className="col-2" style={{width:"200px"}}>Fees and charges</td>
+              <td className="col-2" style={{width:"910px"}}>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
+          <tr className="d-flex">
+              
+              <td className="col-2" style={{width:"200px"}}>Commissions</td>
+              <td className="col-2" style={{width:"910px"}}>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
+          <tr className="d-flex">
+              
+              <td className="col-2" style={{width:"200px"}}>Total premium</td>
+              <td className="col-2" style={{width:"910px"}}>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              </td>
+            
+          </tr>
       </tbody>
   </table>
   </div>
+</div>
 
   <div className="row g-3 align-items-center">
       <div className="col-6">
@@ -2379,36 +2508,30 @@ import React, {useState} from 'react';
               </div>
           </div>
       </div>
-      {
-          Fica1 ? null : 
-          <>
-              <div className="col-11" id="provided_identity_2" >
-                  {
-                      FicaVisibility1 ?
-                      <>
-                          {/* <div id="provided_identity_instructions" className="hidden_class">
-                                <p>What is the purpose of this replacement?</p> 
-                          </div> */}
-                          
-                          
-                      </> : 
-                      null
-                  }
+      <div className="col-11" id="provided_identity_2" >
+        {
+            FicaVisibility1 ?
+            <>
+                {/* <div id="provided_identity_instructions" className="hidden_class">
+                      <p>What is the purpose of this replacement?</p> 
+                </div> */}
+                
+                
+            </> : 
+            null
+        }
 
-                <p>If yes,answer the following:</p>
-                  <p>What is the purpose of this replacement?</p>
-                  <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason1(e.target.value)}} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
-                <hr/>
-                  <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
-                  <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason1(e.target.value)}} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
-                  <hr/>
-                  <p>Suppliers of the product(s) to be replaced:</p>
-                  <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason1(e.target.value)}} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+      <p>If yes,answer the following:</p>
+        <p>What is the purpose of this replacement?</p>
+        <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason1(e.target.value)}} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+      <hr/>
+        <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
+        <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason1(e.target.value)}} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+        <hr/>
+        <p>Suppliers of the product(s) to be replaced:</p>
+        <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason1(e.target.value)}} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
 
-              </div>
-
-          </>
-      }
+    </div>
   </div>
 
 
@@ -3709,7 +3832,18 @@ import React, {useState} from 'react';
                       <label htmlFor="id_number" className="col-form-label"><b>Overnight parking</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true"  id="id_number"  name="id_number" className="form-control" placeholder="Select the type of overnight parking."  aria-describedby="" />
+                    <select className="text-start form-select" id="RP_Product_PremiumFrequency" name='RP_Product_PremiumFrequency' 
+                    // value={} onChange={(e) => {onChange(e)}}
+                    aria-label="Default select example">
+                        <option value="0" selected>Select the type of Overnight Parking</option>
+                        <option value="1">Overnight Parking</option>
+                        <option value="2">Locked Garage</option>
+                        <option value="3">Carport</option>
+                        <option value="4">Security Complex</option>
+                        <option value="5">Behind Gates</option>
+                        <option value="6">Others</option>
+                    </select>
+                    <input spellCheck="true"  id="id_number"  name="id_number" className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -3732,7 +3866,16 @@ import React, {useState} from 'react';
                       <label htmlFor="id_number" className="col-form-label"><b>Type of cover required</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true"  id="id_number"  name="id_number" className="form-control" placeholder="Select the type of overnight parking."  aria-describedby="" />
+                    <select className="text-start form-select" id="RP_Product_PremiumFrequency" name='RP_Product_PremiumFrequency' 
+                      // value={} onChange={(e) => {onChange(e)}}
+                      aria-label="Default select example">
+                        <option value="0" selected>Select the type of cover</option>
+                        <option value="1">Comprehensive (cover for comprehensive risks)</option>
+                        <option value="2">Limited (Fire and Theft)</option>
+                        <option value="3">Third Party (cover for claims of 3rd parties)</option>
+                        <option value="4">Third Party - Theft excluded (cover for loss or damage except by theft)</option>
+                    </select>
+                      {/* <input spellCheck="true"  id="id_number"  name="id_number" className="form-control" placeholder="Select the type of overnight parking."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -3756,18 +3899,18 @@ import React, {useState} from 'react';
                   </div>
                   <div className="col-8">
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                        <label class="form-check-label" for="flexCheckDefault">
+                    <div className="form-check">
+                      <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label className="form-check-label" for="flexCheckDefault">
                         Immobilizer  
                         </label>
                     </div>
                   </td> 
                     
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                        <label class="form-check-label" for="flexCheckDefault">
+                    <div className="form-check">
+                      <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label className="form-check-label" for="flexCheckDefault">
                           Gear lock
                         </label>
                     </div>
@@ -3783,18 +3926,18 @@ import React, {useState} from 'react';
                   </div>
                   <div className="col-8">
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
-                    <div class="form-check">
-                      {/* <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/> */}
-                        <label class="form-check-label" for="flexCheckDefault">
+                    <div className="form-check">
+                      {/* <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/> */}
+                        <label className="form-check-label" for="flexCheckDefault">
                         {/* Tracking device   */}
                         </label>
                     </div>
                   </td> 
                     
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
-                    <div class="form-check">
-                      {/* <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/> */}
-                        <label class="form-check-label" for="flexCheckDefault">
+                    <div className="form-check">
+                      {/* <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/> */}
+                        <label className="form-check-label" for="flexCheckDefault">
                           {/* Data dot */}
                         </label>
                     </div>
@@ -3810,18 +3953,18 @@ import React, {useState} from 'react';
                   </div>
                   <div className="col-8">
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                        <label class="form-check-label" for="flexCheckDefault">
+                    <div className="form-check">
+                      <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label className="form-check-label" for="flexCheckDefault">
                         Tracking device  
                         </label>
                     </div>
                   </td> 
                     
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                        <label class="form-check-label" for="flexCheckDefault">
+                    <div className="form-check">
+                      <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label className="form-check-label" for="flexCheckDefault">
                           Data dot
                         </label>
                     </div>
@@ -3962,198 +4105,424 @@ import React, {useState} from 'react';
   <div className="col-2">
           <label htmlFor="client_name" className="col-form-label" title="If no, motivate"></label>
       </div>
-        <div className="col-6">
+        <div className="col-10">
           <div className="row">
-              <div className="row col-3 align-items-center">
-                  <div className="col-2">
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                  </div>
-                  <div className="col-3">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn25" >
-                          Air conditioning
-                      </label>
-                  </div>
-              </div>
-
-              <div className="row col-2 align-items-center">
+              <div className="row col-6 align-items-center">
                   <div className="col-2">
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
                   </div>
                   <div className="col-4">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn25" >
-                          Mag wheels
+                      <label className="form-check-label"  >
+                          Air Conditioning
                       </label>
                   </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
               </div>
-
-            </div>
-          </div>
-        </div>
-        <br/>
-
-        <div className="row g-2 align-items-center">
-  <div className="col-2">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"></label>
-      </div>
-        <div className="col-6">
-          <div className="row">
-              <div className="row col-3 align-items-center">
+              <div className="row col-6 align-items-center">
                   <div className="col-2">
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
                   </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Mag wheels
+                      </label>
+                  </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
+              </div>
+              <div className="row col-6 align-items-center">
                   <div className="col-2">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn26" >
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
                           Canopy
                       </label>
                   </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
               </div>
-
-              <div className="row col-2 align-items-center">
+              <div className="row col-6 align-items-center">
                   <div className="col-2">
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
                   </div>
                   <div className="col-4">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn26" >
-                          Electric windows
+                      <label className="form-check-label"  >
+                      Electric windows
                       </label>
                   </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
               </div>
+              <div className="row col-6 align-items-center">
+                  <div className="col-2">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Leather seats
+                      </label>
+                  </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
+              </div>
+              <div className="row col-6 align-items-center">
+                  <div className="col-2">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Tow bar
+                      </label>
+                  </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
+              </div>
+              <div className="row col-6 align-items-center">
+                  <div className="col-2">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Roof carrier
+                      </label>
+                  </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
+              </div>
+              <div className="row col-6 align-items-center">
+                  <div className="col-2">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Sunroof
+                      </label>
+                  </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
+              </div>
+              <div className="row col-6 align-items-center">
+                  <div className="col-2">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Power steering
+                      </label>
+                  </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
+              </div>
+              <div className="row col-6 align-items-center">
+                  <div className="col-2">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Sound
+                      </label>
+                  </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
+              </div>
+              <div className="row col-6 align-items-center">
+                  <div className="col-2">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Car Keys
+                      </label>
+                  </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
+              </div>
+              <div className="row col-6 align-items-center">
+                  <div className="col-2">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Tools,spare parts
+                      </label>
+                  </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
+              </div>
+              <div className="row col-6 align-items-center">
+                  <div className="col-2">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Restricted travelling cover
+                      </label>
+                  </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
+              </div>
+              <div className="row col-6 align-items-center">
+                  <div className="col-2">
+                      <label className="form-check-label"  >
+                      Other
+                      </label>
+                  </div>
+                  <div className="col-4">
+                    <input className="form-control" type="text" placeholder="Enter text"  />
+                  </div>
+                  <div className="col-6">
+                    <input className="form-control" type="number" placeholder="R 0.0"  />
+                  </div>
+              </div>
+            </div>
+          </div>
+        <div className="col-10">
+          <div className="row">
+              <div className="row align-items-center">
+                  <div className="col-4">
+                    <b>Additional cover required by client:</b>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Market value/hire purchase difference
+                      </label>
+                  </div>
+                  <div className='col-4'> 
+                    <div className="row">
+                      <div className="row col-6 align-items-center">
+                          <div className="col-6">
+                              <input className="form-check-input"  type="radio" value="0" id="letter_of_introduction_radio_btn30" name="letter_of_introduction_radio_btn30" />
+                          </div>
+                          <div className="col-6">
+                              <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
+                                  Yes
+                              </label>
+                          </div>
+                      </div>
 
+                      <div className="row col-6 align-items-center">
+                          <div className="col-6">
+                              <input className="form-check-input" type="radio" value="1" id="letter_of_introduction_radio_btn30" name="letter_of_introduction_radio_btn30" />
+                          </div>
+                          <div className="col-6">
+                              <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
+                                  No
+                              </label>
+                          </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+              </div>
+              <div className="row align-items-center">
+                  <div className="col-4">
+                    <b></b>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Waiver of excess (NOT if client choose voluntary excess)
+                      </label>
+                  </div>
+                  <div className='col-4'> 
+                    <div className="row">
+                      <div className="row col-6 align-items-center">
+                          <div className="col-6">
+                              <input className="form-check-input"  type="radio" value="0" id="letter_of_introduction_radio_btn30" name="letter_of_introduction_radio_btn30" />
+                          </div>
+                          <div className="col-6">
+                              <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
+                                  Yes
+                              </label>
+                          </div>
+                      </div>
+
+                      <div className="row col-6 align-items-center">
+                          <div className="col-6">
+                              <input className="form-check-input" type="radio" value="1" id="letter_of_introduction_radio_btn30" name="letter_of_introduction_radio_btn30" />
+                          </div>
+                          <div className="col-6">
+                              <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
+                                  No
+                              </label>
+                          </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+              </div>
+              <div className="row align-items-center">
+                  <div className="col-4">
+                    <b></b>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Car hire	
+                      </label>
+                  </div>
+                  <div className='col-4'> 
+                    <div className="row">
+                      <div className="row col-6 align-items-center">
+                          <div className="col-6">
+                              <input className="form-check-input"  type="radio" value="0" id="letter_of_introduction_radio_btn30" name="letter_of_introduction_radio_btn30" />
+                          </div>
+                          <div className="col-6">
+                              <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
+                                  Yes
+                              </label>
+                          </div>
+                      </div>
+
+                      <div className="row col-6 align-items-center">
+                          <div className="col-6">
+                              <input className="form-check-input" type="radio" value="1" id="letter_of_introduction_radio_btn30" name="letter_of_introduction_radio_btn30" />
+                          </div>
+                          <div className="col-6">
+                              <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
+                                  No
+                              </label>
+                          </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+              </div>
+              <div className="row align-items-center">
+                  <div className="col-4">
+                    <b></b>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Damage to rims and tyres
+                      </label>
+                  </div>
+                  <div className='col-4'> 
+                    <div className="row">
+                      <div className="row col-6 align-items-center">
+                          <div className="col-6">
+                              <input className="form-check-input"  type="radio" value="0" id="letter_of_introduction_radio_btn30" name="letter_of_introduction_radio_btn30" />
+                          </div>
+                          <div className="col-6">
+                              <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
+                                  Yes
+                              </label>
+                          </div>
+                      </div>
+
+                      <div className="row col-6 align-items-center">
+                          <div className="col-6">
+                              <input className="form-check-input" type="radio" value="1" id="letter_of_introduction_radio_btn30" name="letter_of_introduction_radio_btn30" />
+                          </div>
+                          <div className="col-6">
+                              <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
+                                  No
+                              </label>
+                          </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+              </div>
+              <div className="row align-items-center">
+                  <div className="col-4">
+                    <b></b>
+                  </div>
+                  <div className="col-4">
+                      <label className="form-check-label"  >
+                      Contents of 4 x 4
+                      </label>
+                  </div>
+                  <div className='col-4'> 
+                    <div className="row">
+                      <div className="row col-6 align-items-center">
+                          <div className="col-6">
+                              <input className="form-check-input"  type="radio" value="0" id="letter_of_introduction_radio_btn30" name="letter_of_introduction_radio_btn30" />
+                          </div>
+                          <div className="col-6">
+                              <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
+                                  Yes
+                              </label>
+                          </div>
+                      </div>
+
+                      <div className="row col-6 align-items-center">
+                          <div className="col-6">
+                              <input className="form-check-input" type="radio" value="1" id="letter_of_introduction_radio_btn30" name="letter_of_introduction_radio_btn30" />
+                          </div>
+                          <div className="col-6">
+                              <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
+                                  No
+                              </label>
+                          </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+              </div>
+              <div className="" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                    <div className="col-4">
+                        <label className="col-form-label"><b>Fees:</b></label>
+                    </div>
+                    <div className="col-8">
+                        <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                    </div>
+                </div>
+              </div>
+              <div className="" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                    <div className="col-4">
+                        <label className="col-form-label"><b>Commission:</b></label>
+                    </div>
+                    <div className="col-8">
+                        <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                    </div>
+                </div>
+              </div>
+              <div className="" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                    <div className="col-4">
+                        <label className="col-form-label"><b>Total Premium:</b></label>
+                    </div>
+                    <div className="col-8">
+                        <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                    </div>
+                </div>
+                
+              </div>
+              <div>Additional notes on Mororcycle that may affect cover/advice to the client:</div>
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
+              <br/>
+              
             </div>
           </div>
         </div>
         <br/>
+        
+        
 
-        <div className="row g-2 align-items-center">
-  <div className="col-2">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"></label>
-      </div>
-        <div className="col-6">
-          <div className="row">
-              <div className="row col-3 align-items-center">
-                  <div className="col-2">
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                  </div>
-                  <div className="col-2">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn27" >
-                          Leather seats
-                      </label>
-                  </div>
-              </div>
+        
 
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                  </div>
-                  <div className="col-4">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn27" >
-                          Tow bar
-                      </label>
-                  </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <br/>
-        <div className="row g-2 align-items-center">
-  <div className="col-2">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"></label>
-      </div>
-        <div className="col-6">
-          <div className="row">
-              <div className="row col-3 align-items-center">
-                  <div className="col-2">
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                  </div>
-                  <div className="col-2">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn28" >
-                          Roof carrier
-                      </label>
-                  </div>
-              </div>
-
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                  </div>
-                  <div className="col-4">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn28" >
-                          Sunroof
-                      </label>
-                  </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <br/>
-        <div className="row g-2 align-items-center">
-  <div className="col-2">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"></label>
-      </div>
-        <div className="col-6">
-          <div className="row">
-              <div className="row col-3 align-items-center">
-                  <div className="col-2">
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                  </div>
-                  <div className="col-2">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn29" >
-                          Power steering
-                      </label>
-                  </div>
-              </div>
-
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                  </div>
-                  <div className="col-4">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn29" >
-                          Sound
-                      </label>
-                  </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <br/>
-        <div className="row g-2 align-items-center">
-  <div className="col-2">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"></label>
-      </div>
-        <div className="col-6">
-          <div className="row">
-              <div className="row col-3 align-items-center">
-                  <div className="col-2">
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                  </div>
-                  <div className="col-2">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
-                          Car keys
-                      </label>
-                  </div>
-              </div>
-
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                  </div>
-                  <div className="col-4">
-                      <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn30" >
-                          Tools,spare parts
-                      </label>
-                  </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        
 
 
         <h6 align="left" style={{ color: "#14848A"}}><b>MOTORCYCLES</b></h6>
@@ -4213,7 +4582,19 @@ import React, {useState} from 'react';
                       <label className="col-form-label"><b>Overnight parking:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Select the type of overnight parking."  aria-describedby="" />
+                    <select className="text-start form-select" id="RP_Product_PremiumFrequency" name='RP_Product_PremiumFrequency' 
+                    // value={} onChange={(e) => {onChange(e)}}
+                    aria-label="Default select example">
+                        <option value="0" selected>Select the type of Overnight Parking</option>
+                        <option value="1">Overnight Parking</option>
+                        <option value="2">Locked Garage</option>
+                        <option value="3">Carport</option>
+                        <option value="4">Security Complex</option>
+                        <option value="5">Behind Gates</option>
+                        <option value="6">Others</option>
+                    </select>
+                    <input spellCheck="true"  id="id_number"  name="id_number" className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+                  
                   </div>
               </div>
           </div>
@@ -4257,7 +4638,16 @@ import React, {useState} from 'react';
                       <label className="col-form-label"><b>Type of cover required:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Select the type of cover."  aria-describedby="" />
+                      <select className="text-start form-select" id="RP_Product_PremiumFrequency" name='RP_Product_PremiumFrequency' 
+                        // value={} onChange={(e) => {onChange(e)}}
+                        aria-label="Default select example">
+                          <option value="0" selected>Select the type of cover</option>
+                          <option value="1">Comprehensive (cover for comprehensive risks)</option>
+                          <option value="2">Limited (Fire and Theft)</option>
+                          <option value="3">Third Party (cover for claims of 3rd parties)</option>
+                          <option value="4">Third Party - Theft excluded (cover for loss or damage except by theft)</option>
+                      </select>
+                      {/* <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Select the type of cover."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -4279,7 +4669,18 @@ import React, {useState} from 'react';
                       <label className="col-form-label"><b>Regular driver:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Select the relevant regular driver description ."  aria-describedby="" />
+                    <select className="text-start form-select" id="RP_Product_PremiumFrequency" name='RP_Product_PremiumFrequency' 
+                        // value={} onChange={(e) => {onChange(e)}}
+                        aria-label="Default select example">
+                          <option value="0" selected>Select the relevant regular driver description</option>
+                          <option value="1">Financial dependant child</option>
+                          <option value="2">Policy Holder</option>
+                          <option value="3">Spouse</option>
+                          <option value="4">Third Party - Theft excluded (cover for loss or damage except by theft)</option>
+                      </select>
+                      <input spellCheck="true"  id="id_number"  name="id_number" className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+
+                      {/* <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Select the relevant regular driver description ."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -4457,7 +4858,18 @@ import React, {useState} from 'react';
                       <label className="col-form-label"><b>Overnight parking:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Select the type of overnight parking."  aria-describedby="" />
+                      <select className="text-start form-select" id="RP_Product_PremiumFrequency" name='RP_Product_PremiumFrequency' 
+                    // value={} onChange={(e) => {onChange(e)}}
+                    aria-label="Default select example">
+                        <option value="0" selected>Select the type of Overnight Parking</option>
+                        <option value="1">Overnight Parking</option>
+                        <option value="2">Locked Garage</option>
+                        <option value="3">Carport</option>
+                        <option value="4">Security Complex</option>
+                        <option value="5">Behind Gates</option>
+                        <option value="6">Others</option>
+                    </select>
+                    <input spellCheck="true"  id="id_number"  name="id_number" className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5117,7 +5529,7 @@ import React, {useState} from 'react';
       </div>
 
   <br/>
-  <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>MEDICAL SCHEMES ANALYSIS</b></div>
+  <div className="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>MEDICAL SCHEMES ANALYSIS</b></div>
     <hr/>
 
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
@@ -5213,9 +5625,9 @@ import React, {useState} from 'react';
     <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence and storage of your personal information relating to your financial matters. Ts&Cs on  <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a></p>
 
     {/* <br/> */}
-    <div class="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION A:</b></div>
+    <div className="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION A:</b></div>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>MEDICAL SCHEMES ANALYSIS</b></div>
+    <div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>MEDICAL SCHEMES ANALYSIS</b></div>
 
     <hr/>
 
@@ -5414,9 +5826,9 @@ import React, {useState} from 'react';
       </div>
     </div>
 
-    <div class="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION B:</b></div>
+    <div className="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION B:</b></div>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>BACKGROUND INFORMATION</b></div>
+    <div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>BACKGROUND INFORMATION</b></div>
 
     <hr/><p>Your personal circumstances that formed the basis for my recommendation</p>
       {
@@ -5451,7 +5863,7 @@ import React, {useState} from 'react';
       that formed the basis for the financial solution recommended`}  aria-describedby=""  ></textarea>
 
 <br/>
-<div class="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SUMMARY NEEDS ANALYSIS</b></div>
+<div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SUMMARY NEEDS ANALYSIS</b></div>
 
 <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
       <div className="row">
@@ -5664,10 +6076,10 @@ import React, {useState} from 'react';
       </div>
   </div>
 
-  <div class="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION C:</b></div>
+  <div className="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION C:</b></div>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SUMMARY: COMPARISON OF MEDICAL AID BENEFITS</b></div>
-    <p class="text-start "style={{ color: "#14848A"}}>(Indicate whether a new medical scheme(s) is recommended or an existing scheme is to be replaced) </p>
+    <div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SUMMARY: COMPARISON OF MEDICAL AID BENEFITS</b></div>
+    <p className="text-start "style={{ color: "#14848A"}}>(Indicate whether a new medical scheme(s) is recommended or an existing scheme is to be replaced) </p>
 
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
       <div className="row">
@@ -5875,9 +6287,9 @@ import React, {useState} from 'react';
   </div>
 
 <br/>
-  <div class="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION D:</b></div>
+  <div className="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION D:</b></div>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>INITIAL RECOMMENDATION/ADVICE & MOTIVATION</b></div>
+    <div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>INITIAL RECOMMENDATION/ADVICE & MOTIVATION</b></div>
 
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
       <div className="row">
@@ -5898,18 +6310,18 @@ import React, {useState} from 'react';
     </div>
 
     <br/>
-  <div class="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION E:</b></div>
+  <div className="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION E:</b></div>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>IMPORTANT INFORMATION HIGHLIGHTED TO YOU</b></div>
+    <div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>IMPORTANT INFORMATION HIGHLIGHTED TO YOU</b></div>
     <hr/>
     <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc."  aria-describedby="" style={{height:"80px"}}/>
     <hr/>
 
     
     <br/>
-  <div class="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION F:</b></div>
+  <div className="text-start" style={{fontSize:'18px',fontFamily:'Arial Bold'}}><b>SECTION F:</b></div>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>FINANCIAL ADVISER'S DECLARATION</b></div>
+    <div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>FINANCIAL ADVISER'S DECLARATION</b></div>
 
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
       <div className="row">

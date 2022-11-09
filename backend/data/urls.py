@@ -44,4 +44,8 @@ urlpatterns = [
     path('add_gap_cover_data/' , views.insertGapCoverData, name="Insert data into Gap Cover Collection"),
     path('view_gap_cover_data/' , views.viewGapCoverData, name="Gap Cover data details"),
     path('update_gap_cover_data/' , views.updateGapCoverData, name="Gap Cover data details"),
+    # Short Term Personal
+    path('add_short_term_personal_data/' , views.insertShortTermInsurancePersonalData, name="Insert data into Short Term Personal Collection"),
+    path('view_short_term_personal_data/' , views.viewShortTermInsurancePersonalData, name="Short Term Personal data details"),
+    path('update_short_term_personal_data/' , views.updateShortTermInsurancePersonalData, name="Short Term Personal data details"),
 ]
