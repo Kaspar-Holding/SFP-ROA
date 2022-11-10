@@ -1,7 +1,11 @@
-import React, {useState} from 'react';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
 // import './Invest.css';
- function  Short_term_Personal()
- {
+import './Styles/CustomNotification.css'
+import './Styles/CustomButton.css'
+
+const Short_term_Personal = () => {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionReason, setletterOfIntroductionReason] = useState("")
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -56,13 +60,727 @@ import React, {useState} from 'react';
       function backgroundInfo_onBlur() {
         setbackgroundInfoVisibility(false)
       }
+
+      function fica_onFocus() {
+        setFicaVisibility(true)
+      }
+      function fica_onBlur() {
+        setFicaVisibility(false)
+      }
+      const location = useLocation();
+    const { state } = location;
+
+    const [FormData, setFormData] = useState({
+        advisorId : state['advisorId'],
+        formId : state['formId'],
+        
+        STIP_Underwritten_By: "",
+        STIP_Branch_Name: "",
+        STIP_Branch_Number: "",
+        STIP_Quotation_Number: "",
+        STIP_Policy_Number: "",
+        STIP_Inception_Date: "",
+        
+        STIP_Applicant_Surname: "",
+        STIP_Applicant_Gender : "",
+        STIP_Applicant_Initials: "",
+        STIP_Applicant_Title: "",
+        STIP_Applicant_DateofBirth: "",
+        STIP_Applicant_IdNumber: "",
+        STIP_Applicant_Email: "",
+
+        STIP_General_Refused : "",
+        STIP_General_Risks : "",
+        STIP_General_LastDate: "",
+        STIP_General_InsurerName: "",
+
+        STIP_General_TypeOfLoss: "",
+        STIP_General_LossYear: "",
+        STIP_General_LossAmount: "",
+        STIP_General_LossInsurer: "",
+        
+        STIP_CnRI_Existing_Company: "",
+        STIP_CnRI_Replacement_Company: "",
+        STIP_CnRI_Existing_Provider: "",
+        STIP_CnRI_Replacement_Provider: "",
+        STIP_CnRI_Existing_Product: "",
+        STIP_CnRI_Replacement_Product: "",
+        
+        STIP_CnRI_HC_Recomm : "",
+        STIP_CnRI_HC_Accepted : "",
+        STIP_CnRI_HC_CoverAmount: "",
+        STIP_CnRI_HC_Premium: "",
+        STIP_CnRI_HC_Excess: "",
+
+        STIP_CnRI_Build_Recomm : "",
+        STIP_CnRI_Build_Accepted : "",
+        STIP_CnRI_Build_CoverAmount: "",
+        STIP_CnRI_Build_Premium: "",
+        STIP_CnRI_Build_Excess: "",
+
+        STIP_CnRI_SnL_Recomm : "",
+        STIP_CnRI_SnL_Accepted : "",
+        STIP_CnRI_SnL_CoverAmount: "",
+        STIP_CnRI_SnL_Premium: "",
+        STIP_CnRI_SnL_Excess: "",
+
+        STIP_CnRI_AccidentDam_Recomm : "",
+        STIP_CnRI_AccidentDam_Accepted : "",
+        STIP_CnRI_AccidentDam_CoverAmount: "",
+        STIP_CnRI_AccidentDam_Premium: "",
+        STIP_CnRI_AccidentDam_Excess: "",
+
+        STIP_CnRI_Risks_Recomm : "",
+        STIP_CnRI_Risks_Accepted : "",
+        STIP_CnRI_Risks_CoverAmount: "",
+        STIP_CnRI_Risks_Premium: "",
+        STIP_CnRI_Risks_Excess: "",
+
+        STIP_CnRI_CnP_Recomm : "",
+        STIP_CnRI_CnP_Accepted : "",
+        STIP_CnRI_CnP_CoverAmount: "",
+        STIP_CnRI_CnP_Premium: "",
+        STIP_CnRI_CnP_Excess: "",
+
+        STIP_CnRI_KnL_Recomm : "",
+        STIP_CnRI_KnL_Accepted : "",
+        STIP_CnRI_KnL_CoverAmount: "",
+        STIP_CnRI_KnL_Premium: "",
+        STIP_CnRI_KnL_Excess: "",
+
+        STIP_CnRI_WhC_Recomm : "",
+        STIP_CnRI_WhC_Accepted : "",
+        STIP_CnRI_WhC_CoverAmount: "",
+        STIP_CnRI_WhC_Premium: "",
+        STIP_CnRI_WhC_Excess: "",
+
+        STIP_CnRI_BiCy_Recomm : "",
+        STIP_CnRI_BiCy_Accepted : "",
+        STIP_CnRI_BiCy_CoverAmount: "",
+        STIP_CnRI_BiCy_Premium: "",
+        STIP_CnRI_BiCy_Excess: "",
+
+        STIP_CnRI_CellPhone_Recomm : "",
+        STIP_CnRI_CellPhone_Accepted : "",
+        STIP_CnRI_CellPhone_CoverAmount: "",
+        STIP_CnRI_CellPhone_Premium: "",
+        STIP_CnRI_CellPhone_Excess: "",
+
+        STIP_CnRI_Decoder_Recomm : "",
+        STIP_CnRI_Decoder_Accepted : "",
+        STIP_CnRI_Decoder_CoverAmount: "",
+        STIP_CnRI_Decoder_Premium: "",
+        STIP_CnRI_Decoder_Excess: "",
+
+        STIP_CnRI_RisksSp_Recomm : "",
+        STIP_CnRI_RisksSp_Accepted : "",
+        STIP_CnRI_RisksSp_CoverAmount: "",
+        STIP_CnRI_RisksSp_Premium: "",
+        STIP_CnRI_RisksSp_Excess: "",
+
+        STIP_CnRI_CompEquip_Recomm : "",
+        STIP_CnRI_CompEquip_Accepted : "",
+        STIP_CnRI_CompEquip_CoverAmount: "",
+        STIP_CnRI_CompEquip_Premium: "",
+        STIP_CnRI_CompEquip_Excess: "",
+
+        STIP_CnRI_ItemInVault_Recomm : "",
+        STIP_CnRI_ItemInVault_Accepted : "",
+        STIP_CnRI_ItemInVault_CoverAmount: "",
+        STIP_CnRI_ItemInVault_Premium: "",
+        STIP_CnRI_ItemInVault_Excess: "",
+
+        STIP_CnRI_Jewel_Recomm : "",
+        STIP_CnRI_Jewel_Accepted : "",
+        STIP_CnRI_Jewel_CoverAmount: "",
+        STIP_CnRI_Jewel_Premium: "",
+        STIP_CnRI_Jewel_Excess: "",
+
+        STIP_CnRI_PhotoGraphic_Recomm : "",
+        STIP_CnRI_PhotoGraphic_Accepted : "",
+        STIP_CnRI_PhotoGraphic_CoverAmount: "",
+        STIP_CnRI_PhotoGraphic_Premium: "",
+        STIP_CnRI_PhotoGraphic_Excess: "",
+
+        STIP_CnRI_Sound_Recomm : "",
+        STIP_CnRI_Sound_Accepted : "",
+        STIP_CnRI_Sound_CoverAmount: "",
+        STIP_CnRI_Sound_Premium: "",
+        STIP_CnRI_Sound_Excess: "",
+
+        STIP_CnRI_OtherRecomm : "",
+        STIP_CnRI_OtherAccepted : "",
+        STIP_CnRI_OtherCoverAmount: "",
+        STIP_CnRI_OtherPremium: "",
+        STIP_CnRI_OtherExcess: "",
+
+        STIP_CnRI_PLL_Recomm : "",
+        STIP_CnRI_PLL_Accepted : "",
+        STIP_CnRI_PLL_CoverAmount: "",
+        STIP_CnRI_PLL_Premium: "",
+        STIP_CnRI_PLL_Excess: "",
+
+        STIP_CnRI_PLIP_Recomm : "",
+        STIP_CnRI_PLIP_Accepted : "",
+        STIP_CnRI_PLIP_CoverAmount: "",
+        STIP_CnRI_PLIP_Premium: "",
+        STIP_CnRI_PLIP_Excess: "",
+
+        STIP_CnRI_Vehicle_Recomm : "",
+        STIP_CnRI_Vehicle_Accepted : "",
+        STIP_CnRI_Vehicle_CoverAmount: "",
+        STIP_CnRI_Vehicle_Premium: "",
+        STIP_CnRI_Vehicle_Excess: "",
+
+        STIP_CnRI_CarHire_Recomm : "",
+        STIP_CnRI_CarHire_Accepted : "",
+        STIP_CnRI_CarHire_CoverAmount: "",
+        STIP_CnRI_CarHire_Premium: "",
+        STIP_CnRI_CarHire_Excess: "",
+
+        STIP_CnRI_ExcessW_Recomm : "",
+        STIP_CnRI_ExcessW_Accepted : "",
+        STIP_CnRI_ExcessW_CoverAmount: "",
+        STIP_CnRI_ExcessW_Premium: "",
+        STIP_CnRI_ExcessW_Excess: "",
+
+        STIP_CnRI_Credit_Recomm : "",
+        STIP_CnRI_Credit_Accepted : "",
+        STIP_CnRI_Credit_CoverAmount: "",
+        STIP_CnRI_Credit_Premium: "",
+        STIP_CnRI_Credit_Excess: "",
+
+        STIP_CnRI_WaterC_Recomm : "",
+        STIP_CnRI_WaterC_Accepted : "",
+        STIP_CnRI_WaterC_CoverAmount: "",
+        STIP_CnRI_WaterC_Premium: "",
+        STIP_CnRI_WaterC_Excess: "",
+
+        STIP_CnRI_Sasria_Recomm : "",
+        STIP_CnRI_Sasria_Accepted : "",
+        STIP_CnRI_Sasria_CoverAmount: "",
+        STIP_CnRI_Sasria_Premium: "",
+        STIP_CnRI_Sasria_Excess: "",
+
+        STIP_CnRI_LegalA_Recomm : "",
+        STIP_CnRI_LegalA_Accepted : "",
+        STIP_CnRI_LegalA_CoverAmount: "",
+        STIP_CnRI_LegalA_Premium: "",
+        STIP_CnRI_LegalA_Excess: "",
+
+        STIP_CnRI_FeeCharges: "",
+        STIP_CnRI_Commission: "",
+        STIP_CnRI_TotalPremium: "",
+
+        STIP_CnRen_Existing_Company: "",
+        STIP_CnRen_Replacement_Company: "",
+        STIP_CnRen_Existing_Provider: "",
+        STIP_CnRen_Replacement_Provider: "",
+        STIP_CnRen_Existing_Product: "",
+        STIP_CnRen_Replacement_Product: "",
+        
+        STIP_CnRen_HC_Recomm : "",
+        STIP_CnRen_HC_Accepted : "",
+        STIP_CnRen_HC_CoverAmount: "",
+        STIP_CnRen_HC_Premium: "",
+        STIP_CnRen_HC_Excess: "",
+
+        STIP_CnRen_Build_Recomm : "",
+        STIP_CnRen_Build_Accepted : "",
+        STIP_CnRen_Build_CoverAmount: "",
+        STIP_CnRen_Build_Premium: "",
+        STIP_CnRen_Build_Excess: "",
+
+        STIP_CnRen_SnL_Recomm : "",
+        STIP_CnRen_SnL_Accepted : "",
+        STIP_CnRen_SnL_CoverAmount: "",
+        STIP_CnRen_SnL_Premium: "",
+        STIP_CnRen_SnL_Excess: "",
+
+        STIP_CnRen_AccidentDam_Recomm : "",
+        STIP_CnRen_AccidentDam_Accepted : "",
+        STIP_CnRen_AccidentDam_CoverAmount: "",
+        STIP_CnRen_AccidentDam_Premium: "",
+        STIP_CnRen_AccidentDam_Excess: "",
+
+        STIP_CnRen_Risks_Recomm : "",
+        STIP_CnRen_Risks_Accepted : "",
+        STIP_CnRen_Risks_CoverAmount: "",
+        STIP_CnRen_Risks_Premium: "",
+        STIP_CnRen_Risks_Excess: "",
+
+        STIP_CnRen_CnP_Recomm : "",
+        STIP_CnRen_CnP_Accepted : "",
+        STIP_CnRen_CnP_CoverAmount: "",
+        STIP_CnRen_CnP_Premium: "",
+        STIP_CnRen_CnP_Excess: "",
+
+        STIP_CnRen_KnL_Recomm : "",
+        STIP_CnRen_KnL_Accepted : "",
+        STIP_CnRen_KnL_CoverAmount: "",
+        STIP_CnRen_KnL_Premium: "",
+        STIP_CnRen_KnL_Excess: "",
+
+        STIP_CnRen_WhC_Recomm : "",
+        STIP_CnRen_WhC_Accepted : "",
+        STIP_CnRen_WhC_CoverAmount: "",
+        STIP_CnRen_WhC_Premium: "",
+        STIP_CnRen_WhC_Excess: "",
+
+        STIP_CnRen_BiCy_Recomm : "",
+        STIP_CnRen_BiCy_Accepted : "",
+        STIP_CnRen_BiCy_CoverAmount: "",
+        STIP_CnRen_BiCy_Premium: "",
+        STIP_CnRen_BiCy_Excess: "",
+
+        STIP_CnRen_CellPhone_Recomm : "",
+        STIP_CnRen_CellPhone_Accepted : "",
+        STIP_CnRen_CellPhone_CoverAmount: "",
+        STIP_CnRen_CellPhone_Premium: "",
+        STIP_CnRen_CellPhone_Excess: "",
+
+        STIP_CnRen_Decoder_Recomm : "",
+        STIP_CnRen_Decoder_Accepted : "",
+        STIP_CnRen_Decoder_CoverAmount: "",
+        STIP_CnRen_Decoder_Premium: "",
+        STIP_CnRen_Decoder_Excess: "",
+
+        STIP_CnRen_RisksSp_Recomm : "",
+        STIP_CnRen_RisksSp_Accepted : "",
+        STIP_CnRen_RisksSp_CoverAmount: "",
+        STIP_CnRen_RisksSp_Premium: "",
+        STIP_CnRen_RisksSp_Excess: "",
+
+        STIP_CnRen_CompEquip_Recomm : "",
+        STIP_CnRen_CompEquip_Accepted : "",
+        STIP_CnRen_CompEquip_CoverAmount: "",
+        STIP_CnRen_CompEquip_Premium: "",
+        STIP_CnRen_CompEquip_Excess: "",
+
+        STIP_CnRen_ItemInVault_Recomm : "",
+        STIP_CnRen_ItemInVault_Accepted : "",
+        STIP_CnRen_ItemInVault_CoverAmount: "",
+        STIP_CnRen_ItemInVault_Premium: "",
+        STIP_CnRen_ItemInVault_Excess: "",
+
+        STIP_CnRen_Jewel_Recomm : "",
+        STIP_CnRen_Jewel_Accepted : "",
+        STIP_CnRen_Jewel_CoverAmount: "",
+        STIP_CnRen_Jewel_Premium: "",
+        STIP_CnRen_Jewel_Excess: "",
+
+        STIP_CnRen_PhotoGraphic_Recomm : "",
+        STIP_CnRen_PhotoGraphic_Accepted : "",
+        STIP_CnRen_PhotoGraphic_CoverAmount: "",
+        STIP_CnRen_PhotoGraphic_Premium: "",
+        STIP_CnRen_PhotoGraphic_Excess: "",
+
+        STIP_CnRen_Sound_Recomm : "",
+        STIP_CnRen_Sound_Accepted : "",
+        STIP_CnRen_Sound_CoverAmount: "",
+        STIP_CnRen_Sound_Premium: "",
+        STIP_CnRen_Sound_Excess: "",
+
+        STIP_CnRen_OtherRecomm : "",
+        STIP_CnRen_OtherAccepted : "",
+        STIP_CnRen_OtherCoverAmount: "",
+        STIP_CnRen_OtherPremium: "",
+        STIP_CnRen_OtherExcess: "",
+
+        STIP_CnRen_PLL_Recomm : "",
+        STIP_CnRen_PLL_Accepted : "",
+        STIP_CnRen_PLL_CoverAmount: "",
+        STIP_CnRen_PLL_Premium: "",
+        STIP_CnRen_PLL_Excess: "",
+
+        STIP_CnRen_PLIP_Recomm : "",
+        STIP_CnRen_PLIP_Accepted : "",
+        STIP_CnRen_PLIP_CoverAmount: "",
+        STIP_CnRen_PLIP_Premium: "",
+        STIP_CnRen_PLIP_Excess: "",
+
+        STIP_CnRen_Vehicle_Recomm : "",
+        STIP_CnRen_Vehicle_Accepted : "",
+        STIP_CnRen_Vehicle_CoverAmount: "",
+        STIP_CnRen_Vehicle_Premium: "",
+        STIP_CnRen_Vehicle_Excess: "",
+
+        STIP_CnRen_CarHire_Recomm : "",
+        STIP_CnRen_CarHire_Accepted : "",
+        STIP_CnRen_CarHire_CoverAmount: "",
+        STIP_CnRen_CarHire_Premium: "",
+        STIP_CnRen_CarHire_Excess: "",
+
+        STIP_CnRen_ExcessW_Recomm : "",
+        STIP_CnRen_ExcessW_Accepted : "",
+        STIP_CnRen_ExcessW_CoverAmount: "",
+        STIP_CnRen_ExcessW_Premium: "",
+        STIP_CnRen_ExcessW_Excess: "",
+
+        STIP_CnRen_Credit_Recomm : "",
+        STIP_CnRen_Credit_Accepted : "",
+        STIP_CnRen_Credit_CoverAmount: "",
+        STIP_CnRen_Credit_Premium: "",
+        STIP_CnRen_Credit_Excess: "",
+
+        STIP_CnRen_WaterC_Recomm : "",
+        STIP_CnRen_WaterC_Accepted : "",
+        STIP_CnRen_WaterC_CoverAmount: "",
+        STIP_CnRen_WaterC_Premium: "",
+        STIP_CnRen_WaterC_Excess: "",
+
+        STIP_CnRen_Sasria_Recomm : "",
+        STIP_CnRen_Sasria_Accepted : "",
+        STIP_CnRen_Sasria_CoverAmount: "",
+        STIP_CnRen_Sasria_Premium: "",
+        STIP_CnRen_Sasria_Excess: "",
+
+        STIP_CnRen_LegalA_Recomm : "",
+        STIP_CnRen_LegalA_Accepted : "",
+        STIP_CnRen_LegalA_CoverAmount: "",
+        STIP_CnRen_LegalA_Premium: "",
+        STIP_CnRen_LegalA_Excess: "",
+
+        STIP_CnRen_FeeCharges: "",
+        STIP_CnRen_Commission: "",
+        STIP_CnRen_TotalPremium: "",
+
+        STIP_CnRI_AdviseGiven : "",
+        STIP_CnRI_ReplacePurpose: "",
+        STIP_CnRI_ReplaceReason: "",
+        STIP_CnRI_ReplaceSupplier: "",
+
+        STIP_HC_ResidentialArea: "",
+        STIP_HC_StreetNumber: "",
+        STIP_HC_PostalCode: "",
+        STIP_HC_ResidenceType: "",
+        STIP_HC_Flat_GroundLevel : "",
+        STIP_HC_WallConstruction : "",
+        STIP_HC_RoofConstruction : "",
+        STIP_HC_SM_BurglarBar : "",
+        STIP_HC_SM_SecurityGate : "",
+        STIP_HC_SM_AlarmSystem : "",
+        STIP_HC_SM_SecurityArea : "",
+        STIP_HC_NoClaimBonus: "",
+        STIP_HC_SumInsured: "",
+        STIP_HCEx_BusinessType: "",
+        STIP_HCEx_InsuredAmount: "",
+        STIP_HC_ADI_General1: "",
+        STIP_HC_ADI_General2: "",
+        STIP_HC_ADI_MechElecBreakdown: "",
+        STIP_HC_ADI_ElectronicalBreakdown: "",
+        STIP_HC_ADI_PowerSurgeCover1: "",
+        STIP_HC_ADI_PowerSurgeCover2: "",
+        STIP_HC_ADI_PowerSurgeCover3: "",
+        STIP_HC_Fee: "",
+        STIP_HC_Commission: "",
+
+        STIP_Build_ResidentialArea: "",
+        STIP_Build_StreetNumber: "",
+        STIP_Build_PostalCode: "",
+        STIP_Build_ResidenceType: "",
+        STIP_Build_Flat_GroundLevel : "",
+        STIP_Build_Voluntary : "",
+        STIP_Build_SnL : "",
+        STIP_Build_ADI : "",
+        STIP_Build_WallConstruction : "",
+        STIP_Build_RoofConstruction : "",
+        STIP_Build_Fee: "",
+        STIP_Build_Commission: "",
+        STIP_Build_TotalPremium: "",
+        STIP_Build_AdditionalAdvise: "",
+
+        STIP_AddProp_ResidentialArea: "",
+        STIP_AddProp_StreetNumber: "",
+        STIP_AddProp_PostalCode: "",
+        STIP_AddProp_ResidenceType: "",
+        STIP_AddProp_Flat_GroundLevel : "",
+        STIP_AddProp_Voluntary : "",
+        STIP_AddProp_SnL : "",
+        STIP_AddProp_ADI : "",
+        STIP_AddProp_WallConstruction : "",
+        STIP_AddProp_RoofConstruction : "",
+        STIP_AddProp_Fee: "",
+        STIP_AddProp_Commission: "",
+        STIP_AddProp_TotalPremium: "",
+        STIP_AddProp_AdditionalAdvise: "",
+
+        STIP_Vehicle_Owner: "",
+        STIP_Vehicle_RegOwner: "",
+        STIP_Vehicle_Usage: "",
+        STIP_Vehicle_ONParkingOptions : "",
+        STIP_Vehicle_ONParking: "",
+        STIP_Vehicle_ONOtherParking: "",
+        STIP_Vehicle_CoverType : "",
+        STIP_Vehicle_SM1 : "",
+        STIP_Vehicle_SM2 : "",
+        STIP_Vehicle_SM3 : "",
+        STIP_Vehicle_SM4 : "",
+        STIP_Vehicle_Driver: "",
+        STIP_Vehicle_DriverLicIssDate: "",
+        STIP_Vehicle_LicCode: "",
+        STIP_Vehicle_SumInsured: "",
+        STIP_Vehicle_ClaimBonus: "",
+        STIP_Vehicle_VoluntaryExcess : "",
+        STIP_Vehicle_Extras1 : "",
+        STIP_Vehicle_ExtrasAmount1: "",
+        STIP_Vehicle_Extras2 : "",
+        STIP_Vehicle_ExtrasAmount2: "",
+        STIP_Vehicle_Extras3 : "",
+        STIP_Vehicle_ExtrasAmount3: "",
+        STIP_Vehicle_Extras4 : "",
+        STIP_Vehicle_ExtrasAmount4: "",
+        STIP_Vehicle_Extras5 : "",
+        STIP_Vehicle_ExtrasAmount5: "",
+        STIP_Vehicle_Extras6 : "",
+        STIP_Vehicle_ExtrasAmount6: "",
+        STIP_Vehicle_Extras7 : "",
+        STIP_Vehicle_ExtrasAmount7: "",
+        STIP_Vehicle_Extras8 : "",
+        STIP_Vehicle_ExtrasAmount8: "",
+        STIP_Vehicle_Extras9 : "",
+        STIP_Vehicle_ExtrasAmount9: "",
+        STIP_Vehicle_Extras10 : "",
+        STIP_Vehicle_ExtrasAmount10: "",
+        STIP_Vehicle_Extras11 : "",
+        STIP_Vehicle_ExtrasAmount11: "",
+        STIP_Vehicle_Extras12 : "",
+        STIP_Vehicle_ExtrasAmount12: "",
+        STIP_Vehicle_Extras13 : "",
+        STIP_Vehicle_ExtrasAmount13: "",
+        STIP_Vehicle_Extras14 : "",
+        STIP_Vehicle_ExtrasAmount14: "",
+        STIP_Vehicle_AC1 : "",
+        STIP_Vehicle_AC2 : "",
+        STIP_Vehicle_AC3 : "",
+        STIP_Vehicle_AC4 : "",
+        STIP_Vehicle_AC5 : "",
+        STIP_Vehicle_Fees: "",
+        STIP_Vehicle_Commission: "",
+        STIP_Vehicle_TotalPremium: "",
+        STIP_Vehicle_Comments: "",
+        
+        STIP_MotorC_RegOwner: "",
+        STIP_MotorC_Usage: "",
+        STIP_MotorC_ONParkingOptions : "",
+        STIP_MotorC_ONParking: "",
+        STIP_MotorC_ONOtherParking: "",
+        STIP_MotorC_CoverType : "",
+        STIP_MotorC_Driver: "",
+        STIP_MotorC_Driver1: "",
+        STIP_MotorC_DriverLicIssDate: "",
+        STIP_MotorC_LicCode: "",
+        STIP_MotorC_SumInsured: "",
+        STIP_MotorC_ClaimBonus: "",
+        STIP_MotorC_Fees: "",
+        STIP_MotorC_Commission: "",
+        STIP_MotorC_TotalPremium: "",
+        STIP_MotorC_Comments: "",
+
+        STIP_Trailer_RegOwner: "",
+        STIP_Trailer_Type: "",
+        STIP_Trailer_ONParkingOptions : "",
+        STIP_Trailer_ONOtherParking: "",
+        STIP_Trailer_SumInsured: "",
+        STIP_Trailer_ClaimBonus: "",
+        STIP_Trailer_Fees: "",
+        STIP_Trailer_Commission: "",
+        STIP_Trailer_TotalPremium: "",
+        STIP_Trailer_Comments: "",
+
+        STIP_WaterC_RegOwner: "",
+        STIP_WaterC_Type: "",
+        STIP_WaterC_Hull: "",
+        STIP_WaterC_SumInsured: "",
+        STIP_WaterC_VIN: "",
+        STIP_WaterC_EngineNumber: "",
+        STIP_WaterC_OC_Glitter: "",
+        STIP_WaterC_OC_SpecifiedAccessories: "",
+        STIP_WaterC_OC_MotorType: "",
+        STIP_WaterC_OC_Output: "",
+        STIP_WaterC_Fees: "",
+        STIP_WaterC_Commission: "",
+        STIP_WaterC_TotalPremium: "",
+        STIP_WaterC_Comments: "",
+
+        STIP_PersonalLL_IndemnityLimit : "",
+        STIP_PersonalLL_IndemnityLimitDetail : "",
+        STIP_PersonalLL_Fees: "",
+        STIP_PersonalLL_Commission: "",
+        STIP_PersonalLL_TotalPremium: "",
+        STIP_PersonalLL_Comments: "",
+
+        STIP_LegalA_IndemnityLimit : "",
+        STIP_LegalA_IndemnityLimitDetail : "",
+        STIP_LegalA_Fees: "",
+        STIP_LegalA_Commission: "",
+        STIP_LegalA_TotalPremium: "",
+        STIP_LegalA_Comments: "",
+
+        STIP_ProductConsidered: "",
+        STIP_ProductRecommended: "",
+        STIP_ProductReasons: "",
+
+        STIP_DbyI_IName: "",
+        STIP_DbyI_Code: "",
+        STIP_DbyI_Signature: "",
+        STIP_DbyI_Date: "",
+
+        STIP_MSA_ClientName: "",
+        STIP_MSA_ClientIdNumber: "",
+        STIP_MSA_ClientAddress: "",
+        STIP_MSA_ClientEmail: "",
+        STIP_MSA_ClientPhone: "",
+        STIP_MSA_ClientDate: "",
+
+        STIP_MSA_Name: "",
+        STIP_MSA_MaritalStatus: "",
+        STIP_MSA_Gender: "",
+        STIP_MSA_Occupation: "",
+        STIP_MSA_Income: "",
+        STIP_MSA_Subsidy: "",
+        STIP_MSA_Dependant: "",
+        STIP_MSA_Spouse: "",
+        STIP_MSA_AdultDependant: "",
+        STIP_MSA_ChronicM: "",
+        STIP_MSA_ChronicS: "",
+        STIP_MSA_ChronicAD: "",
+        STIP_MSA_ChronicC: "",
+        STIP_MSA_ChronicOC: "",
+        STIP_MSA_PFromDate: "",
+        STIP_MSA_PTODate: "",
+
+        STIP_BackInfo: "",
+        
+        STIP_SNA_Needs1 : "",
+        STIP_SNA_Comments1: "",
+        STIP_SNA_Needs2 : "",
+        STIP_SNA_Comments2: "",
+        STIP_SNA_Needs3 : "",
+        STIP_SNA_Comments3: "",
+        STIP_SNA_Needs4 : "",
+        STIP_SNA_Comments4: "",
+        STIP_SNA_Needs5 : "",
+        STIP_SNA_Comments5: "",
+        STIP_SNA_Needs6 : "",
+        STIP_SNA_Comments6: "",
+        STIP_SNA_Needs7 : "",
+        STIP_SNA_Comments7: "",
+        STIP_SNA_Needs8 : "",
+        STIP_SNA_Comments8: "",
+        STIP_SNA_Needs9 : "",
+        STIP_SNA_Comments9: "",
+        STIP_SNA_Needs10 : "",
+        STIP_SNA_Comments10: "",
+        
+        STIP_CoMAB_Current1: "",
+        STIP_CoMAB_Replaced1: "",
+        STIP_CoMAB_Current2: "",
+        STIP_CoMAB_Replaced2: "",
+        STIP_CoMAB_Current3: "",
+        STIP_CoMAB_Replaced3: "",
+        STIP_CoMAB_Current4: "",
+        STIP_CoMAB_Replaced4: "",
+        STIP_CoMAB_Current5: "",
+        STIP_CoMAB_Replaced5: "",
+        STIP_CoMAB_Current6: "",
+        STIP_CoMAB_Replaced6: "",
+        STIP_CoMAB_Current7: "",
+        STIP_CoMAB_Replaced7: "",
+        STIP_CoMAB_Current8: "",
+        STIP_CoMAB_Replaced8: "",
+        STIP_CoMAB_Current9: "",
+        STIP_CoMAB_Replaced9: "",
+        STIP_CoMAB_Current10: "",
+        STIP_CoMAB_Replaced10: "",
+        STIP_CoMAB_Current11: "",
+        STIP_CoMAB_Replaced11: "",
+        STIP_CoMAB_Current12: "",
+        STIP_CoMAB_Replaced12: "",
+
+        STIP_SectionD_SnF: "",
+        STIP_SectionE_PMB: "",
+
+        STIP_SectionF_NotAccepted: "",
+        STIP_SectionF_Reasons: "",
+        STIP_SectionF_Consequences : "",
+        STIP_SectionF_Fee: "",
+        STIP_SectionF_Comments: "",
+        STIP_SectionF_Date: "",
+        STIP_SectionF_ClientName: "",
+
+      });
+      const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
+
+      const createSTIPForm = async(data) => {
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`
+            }
+        }
+        const Body = JSON.stringify(data)
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/add_short_term_personal_data/`, Body ,config)
+            // console.log(response.data['formData'])
+            if (response.status === 201) {
+                setFormData(response.data['formData'])
+            } else {
+                setFormData(response.data['formData'])
+            }
+            // setSubmissionMessageVisibility("block")
+        } catch (error) {
+            console.log(error)
+        }
+      }
+      const [SuccessMessage, setSuccessMessage] = useState("")
+      const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
+      const updateForm = async() => {
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`
+            }
+        }
+        const Body = JSON.stringify(FormData)
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_short_term_personal_data/`, Body ,config)
+            // console.log(response.data['formData'])
+            setFormData(response.data['formData'])
+            setSuccessMessage("Gap Cover data is successfully updated")
+            setSuccessMessageVisibility("block")
+            // setSubmissionMessageVisibility("block")
+        } catch (error) {
+            console.log(error)
+        }
+      }
+      const onSubmit = e => {
+        e.preventDefault()
+        updateForm()
+        // window.location.reload();
+      }
+      // console.log(FormData)
+      useEffect(() => {
+        createSTIPForm(FormData)
+      }, []);
+      setTimeout(() => {
+        setSuccessMessageVisibility("none")
+      }, 5000);
       
     return(
         <>
          <br/>
         <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SHORT-TERM INSURANCE: PERSONAL LINES</b></div>
        <hr/>
-
+       <div className="notification_container">
+          <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+          {SuccessMessage}
+          {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
+          </div>
+        </div>
+       <form onSubmit={e => onSubmit(e)}>
        <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence and storage of your personal information relating to your financial matters. Ts&Cs on  <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  </p>
        <hr/>
        <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
@@ -4678,7 +5396,7 @@ import React, {useState} from 'react';
                           <option value="3">Spouse</option>
                           <option value="4">Third Party - Theft excluded (cover for loss or damage except by theft)</option>
                       </select>
-                      <input spellCheck="true"  id="id_number"  name="id_number" className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+                      {/* <input spellCheck="true"  id="id_number"  name="id_number" className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
 
                       {/* <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Select the relevant regular driver description ."  aria-describedby="" /> */}
                   </div>
@@ -4869,7 +5587,7 @@ import React, {useState} from 'react';
                         <option value="5">Behind Gates</option>
                         <option value="6">Others</option>
                     </select>
-                    <input spellCheck="true"  id="id_number"  name="id_number" className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+                    {/* <input spellCheck="true"  id="id_number"  name="id_number" className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -6416,11 +7134,20 @@ import React, {useState} from 'react';
         
       </div>
     </div>
-
+    <div className="container1">
+          <div className="icon1 update">
+              <div className="tooltip1">
+                  Update
+              </div>
+              <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+          </div>
+      </div>
+        </form>
       
 
         </>
     )
 }
+
 
 export default Short_term_Personal

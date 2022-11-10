@@ -7,6 +7,11 @@ This project is built on the following Stack
 - PostgreSQL (User)
 
 ## Updates
+### 10 November 2022:
+- Created APIs for Short Term Insurance Personal and Commerical
+- Created Serializers for Short Term Insurance Personal and Commerical
+- Added API functions in Short Term Insurance Personal and Commerical modules
+
 ### 9 November 2022:
 - Created APIs for Gap Cover and integrated those in Form Data
 - Data is inserting and updating for Gap Cover

@@ -1,6 +1,10 @@
-import React, {useState} from 'react';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
 // import './Invest.css';
- function  Short_term_Commercial()
+import './Styles/CustomNotification.css'
+import './Styles/CustomButton.css'
+const Short_term_Commercial= () => {
  {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -21,12 +25,1054 @@ import React, {useState} from 'react';
       function fica_onBlur() {
         setFicaVisibility(false)
       }
+      const location = useLocation();
+      const { state } = location;
+
+    const [FormData, setFormData] = useState({
+        advisorId : state['advisorId'],
+        formId : state['formId'],
+        
+        
+        STIC_Quotation_Number : "",
+        STIC_Underwritten_By : "",
+        STIC_Branch_Name : "",
+        STIC_Branch_Number : "",
+        STIC_Inception_Date : "",
+        STIC_Renewal_Date : "",
+        STIC_Payment_Method_Annual : "",
+        STIC_Payment_Method_Monthly : "",
+        STIC_Sasria_Annual : "",
+        STIC_Sasria_Monthly : "",
+
+        STIC_Business_Owner : "",
+        STIC_Client_Id_Number : "",
+        STIC_Company_Reg_Number : "",
+        STIC_Company_VAT_Number : "",
+        STIC_Postal_Address : "",
+        STIC_Risk_Address : "",
+        STIC_Contact_Person : "",
+        STIC_TelePhone_Number : "",
+        STIC_Fax_Number : "",
+        STIC_CellPhone_Number : "",
+        STIC_Email : "",
+        STIC_Business_Description : "",
+
+        STIC_Lower_Premium : "",
+        STIC_Higher_Premium : "",
+        STIC_Applicable_Option : "",
+
+        STIC_General_Cancelled : "",
+        STIC_General_Cancelled_Detail : "",
+        STIC_General_LossType : "",
+        STIC_General_Year : "",
+        STIC_General_Amount : "",
+        STIC_General_History : "",
+        STIC_General_Insurer : "",
+
+        STIC_Replacement_Advise : "",
+        STIC_Replacement_Purpose : "",
+        STIC_Replacement_Reason : "",
+        STIC_Replacement_Suppliers : "",
+
+        STIC_Fin_FnC_Existing : "",
+        STIC_Fin_FnC_Replacement : "",
+        STIC_Fin_STnC_Existing : "",
+        STIC_Fin_STnC_Replacement : "",
+        STIC_Fin_ImpOnPre_Existing : "",
+        STIC_Fin_ImpOnPre_Replacement : "",
+        STIC_Fin_Excesses_Existing : "",
+        STIC_Fin_Excesses_Replacement : "",
+        STIC_Fin_VABen_Existing : "",
+        STIC_Fin_VABen_Replacement : "",
+        STIC_Fin_AdvisorComm_Existing : "",
+        STIC_Fin_AdvisorComm_Replacement : "",
+
+        STIC_ProdComp_Existing_Company : "",
+        STIC_ProdComp_Replacement_Company : "",
+        STIC_ProdComp_Existing_Provider : "",
+        STIC_ProdComp_Replacement_Provider : "",
+        STIC_ProdComp_Existing_Product : "",
+        STIC_ProdComp_Replacement_Product : "",
+
+        STIC_ProdComp_Recommended1 : "",
+        STIC_ProdComp_Accepted1 : "",
+        STIC_ProdComp_CoverAmount1 : "",
+        STIC_ProdComp_ExistP_Premium1 : "",
+        STIC_ProdComp_ExistP_Excess1 : "",
+        STIC_ProdComp_RecommP_Premium1 : "",
+        STIC_ProdComp_RecommP_Excess1 : "",
+
+        STIC_ProdComp_Recommended2 : "",
+        STIC_ProdComp_Accepted2 : "",
+        STIC_ProdComp_CoverAmount2 : "",
+        STIC_ProdComp_ExistP_Premium2 : "",
+        STIC_ProdComp_ExistP_Excess2 : "",
+        STIC_ProdComp_RecommP_Premium2 : "",
+        STIC_ProdComp_RecommP_Excess2 : "",
+
+        STIC_ProdComp_Recommended3 : "",
+        STIC_ProdComp_Accepted3 : "",
+        STIC_ProdComp_CoverAmount3 : "",
+        STIC_ProdComp_ExistP_Premium3 : "",
+        STIC_ProdComp_ExistP_Excess3 : "",
+        STIC_ProdComp_RecommP_Premium3 : "",
+        STIC_ProdComp_RecommP_Excess3 : "",
+
+        STIC_ProdComp_Recommended4 : "",
+        STIC_ProdComp_Accepted4 : "",
+        STIC_ProdComp_CoverAmount4 : "",
+        STIC_ProdComp_ExistP_Premium4 : "",
+        STIC_ProdComp_ExistP_Excess4 : "",
+        STIC_ProdComp_RecommP_Premium4 : "",
+        STIC_ProdComp_RecommP_Excess4 : "",
+
+        STIC_ProdComp_Recommended5 : "",
+        STIC_ProdComp_Accepted5 : "",
+        STIC_ProdComp_CoverAmount5 : "",
+        STIC_ProdComp_ExistP_Premium5 : "",
+        STIC_ProdComp_ExistP_Excess5 : "",
+        STIC_ProdComp_RecommP_Premium5 : "",
+        STIC_ProdComp_RecommP_Excess5 : "",
+
+        STIC_ProdComp_Recommended6 : "",
+        STIC_ProdComp_Accepted6 : "",
+        STIC_ProdComp_CoverAmount6 : "",
+        STIC_ProdComp_ExistP_Premium6 : "",
+        STIC_ProdComp_ExistP_Excess6 : "",
+        STIC_ProdComp_RecommP_Premium6 : "",
+        STIC_ProdComp_RecommP_Excess6 : "",
+
+        STIC_ProdComp_Recommended7 : "",
+        STIC_ProdComp_Accepted7 : "",
+        STIC_ProdComp_CoverAmount7 : "",
+        STIC_ProdComp_ExistP_Premium7 : "",
+        STIC_ProdComp_ExistP_Excess7 : "",
+        STIC_ProdComp_RecommP_Premium7 : "",
+        STIC_ProdComp_RecommP_Excess7 : "",
+
+        STIC_ProdComp_Recommended8 : "",
+        STIC_ProdComp_Accepted8 : "",
+        STIC_ProdComp_CoverAmount8 : "",
+        STIC_ProdComp_ExistP_Premium8 : "",
+        STIC_ProdComp_ExistP_Excess8 : "",
+        STIC_ProdComp_RecommP_Premium8 : "",
+        STIC_ProdComp_RecommP_Excess8 : "",
+
+        STIC_ProdComp_Recommended9 : "",
+        STIC_ProdComp_Accepted9 : "",
+        STIC_ProdComp_CoverAmount9 : "",
+        STIC_ProdComp_ExistP_Premium9 : "",
+        STIC_ProdComp_ExistP_Excess9 : "",
+        STIC_ProdComp_RecommP_Premium9 : "",
+        STIC_ProdComp_RecommP_Excess9 : "",
+
+        STIC_ProdComp_Recommended10 : "",
+        STIC_ProdComp_Accepted10 : "",
+        STIC_ProdComp_CoverAmount10 : "",
+        STIC_ProdComp_ExistP_Premium10 : "",
+        STIC_ProdComp_ExistP_Excess10 : "",
+        STIC_ProdComp_RecommP_Premium10 : "",
+        STIC_ProdComp_RecommP_Excess10 : "",
+
+        STIC_ProdComp_Recommended11 : "",
+        STIC_ProdComp_Accepted11 : "",
+        STIC_ProdComp_CoverAmount11 : "",
+        STIC_ProdComp_ExistP_Premium11 : "",
+        STIC_ProdComp_ExistP_Excess11 : "",
+        STIC_ProdComp_RecommP_Premium11 : "",
+        STIC_ProdComp_RecommP_Excess11 : "",
+
+        STIC_ProdComp_Recommended12 : "",
+        STIC_ProdComp_Accepted12 : "",
+        STIC_ProdComp_CoverAmount12 : "",
+        STIC_ProdComp_ExistP_Premium12 : "",
+        STIC_ProdComp_ExistP_Excess12 : "",
+        STIC_ProdComp_RecommP_Premium12 : "",
+        STIC_ProdComp_RecommP_Excess12 : "",
+
+        STIC_ProdComp_Recommended13 : "",
+        STIC_ProdComp_Accepted13 : "",
+        STIC_ProdComp_CoverAmount13 : "",
+        STIC_ProdComp_ExistP_Premium13 : "",
+        STIC_ProdComp_ExistP_Excess13 : "",
+        STIC_ProdComp_RecommP_Premium13 : "",
+        STIC_ProdComp_RecommP_Excess13 : "",
+
+        STIC_ProdComp_Recommended14 : "",
+        STIC_ProdComp_Accepted14 : "",
+        STIC_ProdComp_CoverAmount14 : "",
+        STIC_ProdComp_ExistP_Premium14 : "",
+        STIC_ProdComp_ExistP_Excess14 : "",
+        STIC_ProdComp_RecommP_Premium14 : "",
+        STIC_ProdComp_RecommP_Excess14 : "",
+
+        STIC_ProdComp_Recommended15 : "",
+        STIC_ProdComp_Accepted15 : "",
+        STIC_ProdComp_CoverAmount15 : "",
+        STIC_ProdComp_ExistP_Premium15 : "",
+        STIC_ProdComp_ExistP_Excess15 : "",
+        STIC_ProdComp_RecommP_Premium15 : "",
+        STIC_ProdComp_RecommP_Excess15 : "",
+
+        STIC_ProdComp_Recommended16 : "",
+        STIC_ProdComp_Accepted16 : "",
+        STIC_ProdComp_CoverAmount16 : "",
+        STIC_ProdComp_ExistP_Premium16 : "",
+        STIC_ProdComp_ExistP_Excess16 : "",
+        STIC_ProdComp_RecommP_Premium16 : "",
+        STIC_ProdComp_RecommP_Excess16 : "",
+
+        STIC_ProdComp_Recommended17 : "",
+        STIC_ProdComp_Accepted17 : "",
+        STIC_ProdComp_CoverAmount17 : "",
+        STIC_ProdComp_ExistP_Premium17 : "",
+        STIC_ProdComp_ExistP_Excess17 : "",
+        STIC_ProdComp_RecommP_Premium17 : "",
+        STIC_ProdComp_RecommP_Excess17 : "",
+
+        STIC_ProdComp_Recommended18 : "",
+        STIC_ProdComp_Accepted18 : "",
+        STIC_ProdComp_CoverAmount18 : "",
+        STIC_ProdComp_ExistP_Premium18 : "",
+        STIC_ProdComp_ExistP_Excess18 : "",
+        STIC_ProdComp_RecommP_Premium18 : "",
+        STIC_ProdComp_RecommP_Excess18 : "",
+
+        STIC_ProdComp_Recommended19 : "",
+        STIC_ProdComp_Accepted19 : "",
+        STIC_ProdComp_CoverAmount19 : "",
+        STIC_ProdComp_ExistP_Premium19 : "",
+        STIC_ProdComp_ExistP_Excess19 : "",
+        STIC_ProdComp_RecommP_Premium19 : "",
+        STIC_ProdComp_RecommP_Excess19 : "",
+
+        STIC_ProdComp_Recommended20 : "",
+        STIC_ProdComp_Accepted20 : "",
+        STIC_ProdComp_CoverAmount20 : "",
+        STIC_ProdComp_ExistP_Premium20 : "",
+        STIC_ProdComp_ExistP_Excess20 : "",
+        STIC_ProdComp_RecommP_Premium20 : "",
+        STIC_ProdComp_RecommP_Excess20 : "",
+
+        STIC_ProdComp_Recommended21 : "",
+        STIC_ProdComp_Accepted21 : "",
+        STIC_ProdComp_CoverAmount21 : "",
+        STIC_ProdComp_ExistP_Premium21 : "",
+        STIC_ProdComp_ExistP_Excess21 : "",
+        STIC_ProdComp_RecommP_Premium21 : "",
+        STIC_ProdComp_RecommP_Excess21 : "",
+
+        STIC_ProdComp_Recommended22 : "",
+        STIC_ProdComp_Accepted22 : "",
+        STIC_ProdComp_CoverAmount22 : "",
+        STIC_ProdComp_ExistP_Premium22 : "",
+        STIC_ProdComp_ExistP_Excess22 : "",
+        STIC_ProdComp_RecommP_Premium22 : "",
+        STIC_ProdComp_RecommP_Excess22 : "",
+
+        STIC_ProdComp_Recommended23 : "",
+        STIC_ProdComp_Accepted23 : "",
+        STIC_ProdComp_CoverAmount23 : "",
+        STIC_ProdComp_ExistP_Premium23 : "",
+        STIC_ProdComp_ExistP_Excess23 : "",
+        STIC_ProdComp_RecommP_Premium23 : "",
+        STIC_ProdComp_RecommP_Excess23 : "",
+
+        STIC_ProdComp_Recommended24 : "",
+        STIC_ProdComp_Accepted24 : "",
+        STIC_ProdComp_CoverAmount24 : "",
+        STIC_ProdComp_ExistP_Premium24 : "",
+        STIC_ProdComp_ExistP_Excess24 : "",
+        STIC_ProdComp_RecommP_Premium24 : "",
+        STIC_ProdComp_RecommP_Excess24 : "",
+
+        STIC_ProdComp_Recommended25 : "",
+        STIC_ProdComp_Accepted25 : "",
+        STIC_ProdComp_CoverAmount25 : "",
+        STIC_ProdComp_ExistP_Premium25 : "",
+        STIC_ProdComp_ExistP_Excess25 : "",
+        STIC_ProdComp_RecommP_Premium25 : "",
+        STIC_ProdComp_RecommP_Excess25 : "",
+
+        STIC_ProdComp_Recommended26 : "",
+        STIC_ProdComp_Accepted26 : "",
+        STIC_ProdComp_CoverAmount26 : "",
+        STIC_ProdComp_ExistP_Premium26 : "",
+        STIC_ProdComp_ExistP_Excess26 : "",
+        STIC_ProdComp_RecommP_Premium26 : "",
+        STIC_ProdComp_RecommP_Excess26 : "",
+
+        STIC_ProdComp_Recommended26 : "",
+        STIC_ProdComp_Accepted26 : "",
+        STIC_ProdComp_CoverAmount26 : "",
+        STIC_ProdComp_ExistP_Premium26 : "",
+        STIC_ProdComp_ExistP_Excess26 : "",
+        STIC_ProdComp_RecommP_Premium26 : "",
+        STIC_ProdComp_RecommP_Excess26 : "",
+
+        STIC_ProdComp_Recommended27 : "",
+        STIC_ProdComp_Accepted27 : "",
+        STIC_ProdComp_CoverAmount27 : "",
+        STIC_ProdComp_ExistP_Premium27 : "",
+        STIC_ProdComp_ExistP_Excess27 : "",
+        STIC_ProdComp_RecommP_Premium27 : "",
+        STIC_ProdComp_RecommP_Excess27 : "",
+
+        STIC_ProdComp_Recommended28 : "",
+        STIC_ProdComp_Accepted28 : "",
+        STIC_ProdComp_CoverAmount28 : "",
+        STIC_ProdComp_ExistP_Premium28 : "",
+        STIC_ProdComp_ExistP_Excess28 : "",
+        STIC_ProdComp_RecommP_Premium28 : "",
+        STIC_ProdComp_RecommP_Excess28 : "",
+
+        STIC_ProdComp_Recommended29 : "",
+        STIC_ProdComp_Accepted29 : "",
+        STIC_ProdComp_CoverAmount29 : "",
+        STIC_ProdComp_ExistP_Premium29 : "",
+        STIC_ProdComp_ExistP_Excess29 : "",
+        STIC_ProdComp_RecommP_Premium29 : "",
+        STIC_ProdComp_RecommP_Excess29 : "",
+
+        STIC_ProdComp_Recommended30 : "",
+        STIC_ProdComp_Accepted30 : "",
+        STIC_ProdComp_CoverAmount30 : "",
+        STIC_ProdComp_ExistP_Premium30 : "",
+        STIC_ProdComp_ExistP_Excess30 : "",
+        STIC_ProdComp_RecommP_Premium30 : "",
+        STIC_ProdComp_RecommP_Excess30 : "",
+
+        STIC_ProdComp_Recommended31 : "",
+        STIC_ProdComp_Accepted31 : "",
+        STIC_ProdComp_CoverAmount31 : "",
+        STIC_ProdComp_ExistP_Premium31 : "",
+        STIC_ProdComp_ExistP_Excess31 : "",
+        STIC_ProdComp_RecommP_Premium31 : "",
+        STIC_ProdComp_RecommP_Excess31 : "",
+
+        STIC_ProdComp_Recommended32 : "",
+        STIC_ProdComp_Accepted32 : "",
+        STIC_ProdComp_CoverAmount32 : "",
+        STIC_ProdComp_ExistP_Premium32 : "",
+        STIC_ProdComp_ExistP_Excess32 : "",
+        STIC_ProdComp_RecommP_Premium32 : "",
+        STIC_ProdComp_RecommP_Excess32 : "",
+
+        STIC_ProdComp_Recommended33 : "",
+        STIC_ProdComp_Accepted33 : "",
+        STIC_ProdComp_CoverAmount33 : "",
+        STIC_ProdComp_ExistP_Premium33 : "",
+        STIC_ProdComp_ExistP_Excess33 : "",
+        STIC_ProdComp_RecommP_Premium33 : "",
+        STIC_ProdComp_RecommP_Excess33 : "",
+
+        STIC_ProdComp_Recommended34 : "",
+        STIC_ProdComp_Accepted34 : "",
+        STIC_ProdComp_CoverAmount34 : "",
+        STIC_ProdComp_ExistP_Premium34 : "",
+        STIC_ProdComp_ExistP_Excess34 : "",
+        STIC_ProdComp_RecommP_Premium34 : "",
+        STIC_ProdComp_RecommP_Excess34 : "",
+
+        STIC_ProdComp_Recommended35 : "",
+        STIC_ProdComp_Accepted35 : "",
+        STIC_ProdComp_CoverAmount35 : "",
+        STIC_ProdComp_ExistP_Premium35 : "",
+        STIC_ProdComp_ExistP_Excess35 : "",
+        STIC_ProdComp_RecommP_Premium35 : "",
+        STIC_ProdComp_RecommP_Excess35 : "",
+
+        STIC_ProdComp_FeeNCharges : "",
+        STIC_ProdComp_Commission : "",
+        STIC_ProdComp_TotalPremium : "",
+
+        
+        STIC_Fire_Limit : "",
+        STIC_Fire_ItemNumber : "",
+        STIC_Fire_Premium : "",
+        STIC_Fire_PremNumber : "",
+        STIC_Buildings_Insured : "",
+        STIC_Rental_Insured : "",
+        STIC_Others_Insured : "",
+        STIC_Stocks_Insured : "",
+        STIC_Stocks_Insured : "",
+        STIC_Miscellaneous1_Insured : "",
+        STIC_Miscellaneous2_Insured : "",
+
+        STIC_Earthquake_Insured : "",
+        STIC_Malicious_Damage_Insured : "",
+        STIC_Special_Insured : "",
+        STIC_LeakFull_Insured : "",
+        STIC_LeakFirst_Insured : "",
+        STIC_SnLLimited_Insured : "",
+        STIC_SnLComprehensive_Insured : "",
+        STIC_RnS_Insured : "",
+        STIC_SDC_Insured : "",
+
+        STIC_BuildCombined_Limit : "",
+        STIC_BuildCombined_ItemNumber : "",
+        STIC_BuildCombined_Premium : "",
+        STIC_BuildCombined_PremNumber : "",
+        STIC_BuildCombined_ColumnRef : "",
+        STIC_BuildCombined_Sum : "",
+        STIC_BuildCombined_Construct : "",
+        STIC_BuildCombined_Desc : "",
+
+        STIC_Extensions_RnS : "",
+        STIC_Extensions_Geysers : "",
+        STIC_Extensions_SnL : "",
+        STIC_Extensions_PoA : "",
+        STIC_Extensions_IorE : "",
+
+        STIC_OC_Limit : "",
+        STIC_OC_ItemNumber : "",
+        STIC_OC_Premium : "",
+        STIC_OC_PremNumber : "",
+        STIC_OC_PremisesNum : "",
+        STIC_OC_Sum : "",
+        STIC_OC_Construct : "",
+        STIC_OC_Desc : "",
+
+        STIC_OC_Doc_Sum : "",
+        STIC_OC_Doc_Premium : "",
+        STIC_OC_LLDoc_Sum : "",
+        STIC_OC_LLDoc_Premium : "",
+        STIC_OC_RnS_Sum : "",
+        STIC_OC_RnS_Premium : "",
+        STIC_OC_TheftF_Sum : "",
+        STIC_OC_TheftF_Premium : "",
+        STIC_OC_Theft_Sum : "",
+        STIC_OC_Theft_Premium : "",
+        STIC_OC_Total_Premium : "",
+
+        STIC_BusInt_Limit : "",
+        STIC_BusInt_Premium : "",
+        STIC_BusInt_ItemNumber : "",
+        STIC_BusInt_PremNumber : "",
+        STIC_BusInt_Basis : "",
+        STIC_BusInt_Indemnity : "",
+
+        STIC_BusInt_Type1 : "",
+        STIC_BusInt_Type2 : "",
+        STIC_BusInt_Type3 : "",
+        STIC_BusInt_Type4 : "",
+        STIC_BusInt_Type5 : "",
+        STIC_BusInt_Type6 : "",
+        STIC_BusInt_Type7 : "",
+        STIC_BusInt_Type8 : "",
+        
+        STIC_BusInt_Type9 : "",
+        STIC_BusInt_Type9_1 : "",
+        STIC_BusInt_Type10 : "",
+        STIC_BusInt_Type11 : "",
+        STIC_BusInt_Type11_1 : "",
+        STIC_BusInt_Type13 : "",
+        STIC_BusInt_Type14 : "",
+        STIC_BusInt_Type14_1 : "",
+        STIC_BusInt_Type15 : "",
+        STIC_BusInt_Type15_1 : "",
+        STIC_BusInt_Type16 : "",
+        STIC_BusInt_Type16_1 : "",
+        STIC_BusInt_Type17 : "",
+        STIC_BusInt_Type18 : "",
+        STIC_BusInt_Type19 : "",
+        STIC_BusInt_Type19_1 : "",
+        STIC_BusInt_Type20 : "",
+        STIC_BusInt_Type20_1 : "",
+        STIC_BusInt_Type21 : "",
+        STIC_BusInt_Type21_1 : "",
+
+        STIC_BusInt_TotalPremium : "",
+        STIC_BusInt_Comments : "",
+        STIC_BusInt_PremisesNumber : "",
+        STIC_BusInt_Basis : "",
+        STIC_BusInt_IndemPer : "",
+        STIC_BusInt_Suppliers : "",
+
+        STIC_BusInt_Type2_1 : "",
+        STIC_BusInt_Type2_2 : "",
+        STIC_BusInt_Type2_3 : "",
+        STIC_BusInt_Type2_4 : "",
+        STIC_BusInt_Type2_5 : "",
+        STIC_BusInt_Type2_6 : "",
+        STIC_BusInt_Type2_7 : "",
+        STIC_BusInt_Type2_8 : "",
+        
+        STIC_BusInt_Type2_9 : "",
+        STIC_BusInt_Type2_9_1 : "",
+        STIC_BusInt_Type2_10 : "",
+        STIC_BusInt_Type2_11 : "",
+        STIC_BusInt_Type2_11_1 : "",
+        STIC_BusInt_Type2_13 : "",
+        STIC_BusInt_Type2_14 : "",
+        STIC_BusInt_Type2_14_1 : "",
+        STIC_BusInt_Type2_15 : "",
+        STIC_BusInt_Type2_15_1 : "",
+        STIC_BusInt_Type2_16 : "",
+        STIC_BusInt_Type2_16_1 : "",
+        STIC_BusInt_Type2_17 : "",
+        STIC_BusInt_Type2_18 : "",
+        STIC_BusInt_Type2_19 : "",
+        STIC_BusInt_Type2_19_1 : "",
+        STIC_BusInt_Type2_20 : "",
+        STIC_BusInt_Type2_20_1 : "",
+        STIC_BusInt_Type2_21 : "",
+        STIC_BusInt_Type2_21_1 : "",
+
+        STIC_BusInt2_TotalPremium : "",
+        STIC_BusInt2_Comments : "",
+        
+        STIC_Sec5_Limit : "",
+        STIC_Sec5_Premium : "",
+        STIC_Sec5_ItemNumber : "",
+        STIC_Sec5_PremNumber : "",
+        STIC_Sec5_1 : "",
+        STIC_Sec5_2 : "",
+        STIC_Sec5_Extension_1 : "",
+        STIC_Sec5_Extension_2 : "",
+        STIC_Sec5_Extension_3 : "",
+        STIC_Sec5_Extension_4 : "",
+        STIC_Sec5_Extension_5 : "",
+        STIC_Sec5_AnnualPremium : "",
+        STIC_Sec5_Comments : "",
+
+
+        STIC_Sec6_Limit : "",
+        STIC_Sec6_Premium : "",
+        STIC_Sec6_ItemNumber : "",
+        STIC_Sec6_PremNumber : "",
+        STIC_Sec6_1 : "",
+        STIC_Sec6_2 : "",
+        STIC_Sec6_3 : "",
+        STIC_Sec6_4 : "",
+        STIC_Sec6_5 : "",
+        STIC_Sec6_6 : "",
+        STIC_Sec6_Comments : "",
+
+        STIC_Sec7_Limit : "",
+        STIC_Sec7_Premium : "",
+        STIC_Sec7_ItemNumber : "",
+        STIC_Sec7_PremNumber : "",
+        STIC_Sec7_1 : "",
+        STIC_Sec7_2 : "",
+        STIC_Sec7_3 : "",
+        STIC_Sec7_4 : "",
+        STIC_Sec7_5 : "",
+        STIC_Sec7_6 : "",
+        STIC_Sec7_7 : "",
+        STIC_Sec7_8 : "",
+        STIC_Sec7_9 : "",
+        STIC_Sec7_Extension_Included1 : "",
+        STIC_Sec7_Extension_Limit1 : "",
+        STIC_Sec7_Extension_Premium1 : "",
+        STIC_Sec7_Extension_Included2 : "",
+        STIC_Sec7_Extension_Limit2 : "",
+        STIC_Sec7_Extension_Premium2 : "",
+        STIC_Sec7_Extension_Included3 : "",
+        STIC_Sec7_Extension_Limit3 : "",
+        STIC_Sec7_Extension_Premium3 : "",
+        STIC_Sec7_AnnualPremium : "",
+        STIC_Sec7_Comments : "",
+
+        STIC_Sec8_Limit : "",
+        STIC_Sec8_Premium : "",
+        STIC_Sec8_ItemNumber : "",
+        STIC_Sec8_PremNumber : "",
+        STIC_Sec8_1 : "",
+        STIC_Sec8_2 : "",
+        STIC_Sec8_Extension_Included1 : "",
+        STIC_Sec8_Extension_Included2 : "",
+        STIC_Sec8_Extension_Included3 : "",
+        STIC_Sec8_AnnualPremium : "",
+        STIC_Sec8_Comments : "",
+
+        STIC_Sec9_Limit : "",
+        STIC_Sec9_Premium : "",
+        STIC_Sec9_ItemNumber : "",
+        STIC_Sec9_PremNumber : "",
+        STIC_Sec9_1 : "",
+        STIC_Sec9_2 : "",
+        STIC_Sec9_3 : "",
+        STIC_Sec9_4 : "",
+        STIC_Sec9_5 : "",
+        STIC_Sec9_6 : "",
+        STIC_Sec9_Extension_Included1 : "",
+        STIC_Sec9_Extension_Limit1 : "",
+        STIC_Sec9_Extension_Premium1 : "",
+        STIC_Sec9_Extension_Included2 : "",
+        STIC_Sec9_Extension_Limit2 : "",
+        STIC_Sec9_Extension_Premium2 : "",
+        STIC_Sec9_Extension_Included3 : "",
+        STIC_Sec9_Extension_Limit3 : "",
+        STIC_Sec9_Extension_Premium3 : "",
+        STIC_Sec9_Extension_Included4 : "",
+        STIC_Sec9_Extension_Limit4 : "",
+        STIC_Sec9_Extension_Premium4 : "",
+        STIC_Sec9_Extension_Included5 : "",
+        STIC_Sec9_Extension_Limit5 : "",
+        STIC_Sec9_Extension_Premium5 : "",
+        STIC_Sec9_Extension_Included6 : "",
+        STIC_Sec9_Extension_Limit6 : "",
+        STIC_Sec9_Extension_Premium6 : "",
+        STIC_Sec9_AnnualPremium : "",
+        STIC_Sec9_Comments : "",
+
+        STIC_Sec10_Limit : "",
+        STIC_Sec10_Premium : "",
+        STIC_Sec10_ItemNumber : "",
+        STIC_Sec10_PremNumber : "",
+        STIC_Sec10_1 : "",
+        STIC_Sec10_2 : "",
+        STIC_Sec10_3 : "",
+        STIC_Sec10_4 : "",
+        STIC_Sec10_5 : "",
+        STIC_Sec10_6 : "",
+        STIC_Sec10_7 : "",
+        STIC_Sec10_Extension_Included1 : "",
+        STIC_Sec10_Extension_Limit1 : "",
+        STIC_Sec10_Extension_Premium1 : "",
+        STIC_Sec10_Extension_Included2 : "",
+        STIC_Sec10_Extension_Limit2 : "",
+        STIC_Sec10_Extension_Premium2 : "",
+        STIC_Sec10_Extension_Included3 : "",
+        STIC_Sec10_Extension_Limit3 : "",
+        STIC_Sec10_Extension_Premium3 : "",
+        STIC_Sec10_Extension_Included4 : "",
+        STIC_Sec10_Extension_Limit4 : "",
+        STIC_Sec10_Extension_Premium4 : "",
+        STIC_Sec10_AnnualPremium : "",
+        STIC_Sec10_Comments : "",
+
+        STIC_Sec11_Limit : "",
+        STIC_Sec11_Premium : "",
+        STIC_Sec11_ItemNumber : "",
+        STIC_Sec11_PremNumber : "",
+        STIC_Sec11_1 : "",
+        STIC_Sec11_2 : "",
+        STIC_Sec11_3 : "",
+        STIC_Sec11_4 : "",
+        STIC_Sec11_5 : "",
+        STIC_Sec11_6 : "",
+        STIC_Sec11_7 : "",
+        STIC_Sec11_8 : "",
+        STIC_Sec11_9 : "",
+        STIC_Sec11_10 : "",
+        STIC_Sec11_AnnualPremium : "",
+        STIC_Sec11_Comments : "",
+
+        STIC_Sec12_Limit : "",
+        STIC_Sec12_Premium : "",
+        STIC_Sec12_ItemNumber : "",
+        STIC_Sec12_PremNumber : "",
+        STIC_Sec12_1 : "",
+        STIC_Sec12_2 : "",
+        STIC_Sec12_3 : "",
+        STIC_Sec12_4 : "",
+        STIC_Sec12_5 : "",
+        STIC_Sec12_6 : "",
+        STIC_Sec12_Extension_Included1 : "",
+        STIC_Sec12_Extension_Included2 : "",
+        STIC_Sec12_Extension_Included3 : "",
+        STIC_Sec12_Extension_Included4 : "",
+        STIC_Sec12_Extension_Included5 : "",
+        STIC_Sec12_AnnualPremium : "",
+        STIC_Sec12_Comments : "",
+
+        STIC_Sec13_Limit : "",
+        STIC_Sec13_Premium : "",
+        STIC_Sec13_ItemNumber : "",
+        STIC_Sec13_PremNumber : "",
+        STIC_Sec13_1 : "",
+        STIC_Sec13_2 : "",
+        STIC_Sec13_3 : "",
+        STIC_Sec13_4 : "",
+        STIC_Sec13_5 : "",
+        STIC_Sec13_6 : "",
+        STIC_Sec13_7 : "",
+        STIC_Sec13_8 : "",
+        STIC_Sec13_9 : "",
+        STIC_Sec13_10 : "",
+        STIC_Sec13_11 : "",
+        STIC_Sec13_12 : "",
+        STIC_Sec13_13 : "",
+        STIC_Sec13_14 : "",
+        STIC_Sec13_15 : "",
+        STIC_Sec13_16 : "",
+        STIC_Sec13_17 : "",
+        STIC_Sec13_18 : "",
+        STIC_Sec13_19 : "",
+        STIC_Sec13_20 : "",
+        STIC_Sec13_21 : "",
+        STIC_Sec13_22 : "",
+        STIC_Sec13_23 : "",
+        STIC_Sec13_24 : "",
+        STIC_Sec13_25 : "",
+        STIC_Sec13_26 : "",
+        STIC_Sec13_27 : "",
+        STIC_Sec13_28 : "",
+        STIC_Sec13_29 : "",
+        STIC_Sec13_30 : "",
+        STIC_Sec13_31 : "",
+        STIC_Sec13_32 : "",
+        STIC_Sec13_33 : "",
+        STIC_Sec13_AnnualPremium : "",
+        STIC_Sec13_Comments : "",
+
+        STIC_Sec14_Limit : "",
+        STIC_Sec14_Premium : "",
+        STIC_Sec14_ItemNumber : "",
+        STIC_Sec14_PremNumber : "",
+        STIC_Sec14_1 : "",
+        STIC_Sec14_2 : "",
+        STIC_Sec14_3 : "",
+        STIC_Sec14_4 : "",
+        STIC_Sec14_5 : "",
+        STIC_Sec14_6 : "",
+        STIC_Sec14_Recommended1 : "",
+        STIC_Sec14_Accepted1 : "",
+        STIC_Sec14_CoverAmount1 : "",
+        STIC_Sec14_Recommended12 : "",
+        STIC_Sec14_Accepted2 : "",
+        STIC_Sec14_CoverAmount2 : "",
+        STIC_Sec14_Recommended3 : "",
+        STIC_Sec14_Accepted3 : "",
+        STIC_Sec14_CoverAmount3 : "",
+        STIC_Sec14_Recommended4 : "",
+        STIC_Sec14_Accepted4 : "",
+        STIC_Sec14_CoverAmount4 : "",
+        STIC_Sec14_Recommended5 : "",
+        STIC_Sec14_Accepted5 : "",
+        STIC_Sec14_CoverAmount5 : "",
+        STIC_Sec14_Recommended6 : "",
+        STIC_Sec14_Accepted6 : "",
+        STIC_Sec14_CoverAmount6 : "",
+        STIC_Sec14_Recommended7 : "",
+        STIC_Sec14_Accepted7 : "",
+        STIC_Sec14_CoverAmount7 : "",
+        STIC_Sec14_Recommended8 : "",
+        STIC_Sec14_Accepted8 : "",
+        STIC_Sec14_CoverAmount8 : "",
+        STIC_Sec14_Recommended9 : "",
+        STIC_Sec14_Accepted9 : "",
+        STIC_Sec14_CoverAmount9 : "",
+        STIC_Sec14_Recommended10 : "",
+        STIC_Sec14_Accepted10 : "",
+        STIC_Sec14_CoverAmount10 : "",
+        STIC_Sec14_Recommended11 : "",
+        STIC_Sec14_Accepted11 : "",
+        STIC_Sec14_CoverAmount11 : "",
+        STIC_Sec14_Recommended12 : "",
+        STIC_Sec14_Accepted12 : "",
+        STIC_Sec14_CoverAmount12 : "",
+
+        STIC_Sec15_Limit : "",
+        STIC_Sec15_Premium : "",
+        STIC_Sec15_ItemNumber : "",
+        STIC_Sec15_PremNumber : "",
+        STIC_Sec15_1 : "",
+        STIC_Sec15_1_1 : "",
+        STIC_Sec15_2 : "",
+        STIC_Sec15_2_1 : "",
+        STIC_Sec15_3 : "",
+        STIC_Sec15_3_1 : "",
+        STIC_Sec15_AnnualPremium : "",
+        STIC_Sec15_Comments : "",
+
+        STIC_Sec16_Limit : "",
+        STIC_Sec16_Premium : "",
+        STIC_Sec16_ItemNumber : "",
+        STIC_Sec16_PremNumber : "",
+        STIC_Sec16_1 : "",
+        STIC_Sec16_2 : "",
+        STIC_Sec16_3 : "",
+        STIC_Sec16_4 : "",
+        STIC_Sec16_5 : "",
+        STIC_Sec16_6 : "",
+        STIC_Sec16_7 : "",
+        STIC_Sec16_8 : "",
+        STIC_Sec16_9 : "",
+        STIC_Sec16_10 : "",
+        STIC_Sec16_Extension1 : "",
+        STIC_Sec16_Extension2 : "",
+        STIC_Sec16_Extension3 : "",
+        STIC_Sec16_Extension4 : "",
+        STIC_Sec16_Extension5 : "",
+        STIC_Sec16_Extension6 : "",
+        STIC_Sec16_Extension7 : "",
+        STIC_Sec16_Extension8 : "",
+        STIC_Sec16_Extension9 : "",
+        STIC_Sec16_AnnualPremium : "",
+        STIC_Sec16_Comments : "",
+
+        STIC_Sec17_Limit : "",
+        STIC_Sec17_Premium : "",
+        STIC_Sec17_ItemNumber : "",
+        STIC_Sec17_PremNumber : "",
+        STIC_Sec17_1 : "",
+        STIC_Sec17_2 : "",
+        STIC_Sec17_3 : "",
+        STIC_Sec17_4 : "",
+        STIC_Sec17_5 : "",
+        STIC_Sec17_6 : "",
+        STIC_Sec17_7 : "",
+        STIC_Sec17_8 : "",
+        STIC_Sec17_9 : "",
+        STIC_Sec17_10 : "",
+        STIC_Sec17_Extension1 : "",
+        STIC_Sec17_ExtensionLimit1 : "",
+        STIC_Sec17_ExtensionPremium1 : "",
+        STIC_Sec17_Extension2 : "",
+        STIC_Sec17_ExtensionLimit2 : "",
+        STIC_Sec17_ExtensionPremium2 : "",
+        STIC_Sec17_Extension3 : "",
+        STIC_Sec17_ExtensionLimit3 : "",
+        STIC_Sec17_ExtensionPremium3 : "",
+        STIC_Sec17_Extension4 : "",
+        STIC_Sec17_ExtensionLimit4 : "",
+        STIC_Sec17_ExtensionPremium4 : "",
+        STIC_Sec17_Extension5 : "",
+        STIC_Sec17_ExtensionLimit5 : "",
+        STIC_Sec17_ExtensionPremium5 : "",
+        STIC_Sec17_Extension6 : "",
+        STIC_Sec17_ExtensionLimit6 : "",
+        STIC_Sec17_ExtensionPremium6 : "",
+        STIC_Sec17_Extension7 : "",
+        STIC_Sec17_ExtensionLimit7 : "",
+        STIC_Sec17_ExtensionPremium7 : "",
+        STIC_Sec17_Extension8 : "",
+        STIC_Sec17_ExtensionLimit8 : "",
+        STIC_Sec17_ExtensionPremium8 : "",
+        STIC_Sec17_Extension9 : "",
+        STIC_Sec17_ExtensionLimit9 : "",
+        STIC_Sec17_ExtensionPremium9 : "",
+        STIC_Sec17_AnnualPremium : "",
+        STIC_Sec17_Comments : "",
+
+        STIC_Sec18_Limit : "",
+        STIC_Sec18_Premium : "",
+        STIC_Sec18_ItemNumber : "",
+        STIC_Sec18_PremNumber : "",
+        STIC_Sec18_1 : "",
+        STIC_Sec18_2 : "",
+        STIC_Sec18_3 : "",
+        STIC_Sec18_4 : "",
+        STIC_Sec18_5 : "",
+        STIC_Sec18_6 : "",
+        STIC_Sec18_7 : "",
+        STIC_Sec18_8 : "",
+        STIC_Sec18_9 : "",
+        STIC_Sec18_10 : "",
+        STIC_Sec18_11 : "",
+        STIC_Sec18_12 : "",
+        STIC_Sec18_13 : "",
+        STIC_Sec18_14 : "",
+        STIC_Sec18_15 : "",
+        STIC_Sec18_16 : "",
+        STIC_Sec18_17 : "",
+        STIC_Sec18_18 : "",
+        STIC_Sec18_19 : "",
+        STIC_Sec18_20 : "",
+        STIC_Sec18_21 : "",
+        STIC_Sec18_22 : "",
+        STIC_Sec18_23 : "",
+        STIC_Sec18_24 : "",
+        STIC_Sec18_25 : "",
+        STIC_Sec18_26 : "",
+        STIC_Sec18_27 : "",
+        STIC_Sec18_27 : "",
+        STIC_Sec18_FaP1 : "",
+        STIC_Sec18_FaP1_1 : "",
+        STIC_Sec18_FaP1_2 : "",
+        STIC_Sec18_FaP2 : "",
+        STIC_Sec18_FaP2_1 : "",
+        STIC_Sec18_FaP2_2 : "",
+        STIC_Sec18_FaP3 : "",
+        STIC_Sec18_FaP3_1 : "",
+        STIC_Sec18_FaP3_2 : "",
+        STIC_Sec18_FaP4 : "",
+        STIC_Sec18_FaP4_1 : "",
+        STIC_Sec18_FaP4_2 : "",
+        STIC_Sec18_FaP5 : "",
+        STIC_Sec18_FaP5_1 : "",
+        STIC_Sec18_FaP5_2 : "",
+        STIC_Sec18_FaP6 : "",
+        STIC_Sec18_FaP6_1 : "",
+        STIC_Sec18_FaP6_2 : "",
+        STIC_Sec18_Extension1 : "",
+        STIC_Sec18_Extension1_1 : "",
+        STIC_Sec18_Extension1_2 : "",
+        STIC_Sec18_Extension2 : "",
+        STIC_Sec18_Extension2_1 : "",
+        STIC_Sec18_Extension3 : "",
+        STIC_Sec18_Extension3_1 : "",
+        STIC_Sec18_Extension4 : "",
+        STIC_Sec18_Extension4_1 : "",
+        STIC_Sec18_Extension5 : "",
+        STIC_Sec18_Extension5_1 : "",
+        STIC_Sec18_Extension6 : "",
+        STIC_Sec18_Extension6_1 : "",
+        STIC_Sec18_Comments : "",
+
+        STIC_Sec19_Limit : "",
+        STIC_Sec19_Premium : "",
+        STIC_Sec19_ItemNumber : "",
+        STIC_Sec19_PremNumber : "",
+        STIC_Sec19_Part1_1 : "",
+        STIC_Sec19_Part1_2 : "",
+        STIC_Sec19_Part1_3 : "",
+        STIC_Sec19_Part1_4 : "",
+        STIC_Sec19_Part1_5 : "",
+        STIC_Sec19_Part1_6 : "",
+        STIC_Sec19_Part1_7 : "",
+        STIC_Sec19_Part1_8 : "",
+        STIC_Sec19_Part1_9 : "",
+        STIC_Sec19_Part2_1 : "",
+        STIC_Sec19_Part2_2 : "",
+        STIC_Sec19_Part2_3 : "",
+        STIC_Sec19_Part2_4 : "",
+        STIC_Sec19_Part2_5 : "",
+        STIC_Sec19_Extension1 : "",
+        STIC_Sec19_Extension_Premium1 : "",
+        STIC_Sec19_Extension2 : "",
+        STIC_Sec19_Extension_Premium2 : "",
+        STIC_Sec19_RoD_1 : "",
+        STIC_Sec19_RoD_2 : "",
+        STIC_Sec19_RoD_3 : "",
+        STIC_Sec19_RoD_4 : "",
+        STIC_Sec19_RoD_5 : "",
+        STIC_Sec19_AnnualPremium : "",
+        STIC_Sec19_Comments : "",
+
+        STIC_Sec20_Limit : "",
+        STIC_Sec20_Premium : "",
+        STIC_Sec20_ItemNumber : "",
+        STIC_Sec20_PremNumber : "",
+        STIC_Sec20_1 : "",
+        STIC_Sec20_2 : "",
+        STIC_Sec20_3 : "",
+        STIC_Sec20_4 : "",
+        STIC_Sec20_5 : "",
+        STIC_Sec20_6 : "",
+        STIC_Sec20_Extension1 : "",
+        STIC_Sec20_Extension_Premium1 : "",
+        STIC_Sec20_Extension2 : "",
+        STIC_Sec20_Extension_Premium2 : "",
+        STIC_Sec20_AnnualPremium : "",
+        STIC_Sec20_Comments : "",
+
+        STIC_Sec21_Limit : "",
+        STIC_Sec21_Premium : "",
+        STIC_Sec21_ItemNumber : "",
+        STIC_Sec21_PremNumber : "",
+        STIC_Sec21_1 : "",
+        STIC_Sec21_2 : "",
+        STIC_Sec21_3 : "",
+        STIC_Sec21_4 : "",
+        STIC_Sec21_5 : "",
+        STIC_Sec21_6 : "",
+        STIC_Sec21_Extension1 : "",
+        STIC_Sec21_Extension_Premium1 : "",
+        STIC_Sec21_Extension2 : "",
+        STIC_Sec21_Extension_Premium2 : "",
+        STIC_Sec21_AnnualPremium : "",
+        STIC_Sec21_Comments : "",
+        
+        STIC_SecD_1 : "",
+        STIC_SecD_2 : "",
+        STIC_SecD_3 : "",
+        STIC_SecD_4 : "",
+        STIC_SecD_5 : "",
+        STIC_SecD_6 : "",
+        STIC_SecD_7 : "",
+        STIC_SecD_8 : "",
+        STIC_SecD_9 : "",
+        STIC_SecD_10 : "",
+        STIC_SecD_11 : "",
+        STIC_SecD_12 : "",
+        STIC_SecD_13 : "",
+
+        STIC_SecE_1 : "",
+        STIC_SecE_2 : "",
+        STIC_SecE_3 : "",
+
+        STIC_SecG_1 : "",
+        STIC_SecG_2 : "",
+        STIC_SecG_3 : "",
+
+
+
+      });
+      const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
+
+      const createSTICForm = async(data) => {
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`
+            }
+        }
+        const Body = JSON.stringify(data)
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/add_short_term_commerical_data/`, Body ,config)
+            // console.log(response.data['formData'])
+            if (response.status === 201) {
+                setFormData(response.data['formData'])
+            } else {
+                setFormData(response.data['formData'])
+            }
+            // setSubmissionMessageVisibility("block")
+        } catch (error) {
+            console.log(error)
+        }
+      }
+      const [SuccessMessage, setSuccessMessage] = useState("")
+      const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
+      const updateForm = async() => {
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`
+            }
+        }
+        const Body = JSON.stringify(FormData)
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_short_term_commerical_data/`, Body ,config)
+            // console.log(response.data['formData'])
+            setFormData(response.data['formData'])
+            setSuccessMessage("Gap Cover data is successfully updated")
+            setSuccessMessageVisibility("block")
+            // setSubmissionMessageVisibility("block")
+        } catch (error) {
+            console.log(error)
+        }
+      }
+      const onSubmit = e => {
+        e.preventDefault()
+        updateForm()
+        // window.location.reload();
+      }
+      // console.log(FormData)
+      useEffect(() => {
+        createSTICForm(FormData)
+      }, []);
+      setTimeout(() => {
+        setSuccessMessageVisibility("none")
+      }, 5000);
     return(
         <>
         <br/>
-        <div class="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SHORT-TERM INSURANCE: COMMERCIAL</b></div>
-       <hr/>
-                {/* <form onSubmit={_btn} method="get"> */}
+            <div class="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SHORT-TERM INSURANCE: COMMERCIAL</b></div>
+            <hr/>
+            <div className="notification_container">
+              <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+              {SuccessMessage}
+              {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
+              </div>
+            </div>
+            <form onSubmit={e => onSubmit(e)}>
+                  
                   <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
                       <div className="row">
                           <div className="col-6" style={{paddingBottom: "0.5%"}}>
@@ -171,7 +1217,6 @@ import React, {useState} from 'react';
 
                         </div>
                     </div>
-                {/* </form> */}
         <hr/>
 
         <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary of the information and material on which the advisory process you recently undertook with your advisor was based. Contact your advisor if you have any questions concerning the content. You are entitled to a copy of this document for your records. You have given consent to Succession Financial Planning (SFP) to process your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP to retain your personal information to recommend the best financial solutions for your financial needs and maintenance. You have given consent to be contacted from time to time for maintenance, news, correspondence and storage of your personal information relating to your financial matters.Terms and Conditions on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a> </p>
@@ -534,27 +1579,19 @@ import React, {useState} from 'react';
                                           </div>
                                       </div>
                                   </div>
-                                  {
-                                      letterOfIntroduction ?
-                                      null :
-                                      <>
-                                          <div className="col-11" id="letter_of_introduction_2">
-                                              {
-                                                  letterOfIntroductionVisibility ?
-                                                  <>
-                                                      <div id="letter_of_introduction_instructions" className="hidden_class">
-                                                          <p>If 'Yes', provide details:</p>
-                                                      </div>
-                                                  </> :
-                                                  null
-                                              }
-                                              <textarea  id="letter_of_introduction" name="letter_of_introduction" onChange={(e) => {setletterOfIntroductionReason(e.target.value)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If 'Yes', provide details:" aria-describedby="" ></textarea>
-                                          </div>
-                                          <hr/>
-                                          
-                                             
-                                      </>
-                                  }
+                                  <div className="col-11" id="letter_of_introduction_2">
+                                      {
+                                          letterOfIntroductionVisibility ?
+                                          <>
+                                              <div id="letter_of_introduction_instructions" className="hidden_class">
+                                                  <p>If 'Yes', provide details:</p>
+                                              </div>
+                                          </> :
+                                          null
+                                      }
+                                      <textarea  id="letter_of_introduction" name="letter_of_introduction" onChange={(e) => {setletterOfIntroductionReason(e.target.value)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If 'Yes', provide details:" aria-describedby="" ></textarea>
+                                  </div>
+                                  <hr/>
                               </div>
 
                               <p>2. History of previous losses/claims. Provide details regarding any losses you might have sustained during the past five years, including all claims that were paid out or not paid out</p>
@@ -648,35 +1685,30 @@ import React, {useState} from 'react';
                                           </div>
                                       </div>
                                   </div>
-                                  {
-                                      Fica ? null : 
-                                      <>
-                                          <div className="col-11" id="provided_identity_2" >
-                                              {
-                                                  FicaVisibility ?
-                                                  <>
-                                                      {/* <div id="provided_identity_instructions" className="hidden_class">
-                                                           <p>What is the purpose of this replacement?</p> 
-                                                      </div> */}
-                                                      
-                                                      
-                                                  </> : 
-                                                  null
-                                              }
+                                  <div className="col-11" id="provided_identity_2" >
+                                      {
+                                          FicaVisibility ?
+                                          <>
+                                              {/* <div id="provided_identity_instructions" className="hidden_class">
+                                                    <p>What is the purpose of this replacement?</p> 
+                                              </div> */}
+                                              
+                                              
+                                          </> : 
+                                          null
+                                      }
 
-                                            <p>If yes,answer the following:</p>
-                                              <p>What is the purpose of this replacement?</p>
-                                              <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason(e.target.value)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
-                                            <hr/>
-                                              <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
-                                              <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason(e.target.value)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
-                                              <hr/>
-                                              <p>Suppliers of the product(s) to be replaced:</p>
-                                              <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason(e.target.value)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
-          
-                                          </div>
-                                      </>
-                                  }
+                                    <p>If yes,answer the following:</p>
+                                      <p>What is the purpose of this replacement?</p>
+                                      <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason(e.target.value)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+                                    <hr/>
+                                      <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
+                                      <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason(e.target.value)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+                                      <hr/>
+                                      <p>Suppliers of the product(s) to be replaced:</p>
+                                      <textarea  id="provided_identity_instructions" name="provided_identity_instructions" onChange={(e) => {setFicaReason(e.target.value)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+  
+                                  </div>
                               </div>
                                   <hr/>
                               <p>Comparison between the product to be replaced (old product) and the recommended product (new product):</p>
@@ -822,6 +1854,41 @@ import React, {useState} from 'react';
                                           <td class="col-3">Existing Product</td>
                                           <td class="col-3">Replacement Product</td>
                                       </tr> */}
+                                      <tr className="d-flex">
+              
+                                          <td className="col-6" style={{width:"590px"}}></td>
+                                          <td className="col-2" align="center" style={{width:"260px"}}>
+                                            <b>Existing Product</b>
+                                            <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+                                          </td>
+                                          <td className="col-2" align="center" style={{width:"260px"}}>
+                                            <b>Replacement Product</b>
+                                            <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+                                          </td>
+                                        
+                                      </tr>
+                                      <tr className="d-flex">
+                                          
+                                          <td className="col-6" style={{width:"590px"}}></td>
+                                          <td className="col-2" align="center" style={{width:"260px"}}>
+                                            <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+                                          </td>
+                                          <td className="col-2" align="center" style={{width:"260px"}}>
+                                            <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+                                          </td>
+                                        
+                                      </tr>
+                                      <tr className="d-flex">
+                                          
+                                          <td className="col-6" style={{width:"590px"}}></td>
+                                          <td className="col-2" align="center" style={{width:"260px"}}>
+                                            <input spellCheck="true"  id="product" name="product" className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+                                          </td>
+                                          <td className="col-2" align="center" style={{width:"260px"}}>
+                                            <input spellCheck="true"  id="product" name="product" className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+                                          </td>
+                                        
+                                      </tr>
                                   
                                   
                                       <tr class="d-flex">
@@ -2564,6 +3631,58 @@ import React, {useState} from 'react';
                               <p>Where tracking devices are not a requirement, and you have elected to fit such a device of your own accord, inform us as you may be entitled to a reduction in premium and/or your theft excess may be waived (subject to policy terms and conditions).</p>
 
                               <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 1:FIRE</b></div>
+                              <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
+
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
                               <div><b>Important notes:</b></div>
                               <p>The onus is on the client to provide the correct sums insured.</p>
                               <div><b>Building:</b></div>
@@ -2799,6 +3918,58 @@ import React, {useState} from 'react';
                               </div>
 
                               <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 2:BUILDINGS COMBINED</b></div>
+                              <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
+
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
                               <div><b>Importance notes:</b></div>
                               <p>The onus is on the client to provide the correct sums insured. </p>
                               <ul>
@@ -2973,20 +4144,62 @@ import React, {useState} from 'react';
 
                               <br/>
                               <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 3:OFFICE CONTENTS</b></div>
+                              <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
+
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
                               <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
                                 <div className="row">
 
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Premises Number:</label>
-                                      </div>
-                                      <div className="col-3">
-                                        <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
+                                
 
                                   <div className="col-8" style={{paddingBottom: "0.5%"}}>
                                     <div className="row g-3 align-items-center">
@@ -3148,20 +4361,62 @@ import React, {useState} from 'react';
 
                               <br/>
                               <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 4:BUSINESS INTERRUPTION</b></div>
+                              <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
+
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
 
                               <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
                                 <div className="row">
-                                  <div className="col-10" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-6">
-                                        <label className="col-form-label">Premises Number:</label>
-                                      </div>
-                                      <div className="col-3">
-                                        <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"200px"}} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
+                                  
 
                                   <div className="col-10" style={{paddingBottom: "0.5%"}}>
                                     <div className="row g-3 align-items-center">
@@ -4047,20 +5302,61 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 5:ACCOUNTS RECEIVABLE</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
-    <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-       <div className="row">
-          <div className="col-10" style={{paddingBottom: "0.5%"}}>
-            <div className="row g-3 align-items-center">
-              <div className="col-6">
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
                   <label className="col-form-label">Premises Number:</label>
               </div>
-              <div className="col-3">
-                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"200px"}} />
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
               </div>
-            </div>
           </div>
-          <hr/>
+      </div>
+    </div>                               
+    <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+       <div className="row">
+          
 
           <div className="col-10" style={{paddingBottom: "0.5%"}}>
             <div className="row g-3 align-items-center">
@@ -4199,21 +5495,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 6:THEFT</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
-    <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-       <div className="row">
-          <div className="col-10" style={{paddingBottom: "0.5%"}}>
-            <div className="row g-3 align-items-center">
-              <div className="col-6">
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
                   <label className="col-form-label">Premises Number:</label>
               </div>
-              <div className="col-3">
-                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"200px"}} />
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
               </div>
-            </div>
           </div>
-        </div>
       </div>
+    </div> 
 
       <div><b>Important Notes</b></div>
       <div>The onus is on the client to provide the correct sums insured on a first loss basis.</div>
@@ -4303,21 +5636,59 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 7:MONEY</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
-    <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-       <div className="row">
-          <div className="col-10" style={{paddingBottom: "0.5%"}}>
-            <div className="row g-3 align-items-center">
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
               <div className="col-2">
                   <label className="col-form-label">Premises Number:</label>
               </div>
-              <div className="col-3">
-                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"200px"}} />
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
               </div>
-            </div>
           </div>
-        </div>
       </div>
+    </div>                                  
+    
 
       <div><b>Important Notes</b></div>
       <ul>
@@ -4345,8 +5716,10 @@ import React, {useState} from 'react';
         <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
       </td>
       <td>
-        
-        <input spellCheck="true"  id="client_name" name="client_namea" className="form-control" placeholder="Premium:R 0.00"  aria-describedby="" style={{width:"200px"}} />
+        <div className='row' style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">
+          <p>Premium</p>
+          <input spellCheck="true"  id="client_name" name="client_namea" className="form-control" placeholder="Premium:R 0.00"  aria-describedby="" style={{width:"200px"}} />
+        </div>
       </td>
       <td></td>
       <td></td>
@@ -4383,7 +5756,10 @@ import React, {useState} from 'react';
         </div>
       </td>
       <td>
-        <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Ocupation Description:"  aria-describedby="" style={{width:"200px"}} />
+        <div className='row' style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">
+          <p>Ocupation Description</p>
+          <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="Ocupation Description:"  aria-describedby="" style={{width:"200px"}} />
+        </div>
       </td>
       <td></td>
       <td></td>
@@ -4528,7 +5904,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 8:GLASS</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <table class="table">
         <thead>
         <tr align="left">
@@ -4544,21 +5971,7 @@ import React, {useState} from 'react';
   </thead>
 
   <tbody>
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Premises number </td>
-      <td>
-        <input spellCheck="true"  id="client_name" name="client_namea" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
-      </td>
-      <td> 
-        
-      </td>
-      <td>
-      
-      </td>
-      <td></td>
-      
-    </tr>
-
+    
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Sum insured: </td>
       <td>
@@ -4637,7 +6050,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 9:FIDELITY GURANTEE</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <table class="table">
         <thead>
         <tr align="left">
@@ -4838,7 +6302,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 10:GOODS IN TRANSIT</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <table class="table">
         <thead>
         <tr align="left">
@@ -4854,16 +6369,6 @@ import React, {useState} from 'react';
   </thead>
 
   <tbody>
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Premises Number:</td>
-      <td>
-        <input spellCheck="true"  id="client_name" name="client_namea" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
-      </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
 
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Commodity:</td>
@@ -5028,7 +6533,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 11:BUSINESS ALL RISKS</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <table class="table">
         <thead>
         <tr align="left">
@@ -5057,16 +6613,6 @@ import React, {useState} from 'react';
       
     </tr>
 
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Item Number:</td>
-      <td>
-        <input spellCheck="true"  id="client_name" name="client_namea" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
-      </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
 
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Place:</td>
@@ -5162,7 +6708,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 12:ACCIDENTAL DAMAGE</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <table class="table">
         <thead>
         <tr align="left">
@@ -5178,27 +6775,6 @@ import React, {useState} from 'react';
   </thead>
 
   <tbody>
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Item Number:</td>
-      <td>
-        <input spellCheck="true"  id="client_name" name="client_namea" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
-      </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Premises Number:</td>
-      <td>
-        <input spellCheck="true"  id="client_name" name="client_namea" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
-      </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
 
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">EML%:</td>
@@ -5340,7 +6916,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 13:PUBLIC LIABILITY</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <p>Additional claims preparation cost: R1 000 or 10% of the sum insured, whichever is the lower. No additional cover is allowed.</p>
     <p><b>Important Notes:</b></p>
     <ul>
@@ -5385,16 +7012,6 @@ import React, {useState} from 'react';
       
     </tr>
 
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Premises number:</td>
-      <td>
-        <input spellCheck="true"  id="client_name" name="client_namea"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
-      </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
 
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Occupation:</td>
@@ -5751,7 +7368,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 14:SPECIALIST PRODUCTS</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <table class="table">
         <thead>
         <tr align="left">
@@ -5960,7 +7628,58 @@ import React, {useState} from 'react';
   </table>
 
   <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 15:EMPLOYER'S LIABILITY</b></div>
+  <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     
   <table class="table">
         <thead>
@@ -6054,7 +7773,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 16:STATED BENEFITS</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <p><b>Important Notes:</b></p>
     <ul>
       <li>Attach complete list of full names and identity number for each employee.</li>
@@ -6335,7 +8105,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 17:GROUP PERSONAL ACCIDENT</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <table class="table">
         <thead>
         <tr align="left">
@@ -6352,15 +8173,6 @@ import React, {useState} from 'react';
 
   <tbody>
 
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Item Number:</td>
-      <td>
-        <input spellCheck="true"  id="client_name" name="client_namea" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
-      </td>
-      <td></td>
-      <td></td>
-      <td></td>  
-    </tr>
 
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Profession:</td>
@@ -6651,7 +8463,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 18:MOTOR</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <table class="table">
         <thead>
         <tr align="left">
@@ -7133,6 +8996,58 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 19:ELECTRONIC EQUIPMENT</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
+
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <div><b>PART 1</b></div>
     
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
@@ -7147,25 +9062,7 @@ import React, {useState} from 'react';
           </div>
 
           <hr/>
-          <div className="col-16" style={{paddingBottom: "0.5%"}}>
-              <div className="row g-3 align-items-center">
-                  <div className="col-2">
-                      <label className="col-form-label">Item Number:</label>
-                  </div>
-
-                  <div className="col-4">
-                      <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-
-                  <div className="col-2">
-                      <label className="col-form-label">Premises Number:</label>
-                  </div>
-
-                  <div className="col-4">
-                    <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-              </div>
-          </div>
+          
 
           <hr/>
           <div className="col-16" style={{paddingBottom: "0.5%"}}>
@@ -7545,59 +9442,61 @@ import React, {useState} from 'react';
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 20:HOUSE OWNERS</b></div>
+    <div className='row'>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-4">
+                  <label className="col-form-label">Additional claims Preparation cost:</label>
+              </div>
 
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Limit:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premium:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+
+      <hr/>
+      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+          <div className="row g-3 align-items-center">
+              <div className="col-2">
+                  <label className="col-form-label">Item Number:</label>
+              </div>
+
+              <div className="col-4">
+                  <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+
+              <div className="col-2">
+                  <label className="col-form-label">Premises Number:</label>
+              </div>
+
+              <div className="col-4">
+                <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
+              </div>
+          </div>
+      </div>
+    </div>
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
       <div className="row">
-          <div className="col-16" style={{paddingBottom: "0.5%"}}>
-              <div className="row g-3 align-items-center">
-                  <div className="col-4">
-                      <label className="col-form-label">Additional claims Preparation cost:</label>
-                  </div>
-
-              </div>
-          </div>
-
-          <hr/>
-          <div className="col-16" style={{paddingBottom: "0.5%"}}>
-              <div className="row g-3 align-items-center">
-                  <div className="col-2">
-                      <label className="col-form-label">Limit:</label>
-                  </div>
-
-                  <div className="col-4">
-                      <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-
-                  <div className="col-2">
-                      <label className="col-form-label">Premium:</label>
-                  </div>
-
-                  <div className="col-4">
-                    <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-              </div>
-          </div>
-
-          <hr/>
-          <div className="col-16" style={{paddingBottom: "0.5%"}}>
-              <div className="row g-3 align-items-center">
-                  <div className="col-2">
-                      <label className="col-form-label">Item Number:</label>
-                  </div>
-
-                  <div className="col-4">
-                      <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-
-                  <div className="col-2">
-                      <label className="col-form-label">Premises Number:</label>
-                  </div>
-
-                  <div className="col-4">
-                    <input spellCheck="true"  id="client_name" name="client_name" className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-              </div>
-          </div>
+          
 
           <hr/>
           <div className="col-16" style={{paddingBottom: "0.5%"}}>
@@ -7772,7 +9671,8 @@ import React, {useState} from 'react';
 
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
       <div className="row">
-          <div className="col-16" style={{paddingBottom: "0.5%"}}>
+        <div className='row'>
+          <div className="col-12" style={{paddingBottom: "0.5%"}}>
               <div className="row g-3 align-items-center">
                   <div className="col-4">
                       <label className="col-form-label">Additional claims Preparation cost:</label>
@@ -7782,7 +9682,7 @@ import React, {useState} from 'react';
           </div>
 
           <hr/>
-          <div className="col-16" style={{paddingBottom: "0.5%"}}>
+          <div className="col-12" style={{paddingBottom: "0.5%"}}>
               <div className="row g-3 align-items-center">
                   <div className="col-2">
                       <label className="col-form-label">Limit:</label>
@@ -7803,7 +9703,7 @@ import React, {useState} from 'react';
           </div>
 
           <hr/>
-          <div className="col-16" style={{paddingBottom: "0.5%"}}>
+          <div className="col-12" style={{paddingBottom: "0.5%"}}>
               <div className="row g-3 align-items-center">
                   <div className="col-2">
                       <label className="col-form-label">Item Number:</label>
@@ -7822,6 +9722,7 @@ import React, {useState} from 'react';
                   </div>
               </div>
           </div>
+        </div>
 
           <hr/>
           <div className="col-16" style={{paddingBottom: "0.5%"}}>
@@ -8238,7 +10139,15 @@ import React, {useState} from 'react';
 
       </div>
   </div>
-
+  <div className="container1">
+          <div className="icon1 update">
+              <div className="tooltip1">
+                  Update
+              </div>
+              <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+          </div>
+      </div>
+  </form>
 <br/>
   <p><b>Very Important:</b></p>
   <p>You are strongly advised to study your policy to acquaint yourself with the detail of all special terms and conditions for liability. If you have any questions or queries regarding the terms of your policy contract, you are advised to immediately contact the intermediary whose detail appears in Section F so that these issues can be addressed.</p>
@@ -8251,6 +10160,7 @@ import React, {useState} from 'react';
 
     )
  }
+}
 
 
 

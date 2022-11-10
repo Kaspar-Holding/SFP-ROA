@@ -48,4 +48,8 @@ urlpatterns = [
     path('add_short_term_personal_data/' , views.insertShortTermInsurancePersonalData, name="Insert data into Short Term Personal Collection"),
     path('view_short_term_personal_data/' , views.viewShortTermInsurancePersonalData, name="Short Term Personal data details"),
     path('update_short_term_personal_data/' , views.updateShortTermInsurancePersonalData, name="Short Term Personal data details"),
+    # Short Term Commerical
+    path('add_short_term_commerical_data/' , views.insertShortTermInsuranceCommericalData, name="Insert data into Short Term Commerical Collection"),
+    path('view_short_term_commerical_data/' , views.viewShortTermInsuranceCommericalData, name="Short Term Commerical data details"),
+    path('update_short_term_commerical_data/' , views.updateShortTermInsuranceCommericalData, name="Short Term Commerical data details"),
 ]
