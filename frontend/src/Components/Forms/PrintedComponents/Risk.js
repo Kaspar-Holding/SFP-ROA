@@ -764,24 +764,7 @@ function  Risk()
   
   
   <p className="text-start"><u>Disability Cover:</u></p>
-  {
-          backgroundInfoVisibility2 ? 
-          <>
-          <div id="background_info_instructions2" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      Explain the reasons why life cover benefits were recommended to satisfy this need.<br/>
-                      Record the client's instructions, deviations and implications thereof.
   
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_DiC_FinancialSolutions" name='RP_DiC_FinancialSolutions' value={FormData['RP_DiC_FinancialSolutions']}    
           placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. 
@@ -792,24 +775,7 @@ function  Risk()
   
   
   <p className="text-start"><u>Dread Disease Cover:</u></p>
-  {
-          backgroundInfoVisibility3 ? 
-          <>
-          <div id="background_info_instructions3" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      Explain the reasons why life cover benefits were recommended to satisfy this need.<br/>
-                      Record the client's instructions, deviations and implications thereof.
   
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_DrC_FinancialSolutions" name='RP_DrC_FinancialSolutions' value={FormData['RP_DrC_FinancialSolutions']}  
           placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. 
@@ -822,69 +788,20 @@ function  Risk()
   
           <p className="text-start">The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
   
-          {
-          backgroundInfoVisibility4 ? 
-          <>
-          <div id="background_info_instructions4" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      1. Identify the type of product or product provider which was considered but not selected and motivate.
-  
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
+         
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_AltS_1" name='RP_AltS_1' value={FormData['RP_AltS_1']}     
           placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.
           `}  aria-describedby=""  ></textarea>
   <br/>
   
-      {
-          backgroundInfoVisibility5 ? 
-          <>
-          <div id="background_info_instructions5" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      2. Identify the type of product or product provider which was considered but not selected and motivate.
-  
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_AltS_2" name='RP_AltS_2' value={FormData['RP_AltS_2']}     
           placeholder={`2. Identify the type of product or product provider which was considered but not selected and motivate.
           `}  aria-describedby=""  ></textarea>
   
       <br/>
-      {
-          backgroundInfoVisibility6 ? 
-          <>
-          <div id="background_info_instructions6" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      3. Identify the type of product or product provider which was considered but not selected and motivate.
-  
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
+      
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_AltS_3" name='RP_AltS_3' value={FormData['RP_AltS_3']}     
           placeholder={`3. Identify the type of product or product provider which was considered but not selected and motivate.
@@ -1283,23 +1200,7 @@ function  Risk()
   
   <p className="text-start">The following are reasons why the above-mentioned product best suits your needs and objectives</p>
   
-  {
-          backgroundInfoVisibility7 ? 
-          <>
-          <div id="background_info_instructions7" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      Motivate why the chosen product was recommended to best suit your client’s needs.
   
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_ProductReasons" name='RP_ProductReasons' value={FormData['RP_ProductReasons']}     
           placeholder={`Motivate why the chosen product was recommended to best suit your client’s needs.
@@ -1307,44 +1208,14 @@ function  Risk()
   <hr/>
   <p className="text-start">The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
   
-      {
-          backgroundInfoVisibility8 ? 
-          <>
-          <div id="background_info_instructions8" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      Explain any deviations from your recommendation and the implications thereof.
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
+    
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_ProductMaterialAspects" name='RP_ProductMaterialAspects' value={FormData['RP_ProductMaterialAspects']}     
           placeholder={`Explain any deviations from your recommendation and the implications thereof.
           `}  aria-describedby=""  ></textarea>
   
   <br/>
-      {
-          backgroundInfoVisibility9 ? 
-          <>
-          <div id="background_info_instructions9" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
+     
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_ProductDetails" name='RP_ProductDetails' value={FormData['RP_ProductDetails']}     
           placeholder={`The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
@@ -1364,23 +1235,7 @@ function  Risk()
   
   
   <br/>
-      {
-          backgroundInfoVisibility11 ? 
-          <>
-          <div id="background_info_instructions11" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      Record discussion with regard to nomination of beneficiaries or cessionaries.
-  
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
+      
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_NominationOfBeneficiaries" name='RP_NominationOfBeneficiaries' value={FormData['RP_NominationOfBeneficiaries']}     
           placeholder={`Record discussion with regard to nomination of beneficiaries or cessionaries.
@@ -1389,27 +1244,7 @@ function  Risk()
   
   
   <br/>
-      {
-          backgroundInfoVisibility12 ? 
-          <>
-          <div id="background_info_instructions12" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      Discuss the following information which has been explained to client.<br/>
-                      General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)<br/>
-                      Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)<br/>
-                      Waiting periods<br/>
-                      Cooling off period
-  
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
+      
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_InformationExplained" name='RP_InformationExplained' value={FormData['RP_InformationExplained']}     
           placeholder={`Discuss the following information which has been explained to client.
