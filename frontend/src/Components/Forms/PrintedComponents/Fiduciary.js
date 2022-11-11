@@ -101,7 +101,7 @@ const Fiduciary = () => {
                                   <label htmlFor="fiduciaryWillUpdationDate" className="col-form-label">Date last updated? </label>
                                 </div>
                                 <div className="col-6">
-                                  <input spellCheck="true"  type="date" id="fiduciaryWillUpdationDate" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryWillUpdationDate']}  name="fiduciaryWillUpdationDate" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
+                                  <input spellCheck="true" disabled   type="date" id="fiduciaryWillUpdationDate" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryWillUpdationDate']}  name="fiduciaryWillUpdationDate" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
                                 </div>
                             </div>
 
@@ -111,7 +111,7 @@ const Fiduciary = () => {
                                   <label htmlFor="fiduciaryWillKeepingPlace" className="col-form-label">Where is the will kept? </label>
                                 </div>
                                 <div className="col-6">
-                                  <input spellCheck="true" id="fiduciaryWillKeepingPlace" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryWillKeepingPlace']} name="fiduciaryWillKeepingPlace" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
+                                  <input spellCheck="true" disabled  id="fiduciaryWillKeepingPlace" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryWillKeepingPlace']} name="fiduciaryWillKeepingPlace" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
                                 </div>
                             </div>
 
@@ -121,7 +121,7 @@ const Fiduciary = () => {
                                   <label htmlFor="fiduciaryExecutorDetails" className="col-form-label">Details of Executor?</label>
                                 </div>
                                 <div className="col-6">
-                                  <input spellCheck="true" id="fiduciaryExecutorDetails" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryExecutorDetails']} name="fiduciaryExecutorDetails" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
+                                  <input spellCheck="true" disabled  id="fiduciaryExecutorDetails" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryExecutorDetails']} name="fiduciaryExecutorDetails" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
                                 </div>
                             </div>
 
@@ -131,7 +131,7 @@ const Fiduciary = () => {
                                   <label htmlFor="fiduciaryClientInstructions" className="col-form-label">Client instruction in terms of drafting a Will? </label>
                                 </div>
                                 <div className="col-6">
-                                  <input spellCheck="true"  id="fiduciaryClientInstructions" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryClientInstructions']} name="fiduciaryClientInstructions" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
+                                  <input spellCheck="true" disabled   id="fiduciaryClientInstructions" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryClientInstructions']} name="fiduciaryClientInstructions" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
                                 </div>
                             </div>
 
@@ -141,7 +141,7 @@ const Fiduciary = () => {
                                   <label htmlFor="fiduciaryConsequencesExplained" className="col-form-label">Has the consequences of not having a will being explained and discussed? </label>
                                 </div>
                                 <div className="col-6">
-                                  <input spellCheck="true" id="fiduciaryConsequencesExplained" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryConsequencesExplained']}  name="fiduciaryConsequencesExplained" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
+                                  <input spellCheck="true" disabled  id="fiduciaryConsequencesExplained" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryConsequencesExplained']}  name="fiduciaryConsequencesExplained" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
                                 </div>
                             </div>
                             {/* <button className='btn btn-primary'>Update Data</button> */}

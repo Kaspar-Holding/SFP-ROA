@@ -357,7 +357,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info10" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info10" className="form-control"
                 name='IP_OtherSourceOfIncome' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_OtherSourceOfIncome']}
                 onFocus={backgroundInfo_onFocus10}
@@ -384,7 +384,7 @@ const Invest = (props) =>
                     <label htmlFor="client_name" className="col-form-label" title="If no, motivate">2.1 Investment term</label>
                 </div>
                 <div className="col-3">
-                    <input spellCheck="true" type="number" id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Investment Term"  aria-describedby="" />
+                    <input spellCheck="true" disabled  type="number" id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Investment Term"  aria-describedby="" />
                 </div>
                 <div className="col-3">
                 <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Years</label>
@@ -410,7 +410,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
                 name='IP_InvestmentTermDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_InvestmentTermDetails']}
                 onFocus={backgroundInfo_onFocus11}
@@ -428,7 +428,7 @@ const Invest = (props) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Liquidity'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Liquidity" name="IP_Liquidity" />
+                                <input disabled className="form-check-input" checked={FormData['IP_Liquidity'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Liquidity" name="IP_Liquidity" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -439,7 +439,7 @@ const Invest = (props) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Liquidity'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Liquidity" name="IP_Liquidity" />
+                                <input disabled className="form-check-input" checked={FormData['IP_Liquidity'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Liquidity" name="IP_Liquidity" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -468,7 +468,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
                 name='IP_LiquidityDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_LiquidityDetails']}
                 onFocus={backgroundInfo_onFocus12}
@@ -485,7 +485,7 @@ const Invest = (props) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Type'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Type" name="IP_Type" />
+                                <input disabled className="form-check-input" checked={FormData['IP_Type'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Type" name="IP_Type" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -496,7 +496,7 @@ const Invest = (props) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Type'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Type" name="IP_Type" />
+                                <input disabled className="form-check-input" checked={FormData['IP_Type'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Type" name="IP_Type" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -524,7 +524,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control" 
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control" 
                 name='IP_TypeDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_TypeDetails']}
                 onFocus={backgroundInfo_onFocus13}
@@ -542,7 +542,7 @@ const Invest = (props) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_PremiumType'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_PremiumType" name="IP_PremiumType"/>
+                                <input disabled className="form-check-input" checked={FormData['IP_PremiumType'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_PremiumType" name="IP_PremiumType"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -553,7 +553,7 @@ const Invest = (props) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_PremiumType'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_PremiumType" name="IP_PremiumType"/>
+                                <input disabled className="form-check-input" checked={FormData['IP_PremiumType'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_PremiumType" name="IP_PremiumType"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -581,7 +581,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
                 name='IP_PremiumTypeDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_PremiumTypeDetails']}
                 onFocus={backgroundInfo_onFocus14}
@@ -598,7 +598,7 @@ const Invest = (props) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
+                                <input disabled className="form-check-input" checked={FormData['IP_IncomeRequired'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
                             </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -609,7 +609,7 @@ const Invest = (props) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
+                                <input disabled className="form-check-input" checked={FormData['IP_IncomeRequired'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -636,7 +636,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
                 name='IP_IncomeRequiredDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_IncomeRequiredDetails']}
                 onFocus={backgroundInfo_onFocus15}
@@ -679,7 +679,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info1" className="form-control" 
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info1" className="form-control" 
                 name='IP_InvestmentStrategyDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_InvestmentStrategyDetails']}
                 onFocus={backgroundInfo_onFocus1}
@@ -721,7 +721,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info2" className="form-control"  
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info2" className="form-control"  
                 name='IP_ReturnRequiredDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_ReturnRequiredDetails']}
                 onFocus={backgroundInfo_onFocus2}
@@ -766,7 +766,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info3" className="form-control"  
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info3" className="form-control"  
                 name='IP_RiskProfileDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_RiskProfileDetails']} 
                 onFocus={backgroundInfo_onFocus3}
@@ -805,7 +805,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info" className="form-control"
                 name='IP_RecommendationSummary' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_RecommendationSummary']}
                 onFocus={backgroundInfo_onFocus}
@@ -837,7 +837,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info4" className="form-control"  
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info4" className="form-control"  
                 name='IP_AltS_1' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_1']}
                 onFocus={backgroundInfo_onFocus4}
@@ -863,7 +863,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info5" className="form-control"  
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info5" className="form-control"  
                 name='IP_AltS_2' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_2']}
                 onFocus={backgroundInfo_onFocus5}
@@ -889,7 +889,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info6" className="form-control"  
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info6" className="form-control"  
                 name='IP_AltS_3' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_3']}
                 onFocus={backgroundInfo_onFocus6}
@@ -1090,7 +1090,7 @@ const Invest = (props) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData['IP_SFPSolutionFundsDetails'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_SFPSolutionFundsDetails" name="IP_SFPSolutionFundsDetails"/>
+                                    <input disabled className="form-check-input" checked={FormData['IP_SFPSolutionFundsDetails'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_SFPSolutionFundsDetails" name="IP_SFPSolutionFundsDetails"/>
                                 </div>
                                     <div className="col-2">
                                         <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -1101,7 +1101,7 @@ const Invest = (props) =>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData["IP_SFPSolutionFundsDetails"] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_SFPSolutionFundsDetails" name="IP_SFPSolutionFundsDetails"/>
+                                    <input disabled className="form-check-input" checked={FormData["IP_SFPSolutionFundsDetails"] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_SFPSolutionFundsDetails" name="IP_SFPSolutionFundsDetails"/>
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -1121,7 +1121,7 @@ const Invest = (props) =>
                             </> : 
                         null
                     }
-                        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="provided_identity2" name="IP_SFPSolutionFundsDetailsDetails" onChange={(e) => {onChange(e)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" placeholder="State the motivation" aria-describedby="" ></textarea>
+                        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="provided_identity2" name="IP_SFPSolutionFundsDetailsDetails" onChange={(e) => {onChange(e)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" placeholder="State the motivation" aria-describedby="" ></textarea>
                     </div>
             </div>
             <hr/>
@@ -1151,7 +1151,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info7" className="form-control" 
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info7" className="form-control" 
                 name='IP_ItP' value={FormData['IP_ItP']} onChange={(e) => {onChange(e)}} 
                 onFocus={backgroundInfo_onFocus7}
                 onBlur={backgroundInfo_onBlur7}
@@ -1220,12 +1220,12 @@ const Invest = (props) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided"] == 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided"] == 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed"] == 1 ? true : false} name="IP_ItP_FundDiscussed" onChange={(e)=>{FormData["IP_ItP_FundDiscussed"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed"] == 1 ? true : false} name="IP_ItP_FundDiscussed" onChange={(e)=>{FormData["IP_ItP_FundDiscussed"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
@@ -1246,12 +1246,12 @@ const Invest = (props) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided1"] == 1 ? true : false} name="IP_ItP_FundProvided1" onChange={(e)=>{FormData["IP_ItP_FundProvided1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided1"] == 1 ? true : false} name="IP_ItP_FundProvided1" onChange={(e)=>{FormData["IP_ItP_FundProvided1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed1"] == 1 ? true : false} name="IP_ItP_FundDiscussed1" onChange={(e)=>{FormData["IP_ItP_FundDiscussed1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed1"] == 1 ? true : false} name="IP_ItP_FundDiscussed1" onChange={(e)=>{FormData["IP_ItP_FundDiscussed1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
@@ -1272,12 +1272,12 @@ const Invest = (props) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided2"] == 1 ? true : false} name="IP_ItP_FundProvided2" onChange={(e)=>{FormData["IP_ItP_FundProvided2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided2"] == 1 ? true : false} name="IP_ItP_FundProvided2" onChange={(e)=>{FormData["IP_ItP_FundProvided2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed2"] == 1 ? true : false} name="IP_ItP_FundDiscussed2" onChange={(e)=>{FormData["IP_ItP_FundDiscussed2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed2"] == 1 ? true : false} name="IP_ItP_FundDiscussed2" onChange={(e)=>{FormData["IP_ItP_FundDiscussed2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
@@ -1298,12 +1298,12 @@ const Invest = (props) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided3"] == 1 ? true : false} name="IP_ItP_FundProvided3" onChange={(e)=>{FormData["IP_ItP_FundProvided3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided3"] == 1 ? true : false} name="IP_ItP_FundProvided3" onChange={(e)=>{FormData["IP_ItP_FundProvided3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed3"] == 1 ? true : false} name="IP_ItP_FundDiscussed3" onChange={(e)=>{FormData["IP_ItP_FundDiscussed3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed3"] == 1 ? true : false} name="IP_ItP_FundDiscussed3" onChange={(e)=>{FormData["IP_ItP_FundDiscussed3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
@@ -1324,12 +1324,12 @@ const Invest = (props) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided4"] == 1 ? true : false} name="IP_ItP_FundProvided4" onChange={(e)=>{FormData["IP_ItP_FundProvided4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided4"] == 1 ? true : false} name="IP_ItP_FundProvided4" onChange={(e)=>{FormData["IP_ItP_FundProvided4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed4"] == 1 ? true : false} name="IP_ItP_FundDiscussed4" onChange={(e)=>{FormData["IP_ItP_FundDiscussed4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed4"] == 1 ? true : false} name="IP_ItP_FundDiscussed4" onChange={(e)=>{FormData["IP_ItP_FundDiscussed4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
@@ -1350,12 +1350,12 @@ const Invest = (props) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided5"] == 1 ? true : false} name="IP_ItP_FundProvided5" onChange={(e)=>{FormData["IP_ItP_FundProvided5"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided5"] == 1 ? true : false} name="IP_ItP_FundProvided5" onChange={(e)=>{FormData["IP_ItP_FundProvided5"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed5"] == 1 ? true : false} name="IP_ItP_FundDiscussed5" onChange={(e)=>{FormData["IP_ItP_FundDiscussed5"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed5"] == 1 ? true : false} name="IP_ItP_FundDiscussed5" onChange={(e)=>{FormData["IP_ItP_FundDiscussed5"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td> 
                 </tr>
@@ -1376,12 +1376,12 @@ const Invest = (props) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided6"] == 1 ? true : false} name="IP_ItP_FundProvided6" onChange={(e)=>{FormData["IP_ItP_FundProvided6"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided6"] == 1 ? true : false} name="IP_ItP_FundProvided6" onChange={(e)=>{FormData["IP_ItP_FundProvided6"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed6"] == 1 ? true : false} name="IP_ItP_FundDiscussed6" onChange={(e)=>{FormData["IP_ItP_FundDiscussed6"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed6"] == 1 ? true : false} name="IP_ItP_FundDiscussed6" onChange={(e)=>{FormData["IP_ItP_FundDiscussed6"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>      
                 </tr>
@@ -1402,12 +1402,12 @@ const Invest = (props) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided7"] == 1 ? true : false} name="IP_ItP_FundProvided7" onChange={(e)=>{FormData["IP_ItP_FundProvided7"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided7"] == 1 ? true : false} name="IP_ItP_FundProvided7" onChange={(e)=>{FormData["IP_ItP_FundProvided7"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed7"] == 1 ? true : false} name="IP_ItP_FundDiscussed7" onChange={(e)=>{FormData["IP_ItP_FundDiscussed7"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed7"] == 1 ? true : false} name="IP_ItP_FundDiscussed7" onChange={(e)=>{FormData["IP_ItP_FundDiscussed7"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
             </tr>
@@ -1436,7 +1436,7 @@ const Invest = (props) =>
             </>: 
             null
         }
-        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info8" className="form-control"  
+        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info8" className="form-control"  
             name='IP_ItP_FundsReasons' value={FormData['IP_ItP_FundsReasons']} onChange={(e) => {onChange(e)}} 
             onFocus={backgroundInfo_onFocus8}
             onBlur={backgroundInfo_onBlur8}
@@ -1476,7 +1476,7 @@ const Invest = (props) =>
             </>: 
             null
         }
-        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info9" className="form-control" 
+        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info9" className="form-control" 
             name='IP_ItP_FundsMaterialAspects' value={FormData['IP_ItP_FundsMaterialAspects']} onChange={(e) => {onChange(e)}} 
             onFocus={backgroundInfo_onFocus9}
             onBlur={backgroundInfo_onBlur9}

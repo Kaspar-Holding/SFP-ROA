@@ -130,7 +130,7 @@ const CreateForm = ({user}) => {
                                         <label className="col-form-label"><b>Client Name:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input spellCheck="true" id="clientName" onChange={e => onChange(e)} name="clientName" className="form-control" placeholder="Client Name"  aria-describedby="" />
+                                        <input required spellCheck="true" id="clientName" onChange={e => onChange(e)} name="clientName" className="form-control" placeholder="Client Name"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@ const CreateForm = ({user}) => {
                                         <label htmlFor="id_number" className="col-form-label"><b>ID number:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input spellCheck="true"  id="clientIdNumber"  onChange={e => onChange(e)} name="clientIdNumber" className="form-control" placeholder="ID number"  aria-describedby="" />
+                                        <input required spellCheck="true"  id="clientIdNumber"  onChange={e => onChange(e)} name="clientIdNumber" className="form-control" placeholder="ID number"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@ const CreateForm = ({user}) => {
                                         <label htmlFor="address" className="col-form-label"><b>Address:</b></label>
                                     </div>
                                     <div className="col-9">
-                                        <input spellCheck="true"  id="clientAddress" onChange={(e) => {onChange(e)}}  name="clientAddress" className="form-control" placeholder="Address"  aria-describedby="" />
+                                        <input required spellCheck="true"  id="clientAddress" onChange={(e) => {onChange(e)}}  name="clientAddress" className="form-control" placeholder="Address"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@ const CreateForm = ({user}) => {
                                         <label htmlFor="email" className="col-form-label"><b>Email:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input spellCheck="true"  id="email" onChange={(e) => {onChange(e)}}  name="clientEmail" className="form-control" placeholder="Email"  aria-describedby="" />
+                                        <input required spellCheck="true"  id="email" onChange={(e) => {onChange(e)}}  name="clientEmail" className="form-control" placeholder="Email"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@ const CreateForm = ({user}) => {
                                         <label htmlFor="phoneNumber" className="col-form-label"><b>Phone:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input spellCheck="true"  type="number" id="clientPhoneNumber" onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
+                                        <input required spellCheck="true"  type="number" id="clientPhoneNumber" onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +184,7 @@ const CreateForm = ({user}) => {
                                         <label htmlFor="advisor" className="col-form-label"><b>Financial Advisor:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input spellCheck="true" value={user['name']} disabled name="advisor" className="form-control" placeholder="Financial Advisor"  aria-describedby="" />
+                                        <input required spellCheck="true" value={user['name']} disabled name="advisor" className="form-control" placeholder="Financial Advisor"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +194,7 @@ const CreateForm = ({user}) => {
                                         <label htmlFor="date_of_birth" className="col-form-label"><b>Date:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input spellCheck="true"  type="date"  id="date_of_birth" onChange={e => onChange(e)} name="clientDateOfBirth" className="form-control" placeholder="date_of_birth"  aria-describedby="" />
+                                        <input required spellCheck="true"  type="date"  id="date_of_birth" onChange={e => onChange(e)} name="clientDateOfBirth" className="form-control" placeholder="date_of_birth"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -243,7 +243,7 @@ const CreateForm = ({user}) => {
                                             </> :
                                             null
                                         }
-                                        <textarea  id="letter_of_introduction" name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea id="letter_of_introduction" name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['letterOfIntroduction'] === "1" ?
@@ -273,7 +273,7 @@ const CreateForm = ({user}) => {
                                         <div className="row">
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] === "1" ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
+                                                    <input required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] === "1" ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -283,7 +283,7 @@ const CreateForm = ({user}) => {
                                             </div>
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] === "1" ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
+                                                    <input required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] === "1" ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -303,7 +303,7 @@ const CreateForm = ({user}) => {
                                             </> :
                                             null
                                         }
-                                        <textarea  id="authority_access" name="clientLetterOfIntroductionAccessReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea id="authority_access" name="clientLetterOfIntroductionAccessReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['letterOfIntroductionAccess'] === "1" ?
@@ -334,7 +334,7 @@ const CreateForm = ({user}) => {
                                         <div className="row">
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input className="form-check-input" checked={FormData['clientFica'] === "1" ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientFica"/>
+                                                    <input required className="form-check-input" checked={FormData['clientFica'] === "1" ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientFica"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -344,7 +344,7 @@ const CreateForm = ({user}) => {
                                             </div>
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input className="form-check-input" checked={FormData['clientFica'] === "1" ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientFica"/>
+                                                    <input required className="form-check-input" checked={FormData['clientFica'] === "1" ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientFica"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -364,7 +364,7 @@ const CreateForm = ({user}) => {
                                             </> : 
                                             null
                                         }
-                                        <textarea  id="provided_identity" name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea  id="provided_identity" required name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['fica'] === "1" ? null : 
@@ -411,7 +411,7 @@ const CreateForm = ({user}) => {
                                 null
                             }
                             <textarea  id="clientBackgroundInfo" name="clientBackgroundInfo" className="form-control"  style={{height: '160px'}} 
-                            onFocus={backgroundInfo_onFocus}
+                            onFocus={backgroundInfo_onFocus} required
                             onBlur={backgroundInfo_onBlur}
                             onChange={e => onChange(e)}
                             placeholder={

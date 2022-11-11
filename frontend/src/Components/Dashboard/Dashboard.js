@@ -9,6 +9,7 @@ const Dashboard = ({user}) => {
     const [formStats, setFormStats] = useState([]);
     const [formList, setFormList] = useState([]);
     const [Loader, setLoader] = useState("none")
+    const [Advisor, setAdvisor] = useState("")
     const [dashboardVisibility, setDashboardVisibility] = useState("none")
     // console.log(user)
     const loadFormsStats = async() => {
@@ -37,8 +38,11 @@ const Dashboard = ({user}) => {
     // console.log(formStats)
     useEffect(() => {
         loadFormsStats()
-    }, [user])
-    console.log(localStorage.getItem('access'))
+        if (user){
+            setAdvisor(user["name"])
+        }
+    }, [Advisor,user])
+    // console.log(localStorage.getItem('access'))
   return (
     <>
         <div style={{display: Loader}}>
@@ -120,7 +124,7 @@ const Dashboard = ({user}) => {
                                         <td>{formList[i]['clientPhoneNumber']}</td>
                                         <td>{formList[i]['status'] === 0 ? "Incomplete" : "Completed"}</td>
                                         <td>
-                                            <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], advisorId : formList[i]['advisorId'], clientIdNumber: formList['clientIdNumber']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
+                                            <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], advisorId : formList[i]['advisorId'], advisor: Advisor}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
                                             {/* <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : data[i]['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink> */}
                                         </td>
                                     </tr>

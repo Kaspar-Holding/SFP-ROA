@@ -340,6 +340,7 @@ function AssuranceRisk()
         AR_BnS_DiC_ExistingShortfallSurplus : "",   
         AR_BnS_DiC_Investments : "",      
 
+        AR_BnS_Other : "",   
         AR_BnS_OtherTotalNeed : "",   
         AR_BnS_OtherExistingProvisions : "",   
         AR_BnS_OtherExistingShortfallSurplus : "",   
@@ -367,6 +368,7 @@ function AssuranceRisk()
         AR_KeyP_PI_CoverExistingShortfallSurplus : "",   
         AR_KeyP_PI_CoverInvestments : "",       
 
+        AR_KeyP_Other : "",   
         AR_KeyP_OtherTotalNeed : "",   
         AR_KeyP_OtherExistingProvisions : "",   
         AR_KeyP_OtherExistingShortfallSurplus : "",   
@@ -384,6 +386,7 @@ function AssuranceRisk()
         AR_SureNLia_DiC_ExistingShortfallSurplus : "",   
         AR_SureNLia_DiC_Investments : "",      
 
+        AR_SureNLia_Other : "",   
         AR_SureNLia_OtherTotalNeed : "",   
         AR_SureNLia_OtherExistingProvisions : "",   
         AR_SureNLia_OtherExistingShortfallSurplus : "",   
@@ -401,6 +404,7 @@ function AssuranceRisk()
         AR_BusOvProt_PI_CoverExistingShortfallSurplus : "",   
         AR_BusOvProt_PI_CoverInvestments : "",       
 
+        AR_BusOvProt_Other : "",   
         AR_BusOvProt_OtherTotalNeed : "",   
         AR_BusOvProt_OtherExistingProvisions : "",   
         AR_BusOvProt_OtherExistingShortfallSurplus : "",   
@@ -418,6 +422,7 @@ function AssuranceRisk()
         AR_CLARedm_DiC_ExistingShortfallSurplus : "",   
         AR_CLARedm_DiC_Investments : "",   
             
+        AR_CLARedm_Other : "",   
         AR_CLARedm_OtherTotalNeed : "",   
         AR_CLARedm_OtherExistingProvisions : "",   
         AR_CLARedm_OtherExistingShortfallSurplus : "",   
@@ -435,6 +440,7 @@ function AssuranceRisk()
         AR_DLARedm_DiC_ExistingShortfallSurplus : "",   
         AR_DLARedm_DiC_Investments : "",   
             
+        AR_DLARedm_Other : "",   
         AR_DLARedm_OtherTotalNeed : "",   
         AR_DLARedm_OtherExistingProvisions : "",   
         AR_DLARedm_OtherExistingShortfallSurplus : "",   
@@ -546,6 +552,7 @@ function AssuranceRisk()
               setUpdateErrorVisibility("block")
           }
       }
+      const [Advisor, setAdvisor] = useState("")
       const onSubmit = e => {
           e.preventDefault()
           updateARForm()
@@ -553,8 +560,9 @@ function AssuranceRisk()
       }
       useEffect(() => {
           createARForm(FormData)
+          setAdvisor(state["Advisor"])
           // setInterval(updateIPForm, 20000);
-      }, []);
+      }, [Advisor]);
       // console.log(JSON.stringify(FormData))
       
       setTimeout(() => {
@@ -574,12 +582,6 @@ function AssuranceRisk()
         <br/>
             <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>BUSINESS ASSURANCE</b></div>
             <hr/>
-            <div className="alert alert-danger" style={{display: responseErrorVisibility}} role="alert">
-                {errorData.status} : {errorData.message}
-            </div>
-            <div className="alert alert-success" style={{display: UpdateMessageVisibility}} role="alert">
-                {UpdateMessage}
-            </div>
     
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
@@ -650,7 +652,7 @@ function AssuranceRisk()
                     </div>
 
                     <div className="col-6">
-                        <input spellCheck="true" type="email" id="AR_BusinessEmail" name='AR_BusinessEmail' value={FormData['AR_BusinessEmail']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Email address"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" type="text" id="AR_BusinessEmail" name='AR_BusinessEmail' value={FormData['AR_BusinessEmail']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Email address"  aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -953,7 +955,7 @@ function AssuranceRisk()
             </div>
 
             <hr/>
-            <div className="h6 fw-bold" style={{color: '#00788A'}}>4. Source of Funds</div>
+            {/* <div className="h6 fw-bold" style={{color: '#00788A'}}>4. Source of Funds</div>
             <div className='row'>
                 <div className='col-6'>
                     <p className='text-start'>Identify the source of funds being invested</p>
@@ -972,7 +974,7 @@ function AssuranceRisk()
                     </div>
                 </div>
             </div>
-            <br />
+            <br /> */}
             {
               backgroundInfoVisibility10 ? 
                 <>
@@ -990,13 +992,13 @@ function AssuranceRisk()
                   </>: 
                 null
             }
-            <textarea className="form-control"  style={{height: '100px'}} 
+            {/* <textarea className="form-control"  style={{height: '100px'}} 
                 name='AR_SourceOfFundsDetail' onChange={(e) => {onChange(e)}} value={FormData['AR_SourceOfFundsDetail']}
                 onFocus={backgroundInfo_onFocus10}
                 onBlur={backgroundInfo_onBlur10}
                 placeholder={`Define Other Source of Funds.
                 
-                `}  aria-describedby=""  ></textarea>
+                `}  aria-describedby=""  ></textarea> */}
 
             <hr />
             <h5 className="section_class"><b>SECTION B:</b></h5>
@@ -1245,7 +1247,11 @@ function AssuranceRisk()
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">OTHER</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+      <div className="form-group">
+            <input type="text"  name='AR_BnS_Other' value={FormData['AR_BnS_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        </div>
+      </td>
       
       <td>
         <div >
@@ -1287,7 +1293,7 @@ function AssuranceRisk()
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comment</td>
       <td>
         <div className="form-group">
-            <input type="email" className="form-control" id="AR_BnS_Comments" name='AR_BnS_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_Comments']} aria-describedby="emailHelp" placeholder=""/>
+            <textarea type="text" className="form-control" id="AR_BnS_Comments" name='AR_BnS_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_Comments']} aria-describedby="emailHelp" placeholder=""/>
         </div>
       </td>
       <td></td>
@@ -1438,7 +1444,11 @@ function AssuranceRisk()
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">OTHER</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+      <div className="form-group">
+            <input type="text"  name='AR_KeyP_Other' value={FormData['AR_KeyP_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        </div>
+      </td>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
@@ -1472,7 +1482,7 @@ function AssuranceRisk()
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comment</td>
         <td>  
         <div className="form-group">
-            <input type="email" className="form-control" id="AR_KeyP_Comments" name='AR_KeyP_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_Comments']} aria-describedby="emailHelp" placeholder=""/>
+            <textarea type="text" className="form-control" id="AR_KeyP_Comments" name='AR_KeyP_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_Comments']} aria-describedby="emailHelp" placeholder=""/>
         </div>
        </td>
        <td></td>  
@@ -1559,7 +1569,11 @@ function AssuranceRisk()
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">OTHER</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+      <div className="form-group">
+            <input type="text"  name='AR_SureNLia_Other' value={FormData['AR_SureNLia_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        </div>
+      </td>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
@@ -1594,7 +1608,7 @@ function AssuranceRisk()
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comment</td>
         <td>  
         <div className="form-group">
-            <input type="email" className="form-control"  id="AR_SureNLia_Comments" name='AR_SureNLia_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_Comments']} aria-describedby="emailHelp" placeholder=""/>
+            <textarea type="text" className="form-control"  id="AR_SureNLia_Comments" name='AR_SureNLia_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_Comments']} aria-describedby="emailHelp" placeholder=""/>
         </div>
        </td> 
        <td></td>  
@@ -1681,7 +1695,11 @@ function AssuranceRisk()
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">OTHER</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+        <div className="form-group">
+            <input type="text"  name='AR_BusOvProt_Other' value={FormData['AR_BusOvProt_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        </div>
+      </td>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
@@ -1715,17 +1733,13 @@ function AssuranceRisk()
     <tr> 
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comment</td>
         <td>  
-        <div className="form-group">
-            <input type="email" className="form-control"  id="AR_BusOvProt_Comments" name='AR_BusOvProt_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_Comments']} aria-describedby="emailHelp" placeholder=""/>
+        <div className="form-group"> 
+            <textarea type="text" colspan={3} className="form-control"  id="AR_BusOvProt_Comments" name='AR_BusOvProt_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_Comments']} aria-describedby="emailHelp" placeholder=""/>
         </div>
        </td> 
-       <td></td>  
-       <td></td>
-       <td></td>
-       <td></td>   
      </tr> 
 
-
+          
     <br/>
     <br/>
      <tr>
@@ -1803,7 +1817,11 @@ function AssuranceRisk()
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">OTHER</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+        <div className="form-group">
+            <input type="text"  name='AR_CLARedm_Other' value={FormData['AR_CLARedm_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        </div>
+      </td>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
@@ -1911,7 +1929,11 @@ function AssuranceRisk()
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">OTHER</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+      <div className="form-group">
+            <input type="text"  name='AR_DLARedm_Other' value={FormData['AR_DLARedm_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        </div>
+      </td>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>

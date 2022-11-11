@@ -350,12 +350,7 @@ import './Styles/CustomButton.css';
              <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>EMPLOYEE BENEFITS</b></div>
              <hr/>
              <form onSubmit={e => onSubmit(e)}>
-                <div className="alert alert-danger" style={{display: responseErrorVisibility}} role="alert">
-                    {errorData.status} : {errorData.message}
-                </div>
-                <div className="alert alert-success" style={{display: UpdateMessageVisibility}} role="alert">
-                    {UpdateMessage}
-                </div>
+                
                   <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
                       <div className="row">
                           <div className="col-6" style={{paddingBottom: "0.5%"}}>
@@ -695,7 +690,7 @@ import './Styles/CustomButton.css';
                                     <label htmlFor="address" className="col-form-label"><b>Reason for change:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input spellCheck="true" id="EB_BusEx_FundsFullyPaidMembers" name='EB_BusEx_FundsFullyPaidMembers' value={FormData['EB_BusEx_FundsFullyPaidMembers']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Reason for change"  aria-describedby="" />
+                                    <input spellCheck="true" id="EB_BusEx_FundsFullyReasonForChange" name='EB_BusEx_FundsFullyReasonForChange' value={FormData['EB_BusEx_FundsFullyReasonForChange']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Reason for change"  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -710,7 +705,7 @@ import './Styles/CustomButton.css';
                  <div className="row g-3 align-items-center">
                     <div className="col-6">
                         <div className='col-6'>
-                            <select className="text-start form-select" id="EB_BusB_CoverType" name='EB_BusB_CoverType' value={FormData['EB_BusB_CoverType']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                            <select className="text-start form-select" multiple id="EB_BusB_CoverType" name='EB_BusB_CoverType' value={FormData['EB_BusB_CoverType']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                                 <option value="0" selected>Select the type of benefit cover.</option>
                                 <option value="1">Retirement Benefits</option>
                                 <option value="2">Type of fund/scheme</option>
@@ -1068,28 +1063,28 @@ import './Styles/CustomButton.css';
       <td style={{fontSize:'14px'}} align="left">Member Contributions</td>
       <td>
         <div className="input-group">
-            <span className="input-group-text">R</span>
+            {/* <span className="input-group-text">R</span> */}
             <input type="number" id="EB_BusRB_MemContrib_Category1" name='EB_BusRB_MemContrib_Category1' value={FormData['EB_BusRB_MemContrib_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
-            <span className="input-group-text">R</span>
+            {/* <span className="input-group-text">R</span> */}
             <input type="number" id="EB_BusRB_MemContrib_Category2" name='EB_BusRB_MemContrib_Category2' value={FormData['EB_BusRB_MemContrib_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
-            <span className="input-group-text">R</span>
+            {/* <span className="input-group-text">R</span> */}
             <input type="number" id="EB_BusRB_MemContrib_Category3" name='EB_BusRB_MemContrib_Category3' value={FormData['EB_BusRB_MemContrib_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
-            <span className="input-group-text">R</span>
+            {/* <span className="input-group-text">R</span> */}
             <input type="number" id="EB_BusRB_MemContrib_Category4" name='EB_BusRB_MemContrib_Category4' value={FormData['EB_BusRB_MemContrib_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
@@ -1100,28 +1095,28 @@ import './Styles/CustomButton.css';
       <td style={{fontSize:'14px'}} align="left">Employer contributions</td>
       <td>
         <div className="input-group">
-            <span className="input-group-text">R</span>
+            {/* <span className="input-group-text">R</span> */}
             <input type="number" id="EB_BusRB_EmpContrib_Category1" name='EB_BusRB_EmpContrib_Category1' value={FormData['EB_BusRB_EmpContrib_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
-            <span className="input-group-text">R</span>
+            {/* <span className="input-group-text">R</span> */}
             <input type="number" id="EB_BusRB_EmpContrib_Category2" name='EB_BusRB_EmpContrib_Category2' value={FormData['EB_BusRB_EmpContrib_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
-            <span className="input-group-text">R</span>
+            {/* <span className="input-group-text">R</span> */}
             <input type="number" id="EB_BusRB_EmpContrib_Category3" name='EB_BusRB_EmpContrib_Category3' value={FormData['EB_BusRB_EmpContrib_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
-            <span className="input-group-text">R</span>
+            {/* <span className="input-group-text">R</span> */}
             <input type="number" id="EB_BusRB_EmpContrib_Category4" name='EB_BusRB_EmpContrib_Category4' value={FormData['EB_BusRB_EmpContrib_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>

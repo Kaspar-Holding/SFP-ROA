@@ -550,7 +550,7 @@ function AssuranceRisk()
                         <label className="col-form-label"><b>Trade name of Business:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_BusinessTradeName" name='AR_BusinessTradeName' value={FormData['AR_BusinessTradeName']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Trade name of Business"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled   id="AR_BusinessTradeName" name='AR_BusinessTradeName' value={FormData['AR_BusinessTradeName']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Trade name of Business"  aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -562,7 +562,7 @@ function AssuranceRisk()
                         <label className="col-form-label"><b>Registered name of Business:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_BusinessRegisteredName" name='AR_BusinessRegisteredName' value={FormData['AR_BusinessRegisteredName']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Registered name of business (If different from the trade name of the business)"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled   id="AR_BusinessRegisteredName" name='AR_BusinessRegisteredName' value={FormData['AR_BusinessRegisteredName']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Registered name of business (If different from the trade name of the business)"  aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -574,7 +574,7 @@ function AssuranceRisk()
                         <label className="col-form-label"><b>Authorised Person(s):</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_BusinessAuthorisedPersons" name='AR_BusinessAuthorisedPersons' value={FormData['AR_BusinessAuthorisedPersons']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Person(s) who may act on behalf of this business"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled   id="AR_BusinessAuthorisedPersons" name='AR_BusinessAuthorisedPersons' value={FormData['AR_BusinessAuthorisedPersons']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Person(s) who may act on behalf of this business"  aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -587,7 +587,7 @@ function AssuranceRisk()
                     </div>
 
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_BusinessFinancialAdvisor" name='AR_BusinessFinancialAdvisor' value={FormData['AR_BusinessFinancialAdvisor']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Primary intermediary's name"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled   id="AR_BusinessFinancialAdvisor" name='AR_BusinessFinancialAdvisor' value={FormData['AR_BusinessFinancialAdvisor']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Primary intermediary's name"  aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -600,7 +600,7 @@ function AssuranceRisk()
                     </div>
 
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_BusinessAddress" name='AR_BusinessAddress' value={FormData['AR_BusinessAddress']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Business address"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled   id="AR_BusinessAddress" name='AR_BusinessAddress' value={FormData['AR_BusinessAddress']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Business address"  aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -613,7 +613,7 @@ function AssuranceRisk()
                     </div>
 
                     <div className="col-6">
-                        <input spellCheck="true" type="email" id="AR_BusinessEmail" name='AR_BusinessEmail' value={FormData['AR_BusinessEmail']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Email address"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled  type="email" id="AR_BusinessEmail" name='AR_BusinessEmail' value={FormData['AR_BusinessEmail']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Email address"  aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -626,7 +626,7 @@ function AssuranceRisk()
                     </div>
 
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_BusinessPhoneNumber" name='AR_BusinessPhoneNumber' value={FormData['AR_BusinessPhoneNumber']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Contact numbers"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled   id="AR_BusinessPhoneNumber" name='AR_BusinessPhoneNumber' value={FormData['AR_BusinessPhoneNumber']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Contact numbers"  aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -639,7 +639,7 @@ function AssuranceRisk()
                     </div>
 
                     <div className="col-6">
-                        <input spellCheck="true" type="date" id="AR_BusinessDate" name='AR_BusinessDate' value={FormData['AR_BusinessDate']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click or tap to enter date"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled  type="date" id="AR_BusinessDate" name='AR_BusinessDate' value={FormData['AR_BusinessDate']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click or tap to enter date"  aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -692,7 +692,7 @@ function AssuranceRisk()
                         </> :
                         null
                     }
-                    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_ComDisc_AuthorizedPersonDetail" name="AR_ComDisc_AuthorizedPersonDetail" value={FormData['AR_ComDisc_AuthorizedPersonDetail']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_ComDisc_AuthorizedPersonDetail" name="AR_ComDisc_AuthorizedPersonDetail" value={FormData['AR_ComDisc_AuthorizedPersonDetail']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                 </div>
             </div>
 
@@ -736,7 +736,7 @@ function AssuranceRisk()
                         </> :
                         null
                     }
-                      <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_ComDisc_AuthorityDetail" name="AR_ComDisc_AuthorityDetail" value={FormData['AR_ComDisc_AuthorityDetail']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                      <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_ComDisc_AuthorityDetail" name="AR_ComDisc_AuthorityDetail" value={FormData['AR_ComDisc_AuthorityDetail']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                 </div>
             </div>
             <hr/>
@@ -780,7 +780,7 @@ function AssuranceRisk()
                     </> : 
                     null
                 }
-                <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_FICADetail" name="AR_FICADetail" value={FormData['AR_FICADetail']} onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_FICADetail" name="AR_FICADetail" value={FormData['AR_FICADetail']} onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                 </div>
             </div>
             <hr/>
@@ -825,7 +825,7 @@ function AssuranceRisk()
                     </> : 
                     null
                 }
-                <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_RepPrs_TakenDetail" name="AR_RepPrs_TakenDetail" value={FormData['AR_RepPrs_TakenDetail']} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_RepPrs_TakenDetail" name="AR_RepPrs_TakenDetail" value={FormData['AR_RepPrs_TakenDetail']} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                 </div>
             </div>
 
@@ -868,7 +868,7 @@ function AssuranceRisk()
                     </> : 
                     null
                 }
-                <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_RepPrs_ExplainedDetail" name="AR_RepPrs_ExplainedDetail" value={FormData["AR_RepPrs_ExplainedDetail"]} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_RepPrs_ExplainedDetail" name="AR_RepPrs_ExplainedDetail" value={FormData["AR_RepPrs_ExplainedDetail"]} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                 </div>
             </div>
 
@@ -911,12 +911,12 @@ function AssuranceRisk()
                     </> : 
                     null
                 }
-                <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_RepPrs_CancelledDetail" name="AR_RepPrs_CancelledDetail" value={FormData["AR_RepPrs_CancelledDetail"]} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_RepPrs_CancelledDetail" name="AR_RepPrs_CancelledDetail" value={FormData["AR_RepPrs_CancelledDetail"]} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                 </div>
             </div>
 
             <hr/>
-            <div className="h6 fw-bold" style={{color: '#00788A'}}>4. Source of Funds</div>
+            {/* <div className="h6 fw-bold" style={{color: '#00788A'}}>4. Source of Funds</div>
             <div className='row'>
                 <div className='col-6'>
                     <p className='text-start'>Identify the source of funds being invested</p>
@@ -935,7 +935,7 @@ function AssuranceRisk()
                     </div>
                 </div>
             </div>
-            <br />
+            <br /> */}
             {
               backgroundInfoVisibility10 ? 
                 <>
@@ -953,13 +953,13 @@ function AssuranceRisk()
                   </>: 
                 null
             }
-            <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+            {/* <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
                 name='AR_SourceOfFundsDetail' onChange={(e) => {onChange(e)}} value={FormData['AR_SourceOfFundsDetail']}
                 onFocus={backgroundInfo_onFocus10}
                 onBlur={backgroundInfo_onBlur10}
                 placeholder={`Define Other Source of Funds.
                 
-                `}  aria-describedby=""  ></textarea>
+                `}  aria-describedby=""  ></textarea> */}
 
             <hr />
             <h5 className="section_class"><b>SECTION B:</b></h5>
@@ -982,7 +982,7 @@ function AssuranceRisk()
             </>: 
             null
         }
-        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
         name='AR_ReplacementBackInfo' onChange={(e) => {onChange(e)}} value={FormData['AR_ReplacementBackInfo']}
         onFocus={backgroundInfo_onFocus1}
         onBlur={backgroundInfo_onBlur1}
@@ -1002,7 +1002,7 @@ function AssuranceRisk()
       {/* <th scope="col">#</th> */}
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BnS"]} name="AR_BusA_BnS" onChange={(e)=>{FormData["AR_BusA_BnS"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BnS"]} name="AR_BusA_BnS" onChange={(e)=>{FormData["AR_BusA_BnS"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Funding of Buy-and-Sell Agreement
             </label>
@@ -1011,7 +1011,7 @@ function AssuranceRisk()
       
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_KeyP_Insurance"]} name="AR_BusA_KeyP_Insurance" onChange={(e)=>{FormData["AR_BusA_KeyP_Insurance"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_KeyP_Insurance"]} name="AR_BusA_KeyP_Insurance" onChange={(e)=>{FormData["AR_BusA_KeyP_Insurance"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Key Person Insurance
             </label>
@@ -1020,7 +1020,7 @@ function AssuranceRisk()
       
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_ContingentLiability"]} name="AR_BusA_ContingentLiability" onChange={(e)=>{FormData["AR_BusA_ContingentLiability"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_ContingentLiability"]} name="AR_BusA_ContingentLiability" onChange={(e)=>{FormData["AR_BusA_ContingentLiability"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Contingent liability
             </label>
@@ -1029,7 +1029,7 @@ function AssuranceRisk()
 
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BusOvProt"]} name="AR_BusA_BusOvProt" onChange={(e)=>{FormData["AR_BusA_BusOvProt"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BusOvProt"]} name="AR_BusA_BusOvProt" onChange={(e)=>{FormData["AR_BusA_BusOvProt"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Business Overheads Protection
             </label>
@@ -1043,7 +1043,7 @@ function AssuranceRisk()
         {/* <th scope="col">#</th> */}
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_CLARedm"]} name="AR_BusA_CLARedm" onChange={(e)=>{FormData["AR_BusA_CLARedm"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_CLARedm"]} name="AR_BusA_CLARedm" onChange={(e)=>{FormData["AR_BusA_CLARedm"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Credit Loan Account Redemption
             </label>
@@ -1052,7 +1052,7 @@ function AssuranceRisk()
 
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_DebitLoanRedemption"]} name="AR_BusA_DebitLoanRedemption" onChange={(e)=>{FormData["AR_BusA_DebitLoanRedemption"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_DebitLoanRedemption"]} name="AR_BusA_DebitLoanRedemption" onChange={(e)=>{FormData["AR_BusA_DebitLoanRedemption"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Debit Loan Redemption
             </label>
@@ -1061,7 +1061,7 @@ function AssuranceRisk()
 
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfFutureExpenses"]} name="AR_BusA_FundingOfFutureExpenses" onChange={(e)=>{FormData["AR_BusA_FundingOfFutureExpenses"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfFutureExpenses"]} name="AR_BusA_FundingOfFutureExpenses" onChange={(e)=>{FormData["AR_BusA_FundingOfFutureExpenses"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Funding of Future Expenses
             </label>
@@ -1070,7 +1070,7 @@ function AssuranceRisk()
 
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfDeferredGratuities"]} name="AR_BusA_FundingOfDeferredGratuities" onChange={(e)=>{FormData["AR_BusA_FundingOfDeferredGratuities"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfDeferredGratuities"]} name="AR_BusA_FundingOfDeferredGratuities" onChange={(e)=>{FormData["AR_BusA_FundingOfDeferredGratuities"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Funding of Deferred Gratuities
             </label>
@@ -1096,7 +1096,7 @@ function AssuranceRisk()
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
         name='AR_BusA_Details' onChange={(e) => {onChange(e)}} value={FormData['AR_BusA_Details']}
         onFocus={backgroundInfo_onFocus2}
         onBlur={backgroundInfo_onBlur2}
@@ -1931,7 +1931,7 @@ function AssuranceRisk()
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
         id="AR_LifeCoverFinancialSolutions" name='AR_LifeCoverFinancialSolutions' onChange={(e) => {onChange(e)}} value={FormData['AR_LifeCoverFinancialSolutions']}
         onFocus={backgroundInfo_onFocus3}
         onBlur={backgroundInfo_onBlur3}
@@ -1962,7 +1962,7 @@ Record the client's instructions, deviations and implications thereof..`}  aria-
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
         id="AR_DiC_FinancialSolutions" name='AR_DiC_FinancialSolutions' onChange={(e) => {onChange(e)}} value={FormData['AR_DiC_FinancialSolutions']}
         onFocus={backgroundInfo_onFocus4}
         onBlur={backgroundInfo_onBlur4}
@@ -1994,7 +1994,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
         id="AR_AltS_1" name='AR_AltS_1' onChange={(e) => {onChange(e)}} value={FormData['AR_AltS_1']}
         onFocus={backgroundInfo_onFocus5}
         onBlur={backgroundInfo_onBlur5}
@@ -2019,7 +2019,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
         id="AR_AltS_2" name='AR_AltS_2' onChange={(e) => {onChange(e)}} value={FormData['AR_AltS_2']}
         onFocus={backgroundInfo_onFocus6}
         onBlur={backgroundInfo_onBlur6}
@@ -2044,7 +2044,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
         id="AR_AltS_3" name='AR_AltS_3' onChange={(e) => {onChange(e)}} value={FormData['AR_AltS_3']}
         onFocus={backgroundInfo_onFocus7}
         onBlur={backgroundInfo_onBlur7}
@@ -2067,7 +2067,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label className="col-form-label"><b>Product Provider</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_ProductProvider" name='AR_ProductProvider' value={FormData['AR_ProductProvider']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_ProductProvider" name='AR_ProductProvider' value={FormData['AR_ProductProvider']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2078,7 +2078,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label htmlFor="id_number" className="col-form-label"><b>Policy number</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_PolicyNumber" name='AR_PolicyNumber' onChange={(e) => {onChange(e)}} value={FormData['AR_PolicyNumber']} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_PolicyNumber" name='AR_PolicyNumber' onChange={(e) => {onChange(e)}} value={FormData['AR_PolicyNumber']} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2090,7 +2090,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label className="col-form-label"><b>Product Name</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_ProductName" name='AR_ProductName' value={FormData['AR_ProductName']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_ProductName" name='AR_ProductName' value={FormData['AR_ProductName']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2128,7 +2128,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label className="col-form-label"><b>Premium Pattern</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_ProductPattern" name='AR_ProductPattern' value={FormData['AR_ProductPattern']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_ProductPattern" name='AR_ProductPattern' value={FormData['AR_ProductPattern']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2139,7 +2139,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label htmlFor="id_number" className="col-form-label"><b>Escalation in cover / premium</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"   id="AR_ProductEscalation" name='AR_ProductEscalation' value={FormData['AR_ProductEscalation']} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled    id="AR_ProductEscalation" name='AR_ProductEscalation' value={FormData['AR_ProductEscalation']} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2151,7 +2151,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label className="col-form-label"><b>Contracting party</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_ProductContractingParty" name='AR_ProductContractingParty' value={FormData['AR_ProductContractingParty']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_ProductContractingParty" name='AR_ProductContractingParty' value={FormData['AR_ProductContractingParty']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2162,7 +2162,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label htmlFor="id_number" className="col-form-label"><b>Life / Lives covered</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AR_ProductLivesAssured" name='AR_ProductLivesAssured' value={FormData['AR_ProductLivesAssured']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AR_ProductLivesAssured" name='AR_ProductLivesAssured' value={FormData['AR_ProductLivesAssured']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2174,7 +2174,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label className="col-form-label"><b>Premium Payer</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_ProductPremiumPayer" name='AR_ProductPremiumPayer' value={FormData['AR_ProductPremiumPayer']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_ProductPremiumPayer" name='AR_ProductPremiumPayer' value={FormData['AR_ProductPremiumPayer']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2230,7 +2230,7 @@ Record the client's instructions, deviations and implications thereof.
             <div className="col-8" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_BenDesc_1" name='AR_BenDesc_1' value={FormData['AR_BenDesc_1']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_BenDesc_1" name='AR_BenDesc_1' value={FormData['AR_BenDesc_1']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2250,7 +2250,7 @@ Record the client's instructions, deviations and implications thereof.
             <div className="col-8" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_BenDesc_2" name='AR_BenDesc_2' value={FormData['AR_BenDesc_2']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_BenDesc_2" name='AR_BenDesc_2' value={FormData['AR_BenDesc_2']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2270,7 +2270,7 @@ Record the client's instructions, deviations and implications thereof.
             <div className="col-8" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-6">
-                        <input spellCheck="true"  id="AR_BenDesc_3" name='AR_BenDesc_3' value={FormData['AR_BenDesc_3']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_BenDesc_3" name='AR_BenDesc_3' value={FormData['AR_BenDesc_3']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2307,7 +2307,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
         id="AR_ProductReasons" name='AR_ProductReasons' value={FormData['AR_ProductReasons']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus8}
         onBlur={backgroundInfo_onBlur8}
@@ -2334,7 +2334,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
         id="AR_ProductMaterialAspects" name='AR_ProductMaterialAspects' value={FormData['AR_ProductMaterialAspects']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus9}
         onBlur={backgroundInfo_onBlur9}
@@ -2363,7 +2363,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
         id="AR_ProductDetails" name='AR_ProductDetails' value={FormData['AR_ProductDetails']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus10}
         onBlur={backgroundInfo_onBlur10}
@@ -2394,7 +2394,7 @@ Executor’s fees?`}  aria-describedby=""  ></textarea>
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
         id="AR_ProductBriefSummary" name='AR_ProductBriefSummary' value={FormData['AR_ProductBriefSummary']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus11}
         onBlur={backgroundInfo_onBlur11}
@@ -2421,7 +2421,7 @@ Details of premium and cover pattern structure, frequency etc.`}  aria-described
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
         id="AR_Cessionaries" name='AR_Cessionaries' value={FormData['AR_Cessionaries']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus12}
         onBlur={backgroundInfo_onBlur12}
@@ -2451,7 +2451,7 @@ Details of premium and cover pattern structure, frequency etc.`}  aria-described
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
         id="AR_InformationExplained" name='AR_InformationExplained' value={FormData['AR_InformationExplained']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus13}
         onBlur={backgroundInfo_onBlur13}

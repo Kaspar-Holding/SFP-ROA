@@ -7,6 +7,13 @@ This project is built on the following Stack
 - PostgreSQL (User)
 
 ## Updates
+
+### 11 November 2022:
+- Added the form structures in Short Term Insurance Personal and Commerical 
+- Updated the failed login function
+- Added Short Term Insurance Personal & Commerical and Gap Cover in build
+- Updated the backend and frontend on production server
+
 ### 10 November 2022:
 - Created APIs for Short Term Insurance Personal and Commerical
 - Created Serializers for Short Term Insurance Personal and Commerical

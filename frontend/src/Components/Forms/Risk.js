@@ -115,6 +115,7 @@ function  Risk()
         RP_DC_FB_ExistingShortfallSurplus : "",
         RP_DC_FB_Investments : "",
     
+        RP_DC_Other : "",
         RP_DC_OtherTotalNeed : "",
         RP_DC_OtherExistingProvisions : "",
         RP_DC_OtherExistingShortfallSurplus : "",
@@ -142,11 +143,13 @@ function  Risk()
         RP_DiC_SiB_ExistingShortfallSurplus : "",
         RP_DiC_SiB_Investments : "",  
     
+        RP_DiC_Other1 : "",
         RP_DiC_OtherTotalNeed1 : "",
         RP_DiC_OtherExistingProvisions1 : "",
         RP_DiC_OtherExistingShortfallSurplus1 : "",
         RP_DiC_OtherInvestments1 : "", 
         
+        RP_DiC_Other2 : "",
         RP_DiC_OtherTotalNeed2 : "",
         RP_DiC_OtherExistingProvisions2 : "",
         RP_DiC_OtherExistingShortfallSurplus2 : "",
@@ -164,11 +167,13 @@ function  Risk()
         RP_DrC_IncomeExistingShortfallSurplus : "",
         RP_DrC_IncomeInvestments : "",
         
+        RP_DrC_Other1 : "",
         RP_DrC_OtherTotalNeed1 : "",
         RP_DrC_OtherExistingProvisions1 : "",
         RP_DrC_OtherExistingShortfallSurplus1 : "",
         RP_DrC_OtherInvestments1 : "", 
         
+        RP_DrC_Other2 : "",
         RP_DrC_OtherTotalNeed2 : "",
         RP_DrC_OtherExistingProvisions2 : "",
         RP_DrC_OtherExistingShortfallSurplus2 : "",
@@ -423,7 +428,11 @@ function  Risk()
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Other</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+        <div className="form-group">
+            <input type="text"  name='RP_DC_Other' value={FormData['RP_DC_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        </div>
+      </td>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
@@ -461,10 +470,6 @@ function  Risk()
             <input type="text"  name='RP_DC_Comments' value={FormData['RP_DC_Comments']} onChange={(e) => {onChange(e)}}  className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=""/>
         </div>
       </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
     </tr>
 
     <tr>
@@ -606,7 +611,11 @@ function  Risk()
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Other</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+      <div className="form-group">
+            <input type="text"  name='RP_DiC_Other1' value={FormData['RP_DiC_Other1']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        </div>
+      </td>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
@@ -638,7 +647,11 @@ function  Risk()
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Other</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+      <div className="form-group">
+            <input type="text"  name='RP_DiC_Other2' value={FormData['RP_DiC_Other2']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        </div>
+      </td>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
@@ -758,7 +771,11 @@ function  Risk()
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Other</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+      <div className="form-group">
+            <input type="text"  name='RP_DrC_Other1' value={FormData['RP_DrC_Other1']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        </div>
+      </td>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
@@ -789,7 +806,11 @@ function  Risk()
     </tr>
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Other</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+      <div className="form-group">
+            <input type="text"  name='RP_DrC_Other2' value={FormData['RP_DrC_Other2']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        </div>
+      </td>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>

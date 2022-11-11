@@ -480,7 +480,7 @@ function AssuranceInvestment()
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-4">
-                        <input spellCheck="true" id="AI_Term" name='AI_Term' value={FormData['AI_Term']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="years"  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Term" name='AI_Term' value={FormData['AI_Term']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="years"  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -503,7 +503,7 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         name='AI_TermDetails' value={FormData['AI_TermDetails']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus14}
         onBlur={backgroundInfo_onBlur14}
@@ -554,7 +554,7 @@ function AssuranceInvestment()
                         </> : 
                         null
                     }
-                    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   onFocus={sica1_onFocus} onBlur={sica1_onBlur} className="form-control" placeholder="Notes" aria-describedby="" ></textarea>
+                    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   onFocus={sica1_onFocus} onBlur={sica1_onBlur} className="form-control" placeholder="Notes" aria-describedby="" ></textarea>
                     </div>
                     <hr/>
                     </>
@@ -577,7 +577,7 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  
         id="AI_PremiumDetails" name='AI_PremiumDetails' value={FormData['AI_PremiumDetails']} onChange={(e) => {onChange(e)}}
         className="form-control" 
         onFocus={backgroundInfo_onFocus15}
@@ -616,7 +616,7 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="AI_StrategyDetails" name='AI_StrategyDetails' value={FormData['AI_StrategyDetails']} onChange={(e) => {onChange(e)}}
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="AI_StrategyDetails" name='AI_StrategyDetails' value={FormData['AI_StrategyDetails']} onChange={(e) => {onChange(e)}}
         className="form-control" 
         onFocus={backgroundInfo_onFocus16}
         onBlur={backgroundInfo_onBlur16}
@@ -654,7 +654,7 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_ReturnRequiredDetails" name='AI_ReturnRequiredDetails' value={FormData['AI_ReturnRequiredDetails']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus17}
         onBlur={backgroundInfo_onBlur17}
@@ -693,7 +693,7 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_RiskProfileDetails" name='AI_RiskProfileDetails' value={FormData['AI_RiskProfileDetails']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus18}
         onBlur={backgroundInfo_onBlur18}
@@ -851,7 +851,7 @@ function AssuranceInvestment()
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_FinancialSolutions" name='AI_FinancialSolutions' value={FormData['AI_FinancialSolutions']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus19}
         onBlur={backgroundInfo_onBlur19}
@@ -884,7 +884,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_AltS_1" name='AI_AltS_1' value={FormData['AI_AltS_1']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus20}
         onBlur={backgroundInfo_onBlur20}
@@ -910,7 +910,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea className="form-control" 
+    <textarea disabled className="form-control" 
         id="AI_AltS_2" name='AI_AltS_2' value={FormData['AI_AltS_2']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus21}
         onBlur={backgroundInfo_onBlur21}
@@ -936,7 +936,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"  
         id="AI_AltS_3" name='AI_AltS_3' value={FormData['AI_AltS_3']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus22}
         onBlur={backgroundInfo_onBlur22}
@@ -959,7 +959,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Product Provider</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_Taken" name='AI_Pr_Taken' value={FormData['AI_Pr_Taken']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_Taken" name='AI_Pr_Taken' value={FormData['AI_Pr_Taken']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -970,7 +970,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Policy number</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_Provider" name='AI_Pr_Provider' value={FormData['AI_Pr_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_Provider" name='AI_Pr_Provider' value={FormData['AI_Pr_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -982,7 +982,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Product Name</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_Name" name='AI_Pr_Name' value={FormData['AI_Pr_Name']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_Name" name='AI_Pr_Name' value={FormData['AI_Pr_Name']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1018,7 +1018,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Escalation</b></label>
                     </div>
                     <div className="col-6"> 
-                        <input spellCheck="true" id="AI_Pr_Escalation" name='AI_Pr_Escalation' value={FormData['AI_Pr_Escalation']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_Escalation" name='AI_Pr_Escalation' value={FormData['AI_Pr_Escalation']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1029,7 +1029,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Effective annual cost (EAC)</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_EAC" name='AI_Pr_EAC' value={FormData['AI_Pr_EAC']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_EAC" name='AI_Pr_EAC' value={FormData['AI_Pr_EAC']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1041,7 +1041,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Contracting party</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_ContractingParty" name='AI_Pr_ContractingParty' value={FormData['AI_Pr_ContractingParty']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_ContractingParty" name='AI_Pr_ContractingParty' value={FormData['AI_Pr_ContractingParty']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1052,7 +1052,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Life / Lives covered</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_LivesAssured" name='AI_Pr_LivesAssured' value={FormData['AI_Pr_LivesAssured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_LivesAssured" name='AI_Pr_LivesAssured' value={FormData['AI_Pr_LivesAssured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1064,7 +1064,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Premium Payer</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_PremiumPayer" name='AI_Pr_PremiumPayer' value={FormData['AI_Pr_PremiumPayer']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_PremiumPayer" name='AI_Pr_PremiumPayer' value={FormData['AI_Pr_PremiumPayer']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1074,7 +1074,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Beneficiary/cessionary</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_Beneficiary" name='AI_Pr_Beneficiary' value={FormData['AI_Pr_Beneficiary']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_Beneficiary" name='AI_Pr_Beneficiary' value={FormData['AI_Pr_Beneficiary']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1086,10 +1086,10 @@ How it will meet the business need
                         <label className="col-form-label"><b>Initial commission</b></label>
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="AI_Pr_IniC" name='AI_Pr_IniC' value={FormData['AI_Pr_IniC']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_IniC" name='AI_Pr_IniC' value={FormData['AI_Pr_IniC']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="AI_Pr_IniC_Percentage" name='AI_Pr_IniC_Percentage' value={FormData['AI_Pr_IniC_Percentage']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_IniC_Percentage" name='AI_Pr_IniC_Percentage' value={FormData['AI_Pr_IniC_Percentage']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1100,10 +1100,10 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Ongoing commission</b></label>
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="AI_Pr_OnC" name='AI_Pr_OnC' value={FormData['AI_Pr_OnC']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_OnC" name='AI_Pr_OnC' value={FormData['AI_Pr_OnC']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="AI_Pr_OnC_Percentage" name='AI_Pr_OnC_Percentage' value={FormData['AI_Pr_OnC_Percentage']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AI_Pr_OnC_Percentage" name='AI_Pr_OnC_Percentage' value={FormData['AI_Pr_OnC_Percentage']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1141,7 +1141,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_Portfolio" name='AI_Portfolio' value={FormData['AI_Portfolio']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus23}
         onBlur={backgroundInfo_onBlur23}
@@ -1386,6 +1386,48 @@ o	meeting the investment objectives of the clients
 </div>
 
 <br/>
+<div className="h6 fw-bold" style={{color: '#00788A'}}>Source of Funds</div>
+            <div className='row'>
+                <div className='col-6'>
+                    <p className='text-start'>Identify the source of funds being invested</p>
+                </div>
+                <div className='col-6'>
+                    <div className='col-6'>
+                        <select disabled className="text-start form-select" name='AI_SourceOfFunds' value={FormData['AI_SourceOfFunds']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                            <option value="0" selected>Choose Source of funds</option>
+                            <option value="1">Salary</option>
+                            <option value="2">Savings</option>
+                            <option value="3">Inheritence</option>
+                            <option value="4">Resignation</option>
+                            <option value="5">Retirement</option>
+                            <option value="6">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br />
+            {
+              backgroundInfoVisibility10_1 ? 
+                <>
+                  <div id="background_info_instructions10" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              Define Other Source of Funds.
+
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                null
+            }
+            <textarea disabled className="form-control"  style={{height: '100px'}} 
+                name='AI_SourceOfFundsDetail' onChange={(e) => {onChange(e)}} value={FormData['AI_SourceOfFundsDetail']}
+                placeholder={`Define Other Source of Funds.
+                
+                `}  aria-describedby=""  ></textarea>
 <p>The following are reasons why the abovementioned product best suits the business’s needs and objectives:</p>
 {
         backgroundInfoVisibility24 ? 
@@ -1405,7 +1447,7 @@ o	meeting the investment objectives of the clients
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_PF_Reasons" name='AI_PF_Reasons' value={FormData['AI_PF_Reasons']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus24}
         onBlur={backgroundInfo_onBlur24}
@@ -1435,7 +1477,7 @@ o	meeting the investment objectives of the clients
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_PF_MaterialAspects" name='AI_PF_MaterialAspects' value={FormData['AI_PF_MaterialAspects']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus25}
         onBlur={backgroundInfo_onBlur25}
@@ -1472,7 +1514,7 @@ The tax implications, i.e. estate duty, income tax (e.g. interest received), CGT
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_PF_Pr_Details" name='AI_PF_Pr_Details' value={FormData['AI_PF_Pr_Details']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus26}
         onBlur={backgroundInfo_onBlur26}
@@ -1508,7 +1550,7 @@ Other relevant information
         </>: 
          null
     }
-    <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control" 
         id="AI_PF_NominationOfBeneficiaries" name='AI_PF_NominationOfBeneficiaries' value={FormData['AI_PF_NominationOfBeneficiaries']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus27}
         onBlur={backgroundInfo_onBlur27}

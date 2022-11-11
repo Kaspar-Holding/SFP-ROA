@@ -6,14 +6,15 @@ import AssuranceRisk from './PrintedComponents/AssuranceRisk';
 import AssuranceInvestment from './PrintedComponents/AssuranceInvestment';
 import Employee from './PrintedComponents/Employee';
 import Fiduciary from './PrintedComponents/Fiduciary';
-import Short_term_Commercial from './Short-term Commercial';
-import Short_term_Personal from './Short-term Personal';
+import Short_term_Commercial from './PrintedComponents/Short-term Commercial';
+import Short_term_Personal from './PrintedComponents/Short-term Personal';
 import {Navigate, NavLink, useLocation} from 'react-router-dom'
 import axios from 'axios';
 import Loader from '../Loader/Loader';
 import Footer from '../Footer';
 import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
+import GapCover from './PrintedComponents/GapCover';
 
 const PrintForm = () => {
     const location = useLocation();
@@ -553,6 +554,9 @@ const PrintForm = () => {
             <AssuranceInvestment  data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}}/>
             <Employee data={{formId: FormData['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} />
             <Fiduciary data={{formId: state['formId'],advisorId: state['advisorId']}} />
+            <Short_term_Commercial />
+            <Short_term_Personal />
+            <GapCover />
             {/* <div className="tab-content" id="myTabContent"> */}
                 {/* {
                     state['clientIdNumber']!== undefined ? 

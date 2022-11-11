@@ -499,8 +499,7 @@ const Invest = (props) =>
                 null
             }
             <textarea  id="background_info11" className="form-control"
-                name='IP_LiquidityDetails' onChange={(e) => {onChange(e)}}
-                value={FormData['IP_LiquidityDetails']}
+                name='IP_LiquidityDetails' onChange={(e) => {onChange(e)}} value={FormData['IP_LiquidityDetails']}
                 onFocus={backgroundInfo_onFocus12}
                 onBlur={backgroundInfo_onBlur12}
                 placeholder={`Does the client require access to the investment during the term?                
@@ -1250,12 +1249,12 @@ const Invest = (props) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided"] == 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" checked={FormData["IP_ItP_FundProvided"] == 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed"] == 1 ? true : false} name="IP_ItP_FundDiscussed" onChange={(e)=>{FormData["IP_ItP_FundDiscussed"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" checked={FormData["IP_ItP_FundDiscussed"] == 1 ? true : false} name="IP_ItP_FundDiscussed" onChange={(e)=>{FormData["IP_ItP_FundDiscussed"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>

@@ -21,6 +21,7 @@ function AssuranceInvestment()
     const [backgroundInfoVisibility8, setbackgroundInfoVisibility8] = useState(false)
     const [backgroundInfoVisibility9, setbackgroundInfoVisibility9] = useState(false)
     const [backgroundInfoVisibility10, setbackgroundInfoVisibility10] = useState(false)
+    const [backgroundInfoVisibility10_1, setbackgroundInfoVisibility10_1] = useState(false)
     const [backgroundInfoVisibility11, setbackgroundInfoVisibility11] = useState(false)
     const [backgroundInfoVisibility12, setbackgroundInfoVisibility12] = useState(false)
     const [backgroundInfoVisibility13, setbackgroundInfoVisibility13] = useState(false)
@@ -164,6 +165,12 @@ function AssuranceInvestment()
       }
       function backgroundInfo_onBlur10() {
         setbackgroundInfoVisibility10(false)
+      }
+      function backgroundInfo_onFocus10_1() {
+        setbackgroundInfoVisibility10_1(true)
+      }
+      function backgroundInfo_onBlur10_1() {
+        setbackgroundInfoVisibility10_1(false)
       }
       function backgroundInfo_onFocus11() {
         setbackgroundInfoVisibility11(true)
@@ -317,6 +324,7 @@ function AssuranceInvestment()
         AI_CR_ExistingShortfallSurplus : "",    
         AI_CR_Investments : "",    
 
+        AI_Other : "",    
         AI_Other_TotalNeed : "",    
         AI_Other_ExistingProvisions : "",    
         AI_Other_ExistingShortfallSurplus : "",    
@@ -345,6 +353,9 @@ function AssuranceInvestment()
         AI_Pr_OnC_Percentage : "",
 
         AI_Portfolio : "",
+        
+        AI_SourceOfFunds : "",
+        AI_SourceOfFundsDetail : "",
         
         AI_PF_1 : "",
         AI_PF_Percentage1 : "",
@@ -477,12 +488,6 @@ function AssuranceInvestment()
 
     <p><b>Investment requirements</b></p>
     <p>Need</p>
-    <div className="alert alert-danger" style={{display: responseErrorVisibility}} role="alert">
-        {errorData.status} : {errorData.message}
-    </div>
-    <div className="alert alert-success" style={{display: UpdateMessageVisibility}} role="alert">
-        {UpdateMessage}
-    </div>
     <form onSubmit={e => onSubmit(e)}>
       
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
@@ -834,7 +839,11 @@ function AssuranceInvestment()
     </tr>
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Other</td>
+      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+        <div className="form-group">
+              <input type="text"  name='AI_Other' value={FormData['AI_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </div>
+      </td>
       <td>
         <div >
             <input type="number" className="form-control" id="AI_Other_TotalNeed" name='AI_Other_TotalNeed' value={FormData['AI_Other_TotalNeed']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
@@ -1421,6 +1430,50 @@ o	meeting the investment objectives of the clients
 </div>
 
 <br/>
+      <div className="h6 fw-bold" style={{color: '#00788A'}}>Source of Funds</div>
+            <div className='row'>
+                <div className='col-6'>
+                    <p className='text-start'>Identify the source of funds being invested</p>
+                </div>
+                <div className='col-6'>
+                    <div className='col-6'>
+                        <select className="text-start form-select" name='AI_SourceOfFunds' value={FormData['AI_SourceOfFunds']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                            <option value="0" selected>Choose Source of funds</option>
+                            <option value="1">Salary</option>
+                            <option value="2">Savings</option>
+                            <option value="3">Inheritence</option>
+                            <option value="4">Resignation</option>
+                            <option value="5">Retirement</option>
+                            <option value="6">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br />
+            {
+              backgroundInfoVisibility10_1 ? 
+                <>
+                  <div id="background_info_instructions10" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              Define Other Source of Funds.
+
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                null
+            }
+            <textarea className="form-control"  style={{height: '100px'}} 
+                name='AI_SourceOfFundsDetail' onChange={(e) => {onChange(e)}} value={FormData['AI_SourceOfFundsDetail']}
+                onFocus={backgroundInfo_onFocus10_1}
+                onBlur={backgroundInfo_onBlur10_1}
+                placeholder={`Define Other Source of Funds.
+                
+                `}  aria-describedby=""  ></textarea>
 <p>The following are reasons why the abovementioned product best suits the business’s needs and objectives:</p>
 {
         backgroundInfoVisibility24 ? 
