@@ -1406,23 +1406,7 @@ o	meeting the investment objectives of the clients
                 </div>
             </div>
             <br />
-            {
-              backgroundInfoVisibility10_1 ? 
-                <>
-                  <div id="background_info_instructions10" className="hidden_class">
-                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                          <ul>
-                              <li>
-                              Define Other Source of Funds.
-
-                              </li>
-                            
-                          </ul>
-                          
-                  </div>
-                  </>: 
-                null
-            }
+            
             <textarea disabled className="form-control"  style={{height: '100px'}} 
                 name='AI_SourceOfFundsDetail' onChange={(e) => {onChange(e)}} value={FormData['AI_SourceOfFundsDetail']}
                 placeholder={`Define Other Source of Funds.

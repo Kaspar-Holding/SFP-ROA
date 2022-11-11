@@ -754,28 +754,9 @@ function  Risk()
           <p className="text-start">Death benefits will not be paid where the life insured commits suicide within 2 years of commencement or reinstatement of the cover.</p>
   
   
-          {
-          backgroundInfoVisibility1 ? 
-          <>
-          <div id="background_info_instructions1" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      Explain the reasons why life cover benefits were recommended to satisfy this need.<br/>
-                      Record the client's instructions, deviations and implications thereof.
-  
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
+         
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_LC_FinancialSolutions" name='RP_LC_FinancialSolutions' value={FormData['RP_LC_FinancialSolutions']}     
-          onFocus={backgroundInfo_onFocus1}
-          onBlur={backgroundInfo_onBlur1}
           placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. 
   Record the client's instructions, deviations and implications thereof.
           `}  aria-describedby=""  ></textarea>
@@ -802,9 +783,7 @@ function  Risk()
            null
       }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
-          id="RP_DiC_FinancialSolutions" name='RP_DiC_FinancialSolutions' value={FormData['RP_DiC_FinancialSolutions']}     
-          onFocus={backgroundInfo_onFocus2}
-          onBlur={backgroundInfo_onBlur2}
+          id="RP_DiC_FinancialSolutions" name='RP_DiC_FinancialSolutions' value={FormData['RP_DiC_FinancialSolutions']}    
           placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. 
   Record the client's instructions, deviations and implications thereof.
           `}  aria-describedby=""  ></textarea>
@@ -832,9 +811,7 @@ function  Risk()
            null
       }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
-          id="RP_DrC_FinancialSolutions" name='RP_DrC_FinancialSolutions' value={FormData['RP_DrC_FinancialSolutions']}     
-          onFocus={backgroundInfo_onFocus3}
-          onBlur={backgroundInfo_onBlur3}
+          id="RP_DrC_FinancialSolutions" name='RP_DrC_FinancialSolutions' value={FormData['RP_DrC_FinancialSolutions']}  
           placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. 
   Record the client's instructions, deviations and implications thereof.
           `}  aria-describedby=""  ></textarea>
@@ -864,8 +841,6 @@ function  Risk()
       }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_AltS_1" name='RP_AltS_1' value={FormData['RP_AltS_1']}     
-          onFocus={backgroundInfo_onFocus4}
-          onBlur={backgroundInfo_onBlur4}
           placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.
           `}  aria-describedby=""  ></textarea>
   <br/>
@@ -889,8 +864,6 @@ function  Risk()
       }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_AltS_2" name='RP_AltS_2' value={FormData['RP_AltS_2']}     
-          onFocus={backgroundInfo_onFocus5}
-          onBlur={backgroundInfo_onBlur5}
           placeholder={`2. Identify the type of product or product provider which was considered but not selected and motivate.
           `}  aria-describedby=""  ></textarea>
   
@@ -914,8 +887,6 @@ function  Risk()
       }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_AltS_3" name='RP_AltS_3' value={FormData['RP_AltS_3']}     
-          onFocus={backgroundInfo_onFocus6}
-          onBlur={backgroundInfo_onBlur6}
           placeholder={`3. Identify the type of product or product provider which was considered but not selected and motivate.
           `}  aria-describedby=""  ></textarea>
   
@@ -1331,8 +1302,6 @@ function  Risk()
       }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_ProductReasons" name='RP_ProductReasons' value={FormData['RP_ProductReasons']}     
-          onFocus={backgroundInfo_onFocus7}
-          onBlur={backgroundInfo_onBlur7}
           placeholder={`Motivate why the chosen product was recommended to best suit your client’s needs.
           `}  aria-describedby=""  ></textarea>
   <hr/>
@@ -1356,8 +1325,6 @@ function  Risk()
       }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_ProductMaterialAspects" name='RP_ProductMaterialAspects' value={FormData['RP_ProductMaterialAspects']}     
-          onFocus={backgroundInfo_onFocus8}
-          onBlur={backgroundInfo_onBlur8}
           placeholder={`Explain any deviations from your recommendation and the implications thereof.
           `}  aria-describedby=""  ></textarea>
   
@@ -1380,38 +1347,13 @@ function  Risk()
       }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_ProductDetails" name='RP_ProductDetails' value={FormData['RP_ProductDetails']}     
-          onFocus={backgroundInfo_onFocus9}
-          onBlur={backgroundInfo_onBlur9}
           placeholder={`The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
           `}  aria-describedby=""  ></textarea>
   
   
       <br/>
-      {
-          backgroundInfoVisibility10 ? 
-          <>
-          <div id="background_info_instructions10" className="hidden_class">
-              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                  <ul>
-                      <li>
-                      Executor’s fees?<br/>
-                      Does the policy offer any liquidity?<br/>
-                      Provide a summary of the contents of the quote with regard to the following:<br/>
-                      Benefit terms (cease ages, cover periods etc.)<br/>
-                      Details of premium and cover pattern structure, frequency etc.
-  
-                      </li>
-                     
-                  </ul>
-                  
-          </div>
-          </>: 
-           null
-      }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_ExecutorFee" name='RP_ExecutorFee' value={FormData['RP_ExecutorFee']}     
-          onFocus={backgroundInfo_onFocus10}
-          onBlur={backgroundInfo_onBlur10}
           placeholder={`Executor’s fees?
   Does the policy offer any liquidity?
   Provide a summary of the contents of the quote with regard to the following:
@@ -1441,8 +1383,6 @@ function  Risk()
       }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_NominationOfBeneficiaries" name='RP_NominationOfBeneficiaries' value={FormData['RP_NominationOfBeneficiaries']}     
-          onFocus={backgroundInfo_onFocus11}
-          onBlur={backgroundInfo_onBlur11}
           placeholder={`Record discussion with regard to nomination of beneficiaries or cessionaries.
           
           `}  aria-describedby=""  ></textarea>
@@ -1472,8 +1412,6 @@ function  Risk()
       }
       <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} className="form-control"
           id="RP_InformationExplained" name='RP_InformationExplained' value={FormData['RP_InformationExplained']}     
-          onFocus={backgroundInfo_onFocus12}
-          onBlur={backgroundInfo_onBlur12}
           placeholder={`Discuss the following information which has been explained to client.
   General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)
   Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)

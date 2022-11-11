@@ -723,27 +723,9 @@ import { useLocation } from 'react-router-dom';
                     <hr/>
                                  
                  </div> 
-        {
-        backgroundInfoVisibility1 ? 
-        <>
-        <div id="background_info_instructions1" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Additional Comments .
-
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
+       
     <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}
         id="EB_BusB_CoverDetails" name='EB_BusB_CoverDetails' value={FormData['EB_BusB_CoverDetails']} onChange={(e) => {onChange(e)}}  
-        onFocus={backgroundInfo_onFocus1}
-        onBlur={backgroundInfo_onBlur1}
         placeholder={`Additional Comments .
         
         `}  aria-describedby=""  ></textarea>
@@ -1720,29 +1702,8 @@ import { useLocation } from 'react-router-dom';
 </table>
     
     <hr/>
-    {
-        backgroundInfoVisibility2 ? 
-        <>
-        <div id="background_info_instructions2" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Explain the reasons why life cover benefits were recommended to satisfy this need. <br/>
-                    Record the client's instructions, deviations and implications thereof.
-
-
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
     <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}
         id="EB_BusRB_AccidentBenefitReason" name='EB_BusRB_AccidentBenefitReason' value={FormData['EB_BusRB_AccidentBenefitReason']} onChange={(e) => {onChange(e)}}
-        onFocus={backgroundInfo_onFocus2}
-        onBlur={backgroundInfo_onBlur2}
         placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. 
 Record the client's instructions, deviations and implications thereof.
         
@@ -1774,7 +1735,6 @@ Record the client's instructions, deviations and implications thereof.
     }
     <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}
         id="EB_BusRB_DiC_Reason" name='EB_BusRB_DiC_Reason' value={FormData['EB_BusRB_DiC_Reason']} onChange={(e) => {onChange(e)}}
-        onFocus={backgroundInfo_onFocus4}
         onBlur={backgroundInfo_onBlur4}
         placeholder={`Explain the reasons why disability benefits were recommended to satisfy this need. 
 Record the client's instructions, deviations and implications thereof.
@@ -1786,30 +1746,9 @@ Record the client's instructions, deviations and implications thereof.
     <p>Dread Disease Cover:</p>
     <hr/>
 
-            {
-        backgroundInfoVisibility3 ? 
-        <>
-        <div id="background_info_instructions3" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Explain the reasons why dread disease cover was recommended to satisfy this need.<br/>
-                    Record the client's instructions, deviations and implications thereof.
-
-
-
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
+            
     <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}
         id="EB_BusRB_DrC_Reason" name='EB_BusRB_DrC_Reason' value={FormData['EB_BusRB_DrC_Reason']} onChange={(e) => {onChange(e)}}
-        onFocus={backgroundInfo_onFocus3}
-        onBlur={backgroundInfo_onBlur3}
         placeholder={`Explain the reasons why dread disease cover was recommended to satisfy this need. 
 Record the client's instructions, deviations and implications thereof.
         
@@ -1819,26 +1758,8 @@ Record the client's instructions, deviations and implications thereof.
 
 <hr/>
 
-        {
-            backgroundInfoVisibility5 ? 
-            <>
-            <div id="background_info_instructions5" className="hidden_class">
-                <ul>
-                    <li>
-                        Summary of recommendations to address your identified needs.
-                    </li>
-       
-                </ul>
-    
-            </div>
-            </>: 
-            null
-        }
-
         <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}
         id="EB_BusRB_DrC_Summary" name='EB_BusRB_DrC_Summary' value={FormData['EB_BusRB_DrC_Summary']} onChange={(e) => {onChange(e)}}
-        onFocus={backgroundInfo_onFocus5}
-        onBlur={backgroundInfo_onBlur5}
         placeholder={`Summary of recommendations to address your identified needs.
 
 
