@@ -540,7 +540,9 @@ function AssuranceRisk()
               
               setSuccessMessage("Assurance Risk data is successfully updated")
               setSuccessMessageVisibility("block")
-
+              setTimeout(() => {
+                setSuccessMessageVisibility("none")
+              }, 5000)
               // setSubmissionMessageVisibility("block")
           } catch (error) {
               console.log(error)
@@ -565,9 +567,9 @@ function AssuranceRisk()
       }, [Advisor]);
       // console.log(JSON.stringify(FormData))
       
-      setTimeout(() => {
-        setSuccessMessageVisibility("none")
-      }, 5000);
+      // setTimeout(() => {
+      //   setSuccessMessageVisibility("none")
+      // }, 5000);
     return(
         <>
         

@@ -315,6 +315,9 @@ const Invest = (props) =>
             
             setSuccessMessage("Investment Planning data is successfully updated")
             setSuccessMessageVisibility("block")
+            setTimeout(() => {
+                setSuccessMessageVisibility("none")
+            }, 5000)
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
@@ -331,9 +334,9 @@ const Invest = (props) =>
     }, []);
     // console.log(JSON.stringify(FormData))
     
-    setTimeout(() => {
-        setSuccessMessageVisibility("none")
-    }, 5000);
+    // setTimeout(() => {
+    //     setSuccessMessageVisibility("none")
+    // }, 5000);
     
     
     return(

@@ -1118,6 +1118,9 @@ const Short_term_Commercial= () => {
             setFormData(response.data['formData'])
             setSuccessMessage("Short Term Insurance Commerical data is successfully updated")
             setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+            }, 5000)
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
@@ -1133,9 +1136,9 @@ const Short_term_Commercial= () => {
       useEffect(() => {
         createSTICForm(FormData)
       }, []);
-      setTimeout(() => {
-        setSuccessMessageVisibility("none")
-      }, 5000);
+      // setTimeout(() => {
+      //   setSuccessMessageVisibility("none")
+      // }, 5000);
     return(
         <>
         <br/>

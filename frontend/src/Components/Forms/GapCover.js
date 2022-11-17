@@ -127,6 +127,9 @@ const GapCover = () => {
             setFormData(response.data['formData'])
             setSuccessMessage("Gap Cover data is successfully updated")
             setSuccessMessageVisibility("block")
+            setTimeout(() => {
+                setSuccessMessageVisibility("none")
+            }, 5000)
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
@@ -141,9 +144,9 @@ const GapCover = () => {
       useEffect(() => {
         createGapCoverForm(FormData)
       }, []);
-      setTimeout(() => {
-        setSuccessMessageVisibility("none")
-      }, 5000);
+    //   setTimeout(() => {
+    //     setSuccessMessageVisibility("none")
+    //   }, 5000);
     return(
         <>
         <br/>

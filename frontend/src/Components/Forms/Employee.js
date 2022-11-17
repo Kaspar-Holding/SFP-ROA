@@ -311,7 +311,9 @@ import './Styles/CustomButton.css';
                     
                 setSuccessMessage("Employee Benefits data is successfully updated")
                 setSuccessMessageVisibility("block")
-
+                setTimeout(() => {
+                    setSuccessMessageVisibility("none")
+                }, 5000)
               // setSubmissionMessageVisibility("block")
           } catch (error) {
               console.log(error)
@@ -334,9 +336,9 @@ import './Styles/CustomButton.css';
       }, []);
     //   console.log(JSON.stringify(FormData))
     
-    setTimeout(() => {
-        setSuccessMessageVisibility("none")
-    }, 5000);
+    // setTimeout(() => {
+    //     setSuccessMessageVisibility("none")
+    // }, 5000);
     return(
         <>
         <br/>

@@ -60,6 +60,9 @@ const Fiduciary = () => {
         setSuccessMessage("Fiduciary data is successfully updated")
         setSuccessMessageVisibility("block")
         // setSubmissionMessageVisibility("block")
+        setTimeout(() => {
+          setSuccessMessageVisibility("none")
+        }, 5000)
     } catch (error) {
         console.log(error)
     }
@@ -70,9 +73,9 @@ const Fiduciary = () => {
     // window.location.reload();
   }
   // console.log(FormData)
-  useEffect(() => {
-    createFiduciaryForm(FormData)
-  }, []);
+  // useEffect(() => {
+  //   createFiduciaryForm(FormData)
+  // }, []);
   setTimeout(() => {
     setSuccessMessageVisibility("none")
   }, 5000);

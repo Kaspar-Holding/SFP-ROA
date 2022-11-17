@@ -273,6 +273,9 @@ function  Risk()
             
             setSuccessMessage("Risk Planning data is successfully updated")
             setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+            }, 5000)
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
@@ -288,9 +291,9 @@ function  Risk()
       }, []);
       // console.log(JSON.stringify(FormData))
 
-      setTimeout(() => {
-        setSuccessMessageVisibility("none")
-      }, 5000);
+      // setTimeout(() => {
+      //   setSuccessMessageVisibility("none")
+      // }, 5000);
     return(
 
       <header >

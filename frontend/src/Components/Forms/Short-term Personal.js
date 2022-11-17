@@ -879,6 +879,9 @@ const Short_term_Personal = () => {
             setFormData(response.data['formData'])
             setSuccessMessage("Short Term Insurance Personal data is successfully updated")
             setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+            }, 5000)
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
@@ -893,9 +896,9 @@ const Short_term_Personal = () => {
       useEffect(() => {
         createSTIPForm(FormData)
       }, []);
-      setTimeout(() => {
-        setSuccessMessageVisibility("none")
-      }, 5000);
+      // setTimeout(() => {
+      //   setSuccessMessageVisibility("none")
+      // }, 5000);
       
     return(
         <>

@@ -8,6 +8,11 @@ This project is built on the following Stack
 
 ## Updates
 
+### 18 November 2022:
+- Added Update Password functionaility in Profile 
+- Updated EMail template in Djoser
+- Added Footer
+
 ### 11 November 2022:
 - Added the form structures in Short Term Insurance Personal and Commerical 
 - Updated the failed login function

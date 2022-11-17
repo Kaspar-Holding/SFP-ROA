@@ -570,6 +570,7 @@ const PrintForm = () => {
             {/* <Footer /> */}
       </main>
         </div>
+        <Footer />
       </>
     )
 }

@@ -12,6 +12,7 @@ import {Navigate, NavLink, useLocation} from 'react-router-dom'
 import axios from 'axios';
 import Loader from '../Loader/Loader';
 import GapCover from './GapCover';
+import Footer from '../Footer';
 const CompleteForm = () => {
     const location = useLocation();
     const { state } = location;
@@ -555,7 +556,7 @@ const CompleteForm = () => {
         <br/>
         <ul className="nav nav-tabs" id="myTab" role="tablist">
             <li className="nav-item" role="presentation">
-                <button className="nav-link active" id="risk-tab" data-bs-toggle="tab" data-bs-target="#risk" type="button" role="tab" aria-controls="risk" aria-selected="true">Risk Planning</button>
+                <button className="nav-link" id="risk-tab" data-bs-toggle="tab" data-bs-target="#risk" type="button" role="tab" aria-controls="risk" aria-selected="true">Risk Planning</button>
             </li>
             <li className="nav-item" role="presentation">
                 <button className="nav-link" id="invest-tab" data-bs-toggle="tab" data-bs-target="#invest" type="button" role="tab" aria-controls="invest" aria-selected="false">Investment Planning</button>
@@ -601,6 +602,7 @@ const CompleteForm = () => {
             <div className="tab-pane fade" id="Short-term-Personal" role="tabpanel" aria-labelledby="Short-term-Personal-tab"><Short_term_Personal/></div>
         </div>
       </main>
+        <Footer />
         </div>
       </>
     )
