@@ -15,6 +15,7 @@ import Footer from '../Footer';
 import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import GapCover from './PrintedComponents/GapCover';
+import RiskFactors from './PrintedComponents/RiskFactors';
 
 const PrintForm = () => {
     const location = useLocation();
@@ -557,6 +558,7 @@ const PrintForm = () => {
             <Short_term_Commercial />
             <Short_term_Personal />
             <GapCover />
+            <RiskFactors />
             {/* <div className="tab-content" id="myTabContent"> */}
                 {/* {
                     state['clientIdNumber']!== undefined ? 

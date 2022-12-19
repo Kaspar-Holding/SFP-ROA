@@ -8,6 +8,9 @@ This project is built on the following Stack
 
 ## Updates
 
+### 19 December 2022:
+- Added Risk Factors 
+
 ### 18 November 2022:
 - Added Update Password functionaility in Profile 
 - Updated EMail template in Djoser
