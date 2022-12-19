@@ -12,6 +12,7 @@ import {Navigate, NavLink, useLocation} from 'react-router-dom'
 import axios from 'axios';
 import Loader from '../Loader/Loader';
 import GapCover from './GapCover';
+import RiskFactors from './RiskFactors';
 import Footer from '../Footer';
 const CompleteForm = () => {
     const location = useLocation();
@@ -582,6 +583,9 @@ const CompleteForm = () => {
             <li className="nav-item" role="presentation">
                 <button className="nav-link" id="Gap-Cover-tab" data-bs-toggle="tab" data-bs-target="#Gap-Cover" type="button" role="tab" aria-controls="Gap-Cover" aria-selected="false">Gap Cover</button>
             </li>
+            <li className="nav-item" role="presentation">
+                <button className="nav-link" id="Risk-Factors-tab" data-bs-toggle="tab" data-bs-target="#Risk-Factors" type="button" role="tab" aria-controls="Risk-Factors" aria-selected="false">Risk Factors</button>
+            </li>
             <br/>
             </ul>
             <div className="tab-content" id="myTabContent">
@@ -600,6 +604,7 @@ const CompleteForm = () => {
             <div className="tab-pane fade" id="Short-term-Commercial" role="tabpanel" aria-labelledby="Short-term-Commercial-tab"><Short_term_Commercial/></div>
             <div className="tab-pane fade" id="Gap-Cover" role="tabpanel" aria-labelledby="Gap-Cover-tab"><GapCover /></div>
             <div className="tab-pane fade" id="Short-term-Personal" role="tabpanel" aria-labelledby="Short-term-Personal-tab"><Short_term_Personal/></div>
+             <div className="tab-pane fade" id="Risk-Factors" role="tabpanel" aria-labelledby="Risk-Factors-tab"><RiskFactors /></div> 
         </div>
       </main>
         <Footer />
