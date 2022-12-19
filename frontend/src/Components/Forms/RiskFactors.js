@@ -1,4 +1,3 @@
-
 import { useLocation } from 'react-router-dom';
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
@@ -7840,3 +7839,5 @@ import axios from 'axios'
 export default RiskFactors
 
 //&DqWa5u93Ue6
+
+   
