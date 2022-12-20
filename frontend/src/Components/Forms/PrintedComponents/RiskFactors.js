@@ -502,7 +502,7 @@ import axios from 'axios'
                             <label className="col-form-label"><b>Business Unit Risk</b></label>
                         </div>
                         <div className="col-6">
-                        <select className="text-start form-select" id="RF_BU_Risk" name='RF_BU_Risk' value={FormData['RF_BU_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                        <select disabled className="text-start form-select" id="RF_BU_Risk" name='RF_BU_Risk' value={FormData['RF_BU_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                             <option value="0" selected></option>
                             <option value="1">Low</option>
                             <option value="2">Medium</option>
@@ -519,7 +519,7 @@ import axios from 'axios'
                             <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
+                            <input disabled  spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -531,7 +531,7 @@ import axios from 'axios'
                             <label htmlFor="address" className="col-form-label"><b>Client Name</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true"  id="RF_ClientName" name="RF_ClientName" value={FormData['RF_ClientName']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Name"  aria-describedby="" />
+                            <input disabled  spellCheck="true"  id="RF_ClientName" name="RF_ClientName" value={FormData['RF_ClientName']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Name"  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -542,7 +542,7 @@ import axios from 'axios'
                             <label htmlFor="email" className="col-form-label"><b>Completed By: Name</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true"  id="RF_CompleteByName" name="RF_CompleteByName" value={FormData['RF_CompleteByName']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Name"  aria-describedby="" />
+                            <input disabled  spellCheck="true"  id="RF_CompleteByName" name="RF_CompleteByName" value={FormData['RF_CompleteByName']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Name"  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -554,7 +554,7 @@ import axios from 'axios'
                             <label htmlFor="address" className="col-form-label"><b>Screening Event ID</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true"  id="RF_EventID" name="RF_EventID" value={FormData['RF_EventID']}  className="form-control" onChange={(e) => {onChange(e)}} placeholder="Event ID"  aria-describedby="" />
+                            <input disabled  spellCheck="true"  id="RF_EventID" name="RF_EventID" value={FormData['RF_EventID']}  className="form-control" onChange={(e) => {onChange(e)}} placeholder="Event ID"  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -565,7 +565,7 @@ import axios from 'axios'
                             <label htmlFor="email" className="col-form-label"><b>Completed By: Role/Designation</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true"  id="RF_CompleteByRole" name="RF_CompleteByRole" value={FormData['RF_CompleteByRole']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Role/Designation"  aria-describedby="" />
+                            <input disabled  spellCheck="true"  id="RF_CompleteByRole" name="RF_CompleteByRole" value={FormData['RF_CompleteByRole']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Role/Designation"  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -654,7 +654,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                        <select className="text-start form-select" name='RF_AdjustedRisk' id='RF_AdjustedRisk' value={FormData['RF_AdjustedRisk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                        <select disabled className="text-start form-select" name='RF_AdjustedRisk' id='RF_AdjustedRisk' value={FormData['RF_AdjustedRisk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                             <option value="0" selected></option>
                             <option value="1">Low</option>
                             <option value="2">Medium</option>
@@ -668,7 +668,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2"> 
-                            <select className="text-start form-select" name='RF_Approvals' id='RF_Approvals' value={FormData['RF_Approvals']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Approvals' id='RF_Approvals' value={FormData['RF_Approvals']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
@@ -745,7 +745,7 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <select className="text-start form-select" name='RF_GCO_Risk' id='RF_GCO_Risk' value={FormData['RF_GCO_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                    <select disabled className="text-start form-select" name='RF_GCO_Risk' id='RF_GCO_Risk' value={FormData['RF_GCO_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                         <option value3="0" selected></option>
                         <option value3="1">Low</option>
                         <option value3="2">Medium</option>
@@ -1180,7 +1180,7 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <select className="text-start form-select" name='RF_ClientType' id='RF_ClientType' value={FormData['RF_ClientType']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                    <select disabled className="text-start form-select" name='RF_ClientType' id='RF_ClientType' value={FormData['RF_ClientType']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                         <option value="0" selected></option>
                         <option value="1">Individual</option>
                         <option value="2">Legal</option>
@@ -1206,7 +1206,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Occupation' id='RF_Occupation' value={FormData['RF_Occupation']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Occupation' id='RF_Occupation' value={FormData['RF_Occupation']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Minor/Scholar</option>
                                 <option value="2">Retired</option>
@@ -1298,7 +1298,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_CountryOfBirth' id='RF_CountryOfBirth' value={FormData['RF_CountryOfBirth']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_CountryOfBirth' id='RF_CountryOfBirth' value={FormData['RF_CountryOfBirth']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Afghanistan</option>
                                 <option value="2">Albania</option>
@@ -1711,7 +1711,7 @@ import axios from 'axios'
                             <label className="col-form-label">Country of Residence</label>
                         </div>
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_CountryOfResidence' id='RF_CountryOfResidence' value={FormData['RF_CountryOfResidence']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_CountryOfResidence' id='RF_CountryOfResidence' value={FormData['RF_CountryOfResidence']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Afghanistan</option>
                                 <option value="2">Albania</option>
@@ -2125,7 +2125,7 @@ import axios from 'axios'
                             <label className="col-form-label">Nationality</label>
                         </div>
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Nationality' id='RF_Nationality' value={FormData['RF_Nationality']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Nationality' id='RF_Nationality' value={FormData['RF_Nationality']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Afghanistan</option>
                                 <option value="2">Albania</option>
@@ -2539,7 +2539,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Different_Nationality' id='RF_Different_Nationality' value={FormData['RF_Different_Nationality']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Different_Nationality' id='RF_Different_Nationality' value={FormData['RF_Different_Nationality']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
@@ -2562,7 +2562,7 @@ import axios from 'axios'
                                     </div>
 
                                     <div className="col-2">
-                                    <select className="text-start form-select" name='RF_CountryOfTax' id='RF_CountryOfTax' value={FormData['RF_CountryOfTax']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                                    <select disabled className="text-start form-select" name='RF_CountryOfTax' id='RF_CountryOfTax' value={FormData['RF_CountryOfTax']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                     <option value="0" selected></option>
                                     <option value="1">Afghanistan</option>
                                     <option value="2">Albania</option>
@@ -2982,7 +2982,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Industry' id='RF_Industry' value={FormData['RF_Industry']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Industry' id='RF_Industry' value={FormData['RF_Industry']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Administrative and support services</option>
                                 <option value="2">Adult Entertainment</option>
@@ -3146,7 +3146,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_SourceOfFunds'  id='RF_SourceOfFunds' value={FormData['RF_SourceOfFunds']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_SourceOfFunds'  id='RF_SourceOfFunds' value={FormData['RF_SourceOfFunds']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Allowance</option>
                                 <option value="2">Bonus</option>
@@ -3292,7 +3292,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_RelationshipToClient' id='RF_RelationshipToClient' value={FormData['RF_RelationshipToClient']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_RelationshipToClient' id='RF_RelationshipToClient' value={FormData['RF_RelationshipToClient']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Annuitant</option>
                                 <option value="2">Applicant</option>
@@ -3410,7 +3410,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_CountryOfRegistration' id='RF_CountryOfRegistration' value={FormData['RF_CountryOfRegistration']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_CountryOfRegistration' id='RF_CountryOfRegistration' value={FormData['RF_CountryOfRegistration']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Afghanistan</option>
                                 <option value="2">Albania</option>
@@ -3826,7 +3826,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_CountryOfOperation' id='RF_CountryOfOperation' value={FormData['RF_CountryOfOperation']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_CountryOfOperation' id='RF_CountryOfOperation' value={FormData['RF_CountryOfOperation']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Afghanistan</option>
                                 <option value="2">Albania</option>
@@ -4241,7 +4241,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Type_Legal_Entity' id='RF_Type_Legal_Entity' value={FormData['RF_RelationshipToClient']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Type_Legal_Entity' id='RF_Type_Legal_Entity' value={FormData['RF_RelationshipToClient']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Body corporate</option>
                                 <option value="2">Charitable organization</option>
@@ -4363,7 +4363,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Industry' id='RF_Industry' value={FormData['RF_Industry']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Industry' id='RF_Industry' value={FormData['RF_Industry']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Administrative and support services</option>
                                 <option value="2">Adult Entertainment</option>
@@ -4529,7 +4529,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_SourceOfFunds' id='RF_SourceOfFunds' value={FormData['RF_SourceOfFunds']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_SourceOfFunds' id='RF_SourceOfFunds' value={FormData['RF_SourceOfFunds']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Allowance</option>
                                 <option value="2">Bonus</option>
@@ -4675,7 +4675,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Client_Relationship' id='RF_Client_Relationship' value={FormData['RF_RelationshipToClient']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Client_Relationship' id='RF_Client_Relationship' value={FormData['RF_RelationshipToClient']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Annuitant</option>
                                 <option value="2">Applicant</option>
@@ -4880,7 +4880,7 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <select className="text-start form-select" name='RF_Product_Name' id='RF_Product_Name' value={FormData['RF_Product_Name']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                    <select disabled className="text-start form-select" name='RF_Product_Name' id='RF_Product_Name' value={FormData['RF_Product_Name']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                         <option value="0" selected></option>
                         <option value="1">Access to funds or benefits restricted to specific contractual events (specified termination, uncertain insured event)</option>
                         <option value="2">Access to primary benefits only at claim stage</option>
@@ -5004,7 +5004,7 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <input spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' className="form-control" placeholder=""  aria-describedby="" />
+                    <input disabled  spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' className="form-control" placeholder=""  aria-describedby="" />
                 </div>
 
 
@@ -5174,7 +5174,7 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <select className="text-start form-select" name='RF_Transaction_Flow' id='RF_Transaction_Flow'  value={FormData['RF_Transaction_Flow']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                    <select disabled className="text-start form-select" name='RF_Transaction_Flow' id='RF_Transaction_Flow'  value={FormData['RF_Transaction_Flow']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                         <option value="0" selected></option>
                         <option value="1">Inflow</option>
                         <option value="2">Outflow</option>
@@ -5203,7 +5203,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Transaction_Method' id='RF_Transaction_Method' value={FormData['RF_Transaction_Method']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Transaction_Method' id='RF_Transaction_Method' value={FormData['RF_Transaction_Method']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Bank Transfer</option>
                                 <option value="2">Cash</option>
@@ -5306,7 +5306,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Transaction_Reason' id='RF_Transaction_Reason' value={FormData['RF_Transaction_Reason']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Transaction_Reason' id='RF_Transaction_Reason' value={FormData['RF_Transaction_Reason']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Additional Premium</option>
                                 <option value="2">Cession</option>
@@ -5391,7 +5391,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_High_Transaction_Reason' id='RF_High_Transaction_Reason' value={FormData['RF_High_Transaction_Reason']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_High_Transaction_Reason' id='RF_High_Transaction_Reason' value={FormData['RF_High_Transaction_Reason']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>     
@@ -5460,7 +5460,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Transaction_Frequency' id='RF_Transaction_Frequency' value={FormData['RF_Transaction_Frequency']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Transaction_Frequency' id='RF_Transaction_Frequency' value={FormData['RF_Transaction_Frequency']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Ad hoc</option>
                                 <option value="2">Lump sum and recurring combination</option>  
@@ -5536,7 +5536,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <input spellCheck="true" id="RF_Transaction_Value" name='RF_Transaction_Value' className="form-control" aria-describedby="" />
+                            <input disabled  spellCheck="true" id="RF_Transaction_Value" name='RF_Transaction_Value' className="form-control" aria-describedby="" />
                         </div>
 
                         <div className="col-1">       
@@ -5544,7 +5544,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <input spellCheck="true" id="RF_Currency_Value" name='RF_Currency_Value' className="form-control" aria-describedby="" />
+                            <input disabled  spellCheck="true" id="RF_Currency_Value" name='RF_Currency_Value' className="form-control" aria-describedby="" />
                         </div>
 
                         <div className="col-1">       
@@ -5570,7 +5570,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Transaction_Geography' id='RF_Transaction_Geography' value={FormData['RF_Transaction_Geography']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Transaction_Geography' id='RF_Transaction_Geography' value={FormData['RF_Transaction_Geography']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Cross Border</option>
                                 <option value="2">In-country</option>  
@@ -5650,7 +5650,7 @@ import axios from 'axios'
                                     </div>
 
                                 <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Funds_Jurisdiction' value={FormData['RF_Funds_Jurisdiction']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                                    <select disabled className="text-start form-select" name='RF_Funds_Jurisdiction' value={FormData['RF_Funds_Jurisdiction']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                         <option value="0" selected></option>
                                         <option value="1">Afghanistan</option>
                                         <option value="2">Albania</option>
@@ -6068,7 +6068,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Delivery_Channel' id='RF_Delivery_Channel' value={FormData['RF_Delivery_Channel']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Delivery_Channel' id='RF_Delivery_Channel' value={FormData['RF_Delivery_Channel']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Combination of delivery channels</option>
                                 <option value="2">Digital / Technology</option>  
@@ -6164,7 +6164,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Linked_Party_Acting' id='RF_Linked_Party_Acting' value={FormData['RF_Linked_Party_Acting']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Linked_Party_Acting' id='RF_Linked_Party_Acting' value={FormData['RF_Linked_Party_Acting']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Not applicable</option>
                                 <option value="2">No</option>  
@@ -6238,7 +6238,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Linked_Party_Paying' id='RF_Linked_Party_Paying' value={FormData['RF_Linked_Party_Paying']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Linked_Party_Paying' id='RF_Linked_Party_Paying' value={FormData['RF_Linked_Party_Paying']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Not applicable</option>
                                 <option value="2">Paying funds</option>  
@@ -6458,7 +6458,7 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <select className="text-start form-select" name='RF_Client_Match' id='RF_Client_Match'  value={FormData['RF_Client_Match']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                    <select disabled className="text-start form-select" name='RF_Client_Match' id='RF_Client_Match'  value={FormData['RF_Client_Match']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                         <option value="0" selected></option>
                         <option value="1">Adverse Media</option>
                         <option value="2">Enforcement,SIP,SIE</option>
@@ -6594,7 +6594,7 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <select className="text-start form-select" name='RF_Client_Beneficiaries' id='RF_Client_Beneficiaries' value={FormData['RF_Client_Beneficiaries']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                    <select disabled className="text-start form-select" name='RF_Client_Beneficiaries' id='RF_Client_Beneficiaries' value={FormData['RF_Client_Beneficiaries']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                         <option value="0" selected></option>
                         <option value="1">Yes</option>
                         <option value="2">No</option>
@@ -6662,7 +6662,7 @@ import axios from 'axios'
                                  </div>
 
                                  <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Adjust_Risk1' id='RF_Adjust_Risk1' value={FormData['RF_Adjust_Risk1']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                                    <select disabled className="text-start form-select" name='RF_Adjust_Risk1' id='RF_Adjust_Risk1' value={FormData['RF_Adjust_Risk1']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                                         <option value="0" selected></option>
                                         <option value="1">Low</option>
                                         <option value="2">Medium</option>
@@ -6677,7 +6677,7 @@ import axios from 'axios'
                                  </div>
 
                                  <div className="col-2">
-                                 <input spellCheck="true" id="RF_Name" name='RF_Name' className="form-control" value={FormData['RF_Name']}  onChange={(e) => {onChange(e)}} placeholder=""  aria-describedby="" />
+                                 <input disabled  spellCheck="true" id="RF_Name" name='RF_Name' className="form-control" value={FormData['RF_Name']}  onChange={(e) => {onChange(e)}} placeholder=""  aria-describedby="" />
                                  </div>
 
                                  <hr/>
@@ -6686,7 +6686,7 @@ import axios from 'axios'
                                  </div>
 
                                  <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Client_Relationship' id='RF_Client_Relationship' value={FormData['RF_Client_Relationship']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                                    <select disabled className="text-start form-select" name='RF_Client_Relationship' id='RF_Client_Relationship' value={FormData['RF_Client_Relationship']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                                         <option value="0" selected></option>
                                         <option value="1">Beneficial owner</option>
                                         <option value="2">Beneficiary</option>
@@ -6722,7 +6722,7 @@ import axios from 'axios'
                                  </div>
 
                                  <div className="col-2">
-                                    <input spellCheck="true" id="RF_ID" name='RF_ID' className="form-control" value={FormData['RF_ID']} onChange={(e) => {onChange(e)}} placeholder=""  aria-describedby="" />
+                                    <input disabled  spellCheck="true" id="RF_ID" name='RF_ID' className="form-control" value={FormData['RF_ID']} onChange={(e) => {onChange(e)}} placeholder=""  aria-describedby="" />
                                  </div>
                                  
                                  <hr/>
@@ -6731,7 +6731,7 @@ import axios from 'axios'
                                  </div>
 
                                  <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Linked_Party' id='RF_Linked_Party' value={FormData['RF_Linked_Party']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                                    <select disabled className="text-start form-select" name='RF_Linked_Party' id='RF_Linked_Party' value={FormData['RF_Linked_Party']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                                         <option value="0" selected></option>
                                         <option value="1">Adverse Media</option>
                                         <option value="2">Enforcement,SIP,SIE</option>
@@ -6860,7 +6860,7 @@ import axios from 'axios'
                                  </div>
 
                                  <div className="col-2">
-                                    <select className="text-start form-select" name='RF_RCA' id='RF_RCA' value={FormData['RF_RCA']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                                    <select disabled className="text-start form-select" name='RF_RCA' id='RF_RCA' value={FormData['RF_RCA']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                                         <option value="0" selected></option>
                                         <option value="1">Yes</option>
                                         <option value="2">No</option>
@@ -6924,7 +6924,7 @@ import axios from 'axios'
                                  </div>
 
                                  <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Birth_Country' id='RF_Birth_Country' value={FormData['RF_Birth_Country']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                                    <select disabled className="text-start form-select" name='RF_Birth_Country' id='RF_Birth_Country' value={FormData['RF_Birth_Country']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                         <option value="0" selected></option>
                                         <option value="1">Afghanistan</option>
                                         <option value="2">Albania</option>
@@ -7336,7 +7336,7 @@ import axios from 'axios'
                                  </div>
 
                                  <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Residence_Country' id='RF_Residence_Country' value={FormData['RF_Residence_Country']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                                    <select disabled className="text-start form-select" name='RF_Residence_Country' id='RF_Residence_Country' value={FormData['RF_Residence_Country']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                         <option value="0" selected></option>
                                         <option value="1">Afghanistan</option>
                                         <option value="2">Albania</option>
@@ -7749,7 +7749,7 @@ import axios from 'axios'
                                  </div>
 
                                  <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Nationality1' id='RF_Nationality1' value={FormData['RF_Nationality1']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                                    <select disabled className="text-start form-select" name='RF_Nationality1' id='RF_Nationality1' value={FormData['RF_Nationality1']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                         <option value="0" selected></option>
                                         <option value="1">Afghanistan</option>
                                         <option value="2">Albania</option>
@@ -8262,7 +8262,7 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-4">
-                    <input spellCheck="true" id="RF_Control1" name='RF_Control1' className="form-control" value={FormData['RF_Control1']} onChange={(e) => {onChange(e)}} style={{height:"80px"}} placeholder=""  aria-describedby="" />
+                    <input disabled  spellCheck="true" id="RF_Control1" name='RF_Control1' className="form-control" value={FormData['RF_Control1']} onChange={(e) => {onChange(e)}} style={{height:"80px"}} placeholder=""  aria-describedby="" />
                  </div>
 
                  <div className="col-2">
@@ -8270,7 +8270,7 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <select className="text-start form-select" name='RF_Another_Control1' id='RF_Another_Control1' value={FormData['RF_Another_Control1']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                    <select disabled className="text-start form-select" name='RF_Another_Control1' id='RF_Another_Control1' value={FormData['RF_Another_Control1']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                         <option value="0" selected></option>
                         <option value="1">Yes</option>
                         <option value="2">No</option>
@@ -8295,7 +8295,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-4">
-                            <input spellCheck="true" id="RF_Control2" name='RF_Control2' className="form-control" style={{height:"80px"}}  value={FormData['RF_Control2']} onChange={(e) => {onChange(e)}} placeholder=""  aria-describedby="" />
+                            <input disabled  spellCheck="true" id="RF_Control2" name='RF_Control2' className="form-control" style={{height:"80px"}}  value={FormData['RF_Control2']} onChange={(e) => {onChange(e)}} placeholder=""  aria-describedby="" />
                         </div>
 
                         <div className="col-2">
@@ -8303,7 +8303,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-2">
-                            <select className="text-start form-select" name='RF_Another_Control2' id='RF_Another_Control2' value={FormData['RF_Another_Control2']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                            <select disabled className="text-start form-select" name='RF_Another_Control2' id='RF_Another_Control2' value={FormData['RF_Another_Control2']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected></option>
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
@@ -8328,7 +8328,7 @@ import axios from 'axios'
                                     </div>
 
                                     <div className="col-4">
-                                        <input spellCheck="true" id="RF_Control3" name='RF_Control3' value={FormData['RF_Control3']} onChange={(e)=>{onChange(e)}} className="form-control" style={{height:"80px"}} placeholder=""  aria-describedby="" />
+                                        <input disabled  spellCheck="true" id="RF_Control3" name='RF_Control3' value={FormData['RF_Control3']} onChange={(e)=>{onChange(e)}} className="form-control" style={{height:"80px"}} placeholder=""  aria-describedby="" />
                                     </div>
 
                                 </>)
