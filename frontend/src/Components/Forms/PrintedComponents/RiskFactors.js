@@ -1,3 +1,4 @@
+
 import { useLocation } from 'react-router-dom';
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
@@ -443,7 +444,7 @@ import axios from 'axios'
  
     
         })    
-        
+        var val1;
         const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
 
         const createRFForm = async(data) => {
@@ -474,6 +475,8 @@ import axios from 'axios'
             }
           }
 
+            const [SuccessMessage, setSuccessMessage] = useState("")
+            const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
     useEffect(() => {
         createRFForm(FormData)
         // setInterval(updateIPForm, 20000);
@@ -485,7 +488,8 @@ import axios from 'axios'
 
     return(
     <>
-        <br/>
+    
+    
          <div class="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>RISK FACTORS</b></div>
         <hr/>
 
@@ -757,9 +761,411 @@ import axios from 'axios'
                 <div className="col-1">
                     <label className="col-form-label"></label>
                 </div>
-
+                
                 <div className="col-2">
-                    <label className="col-form-label"></label>
+                {(() => { 
+                                var val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11
+                                
+                                
+                                if(FormData['RF_Occupation']==="1" || FormData['RF_Occupation']==="2" || FormData['RF_Occupation']==="3" || FormData['RF_Occupation']==="5")
+                                {
+                                    val1=1
+                                    
+                                } 
+                                
+                                else if(FormData['RF_Occupation']==="4" || FormData['RF_Occupation']==="6")
+                                {
+                                    val1=3
+                                   
+                                }
+                               
+
+                                if(
+                                    FormData['RF_CountryOfBirth']==="1" || FormData['RF_CountryOfBirth']==="2" || FormData['RF_CountryOfBirth']==="3" || FormData['RF_CountryOfBirth']==="4" || FormData['RF_CountryOfBirth']==="6" || FormData['RF_CountryOfBirth']==="8" || FormData['RF_CountryOfBirth']==="10" || FormData['RF_CountryOfBirth']==="13" || FormData['RF_CountryOfBirth']==="16" || FormData['RF_CountryOfBirth']==="17" || FormData['RF_CountryOfBirth']==="19" || FormData['RF_CountryOfBirth']==="20" || FormData['RF_CountryOfBirth']==="24"
+                                 || FormData['RF_CountryOfBirth']==="27" || FormData['RF_CountryOfBirth']==="28" || FormData['RF_CountryOfBirth']==="29" || FormData['RF_CountryOfBirth']==="30" || FormData['RF_CountryOfBirth']==="31" || FormData['RF_CountryOfBirth']==="32" || FormData['RF_CountryOfBirth']==="33" || FormData['RF_CountryOfBirth']==="36" || FormData['RF_CountryOfBirth']==="37" || FormData['RF_CountryOfBirth']==="39" || FormData['RF_CountryOfBirth']==="41" || FormData['RF_CountryOfBirth']==="42" || FormData['RF_CountryOfBirth']==="43"
+                                 || FormData['RF_CountryOfBirth']==="46" || FormData['RF_CountryOfBirth']==="47" || FormData['RF_CountryOfBirth']==="48" || FormData['RF_CountryOfBirth']==="49" || FormData['RF_CountryOfBirth']==="50" || FormData['RF_CountryOfBirth']==="51" || FormData['RF_CountryOfBirth']==="52" || FormData['RF_CountryOfBirth']==="53" || FormData['RF_CountryOfBirth']==="55" || FormData['RF_CountryOfBirth']==="58" || FormData['RF_CountryOfBirth']==="62" || FormData['RF_CountryOfBirth']==="64" || FormData['RF_CountryOfBirth']==="65" || FormData['RF_CountryOfBirth']==="66" 
+                                 || FormData['RF_CountryOfBirth']==="67" || FormData['RF_CountryOfBirth']==="68" || FormData['RF_CountryOfBirth']==="69" || FormData['RF_CountryOfBirth']==="70" || FormData['RF_CountryOfBirth']==="71" || FormData['RF_CountryOfBirth']==="72" || FormData['RF_CountryOfBirth']==="73" || FormData['RF_CountryOfBirth']==="74" || FormData['RF_CountryOfBirth']==="82" || FormData['RF_CountryOfBirth']==="85" || FormData['RF_CountryOfBirth']==="86" || FormData['RF_CountryOfBirth']==="90" || FormData['RF_CountryOfBirth']==="91" || FormData['RF_CountryOfBirth']==="92" || FormData['RF_CountryOfBirth']==="93"
+                                 || FormData['RF_CountryOfBirth']==="94" || FormData['RF_CountryOfBirth']==="95" || FormData['RF_CountryOfBirth']==="96" || FormData['RF_CountryOfBirth']==="97" || FormData['RF_CountryOfBirth']==="98" || FormData['RF_CountryOfBirth']==="99" || FormData['RF_CountryOfBirth']==="100" || FormData['RF_CountryOfBirth']==="102" || FormData['RF_CountryOfBirth']==="103"
+                                 
+                                 || FormData['RF_CountryOfBirth']==="109"  || FormData['RF_CountryOfBirth']==="112"  || FormData['RF_CountryOfBirth']==="115"  || FormData['RF_CountryOfBirth']==="116"  || FormData['RF_CountryOfBirth']==="117"  || FormData['RF_CountryOfBirth']==="121"  || FormData['RF_CountryOfBirth']==="123"  || FormData['RF_CountryOfBirth']==="124"
+                                 || FormData['RF_CountryOfBirth']==="126"  || FormData['RF_CountryOfBirth']==="127"  || FormData['RF_CountryOfBirth']==="128"  || FormData['RF_CountryOfBirth']==="129"  || FormData['RF_CountryOfBirth']==="134"  || FormData['RF_CountryOfBirth']==="135"  || FormData['RF_CountryOfBirth']==="136"
+                                 || FormData['RF_CountryOfBirth']==="139"  || FormData['RF_CountryOfBirth']==="143"  || FormData['RF_CountryOfBirth']==="145"  || FormData['RF_CountryOfBirth']==="146"  || FormData['RF_CountryOfBirth']==="148"  || FormData['RF_CountryOfBirth']==="150" || FormData['RF_CountryOfBirth']==="151"
+                                 || FormData['RF_CountryOfBirth']==="152" || FormData['RF_CountryOfBirth']==="153" || FormData['RF_CountryOfBirth']==="154" || FormData['RF_CountryOfBirth']==="155" || FormData['RF_CountryOfBirth']==="158" || FormData['RF_CountryOfBirth']==="160" || FormData['RF_CountryOfBirth']==="162" 
+                                 || FormData['RF_CountryOfBirth']==="163" || FormData['RF_CountryOfBirth']==="164" || FormData['RF_CountryOfBirth']==="165" || FormData['RF_CountryOfBirth']==="166" || FormData['RF_CountryOfBirth']==="168" || FormData['RF_CountryOfBirth']==="170" || FormData['RF_CountryOfBirth']==="172" || FormData['RF_CountryOfBirth']==="173" || FormData['RF_CountryOfBirth']==="174" || FormData['RF_CountryOfBirth']==="175" || FormData['RF_CountryOfBirth']==="176" || FormData['RF_CountryOfBirth']==="177"
+                                 || FormData['RF_CountryOfBirth']==="186" || FormData['RF_CountryOfBirth']==="187" || FormData['RF_CountryOfBirth']==="188" || FormData['RF_CountryOfBirth']==="190" || FormData['RF_CountryOfBirth']==="191" || FormData['RF_CountryOfBirth']==="193" || FormData['RF_CountryOfBirth']==="195"
+                                 || FormData['RF_CountryOfBirth']==="197" || FormData['RF_CountryOfBirth']==="198" || FormData['RF_CountryOfBirth']==="200" || FormData['RF_CountryOfBirth']==="202" || FormData['RF_CountryOfBirth']==="203" || FormData['RF_CountryOfBirth']==="206" || FormData['RF_CountryOfBirth']==="208" || FormData['RF_CountryOfBirth']==="209"
+                                 || FormData['RF_CountryOfBirth']==="211" || FormData['RF_CountryOfBirth']==="212" || FormData['RF_CountryOfBirth']==="213" || FormData['RF_CountryOfBirth']==="214" || FormData['RF_CountryOfBirth']==="219" || FormData['RF_CountryOfBirth']==="220" || FormData['RF_CountryOfBirth']==="221" || FormData['RF_CountryOfBirth']==="222" || FormData['RF_CountryOfBirth']==="223" || FormData['RF_CountryOfBirth']==="224"
+                                 || FormData['RF_CountryOfBirth']==="226" || FormData['RF_CountryOfBirth']==="230" || FormData['RF_CountryOfBirth']==="232" || FormData['RF_CountryOfBirth']==="233" || FormData['RF_CountryOfBirth']==="236" || FormData['RF_CountryOfBirth']==="237" || FormData['RF_CountryOfBirth']==="238" || FormData['RF_CountryOfBirth']==="239")
+                                {
+                                    val2=9
+                                    
+                                }
+
+                                else if(FormData['RF_CountryOfBirth']==="5" || FormData['RF_CountryOfBirth']==="7" || FormData['RF_CountryOfBirth']==="9" || FormData['RF_CountryOfBirth']==="12" || FormData['RF_CountryOfBirth']==="25" || FormData['RF_CountryOfBirth']==="34" || FormData['RF_CountryOfBirth']==="35" || FormData['RF_CountryOfBirth']==="61" || FormData['RF_CountryOfBirth']==="76" || FormData['RF_CountryOfBirth']==="84" || FormData['RF_CountryOfBirth']==="88"
+                                
+                                || FormData['RF_CountryOfBirth']==="114" || FormData['RF_CountryOfBirth']==="130" || FormData['RF_CountryOfBirth']==="132" || FormData['RF_CountryOfBirth']==="142" || FormData['RF_CountryOfBirth']==="149" || FormData['RF_CountryOfBirth']==="159" || FormData['RF_CountryOfBirth']==="161" 
+                                || FormData['RF_CountryOfBirth']==="167" || FormData['RF_CountryOfBirth']==="194" || FormData['RF_CountryOfBirth']==="215" || FormData['RF_CountryOfBirth']==="216")
+                            {
+                                val2=3
+                            }
+
+                            else if(FormData['RF_CountryOfBirth']==="11" || FormData['RF_CountryOfBirth']==="14" || FormData['RF_CountryOfBirth']==="15" || FormData['RF_CountryOfBirth']==="18" || FormData['RF_CountryOfBirth']==="22" || FormData['RF_CountryOfBirth']==="23" || FormData['RF_CountryOfBirth']==="26" || FormData['RF_CountryOfBirth']==="30" || FormData['RF_CountryOfBirth']==="38" || FormData['RF_CountryOfBirth']==="40"
+                                || FormData['RF_CountryOfBirth']==="44" || FormData['RF_CountryOfBirth']==="45" || FormData['RF_CountryOfBirth']==="54" || FormData['RF_CountryOfBirth']==="56" || FormData['RF_CountryOfBirth']==="59" || FormData['RF_CountryOfBirth']==="60" || FormData['RF_CountryOfBirth']==="63" || FormData['RF_CountryOfBirth']==="70" || FormData['RF_CountryOfBirth']==="75" || FormData['RF_CountryOfBirth']==="77" 
+                                || FormData['RF_CountryOfBirth']==="78" || FormData['RF_CountryOfBirth']==="79" || FormData['RF_CountryOfBirth']==="80" || FormData['RF_CountryOfBirth']==="81" || FormData['RF_CountryOfBirth']==="83" || FormData['RF_CountryOfBirth']==="87" || FormData['RF_CountryOfBirth']==="89" || FormData['RF_CountryOfBirth']==="96" || FormData['RF_CountryOfBirth']==="97" || FormData['RF_CountryOfBirth']==="98" 
+                                || FormData['RF_CountryOfBirth']==="99" || FormData['RF_CountryOfBirth']==="100" || FormData['RF_CountryOfBirth']==="101" || FormData['RF_CountryOfBirth']==="102" || FormData['RF_CountryOfBirth']==="104" || FormData['RF_CountryOfBirth']==="105"
+                                || FormData['RF_CountryOfBirth']==="108" || FormData['RF_CountryOfBirth']==="110" || FormData['RF_CountryOfBirth']==="111" || FormData['RF_CountryOfBirth']==="113" || FormData['RF_CountryOfBirth']==="118" || FormData['RF_CountryOfBirth']==="120" || FormData['RF_CountryOfBirth']==="125"
+                                || FormData['RF_CountryOfBirth']==="131" || FormData['RF_CountryOfBirth']==="133" ||  FormData['RF_CountryOfBirth']==="137" || FormData['RF_CountryOfBirth']==="138" || FormData['RF_CountryOfBirth']==="140" || FormData['RF_CountryOfBirth']==="141"
+                                || FormData['RF_CountryOfBirth']==="144" || FormData['RF_CountryOfBirth']==="147" || FormData['RF_CountryOfBirth']==="156" || FormData['RF_CountryOfBirth']==="157" || FormData['RF_CountryOfBirth']==="169" || FormData['RF_CountryOfBirth']==="171" || FormData['RF_CountryOfBirth']==="178" || FormData['RF_CountryOfBirth']==="179" || FormData['RF_CountryOfBirth']==="180" || FormData['RF_CountryOfBirth']==="181" || FormData['RF_CountryOfBirth']==="182" || FormData['RF_CountryOfBirth']==="183"
+                                || FormData['RF_CountryOfBirth']==="185" || FormData['RF_CountryOfBirth']==="189" || FormData['RF_CountryOfBirth']==="192" || FormData['RF_CountryOfBirth']==="196" || FormData['RF_CountryOfBirth']==="199" || FormData['RF_CountryOfBirth']==="201" || FormData['RF_CountryOfBirth']==="204" || FormData['RF_CountryOfBirth']==="205"
+                                || FormData['RF_CountryOfBirth']==="207" || FormData['RF_CountryOfBirth']==="210" || FormData['RF_CountryOfBirth']==="218" || FormData['RF_CountryOfBirth']==="225" || FormData['RF_CountryOfBirth']==="231" || FormData['RF_CountryOfBirth']==="234" || FormData['RF_CountryOfBirth']==="235" || FormData['RF_CountryOfBirth']==="237" || FormData['RF_CountryOfBirth']==="238")
+                            {
+                                val2=6
+                            }
+
+                            else if(FormData['RF_CountryOfBirth']==="21" || FormData['RF_CountryOfBirth']==="57" || FormData['RF_CountryOfBirth']==="106" || FormData['RF_CountryOfBirth']==="107" || FormData['RF_CountryOfBirth']==="119" || FormData['RF_CountryOfBirth']==="187" || FormData['RF_CountryOfBirth']==="217")
+                            {
+                                val2=12
+                            }
+    
+                            if(FormData['RF_CountryOfResidence']==1 || FormData['RF_CountryOfResidence']==2 || FormData['RF_CountryOfResidence']==3 || FormData['RF_CountryOfResidence']==4 || FormData['RF_CountryOfResidence']==6 || FormData['RF_CountryOfResidence']==8 || FormData['RF_CountryOfResidence']==10 || FormData['RF_CountryOfResidence']==13 || FormData['RF_CountryOfResidence']==16 || FormData['RF_CountryOfResidence']==17 || FormData['RF_CountryOfResidence']==19 || FormData['RF_CountryOfResidence']==20 || FormData['RF_CountryOfResidence']==24
+                            || FormData['RF_CountryOfResidence']==27 || FormData['RF_CountryOfResidence']==28 || FormData['RF_CountryOfResidence']==29 || FormData['RF_CountryOfResidence']==30 || FormData['RF_CountryOfResidence']==31 || FormData['RF_CountryOfResidence']==32 || FormData['RF_CountryOfResidence']==33 || FormData['RF_CountryOfResidence']==36 || FormData['RF_CountryOfResidence']==37 || FormData['RF_CountryOfResidence']==39 || FormData['RF_CountryOfResidence']==41 || FormData['RF_CountryOfResidence']==42 || FormData['RF_CountryOfResidence']==43
+                            || FormData['RF_CountryOfResidence']==46 || FormData['RF_CountryOfResidence']==47 || FormData['RF_CountryOfResidence']==48 || FormData['RF_CountryOfResidence']==49 || FormData['RF_CountryOfResidence']==50 || FormData['RF_CountryOfResidence']==51 || FormData['RF_CountryOfResidence']==52 || FormData['RF_CountryOfResidence']==53 || FormData['RF_CountryOfResidence']==55 || FormData['RF_CountryOfResidence']==58 || FormData['RF_CountryOfResidence']==62 || FormData['RF_CountryOfResidence']==64 || FormData['RF_CountryOfResidence']==65 || FormData['RF_CountryOfResidence']==66 
+                            || FormData['RF_CountryOfResidence']==67 || FormData['RF_CountryOfResidence']==68 || FormData['RF_CountryOfResidence']==69 || FormData['RF_CountryOfResidence']==70 || FormData['RF_CountryOfResidence']==71 || FormData['RF_CountryOfResidence']==72 || FormData['RF_CountryOfResidence']==73 || FormData['RF_CountryOfResidence']==74 || FormData['RF_CountryOfResidence']==82 || FormData['RF_CountryOfResidence']==85 || FormData['RF_CountryOfResidence']==86 || FormData['RF_CountryOfResidence']==90 || FormData['RF_CountryOfResidence']==91 || FormData['RF_CountryOfResidence']==92 || FormData['RF_CountryOfResidence']==93
+                            || FormData['RF_CountryOfResidence']==94 || FormData['RF_CountryOfResidence']==95 || FormData['RF_CountryOfResidence']==96 || FormData['RF_CountryOfResidence']==97 || FormData['RF_CountryOfResidence']==98 || FormData['RF_CountryOfResidence']==99 || FormData['RF_CountryOfResidence']==100 || FormData['RF_CountryOfResidence']==102 || FormData['RF_CountryOfResidence']==103
+                            
+                            || FormData['RF_CountryOfResidence']==109  || FormData['RF_CountryOfResidence']==112  || FormData['RF_CountryOfResidence']==115  || FormData['RF_CountryOfResidence']==116  || FormData['RF_CountryOfResidence']==117  || FormData['RF_CountryOfResidence']==121  || FormData['RF_CountryOfResidence']==123  || FormData['RF_CountryOfResidence']==124
+                            || FormData['RF_CountryOfResidence']==126  || FormData['RF_CountryOfResidence']==127  || FormData['RF_CountryOfResidence']==128  || FormData['RF_CountryOfResidence']==129  || FormData['RF_CountryOfResidence']==134  || FormData['RF_CountryOfResidence']==135  || FormData['RF_CountryOfResidence']==136
+                            || FormData['RF_CountryOfResidence']==139  || FormData['RF_CountryOfResidence']==143  || FormData['RF_CountryOfResidence']==145  || FormData['RF_CountryOfResidence']==146  || FormData['RF_CountryOfResidence']==148  || FormData['RF_CountryOfResidence']==150 || FormData['RF_CountryOfResidence']==151
+                            || FormData['RF_CountryOfResidence']==152 || FormData['RF_CountryOfResidence']==153 || FormData['RF_CountryOfResidence']==154 || FormData['RF_CountryOfResidence']==155 || FormData['RF_CountryOfResidence']==158 || FormData['RF_CountryOfResidence']==160 || FormData['RF_CountryOfResidence']==162 
+                            || FormData['RF_CountryOfResidence']==163 || FormData['RF_CountryOfResidence']==164 || FormData['RF_CountryOfResidence']==165 || FormData['RF_CountryOfResidence']==166 || FormData['RF_CountryOfResidence']==168 || FormData['RF_CountryOfResidence']==170 || FormData['RF_CountryOfResidence']==172 || FormData['RF_CountryOfResidence']==173 || FormData['RF_CountryOfResidence']==174 || FormData['RF_CountryOfResidence']==175 || FormData['RF_CountryOfResidence']==176 || FormData['RF_CountryOfResidence']==177
+                            || FormData['RF_CountryOfResidence']==186 || FormData['RF_CountryOfResidence']==187 || FormData['RF_CountryOfResidence']==188 || FormData['RF_CountryOfResidence']==190 || FormData['RF_CountryOfResidence']==191 || FormData['RF_CountryOfResidence']==193 || FormData['RF_CountryOfResidence']==195
+                            || FormData['RF_CountryOfResidence']==197 || FormData['RF_CountryOfResidence']==198 || FormData['RF_CountryOfResidence']==200 || FormData['RF_CountryOfResidence']==202 || FormData['RF_CountryOfResidence']==203 || FormData['RF_CountryOfResidence']==206 || FormData['RF_CountryOfResidence']==208 || FormData['RF_CountryOfResidence']==209
+                            || FormData['RF_CountryOfResidence']==211 || FormData['RF_CountryOfResidence']==212 || FormData['RF_CountryOfResidence']==213 || FormData['RF_CountryOfResidence']==214 || FormData['RF_CountryOfResidence']==219 || FormData['RF_CountryOfResidence']==220 || FormData['RF_CountryOfResidence']==221 || FormData['RF_CountryOfResidence']==222 || FormData['RF_CountryOfResidence']==223 || FormData['RF_CountryOfResidence']==224
+                            || FormData['RF_CountryOfResidence']==226 || FormData['RF_CountryOfResidence']==230 || FormData['RF_CountryOfResidence']==232 || FormData['RF_CountryOfResidence']==233 || FormData['RF_CountryOfResidence']==236 || FormData['RF_CountryOfResidence']==237 || FormData['RF_CountryOfResidence']==238 || FormData['RF_CountryOfResidence']==239)
+                        {
+                           val3=9
+                        }
+
+                        else if(FormData['RF_CountryOfResidence']==5 || FormData['RF_CountryOfResidence']==7 || FormData['RF_CountryOfResidence']==9 || FormData['RF_CountryOfResidence']==12 || FormData['RF_CountryOfResidence']==25 || FormData['RF_CountryOfResidence']==34 || FormData['RF_CountryOfResidence']==35 || FormData['RF_CountryOfResidence']==61 || FormData['RF_CountryOfResidence']==76 || FormData['RF_CountryOfResidence']==84|| FormData['RF_CountryOfResidence']==88
+                            
+                            || FormData['RF_CountryOfResidence']==114 || FormData['RF_CountryOfResidence']==130 || FormData['RF_CountryOfResidence']==132 || FormData['RF_CountryOfResidence']==142 || FormData['RF_CountryOfResidence']==149 || FormData['RF_CountryOfResidence']==159 || FormData['RF_CountryOfResidence']==161 
+                            || FormData['RF_CountryOfResidence']==167 || FormData['RF_CountryOfResidence']==194 || FormData['RF_CountryOfResidence']==215 || FormData['RF_CountryOfResidence']==216)
+                        {
+                            val3=3
+                        }
+
+                        else if(FormData['RF_CountryOfResidence']==11 || FormData['RF_CountryOfResidence']==14 || FormData['RF_CountryOfResidence']==15 || FormData['RF_CountryOfResidence']==18 || FormData['RF_CountryOfResidence']==22 || FormData['RF_CountryOfResidence']==23 || FormData['RF_CountryOfResidence']==26 || FormData['RF_CountryOfResidence']==30 || FormData['RF_CountryOfResidence']==38 || FormData['RF_CountryOfResidence']==40
+                            || FormData['RF_CountryOfResidence']==44 || FormData['RF_CountryOfResidence']==45 || FormData['RF_CountryOfResidence']==54 || FormData['RF_CountryOfResidence']==56 || FormData['RF_CountryOfResidence']==59 || FormData['RF_CountryOfResidence']==60 || FormData['RF_CountryOfResidence']==63 || FormData['RF_CountryOfResidence']==70 || FormData['RF_CountryOfResidence']==75 || FormData['RF_CountryOfResidence']==77 
+                            || FormData['RF_CountryOfResidence']==78 || FormData['RF_CountryOfResidence']==79 || FormData['RF_CountryOfResidence']==80 || FormData['RF_CountryOfResidence']==81 || FormData['RF_CountryOfResidence']==83 || FormData['RF_CountryOfResidence']==87 || FormData['RF_CountryOfResidence']==89 || FormData['RF_CountryOfResidence']==96 || FormData['RF_CountryOfResidence']==97 || FormData['RF_CountryOfResidence']==98 
+                            || FormData['RF_CountryOfResidence']==99 || FormData['RF_CountryOfResidence']==100 || FormData['RF_CountryOfResidence']==101 || FormData['RF_CountryOfResidence']==102 || FormData['RF_CountryOfResidence']==104 || FormData['RF_CountryOfResidence']==105
+                            
+                            || FormData['RF_CountryOfResidence']==108 || FormData['RF_CountryOfResidence']==110 || FormData['RF_CountryOfResidence']==111 || FormData['RF_CountryOfResidence']==113 || FormData['RF_CountryOfResidence']==118 || FormData['RF_CountryOfResidence']==120 || FormData['RF_CountryOfResidence']==125
+                            || FormData['RF_CountryOfResidence']==131 || FormData['RF_CountryOfResidence']==133 ||  FormData['RF_CountryOfResidence']==137 || FormData['RF_CountryOfResidence']==138 || FormData['RF_CountryOfResidence']==140 || FormData['RF_CountryOfResidence']==141
+                            || FormData['RF_CountryOfResidence']==144 || FormData['RF_CountryOfResidence']==147 || FormData['RF_CountryOfResidence']==156 || FormData['RF_CountryOfResidence']==157 || FormData['RF_CountryOfResidence']==169 || FormData['RF_CountryOfResidence']==171 || FormData['RF_CountryOfResidence']==178 || FormData['RF_CountryOfResidence']==179 || FormData['RF_CountryOfResidence']==180 || FormData['RF_CountryOfResidence']==181 || FormData['RF_CountryOfResidence']==182 || FormData['RF_CountryOfResidence']==183
+                            || FormData['RF_CountryOfResidence']==185 || FormData['RF_CountryOfResidence']==189 || FormData['RF_CountryOfResidence']==192 || FormData['RF_CountryOfResidence']==196 || FormData['RF_CountryOfResidence']==199 || FormData['RF_CountryOfResidence']==201 || FormData['RF_CountryOfResidence']==204 || FormData['RF_CountryOfResidence']==205
+                            || FormData['RF_CountryOfResidence']==207 || FormData['RF_CountryOfResidence']==210 || FormData['RF_CountryOfResidence']==218 || FormData['RF_CountryOfResidence']==225 || FormData['RF_CountryOfResidence']==231 || FormData['RF_CountryOfResidence']==234 || FormData['RF_CountryOfResidence']==235 || FormData['RF_CountryOfResidence']==237 || FormData['RF_CountryOfResidence']==238)
+                        {
+                            val3=6
+                        }
+
+                        else if(FormData['RF_CountryOfResidence']==21 || FormData['RF_CountryOfResidence']==57 || FormData['RF_CountryOfResidence']==106 || FormData['RF_CountryOfResidence']==107 || FormData['RF_CountryOfResidence']==119 || FormData['RF_CountryOfResidence']==187 || FormData['RF_CountryOfResidence']==217)
+                        {
+                            val3=12
+                        }
+
+                        if(FormData['RF_Nationality']==1 || FormData['RF_Nationality']==2 || FormData['RF_Nationality']==3 || FormData['RF_Nationality']==4 || FormData['RF_Nationality']==6 || FormData['RF_Nationality']==8 || FormData['RF_Nationality']==10 || FormData['RF_Nationality']==13 || FormData['RF_Nationality']==16 || FormData['RF_Nationality']==17 || FormData['RF_Nationality']==19 || FormData['RF_Nationality']==20 || FormData['RF_Nationality']==24
+                        || FormData['RF_Nationality']==27 || FormData['RF_Nationality']==28 || FormData['RF_Nationality']==29 || FormData['RF_Nationality']==30 || FormData['RF_Nationality']==31 || FormData['RF_Nationality']==32 || FormData['RF_Nationality']==33 || FormData['RF_Nationality']==36 || FormData['RF_Nationality']==37 || FormData['RF_Nationality']==39 || FormData['RF_Nationality']==41 || FormData['RF_Nationality']==42 || FormData['RF_Nationality']==43
+                        || FormData['RF_Nationality']==46 || FormData['RF_Nationality']==47 || FormData['RF_Nationality']==48 || FormData['RF_Nationality']==49 || FormData['RF_Nationality']==50 || FormData['RF_Nationality']==51 || FormData['RF_Nationality']==52 || FormData['RF_Nationality']==53 || FormData['RF_Nationality']==55 || FormData['RF_Nationality']==58 || FormData['RF_Nationality']==62 || FormData['RF_Nationality']==64 || FormData['RF_Nationality']==65 || FormData['RF_Nationality']==66 
+                        || FormData['RF_Nationality']==67 || FormData['RF_Nationality']==68 || FormData['RF_Nationality']==69 || FormData['RF_Nationality']==70 || FormData['RF_Nationality']==71 || FormData['RF_Nationality']==72 || FormData['RF_Nationality']==73 || FormData['RF_Nationality']==74 || FormData['RF_Nationality']==82 || FormData['RF_Nationality']==85 || FormData['RF_Nationality']==86 || FormData['RF_Nationality']==90 || FormData['RF_Nationality']==91 || FormData['RF_Nationality']==92 || FormData['RF_Nationality']==93
+                        || FormData['RF_Nationality']==94 || FormData['RF_Nationality']==95 || FormData['RF_Nationality']==96 || FormData['RF_Nationality']==97 || FormData['RF_Nationality']==98 || FormData['RF_Nationality']==99 || FormData['RF_Nationality']==100 || FormData['RF_Nationality']==102 || FormData['RF_Nationality']==103
+                        
+                        || FormData['RF_Nationality']==109  || FormData['RF_Nationality']==112  || FormData['RF_Nationality']==115  || FormData['RF_Nationality']==116  || FormData['RF_Nationality']==117  || FormData['RF_Nationality']==121  || FormData['RF_Nationality']==123  || FormData['RF_Nationality']==124
+                        || FormData['RF_Nationality']==126  || FormData['RF_Nationality']==127  || FormData['RF_Nationality']==128  || FormData['RF_Nationality']==129  || FormData['RF_Nationality']==134  || FormData['RF_Nationality']==135  || FormData['RF_Nationality']==136
+                        || FormData['RF_Nationality']==139  || FormData['RF_Nationality']==143  || FormData['RF_Nationality']==145  || FormData['RF_Nationality']==146  || FormData['RF_Nationality']==148  || FormData['RF_Nationality']==150 || FormData['RF_Nationality']==151
+                        || FormData['RF_Nationality']==152 || FormData['RF_Nationality']==153 || FormData['RF_Nationality']==154 || FormData['RF_Nationality']==155 || FormData['RF_Nationality']==158 || FormData['RF_Nationality']==160 || FormData['RF_Nationality']==162 
+                        || FormData['RF_Nationality']==163 || FormData['RF_Nationality']==164 || FormData['RF_Nationality']==165 || FormData['RF_Nationality']==166 || FormData['RF_Nationality']==168 || FormData['RF_Nationality']==170 || FormData['RF_Nationality']==172 || FormData['RF_Nationality']==173 || FormData['RF_Nationality']==174 || FormData['RF_Nationality']==175 || FormData['RF_Nationality']==176 || FormData['RF_Nationality']==177
+                        || FormData['RF_Nationality']==186 || FormData['RF_Nationality']==187 || FormData['RF_Nationality']==188 || FormData['RF_Nationality']==190 || FormData['RF_Nationality']==191 || FormData['RF_Nationality']==193 || FormData['RF_Nationality']==195
+                        || FormData['RF_Nationality']==197 || FormData['RF_Nationality']==198 || FormData['RF_Nationality']==200 || FormData['RF_Nationality']==202 || FormData['RF_Nationality']==203 || FormData['RF_Nationality']==206 || FormData['RF_Nationality']==208 || FormData['RF_Nationality']==209
+                        || FormData['RF_Nationality']==211 || FormData['RF_Nationality']==212 || FormData['RF_Nationality']==213 || FormData['RF_Nationality']==214 || FormData['RF_Nationality']==219 || FormData['RF_Nationality']==220 || FormData['RF_Nationality']==221 || FormData['RF_Nationality']==222 || FormData['RF_Nationality']==223 || FormData['RF_Nationality']==224
+                        || FormData['RF_Nationality']==226 || FormData['RF_Nationality']==230 || FormData['RF_Nationality']==232 || FormData['RF_Nationality']==233 || FormData['RF_Nationality']==236 || FormData['RF_Nationality']==237 || FormData['RF_Nationality']==238 || FormData['RF_Nationality']==239)
+                    {
+                        val4=9
+                    }
+
+                    else if(FormData['RF_Nationality']==5 || FormData['RF_Nationality']==7 || FormData['RF_Nationality']==9 || FormData['RF_Nationality']==12 || FormData['RF_Nationality']==25 || FormData['RF_Nationality']==34 || FormData['RF_Nationality']==35 || FormData['RF_Nationality']==61 || FormData['RF_Nationality']==76 || FormData['RF_Nationality']==84|| FormData['RF_Nationality']==88
+                        
+                        || FormData['RF_Nationality']==114 || FormData['RF_Nationality']==130 || FormData['RF_Nationality']==132 || FormData['RF_Nationality']==142 || FormData['RF_Nationality']==149 || FormData['RF_Nationality']==159 || FormData['RF_Nationality']==161 
+                        || FormData['RF_Nationality']==167 || FormData['RF_Nationality']==194 || FormData['RF_Nationality']==215 || FormData['RF_Nationality']==216)
+                    {
+                        val4=3
+                    }
+
+                    else if(FormData['RF_Nationality']==11 || FormData['RF_Nationality']==14 || FormData['RF_Nationality']==15 || FormData['RF_Nationality']==18 || FormData['RF_Nationality']==22 || FormData['RF_Nationality']==23 || FormData['RF_Nationality']==26 || FormData['RF_Nationality']==30 || FormData['RF_Nationality']==38 || FormData['RF_Nationality']==40
+                        || FormData['RF_Nationality']==44 || FormData['RF_Nationality']==45 || FormData['RF_Nationality']==54 || FormData['RF_Nationality']==56 || FormData['RF_Nationality']==59 || FormData['RF_Nationality']==60 || FormData['RF_Nationality']==63 || FormData['RF_Nationality']==70 || FormData['RF_Nationality']==75 || FormData['RF_Nationality']==77 
+                        || FormData['RF_Nationality']==78 || FormData['RF_Nationality']==79 || FormData['RF_Nationality']==80 || FormData['RF_Nationality']==81 || FormData['RF_Nationality']==83 || FormData['RF_Nationality']==87 || FormData['RF_Nationality']==89 || FormData['RF_Nationality']==96 || FormData['RF_Nationality']==97 || FormData['RF_Nationality']==98 
+                        || FormData['RF_Nationality']==99 || FormData['RF_Nationality']==100 || FormData['RF_Nationality']==101 || FormData['RF_Nationality']==102 || FormData['RF_Nationality']==104 || FormData['RF_Nationality']==105
+                        
+                        || FormData['RF_Nationality']==108 || FormData['RF_Nationality']==110 || FormData['RF_Nationality']==111 || FormData['RF_Nationality']==113 || FormData['RF_Nationality']==118 || FormData['RF_Nationality']==120 || FormData['RF_Nationality']==125
+                        || FormData['RF_Nationality']==131 || FormData['RF_Nationality']==133 ||  FormData['RF_Nationality']==137 || FormData['RF_Nationality']==138 || FormData['RF_Nationality']==140 || FormData['RF_Nationality']==141
+                        || FormData['RF_Nationality']==144 || FormData['RF_Nationality']==147 || FormData['RF_Nationality']==156 || FormData['RF_Nationality']==157 || FormData['RF_Nationality']==169 || FormData['RF_Nationality']==171 || FormData['RF_Nationality']==178 || FormData['RF_Nationality']==179 || FormData['RF_Nationality']==180 || FormData['RF_Nationality']==181 || FormData['RF_Nationality']==182 || FormData['RF_Nationality']==183
+                        || FormData['RF_Nationality']==185 || FormData['RF_Nationality']==189 || FormData['RF_Nationality']==192 || FormData['RF_Nationality']==196 || FormData['RF_Nationality']==199 || FormData['RF_Nationality']==201 || FormData['RF_Nationality']==204 || FormData['RF_Nationality']==205
+                        || FormData['RF_Nationality']==207 || FormData['RF_Nationality']==210 || FormData['RF_Nationality']==218 || FormData['RF_Nationality']==225 || FormData['RF_Nationality']==231 || FormData['RF_Nationality']==234 || FormData['RF_Nationality']==235 || FormData['RF_Nationality']==237 || FormData['RF_Nationality']==238)
+                    {
+                        val4=6
+                    }
+
+                    else if(FormData['RF_Nationality']==21 || FormData['RF_Nationality']==57 || FormData['RF_Nationality']==106 || FormData['RF_Nationality']==107 || FormData['RF_Nationality']==119 || FormData['RF_Nationality']==187 || FormData['RF_Nationality']==217)
+                    {
+                        val4=12
+                    }
+
+                    if(FormData['RF_CountryOfTax']==1 || FormData['RF_CountryOfTax']==2 || FormData['RF_CountryOfTax']==3 || FormData['RF_CountryOfTax']==4 || FormData['RF_CountryOfTax']==6 || FormData['RF_CountryOfTax']==8 || FormData['RF_CountryOfTax']==10 || FormData['RF_CountryOfTax']==13 || FormData['RF_CountryOfTax']==16 || FormData['RF_CountryOfTax']==17 || FormData['RF_CountryOfTax']==19 || FormData['RF_CountryOfTax']==20 || FormData['RF_CountryOfTax']==24
+                                || FormData['RF_CountryOfTax']==27 || FormData['RF_CountryOfTax']==28 || FormData['RF_CountryOfTax']==29 || FormData['RF_CountryOfTax']==30 || FormData['RF_CountryOfTax']==31 || FormData['RF_CountryOfTax']==32 || FormData['RF_CountryOfTax']==33 || FormData['RF_CountryOfTax']==36 || FormData['RF_CountryOfTax']==37 || FormData['RF_CountryOfTax']==39 || FormData['RF_CountryOfTax']==41 || FormData['RF_CountryOfTax']==42 || FormData['RF_CountryOfTax']==43
+                                || FormData['RF_CountryOfTax']==46 || FormData['RF_CountryOfTax']==47 || FormData['RF_CountryOfTax']==48 || FormData['RF_CountryOfTax']==49 || FormData['RF_CountryOfTax']==50 || FormData['RF_CountryOfTax']==51 || FormData['RF_CountryOfTax']==52 || FormData['RF_CountryOfTax']==53 || FormData['RF_CountryOfTax']==55 || FormData['RF_CountryOfTax']==58 || FormData['RF_CountryOfTax']==62 || FormData['RF_CountryOfTax']==64 || FormData['RF_CountryOfTax']==65 || FormData['RF_CountryOfTax']==66 
+                                || FormData['RF_CountryOfTax']==67 || FormData['RF_CountryOfTax']==68 || FormData['RF_CountryOfTax']==69 || FormData['RF_CountryOfTax']==70 || FormData['RF_CountryOfTax']==71 || FormData['RF_CountryOfTax']==72 || FormData['RF_CountryOfTax']==73 || FormData['RF_CountryOfTax']==74 || FormData['RF_CountryOfTax']==82 || FormData['RF_CountryOfTax']==85 || FormData['RF_CountryOfTax']==86 || FormData['RF_CountryOfTax']==90 || FormData['RF_CountryOfTax']==91 || FormData['RF_CountryOfTax']==92 || FormData['RF_CountryOfTax']==93
+                                || FormData['RF_CountryOfTax']==94 || FormData['RF_CountryOfTax']==95 || FormData['RF_CountryOfTax']==96 || FormData['RF_CountryOfTax']==97 || FormData['RF_CountryOfTax']==98 || FormData['RF_CountryOfTax']==99 || FormData['RF_CountryOfTax']==100 || FormData['RF_CountryOfTax']==102 || FormData['RF_CountryOfTax']==103
+                                
+                                || FormData['RF_CountryOfTax']==109  || FormData['RF_CountryOfTax']==112  || FormData['RF_CountryOfTax']==115  || FormData['RF_CountryOfTax']==116  || FormData['RF_CountryOfTax']==117  || FormData['RF_CountryOfTax']==121  || FormData['RF_CountryOfTax']==123  || FormData['RF_CountryOfTax']==124
+                                || FormData['RF_CountryOfTax']==126  || FormData['RF_CountryOfTax']==127  || FormData['RF_CountryOfTax']==128  || FormData['RF_CountryOfTax']==129  || FormData['RF_CountryOfTax']==134  || FormData['RF_CountryOfTax']==135  || FormData['RF_CountryOfTax']==136
+                                || FormData['RF_CountryOfTax']==139  || FormData['RF_CountryOfTax']==143  || FormData['RF_CountryOfTax']==145  || FormData['RF_CountryOfTax']==146  || FormData['RF_CountryOfTax']==148  || FormData['RF_CountryOfTax']==150 || FormData['RF_CountryOfTax']==151
+                                || FormData['RF_CountryOfTax']==152 || FormData['RF_CountryOfTax']==153 || FormData['RF_CountryOfTax']==154 || FormData['RF_CountryOfTax']==155 || FormData['RF_CountryOfTax']==158 || FormData['RF_CountryOfTax']==160 || FormData['RF_CountryOfTax']==162 
+                                || FormData['RF_CountryOfTax']==163 || FormData['RF_CountryOfTax']==164 || FormData['RF_CountryOfTax']==165 || FormData['RF_CountryOfTax']==166 || FormData['RF_CountryOfTax']==168 || FormData['RF_CountryOfTax']==170 || FormData['RF_CountryOfTax']==172 || FormData['RF_CountryOfTax']==173 || FormData['RF_CountryOfTax']==174 || FormData['RF_CountryOfTax']==175 || FormData['RF_CountryOfTax']==176 || FormData['RF_CountryOfTax']==177
+                                || FormData['RF_CountryOfTax']==186 || FormData['RF_CountryOfTax']==187 || FormData['RF_CountryOfTax']==188 || FormData['RF_CountryOfTax']==190 || FormData['RF_CountryOfTax']==191 || FormData['RF_CountryOfTax']==193 || FormData['RF_CountryOfTax']==195
+                                || FormData['RF_CountryOfTax']==197 || FormData['RF_CountryOfTax']==198 || FormData['RF_CountryOfTax']==200 || FormData['RF_CountryOfTax']==202 || FormData['RF_CountryOfTax']==203 || FormData['RF_CountryOfTax']==206 || FormData['RF_CountryOfTax']==208 || FormData['RF_CountryOfTax']==209
+                                || FormData['RF_CountryOfTax']==211 || FormData['RF_CountryOfTax']==212 || FormData['RF_CountryOfTax']==213 || FormData['RF_CountryOfTax']==214 || FormData['RF_CountryOfTax']==219 || FormData['RF_CountryOfTax']==220 || FormData['RF_CountryOfTax']==221 || FormData['RF_CountryOfTax']==222 || FormData['RF_CountryOfTax']==223 || FormData['RF_CountryOfTax']==224
+                                || FormData['RF_CountryOfTax']==226 || FormData['RF_CountryOfTax']==230 || FormData['RF_CountryOfTax']==232 || FormData['RF_CountryOfTax']==233 || FormData['RF_CountryOfTax']==236 || FormData['RF_CountryOfTax']==237 || FormData['RF_CountryOfTax']==238 || FormData['RF_CountryOfTax']==239)
+                            {
+                                val5=9
+                            }
+
+                            else if(FormData['RF_CountryOfTax']==5 || FormData['RF_CountryOfTax']==7 || FormData['RF_CountryOfTax']==9 || FormData['RF_CountryOfTax']==12 || FormData['RF_CountryOfTax']==25 || FormData['RF_CountryOfTax']==34 || FormData['RF_CountryOfTax']==35 || FormData['RF_CountryOfTax']==61 || FormData['RF_CountryOfTax']==76 || FormData['RF_CountryOfTax']==84|| FormData['RF_CountryOfTax']==88
+                                
+                                || FormData['RF_CountryOfTax']==114 || FormData['RF_CountryOfTax']==130 || FormData['RF_CountryOfTax']==132 || FormData['RF_CountryOfTax']==142 || FormData['RF_CountryOfTax']==149 || FormData['RF_CountryOfTax']==159 || FormData['RF_CountryOfTax']==161 
+                                || FormData['RF_CountryOfTax']==167 || FormData['RF_CountryOfTax']==194 || FormData['RF_CountryOfTax']==215 || FormData['RF_CountryOfTax']==216)
+                            {
+                                val5=3
+                            }
+
+                            else if(FormData['RF_CountryOfTax']==11 || FormData['RF_CountryOfTax']==14 || FormData['RF_CountryOfTax']==15 || FormData['RF_CountryOfTax']==18 || FormData['RF_CountryOfTax']==22 || FormData['RF_CountryOfTax']==23 || FormData['RF_CountryOfTax']==26 || FormData['RF_CountryOfTax']==30 || FormData['RF_CountryOfTax']==38 || FormData['RF_CountryOfTax']==40
+                                || FormData['RF_CountryOfTax']==44 || FormData['RF_CountryOfTax']==45 || FormData['RF_CountryOfTax']==54 || FormData['RF_CountryOfTax']==56 || FormData['RF_CountryOfTax']==59 || FormData['RF_CountryOfTax']==60 || FormData['RF_CountryOfTax']==63 || FormData['RF_CountryOfTax']==70 || FormData['RF_CountryOfTax']==75 || FormData['RF_CountryOfTax']==77 
+                                || FormData['RF_CountryOfTax']==78 || FormData['RF_CountryOfTax']==79 || FormData['RF_CountryOfTax']==80 || FormData['RF_CountryOfTax']==81 || FormData['RF_CountryOfTax']==83 || FormData['RF_CountryOfTax']==87 || FormData['RF_CountryOfTax']==89 || FormData['RF_CountryOfTax']==96 || FormData['RF_CountryOfTax']==97 || FormData['RF_CountryOfTax']==98 
+                                || FormData['RF_CountryOfTax']==99 || FormData['RF_CountryOfTax']==100 || FormData['RF_CountryOfTax']==101 || FormData['RF_CountryOfTax']==102 || FormData['RF_CountryOfTax']==104 || FormData['RF_CountryOfTax']==105
+                                
+                                || FormData['RF_CountryOfTax']==108 || FormData['RF_CountryOfTax']==110 || FormData['RF_CountryOfTax']==111 || FormData['RF_CountryOfTax']==113 || FormData['RF_CountryOfTax']==118 || FormData['RF_CountryOfTax']==120 || FormData['RF_CountryOfTax']==125
+                                || FormData['RF_CountryOfTax']==131 || FormData['RF_CountryOfTax']==133 ||  FormData['RF_CountryOfTax']==137 || FormData['RF_CountryOfTax']==138 || FormData['RF_CountryOfTax']==140 || FormData['RF_CountryOfTax']==141
+                                || FormData['RF_CountryOfTax']==144 || FormData['RF_CountryOfTax']==147 || FormData['RF_CountryOfTax']==156 || FormData['RF_CountryOfTax']==157 || FormData['RF_CountryOfTax']==169 || FormData['RF_CountryOfTax']==171 || FormData['RF_CountryOfTax']==178 || FormData['RF_CountryOfTax']==179 || FormData['RF_CountryOfTax']==180 || FormData['RF_CountryOfTax']==181 || FormData['RF_CountryOfTax']==182 || FormData['RF_CountryOfTax']==183
+                                || FormData['RF_CountryOfTax']==185 || FormData['RF_CountryOfTax']==189 || FormData['RF_CountryOfTax']==192 || FormData['RF_CountryOfTax']==196 || FormData['RF_CountryOfTax']==199 || FormData['RF_CountryOfTax']==201 || FormData['RF_CountryOfTax']==204 || FormData['RF_CountryOfTax']==205
+                                || FormData['RF_CountryOfTax']==207 || FormData['RF_CountryOfTax']==210 || FormData['RF_CountryOfTax']==218 || FormData['RF_CountryOfTax']==225 || FormData['RF_CountryOfTax']==231 || FormData['RF_CountryOfTax']==234 || FormData['RF_CountryOfTax']==235 || FormData['RF_CountryOfTax']==237 || FormData['RF_CountryOfTax']==238)
+                            {
+                                val5=6
+                            }
+
+                            else if(FormData['RF_CountryOfTax']==21 || FormData['RF_CountryOfTax']==57 || FormData['RF_CountryOfTax']==106 || FormData['RF_CountryOfTax']==107 || FormData['RF_CountryOfTax']==119 || FormData['RF_CountryOfTax']==187 || FormData['RF_CountryOfTax']==217)
+                            {
+                                val5=12
+                            }
+
+                             
+                            if(FormData['RF_Industry']==1 || FormData['RF_Industry']==3 || FormData['RF_Industry']==15 || FormData['RF_Industry']==19)
+                            {
+                                val6=1
+                            }
+
+                            else if(FormData['RF_Industry']==25)
+                            {
+                                val6=0
+                            }
+
+                            
+                            else if(FormData['RF_Industry']==2 || FormData['RF_Industry']==12 || FormData['RF_Industry']==14 || FormData['RF_Industry']==16 || FormData['RF_Industry']==17 || FormData['RF_Industry']==20 || FormData['RF_Industry']==23 || FormData['RF_Industry']==24
+                                || FormData['RF_Industry']==26 || FormData['RF_Industry']==27 || FormData['RF_Industry']==28 || FormData['RF_Industry']==30 || FormData['RF_Industry']==34)
+                            {
+                                val6=3
+                            }
+
+                            else if(FormData['RF_Industry']==4 || FormData['RF_Industry']==5 || FormData['RF_Industry']==6 || FormData['RF_Industry']==7 || FormData['RF_Industry']==8 || FormData['RF_Industry']==9 || FormData['RF_Industry']==10 || FormData['RF_Industry']==11 || FormData['RF_Industry']==13
+                                || FormData['RF_Industry']==18 || FormData['RF_Industry']==21 || FormData['RF_Industry']==22 || FormData['RF_Industry']==29 || FormData['RF_Industry']==32 || FormData['RF_Industry']==33)
+                            {
+                                val6=2
+                            }
+
+                            else if(FormData['RF_Industry']==31)
+                            {
+                                val6=4
+                            }
+
+                            if(FormData['RF_SourceOfFunds']==1 || FormData['RF_SourceOfFunds']==6 || FormData['RF_SourceOfFunds']==12 || FormData['RF_SourceOfFunds']==13 || FormData['RF_SourceOfFunds']==16)
+                            {
+                               val7=3
+                            }
+
+                            else if(FormData['RF_SourceOfFunds']==2 || FormData['RF_SourceOfFunds']==3 || FormData['RF_SourceOfFunds']==8 || FormData['RF_SourceOfFunds']==9 || FormData['RF_SourceOfFunds']==14 || FormData['RF_SourceOfFunds']==17 || FormData['RF_SourceOfFunds']==18 || FormData['RF_SourceOfFunds']==20
+                               || FormData['RF_SourceOfFunds']==22 || FormData['RF_SourceOfFunds']==23 || FormData['RF_SourceOfFunds']==25 || FormData['RF_SourceOfFunds']==26 || FormData['RF_SourceOfFunds']==29 || FormData['RF_SourceOfFunds']==31 || FormData['RF_SourceOfFunds']==32 || FormData['RF_SourceOfFunds']==33)
+                            {
+                                val7=1
+                            }
+
+                            else if(FormData['RF_SourceOfFunds']==4 || FormData['RF_SourceOfFunds']==5 || FormData['RF_SourceOfFunds']==7 || FormData['RF_SourceOfFunds']==10 || FormData['RF_SourceOfFunds']==11 || FormData['RF_SourceOfFunds']==15 || FormData['RF_SourceOfFunds']==19 || FormData['RF_SourceOfFunds']==24
+                                || FormData['RF_SourceOfFunds']==27 || FormData['RF_SourceOfFunds']==28 || FormData['RF_SourceOfFunds']==30)
+                            {
+                                val7=2
+                            }
+
+                            else if(FormData['RF_SourceOfFunds']==21)
+                            {
+                                val7=0
+                            }
+                           
+                            if(FormData['RF_RelationshipToClient']==1 || FormData['RF_RelationshipToClient']==2 || FormData['RF_RelationshipToClient']==4 || FormData['RF_RelationshipToClient']==6 || FormData['RF_RelationshipToClient']==7 || FormData['RF_RelationshipToClient']==9 || FormData['RF_RelationshipToClient']==11 
+                            || FormData['RF_RelationshipToClient']==13 || FormData['RF_RelationshipToClient']==15)
+                            {
+                               val8=1
+                            }
+
+                            else if(FormData['RF_RelationshipToClient']==3 || FormData['RF_RelationshipToClient']==5 || FormData['RF_RelationshipToClient']==8 || FormData['RF_RelationshipToClient']==10 || FormData['RF_RelationshipToClient']==12 || FormData['RF_RelationshipToClient']==14 || FormData['RF_RelationshipToClient']==16)
+                            {
+                                val8=2
+                            }
+
+                            
+                            if(FormData['RF_CountryOfRegistration']==="1" || FormData['RF_CountryOfRegistration']==="2" || FormData['RF_CountryOfRegistration']==="3" || FormData['RF_CountryOfRegistration']==="4" || FormData['RF_CountryOfRegistration']==="6" || FormData['RF_CountryOfRegistration']==="8" || FormData['RF_CountryOfRegistration']==="10" || FormData['RF_CountryOfRegistration']==="13" || FormData['RF_CountryOfRegistration']==="16" || FormData['RF_CountryOfRegistration']==="17" || FormData['RF_CountryOfRegistration']==="19" || FormData['RF_CountryOfRegistration']==="20" || FormData['RF_CountryOfRegistration']==="24"
+                            || FormData['RF_CountryOfRegistration']==="27" || FormData['RF_CountryOfRegistration']==="28" || FormData['RF_CountryOfRegistration']==="29" || FormData['RF_CountryOfRegistration']==="30" || FormData['RF_CountryOfRegistration']==="31" || FormData['RF_CountryOfRegistration']==="32" || FormData['RF_CountryOfRegistration']==="33" || FormData['RF_CountryOfRegistration']==="36" || FormData['RF_CountryOfRegistration']==="37" || FormData['RF_CountryOfRegistration']==="39" || FormData['RF_CountryOfRegistration']==="41" || FormData['RF_CountryOfRegistration']==="42" || FormData['RF_CountryOfRegistration']==="43"
+                            || FormData['RF_CountryOfRegistration']==="46" || FormData['RF_CountryOfRegistration']==="47" || FormData['RF_CountryOfRegistration']==="48" || FormData['RF_CountryOfRegistration']==="49" || FormData['RF_CountryOfRegistration']==="50" || FormData['RF_CountryOfRegistration']==="51" || FormData['RF_CountryOfRegistration']==="52" || FormData['RF_CountryOfRegistration']==="53" || FormData['RF_CountryOfRegistration']==="55" || FormData['RF_CountryOfRegistration']==="58" || FormData['RF_CountryOfRegistration']==="62" || FormData['RF_CountryOfRegistration']==="64" || FormData['RF_CountryOfRegistration']==="65" || FormData['RF_CountryOfRegistration']==="66" 
+                            || FormData['RF_CountryOfRegistration']==="67" || FormData['RF_CountryOfRegistration']==="68" || FormData['RF_CountryOfRegistration']==="69" || FormData['RF_CountryOfRegistration']==="70" || FormData['RF_CountryOfRegistration']==="71" || FormData['RF_CountryOfRegistration']==="72" || FormData['RF_CountryOfRegistration']==="73" || FormData['RF_CountryOfRegistration']==="74" || FormData['RF_CountryOfRegistration']==="82" || FormData['RF_CountryOfRegistration']==="85" || FormData['RF_CountryOfRegistration']==="86" || FormData['RF_CountryOfRegistration']==="90" || FormData['RF_CountryOfRegistration']==="91" || FormData['RF_CountryOfRegistration']==="92" || FormData['RF_CountryOfRegistration']==="93"
+                            || FormData['RF_CountryOfRegistration']==="94" || FormData['RF_CountryOfRegistration']==="95" || FormData['RF_CountryOfRegistration']==="96" || FormData['RF_CountryOfRegistration']==="97" || FormData['RF_CountryOfRegistration']==="98" || FormData['RF_CountryOfRegistration']==="99" || FormData['RF_CountryOfRegistration']==="100" || FormData['RF_CountryOfRegistration']==="102" || FormData['RF_CountryOfRegistration']==="103"
+
+                            || FormData['RF_CountryOfRegistration']==="109" || FormData['RF_CountryOfRegistration']==="112" || FormData['RF_CountryOfRegistration']==="115" ||  FormData['RF_CountryOfRegistration']==="116" ||  FormData['RF_CountryOfRegistration']==="117" ||  FormData['RF_CountryOfRegistration']==="121" ||  FormData['RF_CountryOfRegistration']==="123" ||  FormData['RF_CountryOfRegistration']==="124"
+                            || FormData['RF_CountryOfRegistration']==="126" || FormData['RF_CountryOfRegistration']==="127" || FormData['RF_CountryOfRegistration']==="128" ||  FormData['RF_CountryOfRegistration']==="129" ||  FormData['RF_CountryOfRegistration']==="134" ||  FormData['RF_CountryOfRegistration']==="135" ||  FormData['RF_CountryOfRegistration']==="136"
+                            || FormData['RF_CountryOfRegistration']==="139" || FormData['RF_CountryOfRegistration']==="143" || FormData['RF_CountryOfRegistration']==="145" ||  FormData['RF_CountryOfRegistration']==="146" ||  FormData['RF_CountryOfRegistration']==="148" ||  FormData['RF_CountryOfRegistration']==="150" || FormData['RF_CountryOfRegistration']==="151"
+                            || FormData['RF_CountryOfRegistration']==="152" || FormData['RF_CountryOfRegistration']==="153" || FormData['RF_CountryOfRegistration']==="154" || FormData['RF_CountryOfRegistration']==="155" || FormData['RF_CountryOfRegistration']==="158" || FormData['RF_CountryOfRegistration']==="160" || FormData['RF_CountryOfRegistration']==="162" 
+                            || FormData['RF_CountryOfRegistration']==="163" || FormData['RF_CountryOfRegistration']==="164" || FormData['RF_CountryOfRegistration']==="165" || FormData['RF_CountryOfRegistration']==="166" || FormData['RF_CountryOfRegistration']==="168" || FormData['RF_CountryOfRegistration']==="170" || FormData['RF_CountryOfRegistration']==="172" || FormData['RF_CountryOfRegistration']==="173" || FormData['RF_CountryOfRegistration']==="174" || FormData['RF_CountryOfRegistration']==="175" || FormData['RF_CountryOfRegistration']==="176" || FormData['RF_CountryOfRegistration']==="177"
+                            || FormData['RF_CountryOfRegistration']==="186" || FormData['RF_CountryOfRegistration']==="187" || FormData['RF_CountryOfRegistration']==="188" || FormData['RF_CountryOfRegistration']==="190" || FormData['RF_CountryOfRegistration']==="191" || FormData['RF_CountryOfRegistration']==="193" || FormData['RF_CountryOfRegistration']==="195"
+                            || FormData['RF_CountryOfRegistration']==="197" || FormData['RF_CountryOfRegistration']==="198" || FormData['RF_CountryOfRegistration']==="200" || FormData['RF_CountryOfRegistration']==="202" || FormData['RF_CountryOfRegistration']==="203" || FormData['RF_CountryOfRegistration']==="206" || FormData['RF_CountryOfRegistration']==="208" || FormData['RF_CountryOfRegistration']==="209"
+                            || FormData['RF_CountryOfRegistration']==="211" || FormData['RF_CountryOfRegistration']==="212" || FormData['RF_CountryOfRegistration']==="213" || FormData['RF_CountryOfRegistration']==="214" || FormData['RF_CountryOfRegistration']==="219" || FormData['RF_CountryOfRegistration']==="220" || FormData['RF_CountryOfRegistration']==="221" || FormData['RF_CountryOfRegistration']==="222" || FormData['RF_CountryOfRegistration']==="223" || FormData['RF_CountryOfRegistration']==="224"
+                            || FormData['RF_CountryOfRegistration']==="226" || FormData['RF_CountryOfRegistration']==="230" || FormData['RF_CountryOfRegistration']==="232" || FormData['RF_CountryOfRegistration']==="233" || FormData['RF_CountryOfRegistration']==="236" || FormData['RF_CountryOfRegistration']==="237" || FormData['RF_CountryOfRegistration']==="238" || FormData['RF_CountryOfRegistration']==="239")
+                            {
+                                val9=9
+                            }
+
+                            else if(FormData['RF_CountryOfRegistration']==="5" || FormData['RF_CountryOfRegistration']==="7" || FormData['RF_CountryOfRegistration']==="9" || FormData['RF_CountryOfRegistration']==="12" || FormData['RF_CountryOfRegistration']==="25" || FormData['RF_CountryOfRegistration']==="34" || FormData['RF_CountryOfRegistration']==="35" || FormData['RF_CountryOfRegistration']==="61" || FormData['RF_CountryOfRegistration']==="76" || FormData['RF_CountryOfRegistration']==="84" || FormData['RF_CountryOfRegistration']==="88" 
+                            || FormData['RF_CountryOfRegistration']==="114" || FormData['RF_CountryOfRegistration']==="130" || FormData['RF_CountryOfRegistration']==="132" || FormData['RF_CountryOfRegistration']==="142" || FormData['RF_CountryOfRegistration']==="149" || FormData['RF_CountryOfRegistration']==="159" || FormData['RF_CountryOfRegistration']==="161"
+                            || FormData['RF_CountryOfRegistration']==="167" || FormData['RF_CountryOfRegistration']==="194" || FormData['RF_CountryOfRegistration']==="215" || FormData['RF_CountryOfRegistration']==="216")
+                            {
+                                val9=3
+                            }
+
+                            else if(FormData['RF_CountryOfRegistration']==="11" || FormData['RF_CountryOfRegistration']==="14" || FormData['RF_CountryOfRegistration']==="15" || FormData['RF_CountryOfRegistration']==="18" || FormData['RF_CountryOfRegistration']==="22" || FormData['RF_CountryOfRegistration']==="23" || FormData['RF_CountryOfRegistration']==="26" || FormData['RF_CountryOfRegistration']==="30" || FormData['RF_CountryOfRegistration']==="38" || FormData['RF_CountryOfRegistration']==="40"
+                            || FormData['RF_CountryOfRegistration']==="44" || FormData['RF_CountryOfRegistration']==="45" || FormData['RF_CountryOfRegistration']==="54" || FormData['RF_CountryOfRegistration']==="56" || FormData['RF_CountryOfRegistration']==="59" || FormData['RF_CountryOfRegistration']==="60" || FormData['RF_CountryOfRegistration']==="63" || FormData['RF_CountryOfRegistration']==="70" || FormData['RF_CountryOfRegistration']==="75" || FormData['RF_CountryOfRegistration']==="77" 
+                            || FormData['RF_CountryOfRegistration']==="78" || FormData['RF_CountryOfRegistration']==="79" || FormData['RF_CountryOfRegistration']==="80" || FormData['RF_CountryOfRegistration']==="81" || FormData['RF_CountryOfRegistration']==="83" || FormData['RF_CountryOfRegistration']==="87" || FormData['RF_CountryOfRegistration']==="89" || FormData['RF_CountryOfRegistration']==="96" || FormData['RF_CountryOfRegistration']==="97" || FormData['RF_CountryOfRegistration']==="98" 
+                            || FormData['RF_CountryOfRegistration']==="99" || FormData['RF_CountryOfRegistration']==="100" || FormData['RF_CountryOfRegistration']==="101" || FormData['RF_CountryOfRegistration']==="102" || FormData['RF_CountryOfRegistration']==="104" || FormData['RF_CountryOfRegistration']==="105"
+                            || FormData['RF_CountryOfRegistration']==="108" || FormData['RF_CountryOfRegistration']==="110" || FormData['RF_CountryOfRegistration']==="111" || FormData['RF_CountryOfRegistration']==="113" || FormData['RF_CountryOfRegistration']==="118" || FormData['RF_CountryOfRegistration']==="120" || FormData['RF_CountryOfRegistration']==="125"
+                            || FormData['RF_CountryOfRegistration']==="131" || FormData['RF_CountryOfRegistration']==="133" ||  FormData['RF_CountryOfRegistration']==="137" || FormData['RF_CountryOfRegistration']==="138" || FormData['RF_CountryOfRegistration']==="140" || FormData['RF_CountryOfRegistration']==="141"
+                            || FormData['RF_CountryOfRegistration']==="144" || FormData['RF_CountryOfRegistration']==="147" || FormData['RF_CountryOfRegistration']==="156" || FormData['RF_CountryOfRegistration']==="157" || FormData['RF_CountryOfRegistration']==="169" || FormData['RF_CountryOfRegistration']==="171" || FormData['RF_CountryOfRegistration']==="178" || FormData['RF_CountryOfRegistration']==="179" || FormData['RF_CountryOfRegistration']==="180" || FormData['RF_CountryOfRegistration']==="181" || FormData['RF_CountryOfRegistration']==="182" || FormData['RF_CountryOfRegistration']==="183"
+                            || FormData['RF_CountryOfRegistration']==="185" || FormData['RF_CountryOfRegistration']==="189" || FormData['RF_CountryOfRegistration']==="192" || FormData['RF_CountryOfRegistration']==="196" || FormData['RF_CountryOfRegistration']==="199" || FormData['RF_CountryOfRegistration']==="201" || FormData['RF_CountryOfRegistration']==="204" || FormData['RF_CountryOfRegistration']==="205"
+                            || FormData['RF_CountryOfRegistration']==="207" || FormData['RF_CountryOfRegistration']==="210" || FormData['RF_CountryOfRegistration']==="218" || FormData['RF_CountryOfRegistration']==="225" || FormData['RF_CountryOfRegistration']==="231" || FormData['RF_CountryOfRegistration']==="234" || FormData['RF_CountryOfRegistration']==="235" || FormData['RF_CountryOfRegistration']==="237" || FormData['RF_CountryOfRegistration']==="238")
+                            {
+                                val9=6
+                            }
+
+                            else if(FormData['RF_CountryOfRegistration']==="21" || FormData['RF_CountryOfRegistration']==="57" || FormData['RF_CountryOfRegistration']==="106" || FormData['RF_CountryOfRegistration']==="107" || FormData['RF_CountryOfRegistration']==="119" || FormData['RF_CountryOfRegistration']==="187" || FormData['RF_CountryOfRegistration']==="217")
+                            {
+                                val9=12
+                            }
+
+                            if(FormData['RF_CountryOfResidence']==1 || FormData['RF_CountryOfResidence']==2 || FormData['RF_CountryOfResidence']==3 || FormData['RF_CountryOfResidence']==4 || FormData['RF_CountryOfResidence']==6 || FormData['RF_CountryOfResidence']==8 || FormData['RF_CountryOfResidence']==10 || FormData['RF_CountryOfResidence']==13 || FormData['RF_CountryOfResidence']==16 || FormData['RF_CountryOfResidence']==17 || FormData['RF_CountryOfResidence']==19 || FormData['RF_CountryOfResidence']==20 || FormData['RF_CountryOfResidence']==24
+                                || FormData['RF_CountryOfResidence']==27 || FormData['RF_CountryOfResidence']==28 || FormData['RF_CountryOfResidence']==29 || FormData['RF_CountryOfResidence']==30 || FormData['RF_CountryOfResidence']==31 || FormData['RF_CountryOfResidence']==32 || FormData['RF_CountryOfResidence']==33 || FormData['RF_CountryOfResidence']==36 || FormData['RF_CountryOfResidence']==37 || FormData['RF_CountryOfResidence']==39 || FormData['RF_CountryOfResidence']==41 || FormData['RF_CountryOfResidence']==42 || FormData['RF_CountryOfResidence']==43
+                                || FormData['RF_CountryOfResidence']==46 || FormData['RF_CountryOfResidence']==47 || FormData['RF_CountryOfResidence']==48 || FormData['RF_CountryOfResidence']==49 || FormData['RF_CountryOfResidence']==50 || FormData['RF_CountryOfResidence']==51 || FormData['RF_CountryOfResidence']==52 || FormData['RF_CountryOfResidence']==53 || FormData['RF_CountryOfResidence']==55 || FormData['RF_CountryOfResidence']==58 || FormData['RF_CountryOfResidence']==62 || FormData['RF_CountryOfResidence']==64 || FormData['RF_CountryOfResidence']==65 || FormData['RF_CountryOfResidence']==66 
+                                || FormData['RF_CountryOfResidence']==67 || FormData['RF_CountryOfResidence']==68 || FormData['RF_CountryOfResidence']==69 || FormData['RF_CountryOfResidence']==70 || FormData['RF_CountryOfResidence']==71 || FormData['RF_CountryOfResidence']==72 || FormData['RF_CountryOfResidence']==73 || FormData['RF_CountryOfResidence']==74 || FormData['RF_CountryOfResidence']==82 || FormData['RF_CountryOfResidence']==85 || FormData['RF_CountryOfResidence']==86 || FormData['RF_CountryOfResidence']==90 || FormData['RF_CountryOfResidence']==91 || FormData['RF_CountryOfResidence']==92 || FormData['RF_CountryOfResidence']==93
+                                || FormData['RF_CountryOfResidence']==94 || FormData['RF_CountryOfResidence']==95 || FormData['RF_CountryOfResidence']==96 || FormData['RF_CountryOfResidence']==97 || FormData['RF_CountryOfResidence']==98 || FormData['RF_CountryOfResidence']==99 || FormData['RF_CountryOfResidence']==100 || FormData['RF_CountryOfResidence']==102 || FormData['RF_CountryOfResidence']==103
+                                
+                                || FormData['RF_CountryOfResidence']==109  || FormData['RF_CountryOfResidence']==112  || FormData['RF_CountryOfResidence']==115  || FormData['RF_CountryOfResidence']==116  || FormData['RF_CountryOfResidence']==117  || FormData['RF_CountryOfResidence']==121  || FormData['RF_CountryOfResidence']==123  || FormData['RF_CountryOfResidence']==124
+                                || FormData['RF_CountryOfResidence']==126  || FormData['RF_CountryOfResidence']==127  || FormData['RF_CountryOfResidence']==128  || FormData['RF_CountryOfResidence']==129  || FormData['RF_CountryOfResidence']==134  || FormData['RF_CountryOfResidence']==135  || FormData['RF_CountryOfResidence']==136
+                                || FormData['RF_CountryOfResidence']==139  || FormData['RF_CountryOfResidence']==143  || FormData['RF_CountryOfResidence']==145  || FormData['RF_CountryOfResidence']==146  || FormData['RF_CountryOfResidence']==148  || FormData['RF_CountryOfResidence']==150 || FormData['RF_CountryOfResidence']==151
+                                || FormData['RF_CountryOfResidence']==152 || FormData['RF_CountryOfResidence']==153 || FormData['RF_CountryOfResidence']==154 || FormData['RF_CountryOfResidence']==155 || FormData['RF_CountryOfResidence']==158 || FormData['RF_CountryOfResidence']==160 || FormData['RF_CountryOfResidence']==162 
+                                || FormData['RF_CountryOfResidence']==163 || FormData['RF_CountryOfResidence']==164 || FormData['RF_CountryOfResidence']==165 || FormData['RF_CountryOfResidence']==166 || FormData['RF_CountryOfResidence']==168 || FormData['RF_CountryOfResidence']==170 || FormData['RF_CountryOfResidence']==172 || FormData['RF_CountryOfResidence']==173 || FormData['RF_CountryOfResidence']==174 || FormData['RF_CountryOfResidence']==175 || FormData['RF_CountryOfResidence']==176 || FormData['RF_CountryOfResidence']==177
+                                || FormData['RF_CountryOfResidence']==186 || FormData['RF_CountryOfResidence']==187 || FormData['RF_CountryOfResidence']==188 || FormData['RF_CountryOfResidence']==190 || FormData['RF_CountryOfResidence']==191 || FormData['RF_CountryOfResidence']==193 || FormData['RF_CountryOfResidence']==195
+                                || FormData['RF_CountryOfResidence']==197 || FormData['RF_CountryOfResidence']==198 || FormData['RF_CountryOfResidence']==200 || FormData['RF_CountryOfResidence']==202 || FormData['RF_CountryOfResidence']==203 || FormData['RF_CountryOfResidence']==206 || FormData['RF_CountryOfResidence']==208 || FormData['RF_CountryOfResidence']==209
+                                || FormData['RF_CountryOfResidence']==211 || FormData['RF_CountryOfResidence']==212 || FormData['RF_CountryOfResidence']==213 || FormData['RF_CountryOfResidence']==214 || FormData['RF_CountryOfResidence']==219 || FormData['RF_CountryOfResidence']==220 || FormData['RF_CountryOfResidence']==221 || FormData['RF_CountryOfResidence']==222 || FormData['RF_CountryOfResidence']==223 || FormData['RF_CountryOfResidence']==224
+                                || FormData['RF_CountryOfResidence']==226 || FormData['RF_CountryOfResidence']==230 || FormData['RF_CountryOfResidence']==232 || FormData['RF_CountryOfResidence']==233 || FormData['RF_CountryOfResidence']==236 || FormData['RF_CountryOfResidence']==237 || FormData['RF_CountryOfResidence']==238 || FormData['RF_CountryOfResidence']==239)
+                            {
+                                val10=9
+                            }
+
+                            else if(FormData['RF_CountryOfResidence']==5 || FormData['RF_CountryOfResidence']==7 || FormData['RF_CountryOfResidence']==9 || FormData['RF_CountryOfResidence']==12 || FormData['RF_CountryOfResidence']==25 || FormData['RF_CountryOfResidence']==34 || FormData['RF_CountryOfResidence']==35 || FormData['RF_CountryOfResidence']==61 || FormData['RF_CountryOfResidence']==76 || FormData['RF_CountryOfResidence']==84|| FormData['RF_CountryOfResidence']==88
+                                
+                                || FormData['RF_CountryOfResidence']==114 || FormData['RF_CountryOfResidence']==130 || FormData['RF_CountryOfResidence']==132 || FormData['RF_CountryOfResidence']==142 || FormData['RF_CountryOfResidence']==149 || FormData['RF_CountryOfResidence']==159 || FormData['RF_CountryOfResidence']==161 
+                                || FormData['RF_CountryOfResidence']==167 || FormData['RF_CountryOfResidence']==194 || FormData['RF_CountryOfResidence']==215 || FormData['RF_CountryOfResidence']==216)
+                            {
+                                val10=3
+                            }
+
+                            else if(FormData['RF_CountryOfResidence']==11 || FormData['RF_CountryOfResidence']==14 || FormData['RF_CountryOfResidence']==15 || FormData['RF_CountryOfResidence']==18 || FormData['RF_CountryOfResidence']==22 || FormData['RF_CountryOfResidence']==23 || FormData['RF_CountryOfResidence']==26 || FormData['RF_CountryOfResidence']==30 || FormData['RF_CountryOfResidence']==38 || FormData['RF_CountryOfResidence']==40
+                                || FormData['RF_CountryOfResidence']==44 || FormData['RF_CountryOfResidence']==45 || FormData['RF_CountryOfResidence']==54 || FormData['RF_CountryOfResidence']==56 || FormData['RF_CountryOfResidence']==59 || FormData['RF_CountryOfResidence']==60 || FormData['RF_CountryOfResidence']==63 || FormData['RF_CountryOfResidence']==70 || FormData['RF_CountryOfResidence']==75 || FormData['RF_CountryOfResidence']==77 
+                                || FormData['RF_CountryOfResidence']==78 || FormData['RF_CountryOfResidence']==79 || FormData['RF_CountryOfResidence']==80 || FormData['RF_CountryOfResidence']==81 || FormData['RF_CountryOfResidence']==83 || FormData['RF_CountryOfResidence']==87 || FormData['RF_CountryOfResidence']==89 || FormData['RF_CountryOfResidence']==96 || FormData['RF_CountryOfResidence']==97 || FormData['RF_CountryOfResidence']==98 
+                                || FormData['RF_CountryOfResidence']==99 || FormData['RF_CountryOfResidence']==100 || FormData['RF_CountryOfResidence']==101 || FormData['RF_CountryOfResidence']==102 || FormData['RF_CountryOfResidence']==104 || FormData['RF_CountryOfResidence']==105
+                                
+                                || FormData['RF_CountryOfResidence']==108 || FormData['RF_CountryOfResidence']==110 || FormData['RF_CountryOfResidence']==111 || FormData['RF_CountryOfResidence']==113 || FormData['RF_CountryOfResidence']==118 || FormData['RF_CountryOfResidence']==120 || FormData['RF_CountryOfResidence']==125
+                                || FormData['RF_CountryOfResidence']==131 || FormData['RF_CountryOfResidence']==133 ||  FormData['RF_CountryOfResidence']==137 || FormData['RF_CountryOfResidence']==138 || FormData['RF_CountryOfResidence']==140 || FormData['RF_CountryOfResidence']==141
+                                || FormData['RF_CountryOfResidence']==144 || FormData['RF_CountryOfResidence']==147 || FormData['RF_CountryOfResidence']==156 || FormData['RF_CountryOfResidence']==157 || FormData['RF_CountryOfResidence']==169 || FormData['RF_CountryOfResidence']==171 || FormData['RF_CountryOfResidence']==178 || FormData['RF_CountryOfResidence']==179 || FormData['RF_CountryOfResidence']==180 || FormData['RF_CountryOfResidence']==181 || FormData['RF_CountryOfResidence']==182 || FormData['RF_CountryOfResidence']==183
+                                || FormData['RF_CountryOfResidence']==185 || FormData['RF_CountryOfResidence']==189 || FormData['RF_CountryOfResidence']==192 || FormData['RF_CountryOfResidence']==196 || FormData['RF_CountryOfResidence']==199 || FormData['RF_CountryOfResidence']==201 || FormData['RF_CountryOfResidence']==204 || FormData['RF_CountryOfResidence']==205
+                                || FormData['RF_CountryOfResidence']==207 || FormData['RF_CountryOfResidence']==210 || FormData['RF_CountryOfResidence']==218 || FormData['RF_CountryOfResidence']==225 || FormData['RF_CountryOfResidence']==231 || FormData['RF_CountryOfResidence']==234 || FormData['RF_CountryOfResidence']==235 || FormData['RF_CountryOfResidence']==237 || FormData['RF_CountryOfResidence']==238)
+                            {
+                                val10=6
+                            }
+
+                            else if(FormData['RF_CountryOfResidence']==21 || FormData['RF_CountryOfResidence']==57 || FormData['RF_CountryOfResidence']==106 || FormData['RF_CountryOfResidence']==107 || FormData['RF_CountryOfResidence']==119 || FormData['RF_CountryOfResidence']==187 || FormData['RF_CountryOfResidence']==217)
+                            {
+                                val10=12
+                            }
+
+                            if(FormData['RF_RelationshipToClient']==1 || FormData['RF_RelationshipToClient']==4 || FormData['RF_RelationshipToClient']==6 || FormData['RF_RelationshipToClient']==8 || FormData['RF_RelationshipToClient']==13 || FormData['RF_RelationshipToClient']==15 || FormData['RF_RelationshipToClient']==16
+                                || FormData['RF_RelationshipToClient']==20 || FormData['RF_RelationshipToClient']==21 || FormData['RF_RelationshipToClient']==25)
+                            {
+                               val11=1
+                            }
+    
+                            else if(FormData['RF_RelationshipToClient']==2 || FormData['RF_RelationshipToClient']==3 || FormData['RF_RelationshipToClient']==7 || FormData['RF_RelationshipToClient']==9 || FormData['RF_RelationshipToClient']==10 || FormData['RF_RelationshipToClient']==11 || FormData['RF_RelationshipToClient']==12
+                                || FormData['RF_RelationshipToClient']==17 || FormData['RF_RelationshipToClient']==18 || FormData['RF_RelationshipToClient']==22 || FormData['RF_RelationshipToClient']==23)
+                            {
+                                val11=3      
+                                
+                            }
+    
+                            else if(FormData['RF_RelationshipToClient']==5 || FormData['RF_RelationshipToClient']==14 || FormData['RF_RelationshipToClient']==19 || FormData['RF_RelationshipToClient']==24)
+                            {
+                                val11=2
+                            }
+
+                            var val2n=val1+val2+val3+val4+val5+val6+val7+val8
+                            var val3n=val6+val7+val8+val9+val10+val11
+                            if(FormData['RF_ClientType']==="1")
+                            {
+                                return (<>
+                               
+                                      
+                                   <label className="col-form-label">{val2n}</label>
+
+                                   </>)
+                            }
+
+                            else if(FormData['RF_ClientType']==="2")
+                            {
+                                return (<>
+                               
+                                      
+                                   <label className="col-form-label">{val3n}</label>
+
+                                   </>)
+                            }
+                        
+
+                        
+
+                           
+                                
+                           
+                })()}
+
                 </div>
 
             </div>
@@ -810,7 +1216,7 @@ import axios from 'axios'
                                 <option value="6">Unemployed</option>
                             </select>    
                         </div>
-
+                        
                         <div className="col-2">
                             <label className="col-form-label"></label>
                         </div>
@@ -818,12 +1224,14 @@ import axios from 'axios'
                         <div className="col-2">
                             <label className="col-form-label"></label>
                         </div>
-
+                        
                         <div className="col-1">
                             {(() => { 
-                            
+                             
                             if(FormData['RF_Occupation']==="1" || FormData['RF_Occupation']==="2" || FormData['RF_Occupation']==="3" || FormData['RF_Occupation']==="5")
                             {
+                                val1=1;
+                                
                                 return (<>
                                      
                                     <label className="col-form-label">1</label>
@@ -4379,7 +4787,38 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <label className="col-form-label"></label>
+                {(() => { 
+                        
+                        if(FormData['RF_Product_Name']==1 || FormData['RF_Product_Name']==2 || FormData['RF_Product_Name']==6 || FormData['RF_Product_Name']==9 || FormData['RF_Product_Name']==12 || FormData['RF_Product_Name']==13 || FormData['RF_Product_Name']==16
+                            || FormData['RF_Product_Name']==19 || FormData['RF_Product_Name']==20 || FormData['RF_Product_Name']==24 || FormData['RF_Product_Name']==26 || FormData['RF_Product_Name']==27)
+                        {
+                            return (<>
+                                
+                                 <label className="col-form-label"><b>Low</b></label>
+                                
+                            </>);
+                        }
+
+                        else if(FormData['RF_Product_Name']==3 || FormData['RF_Product_Name']==4 || FormData['RF_Product_Name']==5 || FormData['RF_Product_Name']==8 || FormData['RF_Product_Name']==11 || FormData['RF_Product_Name']==18 || FormData['RF_Product_Name']==21)
+                        {
+                            return (<>
+                                
+                                 <label className="col-form-label"><b>Medium</b></label>
+                                
+                            </>);
+                        }
+
+                        else if(FormData['RF_Product_Name']==7 || FormData['RF_Product_Name']==10 || FormData['RF_Product_Name']==14 || FormData['RF_Product_Name']==15 || FormData['RF_Product_Name']==17 || FormData['RF_Product_Name']==22 || FormData['RF_Product_Name']==23
+                            || FormData['RF_Product_Name']==25 || FormData['RF_Product_Name']==28 || FormData['RF_Product_Name']==29)
+                        {
+                            return (<>
+                                
+                                 <label className="col-form-label"><b>High</b></label>
+                                
+                            </>);
+                        }
+            
+                 })()}
                 </div>
 
                 <div className="col-2">
@@ -4395,7 +4834,38 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <label className="col-form-label">0</label>
+                     {(() => { 
+                        
+                        if(FormData['RF_Product_Name']==1 || FormData['RF_Product_Name']==2 || FormData['RF_Product_Name']==6 || FormData['RF_Product_Name']==9 || FormData['RF_Product_Name']==12 || FormData['RF_Product_Name']==13 || FormData['RF_Product_Name']==16
+                            || FormData['RF_Product_Name']==19 || FormData['RF_Product_Name']==20 || FormData['RF_Product_Name']==24 || FormData['RF_Product_Name']==26 || FormData['RF_Product_Name']==27)
+                        {
+                            return (<>
+                                
+                                 <label className="col-form-label">1</label>
+                                
+                            </>);
+                        }
+
+                        else if(FormData['RF_Product_Name']==3 || FormData['RF_Product_Name']==4 || FormData['RF_Product_Name']==5 || FormData['RF_Product_Name']==8 || FormData['RF_Product_Name']==11 || FormData['RF_Product_Name']==18 || FormData['RF_Product_Name']==21)
+                        {
+                            return (<>
+                                
+                                 <label className="col-form-label">2</label>
+                                
+                            </>);
+                        }
+
+                        else if(FormData['RF_Product_Name']==7 || FormData['RF_Product_Name']==10 || FormData['RF_Product_Name']==14 || FormData['RF_Product_Name']==15 || FormData['RF_Product_Name']==17 || FormData['RF_Product_Name']==22 || FormData['RF_Product_Name']==23
+                            || FormData['RF_Product_Name']==25 || FormData['RF_Product_Name']==28 || FormData['RF_Product_Name']==29)
+                        {
+                            return (<>
+                                
+                                 <label className="col-form-label">3</label>
+                                
+                            </>);
+                        }
+            
+                 })()}
                 </div>
 
             </div>
@@ -4586,7 +5056,110 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <label className="col-form-label">0</label>
+                {(() => { 
+                            var val13,val14,val15,val16,val17,val18,val19,val20
+                            if(FormData['RF_Transaction_Method']==1 || FormData['RF_Transaction_Method']==4 || FormData['RF_Transaction_Method']==5 || FormData['RF_Transaction_Method']==7 || FormData['RF_Transaction_Method']==8)
+                            {
+                                val13=4
+                            }
+
+                            else if(FormData['RF_Transaction_Method']==2 || FormData['RF_Transaction_Method']==11)
+                            {
+                                val13=6
+                            }
+
+                            else if(FormData['RF_Transaction_Method']==3 || FormData['RF_Transaction_Method']==6 || FormData['RF_Transaction_Method']==9 || FormData['RF_Transaction_Method']==10 || FormData['RF_Transaction_Method']==12)
+                            {
+                                val13=2
+                            }
+
+                            if(FormData['RF_Transaction_Reason']==1)
+                            {
+                               val14=2
+                            } 
+
+                            else if(FormData['RF_Transaction_Reason']!=0)
+                            {
+                                val14=1
+                            } 
+
+                            if(FormData['RF_High_Transaction_Reason']==1)
+                            {
+                                val15=6
+                            } 
+
+                            else if(FormData['RF_High_Transaction_Reason']==2)
+                            {
+                                val15=2
+                            } 
+
+                            if(FormData['RF_Transaction_Frequency']==1 || FormData['RF_Transaction_Frequency']==2 || FormData['RF_Transaction_Frequency']==3)
+                            {
+                                val16=3
+                            } 
+
+                            else if(FormData['RF_Transaction_Frequency']==4)
+                            {
+                                val16=1
+                            } 
+
+                            if(FormData['RF_Transaction_Geography']==1)
+                            {
+                                val17=2
+                            } 
+
+                            else if(FormData['RF_Transaction_Geography']==2 || FormData['RF_Transaction_Geography']==3)
+                            {
+                                val17=1
+                            } 
+
+                            if(FormData['RF_Delivery_Channel']==1)
+                            {
+                                val18=3
+                            } 
+
+                            else if(FormData['RF_Delivery_Channel']==2 || FormData['RF_Delivery_Channel']==5 || FormData['RF_Delivery_Channel']==6)
+                            {
+                                val18=2
+                            } 
+
+                            else if(FormData['RF_Delivery_Channel']==3 || FormData['RF_Delivery_Channel']==4)
+                            {
+                                val18=1
+                            } 
+                              
+                            if(FormData['RF_Linked_Party_Acting']==1 || FormData['RF_Linked_Party_Acting']==2)
+                            {
+                                val19=1
+                            } 
+
+                            else if(FormData['RF_Linked_Party_Acting']==3)
+                            {
+                                val19=3
+                            } 
+                            
+                            if(FormData['RF_Linked_Party_Paying']==1 )
+                            {
+                                val20=0
+                            } 
+
+                            else if(FormData['RF_Linked_Party_Paying']==2 || FormData['RF_Linked_Party_Paying']==3)
+                            {
+                                val20=3
+                            } 
+
+                            if(FormData['RF_Transaction_Flow']==='1' || FormData['RF_Transaction_Flow']==='2')
+                            {
+                                var val4n=val13+val14+val15+val16+val17+val18+val19+val20
+                                return (<>
+                                
+                                        
+                                    <label className="col-form-label">{val4n}</label>
+
+                                    </>)
+                            }
+                                                   
+                            })()}
                 </div>
 
             </div>
@@ -7773,13 +8346,16 @@ import axios from 'axios'
             </div>
         </div>
 
-
         
     </>
     )
  }
 export default RiskFactors
 
-//&DqWa5u93Ue6
 
+        
+      
+                   
+              
+                               
    
