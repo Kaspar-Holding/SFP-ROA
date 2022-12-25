@@ -222,28 +222,28 @@ function  Risk()
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_LumpSumTotalNeed' value={FormData['RP_DC_LumpSumTotalNeed']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_LumpSumTotalNeed' value={FormData['RP_DC_LumpSumTotalNeed']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_LumpSumExistingProvisions' value={FormData['RP_DC_LumpSumExistingProvisions']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_LumpSumExistingProvisions' value={FormData['RP_DC_LumpSumExistingProvisions']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_LumpSumExistingShortfallSurplus' value={FormData['RP_DC_LumpSumExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_LumpSumExistingShortfallSurplus' value={FormData['RP_DC_LumpSumExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_LumpSumInvestments' value={FormData['RP_DC_LumpSumInvestments']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_LumpSumInvestments' value={FormData['RP_DC_LumpSumInvestments']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -254,28 +254,28 @@ function  Risk()
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_IncomeTotalNeed' value={FormData['RP_DC_IncomeTotalNeed']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_IncomeTotalNeed' value={FormData['RP_DC_IncomeTotalNeed']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_IncomeExistingProvisions' value={FormData['RP_DC_IncomeExistingProvisions']}   placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_IncomeExistingProvisions' value={FormData['RP_DC_IncomeExistingProvisions']}   placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_IncomeExistingShortfallSurplus' value={FormData['RP_DC_IncomeExistingShortfallSurplus']}   placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_IncomeExistingShortfallSurplus' value={FormData['RP_DC_IncomeExistingShortfallSurplus']}   placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_IncomeInvestments' value={FormData['RP_DC_IncomeInvestments']}   placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_IncomeInvestments' value={FormData['RP_DC_IncomeInvestments']}   placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -286,28 +286,28 @@ function  Risk()
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_FB_IncomeTotalNeed' value={FormData['RP_DC_FB_IncomeTotalNeed']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_FB_IncomeTotalNeed' value={FormData['RP_DC_FB_IncomeTotalNeed']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_FB_IncomeExistingProvisions' value={FormData['RP_DC_FB_IncomeExistingProvisions']}   placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_FB_IncomeExistingProvisions' value={FormData['RP_DC_FB_IncomeExistingProvisions']}   placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_FB_IncomeExistingShortfallSurplus' value={FormData['RP_DC_FB_IncomeExistingShortfallSurplus']}   placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_FB_IncomeExistingShortfallSurplus' value={FormData['RP_DC_FB_IncomeExistingShortfallSurplus']}   placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_FB_IncomeInvestments' value={FormData['RP_DC_FB_IncomeInvestments']}   placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_FB_IncomeInvestments' value={FormData['RP_DC_FB_IncomeInvestments']}   placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -316,34 +316,34 @@ function  Risk()
       <tr>
         <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
           <div className="form-group">
-              <input disabledtype="text"  name='RP_DC_Other' value={FormData['RP_DC_Other']}  placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <input disabled type="text"  name='RP_DC_Other' value={FormData['RP_DC_Other']}  placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
           </div>
         </td>
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_OtherIncomeTotalNeed' value={FormData['RP_DC_OtherIncomeTotalNeed']}  placeholder='0.00' aria-label="" />
-          </div>
-        </td>
-  
-        <td>
-          <div className="input-group">
-            <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_OtherIncomeExistingProvisions' value={FormData['RP_DC_OtherIncomeExistingProvisions']}   placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_OtherIncomeTotalNeed' value={FormData['RP_DC_OtherIncomeTotalNeed']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_OtherIncomeExistingShortfallSurplus' value={FormData['RP_DC_OtherIncomeExistingShortfallSurplus']}   placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_OtherIncomeExistingProvisions' value={FormData['RP_DC_OtherIncomeExistingProvisions']}   placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DC_OtherIncomeInvestments' value={FormData['RP_DC_OtherIncomeInvestments']}   placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DC_OtherIncomeExistingShortfallSurplus' value={FormData['RP_DC_OtherIncomeExistingShortfallSurplus']}   placeholder='0.00' aria-label="" />
+          </div>
+        </td>
+  
+        <td>
+          <div className="input-group">
+            <span className="input-group-text">R</span>
+            <input disabled type="number" className="form-control" name='RP_DC_OtherIncomeInvestments' value={FormData['RP_DC_OtherIncomeInvestments']}   placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -353,7 +353,7 @@ function  Risk()
         <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</td>
         <td>
           <div className="form-group">
-              <input disabledtype="text"  name='RP_DC_Comments' value={FormData['RP_DC_Comments']}   className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text"  name='RP_DC_Comments' value={FormData['RP_DC_Comments']}   className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=""/>
           </div>
         </td>
       </tr>
@@ -373,28 +373,28 @@ function  Risk()
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_LumpSumTotalNeed' value={FormData['RP_DiC_LumpSumTotalNeed']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_LumpSumTotalNeed' value={FormData['RP_DiC_LumpSumTotalNeed']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_LumpSumExistingProvisions' value={FormData['RP_DiC_LumpSumExistingProvisions']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_LumpSumExistingProvisions' value={FormData['RP_DiC_LumpSumExistingProvisions']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_LumpSumExistingShortfallSurplus' value={FormData['RP_DiC_LumpSumExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_LumpSumExistingShortfallSurplus' value={FormData['RP_DiC_LumpSumExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_LumpSumInvestments' value={FormData['RP_DiC_LumpSumInvestments']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_LumpSumInvestments' value={FormData['RP_DiC_LumpSumInvestments']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -405,28 +405,28 @@ function  Risk()
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_PI_TotalNeed' value={FormData['RP_DiC_PI_TotalNeed']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_PI_TotalNeed' value={FormData['RP_DiC_PI_TotalNeed']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_PI_ExistingProvisions' value={FormData['RP_DiC_PI_ExistingProvisions']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_PI_ExistingProvisions' value={FormData['RP_DiC_PI_ExistingProvisions']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_PI_ExistingShortfallSurplus' value={FormData['RP_DiC_PI_ExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_PI_ExistingShortfallSurplus' value={FormData['RP_DiC_PI_ExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_PI_Investments' value={FormData['RP_DiC_PI_Investments']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_PI_Investments' value={FormData['RP_DiC_PI_Investments']}  placeholder='0.00' aria-label="" />
           </div>
         </td> 
       </tr>
@@ -437,28 +437,28 @@ function  Risk()
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_TI_TotalNeed' value={FormData['RP_DiC_TI_TotalNeed']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_TI_TotalNeed' value={FormData['RP_DiC_TI_TotalNeed']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_TI_ExistingProvisions' value={FormData['RP_DiC_TI_ExistingProvisions']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_TI_ExistingProvisions' value={FormData['RP_DiC_TI_ExistingProvisions']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_TI_ExistingShortfallSurplus' value={FormData['RP_DiC_TI_ExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_TI_ExistingShortfallSurplus' value={FormData['RP_DiC_TI_ExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_TI_Investments' value={FormData['RP_DiC_TI_Investments']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_TI_Investments' value={FormData['RP_DiC_TI_Investments']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -469,28 +469,28 @@ function  Risk()
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_SiB_TotalNeed' value={FormData['RP_DiC_SiB_TotalNeed']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_SiB_TotalNeed' value={FormData['RP_DiC_SiB_TotalNeed']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_SiB_ExistingProvisions' value={FormData['RP_DiC_SiB_ExistingProvisions']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_SiB_ExistingProvisions' value={FormData['RP_DiC_SiB_ExistingProvisions']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_SiB_ExistingShortfallSurplus' value={FormData['RP_DiC_SiB_ExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_SiB_ExistingShortfallSurplus' value={FormData['RP_DiC_SiB_ExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_SiB_Investments' value={FormData['RP_DiC_SIB_Investments']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_SiB_Investments' value={FormData['RP_DiC_SIB_Investments']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -499,34 +499,34 @@ function  Risk()
       <tr>
         <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
         <div className="form-group">
-              <input disabledtype="text"  name='RP_DiC_Other1' value={FormData['RP_DiC_Other1']}  placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <input disabled type="text"  name='RP_DiC_Other1' value={FormData['RP_DiC_Other1']}  placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
           </div>
         </td>
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_OtherTotalNeed1' value={FormData['RP_DiC_OtherTotalNeed1']}  placeholder='0.00' aria-label="" />
-          </div>
-        </td>
-  
-        <td>
-          <div className="input-group">
-            <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_OtherExistingProvisions1' value={FormData['RP_DiC_OtherExistingProvisions1']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_OtherTotalNeed1' value={FormData['RP_DiC_OtherTotalNeed1']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_OtherExistingShortfallSurplus1' value={FormData['RP_DiC_OtherExistingShortfallSurplus1']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_OtherExistingProvisions1' value={FormData['RP_DiC_OtherExistingProvisions1']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_OtherInvestments1' value={FormData['RP_DiC_OtherInvestments1']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_OtherExistingShortfallSurplus1' value={FormData['RP_DiC_OtherExistingShortfallSurplus1']}  placeholder='0.00' aria-label="" />
+          </div>
+        </td>
+  
+        <td>
+          <div className="input-group">
+            <span className="input-group-text">R</span>
+            <input disabled type="number" className="form-control" name='RP_DiC_OtherInvestments1' value={FormData['RP_DiC_OtherInvestments1']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -535,34 +535,34 @@ function  Risk()
       <tr>
         <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
         <div className="form-group">
-              <input disabledtype="text"  name='RP_DiC_Other2' value={FormData['RP_DiC_Other2']}  placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <input disabled type="text"  name='RP_DiC_Other2' value={FormData['RP_DiC_Other2']}  placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
           </div>
         </td>
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_OtherTotalNeed2' value={FormData['RP_DiC_OtherTotalNeed2']}  placeholder='0.00' aria-label="" />
-          </div>
-        </td>
-  
-        <td>
-          <div className="input-group">
-            <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_OtherExistingProvisions2' value={FormData['RP_DiC_OtherExistingProvisions2']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_OtherTotalNeed2' value={FormData['RP_DiC_OtherTotalNeed2']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_OtherExistingShortfallSurplus2' value={FormData['RP_DiC_OtherExistingShortfallSurplus2']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_OtherExistingProvisions2' value={FormData['RP_DiC_OtherExistingProvisions2']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DiC_OtherInvestments2' value={FormData['RP_DiC_OtherInvestments2']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DiC_OtherExistingShortfallSurplus2' value={FormData['RP_DiC_OtherExistingShortfallSurplus2']}  placeholder='0.00' aria-label="" />
+          </div>
+        </td>
+  
+        <td>
+          <div className="input-group">
+            <span className="input-group-text">R</span>
+            <input disabled type="number" className="form-control" name='RP_DiC_OtherInvestments2' value={FormData['RP_DiC_OtherInvestments2']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -572,7 +572,7 @@ function  Risk()
         <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</td>
           <td>  
             <div className="form-group">
-              <input disabledtype="email" className="form-control" id="RP_DiC_Comments" name='RP_DiC_Comments' value={FormData['RP_DiC_Comments']}  aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="email" className="form-control" id="RP_DiC_Comments" name='RP_DiC_Comments' value={FormData['RP_DiC_Comments']}  aria-describedby="emailHelp" placeholder=""/>
             </div>
          </td>
          <td></td>  
@@ -597,28 +597,28 @@ function  Risk()
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_LumpSumTotalNeed' value={FormData['RP_DrC_LumpSumTotalNeed']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_LumpSumTotalNeed' value={FormData['RP_DrC_LumpSumTotalNeed']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_LumpSumExistingProvisions' value={FormData['RP_DrC_LumpSumExistingProvisions']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_LumpSumExistingProvisions' value={FormData['RP_DrC_LumpSumExistingProvisions']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_LumpSumExistingShortfallSurplus' value={FormData['RP_DrC_LumpSumExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_LumpSumExistingShortfallSurplus' value={FormData['RP_DrC_LumpSumExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_LumpSumInvestments' value={FormData['RP_DrC_LumpSumInvestments']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_LumpSumInvestments' value={FormData['RP_DrC_LumpSumInvestments']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -629,28 +629,28 @@ function  Risk()
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_IncomeTotalNeed' value={FormData['RP_DrC_IncomeTotalNeed']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_IncomeTotalNeed' value={FormData['RP_DrC_IncomeTotalNeed']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_IncomeExistingProvisions' value={FormData['RP_DrC_IncomeExistingProvisions']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_IncomeExistingProvisions' value={FormData['RP_DrC_IncomeExistingProvisions']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_IncomeExistingShortfallSurplus' value={FormData['RP_DrC_IncomeExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_IncomeExistingShortfallSurplus' value={FormData['RP_DrC_IncomeExistingShortfallSurplus']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_IncomeInvestments' value={FormData['RP_DrC_IncomeInvestments']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_IncomeInvestments' value={FormData['RP_DrC_IncomeInvestments']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -659,34 +659,34 @@ function  Risk()
       <tr>
         <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
         <div className="form-group">
-              <input disabledtype="text"  name='RP_DrC_Other1' value={FormData['RP_DrC_Other1']}  placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <input disabled type="text"  name='RP_DrC_Other1' value={FormData['RP_DrC_Other1']}  placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
           </div>
         </td>
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_OtherTotalNeed1' value={FormData['RP_DrC_OtherTotalNeed1']}  placeholder='0.00' aria-label="" />
-          </div>
-        </td>
-  
-        <td>
-          <div className="input-group">
-            <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_OtherExistingProvisions1' value={FormData['RP_DrC_OtherExistingProvisions1']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_OtherTotalNeed1' value={FormData['RP_DrC_OtherTotalNeed1']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_OtherExistingShortfallSurplus1' value={FormData['RP_DrC_OtherExistingShortfallSurplus1']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_OtherExistingProvisions1' value={FormData['RP_DrC_OtherExistingProvisions1']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_OtherInvestments1' value={FormData['RP_DrC_OtherInvestments1']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_OtherExistingShortfallSurplus1' value={FormData['RP_DrC_OtherExistingShortfallSurplus1']}  placeholder='0.00' aria-label="" />
+          </div>
+        </td>
+  
+        <td>
+          <div className="input-group">
+            <span className="input-group-text">R</span>
+            <input disabled type="number" className="form-control" name='RP_DrC_OtherInvestments1' value={FormData['RP_DrC_OtherInvestments1']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -694,34 +694,34 @@ function  Risk()
       <tr>
         <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
         <div className="form-group">
-              <input disabledtype="text"  name='RP_DrC_Other2' value={FormData['RP_DrC_Other2']}  placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <input disabled type="text"  name='RP_DrC_Other2' value={FormData['RP_DrC_Other2']}  placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
           </div>
         </td>
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_OtherTotalNeed2' value={FormData['RP_DrC_OtherTotalNeed2']}  placeholder='0.00' aria-label="" />
-          </div>
-        </td>
-  
-        <td>
-          <div className="input-group">
-            <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_OtherExistingProvisions2' value={FormData['RP_DrC_OtherExistingProvisions2']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_OtherTotalNeed2' value={FormData['RP_DrC_OtherTotalNeed2']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_OtherExistingShortfallSurplus2' value={FormData['RP_DrC_OtherExistingShortfallSurplus2']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_OtherExistingProvisions2' value={FormData['RP_DrC_OtherExistingProvisions2']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
   
         <td>
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabledtype="number" className="form-control" name='RP_DrC_OtherInvestments2' value={FormData['RP_DrC_OtherInvestments2']}  placeholder='0.00' aria-label="" />
+            <input disabled type="number" className="form-control" name='RP_DrC_OtherExistingShortfallSurplus2' value={FormData['RP_DrC_OtherExistingShortfallSurplus2']}  placeholder='0.00' aria-label="" />
+          </div>
+        </td>
+  
+        <td>
+          <div className="input-group">
+            <span className="input-group-text">R</span>
+            <input disabled type="number" className="form-control" name='RP_DrC_OtherInvestments2' value={FormData['RP_DrC_OtherInvestments2']}  placeholder='0.00' aria-label="" />
           </div>
         </td>
       </tr>
@@ -731,7 +731,7 @@ function  Risk()
         <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</td>
           <td>  
           <div className="form-group">
-            <input disabledtype="email" className="form-control" id="RP_DrC_Comments" name='RP_DrC_Comments' value={FormData['RP_DrC_Comments']}  aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="email" className="form-control" id="RP_DrC_Comments" name='RP_DrC_Comments' value={FormData['RP_DrC_Comments']}  aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td> 
          <td></td>  
@@ -821,7 +821,7 @@ function  Risk()
           <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product:</td>
           <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_Product_Taken" name='RP_Product_Taken' value={FormData['RP_Product_Taken']}   aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_Product_Taken" name='RP_Product_Taken' value={FormData['RP_Product_Taken']}   aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td>  
          <td></td>
@@ -837,7 +837,7 @@ function  Risk()
           <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Provider:</td>
           <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_Product_Provider" name='RP_Product_Provider' value={FormData['RP_Product_Provider']}  aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_Product_Provider" name='RP_Product_Provider' value={FormData['RP_Product_Provider']}  aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td>  
          <td></td>
@@ -845,7 +845,7 @@ function  Risk()
          <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Policy No:</td>
          <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_Policy_Number" name='RP_Policy_Number' value={FormData['RP_Policy_Number']}  aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_Policy_Number" name='RP_Policy_Number' value={FormData['RP_Policy_Number']}  aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td> 
   
@@ -857,7 +857,7 @@ function  Risk()
               <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Name:</td>
               <td>  
               <div className="form-group">
-                  <input disabledtype="text" className="form-control" id="RP_Product_Name" name='RP_Product_Name' value={FormData['RP_Product_Name']}   aria-describedby="emailHelp" placeholder="" />
+                  <input disabled type="text" className="form-control" id="RP_Product_Name" name='RP_Product_Name' value={FormData['RP_Product_Name']}   aria-describedby="emailHelp" placeholder="" />
               </div>
           </td>  
           <td></td>
@@ -867,11 +867,11 @@ function  Risk()
               <div className='row'>
                   <div className='col-6'>
                       <div className="form-group">
-                          <input disabledtype="text" className="form-control" id="RP_Product_Premium" name='RP_Product_Premium' value={FormData['RP_Product_Premium']}   aria-describedby="emailHelp" placeholder="" />
+                          <input disabled type="text" className="form-control" id="RP_Product_Premium" name='RP_Product_Premium' value={FormData['RP_Product_Premium']}   aria-describedby="emailHelp" placeholder="" />
                       </div>
                   </div>
                   <div className='col-6'>
-                      <select className="text-start form-select" id="RP_Product_PremiumFrequency" name='RP_Product_PremiumFrequency' value={FormData['RP_Product_PremiumFrequency']}  aria-label="Default select example">
+                      <select disabled className="text-start form-select" id="RP_Product_PremiumFrequency" name='RP_Product_PremiumFrequency' value={FormData['RP_Product_PremiumFrequency']}  aria-label="Default select example">
                           <option value="0" selected>Frequeny</option>
                           <option value="1">Monthly</option>
                           <option value="2">Quarterly</option>
@@ -887,7 +887,7 @@ function  Risk()
           <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Premium Pattern:</td>
           <td>  
             <div className="form-group">
-                <input disabledtype="text" className="form-control" id="RP_Product_Pattern" name='RP_Product_Pattern' value={FormData['RP_Product_Pattern']}   aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" className="form-control" id="RP_Product_Pattern" name='RP_Product_Pattern' value={FormData['RP_Product_Pattern']}   aria-describedby="emailHelp" placeholder=""/>
             </div>
           </td>  
           <td>
@@ -896,7 +896,7 @@ function  Risk()
          <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Escalation in<br/>cover/premium</td>
          <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_Product_Escalation" name='RP_Product_Escalation' value={FormData['RP_Product_Escalation']}   aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_Product_Escalation" name='RP_Product_Escalation' value={FormData['RP_Product_Escalation']}   aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td> 
           <td></td> 
@@ -908,7 +908,7 @@ function  Risk()
           <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Contracting Party:</td>
           <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_Product_ContractingParty" name='RP_Product_ContractingParty' value={FormData['RP_Product_ContractingParty']}   aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_Product_ContractingParty" name='RP_Product_ContractingParty' value={FormData['RP_Product_ContractingParty']}   aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td>  
          <td></td>
@@ -916,7 +916,7 @@ function  Risk()
          <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Life/Lives<br/>covered</td>
          <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_Product_LivesAssured" name='RP_Product_LivesAssured' value={FormData['RP_Product_LivesAssured']}   aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_Product_LivesAssured" name='RP_Product_LivesAssured' value={FormData['RP_Product_LivesAssured']}   aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td> 
           <td></td> 
@@ -927,7 +927,7 @@ function  Risk()
           <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Beneficial/<br/>Cessionary</td>
           <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_Product_Beneficiary" name='RP_Product_Beneficiary' value={FormData['RP_Product_Beneficiary']}   aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_Product_Beneficiary" name='RP_Product_Beneficiary' value={FormData['RP_Product_Beneficiary']}   aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td>  
          <td></td>
@@ -935,7 +935,7 @@ function  Risk()
          <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Premium<br/>payer(s)</td>
          <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_Product_PremiumPayer" name='RP_Product_PremiumPayer' value={FormData['RP_Product_PremiumPayer']}   aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_Product_PremiumPayer" name='RP_Product_PremiumPayer' value={FormData['RP_Product_PremiumPayer']}   aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td> 
           <td></td> 
@@ -946,14 +946,14 @@ function  Risk()
           <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">1st year<br/>commission</td>
           <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_Product_1stYearCommission" name='RP_Product_1stYearCommission' value={FormData['RP_Product_1stYearCommission']}   aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_Product_1stYearCommission" name='RP_Product_1stYearCommission' value={FormData['RP_Product_1stYearCommission']}   aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td>  
          <td></td>
          <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">2nd year<br/>commission</td>
          <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_Product_2ndYearCommission" name='RP_Product_2ndYearCommission' value={FormData['RP_Product_2ndYearCommission']}   aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_Product_2ndYearCommission" name='RP_Product_2ndYearCommission' value={FormData['RP_Product_2ndYearCommission']}   aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td> 
           <td></td> 
@@ -964,7 +964,7 @@ function  Risk()
           <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Ongoing fees</td>
           <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_Product_OngoingFees" name='RP_Product_OngoingFees' value={FormData['RP_Product_OngoingFees']}   aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_Product_OngoingFees" name='RP_Product_OngoingFees' value={FormData['RP_Product_OngoingFees']}   aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td>  
          <td></td>
@@ -973,11 +973,11 @@ function  Risk()
           <div className='row'>
             <div className='col-6'>
                 <div className="form-group">
-                    <input disabledtype="text" className="form-control" id="RP_Product_OngoingFeesFrequency" name='RP_Product_OngoingFeesFrequency' value={FormData['RP_Product_OngoingFeesFrequency']}  aria-describedby="emailHelp" placeholder="" />
+                    <input disabled type="text" className="form-control" id="RP_Product_OngoingFeesFrequency" name='RP_Product_OngoingFeesFrequency' value={FormData['RP_Product_OngoingFeesFrequency']}  aria-describedby="emailHelp" placeholder="" />
                 </div>
             </div>
             <div className='col-6'>
-                <select className="text-start form-select" id="RP_Product_OngoingFeesFrequency1" name='RP_Product_OngoingFeesFrequency1' value={FormData['RP_Product_OngoingFeesFrequency1']}  aria-label="Default select example">
+                <select disabled className="text-start form-select" id="RP_Product_OngoingFeesFrequency1" name='RP_Product_OngoingFeesFrequency1' value={FormData['RP_Product_OngoingFeesFrequency1']}  aria-label="Default select example">
                     <option value="0" selected>Frequeny</option>
                     <option value="1">Monthly</option>
                     <option value="2">Quarterly</option>
@@ -1001,7 +1001,7 @@ function  Risk()
          {/* <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Frequency</td> */}
          <td>  
           <div className="form-group">
-              <input disabledtype="text" className="form-control" id="RP_TotalFees_n_Commissions" name='RP_TotalFees_n_Commissions' value={FormData['RP_TotalFees_n_Commissions']}   aria-describedby="emailHelp" placeholder=""/>
+              <input disabled type="text" className="form-control" id="RP_TotalFees_n_Commissions" name='RP_TotalFees_n_Commissions' value={FormData['RP_TotalFees_n_Commissions']}   aria-describedby="emailHelp" placeholder=""/>
           </div>
          </td>
          <td></td> 
@@ -1043,7 +1043,7 @@ function  Risk()
               <div className="col-8" style={{paddingBottom: "0.5%"}}>
                   <div className="row g-3 align-items-center">
                       <div className="col-6">
-                          <input disabledspellCheck="true" id="RP_BenDesc_1" name='RP_BenDesc_1' value={FormData['RP_BenDesc_1']}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                          <input disabled spellCheck="true" id="RP_BenDesc_1" name='RP_BenDesc_1' value={FormData['RP_BenDesc_1']}  className="form-control" placeholder=""  aria-describedby="" />
                       </div>
                   </div>
               </div>
@@ -1053,7 +1053,7 @@ function  Risk()
                       <div className="col-6">
                           <div className="input-group">
                             <span className="input-group-text">R</span>
-                            <input disabledtype="number" className="form-control" id="RP_BenDesc_CoverAmount1" name='RP_BenDesc_CoverAmount1' value={FormData['RP_BenDesc_CoverAmount1']}  placeholder='0.00' aria-label="" />
+                            <input disabled type="number" className="form-control" id="RP_BenDesc_CoverAmount1" name='RP_BenDesc_CoverAmount1' value={FormData['RP_BenDesc_CoverAmount1']}  placeholder='0.00' aria-label="" />
                           </div>
                       </div> 
                   </div>
@@ -1065,7 +1065,7 @@ function  Risk()
               <div className="col-8" style={{paddingBottom: "0.5%"}}>
                   <div className="row g-3 align-items-center">
                       <div className="col-6">
-                          <input disabledspellCheck="true" id="RP_BenDesc_2" name='RP_BenDesc_2' value={FormData['RP_BenDesc_2']}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                          <input disabled spellCheck="true" id="RP_BenDesc_2" name='RP_BenDesc_2' value={FormData['RP_BenDesc_2']}  className="form-control" placeholder=""  aria-describedby="" />
                       </div>
                   </div>
               </div>
@@ -1075,7 +1075,7 @@ function  Risk()
                       <div className="col-6">
                           <div className="input-group">
                             <span className="input-group-text">R</span>
-                            <input disabledtype="number" className="form-control" id="RP_BenDesc_CoverAmount2" name='RP_BenDesc_CoverAmount2' value={FormData['RP_BenDesc_CoverAmount2']}  placeholder='0.00' aria-label="" />
+                            <input disabled type="number" className="form-control" id="RP_BenDesc_CoverAmount2" name='RP_BenDesc_CoverAmount2' value={FormData['RP_BenDesc_CoverAmount2']}  placeholder='0.00' aria-label="" />
                           </div>
                       </div> 
                   </div>
@@ -1087,7 +1087,7 @@ function  Risk()
               <div className="col-8" style={{paddingBottom: "0.5%"}}>
                   <div className="row g-3 align-items-center">
                       <div className="col-6">
-                          <input disabledspellCheck="true" id="RP_BenDesc_3" name='RP_BenDesc_3' value={FormData['RP_BenDesc_3']}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                          <input disabled spellCheck="true" id="RP_BenDesc_3" name='RP_BenDesc_3' value={FormData['RP_BenDesc_3']}  className="form-control" placeholder=""  aria-describedby="" />
                       </div>
                   </div>
               </div>
@@ -1097,7 +1097,7 @@ function  Risk()
                       <div className="col-6">
                           <div className="input-group">
                             <span className="input-group-text">R</span>
-                            <input disabledtype="number" className="form-control" id="RP_BenDesc_CoverAmount3" name='RP_BenDesc_CoverAmount3' value={FormData['RP_BenDesc_CoverAmount3']}  placeholder='0.00' aria-label="" />
+                            <input disabled type="number" className="form-control" id="RP_BenDesc_CoverAmount3" name='RP_BenDesc_CoverAmount3' value={FormData['RP_BenDesc_CoverAmount3']}  placeholder='0.00' aria-label="" />
                           </div>
                       </div> 
                   </div>
@@ -1109,7 +1109,7 @@ function  Risk()
               <div className="col-8" style={{paddingBottom: "0.5%"}}>
                   <div className="row g-3 align-items-center">
                       <div className="col-6">
-                          <input disabledspellCheck="true" id="RP_BenDesc_4" name='RP_BenDesc_4' value={FormData['RP_BenDesc_4']}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                          <input disabled spellCheck="true" id="RP_BenDesc_4" name='RP_BenDesc_4' value={FormData['RP_BenDesc_4']}  className="form-control" placeholder=""  aria-describedby="" />
                       </div>
                   </div>
               </div>
@@ -1119,7 +1119,7 @@ function  Risk()
                       <div className="col-6">
                           <div className="input-group">
                             <span className="input-group-text">R</span>
-                            <input disabledtype="number" className="form-control" id="RP_BenDesc_CoverAmount4" name='RP_BenDesc_CoverAmount4' value={FormData['RP_BenDesc_CoverAmount4']}  placeholder='0.00' aria-label="" />
+                            <input disabled type="number" className="form-control" id="RP_BenDesc_CoverAmount4" name='RP_BenDesc_CoverAmount4' value={FormData['RP_BenDesc_CoverAmount4']}  placeholder='0.00' aria-label="" />
                           </div>
                       </div> 
                   </div>
@@ -1131,7 +1131,7 @@ function  Risk()
               <div className="col-8" style={{paddingBottom: "0.5%"}}>
                   <div className="row g-3 align-items-center">
                       <div className="col-6">
-                          <input disabledspellCheck="true" id="RP_BenDesc_5" name='RP_BenDesc_5' value={FormData['RP_BenDesc_5']}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                          <input disabled spellCheck="true" id="RP_BenDesc_5" name='RP_BenDesc_5' value={FormData['RP_BenDesc_5']}  className="form-control" placeholder=""  aria-describedby="" />
                       </div>
                   </div>
               </div>
@@ -1141,7 +1141,7 @@ function  Risk()
                       <div className="col-6">
                           <div className="input-group">
                             <span className="input-group-text">R</span>
-                            <input disabledtype="number" className="form-control" id="RP_BenDesc_CoverAmount5" name='RP_BenDesc_CoverAmount5' value={FormData['RP_BenDesc_CoverAmount5']}  placeholder='0.00' aria-label="" />
+                            <input disabled type="number" className="form-control" id="RP_BenDesc_CoverAmount5" name='RP_BenDesc_CoverAmount5' value={FormData['RP_BenDesc_CoverAmount5']}  placeholder='0.00' aria-label="" />
                           </div>
                       </div> 
                   </div>
@@ -1153,7 +1153,7 @@ function  Risk()
               <div className="col-8" style={{paddingBottom: "0.5%"}}>
                   <div className="row g-3 align-items-center">
                       <div className="col-6">
-                          <input disabledspellCheck="true" id="RP_BenDesc_6" name='RP_BenDesc_6' value={FormData['RP_BenDesc_6']}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                          <input disabled spellCheck="true" id="RP_BenDesc_6" name='RP_BenDesc_6' value={FormData['RP_BenDesc_6']}  className="form-control" placeholder=""  aria-describedby="" />
                       </div>
                   </div>
               </div>
@@ -1163,7 +1163,7 @@ function  Risk()
                       <div className="col-6">
                           <div className="input-group">
                             <span className="input-group-text">R</span>
-                            <input disabledtype="number" className="form-control" id="RP_BenDesc_CoverAmount6" name='RP_BenDesc_CoverAmount6' value={FormData['RP_BenDesc_CoverAmount6']}  placeholder='0.00' aria-label="" />
+                            <input disabled type="number" className="form-control" id="RP_BenDesc_CoverAmount6" name='RP_BenDesc_CoverAmount6' value={FormData['RP_BenDesc_CoverAmount6']}  placeholder='0.00' aria-label="" />
                           </div>
                       </div> 
                   </div>
@@ -1175,7 +1175,7 @@ function  Risk()
               <div className="col-8" style={{paddingBottom: "0.5%"}}>
                   <div className="row g-3 align-items-center">
                       <div className="col-6">
-                          <input disabledspellCheck="true" id="RP_BenDesc_7" name='RP_BenDesc_7' value={FormData['RP_BenDesc_7']}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                          <input disabled spellCheck="true" id="RP_BenDesc_7" name='RP_BenDesc_7' value={FormData['RP_BenDesc_7']}  className="form-control" placeholder=""  aria-describedby="" />
                       </div>
                   </div>
               </div>
@@ -1185,7 +1185,7 @@ function  Risk()
                       <div className="col-6">
                           <div className="input-group">
                             <span className="input-group-text">R</span>
-                            <input disabledtype="number" className="form-control" id="RP_BenDesc_CoverAmount7" name='RP_BenDesc_CoverAmount7' value={FormData['RP_BenDesc_CoverAmount7']}  placeholder='0.00' aria-label="" />
+                            <input disabled type="number" className="form-control" id="RP_BenDesc_CoverAmount7" name='RP_BenDesc_CoverAmount7' value={FormData['RP_BenDesc_CoverAmount7']}  placeholder='0.00' aria-label="" />
                           </div>
                       </div> 
                   </div>
@@ -1265,3 +1265,4 @@ function  Risk()
 }
 
 export default Risk
+
