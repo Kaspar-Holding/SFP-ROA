@@ -1,4 +1,4 @@
-import axios from 'axios';
+  import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import React, {useEffect,useLayoutEffect, useRef, useState} from 'react';
 // import './Invest.css';
@@ -1090,7 +1090,7 @@ const Short_term_Commercial= () => {
                                   </div>
                                   <div className="col-6">
         
-                                  <input spellCheck="true" disabled  id="STIC_Quotation_Number"value={FormData['STIC_Quotation_Number']}  name="STIC_Quotation_Number" className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" />
+                                  <input spellCheck="true" disabled  id="STIC_Quotation_Number"value={FormData['STIC_Quotation_Number']}  name="STIC_Quotation_Number" className="form-control" placeholder=""  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1101,7 +1101,7 @@ const Short_term_Commercial= () => {
                                   <label htmlFor="id_number" className="col-form-label">Underwritten by:</label>
                                   </div>
                                   <div className="col-6">
-                                  <input spellCheck="true" disabled  id="STIC_Underwritten_By"value={FormData['STIC_Underwritten_By']}  name="STIC_Underwritten_By" className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" />
+                                  <input spellCheck="true" disabled  id="STIC_Underwritten_By"value={FormData['STIC_Underwritten_By']}  name="STIC_Underwritten_By" className="form-control" placeholder=""  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1113,7 +1113,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Branch Name:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Branch_Name"value={FormData['STIC_Branch_Name']}  name="STIC_Branch_Name" className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" />
+                                    <input spellCheck="true" disabled  id="STIC_Branch_Name"value={FormData['STIC_Branch_Name']}  name="STIC_Branch_Name" className="form-control" placeholder=""  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1124,7 +1124,7 @@ const Short_term_Commercial= () => {
                                     <label htmlFor="id_number" className="col-form-label">Branch Number:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number" className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" />
+                                    <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number" className="form-control" placeholder=""  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1136,7 +1136,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Inception Date:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Inception_Date"value={FormData['STIC_Inception_Date']}  name="STIC_Inception_Date"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" />
+                                    <input spellCheck="true" disabled  id="STIC_Inception_Date"value={FormData['STIC_Inception_Date']}  name="STIC_Inception_Date"  className="form-control" placeholder=""  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1147,7 +1147,7 @@ const Short_term_Commercial= () => {
                                     <label htmlFor="id_number" className="col-form-label">Renewal Date: (If any):</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Renewal_Date"value={FormData['STIC_Renewal_Date']}  name="STIC_Quotation_Number" className="form-control" placeholder="Click or tap here to enter text." aria-describedby="" />
+                                    <input spellCheck="true" disabled  id="STIC_Renewal_Date"value={FormData['STIC_Renewal_Date']}  name="STIC_Quotation_Number" className="form-control" placeholder="" aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1159,7 +1159,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label"><i>(* Select if applicable)</i></label>
                                   </div>
                                   {/* <div className="col-6">
-                                  <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" />
+                                  <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder=""  aria-describedby="" />
                                   </div> */}
                               </div>
                           </div>
@@ -1170,7 +1170,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label"><i></i></label>
                                   </div>
                                   {/* <div className="col-6">
-                                  <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" />
+                                  <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder=""  aria-describedby="" />
                                   </div> */}
                               </div>
                           </div>
@@ -1240,7 +1240,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Full name of business/Applicant/Owner:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Business_Owner"value={FormData['STIC_Business_Owner']}  name="STIC_Business_Owner"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_Business_Owner"value={FormData['STIC_Business_Owner']}  name="STIC_Business_Owner"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1253,7 +1253,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Client identity number:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Client_Id_Number"value={FormData['STIC_Client_Id_Number']}  name="STIC_Client_Id_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_Client_Id_Number"value={FormData['STIC_Client_Id_Number']}  name="STIC_Client_Id_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1264,7 +1264,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Company registration number: </label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Company_Reg_Number"value={FormData['STIC_Company_Reg_Number']}  name="STIC_Company_Reg_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_Company_Reg_Number"value={FormData['STIC_Company_Reg_Number']}  name="STIC_Company_Reg_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1275,7 +1275,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label"></label>
                                   </div>
                                   <div className="col-6">
-                                    {/* <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} /> */}
+                                    {/* <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} /> */}
                                   </div>
                               </div>
                           </div>
@@ -1286,7 +1286,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">VAT number:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Company_VAT_Number"value={FormData['STIC_Company_VAT_Number']}  name="STIC_Company_VAT_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_Company_VAT_Number"value={FormData['STIC_Company_VAT_Number']}  name="STIC_Company_VAT_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1297,7 +1297,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label"></label>
                                   </div>
                                   <div className="col-6">
-                                    {/* <input spellCheck="true" disabled  id="STIC_Company_VAT_Number"value={FormData['STIC_Company_VAT_Number']}  name="STIC_Company_VAT_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} /> */}
+                                    {/* <input spellCheck="true" disabled  id="STIC_Company_VAT_Number"value={FormData['STIC_Company_VAT_Number']}  name="STIC_Company_VAT_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} /> */}
                                   </div>
                               </div>
                           </div>
@@ -1308,7 +1308,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Postal Address:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Postal_Address"value={FormData['STIC_Postal_Address']}  name="STIC_Postal_Address"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_Postal_Address"value={FormData['STIC_Postal_Address']}  name="STIC_Postal_Address"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1319,7 +1319,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label"></label>
                                   </div>
                                   <div className="col-6">
-                                    {/* <input spellCheck="true" disabled  id="STIC_Postal_Address"value={FormData['STIC_Postal_Address']}  name="STIC_Postal_Address"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} /> */}
+                                    {/* <input spellCheck="true" disabled  id="STIC_Postal_Address"value={FormData['STIC_Postal_Address']}  name="STIC_Postal_Address"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} /> */}
                                   </div>
                               </div>
                           </div>
@@ -1330,7 +1330,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Risk Address:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Risk_Address"value={FormData['STIC_Risk_Address']}  name="STIC_Risk_Address"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_Risk_Address"value={FormData['STIC_Risk_Address']}  name="STIC_Risk_Address"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1341,7 +1341,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label"></label>
                                   </div>
                                   <div className="col-6">
-                                    {/* <input spellCheck="true" disabled  id="STIC_Risk_Address"value={FormData['STIC_Risk_Address']}  name="STIC_Risk_Address"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} /> */}
+                                    {/* <input spellCheck="true" disabled  id="STIC_Risk_Address"value={FormData['STIC_Risk_Address']}  name="STIC_Risk_Address"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} /> */}
                                   </div>
                               </div>
                           </div>
@@ -1352,7 +1352,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Name and surname of contact person:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Contact_Person"value={FormData['STIC_Contact_Person']}  name="STIC_Contact_Person"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_Contact_Person"value={FormData['STIC_Contact_Person']}  name="STIC_Contact_Person"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1364,7 +1364,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label"></label>
                                   </div>
                                   <div className="col-6">
-                                    {/* <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} /> */}
+                                    {/* <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} /> */}
                                   </div>
                               </div>
                           </div>
@@ -1375,7 +1375,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Telephone Number:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_TelePhone_Number"value={FormData['STIC_TelePhone_Number']}  name="STIC_TelePhone_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_TelePhone_Number"value={FormData['STIC_TelePhone_Number']}  name="STIC_TelePhone_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1386,7 +1386,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label"></label>
                                   </div>
                                   <div className="col-6">
-                                    {/* <input spellCheck="true" disabled  id="STIC_TelePhone_Number"value={FormData['STIC_TelePhone_Number']}  name="STIC_TelePhone_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} /> */}
+                                    {/* <input spellCheck="true" disabled  id="STIC_TelePhone_Number"value={FormData['STIC_TelePhone_Number']}  name="STIC_TelePhone_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} /> */}
                                   </div>
                               </div>
                           </div>
@@ -1397,7 +1397,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Fax Number:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Fax_Number"value={FormData['STIC_Fax_Number']}  name="STIC_Fax_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_Fax_Number"value={FormData['STIC_Fax_Number']}  name="STIC_Fax_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1408,7 +1408,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label"></label>
                                   </div>
                                   <div className="col-6">
-                                    {/* <input spellCheck="true" disabled  id="STIC_Fax_Number"value={FormData['STIC_Fax_Number']}  name="STIC_Fax_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} /> */}
+                                    {/* <input spellCheck="true" disabled  id="STIC_Fax_Number"value={FormData['STIC_Fax_Number']}  name="STIC_Fax_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} /> */}
                                   </div>
                               </div>
                           </div>
@@ -1419,7 +1419,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Cellphone Number:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_CellPhone_Number"value={FormData['STIC_CellPhone_Number']}  name="STIC_CellPhone_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_CellPhone_Number"value={FormData['STIC_CellPhone_Number']}  name="STIC_CellPhone_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1430,7 +1430,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label"></label>
                                   </div>
                                   <div className="col-6">
-                                    {/* <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} /> */}
+                                    {/* <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} /> */}
                                   </div>
                               </div>
                           </div>
@@ -1441,7 +1441,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">email-address:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Email"value={FormData['STIC_Email']}  name="STIC_Email"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_Email"value={FormData['STIC_Email']}  name="STIC_Email"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1452,7 +1452,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label"></label>
                                   </div>
                                   <div className="col-6">
-                                    {/* <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} /> */}
+                                    {/* <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} /> */}
                                   </div>
                               </div>
                           </div>
@@ -1463,7 +1463,7 @@ const Short_term_Commercial= () => {
                                     <label className="col-form-label">Description of business activities:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" disabled  id="STIC_Business_Description"value={FormData['STIC_Business_Description']}  name="STIC_Business_Description"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
+                                    <input spellCheck="true" disabled  id="STIC_Business_Description"value={FormData['STIC_Business_Description']}  name="STIC_Business_Description"  className="form-control" placeholder=""  aria-describedby="" style={{width:"800px"}} />
                                   </div>
                               </div>
                           </div>
@@ -1669,14 +1669,14 @@ const Short_term_Commercial= () => {
                                     <p>If yes,answer the following:</p>
                                       <p>What is the purpose of this replacement?</p>
                                       
-                                      <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled  id="STIC_Replacement_Purpose"value={FormData['STIC_Replacement_Purpose']}  name="STIC_Replacement_Purpose" className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+                                      <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled  id="STIC_Replacement_Purpose"value={FormData['STIC_Replacement_Purpose']}  name="STIC_Replacement_Purpose" className="form-control" placeholder="" aria-describedby="" ></textarea>
                                       <hr/>
                                       <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
-                                      <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled  id="STIC_Replacement_Reason"value={FormData['STIC_Replacement_Reason']}  name="STIC_Replacement_Reason" className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+                                      <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled  id="STIC_Replacement_Reason"value={FormData['STIC_Replacement_Reason']}  name="STIC_Replacement_Reason" className="form-control" placeholder="" aria-describedby="" ></textarea>
                                       <hr/>
                                       <p>Suppliers of the product(s) to be replaced:</p>
                                       
-                                      <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled  id="STIC_Replacement_Suppliers"value={FormData['STIC_Replacement_Suppliers']}  name="STIC_Replacement_Suppliers" className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+                                      <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled  id="STIC_Replacement_Suppliers"value={FormData['STIC_Replacement_Suppliers']}  name="STIC_Replacement_Suppliers" className="form-control" placeholder="" aria-describedby="" ></textarea>
   
                                   </div>
                               </div>
@@ -1895,35 +1895,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount1"value={FormData["STIC_ProdComp_CoverAmount1"]}  name="STIC_ProdComp_CoverAmount1"  className="form-control" placeholder="0.00"  aria-describedby="" />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount1"value={FormData["STIC_ProdComp_CoverAmount1"]}  name="STIC_ProdComp_CoverAmount1"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium1"value={FormData["STIC_ProdComp_ExistP_Premium1"]}  name="STIC_ProdComp_ExistP_Premium1"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium1"value={FormData["STIC_ProdComp_ExistP_Premium1"]}  name="STIC_ProdComp_ExistP_Premium1"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess1"value={FormData["STIC_ProdComp_ExistP_Excess1"]}  name="STIC_ProdComp_ExistP_Excess1"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess1"value={FormData["STIC_ProdComp_ExistP_Excess1"]}  name="STIC_ProdComp_ExistP_Excess1"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium1"value={FormData["STIC_ProdComp_RecommP_Premium1"]}  name="STIC_ProdComp_RecommP_Premium1"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium1"value={FormData["STIC_ProdComp_RecommP_Premium1"]}  name="STIC_ProdComp_RecommP_Premium1"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess1"value={FormData["STIC_ProdComp_RecommP_Excess1"]}  name="STIC_ProdComp_RecommP_Excess1"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess1"value={FormData["STIC_ProdComp_RecommP_Excess1"]}  name="STIC_ProdComp_RecommP_Excess1"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -1958,21 +1958,21 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess2"value={FormData["STIC_ProdComp_ExistP_Excess2"]}  name="STIC_ProdComp_ExistP_Excess2"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess2"value={FormData["STIC_ProdComp_ExistP_Excess2"]}  name="STIC_ProdComp_ExistP_Excess2"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium2"value={FormData["STIC_ProdComp_RecommP_Premium2"]}  name="STIC_ProdComp_RecommP_Premium2"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium2"value={FormData["STIC_ProdComp_RecommP_Premium2"]}  name="STIC_ProdComp_RecommP_Premium2"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess2"value={FormData["STIC_ProdComp_RecommP_Excess2"]}  name="STIC_ProdComp_RecommP_Excess2"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess2"value={FormData["STIC_ProdComp_RecommP_Excess2"]}  name="STIC_ProdComp_RecommP_Excess2"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -1993,35 +1993,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount3"value={FormData["STIC_ProdComp_CoverAmount3"]}  name="STIC_ProdComp_CoverAmount3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount3"value={FormData["STIC_ProdComp_CoverAmount3"]}  name="STIC_ProdComp_CoverAmount3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium3"value={FormData["STIC_ProdComp_ExistP_Premium3"]}  name="STIC_ProdComp_ExistP_Premium3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium3"value={FormData["STIC_ProdComp_ExistP_Premium3"]}  name="STIC_ProdComp_ExistP_Premium3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess3"value={FormData["STIC_ProdComp_ExistP_Excess3"]}  name="STIC_ProdComp_ExistP_Excess3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess3"value={FormData["STIC_ProdComp_ExistP_Excess3"]}  name="STIC_ProdComp_ExistP_Excess3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium3"value={FormData["STIC_ProdComp_RecommP_Premium3"]}  name="STIC_ProdComp_RecommP_Premium3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium3"value={FormData["STIC_ProdComp_RecommP_Premium3"]}  name="STIC_ProdComp_RecommP_Premium3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess3"value={FormData["STIC_ProdComp_RecommP_Excess3"]}  name="STIC_ProdComp_RecommP_Excess3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess3"value={FormData["STIC_ProdComp_RecommP_Excess3"]}  name="STIC_ProdComp_RecommP_Excess3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2042,35 +2042,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount4"value={FormData["STIC_ProdComp_CoverAmount4"]}  name="STIC_ProdComp_CoverAmount4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount4"value={FormData["STIC_ProdComp_CoverAmount4"]}  name="STIC_ProdComp_CoverAmount4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium4"value={FormData["STIC_ProdComp_ExistP_Premium4"]}  name="STIC_ProdComp_ExistP_Premium4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium4"value={FormData["STIC_ProdComp_ExistP_Premium4"]}  name="STIC_ProdComp_ExistP_Premium4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess4"value={FormData["STIC_ProdComp_ExistP_Excess4"]}  name="STIC_ProdComp_ExistP_Excess4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess4"value={FormData["STIC_ProdComp_ExistP_Excess4"]}  name="STIC_ProdComp_ExistP_Excess4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium4"value={FormData["STIC_ProdComp_RecommP_Premium4"]}  name="STIC_ProdComp_RecommP_Premium4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium4"value={FormData["STIC_ProdComp_RecommP_Premium4"]}  name="STIC_ProdComp_RecommP_Premium4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess4"value={FormData["STIC_ProdComp_RecommP_Excess4"]}  name="STIC_ProdComp_RecommP_Excess4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess4"value={FormData["STIC_ProdComp_RecommP_Excess4"]}  name="STIC_ProdComp_RecommP_Excess4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2091,35 +2091,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount5"value={FormData["STIC_ProdComp_CoverAmount5"]}  name="STIC_ProdComp_CoverAmount5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount5"value={FormData["STIC_ProdComp_CoverAmount5"]}  name="STIC_ProdComp_CoverAmount5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium5"value={FormData["STIC_ProdComp_ExistP_Premium5"]}  name="STIC_ProdComp_ExistP_Premium5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium5"value={FormData["STIC_ProdComp_ExistP_Premium5"]}  name="STIC_ProdComp_ExistP_Premium5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess5"value={FormData["STIC_ProdComp_ExistP_Excess5"]}  name="STIC_ProdComp_ExistP_Excess5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess5"value={FormData["STIC_ProdComp_ExistP_Excess5"]}  name="STIC_ProdComp_ExistP_Excess5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium5"value={FormData["STIC_ProdComp_RecommP_Premium5"]}  name="STIC_ProdComp_RecommP_Premium5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium5"value={FormData["STIC_ProdComp_RecommP_Premium5"]}  name="STIC_ProdComp_RecommP_Premium5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess5"value={FormData["STIC_ProdComp_RecommP_Excess5"]}  name="STIC_ProdComp_RecommP_Excess5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess5"value={FormData["STIC_ProdComp_RecommP_Excess5"]}  name="STIC_ProdComp_RecommP_Excess5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2140,35 +2140,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount6"value={FormData["STIC_ProdComp_CoverAmount6"]}  name="STIC_ProdComp_CoverAmount6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount6"value={FormData["STIC_ProdComp_CoverAmount6"]}  name="STIC_ProdComp_CoverAmount6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium6"value={FormData["STIC_ProdComp_ExistP_Premium6"]}  name="STIC_ProdComp_ExistP_Premium6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium6"value={FormData["STIC_ProdComp_ExistP_Premium6"]}  name="STIC_ProdComp_ExistP_Premium6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess6"value={FormData["STIC_ProdComp_ExistP_Excess6"]}  name="STIC_ProdComp_ExistP_Excess6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess6"value={FormData["STIC_ProdComp_ExistP_Excess6"]}  name="STIC_ProdComp_ExistP_Excess6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium6"value={FormData["STIC_ProdComp_RecommP_Premium6"]}  name="STIC_ProdComp_RecommP_Premium6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium6"value={FormData["STIC_ProdComp_RecommP_Premium6"]}  name="STIC_ProdComp_RecommP_Premium6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess6"value={FormData["STIC_ProdComp_RecommP_Excess6"]}  name="STIC_ProdComp_RecommP_Excess6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess6"value={FormData["STIC_ProdComp_RecommP_Excess6"]}  name="STIC_ProdComp_RecommP_Excess6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2189,35 +2189,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount7"value={FormData["STIC_ProdComp_CoverAmount7"]}  name="STIC_ProdComp_CoverAmount7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount7"value={FormData["STIC_ProdComp_CoverAmount7"]}  name="STIC_ProdComp_CoverAmount7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium7"value={FormData["STIC_ProdComp_ExistP_Premium7"]}  name="STIC_ProdComp_ExistP_Premium7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium7"value={FormData["STIC_ProdComp_ExistP_Premium7"]}  name="STIC_ProdComp_ExistP_Premium7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess7"value={FormData["STIC_ProdComp_ExistP_Excess7"]}  name="STIC_ProdComp_ExistP_Excess7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess7"value={FormData["STIC_ProdComp_ExistP_Excess7"]}  name="STIC_ProdComp_ExistP_Excess7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium7"value={FormData["STIC_ProdComp_RecommP_Premium7"]}  name="STIC_ProdComp_RecommP_Premium7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium7"value={FormData["STIC_ProdComp_RecommP_Premium7"]}  name="STIC_ProdComp_RecommP_Premium7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess7"value={FormData["STIC_ProdComp_RecommP_Excess7"]}  name="STIC_ProdComp_RecommP_Excess7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess7"value={FormData["STIC_ProdComp_RecommP_Excess7"]}  name="STIC_ProdComp_RecommP_Excess7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2238,35 +2238,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount8"value={FormData["STIC_ProdComp_CoverAmount8"]}  name="STIC_ProdComp_CoverAmount8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount8"value={FormData["STIC_ProdComp_CoverAmount8"]}  name="STIC_ProdComp_CoverAmount8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium8"value={FormData["STIC_ProdComp_ExistP_Premium8"]}  name="STIC_ProdComp_ExistP_Premium8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium8"value={FormData["STIC_ProdComp_ExistP_Premium8"]}  name="STIC_ProdComp_ExistP_Premium8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess8"value={FormData["STIC_ProdComp_ExistP_Excess8"]}  name="STIC_ProdComp_ExistP_Excess8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess8"value={FormData["STIC_ProdComp_ExistP_Excess8"]}  name="STIC_ProdComp_ExistP_Excess8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium8"value={FormData["STIC_ProdComp_RecommP_Premium8"]}  name="STIC_ProdComp_RecommP_Premium8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium8"value={FormData["STIC_ProdComp_RecommP_Premium8"]}  name="STIC_ProdComp_RecommP_Premium8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess8"value={FormData["STIC_ProdComp_RecommP_Excess8"]}  name="STIC_ProdComp_RecommP_Excess8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess8"value={FormData["STIC_ProdComp_RecommP_Excess8"]}  name="STIC_ProdComp_RecommP_Excess8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2287,35 +2287,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount9"value={FormData["STIC_ProdComp_CoverAmount9"]}  name="STIC_ProdComp_CoverAmount9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount9"value={FormData["STIC_ProdComp_CoverAmount9"]}  name="STIC_ProdComp_CoverAmount9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium9"value={FormData["STIC_ProdComp_ExistP_Premium9"]}  name="STIC_ProdComp_ExistP_Premium9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium9"value={FormData["STIC_ProdComp_ExistP_Premium9"]}  name="STIC_ProdComp_ExistP_Premium9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess9"value={FormData["STIC_ProdComp_ExistP_Excess9"]}  name="STIC_ProdComp_ExistP_Excess9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess9"value={FormData["STIC_ProdComp_ExistP_Excess9"]}  name="STIC_ProdComp_ExistP_Excess9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium9"value={FormData["STIC_ProdComp_RecommP_Premium9"]}  name="STIC_ProdComp_RecommP_Premium9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium9"value={FormData["STIC_ProdComp_RecommP_Premium9"]}  name="STIC_ProdComp_RecommP_Premium9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess9"value={FormData["STIC_ProdComp_RecommP_Excess9"]}  name="STIC_ProdComp_RecommP_Excess9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess9"value={FormData["STIC_ProdComp_RecommP_Excess9"]}  name="STIC_ProdComp_RecommP_Excess9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2336,35 +2336,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount10"value={FormData["STIC_ProdComp_CoverAmount10"]}  name="STIC_ProdComp_CoverAmount10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount10"value={FormData["STIC_ProdComp_CoverAmount10"]}  name="STIC_ProdComp_CoverAmount10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium10"value={FormData["STIC_ProdComp_ExistP_Premium10"]}  name="STIC_ProdComp_ExistP_Premium10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium10"value={FormData["STIC_ProdComp_ExistP_Premium10"]}  name="STIC_ProdComp_ExistP_Premium10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess10"value={FormData["STIC_ProdComp_ExistP_Excess10"]}  name="STIC_ProdComp_ExistP_Excess10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess10"value={FormData["STIC_ProdComp_ExistP_Excess10"]}  name="STIC_ProdComp_ExistP_Excess10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium10"value={FormData["STIC_ProdComp_RecommP_Premium10"]}  name="STIC_ProdComp_RecommP_Premium10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium10"value={FormData["STIC_ProdComp_RecommP_Premium10"]}  name="STIC_ProdComp_RecommP_Premium10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess10"value={FormData["STIC_ProdComp_RecommP_Excess10"]}  name="STIC_ProdComp_RecommP_Excess10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess10"value={FormData["STIC_ProdComp_RecommP_Excess10"]}  name="STIC_ProdComp_RecommP_Excess10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2385,35 +2385,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount11"value={FormData["STIC_ProdComp_CoverAmount11"]}  name="STIC_ProdComp_CoverAmount11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount11"value={FormData["STIC_ProdComp_CoverAmount11"]}  name="STIC_ProdComp_CoverAmount11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium11"value={FormData["STIC_ProdComp_ExistP_Premium11"]}  name="STIC_ProdComp_ExistP_Premium11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium11"value={FormData["STIC_ProdComp_ExistP_Premium11"]}  name="STIC_ProdComp_ExistP_Premium11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess11"value={FormData["STIC_ProdComp_ExistP_Excess11"]}  name="STIC_ProdComp_ExistP_Excess11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess11"value={FormData["STIC_ProdComp_ExistP_Excess11"]}  name="STIC_ProdComp_ExistP_Excess11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium11"value={FormData["STIC_ProdComp_RecommP_Premium11"]}  name="STIC_ProdComp_RecommP_Premium11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium11"value={FormData["STIC_ProdComp_RecommP_Premium11"]}  name="STIC_ProdComp_RecommP_Premium11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess11"value={FormData["STIC_ProdComp_RecommP_Excess11"]}  name="STIC_ProdComp_RecommP_Excess11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess11"value={FormData["STIC_ProdComp_RecommP_Excess11"]}  name="STIC_ProdComp_RecommP_Excess11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2434,35 +2434,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount12"value={FormData["STIC_ProdComp_CoverAmount12"]}  name="STIC_ProdComp_CoverAmount12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount12"value={FormData["STIC_ProdComp_CoverAmount12"]}  name="STIC_ProdComp_CoverAmount12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium12"value={FormData["STIC_ProdComp_ExistP_Premium12"]}  name="STIC_ProdComp_ExistP_Premium12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium12"value={FormData["STIC_ProdComp_ExistP_Premium12"]}  name="STIC_ProdComp_ExistP_Premium12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess12"value={FormData["STIC_ProdComp_ExistP_Excess12"]}  name="STIC_ProdComp_ExistP_Excess12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess12"value={FormData["STIC_ProdComp_ExistP_Excess12"]}  name="STIC_ProdComp_ExistP_Excess12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium12"value={FormData["STIC_ProdComp_RecommP_Premium12"]}  name="STIC_ProdComp_RecommP_Premium12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium12"value={FormData["STIC_ProdComp_RecommP_Premium12"]}  name="STIC_ProdComp_RecommP_Premium12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess12"value={FormData["STIC_ProdComp_RecommP_Excess12"]}  name="STIC_ProdComp_RecommP_Excess12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess12"value={FormData["STIC_ProdComp_RecommP_Excess12"]}  name="STIC_ProdComp_RecommP_Excess12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2473,7 +2473,7 @@ const Short_term_Commercial= () => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Goods in transit</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" disabled checked={FormData["STIC_ProdComp_Recommended13"] == 1 ? true : false} name="STIC_ProdComp_Recommended13" onChange={(e)=>{FormData["STIC_ProdComp_Recommended13"] == 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input  type="checkbox" disabled checked={FormData["STIC_ProdComp_Recommended13"] == 1 ? true : false} name="STIC_ProdComp_Recommended13" onChange={(e)=>{FormData["STIC_ProdComp_Recommended13"] == 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2483,35 +2483,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount13"value={FormData["STIC_ProdComp_CoverAmount13"]}  name="STIC_ProdComp_CoverAmount13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount13"value={FormData["STIC_ProdComp_CoverAmount13"]}  name="STIC_ProdComp_CoverAmount13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium13"value={FormData["STIC_ProdComp_ExistP_Premium13"]}  name="STIC_ProdComp_ExistP_Premium13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium13"value={FormData["STIC_ProdComp_ExistP_Premium13"]}  name="STIC_ProdComp_ExistP_Premium13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess13"value={FormData["STIC_ProdComp_ExistP_Excess13"]}  name="STIC_ProdComp_ExistP_Excess13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess13"value={FormData["STIC_ProdComp_ExistP_Excess13"]}  name="STIC_ProdComp_ExistP_Excess13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium13"value={FormData["STIC_ProdComp_RecommP_Premium13"]}  name="STIC_ProdComp_RecommP_Premium13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium13"value={FormData["STIC_ProdComp_RecommP_Premium13"]}  name="STIC_ProdComp_RecommP_Premium13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess13"value={FormData["STIC_ProdComp_RecommP_Excess13"]}  name="STIC_ProdComp_RecommP_Excess13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess13"value={FormData["STIC_ProdComp_RecommP_Excess13"]}  name="STIC_ProdComp_RecommP_Excess13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2532,35 +2532,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount14"value={FormData["STIC_ProdComp_CoverAmount14"]}  name="STIC_ProdComp_CoverAmount14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount14"value={FormData["STIC_ProdComp_CoverAmount14"]}  name="STIC_ProdComp_CoverAmount14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium14"value={FormData["STIC_ProdComp_ExistP_Premium14"]}  name="STIC_ProdComp_ExistP_Premium14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium14"value={FormData["STIC_ProdComp_ExistP_Premium14"]}  name="STIC_ProdComp_ExistP_Premium14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess14"value={FormData["STIC_ProdComp_ExistP_Excess14"]}  name="STIC_ProdComp_ExistP_Excess14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess14"value={FormData["STIC_ProdComp_ExistP_Excess14"]}  name="STIC_ProdComp_ExistP_Excess14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium14"value={FormData["STIC_ProdComp_RecommP_Premium14"]}  name="STIC_ProdComp_RecommP_Premium14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium14"value={FormData["STIC_ProdComp_RecommP_Premium14"]}  name="STIC_ProdComp_RecommP_Premium14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess14"value={FormData["STIC_ProdComp_RecommP_Excess14"]}  name="STIC_ProdComp_RecommP_Excess14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess14"value={FormData["STIC_ProdComp_RecommP_Excess14"]}  name="STIC_ProdComp_RecommP_Excess14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2581,35 +2581,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount15"value={FormData["STIC_ProdComp_CoverAmount15"]}  name="STIC_ProdComp_CoverAmount15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount15"value={FormData["STIC_ProdComp_CoverAmount15"]}  name="STIC_ProdComp_CoverAmount15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium15"value={FormData["STIC_ProdComp_ExistP_Premium15"]}  name="STIC_ProdComp_ExistP_Premium15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium15"value={FormData["STIC_ProdComp_ExistP_Premium15"]}  name="STIC_ProdComp_ExistP_Premium15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess15"value={FormData["STIC_ProdComp_ExistP_Excess15"]}  name="STIC_ProdComp_ExistP_Excess15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess15"value={FormData["STIC_ProdComp_ExistP_Excess15"]}  name="STIC_ProdComp_ExistP_Excess15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium15"value={FormData["STIC_ProdComp_RecommP_Premium15"]}  name="STIC_ProdComp_RecommP_Premium15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium15"value={FormData["STIC_ProdComp_RecommP_Premium15"]}  name="STIC_ProdComp_RecommP_Premium15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess15"value={FormData["STIC_ProdComp_RecommP_Excess15"]}  name="STIC_ProdComp_RecommP_Excess15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess15"value={FormData["STIC_ProdComp_RecommP_Excess15"]}  name="STIC_ProdComp_RecommP_Excess15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2630,35 +2630,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount16"value={FormData["STIC_ProdComp_CoverAmount16"]}  name="STIC_ProdComp_CoverAmount16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount16"value={FormData["STIC_ProdComp_CoverAmount16"]}  name="STIC_ProdComp_CoverAmount16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium16"value={FormData["STIC_ProdComp_ExistP_Premium16"]}  name="STIC_ProdComp_ExistP_Premium16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium16"value={FormData["STIC_ProdComp_ExistP_Premium16"]}  name="STIC_ProdComp_ExistP_Premium16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess16"value={FormData["STIC_ProdComp_ExistP_Excess16"]}  name="STIC_ProdComp_ExistP_Excess16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess16"value={FormData["STIC_ProdComp_ExistP_Excess16"]}  name="STIC_ProdComp_ExistP_Excess16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium16"value={FormData["STIC_ProdComp_RecommP_Premium16"]}  name="STIC_ProdComp_RecommP_Premium16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium16"value={FormData["STIC_ProdComp_RecommP_Premium16"]}  name="STIC_ProdComp_RecommP_Premium16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess16"value={FormData["STIC_ProdComp_RecommP_Excess16"]}  name="STIC_ProdComp_RecommP_Excess16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess16"value={FormData["STIC_ProdComp_RecommP_Excess16"]}  name="STIC_ProdComp_RecommP_Excess16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2679,35 +2679,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount17"value={FormData["STIC_ProdComp_CoverAmount17"]}  name="STIC_ProdComp_CoverAmount17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount17"value={FormData["STIC_ProdComp_CoverAmount17"]}  name="STIC_ProdComp_CoverAmount17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium17"value={FormData["STIC_ProdComp_ExistP_Premium17"]}  name="STIC_ProdComp_ExistP_Premium17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium17"value={FormData["STIC_ProdComp_ExistP_Premium17"]}  name="STIC_ProdComp_ExistP_Premium17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess17"value={FormData["STIC_ProdComp_ExistP_Excess17"]}  name="STIC_ProdComp_ExistP_Excess17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess17"value={FormData["STIC_ProdComp_ExistP_Excess17"]}  name="STIC_ProdComp_ExistP_Excess17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium17"value={FormData["STIC_ProdComp_RecommP_Premium17"]}  name="STIC_ProdComp_RecommP_Premium17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium17"value={FormData["STIC_ProdComp_RecommP_Premium17"]}  name="STIC_ProdComp_RecommP_Premium17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess17"value={FormData["STIC_ProdComp_RecommP_Excess17"]}  name="STIC_ProdComp_RecommP_Excess17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess17"value={FormData["STIC_ProdComp_RecommP_Excess17"]}  name="STIC_ProdComp_RecommP_Excess17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2728,35 +2728,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount18"value={FormData["STIC_ProdComp_CoverAmount18"]}  name="STIC_ProdComp_CoverAmount18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount18"value={FormData["STIC_ProdComp_CoverAmount18"]}  name="STIC_ProdComp_CoverAmount18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium18"value={FormData["STIC_ProdComp_ExistP_Premium18"]}  name="STIC_ProdComp_ExistP_Premium18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium18"value={FormData["STIC_ProdComp_ExistP_Premium18"]}  name="STIC_ProdComp_ExistP_Premium18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess18"value={FormData["STIC_ProdComp_ExistP_Excess18"]}  name="STIC_ProdComp_ExistP_Excess18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess18"value={FormData["STIC_ProdComp_ExistP_Excess18"]}  name="STIC_ProdComp_ExistP_Excess18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium18"value={FormData["STIC_ProdComp_RecommP_Premium18"]}  name="STIC_ProdComp_RecommP_Premium18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium18"value={FormData["STIC_ProdComp_RecommP_Premium18"]}  name="STIC_ProdComp_RecommP_Premium18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess18"value={FormData["STIC_ProdComp_RecommP_Excess18"]}  name="STIC_ProdComp_RecommP_Excess18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess18"value={FormData["STIC_ProdComp_RecommP_Excess18"]}  name="STIC_ProdComp_RecommP_Excess18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2777,35 +2777,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount19"value={FormData["STIC_ProdComp_CoverAmount19"]}  name="STIC_ProdComp_CoverAmount19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount19"value={FormData["STIC_ProdComp_CoverAmount19"]}  name="STIC_ProdComp_CoverAmount19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium19"value={FormData["STIC_ProdComp_ExistP_Premium19"]}  name="STIC_ProdComp_ExistP_Premium19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium19"value={FormData["STIC_ProdComp_ExistP_Premium19"]}  name="STIC_ProdComp_ExistP_Premium19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess19"value={FormData["STIC_ProdComp_ExistP_Excess19"]}  name="STIC_ProdComp_ExistP_Excess19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess19"value={FormData["STIC_ProdComp_ExistP_Excess19"]}  name="STIC_ProdComp_ExistP_Excess19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium19"value={FormData["STIC_ProdComp_RecommP_Premium19"]}  name="STIC_ProdComp_RecommP_Premium19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium19"value={FormData["STIC_ProdComp_RecommP_Premium19"]}  name="STIC_ProdComp_RecommP_Premium19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess19"value={FormData["STIC_ProdComp_RecommP_Excess19"]}  name="STIC_ProdComp_RecommP_Excess19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess19"value={FormData["STIC_ProdComp_RecommP_Excess19"]}  name="STIC_ProdComp_RecommP_Excess19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2826,35 +2826,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount20"value={FormData["STIC_ProdComp_CoverAmount20"]}  name="STIC_ProdComp_CoverAmount20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount20"value={FormData["STIC_ProdComp_CoverAmount20"]}  name="STIC_ProdComp_CoverAmount20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium20"value={FormData["STIC_ProdComp_ExistP_Premium20"]}  name="STIC_ProdComp_ExistP_Premium20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium20"value={FormData["STIC_ProdComp_ExistP_Premium20"]}  name="STIC_ProdComp_ExistP_Premium20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess20"value={FormData["STIC_ProdComp_ExistP_Excess20"]}  name="STIC_ProdComp_ExistP_Excess20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess20"value={FormData["STIC_ProdComp_ExistP_Excess20"]}  name="STIC_ProdComp_ExistP_Excess20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium20"value={FormData["STIC_ProdComp_RecommP_Premium20"]}  name="STIC_ProdComp_RecommP_Premium20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium20"value={FormData["STIC_ProdComp_RecommP_Premium20"]}  name="STIC_ProdComp_RecommP_Premium20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess20"value={FormData["STIC_ProdComp_RecommP_Excess20"]}  name="STIC_ProdComp_RecommP_Excess20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess20"value={FormData["STIC_ProdComp_RecommP_Excess20"]}  name="STIC_ProdComp_RecommP_Excess20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2875,35 +2875,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount21"value={FormData["STIC_ProdComp_CoverAmount21"]}  name="STIC_ProdComp_CoverAmount21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount21"value={FormData["STIC_ProdComp_CoverAmount21"]}  name="STIC_ProdComp_CoverAmount21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium21"value={FormData["STIC_ProdComp_ExistP_Premium21"]}  name="STIC_ProdComp_ExistP_Premium21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium21"value={FormData["STIC_ProdComp_ExistP_Premium21"]}  name="STIC_ProdComp_ExistP_Premium21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess21"value={FormData["STIC_ProdComp_ExistP_Excess21"]}  name="STIC_ProdComp_ExistP_Excess21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess21"value={FormData["STIC_ProdComp_ExistP_Excess21"]}  name="STIC_ProdComp_ExistP_Excess21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium21"value={FormData["STIC_ProdComp_RecommP_Premium21"]}  name="STIC_ProdComp_RecommP_Premium21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium21"value={FormData["STIC_ProdComp_RecommP_Premium21"]}  name="STIC_ProdComp_RecommP_Premium21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess21"value={FormData["STIC_ProdComp_RecommP_Excess21"]}  name="STIC_ProdComp_RecommP_Excess21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess21"value={FormData["STIC_ProdComp_RecommP_Excess21"]}  name="STIC_ProdComp_RecommP_Excess21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2924,35 +2924,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount22"value={FormData["STIC_ProdComp_CoverAmount22"]}  name="STIC_ProdComp_CoverAmount22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount22"value={FormData["STIC_ProdComp_CoverAmount22"]}  name="STIC_ProdComp_CoverAmount22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium22"value={FormData["STIC_ProdComp_ExistP_Premium22"]}  name="STIC_ProdComp_ExistP_Premium22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium22"value={FormData["STIC_ProdComp_ExistP_Premium22"]}  name="STIC_ProdComp_ExistP_Premium22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess22"value={FormData["STIC_ProdComp_ExistP_Excess22"]}  name="STIC_ProdComp_ExistP_Excess22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess22"value={FormData["STIC_ProdComp_ExistP_Excess22"]}  name="STIC_ProdComp_ExistP_Excess22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium22"value={FormData["STIC_ProdComp_RecommP_Premium22"]}  name="STIC_ProdComp_RecommP_Premium22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium22"value={FormData["STIC_ProdComp_RecommP_Premium22"]}  name="STIC_ProdComp_RecommP_Premium22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess22"value={FormData["STIC_ProdComp_RecommP_Excess22"]}  name="STIC_ProdComp_RecommP_Excess22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess22"value={FormData["STIC_ProdComp_RecommP_Excess22"]}  name="STIC_ProdComp_RecommP_Excess22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -2973,35 +2973,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount23"value={FormData["STIC_ProdComp_CoverAmount23"]}  name="STIC_ProdComp_CoverAmount23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount23"value={FormData["STIC_ProdComp_CoverAmount23"]}  name="STIC_ProdComp_CoverAmount23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium23"value={FormData["STIC_ProdComp_ExistP_Premium23"]}  name="STIC_ProdComp_ExistP_Premium23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium23"value={FormData["STIC_ProdComp_ExistP_Premium23"]}  name="STIC_ProdComp_ExistP_Premium23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess23"value={FormData["STIC_ProdComp_ExistP_Excess23"]}  name="STIC_ProdComp_ExistP_Excess23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess23"value={FormData["STIC_ProdComp_ExistP_Excess23"]}  name="STIC_ProdComp_ExistP_Excess23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium23"value={FormData["STIC_ProdComp_RecommP_Premium23"]}  name="STIC_ProdComp_RecommP_Premium23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium23"value={FormData["STIC_ProdComp_RecommP_Premium23"]}  name="STIC_ProdComp_RecommP_Premium23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess23"value={FormData["STIC_ProdComp_RecommP_Excess23"]}  name="STIC_ProdComp_RecommP_Excess23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess23"value={FormData["STIC_ProdComp_RecommP_Excess23"]}  name="STIC_ProdComp_RecommP_Excess23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3022,35 +3022,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount24"value={FormData["STIC_ProdComp_CoverAmount24"]}  name="STIC_ProdComp_CoverAmount24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount24"value={FormData["STIC_ProdComp_CoverAmount24"]}  name="STIC_ProdComp_CoverAmount24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium24"value={FormData["STIC_ProdComp_ExistP_Premium24"]}  name="STIC_ProdComp_ExistP_Premium24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium24"value={FormData["STIC_ProdComp_ExistP_Premium24"]}  name="STIC_ProdComp_ExistP_Premium24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess24"value={FormData["STIC_ProdComp_ExistP_Excess24"]}  name="STIC_ProdComp_ExistP_Excess24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess24"value={FormData["STIC_ProdComp_ExistP_Excess24"]}  name="STIC_ProdComp_ExistP_Excess24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium24"value={FormData["STIC_ProdComp_RecommP_Premium24"]}  name="STIC_ProdComp_RecommP_Premium24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium24"value={FormData["STIC_ProdComp_RecommP_Premium24"]}  name="STIC_ProdComp_RecommP_Premium24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess24"value={FormData["STIC_ProdComp_RecommP_Excess24"]}  name="STIC_ProdComp_RecommP_Excess24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess24"value={FormData["STIC_ProdComp_RecommP_Excess24"]}  name="STIC_ProdComp_RecommP_Excess24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3074,35 +3074,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount25"value={FormData["STIC_ProdComp_CoverAmount25"]}  name="STIC_ProdComp_CoverAmount25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount25"value={FormData["STIC_ProdComp_CoverAmount25"]}  name="STIC_ProdComp_CoverAmount25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium25"value={FormData["STIC_ProdComp_ExistP_Premium25"]}  name="STIC_ProdComp_ExistP_Premium25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium25"value={FormData["STIC_ProdComp_ExistP_Premium25"]}  name="STIC_ProdComp_ExistP_Premium25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess25"value={FormData["STIC_ProdComp_ExistP_Excess25"]}  name="STIC_ProdComp_ExistP_Excess25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess25"value={FormData["STIC_ProdComp_ExistP_Excess25"]}  name="STIC_ProdComp_ExistP_Excess25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium25"value={FormData["STIC_ProdComp_RecommP_Premium25"]}  name="STIC_ProdComp_RecommP_Premium25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium25"value={FormData["STIC_ProdComp_RecommP_Premium25"]}  name="STIC_ProdComp_RecommP_Premium25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess25"value={FormData["STIC_ProdComp_RecommP_Excess25"]}  name="STIC_ProdComp_RecommP_Excess25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess25"value={FormData["STIC_ProdComp_RecommP_Excess25"]}  name="STIC_ProdComp_RecommP_Excess25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3123,35 +3123,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount26"value={FormData["STIC_ProdComp_CoverAmount26"]}  name="STIC_ProdComp_CoverAmount26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount26"value={FormData["STIC_ProdComp_CoverAmount26"]}  name="STIC_ProdComp_CoverAmount26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium26"value={FormData["STIC_ProdComp_ExistP_Premium26"]}  name="STIC_ProdComp_ExistP_Premium26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium26"value={FormData["STIC_ProdComp_ExistP_Premium26"]}  name="STIC_ProdComp_ExistP_Premium26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess26"value={FormData["STIC_ProdComp_ExistP_Excess26"]}  name="STIC_ProdComp_ExistP_Excess26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess26"value={FormData["STIC_ProdComp_ExistP_Excess26"]}  name="STIC_ProdComp_ExistP_Excess26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium26"value={FormData["STIC_ProdComp_RecommP_Premium26"]}  name="STIC_ProdComp_RecommP_Premium26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium26"value={FormData["STIC_ProdComp_RecommP_Premium26"]}  name="STIC_ProdComp_RecommP_Premium26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess26"value={FormData["STIC_ProdComp_RecommP_Excess26"]}  name="STIC_ProdComp_RecommP_Excess26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess26"value={FormData["STIC_ProdComp_RecommP_Excess26"]}  name="STIC_ProdComp_RecommP_Excess26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3172,35 +3172,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount27"value={FormData["STIC_ProdComp_CoverAmount27"]}  name="STIC_ProdComp_CoverAmount27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount27"value={FormData["STIC_ProdComp_CoverAmount27"]}  name="STIC_ProdComp_CoverAmount27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium27"value={FormData["STIC_ProdComp_ExistP_Premium27"]}  name="STIC_ProdComp_ExistP_Premium27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium27"value={FormData["STIC_ProdComp_ExistP_Premium27"]}  name="STIC_ProdComp_ExistP_Premium27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess27"value={FormData["STIC_ProdComp_ExistP_Excess27"]}  name="STIC_ProdComp_ExistP_Excess27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess27"value={FormData["STIC_ProdComp_ExistP_Excess27"]}  name="STIC_ProdComp_ExistP_Excess27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium27"value={FormData["STIC_ProdComp_RecommP_Premium27"]}  name="STIC_ProdComp_RecommP_Premium27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium27"value={FormData["STIC_ProdComp_RecommP_Premium27"]}  name="STIC_ProdComp_RecommP_Premium27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess27"value={FormData["STIC_ProdComp_RecommP_Excess27"]}  name="STIC_ProdComp_RecommP_Excess27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess27"value={FormData["STIC_ProdComp_RecommP_Excess27"]}  name="STIC_ProdComp_RecommP_Excess27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3221,35 +3221,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount28"value={FormData["STIC_ProdComp_CoverAmount28"]}  name="STIC_ProdComp_CoverAmount28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount28"value={FormData["STIC_ProdComp_CoverAmount28"]}  name="STIC_ProdComp_CoverAmount28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium28"value={FormData["STIC_ProdComp_ExistP_Premium28"]}  name="STIC_ProdComp_ExistP_Premium28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium28"value={FormData["STIC_ProdComp_ExistP_Premium28"]}  name="STIC_ProdComp_ExistP_Premium28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess28"value={FormData["STIC_ProdComp_ExistP_Excess28"]}  name="STIC_ProdComp_ExistP_Excess28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess28"value={FormData["STIC_ProdComp_ExistP_Excess28"]}  name="STIC_ProdComp_ExistP_Excess28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium28"value={FormData["STIC_ProdComp_RecommP_Premium28"]}  name="STIC_ProdComp_RecommP_Premium28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium28"value={FormData["STIC_ProdComp_RecommP_Premium28"]}  name="STIC_ProdComp_RecommP_Premium28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess28"value={FormData["STIC_ProdComp_RecommP_Excess28"]}  name="STIC_ProdComp_RecommP_Excess28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess28"value={FormData["STIC_ProdComp_RecommP_Excess28"]}  name="STIC_ProdComp_RecommP_Excess28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3270,35 +3270,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount29"value={FormData["STIC_ProdComp_CoverAmount29"]}  name="STIC_ProdComp_CoverAmount29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount29"value={FormData["STIC_ProdComp_CoverAmount29"]}  name="STIC_ProdComp_CoverAmount29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium29"value={FormData["STIC_ProdComp_ExistP_Premium29"]}  name="STIC_ProdComp_ExistP_Premium29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium29"value={FormData["STIC_ProdComp_ExistP_Premium29"]}  name="STIC_ProdComp_ExistP_Premium29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess29"value={FormData["STIC_ProdComp_ExistP_Excess29"]}  name="STIC_ProdComp_ExistP_Excess29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess29"value={FormData["STIC_ProdComp_ExistP_Excess29"]}  name="STIC_ProdComp_ExistP_Excess29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium29"value={FormData["STIC_ProdComp_RecommP_Premium29"]}  name="STIC_ProdComp_RecommP_Premium29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium29"value={FormData["STIC_ProdComp_RecommP_Premium29"]}  name="STIC_ProdComp_RecommP_Premium29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess29"value={FormData["STIC_ProdComp_RecommP_Excess29"]}  name="STIC_ProdComp_RecommP_Excess29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess29"value={FormData["STIC_ProdComp_RecommP_Excess29"]}  name="STIC_ProdComp_RecommP_Excess29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3319,35 +3319,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount30"value={FormData["STIC_ProdComp_CoverAmount30"]}  name="STIC_ProdComp_CoverAmount30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount30"value={FormData["STIC_ProdComp_CoverAmount30"]}  name="STIC_ProdComp_CoverAmount30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium30"value={FormData["STIC_ProdComp_ExistP_Premium30"]}  name="STIC_ProdComp_ExistP_Premium30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium30"value={FormData["STIC_ProdComp_ExistP_Premium30"]}  name="STIC_ProdComp_ExistP_Premium30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess30"value={FormData["STIC_ProdComp_ExistP_Excess30"]}  name="STIC_ProdComp_ExistP_Excess30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess30"value={FormData["STIC_ProdComp_ExistP_Excess30"]}  name="STIC_ProdComp_ExistP_Excess30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium30"value={FormData["STIC_ProdComp_RecommP_Premium30"]}  name="STIC_ProdComp_RecommP_Premium30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium30"value={FormData["STIC_ProdComp_RecommP_Premium30"]}  name="STIC_ProdComp_RecommP_Premium30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess30"value={FormData["STIC_ProdComp_RecommP_Excess30"]}  name="STIC_ProdComp_RecommP_Excess30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input disabled type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess30"value={FormData["STIC_ProdComp_RecommP_Excess30"]}  name="STIC_ProdComp_RecommP_Excess30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3368,35 +3368,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount31"value={FormData["STIC_ProdComp_CoverAmount31"]}  name="STIC_ProdComp_CoverAmount31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount31"value={FormData["STIC_ProdComp_CoverAmount31"]}  name="STIC_ProdComp_CoverAmount31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium31"value={FormData["STIC_ProdComp_ExistP_Premium31"]}  name="STIC_ProdComp_ExistP_Premium31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium31"value={FormData["STIC_ProdComp_ExistP_Premium31"]}  name="STIC_ProdComp_ExistP_Premium31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess31"value={FormData["STIC_ProdComp_ExistP_Excess31"]}  name="STIC_ProdComp_ExistP_Excess31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess31"value={FormData["STIC_ProdComp_ExistP_Excess31"]}  name="STIC_ProdComp_ExistP_Excess31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium31"value={FormData["STIC_ProdComp_RecommP_Premium31"]}  name="STIC_ProdComp_RecommP_Premium31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium31"value={FormData["STIC_ProdComp_RecommP_Premium31"]}  name="STIC_ProdComp_RecommP_Premium31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess31"value={FormData["STIC_ProdComp_RecommP_Excess31"]}  name="STIC_ProdComp_RecommP_Excess31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess31"value={FormData["STIC_ProdComp_RecommP_Excess31"]}  name="STIC_ProdComp_RecommP_Excess31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3417,35 +3417,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount32"value={FormData["STIC_ProdComp_CoverAmount32"]}  name="STIC_ProdComp_CoverAmount32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount32"value={FormData["STIC_ProdComp_CoverAmount32"]}  name="STIC_ProdComp_CoverAmount32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium32"value={FormData["STIC_ProdComp_ExistP_Premium32"]}  name="STIC_ProdComp_ExistP_Premium32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium32"value={FormData["STIC_ProdComp_ExistP_Premium32"]}  name="STIC_ProdComp_ExistP_Premium32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess32"value={FormData["STIC_ProdComp_ExistP_Excess32"]}  name="STIC_ProdComp_ExistP_Excess32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess32"value={FormData["STIC_ProdComp_ExistP_Excess32"]}  name="STIC_ProdComp_ExistP_Excess32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium32"value={FormData["STIC_ProdComp_RecommP_Premium32"]}  name="STIC_ProdComp_RecommP_Premium32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium32"value={FormData["STIC_ProdComp_RecommP_Premium32"]}  name="STIC_ProdComp_RecommP_Premium32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess32"value={FormData["STIC_ProdComp_RecommP_Excess32"]}  name="STIC_ProdComp_RecommP_Excess32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess32"value={FormData["STIC_ProdComp_RecommP_Excess32"]}  name="STIC_ProdComp_RecommP_Excess32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3466,35 +3466,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount33"value={FormData["STIC_ProdComp_CoverAmount33"]}  name="STIC_ProdComp_CoverAmount33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount33"value={FormData["STIC_ProdComp_CoverAmount33"]}  name="STIC_ProdComp_CoverAmount33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium33"value={FormData["STIC_ProdComp_ExistP_Premium33"]}  name="STIC_ProdComp_ExistP_Premium33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium33"value={FormData["STIC_ProdComp_ExistP_Premium33"]}  name="STIC_ProdComp_ExistP_Premium33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess33"value={FormData["STIC_ProdComp_ExistP_Excess33"]}  name="STIC_ProdComp_ExistP_Excess33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess33"value={FormData["STIC_ProdComp_ExistP_Excess33"]}  name="STIC_ProdComp_ExistP_Excess33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium33"value={FormData["STIC_ProdComp_RecommP_Premium33"]}  name="STIC_ProdComp_RecommP_Premium33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium33"value={FormData["STIC_ProdComp_RecommP_Premium33"]}  name="STIC_ProdComp_RecommP_Premium33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess33"value={FormData["STIC_ProdComp_RecommP_Excess33"]}  name="STIC_ProdComp_RecommP_Excess33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess33"value={FormData["STIC_ProdComp_RecommP_Excess33"]}  name="STIC_ProdComp_RecommP_Excess33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3515,35 +3515,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount34"value={FormData["STIC_ProdComp_CoverAmount34"]}  name="STIC_ProdComp_CoverAmount34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount34"value={FormData["STIC_ProdComp_CoverAmount34"]}  name="STIC_ProdComp_CoverAmount34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium34"value={FormData["STIC_ProdComp_ExistP_Premium34"]}  name="STIC_ProdComp_ExistP_Premium34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium34"value={FormData["STIC_ProdComp_ExistP_Premium34"]}  name="STIC_ProdComp_ExistP_Premium34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess34"value={FormData["STIC_ProdComp_ExistP_Excess34"]}  name="STIC_ProdComp_ExistP_Excess34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess34"value={FormData["STIC_ProdComp_ExistP_Excess34"]}  name="STIC_ProdComp_ExistP_Excess34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium34"value={FormData["STIC_ProdComp_RecommP_Premium34"]}  name="STIC_ProdComp_RecommP_Premium34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium34"value={FormData["STIC_ProdComp_RecommP_Premium34"]}  name="STIC_ProdComp_RecommP_Premium34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess34"value={FormData["STIC_ProdComp_RecommP_Excess34"]}  name="STIC_ProdComp_RecommP_Excess34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess34"value={FormData["STIC_ProdComp_RecommP_Excess34"]}  name="STIC_ProdComp_RecommP_Excess34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3564,35 +3564,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount35"value={FormData["STIC_ProdComp_CoverAmount35"]}  name="STIC_ProdComp_CoverAmount35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount35"value={FormData["STIC_ProdComp_CoverAmount35"]}  name="STIC_ProdComp_CoverAmount35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium35"value={FormData["STIC_ProdComp_ExistP_Premium35"]}  name="STIC_ProdComp_ExistP_Premium35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium35"value={FormData["STIC_ProdComp_ExistP_Premium35"]}  name="STIC_ProdComp_ExistP_Premium35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess35"value={FormData["STIC_ProdComp_ExistP_Excess35"]}  name="STIC_ProdComp_ExistP_Excess35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess35"value={FormData["STIC_ProdComp_ExistP_Excess35"]}  name="STIC_ProdComp_ExistP_Excess35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium35"value={FormData["STIC_ProdComp_RecommP_Premium35"]}  name="STIC_ProdComp_RecommP_Premium35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium35"value={FormData["STIC_ProdComp_RecommP_Premium35"]}  name="STIC_ProdComp_RecommP_Premium35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess35"value={FormData["STIC_ProdComp_RecommP_Excess35"]}  name="STIC_ProdComp_RecommP_Excess35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess35"value={FormData["STIC_ProdComp_RecommP_Excess35"]}  name="STIC_ProdComp_RecommP_Excess35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3613,35 +3613,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount35"value={FormData["STIC_ProdComp_CoverAmount35"]}  name="STIC_ProdComp_CoverAmount35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount35"value={FormData["STIC_ProdComp_CoverAmount35"]}  name="STIC_ProdComp_CoverAmount35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium35"value={FormData["STIC_ProdComp_ExistP_Premium35"]}  name="STIC_ProdComp_ExistP_Premium35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium35"value={FormData["STIC_ProdComp_ExistP_Premium35"]}  name="STIC_ProdComp_ExistP_Premium35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess35"value={FormData["STIC_ProdComp_ExistP_Excess35"]}  name="STIC_ProdComp_ExistP_Excess35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess35"value={FormData["STIC_ProdComp_ExistP_Excess35"]}  name="STIC_ProdComp_ExistP_Excess35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium35"value={FormData["STIC_ProdComp_RecommP_Premium35"]}  name="STIC_ProdComp_RecommP_Premium35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium35"value={FormData["STIC_ProdComp_RecommP_Premium35"]}  name="STIC_ProdComp_RecommP_Premium35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess35"value={FormData["STIC_ProdComp_RecommP_Excess35"]}  name="STIC_ProdComp_RecommP_Excess35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess35"value={FormData["STIC_ProdComp_RecommP_Excess35"]}  name="STIC_ProdComp_RecommP_Excess35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3662,35 +3662,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount36"value={FormData["STIC_ProdComp_CoverAmount36"]}  name="STIC_ProdComp_CoverAmount36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount36"value={FormData["STIC_ProdComp_CoverAmount36"]}  name="STIC_ProdComp_CoverAmount36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium36"value={FormData["STIC_ProdComp_ExistP_Premium36"]}  name="STIC_ProdComp_ExistP_Premium36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium36"value={FormData["STIC_ProdComp_ExistP_Premium36"]}  name="STIC_ProdComp_ExistP_Premium36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess36"value={FormData["STIC_ProdComp_ExistP_Excess36"]}  name="STIC_ProdComp_ExistP_Excess36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess36"value={FormData["STIC_ProdComp_ExistP_Excess36"]}  name="STIC_ProdComp_ExistP_Excess36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium36"value={FormData["STIC_ProdComp_RecommP_Premium36"]}  name="STIC_ProdComp_RecommP_Premium36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium36"value={FormData["STIC_ProdComp_RecommP_Premium36"]}  name="STIC_ProdComp_RecommP_Premium36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess36"value={FormData["STIC_ProdComp_RecommP_Excess36"]}  name="STIC_ProdComp_RecommP_Excess36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess36"value={FormData["STIC_ProdComp_RecommP_Excess36"]}  name="STIC_ProdComp_RecommP_Excess36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3711,35 +3711,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount37"value={FormData["STIC_ProdComp_CoverAmount37"]}  name="STIC_ProdComp_CoverAmount37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount37"value={FormData["STIC_ProdComp_CoverAmount37"]}  name="STIC_ProdComp_CoverAmount37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium37"value={FormData["STIC_ProdComp_ExistP_Premium37"]}  name="STIC_ProdComp_ExistP_Premium37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium37"value={FormData["STIC_ProdComp_ExistP_Premium37"]}  name="STIC_ProdComp_ExistP_Premium37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess37"value={FormData["STIC_ProdComp_ExistP_Excess37"]}  name="STIC_ProdComp_ExistP_Excess37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess37"value={FormData["STIC_ProdComp_ExistP_Excess37"]}  name="STIC_ProdComp_ExistP_Excess37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium37"value={FormData["STIC_ProdComp_RecommP_Premium37"]}  name="STIC_ProdComp_RecommP_Premium37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium37"value={FormData["STIC_ProdComp_RecommP_Premium37"]}  name="STIC_ProdComp_RecommP_Premium37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess37"value={FormData["STIC_ProdComp_RecommP_Excess37"]}  name="STIC_ProdComp_RecommP_Excess37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess37"value={FormData["STIC_ProdComp_RecommP_Excess37"]}  name="STIC_ProdComp_RecommP_Excess37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3760,35 +3760,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount38"value={FormData["STIC_ProdComp_CoverAmount38"]}  name="STIC_ProdComp_CoverAmount38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount38"value={FormData["STIC_ProdComp_CoverAmount38"]}  name="STIC_ProdComp_CoverAmount38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium38"value={FormData["STIC_ProdComp_ExistP_Premium38"]}  name="STIC_ProdComp_ExistP_Premium38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium38"value={FormData["STIC_ProdComp_ExistP_Premium38"]}  name="STIC_ProdComp_ExistP_Premium38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess38"value={FormData["STIC_ProdComp_ExistP_Excess38"]}  name="STIC_ProdComp_ExistP_Excess38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess38"value={FormData["STIC_ProdComp_ExistP_Excess38"]}  name="STIC_ProdComp_ExistP_Excess38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium38"value={FormData["STIC_ProdComp_RecommP_Premium38"]}  name="STIC_ProdComp_RecommP_Premium38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium38"value={FormData["STIC_ProdComp_RecommP_Premium38"]}  name="STIC_ProdComp_RecommP_Premium38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess38"value={FormData["STIC_ProdComp_RecommP_Excess38"]}  name="STIC_ProdComp_RecommP_Excess38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess38"value={FormData["STIC_ProdComp_RecommP_Excess38"]}  name="STIC_ProdComp_RecommP_Excess38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3809,35 +3809,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount39"value={FormData["STIC_ProdComp_CoverAmount39"]}  name="STIC_ProdComp_CoverAmount39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount39"value={FormData["STIC_ProdComp_CoverAmount39"]}  name="STIC_ProdComp_CoverAmount39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium39"value={FormData["STIC_ProdComp_ExistP_Premium39"]}  name="STIC_ProdComp_ExistP_Premium39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium39"value={FormData["STIC_ProdComp_ExistP_Premium39"]}  name="STIC_ProdComp_ExistP_Premium39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess39"value={FormData["STIC_ProdComp_ExistP_Excess39"]}  name="STIC_ProdComp_ExistP_Excess39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess39"value={FormData["STIC_ProdComp_ExistP_Excess39"]}  name="STIC_ProdComp_ExistP_Excess39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium39"value={FormData["STIC_ProdComp_RecommP_Premium39"]}  name="STIC_ProdComp_RecommP_Premium39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium39"value={FormData["STIC_ProdComp_RecommP_Premium39"]}  name="STIC_ProdComp_RecommP_Premium39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess39"value={FormData["STIC_ProdComp_RecommP_Excess39"]}  name="STIC_ProdComp_RecommP_Excess39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess39"value={FormData["STIC_ProdComp_RecommP_Excess39"]}  name="STIC_ProdComp_RecommP_Excess39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3858,35 +3858,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount40"value={FormData["STIC_ProdComp_CoverAmount40"]}  name="STIC_ProdComp_CoverAmount40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount40"value={FormData["STIC_ProdComp_CoverAmount40"]}  name="STIC_ProdComp_CoverAmount40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium40"value={FormData["STIC_ProdComp_ExistP_Premium40"]}  name="STIC_ProdComp_ExistP_Premium40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium40"value={FormData["STIC_ProdComp_ExistP_Premium40"]}  name="STIC_ProdComp_ExistP_Premium40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess40"value={FormData["STIC_ProdComp_ExistP_Excess40"]}  name="STIC_ProdComp_ExistP_Excess40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess40"value={FormData["STIC_ProdComp_ExistP_Excess40"]}  name="STIC_ProdComp_ExistP_Excess40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium40"value={FormData["STIC_ProdComp_RecommP_Premium40"]}  name="STIC_ProdComp_RecommP_Premium40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium40"value={FormData["STIC_ProdComp_RecommP_Premium40"]}  name="STIC_ProdComp_RecommP_Premium40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess40"value={FormData["STIC_ProdComp_RecommP_Excess40"]}  name="STIC_ProdComp_RecommP_Excess40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess40"value={FormData["STIC_ProdComp_RecommP_Excess40"]}  name="STIC_ProdComp_RecommP_Excess40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3907,35 +3907,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount41"value={FormData["STIC_ProdComp_CoverAmount41"]}  name="STIC_ProdComp_CoverAmount41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount41"value={FormData["STIC_ProdComp_CoverAmount41"]}  name="STIC_ProdComp_CoverAmount41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium41"value={FormData["STIC_ProdComp_ExistP_Premium41"]}  name="STIC_ProdComp_ExistP_Premium41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium41"value={FormData["STIC_ProdComp_ExistP_Premium41"]}  name="STIC_ProdComp_ExistP_Premium41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess41"value={FormData["STIC_ProdComp_ExistP_Excess41"]}  name="STIC_ProdComp_ExistP_Excess41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess41"value={FormData["STIC_ProdComp_ExistP_Excess41"]}  name="STIC_ProdComp_ExistP_Excess41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium41"value={FormData["STIC_ProdComp_RecommP_Premium41"]}  name="STIC_ProdComp_RecommP_Premium41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium41"value={FormData["STIC_ProdComp_RecommP_Premium41"]}  name="STIC_ProdComp_RecommP_Premium41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess41"value={FormData["STIC_ProdComp_RecommP_Excess41"]}  name="STIC_ProdComp_RecommP_Excess41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess41"value={FormData["STIC_ProdComp_RecommP_Excess41"]}  name="STIC_ProdComp_RecommP_Excess41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -3956,35 +3956,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount42"value={FormData["STIC_ProdComp_CoverAmount42"]}  name="STIC_ProdComp_CoverAmount42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount42"value={FormData["STIC_ProdComp_CoverAmount42"]}  name="STIC_ProdComp_CoverAmount42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium42"value={FormData["STIC_ProdComp_ExistP_Premium42"]}  name="STIC_ProdComp_ExistP_Premium42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium42"value={FormData["STIC_ProdComp_ExistP_Premium42"]}  name="STIC_ProdComp_ExistP_Premium42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess42"value={FormData["STIC_ProdComp_ExistP_Excess42"]}  name="STIC_ProdComp_ExistP_Excess42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess42"value={FormData["STIC_ProdComp_ExistP_Excess42"]}  name="STIC_ProdComp_ExistP_Excess42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium42"value={FormData["STIC_ProdComp_RecommP_Premium42"]}  name="STIC_ProdComp_RecommP_Premium42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium42"value={FormData["STIC_ProdComp_RecommP_Premium42"]}  name="STIC_ProdComp_RecommP_Premium42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess42"value={FormData["STIC_ProdComp_RecommP_Excess42"]}  name="STIC_ProdComp_RecommP_Excess42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess42"value={FormData["STIC_ProdComp_RecommP_Excess42"]}  name="STIC_ProdComp_RecommP_Excess42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -4005,35 +4005,35 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount43"value={FormData["STIC_ProdComp_CoverAmount43"]}  name="STIC_ProdComp_CoverAmount43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_CoverAmount43"value={FormData["STIC_ProdComp_CoverAmount43"]}  name="STIC_ProdComp_CoverAmount43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Premium43"value={FormData["STIC_ProdComp_ExistP_Premium43"]}  name="STIC_ProdComp_ExistP_Premium43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Premium43"value={FormData["STIC_ProdComp_ExistP_Premium43"]}  name="STIC_ProdComp_ExistP_Premium43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Excess43"value={FormData["STIC_ProdComp_ExistP_Excess43"]}  name="STIC_ProdComp_ExistP_Excess43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_ExistP_Excess43"value={FormData["STIC_ProdComp_ExistP_Excess43"]}  name="STIC_ProdComp_ExistP_Excess43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium43"value={FormData["STIC_ProdComp_RecommP_Premium43"]}  name="STIC_ProdComp_RecommP_Premium43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Premium43"value={FormData["STIC_ProdComp_RecommP_Premium43"]}  name="STIC_ProdComp_RecommP_Premium43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Excess43"value={FormData["STIC_ProdComp_RecommP_Excess43"]}  name="STIC_ProdComp_RecommP_Excess43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_RecommP_Excess43"value={FormData["STIC_ProdComp_RecommP_Excess43"]}  name="STIC_ProdComp_RecommP_Excess43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
                                         
@@ -4045,7 +4045,7 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_FeeNCharges"value={FormData['STIC_ProdComp_FeeNCharges']}  name="STIC_ProdComp_FeeNCharges"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_FeeNCharges"value={FormData['STIC_ProdComp_FeeNCharges']}  name="STIC_ProdComp_FeeNCharges"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
@@ -4057,7 +4057,7 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_Commission"value={FormData['STIC_ProdComp_Commission']}  name="STIC_ProdComp_Commission"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_Commission"value={FormData['STIC_ProdComp_Commission']}  name="STIC_ProdComp_Commission"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
@@ -4069,7 +4069,7 @@ const Short_term_Commercial= () => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input type="number" spellCheck="true" id="STIC_ProdComp_TotalPremium"value={FormData['STIC_ProdComp_TotalPremium']}  name="STIC_ProdComp_TotalPremium"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input type="number" disabled spellCheck="true" id="STIC_ProdComp_TotalPremium"value={FormData['STIC_ProdComp_TotalPremium']}  name="STIC_ProdComp_TotalPremium"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
@@ -4684,7 +4684,7 @@ const Short_term_Commercial= () => {
                                         <label className="col-form-label">Column refernce:</label>
                                       </div>
                                       <div className="col-3">
-                                        <input spellCheck="true" disabled  id="STIC_BuildCombined_ColumnRef"value={FormData['STIC_BuildCombined_ColumnRef']}  name="STIC_BuildCombined_ColumnRef"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                                        <input spellCheck="true" disabled  id="STIC_BuildCombined_ColumnRef"value={FormData['STIC_BuildCombined_ColumnRef']}  name="STIC_BuildCombined_ColumnRef"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                                       </div>
                                     </div>
                                   </div>
@@ -5210,7 +5210,7 @@ const Short_term_Commercial= () => {
                                         <label className="col-form-label">Basis:</label>
                                       </div>
                                       <div className="col-3">
-                                        <input spellCheck="true" disabled  id="STIC_BusInt_Basis"value={FormData['STIC_BusInt_Basis']}  name="STIC_BusInt_Basis"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                                        <input spellCheck="true" disabled  id="STIC_BusInt_Basis"value={FormData['STIC_BusInt_Basis']}  name="STIC_BusInt_Basis"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                                       </div>
                                     </div>
                                   </div>
@@ -5222,7 +5222,7 @@ const Short_term_Commercial= () => {
                                         <label className="col-form-label">Indemnity Period:</label>
                                       </div>
                                       <div className="col-3">
-                                        <input spellCheck="true" disabled  id="STIC_BusInt_Indemnity"value={FormData['STIC_BusInt_Indemnity']}  name="STIC_BusInt_Indemnity"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                                        <input spellCheck="true" disabled  id="STIC_BusInt_Indemnity"value={FormData['STIC_BusInt_Indemnity']}  name="STIC_BusInt_Indemnity"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                                       </div>
                                     </div>
                                   </div>
@@ -5488,7 +5488,7 @@ const Short_term_Commercial= () => {
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Wages </td>
       <td>
         <div className="col-3">
-          <input spellCheck="true" disabled  id="STIC_BusInt_Type10"value={FormData['STIC_BusInt_Type10']}  name="STIC_BusInt_Type10"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"150px"}} />
+          <input spellCheck="true" disabled  id="STIC_BusInt_Type10"value={FormData['STIC_BusInt_Type10']}  name="STIC_BusInt_Type10"  className="form-control" placeholder=""  aria-describedby="" style={{width:"150px"}} />
         </div>
       </td>
       <td></td>
@@ -5539,7 +5539,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Supplier</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_BusInt_Type12"value={FormData['STIC_BusInt_Type12']}  name="STIC_BusInt_Type12"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"150px"}} />
+        <input spellCheck="true" disabled  id="STIC_BusInt_Type12"value={FormData['STIC_BusInt_Type12']}  name="STIC_BusInt_Type12"  className="form-control" placeholder=""  aria-describedby="" style={{width:"150px"}} />
       </td>
       <td>
         
@@ -5551,7 +5551,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Premises</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_BusInt_Type13"value={FormData['STIC_BusInt_Type13']}  name="STIC_BusInt_Type13"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"150px"}} />
+        <input spellCheck="true" disabled  id="STIC_BusInt_Type13"value={FormData['STIC_BusInt_Type13']}  name="STIC_BusInt_Type13"  className="form-control" placeholder=""  aria-describedby="" style={{width:"150px"}} />
       </td>
       <td>
         
@@ -5650,7 +5650,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Client</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_BusInt_Type17"value={FormData['STIC_BusInt_Type17']}  name="STIC_BusInt_Type17"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"150px"}} />
+        <input spellCheck="true" disabled  id="STIC_BusInt_Type17"value={FormData['STIC_BusInt_Type17']}  name="STIC_BusInt_Type17"  className="form-control" placeholder=""  aria-describedby="" style={{width:"150px"}} />
       </td>
       <td>
         
@@ -5662,7 +5662,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Premises</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_BusInt_Type18"value={FormData['STIC_BusInt_Type18']}  name="STIC_BusInt_Type18"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"150px"}} />
+        <input spellCheck="true" disabled  id="STIC_BusInt_Type18"value={FormData['STIC_BusInt_Type18']}  name="STIC_BusInt_Type18"  className="form-control" placeholder=""  aria-describedby="" style={{width:"150px"}} />
       </td>
       <td>
         
@@ -5857,7 +5857,7 @@ const Short_term_Commercial= () => {
 
     <br/>
     <div><b>Comments</b></div>
-    <input spellCheck="true" disabled  id="STIC_BusInt_Comments"value={FormData['STIC_BusInt_Comments']}  name="STIC_BusInt_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+    <input spellCheck="true" disabled  id="STIC_BusInt_Comments"value={FormData['STIC_BusInt_Comments']}  name="STIC_BusInt_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
@@ -5868,7 +5868,7 @@ const Short_term_Commercial= () => {
                   <label className="col-form-label">Premises Number:</label>
               </div>
               <div className="col-3">
-                <input spellCheck="true" disabled  id="STIC_BusInt_PremisesNumber"value={FormData['STIC_BusInt_PremisesNumber']}  name="STIC_BusInt_PremisesNumber"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                <input spellCheck="true" disabled  id="STIC_BusInt_PremisesNumber"value={FormData['STIC_BusInt_PremisesNumber']}  name="STIC_BusInt_PremisesNumber"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
               </div>
             </div>
           </div>
@@ -5880,7 +5880,7 @@ const Short_term_Commercial= () => {
                 <label className="col-form-label">Basis:</label>
               </div>
               <div className="col-3">
-                <input spellCheck="true" disabled  id="STIC_BusInt_Basis"value={FormData['STIC_BusInt_Basis']}  name="STIC_BusInt_Basis"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                <input spellCheck="true" disabled  id="STIC_BusInt_Basis"value={FormData['STIC_BusInt_Basis']}  name="STIC_BusInt_Basis"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
               </div>
             </div>
           </div>
@@ -5892,7 +5892,7 @@ const Short_term_Commercial= () => {
                 <label className="col-form-label">Indemnity Period:</label>
               </div>
               <div className="col-3">
-                <input spellCheck="true" disabled  id="STIC_BusInt_IndemPer"value={FormData['STIC_BusInt_IndemPer']}  name="STIC_BusInt_IndemPer"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                <input spellCheck="true" disabled  id="STIC_BusInt_IndemPer"value={FormData['STIC_BusInt_IndemPer']}  name="STIC_BusInt_IndemPer"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
 
               </div>
             </div>
@@ -6157,7 +6157,7 @@ const Short_term_Commercial= () => {
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Wages </td>
       <td>
         <div className="col-3">
-          <input spellCheck="true" disabled  id="STIC_BusInt_Type2_10"value={FormData['STIC_BusInt_Type2_10']}  name="STIC_BusInt_Type2_10"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"150px"}} />
+          <input spellCheck="true" disabled  id="STIC_BusInt_Type2_10"value={FormData['STIC_BusInt_Type2_10']}  name="STIC_BusInt_Type2_10"  className="form-control" placeholder=""  aria-describedby="" style={{width:"150px"}} />
         </div>
       </td>
       <td></td>
@@ -6208,7 +6208,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Supplier</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_BusInt_Type2_12"value={FormData['STIC_BusInt_Type2_12']}  name="STIC_BusInt_Type2_12"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"150px"}} />
+        <input spellCheck="true" disabled  id="STIC_BusInt_Type2_12"value={FormData['STIC_BusInt_Type2_12']}  name="STIC_BusInt_Type2_12"  className="form-control" placeholder=""  aria-describedby="" style={{width:"150px"}} />
       </td>
       <td>
         
@@ -6220,7 +6220,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Premises</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_BusInt_Type2_13"value={FormData['STIC_BusInt_Type2_13']}  name="STIC_BusInt_Type2_13"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"150px"}} />
+        <input spellCheck="true" disabled  id="STIC_BusInt_Type2_13"value={FormData['STIC_BusInt_Type2_13']}  name="STIC_BusInt_Type2_13"  className="form-control" placeholder=""  aria-describedby="" style={{width:"150px"}} />
       </td>
       <td>
         
@@ -6319,7 +6319,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Client</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_BusInt_Type2_17"value={FormData['STIC_BusInt_Type2_17']}  name="STIC_BusInt_Type2_17"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"150px"}} />
+        <input spellCheck="true" disabled  id="STIC_BusInt_Type2_17"value={FormData['STIC_BusInt_Type2_17']}  name="STIC_BusInt_Type2_17"  className="form-control" placeholder=""  aria-describedby="" style={{width:"150px"}} />
       </td>
       <td>
         
@@ -6331,7 +6331,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Premises</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_BusInt_Type2_18"value={FormData['STIC_BusInt_Type2_18']}  name="STIC_BusInt_Type2_18"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"150px"}} />
+        <input spellCheck="true" disabled  id="STIC_BusInt_Type2_18"value={FormData['STIC_BusInt_Type2_18']}  name="STIC_BusInt_Type2_18"  className="form-control" placeholder=""  aria-describedby="" style={{width:"150px"}} />
       </td>
       <td>
         
@@ -6526,7 +6526,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-    <input spellCheck="true" disabled  id="STIC_BusInt2_Comments"value={FormData['STIC_BusInt2_Comments']}  name="STIC_BusInt2_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+    <input spellCheck="true" disabled  id="STIC_BusInt2_Comments"value={FormData['STIC_BusInt2_Comments']}  name="STIC_BusInt2_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 5:ACCOUNTS RECEIVABLE</b></div>
@@ -6592,7 +6592,7 @@ const Short_term_Commercial= () => {
                 <label className="col-form-label">Occupation Description:</label>
               </div>
               <div className="col-3">
-                <input spellCheck="true" disabled  id="STIC_Sec5_1"value={FormData['STIC_Sec5_1']}  name="STIC_Sec5_1"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                <input spellCheck="true" disabled  id="STIC_Sec5_1"value={FormData['STIC_Sec5_1']}  name="STIC_Sec5_1"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
               </div>
             </div>
           </div>
@@ -6604,7 +6604,7 @@ const Short_term_Commercial= () => {
                 <label className="col-form-label">Construction type:</label>
               </div>
               <div className="col-3">
-                <input spellCheck="true" disabled  id="STIC_Sec5_2"value={FormData['STIC_Sec5_2']}  name="STIC_Sec5_2"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                <input spellCheck="true" disabled  id="STIC_Sec5_2"value={FormData['STIC_Sec5_2']}  name="STIC_Sec5_2"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
 
               </div>
             </div>
@@ -6784,7 +6784,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec5_Comments"value={FormData['STIC_Sec5_Comments']}  name="STIC_Sec5_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec5_Comments"value={FormData['STIC_Sec5_Comments']}  name="STIC_Sec5_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 6:THEFT</b></div>
@@ -6870,7 +6870,7 @@ const Short_term_Commercial= () => {
                   <label className="col-form-label">Specific description of content:</label>
               </div>
               <div className="col-3">
-                <input spellCheck="true" disabled  id="STIC_Sec6_2"value={FormData['STIC_Sec6_2']}  name="STIC_Sec6_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                <input spellCheck="true" disabled  id="STIC_Sec6_2"value={FormData['STIC_Sec6_2']}  name="STIC_Sec6_2"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
               </div>
             </div>
           </div>
@@ -6892,7 +6892,7 @@ const Short_term_Commercial= () => {
                   <label className="col-form-label">Construction type:</label>
               </div>
               <div className="col-3">
-                <input spellCheck="true" disabled  id="STIC_Sec6_4"value={FormData['STIC_Sec6_4']}  name="STIC_Sec6_4"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                <input spellCheck="true" disabled  id="STIC_Sec6_4"value={FormData['STIC_Sec6_4']}  name="STIC_Sec6_4"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
               </div>
             </div>
           </div>
@@ -6903,7 +6903,7 @@ const Short_term_Commercial= () => {
                   <label className="col-form-label">Protection:</label>
               </div>
               <div className="col-3">
-                <input spellCheck="true" disabled  id="STIC_Sec6_5"value={FormData['STIC_Sec6_5']}  name="STIC_Sec6_5"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                <input spellCheck="true" disabled  id="STIC_Sec6_5"value={FormData['STIC_Sec6_5']}  name="STIC_Sec6_5"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
               </div>
             </div>
           </div>
@@ -6914,7 +6914,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec6_Comments"value={FormData['STIC_Sec6_Comments']}  name="STIC_Sec6_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec6_Comments"value={FormData['STIC_Sec6_Comments']}  name="STIC_Sec6_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 7:MONEY</b></div>
@@ -7096,12 +7096,12 @@ const Short_term_Commercial= () => {
     {/* <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontcolor:"grey"}} align="left">Season description:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+        <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
       </td>
       <td></td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontcolor:"grey"}} align="left">Category description:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+        <input spellCheck="true" disabled  id="STIC_Branch_Number"value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
       </td>
       
     </tr> */}
@@ -7247,7 +7247,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec7_Comments"value={FormData['STIC_Sec7_Comments']}  name="STIC_Sec7_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec7_Comments"value={FormData['STIC_Sec7_Comments']}  name="STIC_Sec7_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 8:GLASS</b></div>
@@ -7425,7 +7425,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec8_Comments"value={FormData['STIC_Sec8_Comments']}  name="STIC_Sec8_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec8_Comments"value={FormData['STIC_Sec8_Comments']}  name="STIC_Sec8_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 9:FIDELITY GURANTEE</b></div>
@@ -7767,7 +7767,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec9_Comments"value={FormData['STIC_Sec9_Comments']}  name="STIC_Sec9_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec9_Comments"value={FormData['STIC_Sec9_Comments']}  name="STIC_Sec9_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 10:GOODS IN TRANSIT</b></div>
@@ -7842,7 +7842,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Commodity:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec10_1"value={FormData['STIC_Sec10_1']}  name="STIC_Sec10_1" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec10_1"value={FormData['STIC_Sec10_1']}  name="STIC_Sec10_1" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -7853,7 +7853,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Means of conveyance(e.g by road,rail or air):</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec10_2"value={FormData['STIC_Sec10_2']}  name="STIC_Sec10_2" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec10_2"value={FormData['STIC_Sec10_2']}  name="STIC_Sec10_2" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -8058,7 +8058,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec10_Comments"value={FormData['STIC_Sec10_Comments']}  name="STIC_Sec10_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec10_Comments"value={FormData['STIC_Sec10_Comments']}  name="STIC_Sec10_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 11:BUSINESS ALL RISKS</b></div>
@@ -8161,7 +8161,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Place:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec11_2"value={FormData['STIC_Sec11_2']}  name="STIC_Sec11_2" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec11_2"value={FormData['STIC_Sec11_2']}  name="STIC_Sec11_2" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -8172,7 +8172,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Basis:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec11_3"value={FormData['STIC_Sec11_3']}  name="STIC_Sec11_3" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec11_3"value={FormData['STIC_Sec11_3']}  name="STIC_Sec11_3" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -8187,7 +8187,7 @@ const Short_term_Commercial= () => {
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Article Description:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec11_5"value={FormData['STIC_Sec11_5']}  name="STIC_Sec11_5" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec11_5"value={FormData['STIC_Sec11_5']}  name="STIC_Sec11_5" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -8196,11 +8196,11 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Model Number:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec11_6"value={FormData['STIC_Sec11_6']}  name="STIC_Sec11_6" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec11_6"value={FormData['STIC_Sec11_6']}  name="STIC_Sec11_6" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Serial Number:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec11_7"value={FormData['STIC_Sec11_7']}  name="STIC_Sec11_7" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec11_7"value={FormData['STIC_Sec11_7']}  name="STIC_Sec11_7" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -8248,7 +8248,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec11_Comments"value={FormData['STIC_Sec11_Comments']}  name="STIC_Sec11_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec11_Comments"value={FormData['STIC_Sec11_Comments']}  name="STIC_Sec11_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 12:ACCIDENTAL DAMAGE</b></div>
@@ -8327,7 +8327,7 @@ const Short_term_Commercial= () => {
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Same risk:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec12_2"value={FormData['STIC_Sec12_2']}  name="STIC_Sec12_2" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec12_2"value={FormData['STIC_Sec12_2']}  name="STIC_Sec12_2" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -8351,7 +8351,7 @@ const Short_term_Commercial= () => {
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Premium:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec12_5"value={FormData['STIC_Sec12_5']}  name="STIC_Sec12_5" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec12_5"value={FormData['STIC_Sec12_5']}  name="STIC_Sec12_5" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -8531,7 +8531,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec12_Comments"value={FormData['STIC_Sec12_Comments']}  name="STIC_Sec12_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec12_Comments"value={FormData['STIC_Sec12_Comments']}  name="STIC_Sec12_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 13:PUBLIC LIABILITY</b></div>
@@ -8612,7 +8612,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Basis of cover:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec13_1"value={FormData['STIC_Sec13_1']}  name="STIC_Sec13_1" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec13_1"value={FormData['STIC_Sec13_1']}  name="STIC_Sec13_1" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -8623,7 +8623,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Retroactive date:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec13_2"value={FormData['STIC_Sec13_2']}  name="STIC_Sec13_2" type="date" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec13_2"value={FormData['STIC_Sec13_2']}  name="STIC_Sec13_2" type="date" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -8635,7 +8635,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Occupation:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec13_3"value={FormData['STIC_Sec13_3']}  name="STIC_Sec13_3"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec13_3"value={FormData['STIC_Sec13_3']}  name="STIC_Sec13_3"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -8646,7 +8646,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Additional premises:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec13_4"value={FormData['STIC_Sec13_4']}  name="STIC_Sec13_4"  className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec13_4"value={FormData['STIC_Sec13_4']}  name="STIC_Sec13_4"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -8698,7 +8698,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">. Code</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec13_8"value={FormData['STIC_Sec13_8']}  name="STIC_Sec13_8" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec13_8"value={FormData['STIC_Sec13_8']}  name="STIC_Sec13_8" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -8995,7 +8995,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">. Number of pharmacists/Assist</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec13_29"value={FormData['STIC_Sec13_29']}  name="STIC_Sec13_29" className="form-control" placeholder="Click to enter text"  aria-describedby="" /> 
+        <input spellCheck="true" disabled  id="STIC_Sec13_29"value={FormData['STIC_Sec13_29']}  name="STIC_Sec13_29" className="form-control" placeholder=""  aria-describedby="" /> 
       </td>
       <td></td>
       <td></td>
@@ -9100,7 +9100,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec13_Comments"value={FormData['STIC_Sec13_Comments']}  name="STIC_Sec13_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec13_Comments"value={FormData['STIC_Sec13_Comments']}  name="STIC_Sec13_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 14:SPECIALIST PRODUCTS</b></div>
@@ -9505,7 +9505,7 @@ const Short_term_Commercial= () => {
 
     <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec15_Comments"value={FormData['STIC_Sec15_Comments']}  name="STIC_Sec15_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec15_Comments"value={FormData['STIC_Sec15_Comments']}  name="STIC_Sec15_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 16:STATED BENEFITS</b></div>
@@ -9585,11 +9585,11 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">ID Number</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec16_1"value={FormData['STIC_Sec16_1']}  name="STIC_Sec16_1" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec16_1"value={FormData['STIC_Sec16_1']}  name="STIC_Sec16_1" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Number of persons</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec16_2"value={FormData['STIC_Sec16_2']}  name="STIC_Sec16_2" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec16_2"value={FormData['STIC_Sec16_2']}  name="STIC_Sec16_2" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>  
     </tr>
@@ -9597,7 +9597,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Occupation</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec16_3"value={FormData['STIC_Sec16_3']}  name="STIC_Sec16_3" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec16_3"value={FormData['STIC_Sec16_3']}  name="STIC_Sec16_3" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -9607,7 +9607,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Job Description</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec16_4"value={FormData['STIC_Sec16_4']}  name="STIC_Sec16_4" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec16_4"value={FormData['STIC_Sec16_4']}  name="STIC_Sec16_4" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -9617,7 +9617,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Insured Person</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec16_5"value={FormData['STIC_Sec16_5']}  name="STIC_Sec16_5" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec16_5"value={FormData['STIC_Sec16_5']}  name="STIC_Sec16_5" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -9646,7 +9646,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Death</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec16_7"value={FormData['STIC_Sec16_7']}  name="STIC_Sec16_7" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec16_7"value={FormData['STIC_Sec16_7']}  name="STIC_Sec16_7" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -9656,7 +9656,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Permanant Disability</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec16_8"value={FormData['STIC_Sec16_8']}  name="STIC_Sec16_8" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec16_8"value={FormData['STIC_Sec16_8']}  name="STIC_Sec16_8" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -9666,7 +9666,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Temporary Disability</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec16_9"value={FormData['STIC_Sec16_9']}  name="STIC_Sec16_9" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec16_9"value={FormData['STIC_Sec16_9']}  name="STIC_Sec16_9" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -9967,7 +9967,7 @@ const Short_term_Commercial= () => {
 
     <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec16_Comments"value={FormData['STIC_Sec16_Comments']}  name="STIC_Sec16_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec16_Comments"value={FormData['STIC_Sec16_Comments']}  name="STIC_Sec16_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 17:GROUP PERSONAL ACCIDENT</b></div>
@@ -10043,7 +10043,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Profession:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec17_1"value={FormData['STIC_Sec17_1']}  name="STIC_Sec17_1" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec17_1"value={FormData['STIC_Sec17_1']}  name="STIC_Sec17_1" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10053,7 +10053,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Basis:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec17_2"value={FormData['STIC_Sec17_2']}  name="STIC_Sec17_2" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec17_2"value={FormData['STIC_Sec17_2']}  name="STIC_Sec17_2" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10063,7 +10063,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Number of People:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec17_3"value={FormData['STIC_Sec17_3']}  name="STIC_Sec17_3" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec17_3"value={FormData['STIC_Sec17_3']}  name="STIC_Sec17_3" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10112,7 +10112,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Temporary Disabiltiy:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec17_7"value={FormData['STIC_Sec17_7']}  name="STIC_Sec17_7" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec17_7"value={FormData['STIC_Sec17_7']}  name="STIC_Sec17_7" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10122,7 +10122,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Minimum period:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec17_8"value={FormData['STIC_Sec17_8']}  name="STIC_Sec17_8" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec17_8"value={FormData['STIC_Sec17_8']}  name="STIC_Sec17_8" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10132,7 +10132,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Maximum period:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec17_9"value={FormData['STIC_Sec17_9']}  name="STIC_Sec17_9" className="form-control" placeholder="Click to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec17_9"value={FormData['STIC_Sec17_9']}  name="STIC_Sec17_9" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10472,7 +10472,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec17_Comments"value={FormData['STIC_Sec17_Comments']}  name="STIC_Sec17_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec17_Comments"value={FormData['STIC_Sec17_Comments']}  name="STIC_Sec17_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 18:MOTOR</b></div>
@@ -10621,7 +10621,7 @@ const Short_term_Commercial= () => {
   <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Category:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_6"value={FormData['STIC_Sec18_6']}  name="STIC_Sec18_6" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_6"value={FormData['STIC_Sec18_6']}  name="STIC_Sec18_6" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10631,7 +10631,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Class of use:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_7"value={FormData['STIC_Sec18_7']}  name="STIC_Sec18_7" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_7"value={FormData['STIC_Sec18_7']}  name="STIC_Sec18_7" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10641,7 +10641,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Type of cover:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_8"value={FormData['STIC_Sec18_8']}  name="STIC_Sec18_8" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_8"value={FormData['STIC_Sec18_8']}  name="STIC_Sec18_8" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10651,11 +10651,11 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Registration number:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_9"value={FormData['STIC_Sec18_9']}  name="STIC_Sec18_9" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_9"value={FormData['STIC_Sec18_9']}  name="STIC_Sec18_9" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Year manufactured:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_10"value={FormData['STIC_Sec18_10']}  name="STIC_Sec18_10" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_10"value={FormData['STIC_Sec18_10']}  name="STIC_Sec18_10" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>  
     </tr>
@@ -10663,7 +10663,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Auto dealer's code:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_11"value={FormData['STIC_Sec18_11']}  name="STIC_Sec18_11" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_11"value={FormData['STIC_Sec18_11']}  name="STIC_Sec18_11" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10673,11 +10673,11 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Make:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_12"value={FormData['STIC_Sec18_12']}  name="STIC_Sec18_12" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_12"value={FormData['STIC_Sec18_12']}  name="STIC_Sec18_12" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Model:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_13"value={FormData['STIC_Sec18_13']}  name="STIC_Sec18_13" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_13"value={FormData['STIC_Sec18_13']}  name="STIC_Sec18_13" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>  
     </tr>
@@ -10685,7 +10685,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">NCB:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_14"value={FormData['STIC_Sec18_14']}  name="STIC_Sec18_14" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_14"value={FormData['STIC_Sec18_14']}  name="STIC_Sec18_14" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Sum insured:</td>
       <td>
@@ -10697,11 +10697,11 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">VSS security:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_16"value={FormData['STIC_Sec18_16']}  name="STIC_Sec18_16" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_16"value={FormData['STIC_Sec18_16']}  name="STIC_Sec18_16" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">GVM/CC:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_17"value={FormData['STIC_Sec18_17']}  name="STIC_Sec18_17" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_17"value={FormData['STIC_Sec18_17']}  name="STIC_Sec18_17" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>  
     </tr>
@@ -10709,7 +10709,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Engine Number:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_18"value={FormData['STIC_Sec18_18']}  name="STIC_Sec18_18" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_18"value={FormData['STIC_Sec18_18']}  name="STIC_Sec18_18" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10719,7 +10719,7 @@ const Short_term_Commercial= () => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Chassis Number:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_19"value={FormData['STIC_Sec18_19']}  name="STIC_Sec18_19" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_19"value={FormData['STIC_Sec18_19']}  name="STIC_Sec18_19" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       <td></td>
@@ -10750,7 +10750,7 @@ const Short_term_Commercial= () => {
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>Financial institute:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_21"value={FormData['STIC_Sec18_21']}  name="STIC_Sec18_21" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_21"value={FormData['STIC_Sec18_21']}  name="STIC_Sec18_21" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>  
     </tr>
@@ -10760,7 +10760,7 @@ const Short_term_Commercial= () => {
       <td></td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>Contact Number:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_22"value={FormData['STIC_Sec18_22']}  name="STIC_Sec18_22" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_22"value={FormData['STIC_Sec18_22']}  name="STIC_Sec18_22" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>  
     </tr>
@@ -10770,7 +10770,7 @@ const Short_term_Commercial= () => {
       <td></td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>Period:</td>
       <td>
-        <input spellCheck="true" disabled  id="STIC_Sec18_23"value={FormData['STIC_Sec18_23']}  name="STIC_Sec18_23" className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} /> 
+        <input spellCheck="true" disabled  id="STIC_Sec18_23"value={FormData['STIC_Sec18_23']}  name="STIC_Sec18_23" className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>  
     </tr>
@@ -11018,7 +11018,7 @@ const Short_term_Commercial= () => {
 
     <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec18_Comments"value={FormData['STIC_Sec18_Comments']}  name="STIC_Sec18_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec18_Comments"value={FormData['STIC_Sec18_Comments']}  name="STIC_Sec18_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 19:ELECTRONIC EQUIPMENT</b></div>
@@ -11115,7 +11115,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec19_Part1_2"value={FormData['STIC_Sec19_Part1_2']}  name="STIC_Sec19_Part1_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec19_Part1_2"value={FormData['STIC_Sec19_Part1_2']}  name="STIC_Sec19_Part1_2"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
                   <div className="col-2"></div>
@@ -11132,7 +11132,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec19_Part1_3"value={FormData['STIC_Sec19_Part1_3']}  name="STIC_Sec19_Part1_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec19_Part1_3"value={FormData['STIC_Sec19_Part1_3']}  name="STIC_Sec19_Part1_3"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
                   <div className="col-2"></div>
@@ -11149,7 +11149,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec19_Part1_4"value={FormData['STIC_Sec19_Part1_4']}  name="STIC_Sec19_Part1_4"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec19_Part1_4"value={FormData['STIC_Sec19_Part1_4']}  name="STIC_Sec19_Part1_4"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
                   <div className="col-2"></div>
@@ -11244,7 +11244,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec19_Part2_1"value={FormData['STIC_Sec19_Part2_1']}  name="STIC_Sec19_Part2_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec19_Part2_1"value={FormData['STIC_Sec19_Part2_1']}  name="STIC_Sec19_Part2_1"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
                   <div className="col-2"></div>
@@ -11261,7 +11261,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec19_Part2_3"value={FormData['STIC_Sec19_Part2_3']}  name="STIC_Sec19_Part2_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec19_Part2_3"value={FormData['STIC_Sec19_Part2_3']}  name="STIC_Sec19_Part2_3"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
                   <div className="col-2">
@@ -11269,7 +11269,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                    <input spellCheck="true" disabled  id="STIC_Sec19_Part2_4"value={FormData['STIC_Sec19_Part2_4']}  name="STIC_Sec19_Part2_4"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                    <input spellCheck="true" disabled  id="STIC_Sec19_Part2_4"value={FormData['STIC_Sec19_Part2_4']}  name="STIC_Sec19_Part2_4"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
           </div>
@@ -11410,7 +11410,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec19_RoD_1"value={FormData['STIC_Sec19_RoD_1']}  name="STIC_Sec19_RoD_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec19_RoD_1"value={FormData['STIC_Sec19_RoD_1']}  name="STIC_Sec19_RoD_1"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
                   <div className="col-2"></div>
@@ -11486,7 +11486,7 @@ const Short_term_Commercial= () => {
 
   <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec19_Comments"value={FormData['STIC_Sec19_Comments']}  name="STIC_Sec19_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec19_Comments"value={FormData['STIC_Sec19_Comments']}  name="STIC_Sec19_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 20:HOUSE OWNERS</b></div>
@@ -11554,7 +11554,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec20_1"value={FormData['STIC_Sec20_1']}  name="STIC_Sec20_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec20_1"value={FormData['STIC_Sec20_1']}  name="STIC_Sec20_1"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
               </div>
@@ -11568,7 +11568,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec20_2"value={FormData['STIC_Sec20_2']}  name="STIC_Sec20_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec20_2"value={FormData['STIC_Sec20_2']}  name="STIC_Sec20_2"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
               </div>
@@ -11582,7 +11582,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec20_3"value={FormData['STIC_Sec20_3']}  name="STIC_Sec20_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec20_3"value={FormData['STIC_Sec20_3']}  name="STIC_Sec20_3"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
               </div>
@@ -11734,7 +11734,7 @@ const Short_term_Commercial= () => {
 
       <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec20_Comments"value={FormData['STIC_Sec20_Comments']}  name="STIC_Sec20_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec20_Comments"value={FormData['STIC_Sec20_Comments']}  name="STIC_Sec20_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 21:HOUSE HOLDERS</b></div>
@@ -11802,7 +11802,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec21_1"value={FormData['STIC_Sec21_1']}  name="STIC_Sec21_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec21_1"value={FormData['STIC_Sec21_1']}  name="STIC_Sec21_1"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
               </div>
@@ -11816,7 +11816,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec21_2"value={FormData['STIC_Sec21_2']}  name="STIC_Sec21_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec21_2"value={FormData['STIC_Sec21_2']}  name="STIC_Sec21_2"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
               </div>
@@ -11830,7 +11830,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_Sec21_3"value={FormData['STIC_Sec21_3']}  name="STIC_Sec21_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_Sec21_3"value={FormData['STIC_Sec21_3']}  name="STIC_Sec21_3"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
               </div>
@@ -11984,7 +11984,7 @@ const Short_term_Commercial= () => {
 
       <br/>
     <div><b>Comments</b></div>
-      <input spellCheck="true" disabled  id="STIC_Sec21_Comments"value={FormData['STIC_Sec21_Comments']}  name="STIC_Sec21_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+      <input spellCheck="true" disabled  id="STIC_Sec21_Comments"value={FormData['STIC_Sec21_Comments']}  name="STIC_Sec21_Comments"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
     <br/>
@@ -12005,7 +12005,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_SecD_1"value={FormData['STIC_SecD_1']}  name="STIC_SecD_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_SecD_1"value={FormData['STIC_SecD_1']}  name="STIC_SecD_1"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
               </div>
@@ -12019,7 +12019,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_SecD_2"value={FormData['STIC_SecD_2']}  name="STIC_SecD_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_SecD_2"value={FormData['STIC_SecD_2']}  name="STIC_SecD_2"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
                   <div className="col-2">
@@ -12027,7 +12027,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                    <input spellCheck="true" disabled  id="STIC_SecD_3"value={FormData['STIC_SecD_3']}  name="STIC_SecD_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                    <input spellCheck="true" disabled  id="STIC_SecD_3"value={FormData['STIC_SecD_3']}  name="STIC_SecD_3"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
           </div>
@@ -12070,7 +12070,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_SecD_5"value={FormData['STIC_SecD_5']}  name="STIC_SecD_5"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_SecD_5"value={FormData['STIC_SecD_5']}  name="STIC_SecD_5"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
                   <div className="col-2">
@@ -12078,7 +12078,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                    <input spellCheck="true" disabled  id="STIC_SecD_6"value={FormData['STIC_SecD_6']}  name="STIC_SecD_6"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                    <input spellCheck="true" disabled  id="STIC_SecD_6"value={FormData['STIC_SecD_6']}  name="STIC_SecD_6"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
           </div>
@@ -12091,7 +12091,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_SecD_7"value={FormData['STIC_SecD_7']}  name="STIC_SecD_7"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_SecD_7"value={FormData['STIC_SecD_7']}  name="STIC_SecD_7"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
           </div>
@@ -12104,7 +12104,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_SecD_8"value={FormData['STIC_SecD_8']}  name="STIC_SecD_8"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_SecD_8"value={FormData['STIC_SecD_8']}  name="STIC_SecD_8"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
           </div>
@@ -12117,7 +12117,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_SecD_9"value={FormData['STIC_SecD_9']}  name="STIC_SecD_9"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_SecD_9"value={FormData['STIC_SecD_9']}  name="STIC_SecD_9"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
                   <div className="col-2">
@@ -12125,7 +12125,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_SecD_10"value={FormData['STIC_SecD_10']}  name="STIC_SecD_10"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_SecD_10"value={FormData['STIC_SecD_10']}  name="STIC_SecD_10"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
           </div>
@@ -12138,7 +12138,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_SecD_11"value={FormData['STIC_SecD_11']}  name="STIC_SecD_11"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_SecD_11"value={FormData['STIC_SecD_11']}  name="STIC_SecD_11"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
               </div>
@@ -12175,15 +12175,15 @@ const Short_term_Commercial= () => {
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>E. INTERMEDIARY INFORMATION</b></div>
 
     <p>Products considered appropriate to address the needs of the client</p>
-    <input spellCheck="true" disabled  id="STIC_SecE_1"value={FormData['STIC_SecE_1']}  name="STIC_SecE_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
+    <input spellCheck="true" disabled  id="STIC_SecE_1"value={FormData['STIC_SecE_1']}  name="STIC_SecE_1"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px",height:"100px"}} />
     <hr/>
 
     <p>Recommended product</p>
-    <input spellCheck="true" disabled  id="STIC_SecE_2"value={FormData['STIC_SecE_2']}  name="STIC_SecE_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
+    <input spellCheck="true" disabled  id="STIC_SecE_2"value={FormData['STIC_SecE_2']}  name="STIC_SecE_2"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px",height:"100px"}} />
     <hr/>
 
     <p>Reasons why the recommended product is considered the most suitable for the needs of the client:</p>
-    <input spellCheck="true" disabled  id="STIC_SecE_3"value={FormData['STIC_SecE_3']}  name="STIC_SecE_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
+    <input spellCheck="true" disabled  id="STIC_SecE_3"value={FormData['STIC_SecE_3']}  name="STIC_SecE_3"  className="form-control" placeholder=""  aria-describedby="" style={{width:"1000px",height:"100px"}} />
     <hr/>
 
     <br/>
@@ -12200,7 +12200,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_SecG_1"value={FormData['STIC_SecG_1']}  name="STIC_SecG_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_SecG_1"value={FormData['STIC_SecG_1']}  name="STIC_SecG_1"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
                   <div className="col-2">
@@ -12208,7 +12208,7 @@ const Short_term_Commercial= () => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" disabled  id="STIC_SecG_2"value={FormData['STIC_SecG_2']}  name="STIC_SecG_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled  id="STIC_SecG_2"value={FormData['STIC_SecG_2']}  name="STIC_SecG_3"  className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
           </div>
