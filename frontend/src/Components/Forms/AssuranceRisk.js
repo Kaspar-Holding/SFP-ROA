@@ -1043,7 +1043,7 @@ function AssuranceRisk()
       {/* <th scope="col">#</th> */}
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BnS"]} name="AR_BusA_BnS" onChange={(e)=>{FormData["AR_BusA_BnS"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BnS"]} name="AR_BusA_BnS" onChange={(e)=>{FormData["AR_BusA_BnS"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>&nbsp;&nbsp;&nbsp;&nbsp;
             <label className="form-check-label" for="flexCheckDefault">
             Funding of Buy-and-Sell Agreement
             </label>
@@ -1052,7 +1052,7 @@ function AssuranceRisk()
       
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_KeyP_Insurance"]} name="AR_BusA_KeyP_Insurance" onChange={(e)=>{FormData["AR_BusA_KeyP_Insurance"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_KeyP_Insurance"]} name="AR_BusA_KeyP_Insurance" onChange={(e)=>{FormData["AR_BusA_KeyP_Insurance"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/> &nbsp;&nbsp;&nbsp;&nbsp;
             <label className="form-check-label" for="flexCheckDefault">
             Key Person Insurance
             </label>
@@ -1061,7 +1061,7 @@ function AssuranceRisk()
       
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_ContingentLiability"]} name="AR_BusA_ContingentLiability" onChange={(e)=>{FormData["AR_BusA_ContingentLiability"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_ContingentLiability"]} name="AR_BusA_ContingentLiability" onChange={(e)=>{FormData["AR_BusA_ContingentLiability"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/> &nbsp;&nbsp;&nbsp;&nbsp;
             <label className="form-check-label" for="flexCheckDefault">
             Contingent liability
             </label>
@@ -1070,7 +1070,7 @@ function AssuranceRisk()
 
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BusOvProt"]} name="AR_BusA_BusOvProt" onChange={(e)=>{FormData["AR_BusA_BusOvProt"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BusOvProt"]} name="AR_BusA_BusOvProt" onChange={(e)=>{FormData["AR_BusA_BusOvProt"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/> &nbsp;&nbsp;&nbsp;&nbsp;
             <label className="form-check-label" for="flexCheckDefault">
             Business Overheads Protection
             </label>
@@ -1084,7 +1084,7 @@ function AssuranceRisk()
         {/* <th scope="col">#</th> */}
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_CLARedm"]} name="AR_BusA_CLARedm" onChange={(e)=>{FormData["AR_BusA_CLARedm"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_CLARedm"]} name="AR_BusA_CLARedm" onChange={(e)=>{FormData["AR_BusA_CLARedm"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/> &nbsp;&nbsp;&nbsp;&nbsp;
             <label className="form-check-label" for="flexCheckDefault">
             Credit Loan Account Redemption
             </label>
@@ -1093,7 +1093,7 @@ function AssuranceRisk()
 
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_DebitLoanRedemption"]} name="AR_BusA_DebitLoanRedemption" onChange={(e)=>{FormData["AR_BusA_DebitLoanRedemption"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_DebitLoanRedemption"]} name="AR_BusA_DebitLoanRedemption" onChange={(e)=>{FormData["AR_BusA_DebitLoanRedemption"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/> &nbsp;&nbsp;&nbsp;&nbsp;
             <label className="form-check-label" for="flexCheckDefault">
             Debit Loan Redemption
             </label>
@@ -1102,7 +1102,7 @@ function AssuranceRisk()
 
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfFutureExpenses"]} name="AR_BusA_FundingOfFutureExpenses" onChange={(e)=>{FormData["AR_BusA_FundingOfFutureExpenses"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfFutureExpenses"]} name="AR_BusA_FundingOfFutureExpenses" onChange={(e)=>{FormData["AR_BusA_FundingOfFutureExpenses"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/> &nbsp;&nbsp;&nbsp;&nbsp;
             <label className="form-check-label" for="flexCheckDefault">
             Funding of Future Expenses
             </label>
@@ -1111,7 +1111,7 @@ function AssuranceRisk()
 
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfDeferredGratuities"]} name="AR_BusA_FundingOfDeferredGratuities" onChange={(e)=>{FormData["AR_BusA_FundingOfDeferredGratuities"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfDeferredGratuities"]} name="AR_BusA_FundingOfDeferredGratuities" onChange={(e)=>{FormData["AR_BusA_FundingOfDeferredGratuities"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/> &nbsp;&nbsp;&nbsp;&nbsp;
             <label className="form-check-label" for="flexCheckDefault">
             Funding of Deferred Gratuities
             </label>
