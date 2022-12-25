@@ -259,9 +259,9 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Are all dependents on the same medical aid and same medical aid plan? </b></label>
                         </div>
                         <div className="col-6">
-                            <input type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] == 1 ? true : false}  name="1"/>
+                            <input disabled type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] == 1 ? true : false}  name="1"/>
                                 <label for="yes9">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] == 1 ? false : true}  name="0"/>
+                            <input disabled type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] == 1 ? false : true}  name="0"/>
                                 <label for="no9">No</label>
                         </div>
                     </div>
@@ -593,7 +593,7 @@ const GapCover = () => {
                             <div className="row">
                                 <div className="row col-3 align-items-center">
                                     <div className="col-2">
-                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? true : false}type="radio" value="1" id="GP_Exclusions" name="GP_Exclusions" />
+                                        <input disabled className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? true : false}type="radio" value="1" id="GP_Exclusions" name="GP_Exclusions" />
                                     </div>
                                     <div className="col-8">
                                         <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -604,7 +604,7 @@ const GapCover = () => {
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div className="row col-3 align-items-center">
                                     <div className="col-2">
-                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? false : true}type="radio" value="0" id="GP_Exclusions" name="GP_Exclusions" />
+                                        <input disabled className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? false : true}type="radio" value="0" id="GP_Exclusions" name="GP_Exclusions" />
                                     </div>
                                     <div className="col-8">
                                         <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -670,7 +670,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label">You have elected not to accept the following product recommendations:</label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_ProdRecomm"value={FormData['GP_FinanAdvisor_ProdRecomm']}  name="GP_FinanAdvisor_ProdRecomm" className="form-control" placeholder="Click here to enter text"  aria-describedby=""  />
+                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_ProdRecomm"value={FormData['GP_FinanAdvisor_ProdRecomm']}  name="GP_FinanAdvisor_ProdRecomm" className="form-control" placeholder=""  aria-describedby=""  />
                         </div>
                     </div>
 
@@ -680,7 +680,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label">For the following reasons</label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_Reasons"value={FormData['GP_FinanAdvisor_Reasons']}  name="GP_FinanAdvisor_Reasons" className="form-control" placeholder="Click here to enter text"  aria-describedby=""  />
+                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_Reasons"value={FormData['GP_FinanAdvisor_Reasons']}  name="GP_FinanAdvisor_Reasons" className="form-control" placeholder=""  aria-describedby=""  />
                         </div>
                     </div>
 
@@ -693,7 +693,7 @@ const GapCover = () => {
                         <div className="row">
                             <div className="row col-3 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? true : false}type="radio" value="1" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                    <input disabled className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? true : false}type="radio" value="1" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
                                 </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -704,7 +704,7 @@ const GapCover = () => {
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-3 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? false : true}type="radio" value="0" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                    <input disabled className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? false : true}type="radio" value="0" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
                                 </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -724,7 +724,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label">Fee and/or commission</label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_FeeCommission"value={FormData['GP_FinanAdvisor_FeeCommission']}  name="GP_FinanAdvisor_FeeCommission" className="form-control" placeholder="Click here to enter text"  aria-describedby=""  />
+                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_FeeCommission"value={FormData['GP_FinanAdvisor_FeeCommission']}  name="GP_FinanAdvisor_FeeCommission" className="form-control" placeholder=""  aria-describedby=""  />
                         </div>
                     </div>
                     <br />
@@ -739,7 +739,7 @@ const GapCover = () => {
                             <input spellCheck="true" disabled   id="GP_FinanAdvisor_Date"value={FormData['GP_FinanAdvisor_Date']}  name="GP_FinanAdvisor_Date" className="form-control" placeholder="Sign here"  aria-describedby=""  />
                         </div>
                         <div className="col-6">
-                            <input type="date" name="client_name" className="form-control" placeholder="Click here to enter text"  aria-describedby=""  />
+                            <input disabled type="date" name="client_name" className="form-control" placeholder=""  aria-describedby=""  />
                         </div>
                     </div>
        </form>
