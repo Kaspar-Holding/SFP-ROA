@@ -1751,7 +1751,15 @@ const Invest = (props) =>
           }
       })()}
       
-            
+      <div className="container1">
+            <div className="icon1 update">
+                <div className="tooltip1">
+                    Update
+                </div>
+                <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+            </div>
+        </div>
+
             </form>
         </>
      )
