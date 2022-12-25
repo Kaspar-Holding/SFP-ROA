@@ -327,7 +327,7 @@ const Invest = (props) =>
                         </div>
                         <div className='col-6'>
                             <div className='col-6'>
-                                <select className="text-start form-select" name='IP_SourceOfIncome' value={FormData['IP_SourceOfIncome']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                                <select className="text-start form-select" disabled name='IP_SourceOfIncome' value={FormData['IP_SourceOfIncome']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                                     <option value="0" selected>Choose Source of funds</option>
                                     <option value="1">Salary</option>
                                     <option value="2">Savings</option>
@@ -651,7 +651,7 @@ const Invest = (props) =>
                 
                 <div className='col-6'>
                     <div className='col-6'>
-                        <select className="text-start form-select" name='IP_InvestmentStrategy' value={FormData['IP_InvestmentStrategy']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                        <select className="text-start form-select" disabled name='IP_InvestmentStrategy' value={FormData['IP_InvestmentStrategy']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                             <option value="0" selected>Choose an Item</option>
                             <option value="1">Capital Reservation</option>
                             <option value="2">Income</option>
@@ -694,7 +694,7 @@ const Invest = (props) =>
                 </div>
                 <div className='col-6'>
                     <div className='col-6'>
-                        <select className="text-start form-select" name='IP_ReturnRequired' value={FormData['IP_ReturnRequired']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                        <select className="text-start form-select" disabled name='IP_ReturnRequired' value={FormData['IP_ReturnRequired']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                             <option value="0" selected>Choose an Item</option>
                             <option value="1">Market Linked Return</option>
                             <option value="2">Targeted Return</option>
@@ -738,7 +738,7 @@ const Invest = (props) =>
                 </div>
                 <div className='col-6'>
                     <div className='col-6'>
-                        <select className="text-start form-select" name='IP_RiskProfile' value={FormData['IP_RiskProfile']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                        <select className="text-start form-select" disabled name='IP_RiskProfile' value={FormData['IP_RiskProfile']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                             <option value="0" selected>Choose an Item</option>
                             <option value="1">Conservative</option>
                             <option value="2">Cautious</option>
@@ -917,7 +917,7 @@ const Invest = (props) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product:</td>
                     <td>  
                     <div className=''>
-                        <select className="text-start form-select" name='IP_ProductTaken' value={FormData['IP_ProductTaken']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                        <select className="text-start form-select" disabled name='IP_ProductTaken' value={FormData['IP_ProductTaken']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                             <option value="0" selected>Choose Product</option>
                             <option value="1">Endowment</option>
                             <option value="2">RA</option>
@@ -942,7 +942,7 @@ const Invest = (props) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Provider:</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='IP_ProductProvider' value={FormData['IP_ProductProvider']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductProvider' value={FormData['IP_ProductProvider']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -950,7 +950,7 @@ const Invest = (props) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Policy No:</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='IP_PolicyNumber' value={FormData['IP_PolicyNumber']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_PolicyNumber' value={FormData['IP_PolicyNumber']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td> 
 
@@ -963,7 +963,7 @@ const Invest = (props) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Name:</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='IP_ProductName' value={FormData['IP_ProductName']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductName' value={FormData['IP_ProductName']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -973,11 +973,11 @@ const Invest = (props) =>
                     <div className='row'>
                         <div className='col-6'>
                             <div className="form-group">
-                                <input type="text" className="form-control" name='IP_ProductPremium' value={FormData['IP_ProductPremium']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                                <input type="text" disabled className="form-control" name='IP_ProductPremium' value={FormData['IP_ProductPremium']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                             </div>
                         </div>
                         <div className='col-6'>
-                            <select className="text-start form-select" name='IP_ProductPremiumFrequency' value={FormData['IP_ProductPremiumFrequency']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                            <select className="text-start form-select" disabled name='IP_ProductPremiumFrequency' value={FormData['IP_ProductPremiumFrequency']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                                 <option value="0" selected>Frequeny</option>
                                 <option value="1">Monthly</option>
                                 <option value="2">Quarterly</option>
@@ -997,7 +997,7 @@ const Invest = (props) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Escalation:</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='IP_ProductEscalation' value={FormData['IP_ProductEscalation']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductEscalation' value={FormData['IP_ProductEscalation']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -1005,7 +1005,7 @@ const Invest = (props) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Total estimated annual <br/>cost (EAC)</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='IP_ProductEAC' value={FormData['IP_ProductEAC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductEAC' value={FormData['IP_ProductEAC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 
@@ -1016,7 +1016,7 @@ const Invest = (props) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Contracting Party</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='IP_ProductContractingParty' value={FormData['IP_ProductContractingParty']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductContractingParty' value={FormData['IP_ProductContractingParty']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -1024,7 +1024,7 @@ const Invest = (props) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Life/Lives assured</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='IP_ProductLivesAssured' value={FormData['IP_ProductLivesAssured']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductLivesAssured' value={FormData['IP_ProductLivesAssured']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 
@@ -1035,14 +1035,14 @@ const Invest = (props) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Premium Layer</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='IP_ProductPremiumLayer' value={FormData['IP_ProductPremiumLayer']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductPremiumLayer' value={FormData['IP_ProductPremiumLayer']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Beneficiary / nominee</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='IP_ProductBeneficiary' value={FormData['IP_ProductBeneficiary']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductBeneficiary' value={FormData['IP_ProductBeneficiary']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 
@@ -1053,24 +1053,24 @@ const Invest = (props) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Initial Commission</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='IP_Product_IniC' value={FormData['IP_Product_IniC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_Product_IniC' value={FormData['IP_Product_IniC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
-                <td><input type="text" className="form-control" name='IP_Product_IniC_Percentage' value={FormData['IP_Product_IniC_Percentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+                <td><input type="text" disabled className="form-control" name='IP_Product_IniC_Percentage' value={FormData['IP_Product_IniC_Percentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%</td>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Ongoing Commission</td>
                 <td>  
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_Product_OnC' value={FormData['IP_Product_OnC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_Product_OnC' value={FormData['IP_Product_OnC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                 </td> 
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_Product_OnC_Percentage' value={FormData['IP_Product_OnC_Percentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%
+                            <input type="text" disabled className="form-control" name='IP_Product_OnC_Percentage' value={FormData['IP_Product_OnC_Percentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%
                         </div>
                     </td> 
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_SFPSolutionFunds' value={FormData['IP_SFPSolutionFunds']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="Total" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_SFPSolutionFunds' value={FormData['IP_SFPSolutionFunds']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="Total" style={{width: '120px'}}/>
                         </div>
                     </td>      
 
@@ -1206,7 +1206,7 @@ const Invest = (props) =>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_Fund' value={FormData['IP_ItP_Fund']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund' value={FormData['IP_ItP_Fund']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1214,7 +1214,7 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_FundPercentage' value={FormData['IP_ItP_FundPercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage' value={FormData['IP_ItP_FundPercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
@@ -1232,7 +1232,7 @@ const Invest = (props) =>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_Fund1' value={FormData['IP_ItP_Fund1']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_ItP_Fund1' value={FormData['IP_ItP_Fund1']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1240,7 +1240,7 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_FundPercentage1' value={FormData['IP_ItP_FundPercentage1']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_ItP_FundPercentage1' value={FormData['IP_ItP_FundPercentage1']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
@@ -1258,7 +1258,7 @@ const Invest = (props) =>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_Fund2' value={FormData['IP_ItP_Fund2']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_ItP_Fund2' value={FormData['IP_ItP_Fund2']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1266,7 +1266,7 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_FundPercentage2' value={FormData['IP_ItP_FundPercentage2']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_ItP_FundPercentage2' value={FormData['IP_ItP_FundPercentage2']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
@@ -1284,7 +1284,7 @@ const Invest = (props) =>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_Fund3' value={FormData['IP_ItP_Fund3']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund3' value={FormData['IP_ItP_Fund3']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1292,7 +1292,7 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_FundPercentage3' value={FormData['IP_ItP_FundPercentage3']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage3' value={FormData['IP_ItP_FundPercentage3']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
@@ -1310,7 +1310,7 @@ const Invest = (props) =>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_Fund4' value={FormData['IP_ItP_Fund4']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund4' value={FormData['IP_ItP_Fund4']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1318,7 +1318,7 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_FundPercentage4' value={FormData['IP_ItP_FundPercentage4']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage4' value={FormData['IP_ItP_FundPercentage4']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
@@ -1336,7 +1336,7 @@ const Invest = (props) =>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_Fund5' value={FormData['IP_ItP_Fund5']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund5' value={FormData['IP_ItP_Fund5']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1344,7 +1344,7 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_FundPercentage5' value={FormData['IP_ItP_FundPercentage5']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage5' value={FormData['IP_ItP_FundPercentage5']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
@@ -1362,7 +1362,7 @@ const Invest = (props) =>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_Fund6' value={FormData['IP_ItP_Fund6']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund6' value={FormData['IP_ItP_Fund6']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1370,7 +1370,7 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_FundPercentage6' value={FormData['IP_ItP_FundPercentage6']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage6' value={FormData['IP_ItP_FundPercentage6']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
@@ -1388,7 +1388,7 @@ const Invest = (props) =>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_Fund7' value={FormData['IP_ItP_Fund7']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund7' value={FormData['IP_ItP_Fund7']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1396,7 +1396,7 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='IP_ItP_FundPercentage7' value={FormData['IP_ItP_FundPercentage7']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage7' value={FormData['IP_ItP_FundPercentage7']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
