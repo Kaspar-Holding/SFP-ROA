@@ -130,7 +130,7 @@ const CreateForm = ({user}) => {
                                         <label className="col-form-label"><b>Client Name:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true" id="clientName" onChange={e => onChange(e)} name="clientName" className="form-control" placeholder="Client Name"  aria-describedby="" />
+                                        <input required minlength="3" and maxlength="45" id="clientName" onChange={e => onChange(e)} name="clientName" className="form-control" placeholder="Client Name"  aria-describedby="" type="text" />
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@ const CreateForm = ({user}) => {
                                         <label htmlFor="id_number" className="col-form-label"><b>ID number:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true"  id="clientIdNumber"  onChange={e => onChange(e)} name="clientIdNumber" className="form-control" placeholder="ID number"  aria-describedby="" />
+                                        <input required type="number" id="clientIdNumber"  onChange={e => onChange(e)} name="clientIdNumber" className="form-control" placeholder="ID number"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@ const CreateForm = ({user}) => {
                                         <label htmlFor="email" className="col-form-label"><b>Email:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true"  id="email" onChange={(e) => {onChange(e)}}  name="clientEmail" className="form-control" placeholder="Email"  aria-describedby="" />
+                                        <input required spellCheck="true" size="30" type="email" id="email" onChange={(e) => {onChange(e)}}  name="clientEmail" className="form-control" placeholder="Email"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@ const CreateForm = ({user}) => {
                                         <label htmlFor="phoneNumber" className="col-form-label"><b>Phone:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true"  type="number" id="clientPhoneNumber" onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
+                                        <input required spellCheck="true" and minlength="11"  type="tel" id="clientPhoneNumber" onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
