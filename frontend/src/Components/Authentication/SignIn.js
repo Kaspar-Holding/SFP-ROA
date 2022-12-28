@@ -86,7 +86,7 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
                     {errorData.message}
                 </div>
                 <div className="form-floating">
-                  <input type="email"  className="form-control" id="floatingInput" placeholder="name@example.com" name="email" onChange={e => onChange(e)} required/>
+                  <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" name="email" onChange={e => onChange(e)} required/>
                   <label htmlFor="floatingInput"  >Email address</label>
                 </div>
                 <div className="form-floating">
