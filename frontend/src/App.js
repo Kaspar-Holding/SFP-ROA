@@ -40,6 +40,7 @@ import PrintFormLayout from './Layout/CompleteFormLayout';
 import PrintStuff from './Components/PrintStuff';
 import ServerDown from './Components/ServerDown';
 import SuperUserLayout from './Layout/SuperUserLayout';
+import UpdatePassword from './Components/Accounts/UpdatePassword';
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
                     </Route>
                     <Route exact path="/profile" element={<UserProfile name="" /> } />
                     <Route exact path="/print" element={<PrintStuff name="" /> } />
+                    <Route exact path="/updatePassword" element={<UpdatePassword /> } siteName={"SignIn"} />
                     {/* <Route exact path="/printform" element={<PrintForm name="" /> } /> */}
                   </Route>
                   <Route element={<PrintFormLayout /> }>

@@ -97,8 +97,8 @@ DATABASES = {
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'SFP',
-        'USER' : 'odoo',
-        'PASSWORD' : 'odoo',
+        'USER' : 'webanalytics',
+        'PASSWORD' : 'Armughan786',
         'HOST' : 'localhost',
         'PORT' : '5432'
     }

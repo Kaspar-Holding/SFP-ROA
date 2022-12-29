@@ -10,7 +10,7 @@ urlpatterns = [
     # Form Data
     path('addformdata/' , views.insertFormData, name="Insert data into Form Collection"),
     path('viewformdata/' , views.viewFormData, name="Form data details"),
-    path('updateformdata/' , views.viewFormData, name="Update form data details"),
+    path('updateformdata/' , views.updateFormData, name="Update form data details"),
     path('deleteformdata/' , views.deleteFormData, name="Delete form data details"),
     path('forms_stats/' , views.formStats, name="Forms Data"),
     path('update_form_status/' , views.changeFormStatus, name="Completed Form"),

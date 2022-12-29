@@ -8,6 +8,15 @@ This project is built on the following Stack
 
 ## Updates
 
+### 29 December 2022:
+Following Bugs are resolved:
+- Bug Number 1206: Email Validation on Form Creation (https://dev.azure.com/KasparHoldingsKCS/Succession%20Finance%20Planning%20SFP/_workitems/edit/1206/) 
+- Bug Number 1207: Phone field should be limited to numbers only (https://dev.azure.com/KasparHoldingsKCS/Succession%20Finance%20Planning%20SFP/_workitems/edit/1207/) 
+- Bug Number 1217: In forms if radio button selected yes the field still remains editable (https://dev.azure.com/KasparHoldingsKCS/Succession%20Finance%20Planning%20SFP/_workitems/edit/1217/) 
+- Bug Number 1218: In the form if a certain field is incorrectly filled it deosn't create the form but also doesn't specify why (https://dev.azure.com/KasparHoldingsKCS/Succession%20Finance%20Planning%20SFP/_workitems/edit/1218/) 
+- Bug Number 1219: In the form, for FICA even if the yes radio button is selected, it still asks to fill the field for no (https://dev.azure.com/KasparHoldingsKCS/Succession%20Finance%20Planning%20SFP/_workitems/edit/1219/) 
+- Bug Number 1220: Not editing the Record of Advice (https://dev.azure.com/KasparHoldingsKCS/Succession%20Finance%20Planning%20SFP/_workitems/edit/1220/) 
+
 ### 19 December 2022:
 - Added Risk Factors 
 

@@ -24,8 +24,25 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
     message: "",
     errors: []  
   })
-  const [ResponseStatus, setResponseStatus] = useState(401);
+  const [ResponseStatus, setResponseStatus] = useState(401)
+  const emailValidation = () =>{
+    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (regex.test(FormData['email']) === false){
+      setErrorData({
+        status: "Email Validity",
+        message: "Email is not valid, Please enter a valid email",
+        errors: ""
+      })
+      setSubmissionErrorVisibilty("block")
+      setTimeout(() => {
+        setSubmissionErrorVisibilty("none")
+      }, 5000)
+      return false
+    }
+    return true
+  }
   const validUser = async(status) => {
+
     setLoadingVisibility("block")
     setDataVisibility("none")
       
@@ -51,16 +68,22 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
         
 
         setSubmissionErrorVisibilty("block")
+        setTimeout(() => {
+          setSubmissionErrorVisibilty("none")
+        }, 5000)
     }
     setLoadingVisibility("none")
     setDataVisibility("block")
     
+  
 }
   const [response, setResponse] = useState([]);
   const [SubmissionErrorVisibilty, setSubmissionErrorVisibilty] = useState("none")
   const onSubmit = e => {
     e.preventDefault()
-    validUser()
+    if (emailValidation()){
+      validUser()
+    }
     
     // setResponse(LoginUser(FormData))
     // console.log(response)

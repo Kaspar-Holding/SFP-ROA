@@ -47,7 +47,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     admin_id = models.IntegerField(default=0)
     password = models.CharField(max_length=255)
     is_active = models.IntegerField(default=1)
-    is_staff = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     role = models.IntegerField(default=1)
 

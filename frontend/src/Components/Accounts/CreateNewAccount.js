@@ -19,17 +19,17 @@ const CreateNewAccount = ({isAuthenticated, user}) => {
         is_superuser : true,
         admin_id: user['id']
     })
-    console.log(FormData)
+    // console.log(FormData)
     const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
     const createUser = async() => {
         const config = {
             headers: {
                 'Content-Type' : 'application/json',
-                'Accept' : 'application/json',
-                
+                'Accept' : 'application/json',                
             }
         }
 
+        // console.log(FormData)
         try {
             const Body = JSON.stringify(FormData)
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/users/`, Body ,config)
@@ -43,14 +43,35 @@ const CreateNewAccount = ({isAuthenticated, user}) => {
                     is_superuser : true,
                     admin_id: user['id']
                 })
-            }
+                }
             setSubmissionMessageVisibility("block")
+            setTimeout(() => {
+                setSubmissionMessageVisibility("none")
+            }, 5000)
+            
         } catch (error) {
-            setErrorData({
-                status: error.response.status,
-                message: error.response.statusText
-            })
+            console.log(error.response)
+            if (error.response.data['email']){
+                setErrorData({
+                    status: error.response.status,
+                    message: error.response.data['email']
+                })
+            }
+            if (error.response.data['password']){
+                setErrorData({
+                    status: error.response.status,
+                    message: error.response.data['password']
+                })
+            } else{
+                setErrorData({
+                    status: error.response.status,
+                    message: error.response.data
+                })
+            }
             setSubmissionErrorVisibilty("block")
+            setTimeout(() => {
+                setSubmissionErrorVisibilty("none")
+            }, 5000)
         }
     }
     const onSubmit = e => {
@@ -85,19 +106,19 @@ const CreateNewAccount = ({isAuthenticated, user}) => {
             <form onSubmit={e => onSubmit(e)}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
-                    <input type="text" className="form-control" onChange={e => onChange(e)} name='name' required />
+                    <input type="text" className="form-control" onChange={e => onChange(e)} name='name' value={FormData['name']} required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                    <input type="email" className="form-control" onChange={e => onChange(e)} name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required />
+                    <input type="email" className="form-control" onChange={e => onChange(e)} name="email" value={FormData['email']} id="exampleInputEmail1" aria-describedby="emailHelp" required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                    <input type="password" className="form-control" onChange={e => onChange(e)} name="password" id="exampleInputPassword1" required />
+                    <input type="password" minLength={8} className="form-control" onChange={e => onChange(e)} value={FormData['password']} name="password" id="exampleInputPassword1" required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputPassword2" className="form-label">Confirm Password</label>
-                    <input type="password" className="form-control" onChange={e => onChange(e)} name="re_password" id="exampleInputPassword2" required />
+                    <input type="password" minLength={8} className="form-control" onChange={e => onChange(e)} value={FormData['re_password']} name="re_password" id="exampleInputPassword2" required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="Role" className="form-label">Role</label>

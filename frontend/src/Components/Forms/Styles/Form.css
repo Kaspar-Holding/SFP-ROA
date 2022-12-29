@@ -14,3 +14,13 @@
 .h2_1 {
   color: #00788a; font-family: 'Arial'
 }
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }

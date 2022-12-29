@@ -67,11 +67,29 @@ const CreateForm = ({user}) => {
         message: "",
         errors: []
     })
-    console.log(localStorage.getItem('access'))
+    // console.log(localStorage.getItem('access'))
+    const emailValidation = () =>{
+        const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        if (regex.test(FormData['clientEmail']) === false){
+          setErrorData({
+            status: "Email Validity",
+            message: "Email is not valid, Please enter a valid email",
+            errors: ""
+          })
+          setSubmissionErrorVisibilty("block")
+          setTimeout(() => {
+            setSubmissionErrorVisibilty("none")
+          }, 5000)
+          return false
+        }
+        return true
+    }
     const [SubmissionErrorVisibilty, setSubmissionErrorVisibilty] = useState("none")
     const navigate = useNavigate()
     const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
     const createForm = async() => {
+        console.log(JSON.stringify(localStorage.getItem('access')))
+        console.log(JSON.stringify(FormData))
         const config = {
             headers: {
                 'Content-Type' : 'application/json',
@@ -103,14 +121,40 @@ const CreateForm = ({user}) => {
         return <Navigate to="/completeform" state={{formId : Id}}  />
 
     }
+    const [SuccessMessage, setSuccessMessage] = useState("")
+    const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
     const onSubmit = e => {
         e.preventDefault()
-        createForm()
+        var emailValid = emailValidation()
+        if(emailValid === false){
+            setSuccessMessage("Invalid Email")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+            setSuccessMessageVisibility("none")
+            }, 5000)
+        }
+        if (FormData['clientPhoneNumber'].length < 11){
+            setSuccessMessage("Invalid Phone Number, Please input valid phone number with 11 digits")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+            setSuccessMessageVisibility("none")
+            }, 5000)
+
+        }
+        else{
+            createForm()
+        }
         // window.location.reload();
     }
     return (
       
         <main className="container">
+            <div className="notification_container">
+                <div className="alert alert-danger fade show" style={{display: SuccessMessageVisibility}} role="alert">
+                {SuccessMessage}
+                {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
+                </div>
+            </div>
             {/* <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h2 className="fw-bold h2_1">SECTION A: LONG-TERM INSURANCE </h2>
             </div> */}
@@ -162,7 +206,7 @@ const CreateForm = ({user}) => {
                                         <label htmlFor="email" className="col-form-label"><b>Email:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true" size="30" type="email" id="email" onChange={(e) => {onChange(e)}}  name="clientEmail" className="form-control" placeholder="Email"  aria-describedby="" />
+                                        <input type="email" required spellCheck="true" size="30"  id="email" onChange={(e) => {onChange(e)}}  name="clientEmail" className="form-control" placeholder="user@succession.co.za"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +216,7 @@ const CreateForm = ({user}) => {
                                         <label htmlFor="phoneNumber" className="col-form-label"><b>Phone:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true" and minlength="11"  type="tel" id="clientPhoneNumber" onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
+                                        <input required spellCheck="true" minLength="11" type="number" id="clientPhoneNumber" onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -243,7 +287,7 @@ const CreateForm = ({user}) => {
                                             </> :
                                             null
                                         }
-                                        <textarea id="letter_of_introduction" name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea id="letter_of_introduction" required={FormData['clientLetterOfIntroduction'] === "0" ? true : false}  name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['letterOfIntroduction'] === "1" ?
@@ -303,7 +347,7 @@ const CreateForm = ({user}) => {
                                             </> :
                                             null
                                         }
-                                        <textarea id="authority_access" name="clientLetterOfIntroductionAccessReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea id="authority_access" required={FormData['clientLetterOfIntroductionAccess'] === "0" ? true : false} name="clientLetterOfIntroductionAccessReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['letterOfIntroductionAccess'] === "1" ?
@@ -364,7 +408,7 @@ const CreateForm = ({user}) => {
                                             </> : 
                                             null
                                         }
-                                        <textarea  id="provided_identity" required name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea  id="provided_identity" required={FormData['clientFica'] === "0" ? true : false} name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['fica'] === "1" ? null : 

@@ -102,7 +102,7 @@ def viewFormData(request):
 
 @api_view(['POST'])
 def updateFormData(request):
-    form = Form.objects.get(id=request.data['formId'])
+    form = Form.objects.get(id=request.data['id'])
     serializer = FormSerializers(instance=form, data=request.data)
     if serializer.is_valid():
         serializer.save()
