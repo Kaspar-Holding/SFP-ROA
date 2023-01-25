@@ -62,10 +62,35 @@ const AccountDashboard = ({isAuthenticated, user}) => {
           setResponseError(error.response.statusText)
         }
     }
+    const DeleteUser = async(id) => {
+        const config = {
+          headers: {
+              'Content-Type' : 'application/json',
+              'Authorization' : `JWT ${localStorage.getItem('access')}`,
+              'Accept' : 'application/json'
+          }
+        }
+        const Body = JSON.stringify({
+            "id" : id
+        })
+        try {
+          await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/deleteUser/`, Body, config)
+          loadUsers(1,OrderBy,SearchQuery)
+        //   console.log('Users', JSON.stringify(response.data.Data))
+        } catch (error) {
+          console.log('first', error.response.statusText)
+          setResponseError(error.response.statusText)
+        }
+    }
     const onSearchQueryChange = (e) => {
         e.preventDefault()
         setTotalUsers(0)
         loadUsers(1, OrderBy, SearchQuery)    
+    }
+    const onDeleteButtonClick = (e,id) => {
+        e.preventDefault()
+        setTotalUsers(0)
+        DeleteUser(id)    
     }
     useEffect(() => {
         loadUsers(1,OrderBy,SearchQuery)
@@ -189,11 +214,24 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                                     <td>{key['is_superuser'] == true ? "Admin" : "Agent"}</td>
                                     <td>{key['is_active'] == 1 ? "Active" : "Inactive"}</td>
                                     <td>
-                                        {
-                                            user['id'] === key['id'] ? 
-                                            <button type="button" className="btn btn-sm btn-outline-primary">Can't edit</button> : 
-                                            <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : key['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
-                                        }
+                                        <div className='col-6'>
+                                            <div className='row'>
+                                                <div className='col-6'>
+                                                    {
+                                                        user['id'] === key['id'] ? 
+                                                        <button type="button" className="btn btn-sm btn-outline-primary">Can't edit</button> : 
+                                                        <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : key['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
+                                                    }
+                                                </div>
+                                                <div className='col-6'>
+                                                    {
+                                                        user['id'] === key['id'] ? 
+                                                        <button type="button" className="btn btn-sm btn-outline-danger">Can't Delete</button> : 
+                                                        <button type="button" onClick={(e)=>{onDeleteButtonClick(e,key.id)}} state={{userID : key['id']}} className="btn btn-sm btn-outline-danger">Delete</button>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
                                         {/* <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : key['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink> */}
                                     </td>
                                 </tr>)

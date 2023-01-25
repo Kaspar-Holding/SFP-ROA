@@ -1,18 +1,8 @@
-from distutils.log import error
-from email import message
-from http.client import HTTPResponse
-from urllib.request import Request
-from wsgiref.util import FileWrapper
-from multiprocessing import managers
-from tkinter.messagebox import NO
-from urllib import response
-from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from uritemplate import partial
 from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers
 from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form
-from django.http import FileResponse, HttpResponse
+from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
 
@@ -56,6 +46,15 @@ def getData(request):
                 "results" : None
             }
         )
+
+@api_view(['POST'])
+def deleteUser(request):
+    if UserAccount.objects.filter(id=request.data['id']).exists():
+        UserAccount.objects.filter(id=request.data['id']).delete()
+        return Response({"message":"Delete"})
+    else:
+        return Response({"message":"User Not found"})
+
 
 @api_view(['GET'])
 def userStats(request):

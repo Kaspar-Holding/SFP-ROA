@@ -7,6 +7,7 @@ urlpatterns = [
     path('user_details/' , views.userDetails,name='User Details'),
     path('update_user/' , views.updateUser,name='Update User'),
     path('add/' , views.insertData, name="Insert into Database"),
+    path('deleteUser/' , views.deleteUser, name="Delete User from Database"),
     # Form Data
     path('addformdata/' , views.insertFormData, name="Insert data into Form Collection"),
     path('viewformdata/' , views.viewFormData, name="Form data details"),
