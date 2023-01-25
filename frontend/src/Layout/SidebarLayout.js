@@ -1,10 +1,9 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
-const SidebarLayout = ({isAuthenticated}) => {
-  console.log(isAuthenticated)
+const SidebarLayout = ({isAuthenticated, user}) => {
   if(isAuthenticated === null || isAuthenticated === false){
     return <Navigate to="/signin" />
   }
@@ -22,7 +21,8 @@ const SidebarLayout = ({isAuthenticated}) => {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.Auth.isAuthenticated
+  isAuthenticated: state.Auth.isAuthenticated,
+  user: state.Auth.user,
 })
 
 export default connect(mapStateToProps)(SidebarLayout)

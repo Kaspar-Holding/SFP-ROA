@@ -13,19 +13,24 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from datetime import timedelta
 import os
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zm+-)5e+@8)rnduh0h4kp5h%zg(0@kvt2+fk+x)xhvx$9x@coo'
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DJANGO_DEBUG')
 
 ALLOWED_HOSTS=['*']
 
@@ -48,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'wkhtmltopdf',
     'data',
     'rest_framework',
     'rest_framework.authtoken',
@@ -96,11 +102,11 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'SFP',
-        'USER' : 'webanalytics',
-        'PASSWORD' : 'Armughan786',
-        'HOST' : 'localhost',
-        'PORT' : '5432'
+        'NAME': env('DJANGO_DATABASE_DB'),
+        'USER' : env('DJANGO_DATABASE_USER'),
+        'PASSWORD' : env('DJANGO_DATABASE_PASSWORD'),
+        'HOST' : env('DJANGO_DATABASE_HOST'),
+        'PORT' : env('DJANGO_DATABASE_PORT')
     }
 }
 
@@ -123,6 +129,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# WKHTMLTOPDF_CMD = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
+WKHTMLTOPDF_CMD_OPTIONS = {
+    'quiet': True, 'enable-local-file-access': True, 'disable-javascript' : True
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -136,8 +146,11 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'data/static/images')
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'build/static')
+    os.path.join(BASE_DIR, 'data/static')
 ]
 
 STATIC_ROUTE = os.path.join(BASE_DIR,'static')

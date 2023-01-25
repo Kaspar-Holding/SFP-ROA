@@ -67,6 +67,7 @@ function App() {
                     {/* <Route exact path="/printform" element={<PrintForm name="" /> } /> */}
                   </Route>
                   <Route element={<PrintFormLayout /> }>
+                      <Route exact path="/updateFirstPassword" element={<UpdatePassword /> } siteName={"SignIn"} />
                       <Route exact path="/printform" element={<PrintForm name="" /> } />
                   </Route>
                   <Route element={<NonSidebarLayout /> }>

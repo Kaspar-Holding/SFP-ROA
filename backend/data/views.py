@@ -13,13 +13,49 @@ from uritemplate import partial
 from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers
 from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form
 from django.http import FileResponse, HttpResponse
+from django.core.paginator import Paginator
+from django.db.models import Q
 
-@api_view(['GET'])
+@api_view(['POST'])
 def getData(request):
-    users = UserAccount.objects.all()
-    serializer = UserAccountsSerializers(users, many=True)
+    limit = 10
+    orderBy = request.data['order_by']
+    searchQuery = request.data['search_query']
+    if searchQuery != "":
+        users = UserAccount.objects.filter(Q(name__icontains=searchQuery) | Q(email__icontains=searchQuery)).order_by('id').values('id','email','name','is_superuser','is_active')
+    else:
+        users = UserAccount.objects.values('id','email','name','is_superuser','is_active').order_by('id')
 
-    return Response(serializer.data,200)
+    if orderBy[0] == "-":
+        users = sorted(users, key=lambda d: d[orderBy[1:]], reverse=True) 
+    else:
+        users = sorted(users, key=lambda d: d[orderBy]) 
+        
+    p = Paginator(users, limit)
+    # print(p.num_pages)
+    if request.data['page_number'] <= p.num_pages:
+            
+        return Response(
+            {
+                "total_pages" : p.num_pages,
+                "has_pages" : p.num_pages,
+                "total_records" : len(users),
+                "pagelimit" : limit,
+                "next" : p.page(request.data['page_number']).has_next(),
+                "results" : p.page(request.data['page_number']).object_list
+            }
+        )
+    else:
+        return Response(
+            {
+                "total_pages" : p.num_pages,
+                "next" : None,
+                "has_pages" : p.num_pages,
+                "total_records" : len(users),
+                "pagelimit" : limit,
+                "results" : None
+            }
+        )
 
 @api_view(['GET'])
 def userStats(request):

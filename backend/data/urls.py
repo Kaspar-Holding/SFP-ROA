@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from . import views, printFormViews
 
 urlpatterns = [
     path('all_users/' , views.getData,name='Users List'),
@@ -52,4 +52,6 @@ urlpatterns = [
     path('add_short_term_commerical_data/' , views.insertShortTermInsuranceCommericalData, name="Insert data into Short Term Commerical Collection"),
     path('view_short_term_commerical_data/' , views.viewShortTermInsuranceCommericalData, name="Short Term Commerical data details"),
     path('update_short_term_commerical_data/' , views.updateShortTermInsuranceCommericalData, name="Short Term Commerical data details"),
+    # PDF Form
+    path('pdf/' , printFormViews.pdfForm, name="PDF Form"),
 ]

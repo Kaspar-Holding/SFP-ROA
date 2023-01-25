@@ -3,16 +3,20 @@ import {NavLink} from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import Loader from '../Loader/Loader'
+import Pagination from '../Pagination/Pagination'
 
 
 const AccountDashboard = ({isAuthenticated, user}) => {
-    console.log(isAuthenticated)
-    const [data, setData] = useState([])
+    const [UsersData, setUsersData] = useState([])
+    const [TotalUsers, setTotalUsers] = useState(0)
+    const [PageLimit, setPageLimit] = useState(0)
+    const [SearchQuery, setSearchQuery] = useState("")
+    const [OrderBy, setOrderBy] = useState("name")
     const [userStats, setUserStats] = useState([]);
     const [responseError, setResponseError] = useState("");
     const [LoaderVisibility, setLoaderVisibility] = useState("none")
-    const [dataVisibility, setDataVisibility] = useState("none")
-    const loadUsers = async() => {
+    const [dataVisibility, setDataVisibility] = useState("block")
+    const loadUsers = async(page_number, orderBy, searchQuery) => {
         setLoaderVisibility("block")
         setDataVisibility("none")
         const config = {
@@ -22,14 +26,24 @@ const AccountDashboard = ({isAuthenticated, user}) => {
               'Accept' : 'application/json'
           }
         }
+        const Body = JSON.stringify({
+            "page_number" : page_number,
+            "order_by" : orderBy,
+            "search_query" : searchQuery
+          })
         try {
-          const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/all_users/`, config)
-          setData(response.data)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/all_users/`, Body,config)
+            setUsersData(response.data['results'])
+            setTotalUsers(response.data['total_records'])
+            setPageLimit(response.data['pagelimit'])
         //   console.log('Users', JSON.stringify(response.data.Data))
         } catch (error) {
           console.log('first', error.response.statusText)
           setResponseError(error.response.statusText)
         }
+        
+        setLoaderVisibility("none")
+        setDataVisibility("block")
     }
     const loadUserStats = async() => {
         const config = {
@@ -47,11 +61,14 @@ const AccountDashboard = ({isAuthenticated, user}) => {
           console.log('first', error.response.statusText)
           setResponseError(error.response.statusText)
         }
-        setLoaderVisibility("none")
-        setDataVisibility("block")
+    }
+    const onSearchQueryChange = (e) => {
+        e.preventDefault()
+        setTotalUsers(0)
+        loadUsers(1, OrderBy, SearchQuery)    
     }
     useEffect(() => {
-        loadUsers()
+        loadUsers(1,OrderBy,SearchQuery)
         loadUserStats()
     }, [])
     // console.log(data)
@@ -131,6 +148,24 @@ const AccountDashboard = ({isAuthenticated, user}) => {
             </div>
             <hr/>
             <h5 className="h3">User Account List</h5>
+            <div className="card mb-4">
+                <h5 className="card-header">Search Users</h5>
+                <div className="card-body">
+                    <div>
+                        {/* <label htmlFor="defaultFormControlInput" className="form-label">Name</label> */}
+                        <form onSubmit={(e)=>{onSearchQueryChange(e)}} >
+                            <input
+                            type="text"
+                            className="form-control"
+                            id="defaultFormControlInput"
+                            placeholder="Name / Email"
+                            onChange={(e)=>{setSearchQuery(e.target.value)}}                      
+                            aria-describedby="defaultFormControlHelp"
+                            />
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div className='row'>
                 <table className="table table-hover">
                     <thead>
@@ -145,23 +180,24 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                     </thead>
                     <tbody>
                         {
-                            Object.keys(data).map((keyName, i) => (
+                            UsersData.map((key,i) => {
+                                return(
                                 <tr>
                                     <th scope="row">{i+1}</th>
-                                    <td>{data[i]['name']}</td>
-                                    <td>{data[i]['email']}</td>
-                                    <td>{data[i]['is_superuser'] == true ? "Admin" : "Agent"}</td>
-                                    <td>{data[i]['is_active'] == 1 ? "Active" : "Inactive"}</td>
+                                    <td>{key['name']}</td>
+                                    <td>{key['email']}</td>
+                                    <td>{key['is_superuser'] == true ? "Admin" : "Agent"}</td>
+                                    <td>{key['is_active'] == 1 ? "Active" : "Inactive"}</td>
                                     <td>
                                         {
-                                            user['id'] === data[i]['id'] ? 
+                                            user['id'] === key['id'] ? 
                                             <button type="button" className="btn btn-sm btn-outline-primary">Can't edit</button> : 
-                                            <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : data[i]['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
+                                            <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : key['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
                                         }
-                                        {/* <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : data[i]['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink> */}
+                                        {/* <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : key['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink> */}
                                     </td>
-                                </tr>
-                            ))
+                                </tr>)
+                            })
                         }                        
                         {/* <tr>
                             <th scope="row">1</th>
@@ -172,6 +208,13 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                     </tbody>
                 </table>
                 <br/>
+            </div>
+            <div className='d-flex justify-content-center'>
+                {
+                    TotalUsers > 0 ?
+                    <Pagination  totalRecords={TotalUsers} pageLimit={PageLimit} paginationSearchQuery={SearchQuery} paginationOrderBy={OrderBy} onPageChanged={loadUsers} />
+                    : <></>
+                }
             </div>
         </div>
     

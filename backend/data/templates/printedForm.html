@@ -1,0 +1,450 @@
+<html style="background-color: white ">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SFP Web ROA</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}
+        <!-- Core CSS -->
+        <!-- Vendors CSS -->
+        <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+        <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+        <style>
+            body{
+                font-family: 'Arial Narrow';
+            }
+            .invoice-title h2, .invoice-title h3 {
+                display: inline-block;
+            }
+            
+            .table > tbody > tr > .no-line {
+                border-top: none;
+            }
+            
+            .table > thead > tr > .no-line {
+                border-bottom: none;
+            }
+            
+            .table > tbody > tr > .thick-line {
+                border-top: 2px solid;
+            }        
+            .floating-left {
+                float: left;
+                margin: 0px;
+                {% comment %} width: 50%; {% endcomment %}
+            }
+            .floating-right {
+                float: right;
+                margin: 0px;
+                {% comment %} width: 50%; {% endcomment %}
+            }
+            .logo {
+                display: grid;
+                padding: 2rem;
+                grid-template-columns: 300px 1fr;
+                gap: 1rem;
+                align-items: center;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .iconDetails {
+                margin-left:2%;
+               float:left; 
+               width:100%;	
+            } 
+               
+            .container2 {
+                width:100%;
+                height:auto;
+                padding:1%;
+            }
+            h3, h4 {
+                margin:0px;
+            }
+              
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+              
+            img {
+                border-radius: 5px 5px 0 0;
+            }
+              
+            .card-container {
+                padding: 16px 16px 16px 16px;
+            }
+            .column {
+                float: left;
+                width: 22%;
+                padding: 0 10px;
+            }
+            .card {
+                padding: 16px;
+                display: grid;
+                grid-template-rows: 20px 50px 1fr 50px;
+                border-radius: 10px;
+                border-color: white;
+                box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+                transition: all 0.2s;
+                text-align: center;
+            }
+              
+            .card:hover {
+                box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+                transform: scale(1.01);
+            }
+              
+            .card__link,
+            .card__exit,
+            .card__icon {
+                position: relative;
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.9);
+            }
+              
+            .card__link::after {
+                position: absolute;
+                padding: 16px;
+                top: 25px;
+                left: 0;
+                content: "";
+                width: 0%;
+                height: 3px;
+                background-color: rgba(255, 255, 255, 0.6);
+                transition: all 0.5s;
+            }
+              
+            .card__link:hover::after {
+                width: 100%;
+            }
+              
+            .card__exit {
+                grid-row: 1/2;
+                justify-self: end;
+            }
+              
+            .card__icon {
+                grid-row: 2/3;
+                font-size: 30px;
+            }
+              
+            .card__title {
+                grid-row: 3/4;
+                font-weight: 400;
+                color: #ffffff;
+            }
+            .card__subtitle {
+                grid-row: 3/4;
+                font-weight: 200;
+                color: #ffffff;
+            }
+              
+            .card__apply {
+                grid-row: 4/5;
+                align-self: center;
+            }
+              
+              /* CARD BACKGROUNDS */
+              
+            .card-1 {
+                /* background: -webkit-linear-gradient(#1fe4f5, #3fbafe); */
+                background: -webkit-linear-gradient(#213F9A, #1fe4f5);
+            }
+              
+            .card-2 {
+                background: -webkit-linear-gradient(#fbc1cc, #fa99b2);
+            }
+              
+            .card-3 {
+                background: -webkit-linear-gradient(#76b2fe, #b69efe);
+            }
+              
+            .card-4 {
+                background: -webkit-linear-gradient(#fdcf84, #ff9d00);
+                {% comment %} background: -webkit-linear-gradient(#60efbc, #58d5c9); {% endcomment %}
+            }
+              
+            .card-5 {
+                background: -webkit-linear-gradient(#f588d8, #c0a3e5);
+            }
+            .row {margin: 0 -5px;}
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            #salesTable {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                border-radius: 10px;
+            }
+              
+            #salesTable td, #salesTable th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+              
+            #salesTable tr:nth-child(even){background-color: #f2f2f2;}
+              
+            #salesTable tr:hover {background-color: #ddd;}
+              
+            #salesTable th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #213F9A;
+                color: white;
+            }
+            input {
+                border: 0;
+            }
+            .h2_1 {
+                color: #00788a; font-family: 'Arial'
+            }
+            
+            .form-inline {  
+                display: flex;
+                flex-flow: row wrap;
+                align-items: center;
+            }
+            
+            .form-inline label {
+                margin: 5px 10px 5px 0;
+            }
+            
+            .form-inline input {
+                vertical-align: middle;
+                margin: 5px 10px 5px 0px;
+                padding-left: 100px;
+                background-color: #fff;
+                border: 0px solid #ddd;
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <p>outdated</p> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="" id='report' style="background-color: white; font-family: 'Calibri';">
+            <div class='container' style="margin-right: 5%;">
+                <div class='container2'>
+                    <div>
+                        <img src="{% get_media_prefix %}{{ logo }}" class='iconDetails'/>
+                    </div>	
+                </div>
+                <br/><br/><br/><br/><br/><br/>
+                <hr/>
+                <div class="invoice-title" style="margin: 0px">
+                    <h2 style="margin: 0px" class='h2_1'>RECORD OF ADVICE</h2>
+                </div>
+                
+                <div style="font-size: '9'; margin: 0px;">
+                    <div class="form-inline">
+                        <label for="email"><b>Client Name:</b></label>
+                        <input type="email" id="email" placeholder="Enter email" name="email">
+                        <label for="pwd"><b>ID number:</b></label>
+                        <input type="text" id="pwd" placeholder="Enter ID number" name="pswd">
+                    </div>
+                    <hr/>
+                    <div class="form-inline">
+                        <label for="email"><b>Address:</b></label>
+                        <input type="email" id="email" placeholder="Enter email" name="email">
+                    </div>
+                    <hr/>
+                    <div class="form-inline">
+                        <label for="email"><b>Email:</b></label>
+                        <input type="email" id="email" placeholder="Enter email" name="email">
+                        <label for="pwd"><b>Phone:</b></label>
+                        <input type="text" id="pwd" placeholder="Enter ID number" name="pswd">
+                    </div>
+                    <hr/>
+                    <div class="form-inline">
+                        <label for="email"><b>Financial Advisor:</b></label>
+                        <input type="email" id="email" placeholder="Enter email" name="email">
+                        <label for="pwd"><b>Date:</b></label>
+                        <input type="text" id="pwd" placeholder="Enter ID number" name="pswd">
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <hr class="col-11" />
+                        <div class="col-12" style='padding-bottom: "0.5%"'>
+                            <div class="row g-3 align-items-center">
+                                <div class="col-2">
+                                    <label htmlFor="address" class="col-form-label"><b>Address:</b></label>
+                                </div>
+                                <div class="col-9">
+                                    <input spellCheck="true"  id="clientAddress"  name="clientAddress" class="form-control" placeholder="Address"  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="col-11" />
+                        <div class="col-6" style='padding-bottom: "0.5%"'>
+                            <div class="row g-3 align-items-center">
+                                <div class="col-4">
+                                    <label htmlFor="email" class="col-form-label"><b>Email:</b></label>
+                                </div>
+                                <div class="col-6">
+                                    <input type="email" spellCheck="true" size="30"  id="email"  name="clientEmail" class="form-control" placeholder="user@succession.co.za"  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6" style='padding-bottom: "0.5%"'>
+                            <div class="row g-3 align-items-center">
+                                <div class="col-4">
+                                    <label htmlFor="phoneNumber" class="col-form-label"><b>Phone:</b></label>
+                                </div>
+                                <div class="col-6">
+                                    <input spellCheck="true" minLength="11" type="number" id="clientPhoneNumber" name="clientPhoneNumber" class="form-control" placeholder="Phone"  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="col-11" />
+                        
+                        <div class="col-6" style='padding-bottom: "0.5%"'>
+                            <div class="row g-3 align-items-center">
+                                <div class="col-4">
+                                    <label htmlFor="advisor" class="col-form-label"><b>Financial Advisor:</b></label>
+                                </div>
+                                <div class="col-6">
+                                    <input spellCheck="true" value={user['name']} disabled name="advisor" class="form-control" placeholder="Financial Advisor"  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6" style='padding-bottom: "0.5%"'>
+                            <div class="row g-3 align-items-center">
+                                <div class="col-4">
+                                    <label htmlFor="date_of_birth" class="col-form-label"><b>Date:</b></label>
+                                </div>
+                                <div class="col-6">
+                                    <input spellCheck="true"  type="date"  id="date_of_birth"  name="clientDateOfBirth" class="form-control" placeholder="date_of_birth"  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="col-11" />
+                        <div class="col-11 p_class">
+                            <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  </p>
+                        </div>
+                        <h5 class="section_class"><b>SECTION A:</b></h5>
+                        <ol style="fontFamily: 'Arial Narrow',fontSize: 15">
+                            <li class="h6 fw-bold" style="color: '#00788A'">Compulsory Disclosures</li>
+                            <div class="row g-3 align-items-center">
+                                <div class="col-6">
+                                <label htmlFor="client_name" class="col-form-label" title="If no, motivate">Client was provided with a copy of the Letter of Introduction.</label>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="row col-2 align-items-center">
+                                            <div class="col-2">
+                                                <input class="form-check-input"    type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
+                                            </div>
+                                            <div class="col-2">
+                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row col-2 align-items-center">
+                                            <div class="col-2">
+                                                <input class="form-check-input"    type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
+                                            </div>
+                                            <div class="col-2">
+                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
+                                                    No
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-11" id="letter_of_introduction_2">
+                                    <textarea id="letter_of_introduction" name="clientLetterOfIntroductionReason"   onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} class="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                </div>
+                            </div>
+                            <hr class="col-11" />
+                            <div class="row g-3 align-items-center">
+                                <div class="col-6">
+                                <label htmlFor="client_name" class="col-form-label" title="If no, motivate">Client has provided authority to access information.</label>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="row col-2 align-items-center">
+                                            <div class="col-2">
+                                                <input class="form-check-input"  type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
+                                            </div>
+                                            <div class="col-2">
+                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row col-2 align-items-center">
+                                            <div class="col-2">
+                                                <input class="form-check-input"  type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
+                                            </div>
+                                            <div class="col-2">
+                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
+                                                    No
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-11" id="authority_access_2" >
+                                    
+                                    <textarea id="authority_access" name="clientLetterOfIntroductionAccessReason"   onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} class="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                </div>
+                            </div>
+                            <hr class="col-11" />
+                            <li class="h6 fw-bold" style="color: '#00788A'">Financial Intelligence Centre Act (FICA)</li>
+                            <div class="row g-3 align-items-center">
+                                <div class="col-6">
+                                <label htmlFor="client_name" class="col-form-label" title="If no, motivate">Client has provided a clear copy of his/her identity document.</label>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="row col-2 align-items-center">
+                                            <div class="col-2">
+                                                <input class="form-check-input"    type="radio" value="1" id="provided_identity_radio_btn" name="clientFica"/>
+                                            </div>
+                                            <div class="col-2">
+                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row col-2 align-items-center">
+                                            <div class="col-2">
+                                                <input class="form-check-input"   type="radio" value="0" id="provided_identity_radio_btn" name="clientFica"/>
+                                            </div>
+                                            <div class="col-2">
+                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
+                                                    No
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-11" id="provided_identity_2" >
+                                   <textarea  id="provided_identity" name="clientFicaReason" onFocus={fica_onFocus} onBlur={fica_onBlur} class="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                </div>
+                                
+                            </div>
+                            <hr class="col-11" />
+                        </ol>
+                        <h5 class="section_class"><b>SECTION B:</b></h5>
+                        <h5 class="h6 section_class1"><b>Background information</b></h5>
+                        <p>Your personal circumstances that formed the basis for my recommendation</p>
+                        
+                        <textarea  id="clientBackgroundInfo" name="clientBackgroundInfo" class="form-control"  style="height: '160px'"/>
+                    </div>
+                </div>
+                <p>This form was generated by System developed by KASPAR Consulting Services</p>
+                
+            </div>
+        </div>
+    </body>
+</html> 
