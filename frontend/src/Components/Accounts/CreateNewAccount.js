@@ -50,22 +50,21 @@ const CreateNewAccount = ({isAuthenticated, user}) => {
             }, 5000)
             
         } catch (error) {
-            console.log(error.response)
-            if (error.response.data['email']){
+            if ('email' in error.response.data){
                 setErrorData({
                     status: error.response.status,
-                    message: error.response.data['email']
+                    message: error.response.data['email'][0]
                 })
             }
-            if (error.response.data['password']){
+            else if ('password' in error.response.data){
                 setErrorData({
                     status: error.response.status,
-                    message: error.response.data['password']
+                    message: error.response.data['password'][0]
                 })
             } else{
                 setErrorData({
                     status: error.response.status,
-                    message: error.response.data
+                    message: "API Error"
                 })
             }
             setSubmissionErrorVisibilty("block")
