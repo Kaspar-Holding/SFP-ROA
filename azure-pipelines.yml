@@ -30,5 +30,5 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish to Azure Pipelines'
   inputs:
-    PathtoPublish: $(Build.ArtifactStagingDirectory)
-    ArtifactName: 'www'
+    PathtoPublish: $(Build.ArtifactStagingDirectory)/frontend/build
+    ArtifactName: 'nginx'
