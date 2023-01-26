@@ -20,3 +20,15 @@ steps:
     npm run build
   displayName: 'npm install and build'
   workingDirectory: '$(Build.SourcesDirectory)/frontend'
+
+- task: CopyFiles@2
+  displayName: 'Copy Build Output'
+  inputs:
+    Contents: '$(Build.SourcesDirectory)/frontend/build/**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'   
+  
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish to Azure Pipelines'
+  inputs:
+    PathtoPublish: $(Build.ArtifactStagingDirectory)
+    ArtifactName: 'www'
