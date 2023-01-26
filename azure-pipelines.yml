@@ -20,3 +20,9 @@ steps:
     npm run build
   displayName: 'npm install and build'
   workingDirectory: '$(Build.SourcesDirectory)/frontend'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)' # string. Required. Path to publish. Default: $(Build.ArtifactStagingDirectory).
+    ArtifactName: 'drop' # string. Required. Artifact name. Default: drop.
+    publishLocation: 'Container'
