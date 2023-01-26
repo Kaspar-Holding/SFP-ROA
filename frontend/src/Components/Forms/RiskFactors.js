@@ -2,7 +2,9 @@
 import { useLocation } from 'react-router-dom';
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-// import './Invest.css';
+import './RiskFactors.css';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; // optional
  function  RiskFactors()
  {
         const getInitialState = () => {
@@ -346,7 +348,7 @@ import axios from 'axios'
             formId : state['formId'],
             
                 
-            RF_BU_Risk : "",
+            RF_BU_Risk : "2",
             RF_Date : "",
             RF_ClientName : "",
             RF_CompleteByName : "",
@@ -389,7 +391,7 @@ import axios from 'axios'
             RF_Linked_Party_Paying : "0",
             RF_Client_Match : "0",
             RF_Client_Beneficiaries : "0",
-            RF_Adjust_Risk1 : "0",
+            RF_Adjust_Risk1 : "2",
             RF_Name : "",
             RF_ID : "",
             RF_Linked_Party : "0",
@@ -535,7 +537,7 @@ import axios from 'axios'
             {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
             </div>
         </div>
-         <div class="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>RISK FACTORS</b></div>
+         <div class="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Dynamic Risk Assessment</b></div>
         <hr/>
 
         <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
@@ -548,11 +550,12 @@ import axios from 'axios'
                         </div>
                         <div className="col-6">
                         <select className="text-start form-select" id="RF_BU_Risk" name='RF_BU_Risk' value={FormData['RF_BU_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
-                            <option value="0" selected></option>
+                            <option value="0"></option>
                             <option value="1">Low</option>
                             <option value="2">Medium</option>
                             <option value="3">High</option>
                             <option value="4">Intolerable</option>
+                           
                         </select>
                         </div>
                     </div>
@@ -593,7 +596,7 @@ import axios from 'axios'
                 </div>
 
                 <hr className="col-11" />
-                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                {/* <div className="col-6" style={{paddingBottom: "0.5%"}}>
                     <div className="row g-3 align-items-center">
                         <div className="col-4">
                             <label htmlFor="address" className="col-form-label"><b>Screening Event ID</b></label>
@@ -602,7 +605,7 @@ import axios from 'axios'
                             <input spellCheck="true"  id="RF_EventID" name="RF_EventID" value={FormData['RF_EventID']}  className="form-control" onChange={(e) => {onChange(e)}} placeholder="Event ID"  aria-describedby="" />
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="col-6" style={{paddingBottom: "0.5%"}}>
                     <div className="row g-3 align-items-center">
@@ -694,11 +697,11 @@ import axios from 'axios'
                         })()}
                         </div>
 
-                        <div className="col-2">
+                        {/* <div className="col-2">
                             <label className="col-form-label"><b>Adjusted Risk:</b></label>
-                        </div>
+                        </div> */}
 
-                        <div className="col-2">
+                        {/* <div className="col-2">
                         <select className="text-start form-select" name='RF_AdjustedRisk' id='RF_AdjustedRisk' value={FormData['RF_AdjustedRisk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                             <option value="0" selected></option>
                             <option value="1">Low</option>
@@ -718,7 +721,7 @@ import axios from 'axios'
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
                             </select>  
-                        </div>
+                        </div> */}
 
                         <br/>
                         <br/>
@@ -785,7 +788,7 @@ import axios from 'axios'
                     <label className="col-form-label"></label>
                 </div>
 
-                <div className="col-2">
+                {/* <div className="col-2">
                     <label className="col-form-label">Adjust Risk on GCO Approval</label>
                 </div>
 
@@ -797,7 +800,7 @@ import axios from 'axios'
                         <option value3="3">High</option>
                         <option value3="4">Intolerable</option>
                     </select>  
-                </div>
+                </div> */}
 
                 <div className="col-1">
                     <label className="col-form-label"></label>
@@ -1221,7 +1224,10 @@ import axios from 'axios'
             <div className="row">
 
                 <div className="col-2">
-                    <label className="col-form-label">Client Type</label>
+                    <Tippy content="The resulting selection of this field will determine which subsequent fields will display to complete the DRA">
+                        <label className="col-form-label">Client Type</label>
+                    </Tippy>
+                    
                 </div>
 
                 <div className="col-2">
@@ -1246,8 +1252,11 @@ import axios from 'axios'
                         return (<>
                         <br/>
                         <hr/>
-                        <div className="col-2">       
+                        <div className="col-2">  
+                            <Tippy content="Occupation	The provided occupations are extremely high level. More detailed occupations (e.g. Botanist, Artist) can be mapped back to these categories">
                             <label className="col-form-label">Occupation</label>
+                            </Tippy>     
+                            
                         </div>
 
                         <div className="col-2">
@@ -1338,8 +1347,11 @@ import axios from 'axios'
 
                         <br/>
                         <hr/>
-                        <div className="col-2">       
-                            <label className="col-form-label">Country of Birth</label>
+                        <div className="col-2">  
+                            <Tippy content="As published by GCO. If the country is the same as the country of business jurisdiction, the resulting risk score will be lowered by 1">
+                                <label className="col-form-label">Country of Birth</label>
+                            </Tippy>     
+                            
                         </div>
 
                         <div className="col-2">
@@ -1752,8 +1764,11 @@ import axios from 'axios'
 
                         <br/>
                         <hr/>
-                        <div className="col-2">       
-                            <label className="col-form-label">Country of Residence</label>
+                        <div className="col-2"> 
+                            <Tippy content="As published by GCO. If the country is the same as the country of business jurisdiction, the resulting risk score will be lowered by 1">
+                                <label className="col-form-label">Country of Residence</label>
+                            </Tippy>      
+                            
                         </div>
                         <div className="col-2">
                             <select className="text-start form-select" name='RF_CountryOfResidence' id='RF_CountryOfResidence' value={FormData['RF_CountryOfResidence']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
@@ -2166,8 +2181,11 @@ import axios from 'axios'
 
                         <br/>
                         <hr/>
-                        <div className="col-2">       
-                            <label className="col-form-label">Nationality</label>
+                        <div className="col-2">    
+                            <Tippy content="Nationality	As published by GCO. If the country is the same as the country of business jurisdiction, the resulting risk score will be lowered by 1">
+                                <label className="col-form-label">Nationality</label>
+                            </Tippy>
+                            
                         </div>
                         <div className="col-2">
                             <select className="text-start form-select" name='RF_Nationality' id='RF_Nationality' value={FormData['RF_Nationality']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
@@ -2579,8 +2597,10 @@ import axios from 'axios'
 
                         <br/>
                         <hr/>
-                        <div className="col-2">       
-                            <label className="col-form-label">Is nationality different to current jurisdiction?</label>
+                        <div className="col-2">  
+                            <Tippy content="Jurisdiction references the country in which the business is operating">
+                                <label className="col-form-label">Is nationality different to current jurisdiction?</label>
+                            </Tippy>      
                         </div>
 
                         <div className="col-2">
@@ -2602,8 +2622,11 @@ import axios from 'axios'
                                      
                                      <br/>
                                     <hr/>
-                                    <div className="col-2">       
+                                    <div className="col-2">
+                                        <Tippy content="As published by GCO. Only applicable / displayed if nationality is different to current jurisdiction">
                                         <label className="col-form-label">Country of tax residence</label>
+                                        </Tippy>       
+                                        
                                     </div>
 
                                     <div className="col-2">
@@ -3022,8 +3045,11 @@ import axios from 'axios'
 
                         
                         <hr/>
-                        <div className="col-2">       
-                            <label className="col-form-label">Industry</label>
+                        <div className="col-2">
+                            <Tippy content="The industry in which the client operates">
+                                <label className="col-form-label">Industry</label>
+                            </Tippy>       
+                            
                         </div>
 
                         <div className="col-2">
@@ -3186,8 +3212,11 @@ import axios from 'axios'
                         </div>
 
                         <hr/>
-                        <div className="col-2">       
+                        <div className="col-2"> 
+                            <Tippy content="Source of funds	The client’s source of funds for conducting this transaction">
                             <label className="col-form-label">Source of Funds</label>
+
+                            </Tippy>      
                         </div>
 
                         <div className="col-2">
@@ -3332,8 +3361,10 @@ import axios from 'axios'
                         </div>
 
                         <hr/>
-                        <div className="col-2">       
+                        <div className="col-2">
+                            <Tippy content="This describes the relationship that the client has with SFP for this transaction">
                             <label className="col-form-label">Relationship to client</label>
+                            </Tippy>       
                         </div>
 
                         <div className="col-2">
@@ -4921,7 +4952,9 @@ import axios from 'axios'
             <div className="row">
 
                 <div className="col-2">
+                    <Tippy content="The drop-down list is created for all products/services that have been captured in the Library in the Summary Worksheet">                    
                     <label className="col-form-label">Product/Service Name</label>
+                    </Tippy>
                 </div>
 
                 <div className="col-2">
@@ -5045,7 +5078,9 @@ import axios from 'axios'
 
                  <hr/>
                 <div className="col-2">
-                    <label className="col-form-label">Product/Service Category</label>
+                    <Tippy content="This field defaults to the relevant Product / Service category that was selected for the relevant product/service in the Summary Worksheet. It is displayed for information purposes only">                   
+                     <label className="col-form-label">Product/Service Category</label>
+                    </Tippy>
                 </div>
 
                 <div className="col-2">
@@ -5215,7 +5250,14 @@ import axios from 'axios'
             <div className="row">
 
                 <div className="col-2">
+                    <Tippy content="The drop down box contains a selection for Inflow, Outflow or Not Applicable.
+                    Inflow describes a transaction that is flowing into Sanlam (credit). Outflow describes a debit / payment to a client or third party.
+                    “Not applicable” can be selected when a client is being onboarded and no financial transaction has yet taken place. 
+                    If “Not applicable” is selected, no other transaction fields will be displayed, with the exception of the “Reason for Transaction”. A client or policy change may be applicable.
+                    ">
                     <label className="col-form-label">Transaction Flow</label>
+                    </Tippy>
+                    
                 </div>
 
                 <div className="col-2">
@@ -6499,7 +6541,9 @@ import axios from 'axios'
             <div className="row">
 
                 <div className="col-2">
+                    <Tippy content="Client is a true match on	This drop-down box refers to the results of the screening action for the main client">
                     <label className="col-form-label">Client is a true match on:</label>
+                    </Tippy>
                 </div>
 
                 <div className="col-2">
@@ -6635,7 +6679,10 @@ import axios from 'axios'
             <div className="row">
 
                 <div className="col-2">
+                    <Tippy content="If this field is left blank or set to “No”, further Linked Party information will be hidden. However, if there are linked parties or beneficiaries to the Client, each linked party needs to be screened and the input provided into the relevant Linked Party entries">
                     <label className="col-form-label">Are there Linked Parties / Beneficiaries to Client?</label>
+
+                    </Tippy>
                 </div>
 
                 <div className="col-2">
@@ -6708,7 +6755,7 @@ import axios from 'axios'
 
                                  <div className="col-2">
                                     <select className="text-start form-select" name='RF_Adjust_Risk1' id='RF_Adjust_Risk1' value={FormData['RF_Adjust_Risk1']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
-                                        <option value="0" selected></option>
+                                        <option value="0"></option>
                                         <option value="1">Low</option>
                                         <option value="2">Medium</option>
                                         <option value="3">High</option>
@@ -8290,7 +8337,7 @@ import axios from 'axios'
         </div>
         <hr/>
 
-        <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+        {/* <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
             <div className="row">
 
                 <div className="col-2">
@@ -8389,7 +8436,7 @@ import axios from 'axios'
                 })()}
 
             </div>
-        </div>
+        </div> */}
 
         <div className="container1">
             <div className="icon1 update">

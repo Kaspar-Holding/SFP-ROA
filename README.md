@@ -8,6 +8,10 @@ This project is built on the following Stack
 
 ## Updates
 
+### 26 January 2023:
+- Fields removal of risk assessment module
+- Tooltips added to form data
+- Renamed Risk Factors to Dynamic Risk Assessment
 ### 29 December 2022:
 Following Bugs are resolved:
 - Bug Number 1206: Email Validation on Form Creation (https://dev.azure.com/KasparHoldingsKCS/Succession%20Finance%20Planning%20SFP/_workitems/edit/1206/) 
