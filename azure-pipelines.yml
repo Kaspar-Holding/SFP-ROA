@@ -21,14 +21,12 @@ steps:
   displayName: 'npm install and build'
   workingDirectory: '$(Build.SourcesDirectory)/frontend'
 
-- task: ArchiveFiles@2
+- task: CopyFiles@2
+  displayName: 'Copy Build Output'
   inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)/frontend/build'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.SourcesDirectory)/frontend/build.zip'
-    replaceExistingArchive: true
-    publishLocation: 'Container'
+    Contents: 'build/**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'   
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
