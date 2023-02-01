@@ -1,0 +1,15 @@
+FROM node:19-alpine
+
+RUN mkdir /app
+
+WORKDIR /app
+
+COPY ./frontend /app
+
+ARG REACT_APP_BACKEND_URL
+
+ENV REACT_APP_BACKEND_URL $REACT_APP_BACKEND_URL
+
+RUN cd /app
+
+RUN npm install

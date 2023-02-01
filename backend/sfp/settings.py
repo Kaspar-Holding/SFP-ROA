@@ -27,7 +27,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('DJANGO_SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -102,11 +102,11 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DJANGO_DATABASE_DB'),
-        'USER' : env('DJANGO_DATABASE_USER'),
-        'PASSWORD' : env('DJANGO_DATABASE_PASSWORD'),
-        'HOST' : env('DJANGO_DATABASE_HOST'),
-        'PORT' : env('DJANGO_DATABASE_PORT')
+        'NAME': os.environ.get('DJANGO_DATABASE_NAME'),
+        'USER' : os.environ.get('DJANGO_DATABASE_USER'),
+        'PASSWORD' : os.environ.get('DJANGO_DATABASE_PASS'),
+        'HOST' : os.environ.get('DJANGO_DATABASE_HOST'),
+        'PORT' : os.environ.get('DJANGO_DATABASE_PORT')
     }
 }
 
@@ -145,15 +145,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'data/static/images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'data/static')
 ]
 
-STATIC_ROUTE = os.path.join(BASE_DIR,'static')
+# STATIC_ROUTE = os.path.join(BASE_DIR,'static')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' : [
@@ -204,7 +205,7 @@ DJOSER = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
