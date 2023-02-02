@@ -14,7 +14,9 @@ variables:
   imageRepository: 'kaspar_sfproa_frontend'
   containerRegistry: 'kaspar.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/frontend/Dockerfile'
-  tag: '$(Build.BuildId)'
+  tags: |
+    latest
+    '$(Build.BuildId)'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
