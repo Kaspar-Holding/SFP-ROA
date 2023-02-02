@@ -27,7 +27,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('DJANGO_SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -102,11 +102,11 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DJANGO_DATABASE_NAME'),
-        'USER' : env('DJANGO_DATABASE_USER'),
-        'PASSWORD' : env('DJANGO_DATABASE_PASS'),
-        'HOST' : env('DJANGO_DATABASE_HOST'),
-        'PORT' : env('DJANGO_DATABASE_PORT')
+        'NAME': os.environ.get('DJANGO_DATABASE_NAME'),
+        'USER' : os.environ.get('DJANGO_DATABASE_USER'),
+        'PASSWORD' : os.environ.get('DJANGO_DATABASE_PASS'),
+        'HOST' : os.environ.get('DJANGO_DATABASE_HOST'),
+        'PORT' : os.environ.get('DJANGO_DATABASE_PORT')
     }
 }
 
