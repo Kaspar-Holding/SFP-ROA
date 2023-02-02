@@ -140,8 +140,8 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                                     <th scope="row">{i+1}</th>
                                     <td>{data[i]['name']}</td>
                                     <td>{data[i]['email']}</td>
-                                    <td>{data[i]['is_superuser'] == true ? "Admin" : "Agent"}</td>
-                                    <td>{data[i]['is_active'] == 1 ? "Active" : "Inactive"}</td>
+                                    <td>{data[i]['is_superuser'] === true ? "Admin" : "Agent"}</td>
+                                    <td>{data[i]['is_active'] === 1 ? "Active" : "Inactive"}</td>
                                     <td>
                                         <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : data[i]['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
                                     </td>
@@ -152,7 +152,7 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                             <th scope="row">1</th>
                             <td>{data[0]['name']}</td>
                             <td>{data[0]['email']}</td>
-                            <td>{data[0]['role'] == true ? "Admin" : "Agent"}</td>
+                            <td>{data[0]['role'] === true ? "Admin" : "Agent"}</td>
                         </tr> */}
                     </tbody>
                 </table>

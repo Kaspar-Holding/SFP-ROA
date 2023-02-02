@@ -662,7 +662,7 @@ function AssuranceRisk()
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_ComDisc_AuthorizedPerson'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_ComDisc_AuthorizedPerson" name="AR_ComDisc_AuthorizedPerson" />
+                                <input disabled className="form-check-input" checked={FormData['AR_ComDisc_AuthorizedPerson'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_ComDisc_AuthorizedPerson" name="AR_ComDisc_AuthorizedPerson" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -672,7 +672,7 @@ function AssuranceRisk()
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_ComDisc_AuthorizedPerson'] == 1 ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_ComDisc_AuthorizedPerson" name="AR_ComDisc_AuthorizedPerson" />
+                                <input disabled className="form-check-input" checked={FormData['AR_ComDisc_AuthorizedPerson'] === 1 ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_ComDisc_AuthorizedPerson" name="AR_ComDisc_AuthorizedPerson" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -705,7 +705,7 @@ function AssuranceRisk()
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_ComDisc_Authority'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_ComDisc_Authority" name="AR_ComDisc_Authority" />
+                                <input disabled className="form-check-input" checked={FormData['AR_ComDisc_Authority'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_ComDisc_Authority" name="AR_ComDisc_Authority" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -715,7 +715,7 @@ function AssuranceRisk()
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_ComDisc_Authority'] == 1  ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_ComDisc_Authority" name="AR_ComDisc_Authority" />
+                                <input disabled className="form-check-input" checked={FormData['AR_ComDisc_Authority'] === 1  ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_ComDisc_Authority" name="AR_ComDisc_Authority" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -750,7 +750,7 @@ function AssuranceRisk()
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_FICA'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_FICA" name="AR_FICA"/>
+                                <input disabled className="form-check-input" checked={FormData['AR_FICA'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_FICA" name="AR_FICA"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -760,7 +760,7 @@ function AssuranceRisk()
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_FICA'] == 1 ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_FICA" name="AR_FICA"/>
+                                <input disabled className="form-check-input" checked={FormData['AR_FICA'] === 1 ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_FICA" name="AR_FICA"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -795,7 +795,7 @@ function AssuranceRisk()
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Taken'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_RepPrs_Taken" name="AR_RepPrs_Taken"/>
+                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Taken'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_RepPrs_Taken" name="AR_RepPrs_Taken"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -805,7 +805,7 @@ function AssuranceRisk()
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Taken'] == 1 ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Taken" name="AR_RepPrs_Taken"/>
+                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Taken'] === 1 ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Taken" name="AR_RepPrs_Taken"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -838,7 +838,7 @@ function AssuranceRisk()
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Explained'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Explained" name="AR_RepPrs_Explained"/>
+                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Explained'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Explained" name="AR_RepPrs_Explained"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -848,7 +848,7 @@ function AssuranceRisk()
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Explained'] == 1 ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Explained" name="AR_RepPrs_Explained"/>
+                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Explained'] === 1 ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Explained" name="AR_RepPrs_Explained"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -881,7 +881,7 @@ function AssuranceRisk()
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Cancelled'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_RepPrs_Cancelled" name="AR_RepPrs_Cancelled"/>
+                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Cancelled'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_RepPrs_Cancelled" name="AR_RepPrs_Cancelled"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -891,7 +891,7 @@ function AssuranceRisk()
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Cancelled'] == 1 ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Cancelled" name="AR_RepPrs_Cancelled"/>
+                                <input disabled className="form-check-input" checked={FormData['AR_RepPrs_Cancelled'] === 1 ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Cancelled" name="AR_RepPrs_Cancelled"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -1002,7 +1002,7 @@ function AssuranceRisk()
       {/* <th scope="col">#</th> */}
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BnS"]} name="AR_BusA_BnS" onChange={(e)=>{FormData["AR_BusA_BnS"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BnS"]} name="AR_BusA_BnS" onChange={(e)=>{FormData["AR_BusA_BnS"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Funding of Buy-and-Sell Agreement
             </label>
@@ -1011,7 +1011,7 @@ function AssuranceRisk()
       
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_KeyP_Insurance"]} name="AR_BusA_KeyP_Insurance" onChange={(e)=>{FormData["AR_BusA_KeyP_Insurance"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_KeyP_Insurance"]} name="AR_BusA_KeyP_Insurance" onChange={(e)=>{FormData["AR_BusA_KeyP_Insurance"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Key Person Insurance
             </label>
@@ -1020,7 +1020,7 @@ function AssuranceRisk()
       
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_ContingentLiability"]} name="AR_BusA_ContingentLiability" onChange={(e)=>{FormData["AR_BusA_ContingentLiability"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_ContingentLiability"]} name="AR_BusA_ContingentLiability" onChange={(e)=>{FormData["AR_BusA_ContingentLiability"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Contingent liability
             </label>
@@ -1029,7 +1029,7 @@ function AssuranceRisk()
 
        <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BusOvProt"]} name="AR_BusA_BusOvProt" onChange={(e)=>{FormData["AR_BusA_BusOvProt"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_BusOvProt"]} name="AR_BusA_BusOvProt" onChange={(e)=>{FormData["AR_BusA_BusOvProt"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Business Overheads Protection
             </label>
@@ -1043,7 +1043,7 @@ function AssuranceRisk()
         {/* <th scope="col">#</th> */}
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_CLARedm"]} name="AR_BusA_CLARedm" onChange={(e)=>{FormData["AR_BusA_CLARedm"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_CLARedm"]} name="AR_BusA_CLARedm" onChange={(e)=>{FormData["AR_BusA_CLARedm"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Credit Loan Account Redemption
             </label>
@@ -1052,7 +1052,7 @@ function AssuranceRisk()
 
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_DebitLoanRedemption"]} name="AR_BusA_DebitLoanRedemption" onChange={(e)=>{FormData["AR_BusA_DebitLoanRedemption"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_DebitLoanRedemption"]} name="AR_BusA_DebitLoanRedemption" onChange={(e)=>{FormData["AR_BusA_DebitLoanRedemption"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Debit Loan Redemption
             </label>
@@ -1061,7 +1061,7 @@ function AssuranceRisk()
 
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfFutureExpenses"]} name="AR_BusA_FundingOfFutureExpenses" onChange={(e)=>{FormData["AR_BusA_FundingOfFutureExpenses"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfFutureExpenses"]} name="AR_BusA_FundingOfFutureExpenses" onChange={(e)=>{FormData["AR_BusA_FundingOfFutureExpenses"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Funding of Future Expenses
             </label>
@@ -1070,7 +1070,7 @@ function AssuranceRisk()
 
         <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
         <div className="form-check">
-            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfDeferredGratuities"]} name="AR_BusA_FundingOfDeferredGratuities" onChange={(e)=>{FormData["AR_BusA_FundingOfDeferredGratuities"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
+            <input disabled type="checkbox" id="vehicle1" checked={FormData["AR_BusA_FundingOfDeferredGratuities"]} name="AR_BusA_FundingOfDeferredGratuities" onChange={(e)=>{FormData["AR_BusA_FundingOfDeferredGratuities"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}}/>
             <label className="form-check-label" for="flexCheckDefault">
             Funding of Deferred Gratuities
             </label>

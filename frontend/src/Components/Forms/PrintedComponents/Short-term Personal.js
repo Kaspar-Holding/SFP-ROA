@@ -961,7 +961,7 @@ const Short_term_Personal = () => {
                     <div className="col-6">
                       <div className="row col-6 align-items-center">
                         <div className="col-3">
-                            <input disabled className="form-check-input" checked={FormData["STIP_Applicant_Gender"] == "1" ? true : false}type="radio" value="1" id="STIP_Applicant_Gender" name="STIP_Applicant_Gender" />
+                            <input disabled className="form-check-input" checked={FormData["STIP_Applicant_Gender"] === "1" ? true : false}type="radio" value="1" id="STIP_Applicant_Gender" name="STIP_Applicant_Gender" />
                         </div>
                         <div className="col-3">
                             <label className="form-check-label"  >
@@ -969,7 +969,7 @@ const Short_term_Personal = () => {
                             </label>
                         </div>
                         <div className="col-3">
-                            <input disabled className="form-check-input" checked={FormData["STIP_Applicant_Gender"] == "1" ? false : true}type="radio" value="0" id="STIP_Applicant_Gender" name="STIP_Applicant_Gender" />
+                            <input disabled className="form-check-input" checked={FormData["STIP_Applicant_Gender"] === "1" ? false : true}type="radio" value="0" id="STIP_Applicant_Gender" name="STIP_Applicant_Gender" />
                         </div>
                         <div className="col-3">
                             <label className="form-check-label"  >
@@ -1064,7 +1064,7 @@ const Short_term_Personal = () => {
         <div className="col-6">
           <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_General_Refused"] == "1" ? true : false}type="radio" value="1" id="STIP_General_Refused" name="STIP_General_Refused" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_General_Refused"] === "1" ? true : false}type="radio" value="1" id="STIP_General_Refused" name="STIP_General_Refused" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -1072,7 +1072,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_General_Refused"] == "1" ? false : true}type="radio" value="0" id="STIP_General_Refused" name="STIP_General_Refused" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_General_Refused"] === "1" ? false : true}type="radio" value="0" id="STIP_General_Refused" name="STIP_General_Refused" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -1094,7 +1094,7 @@ const Short_term_Personal = () => {
                 <div className="col-6">
                 <div className="row col-6 align-items-center">
                     <div className="col-3">
-                        <input disabled className="form-check-input" checked={FormData["STIP_General_Risks"] == "1" ? true : false}type="radio" value="1" id="STIP_General_Risks" name="STIP_General_Risks" />
+                        <input disabled className="form-check-input" checked={FormData["STIP_General_Risks"] === "1" ? true : false}type="radio" value="1" id="STIP_General_Risks" name="STIP_General_Risks" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -1102,7 +1102,7 @@ const Short_term_Personal = () => {
                         </label>
                     </div>
                     <div className="col-3">
-                        <input disabled className="form-check-input" checked={FormData["STIP_General_Risks"] == "1" ? false : true}type="radio" value="0" id="STIP_General_Risks" name="STIP_General_Risks" />
+                        <input disabled className="form-check-input" checked={FormData["STIP_General_Risks"] === "1" ? false : true}type="radio" value="0" id="STIP_General_Risks" name="STIP_General_Risks" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -1289,11 +1289,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>House content</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_1_Recomm"] == 1 ? true : false} name="STIP_CnRI_1_Recomm" />
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_1_Recomm"] === 1 ? true : false} name="STIP_CnRI_1_Recomm" />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_1_Accepted"] == 1 ? true : false} name="STIP_CnRI_1_Accepted" />
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_1_Accepted"] === 1 ? true : false} name="STIP_CnRI_1_Accepted" />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1323,11 +1323,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Buildings</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_2_Recomm"] == 1 ? true : false} name="STIP_CnRI_2_Recomm" onChange={(e)=>{FormData["STIP_CnRI_2_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_2_Recomm"] === 1 ? true : false} name="STIP_CnRI_2_Recomm" onChange={(e)=>{FormData["STIP_CnRI_2_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_2_Accepted"] == 1 ? true : false} name="STIP_CnRI_2_Accepted" onChange={(e)=>{FormData["STIP_CnRI_2_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_2_Accepted"] === 1 ? true : false} name="STIP_CnRI_2_Accepted" onChange={(e)=>{FormData["STIP_CnRI_2_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1356,11 +1356,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Subsidence and landslip</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_3_Recomm"] == 1 ? true : false} name="STIP_CnRI_3_Recomm" onChange={(e)=>{FormData["STIP_CnRI_3_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_3_Recomm"] === 1 ? true : false} name="STIP_CnRI_3_Recomm" onChange={(e)=>{FormData["STIP_CnRI_3_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_3_Accepted"] == 1 ? true : false} name="STIP_CnRI_3_Accepted" onChange={(e)=>{FormData["STIP_CnRI_3_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_3_Accepted"] === 1 ? true : false} name="STIP_CnRI_3_Accepted" onChange={(e)=>{FormData["STIP_CnRI_3_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1389,11 +1389,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Accidental damage</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_4_Recomm"] == 1 ? true : false} name="STIP_CnRI_4_Recomm" onChange={(e)=>{FormData["STIP_CnRI_4_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_4_Recomm"] === 1 ? true : false} name="STIP_CnRI_4_Recomm" onChange={(e)=>{FormData["STIP_CnRI_4_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_4_Accepted"] == 1 ? true : false} name="STIP_CnRI_4_Accepted" onChange={(e)=>{FormData["STIP_CnRI_4_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_4_Accepted"] === 1 ? true : false} name="STIP_CnRI_4_Accepted" onChange={(e)=>{FormData["STIP_CnRI_4_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1423,11 +1423,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>All Risk(General)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_5_Recomm"] == 1 ? true : false} name="STIP_CnRI_5_Recomm" onChange={(e)=>{FormData["STIP_CnRI_5_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_5_Recomm"] === 1 ? true : false} name="STIP_CnRI_5_Recomm" onChange={(e)=>{FormData["STIP_CnRI_5_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_5_Accepted"] == 1 ? true : false} name="STIP_CnRI_5_Accepted" onChange={(e)=>{FormData["STIP_CnRI_5_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_5_Accepted"] === 1 ? true : false} name="STIP_CnRI_5_Accepted" onChange={(e)=>{FormData["STIP_CnRI_5_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1456,11 +1456,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Clothing and personal</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_6_Recomm"] == 1 ? true : false} name="STIP_CnRI_6_Recomm" onChange={(e)=>{FormData["STIP_CnRI_6_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_6_Recomm"] === 1 ? true : false} name="STIP_CnRI_6_Recomm" onChange={(e)=>{FormData["STIP_CnRI_6_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_6_Accepted"] == 1 ? true : false} name="STIP_CnRI_6_Accepted" onChange={(e)=>{FormData["STIP_CnRI_6_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_6_Accepted"] === 1 ? true : false} name="STIP_CnRI_6_Accepted" onChange={(e)=>{FormData["STIP_CnRI_6_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1489,11 +1489,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Keys and locks</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_7_Recomm"] == 1 ? true : false} name="STIP_CnRI_7_Recomm" onChange={(e)=>{FormData["STIP_CnRI_7_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_7_Recomm"] === 1 ? true : false} name="STIP_CnRI_7_Recomm" onChange={(e)=>{FormData["STIP_CnRI_7_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_7_Accepted"] == 1 ? true : false} name="STIP_CnRI_7_Accepted" onChange={(e)=>{FormData["STIP_CnRI_7_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_7_Accepted"] === 1 ? true : false} name="STIP_CnRI_7_Accepted" onChange={(e)=>{FormData["STIP_CnRI_7_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1522,11 +1522,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Wheelchairs</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_8_Recomm"] == 1 ? true : false} name="STIP_CnRI_8_Recomm" onChange={(e)=>{FormData["STIP_CnRI_8_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_8_Recomm"] === 1 ? true : false} name="STIP_CnRI_8_Recomm" onChange={(e)=>{FormData["STIP_CnRI_8_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_8_Accepted"] == 1 ? true : false} name="STIP_CnRI_8_Accepted" onChange={(e)=>{FormData["STIP_CnRI_8_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_8_Accepted"] === 1 ? true : false} name="STIP_CnRI_8_Accepted" onChange={(e)=>{FormData["STIP_CnRI_8_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1555,11 +1555,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Bicycles</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_9_Recomm"] == 1 ? true : false} name="STIP_CnRI_9_Recomm" onChange={(e)=>{FormData["STIP_CnRI_9_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_9_Recomm"] === 1 ? true : false} name="STIP_CnRI_9_Recomm" onChange={(e)=>{FormData["STIP_CnRI_9_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_9_Accepted"] == 1 ? true : false} name="STIP_CnRI_9_Accepted" onChange={(e)=>{FormData["STIP_CnRI_9_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_9_Accepted"] === 1 ? true : false} name="STIP_CnRI_9_Accepted" onChange={(e)=>{FormData["STIP_CnRI_9_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1588,11 +1588,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Cellular telephones</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_10_Recomm"] == 1 ? true : false} name="STIP_CnRI_10_Recomm" onChange={(e)=>{FormData["STIP_CnRI_10_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_10_Recomm"] === 1 ? true : false} name="STIP_CnRI_10_Recomm" onChange={(e)=>{FormData["STIP_CnRI_10_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_10_Accepted"] == 1 ? true : false} name="STIP_CnRI_10_Accepted" onChange={(e)=>{FormData["STIP_CnRI_10_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_10_Accepted"] === 1 ? true : false} name="STIP_CnRI_10_Accepted" onChange={(e)=>{FormData["STIP_CnRI_10_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1621,11 +1621,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; TV,VCR,Decoders</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_11_Recomm"] == 1 ? true : false} name="STIP_CnRI_11_Recomm" onChange={(e)=>{FormData["STIP_CnRI_11_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_11_Recomm"] === 1 ? true : false} name="STIP_CnRI_11_Recomm" onChange={(e)=>{FormData["STIP_CnRI_11_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_11_Accepted"] == 1 ? true : false} name="STIP_CnRI_11_Accepted" onChange={(e)=>{FormData["STIP_CnRI_11_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_11_Accepted"] === 1 ? true : false} name="STIP_CnRI_11_Accepted" onChange={(e)=>{FormData["STIP_CnRI_11_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1655,11 +1655,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>All Risk Specified</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_12_Recomm"] == 1 ? true : false} name="STIP_CnRI_12_Recomm" onChange={(e)=>{FormData["STIP_CnRI_12_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_12_Recomm"] === 1 ? true : false} name="STIP_CnRI_12_Recomm" onChange={(e)=>{FormData["STIP_CnRI_12_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_12_Accepted"] == 1 ? true : false} name="STIP_CnRI_12_Accepted" onChange={(e)=>{FormData["STIP_CnRI_12_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_12_Accepted"] === 1 ? true : false} name="STIP_CnRI_12_Accepted" onChange={(e)=>{FormData["STIP_CnRI_12_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1688,11 +1688,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Computer equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_13_Recomm"] == 1 ? true : false} name="STIP_CnRI_13_Recomm" onChange={(e)=>{FormData["STIP_CnRI_13_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_13_Recomm"] === 1 ? true : false} name="STIP_CnRI_13_Recomm" onChange={(e)=>{FormData["STIP_CnRI_13_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_13_Accepted"] == 1 ? true : false} name="STIP_CnRI_13_Accepted" onChange={(e)=>{FormData["STIP_CnRI_13_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_13_Accepted"] === 1 ? true : false} name="STIP_CnRI_13_Accepted" onChange={(e)=>{FormData["STIP_CnRI_13_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1721,11 +1721,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Items in bank vault</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_14_Recomm"] == 1 ? true : false} name="STIP_CnRI_14_Recomm" onChange={(e)=>{FormData["STIP_CnRI_14_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_14_Recomm"] === 1 ? true : false} name="STIP_CnRI_14_Recomm" onChange={(e)=>{FormData["STIP_CnRI_14_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_14_Accepted"] == 1 ? true : false} name="STIP_CnRI_14_Accepted" onChange={(e)=>{FormData["STIP_CnRI_14_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_14_Accepted"] === 1 ? true : false} name="STIP_CnRI_14_Accepted" onChange={(e)=>{FormData["STIP_CnRI_14_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1754,11 +1754,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Jewellery(All jewellery)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_15_Recomm"] == 1 ? true : false} name="STIP_CnRI_15_Recomm" onChange={(e)=>{FormData["STIP_CnRI_15_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_15_Recomm"] === 1 ? true : false} name="STIP_CnRI_15_Recomm" onChange={(e)=>{FormData["STIP_CnRI_15_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_15_Accepted"] == 1 ? true : false} name="STIP_CnRI_15_Accepted" onChange={(e)=>{FormData["STIP_CnRI_15_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_15_Accepted"] === 1 ? true : false} name="STIP_CnRI_15_Accepted" onChange={(e)=>{FormData["STIP_CnRI_15_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1787,11 +1787,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Photographic equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_16_Recomm"] == 1 ? true : false} name="STIP_CnRI_16_Recomm" onChange={(e)=>{FormData["STIP_CnRI_16_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_16_Recomm"] === 1 ? true : false} name="STIP_CnRI_16_Recomm" onChange={(e)=>{FormData["STIP_CnRI_16_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_16_Accepted"] == 1 ? true : false} name="STIP_CnRI_16_Accepted" onChange={(e)=>{FormData["STIP_CnRI_16_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_16_Accepted"] === 1 ? true : false} name="STIP_CnRI_16_Accepted" onChange={(e)=>{FormData["STIP_CnRI_16_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1820,11 +1820,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Sound Equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_17_Recomm"] == 1 ? true : false} name="STIP_CnRI_17_Recomm" onChange={(e)=>{FormData["STIP_CnRI_17_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_17_Recomm"] === 1 ? true : false} name="STIP_CnRI_17_Recomm" onChange={(e)=>{FormData["STIP_CnRI_17_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_17_Accepted"] == 1 ? true : false} name="STIP_CnRI_17_Accepted" onChange={(e)=>{FormData["STIP_CnRI_17_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_17_Accepted"] === 1 ? true : false} name="STIP_CnRI_17_Accepted" onChange={(e)=>{FormData["STIP_CnRI_17_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1853,11 +1853,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Other specify</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_18_Recomm"] == 1 ? true : false} name="STIP_CnRI_18_Recomm" onChange={(e)=>{FormData["STIP_CnRI_18_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_18_Recomm"] === 1 ? true : false} name="STIP_CnRI_18_Recomm" onChange={(e)=>{FormData["STIP_CnRI_18_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_18_Accepted"] == 1 ? true : false} name="STIP_CnRI_18_Accepted" onChange={(e)=>{FormData["STIP_CnRI_18_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_18_Accepted"] === 1 ? true : false} name="STIP_CnRI_18_Accepted" onChange={(e)=>{FormData["STIP_CnRI_18_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1886,11 +1886,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Personal legal liability</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_19_Recomm"] == 1 ? true : false} name="STIP_CnRI_19_Recomm" onChange={(e)=>{FormData["STIP_CnRI_19_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_19_Recomm"] === 1 ? true : false} name="STIP_CnRI_19_Recomm" onChange={(e)=>{FormData["STIP_CnRI_19_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_19_Accepted"] == 1 ? true : false} name="STIP_CnRI_19_Accepted" onChange={(e)=>{FormData["STIP_CnRI_19_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_19_Accepted"] === 1 ? true : false} name="STIP_CnRI_19_Accepted" onChange={(e)=>{FormData["STIP_CnRI_19_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1919,11 +1919,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>(PLIP)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_20_Recomm"] == 1 ? true : false} name="STIP_CnRI_20_Recomm" onChange={(e)=>{FormData["STIP_CnRI_20_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_20_Recomm"] === 1 ? true : false} name="STIP_CnRI_20_Recomm" onChange={(e)=>{FormData["STIP_CnRI_20_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_20_Accepted"] == 1 ? true : false} name="STIP_CnRI_20_Accepted" onChange={(e)=>{FormData["STIP_CnRI_20_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_20_Accepted"] === 1 ? true : false} name="STIP_CnRI_20_Accepted" onChange={(e)=>{FormData["STIP_CnRI_20_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1952,11 +1952,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Vehicles(Refer to quote/policy)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_21_Recomm"] == 1 ? true : false} name="STIP_CnRI_21_Recomm" onChange={(e)=>{FormData["STIP_CnRI_21_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_21_Recomm"] === 1 ? true : false} name="STIP_CnRI_21_Recomm" onChange={(e)=>{FormData["STIP_CnRI_21_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_21_Accepted"] == 1 ? true : false} name="STIP_CnRI_21_Accepted" onChange={(e)=>{FormData["STIP_CnRI_21_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_21_Accepted"] === 1 ? true : false} name="STIP_CnRI_21_Accepted" onChange={(e)=>{FormData["STIP_CnRI_21_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -1986,11 +1986,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Car hire</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_22_Recomm"] == 1 ? true : false} name="STIP_CnRI_22_Recomm" onChange={(e)=>{FormData["STIP_CnRI_22_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_22_Recomm"] === 1 ? true : false} name="STIP_CnRI_22_Recomm" onChange={(e)=>{FormData["STIP_CnRI_22_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_22_Accepted"] == 1 ? true : false} name="STIP_CnRI_22_Accepted" onChange={(e)=>{FormData["STIP_CnRI_22_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_22_Accepted"] === 1 ? true : false} name="STIP_CnRI_22_Accepted" onChange={(e)=>{FormData["STIP_CnRI_22_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2020,11 +2020,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Excess waiver</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_23_Recomm"] == 1 ? true : false} name="STIP_CnRI_23_Recomm" onChange={(e)=>{FormData["STIP_CnRI_23_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_23_Recomm"] === 1 ? true : false} name="STIP_CnRI_23_Recomm" onChange={(e)=>{FormData["STIP_CnRI_23_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_23_Accepted"] == 1 ? true : false} name="STIP_CnRI_23_Accepted" onChange={(e)=>{FormData["STIP_CnRI_23_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_23_Accepted"] === 1 ? true : false} name="STIP_CnRI_23_Accepted" onChange={(e)=>{FormData["STIP_CnRI_23_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2053,11 +2053,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Credit shortfall</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_24_Recomm"] == 1 ? true : false} name="STIP_CnRI_24_Recomm" onChange={(e)=>{FormData["STIP_CnRI_24_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_24_Recomm"] === 1 ? true : false} name="STIP_CnRI_24_Recomm" onChange={(e)=>{FormData["STIP_CnRI_24_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_24_Accepted"] == 1 ? true : false} name="STIP_CnRI_24_Accepted" onChange={(e)=>{FormData["STIP_CnRI_24_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_24_Accepted"] === 1 ? true : false} name="STIP_CnRI_24_Accepted" onChange={(e)=>{FormData["STIP_CnRI_24_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2088,11 +2088,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Watercraft</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_25_Recomm"] == 1 ? true : false} name="STIP_CnRI_25_Recomm" onChange={(e)=>{FormData["STIP_CnRI_25_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_25_Recomm"] === 1 ? true : false} name="STIP_CnRI_25_Recomm" onChange={(e)=>{FormData["STIP_CnRI_25_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_25_Accepted"] == 1 ? true : false} name="STIP_CnRI_25_Accepted" onChange={(e)=>{FormData["STIP_CnRI_25_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_25_Accepted"] === 1 ? true : false} name="STIP_CnRI_25_Accepted" onChange={(e)=>{FormData["STIP_CnRI_25_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2122,11 +2122,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Sasria</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_26_Recomm"] == 1 ? true : false} name="STIP_CnRI_26_Recomm" onChange={(e)=>{FormData["STIP_CnRI_26_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_26_Recomm"] === 1 ? true : false} name="STIP_CnRI_26_Recomm" onChange={(e)=>{FormData["STIP_CnRI_26_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_26_Accepted"] == 1 ? true : false} name="STIP_CnRI_26_Accepted" onChange={(e)=>{FormData["STIP_CnRI_26_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_26_Accepted"] === 1 ? true : false} name="STIP_CnRI_26_Accepted" onChange={(e)=>{FormData["STIP_CnRI_26_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2156,11 +2156,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Legal access</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_27_Recomm"] == 1 ? true : false} name="STIP_CnRI_27_Recomm" onChange={(e)=>{FormData["STIP_CnRI_27_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRI_27_Recomm"] === 1 ? true : false} name="STIP_CnRI_27_Recomm" onChange={(e)=>{FormData["STIP_CnRI_27_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRI_27_Accepted"] == 1 ? true : false} name="STIP_CnRI_27_Accepted" onChange={(e)=>{FormData["STIP_CnRI_27_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRI_27_Accepted"] === 1 ? true : false} name="STIP_CnRI_27_Accepted" onChange={(e)=>{FormData["STIP_CnRI_27_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2291,11 +2291,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>House content</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_1_Recomm"] == 1 ? true : false} name="STIP_CnRen_1_Recomm" onChange={(e)=>{FormData["STIP_CnRen_1_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_1_Recomm"] === 1 ? true : false} name="STIP_CnRen_1_Recomm" onChange={(e)=>{FormData["STIP_CnRen_1_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_1_Accepted"] == 1 ? true : false} name="STIP_CnRen_1_Accepted" onChange={(e)=>{FormData["STIP_CnRen_1_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_1_Accepted"] === 1 ? true : false} name="STIP_CnRen_1_Accepted" onChange={(e)=>{FormData["STIP_CnRen_1_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2325,11 +2325,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Buildings</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_2_Recomm"] == 1 ? true : false} name="STIP_CnRen_2_Recomm" onChange={(e)=>{FormData["STIP_CnRen_2_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_2_Recomm"] === 1 ? true : false} name="STIP_CnRen_2_Recomm" onChange={(e)=>{FormData["STIP_CnRen_2_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_2_Accepted"] == 1 ? true : false} name="STIP_CnRen_2_Accepted" onChange={(e)=>{FormData["STIP_CnRen_2_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_2_Accepted"] === 1 ? true : false} name="STIP_CnRen_2_Accepted" onChange={(e)=>{FormData["STIP_CnRen_2_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2358,11 +2358,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Subsidence and landslip</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_3_Recomm"] == 1 ? true : false} name="STIP_CnRen_3_Recomm" onChange={(e)=>{FormData["STIP_CnRen_3_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_3_Recomm"] === 1 ? true : false} name="STIP_CnRen_3_Recomm" onChange={(e)=>{FormData["STIP_CnRen_3_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_3_Accepted"] == 1 ? true : false} name="STIP_CnRen_3_Accepted" onChange={(e)=>{FormData["STIP_CnRen_3_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_3_Accepted"] === 1 ? true : false} name="STIP_CnRen_3_Accepted" onChange={(e)=>{FormData["STIP_CnRen_3_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2391,11 +2391,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Accidental damage</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_4_Recomm"] == 1 ? true : false} name="STIP_CnRen_4_Recomm" onChange={(e)=>{FormData["STIP_CnRen_4_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_4_Recomm"] === 1 ? true : false} name="STIP_CnRen_4_Recomm" onChange={(e)=>{FormData["STIP_CnRen_4_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_4_Accepted"] == 1 ? true : false} name="STIP_CnRen_4_Accepted" onChange={(e)=>{FormData["STIP_CnRen_4_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_4_Accepted"] === 1 ? true : false} name="STIP_CnRen_4_Accepted" onChange={(e)=>{FormData["STIP_CnRen_4_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2425,11 +2425,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>All Risk(General)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_5_Recomm"] == 1 ? true : false} name="STIP_CnRen_5_Recomm" onChange={(e)=>{FormData["STIP_CnRen_5_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_5_Recomm"] === 1 ? true : false} name="STIP_CnRen_5_Recomm" onChange={(e)=>{FormData["STIP_CnRen_5_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_5_Accepted"] == 1 ? true : false} name="STIP_CnRen_5_Accepted" onChange={(e)=>{FormData["STIP_CnRen_5_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_5_Accepted"] === 1 ? true : false} name="STIP_CnRen_5_Accepted" onChange={(e)=>{FormData["STIP_CnRen_5_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2458,11 +2458,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Clothing and personal</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_6_Recomm"] == 1 ? true : false} name="STIP_CnRen_6_Recomm" onChange={(e)=>{FormData["STIP_CnRen_6_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_6_Recomm"] === 1 ? true : false} name="STIP_CnRen_6_Recomm" onChange={(e)=>{FormData["STIP_CnRen_6_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_6_Accepted"] == 1 ? true : false} name="STIP_CnRen_6_Accepted" onChange={(e)=>{FormData["STIP_CnRen_6_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_6_Accepted"] === 1 ? true : false} name="STIP_CnRen_6_Accepted" onChange={(e)=>{FormData["STIP_CnRen_6_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2491,11 +2491,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Keys and locks</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_7_Recomm"] == 1 ? true : false} name="STIP_CnRen_7_Recomm" onChange={(e)=>{FormData["STIP_CnRen_7_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_7_Recomm"] === 1 ? true : false} name="STIP_CnRen_7_Recomm" onChange={(e)=>{FormData["STIP_CnRen_7_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_7_Accepted"] == 1 ? true : false} name="STIP_CnRen_7_Accepted" onChange={(e)=>{FormData["STIP_CnRen_7_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_7_Accepted"] === 1 ? true : false} name="STIP_CnRen_7_Accepted" onChange={(e)=>{FormData["STIP_CnRen_7_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2524,11 +2524,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Wheelchairs</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_8_Recomm"] == 1 ? true : false} name="STIP_CnRen_8_Recomm" onChange={(e)=>{FormData["STIP_CnRen_8_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_8_Recomm"] === 1 ? true : false} name="STIP_CnRen_8_Recomm" onChange={(e)=>{FormData["STIP_CnRen_8_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_8_Accepted"] == 1 ? true : false} name="STIP_CnRen_8_Accepted" onChange={(e)=>{FormData["STIP_CnRen_8_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_8_Accepted"] === 1 ? true : false} name="STIP_CnRen_8_Accepted" onChange={(e)=>{FormData["STIP_CnRen_8_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2557,11 +2557,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Bicycles</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_9_Recomm"] == 1 ? true : false} name="STIP_CnRen_9_Recomm" onChange={(e)=>{FormData["STIP_CnRen_9_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_9_Recomm"] === 1 ? true : false} name="STIP_CnRen_9_Recomm" onChange={(e)=>{FormData["STIP_CnRen_9_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_9_Accepted"] == 1 ? true : false} name="STIP_CnRen_9_Accepted" onChange={(e)=>{FormData["STIP_CnRen_9_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_9_Accepted"] === 1 ? true : false} name="STIP_CnRen_9_Accepted" onChange={(e)=>{FormData["STIP_CnRen_9_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2590,11 +2590,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Cellular telephones</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_10_Recomm"] == 1 ? true : false} name="STIP_CnRen_10_Recomm" onChange={(e)=>{FormData["STIP_CnRen_10_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_10_Recomm"] === 1 ? true : false} name="STIP_CnRen_10_Recomm" onChange={(e)=>{FormData["STIP_CnRen_10_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_10_Accepted"] == 1 ? true : false} name="STIP_CnRen_10_Accepted" onChange={(e)=>{FormData["STIP_CnRen_10_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_10_Accepted"] === 1 ? true : false} name="STIP_CnRen_10_Accepted" onChange={(e)=>{FormData["STIP_CnRen_10_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2623,11 +2623,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; TV,VCR,Decoders</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_11_Recomm"] == 1 ? true : false} name="STIP_CnRen_11_Recomm" onChange={(e)=>{FormData["STIP_CnRen_11_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_11_Recomm"] === 1 ? true : false} name="STIP_CnRen_11_Recomm" onChange={(e)=>{FormData["STIP_CnRen_11_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_11_Accepted"] == 1 ? true : false} name="STIP_CnRen_11_Accepted" onChange={(e)=>{FormData["STIP_CnRen_11_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_11_Accepted"] === 1 ? true : false} name="STIP_CnRen_11_Accepted" onChange={(e)=>{FormData["STIP_CnRen_11_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2657,11 +2657,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>All Risk Specified</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_12_Recomm"] == 1 ? true : false} name="STIP_CnRen_12_Recomm" onChange={(e)=>{FormData["STIP_CnRen_12_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_12_Recomm"] === 1 ? true : false} name="STIP_CnRen_12_Recomm" onChange={(e)=>{FormData["STIP_CnRen_12_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_12_Accepted"] == 1 ? true : false} name="STIP_CnRen_12_Accepted" onChange={(e)=>{FormData["STIP_CnRen_12_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_12_Accepted"] === 1 ? true : false} name="STIP_CnRen_12_Accepted" onChange={(e)=>{FormData["STIP_CnRen_12_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2690,11 +2690,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Computer equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_13_Recomm"] == 1 ? true : false} name="STIP_CnRen_13_Recomm" onChange={(e)=>{FormData["STIP_CnRen_13_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_13_Recomm"] === 1 ? true : false} name="STIP_CnRen_13_Recomm" onChange={(e)=>{FormData["STIP_CnRen_13_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_13_Accepted"] == 1 ? true : false} name="STIP_CnRen_13_Accepted" onChange={(e)=>{FormData["STIP_CnRen_13_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_13_Accepted"] === 1 ? true : false} name="STIP_CnRen_13_Accepted" onChange={(e)=>{FormData["STIP_CnRen_13_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2723,11 +2723,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Items in bank vault</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_14_Recomm"] == 1 ? true : false} name="STIP_CnRen_14_Recomm" onChange={(e)=>{FormData["STIP_CnRen_14_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_14_Recomm"] === 1 ? true : false} name="STIP_CnRen_14_Recomm" onChange={(e)=>{FormData["STIP_CnRen_14_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_14_Accepted"] == 1 ? true : false} name="STIP_CnRen_14_Accepted" onChange={(e)=>{FormData["STIP_CnRen_14_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_14_Accepted"] === 1 ? true : false} name="STIP_CnRen_14_Accepted" onChange={(e)=>{FormData["STIP_CnRen_14_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2756,11 +2756,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Jewellery(All jewellery)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_15_Recomm"] == 1 ? true : false} name="STIP_CnRen_15_Recomm" onChange={(e)=>{FormData["STIP_CnRen_15_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_15_Recomm"] === 1 ? true : false} name="STIP_CnRen_15_Recomm" onChange={(e)=>{FormData["STIP_CnRen_15_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_15_Accepted"] == 1 ? true : false} name="STIP_CnRen_15_Accepted" onChange={(e)=>{FormData["STIP_CnRen_15_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_15_Accepted"] === 1 ? true : false} name="STIP_CnRen_15_Accepted" onChange={(e)=>{FormData["STIP_CnRen_15_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2789,11 +2789,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Photographic equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_16_Recomm"] == 1 ? true : false} name="STIP_CnRen_16_Recomm" onChange={(e)=>{FormData["STIP_CnRen_16_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_16_Recomm"] === 1 ? true : false} name="STIP_CnRen_16_Recomm" onChange={(e)=>{FormData["STIP_CnRen_16_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_16_Accepted"] == 1 ? true : false} name="STIP_CnRen_16_Accepted" onChange={(e)=>{FormData["STIP_CnRen_16_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_16_Accepted"] === 1 ? true : false} name="STIP_CnRen_16_Accepted" onChange={(e)=>{FormData["STIP_CnRen_16_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2822,11 +2822,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Sound Equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_17_Recomm"] == 1 ? true : false} name="STIP_CnRen_17_Recomm" onChange={(e)=>{FormData["STIP_CnRen_17_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_17_Recomm"] === 1 ? true : false} name="STIP_CnRen_17_Recomm" onChange={(e)=>{FormData["STIP_CnRen_17_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_17_Accepted"] == 1 ? true : false} name="STIP_CnRen_17_Accepted" onChange={(e)=>{FormData["STIP_CnRen_17_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_17_Accepted"] === 1 ? true : false} name="STIP_CnRen_17_Accepted" onChange={(e)=>{FormData["STIP_CnRen_17_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2855,11 +2855,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Other specify</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_18_Recomm"] == 1 ? true : false} name="STIP_CnRen_18_Recomm" onChange={(e)=>{FormData["STIP_CnRen_18_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_18_Recomm"] === 1 ? true : false} name="STIP_CnRen_18_Recomm" onChange={(e)=>{FormData["STIP_CnRen_18_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_18_Accepted"] == 1 ? true : false} name="STIP_CnRen_18_Accepted" onChange={(e)=>{FormData["STIP_CnRen_18_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_18_Accepted"] === 1 ? true : false} name="STIP_CnRen_18_Accepted" onChange={(e)=>{FormData["STIP_CnRen_18_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2888,11 +2888,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Personal legal liability</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_19_Recomm"] == 1 ? true : false} name="STIP_CnRen_19_Recomm" onChange={(e)=>{FormData["STIP_CnRen_19_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_19_Recomm"] === 1 ? true : false} name="STIP_CnRen_19_Recomm" onChange={(e)=>{FormData["STIP_CnRen_19_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_19_Accepted"] == 1 ? true : false} name="STIP_CnRen_19_Accepted" onChange={(e)=>{FormData["STIP_CnRen_19_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_19_Accepted"] === 1 ? true : false} name="STIP_CnRen_19_Accepted" onChange={(e)=>{FormData["STIP_CnRen_19_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2921,11 +2921,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>(PLIP)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_20_Recomm"] == 1 ? true : false} name="STIP_CnRen_20_Recomm" onChange={(e)=>{FormData["STIP_CnRen_20_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_20_Recomm"] === 1 ? true : false} name="STIP_CnRen_20_Recomm" onChange={(e)=>{FormData["STIP_CnRen_20_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_20_Accepted"] == 1 ? true : false} name="STIP_CnRen_20_Accepted" onChange={(e)=>{FormData["STIP_CnRen_20_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_20_Accepted"] === 1 ? true : false} name="STIP_CnRen_20_Accepted" onChange={(e)=>{FormData["STIP_CnRen_20_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2954,11 +2954,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Vehicles(Refer to quote/policy)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_21_Recomm"] == 1 ? true : false} name="STIP_CnRen_21_Recomm" onChange={(e)=>{FormData["STIP_CnRen_21_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_21_Recomm"] === 1 ? true : false} name="STIP_CnRen_21_Recomm" onChange={(e)=>{FormData["STIP_CnRen_21_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_21_Accepted"] == 1 ? true : false} name="STIP_CnRen_21_Accepted" onChange={(e)=>{FormData["STIP_CnRen_21_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_21_Accepted"] === 1 ? true : false} name="STIP_CnRen_21_Accepted" onChange={(e)=>{FormData["STIP_CnRen_21_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -2988,11 +2988,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Car hire</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_22_Recomm"] == 1 ? true : false} name="STIP_CnRen_22_Recomm" onChange={(e)=>{FormData["STIP_CnRen_22_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_22_Recomm"] === 1 ? true : false} name="STIP_CnRen_22_Recomm" onChange={(e)=>{FormData["STIP_CnRen_22_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_22_Accepted"] == 1 ? true : false} name="STIP_CnRen_22_Accepted" onChange={(e)=>{FormData["STIP_CnRen_22_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_22_Accepted"] === 1 ? true : false} name="STIP_CnRen_22_Accepted" onChange={(e)=>{FormData["STIP_CnRen_22_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -3022,11 +3022,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Excess waiver</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_23_Recomm"] == 1 ? true : false} name="STIP_CnRen_23_Recomm" onChange={(e)=>{FormData["STIP_CnRen_23_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_23_Recomm"] === 1 ? true : false} name="STIP_CnRen_23_Recomm" onChange={(e)=>{FormData["STIP_CnRen_23_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_23_Accepted"] == 1 ? true : false} name="STIP_CnRen_23_Accepted" onChange={(e)=>{FormData["STIP_CnRen_23_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_23_Accepted"] === 1 ? true : false} name="STIP_CnRen_23_Accepted" onChange={(e)=>{FormData["STIP_CnRen_23_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -3055,11 +3055,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Credit shortfall</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_24_Recomm"] == 1 ? true : false} name="STIP_CnRen_24_Recomm" onChange={(e)=>{FormData["STIP_CnRen_24_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_24_Recomm"] === 1 ? true : false} name="STIP_CnRen_24_Recomm" onChange={(e)=>{FormData["STIP_CnRen_24_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_24_Accepted"] == 1 ? true : false} name="STIP_CnRen_24_Accepted" onChange={(e)=>{FormData["STIP_CnRen_24_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_24_Accepted"] === 1 ? true : false} name="STIP_CnRen_24_Accepted" onChange={(e)=>{FormData["STIP_CnRen_24_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -3090,11 +3090,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Watercraft</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_25_Recomm"] == 1 ? true : false} name="STIP_CnRen_25_Recomm" onChange={(e)=>{FormData["STIP_CnRen_25_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_25_Recomm"] === 1 ? true : false} name="STIP_CnRen_25_Recomm" onChange={(e)=>{FormData["STIP_CnRen_25_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_25_Accepted"] == 1 ? true : false} name="STIP_CnRen_25_Accepted" onChange={(e)=>{FormData["STIP_CnRen_25_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_25_Accepted"] === 1 ? true : false} name="STIP_CnRen_25_Accepted" onChange={(e)=>{FormData["STIP_CnRen_25_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -3124,11 +3124,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Sasria</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_26_Recomm"] == 1 ? true : false} name="STIP_CnRen_26_Recomm" onChange={(e)=>{FormData["STIP_CnRen_26_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_26_Recomm"] === 1 ? true : false} name="STIP_CnRen_26_Recomm" onChange={(e)=>{FormData["STIP_CnRen_26_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_26_Accepted"] == 1 ? true : false} name="STIP_CnRen_26_Accepted" onChange={(e)=>{FormData["STIP_CnRen_26_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_26_Accepted"] === 1 ? true : false} name="STIP_CnRen_26_Accepted" onChange={(e)=>{FormData["STIP_CnRen_26_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -3158,11 +3158,11 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Legal access</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_27_Recomm"] == 1 ? true : false} name="STIP_CnRen_27_Recomm" onChange={(e)=>{FormData["STIP_CnRen_27_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input type="checkbox" disabled checked={FormData["STIP_CnRen_27_Recomm"] === 1 ? true : false} name="STIP_CnRen_27_Recomm" onChange={(e)=>{FormData["STIP_CnRen_27_Recomm"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" disabled checked={FormData["STIP_CnRen_27_Accepted"] == 1 ? true : false} name="STIP_CnRen_27_Accepted" onChange={(e)=>{FormData["STIP_CnRen_27_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input type="checkbox" disabled checked={FormData["STIP_CnRen_27_Accepted"] === 1 ? true : false} name="STIP_CnRen_27_Accepted" onChange={(e)=>{FormData["STIP_CnRen_27_Accepted"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
@@ -3226,7 +3226,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input disabled className="form-check-input" checked={FormData['STIP_CnRI_AdviseGiven'] == "1" ? true : false}type="radio" value="1" id="STIP_CnRI_AdviseGiven" name="STIP_CnRI_AdviseGiven"/>
+                      <input disabled className="form-check-input" checked={FormData['STIP_CnRI_AdviseGiven'] === "1" ? true : false}type="radio" value="1" id="STIP_CnRI_AdviseGiven" name="STIP_CnRI_AdviseGiven"/>
                   </div>
                   <div className="col-2">
                       <label className="form-check-label" htmlFor="STIP_CnRI_AdviseGiven" >
@@ -3236,7 +3236,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input disabled className="form-check-input" checked={FormData['STIP_CnRI_AdviseGiven'] == "1" ? true : false}type="radio" value="1" id="STIP_CnRI_AdviseGiven" name="STIP_CnRI_AdviseGiven"/>
+                      <input disabled className="form-check-input" checked={FormData['STIP_CnRI_AdviseGiven'] === "1" ? true : false}type="radio" value="1" id="STIP_CnRI_AdviseGiven" name="STIP_CnRI_AdviseGiven"/>
                   </div>
                   <div className="col-2">
                       <label className="form-check-label" htmlFor="STIP_CnRI_AdviseGiven" >
@@ -3331,7 +3331,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3339,7 +3339,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3361,7 +3361,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3369,7 +3369,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3392,7 +3392,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3400,7 +3400,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3423,7 +3423,7 @@ const Short_term_Personal = () => {
           <div className="row">
           <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
+                <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -3431,7 +3431,7 @@ const Short_term_Personal = () => {
                 </label>
             </div>
             <div className="col-3">
-                <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
+                <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -3453,7 +3453,7 @@ const Short_term_Personal = () => {
           <div className="row">
           <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
+                <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -3461,7 +3461,7 @@ const Short_term_Personal = () => {
                 </label>
             </div>
             <div className="col-3">
-                <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
+                <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -3483,7 +3483,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3491,7 +3491,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3512,7 +3512,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3520,7 +3520,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3614,7 +3614,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3622,7 +3622,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3643,7 +3643,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3651,7 +3651,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3673,7 +3673,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -3681,7 +3681,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -3703,7 +3703,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -3711,7 +3711,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -3733,7 +3733,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -3741,7 +3741,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -3763,7 +3763,7 @@ const Short_term_Personal = () => {
           <div className="row">
           <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -3771,7 +3771,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -3793,7 +3793,7 @@ const Short_term_Personal = () => {
           <div className="row">
           <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] == "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] === "1" ? true : false}type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -3801,7 +3801,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] == "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] === "1" ? false : true}type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -3951,7 +3951,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_Build_Voluntary"] == "1" ? true : false}type="radio" value="1" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_Build_Voluntary"] === "1" ? true : false}type="radio" value="1" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3959,7 +3959,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_Build_Voluntary"] == "1" ? false : true}type="radio" value="0" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_Build_Voluntary"] === "1" ? false : true}type="radio" value="0" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3982,7 +3982,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_Build_SnL"] == "1" ? true : false}type="radio" value="1" id="STIP_Build_SnL" name="STIP_Build_SnL" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_Build_SnL"] === "1" ? true : false}type="radio" value="1" id="STIP_Build_SnL" name="STIP_Build_SnL" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3990,7 +3990,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_Build_SnL"] == "1" ? false : true}type="radio" value="0" id="STIP_Build_SnL" name="STIP_Build_SnL" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_Build_SnL"] === "1" ? false : true}type="radio" value="0" id="STIP_Build_SnL" name="STIP_Build_SnL" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -4011,7 +4011,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_Build_ADI"] == "1" ? true : false}type="radio" value="1" id="STIP_Build_ADI" name="STIP_Build_ADI" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_Build_ADI"] === "1" ? true : false}type="radio" value="1" id="STIP_Build_ADI" name="STIP_Build_ADI" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4019,7 +4019,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_Build_ADI"] == "1" ? false : true}type="radio" value="0" id="STIP_Build_ADI" name="STIP_Build_ADI" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_Build_ADI"] === "1" ? false : true}type="radio" value="0" id="STIP_Build_ADI" name="STIP_Build_ADI" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4041,7 +4041,7 @@ const Short_term_Personal = () => {
           <div className="row">
           <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input disabled className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] == "1" ? true : false}type="radio" value="1" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
+                <input disabled className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] === "1" ? true : false}type="radio" value="1" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -4049,7 +4049,7 @@ const Short_term_Personal = () => {
                 </label>
             </div>
             <div className="col-3">
-                <input disabled className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] == "1" ? false : true}type="radio" value="0" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
+                <input disabled className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] === "1" ? false : true}type="radio" value="0" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -4070,7 +4070,7 @@ const Short_term_Personal = () => {
           <div className="row">
           <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input disabled className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] == "1" ? true : false}type="radio" value="1" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
+                <input disabled className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] === "1" ? true : false}type="radio" value="1" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -4078,7 +4078,7 @@ const Short_term_Personal = () => {
                 </label>
             </div>
             <div className="col-3">
-                <input disabled className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] == "1" ? false : true}type="radio" value="0" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
+                <input disabled className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] === "1" ? false : true}type="radio" value="0" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -4229,7 +4229,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] == "1" ? true : false}type="radio" value="1" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] === "1" ? true : false}type="radio" value="1" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4237,7 +4237,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] == "1" ? false : true}type="radio" value="0" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] === "1" ? false : true}type="radio" value="0" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4260,7 +4260,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_SnL"] == "1" ? true : false}type="radio" value="1" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_SnL"] === "1" ? true : false}type="radio" value="1" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4268,7 +4268,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_SnL"] == "1" ? false : true}type="radio" value="0" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_SnL"] === "1" ? false : true}type="radio" value="0" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4290,7 +4290,7 @@ const Short_term_Personal = () => {
           <div className="row">
            <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_ADI"] == "1" ? true : false}type="radio" value="1" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_ADI"] === "1" ? true : false}type="radio" value="1" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4298,7 +4298,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_ADI"] == "1" ? false : true}type="radio" value="0" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_ADI"] === "1" ? false : true}type="radio" value="0" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4321,7 +4321,7 @@ const Short_term_Personal = () => {
           <div className="row">
           <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] == "1" ? true : false}type="radio" value="1" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] === "1" ? true : false}type="radio" value="1" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4329,7 +4329,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] == "1" ? false : true}type="radio" value="0" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] === "1" ? false : true}type="radio" value="0" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4352,7 +4352,7 @@ const Short_term_Personal = () => {
           <div className="row">
           <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] == "1" ? true : false}type="radio" value="1" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] === "1" ? true : false}type="radio" value="1" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4360,7 +4360,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] == "1" ? false : true}type="radio" value="0" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] === "1" ? false : true}type="radio" value="0" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4555,7 +4555,7 @@ const Short_term_Personal = () => {
                   <div className="col-8">
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM1"] == 1 ? true : false} name="STIP_Vehicle_SM1" onChange={(e)=>{FormData["STIP_Vehicle_SM1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                      <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM1"] === 1 ? true : false} name="STIP_Vehicle_SM1" onChange={(e)=>{FormData["STIP_Vehicle_SM1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label className="form-check-label" for="flexCheckDefault">
                         Immobilizer  
                         </label>
@@ -4564,7 +4564,7 @@ const Short_term_Personal = () => {
                     
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                      <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] === 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label className="form-check-label" for="flexCheckDefault">
                           Gear lock
                         </label>
@@ -4582,7 +4582,7 @@ const Short_term_Personal = () => {
                   <div className="col-8">
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      {/* <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/> */}
+                      {/* <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] === 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/> */}
                         <label className="form-check-label" for="flexCheckDefault">
                         {/* Tracking device   */}
                         </label>
@@ -4591,7 +4591,7 @@ const Short_term_Personal = () => {
                     
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      {/* <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/> */}
+                      {/* <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] === 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/> */}
                         <label className="form-check-label" for="flexCheckDefault">
                           {/* Data dot */}
                         </label>
@@ -4609,7 +4609,7 @@ const Short_term_Personal = () => {
                   <div className="col-8">
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM3"] == 1 ? true : false} name="STIP_Vehicle_SM3" onChange={(e)=>{FormData["STIP_Vehicle_SM3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                      <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM3"] === 1 ? true : false} name="STIP_Vehicle_SM3" onChange={(e)=>{FormData["STIP_Vehicle_SM3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label className="form-check-label" for="flexCheckDefault">
                         Tracking device  
                         </label>
@@ -4618,7 +4618,7 @@ const Short_term_Personal = () => {
                     
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM4"] == 1 ? true : false} name="STIP_Vehicle_SM4" onChange={(e)=>{FormData["STIP_Vehicle_SM4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                      <input disabled className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM4"] === 1 ? true : false} name="STIP_Vehicle_SM4" onChange={(e)=>{FormData["STIP_Vehicle_SM4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label className="form-check-label" for="flexCheckDefault">
                           Data dot
                         </label>
@@ -4729,7 +4729,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_VoluntaryExcess"] == "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_VoluntaryExcess" name="STIP_Vehicle_VoluntaryExcess" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_VoluntaryExcess"] === "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_VoluntaryExcess" name="STIP_Vehicle_VoluntaryExcess" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -4737,7 +4737,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_VoluntaryExcess"] == "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_VoluntaryExcess" name="STIP_Vehicle_VoluntaryExcess" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_VoluntaryExcess"] === "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_VoluntaryExcess" name="STIP_Vehicle_VoluntaryExcess" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -4761,7 +4761,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras1"] == 1 ? true : false} name="STIP_Vehicle_Extras1" onChange={(e)=>{FormData["STIP_Vehicle_Extras1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras1"] === 1 ? true : false} name="STIP_Vehicle_Extras1" onChange={(e)=>{FormData["STIP_Vehicle_Extras1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4774,7 +4774,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras2"] == 1 ? true : false} name="STIP_Vehicle_Extras2" onChange={(e)=>{FormData["STIP_Vehicle_Extras2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras2"] === 1 ? true : false} name="STIP_Vehicle_Extras2" onChange={(e)=>{FormData["STIP_Vehicle_Extras2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4787,7 +4787,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras3"] == 1 ? true : false} name="STIP_Vehicle_Extras3" onChange={(e)=>{FormData["STIP_Vehicle_Extras3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras3"] === 1 ? true : false} name="STIP_Vehicle_Extras3" onChange={(e)=>{FormData["STIP_Vehicle_Extras3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4800,7 +4800,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras4"] == 1 ? true : false} name="STIP_Vehicle_Extras4" onChange={(e)=>{FormData["STIP_Vehicle_Extras4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras4"] === 1 ? true : false} name="STIP_Vehicle_Extras4" onChange={(e)=>{FormData["STIP_Vehicle_Extras4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4813,7 +4813,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras5"] == 1 ? true : false} name="STIP_Vehicle_Extras5" onChange={(e)=>{FormData["STIP_Vehicle_Extras5"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras5"] === 1 ? true : false} name="STIP_Vehicle_Extras5" onChange={(e)=>{FormData["STIP_Vehicle_Extras5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4826,7 +4826,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras6"] == 1 ? true : false} name="STIP_Vehicle_Extras6" onChange={(e)=>{FormData["STIP_Vehicle_Extras6"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras6"] === 1 ? true : false} name="STIP_Vehicle_Extras6" onChange={(e)=>{FormData["STIP_Vehicle_Extras6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4839,7 +4839,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras7"] == 1 ? true : false} name="STIP_Vehicle_Extras7" onChange={(e)=>{FormData["STIP_Vehicle_Extras7"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras7"] === 1 ? true : false} name="STIP_Vehicle_Extras7" onChange={(e)=>{FormData["STIP_Vehicle_Extras7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4852,7 +4852,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras8"] == 1 ? true : false} name="STIP_Vehicle_Extras8" onChange={(e)=>{FormData["STIP_Vehicle_Extras8"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras8"] === 1 ? true : false} name="STIP_Vehicle_Extras8" onChange={(e)=>{FormData["STIP_Vehicle_Extras8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4865,7 +4865,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras9"] == 1 ? true : false} name="STIP_Vehicle_Extras9" onChange={(e)=>{FormData["STIP_Vehicle_Extras9"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras9"] === 1 ? true : false} name="STIP_Vehicle_Extras9" onChange={(e)=>{FormData["STIP_Vehicle_Extras9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4878,7 +4878,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras10"] == 1 ? true : false} name="STIP_Vehicle_Extras10" onChange={(e)=>{FormData["STIP_Vehicle_Extras10"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras10"] === 1 ? true : false} name="STIP_Vehicle_Extras10" onChange={(e)=>{FormData["STIP_Vehicle_Extras10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4891,7 +4891,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras11"] == 1 ? true : false} name="STIP_Vehicle_Extras11" onChange={(e)=>{FormData["STIP_Vehicle_Extras11"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras11"] === 1 ? true : false} name="STIP_Vehicle_Extras11" onChange={(e)=>{FormData["STIP_Vehicle_Extras11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4904,7 +4904,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras12"] == 1 ? true : false} name="STIP_Vehicle_Extras12" onChange={(e)=>{FormData["STIP_Vehicle_Extras12"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras12"] === 1 ? true : false} name="STIP_Vehicle_Extras12" onChange={(e)=>{FormData["STIP_Vehicle_Extras12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4917,7 +4917,7 @@ const Short_term_Personal = () => {
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras13"] == 1 ? true : false} name="STIP_Vehicle_Extras13" onChange={(e)=>{FormData["STIP_Vehicle_Extras13"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input type="checkbox" disabled checked={FormData["STIP_Vehicle_Extras13"] === 1 ? true : false} name="STIP_Vehicle_Extras13" onChange={(e)=>{FormData["STIP_Vehicle_Extras13"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -4958,7 +4958,7 @@ const Short_term_Personal = () => {
                     <div className="row">
                       <div className="row col-6 align-items-center">
                           <div className="col-3">
-                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC1"] == "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_AC1" name="STIP_Vehicle_AC1" />
+                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC1"] === "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_AC1" name="STIP_Vehicle_AC1" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -4966,7 +4966,7 @@ const Short_term_Personal = () => {
                               </label>
                           </div>
                           <div className="col-3">
-                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC1"] == "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_AC1" name="STIP_Vehicle_AC1" />
+                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC1"] === "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_AC1" name="STIP_Vehicle_AC1" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -4992,7 +4992,7 @@ const Short_term_Personal = () => {
                     <div className="row">
                     <div className="row col-6 align-items-center">
                           <div className="col-3">
-                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC2"] == "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_AC2" name="STIP_Vehicle_AC2" />
+                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC2"] === "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_AC2" name="STIP_Vehicle_AC2" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5000,7 +5000,7 @@ const Short_term_Personal = () => {
                               </label>
                           </div>
                           <div className="col-3">
-                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC2"] == "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_AC2" name="STIP_Vehicle_AC2" />
+                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC2"] === "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_AC2" name="STIP_Vehicle_AC2" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5026,7 +5026,7 @@ const Short_term_Personal = () => {
                     <div className="row">
                     <div className="row col-6 align-items-center">
                           <div className="col-3">
-                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC1"] == "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_AC3" name="STIP_Vehicle_AC3" />
+                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC1"] === "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_AC3" name="STIP_Vehicle_AC3" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5034,7 +5034,7 @@ const Short_term_Personal = () => {
                               </label>
                           </div>
                           <div className="col-3">
-                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC3"] == "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_AC3" name="STIP_Vehicle_AC3" />
+                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC3"] === "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_AC3" name="STIP_Vehicle_AC3" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5060,7 +5060,7 @@ const Short_term_Personal = () => {
                     <div className="row">
                     <div className="row col-6 align-items-center">
                           <div className="col-3">
-                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC4"] == "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_AC4" name="STIP_Vehicle_AC4" />
+                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC4"] === "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_AC4" name="STIP_Vehicle_AC4" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5068,7 +5068,7 @@ const Short_term_Personal = () => {
                               </label>
                           </div>
                           <div className="col-3">
-                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC4"] == "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_AC4" name="STIP_Vehicle_AC4" />
+                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC4"] === "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_AC4" name="STIP_Vehicle_AC4" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5094,7 +5094,7 @@ const Short_term_Personal = () => {
                     <div className="row">
                     <div className="row col-6 align-items-center">
                           <div className="col-3">
-                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC5"] == "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_AC5" name="STIP_Vehicle_AC5" />
+                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC5"] === "1" ? true : false}type="radio" value="1" id="STIP_Vehicle_AC5" name="STIP_Vehicle_AC5" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5102,7 +5102,7 @@ const Short_term_Personal = () => {
                               </label>
                           </div>
                           <div className="col-3">
-                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC5"] == "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_AC5" name="STIP_Vehicle_AC5" />
+                              <input disabled className="form-check-input" checked={FormData["STIP_Vehicle_AC5"] === "1" ? false : true}type="radio" value="0" id="STIP_Vehicle_AC5" name="STIP_Vehicle_AC5" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5843,7 +5843,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_PersonalLL_IndemnityLimit"] == "1" ? true : false}type="radio" value="1" id="STIP_PersonalLL_IndemnityLimit" name="STIP_PersonalLL_IndemnityLimit" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_PersonalLL_IndemnityLimit"] === "1" ? true : false}type="radio" value="1" id="STIP_PersonalLL_IndemnityLimit" name="STIP_PersonalLL_IndemnityLimit" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -5851,7 +5851,7 @@ const Short_term_Personal = () => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input disabled className="form-check-input" checked={FormData["STIP_PersonalLL_IndemnityLimit"] == "1" ? false : true}type="radio" value="0" id="STIP_PersonalLL_IndemnityLimit" name="STIP_PersonalLL_IndemnityLimit" />
+                    <input disabled className="form-check-input" checked={FormData["STIP_PersonalLL_IndemnityLimit"] === "1" ? false : true}type="radio" value="0" id="STIP_PersonalLL_IndemnityLimit" name="STIP_PersonalLL_IndemnityLimit" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -5954,7 +5954,7 @@ const Short_term_Personal = () => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_LegalA_IndemnityLimit"] == "1" ? true : false}type="radio" value="1" id="STIP_LegalA_IndemnityLimit" name="STIP_LegalA_IndemnityLimit" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_LegalA_IndemnityLimit"] === "1" ? true : false}type="radio" value="1" id="STIP_LegalA_IndemnityLimit" name="STIP_LegalA_IndemnityLimit" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -5962,7 +5962,7 @@ const Short_term_Personal = () => {
                   </label>
               </div>
               <div className="col-3">
-                  <input disabled className="form-check-input" checked={FormData["STIP_LegalA_IndemnityLimit"] == "1" ? false : true}type="radio" value="0" id="STIP_LegalA_IndemnityLimit" name="STIP_LegalA_IndemnityLimit" />
+                  <input disabled className="form-check-input" checked={FormData["STIP_LegalA_IndemnityLimit"] === "1" ? false : true}type="radio" value="0" id="STIP_LegalA_IndemnityLimit" name="STIP_LegalA_IndemnityLimit" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -6497,7 +6497,7 @@ const Short_term_Personal = () => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs1"] == "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs1" name="STIP_SNA_Needs1" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs1"] === "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs1" name="STIP_SNA_Needs1" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6505,7 +6505,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs1"] == "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs1" name="STIP_SNA_Needs1" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs1"] === "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs1" name="STIP_SNA_Needs1" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6529,7 +6529,7 @@ const Short_term_Personal = () => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs2"] == "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs2" name="STIP_SNA_Needs2" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs2"] === "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs2" name="STIP_SNA_Needs2" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6537,7 +6537,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs2"] == "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs2" name="STIP_SNA_Needs2" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs2"] === "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs2" name="STIP_SNA_Needs2" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6561,7 +6561,7 @@ const Short_term_Personal = () => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs3"] == "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs3" name="STIP_SNA_Needs3" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs3"] === "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs3" name="STIP_SNA_Needs3" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6569,7 +6569,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs3"] == "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs3" name="STIP_SNA_Needs3" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs3"] === "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs3" name="STIP_SNA_Needs3" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6593,7 +6593,7 @@ const Short_term_Personal = () => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs4"] == "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs4" name="STIP_SNA_Needs4" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs4"] === "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs4" name="STIP_SNA_Needs4" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6601,7 +6601,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs4"] == "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs4" name="STIP_SNA_Needs4" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs4"] === "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs4" name="STIP_SNA_Needs4" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6626,7 +6626,7 @@ const Short_term_Personal = () => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs5"] == "1" ? true : false}  type="radio" value="1" id="STIP_SNA_Needs5" name="STIP_SNA_Needs5" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs5"] === "1" ? true : false}  type="radio" value="1" id="STIP_SNA_Needs5" name="STIP_SNA_Needs5" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6634,7 +6634,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs5"] == "1" ? false : true}  type="radio" value="0" id="STIP_SNA_Needs5" name="STIP_SNA_Needs5" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs5"] === "1" ? false : true}  type="radio" value="0" id="STIP_SNA_Needs5" name="STIP_SNA_Needs5" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6662,7 +6662,7 @@ const Short_term_Personal = () => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs6"] == "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs6" name="STIP_SNA_Needs6" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs6"] === "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs6" name="STIP_SNA_Needs6" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6670,7 +6670,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs6"] == "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs6" name="STIP_SNA_Needs6" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs6"] === "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs6" name="STIP_SNA_Needs6" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6694,7 +6694,7 @@ const Short_term_Personal = () => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs7"] == "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs7" name="STIP_SNA_Needs7" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs7"] === "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs7" name="STIP_SNA_Needs7" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6702,7 +6702,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs7"] == "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs7" name="STIP_SNA_Needs7" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs7"] === "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs7" name="STIP_SNA_Needs7" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6726,7 +6726,7 @@ const Short_term_Personal = () => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs8"] == "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs8" name="STIP_SNA_Needs8" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs8"] === "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs8" name="STIP_SNA_Needs8" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6734,7 +6734,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs8"] == "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs8" name="STIP_SNA_Needs8" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs8"] === "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs8" name="STIP_SNA_Needs8" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6758,7 +6758,7 @@ const Short_term_Personal = () => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs9"] == "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs9" name="STIP_SNA_Needs9" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs9"] === "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs9" name="STIP_SNA_Needs9" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6766,7 +6766,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs9"] == "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs9" name="STIP_SNA_Needs9" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs9"] === "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs9" name="STIP_SNA_Needs9" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6790,7 +6790,7 @@ const Short_term_Personal = () => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs10"] == "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs10" name="STIP_SNA_Needs10" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs10"] === "1" ? true : false}type="radio" value="1" id="STIP_SNA_Needs10" name="STIP_SNA_Needs10" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -6798,7 +6798,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs10"] == "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs10" name="STIP_SNA_Needs10" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SNA_Needs10"] === "1" ? false : true}type="radio" value="0" id="STIP_SNA_Needs10" name="STIP_SNA_Needs10" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -7099,7 +7099,7 @@ const Short_term_Personal = () => {
               <div className="col-6">
                 <div className="row col-6 align-items-center">
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SectionF_Consequences"] == "1" ? true : false}type="radio" value="1" id="STIP_SectionF_Consequences" name="STIP_SectionF_Consequences" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SectionF_Consequences"] === "1" ? true : false}type="radio" value="1" id="STIP_SectionF_Consequences" name="STIP_SectionF_Consequences" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -7107,7 +7107,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input disabled className="form-check-input" checked={FormData["STIP_SectionF_Consequences"] == "1" ? false : true}type="radio" value="0" id="STIP_SectionF_Consequences" name="STIP_SectionF_Consequences" />
+                      <input disabled className="form-check-input" checked={FormData["STIP_SectionF_Consequences"] === "1" ? false : true}type="radio" value="0" id="STIP_SectionF_Consequences" name="STIP_SectionF_Consequences" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >

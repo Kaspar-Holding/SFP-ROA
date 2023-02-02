@@ -520,7 +520,7 @@ function AssuranceInvestment()
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AI_Premium'] == 1 ? true : false} name="AI_Premium" onChange={(e) => {onChange(e)}} type="radio" value="1" />
+                                <input disabled className="form-check-input" checked={FormData['AI_Premium'] === 1 ? true : false} name="AI_Premium" onChange={(e) => {onChange(e)}} type="radio" value="1" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn3" >
@@ -531,7 +531,7 @@ function AssuranceInvestment()
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['AI_Premium'] == 1 ? false : true} name="AI_Premium" onChange={(e) => {onChange(e)}} type="radio" value="0" />
+                                <input disabled className="form-check-input" checked={FormData['AI_Premium'] === 1 ? false : true} name="AI_Premium" onChange={(e) => {onChange(e)}} type="radio" value="0" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn3" >
@@ -1203,12 +1203,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input disabled type="checkbox" checked={FormData["AI_PF_Provided1"]} name="AI_PF_Provided1" onChange={(e)=>{FormData["AI_PF_Provided1"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Provided1"]} name="AI_PF_Provided1" onChange={(e)=>{FormData["AI_PF_Provided1"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed1"]} name="AI_PF_Discussed1" onChange={(e)=>{FormData["AI_PF_Discussed1"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed1"]} name="AI_PF_Discussed1" onChange={(e)=>{FormData["AI_PF_Discussed1"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>  
       </tr>
@@ -1230,12 +1230,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input disabled type="checkbox" checked={FormData["AI_PF_Provided2"]} name="AI_PF_Provided2" onChange={(e)=>{FormData["AI_PF_Provided2"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Provided2"]} name="AI_PF_Provided2" onChange={(e)=>{FormData["AI_PF_Provided2"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed2"]} name="AI_PF_Discussed2" onChange={(e)=>{FormData["AI_PF_Discussed2"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed2"]} name="AI_PF_Discussed2" onChange={(e)=>{FormData["AI_PF_Discussed2"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>   
       </tr>
@@ -1257,12 +1257,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input disabled type="checkbox" checked={FormData["AI_PF_Provided3"]} name="AI_PF_Provided3" onChange={(e)=>{FormData["AI_PF_Provided3"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Provided3"]} name="AI_PF_Provided3" onChange={(e)=>{FormData["AI_PF_Provided3"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed3"]} name="AI_PF_Discussed3" onChange={(e)=>{FormData["AI_PF_Discussed3"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed3"]} name="AI_PF_Discussed3" onChange={(e)=>{FormData["AI_PF_Discussed3"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>       
       </tr>
@@ -1284,12 +1284,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input disabled type="checkbox" checked={FormData["AI_PF_Provided4"]} name="AI_PF_Provided4" onChange={(e)=>{FormData["AI_PF_Provided4"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Provided4"]} name="AI_PF_Provided4" onChange={(e)=>{FormData["AI_PF_Provided4"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed4"]} name="AI_PF_Discussed4" onChange={(e)=>{FormData["AI_PF_Discussed4"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed4"]} name="AI_PF_Discussed4" onChange={(e)=>{FormData["AI_PF_Discussed4"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>      
       </tr>
@@ -1311,12 +1311,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input disabled type="checkbox" checked={FormData["AI_PF_Provided5"]} name="AI_PF_Provided5" onChange={(e)=>{FormData["AI_PF_Provided5"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Provided5"]} name="AI_PF_Provided5" onChange={(e)=>{FormData["AI_PF_Provided5"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed5"]} name="AI_PF_Discussed5" onChange={(e)=>{FormData["AI_PF_Discussed5"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed5"]} name="AI_PF_Discussed5" onChange={(e)=>{FormData["AI_PF_Discussed5"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>        
       </tr>
@@ -1339,12 +1339,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input disabled type="checkbox" checked={FormData["AI_PF_Provided6"]} name="AI_PF_Provided6" onChange={(e)=>{FormData["AI_PF_Provided6"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Provided6"]} name="AI_PF_Provided6" onChange={(e)=>{FormData["AI_PF_Provided6"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed6"]} name="AI_PF_Discussed6" onChange={(e)=>{FormData["AI_PF_Discussed6"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed6"]} name="AI_PF_Discussed6" onChange={(e)=>{FormData["AI_PF_Discussed6"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>   
       </tr>
@@ -1367,12 +1367,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input disabled type="checkbox" checked={FormData["AI_PF_Provided7"]} name="AI_PF_Provided7" onChange={(e)=>{FormData["AI_PF_Provided7"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Provided7"]} name="AI_PF_Provided7" onChange={(e)=>{FormData["AI_PF_Provided7"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed7"]} name="AI_PF_Discussed7" onChange={(e)=>{FormData["AI_PF_Discussed7"] == true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input disabled type="checkbox" checked={FormData["AI_PF_Discussed7"]} name="AI_PF_Discussed7" onChange={(e)=>{FormData["AI_PF_Discussed7"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
             <label> Yes</label>
         </td>   
       </tr>

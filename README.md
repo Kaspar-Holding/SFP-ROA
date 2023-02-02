@@ -8,6 +8,12 @@ This project is built on the following Stack
 
 ## Updates
 
+### 02 February 2023:
+- Updated to Version 0.4
+- Risk Factors is now Starting Point
+- Record of Advice is now sub tab
+- Updated Dashboard and added search functionality
+
 ### 01 February 2023:
 - Dockerized Frontend (Both Development and Production)
 - Dockerized Backend

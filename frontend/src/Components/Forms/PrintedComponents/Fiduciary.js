@@ -85,12 +85,12 @@ const Fiduciary = () => {
                                 </div>
                                 <div className="col-1">
                                   <label className="radio-inline">
-                                      <input disabled type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == "1" ? true : false} onChange={e => onChange(e)} value="1"/>Yes
+                                      <input disabled type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] === "1" ? true : false} onChange={e => onChange(e)} value="1"/>Yes
                                   </label>
                                 </div>
                                 <div className="col-1">
                                   <label className="radio-inline">
-                                      <input disabled type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == "1" ? false : true} onChange={e => onChange(e)} value="0"/>No
+                                      <input disabled type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] === "1" ? false : true} onChange={e => onChange(e)} value="0"/>No
                                   </label>
                                 </div>
                             </div>

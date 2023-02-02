@@ -259,9 +259,9 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Are all dependents on the same medical aid and same medical aid plan? </b></label>
                         </div>
                         <div className="col-6">
-                            <input disabled type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] == 1 ? true : false}  name="1"/>
+                            <input disabled type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] === 1 ? true : false}  name="1"/>
                                 <label for="yes9">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input disabled type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] == 1 ? false : true}  name="0"/>
+                            <input disabled type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] === 1 ? false : true}  name="0"/>
                                 <label for="no9">No</label>
                         </div>
                     </div>
@@ -593,7 +593,7 @@ const GapCover = () => {
                             <div className="row">
                                 <div className="row col-3 align-items-center">
                                     <div className="col-2">
-                                        <input disabled className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? true : false}type="radio" value="1" id="GP_Exclusions" name="GP_Exclusions" />
+                                        <input disabled className="form-check-input" checked={FormData['GP_Exclusions'] === "1" ? true : false}type="radio" value="1" id="GP_Exclusions" name="GP_Exclusions" />
                                     </div>
                                     <div className="col-8">
                                         <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -604,7 +604,7 @@ const GapCover = () => {
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div className="row col-3 align-items-center">
                                     <div className="col-2">
-                                        <input disabled className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? false : true}type="radio" value="0" id="GP_Exclusions" name="GP_Exclusions" />
+                                        <input disabled className="form-check-input" checked={FormData['GP_Exclusions'] === "1" ? false : true}type="radio" value="0" id="GP_Exclusions" name="GP_Exclusions" />
                                     </div>
                                     <div className="col-8">
                                         <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -693,7 +693,7 @@ const GapCover = () => {
                         <div className="row">
                             <div className="row col-3 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? true : false}type="radio" value="1" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                    <input disabled className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] === "1" ? true : false}type="radio" value="1" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
                                 </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -704,7 +704,7 @@ const GapCover = () => {
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-3 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? false : true}type="radio" value="0" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                    <input disabled className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] === "1" ? false : true}type="radio" value="0" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
                                 </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >

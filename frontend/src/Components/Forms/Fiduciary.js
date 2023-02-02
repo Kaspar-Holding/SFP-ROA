@@ -4,12 +4,14 @@ import { useLocation } from 'react-router-dom';
 // import './Invest.css';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
-const Fiduciary = () => {
+import { connect } from 'react-redux';
+
+const Fiduciary = ({user}) => {
   const location = useLocation();
   const { state } = location;
   // const [propsData, setpropsData] = useState(props.data);
   const [FormData, setFormData] = useState({
-    advisorId : state['advisorId'],
+    advisorId : user['id'],
     formId : state['formId'],
     // clientIdNumber : propsData['clientIdNumber'],
     fiduciaryWillInPlace : "1",
@@ -73,9 +75,9 @@ const Fiduciary = () => {
     // window.location.reload();
   }
   // console.log(FormData)
-  // useEffect(() => {
-  //   createFiduciaryForm(FormData)
-  // }, []);
+  useEffect(() => {
+    createFiduciaryForm(FormData)
+  }, [])
   setTimeout(() => {
     setSuccessMessageVisibility("none")
   }, 5000);
@@ -102,12 +104,12 @@ const Fiduciary = () => {
                                 </div>
                                 <div className="col-1">
                                   <label className="radio-inline">
-                                      <input type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == "1" ? true : false} onChange={e => onChange(e)} value="1"/>Yes
+                                      <input type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] === "1" ? true : false} onChange={e => onChange(e)} value="1"/>Yes
                                   </label>
                                 </div>
                                 <div className="col-1">
                                   <label className="radio-inline">
-                                      <input type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == "1" ? false : true} onChange={e => onChange(e)} value="0"/>No
+                                      <input type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] === "1" ? false : true} onChange={e => onChange(e)} value="0"/>No
                                   </label>
                                 </div>
                             </div>
@@ -178,4 +180,9 @@ const Fiduciary = () => {
   )
  }
 
-export default  Fiduciary
+const mapStateToProps = state => ({
+  isAuthenticated: state.Auth.isAuthenticated,
+  user: state.Auth.user,
+})
+
+export default connect(mapStateToProps)(Fiduciary)

@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15.1-alpine
+    container_name: sfp-db-dev
+    volumes:
+      - sfp_postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: sfp-pgadmin-dev
+    depends_on:
+      - db
+    ports:
+      - "5052:80"
+    env_file:
+      - ./.env
+    restart: always
+
+
+volumes:
+  sfp_postgres_data:

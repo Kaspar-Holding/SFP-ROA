@@ -53,6 +53,10 @@ urlpatterns = [
     path('add_short_term_commerical_data/' , views.insertShortTermInsuranceCommericalData, name="Insert data into Short Term Commerical Collection"),
     path('view_short_term_commerical_data/' , views.viewShortTermInsuranceCommericalData, name="Short Term Commerical data details"),
     path('update_short_term_commerical_data/' , views.updateShortTermInsuranceCommericalData, name="Short Term Commerical data details"),
+    # Risk Factors Commerical
+    path('add_risk_factors_data/' , views.insertRiskFactorsData, name="Insert data into Risk Factors Collection"),
+    path('view_risk_factors_data/' , views.viewRiskFactorsData, name="Risk Factors data details"),
+    path('update_risk_factors_data/' , views.updateRiskFactorsData, name="Risk Factors data details"),
     # PDF Form
     path('pdf/' , printFormViews.pdfForm, name="PDF Form"),
 ]

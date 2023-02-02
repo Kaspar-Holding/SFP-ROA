@@ -90,7 +90,7 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
     // window.location.reload();
   }
   
-  if (isAuthenticated == true){
+  if (isAuthenticated === true){
     return <Navigate to='/' />
   }
   return (

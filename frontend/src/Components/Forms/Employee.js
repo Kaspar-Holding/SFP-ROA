@@ -3,16 +3,14 @@ import React, {useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import './Styles/CustomNotification.css';
 import './Styles/CustomButton.css';
- function  Employee()
- {
+import { connect } from 'react-redux';
+const Employee = ({user}) =>
+{
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
     const [backgroundInfoVisibility2, setbackgroundInfoVisibility2] = useState(false)
     const [backgroundInfoVisibility3, setbackgroundInfoVisibility3] = useState(false)
     const [backgroundInfoVisibility4, setbackgroundInfoVisibility4] = useState(false)
     const [backgroundInfoVisibility5, setbackgroundInfoVisibility5] = useState(false)
-
-
-
 
     function backgroundInfo_onFocus1() {
         setbackgroundInfoVisibility1(true)
@@ -67,10 +65,8 @@ import './Styles/CustomButton.css';
       const [updateErrorVisibilty, setUpdateErrorVisibility] = useState("none")
       
       const [FormData, setFormData] = useState({
-        
-        advisorId : state['advisorId'],
-        formId : state['formId'],
-        
+        advisorId : user['id'],
+        formId : state['formId'],       
             
         EB_ClientName : "",
         EB_ClientIdNumber : "",
@@ -264,7 +260,9 @@ import './Styles/CustomButton.css';
         EB_BusFReplace_InvestCh_Existing : "",
 
 
+
       })
+
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
       const createEBForm = async(data) => {
         const config = {
@@ -285,7 +283,7 @@ import './Styles/CustomButton.css';
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+            console.log(error.response.data)
             setErrorData({
               status: error.response.status,
               message: error.response.statusText
@@ -331,7 +329,9 @@ import './Styles/CustomButton.css';
           // window.location.reload();
       }
       useEffect(() => {
-          createEBForm(FormData)
+        if(user){
+            createEBForm(FormData)
+        }
           // setInterval(updateIPForm, 20000);
       }, []);
     //   console.log(JSON.stringify(FormData))
@@ -558,12 +558,12 @@ import './Styles/CustomButton.css';
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] == 1 ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
+                                        <input type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === 1 ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
                                     </label>
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] == 1 ? false : true} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
+                                        <input type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === 1 ? false : true} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
                                     </label>
                                   </div>
                               </div>
@@ -725,7 +725,7 @@ import './Styles/CustomButton.css';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] == 1 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input className="form-check-input" type="radio" value="1"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 1 ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -736,7 +736,7 @@ import './Styles/CustomButton.css';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] == 0 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input className="form-check-input" type="radio" value="0"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 0 ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -747,7 +747,7 @@ import './Styles/CustomButton.css';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="2" id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] == 2 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input className="form-check-input" type="radio" value="2" id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 2 ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -797,7 +797,7 @@ import './Styles/CustomButton.css';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Retire_In5Years" >
@@ -808,7 +808,7 @@ import './Styles/CustomButton.css';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Retire_In5Years" >
@@ -834,7 +834,7 @@ import './Styles/CustomButton.css';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Illiterate" >
@@ -845,7 +845,7 @@ import './Styles/CustomButton.css';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Illiterate" >
@@ -871,7 +871,7 @@ import './Styles/CustomButton.css';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Sophisticated" >
@@ -882,7 +882,7 @@ import './Styles/CustomButton.css';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Sophisticated" >
@@ -908,7 +908,7 @@ import './Styles/CustomButton.css';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusHS_TurnOver" >
@@ -919,7 +919,7 @@ import './Styles/CustomButton.css';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusHS_TurnOver" >
@@ -945,7 +945,7 @@ import './Styles/CustomButton.css';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusI_Choice" >
@@ -956,7 +956,7 @@ import './Styles/CustomButton.css';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusI_Choice" >
@@ -982,7 +982,7 @@ import './Styles/CustomButton.css';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusinessItP" >
@@ -993,7 +993,7 @@ import './Styles/CustomButton.css';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusinessItP" >
@@ -1182,7 +1182,7 @@ import './Styles/CustomButton.css';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_Approved" >
@@ -1193,7 +1193,7 @@ import './Styles/CustomButton.css';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_Approved" >
@@ -1239,7 +1239,7 @@ import './Styles/CustomButton.css';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_UnApproved" >
@@ -1250,7 +1250,7 @@ import './Styles/CustomButton.css';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_UnApproved" >
@@ -1299,7 +1299,7 @@ import './Styles/CustomButton.css';
         <div className="row">
             <div className="row col-2 align-items-center">
                 <div className="col-2">
-                    <input className="form-check-input" type="radio" value="1" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                    <input className="form-check-input" type="radio" value="1" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                 </div>
                 <div className="col-2">
                     <label className="form-check-label" htmlFor="EB_BusinessRiskFundTakeOver" >
@@ -1310,7 +1310,7 @@ import './Styles/CustomButton.css';
 
             <div className="row col-2 align-items-center">
                 <div className="col-2">
-                    <input className="form-check-input" type="radio" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                    <input className="form-check-input" type="radio" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                 </div>
                 <div className="col-2">
                     <label className="form-check-label" htmlFor="EB_BusinessRiskFundTakeOver" >
@@ -1477,7 +1477,7 @@ import './Styles/CustomButton.css';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_Approved" >
@@ -1488,7 +1488,7 @@ import './Styles/CustomButton.css';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_Approved" >
@@ -1534,7 +1534,7 @@ import './Styles/CustomButton.css';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_UnApproved" >
@@ -1545,7 +1545,7 @@ import './Styles/CustomButton.css';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_UnApproved" >
@@ -1947,7 +1947,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input className="form-check-input" type="radio" value="1" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="1" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1958,7 +1958,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1984,7 +1984,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input className="form-check-input" type="radio" value="1" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="1" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1995,7 +1995,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2079,7 +2079,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input className="form-check-input" type="radio" value="1" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="1" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2090,7 +2090,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input className="form-check-input" type="radio" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2785,4 +2785,9 @@ Record the client's instructions, deviations and implications thereof.
     )
  }
 
- export default Employee
+const mapStateToProps = state => ({
+    isAuthenticated: state.Auth.isAuthenticated,
+    user: state.Auth.user,
+})
+
+export default connect(mapStateToProps)(Employee)

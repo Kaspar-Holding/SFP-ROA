@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers
-from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form
+from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskFactorsSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers
+from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -111,7 +111,7 @@ def insertFormData(request):
             serializer2 = FormSerializers(latest, many=False)
             return Response({"message": "Data is inserted","formId":serializer2.data['id'],"code":201,},201)
         else :
-            return Response({'message': "Form Already Exists","code": "200", "formId" : serializer1.data['id']},200)
+            return Response({'message': "Form Already Exists","code": "200", "formData" : serializer1.data},200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
@@ -128,7 +128,7 @@ def viewFormData(request):
         advisorNameSerializer = UserAccountsSerializers(advisorName, many=False)
 
         formData['advisorName'] = advisorNameSerializer.data['name']
-        message = {"message": "Found","code":200,"Data": formData}
+        message = {"message": "Found","code":200,"formData": formData}
         code = 200
     except:
         message = {"message": "Error 404, Not found","code":404}
@@ -147,11 +147,11 @@ def updateFormData(request):
 
 @api_view(['POST'])
 def changeFormStatus(request):
-    form = Form.objects.filter(id=request.data['formId']).first()
-    serializer = FormSerializers(instance=form, data={'status': request.data['formStatus']}, partial=True)
+    form = RiskFactors.objects.filter(id=request.data['formId']).first()
+    serializer = RiskFactorsSerializers(instance=form, data={'status': request.data['formStatus']}, partial=True)
     if serializer.is_valid():
         serializer.save()
-        return Response({"message": "Found","code":200,"Data": serializer.data},200)
+        return Response({"message": "Updated","code":200,"Data": serializer.data},200)
     else:
         return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
 
@@ -195,18 +195,53 @@ def sampleFile(request):
 
 @api_view(['POST'])
 def formStats(request):
-    forms = Form.objects.filter(advisorId = request.data['advisorId'])
-    formSerializer = FormSerializers(forms, many=True)
-    complete_forms = Form.objects.filter(advisorId = request.data['advisorId'],status = 1)
-    complete_serializer = FormSerializers(complete_forms, many=True)
-    incomplete_forms = Form.objects.filter(advisorId = request.data['advisorId'],status = 0)
-    incomplete_serializer = FormSerializers(incomplete_forms, many=True)
-
-    return Response({
-            "completed_forms": len(complete_serializer.data),
-            "incompleted_forms": len(incomplete_serializer.data),
-            "forms" : formSerializer.data
-        },200)
+    # forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
+    # formSerializer = RiskFactorsSerializers(forms, many=True)
+    complete_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 1)
+    complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
+    incomplete_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 0)
+    incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
+    searchQuery = request.data['search_query']
+    riskFactors = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
+    forms_data = []
+    if searchQuery != "":
+        forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId")
+    else:
+        forms_data = riskFactors.order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId")
+    orderBy = request.data['order_by']
+    p = Paginator(forms_data, 10)
+    if request.data['page_number'] <= p.num_pages:
+            
+        return Response(
+            {
+                "completed_forms": len(complete_serializer.data),
+                "incompleted_forms": len(incomplete_serializer.data),
+                "total_pages" : p.num_pages,
+                "has_pages" : p.num_pages,
+                "total_records" : len(forms_data),
+                "pagelimit" : 10,
+                "next" : p.page(request.data['page_number']).has_next(),
+                "results" : p.page(request.data['page_number']).object_list
+            }
+        )
+    else:
+        return Response(
+            {
+                "completed_forms": len(complete_serializer.data),
+                "incompleted_forms": len(incomplete_serializer.data),
+                "total_pages" : p.num_pages,
+                "next" : None,
+                "has_pages" : p.num_pages,
+                "total_records" : len(forms_data),
+                "pagelimit" : 10,
+                "results" : {}
+            }
+        )
+    # return Response({
+    #         "completed_forms": len(complete_serializer.data),
+    #         "incompleted_forms": len(incomplete_serializer.data),
+    #         "forms" : formSerializer.data
+    #     },200)
 
 # Fiduciary
 @api_view(['POST'])
@@ -355,7 +390,7 @@ def viewRiskPlanningData(request):
 
 @api_view(['POST'])
 def updateRiskPlanningData(request):
-    form = RiskPlanning.objects.get(id=request.data['id'])
+    form = RiskPlanning.objects.get(id=request.data['formId'])
     serializer = RiskPlanningSerializers(instance=form, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
@@ -670,6 +705,77 @@ def viewShortTermInsuranceCommericalData(request):
 def updateShortTermInsuranceCommericalData(request):
     form = ShortTermInsuranceCommerical.objects.get(id=request.data['id'])
     serializer = ShortTermInsuranceCommericalSerializers(instance=form, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    else:
+        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+
+
+# Risk Factors
+@api_view(['POST'])
+def insertRiskFactorsData(request):
+    serializer = RiskFactorsSerializers(data=request.data, many=False)
+    if serializer.is_valid():
+        old_form = RiskFactors.objects.filter(advisorId = request.data['advisorId'],RF_ClientId = request.data['RF_ClientId']).first()
+        serializer1 = RiskFactorsSerializers(old_form, many=False)
+        # return Response({"data":serializer1.data, "length": len(serializer1.data['client_id'])})
+        if len(serializer1.data['RF_ClientId']) == 0:
+            serializer.create(serializer.validated_data)
+            latest = RiskFactors.objects.latest('id')
+            serializer2 = RiskFactorsSerializers(latest, many=False)
+            return Response({"message": "Data is inserted","formId":serializer2.data['id'],"code":201,},201)
+        else :
+            return Response({'message': "Form Already Exists","code": "200", "formId" : serializer1.data['id']},200)
+        #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
+    return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
+
+# @api_view(['POST'])
+# def insertRiskFactorsData(request):
+#     serializer = RiskFactorsSerializers(data=request.data, many=False)
+#     if serializer.is_valid():
+#         old_form = RiskFactors.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
+#         # old_form = RiskPlanning.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId'],clientIdNumber = request.data['clientIdNumber']).first()
+#         serializer1 = RiskFactorsSerializers(old_form, many=False)
+#         data = serializer1.data
+#         # return Response({"data":serializer1.data, "length": str(serializer1.data['advisorId'])})
+#         if str(serializer1.data['advisorId']) == "None":
+#             serializer.create(serializer.validated_data)
+#             latest = RiskFactors.objects.latest('id')
+#             serializer2 = RiskFactorsSerializers(latest, many=False)
+#             return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+#         else :
+#             del data['status']
+#             del data['created_at']
+#             del data['updated_at']
+#             return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
+#         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
+#     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
+
+
+    
+
+@api_view(['POST'])
+def viewRiskFactorsData(request):
+    form = RiskFactors.objects.get(id=request.data['formId'], advisorId=request.data['advisorId'])
+    formSerializer = RiskFactorsSerializers(form, many=False)
+    
+    formData = formSerializer.data
+    
+    # advisorName = RiskFactors.objects.get(id=formData.data['advisorId'])
+    # advisorNameSerializer = RiskFactorsSerializers(advisorName, many=False)
+
+    # formData['advisorName'] = advisorNameSerializer.data['name']
+    # if serializer.is_valid():
+    return Response({"message": "Found","code":200,"formData": formData},200)
+    # else:
+    #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+@api_view(['POST'])
+def updateRiskFactorsData(request):
+    form = RiskFactors.objects.get(id=request.data['id'])
+    serializer = RiskFactorsSerializers(instance=form, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
         return Response({"message": "Updated","code":200,"formData": serializer.data},200)

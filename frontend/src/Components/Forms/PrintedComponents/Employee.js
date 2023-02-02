@@ -521,12 +521,12 @@ import { useLocation } from 'react-router-dom';
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input disabled type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] == 1 ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
+                                        <input disabled type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === 1 ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
                                     </label>
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input disabled type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] == 1 ? false : true} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
+                                        <input disabled type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === 1 ? false : true} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
                                     </label>
                                   </div>
                               </div>
@@ -688,7 +688,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] == 1 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input disabled className="form-check-input" type="radio" value="1"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 1 ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -699,7 +699,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] == 0 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input disabled className="form-check-input" type="radio" value="0"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 0 ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -710,7 +710,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="2" id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] == 2 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input disabled className="form-check-input" type="radio" value="2" id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 2 ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -742,7 +742,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Retire_In5Years" >
@@ -753,7 +753,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Retire_In5Years" >
@@ -779,7 +779,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Illiterate" >
@@ -790,7 +790,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Illiterate" >
@@ -816,7 +816,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Sophisticated" >
@@ -827,7 +827,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Sophisticated" >
@@ -853,7 +853,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusHS_TurnOver" >
@@ -864,7 +864,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusHS_TurnOver" >
@@ -890,7 +890,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusI_Choice" >
@@ -901,7 +901,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusI_Choice" >
@@ -927,7 +927,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusinessItP" >
@@ -938,7 +938,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusinessItP" >
@@ -1127,7 +1127,7 @@ import { useLocation } from 'react-router-dom';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_Approved" >
@@ -1138,7 +1138,7 @@ import { useLocation } from 'react-router-dom';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_Approved" >
@@ -1184,7 +1184,7 @@ import { useLocation } from 'react-router-dom';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_UnApproved" >
@@ -1195,7 +1195,7 @@ import { useLocation } from 'react-router-dom';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_UnApproved" >
@@ -1244,7 +1244,7 @@ import { useLocation } from 'react-router-dom';
         <div className="row">
             <div className="row col-2 align-items-center">
                 <div className="col-2">
-                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                 </div>
                 <div className="col-2">
                     <label className="form-check-label" htmlFor="EB_BusinessRiskFundTakeOver" >
@@ -1255,7 +1255,7 @@ import { useLocation } from 'react-router-dom';
 
             <div className="row col-2 align-items-center">
                 <div className="col-2">
-                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                 </div>
                 <div className="col-2">
                     <label className="form-check-label" htmlFor="EB_BusinessRiskFundTakeOver" >
@@ -1422,7 +1422,7 @@ import { useLocation } from 'react-router-dom';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_Approved" >
@@ -1433,7 +1433,7 @@ import { useLocation } from 'react-router-dom';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_Approved" >
@@ -1479,7 +1479,7 @@ import { useLocation } from 'react-router-dom';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_UnApproved" >
@@ -1490,7 +1490,7 @@ import { useLocation } from 'react-router-dom';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_UnApproved" >
@@ -1831,7 +1831,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1842,7 +1842,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1868,7 +1868,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1879,7 +1879,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1963,7 +1963,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1974,7 +1974,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >

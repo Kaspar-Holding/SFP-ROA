@@ -13,7 +13,7 @@ const SuperUserLayout = (user) => {
     }
   },[isSuperuser,user])
   
-  if(isSuperuser == false){
+  if(isSuperuser === false){
     return <Navigate to="/" />
   }
   return (

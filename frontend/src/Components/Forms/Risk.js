@@ -4,8 +4,9 @@ import React, {useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import  './Styles/CustomNotification.css'
 import  './Styles/CustomButton.css'
+import { connect } from 'react-redux'
 // import './Header.css';
-function  Risk()
+const Risk = ({user}) =>
 {
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
     const [backgroundInfoVisibility2, setbackgroundInfoVisibility2] = useState(false)
@@ -97,7 +98,7 @@ function  Risk()
       const { state } = location;
       const [FormData, setFormData] = useState({
         
-        advisorId : state['advisorId'],
+        advisorId : user['id'],
         formId : state['formId'],
 
         RP_DC_LumpSumTotalNeed : "",
@@ -232,6 +233,7 @@ function  Risk()
         RP_InformationExplained : "",
     
       })
+      // console.log(JSON.stringify(FormData))
       const [SuccessMessage, setSuccessMessage] = useState("")
       const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
@@ -1617,7 +1619,12 @@ Cooling off period
     )
 }
 
-export default Risk
+const mapStateToProps = state => ({
+  isAuthenticated: state.Auth.isAuthenticated,
+  user: state.Auth.user,
+})
+
+export default connect(mapStateToProps)(Risk)
 
 const HeaderStyle = {
    width: "100%",

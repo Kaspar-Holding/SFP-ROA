@@ -4,13 +4,13 @@ import { useLocation } from 'react-router-dom';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
 import axios from 'axios';
-
-const GapCover = () => {
+import { connect } from 'react-redux';
+const GapCover = ({user}) => {
     const location = useLocation();
     const { state } = location;
 
     const [FormData, setFormData] = useState({
-        advisorId : state['advisorId'],
+        advisorId : user['id'],
         formId : state['formId'],
         GP_ClientName : "",
         GP_ClientIdNumber : "",
@@ -299,9 +299,9 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Are all dependents on the same medical aid and same medical aid plan? </b></label>
                         </div>
                         <div className="col-6">
-                            <input type="radio" id="GP_MedicalDependent" onChange={(e) => {onChange(e)}} value={FormData['GP_MedicalDependent'] == 1 ? true : false}  name="1"/>
+                            <input type="radio" id="GP_MedicalDependent" onChange={(e) => {onChange(e)}} value={FormData['GP_MedicalDependent'] === 1 ? true : false}  name="1"/>
                                 <label for="yes9">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" id="GP_MedicalDependent" onChange={(e) => {onChange(e)}} value={FormData['GP_MedicalDependent'] == 1 ? false : true}  name="0"/>
+                            <input type="radio" id="GP_MedicalDependent" onChange={(e) => {onChange(e)}} value={FormData['GP_MedicalDependent'] === 1 ? false : true}  name="0"/>
                                 <label for="no9">No</label>
                         </div>
                     </div>
@@ -633,7 +633,7 @@ const GapCover = () => {
                             <div className="row">
                                 <div className="row col-3 align-items-center">
                                     <div className="col-2">
-                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="GP_Exclusions" name="GP_Exclusions" />
+                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="GP_Exclusions" name="GP_Exclusions" />
                                     </div>
                                     <div className="col-8">
                                         <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -644,7 +644,7 @@ const GapCover = () => {
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div className="row col-3 align-items-center">
                                     <div className="col-2">
-                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="GP_Exclusions" name="GP_Exclusions" />
+                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="GP_Exclusions" name="GP_Exclusions" />
                                     </div>
                                     <div className="col-8">
                                         <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -733,7 +733,7 @@ const GapCover = () => {
                         <div className="row">
                             <div className="row col-3 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
                                 </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -744,7 +744,7 @@ const GapCover = () => {
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-3 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
                                 </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -798,4 +798,9 @@ const GapCover = () => {
 }
 
 
-export default GapCover 
+const mapStateToProps = state => ({
+    isAuthenticated: state.Auth.isAuthenticated,
+    user: state.Auth.user,
+})
+
+export default connect(mapStateToProps)(GapCover) 
