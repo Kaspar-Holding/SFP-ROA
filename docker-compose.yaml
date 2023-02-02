@@ -12,7 +12,7 @@ services:
     # build: 
     #   context: ./backend
     #   dockerfile: Dockerfile
-    image: kaspar.azurecr.io/sfp_backend:1.0
+    image: sfp_backend:1.3
     container_name: sfp_backend
     # command: python /app/manage.py runserver 0.0.0.0:8000
     command: gunicorn sfp.wsgi:application --bind 0.0.0.0:8000
@@ -33,7 +33,7 @@ services:
       - db:db
     
   web_migration:
-    image: kaspar.azurecr.io/sfp_backend:1.0
+    image: sfp_backend:1.3
     # build: 
     #   context: .
     #   dockerfile: Dockerfile.backend
@@ -48,12 +48,12 @@ services:
       - web
 
   frontend:
-    image: test
+    image: sfp_frontend:1.3
     # build:
     #   context: ./frontend
     #   dockerfile: Dockerfile 
     container_name: sfp_frontend
-    command: npm start
+    # command: npm start
     ports:
       - "3000:80"
     depends_on:
