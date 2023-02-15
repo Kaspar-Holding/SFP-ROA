@@ -129,7 +129,7 @@ const GapCover = () => {
                             <label className="col-form-label"><b>Client Name:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled  id="GP_ClientName"value={FormData['GP_ClientName']}  name="GP_ClientName" className="form-control" placeholder="Client Name"  aria-describedby="" />
+                            <input spellCheck="true" disabled  id="GP_ClientName"value={FormData['GP_ClientName']}  name="GP_ClientName" className="form-control"  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -140,7 +140,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>ID number:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_ClientIdNumber"value={FormData['GP_ClientIdNumber']}  name="GP_ClientIdNumber"  className="form-control" placeholder="ID number"  aria-describedby="" />
+                            <input spellCheck="true" disabled   id="GP_ClientIdNumber"value={FormData['GP_ClientIdNumber']}  name="GP_ClientIdNumber"  className="form-control"   aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@ const GapCover = () => {
                             <label htmlFor="address" className="col-form-label"><b>Address:</b></label>
                         </div>
                         <div className="col-9">
-                            <input spellCheck="true" disabled   id="GP_ClientAddress"value={FormData['GP_ClientAddress']}  name="GP_ClientAddress"  className="form-control" placeholder="Address"  aria-describedby="" />
+                            <input spellCheck="true" disabled   id="GP_ClientAddress"value={FormData['GP_ClientAddress']}  name="GP_ClientAddress"  className="form-control"   aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -164,7 +164,7 @@ const GapCover = () => {
                             <label htmlFor="email" className="col-form-label"><b>Email:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_ClientEmail"value={FormData['GP_ClientEmail']}  name="GP_ClientEmail"  className="form-control" placeholder="Email"  aria-describedby="" />
+                            <input spellCheck="true" disabled   id="GP_ClientEmail"value={FormData['GP_ClientEmail']}  name="GP_ClientEmail"  className="form-control"  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -175,7 +175,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Phone:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_ClientPhoneNumber"value={FormData['GP_ClientPhoneNumber']}  name="GP_ClientPhoneNumber"  className="form-control" placeholder="Mobile Number"  aria-describedby="" />
+                            <input spellCheck="true" disabled   id="GP_ClientPhoneNumber"value={FormData['GP_ClientPhoneNumber']}  name="GP_ClientPhoneNumber"  className="form-control"   aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@ const GapCover = () => {
                             <label htmlFor="email" className="col-form-label"><b>Medical Aid:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_ClientMedicalAid"value={FormData['GP_ClientMedicalAid']}  name="GP_ClientMedicalAid"  className="form-control" placeholder="Medical Aid Name"  aria-describedby="" />
+                            <input spellCheck="true" disabled   id="GP_ClientMedicalAid"value={FormData['GP_ClientMedicalAid']}  name="GP_ClientMedicalAid"  className="form-control"   aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -198,7 +198,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Inception Date:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled  type="date" id="GP_ClientInceptionDate"value={FormData['GP_ClientInceptionDate']}  name="GP_ClientInceptionDate"  className="form-control" placeholder="Click to enter date"  aria-describedby="" />
+                            <input spellCheck="true" disabled  type="date" id="GP_ClientInceptionDate"value={FormData['GP_ClientInceptionDate']}  name="GP_ClientInceptionDate"  className="form-control" aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -210,7 +210,7 @@ const GapCover = () => {
                             <label htmlFor="email" className="col-form-label"><b>Financial Advisor:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_FinancialAdvisor"value={FormData['GP_FinancialAdvisor']}  name="GP_FinancialAdvisor"  className="form-control" placeholder="Primary intermediary's name"  aria-describedby="" />
+                            <input spellCheck="true" disabled   id="GP_FinancialAdvisor"value={FormData['GP_FinancialAdvisor']}  name="GP_FinancialAdvisor"  className="form-control" aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Date:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled  type="date" id="GP_Date"value={FormData['GP_Date']}  name="GP_Date"  className="form-control" placeholder="Click here to enter date"  aria-describedby="" />
+                            <input spellCheck="true" disabled  type="date" id="GP_Date"value={FormData['GP_Date']}  name="GP_Date"  className="form-control"   aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -245,7 +245,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Details:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled  id="GP_Benefits"value={FormData['GP_Benefits']}  name="GP_Benefits"  className="form-control" placeholder="Details"  aria-describedby="" style={{width:"900px",height:"80px"}} />
+                            <input spellCheck="true" disabled  id="GP_Benefits"value={FormData['GP_Benefits']}  name="GP_Benefits"  className="form-control"   aria-describedby="" style={{width:"900px",height:"80px"}} />
                         </div>
                     </div>
                 </div>
@@ -259,9 +259,9 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Are all dependents on the same medical aid and same medical aid plan? </b></label>
                         </div>
                         <div className="col-6">
-                            <input disabled type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] == 1 ? true : false}  name="1"/>
+                            <input disabled type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] === 1 ? true : false}  name="1"/>
                                 <label for="yes9">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input disabled type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] == 1 ? false : true}  name="0"/>
+                            <input disabled type="radio" id="GP_MedicalDependent"value={FormData['GP_MedicalDependent'] === 1 ? false : true}  name="0"/>
                                 <label for="no9">No</label>
                         </div>
                     </div>
@@ -281,49 +281,49 @@ const GapCover = () => {
                     <tbody>
                         <tr>
                             <td align="left">
-                                <input spellCheck="true" disabled   id="GP_MemberName1"value={FormData['GP_MemberName1']}  name="GP_MemberName1" className="form-control" placeholder="Member Name"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberName1"value={FormData['GP_MemberName1']}  name="GP_MemberName1" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_MemberRelationship1"value={FormData['GP_MemberRelationship1']}  name="GP_MemberRelationship1" className="form-control" placeholder="Relationship to main member"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberRelationship1"value={FormData['GP_MemberRelationship1']}  name="GP_MemberRelationship1" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_MemberAidPlan1"value={FormData['GP_MemberAidPlan1']}  name="GP_MemberAidPlan1" className="form-control" placeholder="Medical Aid Plan"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberAidPlan1"value={FormData['GP_MemberAidPlan1']}  name="GP_MemberAidPlan1" className="form-control"  aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left">
-                                <input spellCheck="true" disabled   id="GP_MemberName2"value={FormData['GP_MemberName2']}  name="GP_MemberName2" className="form-control" placeholder="Member Name"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberName2"value={FormData['GP_MemberName2']}  name="GP_MemberName2" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_MemberRelationship2"value={FormData['GP_MemberRelationship2']}  name="GP_MemberRelationship2" className="form-control" placeholder="Relationship to main member"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberRelationship2"value={FormData['GP_MemberRelationship2']}  name="GP_MemberRelationship2" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_MemberAidPlan2"value={FormData['GP_MemberAidPlan2']}  name="GP_MemberAidPlan2" className="form-control" placeholder="Medical Aid Plan"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberAidPlan2"value={FormData['GP_MemberAidPlan2']}  name="GP_MemberAidPlan2" className="form-control"  aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left">
-                                <input spellCheck="true" disabled   id="GP_MemberName2"value={FormData['GP_MemberName3']}  name="GP_MemberName3" className="form-control" placeholder="Member Name"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberName2"value={FormData['GP_MemberName3']}  name="GP_MemberName3" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_MemberRelationship3"value={FormData['GP_MemberRelationship3']}  name="GP_MemberRelationship3" className="form-control" placeholder="Relationship to main member"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberRelationship3"value={FormData['GP_MemberRelationship3']}  name="GP_MemberRelationship3" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_MemberAidPlan3"value={FormData['GP_MemberAidPlan3']}  name="GP_MemberAidPlan3" className="form-control" placeholder="Medical Aid Plan"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberAidPlan3"value={FormData['GP_MemberAidPlan3']}  name="GP_MemberAidPlan3" className="form-control"  aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left">
-                                <input spellCheck="true" disabled   id="GP_MemberName4"value={FormData['GP_MemberName4']}  name="GP_MemberName4" className="form-control" placeholder="Member Name"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberName4"value={FormData['GP_MemberName4']}  name="GP_MemberName4" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_MemberRelationship4"value={FormData['GP_MemberRelationship4']}  name="GP_MemberRelationship4" className="form-control" placeholder="Relationship to main member"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberRelationship4"value={FormData['GP_MemberRelationship4']}  name="GP_MemberRelationship4" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_MemberAidPlan4"value={FormData['GP_MemberAidPlan4']}  name="GP_MemberAidPlan4" className="form-control" placeholder="Medical Aid Plan"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_MemberAidPlan4"value={FormData['GP_MemberAidPlan4']}  name="GP_MemberAidPlan4" className="form-control"   aria-describedby=""  />
                             </td>
                         </tr>
 
@@ -339,7 +339,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Provider:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled  id="GP_Provider"value={FormData['GP_Provider']}  name="GP_Provider"  className="form-control" placeholder="         Provider"  aria-describedby="" style={{width:"800px"}} />
+                            <input spellCheck="true" disabled  id="GP_Provider"value={FormData['GP_Provider']}  name="GP_Provider"  className="form-control"  aria-describedby="" style={{width:"800px"}} />
                         </div>
                     </div>
                 </div>
@@ -351,7 +351,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Option:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled  id="GP_Option"value={FormData['GP_Option']}  name="GP_Option"  className="form-control" placeholder="         Option"  aria-describedby="" style={{width:"800px"}} />
+                            <input spellCheck="true" disabled  id="GP_Option"value={FormData['GP_Option']}  name="GP_Option"  className="form-control"  aria-describedby="" style={{width:"800px"}} />
                         </div>
                     </div>
                 </div>
@@ -363,7 +363,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Motivation:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled  id="GP_Motivation"value={FormData['GP_Motivation']}  name="GP_Motivation"  className="form-control" placeholder="         Motivation"  aria-describedby="" style={{width:"800px"}} />
+                            <input spellCheck="true" disabled  id="GP_Motivation"value={FormData['GP_Motivation']}  name="GP_Motivation"  className="form-control"   aria-describedby="" style={{width:"800px"}} />
                         </div>
                     </div>
                 </div>
@@ -375,7 +375,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Total Premium:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled  id="GP_TotalPremium"value={FormData['GP_TotalPremium']}  name="GP_TotalPremium"  className="form-control" placeholder="         R 0.00"  aria-describedby="" style={{width:"800px"}} />
+                            <input spellCheck="true" disabled  id="GP_TotalPremium"value={FormData['GP_TotalPremium']}  name="GP_TotalPremium"  className="form-control"   aria-describedby="" style={{width:"800px"}} />
                         </div>
                     </div>
                 </div>
@@ -387,7 +387,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Broker Fee:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled  id="GP_BrokerFee"value={FormData['GP_BrokerFee']}  name="GP_BrokerFee"  className="form-control" placeholder="         R 0.00"  aria-describedby="" style={{width:"800px"}} />
+                            <input spellCheck="true" disabled  id="GP_BrokerFee"value={FormData['GP_BrokerFee']}  name="GP_BrokerFee"  className="form-control"   aria-describedby="" style={{width:"800px"}} />
                         </div>
                     </div>
                 </div>
@@ -399,7 +399,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Commission:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled  id="GP_Commission"value={FormData['GP_Commission']}  name="GP_Commission"  className="form-control" placeholder="         R 0.00"  aria-describedby="" style={{width:"800px"}} />
+                            <input spellCheck="true" disabled  id="GP_Commission"value={FormData['GP_Commission']}  name="GP_Commission"  className="form-control"   aria-describedby="" style={{width:"800px"}} />
                         </div>
                     </div>
                 </div>
@@ -422,120 +422,120 @@ const GapCover = () => {
                         <tr>
                             <td align="left"><b>Gap Cover rate</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_Rate"value={FormData['GP_CP_Rate']}  name="GP_CP_Rate" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_Rate"value={FormData['GP_CP_Rate']}  name="GP_CP_Rate" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_Rate"value={FormData['GP_NP_Rate']}  name="GP_NP_Rate" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_Rate"value={FormData['GP_NP_Rate']}  name="GP_NP_Rate" className="form-control"   aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Overall annual limit</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_Overall"value={FormData['GP_CP_Overall']}  name="GP_CP_Overall" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_Overall"value={FormData['GP_CP_Overall']}  name="GP_CP_Overall" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_Overall"value={FormData['GP_NP_Overall']}  name="GP_NP_Overall" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_Overall"value={FormData['GP_NP_Overall']}  name="GP_NP_Overall" className="form-control"   aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Co-payment benefit</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_CoPayment_B"value={FormData['GP_CP_CoPayment_B']}  name="GP_CP_CoPayment_B" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_CoPayment_B"value={FormData['GP_CP_CoPayment_B']}  name="GP_CP_CoPayment_B" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_CoPayment_B"value={FormData['GP_NP_CoPayment_B']}  name="GP_NP_CoPayment_B" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_CoPayment_B"value={FormData['GP_NP_CoPayment_B']}  name="GP_NP_CoPayment_B" className="form-control"  aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Sub-limit benefit</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_SubLimit_B"value={FormData['GP_CP_SubLimit_B']}  name="GP_CP_SubLimit_B" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_SubLimit_B"value={FormData['GP_CP_SubLimit_B']}  name="GP_CP_SubLimit_B" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_SubLimit_B"value={FormData['GP_NP_SubLimit_B']}  name="GP_NP_SubLimit_B" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_SubLimit_B"value={FormData['GP_NP_SubLimit_B']}  name="GP_NP_SubLimit_B" className="form-control"   aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Cancer benefit</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_Cancer_B"value={FormData['GP_CP_Cancer_B']}  name="GP_CP_Cancer_B" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_Cancer_B"value={FormData['GP_CP_Cancer_B']}  name="GP_CP_Cancer_B" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_Cancer_B"value={FormData['GP_NP_Cancer_B']}  name="GP_NP_Cancer_B" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_Cancer_B"value={FormData['GP_NP_Cancer_B']}  name="GP_NP_Cancer_B" className="form-control"   aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Cancer diagnose benefit</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_CancerD_B"value={FormData['GP_CP_CancerD_B']}  name="GP_CP_CancerD_B" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_CancerD_B"value={FormData['GP_CP_CancerD_B']}  name="GP_CP_CancerD_B" className="form-control"  aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_CancerD_B"value={FormData['GP_NP_CancerD_B']}  name="GP_NP_CancerD_B" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_CancerD_B"value={FormData['GP_NP_CancerD_B']}  name="GP_NP_CancerD_B" className="form-control"   aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Other benefits</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_Other_B"value={FormData['GP_CP_Other_B']}  name="GP_CP_Other_B" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_Other_B"value={FormData['GP_CP_Other_B']}  name="GP_CP_Other_B" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_Other_B"value={FormData['GP_NP_Other_B']}  name="GP_NP_Other_B" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_Other_B"value={FormData['GP_NP_Other_B']}  name="GP_NP_Other_B" className="form-control"  aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Casualty benefit(In case of accident)</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_CasualB"value={FormData['GP_CP_CasualB']}  name="GP_CP_CasualB" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_CasualB"value={FormData['GP_CP_CasualB']}  name="GP_CP_CasualB" className="form-control"  aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_CasualB"value={FormData['GP_NP_CasualB']}  name="GP_NP_CasualB" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_CasualB"value={FormData['GP_NP_CasualB']}  name="GP_NP_CasualB" className="form-control"   aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Trauma counselling benefit</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_TraumaB"value={FormData['GP_CP_TraumaB']}  name="GP_CP_TraumaB" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_TraumaB"value={FormData['GP_CP_TraumaB']}  name="GP_CP_TraumaB" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_TraumaB"value={FormData['GP_NP_TraumaB']}  name="GP_NP_TraumaB" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_TraumaB"value={FormData['GP_NP_TraumaB']}  name="GP_NP_TraumaB" className="form-control"   aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Gap Cover premium waiver benefit</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_PreW_B"value={FormData['GP_CP_PreW_B']}  name="GP_CP_PreW_B" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_PreW_B"value={FormData['GP_CP_PreW_B']}  name="GP_CP_PreW_B" className="form-control" aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_PreW_B"value={FormData['GP_NP_PreW_B']}  name="GP_NP_PreW_B" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_PreW_B"value={FormData['GP_NP_PreW_B']}  name="GP_NP_PreW_B" className="form-control"  aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Medical scheme waiver benefit</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_Med_SW_B"value={FormData['GP_CP_Med_SW_B']}  name="GP_CP_Med_SW_B" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_Med_SW_B"value={FormData['GP_CP_Med_SW_B']}  name="GP_CP_Med_SW_B" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_Med_SW_B"value={FormData['GP_NP_Med_SW_B']}  name="GP_NP_Med_SW_B" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_Med_SW_B"value={FormData['GP_NP_Med_SW_B']}  name="GP_NP_Med_SW_B" className="form-control"   aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Accidental death cover benefit</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_Accidental_DC_B"value={FormData['GP_CP_Accidental_DC_B']}  name="GP_CP_Accidental_DC_B" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_Accidental_DC_B"value={FormData['GP_CP_Accidental_DC_B']}  name="GP_CP_Accidental_DC_B" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_Accidental_DC_B"value={FormData['GP_NP_Accidental_DC_B']}  name="GP_NP_Accidental_DC_B" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_Accidental_DC_B"value={FormData['GP_NP_Accidental_DC_B']}  name="GP_NP_Accidental_DC_B" className="form-control"  aria-describedby=""  />
                             </td>
                         </tr>
 
@@ -552,30 +552,30 @@ const GapCover = () => {
                         <tr>
                             <td align="left"><b>General Waiting period</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_GenWait_P"value={FormData['GP_CP_GenWait_P']}  name="GP_CP_GenWait_P" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_GenWait_P"value={FormData['GP_CP_GenWait_P']}  name="GP_CP_GenWait_P" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_GenWait_P"value={FormData['GP_NP_GenWait_P']}  name="GP_NP_GenWait_P" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_GenWait_P"value={FormData['GP_NP_GenWait_P']}  name="GP_NP_GenWait_P" className="form-control"  aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Waiting period for pre-existing condition</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_PreExist_P"value={FormData['GP_CP_PreExist_P']}  name="GP_CP_PreExist_P" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_PreExist_P"value={FormData['GP_CP_PreExist_P']}  name="GP_CP_PreExist_P" className="form-control"  aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_PreExist_P"value={FormData['GP_NP_PreExist_P']}  name="GP_NP_PreExist_P" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_PreExist_P"value={FormData['GP_NP_PreExist_P']}  name="GP_NP_PreExist_P" className="form-control"   aria-describedby=""  />
                             </td>
                         </tr>
 
                         <tr>
                             <td align="left"><b>Specific waiting periods</b></td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_CP_Specific_P"value={FormData['GP_CP_Specific_P']}  name="GP_CP_Specific_P" className="form-control" placeholder="Current Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_CP_Specific_P"value={FormData['GP_CP_Specific_P']}  name="GP_CP_Specific_P" className="form-control"   aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true" disabled   id="GP_NP_Specific_P"value={FormData['GP_NP_Specific_P']}  name="GP_CP_Specific_P" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true" disabled   id="GP_NP_Specific_P"value={FormData['GP_NP_Specific_P']}  name="GP_CP_Specific_P" className="form-control"   aria-describedby=""  />
                             </td>
                         </tr>
 
@@ -593,7 +593,7 @@ const GapCover = () => {
                             <div className="row">
                                 <div className="row col-3 align-items-center">
                                     <div className="col-2">
-                                        <input disabled className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? true : false}type="radio" value="1" id="GP_Exclusions" name="GP_Exclusions" />
+                                        <input disabled className="form-check-input" checked={FormData['GP_Exclusions'] === "1" ? true : false}type="radio" value="1" id="GP_Exclusions" name="GP_Exclusions" />
                                     </div>
                                     <div className="col-8">
                                         <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -604,7 +604,7 @@ const GapCover = () => {
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div className="row col-3 align-items-center">
                                     <div className="col-2">
-                                        <input disabled className="form-check-input" checked={FormData['GP_Exclusions'] == "1" ? false : true}type="radio" value="0" id="GP_Exclusions" name="GP_Exclusions" />
+                                        <input disabled className="form-check-input" checked={FormData['GP_Exclusions'] === "1" ? false : true}type="radio" value="0" id="GP_Exclusions" name="GP_Exclusions" />
                                     </div>
                                     <div className="col-8">
                                         <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -626,7 +626,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>Other Exclusions</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_Other_Exclusions"value={FormData['GP_Other_Exclusions']}  name="GP_Other_Exclusions" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  />
+                            <input spellCheck="true" disabled   id="GP_Other_Exclusions"value={FormData['GP_Other_Exclusions']}  name="GP_Other_Exclusions" className="form-control"   aria-describedby=""  />
                         </div>
                     </div>
                     <hr/>
@@ -636,7 +636,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label"><b>General comments</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_GeneralComments"value={FormData['GP_GeneralComments']}  name="GP_GeneralComments" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  />
+                            <input spellCheck="true" disabled   id="GP_GeneralComments"value={FormData['GP_GeneralComments']}  name="GP_GeneralComments" className="form-control"  aria-describedby=""  />
                         </div>
                     </div>
                     <hr/>
@@ -670,7 +670,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label">You have elected not to accept the following product recommendations:</label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_ProdRecomm"value={FormData['GP_FinanAdvisor_ProdRecomm']}  name="GP_FinanAdvisor_ProdRecomm" className="form-control" placeholder=""  aria-describedby=""  />
+                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_ProdRecomm"value={FormData['GP_FinanAdvisor_ProdRecomm']}  name="GP_FinanAdvisor_ProdRecomm" className="form-control"   aria-describedby=""  />
                         </div>
                     </div>
 
@@ -680,7 +680,7 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label">For the following reasons</label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_Reasons"value={FormData['GP_FinanAdvisor_Reasons']}  name="GP_FinanAdvisor_Reasons" className="form-control" placeholder=""  aria-describedby=""  />
+                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_Reasons"value={FormData['GP_FinanAdvisor_Reasons']}  name="GP_FinanAdvisor_Reasons" className="form-control"   aria-describedby=""  />
                         </div>
                     </div>
 
@@ -693,7 +693,7 @@ const GapCover = () => {
                         <div className="row">
                             <div className="row col-3 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? true : false}type="radio" value="1" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                    <input disabled className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] === "1" ? true : false}type="radio" value="1" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
                                 </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -704,7 +704,7 @@ const GapCover = () => {
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-3 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == "1" ? false : true}type="radio" value="0" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                    <input disabled className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] === "1" ? false : true}type="radio" value="0" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
                                 </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -724,22 +724,22 @@ const GapCover = () => {
                             <label htmlFor="id_number" className="col-form-label">Fee and/or commission</label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_FeeCommission"value={FormData['GP_FinanAdvisor_FeeCommission']}  name="GP_FinanAdvisor_FeeCommission" className="form-control" placeholder=""  aria-describedby=""  />
+                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_FeeCommission"value={FormData['GP_FinanAdvisor_FeeCommission']}  name="GP_FinanAdvisor_FeeCommission" className="form-control"   aria-describedby=""  />
                         </div>
                     </div>
                     <br />
                     <div className="row">
                         <div className='col-10'>
-                            <input spellCheck="true" disabled  id="GP_FinanAdvisor_OtherComments"value={FormData['GP_FinanAdvisor_OtherComments']}  name="GP_FinanAdvisor_OtherComments" className="form-control" placeholder="Other Comments"  aria-describedby=""  />
+                            <input spellCheck="true" disabled  id="GP_FinanAdvisor_OtherComments"value={FormData['GP_FinanAdvisor_OtherComments']}  name="GP_FinanAdvisor_OtherComments" className="form-control"   aria-describedby=""  />
                         </div>
                     </div>
                     <br />
                     <div className="row g-3">
                         <div className="col-4">
-                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_Date"value={FormData['GP_FinanAdvisor_Date']}  name="GP_FinanAdvisor_Date" className="form-control" placeholder="Sign here"  aria-describedby=""  />
+                            <input spellCheck="true" disabled   id="GP_FinanAdvisor_Date"value={FormData['GP_FinanAdvisor_Date']}  name="GP_FinanAdvisor_Date" className="form-control"   aria-describedby=""  />
                         </div>
                         <div className="col-6">
-                            <input disabled type="date" name="client_name" className="form-control" placeholder=""  aria-describedby=""  />
+                            <input disabled type="date" name="client_name" className="form-control"   aria-describedby=""  />
                         </div>
                     </div>
        </form>

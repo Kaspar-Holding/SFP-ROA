@@ -17,11 +17,12 @@ import { jsPDF } from 'jspdf'
 import GapCover from './PrintedComponents/GapCover';
 import RiskFactors from './PrintedComponents/RiskFactors';
 import RecordOfAdvice from './PrintedComponents/RecordOfAdvice';
-const PrintForm = () => {
-  // function loadFrame() {
-  //   window.print();
-  // };
-  // window.onload = setTimeout(loadFrame, 5000);
+
+const PrintFormClient = () => {
+  function loadFrame() {
+    window.print();
+  };
+  window.onload = setTimeout(loadFrame, 5000);
     const location = useLocation();
     const { state } = location;
     
@@ -39,7 +40,7 @@ const PrintForm = () => {
           <h2 className="fw-bold h2_1">SECTION A: LONG-TERM INSURANCE </h2>
           </div> */}
 
-        <RiskFactors data={{formId: state['formId']}}  />
+        {/* <RiskFactors data={{formId: state['formId']}}  /> */}
         <br/>
             <RecordOfAdvice data={{formId: state['formId']}}  />
             <Risk data={{formId: state['formId'],advisorId: FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}}/>
@@ -64,10 +65,10 @@ const PrintForm = () => {
             {/* <Footer /> */}
       </main>
         </div>
-      
+       
       </>
     )
     
 }
 
-export default PrintForm
+export default PrintFormClient

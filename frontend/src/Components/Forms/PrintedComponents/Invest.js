@@ -346,7 +346,7 @@ const Invest = (props) =>
                 <div id="background_info_instructions10" className="hidden_class">
                     {/* <p>Discuss the outcome of the FNA</p><br /> */}
                         <ul>
-                            <li>
+                            <li> "none"
                             Define Other Source of Funds.
 
                             </li>
@@ -357,14 +357,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info10" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info10" className="form-control"
                 name='IP_OtherSourceOfIncome' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_OtherSourceOfIncome']}
                 onFocus={backgroundInfo_onFocus10}
                 onBlur={backgroundInfo_onBlur10}
-                placeholder={`Define Other Source of Funds.
-                
-                `}  aria-describedby=""  ></textarea>
+                  aria-describedby=""  ></textarea>
 
             <br/>
             <h6 className="text-start " style={{ color: "#14848A"}} > <b>Analysis of Client's Circumstances</b></h6>
@@ -384,7 +382,7 @@ const Invest = (props) =>
                     <label htmlFor="client_name" className="col-form-label" title="If no, motivate">2.1 Investment term</label>
                 </div>
                 <div className="col-3">
-                    <input spellCheck="true" disabled  type="number" id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Investment Term"  aria-describedby="" />
+                    <input spellCheck="true" disabled  type="number" id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="" />
                 </div>
                 <div className="col-3">
                 <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Years</label>
@@ -410,13 +408,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info11" className="form-control"
                 name='IP_InvestmentTermDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_InvestmentTermDetails']}
                 onFocus={backgroundInfo_onFocus11}
                 onBlur={backgroundInfo_onBlur11}
-                placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.
-                `}  aria-describedby=""  ></textarea>
+                 aria-describedby=""  ></textarea>
 
 
             <hr />
@@ -428,7 +425,7 @@ const Invest = (props) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['IP_Liquidity'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Liquidity" name="IP_Liquidity" />
+                                <input disabled className="form-check-input" checked={FormData['IP_Liquidity'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Liquidity" name="IP_Liquidity" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -439,7 +436,7 @@ const Invest = (props) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['IP_Liquidity'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Liquidity" name="IP_Liquidity" />
+                                <input disabled className="form-check-input" checked={FormData['IP_Liquidity'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Liquidity" name="IP_Liquidity" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -468,13 +465,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info11" className="form-control"
                 name='IP_LiquidityDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_LiquidityDetails']}
                 onFocus={backgroundInfo_onFocus12}
                 onBlur={backgroundInfo_onBlur12}
-                placeholder={`Does the client require access to the investment during the term?                
-                `}  aria-describedby=""  ></textarea>
+                 aria-describedby=""  ></textarea>
 
             <hr/>
             <div className="row g-3 align-items-center">
@@ -485,7 +481,7 @@ const Invest = (props) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['IP_Type'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Type" name="IP_Type" />
+                                <input disabled className="form-check-input" checked={FormData['IP_Type'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Type" name="IP_Type" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -496,7 +492,7 @@ const Invest = (props) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['IP_Type'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Type" name="IP_Type" />
+                                <input disabled className="form-check-input" checked={FormData['IP_Type'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Type" name="IP_Type" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -524,13 +520,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control" 
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info11" className="form-control" 
                 name='IP_TypeDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_TypeDetails']}
                 onFocus={backgroundInfo_onFocus13}
                 onBlur={backgroundInfo_onBlur13}
-                placeholder={`Explain?                
-                `}  aria-describedby=""  ></textarea>
+                 aria-describedby=""  ></textarea>
 
             <hr/>
 
@@ -542,7 +537,7 @@ const Invest = (props) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['IP_PremiumType'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_PremiumType" name="IP_PremiumType"/>
+                                <input disabled className="form-check-input" checked={FormData['IP_PremiumType'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_PremiumType" name="IP_PremiumType"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -553,7 +548,7 @@ const Invest = (props) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['IP_PremiumType'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_PremiumType" name="IP_PremiumType"/>
+                                <input disabled className="form-check-input" checked={FormData['IP_PremiumType'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_PremiumType" name="IP_PremiumType"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -581,13 +576,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info11" className="form-control"
                 name='IP_PremiumTypeDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_PremiumTypeDetails']}
                 onFocus={backgroundInfo_onFocus14}
                 onBlur={backgroundInfo_onBlur14}
-                placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.
-                `}  aria-describedby=""  ></textarea>
+                 aria-describedby=""  ></textarea>
 
             <hr/>
             <div className="row g-3 align-items-center">
@@ -598,7 +592,7 @@ const Invest = (props) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['IP_IncomeRequired'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
+                                <input disabled className="form-check-input" checked={FormData['IP_IncomeRequired'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
                             </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -609,7 +603,7 @@ const Invest = (props) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input disabled className="form-check-input" checked={FormData['IP_IncomeRequired'] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
+                                <input disabled className="form-check-input" checked={FormData['IP_IncomeRequired'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -636,13 +630,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info11" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info11" className="form-control"
                 name='IP_IncomeRequiredDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_IncomeRequiredDetails']}
                 onFocus={backgroundInfo_onFocus15}
                 onBlur={backgroundInfo_onBlur15}
-                placeholder={`Details of Income Required.                
-                `}  aria-describedby=""  ></textarea>
+                 aria-describedby=""  ></textarea>
             <hr/>
             <div className='row'>
                 <div className="col-6">
@@ -679,12 +672,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info1" className="form-control" 
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info1" className="form-control" 
                 name='IP_InvestmentStrategyDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_InvestmentStrategyDetails']}
                 onFocus={backgroundInfo_onFocus1}
                 onBlur={backgroundInfo_onBlur1}
-                placeholder={`Notes on discussion with client concerning the investment strategy.`}  aria-describedby=""  ></textarea>
+                  aria-describedby=""  ></textarea>
 
 
             <hr/>
@@ -721,13 +714,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info2" className="form-control"  
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info2" className="form-control"  
                 name='IP_ReturnRequiredDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_ReturnRequiredDetails']}
                 onFocus={backgroundInfo_onFocus2}
                 onBlur={backgroundInfo_onBlur2}
-                placeholder={
-            `Notes on discussion with client concerning return expectations.`}  aria-describedby=""  ></textarea>
+                 aria-describedby=""  ></textarea>
 
             <hr/>
             <div className="col-6">
@@ -766,13 +758,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info3" className="form-control"  
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info3" className="form-control"  
                 name='IP_RiskProfileDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_RiskProfileDetails']} 
                 onFocus={backgroundInfo_onFocus3}
                 onBlur={backgroundInfo_onBlur3}
-                placeholder={
-            `Notes on the client risk profile.`}  aria-describedby=""  ></textarea>
+                 aria-describedby=""  ></textarea>
 
 
             <hr />
@@ -805,16 +796,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info" className="form-control"
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info" className="form-control"
                 name='IP_RecommendationSummary' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_RecommendationSummary']}
                 onFocus={backgroundInfo_onFocus}
                 onBlur={backgroundInfo_onBlur}
-                placeholder={
-                `Discuss the outcome of the FNA
-                Qualification of need explaining the reasons why this type of investment vehicle was recommended
-                How it will meet the client's needs
-                                `}  aria-describedby=""  ></textarea>
+                 aria-describedby=""  ></textarea>
 
             <h5 className="text-start " ><b>SECTION D:</b></h5> 
             <h6 className="text-start " style={{ color: "#14848A"}} ><b>Alternative Solutions Considered</b></h6>
@@ -837,13 +824,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info4" className="form-control"  
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info4" className="form-control"  
                 name='IP_AltS_1' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_1']}
                 onFocus={backgroundInfo_onFocus4}
                 onBlur={backgroundInfo_onBlur4}
-                placeholder={
-                `1. Identify the type of product or product provider which was considered but not value="0" selected and motivate.. `}  aria-describedby=""  ></textarea>
+                aria-describedby=""  ></textarea>
 
             <hr/>
 
@@ -863,13 +849,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info5" className="form-control"  
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info5" className="form-control"  
                 name='IP_AltS_2' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_2']}
                 onFocus={backgroundInfo_onFocus5}
                 onBlur={backgroundInfo_onBlur5}
-                placeholder={
-            `2. Identify the type of product or product provider which was considered but not value="0" selected and motivate.. `}  aria-describedby=""  ></textarea>
+                aria-describedby=""  ></textarea>
 
             <hr/>
 
@@ -889,13 +874,12 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info6" className="form-control"  
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info6" className="form-control"  
                 name='IP_AltS_3' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_3']}
                 onFocus={backgroundInfo_onFocus6}
                 onBlur={backgroundInfo_onBlur6}
-                placeholder={
-            `3. Identify the type of product or product provider which was considered but not value="0" selected and motivate.. `}  aria-describedby=""  ></textarea>
+                  aria-describedby=""  ></textarea>
 
 
 
@@ -942,7 +926,7 @@ const Invest = (props) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Provider:</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" disabled className="form-control" name='IP_ProductProvider' value={FormData['IP_ProductProvider']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductProvider' value={FormData['IP_ProductProvider']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -950,7 +934,7 @@ const Invest = (props) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Policy No:</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" disabled className="form-control" name='IP_PolicyNumber' value={FormData['IP_PolicyNumber']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_PolicyNumber' value={FormData['IP_PolicyNumber']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                     </div>
                 </td> 
 
@@ -963,7 +947,7 @@ const Invest = (props) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Name:</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" disabled className="form-control" name='IP_ProductName' value={FormData['IP_ProductName']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductName' value={FormData['IP_ProductName']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -973,7 +957,7 @@ const Invest = (props) =>
                     <div className='row'>
                         <div className='col-6'>
                             <div className="form-group">
-                                <input type="text" disabled className="form-control" name='IP_ProductPremium' value={FormData['IP_ProductPremium']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                                <input type="text" disabled className="form-control" name='IP_ProductPremium' value={FormData['IP_ProductPremium']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                             </div>
                         </div>
                         <div className='col-6'>
@@ -997,7 +981,7 @@ const Invest = (props) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Escalation:</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" disabled className="form-control" name='IP_ProductEscalation' value={FormData['IP_ProductEscalation']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductEscalation' value={FormData['IP_ProductEscalation']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -1005,7 +989,7 @@ const Invest = (props) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Total estimated annual <br/>cost (EAC)</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" disabled className="form-control" name='IP_ProductEAC' value={FormData['IP_ProductEAC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductEAC' value={FormData['IP_ProductEAC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 
@@ -1016,7 +1000,7 @@ const Invest = (props) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Contracting Party</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" disabled className="form-control" name='IP_ProductContractingParty' value={FormData['IP_ProductContractingParty']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductContractingParty' value={FormData['IP_ProductContractingParty']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -1024,7 +1008,7 @@ const Invest = (props) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Life/Lives assured</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" disabled className="form-control" name='IP_ProductLivesAssured' value={FormData['IP_ProductLivesAssured']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductLivesAssured' value={FormData['IP_ProductLivesAssured']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 
@@ -1035,14 +1019,14 @@ const Invest = (props) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Premium Layer</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" disabled className="form-control" name='IP_ProductPremiumLayer' value={FormData['IP_ProductPremiumLayer']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductPremiumLayer' value={FormData['IP_ProductPremiumLayer']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Beneficiary / nominee</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" disabled className="form-control" name='IP_ProductBeneficiary' value={FormData['IP_ProductBeneficiary']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_ProductBeneficiary' value={FormData['IP_ProductBeneficiary']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 
@@ -1053,24 +1037,24 @@ const Invest = (props) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Initial Commission</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" disabled className="form-control" name='IP_Product_IniC' value={FormData['IP_Product_IniC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input type="text" disabled className="form-control" name='IP_Product_IniC' value={FormData['IP_Product_IniC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                     </div>
                 </td>  
-                <td><input type="text" disabled className="form-control" name='IP_Product_IniC_Percentage' value={FormData['IP_Product_IniC_Percentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+                <td><input type="text" disabled className="form-control" name='IP_Product_IniC_Percentage' value={FormData['IP_Product_IniC_Percentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%</td>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Ongoing Commission</td>
                 <td>  
                         <div className="form-group">
-                            <input type="text" disabled className="form-control" name='IP_Product_OnC' value={FormData['IP_Product_OnC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_Product_OnC' value={FormData['IP_Product_OnC']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                 </td> 
                     <td>
                         <div className="form-group">
-                            <input type="text" disabled className="form-control" name='IP_Product_OnC_Percentage' value={FormData['IP_Product_OnC_Percentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%
+                            <input type="text" disabled className="form-control" name='IP_Product_OnC_Percentage' value={FormData['IP_Product_OnC_Percentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%
                         </div>
                     </td> 
                     <td>
                         <div className="form-group">
-                            <input type="text" disabled className="form-control" name='IP_SFPSolutionFunds' value={FormData['IP_SFPSolutionFunds']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="Total" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_SFPSolutionFunds' value={FormData['IP_SFPSolutionFunds']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>      
 
@@ -1090,7 +1074,7 @@ const Invest = (props) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" checked={FormData['IP_SFPSolutionFundsDetails'] == "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_SFPSolutionFundsDetails" name="IP_SFPSolutionFundsDetails"/>
+                                    <input disabled className="form-check-input" checked={FormData['IP_SFPSolutionFundsDetails'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_SFPSolutionFundsDetails" name="IP_SFPSolutionFundsDetails"/>
                                 </div>
                                     <div className="col-2">
                                         <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -1101,7 +1085,7 @@ const Invest = (props) =>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" checked={FormData["IP_SFPSolutionFundsDetails"] == "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_SFPSolutionFundsDetails" name="IP_SFPSolutionFundsDetails"/>
+                                    <input disabled className="form-check-input" checked={FormData["IP_SFPSolutionFundsDetails"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_SFPSolutionFundsDetails" name="IP_SFPSolutionFundsDetails"/>
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -1121,7 +1105,7 @@ const Invest = (props) =>
                             </> : 
                         null
                     }
-                        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="provided_identity2" name="IP_SFPSolutionFundsDetailsDetails" onChange={(e) => {onChange(e)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" placeholder="State the motivation" aria-describedby="" ></textarea>
+                        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="provided_identity2" name="IP_SFPSolutionFundsDetailsDetails" onChange={(e) => {onChange(e)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" aria-describedby="" ></textarea>
                     </div>
             </div>
             <hr/>
@@ -1151,7 +1135,7 @@ const Invest = (props) =>
                 </>: 
                 null
             }
-            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info7" className="form-control" 
+            <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info7" className="form-control" 
                 name='IP_ItP' value={FormData['IP_ItP']} onChange={(e) => {onChange(e)}} 
                 onFocus={backgroundInfo_onFocus7}
                 onBlur={backgroundInfo_onBlur7}
@@ -1206,7 +1190,7 @@ const Invest = (props) =>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_Fund' value={FormData['IP_ItP_Fund']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund' value={FormData['IP_ItP_Fund']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1214,25 +1198,25 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage' value={FormData['IP_ItP_FundPercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage' value={FormData['IP_ItP_FundPercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided"] == 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided"] === 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed"] == 1 ? true : false} name="IP_ItP_FundDiscussed" onChange={(e)=>{FormData["IP_ItP_FundDiscussed"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed"] === 1 ? true : false} name="IP_ItP_FundDiscussed" onChange={(e)=>{FormData["IP_ItP_FundDiscussed"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" disabled className="form-control" name='IP_ItP_Fund1' value={FormData['IP_ItP_Fund1']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_ItP_Fund1' value={FormData['IP_ItP_Fund1']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1240,25 +1224,25 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" disabled className="form-control" name='IP_ItP_FundPercentage1' value={FormData['IP_ItP_FundPercentage1']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_ItP_FundPercentage1' value={FormData['IP_ItP_FundPercentage1']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided1"] == 1 ? true : false} name="IP_ItP_FundProvided1" onChange={(e)=>{FormData["IP_ItP_FundProvided1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided1"] === 1 ? true : false} name="IP_ItP_FundProvided1" onChange={(e)=>{FormData["IP_ItP_FundProvided1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed1"] == 1 ? true : false} name="IP_ItP_FundDiscussed1" onChange={(e)=>{FormData["IP_ItP_FundDiscussed1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed1"] === 1 ? true : false} name="IP_ItP_FundDiscussed1" onChange={(e)=>{FormData["IP_ItP_FundDiscussed1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" disabled className="form-control" name='IP_ItP_Fund2' value={FormData['IP_ItP_Fund2']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_ItP_Fund2' value={FormData['IP_ItP_Fund2']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1266,25 +1250,25 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" disabled className="form-control" name='IP_ItP_FundPercentage2' value={FormData['IP_ItP_FundPercentage2']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input type="text" disabled className="form-control" name='IP_ItP_FundPercentage2' value={FormData['IP_ItP_FundPercentage2']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided2"] == 1 ? true : false} name="IP_ItP_FundProvided2" onChange={(e)=>{FormData["IP_ItP_FundProvided2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided2"] === 1 ? true : false} name="IP_ItP_FundProvided2" onChange={(e)=>{FormData["IP_ItP_FundProvided2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed2"] == 1 ? true : false} name="IP_ItP_FundDiscussed2" onChange={(e)=>{FormData["IP_ItP_FundDiscussed2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed2"] === 1 ? true : false} name="IP_ItP_FundDiscussed2" onChange={(e)=>{FormData["IP_ItP_FundDiscussed2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_Fund3' value={FormData['IP_ItP_Fund3']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund3' value={FormData['IP_ItP_Fund3']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1292,25 +1276,25 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage3' value={FormData['IP_ItP_FundPercentage3']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage3' value={FormData['IP_ItP_FundPercentage3']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided3"] == 1 ? true : false} name="IP_ItP_FundProvided3" onChange={(e)=>{FormData["IP_ItP_FundProvided3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided3"] === 1 ? true : false} name="IP_ItP_FundProvided3" onChange={(e)=>{FormData["IP_ItP_FundProvided3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed3"] == 1 ? true : false} name="IP_ItP_FundDiscussed3" onChange={(e)=>{FormData["IP_ItP_FundDiscussed3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed3"] === 1 ? true : false} name="IP_ItP_FundDiscussed3" onChange={(e)=>{FormData["IP_ItP_FundDiscussed3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_Fund4' value={FormData['IP_ItP_Fund4']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund4' value={FormData['IP_ItP_Fund4']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1318,25 +1302,25 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage4' value={FormData['IP_ItP_FundPercentage4']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage4' value={FormData['IP_ItP_FundPercentage4']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided4"] == 1 ? true : false} name="IP_ItP_FundProvided4" onChange={(e)=>{FormData["IP_ItP_FundProvided4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided4"] === 1 ? true : false} name="IP_ItP_FundProvided4" onChange={(e)=>{FormData["IP_ItP_FundProvided4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed4"] == 1 ? true : false} name="IP_ItP_FundDiscussed4" onChange={(e)=>{FormData["IP_ItP_FundDiscussed4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed4"] === 1 ? true : false} name="IP_ItP_FundDiscussed4" onChange={(e)=>{FormData["IP_ItP_FundDiscussed4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_Fund5' value={FormData['IP_ItP_Fund5']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund5' value={FormData['IP_ItP_Fund5']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1344,25 +1328,25 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage5' value={FormData['IP_ItP_FundPercentage5']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage5' value={FormData['IP_ItP_FundPercentage5']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided5"] == 1 ? true : false} name="IP_ItP_FundProvided5" onChange={(e)=>{FormData["IP_ItP_FundProvided5"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided5"] === 1 ? true : false} name="IP_ItP_FundProvided5" onChange={(e)=>{FormData["IP_ItP_FundProvided5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed5"] == 1 ? true : false} name="IP_ItP_FundDiscussed5" onChange={(e)=>{FormData["IP_ItP_FundDiscussed5"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed5"] === 1 ? true : false} name="IP_ItP_FundDiscussed5" onChange={(e)=>{FormData["IP_ItP_FundDiscussed5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td> 
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_Fund6' value={FormData['IP_ItP_Fund6']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund6' value={FormData['IP_ItP_Fund6']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1370,25 +1354,25 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage6' value={FormData['IP_ItP_FundPercentage6']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage6' value={FormData['IP_ItP_FundPercentage6']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided6"] == 1 ? true : false} name="IP_ItP_FundProvided6" onChange={(e)=>{FormData["IP_ItP_FundProvided6"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided6"] === 1 ? true : false} name="IP_ItP_FundProvided6" onChange={(e)=>{FormData["IP_ItP_FundProvided6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed6"] == 1 ? true : false} name="IP_ItP_FundDiscussed6" onChange={(e)=>{FormData["IP_ItP_FundDiscussed6"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed6"] === 1 ? true : false} name="IP_ItP_FundDiscussed6" onChange={(e)=>{FormData["IP_ItP_FundDiscussed6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>      
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_Fund7' value={FormData['IP_ItP_Fund7']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_Fund7' value={FormData['IP_ItP_Fund7']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1396,18 +1380,18 @@ const Invest = (props) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage7' value={FormData['IP_ItP_FundPercentage7']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input disabled type="text" className="form-control" name='IP_ItP_FundPercentage7' value={FormData['IP_ItP_FundPercentage7']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided7"] == 1 ? true : false} name="IP_ItP_FundProvided7" onChange={(e)=>{FormData["IP_ItP_FundProvided7"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided7"] === 1 ? true : false} name="IP_ItP_FundProvided7" onChange={(e)=>{FormData["IP_ItP_FundProvided7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed7"] == 1 ? true : false} name="IP_ItP_FundDiscussed7" onChange={(e)=>{FormData["IP_ItP_FundDiscussed7"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input disabled type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed7"] === 1 ? true : false} name="IP_ItP_FundDiscussed7" onChange={(e)=>{FormData["IP_ItP_FundDiscussed7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
             </tr>
@@ -1436,7 +1420,7 @@ const Invest = (props) =>
             </>: 
             null
         }
-        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info8" className="form-control"  
+        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info8" className="form-control"  
             name='IP_ItP_FundsReasons' value={FormData['IP_ItP_FundsReasons']} onChange={(e) => {onChange(e)}} 
             onFocus={backgroundInfo_onFocus8}
             onBlur={backgroundInfo_onBlur8}
@@ -1476,7 +1460,7 @@ const Invest = (props) =>
             </>: 
             null
         }
-        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }} id="background_info9" className="form-control" 
+        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }} id="background_info9" className="form-control" 
             name='IP_ItP_FundsMaterialAspects' value={FormData['IP_ItP_FundsMaterialAspects']} onChange={(e) => {onChange(e)}} 
             onFocus={backgroundInfo_onFocus9}
             onBlur={backgroundInfo_onBlur9}

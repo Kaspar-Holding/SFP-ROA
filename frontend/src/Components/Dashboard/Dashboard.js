@@ -3,16 +3,21 @@ import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import Loader from '../Loader/Loader';
+import Pagination from '../Pagination/Pagination';
 
 const Dashboard = ({user}) => {
 
-    const [formStats, setFormStats] = useState([]);
-    const [formList, setFormList] = useState([]);
+    const [formStats, setFormStats] = useState([])
+    const [SearchQuery, setSearchQuery] = useState("")
+    const [formList, setFormList] = useState([])
+    const [OrderBy, setOrderBy] = useState("name")
     const [Loader, setLoader] = useState("none")
+    const [TotalForms, setTotalForms] = useState(0)
+    const [PageLimit, setPageLimit] = useState(0)
     const [Advisor, setAdvisor] = useState("")
     const [dashboardVisibility, setDashboardVisibility] = useState("none")
     // console.log(user)
-    const loadFormsStats = async() => {
+    const loadFormsStats = async(page_number, order_by, search_query) => {
         setLoader("block")
         setDashboardVisibility("none")
         const config = {
@@ -22,11 +27,20 @@ const Dashboard = ({user}) => {
               'Accept' : 'application/json'
           }
         }
-        const Body = JSON.stringify({"advisorId" : user['id']})
+        const Body = JSON.stringify(
+            {
+                "advisorId" : user['id'],
+                "page_number" : page_number,
+                "order_by" : order_by,
+                "search_query" : search_query
+            }
+        )
         try {
           const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/forms_stats/`, Body,config)
           setFormStats(response.data)
-          setFormList(response.data['forms'])
+          setFormList(response.data['results'])
+          setTotalForms(response.data['total_records'])
+          setPageLimit(response.data['pagelimit'])
         //   console.log('Users', JSON.stringify(response.data.Data))
         } catch (error) {
           console.log('first', error.response.statusText)
@@ -35,9 +49,20 @@ const Dashboard = ({user}) => {
         setLoader("none")
         setDashboardVisibility("block")
     }
+    const onSearchQueryChange = (e) => {
+        e.preventDefault()
+        setTotalForms(0)
+        loadFormsStats(1, OrderBy, SearchQuery)    
+    }
+    const resetForm = (e) => {
+        e.preventDefault()
+        setOrderBy("")
+        setSearchQuery("")
+        loadFormsStats(1,"","")
+    }
     // console.log(formStats)
     useEffect(() => {
-        loadFormsStats()
+        loadFormsStats(1,OrderBy, SearchQuery)
         if (user){
             setAdvisor(user["name"])
         }
@@ -100,15 +125,41 @@ const Dashboard = ({user}) => {
                 </div>
                 <hr />
                 <h5 className="h3">Form List</h5>
+                <div className="card mb-4">
+                    <h5 className="card-header">Search Forms</h5>
+                    <div className="card-body">
+                        <div>
+                            {/* <label htmlFor="defaultFormControlInput" className="form-label">Name</label> */}
+                            <div className='row'>
+                                <div className='col-10'>
+                                    <form onSubmit={(e)=>{onSearchQueryChange(e)}} >
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="clientNameIdSearchQuery"
+                                            value={SearchQuery}
+                                            placeholder="Client Name / Client ID"
+                                            onChange={(e)=>{setSearchQuery(e.target.value)}}    
+                                        />
+                                    </form>
+                                </div>
+                                <div className='col-2'>
+                                    <button onClick={(e)=>{resetForm(e)}} className='btn btn-md btn-primary'>Reset Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
                 <div className='table-responsive'>
                     <table className="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Client Name</th>
-                                <th scope="col">Client Email</th>
+                                {/* <th scope="col">Client Email</th> */}
                                 <th scope="col">Client ID Number</th>
-                                <th scope="col">Client Phone Number</th>
+                                {/* <th scope="col">Client Risk Status</th> */}
                                 <th scope="col">Form Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -118,13 +169,13 @@ const Dashboard = ({user}) => {
                                 Object.keys(formList).map((keyName, i) => (
                                     <tr>
                                         <th scope="row">{i+1}</th>
-                                        <td>{formList[i]['clientName']}</td>
-                                        <td>{formList[i]['clientEmail']}</td>
-                                        <td>{formList[i]['clientIdNumber']}</td>
-                                        <td>{formList[i]['clientPhoneNumber']}</td>
+                                        <td>{formList[i]['RF_ClientName']}</td>
+                                        {/* <td>{formList[i]['clientEmail']}</td> */}
+                                        <td>{formList[i]['RF_ClientId']}</td>
+                                        {/* <td>{formList[i]['RF_Overall_Risk']}</td> */}
                                         <td>{formList[i]['status'] === 0 ? "Incomplete" : "Completed"}</td>
                                         <td>
-                                            <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], advisorId : formList[i]['advisorId'], advisor: Advisor}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
+                                            <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
                                             {/* <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : data[i]['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink> */}
                                         </td>
                                     </tr>
@@ -134,12 +185,19 @@ const Dashboard = ({user}) => {
                                 <th scope="row">1</th>
                                 <td>{data[0]['name']}</td>
                                 <td>{data[0]['email']}</td>
-                                <td>{data[0]['role'] == true ? "Admin" : "Agent"}</td>
+                                <td>{data[0]['role'] === true ? "Admin" : "Agent"}</td>
                             </tr> */}
                         </tbody>
                     </table>
                     <br/>
                 </div>
+                <div className='d-flex justify-content-center'>
+                {
+                    TotalForms > 0 ?
+                    <Pagination  totalRecords={TotalForms} pageLimit={PageLimit} paginationSearchQuery={SearchQuery} paginationOrderBy={OrderBy} onPageChanged={loadFormsStats} />
+                    : <></>
+                }
+            </div>
             </div>
         </div>
     

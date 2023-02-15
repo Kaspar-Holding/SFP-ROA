@@ -211,8 +211,8 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                                     <th scope="row">{i+1}</th>
                                     <td>{key['name']}</td>
                                     <td>{key['email']}</td>
-                                    <td>{key['is_superuser'] == true ? "Admin" : "Agent"}</td>
-                                    <td>{key['is_active'] == 1 ? "Active" : "Inactive"}</td>
+                                    <td>{key['is_superuser'] === true ? "Admin" : "Agent"}</td>
+                                    <td>{key['is_active'] === 1 ? "Active" : "Inactive"}</td>
                                     <td>
                                         <div className='col-6'>
                                             <div className='row'>
@@ -241,7 +241,7 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                             <th scope="row">1</th>
                             <td>{data[0]['name']}</td>
                             <td>{data[0]['email']}</td>
-                            <td>{data[0]['role'] == true ? "Admin" : "Agent"}</td>
+                            <td>{data[0]['role'] === true ? "Admin" : "Agent"}</td>
                         </tr> */}
                     </tbody>
                 </table>

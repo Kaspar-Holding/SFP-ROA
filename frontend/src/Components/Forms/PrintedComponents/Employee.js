@@ -324,7 +324,7 @@ import { useLocation } from 'react-router-dom';
                                   <label className="col-form-label"><b>Client Name:</b></label>
                                   </div>
                                   <div className="col-6">
-                                  <input disabled spellCheck="true" id="EB_ClientName" name='EB_ClientName' value={FormData['EB_ClientName']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Client Name"  aria-describedby="" />
+                                  <input disabled spellCheck="true" id="EB_ClientName" name='EB_ClientName' value={FormData['EB_ClientName']} onChange={(e) => {onChange(e)}}  className="form-control"  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -335,7 +335,7 @@ import { useLocation } from 'react-router-dom';
                                   <label htmlFor="id_number" className="col-form-label"><b>ID number:</b></label>
                                   </div>
                                   <div className="col-6">
-                                  <input disabled spellCheck="true" id="EB_ClientIdNumber" name='EB_ClientIdNumber' value={FormData['EB_ClientIdNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="ID # of client"  aria-describedby="" />
+                                  <input disabled spellCheck="true" id="EB_ClientIdNumber" name='EB_ClientIdNumber' value={FormData['EB_ClientIdNumber']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -347,7 +347,7 @@ import { useLocation } from 'react-router-dom';
                                   <label htmlFor="address" className="col-form-label"><b>Address:</b></label>
                                   </div>
                                   <div className="col-9">
-                                  <input disabled spellCheck="true" id="EB_ClientAddress" name='EB_ClientAddress' value={FormData['EB_ClientAddress']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Address"  aria-describedby="" />
+                                  <input disabled spellCheck="true" id="EB_ClientAddress" name='EB_ClientAddress' value={FormData['EB_ClientAddress']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -359,7 +359,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="email" className="col-form-label"><b>Phone:</b></label>
                                   </div>
                                   <div className="col-6">
-                                    <input disabled spellCheck="true" id="EB_ClientPhoneNumber" name='EB_ClientPhoneNumber' value={FormData['EB_ClientPhoneNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Office Tel"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_ClientPhoneNumber" name='EB_ClientPhoneNumber' value={FormData['EB_ClientPhoneNumber']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -367,7 +367,7 @@ import { useLocation } from 'react-router-dom';
                           <div className="col-6" style={{paddingBottom: "0.5%"}}>
                               <div className="row g-3 align-items-center">
                                   <div className="col-6">
-                                    <input disabled spellCheck="true" id="EB_ClientCellNumber" name='EB_ClientCellNumber' value={FormData['EB_ClientCellNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Cell Number"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_ClientCellNumber" name='EB_ClientCellNumber' value={FormData['EB_ClientCellNumber']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -379,7 +379,7 @@ import { useLocation } from 'react-router-dom';
                                   <label htmlFor="advisor" className="col-form-label"><b>Email:</b></label>
                                   </div>
                                   <div className="col-6">
-                                  <input disabled spellCheck="true" type="email" id="EB_ClientEmail" name='EB_ClientEmail' value={FormData['EB_ClientEmail']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Email"  aria-describedby="" />
+                                  <input disabled spellCheck="true" type="email" id="EB_ClientEmail" name='EB_ClientEmail' value={FormData['EB_ClientEmail']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -390,7 +390,7 @@ import { useLocation } from 'react-router-dom';
                                   <label htmlFor="date_of_birth" className="col-form-label"><b>Date:</b></label>
                                   </div>
                                   <div className="col-6">
-                                  <input disabled spellCheck="true"  type="date" id="EB_ClientDate" name='EB_ClientDate' value={FormData['EB_ClientDate']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="date_of_birth"  aria-describedby="" />
+                                  <input disabled spellCheck="true"  type="date" id="EB_ClientDate" name='EB_ClientDate' value={FormData['EB_ClientDate']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -402,7 +402,7 @@ import { useLocation } from 'react-router-dom';
                                   <label htmlFor="advisor" className="col-form-label"><b>Financial Advisor:</b></label>
                                   </div>
                                   <div className="col-6">
-                                  <input disabled spellCheck="true"  id="advisor" name="advisor" className="form-control" placeholder="Primary Intermediary’s name"  aria-describedby="" />
+                                  <input disabled spellCheck="true"  id="advisor" name="advisor" className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -413,7 +413,7 @@ import { useLocation } from 'react-router-dom';
                                   <label htmlFor="date_of_birth" className="col-form-label"><b>Details of fee:</b></label>
                                   </div>
                                   <div className="col-6">
-                                  <input disabled spellCheck="true"  type="text" id="EB_ClientFeeDetails" name='EB_ClientFeeDetails' value={FormData['EB_ClientFeeDetails']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Details of fee due to intermediary"  aria-describedby="" />
+                                  <input disabled spellCheck="true"  type="text" id="EB_ClientFeeDetails" name='EB_ClientFeeDetails' value={FormData['EB_ClientFeeDetails']} onChange={(e) => {onChange(e)}} className="form-control"  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -437,7 +437,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Name of business entity:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusinessName" name='EB_BusinessName' value={FormData['EB_BusinessName']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Name of business entity"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusinessName" name='EB_BusinessName' value={FormData['EB_BusinessName']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -449,7 +449,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Physical Business Address:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusinessAddress" name='EB_BusinessAddress' value={FormData['EB_BusinessAddress']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Physical Business Address"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusinessAddress" name='EB_BusinessAddress' value={FormData['EB_BusinessAddress']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -461,7 +461,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Employer contact person:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusinessContactPerson" name='EB_BusinessContactPerson' value={FormData['EB_BusinessContactPerson']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Employer contact person"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusinessContactPerson" name='EB_BusinessContactPerson' value={FormData['EB_BusinessContactPerson']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -473,7 +473,7 @@ import { useLocation } from 'react-router-dom';
                                   <label htmlFor="advisor" className="col-form-label"><b>Office Tel No:</b></label>
                                   </div>
                                   <div className="col-6">
-                                  <input disabled spellCheck="true" id="EB_BusinessPhoneNumber" name='EB_BusinessPhoneNumber' value={FormData['EB_BusinessPhoneNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Office Tel No"  aria-describedby="" />
+                                  <input disabled spellCheck="true" id="EB_BusinessPhoneNumber" name='EB_BusinessPhoneNumber' value={FormData['EB_BusinessPhoneNumber']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -484,7 +484,7 @@ import { useLocation } from 'react-router-dom';
                                   <label htmlFor="date_of_birth" className="col-form-label"><b>Cell Phone:</b></label>
                                   </div>
                                   <div className="col-6">
-                                  <input disabled spellCheck="true"  type="text" id="EB_BusinessCellNumber" name='EB_BusinessCellNumber' value={FormData['EB_BusinessCellNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Cell Phone"  aria-describedby="" />
+                                  <input disabled spellCheck="true"  type="text" id="EB_BusinessCellNumber" name='EB_BusinessCellNumber' value={FormData['EB_BusinessCellNumber']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -496,7 +496,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Email Address:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" type="email" id="EB_BusinessEmail" name='EB_BusinessEmail' value={FormData['EB_BusinessEmail']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Email Address"  aria-describedby="" />
+                                    <input disabled spellCheck="true" type="email" id="EB_BusinessEmail" name='EB_BusinessEmail' value={FormData['EB_BusinessEmail']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -508,7 +508,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Nature of business & Type of industry:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusinessNature" name='EB_BusinessNature' value={FormData['EB_BusinessNature']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Nature of business & Type of industry"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusinessNature" name='EB_BusinessNature' value={FormData['EB_BusinessNature']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -521,12 +521,12 @@ import { useLocation } from 'react-router-dom';
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input disabled type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] == 1 ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
+                                        <input disabled type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === 1 ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
                                     </label>
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input disabled type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] == 1 ? false : true} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
+                                        <input disabled type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === 1 ? false : true} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
                                     </label>
                                   </div>
                               </div>
@@ -539,7 +539,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Details:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusinessDetails" name='EB_BusinessDetails' value={FormData['EB_BusinessDetails']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Details"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusinessDetails" name='EB_BusinessDetails' value={FormData['EB_BusinessDetails']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -551,7 +551,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Total number of employees:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusinessNumberOfEmployees" name='EB_BusinessNumberOfEmployees' value={FormData['EB_BusinessNumberOfEmployees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Total number of employees"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusinessNumberOfEmployees" name='EB_BusinessNumberOfEmployees' value={FormData['EB_BusinessNumberOfEmployees']} onChange={(e) => {onChange(e)}} className="form-control"  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -563,7 +563,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Total number of eligible employees:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusinessNumberOfEligibleEmployees" name='EB_BusinessNumberOfEligibleEmployees' value={FormData['EB_BusinessNumberOfEligibleEmployees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Total number of eligible employees"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusinessNumberOfEligibleEmployees" name='EB_BusinessNumberOfEligibleEmployees' value={FormData['EB_BusinessNumberOfEligibleEmployees']} onChange={(e) => {onChange(e)}} className="form-control"  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -575,7 +575,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Specify and explain categories of members excluded:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusinessNumberOfExcludedCategories" name='EB_BusinessNumberOfExcludedCategories' value={FormData['EB_BusinessNumberOfExcludedCategories']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Specify and explain categories of members excluded"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusinessNumberOfExcludedCategories" name='EB_BusinessNumberOfExcludedCategories' value={FormData['EB_BusinessNumberOfExcludedCategories']} onChange={(e) => {onChange(e)}} className="form-control"  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -595,7 +595,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Name of existing fund & PF Reg no:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusEx_FundsName" name='EB_BusEx_FundsName' value={FormData['EB_BusEx_FundsName']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Name of existing fund & PF Reg no"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusEx_FundsName" name='EB_BusEx_FundsName' value={FormData['EB_BusEx_FundsName']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -607,7 +607,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Name of previous Insurer/ Administrator:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusEx_FundsAdmin" name='EB_BusEx_FundsAdmin' value={FormData['EB_BusEx_FundsAdmin']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Name of previous Insurer/ Administrator"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusEx_FundsAdmin" name='EB_BusEx_FundsAdmin' value={FormData['EB_BusEx_FundsAdmin']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -619,7 +619,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Current total fund value:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusEx_FundsCurrentValue" name='EB_BusEx_FundsCurrentValue' value={FormData['EB_BusEx_FundsCurrentValue']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Current total fund value"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusEx_FundsCurrentValue" name='EB_BusEx_FundsCurrentValue' value={FormData['EB_BusEx_FundsCurrentValue']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -631,7 +631,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Number of current active members:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusEx_FundsActiveMembers" name='EB_BusEx_FundsActiveMembers' value={FormData['EB_BusEx_FundsActiveMembers']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Number of current active members"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusEx_FundsActiveMembers" name='EB_BusEx_FundsActiveMembers' value={FormData['EB_BusEx_FundsActiveMembers']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -643,7 +643,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Number of fully paid-up members:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusEx_FundsFullyPaidMembers" name='EB_BusEx_FundsFullyPaidMembers' value={FormData['EB_BusEx_FundsFullyPaidMembers']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Number of fully paid-up members"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusEx_FundsFullyPaidMembers" name='EB_BusEx_FundsFullyPaidMembers' value={FormData['EB_BusEx_FundsFullyPaidMembers']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -655,7 +655,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="address" className="col-form-label"><b>Reason for change:</b></label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusEx_FundsFullyReasonForChange" name='EB_BusEx_FundsFullyReasonForChange' value={FormData['EB_BusEx_FundsFullyReasonForChange']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Reason for change"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusEx_FundsFullyReasonForChange" name='EB_BusEx_FundsFullyReasonForChange' value={FormData['EB_BusEx_FundsFullyReasonForChange']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -670,17 +670,9 @@ import { useLocation } from 'react-router-dom';
                  <div className="row g-3 align-items-center">
                     <div className="col-6">
                         <div className='col-6'>
-                            <select disabled className="text-start form-select" multiple id="EB_BusB_CoverType" name='EB_BusB_CoverType' value={FormData['EB_BusB_CoverType']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
-                                <option value="0" selected>Select the type of benefit cover.</option>
-                                <option value="1">Retirement Benefits</option>
-                                <option value="2">Type of fund/scheme</option>
-                                <option value="3">Truama Benefits</option>
-                                <option value="4">Funeral Benefits</option>
-                                <option value="5">Accidental Benefits</option>
-                                <option value="6">Group Life Cover</option>
-                                <option value="7">Lump Sum Disability Cover</option>
-                                <option value="8">Spouse Life Cover</option>
-                                <option value="9">Disability Income Cover</option>
+                            <select disabled style={{overflow:"hidden"}} className="text-start form-select" multiple id="EB_BusB_CoverType" name='EB_BusB_CoverType' value={FormData['EB_BusB_CoverType']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                                <option value="0" selected></option>
+                                
                             </select>
                         </div>
                     </div>
@@ -688,7 +680,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] == 1 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input disabled className="form-check-input" type="radio" value="1"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 1 ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -699,7 +691,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] == 0 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input disabled className="form-check-input" type="radio" value="0"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 0 ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -710,7 +702,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="2" id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] == 2 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input disabled className="form-check-input" type="radio" value="2" id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 2 ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -724,13 +716,11 @@ import { useLocation } from 'react-router-dom';
                                  
                  </div> 
        
-    <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}
+    {/* <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}
         id="EB_BusB_CoverDetails" name='EB_BusB_CoverDetails' value={FormData['EB_BusB_CoverDetails']} onChange={(e) => {onChange(e)}}  
-        placeholder={`Additional Comments .
-        
-        `}  aria-describedby=""  ></textarea>
+        aria-describedby=""  ></textarea> */}
 
-    <hr/>
+    
     <h5 style={{color: '#00788A'}}><b>Section D:Investment Indicator</b></h5>
     <hr/>
 
@@ -742,7 +732,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Retire_In5Years" >
@@ -753,7 +743,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Retire_In5Years" >
@@ -763,7 +753,7 @@ import { useLocation } from 'react-router-dom';
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
-                                <input disabledtype="text" className="form-control" id="EB_BusEmp_Retire_In5YearsPercentage" name='EB_BusEmp_Retire_In5YearsPercentage' value={FormData['EB_BusEmp_Retire_In5YearsPercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="00 %" style={{width: '200px'}}/>
+                                <input disabledtype="text" className="form-control" id="EB_BusEmp_Retire_In5YearsPercentage" name='EB_BusEmp_Retire_In5YearsPercentage' value={FormData['EB_BusEmp_Retire_In5YearsPercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '200px'}}/>
                             </div>
                         </div>
                     </div>
@@ -779,7 +769,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Illiterate" >
@@ -790,7 +780,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Illiterate" >
@@ -800,7 +790,7 @@ import { useLocation } from 'react-router-dom';
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
-                                <input disabledtype="text" className="form-control" id="EB_BusEmp_Fin_IlliteratePercentage" name='EB_BusEmp_Fin_IlliteratePercentage' value={FormData['EB_BusEmp_Fin_IlliteratePercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="00 %" style={{width: '200px'}}/>
+                                <input disabledtype="text" className="form-control" id="EB_BusEmp_Fin_IlliteratePercentage" name='EB_BusEmp_Fin_IlliteratePercentage' value={FormData['EB_BusEmp_Fin_IlliteratePercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '200px'}}/>
                             </div>
                         </div>
                     </div>
@@ -816,7 +806,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Sophisticated" >
@@ -827,7 +817,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Sophisticated" >
@@ -837,7 +827,7 @@ import { useLocation } from 'react-router-dom';
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
-                                <input disabled type="text" className="form-control" id="EB_BusEmp_Fin_SophisticatedPercentage" name='EB_BusEmp_Fin_SophisticatedPercentage' value={FormData['EB_BusEmp_Fin_SophisticatedPercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="00 %" style={{width: '200px'}}/>
+                                <input disabled type="text" className="form-control" id="EB_BusEmp_Fin_SophisticatedPercentage" name='EB_BusEmp_Fin_SophisticatedPercentage' value={FormData['EB_BusEmp_Fin_SophisticatedPercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '200px'}}/>
                             </div>
                         </div>
                     </div>
@@ -853,7 +843,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusHS_TurnOver" >
@@ -864,7 +854,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusHS_TurnOver" >
@@ -874,7 +864,7 @@ import { useLocation } from 'react-router-dom';
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
-                                <input disabled type="text" className="form-control" id="EB_BusHS_TurnOverPercentage" name='EB_BusHS_TurnOverPercentage' value={FormData['EB_BusHS_TurnOverPercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="00 %" style={{width: '200px'}}/>
+                                <input disabled type="text" className="form-control" id="EB_BusHS_TurnOverPercentage" name='EB_BusHS_TurnOverPercentage' value={FormData['EB_BusHS_TurnOverPercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '200px'}}/>
                             </div>
                         </div>
                     </div>
@@ -890,7 +880,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusI_Choice" >
@@ -901,7 +891,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusI_Choice" >
@@ -911,7 +901,7 @@ import { useLocation } from 'react-router-dom';
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
-                                <input disabled type="text" className="form-control" id="EB_BusI_ChoicePercentage" name='EB_BusI_ChoicePercentage' value={FormData['EB_BusI_ChoicePercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="00 %" style={{width: '200px'}}/>
+                                <input disabled type="text" className="form-control" id="EB_BusI_ChoicePercentage" name='EB_BusI_ChoicePercentage' value={FormData['EB_BusI_ChoicePercentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp"  style={{width: '200px'}}/>
                             </div>
                         </div>
                     </div>
@@ -927,7 +917,7 @@ import { useLocation } from 'react-router-dom';
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusinessItP" >
@@ -938,7 +928,7 @@ import { useLocation } from 'react-router-dom';
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusinessItP" >
@@ -948,7 +938,7 @@ import { useLocation } from 'react-router-dom';
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
-                                <input disabled type="text" className="form-control"  id="EB_BusinessItP_Percentage" name='EB_BusinessItP_Percentage' value={FormData['EB_BusinessItP_Percentage']} onChange={(e) => {onChange(e)}}  aria-describedby="emailHelp" placeholder="00 %" style={{width: '200px'}}/>
+                                <input disabled type="text" className="form-control"  id="EB_BusinessItP_Percentage" name='EB_BusinessItP_Percentage' value={FormData['EB_BusinessItP_Percentage']} onChange={(e) => {onChange(e)}}  aria-describedby="emailHelp"  style={{width: '200px'}}/>
                             </div>
                         </div>
                     </div>
@@ -964,7 +954,7 @@ import { useLocation } from 'react-router-dom';
                                     <label htmlFor="client_name" className="col-form-label" title="If no, motivate6">Additional Comments</label>
                                   </div>
                                   <div className="col-9">
-                                    <input disabled spellCheck="true" id="EB_BusEmp_AdditionalComments" name='EB_BusEmp_AdditionalComments' value={FormData['EB_BusEmp_AdditionalComments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Additional Comments"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusEmp_AdditionalComments" name='EB_BusEmp_AdditionalComments' value={FormData['EB_BusEmp_AdditionalComments']} onChange={(e) => {onChange(e)}} className="form-control"  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -982,25 +972,25 @@ import { useLocation } from 'react-router-dom';
       <td style={{fontSize:'14px'}} align="left">Categories (description)</td>
       <td>
         <div >
-            <input disabled type="text" id="EB_BusRB_Category1" name='EB_BusRB_Category1' value={FormData['EB_BusRB_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_Category1" name='EB_BusRB_Category1' value={FormData['EB_BusRB_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input disabled type="text" id="EB_BusRB_Category2" name='EB_BusRB_Category2' value={FormData['EB_BusRB_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_Category2" name='EB_BusRB_Category2' value={FormData['EB_BusRB_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input disabled type="text" id="EB_BusRB_Category3" name='EB_BusRB_Category3' value={FormData['EB_BusRB_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_Category3" name='EB_BusRB_Category3' value={FormData['EB_BusRB_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input disabled type="text" id="EB_BusRB_Category4" name='EB_BusRB_Category4' value={FormData['EB_BusRB_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_Category4" name='EB_BusRB_Category4' value={FormData['EB_BusRB_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
       </td>
     </tr>
@@ -1011,28 +1001,28 @@ import { useLocation } from 'react-router-dom';
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input disabled type="number" id="EB_BusRB_MemContrib_Category1" name='EB_BusRB_MemContrib_Category1' value={FormData['EB_BusRB_MemContrib_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_MemContrib_Category1" name='EB_BusRB_MemContrib_Category1' value={FormData['EB_BusRB_MemContrib_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input disabled type="number" id="EB_BusRB_MemContrib_Category2" name='EB_BusRB_MemContrib_Category2' value={FormData['EB_BusRB_MemContrib_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_MemContrib_Category2" name='EB_BusRB_MemContrib_Category2' value={FormData['EB_BusRB_MemContrib_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input disabled type="number" id="EB_BusRB_MemContrib_Category3" name='EB_BusRB_MemContrib_Category3' value={FormData['EB_BusRB_MemContrib_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_MemContrib_Category3" name='EB_BusRB_MemContrib_Category3' value={FormData['EB_BusRB_MemContrib_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input disabled type="number" id="EB_BusRB_MemContrib_Category4" name='EB_BusRB_MemContrib_Category4' value={FormData['EB_BusRB_MemContrib_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_MemContrib_Category4" name='EB_BusRB_MemContrib_Category4' value={FormData['EB_BusRB_MemContrib_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
     </tr>
@@ -1043,28 +1033,28 @@ import { useLocation } from 'react-router-dom';
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input disabled type="number" id="EB_BusRB_EmpContrib_Category1" name='EB_BusRB_EmpContrib_Category1' value={FormData['EB_BusRB_EmpContrib_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_EmpContrib_Category1" name='EB_BusRB_EmpContrib_Category1' value={FormData['EB_BusRB_EmpContrib_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input disabled type="number" id="EB_BusRB_EmpContrib_Category2" name='EB_BusRB_EmpContrib_Category2' value={FormData['EB_BusRB_EmpContrib_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_EmpContrib_Category2" name='EB_BusRB_EmpContrib_Category2' value={FormData['EB_BusRB_EmpContrib_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input disabled type="number" id="EB_BusRB_EmpContrib_Category3" name='EB_BusRB_EmpContrib_Category3' value={FormData['EB_BusRB_EmpContrib_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_EmpContrib_Category3" name='EB_BusRB_EmpContrib_Category3' value={FormData['EB_BusRB_EmpContrib_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input disabled type="number" id="EB_BusRB_EmpContrib_Category4" name='EB_BusRB_EmpContrib_Category4' value={FormData['EB_BusRB_EmpContrib_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_EmpContrib_Category4" name='EB_BusRB_EmpContrib_Category4' value={FormData['EB_BusRB_EmpContrib_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
     </tr>
@@ -1073,25 +1063,25 @@ import { useLocation } from 'react-router-dom';
       <td style={{fontSize:'14px'}} align="left">Normal Retirement age</td>
       <td>
         <div >
-            <input disabled type="text" id="EB_BusRB_NormRetire_AgeCategory1" name='EB_BusRB_NormRetire_AgeCategory1' value={FormData['EB_BusRB_NormRetire_AgeCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_NormRetire_AgeCategory1" name='EB_BusRB_NormRetire_AgeCategory1' value={FormData['EB_BusRB_NormRetire_AgeCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input disabled type="text" id="EB_BusRB_NormRetire_AgeCategory2" name='EB_BusRB_NormRetire_AgeCategory2' value={FormData['EB_BusRB_NormRetire_AgeCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_NormRetire_AgeCategory2" name='EB_BusRB_NormRetire_AgeCategory2' value={FormData['EB_BusRB_NormRetire_AgeCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input disabled type="text" id="EB_BusRB_NormRetire_AgeCategory3" name='EB_BusRB_NormRetire_AgeCategory3' value={FormData['EB_BusRB_NormRetire_AgeCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_NormRetire_AgeCategory3" name='EB_BusRB_NormRetire_AgeCategory3' value={FormData['EB_BusRB_NormRetire_AgeCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input disabled type="text" id="EB_BusRB_NormRetire_AgeCategory4" name='EB_BusRB_NormRetire_AgeCategory4' value={FormData['EB_BusRB_NormRetire_AgeCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_NormRetire_AgeCategory4" name='EB_BusRB_NormRetire_AgeCategory4' value={FormData['EB_BusRB_NormRetire_AgeCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
       </td>
     </tr>
@@ -1110,7 +1100,7 @@ import { useLocation } from 'react-router-dom';
       <td>
       </td>
       <td>
-        <input disabled type="text" id="EB_BusRB_FlexibleGroupLife" name='EB_BusRB_FlexibleGroupLife' value={FormData['EB_BusRB_FlexibleGroupLife']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder="Multiple of Salary"/>
+        <input disabled type="text" id="EB_BusRB_FlexibleGroupLife" name='EB_BusRB_FlexibleGroupLife' value={FormData['EB_BusRB_FlexibleGroupLife']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
 
       </td>
       <td></td>
@@ -1127,7 +1117,7 @@ import { useLocation } from 'react-router-dom';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_Approved" >
@@ -1138,7 +1128,7 @@ import { useLocation } from 'react-router-dom';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_Approved" >
@@ -1151,25 +1141,25 @@ import { useLocation } from 'react-router-dom';
         </td>
         <td>
             <div >
-                <input disabled type="text" id="EB_BusRB_ApprovedCategory1" name='EB_BusRB_ApprovedCategory1' value={FormData['EB_BusRB_ApprovedCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_ApprovedCategory1" name='EB_BusRB_ApprovedCategory1' value={FormData['EB_BusRB_ApprovedCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_ApprovedCategory2" name='EB_BusRB_ApprovedCategory2' value={FormData['EB_BusRB_ApprovedCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_ApprovedCategory2" name='EB_BusRB_ApprovedCategory2' value={FormData['EB_BusRB_ApprovedCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_ApprovedCategory3" name='EB_BusRB_ApprovedCategory3' value={FormData['EB_BusRB_ApprovedCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_ApprovedCategory3" name='EB_BusRB_ApprovedCategory3' value={FormData['EB_BusRB_ApprovedCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_ApprovedCategory4" name='EB_BusRB_ApprovedCategory4' value={FormData['EB_BusRB_ApprovedCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_ApprovedCategory4" name='EB_BusRB_ApprovedCategory4' value={FormData['EB_BusRB_ApprovedCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
@@ -1184,7 +1174,7 @@ import { useLocation } from 'react-router-dom';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_UnApproved" >
@@ -1195,7 +1185,7 @@ import { useLocation } from 'react-router-dom';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_UnApproved" >
@@ -1208,25 +1198,25 @@ import { useLocation } from 'react-router-dom';
         </td>
         <td>
             <div >
-                <input disabledtype="text" id="EB_BusRB_UnApprovedCategory1" name='EB_BusRB_UnApprovedCategory1' value={FormData['EB_BusRB_UnApprovedCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabledtype="text" id="EB_BusRB_UnApprovedCategory1" name='EB_BusRB_UnApprovedCategory1' value={FormData['EB_BusRB_UnApprovedCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_UnApprovedCategory2" name='EB_BusRB_UnApprovedCategory2' value={FormData['EB_BusRB_UnApprovedCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_UnApprovedCategory2" name='EB_BusRB_UnApprovedCategory2' value={FormData['EB_BusRB_UnApprovedCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_UnApprovedCategory3" name='EB_BusRB_UnApprovedCategory3' value={FormData['EB_BusRB_UnApprovedCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_UnApprovedCategory3" name='EB_BusRB_UnApprovedCategory3' value={FormData['EB_BusRB_UnApprovedCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_UnApprovedCategory4" name='EB_BusRB_UnApprovedCategory4' value={FormData['EB_BusRB_UnApprovedCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_UnApprovedCategory4" name='EB_BusRB_UnApprovedCategory4' value={FormData['EB_BusRB_UnApprovedCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
@@ -1244,7 +1234,7 @@ import { useLocation } from 'react-router-dom';
         <div className="row">
             <div className="row col-2 align-items-center">
                 <div className="col-2">
-                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                    <input disabled className="form-check-input" type="radio" value="1" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                 </div>
                 <div className="col-2">
                     <label className="form-check-label" htmlFor="EB_BusinessRiskFundTakeOver" >
@@ -1255,7 +1245,7 @@ import { useLocation } from 'react-router-dom';
 
             <div className="row col-2 align-items-center">
                 <div className="col-2">
-                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                    <input disabled className="form-check-input" type="radio" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                 </div>
                 <div className="col-2">
                     <label className="form-check-label" htmlFor="EB_BusinessRiskFundTakeOver" >
@@ -1275,28 +1265,28 @@ import { useLocation } from 'react-router-dom';
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_SpouseLC_Category1" name='EB_BusRB_SpouseLC_Category' value={FormData['EB_BusRB_SpouseLC_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_SpouseLC_Category1" name='EB_BusRB_SpouseLC_Category' value={FormData['EB_BusRB_SpouseLC_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_SpouseLC_Category2" name='EB_BusRB_SpouseLC_Category2' value={FormData['EB_BusRB_SpouseLC_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_SpouseLC_Category2" name='EB_BusRB_SpouseLC_Category2' value={FormData['EB_BusRB_SpouseLC_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_SpouseLC_Category3" name='EB_BusRB_SpouseLC_Category3' value={FormData['EB_BusRB_SpouseLC_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_SpouseLC_Category3" name='EB_BusRB_SpouseLC_Category3' value={FormData['EB_BusRB_SpouseLC_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_SpouseLC_Category4" name='EB_BusRB_SpouseLC_Category4' value={FormData['EB_BusRB_SpouseLC_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_SpouseLC_Category4" name='EB_BusRB_SpouseLC_Category4' value={FormData['EB_BusRB_SpouseLC_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
     </tr>
@@ -1305,7 +1295,7 @@ import { useLocation } from 'react-router-dom';
       <td style={{fontSize:'14px'}} align="left">Notes on Spouse cover</td>
       <td>
         <div >
-            <input disabled type="number" id="EB_BusRB_SpouseLC_Notes" name='EB_BusRB_SpouseLC_Notes' value={FormData['EB_BusRB_SpouseLC_Notes']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder="Notes on Spouse cover"/>
+            <input disabled type="number" id="EB_BusRB_SpouseLC_Notes" name='EB_BusRB_SpouseLC_Notes' value={FormData['EB_BusRB_SpouseLC_Notes']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
         </div>
       </td>
 
@@ -1334,28 +1324,28 @@ import { useLocation } from 'react-router-dom';
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_TrauBenSa_Category1" name='EB_BusRB_TrauBenSa_Category1' value={FormData['EB_BusRB_TrauBenSa_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_TrauBenSa_Category1" name='EB_BusRB_TrauBenSa_Category1' value={FormData['EB_BusRB_TrauBenSa_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_TrauBenSa_Category2" name='EB_BusRB_TrauBenSa_Category2' value={FormData['EB_BusRB_TrauBenSa_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_TrauBenSa_Category2" name='EB_BusRB_TrauBenSa_Category2' value={FormData['EB_BusRB_TrauBenSa_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_TrauBenSa_Category3" name='EB_BusRB_TrauBenSa_Category3' value={FormData['EB_BusRB_TrauBenSa_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_TrauBenSa_Category3" name='EB_BusRB_TrauBenSa_Category3' value={FormData['EB_BusRB_TrauBenSa_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_TrauBenSa_Category4" name='EB_BusRB_TrauBenSa_Category4' value={FormData['EB_BusRB_TrauBenSa_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_TrauBenSa_Category4" name='EB_BusRB_TrauBenSa_Category4' value={FormData['EB_BusRB_TrauBenSa_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
     </tr>
@@ -1378,28 +1368,28 @@ import { useLocation } from 'react-router-dom';
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_FB_CoverCategory1" name='EB_BusRB_FB_CoverCategory1' value={FormData['EB_BusRB_FB_CoverCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_FB_CoverCategory1" name='EB_BusRB_FB_CoverCategory1' value={FormData['EB_BusRB_FB_CoverCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_FB_CoverCategory2" name='EB_BusRB_FB_CoverCategory2' value={FormData['EB_BusRB_FB_CoverCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_FB_CoverCategory2" name='EB_BusRB_FB_CoverCategory2' value={FormData['EB_BusRB_FB_CoverCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_FB_CoverCategory3" name='EB_BusRB_FB_CoverCategory3' value={FormData['EB_BusRB_FB_CoverCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_FB_CoverCategory3" name='EB_BusRB_FB_CoverCategory3' value={FormData['EB_BusRB_FB_CoverCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" id="EB_BusRB_FB_CoverCategory4" name='EB_BusRB_FB_CoverCategory4' value={FormData['EB_BusRB_FB_CoverCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input disabled type="number" id="EB_BusRB_FB_CoverCategory4" name='EB_BusRB_FB_CoverCategory4' value={FormData['EB_BusRB_FB_CoverCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp"/>
         </div>
       </td>
     </tr>
@@ -1422,7 +1412,7 @@ import { useLocation } from 'react-router-dom';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_Approved" >
@@ -1433,7 +1423,7 @@ import { useLocation } from 'react-router-dom';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_Approved" >
@@ -1446,25 +1436,25 @@ import { useLocation } from 'react-router-dom';
         </td>
         <td>
             <div >
-                <input disabled type="text" id="EB_BusRB_CapDisBen_ApprovedCategory1" name='EB_BusRB_CapDisBen_ApprovedCategory1' value={FormData['EB_BusRB_CapDisBen_ApprovedCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_CapDisBen_ApprovedCategory1" name='EB_BusRB_CapDisBen_ApprovedCategory1' value={FormData['EB_BusRB_CapDisBen_ApprovedCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_CapDisBen_ApprovedCategory2" name='EB_BusRB_CapDisBen_ApprovedCategory2' value={FormData['EB_BusRB_CapDisBen_ApprovedCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_CapDisBen_ApprovedCategory2" name='EB_BusRB_CapDisBen_ApprovedCategory2' value={FormData['EB_BusRB_CapDisBen_ApprovedCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_CapDisBen_ApprovedCategory3" name='EB_BusRB_CapDisBen_ApprovedCategory3' value={FormData['EB_BusRB_CapDisBen_ApprovedCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_CapDisBen_ApprovedCategory3" name='EB_BusRB_CapDisBen_ApprovedCategory3' value={FormData['EB_BusRB_CapDisBen_ApprovedCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_CapDisBen_ApprovedCategory4" name='EB_BusRB_CapDisBen_ApprovedCategory4' value={FormData['EB_BusRB_CapDisBen_ApprovedCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_CapDisBen_ApprovedCategory4" name='EB_BusRB_CapDisBen_ApprovedCategory4' value={FormData['EB_BusRB_CapDisBen_ApprovedCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
@@ -1479,7 +1469,7 @@ import { useLocation } from 'react-router-dom';
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_UnApproved" >
@@ -1490,7 +1480,7 @@ import { useLocation } from 'react-router-dom';
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_UnApproved" >
@@ -1503,25 +1493,25 @@ import { useLocation } from 'react-router-dom';
         </td>
         <td>
             <div >
-                <input disabled type="text" id="EB_BusRB_CapDisBen_UnApprovedCategory1" name='EB_BusRB_CapDisBen_UnApprovedCategory1' value={FormData['EB_BusRB_CapDisBen_UnApprovedCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_CapDisBen_UnApprovedCategory1" name='EB_BusRB_CapDisBen_UnApprovedCategory1' value={FormData['EB_BusRB_CapDisBen_UnApprovedCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_CapDisBen_UnApprovedCategory2" name='EB_BusRB_CapDisBen_UnApprovedCategory2' value={FormData['EB_BusRB_CapDisBen_UnApprovedCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_CapDisBen_UnApprovedCategory2" name='EB_BusRB_CapDisBen_UnApprovedCategory2' value={FormData['EB_BusRB_CapDisBen_UnApprovedCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_CapDisBen_UnApprovedCategory3" name='EB_BusRB_CapDisBen_UnApprovedCategory3' value={FormData['EB_BusRB_CapDisBen_UnApprovedCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_CapDisBen_UnApprovedCategory3" name='EB_BusRB_CapDisBen_UnApprovedCategory3' value={FormData['EB_BusRB_CapDisBen_UnApprovedCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
         <td>
             <div className="form-group">
-                <input disabled type="text" id="EB_BusRB_CapDisBen_UnApprovedCategory4" name='EB_BusRB_CapDisBen_UnApprovedCategory4' value={FormData['EB_BusRB_CapDisBen_UnApprovedCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                <input disabled type="text" id="EB_BusRB_CapDisBen_UnApprovedCategory4" name='EB_BusRB_CapDisBen_UnApprovedCategory4' value={FormData['EB_BusRB_CapDisBen_UnApprovedCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
             </div>
         </td>
 
@@ -1541,12 +1531,7 @@ import { useLocation } from 'react-router-dom';
       <td>
         <div className='col-6'>
             <select disabled className="text-start form-select"id="EB_BusRB_DiIBenWaitPer_Category1" name='EB_BusRB_DiIBenWaitPer_Category1' value={FormData['EB_BusRB_DiIBenWaitPer_Category1']} onChange={(e) => {onChange(e)}}   aria-label="Default select example">
-                <option value="0" selected>Select</option>
-                <option value="1">1</option>
-                <option value="2">3</option>
-                <option value="3">6</option>
-                <option value="4">12</option>
-                <option value="5">24</option>
+                <option value="0" selected>{FormData['EB_BusRB_DiIBenWaitPer_Category1']}</option>
             </select>
         </div>
       </td>
@@ -1554,12 +1539,8 @@ import { useLocation } from 'react-router-dom';
       <td>
         <div className='col-6'>
             <select disabled className="text-start form-select" id="EB_BusRB_DiIBenWaitPer_Category2" name='EB_BusRB_DiIBenWaitPer_Category2' value={FormData['EB_BusRB_DiIBenWaitPer_Category2']} onChange={(e) => {onChange(e)}}   aria-label="Default select example">
-                <option value="0" selected>Select</option>
-                <option value="1">1</option>
-                <option value="2">3</option>
-                <option value="3">6</option>
-                <option value="4">12</option>
-                <option value="5">24</option>
+                <option value="0" selected>{FormData['EB_BusRB_DiIBenWaitPer_Category2']}</option>
+               
             </select>
         </div>
       </td>
@@ -1567,12 +1548,7 @@ import { useLocation } from 'react-router-dom';
       <td>
         <div className='col-6'>
             <select disabled className="text-start form-select" id="EB_BusRB_DiIBenWaitPer_Category3" name='EB_BusRB_DiIBenWaitPer_Category3' value={FormData['EB_BusRB_DiIBenWaitPer_Category3']} onChange={(e) => {onChange(e)}}   aria-label="Default select example">
-                <option value="0" selected>Select</option>
-                <option value="1">1</option>
-                <option value="2">3</option>
-                <option value="3">6</option>
-                <option value="4">12</option>
-                <option value="5">24</option>
+                <option value="0" selected>{FormData['EB_BusRB_DiIBenWaitPer_Category3']}</option>
             </select>
         </div>
       </td>
@@ -1580,12 +1556,8 @@ import { useLocation } from 'react-router-dom';
       <td>
         <div className='col-6'>
             <select disabled className="text-start form-select" id="EB_BusRB_DiIBenWaitPer_Category4" name='EB_BusRB_DiIBenWaitPer_Category4' value={FormData['EB_BusRB_DiIBenWaitPer_Category4']} onChange={(e) => {onChange(e)}}   aria-label="Default select example">
-                <option value="0" selected>Select</option>
-                <option value="1">1</option>
-                <option value="2">3</option>
-                <option value="3">6</option>
-                <option value="4">12</option>
-                <option value="5">24</option>
+                <option value={FormData['EB_BusRB_DiIBenWaitPer_Category4']} selected>{FormData['EB_BusRB_DiIBenWaitPer_Category4']}</option>
+               
             </select>
         </div>
       </td>
@@ -1603,7 +1575,7 @@ import { useLocation } from 'react-router-dom';
                             <label htmlFor="address" className="col-form-label">Conversion option:</label>
                         </div>
                         <div className="col-10">
-                            <input disabled spellCheck="true" id="EB_BusRB_ConvOp" name='EB_BusRB_ConvOp' value={FormData['EB_BusRB_ConvOp']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Conversion option"  aria-describedby="" />
+                            <input disabled spellCheck="true" id="EB_BusRB_ConvOp" name='EB_BusRB_ConvOp' value={FormData['EB_BusRB_ConvOp']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -1619,7 +1591,7 @@ import { useLocation } from 'react-router-dom';
                             <label htmlFor="address" className="col-form-label">Growth rates for income benefits:</label>
                         </div>
                         <div className="col-10">
-                            <input disabled spellCheck="true" id="EB_BusRB_GrowthRates" name='EB_BusRB_GrowthRates' value={FormData['EB_BusRB_GrowthRates']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Growth rates for income benefits"  aria-describedby="" />
+                            <input disabled spellCheck="true" id="EB_BusRB_GrowthRates" name='EB_BusRB_GrowthRates' value={FormData['EB_BusRB_GrowthRates']} onChange={(e) => {onChange(e)}} className="form-control"  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -1635,7 +1607,7 @@ import { useLocation } from 'react-router-dom';
                             <label htmlFor="address" className="col-form-label">Notes on Disability Benefits:</label>
                         </div>
                         <div className="col-10">
-                            <input disabled spellCheck="true" id="EB_BusRB_DisabilityBenefitsNotes" name='EB_BusRB_DisabilityBenefitsNotes' value={FormData['EB_BusRB_DisabilityBenefitsNotes']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Notes on Disability Benefits"  aria-describedby="" />
+                            <input disabled spellCheck="true" id="EB_BusRB_DisabilityBenefitsNotes" name='EB_BusRB_DisabilityBenefitsNotes' value={FormData['EB_BusRB_DisabilityBenefitsNotes']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -1676,25 +1648,25 @@ import { useLocation } from 'react-router-dom';
     </td>
     <td>
         <div >
-            <input disabled type="text" id="EB_BusRB_AccidentBenefitCategory1" name='EB_BusRB_AccidentBenefitCategory1' value={FormData['EB_BusRB_AccidentBenefitCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_AccidentBenefitCategory1" name='EB_BusRB_AccidentBenefitCategory1' value={FormData['EB_BusRB_AccidentBenefitCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
     </td>
 
     <td>
         <div className="form-group">
-            <input disabled type="text" id="EB_BusRB_AccidentBenefitCategory2" name='EB_BusRB_AccidentBenefitCategory2' value={FormData['EB_BusRB_AccidentBenefitCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_AccidentBenefitCategory2" name='EB_BusRB_AccidentBenefitCategory2' value={FormData['EB_BusRB_AccidentBenefitCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
     </td>
 
     <td>
         <div className="form-group">
-            <input disabled type="text" id="EB_BusRB_AccidentBenefitCategory3" name='EB_BusRB_AccidentBenefitCategory3' value={FormData['EB_BusRB_AccidentBenefitCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_AccidentBenefitCategory3" name='EB_BusRB_AccidentBenefitCategory3' value={FormData['EB_BusRB_AccidentBenefitCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
     </td>
 
     <td>
         <div className="form-group">
-            <input disabled type="text" id="EB_BusRB_AccidentBenefitCategory4" name='EB_BusRB_AccidentBenefitCategory4' value={FormData['EB_BusRB_AccidentBenefitCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="text" id="EB_BusRB_AccidentBenefitCategory4" name='EB_BusRB_AccidentBenefitCategory4' value={FormData['EB_BusRB_AccidentBenefitCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" />
         </div>
     </td>
     </tr>
@@ -1702,14 +1674,10 @@ import { useLocation } from 'react-router-dom';
 </table>
     
     <hr/>
-    <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}
-        id="EB_BusRB_AccidentBenefitReason" name='EB_BusRB_AccidentBenefitReason' value={FormData['EB_BusRB_AccidentBenefitReason']} onChange={(e) => {onChange(e)}}
-        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. 
-Record the client's instructions, deviations and implications thereof.
-        
-        
-        `}  aria-describedby=""  ></textarea>
-            
+    <textarea disbaled ref={textareaRef} className="form-control" style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}
+        id="EB_BusRB_AccidentBenefitReason" name='EB_BusRB_AccidentBenefitReason' value={FormData['EB_BusRB_AccidentBenefitReason']} onChange={(e) => {onChange(e)}} 
+         aria-describedby=""  ></textarea>
+  
             <hr/>
             <p>Disability Cover:</p>
             <hr/>
@@ -1733,38 +1701,25 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}
+    <textarea disbaled ref={textareaRef} className="form-control" style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}
         id="EB_BusRB_DiC_Reason" name='EB_BusRB_DiC_Reason' value={FormData['EB_BusRB_DiC_Reason']} onChange={(e) => {onChange(e)}}
         onBlur={backgroundInfo_onBlur4}
-        placeholder={`Explain the reasons why disability benefits were recommended to satisfy this need. 
-Record the client's instructions, deviations and implications thereof.
-        
-        
-        `}  aria-describedby=""  ></textarea>
+        aria-describedby=""  ></textarea>
 
     <hr/>
     <p>Dread Disease Cover:</p>
     <hr/>
 
             
-    <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}
+    <textarea disbaled ref={textareaRef} className="form-control" style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}
         id="EB_BusRB_DrC_Reason" name='EB_BusRB_DrC_Reason' value={FormData['EB_BusRB_DrC_Reason']} onChange={(e) => {onChange(e)}}
-        placeholder={`Explain the reasons why dread disease cover was recommended to satisfy this need. 
-Record the client's instructions, deviations and implications thereof.
-        
-        
-        
-        `}  aria-describedby=""  ></textarea>
+        aria-describedby=""  ></textarea>
 
 <hr/>
 
-        <textarea disbaled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}
+        <textarea disbaled ref={textareaRef} className="form-control" style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}
         id="EB_BusRB_DrC_Summary" name='EB_BusRB_DrC_Summary' value={FormData['EB_BusRB_DrC_Summary']} onChange={(e) => {onChange(e)}}
-        placeholder={`Summary of recommendations to address your identified needs.
-
-
-
-        `}  aria-describedby=""  ></textarea>
+         aria-describedby=""  ></textarea>
 
         <hr/>
 
@@ -1780,7 +1735,7 @@ Record the client's instructions, deviations and implications thereof.
                                     <label htmlFor="address" className="col-form-label">Product provider/ Administrator:</label>
                                   </div>
                                   <div className="col-8">
-                                    <input disabled spellCheck="true" id="EB_BusRecom_ProductAdmin" name='EB_BusRecom_ProductAdmin' value={FormData['EB_BusRecom_ProductAdmin']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Product provider/ Administrator"  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusRecom_ProductAdmin" name='EB_BusRecom_ProductAdmin' value={FormData['EB_BusRecom_ProductAdmin']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1792,7 +1747,7 @@ Record the client's instructions, deviations and implications thereof.
                                     <label htmlFor="address" className="col-form-label">Product name:</label>
                                   </div>
                                   <div className="col-8">
-                                    <input disabled spellCheck="true" id="EB_BusRecom_ProductName" name='EB_BusRecom_ProductName' value={FormData['EB_BusRecom_ProductName']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=""  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusRecom_ProductName" name='EB_BusRecom_ProductName' value={FormData['EB_BusRecom_ProductName']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1804,7 +1759,7 @@ Record the client's instructions, deviations and implications thereof.
                                     <label htmlFor="address" className="col-form-label">Type of fund </label>
                                   </div>
                                   <div className="col-8">
-                                    <input disabled spellCheck="true" id="EB_BusRecom_FundType" name='EB_BusRecom_FundType' value={FormData['EB_BusRecom_FundType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=""  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusRecom_FundType" name='EB_BusRecom_FundType' value={FormData['EB_BusRecom_FundType']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1816,7 +1771,7 @@ Record the client's instructions, deviations and implications thereof.
                                     <label htmlFor="address" className="col-form-label">Motivation for recommendations of fund/scheme and type:</label>
                                   </div>
                                   <div className="col-8">
-                                    <input disabled spellCheck="true" id="EB_BusRecom_RecommendationFundType" name='EB_BusRecom_RecommendationFundType' value={FormData['EB_BusRecom_RecommendationFundType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=""  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusRecom_RecommendationFundType" name='EB_BusRecom_RecommendationFundType' value={FormData['EB_BusRecom_RecommendationFundType']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1831,7 +1786,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1842,7 +1797,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1868,7 +1823,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1879,7 +1834,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1901,7 +1856,7 @@ Record the client's instructions, deviations and implications thereof.
                                     <label htmlFor="address" className="col-form-label">If the client has decided to conclude a transaction that differs from the recommended solution, has the employer been informed of the risks? What risks have been pointed out?:</label>
                                   </div>
                                   <div className="col-8">
-                                    <input disabled spellCheck="true" id="EB_BusRecom_ClientRisks" name='EB_BusRecom_ClientRisks' value={FormData['EB_BusRecom_ClientRisks']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=""  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusRecom_ClientRisks" name='EB_BusRecom_ClientRisks' value={FormData['EB_BusRecom_ClientRisks']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1923,7 +1878,7 @@ Record the client's instructions, deviations and implications thereof.
                                     <label htmlFor="address" className="col-form-label">Name of fund replaced:</label>
                                   </div>
                                   <div className="col-8">
-                                    <input disabled spellCheck="true" id="EB_BusFReplace_Name" name='EB_BusFReplace_Name' value={FormData['EB_BusFReplace_Name']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=""  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusFReplace_Name" name='EB_BusFReplace_Name' value={FormData['EB_BusFReplace_Name']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1935,7 +1890,7 @@ Record the client's instructions, deviations and implications thereof.
                                     <label htmlFor="address" className="col-form-label">Reg No: </label>
                                   </div>
                                   <div className="col-8">
-                                    <input disabled spellCheck="true" id="EB_BusFReplace_RegNo" name='EB_BusFReplace_RegNo' value={FormData['EB_BusFReplace_RegNo']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=""  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusFReplace_RegNo" name='EB_BusFReplace_RegNo' value={FormData['EB_BusFReplace_RegNo']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1947,7 +1902,7 @@ Record the client's instructions, deviations and implications thereof.
                                     <label htmlFor="address" className="col-form-label">Type of fund replaced:</label>
                                   </div>
                                   <div className="col-8">
-                                    <input disabled spellCheck="true" id="EB_BusFReplace_Type" name='EB_BusFReplace_Type' value={FormData['EB_BusFReplace_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=""  aria-describedby="" />
+                                    <input disabled spellCheck="true" id="EB_BusFReplace_Type" name='EB_BusFReplace_Type' value={FormData['EB_BusFReplace_Type']} onChange={(e) => {onChange(e)}} className="form-control"   aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1963,7 +1918,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="1" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1974,7 +1929,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input disabled className="form-check-input" type="radio" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2000,13 +1955,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_FeeChargesReplaced" name='EB_BusFReplace_FeeChargesReplaced' value={FormData['EB_BusFReplace_FeeChargesReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_FeeChargesReplaced" name='EB_BusFReplace_FeeChargesReplaced' value={FormData['EB_BusFReplace_FeeChargesReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_FeeChargesExisting" name='EB_BusFReplace_FeeChargesExisting' value={FormData['EB_BusFReplace_FeeChargesExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_FeeChargesExisting" name='EB_BusFReplace_FeeChargesExisting' value={FormData['EB_BusFReplace_FeeChargesExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2027,13 +1982,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_TnC_Replaced" name='EB_BusFReplace_TnC_Replaced' value={FormData['EB_BusFReplace_TnC_Replaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_TnC_Replaced" name='EB_BusFReplace_TnC_Replaced' value={FormData['EB_BusFReplace_TnC_Replaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_TnC_Existing" name='EB_BusFReplace_TnC_Existing' value={FormData['EB_BusFReplace_TnC_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_TnC_Existing" name='EB_BusFReplace_TnC_Existing' value={FormData['EB_BusFReplace_TnC_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2054,13 +2009,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_HealthChangesReplaced" name='EB_BusFReplace_HealthChangesReplaced' value={FormData['EB_BusFReplace_HealthChangesReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_HealthChangesReplaced" name='EB_BusFReplace_HealthChangesReplaced' value={FormData['EB_BusFReplace_HealthChangesReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_HealthChangesExisting" name='EB_BusFReplace_HealthChangesExisting' value={FormData['EB_BusFReplace_HealthChangesExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_HealthChangesExisting" name='EB_BusFReplace_HealthChangesExisting' value={FormData['EB_BusFReplace_HealthChangesExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2081,13 +2036,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_TaxImplicationsReplaced" name='EB_BusFReplace_TaxImplicationsReplaced' value={FormData['EB_BusFReplace_TaxImplicationsReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_TaxImplicationsReplaced" name='EB_BusFReplace_TaxImplicationsReplaced' value={FormData['EB_BusFReplace_TaxImplicationsReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_TaxImplicationsExisting" name='EB_BusFReplace_TaxImplicationsExisting' value={FormData['EB_BusFReplace_TaxImplicationsExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_TaxImplicationsExisting" name='EB_BusFReplace_TaxImplicationsExisting' value={FormData['EB_BusFReplace_TaxImplicationsExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2108,13 +2063,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_MaterialDifferencesReplaced" name='EB_BusFReplace_MaterialDifferencesReplaced' value={FormData['EB_BusFReplace_MaterialDifferencesReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_MaterialDifferencesReplaced" name='EB_BusFReplace_MaterialDifferencesReplaced' value={FormData['EB_BusFReplace_MaterialDifferencesReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_MaterialDifferencesExisting" name='EB_BusFReplace_MaterialDifferencesExisting' value={FormData['EB_BusFReplace_MaterialDifferencesExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_MaterialDifferencesExisting" name='EB_BusFReplace_MaterialDifferencesExisting' value={FormData['EB_BusFReplace_MaterialDifferencesExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2135,13 +2090,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_PenaltiesReplaced" name='EB_BusFReplace_PenaltiesReplaced' value={FormData['EB_BusFReplace_PenaltiesReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_PenaltiesReplaced" name='EB_BusFReplace_PenaltiesReplaced' value={FormData['EB_BusFReplace_PenaltiesReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_PenaltiesExisting" name='EB_BusFReplace_PenaltiesExisting' value={FormData['EB_BusFReplace_PenaltiesExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_PenaltiesExisting" name='EB_BusFReplace_PenaltiesExisting' value={FormData['EB_BusFReplace_PenaltiesExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2162,13 +2117,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_RealisedReplaced" name='EB_BusFReplace_RealisedReplaced' value={FormData['EB_BusFReplace_RealisedReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_RealisedReplaced" name='EB_BusFReplace_RealisedReplaced' value={FormData['EB_BusFReplace_RealisedReplaced']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_RealisedExisting" name='EB_BusFReplace_RealisedExisting' value={FormData['EB_BusFReplace_RealisedExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_RealisedExisting" name='EB_BusFReplace_RealisedExisting' value={FormData['EB_BusFReplace_RealisedExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2216,13 +2171,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_EligGr_Proposed" name='EB_BusFReplace_EligGr_Proposed' value={FormData['EB_BusFReplace_EligGr_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_EligGr_Proposed" name='EB_BusFReplace_EligGr_Proposed' value={FormData['EB_BusFReplace_EligGr_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_EligGr_Existing" name='EB_BusFReplace_EligGr_Existing' value={FormData['EB_BusFReplace_EligGr_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_EligGr_Existing" name='EB_BusFReplace_EligGr_Existing' value={FormData['EB_BusFReplace_EligGr_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2243,13 +2198,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_MemContrib_Proposed" name='EB_BusFReplace_MemContrib_Proposed' value={FormData['EB_BusFReplace_MemContrib_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_MemContrib_Proposed" name='EB_BusFReplace_MemContrib_Proposed' value={FormData['EB_BusFReplace_MemContrib_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_MemContrib_Existing" name='EB_BusFReplace_MemContrib_Existing' value={FormData['EB_BusFReplace_MemContrib_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_MemContrib_Existing" name='EB_BusFReplace_MemContrib_Existing' value={FormData['EB_BusFReplace_MemContrib_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2270,13 +2225,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_EmpContrib_PercentageProposed" name='EB_BusFReplace_EmpContrib_PercentageProposed' value={FormData['EB_BusFReplace_EmpContrib_PercentageProposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_EmpContrib_PercentageProposed" name='EB_BusFReplace_EmpContrib_PercentageProposed' value={FormData['EB_BusFReplace_EmpContrib_PercentageProposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_EmpContrib_PercentageExisting" name='EB_BusFReplace_EmpContrib_PercentageExisting' value={FormData['EB_BusFReplace_EmpContrib_PercentageExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_EmpContrib_PercentageExisting" name='EB_BusFReplace_EmpContrib_PercentageExisting' value={FormData['EB_BusFReplace_EmpContrib_PercentageExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2297,13 +2252,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_AdminFee_Proposed" name='EB_BusFReplace_AdminFee_Proposed' value={FormData['EB_BusFReplace_AdminFee_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_AdminFee_Proposed" name='EB_BusFReplace_AdminFee_Proposed' value={FormData['EB_BusFReplace_AdminFee_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_AdminFee_Existing" name='EB_BusFReplace_AdminFee_Existing' value={FormData['EB_BusFReplace_AdminFee_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_AdminFee_Existing" name='EB_BusFReplace_AdminFee_Existing' value={FormData['EB_BusFReplace_AdminFee_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2322,13 +2277,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_BenPayD_Proposed" name='EB_BusFReplace_BenPayD_Proposed' value={FormData['EB_BusFReplace_BenPayD_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_BenPayD_Proposed" name='EB_BusFReplace_BenPayD_Proposed' value={FormData['EB_BusFReplace_BenPayD_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_BenPayD_Existing" name='EB_BusFReplace_BenPayD_Existing' value={FormData['EB_BusFReplace_BenPayD_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_BenPayD_Existing" name='EB_BusFReplace_BenPayD_Existing' value={FormData['EB_BusFReplace_BenPayD_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2347,13 +2302,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_BenPayDis_Proposed" name='EB_BusFReplace_BenPayDis_Proposed' value={FormData['EB_BusFReplace_BenPayDis_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_BenPayDis_Proposed" name='EB_BusFReplace_BenPayDis_Proposed' value={FormData['EB_BusFReplace_BenPayDis_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_BenPayDis_Existing" name='EB_BusFReplace_BenPayDis_Existing' value={FormData['EB_BusFReplace_BenPayDis_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_BenPayDis_Existing" name='EB_BusFReplace_BenPayDis_Existing' value={FormData['EB_BusFReplace_BenPayDis_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2373,13 +2328,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_BenPayW_Proposed" name='EB_BusFReplace_BenPayW_Proposed' value={FormData['EB_BusFReplace_BenPayW_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_BenPayW_Proposed" name='EB_BusFReplace_BenPayW_Proposed' value={FormData['EB_BusFReplace_BenPayW_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_BenPayW_Existing" name='EB_BusFReplace_BenPayW_Existing' value={FormData['EB_BusFReplace_BenPayW_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_BenPayW_Existing" name='EB_BusFReplace_BenPayW_Existing' value={FormData['EB_BusFReplace_BenPayW_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2399,13 +2354,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_BenPayRe_Proposed" name='EB_BusFReplace_BenPayRe_Proposed' value={FormData['EB_BusFReplace_BenPayRe_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_BenPayRe_Proposed" name='EB_BusFReplace_BenPayRe_Proposed' value={FormData['EB_BusFReplace_BenPayRe_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_BenPayRe_Existing" name='EB_BusFReplace_BenPayRe_Existing' value={FormData['EB_BusFReplace_BenPayRe_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_BenPayRe_Existing" name='EB_BusFReplace_BenPayRe_Existing' value={FormData['EB_BusFReplace_BenPayRe_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2424,13 +2379,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_NormRetire_AgeProposed" name='EB_BusFReplace_NormRetire_AgeProposed' value={FormData['EB_BusFReplace_NormRetire_AgeProposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_NormRetire_AgeProposed" name='EB_BusFReplace_NormRetire_AgeProposed' value={FormData['EB_BusFReplace_NormRetire_AgeProposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_NormRetire_AgeExisting" name='EB_BusFReplace_NormRetire_AgeExisting' value={FormData['EB_BusFReplace_NormRetire_AgeExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_NormRetire_AgeExisting" name='EB_BusFReplace_NormRetire_AgeExisting' value={FormData['EB_BusFReplace_NormRetire_AgeExisting']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2449,13 +2404,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_ConvOp_Proposed" name='EB_BusFReplace_ConvOp_Proposed' value={FormData['EB_BusFReplace_ConvOp_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_ConvOp_Proposed" name='EB_BusFReplace_ConvOp_Proposed' value={FormData['EB_BusFReplace_ConvOp_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_ConvOp_Existing" name='EB_BusFReplace_ConvOp_Existing' value={FormData['EB_BusFReplace_ConvOp_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_ConvOp_Existing" name='EB_BusFReplace_ConvOp_Existing' value={FormData['EB_BusFReplace_ConvOp_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2474,13 +2429,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_HouseL_Proposed" name='EB_BusFReplace_HouseL_Proposed' value={FormData['EB_BusFReplace_HouseL_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_HouseL_Proposed" name='EB_BusFReplace_HouseL_Proposed' value={FormData['EB_BusFReplace_HouseL_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_HouseL_Existing" name='EB_BusFReplace_HouseL_Existing' value={FormData['EB_BusFReplace_HouseL_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_HouseL_Existing" name='EB_BusFReplace_HouseL_Existing' value={FormData['EB_BusFReplace_HouseL_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2499,13 +2454,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_AdminC_Proposed" name='EB_BusFReplace_AdminC_Proposed' value={FormData['EB_BusFReplace_AdminC_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_AdminC_Proposed" name='EB_BusFReplace_AdminC_Proposed' value={FormData['EB_BusFReplace_AdminC_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_AdminC_Existing" name='EB_BusFReplace_AdminC_Existing' value={FormData['EB_BusFReplace_AdminC_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_AdminC_Existing" name='EB_BusFReplace_AdminC_Existing' value={FormData['EB_BusFReplace_AdminC_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2524,13 +2479,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_InvestFee_Proposed" name='EB_BusFReplace_InvestFee_Proposed' value={FormData['EB_BusFReplace_InvestFee_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_InvestFee_Proposed" name='EB_BusFReplace_InvestFee_Proposed' value={FormData['EB_BusFReplace_InvestFee_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_InvestFee_Existing" name='EB_BusFReplace_InvestFee_Existing' value={FormData['EB_BusFReplace_InvestFee_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_InvestFee_Existing" name='EB_BusFReplace_InvestFee_Existing' value={FormData['EB_BusFReplace_InvestFee_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2549,13 +2504,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_CoR_Proposed" name='EB_BusFReplace_CoR_Proposed' value={FormData['EB_BusFReplace_CoR_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_CoR_Proposed" name='EB_BusFReplace_CoR_Proposed' value={FormData['EB_BusFReplace_CoR_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_CoR_Existing" name='EB_BusFReplace_CoR_Existing' value={FormData['EB_BusFReplace_CoR_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_CoR_Existing" name='EB_BusFReplace_CoR_Existing' value={FormData['EB_BusFReplace_CoR_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2574,13 +2529,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_BenA_Proposed" name='EB_BusFReplace_BenA_Proposed' value={FormData['EB_BusFReplace_BenA_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_BenA_Proposed" name='EB_BusFReplace_BenA_Proposed' value={FormData['EB_BusFReplace_BenA_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_BenA_Existing" name='EB_BusFReplace_BenA_Existing' value={FormData['EB_BusFReplace_BenA_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_BenA_Existing" name='EB_BusFReplace_BenA_Existing' value={FormData['EB_BusFReplace_BenA_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2599,13 +2554,13 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_InvestCh_Proposed" name='EB_BusFReplace_InvestCh_Proposed' value={FormData['EB_BusFReplace_InvestCh_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_InvestCh_Proposed" name='EB_BusFReplace_InvestCh_Proposed' value={FormData['EB_BusFReplace_InvestCh_Proposed']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                     </div>
 
                                     <div className="row col-6 align-items-center">
                                         <div className="col-6">
-                                            <input disabled type="text" id="EB_BusFReplace_InvestCh_Existing" name='EB_BusFReplace_InvestCh_Existing' value={FormData['EB_BusFReplace_InvestCh_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder=""/>
+                                            <input disabled type="text" id="EB_BusFReplace_InvestCh_Existing" name='EB_BusFReplace_InvestCh_Existing' value={FormData['EB_BusFReplace_InvestCh_Existing']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <br/>
                                     </div>
@@ -2629,22 +2584,22 @@ Record the client's instructions, deviations and implications thereof.
                 2.&nbsp;&nbsp;&nbsp;I confirm that I required the financial adviser to render the financial services set out in the Service Level Agreement, a copy of which has been provided to me.<br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                3.&nbsp;&nbsp;&nbsp;I understand that the accuracy of a needs analysis is dependent upon the information provided to or obtained by the financial adviser. The advice furnished and product &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recommendations made by the financial adviser are based largely on the information I provided to the financial adviser. I understand that material non-disclosures and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; misrepresentations could result in inappropriate product(s) being recommended and purchased by me.<br/>
+                3.&nbsp;&nbsp;&nbsp;I understand that the accuracy of a needs analysis is dependent upon the information provided to or obtained by the financial adviser. The advice furnished and product recommendations made by the financial adviser are based largely on the &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; information I provided to the financial adviser. I understand that material non-disclosures and misrepresentations could result in inappropriate product(s) being recommended and purchased by me.<br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                4.&nbsp;&nbsp;&nbsp;I confirm that I was provided with copies of quotations, fund fact sheet(s), marketing brochures and rates and benefit sheets for the product(s) selected. All material terms &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and conditions of the product(s) selected were explained to me prior to any decision made.  <br/>
+                4.&nbsp;&nbsp;&nbsp;I confirm that I was provided with copies of quotations, fund fact sheet(s), marketing brochures and rates and benefit sheets for the product(s) selected. All material terms and conditions of the product(s) selected were explained to me prior to any &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; decision made.  <br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                5.&nbsp;&nbsp;&nbsp;I have been informed of and understand all costs, charges, penalties, liquidity limitations and tax implications where applicable.  I understand the risks / guarantees (or &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;absence thereof) associated with the product(s) and /or underlying fund(s) selected.<br/>
+                5.&nbsp;&nbsp;&nbsp;I have been informed of and understand all costs, charges, penalties, liquidity limitations and tax implications where applicable.  I understand the risks / guarantees (or absence thereof) associated with the product(s) and /or underlying &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fund(s) selected.<br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 6.&nbsp;&nbsp;&nbsp;I confirm that all documents signed by me were fully completed prior to my signing them.<br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                7.&nbsp;&nbsp;&nbsp;I confirm that the financial adviser has made enquiries to ascertain whether the product(s) selected are intended to replace any existing financial products held by me and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where applicable, has informed me of the financial implications, costs and consequences of replacement.<br/>
+                7.&nbsp;&nbsp;&nbsp;I confirm that the financial adviser has made enquiries to ascertain whether the product(s) selected are intended to replace any existing financial products held by me and where applicable, has informed me of the financial implications, costs and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consequences of replacement.<br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                8.&nbsp;&nbsp;&nbsp;Notwithstanding the information provided by the Advisor, I acknowledge that I have an obligation to familiarize myself with the terms and conditions of the product(s) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that I have purchased.<br/>
+                8.&nbsp;&nbsp;&nbsp;Notwithstanding the information provided by the Advisor, I acknowledge that I have an obligation to familiarize myself with the terms and conditions of the product(s) that I have purchased.<br/>
 
                 </p>
             
