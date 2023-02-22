@@ -61,13 +61,64 @@ def importCSV(request):
     csvData = []
     for i in range(len(df)):
         csvData.append({
-            "RF_ClientId" : df['RF_ClientId'][i]
+            "advisorId" : request.data['advisorId'],
+            "RF_Overall_Risk" : str(df['RF_Overall_Risk'][i]) if df['RF_Overall_Risk'][i] is not None else "",
+            "RF_BU_Risk" : str(df['RF_BU_Risk'][i]) if df['RF_BU_Risk'][i] is not None else "",
+            "RF_Date" : str(df['RF_Date'][i]) if df['RF_Date'][i] is not None else "",
+            "RF_ClientName" : str(df['RF_ClientName'][i]) if df['RF_ClientName'][i] is not None else "",
+            "RF_ClientId" : str(df['RF_ClientId'][i]) if df['RF_ClientId'][i] is not None else "",
+            "RF_CompleteByName" : str(df['RF_CompleteByName'][i]) if df['RF_CompleteByName'][i] is not None else "",
+            "RF_CompleteByRole" : str(df['RF_CompleteByRole'][i]) if df['RF_CompleteByRole'][i] is not None else "",
+            "RF_ClientType" : str(df['RF_ClientType'][i]) if df['RF_ClientType'][i] is not None else "",
+            "RF_Occupation" : str(df['RF_Occupation'][i]) if df['RF_Occupation'][i] is not None else "",
+            "RF_CountryOfBirth" : str(df['RF_CountryOfBirth'][i]) if df['RF_CountryOfBirth'][i] is not None else "",
+            "RF_CountryOfResidence" : str(df['RF_CountryOfResidence'][i]) if df['RF_CountryOfResidence'][i] is not None else "",
+            "RF_Nationality" : str(df['RF_Nationality'][i]) if df['RF_Nationality'][i] is not None else "",
+            "RF_Different_Nationality" : str(df['RF_Different_Nationality'][i]) if df['RF_Different_Nationality'][i] is not None else "",
+            "RF_CountryOfTax" : str(df['RF_CountryOfTax'][i]) if df['RF_CountryOfTax'][i] is not None else "",
+            "RF_Industry" : str(df['RF_Industry'][i]) if df['RF_Industry'][i] is not None else "",
+            "RF_SourceOfFunds" : str(df['RF_SourceOfFunds'][i]) if df['RF_SourceOfFunds'][i] is not None else "",
+            "RF_RelationshipToClient" : str(df['RF_RelationshipToClient'][i]) if df['RF_RelationshipToClient'][i] is not None else "",
+            "RF_CountryOfRegistration" : str(df['RF_CountryOfRegistration'][i]) if df['RF_CountryOfRegistration'][i] is not None else "",
+            "RF_CountryOfOperation" : str(df['RF_CountryOfOperation'][i]) if df['RF_CountryOfOperation'][i] is not None else "",
+            "RF_Type_Legal_Entity" : str(df['RF_Type_Legal_Entity'][i]) if df['RF_Type_Legal_Entity'][i] is not None else "",
+            "RF_Client_Relationship" : str(df['RF_Client_Relationship'][i]) if df['RF_Client_Relationship'][i] is not None else "",
+            "RF_Product_Name" : str(df['RF_Product_Name'][i]) if df['RF_Product_Name'][i] is not None else "",
+            "RF_Transaction_Flow" : str(df['RF_Transaction_Flow'][i]) if df['RF_Transaction_Flow'][i] is not None else "",
+            "RF_Transaction_Method" : str(df['RF_Transaction_Method'][i]) if df['RF_Transaction_Method'][i] is not None else "",
+            "RF_Transaction_Reason" : str(df['RF_Transaction_Reason'][i]) if df['RF_Transaction_Reason'][i] is not None else "",
+            "RF_High_Transaction_Reason" : str(df['RF_High_Transaction_Reason'][i]) if df['RF_High_Transaction_Reason'][i] is not None else "",
+            "RF_Transaction_Frequency" : str(df['RF_Transaction_Frequency'][i]) if df['RF_Transaction_Frequency'][i] is not None else "",
+            "RF_Transaction_Value" : str(df['RF_Transaction_Value'][i]) if df['RF_Transaction_Value'][i] is not None else "",
+            "RF_Currency_Value" : str(df['RF_Currency_Value'][i]) if df['RF_Currency_Value'][i] is not None else "",
+            "RF_Transaction_Geography" : str(df['RF_Transaction_Geography'][i]) if df['RF_Transaction_Geography'][i] is not None else "",
+            "RF_Funds_Jurisdiction" : str(df['RF_Funds_Jurisdiction'][i]) if df['RF_Funds_Jurisdiction'][i] is not None else "",
+            "RF_Delivery_Channel" : str(df['RF_Delivery_Channel'][i]) if df['RF_Delivery_Channel'][i] is not None else "",
+            "RF_Linked_Party_Acting" : str(df['RF_Linked_Party_Acting'][i]) if df['RF_Linked_Party_Acting'][i] is not None else "",
+            "RF_Linked_Party_Paying" : str(df['RF_Linked_Party_Paying'][i]) if df['RF_Linked_Party_Paying'][i] is not None else "",
+            "RF_Client_Match" : str(df['RF_Client_Match'][i]) if df['RF_Client_Match'][i] is not None else "",
+            "RF_Client_Beneficiaries" : str(df['RF_Client_Beneficiaries'][i]) if df['RF_Client_Beneficiaries'][i] is not None else "",
+            "RF_Adjust_Risk1" : str(df['RF_Adjust_Risk1'][i]) if df['RF_Adjust_Risk1'][i] is not None else "",
+            "RF_Name" : str(df['RF_Name'][i]) if df['RF_Name'][i] is not None else "",
+            "RF_ID" : str(df['RF_ID'][i]) if df['RF_ID'][i] is not None else "",
+            "RF_Linked_Party" : str(df['RF_Linked_Party'][i]) if df['RF_Linked_Party'][i] is not None else "",
+            "RF_RCA" : str(df['RF_RCA'][i]) if df['RF_RCA'][i] is not None else "",
+            "RF_Birth_Country" : str(df['RF_Birth_Country'][i]) if df['RF_Birth_Country'][i] is not None else "",
+            "RF_Residence_Country" : str(df['RF_Residence_Country'][i]) if df['RF_Residence_Country'][i] is not None else "",
+            "RF_Nationality1" : str(df['RF_Nationality1'][i]) if df['RF_Nationality1'][i] is not None else "",
+            "RF_Control1" : str(df['RF_Control1'][i]) if df['RF_Control1'][i] is not None else "",
+            "RF_Control2" : str(df['RF_Control2'][i]) if df['RF_Control2'][i] is not None else "",
+            "RF_Control3" : str(df['RF_Control3'][i]) if df['RF_Control3'][i] is not None else "",
+            "RF_Another_Control1" : str(df['RF_Another_Control1'][i]) if df['RF_Another_Control1'][i] is not None else "",
+            "RF_Another_Control2" : str(df['RF_Another_Control2'][i]) if df['RF_Another_Control2'][i] is not None else "" ,
         })
-    for i in range(len(csvData)):
-        # print((csvData[i]))
+    # print(csvData)
+    data = {"advisorId":1,"RF_Overall_Risk":"","RF_BU_Risk":"2","RF_Date":"2023-02-22","RF_ClientName":"","RF_ClientId":"","RF_CompleteByName":"Armughan","RF_EventID":"","RF_CompleteByRole":"","RF_AdjustedRisk":"","RF_GCO_Risk":"","RF_Approvals":"","RF_ClientType":"1","RF_Occupation":"1","RF_CountryOfBirth":"0","RF_CountryOfResidence":"0","RF_Nationality":"0","RF_Different_Nationality":"0","RF_CountryOfTax":"0","RF_Industry":"0","RF_SourceOfFunds":"0","RF_RelationshipToClient":"0","RF_CountryOfRegistration":"0","RF_CountryOfOperation":"0","RF_Type_Legal_Entity":"0","RF_Client_Relationship":"0","RF_Product_Name":"7","RF_Transaction_Flow":"0","RF_Transaction_Method":"0","RF_Transaction_Reason":"0","RF_High_Transaction_Reason":"0","RF_Transaction_Frequency":"0","RF_Transaction_Value":"0","RF_Currency_Value":"0","RF_Transaction_Geography":"0","RF_Funds_Jurisdiction":"0","RF_Delivery_Channel":"0","RF_Linked_Party_Acting":"0","RF_Linked_Party_Paying":"0","RF_Client_Match":"0","RF_Client_Beneficiaries":"0","RF_Adjust_Risk1":"2","RF_Name":"","RF_ID":"","RF_Linked_Party":"0","RF_RCA":"0","RF_Birth_Country":"0","RF_Residence_Country":"0","RF_Nationality1":"0","RF_Control1":"","RF_Control2":"","RF_Control3":"","RF_Another_Control1":"0","RF_Another_Control2":"0"}
+    for row in csvData:
+        print(row)
         # importCSV = RiskFactors.objects.filter(RF_ClientId=csvData[i]['RF_ClientId']).values()
-        importCSV = RiskFactors.objects.get(RF_ClientId=csvData[i]['RF_ClientId'])
-        serializer = RiskFactorsSerializers(instance=importCSV, data=csvData[i], partial=True)
+        # importCSV = RiskFactors.objects.filter(RF_ClientId=csvData[i]['RF_ClientId'])
+        serializer = RiskFactorsSerializers(data=row, many=False)
         if serializer.is_valid():
             serializer.save()
         else:
@@ -76,7 +127,7 @@ def importCSV(request):
     # if serializer.is_valid():
     #     serializer.update()
     # print(df.head())
-    return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    return Response({"message": "Updated","code":200},200)
     # return Response({"data":csvData})
 
 @api_view(['POST'])

@@ -1,6 +1,10 @@
+import './Styles/CustomNotification.css';
+import  './Styles/CustomButton.css'
 import React, { useState } from 'react'
 import axios from 'axios'
-const ImportExport = ({}) => {
+import { connect } from 'react-redux';
+
+const ImportExport = ({user}) => {
   const [SuccessMessage, setSuccessMessage] = useState("")
   const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
   const ExportCSVFile = async() => {
@@ -31,12 +35,17 @@ const ImportExport = ({}) => {
     try {
         await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/importCSV/`,Body,config)
         setSuccessMessage("Successfully Updated")
-        setSuccessMessageVisibility("block");
+        setSuccessMessageVisibility("block")
         setTimeout(() => {
             setSuccessMessageVisibility("none")
         }, 5000)
     } catch (error) {
-      console.log('first', error.response)
+      console.log('first', error.response.data['Errors'])
+      setSuccessMessage(error.response.Errors)
+      setSuccessMessageVisibility("block")
+      setTimeout(() => {
+        setSuccessMessageVisibility("none")
+    }, 5000)
     }
   }
   const onDowloadCSV = (e) => {
@@ -48,7 +57,8 @@ const ImportExport = ({}) => {
     uploadCSVFile()
   }
   const [csvFile, setcsvFile] = useState({
-    exportCSV : null
+    exportCSV : null,
+    advisorId: user.id
   })
 
   console.log(JSON.stringify(csvFile))
@@ -63,6 +73,12 @@ const ImportExport = ({}) => {
   }
   return (
     <>
+      <div className="notification_container">
+        <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+          {SuccessMessage}
+          {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
+        </div>
+      </div>
       <button className='btn btn-md btn-primary' onClick={(e)=>{onDowloadCSV(e)}}>Please download the sample CSV file from here</button>
 
       <div className="alert alert-success text-center" style={{display: SuccessMessageVisibility}} role="alert">
@@ -87,4 +103,10 @@ const ImportExport = ({}) => {
     </>
   )
 }
-export default ImportExport
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.Auth.isAuthenticated,
+  user: state.Auth.user,
+})
+
+export default connect(mapStateToProps)(ImportExport)
