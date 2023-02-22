@@ -372,7 +372,7 @@ const CreateForm = ({user}) => {
         RF_Type_Legal_Entity : "0",
         RF_SourceOfFunds : "0",
         RF_Client_Relationship : "0",
-        RF_Product_Name : "0",
+        RF_Product_Name : "7",
         RF_Transaction_Flow : "0",
         RF_Transaction_Method : "0",
         RF_Transaction_Reason : "0",
@@ -2357,7 +2357,7 @@ const CreateForm = ({user}) => {
                                 <option value="203">Slovenia</option>
                                 <option value="204">Solomon Islands</option>
                                 <option value="205">Somalia</option>
-                                <option value="206">South Africa</option>
+                                <option value="206">South African</option>
                                 <option value="207">South Georgia</option>
                                 <option value="208">South Sudan</option>
                                 <option value="209">SPain</option>
@@ -5046,7 +5046,7 @@ const CreateForm = ({user}) => {
             </div>
 
             <div className="col-2">
-                <input spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' className="form-control" placeholder=""  aria-describedby="" />
+                <input spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' className="form-control" placeholder=""  aria-describedby="" value="Advisory or intermediary services only with commission based inflow" />
             </div>
 
 
@@ -8010,7 +8010,7 @@ const CreateForm = ({user}) => {
                                         <option value="203">Slovenia</option>
                                         <option value="204">Solomon Islands</option>
                                         <option value="205">Somalia</option>
-                                        <option value="206">South Africa</option>
+                                        <option value="206">South African</option>
                                         <option value="207">South Georgia</option>
                                         <option value="208">South Sudan</option>
                                         <option value="209">SPain</option>

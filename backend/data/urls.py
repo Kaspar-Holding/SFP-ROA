@@ -2,6 +2,8 @@ from django.urls import path
 from . import views, printFormViews
 
 urlpatterns = [
+    path('excel/' , views.excel,name='excel'),
+    path('importCSV/' , views.importCSV,name='importCSV'),
     path('all_users/' , views.getData,name='Users List'),
     path('users_stats/' , views.userStats,name='Users Stats'),
     path('user_details/' , views.userDetails,name='User Details'),

@@ -849,7 +849,7 @@ const Short_term_Personal = () => {
                         <label className="col-form-label"><b>Underwritten By:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_Underwritten_By" name='STIP_Underwritten_By' value={FormData['STIP_Underwritten_By']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Underwritten_By" name='STIP_Underwritten_By' value={FormData['STIP_Underwritten_By']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -860,7 +860,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label"><b>Branch name:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_Branch_Name" name='STIP_Branch_Name' value={FormData['STIP_Branch_Name']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Branch_Name" name='STIP_Branch_Name' value={FormData['STIP_Branch_Name']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -872,7 +872,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label"><b>Branch number:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_Branch_Number" name='STIP_Branch_Number' value={FormData['STIP_Branch_Number']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Branch_Number" name='STIP_Branch_Number' value={FormData['STIP_Branch_Number']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -883,7 +883,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label"><b>Quotation number:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_Quotation_Number" name='STIP_Quotation_Number' value={FormData['STIP_Quotation_Number']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Quotation_Number" name='STIP_Quotation_Number' value={FormData['STIP_Quotation_Number']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -895,7 +895,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label"><b>Policy Number</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_Policy_Number" name='STIP_Policy_Number' value={FormData['STIP_Policy_Number']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Policy_Number" name='STIP_Policy_Number' value={FormData['STIP_Policy_Number']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -906,7 +906,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label"><b>Inception date:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled  type="date" id="STIP_Inception_Date" name='STIP_Inception_Date' value={FormData['STIP_Inception_Date']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled  type="date" id="STIP_Inception_Date" name='STIP_Inception_Date' value={FormData['STIP_Inception_Date']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -948,7 +948,7 @@ const Short_term_Personal = () => {
                         <label className="col-form-label"><b>Surname:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_Applicant_Surname" name='STIP_Applicant_Surname' value={FormData['STIP_Applicant_Surname']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Applicant_Surname" name='STIP_Applicant_Surname' value={FormData['STIP_Applicant_Surname']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -988,7 +988,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label"><b>Initials:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_Applicant_Initials" name='STIP_Applicant_Initials' value={FormData['STIP_Applicant_Initials']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Applicant_Initials" name='STIP_Applicant_Initials' value={FormData['STIP_Applicant_Initials']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -999,7 +999,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label"><b>Title:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_Applicant_Title" name='STIP_Applicant_Title' value={FormData['STIP_Applicant_Title']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Applicant_Title" name='STIP_Applicant_Title' value={FormData['STIP_Applicant_Title']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1011,7 +1011,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label"><b>Date of birth</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled  type="date" id="STIP_Applicant_DateofBirth" name='STIP_Applicant_DateofBirth' value={FormData['STIP_Applicant_DateofBirth']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled  type="date" id="STIP_Applicant_DateofBirth" name='STIP_Applicant_DateofBirth' value={FormData['STIP_Applicant_DateofBirth']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1022,7 +1022,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label"><b>Identity Number:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_Applicant_IdNumber" name='STIP_Applicant_IdNumber' value={FormData['STIP_Applicant_IdNumber']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Applicant_IdNumber" name='STIP_Applicant_IdNumber' value={FormData['STIP_Applicant_IdNumber']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1034,7 +1034,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label"><b>Email Address:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_Applicant_Email" name='STIP_Applicant_Email' value={FormData['STIP_Applicant_Email']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Applicant_Email" name='STIP_Applicant_Email' value={FormData['STIP_Applicant_Email']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1045,7 +1045,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label"><b>Contact Number:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_Applicant_ContactNumber" name='STIP_Applicant_ContactNumber' value={FormData['STIP_Applicant_ContactNumber']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Applicant_ContactNumber" name='STIP_Applicant_ContactNumber' value={FormData['STIP_Applicant_ContactNumber']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1082,7 +1082,7 @@ const Short_term_Personal = () => {
           </div>
         </div>
         <div className="col-11" id="letter_of_introduction_2">
-                <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled  id="STIP_General_RefusedDetails" name='STIP_General_RefusedDetails' value={FormData['STIP_General_RefusedDetails']} className="form-control" placeholder="If yes, provide details" aria-describedby="" ></textarea>
+                <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled  id="STIP_General_RefusedDetails" name='STIP_General_RefusedDetails' value={FormData['STIP_General_RefusedDetails']} className="form-control"  aria-describedby="" ></textarea>
             </div>
     </div>
     <hr/>
@@ -1112,7 +1112,7 @@ const Short_term_Personal = () => {
                 </div>
             </div>
             <div className="col-11" id="provided_identity_2" >
-                <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled  id="STIP_General_RisksDetails" name='STIP_General_RisksDetails' value={FormData['STIP_General_RisksDetails']}  className="form-control" placeholder="If yes,provide name of the issuer" aria-describedby="" ></textarea>
+                <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled  id="STIP_General_RisksDetails" name='STIP_General_RisksDetails' value={FormData['STIP_General_RisksDetails']}  className="form-control"  aria-describedby="" ></textarea>
                 </div>
             </div>
             <hr/>
@@ -1131,7 +1131,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label">Last date of insurance: </label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled  type="date" id="STIP_General_LastDate" name='STIP_General_LastDate' value={FormData['STIP_General_LastDate']}className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled  type="date" id="STIP_General_LastDate" name='STIP_General_LastDate' value={FormData['STIP_General_LastDate']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1142,7 +1142,7 @@ const Short_term_Personal = () => {
                         <label htmlFor="id_number" className="col-form-label">Name of insurer: </label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_General_InsurerName" name='STIP_General_InsurerName' value={FormData['STIP_General_InsurerName']}className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_General_InsurerName" name='STIP_General_InsurerName' value={FormData['STIP_General_InsurerName']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1191,11 +1191,11 @@ const Short_term_Personal = () => {
         <div className="col-6" style={{paddingBottom: "0.5%"}}>
             <div className="row g-3 align-items-center">
                 <div className="col-6">
-                    <input spellCheck="true" disabled   id="STIP_General_TypeOfLoss" name='STIP_General_TypeOfLoss' value={FormData['STIP_General_TypeOfLoss']}className="form-control" placeholder="Type of loss"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_General_TypeOfLoss" name='STIP_General_TypeOfLoss' value={FormData['STIP_General_TypeOfLoss']}className="form-control"   aria-describedby="" style={{width:"150px"}} />
                 </div>
                 
                 <div className="col-6">
-                    <input spellCheck="true" disabled   id="STIP_General_LossYear" name='STIP_General_LossYear' value={FormData['STIP_General_LossYear']}className="form-control" placeholder="Year"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_General_LossYear" name='STIP_General_LossYear' value={FormData['STIP_General_LossYear']}className="form-control"  aria-describedby="" style={{width:"150px"}} />
                 </div>
             </div>
         </div>
@@ -1203,11 +1203,11 @@ const Short_term_Personal = () => {
         <div className="col-6" style={{paddingBottom: "0.5%"}}>
             <div className="row g-3 align-items-center">
                 <div className="col-6">
-                    <input spellCheck="true" disabled   id="STIP_General_LossAmount" name='STIP_General_LossAmount' value={FormData['STIP_General_LossAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_General_LossAmount" name='STIP_General_LossAmount' value={FormData['STIP_General_LossAmount']}className="form-control"  aria-describedby="" style={{width:"150px"}} />
                 </div>
                 
                 <div className="col-6">
-                    <input spellCheck="true" disabled   id="STIP_General_LossInsurer" name='STIP_General_LossInsurer' value={FormData['STIP_General_LossInsurer']}className="form-control" placeholder="Insurer"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_General_LossInsurer" name='STIP_General_LossInsurer' value={FormData['STIP_General_LossInsurer']}className="form-control"  aria-describedby="" style={{width:"150px"}} />
                 </div>
             </div>
         </div>
@@ -1242,11 +1242,11 @@ const Short_term_Personal = () => {
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
                 <b>Existing Product</b>
-                <input spellCheck="true" disabled   id="STIP_CnRI_Existing_Company" name='STIP_CnRI_Existing_Company' value={FormData['STIP_CnRI_Existing_Company']}className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_Existing_Company" name='STIP_CnRI_Existing_Company' value={FormData['STIP_CnRI_Existing_Company']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
                 <b>Replacement Product</b>
-                <input spellCheck="true" disabled   id="STIP_CnRI_Replacement_Company" name='STIP_CnRI_Replacement_Company' value={FormData['STIP_CnRI_Replacement_Company']}className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_Replacement_Company" name='STIP_CnRI_Replacement_Company' value={FormData['STIP_CnRI_Replacement_Company']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1254,10 +1254,10 @@ const Short_term_Personal = () => {
               
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_Existing_Provider" name='STIP_CnRI_Existing_Provider' value={FormData['STIP_CnRI_Existing_Provider']}className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_Existing_Provider" name='STIP_CnRI_Existing_Provider' value={FormData['STIP_CnRI_Existing_Provider']}className="form-control"   aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_Replacement_Provider" name='STIP_CnRI_Replacement_Provider' value={FormData['STIP_CnRI_Replacement_Provider']}className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_Replacement_Provider" name='STIP_CnRI_Replacement_Provider' value={FormData['STIP_CnRI_Replacement_Provider']}className="form-control"   aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1265,10 +1265,10 @@ const Short_term_Personal = () => {
               
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_Existing_Product" name='STIP_CnRI_Existing_Product' value={FormData['STIP_CnRI_Existing_Product']}className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_Existing_Product" name='STIP_CnRI_Existing_Product' value={FormData['STIP_CnRI_Existing_Product']}className="form-control"   aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_Replacement_Product" name='STIP_CnRI_Replacement_Product' value={FormData['STIP_CnRI_Replacement_Product']}className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_Replacement_Product" name='STIP_CnRI_Replacement_Product' value={FormData['STIP_CnRI_Replacement_Product']}className="form-control" aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1297,23 +1297,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_1_CoverAmount" name='STIP_CnRI_1_CoverAmount' value={FormData['STIP_CnRI_1_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_1_CoverAmount" name='STIP_CnRI_1_CoverAmount' value={FormData['STIP_CnRI_1_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_1_Premium1" name='STIP_CnRen_1_Premium1' value={FormData['STIP_CnRen_1_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_1_Premium1" name='STIP_CnRen_1_Premium1' value={FormData['STIP_CnRen_1_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_1_Excess1" name='STIP_CnRen_1_Excess1' value={FormData['STIP_CnRen_1_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_1_Excess1" name='STIP_CnRen_1_Excess1' value={FormData['STIP_CnRen_1_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_1_Premium2" name='STIP_CnRen_1_Premium2' value={FormData['STIP_CnRen_1_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_1_Premium2" name='STIP_CnRen_1_Premium2' value={FormData['STIP_CnRen_1_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_1_Excess2" name='STIP_CnRen_1_Excess2' value={FormData['STIP_CnRen_1_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_1_Excess2" name='STIP_CnRen_1_Excess2' value={FormData['STIP_CnRen_1_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1331,23 +1331,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_2_CoverAmount" name='STIP_CnRI_2_CoverAmount' value={FormData['STIP_CnRI_2_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_2_CoverAmount" name='STIP_CnRI_2_CoverAmount' value={FormData['STIP_CnRI_2_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_2_Premium1" name='STIP_CnRen_2_Premium1' value={FormData['STIP_CnRen_2_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_2_Premium1" name='STIP_CnRen_2_Premium1' value={FormData['STIP_CnRen_2_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_2_Excess1" name='STIP_CnRen_2_Excess1' value={FormData['STIP_CnRen_2_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_2_Excess1" name='STIP_CnRen_2_Excess1' value={FormData['STIP_CnRen_2_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_2_Premium2" name='STIP_CnRen_2_Premium2' value={FormData['STIP_CnRen_2_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_2_Premium2" name='STIP_CnRen_2_Premium2' value={FormData['STIP_CnRen_2_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_2_Excess2" name='STIP_CnRen_2_Excess2' value={FormData['STIP_CnRen_2_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_2_Excess2" name='STIP_CnRen_2_Excess2' value={FormData['STIP_CnRen_2_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1364,23 +1364,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_3_CoverAmount" name='STIP_CnRI_3_CoverAmount' value={FormData['STIP_CnRI_3_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_3_CoverAmount" name='STIP_CnRI_3_CoverAmount' value={FormData['STIP_CnRI_3_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_3_Premium1" name='STIP_CnRen_3_Premium1' value={FormData['STIP_CnRen_3_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_3_Premium1" name='STIP_CnRen_3_Premium1' value={FormData['STIP_CnRen_3_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_3_Excess1" name='STIP_CnRen_3_Excess1' value={FormData['STIP_CnRen_3_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_3_Excess1" name='STIP_CnRen_3_Excess1' value={FormData['STIP_CnRen_3_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_3_Premium2" name='STIP_CnRen_3_Premium2' value={FormData['STIP_CnRen_3_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_3_Premium2" name='STIP_CnRen_3_Premium2' value={FormData['STIP_CnRen_3_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_3_Excess2" name='STIP_CnRen_3_Excess2' value={FormData['STIP_CnRen_3_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_3_Excess2" name='STIP_CnRen_3_Excess2' value={FormData['STIP_CnRen_3_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1397,23 +1397,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_4_CoverAmount" name='STIP_CnRI_4_CoverAmount' value={FormData['STIP_CnRI_4_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_4_CoverAmount" name='STIP_CnRI_4_CoverAmount' value={FormData['STIP_CnRI_4_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_4_Premium1" name='STIP_CnRen_4_Premium1' value={FormData['STIP_CnRen_4_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_4_Premium1" name='STIP_CnRen_4_Premium1' value={FormData['STIP_CnRen_4_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_4_Excess1" name='STIP_CnRen_4_Excess1' value={FormData['STIP_CnRen_4_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_4_Excess1" name='STIP_CnRen_4_Excess1' value={FormData['STIP_CnRen_4_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_4_Premium2" name='STIP_CnRen_4_Premium2' value={FormData['STIP_CnRen_4_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_4_Premium2" name='STIP_CnRen_4_Premium2' value={FormData['STIP_CnRen_4_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_4_Excess2" name='STIP_CnRen_4_Excess2' value={FormData['STIP_CnRen_4_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_4_Excess2" name='STIP_CnRen_4_Excess2' value={FormData['STIP_CnRen_4_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1431,23 +1431,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_5_CoverAmount" name='STIP_CnRI_5_CoverAmount' value={FormData['STIP_CnRI_5_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_5_CoverAmount" name='STIP_CnRI_5_CoverAmount' value={FormData['STIP_CnRI_5_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_5_Premium1" name='STIP_CnRen_5_Premium1' value={FormData['STIP_CnRen_5_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_5_Premium1" name='STIP_CnRen_5_Premium1' value={FormData['STIP_CnRen_5_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_5_Excess1" name='STIP_CnRen_5_Excess1' value={FormData['STIP_CnRen_5_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_5_Excess1" name='STIP_CnRen_5_Excess1' value={FormData['STIP_CnRen_5_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_5_Premium2" name='STIP_CnRen_5_Premium2' value={FormData['STIP_CnRen_5_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_5_Premium2" name='STIP_CnRen_5_Premium2' value={FormData['STIP_CnRen_5_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_5_Excess2" name='STIP_CnRen_5_Excess2' value={FormData['STIP_CnRen_5_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_5_Excess2" name='STIP_CnRen_5_Excess2' value={FormData['STIP_CnRen_5_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1464,23 +1464,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_6_CoverAmount" name='STIP_CnRI_6_CoverAmount' value={FormData['STIP_CnRI_6_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_6_CoverAmount" name='STIP_CnRI_6_CoverAmount' value={FormData['STIP_CnRI_6_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_6_Premium1" name='STIP_CnRen_6_Premium1' value={FormData['STIP_CnRen_6_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_6_Premium1" name='STIP_CnRen_6_Premium1' value={FormData['STIP_CnRen_6_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_6_Excess1" name='STIP_CnRen_6_Excess1' value={FormData['STIP_CnRen_6_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_6_Excess1" name='STIP_CnRen_6_Excess1' value={FormData['STIP_CnRen_6_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_6_Premium2" name='STIP_CnRen_6_Premium2' value={FormData['STIP_CnRen_6_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_6_Premium2" name='STIP_CnRen_6_Premium2' value={FormData['STIP_CnRen_6_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_6_Excess2" name='STIP_CnRen_6_Excess2' value={FormData['STIP_CnRen_6_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_6_Excess2" name='STIP_CnRen_6_Excess2' value={FormData['STIP_CnRen_6_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1497,23 +1497,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_7_CoverAmount" name='STIP_CnRI_7_CoverAmount' value={FormData['STIP_CnRI_7_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_7_CoverAmount" name='STIP_CnRI_7_CoverAmount' value={FormData['STIP_CnRI_7_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_7_Premium1" name='STIP_CnRen_7_Premium1' value={FormData['STIP_CnRen_7_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_7_Premium1" name='STIP_CnRen_7_Premium1' value={FormData['STIP_CnRen_7_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_7_Excess1" name='STIP_CnRen_7_Excess1' value={FormData['STIP_CnRen_7_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_7_Excess1" name='STIP_CnRen_7_Excess1' value={FormData['STIP_CnRen_7_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_7_Premium2" name='STIP_CnRen_7_Premium2' value={FormData['STIP_CnRen_7_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_7_Premium2" name='STIP_CnRen_7_Premium2' value={FormData['STIP_CnRen_7_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_7_Excess2" name='STIP_CnRen_7_Excess2' value={FormData['STIP_CnRen_7_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_7_Excess2" name='STIP_CnRen_7_Excess2' value={FormData['STIP_CnRen_7_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1530,23 +1530,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_8_CoverAmount" name='STIP_CnRI_8_CoverAmount' value={FormData['STIP_CnRI_8_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_8_CoverAmount" name='STIP_CnRI_8_CoverAmount' value={FormData['STIP_CnRI_8_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_8_Premium1" name='STIP_CnRen_8_Premium1' value={FormData['STIP_CnRen_8_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_8_Premium1" name='STIP_CnRen_8_Premium1' value={FormData['STIP_CnRen_8_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_8_Excess1" name='STIP_CnRen_8_Excess1' value={FormData['STIP_CnRen_8_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_8_Excess1" name='STIP_CnRen_8_Excess1' value={FormData['STIP_CnRen_8_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_8_Premium2" name='STIP_CnRen_8_Premium2' value={FormData['STIP_CnRen_8_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_8_Premium2" name='STIP_CnRen_8_Premium2' value={FormData['STIP_CnRen_8_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_8_Excess2" name='STIP_CnRen_8_Excess2' value={FormData['STIP_CnRen_8_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_8_Excess2" name='STIP_CnRen_8_Excess2' value={FormData['STIP_CnRen_8_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1563,23 +1563,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_9_CoverAmount" name='STIP_CnRI_9_CoverAmount' value={FormData['STIP_CnRI_9_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_9_CoverAmount" name='STIP_CnRI_9_CoverAmount' value={FormData['STIP_CnRI_9_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_9_Premium1" name='STIP_CnRen_9_Premium1' value={FormData['STIP_CnRen_9_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_9_Premium1" name='STIP_CnRen_9_Premium1' value={FormData['STIP_CnRen_9_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_9_Excess1" name='STIP_CnRen_9_Excess1' value={FormData['STIP_CnRen_9_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_9_Excess1" name='STIP_CnRen_9_Excess1' value={FormData['STIP_CnRen_9_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_9_Premium2" name='STIP_CnRen_9_Premium2' value={FormData['STIP_CnRen_9_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_9_Premium2" name='STIP_CnRen_9_Premium2' value={FormData['STIP_CnRen_9_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_9_Excess2" name='STIP_CnRen_9_Excess2' value={FormData['STIP_CnRen_9_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_9_Excess2" name='STIP_CnRen_9_Excess2' value={FormData['STIP_CnRen_9_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1596,23 +1596,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_10_CoverAmount" name='STIP_CnRI_10_CoverAmount' value={FormData['STIP_CnRI_10_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_10_CoverAmount" name='STIP_CnRI_10_CoverAmount' value={FormData['STIP_CnRI_10_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_10_Premium1" name='STIP_CnRen_10_Premium1' value={FormData['STIP_CnRen_10_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_10_Premium1" name='STIP_CnRen_10_Premium1' value={FormData['STIP_CnRen_10_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_10_Excess1" name='STIP_CnRen_10_Excess1' value={FormData['STIP_CnRen_10_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_10_Excess1" name='STIP_CnRen_10_Excess1' value={FormData['STIP_CnRen_10_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_10_Premium2" name='STIP_CnRen_10_Premium2' value={FormData['STIP_CnRen_10_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_10_Premium2" name='STIP_CnRen_10_Premium2' value={FormData['STIP_CnRen_10_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_10_Excess2" name='STIP_CnRen_10_Excess2' value={FormData['STIP_CnRen_10_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_10_Excess2" name='STIP_CnRen_10_Excess2' value={FormData['STIP_CnRen_10_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1629,23 +1629,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_11_CoverAmount" name='STIP_CnRI_11_CoverAmount' value={FormData['STIP_CnRI_11_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_11_CoverAmount" name='STIP_CnRI_11_CoverAmount' value={FormData['STIP_CnRI_11_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_11_Premium1" name='STIP_CnRen_11_Premium1' value={FormData['STIP_CnRen_11_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_11_Premium1" name='STIP_CnRen_11_Premium1' value={FormData['STIP_CnRen_11_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_11_Excess1" name='STIP_CnRen_11_Excess1' value={FormData['STIP_CnRen_11_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_11_Excess1" name='STIP_CnRen_11_Excess1' value={FormData['STIP_CnRen_11_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_11_Premium2" name='STIP_CnRen_11_Premium2' value={FormData['STIP_CnRen_11_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_11_Premium2" name='STIP_CnRen_11_Premium2' value={FormData['STIP_CnRen_11_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_11_Excess2" name='STIP_CnRen_11_Excess2' value={FormData['STIP_CnRen_11_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_11_Excess2" name='STIP_CnRen_11_Excess2' value={FormData['STIP_CnRen_11_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1663,23 +1663,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_12_CoverAmount" name='STIP_CnRI_12_CoverAmount' value={FormData['STIP_CnRI_12_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_12_CoverAmount" name='STIP_CnRI_12_CoverAmount' value={FormData['STIP_CnRI_12_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_12_Premium1" name='STIP_CnRen_12_Premium1' value={FormData['STIP_CnRen_12_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_12_Premium1" name='STIP_CnRen_12_Premium1' value={FormData['STIP_CnRen_12_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_12_Excess1" name='STIP_CnRen_12_Excess1' value={FormData['STIP_CnRen_12_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_12_Excess1" name='STIP_CnRen_12_Excess1' value={FormData['STIP_CnRen_12_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_12_Premium2" name='STIP_CnRen_12_Premium2' value={FormData['STIP_CnRen_12_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_12_Premium2" name='STIP_CnRen_12_Premium2' value={FormData['STIP_CnRen_12_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_12_Excess2" name='STIP_CnRen_12_Excess2' value={FormData['STIP_CnRen_12_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_12_Excess2" name='STIP_CnRen_12_Excess2' value={FormData['STIP_CnRen_12_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1696,23 +1696,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_13_CoverAmount" name='STIP_CnRI_13_CoverAmount' value={FormData['STIP_CnRI_13_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_13_CoverAmount" name='STIP_CnRI_13_CoverAmount' value={FormData['STIP_CnRI_13_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_13_Premium1" name='STIP_CnRen_13_Premium1' value={FormData['STIP_CnRen_13_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_13_Premium1" name='STIP_CnRen_13_Premium1' value={FormData['STIP_CnRen_13_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_13_Excess1" name='STIP_CnRen_13_Excess1' value={FormData['STIP_CnRen_13_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_13_Excess1" name='STIP_CnRen_13_Excess1' value={FormData['STIP_CnRen_13_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_13_Premium2" name='STIP_CnRen_13_Premium2' value={FormData['STIP_CnRen_13_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_13_Premium2" name='STIP_CnRen_13_Premium2' value={FormData['STIP_CnRen_13_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_13_Excess2" name='STIP_CnRen_13_Excess2' value={FormData['STIP_CnRen_13_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_13_Excess2" name='STIP_CnRen_13_Excess2' value={FormData['STIP_CnRen_13_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1729,23 +1729,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_14_CoverAmount" name='STIP_CnRI_14_CoverAmount' value={FormData['STIP_CnRI_14_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_14_CoverAmount" name='STIP_CnRI_14_CoverAmount' value={FormData['STIP_CnRI_14_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_14_Premium1" name='STIP_CnRen_14_Premium1' value={FormData['STIP_CnRen_14_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_14_Premium1" name='STIP_CnRen_14_Premium1' value={FormData['STIP_CnRen_14_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_14_Excess1" name='STIP_CnRen_14_Excess1' value={FormData['STIP_CnRen_14_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_14_Excess1" name='STIP_CnRen_14_Excess1' value={FormData['STIP_CnRen_14_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_14_Premium2" name='STIP_CnRen_14_Premium2' value={FormData['STIP_CnRen_14_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_14_Premium2" name='STIP_CnRen_14_Premium2' value={FormData['STIP_CnRen_14_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_14_Excess2" name='STIP_CnRen_14_Excess2' value={FormData['STIP_CnRen_14_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_14_Excess2" name='STIP_CnRen_14_Excess2' value={FormData['STIP_CnRen_14_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1762,23 +1762,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_15_CoverAmount" name='STIP_CnRI_15_CoverAmount' value={FormData['STIP_CnRI_15_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_15_CoverAmount" name='STIP_CnRI_15_CoverAmount' value={FormData['STIP_CnRI_15_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_15_Premium1" name='STIP_CnRen_15_Premium1' value={FormData['STIP_CnRen_15_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_15_Premium1" name='STIP_CnRen_15_Premium1' value={FormData['STIP_CnRen_15_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_15_Excess1" name='STIP_CnRen_15_Excess1' value={FormData['STIP_CnRen_15_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_15_Excess1" name='STIP_CnRen_15_Excess1' value={FormData['STIP_CnRen_15_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_15_Premium2" name='STIP_CnRen_15_Premium2' value={FormData['STIP_CnRen_15_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_15_Premium2" name='STIP_CnRen_15_Premium2' value={FormData['STIP_CnRen_15_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_15_Excess2" name='STIP_CnRen_15_Excess2' value={FormData['STIP_CnRen_15_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_15_Excess2" name='STIP_CnRen_15_Excess2' value={FormData['STIP_CnRen_15_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1795,23 +1795,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_16_CoverAmount" name='STIP_CnRI_16_CoverAmount' value={FormData['STIP_CnRI_16_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_16_CoverAmount" name='STIP_CnRI_16_CoverAmount' value={FormData['STIP_CnRI_16_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_16_Premium1" name='STIP_CnRen_16_Premium1' value={FormData['STIP_CnRen_16_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_16_Premium1" name='STIP_CnRen_16_Premium1' value={FormData['STIP_CnRen_16_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_16_Excess1" name='STIP_CnRen_16_Excess1' value={FormData['STIP_CnRen_16_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_16_Excess1" name='STIP_CnRen_16_Excess1' value={FormData['STIP_CnRen_16_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_16_Premium2" name='STIP_CnRen_16_Premium2' value={FormData['STIP_CnRen_16_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_16_Premium2" name='STIP_CnRen_16_Premium2' value={FormData['STIP_CnRen_16_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_16_Excess2" name='STIP_CnRen_16_Excess2' value={FormData['STIP_CnRen_16_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_16_Excess2" name='STIP_CnRen_16_Excess2' value={FormData['STIP_CnRen_16_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1828,23 +1828,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_17_CoverAmount" name='STIP_CnRI_17_CoverAmount' value={FormData['STIP_CnRI_17_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_17_CoverAmount" name='STIP_CnRI_17_CoverAmount' value={FormData['STIP_CnRI_17_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_17_Premium1" name='STIP_CnRen_17_Premium1' value={FormData['STIP_CnRen_17_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_17_Premium1" name='STIP_CnRen_17_Premium1' value={FormData['STIP_CnRen_17_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_17_Excess1" name='STIP_CnRen_17_Excess1' value={FormData['STIP_CnRen_17_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_17_Excess1" name='STIP_CnRen_17_Excess1' value={FormData['STIP_CnRen_17_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_17_Premium2" name='STIP_CnRen_17_Premium2' value={FormData['STIP_CnRen_17_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_17_Premium2" name='STIP_CnRen_17_Premium2' value={FormData['STIP_CnRen_17_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_17_Excess2" name='STIP_CnRen_17_Excess2' value={FormData['STIP_CnRen_17_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_17_Excess2" name='STIP_CnRen_17_Excess2' value={FormData['STIP_CnRen_17_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1861,23 +1861,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_18_CoverAmount" name='STIP_CnRI_18_CoverAmount' value={FormData['STIP_CnRI_18_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_18_CoverAmount" name='STIP_CnRI_18_CoverAmount' value={FormData['STIP_CnRI_18_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_18_Premium1" name='STIP_CnRen_18_Premium1' value={FormData['STIP_CnRen_18_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_18_Premium1" name='STIP_CnRen_18_Premium1' value={FormData['STIP_CnRen_18_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_18_Excess1" name='STIP_CnRen_18_Excess1' value={FormData['STIP_CnRen_18_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_18_Excess1" name='STIP_CnRen_18_Excess1' value={FormData['STIP_CnRen_18_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_18_Premium2" name='STIP_CnRen_18_Premium2' value={FormData['STIP_CnRen_18_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_18_Premium2" name='STIP_CnRen_18_Premium2' value={FormData['STIP_CnRen_18_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_18_Excess2" name='STIP_CnRen_18_Excess2' value={FormData['STIP_CnRen_18_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_18_Excess2" name='STIP_CnRen_18_Excess2' value={FormData['STIP_CnRen_18_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1894,23 +1894,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_19_CoverAmount" name='STIP_CnRI_19_CoverAmount' value={FormData['STIP_CnRI_19_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_19_CoverAmount" name='STIP_CnRI_19_CoverAmount' value={FormData['STIP_CnRI_19_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_19_Premium1" name='STIP_CnRen_19_Premium1' value={FormData['STIP_CnRen_19_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_19_Premium1" name='STIP_CnRen_19_Premium1' value={FormData['STIP_CnRen_19_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_19_Excess1" name='STIP_CnRen_19_Excess1' value={FormData['STIP_CnRen_19_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_19_Excess1" name='STIP_CnRen_19_Excess1' value={FormData['STIP_CnRen_19_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_19_Premium2" name='STIP_CnRen_19_Premium2' value={FormData['STIP_CnRen_19_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_19_Premium2" name='STIP_CnRen_19_Premium2' value={FormData['STIP_CnRen_19_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_19_Excess2" name='STIP_CnRen_19_Excess2' value={FormData['STIP_CnRen_19_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_19_Excess2" name='STIP_CnRen_19_Excess2' value={FormData['STIP_CnRen_19_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1927,23 +1927,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_20_CoverAmount" name='STIP_CnRI_20_CoverAmount' value={FormData['STIP_CnRI_20_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_20_CoverAmount" name='STIP_CnRI_20_CoverAmount' value={FormData['STIP_CnRI_20_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_20_Premium1" name='STIP_CnRen_20_Premium1' value={FormData['STIP_CnRen_20_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_20_Premium1" name='STIP_CnRen_20_Premium1' value={FormData['STIP_CnRen_20_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_20_Excess1" name='STIP_CnRen_20_Excess1' value={FormData['STIP_CnRen_20_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_20_Excess1" name='STIP_CnRen_20_Excess1' value={FormData['STIP_CnRen_20_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_20_Premium2" name='STIP_CnRen_20_Premium2' value={FormData['STIP_CnRen_20_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_20_Premium2" name='STIP_CnRen_20_Premium2' value={FormData['STIP_CnRen_20_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_20_Excess2" name='STIP_CnRen_20_Excess2' value={FormData['STIP_CnRen_20_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_20_Excess2" name='STIP_CnRen_20_Excess2' value={FormData['STIP_CnRen_20_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1960,23 +1960,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_21_CoverAmount" name='STIP_CnRI_21_CoverAmount' value={FormData['STIP_CnRI_21_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_21_CoverAmount" name='STIP_CnRI_21_CoverAmount' value={FormData['STIP_CnRI_21_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_21_Premium1" name='STIP_CnRen_21_Premium1' value={FormData['STIP_CnRen_21_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_21_Premium1" name='STIP_CnRen_21_Premium1' value={FormData['STIP_CnRen_21_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_21_Excess1" name='STIP_CnRen_21_Excess1' value={FormData['STIP_CnRen_21_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_21_Excess1" name='STIP_CnRen_21_Excess1' value={FormData['STIP_CnRen_21_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_21_Premium2" name='STIP_CnRen_21_Premium2' value={FormData['STIP_CnRen_21_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_21_Premium2" name='STIP_CnRen_21_Premium2' value={FormData['STIP_CnRen_21_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_21_Excess2" name='STIP_CnRen_21_Excess2' value={FormData['STIP_CnRen_21_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_21_Excess2" name='STIP_CnRen_21_Excess2' value={FormData['STIP_CnRen_21_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1994,23 +1994,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_22_CoverAmount" name='STIP_CnRI_22_CoverAmount' value={FormData['STIP_CnRI_22_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_22_CoverAmount" name='STIP_CnRI_22_CoverAmount' value={FormData['STIP_CnRI_22_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_22_Premium1" name='STIP_CnRen_22_Premium1' value={FormData['STIP_CnRen_22_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_22_Premium1" name='STIP_CnRen_22_Premium1' value={FormData['STIP_CnRen_22_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_22_Excess1" name='STIP_CnRen_22_Excess1' value={FormData['STIP_CnRen_22_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_22_Excess1" name='STIP_CnRen_22_Excess1' value={FormData['STIP_CnRen_22_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_22_Premium2" name='STIP_CnRen_22_Premium2' value={FormData['STIP_CnRen_22_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_22_Premium2" name='STIP_CnRen_22_Premium2' value={FormData['STIP_CnRen_22_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_22_Excess2" name='STIP_CnRen_22_Excess2' value={FormData['STIP_CnRen_22_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_22_Excess2" name='STIP_CnRen_22_Excess2' value={FormData['STIP_CnRen_22_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2028,23 +2028,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_23_CoverAmount" name='STIP_CnRI_23_CoverAmount' value={FormData['STIP_CnRI_23_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_23_CoverAmount" name='STIP_CnRI_23_CoverAmount' value={FormData['STIP_CnRI_23_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_23_Premium1" name='STIP_CnRen_23_Premium1' value={FormData['STIP_CnRen_23_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_23_Premium1" name='STIP_CnRen_23_Premium1' value={FormData['STIP_CnRen_23_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_23_Excess1" name='STIP_CnRen_23_Excess1' value={FormData['STIP_CnRen_23_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_23_Excess1" name='STIP_CnRen_23_Excess1' value={FormData['STIP_CnRen_23_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_23_Premium2" name='STIP_CnRen_23_Premium2' value={FormData['STIP_CnRen_23_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_23_Premium2" name='STIP_CnRen_23_Premium2' value={FormData['STIP_CnRen_23_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_23_Excess2" name='STIP_CnRen_23_Excess2' value={FormData['STIP_CnRen_23_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_23_Excess2" name='STIP_CnRen_23_Excess2' value={FormData['STIP_CnRen_23_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2061,23 +2061,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_24_CoverAmount" name='STIP_CnRI_24_CoverAmount' value={FormData['STIP_CnRI_24_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_24_CoverAmount" name='STIP_CnRI_24_CoverAmount' value={FormData['STIP_CnRI_24_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_24_Premium1" name='STIP_CnRen_24_Premium1' value={FormData['STIP_CnRen_24_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_24_Premium1" name='STIP_CnRen_24_Premium1' value={FormData['STIP_CnRen_24_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_24_Excess1" name='STIP_CnRen_24_Excess1' value={FormData['STIP_CnRen_24_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_24_Excess1" name='STIP_CnRen_24_Excess1' value={FormData['STIP_CnRen_24_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_24_Premium2" name='STIP_CnRen_24_Premium2' value={FormData['STIP_CnRen_24_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_24_Premium2" name='STIP_CnRen_24_Premium2' value={FormData['STIP_CnRen_24_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_24_Excess2" name='STIP_CnRen_24_Excess2' value={FormData['STIP_CnRen_24_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_24_Excess2" name='STIP_CnRen_24_Excess2' value={FormData['STIP_CnRen_24_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2096,23 +2096,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_25_CoverAmount" name='STIP_CnRI_25_CoverAmount' value={FormData['STIP_CnRI_25_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_25_CoverAmount" name='STIP_CnRI_25_CoverAmount' value={FormData['STIP_CnRI_25_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_25_Premium1" name='STIP_CnRen_25_Premium1' value={FormData['STIP_CnRen_25_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_25_Premium1" name='STIP_CnRen_25_Premium1' value={FormData['STIP_CnRen_25_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_25_Excess1" name='STIP_CnRen_25_Excess1' value={FormData['STIP_CnRen_25_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_25_Excess1" name='STIP_CnRen_25_Excess1' value={FormData['STIP_CnRen_25_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_25_Premium2" name='STIP_CnRen_25_Premium2' value={FormData['STIP_CnRen_25_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_25_Premium2" name='STIP_CnRen_25_Premium2' value={FormData['STIP_CnRen_25_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_25_Excess2" name='STIP_CnRen_25_Excess2' value={FormData['STIP_CnRen_25_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_25_Excess2" name='STIP_CnRen_25_Excess2' value={FormData['STIP_CnRen_25_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2130,23 +2130,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_26_CoverAmount" name='STIP_CnRI_26_CoverAmount' value={FormData['STIP_CnRI_26_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_26_CoverAmount" name='STIP_CnRI_26_CoverAmount' value={FormData['STIP_CnRI_26_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_26_Premium1" name='STIP_CnRen_26_Premium1' value={FormData['STIP_CnRen_26_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_26_Premium1" name='STIP_CnRen_26_Premium1' value={FormData['STIP_CnRen_26_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_26_Excess1" name='STIP_CnRen_26_Excess1' value={FormData['STIP_CnRen_26_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_26_Excess1" name='STIP_CnRen_26_Excess1' value={FormData['STIP_CnRen_26_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_26_Premium2" name='STIP_CnRen_26_Premium2' value={FormData['STIP_CnRen_26_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_26_Premium2" name='STIP_CnRen_26_Premium2' value={FormData['STIP_CnRen_26_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_26_Excess2" name='STIP_CnRen_26_Excess2' value={FormData['STIP_CnRen_26_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_26_Excess2" name='STIP_CnRen_26_Excess2' value={FormData['STIP_CnRen_26_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2164,23 +2164,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_27_CoverAmount" name='STIP_CnRI_27_CoverAmount' value={FormData['STIP_CnRI_27_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_27_CoverAmount" name='STIP_CnRI_27_CoverAmount' value={FormData['STIP_CnRI_27_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_27_Premium1" name='STIP_CnRen_27_Premium1' value={FormData['STIP_CnRen_27_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_27_Premium1" name='STIP_CnRen_27_Premium1' value={FormData['STIP_CnRen_27_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_27_Excess1" name='STIP_CnRen_27_Excess1' value={FormData['STIP_CnRen_27_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_27_Excess1" name='STIP_CnRen_27_Excess1' value={FormData['STIP_CnRen_27_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_27_Premium2" name='STIP_CnRen_27_Premium2' value={FormData['STIP_CnRen_27_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_27_Premium2" name='STIP_CnRen_27_Premium2' value={FormData['STIP_CnRen_27_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_27_Excess2" name='STIP_CnRen_27_Excess2' value={FormData['STIP_CnRen_27_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_27_Excess2" name='STIP_CnRen_27_Excess2' value={FormData['STIP_CnRen_27_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2188,7 +2188,7 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Fees and charges</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_FeeCharges" name='STIP_CnRI_FeeCharges' value={FormData['STIP_CnRI_FeeCharges']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_FeeCharges" name='STIP_CnRI_FeeCharges' value={FormData['STIP_CnRI_FeeCharges']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2196,7 +2196,7 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Commissions</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_Commission" name='STIP_CnRI_Commission' value={FormData['STIP_CnRI_Commission']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_Commission" name='STIP_CnRI_Commission' value={FormData['STIP_CnRI_Commission']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2204,7 +2204,7 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Total premium</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRI_TotalPremium" name='STIP_CnRI_TotalPremium' value={FormData['STIP_CnRI_TotalPremium']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRI_TotalPremium" name='STIP_CnRI_TotalPremium' value={FormData['STIP_CnRI_TotalPremium']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2244,11 +2244,11 @@ const Short_term_Personal = () => {
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
                 <b>Existing Product</b>
-                <input spellCheck="true" disabled   id="STIP_CnRen_Existing_Company" name='STIP_CnRen_Existing_Company' value={FormData['STIP_CnRen_Existing_Company']}className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_Existing_Company" name='STIP_CnRen_Existing_Company' value={FormData['STIP_CnRen_Existing_Company']}className="form-control"   aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
                 <b>Replacement Product</b>
-                <input spellCheck="true" disabled   id="STIP_CnRen_Replacement_Company" name='STIP_CnRen_Replacement_Company' value={FormData['STIP_CnRen_Replacement_Company']}className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_Replacement_Company" name='STIP_CnRen_Replacement_Company' value={FormData['STIP_CnRen_Replacement_Company']}className="form-control"   aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2256,10 +2256,10 @@ const Short_term_Personal = () => {
               
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_Existing_Provider" name='STIP_CnRen_Existing_Provider' value={FormData['STIP_CnRen_Existing_Provider']}className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_Existing_Provider" name='STIP_CnRen_Existing_Provider' value={FormData['STIP_CnRen_Existing_Provider']}className="form-control"   aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_Replacement_Provider" name='STIP_CnRen_Replacement_Provider' value={FormData['STIP_CnRen_Replacement_Provider']}className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_Replacement_Provider" name='STIP_CnRen_Replacement_Provider' value={FormData['STIP_CnRen_Replacement_Provider']}className="form-control"   aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2267,10 +2267,10 @@ const Short_term_Personal = () => {
               
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_Existing_Product" name='STIP_CnRen_Existing_Product' value={FormData['STIP_CnRen_Existing_Product']}className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_Existing_Product" name='STIP_CnRen_Existing_Product' value={FormData['STIP_CnRen_Existing_Product']}className="form-control"   aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_Replacement_Product" name='STIP_CnRen_Replacement_Product' value={FormData['STIP_CnRen_Replacement_Product']}className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_Replacement_Product" name='STIP_CnRen_Replacement_Product' value={FormData['STIP_CnRen_Replacement_Product']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2299,23 +2299,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_1_CoverAmount" name='STIP_CnRen_1_CoverAmount' value={FormData['STIP_CnRen_1_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_1_CoverAmount" name='STIP_CnRen_1_CoverAmount' value={FormData['STIP_CnRen_1_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_1_Premium1" name='STIP_CnRen_1_Premium1' value={FormData['STIP_CnRen_1_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_1_Premium1" name='STIP_CnRen_1_Premium1' value={FormData['STIP_CnRen_1_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_1_Excess1" name='STIP_CnRen_1_Excess1' value={FormData['STIP_CnRen_1_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_1_Excess1" name='STIP_CnRen_1_Excess1' value={FormData['STIP_CnRen_1_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_1_Premium2" name='STIP_CnRen_1_Premium2' value={FormData['STIP_CnRen_1_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_1_Premium2" name='STIP_CnRen_1_Premium2' value={FormData['STIP_CnRen_1_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_1_Excess2" name='STIP_CnRen_1_Excess2' value={FormData['STIP_CnRen_1_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_1_Excess2" name='STIP_CnRen_1_Excess2' value={FormData['STIP_CnRen_1_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2333,23 +2333,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_2_CoverAmount" name='STIP_CnRen_2_CoverAmount' value={FormData['STIP_CnRen_2_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_2_CoverAmount" name='STIP_CnRen_2_CoverAmount' value={FormData['STIP_CnRen_2_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_2_Premium1" name='STIP_CnRen_2_Premium1' value={FormData['STIP_CnRen_2_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_2_Premium1" name='STIP_CnRen_2_Premium1' value={FormData['STIP_CnRen_2_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_2_Excess1" name='STIP_CnRen_2_Excess1' value={FormData['STIP_CnRen_2_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_2_Excess1" name='STIP_CnRen_2_Excess1' value={FormData['STIP_CnRen_2_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_2_Premium2" name='STIP_CnRen_2_Premium2' value={FormData['STIP_CnRen_2_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_2_Premium2" name='STIP_CnRen_2_Premium2' value={FormData['STIP_CnRen_2_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_2_Excess2" name='STIP_CnRen_2_Excess2' value={FormData['STIP_CnRen_2_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_2_Excess2" name='STIP_CnRen_2_Excess2' value={FormData['STIP_CnRen_2_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2366,23 +2366,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_3_CoverAmount" name='STIP_CnRen_3_CoverAmount' value={FormData['STIP_CnRen_3_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_3_CoverAmount" name='STIP_CnRen_3_CoverAmount' value={FormData['STIP_CnRen_3_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_3_Premium1" name='STIP_CnRen_3_Premium1' value={FormData['STIP_CnRen_3_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_3_Premium1" name='STIP_CnRen_3_Premium1' value={FormData['STIP_CnRen_3_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_3_Excess1" name='STIP_CnRen_3_Excess1' value={FormData['STIP_CnRen_3_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_3_Excess1" name='STIP_CnRen_3_Excess1' value={FormData['STIP_CnRen_3_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_3_Premium2" name='STIP_CnRen_3_Premium2' value={FormData['STIP_CnRen_3_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_3_Premium2" name='STIP_CnRen_3_Premium2' value={FormData['STIP_CnRen_3_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_3_Excess2" name='STIP_CnRen_3_Excess2' value={FormData['STIP_CnRen_3_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_3_Excess2" name='STIP_CnRen_3_Excess2' value={FormData['STIP_CnRen_3_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2399,23 +2399,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_4_CoverAmount" name='STIP_CnRen_4_CoverAmount' value={FormData['STIP_CnRen_4_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_4_CoverAmount" name='STIP_CnRen_4_CoverAmount' value={FormData['STIP_CnRen_4_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_4_Premium1" name='STIP_CnRen_4_Premium1' value={FormData['STIP_CnRen_4_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_4_Premium1" name='STIP_CnRen_4_Premium1' value={FormData['STIP_CnRen_4_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_4_Excess1" name='STIP_CnRen_4_Excess1' value={FormData['STIP_CnRen_4_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_4_Excess1" name='STIP_CnRen_4_Excess1' value={FormData['STIP_CnRen_4_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_4_Premium2" name='STIP_CnRen_4_Premium2' value={FormData['STIP_CnRen_4_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_4_Premium2" name='STIP_CnRen_4_Premium2' value={FormData['STIP_CnRen_4_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_4_Excess2" name='STIP_CnRen_4_Excess2' value={FormData['STIP_CnRen_4_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_4_Excess2" name='STIP_CnRen_4_Excess2' value={FormData['STIP_CnRen_4_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2433,23 +2433,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_5_CoverAmount" name='STIP_CnRen_5_CoverAmount' value={FormData['STIP_CnRen_5_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_5_CoverAmount" name='STIP_CnRen_5_CoverAmount' value={FormData['STIP_CnRen_5_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_5_Premium1" name='STIP_CnRen_5_Premium1' value={FormData['STIP_CnRen_5_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_5_Premium1" name='STIP_CnRen_5_Premium1' value={FormData['STIP_CnRen_5_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_5_Excess1" name='STIP_CnRen_5_Excess1' value={FormData['STIP_CnRen_5_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_5_Excess1" name='STIP_CnRen_5_Excess1' value={FormData['STIP_CnRen_5_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_5_Premium2" name='STIP_CnRen_5_Premium2' value={FormData['STIP_CnRen_5_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_5_Premium2" name='STIP_CnRen_5_Premium2' value={FormData['STIP_CnRen_5_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_5_Excess2" name='STIP_CnRen_5_Excess2' value={FormData['STIP_CnRen_5_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_5_Excess2" name='STIP_CnRen_5_Excess2' value={FormData['STIP_CnRen_5_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2466,23 +2466,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_6_CoverAmount" name='STIP_CnRen_6_CoverAmount' value={FormData['STIP_CnRen_6_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_6_CoverAmount" name='STIP_CnRen_6_CoverAmount' value={FormData['STIP_CnRen_6_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_6_Premium1" name='STIP_CnRen_6_Premium1' value={FormData['STIP_CnRen_6_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_6_Premium1" name='STIP_CnRen_6_Premium1' value={FormData['STIP_CnRen_6_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_6_Excess1" name='STIP_CnRen_6_Excess1' value={FormData['STIP_CnRen_6_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_6_Excess1" name='STIP_CnRen_6_Excess1' value={FormData['STIP_CnRen_6_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_6_Premium2" name='STIP_CnRen_6_Premium2' value={FormData['STIP_CnRen_6_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_6_Premium2" name='STIP_CnRen_6_Premium2' value={FormData['STIP_CnRen_6_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_6_Excess2" name='STIP_CnRen_6_Excess2' value={FormData['STIP_CnRen_6_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_6_Excess2" name='STIP_CnRen_6_Excess2' value={FormData['STIP_CnRen_6_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2499,23 +2499,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_7_CoverAmount" name='STIP_CnRen_7_CoverAmount' value={FormData['STIP_CnRen_7_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_7_CoverAmount" name='STIP_CnRen_7_CoverAmount' value={FormData['STIP_CnRen_7_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_7_Premium1" name='STIP_CnRen_7_Premium1' value={FormData['STIP_CnRen_7_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_7_Premium1" name='STIP_CnRen_7_Premium1' value={FormData['STIP_CnRen_7_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_7_Excess1" name='STIP_CnRen_7_Excess1' value={FormData['STIP_CnRen_7_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_7_Excess1" name='STIP_CnRen_7_Excess1' value={FormData['STIP_CnRen_7_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_7_Premium2" name='STIP_CnRen_7_Premium2' value={FormData['STIP_CnRen_7_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_7_Premium2" name='STIP_CnRen_7_Premium2' value={FormData['STIP_CnRen_7_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_7_Excess2" name='STIP_CnRen_7_Excess2' value={FormData['STIP_CnRen_7_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_7_Excess2" name='STIP_CnRen_7_Excess2' value={FormData['STIP_CnRen_7_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2532,23 +2532,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_8_CoverAmount" name='STIP_CnRen_8_CoverAmount' value={FormData['STIP_CnRen_8_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_8_CoverAmount" name='STIP_CnRen_8_CoverAmount' value={FormData['STIP_CnRen_8_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_8_Premium1" name='STIP_CnRen_8_Premium1' value={FormData['STIP_CnRen_8_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_8_Premium1" name='STIP_CnRen_8_Premium1' value={FormData['STIP_CnRen_8_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_8_Excess1" name='STIP_CnRen_8_Excess1' value={FormData['STIP_CnRen_8_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_8_Excess1" name='STIP_CnRen_8_Excess1' value={FormData['STIP_CnRen_8_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_8_Premium2" name='STIP_CnRen_8_Premium2' value={FormData['STIP_CnRen_8_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_8_Premium2" name='STIP_CnRen_8_Premium2' value={FormData['STIP_CnRen_8_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_8_Excess2" name='STIP_CnRen_8_Excess2' value={FormData['STIP_CnRen_8_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_8_Excess2" name='STIP_CnRen_8_Excess2' value={FormData['STIP_CnRen_8_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2565,23 +2565,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_9_CoverAmount" name='STIP_CnRen_9_CoverAmount' value={FormData['STIP_CnRen_9_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_9_CoverAmount" name='STIP_CnRen_9_CoverAmount' value={FormData['STIP_CnRen_9_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_9_Premium1" name='STIP_CnRen_9_Premium1' value={FormData['STIP_CnRen_9_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_9_Premium1" name='STIP_CnRen_9_Premium1' value={FormData['STIP_CnRen_9_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_9_Excess1" name='STIP_CnRen_9_Excess1' value={FormData['STIP_CnRen_9_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_9_Excess1" name='STIP_CnRen_9_Excess1' value={FormData['STIP_CnRen_9_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_9_Premium2" name='STIP_CnRen_9_Premium2' value={FormData['STIP_CnRen_9_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_9_Premium2" name='STIP_CnRen_9_Premium2' value={FormData['STIP_CnRen_9_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_9_Excess2" name='STIP_CnRen_9_Excess2' value={FormData['STIP_CnRen_9_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_9_Excess2" name='STIP_CnRen_9_Excess2' value={FormData['STIP_CnRen_9_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2598,23 +2598,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_10_CoverAmount" name='STIP_CnRen_10_CoverAmount' value={FormData['STIP_CnRen_10_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_10_CoverAmount" name='STIP_CnRen_10_CoverAmount' value={FormData['STIP_CnRen_10_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_10_Premium1" name='STIP_CnRen_10_Premium1' value={FormData['STIP_CnRen_10_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_10_Premium1" name='STIP_CnRen_10_Premium1' value={FormData['STIP_CnRen_10_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_10_Excess1" name='STIP_CnRen_10_Excess1' value={FormData['STIP_CnRen_10_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_10_Excess1" name='STIP_CnRen_10_Excess1' value={FormData['STIP_CnRen_10_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_10_Premium2" name='STIP_CnRen_10_Premium2' value={FormData['STIP_CnRen_10_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_10_Premium2" name='STIP_CnRen_10_Premium2' value={FormData['STIP_CnRen_10_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_10_Excess2" name='STIP_CnRen_10_Excess2' value={FormData['STIP_CnRen_10_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_10_Excess2" name='STIP_CnRen_10_Excess2' value={FormData['STIP_CnRen_10_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2631,23 +2631,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_11_CoverAmount" name='STIP_CnRen_11_CoverAmount' value={FormData['STIP_CnRen_11_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_11_CoverAmount" name='STIP_CnRen_11_CoverAmount' value={FormData['STIP_CnRen_11_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_11_Premium1" name='STIP_CnRen_11_Premium1' value={FormData['STIP_CnRen_11_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_11_Premium1" name='STIP_CnRen_11_Premium1' value={FormData['STIP_CnRen_11_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_11_Excess1" name='STIP_CnRen_11_Excess1' value={FormData['STIP_CnRen_11_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_11_Excess1" name='STIP_CnRen_11_Excess1' value={FormData['STIP_CnRen_11_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_11_Premium2" name='STIP_CnRen_11_Premium2' value={FormData['STIP_CnRen_11_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_11_Premium2" name='STIP_CnRen_11_Premium2' value={FormData['STIP_CnRen_11_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_11_Excess2" name='STIP_CnRen_11_Excess2' value={FormData['STIP_CnRen_11_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_11_Excess2" name='STIP_CnRen_11_Excess2' value={FormData['STIP_CnRen_11_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2665,23 +2665,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_12_CoverAmount" name='STIP_CnRen_12_CoverAmount' value={FormData['STIP_CnRen_12_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_12_CoverAmount" name='STIP_CnRen_12_CoverAmount' value={FormData['STIP_CnRen_12_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_12_Premium1" name='STIP_CnRen_12_Premium1' value={FormData['STIP_CnRen_12_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_12_Premium1" name='STIP_CnRen_12_Premium1' value={FormData['STIP_CnRen_12_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_12_Excess1" name='STIP_CnRen_12_Excess1' value={FormData['STIP_CnRen_12_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_12_Excess1" name='STIP_CnRen_12_Excess1' value={FormData['STIP_CnRen_12_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_12_Premium2" name='STIP_CnRen_12_Premium2' value={FormData['STIP_CnRen_12_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_12_Premium2" name='STIP_CnRen_12_Premium2' value={FormData['STIP_CnRen_12_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_12_Excess2" name='STIP_CnRen_12_Excess2' value={FormData['STIP_CnRen_12_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_12_Excess2" name='STIP_CnRen_12_Excess2' value={FormData['STIP_CnRen_12_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2698,23 +2698,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_13_CoverAmount" name='STIP_CnRen_13_CoverAmount' value={FormData['STIP_CnRen_13_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_13_CoverAmount" name='STIP_CnRen_13_CoverAmount' value={FormData['STIP_CnRen_13_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_13_Premium1" name='STIP_CnRen_13_Premium1' value={FormData['STIP_CnRen_13_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_13_Premium1" name='STIP_CnRen_13_Premium1' value={FormData['STIP_CnRen_13_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_13_Excess1" name='STIP_CnRen_13_Excess1' value={FormData['STIP_CnRen_13_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_13_Excess1" name='STIP_CnRen_13_Excess1' value={FormData['STIP_CnRen_13_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_13_Premium2" name='STIP_CnRen_13_Premium2' value={FormData['STIP_CnRen_13_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_13_Premium2" name='STIP_CnRen_13_Premium2' value={FormData['STIP_CnRen_13_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_13_Excess2" name='STIP_CnRen_13_Excess2' value={FormData['STIP_CnRen_13_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_13_Excess2" name='STIP_CnRen_13_Excess2' value={FormData['STIP_CnRen_13_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2731,23 +2731,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_14_CoverAmount" name='STIP_CnRen_14_CoverAmount' value={FormData['STIP_CnRen_14_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_14_CoverAmount" name='STIP_CnRen_14_CoverAmount' value={FormData['STIP_CnRen_14_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_14_Premium1" name='STIP_CnRen_14_Premium1' value={FormData['STIP_CnRen_14_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_14_Premium1" name='STIP_CnRen_14_Premium1' value={FormData['STIP_CnRen_14_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_14_Excess1" name='STIP_CnRen_14_Excess1' value={FormData['STIP_CnRen_14_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_14_Excess1" name='STIP_CnRen_14_Excess1' value={FormData['STIP_CnRen_14_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_14_Premium2" name='STIP_CnRen_14_Premium2' value={FormData['STIP_CnRen_14_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_14_Premium2" name='STIP_CnRen_14_Premium2' value={FormData['STIP_CnRen_14_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_14_Excess2" name='STIP_CnRen_14_Excess2' value={FormData['STIP_CnRen_14_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_14_Excess2" name='STIP_CnRen_14_Excess2' value={FormData['STIP_CnRen_14_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2764,23 +2764,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_15_CoverAmount" name='STIP_CnRen_15_CoverAmount' value={FormData['STIP_CnRen_15_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_15_CoverAmount" name='STIP_CnRen_15_CoverAmount' value={FormData['STIP_CnRen_15_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_15_Premium1" name='STIP_CnRen_15_Premium1' value={FormData['STIP_CnRen_15_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_15_Premium1" name='STIP_CnRen_15_Premium1' value={FormData['STIP_CnRen_15_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_15_Excess1" name='STIP_CnRen_15_Excess1' value={FormData['STIP_CnRen_15_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_15_Excess1" name='STIP_CnRen_15_Excess1' value={FormData['STIP_CnRen_15_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_15_Premium2" name='STIP_CnRen_15_Premium2' value={FormData['STIP_CnRen_15_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_15_Premium2" name='STIP_CnRen_15_Premium2' value={FormData['STIP_CnRen_15_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_15_Excess2" name='STIP_CnRen_15_Excess2' value={FormData['STIP_CnRen_15_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_15_Excess2" name='STIP_CnRen_15_Excess2' value={FormData['STIP_CnRen_15_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2797,23 +2797,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_16_CoverAmount" name='STIP_CnRen_16_CoverAmount' value={FormData['STIP_CnRen_16_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_16_CoverAmount" name='STIP_CnRen_16_CoverAmount' value={FormData['STIP_CnRen_16_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_16_Premium1" name='STIP_CnRen_16_Premium1' value={FormData['STIP_CnRen_16_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_16_Premium1" name='STIP_CnRen_16_Premium1' value={FormData['STIP_CnRen_16_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_16_Excess1" name='STIP_CnRen_16_Excess1' value={FormData['STIP_CnRen_16_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_16_Excess1" name='STIP_CnRen_16_Excess1' value={FormData['STIP_CnRen_16_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_16_Premium2" name='STIP_CnRen_16_Premium2' value={FormData['STIP_CnRen_16_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_16_Premium2" name='STIP_CnRen_16_Premium2' value={FormData['STIP_CnRen_16_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_16_Excess2" name='STIP_CnRen_16_Excess2' value={FormData['STIP_CnRen_16_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_16_Excess2" name='STIP_CnRen_16_Excess2' value={FormData['STIP_CnRen_16_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2830,23 +2830,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_17_CoverAmount" name='STIP_CnRen_17_CoverAmount' value={FormData['STIP_CnRen_17_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_17_CoverAmount" name='STIP_CnRen_17_CoverAmount' value={FormData['STIP_CnRen_17_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_17_Premium1" name='STIP_CnRen_17_Premium1' value={FormData['STIP_CnRen_17_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_17_Premium1" name='STIP_CnRen_17_Premium1' value={FormData['STIP_CnRen_17_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_17_Excess1" name='STIP_CnRen_17_Excess1' value={FormData['STIP_CnRen_17_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_17_Excess1" name='STIP_CnRen_17_Excess1' value={FormData['STIP_CnRen_17_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_17_Premium2" name='STIP_CnRen_17_Premium2' value={FormData['STIP_CnRen_17_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_17_Premium2" name='STIP_CnRen_17_Premium2' value={FormData['STIP_CnRen_17_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_17_Excess2" name='STIP_CnRen_17_Excess2' value={FormData['STIP_CnRen_17_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_17_Excess2" name='STIP_CnRen_17_Excess2' value={FormData['STIP_CnRen_17_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2863,23 +2863,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_18_CoverAmount" name='STIP_CnRen_18_CoverAmount' value={FormData['STIP_CnRen_18_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_18_CoverAmount" name='STIP_CnRen_18_CoverAmount' value={FormData['STIP_CnRen_18_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_18_Premium1" name='STIP_CnRen_18_Premium1' value={FormData['STIP_CnRen_18_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_18_Premium1" name='STIP_CnRen_18_Premium1' value={FormData['STIP_CnRen_18_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_18_Excess1" name='STIP_CnRen_18_Excess1' value={FormData['STIP_CnRen_18_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_18_Excess1" name='STIP_CnRen_18_Excess1' value={FormData['STIP_CnRen_18_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_18_Premium2" name='STIP_CnRen_18_Premium2' value={FormData['STIP_CnRen_18_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_18_Premium2" name='STIP_CnRen_18_Premium2' value={FormData['STIP_CnRen_18_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_18_Excess2" name='STIP_CnRen_18_Excess2' value={FormData['STIP_CnRen_18_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_18_Excess2" name='STIP_CnRen_18_Excess2' value={FormData['STIP_CnRen_18_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2896,23 +2896,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_19_CoverAmount" name='STIP_CnRen_19_CoverAmount' value={FormData['STIP_CnRen_19_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_19_CoverAmount" name='STIP_CnRen_19_CoverAmount' value={FormData['STIP_CnRen_19_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_19_Premium1" name='STIP_CnRen_19_Premium1' value={FormData['STIP_CnRen_19_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_19_Premium1" name='STIP_CnRen_19_Premium1' value={FormData['STIP_CnRen_19_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_19_Excess1" name='STIP_CnRen_19_Excess1' value={FormData['STIP_CnRen_19_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_19_Excess1" name='STIP_CnRen_19_Excess1' value={FormData['STIP_CnRen_19_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_19_Premium2" name='STIP_CnRen_19_Premium2' value={FormData['STIP_CnRen_19_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_19_Premium2" name='STIP_CnRen_19_Premium2' value={FormData['STIP_CnRen_19_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_19_Excess2" name='STIP_CnRen_19_Excess2' value={FormData['STIP_CnRen_19_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_19_Excess2" name='STIP_CnRen_19_Excess2' value={FormData['STIP_CnRen_19_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2929,23 +2929,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_20_CoverAmount" name='STIP_CnRen_20_CoverAmount' value={FormData['STIP_CnRen_20_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_20_CoverAmount" name='STIP_CnRen_20_CoverAmount' value={FormData['STIP_CnRen_20_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_20_Premium1" name='STIP_CnRen_20_Premium1' value={FormData['STIP_CnRen_20_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_20_Premium1" name='STIP_CnRen_20_Premium1' value={FormData['STIP_CnRen_20_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_20_Excess1" name='STIP_CnRen_20_Excess1' value={FormData['STIP_CnRen_20_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_20_Excess1" name='STIP_CnRen_20_Excess1' value={FormData['STIP_CnRen_20_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_20_Premium2" name='STIP_CnRen_20_Premium2' value={FormData['STIP_CnRen_20_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_20_Premium2" name='STIP_CnRen_20_Premium2' value={FormData['STIP_CnRen_20_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_20_Excess2" name='STIP_CnRen_20_Excess2' value={FormData['STIP_CnRen_20_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_20_Excess2" name='STIP_CnRen_20_Excess2' value={FormData['STIP_CnRen_20_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2962,23 +2962,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_21_CoverAmount" name='STIP_CnRen_21_CoverAmount' value={FormData['STIP_CnRen_21_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_21_CoverAmount" name='STIP_CnRen_21_CoverAmount' value={FormData['STIP_CnRen_21_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_21_Premium1" name='STIP_CnRen_21_Premium1' value={FormData['STIP_CnRen_21_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_21_Premium1" name='STIP_CnRen_21_Premium1' value={FormData['STIP_CnRen_21_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_21_Excess1" name='STIP_CnRen_21_Excess1' value={FormData['STIP_CnRen_21_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_21_Excess1" name='STIP_CnRen_21_Excess1' value={FormData['STIP_CnRen_21_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_21_Premium2" name='STIP_CnRen_21_Premium2' value={FormData['STIP_CnRen_21_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_21_Premium2" name='STIP_CnRen_21_Premium2' value={FormData['STIP_CnRen_21_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_21_Excess2" name='STIP_CnRen_21_Excess2' value={FormData['STIP_CnRen_21_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_21_Excess2" name='STIP_CnRen_21_Excess2' value={FormData['STIP_CnRen_21_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2996,23 +2996,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_22_CoverAmount" name='STIP_CnRen_22_CoverAmount' value={FormData['STIP_CnRen_22_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_22_CoverAmount" name='STIP_CnRen_22_CoverAmount' value={FormData['STIP_CnRen_22_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_22_Premium1" name='STIP_CnRen_22_Premium1' value={FormData['STIP_CnRen_22_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_22_Premium1" name='STIP_CnRen_22_Premium1' value={FormData['STIP_CnRen_22_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_22_Excess1" name='STIP_CnRen_22_Excess1' value={FormData['STIP_CnRen_22_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_22_Excess1" name='STIP_CnRen_22_Excess1' value={FormData['STIP_CnRen_22_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_22_Premium2" name='STIP_CnRen_22_Premium2' value={FormData['STIP_CnRen_22_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_22_Premium2" name='STIP_CnRen_22_Premium2' value={FormData['STIP_CnRen_22_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_22_Excess2" name='STIP_CnRen_22_Excess2' value={FormData['STIP_CnRen_22_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_22_Excess2" name='STIP_CnRen_22_Excess2' value={FormData['STIP_CnRen_22_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3030,23 +3030,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_23_CoverAmount" name='STIP_CnRen_23_CoverAmount' value={FormData['STIP_CnRen_23_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_23_CoverAmount" name='STIP_CnRen_23_CoverAmount' value={FormData['STIP_CnRen_23_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_23_Premium1" name='STIP_CnRen_23_Premium1' value={FormData['STIP_CnRen_23_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_23_Premium1" name='STIP_CnRen_23_Premium1' value={FormData['STIP_CnRen_23_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_23_Excess1" name='STIP_CnRen_23_Excess1' value={FormData['STIP_CnRen_23_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_23_Excess1" name='STIP_CnRen_23_Excess1' value={FormData['STIP_CnRen_23_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_23_Premium2" name='STIP_CnRen_23_Premium2' value={FormData['STIP_CnRen_23_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_23_Premium2" name='STIP_CnRen_23_Premium2' value={FormData['STIP_CnRen_23_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_23_Excess2" name='STIP_CnRen_23_Excess2' value={FormData['STIP_CnRen_23_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_23_Excess2" name='STIP_CnRen_23_Excess2' value={FormData['STIP_CnRen_23_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3063,23 +3063,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_24_CoverAmount" name='STIP_CnRen_24_CoverAmount' value={FormData['STIP_CnRen_24_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_24_CoverAmount" name='STIP_CnRen_24_CoverAmount' value={FormData['STIP_CnRen_24_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_24_Premium1" name='STIP_CnRen_24_Premium1' value={FormData['STIP_CnRen_24_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_24_Premium1" name='STIP_CnRen_24_Premium1' value={FormData['STIP_CnRen_24_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_24_Excess1" name='STIP_CnRen_24_Excess1' value={FormData['STIP_CnRen_24_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_24_Excess1" name='STIP_CnRen_24_Excess1' value={FormData['STIP_CnRen_24_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_24_Premium2" name='STIP_CnRen_24_Premium2' value={FormData['STIP_CnRen_24_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_24_Premium2" name='STIP_CnRen_24_Premium2' value={FormData['STIP_CnRen_24_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_24_Excess2" name='STIP_CnRen_24_Excess2' value={FormData['STIP_CnRen_24_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_24_Excess2" name='STIP_CnRen_24_Excess2' value={FormData['STIP_CnRen_24_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3098,23 +3098,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_25_CoverAmount" name='STIP_CnRen_25_CoverAmount' value={FormData['STIP_CnRen_25_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_25_CoverAmount" name='STIP_CnRen_25_CoverAmount' value={FormData['STIP_CnRen_25_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_25_Premium1" name='STIP_CnRen_25_Premium1' value={FormData['STIP_CnRen_25_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_25_Premium1" name='STIP_CnRen_25_Premium1' value={FormData['STIP_CnRen_25_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_25_Excess1" name='STIP_CnRen_25_Excess1' value={FormData['STIP_CnRen_25_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_25_Excess1" name='STIP_CnRen_25_Excess1' value={FormData['STIP_CnRen_25_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_25_Premium2" name='STIP_CnRen_25_Premium2' value={FormData['STIP_CnRen_25_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_25_Premium2" name='STIP_CnRen_25_Premium2' value={FormData['STIP_CnRen_25_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_25_Excess2" name='STIP_CnRen_25_Excess2' value={FormData['STIP_CnRen_25_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_25_Excess2" name='STIP_CnRen_25_Excess2' value={FormData['STIP_CnRen_25_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3132,23 +3132,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_26_CoverAmount" name='STIP_CnRen_26_CoverAmount' value={FormData['STIP_CnRen_26_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_26_CoverAmount" name='STIP_CnRen_26_CoverAmount' value={FormData['STIP_CnRen_26_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_26_Premium1" name='STIP_CnRen_26_Premium1' value={FormData['STIP_CnRen_26_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_26_Premium1" name='STIP_CnRen_26_Premium1' value={FormData['STIP_CnRen_26_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_26_Excess1" name='STIP_CnRen_26_Excess1' value={FormData['STIP_CnRen_26_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_26_Excess1" name='STIP_CnRen_26_Excess1' value={FormData['STIP_CnRen_26_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_26_Premium2" name='STIP_CnRen_26_Premium2' value={FormData['STIP_CnRen_26_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_26_Premium2" name='STIP_CnRen_26_Premium2' value={FormData['STIP_CnRen_26_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_26_Excess2" name='STIP_CnRen_26_Excess2' value={FormData['STIP_CnRen_26_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_26_Excess2" name='STIP_CnRen_26_Excess2' value={FormData['STIP_CnRen_26_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3166,23 +3166,23 @@ const Short_term_Personal = () => {
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_27_CoverAmount" name='STIP_CnRen_27_CoverAmount' value={FormData['STIP_CnRen_27_CoverAmount']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_27_CoverAmount" name='STIP_CnRen_27_CoverAmount' value={FormData['STIP_CnRen_27_CoverAmount']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_27_Premium1" name='STIP_CnRen_27_Premium1' value={FormData['STIP_CnRen_27_Premium1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_27_Premium1" name='STIP_CnRen_27_Premium1' value={FormData['STIP_CnRen_27_Premium1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_27_Excess1" name='STIP_CnRen_27_Excess1' value={FormData['STIP_CnRen_27_Excess1']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_27_Excess1" name='STIP_CnRen_27_Excess1' value={FormData['STIP_CnRen_27_Excess1']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_27_Premium2" name='STIP_CnRen_27_Premium2' value={FormData['STIP_CnRen_27_Premium2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_27_Premium2" name='STIP_CnRen_27_Premium2' value={FormData['STIP_CnRen_27_Premium2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_27_Excess2" name='STIP_CnRen_27_Excess2' value={FormData['STIP_CnRen_27_Excess2']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_27_Excess2" name='STIP_CnRen_27_Excess2' value={FormData['STIP_CnRen_27_Excess2']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3190,7 +3190,7 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Fees and charges</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_FeeCharges" name='STIP_CnRen_FeeCharges' value={FormData['STIP_CnRen_FeeCharges']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_FeeCharges" name='STIP_CnRen_FeeCharges' value={FormData['STIP_CnRen_FeeCharges']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3198,7 +3198,7 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Commissions</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_Commission" name='STIP_CnRen_Commission' value={FormData['STIP_CnRen_Commission']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_Commission" name='STIP_CnRen_Commission' value={FormData['STIP_CnRen_Commission']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3206,7 +3206,7 @@ const Short_term_Personal = () => {
               
               <td className="col-2" style={{width:"200px"}}>Total premium</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true" disabled   id="STIP_CnRen_TotalPremium" name='STIP_CnRen_TotalPremium' value={FormData['STIP_CnRen_TotalPremium']}className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input spellCheck="true" disabled   id="STIP_CnRen_TotalPremium" name='STIP_CnRen_TotalPremium' value={FormData['STIP_CnRen_TotalPremium']}className="form-control"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3250,13 +3250,13 @@ const Short_term_Personal = () => {
         
       <p>If yes,answer the following:</p>
         <p>What is the purpose of this replacement?</p>
-        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled name='STIP_CnRI_ReplacePurpose'value={FormData['STIP_CnRI_ReplacePurpose']} className="form-control" placeholder="" aria-describedby="" ></textarea>
+        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled name='STIP_CnRI_ReplacePurpose'value={FormData['STIP_CnRI_ReplacePurpose']} className="form-control"  aria-describedby="" ></textarea>
       <hr/>
         <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
-        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled name='STIP_CnRI_ReplaceReason'value={FormData['STIP_CnRI_ReplaceReason']} className="form-control" placeholder="" aria-describedby="" ></textarea>
+        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled name='STIP_CnRI_ReplaceReason'value={FormData['STIP_CnRI_ReplaceReason']} className="form-control"  aria-describedby="" ></textarea>
         <hr/>
         <p>Suppliers of the product(s) to be replaced:</p>
-        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled name='STIP_CnRen_TotalPremium'value={FormData['STIP_CnRen_TotalPremium']} className="form-control" placeholder="" aria-describedby="" ></textarea>
+        <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}disabled name='STIP_CnRen_TotalPremium'value={FormData['STIP_CnRen_TotalPremium']} className="form-control"  aria-describedby="" ></textarea>
 
     </div>
   </div>
@@ -3276,7 +3276,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label">Residential area</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true" disabled   id="STIP_HC_ResidentialArea" name='STIP_HC_ResidentialArea' value={FormData['STIP_HC_ResidentialArea']}className="form-control" placeholder="."  aria-describedby="" />
+                  <input spellCheck="true" disabled   id="STIP_HC_ResidentialArea" name='STIP_HC_ResidentialArea' value={FormData['STIP_HC_ResidentialArea']}className="form-control"   aria-describedby="" />
               </div>
           </div>
       </div>
@@ -3288,7 +3288,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label">Street name,number and suburb</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true" disabled   id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']}className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
+                  <input spellCheck="true" disabled   id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']}className="form-control"   aria-describedby="" style={{height:"100px"}}/>
               </div>
           </div>
       </div>
@@ -3300,7 +3300,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label">Postal code</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true" disabled   id="STIP_HC_PostalCode" name='STIP_HC_PostalCode' value={FormData['STIP_HC_PostalCode']}className="form-control" placeholder=""  aria-describedby=""/>
+                  <input spellCheck="true" disabled   id="STIP_HC_PostalCode" name='STIP_HC_PostalCode' value={FormData['STIP_HC_PostalCode']}className="form-control"   aria-describedby=""/>
               </div>
           </div>
       </div>
@@ -3312,7 +3312,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true" disabled   id="STIP_HC_ResidenceType" name='STIP_HC_ResidenceType' value={FormData['STIP_HC_ResidenceType']}className="form-control" placeholder=""  aria-describedby="" />
+                  <input spellCheck="true" disabled   id="STIP_HC_ResidenceType" name='STIP_HC_ResidenceType' value={FormData['STIP_HC_ResidenceType']}className="form-control"   aria-describedby="" />
               </div>
           </div>
       </div>
@@ -3543,7 +3543,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true" disabled   id="STIP_HC_NoClaimBonus" name='STIP_HC_NoClaimBonus' value={FormData['STIP_HC_NoClaimBonus']}className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled   id="STIP_HC_NoClaimBonus" name='STIP_HC_NoClaimBonus' value={FormData['STIP_HC_NoClaimBonus']}className="form-control"   aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -3559,7 +3559,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true" disabled   id="STIP_HC_SumInsured" name='STIP_HC_SumInsured' value={FormData['STIP_HC_SumInsured']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled   id="STIP_HC_SumInsured" name='STIP_HC_SumInsured' value={FormData['STIP_HC_SumInsured']}className="form-control"  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -3579,7 +3579,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true" disabled   id="STIP_HCEx_BusinessType" name='STIP_HCEx_BusinessType' value={FormData['STIP_HCEx_BusinessType']}className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled   id="STIP_HCEx_BusinessType" name='STIP_HCEx_BusinessType' value={FormData['STIP_HCEx_BusinessType']}className="form-control"   aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -3596,7 +3596,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true" disabled   id="STIP_HCEx_InsuredAmount" name='STIP_HCEx_InsuredAmount' value={FormData['STIP_HCEx_InsuredAmount']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled   id="STIP_HCEx_InsuredAmount" name='STIP_HCEx_InsuredAmount' value={FormData['STIP_HCEx_InsuredAmount']}className="form-control"   aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -3823,7 +3823,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true" disabled   id="STIP_HC_Fee" name='STIP_HC_Fee' value={FormData['STIP_HC_Fee']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled   id="STIP_HC_Fee" name='STIP_HC_Fee' value={FormData['STIP_HC_Fee']}className="form-control"   aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -3840,7 +3840,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true" disabled   id="STIP_HC_Commission" name='STIP_HC_Commission' value={FormData['STIP_HC_Commission']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled   id="STIP_HC_Commission" name='STIP_HC_Commission' value={FormData['STIP_HC_Commission']}className="form-control"   aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -3856,7 +3856,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true" disabled   id="STIP_HC_TotalPremium" name='STIP_HC_TotalPremium' value={FormData['STIP_HC_TotalPremium']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled   id="STIP_HC_TotalPremium" name='STIP_HC_TotalPremium' value={FormData['STIP_HC_TotalPremium']}className="form-control"   aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -3880,7 +3880,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label">Residential area</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true" disabled   id="STIP_Build_ResidentialArea" name='STIP_Build_ResidentialArea' value={FormData['STIP_Build_ResidentialArea']}className="form-control" placeholder="."  aria-describedby="" />
+                  <input spellCheck="true" disabled   id="STIP_Build_ResidentialArea" name='STIP_Build_ResidentialArea' value={FormData['STIP_Build_ResidentialArea']}className="form-control"   aria-describedby="" />
               </div>
           </div>
       </div>
@@ -3892,7 +3892,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label">Street name,number and suburb</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true" disabled   id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']}className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
+                  <input spellCheck="true" disabled   id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']}className="form-control"   aria-describedby="" style={{height:"100px"}}/>
               </div>
           </div>
       </div>
@@ -3904,7 +3904,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label">Postal code</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true" disabled   id="STIP_Build_PostalCode" name='STIP_Build_PostalCode' value={FormData['STIP_Build_PostalCode']}className="form-control" placeholder=""  aria-describedby=""/>
+                  <input spellCheck="true" disabled   id="STIP_Build_PostalCode" name='STIP_Build_PostalCode' value={FormData['STIP_Build_PostalCode']}className="form-control"   aria-describedby=""/>
               </div>
           </div>
       </div>
@@ -3916,7 +3916,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true" disabled   id="STIP_Build_ResidenceType" name='STIP_Build_ResidenceType' value={FormData['STIP_Build_ResidenceType']}className="form-control" placeholder=""  aria-describedby="" />
+                  <input spellCheck="true" disabled   id="STIP_Build_ResidenceType" name='STIP_Build_ResidenceType' value={FormData['STIP_Build_ResidenceType']}className="form-control"   aria-describedby="" />
               </div>
           </div>
       </div>
@@ -3933,7 +3933,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_Build_Type" name='STIP_Build_Type' value={FormData['STIP_Build_Type']}className="form-control" placeholder=""  aria-describedby="" style={{width:'200px'}}/>
+                    <input spellCheck="true" disabled   id="STIP_Build_Type" name='STIP_Build_Type' value={FormData['STIP_Build_Type']}className="form-control"   aria-describedby="" style={{width:'200px'}}/>
                   </div>
               </div>
 
@@ -4100,7 +4100,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_Build_Fee" name='STIP_Build_Fee' value={FormData['STIP_Build_Fee']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
+                    <input spellCheck="true" disabled   id="STIP_Build_Fee" name='STIP_Build_Fee' value={FormData['STIP_Build_Fee']}className="form-control"   aria-describedby="" style={{width:'200px'}}/>
                   </div>
               </div>
             </div>
@@ -4116,7 +4116,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_Build_Commission" name='STIP_Build_Commission' value={FormData['STIP_Build_Commission']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
+                    <input spellCheck="true" disabled   id="STIP_Build_Commission" name='STIP_Build_Commission' value={FormData['STIP_Build_Commission']}className="form-control"   aria-describedby="" style={{width:'200px'}}/>
                   </div>
               </div>
             </div>
@@ -4132,7 +4132,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_Build_TotalPremium" name='STIP_Build_TotalPremium' value={FormData['STIP_Build_TotalPremium']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
+                    <input spellCheck="true" disabled   id="STIP_Build_TotalPremium" name='STIP_Build_TotalPremium' value={FormData['STIP_Build_TotalPremium']}className="form-control"   aria-describedby="" style={{width:'200px'}}/>
                   </div>
               </div>
             </div>
@@ -4142,7 +4142,7 @@ const Short_term_Personal = () => {
       <br/>
     <div>Additional notes on buildings that may affect cover/advice to the client: </div>
     <div className="col-2">
-        <input spellCheck="true" disabled   id="STIP_Build_AdditionalAdvise" name='STIP_Build_AdditionalAdvise' value={FormData['STIP_Build_AdditionalAdvise']}className="form-control" placeholder=" "  aria-describedby="" style={{width:'1000px'}}/>
+        <input spellCheck="true" disabled   id="STIP_Build_AdditionalAdvise" name='STIP_Build_AdditionalAdvise' value={FormData['STIP_Build_AdditionalAdvise']}className="form-control"   aria-describedby="" style={{width:'1000px'}}/>
     </div>
 
       <hr/>
@@ -4158,7 +4158,7 @@ const Short_term_Personal = () => {
                         <label className="col-form-label">Residential area</label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_AddProp_ResidentialArea" name='STIP_AddProp_ResidentialArea' value={FormData['STIP_AddProp_ResidentialArea']}className="form-control" placeholder="."  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_AddProp_ResidentialArea" name='STIP_AddProp_ResidentialArea' value={FormData['STIP_AddProp_ResidentialArea']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -4170,7 +4170,7 @@ const Short_term_Personal = () => {
                         <label className="col-form-label">Street name,number and suburb</label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']}className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
+                        <input spellCheck="true" disabled   id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']}className="form-control"   aria-describedby="" style={{height:"100px"}}/>
                     </div>
                 </div>
             </div>
@@ -4182,7 +4182,7 @@ const Short_term_Personal = () => {
                         <label className="col-form-label">Postal code</label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_AddProp_PostalCode" name='STIP_AddProp_PostalCode' value={FormData['STIP_AddProp_PostalCode']}className="form-control" placeholder=""  aria-describedby=""/>
+                        <input spellCheck="true" disabled   id="STIP_AddProp_PostalCode" name='STIP_AddProp_PostalCode' value={FormData['STIP_AddProp_PostalCode']}className="form-control"   aria-describedby=""/>
                     </div>
                 </div>
             </div>
@@ -4194,7 +4194,7 @@ const Short_term_Personal = () => {
                         <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_AddProp_ResidenceType" name='STIP_AddProp_ResidenceType' value={FormData['STIP_AddProp_ResidenceType']}className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_AddProp_ResidenceType" name='STIP_AddProp_ResidenceType' value={FormData['STIP_AddProp_ResidenceType']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -4206,7 +4206,7 @@ const Short_term_Personal = () => {
                         <label className="col-form-label"><b>Type of building</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="STIP_AddProp_Type" name='STIP_AddProp_Type' value={FormData['STIP_AddProp_Type']}className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_AddProp_Type" name='STIP_AddProp_Type' value={FormData['STIP_AddProp_Type']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -4383,7 +4383,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true" disabled   id="STIP_AddProp_Fee" name='STIP_AddProp_Fee' value={FormData['STIP_AddProp_Fee']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled   id="STIP_AddProp_Fee" name='STIP_AddProp_Fee' value={FormData['STIP_AddProp_Fee']}className="form-control"   aria-describedby="" style={{width:"200px"}} />
                   </div>    
               </div>
             </div>
@@ -4399,7 +4399,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true" disabled   id="STIP_AddProp_Commission" name='STIP_AddProp_Commission' value={FormData['STIP_AddProp_Commission']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled   id="STIP_AddProp_Commission" name='STIP_AddProp_Commission' value={FormData['STIP_AddProp_Commission']}className="form-control"   aria-describedby="" style={{width:"200px"}} />
                   </div>    
               </div>
             </div>
@@ -4415,7 +4415,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true" disabled   id="STIP_AddProp_TotalPremium" name='STIP_AddProp_TotalPremium' value={FormData['STIP_AddProp_TotalPremium']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" disabled   id="STIP_AddProp_TotalPremium" name='STIP_AddProp_TotalPremium' value={FormData['STIP_AddProp_TotalPremium']}className="form-control"   aria-describedby="" style={{width:"200px"}} />
                   </div>    
               </div>
             </div>
@@ -4425,7 +4425,7 @@ const Short_term_Personal = () => {
 
       <br/>
         <div>Additional notes on buildings that may affect cover/advice to the client: </div>
-        <input spellCheck="true" disabled   id="STIP_AddProp_AdditionalAdvise" name='STIP_AddProp_AdditionalAdvise' value={FormData['STIP_AddProp_AdditionalAdvise']}className="form-control" placeholder="      "  aria-describedby="" style={{width:"1000px"}} />
+        <input spellCheck="true" disabled   id="STIP_AddProp_AdditionalAdvise" name='STIP_AddProp_AdditionalAdvise' value={FormData['STIP_AddProp_AdditionalAdvise']}className="form-control"   aria-describedby="" style={{width:"1000px"}} />
         <hr/>
 
         <br/>
@@ -4441,7 +4441,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Vehicle in the name of:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true" disabled   id="STIP_Vehicle_Owner" name='STIP_Vehicle_Owner' value={FormData['STIP_Vehicle_Owner']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Vehicle_Owner" name='STIP_Vehicle_Owner' value={FormData['STIP_Vehicle_Owner']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4452,7 +4452,7 @@ const Short_term_Personal = () => {
                       <label htmlFor="id_number" className="col-form-label"><b>Registered owner:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true" disabled   id="STIP_Vehicle_RegOwner" name='STIP_Vehicle_RegOwner' value={FormData['STIP_Vehicle_RegOwner']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Vehicle_RegOwner" name='STIP_Vehicle_RegOwner' value={FormData['STIP_Vehicle_RegOwner']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4464,7 +4464,7 @@ const Short_term_Personal = () => {
                       <label htmlFor="id_number" className="col-form-label"><b>Usage:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true" disabled   id="STIP_Vehicle_Usage" name='STIP_Vehicle_Usage' value={FormData['STIP_Vehicle_Usage']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Vehicle_Usage" name='STIP_Vehicle_Usage' value={FormData['STIP_Vehicle_Usage']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4497,7 +4497,7 @@ const Short_term_Personal = () => {
                         <option value="5">Behind Gates</option>
                         <option value="6">Others</option>
                     </select>
-                    <input spellCheck="true" disabled   id="STIP_Vehicle_ONParking" name='STIP_Vehicle_ONParking' value={FormData['STIP_Vehicle_ONParking']}className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+                    <input spellCheck="true" disabled   id="STIP_Vehicle_ONParking" name='STIP_Vehicle_ONParking' value={FormData['STIP_Vehicle_ONParking']}className="form-control"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4508,7 +4508,7 @@ const Short_term_Personal = () => {
                       <label htmlFor="id_number" className="col-form-label"><b>R:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true" disabled   id="STIP_Vehicle_ONOtherParking" name='STIP_Vehicle_ONOtherParking' value={FormData['STIP_Vehicle_ONOtherParking']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Vehicle_ONOtherParking" name='STIP_Vehicle_ONOtherParking' value={FormData['STIP_Vehicle_ONOtherParking']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4641,7 +4641,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Regular driver:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true" disabled   id="STIP_Vehicle_Driver" name='STIP_Vehicle_Driver' value={FormData['STIP_Vehicle_Driver']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Vehicle_Driver" name='STIP_Vehicle_Driver' value={FormData['STIP_Vehicle_Driver']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4652,7 +4652,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-6">
-                      {/* <input spellCheck="true" disabled   id="STIP_Vehicle_DriverLicIssDate" name='STIP_Vehicle_DriverLicIssDate' value={FormData['STIP_Vehicle_DriverLicIssDate']}className="form-control" placeholder="."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="STIP_Vehicle_DriverLicIssDate" name='STIP_Vehicle_DriverLicIssDate' value={FormData['STIP_Vehicle_DriverLicIssDate']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -4663,7 +4663,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Driver's license issue date:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true" disabled  type="date" id="STIP_Vehicle_DriverLicIssDate" name='STIP_Vehicle_DriverLicIssDate' value={FormData['STIP_Vehicle_DriverLicIssDate']}className="form-control" placeholder="Click here to enter date."  aria-describedby="" />
+                      <input spellCheck="true" disabled  type="date" id="STIP_Vehicle_DriverLicIssDate" name='STIP_Vehicle_DriverLicIssDate' value={FormData['STIP_Vehicle_DriverLicIssDate']}className="form-control"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4674,7 +4674,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>License code:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true" disabled   id="STIP_Vehicle_LicCode" name='STIP_Vehicle_LicCode' value={FormData['STIP_Vehicle_LicCode']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Vehicle_LicCode" name='STIP_Vehicle_LicCode' value={FormData['STIP_Vehicle_LicCode']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4687,7 +4687,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Sum insured:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true" disabled   id="STIP_Vehicle_SumInsured" name='STIP_Vehicle_SumInsured' value={FormData['STIP_Vehicle_SumInsured']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Vehicle_SumInsured" name='STIP_Vehicle_SumInsured' value={FormData['STIP_Vehicle_SumInsured']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4701,7 +4701,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>No claims bonus:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true" disabled   id="STIP_Vehicle_ClaimBonus" name='STIP_Vehicle_ClaimBonus' value={FormData['STIP_Vehicle_ClaimBonus']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Vehicle_ClaimBonus" name='STIP_Vehicle_ClaimBonus' value={FormData['STIP_Vehicle_ClaimBonus']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4712,7 +4712,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-6">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -4769,7 +4769,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount1' value={FormData['STIP_Vehicle_ExtrasAmount1']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount1' value={FormData['STIP_Vehicle_ExtrasAmount1']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4782,7 +4782,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount2' value={FormData['STIP_Vehicle_ExtrasAmount2']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount2' value={FormData['STIP_Vehicle_ExtrasAmount2']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4795,7 +4795,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount3' value={FormData['STIP_Vehicle_ExtrasAmount3']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount3' value={FormData['STIP_Vehicle_ExtrasAmount3']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4808,7 +4808,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount4' value={FormData['STIP_Vehicle_ExtrasAmount4']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount4' value={FormData['STIP_Vehicle_ExtrasAmount4']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4821,7 +4821,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount5' value={FormData['STIP_Vehicle_ExtrasAmount5']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount5' value={FormData['STIP_Vehicle_ExtrasAmount5']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4834,7 +4834,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount6' value={FormData['STIP_Vehicle_ExtrasAmount6']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount6' value={FormData['STIP_Vehicle_ExtrasAmount6']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4847,7 +4847,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount7' value={FormData['STIP_Vehicle_ExtrasAmount7']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount7' value={FormData['STIP_Vehicle_ExtrasAmount7']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4860,7 +4860,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount8' value={FormData['STIP_Vehicle_ExtrasAmount8']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount8' value={FormData['STIP_Vehicle_ExtrasAmount8']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4873,7 +4873,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount9' value={FormData['STIP_Vehicle_ExtrasAmount9']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount9' value={FormData['STIP_Vehicle_ExtrasAmount9']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4886,7 +4886,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount10' value={FormData['STIP_Vehicle_ExtrasAmount10']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount10' value={FormData['STIP_Vehicle_ExtrasAmount10']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4899,7 +4899,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount11' value={FormData['STIP_Vehicle_ExtrasAmount11']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount11' value={FormData['STIP_Vehicle_ExtrasAmount11']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4912,7 +4912,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount12' value={FormData['STIP_Vehicle_ExtrasAmount12']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount12' value={FormData['STIP_Vehicle_ExtrasAmount12']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4925,7 +4925,7 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount13' value={FormData['STIP_Vehicle_ExtrasAmount13']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount13' value={FormData['STIP_Vehicle_ExtrasAmount13']}  />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -4935,10 +4935,10 @@ const Short_term_Personal = () => {
                       </label>
                   </div>
                   <div className="col-4">
-                    <input disabled className="form-control" type="text" placeholder="Enter text" name='STIP_Vehicle_Extras14' value={FormData['STIP_Vehicle_Extras14']}  />
+                    <input disabled className="form-control" type="text" name='STIP_Vehicle_Extras14' value={FormData['STIP_Vehicle_Extras14']}  />
                   </div>
                   <div className="col-6">
-                    <input disabled className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount14' value={FormData['STIP_Vehicle_ExtrasAmount14']}  />
+                    <input disabled className="form-control" type="number"  name='STIP_Vehicle_ExtrasAmount14' value={FormData['STIP_Vehicle_ExtrasAmount14']}  />
                   </div>
               </div>
             </div>
@@ -5121,7 +5121,7 @@ const Short_term_Personal = () => {
                         <label className="col-form-label"><b>Fees:</b></label>
                     </div>
                     <div className="col-8">
-                        <input spellCheck="true" disabled   id="STIP_Vehicle_Fees" name='STIP_Vehicle_Fees' value={FormData['STIP_Vehicle_Fees']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Vehicle_Fees" name='STIP_Vehicle_Fees' value={FormData['STIP_Vehicle_Fees']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
               </div>
@@ -5131,7 +5131,7 @@ const Short_term_Personal = () => {
                         <label className="col-form-label"><b>Commission:</b></label>
                     </div>
                     <div className="col-8">
-                        <input spellCheck="true" disabled   id="STIP_Vehicle_Commission" name='STIP_Vehicle_Commission' value={FormData['STIP_Vehicle_Commission']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Vehicle_Commission" name='STIP_Vehicle_Commission' value={FormData['STIP_Vehicle_Commission']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
               </div>
@@ -5141,13 +5141,13 @@ const Short_term_Personal = () => {
                         <label className="col-form-label"><b>Total Premium:</b></label>
                     </div>
                     <div className="col-8">
-                        <input spellCheck="true" disabled   id="STIP_Vehicle_TotalPremium" name='STIP_Vehicle_TotalPremium' value={FormData['STIP_Vehicle_TotalPremium']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="STIP_Vehicle_TotalPremium" name='STIP_Vehicle_TotalPremium' value={FormData['STIP_Vehicle_TotalPremium']}className="form-control"   aria-describedby="" />
                     </div>
                 </div>
                 
               </div>
               <div>Additional notes on Mororcycle that may affect cover/advice to the client:</div>
-                <input spellCheck="true" disabled   id="STIP_Vehicle_Comments" name='STIP_Vehicle_Comments' value={FormData['STIP_Vehicle_Comments']}className="form-control" placeholder=" "  aria-describedby="" />
+                <input spellCheck="true" disabled   id="STIP_Vehicle_Comments" name='STIP_Vehicle_Comments' value={FormData['STIP_Vehicle_Comments']}className="form-control"   aria-describedby="" />
               <br/>
               
             </div>
@@ -5175,7 +5175,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Registered owner:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_MotorC_RegOwner" name='STIP_MotorC_RegOwner' value={FormData['STIP_MotorC_RegOwner']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_MotorC_RegOwner" name='STIP_MotorC_RegOwner' value={FormData['STIP_MotorC_RegOwner']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5186,7 +5186,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5197,7 +5197,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Usage:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_MotorC_Usage" name='STIP_MotorC_Usage' value={FormData['STIP_MotorC_Usage']}className="form-control" placeholder="Select the class of use."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_MotorC_Usage" name='STIP_MotorC_Usage' value={FormData['STIP_MotorC_Usage']}className="form-control"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5208,7 +5208,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5229,7 +5229,7 @@ const Short_term_Personal = () => {
                         <option value="5">Behind Gates</option>
                         <option value="6">Others</option>
                     </select>
-                    <input spellCheck="true" disabled   id="STIP_MotorC_ONParking" name='STIP_MotorC_ONParking' value={FormData['STIP_MotorC_ONParking']}className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+                    <input spellCheck="true" disabled   id="STIP_MotorC_ONParking" name='STIP_MotorC_ONParking' value={FormData['STIP_MotorC_ONParking']}className="form-control" aria-describedby="" />
                   
                   </div>
               </div>
@@ -5241,7 +5241,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5252,7 +5252,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_MotorC_ONOtherParking" name='STIP_MotorC_ONOtherParking' value={FormData['STIP_MotorC_ONOtherParking']}className="form-control" placeholder="Other type of overnight parking"  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_MotorC_ONOtherParking" name='STIP_MotorC_ONOtherParking' value={FormData['STIP_MotorC_ONOtherParking']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5263,7 +5263,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5293,7 +5293,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5312,7 +5312,7 @@ const Short_term_Personal = () => {
                           <option value="3">Spouse</option>
                           <option value="4">Third Party - Theft excluded (cover for loss or damage except by theft)</option>
                       </select>
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
 
                       {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="Select the relevant regular driver description ."  aria-describedby="" /> */}
                   </div>
@@ -5325,7 +5325,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5336,7 +5336,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_MotorC_Driver1" name='STIP_MotorC_Driver1' value={FormData['STIP_MotorC_Driver1']}className="form-control" placeholder="Other regular driver."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_MotorC_Driver1" name='STIP_MotorC_Driver1' value={FormData['STIP_MotorC_Driver1']}className="form-control" aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5347,7 +5347,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5358,7 +5358,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Driver license issue date:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_MotorC_DriverLicIssDate" name='STIP_MotorC_DriverLicIssDate' value={FormData['STIP_MotorC_DriverLicIssDate']}className="form-control" placeholder=""  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_MotorC_DriverLicIssDate" name='STIP_MotorC_DriverLicIssDate' value={FormData['STIP_MotorC_DriverLicIssDate']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5369,7 +5369,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>License code:</b></label>
                   </div>
                   <div className="col-8">
-                        <input spellCheck="true" disabled   id="STIP_MotorC_LicCode" name='STIP_MotorC_LicCode' value={FormData['STIP_MotorC_LicCode']}className="form-control" placeholder="."  aria-describedby="" /> 
+                        <input spellCheck="true" disabled   id="STIP_MotorC_LicCode" name='STIP_MotorC_LicCode' value={FormData['STIP_MotorC_LicCode']}className="form-control"   aria-describedby="" /> 
                   </div>
               </div>
           </div>
@@ -5380,7 +5380,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>No claims bonus:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_MotorC_ClaimBonus" name='STIP_MotorC_ClaimBonus' value={FormData['STIP_MotorC_ClaimBonus']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_MotorC_ClaimBonus" name='STIP_MotorC_ClaimBonus' value={FormData['STIP_MotorC_ClaimBonus']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5391,7 +5391,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Sum insured:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_MotorC_SumInsured" name='STIP_MotorC_SumInsured' value={FormData['STIP_MotorC_SumInsured']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_MotorC_SumInsured" name='STIP_MotorC_SumInsured' value={FormData['STIP_MotorC_SumInsured']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5402,7 +5402,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Fees:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_MotorC_Fees" name='STIP_MotorC_Fees' value={FormData['STIP_MotorC_Fees']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_MotorC_Fees" name='STIP_MotorC_Fees' value={FormData['STIP_MotorC_Fees']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5413,7 +5413,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5424,7 +5424,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Commission:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_MotorC_Commission" name='STIP_MotorC_Commission' value={FormData['STIP_MotorC_Commission']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_MotorC_Commission" name='STIP_MotorC_Commission' value={FormData['STIP_MotorC_Commission']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5435,7 +5435,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5446,7 +5446,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Total premium:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_MotorC_TotalPremium" name='STIP_MotorC_TotalPremium' value={FormData['STIP_MotorC_TotalPremium']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_MotorC_TotalPremium" name='STIP_MotorC_TotalPremium' value={FormData['STIP_MotorC_TotalPremium']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5456,7 +5456,7 @@ const Short_term_Personal = () => {
       </div>
       
       <div>Additional notes on Mororcycle that may affect cover/advice to the client:</div>
-        <input spellCheck="true" disabled   id="STIP_MotorC_Comments" name='STIP_MotorC_Comments' value={FormData['STIP_MotorC_Comments']}className="form-control" placeholder=" "  aria-describedby="" />
+        <input spellCheck="true" disabled   id="STIP_MotorC_Comments" name='STIP_MotorC_Comments' value={FormData['STIP_MotorC_Comments']}className="form-control"   aria-describedby="" />
       <br/>
       <h6 align="left" style={{ color: "#14848A"}}><b>TRAILER/CARAVAN</b></h6>
       <div>Please see the attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number etc.</div>
@@ -5470,7 +5470,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Registered owner:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_Trailer_RegOwner" name='STIP_Trailer_RegOwner' value={FormData['STIP_Trailer_RegOwner']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Trailer_RegOwner" name='STIP_Trailer_RegOwner' value={FormData['STIP_Trailer_RegOwner']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5481,7 +5481,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Type:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_Trailer_Type" name='STIP_Trailer_Type' value={FormData['STIP_Trailer_Type']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Trailer_Type" name='STIP_Trailer_Type' value={FormData['STIP_Trailer_Type']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5502,7 +5502,7 @@ const Short_term_Personal = () => {
                         <option value="5">Behind Gates</option>
                         <option value="6">Others</option>
                     </select>
-                    {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
+                    {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5513,7 +5513,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5524,7 +5524,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_Trailer_ONOtherParking" name='STIP_Trailer_ONOtherParking' value={FormData['STIP_Trailer_ONOtherParking']}className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Trailer_ONOtherParking" name='STIP_Trailer_ONOtherParking' value={FormData['STIP_Trailer_ONOtherParking']}className="form-control"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5535,7 +5535,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5546,7 +5546,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>No claims bonus:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_Trailer_ClaimBonus" name='STIP_Trailer_ClaimBonus' value={FormData['STIP_Trailer_ClaimBonus']}className="form-control" placeholder=""  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Trailer_ClaimBonus" name='STIP_Trailer_ClaimBonus' value={FormData['STIP_Trailer_ClaimBonus']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5557,7 +5557,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Sum insured:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_Trailer_SumInsured" name='STIP_Trailer_SumInsured' value={FormData['STIP_Trailer_SumInsured']}className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Trailer_SumInsured" name='STIP_Trailer_SumInsured' value={FormData['STIP_Trailer_SumInsured']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5569,7 +5569,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Fees:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_Trailer_Fees" name='STIP_Trailer_Fees' value={FormData['STIP_Trailer_Fees']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Trailer_Fees" name='STIP_Trailer_Fees' value={FormData['STIP_Trailer_Fees']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5580,7 +5580,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5591,7 +5591,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Commission:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_Trailer_Commission" name='STIP_Trailer_Commission' value={FormData['STIP_Trailer_Commission']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Trailer_Commission" name='STIP_Trailer_Commission' value={FormData['STIP_Trailer_Commission']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5602,7 +5602,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5613,7 +5613,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Total premium:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_Trailer_TotalPremium" name='STIP_Trailer_TotalPremium' value={FormData['STIP_Trailer_TotalPremium']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_Trailer_TotalPremium" name='STIP_Trailer_TotalPremium' value={FormData['STIP_Trailer_TotalPremium']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5623,7 +5623,7 @@ const Short_term_Personal = () => {
         
         <br/>
         <div>Additional notes on trailer that may affect cover/advice to the client:</div>
-        <input spellCheck="true" disabled   id="STIP_Trailer_Comments" name='STIP_Trailer_Comments' value={FormData['STIP_Trailer_Comments']}className="form-control" placeholder=" "  aria-describedby="" />
+        <input spellCheck="true" disabled   id="STIP_Trailer_Comments" name='STIP_Trailer_Comments' value={FormData['STIP_Trailer_Comments']}className="form-control"   aria-describedby="" />
 
         <br/>
       <h6 align="left" style={{ color: "#14848A"}}><b>WATER CRAFT</b></h6>
@@ -5638,7 +5638,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Registered owner:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_WaterC_RegOwner" name='STIP_WaterC_RegOwner' value={FormData['STIP_WaterC_RegOwner']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_WaterC_RegOwner" name='STIP_WaterC_RegOwner' value={FormData['STIP_WaterC_RegOwner']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5649,7 +5649,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Type:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_WaterC_Type" name='STIP_WaterC_Type' value={FormData['STIP_WaterC_Type']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_WaterC_Type" name='STIP_WaterC_Type' value={FormData['STIP_WaterC_Type']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5660,7 +5660,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Length of hull:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_WaterC_Hull" name='STIP_WaterC_Hull' value={FormData['STIP_WaterC_Hull']}className="form-control" placeholder=""  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_WaterC_Hull" name='STIP_WaterC_Hull' value={FormData['STIP_WaterC_Hull']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5671,7 +5671,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Craft sum insured</b></label>
                   </div>
                   <div className="col-8">
-                        <input spellCheck="true" disabled   id="STIP_WaterC_SumInsured" name='STIP_WaterC_SumInsured' value={FormData['STIP_WaterC_SumInsured']}className="form-control" placeholder="     R 0.00"  aria-describedby="" /> 
+                        <input spellCheck="true" disabled   id="STIP_WaterC_SumInsured" name='STIP_WaterC_SumInsured' value={FormData['STIP_WaterC_SumInsured']}className="form-control"  aria-describedby="" /> 
                   </div>
               </div>
           </div>
@@ -5682,7 +5682,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>VIN Number:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_WaterC_VIN" name='STIP_WaterC_VIN' value={FormData['STIP_WaterC_VIN']}className="form-control" placeholder=""  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_WaterC_VIN" name='STIP_WaterC_VIN' value={FormData['STIP_WaterC_VIN']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5694,7 +5694,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Engine number:</b></label>
                   </div>
                   <div className="col-8">
-                        <input spellCheck="true" disabled   id="STIP_WaterC_EngineNumber" name='STIP_WaterC_EngineNumber' value={FormData['STIP_WaterC_EngineNumber']}className="form-control" placeholder=""  aria-describedby="" />  
+                        <input spellCheck="true" disabled   id="STIP_WaterC_EngineNumber" name='STIP_WaterC_EngineNumber' value={FormData['STIP_WaterC_EngineNumber']}className="form-control"   aria-describedby="" />  
                   </div>
               </div>
           </div>
@@ -5705,7 +5705,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Optical cover required by client:</b></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder=""  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5716,7 +5716,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5727,7 +5727,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Glitter finish:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_WaterC_OC_Glitter" name='STIP_WaterC_OC_Glitter' value={FormData['STIP_WaterC_OC_Glitter']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_WaterC_OC_Glitter" name='STIP_WaterC_OC_Glitter' value={FormData['STIP_WaterC_OC_Glitter']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5738,7 +5738,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Specified accessories:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_WaterC_OC_SpecifiedAccessories" name='STIP_WaterC_OC_SpecifiedAccessories' value={FormData['STIP_WaterC_OC_SpecifiedAccessories']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_WaterC_OC_SpecifiedAccessories" name='STIP_WaterC_OC_SpecifiedAccessories' value={FormData['STIP_WaterC_OC_SpecifiedAccessories']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>      
@@ -5749,7 +5749,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Outboard motor type:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_WaterC_OC_MotorType" name='STIP_WaterC_OC_MotorType' value={FormData['STIP_WaterC_OC_MotorType']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_WaterC_OC_MotorType" name='STIP_WaterC_OC_MotorType' value={FormData['STIP_WaterC_OC_MotorType']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5760,7 +5760,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Output:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_WaterC_OC_Output" name='STIP_WaterC_OC_Output' value={FormData['STIP_WaterC_OC_Output']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_WaterC_OC_Output" name='STIP_WaterC_OC_Output' value={FormData['STIP_WaterC_OC_Output']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5772,7 +5772,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Fees:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_WaterC_Fees" name='STIP_WaterC_Fees' value={FormData['STIP_WaterC_Fees']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_WaterC_Fees" name='STIP_WaterC_Fees' value={FormData['STIP_WaterC_Fees']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5783,7 +5783,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5794,7 +5794,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Commission:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_WaterC_Commission" name='STIP_WaterC_Commission' value={FormData['STIP_WaterC_Commission']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_WaterC_Commission" name='STIP_WaterC_Commission' value={FormData['STIP_WaterC_Commission']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5805,7 +5805,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5816,7 +5816,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label"><b>Total premium:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_WaterC_TotalPremium" name='STIP_WaterC_TotalPremium' value={FormData['STIP_WaterC_TotalPremium']}className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_WaterC_TotalPremium" name='STIP_WaterC_TotalPremium' value={FormData['STIP_WaterC_TotalPremium']}className="form-control"   aria-describedby="" />
 
                   </div>
               </div>
@@ -5827,7 +5827,7 @@ const Short_term_Personal = () => {
 
 <br/>
       <div>Additional notes on motorcycle that may affect cover/advice to the client:</div>
-        <input spellCheck="true" disabled   id="STIP_WaterC_Comments" name='STIP_WaterC_Comments' value={FormData['STIP_WaterC_Comments']}className="form-control" placeholder=" "  aria-describedby="" />
+        <input spellCheck="true" disabled   id="STIP_WaterC_Comments" name='STIP_WaterC_Comments' value={FormData['STIP_WaterC_Comments']}className="form-control"   aria-describedby="" />
 
         <br/>
         <h6 align="left" style={{ color: "#14848A"}}><b>PERSONAL LEGAL LIABILITY</b></h6>
@@ -5873,7 +5873,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_PersonalLL_IndemnityLimitDetail" name='STIP_PersonalLL_IndemnityLimitDetail' value={FormData['STIP_PersonalLL_IndemnityLimitDetail']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_PersonalLL_IndemnityLimitDetail" name='STIP_PersonalLL_IndemnityLimitDetail' value={FormData['STIP_PersonalLL_IndemnityLimitDetail']}className="form-control"   aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -5891,7 +5891,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_PersonalLL_Fees" name='STIP_PersonalLL_Fees' value={FormData['STIP_PersonalLL_Fees']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_PersonalLL_Fees" name='STIP_PersonalLL_Fees' value={FormData['STIP_PersonalLL_Fees']}className="form-control"   aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -5909,7 +5909,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_PersonalLL_Commission" name='STIP_PersonalLL_Commission' value={FormData['STIP_PersonalLL_Commission']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_PersonalLL_Commission" name='STIP_PersonalLL_Commission' value={FormData['STIP_PersonalLL_Commission']}className="form-control"   aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -5927,7 +5927,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_PersonalLL_TotalPremium" name='STIP_PersonalLL_TotalPremium' value={FormData['STIP_PersonalLL_TotalPremium']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_PersonalLL_TotalPremium" name='STIP_PersonalLL_TotalPremium' value={FormData['STIP_PersonalLL_TotalPremium']}className="form-control"   aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -5939,7 +5939,7 @@ const Short_term_Personal = () => {
 
       <br/>
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
-        <input spellCheck="true" disabled   id="STIP_PersonalLL_Comments" name='STIP_PersonalLL_Comments' value={FormData['STIP_PersonalLL_Comments']}className="form-control" placeholder="      "  aria-describedby="" style={{height:"80px"}} />
+        <input spellCheck="true" disabled   id="STIP_PersonalLL_Comments" name='STIP_PersonalLL_Comments' value={FormData['STIP_PersonalLL_Comments']}className="form-control"   aria-describedby="" style={{height:"80px"}} />
 
 
         <br/>
@@ -5984,7 +5984,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_LegalA_IndemnityLimitDetail" name='STIP_LegalA_IndemnityLimitDetail' value={FormData['STIP_LegalA_IndemnityLimitDetail']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_LegalA_IndemnityLimitDetail" name='STIP_LegalA_IndemnityLimitDetail' value={FormData['STIP_LegalA_IndemnityLimitDetail']}className="form-control"   aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6002,7 +6002,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_LegalA_Fees" name='STIP_LegalA_Fees' value={FormData['STIP_LegalA_Fees']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_LegalA_Fees" name='STIP_LegalA_Fees' value={FormData['STIP_LegalA_Fees']}className="form-control"   aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6020,7 +6020,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_LegalA_Commission" name='STIP_LegalA_Commission' value={FormData['STIP_LegalA_Commission']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_LegalA_Commission" name='STIP_LegalA_Commission' value={FormData['STIP_LegalA_Commission']}className="form-control"   aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6038,7 +6038,7 @@ const Short_term_Personal = () => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true" disabled   id="STIP_LegalA_TotalPremium" name='STIP_LegalA_TotalPremium' value={FormData['STIP_LegalA_TotalPremium']}className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input spellCheck="true" disabled   id="STIP_LegalA_TotalPremium" name='STIP_LegalA_TotalPremium' value={FormData['STIP_LegalA_TotalPremium']}className="form-control"   aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6050,7 +6050,7 @@ const Short_term_Personal = () => {
 
       <br/>
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
-        <input spellCheck="true" disabled   id="STIP_LegalA_Comments" name='STIP_LegalA_Comments' value={FormData['STIP_LegalA_Comments']}className="form-control" placeholder="      "  aria-describedby="" style={{height:"80px"}} />
+        <input spellCheck="true" disabled   id="STIP_LegalA_Comments" name='STIP_LegalA_Comments' value={FormData['STIP_LegalA_Comments']}className="form-control"   aria-describedby="" style={{height:"80px"}} />
 
         <br/>
         <div><b>IMPORTANT:</b></div>
@@ -6077,15 +6077,15 @@ const Short_term_Personal = () => {
         <br/>
         <h6 align="left" style={{ color: "#14848A"}}><b>RECORD OF ADVICE</b></h6>
         <div>Products considered appropriate to address the needs of the client:</div>
-        <input spellCheck="true" disabled   id="STIP_ProductConsidered" name='STIP_ProductConsidered' value={FormData['STIP_ProductConsidered']}className="form-control" placeholder="    "  aria-describedby="" style={{height:"80px"}} />
+        <input spellCheck="true" disabled   id="STIP_ProductConsidered" name='STIP_ProductConsidered' value={FormData['STIP_ProductConsidered']}className="form-control"   aria-describedby="" style={{height:"80px"}} />
 
         <hr/>
         <div>Recommended product:</div>
-        <input spellCheck="true" disabled   id="STIP_ProductRecommended" name='STIP_ProductRecommended' value={FormData['STIP_ProductRecommended']}className="form-control" placeholder="    "  aria-describedby="" style={{height:"80px"}} />
+        <input spellCheck="true" disabled   id="STIP_ProductRecommended" name='STIP_ProductRecommended' value={FormData['STIP_ProductRecommended']}className="form-control"   aria-describedby="" style={{height:"80px"}} />
 
         <hr/>
         <div>Reasons why the recommended product is considered the most suitable for the needs of the client:</div>
-        <input spellCheck="true" disabled   id="STIP_ProductReasons" name='STIP_ProductReasons' value={FormData['STIP_ProductReasons']}className="form-control" placeholder="    "  aria-describedby="" style={{height:"80px"}} />
+        <input spellCheck="true" disabled   id="STIP_ProductReasons" name='STIP_ProductReasons' value={FormData['STIP_ProductReasons']}className="form-control"   aria-describedby="" style={{height:"80px"}} />
 
         <hr/>
         <div><b>Note: The intermediary whose name appears in section below, will be regarded as the person responsible for advice to the client. </b></div>
@@ -6102,7 +6102,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label">Name of intermediary:</label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_DbyI_IName" name='STIP_DbyI_IName' value={FormData['STIP_DbyI_IName']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_DbyI_IName" name='STIP_DbyI_IName' value={FormData['STIP_DbyI_IName']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6113,7 +6113,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label">Code:</label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_DbyI_Code" name='STIP_DbyI_Code' value={FormData['STIP_DbyI_Code']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled   id="STIP_DbyI_Code" name='STIP_DbyI_Code' value={FormData['STIP_DbyI_Code']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6137,7 +6137,8 @@ const Short_term_Personal = () => {
                       <label className="col-form-label">Signature of intermediary</label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled   id="STIP_DbyI_Signature" name='IP_InvestmentTerm' value={FormData['STIP_DbyI_Signature']}className="form-control" placeholder="Sign here"  aria-describedby="" />
+                      {/* <input spellCheck="true" disabled   id="STIP_DbyI_Signature" name='IP_InvestmentTerm' value={FormData['STIP_DbyI_Signature']}className="form-control" placeholder="Sign here"  aria-describedby="" /> */}
+                      <hr style={{marginTop:"85px"}}/>
                   </div>
               </div>
           </div>
@@ -6148,7 +6149,7 @@ const Short_term_Personal = () => {
                       <label className="col-form-label">Date(dd/mm/yyyy)</label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" disabled  type="date"  id="STIP_DbyI_Date" name='STIP_DbyI_Date' value={FormData['STIP_DbyI_Date']}className="form-control" placeholder="."  aria-describedby="" />
+                      <input spellCheck="true" disabled  type="date"  id="STIP_DbyI_Date" name='STIP_DbyI_Date' value={FormData['STIP_DbyI_Date']}className="form-control"   aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6168,7 +6169,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Client name:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_ClientName" name='STIP_MSA_ClientName' value={FormData['STIP_MSA_ClientName']}className="form-control" placeholder="Client Name"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_ClientName" name='STIP_MSA_ClientName' value={FormData['STIP_MSA_ClientName']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6180,7 +6181,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>ID Number:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_ClientIdNumber" name='STIP_MSA_ClientIdNumber' value={FormData['STIP_MSA_ClientIdNumber']}className="form-control" placeholder="ID# of client"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_ClientIdNumber" name='STIP_MSA_ClientIdNumber' value={FormData['STIP_MSA_ClientIdNumber']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6192,7 +6193,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Address:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_ClientAddress" name='STIP_MSA_ClientAddress' value={FormData['STIP_MSA_ClientAddress']}className="form-control" placeholder="Address"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_ClientAddress" name='STIP_MSA_ClientAddress' value={FormData['STIP_MSA_ClientAddress']}className="form-control" aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6204,7 +6205,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Email:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_ClientEmail" name='STIP_MSA_ClientEmail' value={FormData['STIP_MSA_ClientEmail']}className="form-control" placeholder="Email Address"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_ClientEmail" name='STIP_MSA_ClientEmail' value={FormData['STIP_MSA_ClientEmail']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6216,7 +6217,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Phone:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_ClientPhone" name='STIP_MSA_ClientPhone' value={FormData['STIP_MSA_ClientPhone']}className="form-control" placeholder="Contact Number"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_ClientPhone" name='STIP_MSA_ClientPhone' value={FormData['STIP_MSA_ClientPhone']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6228,7 +6229,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Financial advisor:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled  value={""} className="form-control" placeholder="Primary intermediary's name"  aria-describedby=""/>
+                <input spellCheck="true" disabled  value={""} className="form-control"  aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6240,7 +6241,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Date:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_ClientDate" name='STIP_MSA_ClientDate' value={FormData['STIP_MSA_ClientDate']}type="date" className="form-control" placeholder="Primary intermediary's name"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_ClientDate" name='STIP_MSA_ClientDate' value={FormData['STIP_MSA_ClientDate']}type="date" className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6267,7 +6268,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Name and surname:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_Name" name='STIP_MSA_Name' value={FormData['STIP_MSA_Name']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_Name" name='STIP_MSA_Name' value={FormData['STIP_MSA_Name']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6279,7 +6280,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Marital status:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_MaritalStatus" name='STIP_MSA_MaritalStatus' value={FormData['STIP_MSA_MaritalStatus']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_MaritalStatus" name='STIP_MSA_MaritalStatus' value={FormData['STIP_MSA_MaritalStatus']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6291,7 +6292,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Gender:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_Gender" name='STIP_MSA_Gender' value={FormData['STIP_MSA_Gender']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_Gender" name='STIP_MSA_Gender' value={FormData['STIP_MSA_Gender']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6303,7 +6304,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Occupation:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_Occupation" name='STIP_MSA_Occupation' value={FormData['STIP_MSA_Occupation']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_Occupation" name='STIP_MSA_Occupation' value={FormData['STIP_MSA_Occupation']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6315,7 +6316,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Income per month(if income plan is selected):</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_Income" name='STIP_MSA_Income' value={FormData['STIP_MSA_Income']}className="form-control" placeholder="R 00"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_Income" name='STIP_MSA_Income' value={FormData['STIP_MSA_Income']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6327,7 +6328,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Subsidy:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_Subsidy" name='STIP_MSA_Subsidy' value={FormData['STIP_MSA_Subsidy']}className="form-control" placeholder="R 00"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_Subsidy" name='STIP_MSA_Subsidy' value={FormData['STIP_MSA_Subsidy']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6339,7 +6340,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Number of Dependants:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_Dependant" name='STIP_MSA_Dependant' value={FormData['STIP_MSA_Dependant']}className="form-control" placeholder="# of Dependants"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_Dependant" name='STIP_MSA_Dependant' value={FormData['STIP_MSA_Dependant']}className="form-control"  aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6351,7 +6352,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Spouse:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_Spouse" name='STIP_MSA_Spouse' value={FormData['STIP_MSA_Spouse']}className="form-control" placeholder="Enter name of spouse"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_Spouse" name='STIP_MSA_Spouse' value={FormData['STIP_MSA_Spouse']}className="form-control"  aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6363,7 +6364,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Other Adult Dependents (Parents, Guardians, Legal dependents):</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_AdultDependant" name='STIP_MSA_AdultDependant' value={FormData['STIP_MSA_AdultDependant']}className="form-control" placeholder="List name of other adult dependents"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_AdultDependant" name='STIP_MSA_AdultDependant' value={FormData['STIP_MSA_AdultDependant']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6375,7 +6376,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Chronic conditions(Member):</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_ChronicM" name='STIP_MSA_ChronicM' value={FormData['STIP_MSA_ChronicM']}className="form-control" placeholder="List of chronic conditions"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_ChronicM" name='STIP_MSA_ChronicM' value={FormData['STIP_MSA_ChronicM']}className="form-control"  aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6387,7 +6388,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Chronic conditions(Spouse):</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_ChronicS" name='STIP_MSA_ChronicS' value={FormData['STIP_MSA_ChronicS']}className="form-control" placeholder="List of chronic conditions of spouse"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_ChronicS" name='STIP_MSA_ChronicS' value={FormData['STIP_MSA_ChronicS']}className="form-control"  aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6399,7 +6400,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Chronic conditions(Adult Dependents):</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_ChronicAD" name='STIP_MSA_ChronicAD' value={FormData['STIP_MSA_ChronicAD']}className="form-control" placeholder="List of chronic conditions for adult dependents"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_ChronicAD" name='STIP_MSA_ChronicAD' value={FormData['STIP_MSA_ChronicAD']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6411,7 +6412,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Chronic conditions(Children):</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_ChronicC" name='STIP_MSA_ChronicC' value={FormData['STIP_MSA_ChronicC']}className="form-control" placeholder="List of chronic conditions for children"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_ChronicC" name='STIP_MSA_ChronicC' value={FormData['STIP_MSA_ChronicC']}className="form-control"  aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6423,7 +6424,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Other medical pre existing conditions:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_MSA_ChronicOC" name='STIP_MSA_ChronicOC' value={FormData['STIP_MSA_ChronicOC']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_MSA_ChronicOC" name='STIP_MSA_ChronicOC' value={FormData['STIP_MSA_ChronicOC']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6438,13 +6439,13 @@ const Short_term_Personal = () => {
                 <label className="col-form-label">From:</label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled  type="date" id="STIP_MSA_PFromDate" name='STIP_MSA_PFromDate' value={FormData['STIP_MSA_PFromDate']}className="form-control" placeholder=""  aria-describedby=""/> 
+                <input spellCheck="true" disabled  type="date" id="STIP_MSA_PFromDate" name='STIP_MSA_PFromDate' value={FormData['STIP_MSA_PFromDate']}className="form-control"   aria-describedby=""/> 
               </div>
               <div className="col-1">
                 <label className="col-form-label">To:</label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled  type="date" id="STIP_MSA_PTODate" name='STIP_MSA_PTODate' value={FormData['STIP_MSA_PTODate']}className="form-control" placeholder=""  aria-describedby=""/> 
+                <input spellCheck="true" disabled  type="date" id="STIP_MSA_PTODate" name='STIP_MSA_PTODate' value={FormData['STIP_MSA_PTODate']}className="form-control"   aria-describedby=""/> 
               </div>
           </div>
         </div>
@@ -6461,12 +6462,7 @@ const Short_term_Personal = () => {
       
       <textarea ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none", height: '160px' }} disabled  id="STIP_BackInfo"  className="form-control" 
       name='STIP_BackInfo' value={FormData['STIP_BackInfo']}
-      placeholder={
-          `                       Provide a detailed description of the client’s:
-          •	current personal circumstances,
-          •	needs that have been identified, 
-          •	and relevant information 
-      that formed the basis for the financial solution recommended`}  aria-describedby=""  ></textarea>
+      aria-describedby=""  ></textarea>
 
 <br/>
 <div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SUMMARY NEEDS ANALYSIS</b></div>
@@ -6515,7 +6511,7 @@ const Short_term_Personal = () => {
               </div>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SNA_Comments1" name='STIP_SNA_Comments1' value={FormData['STIP_SNA_Comments1']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SNA_Comments1" name='STIP_SNA_Comments1' value={FormData['STIP_SNA_Comments1']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6547,7 +6543,7 @@ const Short_term_Personal = () => {
               </div>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SNA_Comments2" name='STIP_SNA_Comments2' value={FormData['STIP_SNA_Comments2']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SNA_Comments2" name='STIP_SNA_Comments2' value={FormData['STIP_SNA_Comments2']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6579,7 +6575,7 @@ const Short_term_Personal = () => {
               </div>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SNA_Comments3" name='STIP_SNA_Comments3' value={FormData['STIP_SNA_Comments3']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SNA_Comments3" name='STIP_SNA_Comments3' value={FormData['STIP_SNA_Comments3']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6611,7 +6607,7 @@ const Short_term_Personal = () => {
               </div>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SNA_Comments4" name='STIP_SNA_Comments4' value={FormData['STIP_SNA_Comments4']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SNA_Comments4" name='STIP_SNA_Comments4' value={FormData['STIP_SNA_Comments4']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6644,11 +6640,11 @@ const Short_term_Personal = () => {
               </div>
               </div>
               <div className="col-4">
-                <input spellCheck="true"  id="STIP_SNA_Comments5" name='STIP_SNA_Comments5' value={FormData['STIP_SNA_Comments5']}  className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true"  id="STIP_SNA_Comments5" name='STIP_SNA_Comments5' value={FormData['STIP_SNA_Comments5']}  className="form-control"   aria-describedby=""/>
               </div>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6680,7 +6676,7 @@ const Short_term_Personal = () => {
               </div>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SNA_Comments6" name='STIP_SNA_Comments6' value={FormData['STIP_SNA_Comments6']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SNA_Comments6" name='STIP_SNA_Comments6' value={FormData['STIP_SNA_Comments6']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6712,7 +6708,7 @@ const Short_term_Personal = () => {
               </div>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SNA_Comments7" name='STIP_SNA_Comments7' value={FormData['STIP_SNA_Comments7']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SNA_Comments7" name='STIP_SNA_Comments7' value={FormData['STIP_SNA_Comments7']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6744,7 +6740,7 @@ const Short_term_Personal = () => {
               </div>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SNA_Comments8" name='STIP_SNA_Comments8' value={FormData['STIP_SNA_Comments8']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SNA_Comments8" name='STIP_SNA_Comments8' value={FormData['STIP_SNA_Comments8']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6776,7 +6772,7 @@ const Short_term_Personal = () => {
               </div>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SNA_Comments9" name='STIP_SNA_Comments9' value={FormData['STIP_SNA_Comments9']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SNA_Comments9" name='STIP_SNA_Comments9' value={FormData['STIP_SNA_Comments9']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6785,7 +6781,7 @@ const Short_term_Personal = () => {
         <div className="col-16" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
               <div className="col-4">
-                <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control" placeholder=""  aria-describedby="" style={{width:"200px"}}/>
+                <input spellCheck="true" disabled   id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']}className="form-control"   aria-describedby="" style={{width:"200px"}}/>
               </div>
               <div className="col-4">
                 <div className="row col-12 align-items-center">
@@ -6808,7 +6804,7 @@ const Short_term_Personal = () => {
               </div>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SNA_Comments10" name='STIP_SNA_Comments10' value={FormData['STIP_SNA_Comments10']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SNA_Comments10" name='STIP_SNA_Comments10' value={FormData['STIP_SNA_Comments10']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6851,10 +6847,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Name:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current1" name='STIP_CoMAB_Current1' value={FormData['STIP_CoMAB_Current1']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current1" name='STIP_CoMAB_Current1' value={FormData['STIP_CoMAB_Current1']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced1" name='STIP_CoMAB_Replaced1' value={FormData['STIP_CoMAB_Replaced1']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced1" name='STIP_CoMAB_Replaced1' value={FormData['STIP_CoMAB_Replaced1']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6866,10 +6862,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Contribution/Premium:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current2" name='STIP_CoMAB_Current2' value={FormData['STIP_CoMAB_Current2']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current2" name='STIP_CoMAB_Current2' value={FormData['STIP_CoMAB_Current2']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced2" name='STIP_CoMAB_Replaced2' value={FormData['STIP_CoMAB_Replaced2']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced2" name='STIP_CoMAB_Replaced2' value={FormData['STIP_CoMAB_Replaced2']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6881,10 +6877,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Benefits:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current3" name='STIP_CoMAB_Current3' value={FormData['STIP_CoMAB_Current3']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current3" name='STIP_CoMAB_Current3' value={FormData['STIP_CoMAB_Current3']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced3" name='STIP_CoMAB_Replaced3' value={FormData['STIP_CoMAB_Replaced3']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced3" name='STIP_CoMAB_Replaced3' value={FormData['STIP_CoMAB_Replaced3']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6896,10 +6892,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Savings Account:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current4" name='STIP_CoMAB_Current4' value={FormData['STIP_CoMAB_Current4']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current4" name='STIP_CoMAB_Current4' value={FormData['STIP_CoMAB_Current4']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced4" name='STIP_CoMAB_Replaced4' value={FormData['STIP_CoMAB_Replaced4']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced4" name='STIP_CoMAB_Replaced4' value={FormData['STIP_CoMAB_Replaced4']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6911,10 +6907,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Chronic Benefits:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current5" name='STIP_CoMAB_Current5' value={FormData['STIP_CoMAB_Current5']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current5" name='STIP_CoMAB_Current5' value={FormData['STIP_CoMAB_Current5']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced5" name='STIP_CoMAB_Replaced5' value={FormData['STIP_CoMAB_Replaced5']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced5" name='STIP_CoMAB_Replaced5' value={FormData['STIP_CoMAB_Replaced5']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6926,10 +6922,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Hospital Cover:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current6" name='STIP_CoMAB_Current6' value={FormData['STIP_CoMAB_Current6']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current6" name='STIP_CoMAB_Current6' value={FormData['STIP_CoMAB_Current6']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced6" name='STIP_CoMAB_Replaced6' value={FormData['STIP_CoMAB_Replaced6']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced6" name='STIP_CoMAB_Replaced6' value={FormData['STIP_CoMAB_Replaced6']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6941,10 +6937,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Limits on cover:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current7" name='STIP_CoMAB_Current7' value={FormData['STIP_CoMAB_Current7']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current7" name='STIP_CoMAB_Current7' value={FormData['STIP_CoMAB_Current7']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced7" name='STIP_CoMAB_Replaced7' value={FormData['STIP_CoMAB_Replaced7']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced7" name='STIP_CoMAB_Replaced7' value={FormData['STIP_CoMAB_Replaced7']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6956,10 +6952,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>General Waiting Period:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current8" name='STIP_CoMAB_Current8' value={FormData['STIP_CoMAB_Current8']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current8" name='STIP_CoMAB_Current8' value={FormData['STIP_CoMAB_Current8']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced8" name='STIP_CoMAB_Replaced8' value={FormData['STIP_CoMAB_Replaced8']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced8" name='STIP_CoMAB_Replaced8' value={FormData['STIP_CoMAB_Replaced8']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6971,10 +6967,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Condition Specific Waiting Period:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current9" name='STIP_CoMAB_Current9' value={FormData['STIP_CoMAB_Current9']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current9" name='STIP_CoMAB_Current9' value={FormData['STIP_CoMAB_Current9']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced9" name='STIP_CoMAB_Replaced9' value={FormData['STIP_CoMAB_Replaced9']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced9" name='STIP_CoMAB_Replaced9' value={FormData['STIP_CoMAB_Replaced9']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -6986,10 +6982,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Legislated Prescribed Minimum Benefits:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current10" name='STIP_CoMAB_Current10' value={FormData['STIP_CoMAB_Current10']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current10" name='STIP_CoMAB_Current10' value={FormData['STIP_CoMAB_Current10']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced10" name='STIP_CoMAB_Replaced10' value={FormData['STIP_CoMAB_Replaced10']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced10" name='STIP_CoMAB_Replaced10' value={FormData['STIP_CoMAB_Replaced10']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -7001,10 +6997,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Later Joiner Penalty:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current11" name='STIP_CoMAB_Current11' value={FormData['STIP_CoMAB_Current11']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current11" name='STIP_CoMAB_Current11' value={FormData['STIP_CoMAB_Current11']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced11" name='STIP_CoMAB_Replaced11' value={FormData['STIP_CoMAB_Replaced11']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced11" name='STIP_CoMAB_Replaced11' value={FormData['STIP_CoMAB_Replaced11']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -7016,10 +7012,10 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Reward/Loyalty Programme:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Current12" name='STIP_CoMAB_Current12' value={FormData['STIP_CoMAB_Current12']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Current12" name='STIP_CoMAB_Current12' value={FormData['STIP_CoMAB_Current12']}className="form-control"   aria-describedby=""/>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced12" name='STIP_CoMAB_Replaced12' value={FormData['STIP_CoMAB_Replaced12']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_CoMAB_Replaced12" name='STIP_CoMAB_Replaced12' value={FormData['STIP_CoMAB_Replaced12']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -7041,7 +7037,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label"><b>Scheme and Fund recommended and/or selected by you:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_SectionD_SnF" name='STIP_SectionD_SnF' value={FormData['STIP_SectionD_SnF']}className="form-control" placeholder="Motivation for recommendations – State why the product purchased will suit the client"  aria-describedby="" style={{height:"150px"}}/>
+                <input spellCheck="true" disabled   id="STIP_SectionD_SnF" name='STIP_SectionD_SnF' value={FormData['STIP_SectionD_SnF']}className="form-control"   aria-describedby="" style={{height:"150px"}}/>
               </div>
             </div>
         </div>
@@ -7055,7 +7051,7 @@ const Short_term_Personal = () => {
 
     <div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>IMPORTANT INFORMATION HIGHLIGHTED TO YOU</b></div>
     <hr/>
-    <input spellCheck="true" disabled   id="STIP_SectionE_PMB" name='STIP_SectionE_PMB' value={FormData['STIP_SectionE_PMB']}className="form-control" placeholder="PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc."  aria-describedby="" style={{height:"80px"}}/>
+    <input spellCheck="true" disabled   id="STIP_SectionE_PMB" name='STIP_SectionE_PMB' value={FormData['STIP_SectionE_PMB']}className="form-control"   aria-describedby="" style={{height:"80px"}}/>
     <hr/>
 
     
@@ -7073,7 +7069,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label">You have elected not to accept the following product recommendations:</label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_SectionF_NotAccepted" name='STIP_SectionF_NotAccepted' value={FormData['STIP_SectionF_NotAccepted']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SectionF_NotAccepted" name='STIP_SectionF_NotAccepted' value={FormData['STIP_SectionF_NotAccepted']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -7085,7 +7081,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label">For the following reasons:</label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_SectionF_Reasons" name='STIP_SectionF_Reasons' value={FormData['STIP_SectionF_Reasons']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SectionF_Reasons" name='STIP_SectionF_Reasons' value={FormData['STIP_SectionF_Reasons']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -7126,7 +7122,7 @@ const Short_term_Personal = () => {
                   <label className="col-form-label">Fees and/or commission:</label>
               </div>
               <div className="col-6">
-                <input spellCheck="true" disabled   id="STIP_SectionF_Fee" name='STIP_SectionF_Fee' value={FormData['STIP_SectionF_Fee']}className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SectionF_Fee" name='STIP_SectionF_Fee' value={FormData['STIP_SectionF_Fee']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -7135,7 +7131,7 @@ const Short_term_Personal = () => {
         <div className="col-16" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
               <div className="col-10">
-                <input spellCheck="true" disabled   id="STIP_SectionF_Comments" name='STIP_SectionF_Comments' value={FormData['STIP_SectionF_Comments']}className="form-control" placeholder="Click here to enter comments"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SectionF_Comments" name='STIP_SectionF_Comments' value={FormData['STIP_SectionF_Comments']}className="form-control"  aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -7144,13 +7140,14 @@ const Short_term_Personal = () => {
         <div className="col-16" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SectionF_Date" name='STIP_SectionF_Date' value={FormData['STIP_SectionF_Date']}className="form-control" placeholder="Sign here"  aria-describedby=""/>
+                {/* <input spellCheck="true" disabled   id="STIP_SectionF_Date" name='STIP_SectionF_Date' value={FormData['STIP_SectionF_Date']}className="form-control" placeholder="Sign here"  aria-describedby=""/> */}
+                <hr style={{marginTop:"85px"}}/>
               </div>
               <div className="col-4">
                   <label className="col-form-label">Date:</label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SectionF_Date" name='STIP_SectionF_Date' value={FormData['STIP_SectionF_Date']}type="date" className="form-control" placeholder=""  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SectionF_Date" name='STIP_SectionF_Date' value={FormData['STIP_SectionF_Date']}type="date" className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>
@@ -7159,7 +7156,7 @@ const Short_term_Personal = () => {
         <div className="col-16" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
               <div className="col-4">
-                <input spellCheck="true" disabled   id="STIP_SectionF_ClientName" name='STIP_SectionF_ClientName' value={FormData['STIP_SectionF_ClientName']}className="form-control" placeholder="Client Name"  aria-describedby=""/>
+                <input spellCheck="true" disabled   id="STIP_SectionF_ClientName" name='STIP_SectionF_ClientName' value={FormData['STIP_SectionF_ClientName']}className="form-control"   aria-describedby=""/>
               </div>
             </div>
         </div>

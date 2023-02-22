@@ -36,11 +36,18 @@ import UserProfile from './Components/Authentication/UserProfile';
 import Form from './Components/Forms/Form';
 import Fiduciary from './Components/Forms/Fiduciary';
 import PrintForm from './Components/Forms/PrintForm';
+import ImportExport from './Components/Import/ImportExport';
+import AppPrint from './Components/Forms/AppPrint';
+import PrintFormClient from './Components/Forms/PrintFormClient';
 import PrintFormLayout from './Layout/CompleteFormLayout';
 import PrintStuff from './Components/PrintStuff';
 import ServerDown from './Components/ServerDown';
 import SuperUserLayout from './Layout/SuperUserLayout';
+import NoHead from './Layout/NoHead';
 import UpdatePassword from './Components/Accounts/UpdatePassword';
+
+
+
 
 function App() {
   return (
@@ -48,11 +55,13 @@ function App() {
       <Provider store={store}> 
           <Router>
           {/* <Router basename={process.env.PUBLIC_URL}> */}
+          
               <Layout>
                 <Routes>
                   <Route element={<SidebarLayout /> }>
                     <Route exact path="/" element={<Dashboard name="" /> } />
                     <Route exact path="/createform" element={<CreateForm name="" /> } />
+                    <Route exact path="/importexport" element={<ImportExport name="" /> } />
                     <Route exact path="/completeform" element={<CompleteForm name="" /> } />
                     <Route exact path="/form" element={<Form name="" /> } />
                     <Route element={<SuperUserLayout /> }>
@@ -66,9 +75,11 @@ function App() {
                     <Route exact path="/updatePassword" element={<UpdatePassword /> } siteName={"SignIn"} />
                     {/* <Route exact path="/printform" element={<PrintForm name="" /> } /> */}
                   </Route>
-                  <Route element={<PrintFormLayout /> }>
+                  <Route  element={<NoHead /> }>
+                    
                       <Route exact path="/updateFirstPassword" element={<UpdatePassword /> } siteName={"SignIn"} />
                       <Route exact path="/printform" element={<PrintForm name="" /> } />
+                      <Route exact path="/printformclient" element={<PrintFormClient name="" /> } />
                   </Route>
                   <Route element={<NonSidebarLayout /> }>
                     {/* <Route exact path="/" element={<Home /> } siteName={"Home"} /> */}

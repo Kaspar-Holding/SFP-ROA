@@ -519,7 +519,7 @@ import axios from 'axios'
                             <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
                         </div>
                         <div className="col-6">
-                            <input disabled  spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
+                            <input disabled  spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}}  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -531,7 +531,7 @@ import axios from 'axios'
                             <label htmlFor="address" className="col-form-label"><b>Client Name</b></label>
                         </div>
                         <div className="col-6">
-                            <input disabled  spellCheck="true"  id="RF_ClientName" name="RF_ClientName" value={FormData['RF_ClientName']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Name"  aria-describedby="" />
+                            <input disabled  spellCheck="true"  id="RF_ClientName" name="RF_ClientName" value={FormData['RF_ClientName']} className="form-control" onChange={(e) => {onChange(e)}}  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -542,7 +542,7 @@ import axios from 'axios'
                             <label htmlFor="email" className="col-form-label"><b>Completed By: Name</b></label>
                         </div>
                         <div className="col-6">
-                            <input disabled  spellCheck="true"  id="RF_CompleteByName" name="RF_CompleteByName" value={FormData['RF_CompleteByName']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Name"  aria-describedby="" />
+                            <input disabled  spellCheck="true"  id="RF_CompleteByName" name="RF_CompleteByName" value={FormData['RF_CompleteByName']} className="form-control" onChange={(e) => {onChange(e)}}  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -554,7 +554,7 @@ import axios from 'axios'
                             <label htmlFor="address" className="col-form-label"><b>Screening Event ID</b></label>
                         </div>
                         <div className="col-6">
-                            <input disabled  spellCheck="true"  id="RF_EventID" name="RF_EventID" value={FormData['RF_EventID']}  className="form-control" onChange={(e) => {onChange(e)}} placeholder="Event ID"  aria-describedby="" />
+                            <input disabled  spellCheck="true"  id="RF_EventID" name="RF_EventID" value={FormData['RF_EventID']}  className="form-control" onChange={(e) => {onChange(e)}}  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -565,7 +565,7 @@ import axios from 'axios'
                             <label htmlFor="email" className="col-form-label"><b>Completed By: Role/Designation</b></label>
                         </div>
                         <div className="col-6">
-                            <input disabled  spellCheck="true"  id="RF_CompleteByRole" name="RF_CompleteByRole" value={FormData['RF_CompleteByRole']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Role/Designation"  aria-describedby="" />
+                            <input disabled  spellCheck="true"  id="RF_CompleteByRole" name="RF_CompleteByRole" value={FormData['RF_CompleteByRole']} className="form-control" onChange={(e) => {onChange(e)}}  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -5004,7 +5004,7 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-2">
-                    <input disabled  spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' className="form-control" placeholder=""  aria-describedby="" />
+                    <input disabled  spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' className="form-control"  aria-describedby="" />
                 </div>
 
 
@@ -6677,7 +6677,7 @@ import axios from 'axios'
                                  </div>
 
                                  <div className="col-2">
-                                 <input disabled  spellCheck="true" id="RF_Name" name='RF_Name' className="form-control" value={FormData['RF_Name']}  onChange={(e) => {onChange(e)}} placeholder=""  aria-describedby="" />
+                                 <input disabled  spellCheck="true" id="RF_Name" name='RF_Name' className="form-control" value={FormData['RF_Name']}  onChange={(e) => {onChange(e)}}  aria-describedby="" />
                                  </div>
 
                                  <hr/>
@@ -6722,7 +6722,7 @@ import axios from 'axios'
                                  </div>
 
                                  <div className="col-2">
-                                    <input disabled  spellCheck="true" id="RF_ID" name='RF_ID' className="form-control" value={FormData['RF_ID']} onChange={(e) => {onChange(e)}} placeholder=""  aria-describedby="" />
+                                    <input disabled  spellCheck="true" id="RF_ID" name='RF_ID' className="form-control" value={FormData['RF_ID']} onChange={(e) => {onChange(e)}}  aria-describedby="" />
                                  </div>
                                  
                                  <hr/>
@@ -8262,7 +8262,7 @@ import axios from 'axios'
                 </div>
 
                 <div className="col-4">
-                    <input disabled  spellCheck="true" id="RF_Control1" name='RF_Control1' className="form-control" value={FormData['RF_Control1']} onChange={(e) => {onChange(e)}} style={{height:"80px"}} placeholder=""  aria-describedby="" />
+                    <input disabled  spellCheck="true" id="RF_Control1" name='RF_Control1' className="form-control" value={FormData['RF_Control1']} onChange={(e) => {onChange(e)}} style={{height:"80px"}}   aria-describedby="" />
                  </div>
 
                  <div className="col-2">
@@ -8295,7 +8295,7 @@ import axios from 'axios'
                         </div>
 
                         <div className="col-4">
-                            <input disabled  spellCheck="true" id="RF_Control2" name='RF_Control2' className="form-control" style={{height:"80px"}}  value={FormData['RF_Control2']} onChange={(e) => {onChange(e)}} placeholder=""  aria-describedby="" />
+                            <input disabled  spellCheck="true" id="RF_Control2" name='RF_Control2' className="form-control" style={{height:"80px"}}  value={FormData['RF_Control2']} onChange={(e) => {onChange(e)}}   aria-describedby="" />
                         </div>
 
                         <div className="col-2">
@@ -8328,7 +8328,7 @@ import axios from 'axios'
                                     </div>
 
                                     <div className="col-4">
-                                        <input disabled  spellCheck="true" id="RF_Control3" name='RF_Control3' value={FormData['RF_Control3']} onChange={(e)=>{onChange(e)}} className="form-control" style={{height:"80px"}} placeholder=""  aria-describedby="" />
+                                        <input disabled  spellCheck="true" id="RF_Control3" name='RF_Control3' value={FormData['RF_Control3']} onChange={(e)=>{onChange(e)}} className="form-control" style={{height:"80px"}}   aria-describedby="" />
                                     </div>
 
                                 </>)

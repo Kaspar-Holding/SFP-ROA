@@ -17,8 +17,11 @@ import { jsPDF } from 'jspdf'
 import GapCover from './PrintedComponents/GapCover';
 import RiskFactors from './PrintedComponents/RiskFactors';
 import RecordOfAdvice from './PrintedComponents/RecordOfAdvice';
-
 const PrintForm = () => {
+  function loadFrame() {
+    window.print();
+  };
+  window.onload = setTimeout(loadFrame, 5000);
     const location = useLocation();
     const { state } = location;
     
@@ -61,9 +64,10 @@ const PrintForm = () => {
             {/* <Footer /> */}
       </main>
         </div>
-        <Footer />
+      
       </>
     )
+    
 }
 
 export default PrintForm

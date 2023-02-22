@@ -1,12 +1,86 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from django.core.files.base import ContentFile
 from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskFactorsSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers
 from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
+import pandas as pd
+import uuid
+import numpy as np
+import base64
+from functools import reduce
+@api_view(['GET'])
+def excel(request):
+    # RF_BU_Risk = ['low','medium','high']
+    # for form in forms:
+    #     RF_BU_Risk_id = int(form['RF_BU_Risk'])
+    #     form['RF_BU_Risk'] = RF_BU_Risk[RF_BU_Risk_id]
+    forms = RiskFactors.objects.all().values()
+    forms2 = AssuranceInvestment.objects.all().values()
+    forms3 = AssuranceRisk.objects.all().values()
+    forms4 = EmployeeBenefits.objects.all().values()
+    forms5 = Fiduciary.objects.all().values()
+    forms6 = GapCover.objects.all().values()
+    forms7 = InvestmentPlanning.objects.all().values()
+    forms8 = RiskPlanning.objects.all().values()
+    forms9 = ShortTermInsuranceCommerical.objects.all().values()
+    forms10 = ShortTermInsurancePersonal.objects.all().values()
+
+    df1 = pd.DataFrame(data=forms)
+    df2 = pd.DataFrame(data=forms2)
+    df3 = pd.DataFrame(data=forms3)
+    df4 = pd.DataFrame(data=forms4)
+    df5 = pd.DataFrame(data=forms5)
+    df6 = pd.DataFrame(data=forms6)
+    df7 = pd.DataFrame(data=forms7)
+    df8 = pd.DataFrame(data=forms8)
+    df9 = pd.DataFrame(data=forms9)
+    df10 = pd.DataFrame(data=forms10)
+    # df = pd.DataFrame(data=pd.concat([df1,df2], axis=0, ignore_index=True))
+    # df = pd.DataFrame(data=)
+    # df = pd.merge(df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, on = "id")
+    dfl=[df1, df2, df3,df4,df5,df6,df7,df8,df9,df10]
+    df = reduce(lambda  left,right: pd.merge(left,right,on=['id'],
+                                            how='outer'), dfl)
+    print(df)
+    filename =  "Export Data - %s.csv" %(uuid.uuid4())
+    df.to_csv("data/static/csv/%s" %(filename))
+    return Response({"file":"static/csv/%s" %(filename)})
 
 @api_view(['POST'])
+def importCSV(request):
+    # decrypted = base64.b64decode(request.data['costCsv']).decode('utf-8')
+    csv_data = request.data['exportCSV']
+    format, csvstr = csv_data.split(';base64,')
+    ext = format.split('/')[-1]
+    file_name = "'file." + ext
+    csvData = ContentFile(base64.b64decode(csvstr), name=file_name) 
+    df = pd.read_csv(csvData)
+    csvData = []
+    for i in range(len(df)):
+        csvData.append({
+            "RF_ClientId" : df['RF_ClientId'][i]
+        })
+    for i in range(len(csvData)):
+        # print((csvData[i]))
+        # importCSV = RiskFactors.objects.filter(RF_ClientId=csvData[i]['RF_ClientId']).values()
+        importCSV = RiskFactors.objects.get(RF_ClientId=csvData[i]['RF_ClientId'])
+        serializer = RiskFactorsSerializers(instance=importCSV, data=csvData[i], partial=True)
+        if serializer.is_valid():
+            serializer.save()
+        else:
+            return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+    # serializer = importCSVSerializer(data=csvData,many=True, partial=True)
+    # if serializer.is_valid():
+    #     serializer.update()
+    # print(df.head())
+    return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    # return Response({"data":csvData})
+
+@api_view(['POST'])
+
 def getData(request):
     limit = 10
     orderBy = request.data['order_by']

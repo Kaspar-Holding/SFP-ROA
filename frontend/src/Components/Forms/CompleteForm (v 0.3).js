@@ -244,8 +244,8 @@ const CompleteForm = () => {
             setSuccessMessageVisibility("none")
             }, 5000)
         }
-        if (FormData['clientPhoneNumber'].length < 11){
-            setSuccessMessage("Invalid Phone Number, Please input valid phone number with 11 digits")
+        if (FormData['clientPhoneNumber'].length < 10){
+            setSuccessMessage("Invalid Phone Number, Please input valid phone number with 10 digits")
             setSuccessMessageVisibility("block")
             setTimeout(() => {
             setSuccessMessageVisibility("none")
@@ -303,6 +303,7 @@ const CompleteForm = () => {
                                     </div>                        
                                     <div className='col-6'>
                                         <NavLink to={{pathname:"/printform"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-12'>Print</NavLink>
+                                        <NavLink to={{pathname:"/printformclient"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-12'>Print For Client</NavLink>
                                     </div> 
                                 </div>        
                             </div>                   

@@ -162,8 +162,8 @@ const RecordOfAdvice = ({user}) => {
                 setSuccessMessageVisibility("none")
             }, 5000)
         }
-        if (FormData['clientPhoneNumber'].length < 11){
-            setSuccessMessage("Invalid Phone Number, Please input valid phone number with 11 digits")
+        if (FormData['clientPhoneNumber'].length < 10){
+            setSuccessMessage("Invalid Phone Number, Please input valid phone number with 10 digits")
             setSuccessMessageVisibility("block")
             setTimeout(() => {
             setSuccessMessageVisibility("none")
@@ -248,7 +248,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="phoneNumber" className="col-form-label"><b>Phone:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true" minLength="11" type="number" id="clientPhoneNumber" value={FormData['clientPhoneNumber']} onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
+                                        <input required spellCheck="true" minLength="10" type="number" id="clientPhoneNumber" value={FormData['clientPhoneNumber']} onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>

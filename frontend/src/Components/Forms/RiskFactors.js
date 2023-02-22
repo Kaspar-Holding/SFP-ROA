@@ -377,7 +377,7 @@ const RiskFactors = ({user}) => {
             RF_Industry : "0",
             RF_SourceOfFunds : "0",
             RF_Client_Relationship : "0",
-            RF_Product_Name : "0",
+            RF_Product_Name : "Advisory or intermediary services only with commission based inflow",
             RF_Transaction_Flow : "0",
             RF_Transaction_Method : "0",
             RF_Transaction_Reason : "0",
@@ -558,6 +558,7 @@ const RiskFactors = ({user}) => {
                                     </div>                        
                                     <div className='col-6'>
                                         <NavLink to={{pathname:"/printform"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-12'>Print</NavLink>
+                                        <NavLink to={{pathname:"/printformclient"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-12'>Print For Client</NavLink>
                                     </div> 
                                 </div>        
                             </div>                   
@@ -2446,7 +2447,7 @@ const RiskFactors = ({user}) => {
                                     <option value="203">Slovenia</option>
                                     <option value="204">Solomon Islands</option>
                                     <option value="205">Somalia</option>
-                                    <option value="206">South Africa</option>
+                                    <option value="206">South African</option>
                                     <option value="207">South Georgia</option>
                                     <option value="208">South Sudan</option>
                                     <option value="209">SPain</option>
@@ -5135,7 +5136,7 @@ const RiskFactors = ({user}) => {
                 </div>
 
                 <div className="col-2">
-                    <input spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' className="form-control" placeholder=""  aria-describedby="" />
+                    <input spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' className="form-control" placeholder="" value="Advisory or intermediary services only with commission based inflow"  aria-describedby="" />
                 </div>
 
 
@@ -8099,7 +8100,7 @@ const RiskFactors = ({user}) => {
                                             <option value="203">Slovenia</option>
                                             <option value="204">Solomon Islands</option>
                                             <option value="205">Somalia</option>
-                                            <option value="206">South Africa</option>
+                                            <option value="206">South African</option>
                                             <option value="207">South Georgia</option>
                                             <option value="208">South Sudan</option>
                                             <option value="209">SPain</option>

@@ -404,6 +404,7 @@ const Employee = ({user}) =>
                           <div className="col-6" style={{paddingBottom: "0.5%"}}>
                               <div className="row g-3 align-items-center">
                                   <div className="col-6">
+                                  <label htmlFor="email" className="col-form-label"><b>Phone:</b></label>
                                     <input spellCheck="true" id="EB_ClientCellNumber" name='EB_ClientCellNumber' value={FormData['EB_ClientCellNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Cell Number"  aria-describedby="" />
                                   </div>
                               </div>

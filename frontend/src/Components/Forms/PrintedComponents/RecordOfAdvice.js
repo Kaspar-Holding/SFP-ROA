@@ -137,7 +137,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label className="col-form-label"><b>Client Name:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input disabled required minlength="3" and maxlength="45" id="clientName" value={FormData['clientName']} onChange={e => onChange(e)} name="clientName" className="form-control" placeholder="Client Name"  aria-describedby="" type="text" />
+                                        <input disabled required minlength="3" and maxlength="45" id="clientName" value={FormData['clientName']} onChange={e => onChange(e)} name="clientName" className="form-control"   aria-describedby="" type="text" />
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="id_number" className="col-form-label"><b>ID number:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input disabled required type="number" id="clientIdNumber" value={FormData['clientIdNumber']}  onChange={e => onChange(e)} name="clientIdNumber" className="form-control" placeholder="ID number"  aria-describedby="" />
+                                        <input disabled required type="number" id="clientIdNumber" value={FormData['clientIdNumber']}  onChange={e => onChange(e)} name="clientIdNumber" className="form-control"   aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +158,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="address" className="col-form-label"><b>Address:</b></label>
                                     </div>
                                     <div className="col-9">
-                                        <input disabled required spellCheck="true"  id="clientAddress" value={FormData['clientAddress']} onChange={(e) => {onChange(e)}}  name="clientAddress" className="form-control" placeholder="Address"  aria-describedby="" />
+                                        <input disabled required spellCheck="true"  id="clientAddress" value={FormData['clientAddress']} onChange={(e) => {onChange(e)}}  name="clientAddress" className="form-control"   aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +169,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="email" className="col-form-label"><b>Email:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input disabled type="email" required spellCheck="true" size="30"  id="email" onChange={(e) => {onChange(e)}} value={FormData['clientEmail']} name="clientEmail" className="form-control" placeholder="user@succession.co.za"  aria-describedby="" />
+                                        <input disabled type="email" required spellCheck="true" size="30"  id="email" onChange={(e) => {onChange(e)}} value={FormData['clientEmail']} name="clientEmail" className="form-control"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +179,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="phoneNumber" className="col-form-label"><b>Phone:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input disabled required spellCheck="true" minLength="11" type="number" id="clientPhoneNumber" value={FormData['clientPhoneNumber']} onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
+                                        <input disabled required spellCheck="true" minLength="11" type="number" id="clientPhoneNumber" value={FormData['clientPhoneNumber']} onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control"   aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -191,7 +191,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="advisor" className="col-form-label"><b>Financial Advisor:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input disabled required spellCheck="true" value={user['name']} name="advisor" className="form-control" placeholder="Financial Advisor"  aria-describedby="" />
+                                        <input disabled required spellCheck="true" value={user['name']} name="advisor" className="form-control"   aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="date_of_birth" className="col-form-label"><b>Date:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input disabled required spellCheck="true"  type="date"  id="date_of_birth" value={FormData['date_of_birth']} onChange={e => onChange(e)} name="clientDateOfBirth" className="form-control" placeholder="date_of_birth"  aria-describedby="" />
+                                        <input disabled required spellCheck="true"  type="date"  id="date_of_birth" value={FormData['date_of_birth']} onChange={e => onChange(e)} name="clientDateOfBirth" className="form-control"   aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -250,7 +250,7 @@ const RecordOfAdvice = ({user}) => {
                                             </> :
                                             null
                                         }
-                                        <textarea id="letter_of_introduction"  disabled required={FormData['clientLetterOfIntroduction'] === "0" ? true : false} value={FormData['clientLetterOfIntroductionReason']} name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea id="letter_of_introduction" style={{overflow:"hidden" }}  disabled required={FormData['clientLetterOfIntroduction'] === "0" ? true : false} value={FormData['clientLetterOfIntroductionReason']} name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['letterOfIntroduction'] === "1" ?
@@ -310,7 +310,7 @@ const RecordOfAdvice = ({user}) => {
                                             </> :
                                             null
                                         }
-                                        <textarea id="authority_access" disabled required={FormData['clientLetterOfIntroductionAccess'] === "0" ? true : false} name="clientLetterOfIntroductionAccessReason" value={FormData['clientLetterOfIntroductionAccessReason']}  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea id="authority_access" disabled style={{overflow:"hidden" }} required={FormData['clientLetterOfIntroductionAccess'] === "0" ? true : false} name="clientLetterOfIntroductionAccessReason" value={FormData['clientLetterOfIntroductionAccessReason']}  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['letterOfIntroductionAccess'] === "1" ?
@@ -371,7 +371,7 @@ const RecordOfAdvice = ({user}) => {
                                             </> : 
                                             null
                                         }
-                                        <textarea  id="provided_identity" disabled required={FormData['clientFica'] === "0" ? true : false} value={FormData['clientFica']} name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea  id="provided_identity" disabled style={{overflow:"hidden" }} required={FormData['clientFica'] === "0" ? true : false} value={FormData['clientFica']} name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control"  aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['fica'] === "1" ? null : 
@@ -417,17 +417,12 @@ const RecordOfAdvice = ({user}) => {
                                 </>: 
                                 null
                             }
-                            <textarea  id="clientBackgroundInfo" name="clientBackgroundInfo" className="form-control"  style={{height: '160px'}} 
+                            <textarea  id="clientBackgroundInfo" name="clientBackgroundInfo" className="form-control"  style={{height: '160px',overflow:"hidden"}} 
                             onFocus={backgroundInfo_onFocus} required
                             onBlur={backgroundInfo_onBlur}
                             onChange={e => onChange(e)} disabled
                             value={FormData['clientBackgroundInfo']}
-                            placeholder={
-                                `                       Provide a detailed description of the client’s:
-                                •	current personal circumstances,
-                                •	needs that have been identified, 
-                                •	and relevant information 
-                            that formed the basis for the financial solution recommended`}  aria-describedby=""  ></textarea>
+                             aria-describedby=""  ></textarea>
                             
                             {/* <NavLink to="/remaining_form" className='btn btn-primary' value="Next" /> */}
                             {/* <NavLink to="/remaining_form" className='btn btn-primary'>Next</NavLink> */}

@@ -1047,7 +1047,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_ProdComp_ExistP_Excess14 = models.CharField(max_length=50, default="", blank=True)
     STIC_ProdComp_RecommP_Premium14 = models.CharField(max_length=50, default="", blank=True)
     STIC_ProdComp_RecommP_Excess14 = models.CharField(max_length=50, default="", blank=True)
-
+ 
     STIC_ProdComp_Recommended15 = models.IntegerField(default="0")
     STIC_ProdComp_Accepted15 = models.IntegerField(default="0")
     STIC_ProdComp_CoverAmount15 = models.CharField(max_length=50, default="", blank=True)

@@ -11,440 +11,993 @@
         <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
         <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
         <style>
-            body{
-                font-family: 'Arial Narrow';
-            }
-            .invoice-title h2, .invoice-title h3 {
-                display: inline-block;
-            }
-            
-            .table > tbody > tr > .no-line {
-                border-top: none;
-            }
-            
-            .table > thead > tr > .no-line {
-                border-bottom: none;
-            }
-            
-            .table > tbody > tr > .thick-line {
-                border-top: 2px solid;
-            }        
-            .floating-left {
-                float: left;
-                margin: 0px;
-                {% comment %} width: 50%; {% endcomment %}
-            }
-            .floating-right {
-                float: right;
-                margin: 0px;
-                {% comment %} width: 50%; {% endcomment %}
-            }
-            .logo {
-                display: grid;
-                padding: 2rem;
-                grid-template-columns: 300px 1fr;
-                gap: 1rem;
-                align-items: center;
-                max-width: 800px;
-                margin: 0 auto;
-            }
-            .iconDetails {
-                margin-left:2%;
-               float:left; 
-               width:100%;	
-            } 
-               
-            .container2 {
-                width:100%;
-                height:auto;
-                padding:1%;
-            }
-            h3, h4 {
-                margin:0px;
-            }
-              
-            .card:hover {
-                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-            }
-              
-            img {
-                border-radius: 5px 5px 0 0;
-            }
-              
-            .card-container {
-                padding: 16px 16px 16px 16px;
-            }
-            .column {
-                float: left;
-                width: 22%;
-                padding: 0 10px;
-            }
-            .card {
-                padding: 16px;
-                display: grid;
-                grid-template-rows: 20px 50px 1fr 50px;
-                border-radius: 10px;
-                border-color: white;
-                box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
-                transition: all 0.2s;
-                text-align: center;
-            }
-              
-            .card:hover {
-                box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
-                transform: scale(1.01);
-            }
-              
-            .card__link,
-            .card__exit,
-            .card__icon {
-                position: relative;
-                text-decoration: none;
-                color: rgba(255, 255, 255, 0.9);
-            }
-              
-            .card__link::after {
-                position: absolute;
-                padding: 16px;
-                top: 25px;
-                left: 0;
-                content: "";
-                width: 0%;
-                height: 3px;
-                background-color: rgba(255, 255, 255, 0.6);
-                transition: all 0.5s;
-            }
-              
-            .card__link:hover::after {
-                width: 100%;
-            }
-              
-            .card__exit {
-                grid-row: 1/2;
-                justify-self: end;
-            }
-              
-            .card__icon {
-                grid-row: 2/3;
-                font-size: 30px;
-            }
-              
-            .card__title {
-                grid-row: 3/4;
-                font-weight: 400;
-                color: #ffffff;
-            }
-            .card__subtitle {
-                grid-row: 3/4;
-                font-weight: 200;
-                color: #ffffff;
-            }
-              
-            .card__apply {
-                grid-row: 4/5;
-                align-self: center;
-            }
-              
-              /* CARD BACKGROUNDS */
-              
-            .card-1 {
-                /* background: -webkit-linear-gradient(#1fe4f5, #3fbafe); */
-                background: -webkit-linear-gradient(#213F9A, #1fe4f5);
-            }
-              
-            .card-2 {
-                background: -webkit-linear-gradient(#fbc1cc, #fa99b2);
-            }
-              
-            .card-3 {
-                background: -webkit-linear-gradient(#76b2fe, #b69efe);
-            }
-              
-            .card-4 {
-                background: -webkit-linear-gradient(#fdcf84, #ff9d00);
-                {% comment %} background: -webkit-linear-gradient(#60efbc, #58d5c9); {% endcomment %}
-            }
-              
-            .card-5 {
-                background: -webkit-linear-gradient(#f588d8, #c0a3e5);
-            }
-            .row {margin: 0 -5px;}
-
-            .row:after {
-                content: "";
-                display: table;
-                clear: both;
-            }
-            #salesTable {
-                font-family: Arial, Helvetica, sans-serif;
-                border-collapse: collapse;
-                width: 100%;
-                border-radius: 10px;
-            }
-              
-            #salesTable td, #salesTable th {
-                border: 1px solid #ddd;
-                padding: 8px;
-            }
-              
-            #salesTable tr:nth-child(even){background-color: #f2f2f2;}
-              
-            #salesTable tr:hover {background-color: #ddd;}
-              
-            #salesTable th {
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-align: left;
-                background-color: #213F9A;
-                color: white;
-            }
-            input {
-                border: 0;
-            }
-            .h2_1 {
-                color: #00788a; font-family: 'Arial'
-            }
-            
-            .form-inline {  
-                display: flex;
-                flex-flow: row wrap;
-                align-items: center;
-            }
-            
-            .form-inline label {
-                margin: 5px 10px 5px 0;
-            }
-            
-            .form-inline input {
-                vertical-align: middle;
-                margin: 5px 10px 5px 0px;
-                padding-left: 100px;
-                background-color: #fff;
-                border: 0px solid #ddd;
-            }
-            
+           .my-container{
+            width:100%;
+            height:100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .my-container label{
+            border: hidden;
+            background-color: blue;
+            color: #fff;
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            width: 120px;
+            height: 40px;
+        }
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0.375rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+        .col-form-label{
+            font-size: 14px;
+        }
+        .align-items-center {
+            align-items: center!important;
+        }
         </style>
     </head>
     <body>
-        
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <p>outdated</p> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <div class="" id='report' style="background-color: white; font-family: 'Calibri';">
-            <div class='container' style="margin-right: 5%;">
-                <div class='container2'>
-                    <div>
-                        <img src="{% get_media_prefix %}{{ logo }}" class='iconDetails'/>
-                    </div>	
-                </div>
-                <br/><br/><br/><br/><br/><br/>
-                <hr/>
-                <div class="invoice-title" style="margin: 0px">
-                    <h2 style="margin: 0px" class='h2_1'>RECORD OF ADVICE</h2>
-                </div>
-                
-                <div style="font-size: '9'; margin: 0px;">
-                    <div class="form-inline">
-                        <label for="email"><b>Client Name:</b></label>
-                        <input type="email" id="email" placeholder="Enter email" name="email">
-                        <label for="pwd"><b>ID number:</b></label>
-                        <input type="text" id="pwd" placeholder="Enter ID number" name="pswd">
-                    </div>
-                    <hr/>
-                    <div class="form-inline">
-                        <label for="email"><b>Address:</b></label>
-                        <input type="email" id="email" placeholder="Enter email" name="email">
-                    </div>
-                    <hr/>
-                    <div class="form-inline">
-                        <label for="email"><b>Email:</b></label>
-                        <input type="email" id="email" placeholder="Enter email" name="email">
-                        <label for="pwd"><b>Phone:</b></label>
-                        <input type="text" id="pwd" placeholder="Enter ID number" name="pswd">
-                    </div>
-                    <hr/>
-                    <div class="form-inline">
-                        <label for="email"><b>Financial Advisor:</b></label>
-                        <input type="email" id="email" placeholder="Enter email" name="email">
-                        <label for="pwd"><b>Date:</b></label>
-                        <input type="text" id="pwd" placeholder="Enter ID number" name="pswd">
-                    </div>
-                    <hr/>
-                    <div class="row">
-                        <hr class="col-11" />
-                        <div class="col-12" style='padding-bottom: "0.5%"'>
-                            <div class="row g-3 align-items-center">
-                                <div class="col-2">
-                                    <label htmlFor="address" class="col-form-label"><b>Address:</b></label>
-                                </div>
-                                <div class="col-9">
-                                    <input spellCheck="true"  id="clientAddress"  name="clientAddress" class="form-control" placeholder="Address"  aria-describedby="" />
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="col-11" />
-                        <div class="col-6" style='padding-bottom: "0.5%"'>
-                            <div class="row g-3 align-items-center">
-                                <div class="col-4">
-                                    <label htmlFor="email" class="col-form-label"><b>Email:</b></label>
-                                </div>
-                                <div class="col-6">
-                                    <input type="email" spellCheck="true" size="30"  id="email"  name="clientEmail" class="form-control" placeholder="user@succession.co.za"  aria-describedby="" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6" style='padding-bottom: "0.5%"'>
-                            <div class="row g-3 align-items-center">
-                                <div class="col-4">
-                                    <label htmlFor="phoneNumber" class="col-form-label"><b>Phone:</b></label>
-                                </div>
-                                <div class="col-6">
-                                    <input spellCheck="true" minLength="11" type="number" id="clientPhoneNumber" name="clientPhoneNumber" class="form-control" placeholder="Phone"  aria-describedby="" />
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="col-11" />
-                        
-                        <div class="col-6" style='padding-bottom: "0.5%"'>
-                            <div class="row g-3 align-items-center">
-                                <div class="col-4">
-                                    <label htmlFor="advisor" class="col-form-label"><b>Financial Advisor:</b></label>
-                                </div>
-                                <div class="col-6">
-                                    <input spellCheck="true" value={user['name']} disabled name="advisor" class="form-control" placeholder="Financial Advisor"  aria-describedby="" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6" style='padding-bottom: "0.5%"'>
-                            <div class="row g-3 align-items-center">
-                                <div class="col-4">
-                                    <label htmlFor="date_of_birth" class="col-form-label"><b>Date:</b></label>
-                                </div>
-                                <div class="col-6">
-                                    <input spellCheck="true"  type="date"  id="date_of_birth"  name="clientDateOfBirth" class="form-control" placeholder="date_of_birth"  aria-describedby="" />
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="col-11" />
-                        <div class="col-11 p_class">
-                            <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  </p>
-                        </div>
-                        <h5 class="section_class"><b>SECTION A:</b></h5>
-                        <ol style="fontFamily: 'Arial Narrow',fontSize: 15">
-                            <li class="h6 fw-bold" style="color: '#00788A'">Compulsory Disclosures</li>
-                            <div class="row g-3 align-items-center">
-                                <div class="col-6">
-                                <label htmlFor="client_name" class="col-form-label" title="If no, motivate">Client was provided with a copy of the Letter of Introduction.</label>
-                                </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="row col-2 align-items-center">
-                                            <div class="col-2">
-                                                <input class="form-check-input"    type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
-                                            </div>
-                                            <div class="col-2">
-                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
-                                                    Yes
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row col-2 align-items-center">
-                                            <div class="col-2">
-                                                <input class="form-check-input"    type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
-                                            </div>
-                                            <div class="col-2">
-                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
-                                                    No
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-11" id="letter_of_introduction_2">
-                                    <textarea id="letter_of_introduction" name="clientLetterOfIntroductionReason"   onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} class="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
-                                </div>
-                            </div>
-                            <hr class="col-11" />
-                            <div class="row g-3 align-items-center">
-                                <div class="col-6">
-                                <label htmlFor="client_name" class="col-form-label" title="If no, motivate">Client has provided authority to access information.</label>
-                                </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="row col-2 align-items-center">
-                                            <div class="col-2">
-                                                <input class="form-check-input"  type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
-                                            </div>
-                                            <div class="col-2">
-                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
-                                                    Yes
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row col-2 align-items-center">
-                                            <div class="col-2">
-                                                <input class="form-check-input"  type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
-                                            </div>
-                                            <div class="col-2">
-                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
-                                                    No
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-11" id="authority_access_2" >
-                                    
-                                    <textarea id="authority_access" name="clientLetterOfIntroductionAccessReason"   onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} class="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
-                                </div>
-                            </div>
-                            <hr class="col-11" />
-                            <li class="h6 fw-bold" style="color: '#00788A'">Financial Intelligence Centre Act (FICA)</li>
-                            <div class="row g-3 align-items-center">
-                                <div class="col-6">
-                                <label htmlFor="client_name" class="col-form-label" title="If no, motivate">Client has provided a clear copy of his/her identity document.</label>
-                                </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="row col-2 align-items-center">
-                                            <div class="col-2">
-                                                <input class="form-check-input"    type="radio" value="1" id="provided_identity_radio_btn" name="clientFica"/>
-                                            </div>
-                                            <div class="col-2">
-                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
-                                                    Yes
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row col-2 align-items-center">
-                                            <div class="col-2">
-                                                <input class="form-check-input"   type="radio" value="0" id="provided_identity_radio_btn" name="clientFica"/>
-                                            </div>
-                                            <div class="col-2">
-                                                <label class="form-check-label" htmlFor="provided_identity_radio_btn" >
-                                                    No
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-11" id="provided_identity_2" >
-                                   <textarea  id="provided_identity" name="clientFicaReason" onFocus={fica_onFocus} onBlur={fica_onBlur} class="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
-                                </div>
-                                
-                            </div>
-                            <hr class="col-11" />
-                        </ol>
-                        <h5 class="section_class"><b>SECTION B:</b></h5>
-                        <h5 class="h6 section_class1"><b>Background information</b></h5>
-                        <p>Your personal circumstances that formed the basis for my recommendation</p>
-                        
-                        <textarea  id="clientBackgroundInfo" name="clientBackgroundInfo" class="form-control"  style="height: '160px'"/>
+        <div>
+            <Loader />
+        </div>
+        <div >
+            
+            <div class="text-start "style="color:#14848A ;fontSize:30px;fontFamily:Arial Bold;fontWeight:bold" >
+                <div class='row'>
+                    <div class='col-8'>
+                        <b>Dynamic Risk Assessment</b>
                     </div>
                 </div>
-                <p>This form was generated by System developed by KASPAR Consulting Services</p>
-                
             </div>
+     
+                <br/>
+                
+                <div class="notification_container">
+                    <div class="alert alert-success fade show" role="alert">
+                    </div>
+                </div>
+                <hr/>
+
+                <div style="font-family: Arial Narrow;font-size:9">
+                    <div class="row">
+
+                        <div class="col-6" style="padding-bottom:0.5">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-4">
+                                    <label class="col-form-label"><b>Business Unit Risk</b></label>
+                                </div>
+                                <div class="col-6">
+                                <select class="text-start form-control form-control" id="RF_BU_Risk" name='RF_BU_Risk' value="" aria-label="Default select example">
+                                    <option value="0">Select Option</option>
+
+
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6" style="padding-bottom:0.5%">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-4">
+                                    <label htmlFor="id_number" class="col-form-label"><b>Date</b></label>
+                                </div>
+                                <div class="col-6">
+                                    <input spellCheck="true" type="date" id="RF_Date" name="RF_Date" value="" class="form-control" placeholder="Date"  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="col-11" />
+                        <div class="col-6" style="padding-bottom:0.5%">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-4">
+                                    <label htmlFor="address" class="col-form-label"><b>Client Name</b></label>
+                                </div>
+                                <div class="col-6">
+                                    <input spellCheck="true"  id="RF_ClientName" name="RF_ClientName" value="" class="form-control"   placeholder="Client Name"  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6" style="padding-bottom:0.5%"}}>
+                            <div class="row g-3 align-items-center">
+                                <div class="col-4">
+                                    <label htmlFor="address" class="col-form-label"><b>Client ID</b></label>
+                                </div>
+                                <div class="col-6">
+                                    <input spellCheck="true"  id="RF_ClientId" name="RF_ClientId" value="" class="form-control"   placeholder="Client ID"  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="col-11" />
+                        
+
+                        <div class="col-6"  style="padding-bottom:0.5%">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-4">
+                                    <label htmlFor="email" class="col-form-label"><b>Completed By: Name</b></label>
+                                </div>
+                                <div class="col-6">
+                                    <input spellCheck="true" disabled id="RF_CompleteByName" name="RF_CompleteByName" value="" class="form-control"  placeholder="Name"  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6"  style="padding-bottom:0.5%">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-4">
+                                    <label htmlFor="email" class="col-form-label"><b>Completed By: Role/Designation</b></label>
+                                </div>
+                                <div class="col-6">
+                                    <input spellCheck="true"  id="RF_CompleteByRole" name="RF_CompleteByRole" value="" class="form-control"  placeholder="Role/Designation"  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+
+                    </div>
+                </div>
+
+                <br/>
+                <div style="font-family: 'Arial Narrow';font-size:9;"><div style="font-family: 'Arial Narrow';font-size:9">
+                    <div class="row">
+
+                
+                        <div class="col-2">
+                            <label class="col-form-label"><b>Overall Dynamic Risk:</b></label>
+                        </div>
+                    
+                        <div class="col-2">
+                                <div class="col-2">
+                                    <label class="col-form-label"><b>Medium</b></label>
+                                </div>
+                               
+                        </div>
+
+
+                        <br/>
+                        <br/>
+                        <br/>
+                        
+                        <hr/>
+                        
+            </div>
+        </div>
+
+        
+        <div style="font-family: 'Arial Narrow';font-size: 9">
+            <div class="row">
+
+            <div class="col-8">
+                                
+                                <label class="col-form-label">The adjusted risk to be approved by Sanlam Entity Senior Management. All evidence and signatories motivating the risk adjustment to be attached to the client records. Insufficient approval / evidence is subject to disciplinary action.</label>
+                                
+                            
+                            <label class="col-form-label"></label>
+
+            </div>
+
+                
+                <div class="col-1">
+                    <label class="col-form-label"><b>Score</b></label>
+                </div>
+
+                <div class="col-1">
+                    <label class="col-form-label"><b>Weight</b></label>
+                </div>
+
+                <div class="col-2">
+                    <label class="col-form-label"><b>Risk Factor</b></label>
+                </div>
+
+            </div>
+        </div>
+        <hr/>
+                
+        <div style="font-family: 'Arial Narrow';font-size: 9">
+            <div class="row">
+
+                <div class="col-2">
+                    <label class="col-form-label"><b>A. Client Risk</b></label>
+                </div>
+
+                <div class="col-2">
+                    <label class="col-form-label"></label>
+                </div>
+
+                <div class="col-1">
+                    <label class="col-form-label"></label>
+                </div>
+
+                <div class="col-1">
+                    <label class="col-form-label"></label>
+                </div>
+                
+                <div class="col-2">
+             
+                                        
+                                    <label class="col-form-label"></label>
+
+                                 
+                                        
+                                    <label class="col-form-label"></label>
+
+                </div>
+
+            </div>
+        </div>
+        <hr/>
+
+        <div style="font-family:Arial Narrow;font-size:9">
+            <div class="row">
+
+                <div class="col-2">
+                    <Tippy content="The resulting selection of this field will determine which subsequent fields will display to complete the DRA">
+                        <label class="col-form-label">Client Type</label>
+                    </Tippy>
+                    
+                </div>
+
+                <div class="col-2">
+                    <select class="text-start form-control" name='RF_ClientType' id='RF_ClientType' value=""  aria-label="Default select example">
+                        <option value="0" selected>Select Option</option>
+                    </select>  
+                </div>
+
+            </div>
+        </div>
+    
+        <div style="font-family:Arial Narrow;font-size:9">
+            <div class="row">
+                        <br/>
+                        <hr/>
+                        <div class="col-2">  
+                            <Tippy content="Occupation	The provided occupations are extremely high level. More detailed occupations (e.g. Botanist, Artist) can be mapped back to these categories">
+                            <label class="col-form-label">Occupation</label>
+                            </Tippy>     
+                            
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Occupation' id='RF_Occupation' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                            </select>    
+                        </div>
+                        
+                        
+
+                        <br/>
+                        <hr/>
+                        <div class="col-2">  
+                            <Tippy content="As published by GCO. If the country is the same as the country of business jurisdiction, the resulting risk score will be lowered by 1">
+                                <label class="col-form-label">Country of Birth</label>
+                            </Tippy>     
+                            
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_CountryOfBirth' id='RF_CountryOfBirth' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                
+                                    
+
+                            </select>    
+                        </div>
+
+                        
+
+                        <br/>
+                        <hr/>
+                        <div class="col-2"> 
+                            <Tippy content="As published by GCO. If the country is the same as the country of business jurisdiction, the resulting risk score will be lowered by 1">
+                                <label class="col-form-label">Country of Residence</label>
+                            </Tippy>      
+                            
+                        </div>
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_CountryOfResidence' id='RF_CountryOfResidence' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                
+                            </select>    
+                        </div>
+
+                        
+
+                        <br/>
+                        <hr/>
+                        <div class="col-2">    
+                            <Tippy content="Nationality	As published by GCO. If the country is the same as the country of business jurisdiction, the resulting risk score will be lowered by 1">
+                                <label class="col-form-label">Nationality</label>
+                            </Tippy>
+                            
+                        </div>
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Nationality' id='RF_Nationality' value="" aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                               
+
+                            </select>    
+                        </div>
+
+                        
+
+                        <br/>
+                        <hr/>
+                        <div class="col-2">  
+                            <Tippy content="Jurisdiction references the country in which the business is operating">
+                                <label class="col-form-label">Is nationality different to current jurisdiction?</label>
+                            </Tippy>      
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Different_Nationality' id='RF_Different_Nationality' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
+                            </select>
+                        </div>                            
+                                        <br/>
+                                    <hr/>
+                                    <div class="col-2">
+                                        <Tippy content="As published by GCO. Only applicable / displayed if nationality is different to current jurisdiction">
+                                        <label class="col-form-label">Country of tax residence</label>
+                                        </Tippy>       
+                                        
+                                    </div>
+
+                                    <div class="col-2">
+                                    <select class="text-start form-control" name='RF_CountryOfTax' id='RF_CountryOfTax' value="" aria-label="Default select example">
+                                    <option value="0" selected>Select Option</option>
+                                    
+
+                                </select> 
+                            </div>
+
+                           
+                        <br/>
+                                    
+                                    
+                               
+                        <hr/>
+                        <div class="col-2">
+                            <Tippy content="The industry in which the client operates">
+                                <label class="col-form-label">Industry</label>
+                            </Tippy>       
+                            
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Industry' id='RF_Industry' value="" aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                
+                            </select>
+                        </div>
+
+                        
+
+                        <hr/>
+                        <div class="col-2"> 
+                            <Tippy content="Source of funds	The client’s source of funds for conducting this transaction">
+                            <label class="col-form-label">Source of Funds</label>
+
+                            </Tippy>      
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_SourceOfFunds'  id='RF_SourceOfFunds' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                
+                            </select>
+                        </div>
+
+                        
+
+                        <hr/>
+                        <div class="col-2">
+                            <Tippy content="This describes the relationship that the client has with SFP for this transaction">
+                            <label class="col-form-label">Relationship to client</label>
+                            </Tippy>       
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_RelationshipToClient' id='RF_RelationshipToClient' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                
+                                
+                            </select>
+                        </div>
+
+                        
+        <hr/>
+
+        <div style="font-family:Arial Narrow;font-size:9">
+            <div class="row">
+                
+               
+                        <br/>
+                        
+                        <div class="col-2">       
+                            <label class="col-form-label">Country of registration</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_CountryOfRegistration' id='RF_CountryOfRegistration' value="" aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                
+                                    
+
+                            </select>    
+                        </div>
+
+                        
+                        
+                        <br/>
+                        <hr/>
+
+                        <div class="col-2">       
+                            <label class="col-form-label">Country of Operation</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_CountryOfOperation' id='RF_CountryOfOperation' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                               
+
+                            </select>    
+                        </div>
+
+                        
+
+                        <br/>
+                        <hr/>
+
+                        <div class="col-2">       
+                            <label class="col-form-label">Type of Legal Entity</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Type_Legal_Entity' id='RF_Type_Legal_Entity' value="" aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                
+                                
+                            </select>
+                        </div>
+
+                        
+
+                        <br/>
+                        <hr/>
+                        
+                        <div class="col-2">       
+                            <label class="col-form-label">Industry</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Industry' id='RF_Industry' value="" aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                               
+                            </select>
+                        </div>
+
+                        
+                        
+                        <hr/>
+                        <div class="col-2">       
+                            <label class="col-form-label">Source of Funds</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_SourceOfFunds' id='RF_SourceOfFunds' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                
+                            </select>
+                        </div>
+
+                        
+                        
+                        <hr/>
+                        <div class="col-2">       
+                            <label class="col-form-label">Relationship to client</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Client_Relationship' id='RF_Client_Relationship' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                
+                                
+                            </select>
+                        </div>
+
+                        
+
+                        <hr/>
+
+
+            </div>
+        </div>
+
+        <div style="font-family:Arial Narrow;font-size:9">
+            <div class="row">
+
+                <div class="col-2">
+                    <label class="col-form-label"><b>B. Product/Service Risk</b></label>
+                </div>
+
+                <div class="col-2">
+                    <label class="col-form-label"><b>Low</b></label>
+                
+                </div>
+
+            </div>
+        </div>
+        <hr/>
+
+        <div style="font-family:Arial Narrow;font-size:9">
+            <div class="row">
+
+                <div class="col-2">
+                    <Tippy content="The drop-down list is created for all products/services that have been captured in the Library in the Summary Worksheet">                    
+                    <label class="col-form-label">Product/Service Name</label>
+                    </Tippy>
+                </div>
+
+                <div class="col-2">
+                    <select class="text-start form-control" name='RF_Product_Name' id='RF_Product_Name' value="" aria-label="Default select example">
+                        <option value="0" selected>Select Option</option>
+                        
+                    </select>  
+                </div>
+
+                
+
+                <div class="col-2">
+                    <label class="col-form-label"></label>
+                </div>
+
+                <div class="col-2">
+                    <label class="col-form-label"></label>
+                </div>
+
+                <div class="col-1">
+                    <label class="col-form-label">1</label>
+                    
+                    </div>
+
+                    <div class="col-1">
+                        <label class="col-form-label">2</label>
+                    </div>
+
+                    <div class="col-2">
+                        <label class="col-form-label">1</label>
+                   
+                    </div>
+
+                    <hr/>
+                <div class="col-2">
+                    <Tippy content="This field defaults to the relevant Product / Service category that was selected for the relevant product/service in the Summary Worksheet. It is displayed for information purposes only">                   
+                        <label class="col-form-label">Product/Service Category</label>
+                    </Tippy>
+                </div>
+
+                <div class="col-2">
+                    <input spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' class="form-control" placeholder="" value="Advisory or intermediary services only with commission based inflow"  aria-describedby="" />
+                </div>
+
+
+            </div>
+        </div>
+        <hr/>
+
+        <div style="font-family:Arial Narrow;font-size:9">
+            <div class="row">
+
+                <div class="col-2">
+                    <label class="col-form-label"><b>C. Transaction Risk</b></label>
+                </div>
+
+                <div class="col-2">
+                    <label class="col-form-label">Low</label>
+                </div>
+
+            </div>
+        </div>
+        <hr/>
+
+        <div style="font-family:Arial Narrow;font-size:9">
+            <div class="row">
+
+                <div class="col-2">
+                    <Tippy content="The drop down box contains a selection for Inflow, Outflow or Not Applicable.
+                    Inflow describes a transaction that is flowing into Sanlam (credit). Outflow describes a debit / payment to a client or third party.
+                    “Not applicable” can be selected when a client is being onboarded and no financial transaction has yet taken place. 
+                    If “Not applicable” is selected, no other transaction fields will be displayed, with the exception of the “Reason for Transaction”. A client or policy change may be applicable.
+                    ">
+                    <label class="col-form-label">Transaction Flow</label>
+                    </Tippy>
+                    
+                </div>
+
+                <div class="col-2">
+                    <select class="text-start form-control" name='RF_Transaction_Flow' id='RF_Transaction_Flow'  value="" aria-label="Default select example">
+                        <option value="0" selected>Select Option</option>
+                       
+                    </select>  
+                </div>
+
+
+            </div>
+        </div>
+        <hr/>
+
+        <div style="font-family:Arial Narrow;font-size:9">
+            <div class="row">
+                
+               
+                        <br/>
+                        
+                        <div class="col-2">       
+                            <label class="col-form-label">Method of Transaction</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Transaction_Method' id='RF_Transaction_Method' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                               
+                            </select>    
+                        </div>
+
+                        
+
+                        <hr/>
+                        
+                        
+                        <div class="col-2">       
+                            <label class="col-form-label">Reason of Transaction</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Transaction_Reason' id='RF_Transaction_Reason' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                            </select>    
+                        </div>
+
+                        
+
+                        <hr/>
+                        <div class="col-5">       
+                            <label class="col-form-label">Has this Reason for Transaction been considered as a High Risk in any Typology report/guidance?</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_High_Transaction_Reason' id='RF_High_Transaction_Reason' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                    
+                            </select>    
+                        </div>
+                        
+                       
+
+                        <hr/>
+                        <div class="col-2">       
+                            <label class="col-form-label">Frequency of Transaction</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Transaction_Frequency' id='RF_Transaction_Frequency' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                               
+                            </select>    
+                        </div>
+
+                        
+
+                        <hr/>
+                        <div class="col-2">       
+                            <label class="col-form-label">Value of Transaction:</label>
+                        </div>
+
+                        <div class="col-2">
+                            <input spellCheck="true" id="RF_Transaction_Value" name='RF_Transaction_Value' class="form-control" aria-describedby="" />
+                        </div>
+
+                        <div class="col-1">       
+                            <label class="col-form-label">Currency:</label>
+                        </div>
+
+                        <div class="col-2">
+                            <input spellCheck="true" id="RF_Currency_Value" name='RF_Currency_Value' class="form-control" aria-describedby="" />
+                        </div>
+
+                        
+
+                        <hr/>
+                        
+                        <div class="col-2">       
+                            <label class="col-form-label">Transaction Geography</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Transaction_Geography' id='RF_Transaction_Geography' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                 
+                            </select>    
+                        </div>
+
+                        
+
+                        <hr/>
+                        
+                            
+                                        <div class="col-2">
+                                        <label class="col-form-label">Jurisdiction of funds</label>
+                                    </div>
+
+                                <div class="col-2">
+                                    <select class="text-start form-control" name='RF_Funds_Jurisdiction' value="" aria-label="Default select example">
+                                        <option value="0" selected>Select Option</option>
+                                       
+
+                                    </select> 
+                                </div>
+                           
+                        <hr/>
+                                    
+                              
+                        
+                        <div class="col-2">
+                            <label class="col-form-label">Delivery channel</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Delivery_Channel' id='RF_Delivery_Channel' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                               
+                            </select>    
+                        </div>
+
+                        
+
+                        <hr/>
+                        <div class="col-2">
+                            <label class="col-form-label">Linked Party acting on behalf of Client?</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Linked_Party_Acting' id='RF_Linked_Party_Acting' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                   
+                            </select>    
+                        </div>
+
+                       
+
+                        <hr/>
+                        <div class="col-2">
+                            <label class="col-form-label">Linked Party paying / receiving funds</label>
+                        </div>
+
+                        <div class="col-2">
+                            <select class="text-start form-control" name='RF_Linked_Party_Paying' id='RF_Linked_Party_Paying' value=""  aria-label="Default select example">
+                                <option value="0" selected>Select Option</option>
+                                  
+                            </select>    
+                        </div>
+
+                        
+
+                        <hr/>
+
+
+                </div>
+            </div>
+
+
+
+
+            <div style="font-family:Arial Narrow;font-size:9">
+                <div class="row">
+
+                    <div class="col-2">
+                        <label class="col-form-label"><b>D. Reputation Risk</b></label>
+                    </div>
+                </div>
+            <hr/>
+
+            <div style="font-family:Arial Narrow;font-size:9">
+                <div class="row">
+
+                    <div class="col-2">
+                        <Tippy content="Client is a true match on	This drop-down box refers to the results of the screening action for the main client">
+                        <label class="col-form-label">Client is a true match on:</label>
+                        </Tippy>
+                    </div>
+
+                    <div class="col-2">
+                        <select class="text-start form-control" name='RF_Client_Match' id='RF_Client_Match'  value="" aria-label="Default select example">
+                            <option value="0" selected>Select Option</option>
+                            
+
+                        </select>  
+                    </div>
+
+                </div>
+            </div>
+            <hr/>
+
+            <div style="font-family:Arial Narrow;font-size:9">
+                <div class="row">
+
+                    <div class="col-2">
+                        <Tippy content="If this field is left blank or set to “No”, further Linked Party information will be hidden. However, if there are linked parties or beneficiaries to the Client, each linked party needs to be screened and the input provided into the relevant Linked Party entries">
+                        <label class="col-form-label">Are there Linked Parties / Beneficiaries to Client?</label>
+
+                        </Tippy>
+                    </div>
+
+                    <div class="col-2">
+                        <select class="text-start form-control" name='RF_Client_Beneficiaries' id='RF_Client_Beneficiaries' value="" aria-label="Default select example">
+                            <option value="0" selected>Select Option</option>
+                            
+                        </select>  
+                    </div>
+
+                    
+                                    <hr/>
+                                    <div class="col-2">
+                                        <label class="col-form-label"><b>&nbsp;&nbsp;&nbsp;Linked Party 1</b></label>
+                                    </div>
+
+                                    
+                                    </div>
+
+                                    <div class="col-2">
+                                        <label class="col-form-label"><b>Adjust Risk</b></label>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <select class="text-start form-control" name='RF_Adjust_Risk1' id='RF_Adjust_Risk1' value="" aria-label="Default select example">
+                                            <option value="0"></option>
+                                        </select>  
+                                    </div>
+
+                                    <hr/>
+                                    <div class="col-2">
+                                        <label class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name and surname</label>
+                                    </div>
+
+                                    <div class="col-2">
+                                    <input spellCheck="true" id="RF_Name" name='RF_Name' class="form-control" value=""   placeholder=""  aria-describedby="" />
+                                    </div>
+
+                                    <hr/>
+                                    <div class="col-2">
+                                        <label class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relationship to client</label>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <select class="text-start form-control" name='RF_Client_Relationship' id='RF_Client_Relationship' value=""  aria-label="Default select example">
+                                            <option value="0" selected>Select Option</option>
+                                            
+                                        </select>  
+                                    </div>
+
+                                    <hr/>
+                                    <div class="col-2">
+                                        <label class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID/Passport Number/Tax &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number</label>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <input spellCheck="true" id="RF_ID" name='RF_ID' class="form-control" value=""  placeholder=""  aria-describedby="" />
+                                    </div>
+                                    
+                                    <hr/>
+                                    <div class="col-2">
+                                        <label class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linked Party is a true&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; match on</label>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <select class="text-start form-control" name='RF_Linked_Party' id='RF_Linked_Party' value="" aria-label="Default select example">
+                                            <option value="0" selected>Select Option</option>
+
+                                        </select>  
+                                    </div>
+
+                                
+
+                                    <hr/>
+                                    <div class="col-2">
+                                        <label class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Is this a RCA (relative / close associate) to Client? </label>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <select class="text-start form-control" name='RF_RCA' id='RF_RCA' value="" aria-label="Default select example">
+                                            <option value="0" selected>Select Option</option>
+                                        </select>  
+                                    </div>
+
+                                    
+                                    <hr/>
+                                    <div class="col-2">
+                                        <label class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country of Birth </label>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <select class="text-start form-control" name='RF_Birth_Country' id='RF_Birth_Country' value=""  aria-label="Default select example">
+                                            <option value="0" selected>Select Option</option>
+                                        </select> 
+                                    </div>
+
+                                    <hr/>
+                                    <div class="col-2">
+                                        <label class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country of Residence </label>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <select class="text-start form-control" name='RF_Residence_Country' id='RF_Residence_Country' value=""  aria-label="Default select example">
+                                            <option value="0" selected>Select Option</option>
+                                            
+                                        </select> 
+                                    </div>
+
+                                   
+                                    <hr/>
+                                    <div class="col-2">
+                                        <label class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nationality</label>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <select class="text-start form-control" name='RF_Nationality1' id='RF_Nationality1' value=""aria-label="Default select example">
+                                            <option value="0" selected>Select Option</option>
+                                            
+
+                                        </select> 
+                                    </div>
+                </div>
+                                    
+            <hr/>
+
+            <div style="font-family:Arial Narrow;font-size:9">
+                <div class="row">
+
+                    <div class="col-2">
+                        <label class="col-form-label"><b>Action:</b></label>
+                    </div>
+
+                    
+
+                </div>
+                <hr/>
+                <!-- <div class="row">
+                    <button class='btn btn-primary'>Update Form</button>
+                </div> -->
+                <br/><br/>
+                </div>
+                <hr/>
+              
+
+                
+
+            </form>
         </div>
     </body>
 </html> 

@@ -550,7 +550,7 @@ function AssuranceRisk()
                         <label className="col-form-label"><b>Trade name of Business:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_BusinessTradeName" name='AR_BusinessTradeName' value={FormData['AR_BusinessTradeName']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Trade name of Business"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled   id="AR_BusinessTradeName" name='AR_BusinessTradeName' value={FormData['AR_BusinessTradeName']} onChange={(e) => {onChange(e)}}  className="form-control"  aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -562,7 +562,7 @@ function AssuranceRisk()
                         <label className="col-form-label"><b>Registered name of Business:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_BusinessRegisteredName" name='AR_BusinessRegisteredName' value={FormData['AR_BusinessRegisteredName']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Registered name of business (If different from the trade name of the business)"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled   id="AR_BusinessRegisteredName" name='AR_BusinessRegisteredName' value={FormData['AR_BusinessRegisteredName']} onChange={(e) => {onChange(e)}}  className="form-control"  aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -574,7 +574,7 @@ function AssuranceRisk()
                         <label className="col-form-label"><b>Authorised Person(s):</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_BusinessAuthorisedPersons" name='AR_BusinessAuthorisedPersons' value={FormData['AR_BusinessAuthorisedPersons']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Person(s) who may act on behalf of this business"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled   id="AR_BusinessAuthorisedPersons" name='AR_BusinessAuthorisedPersons' value={FormData['AR_BusinessAuthorisedPersons']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -587,7 +587,7 @@ function AssuranceRisk()
                     </div>
 
                     <div className="col-6">
-                        <input spellCheck="true" disabled id="AR_BusinessFinancialAdvisor" name='AR_BusinessFinancialAdvisor' value={FormData['AR_BusinessFinancialAdvisor']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Primary intermediary's name"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled id="AR_BusinessFinancialAdvisor" name='AR_BusinessFinancialAdvisor' value={FormData['AR_BusinessFinancialAdvisor']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -600,7 +600,7 @@ function AssuranceRisk()
                     </div>
 
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_BusinessAddress" name='AR_BusinessAddress' value={FormData['AR_BusinessAddress']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Business address"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled   id="AR_BusinessAddress" name='AR_BusinessAddress' value={FormData['AR_BusinessAddress']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -613,7 +613,7 @@ function AssuranceRisk()
                     </div>
 
                     <div className="col-6">
-                        <input spellCheck="true" disabled  type="email" id="AR_BusinessEmail" name='AR_BusinessEmail' value={FormData['AR_BusinessEmail']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Email address"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled  type="email" id="AR_BusinessEmail" name='AR_BusinessEmail' value={FormData['AR_BusinessEmail']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -626,7 +626,7 @@ function AssuranceRisk()
                     </div>
 
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_BusinessPhoneNumber" name='AR_BusinessPhoneNumber' value={FormData['AR_BusinessPhoneNumber']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Contact numbers"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled   id="AR_BusinessPhoneNumber" name='AR_BusinessPhoneNumber' value={FormData['AR_BusinessPhoneNumber']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -639,7 +639,7 @@ function AssuranceRisk()
                     </div>
 
                     <div className="col-6">
-                        <input spellCheck="true" disabled type="date" id="AR_BusinessDate" name='AR_BusinessDate' value={FormData['AR_BusinessDate']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click or tap to enter date"  aria-describedby="" style={{width: '830px'}} />
+                        <input spellCheck="true" disabled type="date" id="AR_BusinessDate" name='AR_BusinessDate' value={FormData['AR_BusinessDate']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" style={{width: '830px'}} />
                     </div>
                 </div>
             </div>
@@ -692,7 +692,7 @@ function AssuranceRisk()
                         </> :
                         null
                     }
-                    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_ComDisc_AuthorizedPersonDetail" name="AR_ComDisc_AuthorizedPersonDetail" value={FormData['AR_ComDisc_AuthorizedPersonDetail']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}   id="AR_ComDisc_AuthorizedPersonDetail" name="AR_ComDisc_AuthorizedPersonDetail" value={FormData['AR_ComDisc_AuthorizedPersonDetail']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control"  aria-describedby="" ></textarea>
                 </div>
             </div>
 
@@ -736,7 +736,7 @@ function AssuranceRisk()
                         </> :
                         null
                     }
-                      <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_ComDisc_AuthorityDetail" name="AR_ComDisc_AuthorityDetail" value={FormData['AR_ComDisc_AuthorityDetail']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                      <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}   id="AR_ComDisc_AuthorityDetail" name="AR_ComDisc_AuthorityDetail" value={FormData['AR_ComDisc_AuthorityDetail']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control"  aria-describedby="" ></textarea>
                 </div>
             </div>
             <hr/>
@@ -780,7 +780,7 @@ function AssuranceRisk()
                     </> : 
                     null
                 }
-                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_FICADetail" name="AR_FICADetail" value={FormData['AR_FICADetail']} onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}   id="AR_FICADetail" name="AR_FICADetail" value={FormData['AR_FICADetail']} onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control"  aria-describedby="" ></textarea>
                 </div>
             </div>
             <hr/>
@@ -825,7 +825,7 @@ function AssuranceRisk()
                     </> : 
                     null
                 }
-                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_RepPrs_TakenDetail" name="AR_RepPrs_TakenDetail" value={FormData['AR_RepPrs_TakenDetail']} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}   id="AR_RepPrs_TakenDetail" name="AR_RepPrs_TakenDetail" value={FormData['AR_RepPrs_TakenDetail']} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control"  aria-describedby="" ></textarea>
                 </div>
             </div>
 
@@ -868,7 +868,7 @@ function AssuranceRisk()
                     </> : 
                     null
                 }
-                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_RepPrs_ExplainedDetail" name="AR_RepPrs_ExplainedDetail" value={FormData["AR_RepPrs_ExplainedDetail"]} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}   id="AR_RepPrs_ExplainedDetail" name="AR_RepPrs_ExplainedDetail" value={FormData["AR_RepPrs_ExplainedDetail"]} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control"  aria-describedby="" ></textarea>
                 </div>
             </div>
 
@@ -911,7 +911,7 @@ function AssuranceRisk()
                     </> : 
                     null
                 }
-                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}   id="AR_RepPrs_CancelledDetail" name="AR_RepPrs_CancelledDetail" value={FormData["AR_RepPrs_CancelledDetail"]} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}   id="AR_RepPrs_CancelledDetail" name="AR_RepPrs_CancelledDetail" value={FormData["AR_RepPrs_CancelledDetail"]} onChange={(e) => {onChange(e)}} onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control"  aria-describedby="" ></textarea>
                 </div>
             </div>
 
@@ -953,7 +953,7 @@ function AssuranceRisk()
                   </>: 
                 null
             }
-            {/* <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+            {/* <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control" 
                 name='AR_SourceOfFundsDetail' onChange={(e) => {onChange(e)}} value={FormData['AR_SourceOfFundsDetail']}
                 onFocus={backgroundInfo_onFocus10}
                 onBlur={backgroundInfo_onBlur10}
@@ -982,11 +982,11 @@ function AssuranceRisk()
             </>: 
             null
         }
-        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+        <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control"  
         name='AR_ReplacementBackInfo' onChange={(e) => {onChange(e)}} value={FormData['AR_ReplacementBackInfo']}
         onFocus={backgroundInfo_onFocus1}
         onBlur={backgroundInfo_onBlur1}
-        placeholder={`Brief description of the business.`}  aria-describedby=""  ></textarea>
+          aria-describedby=""  ></textarea>
 
         <hr/>
         <p><b>Business Needs Identified</b></p>
@@ -1096,12 +1096,11 @@ function AssuranceRisk()
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control"  
         name='AR_BusA_Details' onChange={(e) => {onChange(e)}} value={FormData['AR_BusA_Details']}
         onFocus={backgroundInfo_onFocus2}
         onBlur={backgroundInfo_onBlur2}
-        placeholder={
-`Provide description and motivation of the description of the needs identified.`}  aria-describedby=""  ></textarea>
+         aria-describedby=""  ></textarea>
 
 <hr/>
 
@@ -1137,7 +1136,7 @@ function AssuranceRisk()
         <div >
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_TotalNeed']} aria-label="" />
+            <input disabled type="number" className="form-control"  name='AR_BnS_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_TotalNeed']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1146,7 +1145,7 @@ function AssuranceRisk()
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_DC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_Provisions']} aria-label="" />
+            <input disabled type="number" className="form-control"  name='AR_BnS_DC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_Provisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1155,7 +1154,7 @@ function AssuranceRisk()
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_DC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_ShortfallSurplus']} aria-label="" />
+            <input disabled type="number" className="form-control"  name='AR_BnS_DC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_ShortfallSurplus']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1163,7 +1162,7 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_Investments']} aria-label="" />
+          <input disabled type="number" className="form-control"  name='AR_BnS_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1175,7 +1174,7 @@ function AssuranceRisk()
         <div >
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_TotalNeed']} aria-label="" />
+            <input disabled type="number" className="form-control"  name='AR_BnS_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_TotalNeed']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1184,7 +1183,7 @@ function AssuranceRisk()
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_DiC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_Provisions']} aria-label="" />
+            <input disabled type="number" className="form-control"  name='AR_BnS_DiC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_Provisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1193,7 +1192,7 @@ function AssuranceRisk()
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_DiC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_ShortfallSurplus']} aria-label="" />
+            <input disabled type="number" className="form-control"  name='AR_BnS_DiC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_ShortfallSurplus']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1201,7 +1200,7 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_Investments']} aria-label="" />
+          <input disabled type="number" className="form-control"  name='AR_BnS_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1214,7 +1213,7 @@ function AssuranceRisk()
         <div >
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherTotalNeed']} aria-label="" />
+            <input disabled type="number" className="form-control"  name='AR_BnS_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherTotalNeed']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1223,7 +1222,7 @@ function AssuranceRisk()
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherProvisions']} aria-label="" />
+            <input disabled type="number" className="form-control"  name='AR_BnS_OtherProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherProvisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1232,7 +1231,7 @@ function AssuranceRisk()
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherShortfallSurplus']} aria-label="" />
+            <input disabled type="number" className="form-control"  name='AR_BnS_OtherShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherShortfallSurplus']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1240,7 +1239,7 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherInvestments']} aria-label="" />
+          <input disabled type="number" className="form-control"  name='AR_BnS_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1250,7 +1249,7 @@ function AssuranceRisk()
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comment</td>
       <td>
         <div className="form-group">
-            <input disabled type="email" className="form-control" id="AR_BnS_Comments" name='AR_BnS_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_Comments']} aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="email" className="form-control" id="AR_BnS_Comments" name='AR_BnS_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_Comments']} aria-describedby="emailHelp" />
         </div>
       </td>
       <td></td>
@@ -1277,28 +1276,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DC_TotalNeed" name='AR_KeyP_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_TotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_DC_TotalNeed" name='AR_KeyP_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DC_ExistingProvisions" name='AR_KeyP_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_ExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_DC_ExistingProvisions" name='AR_KeyP_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DC_ExistingShortfallSurplus" name='AR_KeyP_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_ExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_DC_ExistingShortfallSurplus" name='AR_KeyP_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_ExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DC_Investments" name='AR_KeyP_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_Investments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_DC_Investments" name='AR_KeyP_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1309,28 +1308,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_TotalNeed" name='AR_KeyP_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_TotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_DiC_TotalNeed" name='AR_KeyP_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_ExistingProvisions" name='AR_KeyP_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_ExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_DiC_ExistingProvisions" name='AR_KeyP_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_ExistingShortfallSurplus" name='AR_KeyP_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_ExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_DiC_ExistingShortfallSurplus" name='AR_KeyP_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_ExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_Investments" name='AR_KeyP_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_Investments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_DiC_Investments" name='AR_KeyP_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1341,28 +1340,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverTotalNeed" name='AR_KeyP_TI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverTotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_TI_CoverTotalNeed" name='AR_KeyP_TI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverExistingProvisions" name='AR_KeyP_TI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_TI_CoverExistingProvisions" name='AR_KeyP_TI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverExistingShortfallSurplus" name='AR_KeyP_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_TI_CoverExistingShortfallSurplus" name='AR_KeyP_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverInvestments" name='AR_KeyP_TI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverInvestments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_TI_CoverInvestments" name='AR_KeyP_TI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1373,28 +1372,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverTotalNeed" name='AR_KeyP_PI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverTotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_PI_CoverTotalNeed" name='AR_KeyP_PI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverExistingProvisions" name='AR_KeyP_PI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_PI_CoverExistingProvisions" name='AR_KeyP_PI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverExistingShortfallSurplus" name='AR_KeyP_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_PI_CoverExistingShortfallSurplus" name='AR_KeyP_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverInvestments" name='AR_KeyP_PI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverInvestments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_PI_CoverInvestments" name='AR_KeyP_PI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1405,28 +1404,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_OtherTotalNeed" name='AR_KeyP_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherTotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_OtherTotalNeed" name='AR_KeyP_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_OtherExistingProvisions" name='AR_KeyP_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_OtherExistingProvisions" name='AR_KeyP_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_OtherExistingShortfallSurplus" name='AR_KeyP_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_OtherExistingShortfallSurplus" name='AR_KeyP_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_OtherInvestments" name='AR_KeyP_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherInvestments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_KeyP_OtherInvestments" name='AR_KeyP_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1435,7 +1434,7 @@ function AssuranceRisk()
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comment</td>
         <td>  
         <div className="form-group">
-            <input disabled type="email" className="form-control" id="AR_KeyP_Comments" name='AR_KeyP_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_Comments']} aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="email" className="form-control" id="AR_KeyP_Comments" name='AR_KeyP_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_Comments']} aria-describedby="emailHelp" />
         </div>
        </td>
        <td></td>  
@@ -1462,28 +1461,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_TotalNeed" name='AR_SureNLia_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_TotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_DC_TotalNeed" name='AR_SureNLia_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_Provisions" name='AR_SureNLia_DC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_Provisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_DC_Provisions" name='AR_SureNLia_DC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_Provisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_ShortfallSurplus" name='AR_SureNLia_DC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_ShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_DC_ShortfallSurplus" name='AR_SureNLia_DC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_ShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_Investment" name='AR_SureNLia_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_Investments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_DC_Investment" name='AR_SureNLia_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1494,28 +1493,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_TotalNeed" name='AR_SureNLia_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_TotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_DiC_TotalNeed" name='AR_SureNLia_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_Provisions" name='AR_SureNLia_DiC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_Provisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_DiC_Provisions" name='AR_SureNLia_DiC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_Provisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_ShortfallSurplus" name='AR_SureNLia_DiC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_ShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_DiC_ShortfallSurplus" name='AR_SureNLia_DiC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_ShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_Investment" name='AR_SureNLia_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_Investments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_DiC_Investment" name='AR_SureNLia_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1526,28 +1525,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherTotalNeed" name='AR_SureNLia_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherTotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_OtherTotalNeed" name='AR_SureNLia_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherProvisions" name='AR_SureNLia_OtherProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_OtherProvisions" name='AR_SureNLia_OtherProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherShortfallSurplus" name='AR_SureNLia_OtherShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_OtherShortfallSurplus" name='AR_SureNLia_OtherShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherInvestment" name='AR_SureNLia_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherInvestments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_SureNLia_OtherInvestment" name='AR_SureNLia_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1557,7 +1556,7 @@ function AssuranceRisk()
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comment</td>
         <td>  
         <div className="form-group">
-            <input disabled type="email" className="form-control"  id="AR_SureNLia_Comments" name='AR_SureNLia_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_Comments']} aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="email" className="form-control"  id="AR_SureNLia_Comments" name='AR_SureNLia_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_Comments']} aria-describedby="emailHelp" />
         </div>
        </td> 
        <td></td>  
@@ -1584,28 +1583,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverTotalNeed" name='AR_BusOvProt_TI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverTotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_TI_CoverTotalNeed" name='AR_BusOvProt_TI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverExistingProvisions" name='AR_BusOvProt_TI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_TI_CoverExistingProvisions" name='AR_BusOvProt_TI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverExistingShortfallSurplus" name='AR_BusOvProt_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_TI_CoverExistingShortfallSurplus" name='AR_BusOvProt_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverInvestments" name='AR_BusOvProt_TI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverInvestments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_TI_CoverInvestments" name='AR_BusOvProt_TI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1616,28 +1615,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverTotalNeed" name='AR_BusOvProt_PI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverTotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_PI_CoverTotalNeed" name='AR_BusOvProt_PI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverExistingProvisions" name='AR_BusOvProt_PI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_PI_CoverExistingProvisions" name='AR_BusOvProt_PI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverExistingShortfallSurplus" name='AR_BusOvProt_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_PI_CoverExistingShortfallSurplus" name='AR_BusOvProt_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverInvestments" name='AR_BusOvProt_PI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverInvestments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_PI_CoverInvestments" name='AR_BusOvProt_PI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1648,28 +1647,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherTotalNeed" name='AR_BusOvProt_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherTotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_OtherTotalNeed" name='AR_BusOvProt_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherExistingProvisions" name='AR_BusOvProt_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_OtherExistingProvisions" name='AR_BusOvProt_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherExistingShortfallSurplus" name='AR_BusOvProt_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_OtherExistingShortfallSurplus" name='AR_BusOvProt_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherInvestments" name='AR_BusOvProt_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherInvestments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_BusOvProt_OtherInvestments" name='AR_BusOvProt_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1679,7 +1678,7 @@ function AssuranceRisk()
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comment</td>
         <td>  
         <div className="form-group">
-            <input disabled type="email" className="form-control"  id="AR_BusOvProt_Comments" name='AR_BusOvProt_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_Comments']} aria-describedby="emailHelp" placeholder=""/>
+            <input disabled type="email" className="form-control"  id="AR_BusOvProt_Comments" name='AR_BusOvProt_Comments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_Comments']} aria-describedby="emailHelp" />
         </div>
        </td> 
        <td></td>  
@@ -1706,28 +1705,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_TotalNeed" name='AR_CLARedm_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_TotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_DC_TotalNeed" name='AR_CLARedm_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_ExistingProvisions" name='AR_CLARedm_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_ExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_DC_ExistingProvisions" name='AR_CLARedm_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_ExistingShortfallSurplus" name='AR_CLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_ExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_DC_ExistingShortfallSurplus" name='AR_CLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_ExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_Investments" name='AR_CLARedm_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_Investments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_DC_Investments" name='AR_CLARedm_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1738,28 +1737,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_TotalNeed" name='AR_CLARedm_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_TotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_DiC_TotalNeed" name='AR_CLARedm_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_ExistingProvisions" name='AR_CLARedm_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_ExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_DiC_ExistingProvisions" name='AR_CLARedm_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_ExistingShortfallSurplus" name='AR_CLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_ExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_DiC_ExistingShortfallSurplus" name='AR_CLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_ExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_Investments" name='AR_CLARedm_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_Investments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_DiC_Investments" name='AR_CLARedm_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1770,28 +1769,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherTotalNeed" name='AR_CLARedm_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherTotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_OtherTotalNeed" name='AR_CLARedm_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherExistingProvisions" name='AR_CLARedm_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_OtherExistingProvisions" name='AR_CLARedm_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherExistingShortfallSurplus" name='AR_CLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_OtherExistingShortfallSurplus" name='AR_CLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherInvestments" name='AR_CLARedm_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherInvestments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_CLARedm_OtherInvestments" name='AR_CLARedm_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1814,28 +1813,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_TotalNeed" name='AR_DLARedm_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_TotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_DC_TotalNeed" name='AR_DLARedm_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_ExistingProvisions" name='AR_DLARedm_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_ExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_DC_ExistingProvisions" name='AR_DLARedm_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_ExistingShortfallSurplus" name='AR_DLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_ExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_DC_ExistingShortfallSurplus" name='AR_DLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_ExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_Investments" name='AR_DLARedm_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_Investments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_DC_Investments" name='AR_DLARedm_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1846,28 +1845,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_TotalNeed" name='AR_DLARedm_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_TotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_DiC_TotalNeed" name='AR_DLARedm_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_ExistingProvisions" name='AR_DLARedm_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_ExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_DiC_ExistingProvisions" name='AR_DLARedm_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_ExistingShortfallSurplus" name='AR_DLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_ExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_DiC_ExistingShortfallSurplus" name='AR_DLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_ExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_Investments" name='AR_DLARedm_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_Investments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_DiC_Investments" name='AR_DLARedm_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1878,28 +1877,28 @@ function AssuranceRisk()
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherTotalNeed" name='AR_DLARedm_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherTotalNeed']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_OtherTotalNeed" name='AR_DLARedm_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherExistingProvisions" name='AR_DLARedm_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherExistingProvisions']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_OtherExistingProvisions" name='AR_DLARedm_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherExistingShortfallSurplus" name='AR_DLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherExistingShortfallSurplus']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_OtherExistingShortfallSurplus" name='AR_DLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherExistingShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherInvestments" name='AR_DLARedm_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherInvestments']} aria-label="" />
+          <input disabled type="number" className="form-control"   id="AR_DLARedm_OtherInvestments" name='AR_DLARedm_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1931,13 +1930,10 @@ function AssuranceRisk()
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control"  
         id="AR_LifeCoverFinancialSolutions" name='AR_LifeCoverFinancialSolutions' onChange={(e) => {onChange(e)}} value={FormData['AR_LifeCoverFinancialSolutions']}
         onFocus={backgroundInfo_onFocus3}
-        onBlur={backgroundInfo_onBlur3}
-        placeholder={
-`Explain the reasons why Life cover benefits were recommended to satisfy this need.
-Record the client's instructions, deviations and implications thereof..`}  aria-describedby=""  ></textarea>
+        onBlur={backgroundInfo_onBlur3}  aria-describedby=""  ></textarea>
 
 <hr/>
     <br/>
@@ -1962,14 +1958,11 @@ Record the client's instructions, deviations and implications thereof..`}  aria-
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control"  
         id="AR_DiC_FinancialSolutions" name='AR_DiC_FinancialSolutions' onChange={(e) => {onChange(e)}} value={FormData['AR_DiC_FinancialSolutions']}
         onFocus={backgroundInfo_onFocus4}
         onBlur={backgroundInfo_onBlur4}
-        placeholder={
-`Explain the reasons why Disability cover benefits were recommended to satisfy this need.
-Record the client's instructions, deviations and implications thereof.
-`}  aria-describedby=""  ></textarea>
+         aria-describedby=""  ></textarea>
 <hr/>
 
 <br/>
@@ -1994,12 +1987,11 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control" 
         id="AR_AltS_1" name='AR_AltS_1' onChange={(e) => {onChange(e)}} value={FormData['AR_AltS_1']}
         onFocus={backgroundInfo_onFocus5}
         onBlur={backgroundInfo_onBlur5}
-        placeholder={
-`1. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea>
+   aria-describedby=""  ></textarea>
 
 <hr/>
 
@@ -2019,12 +2011,11 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control" 
         id="AR_AltS_2" name='AR_AltS_2' onChange={(e) => {onChange(e)}} value={FormData['AR_AltS_2']}
         onFocus={backgroundInfo_onFocus6}
         onBlur={backgroundInfo_onBlur6}
-        placeholder={
-`2. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea>
+  aria-describedby=""  ></textarea>
 
 <hr/>
 
@@ -2044,12 +2035,11 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control" 
         id="AR_AltS_3" name='AR_AltS_3' onChange={(e) => {onChange(e)}} value={FormData['AR_AltS_3']}
         onFocus={backgroundInfo_onFocus7}
         onBlur={backgroundInfo_onBlur7}
-        placeholder={
-`3. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea>
+          aria-describedby=""  ></textarea>
 
 <br/>
 <h5 className="section_class"><b>SECTION D:</b></h5>
@@ -2067,7 +2057,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label className="col-form-label"><b>Product Provider</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_ProductProvider" name='AR_ProductProvider' value={FormData['AR_ProductProvider']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_ProductProvider" name='AR_ProductProvider' value={FormData['AR_ProductProvider']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2078,7 +2068,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label htmlFor="id_number" className="col-form-label"><b>Policy number</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_PolicyNumber" name='AR_PolicyNumber' onChange={(e) => {onChange(e)}} value={FormData['AR_PolicyNumber']} className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_PolicyNumber" name='AR_PolicyNumber' onChange={(e) => {onChange(e)}} value={FormData['AR_PolicyNumber']} className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2090,7 +2080,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label className="col-form-label"><b>Product Name</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_ProductName" name='AR_ProductName' value={FormData['AR_ProductName']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_ProductName" name='AR_ProductName' value={FormData['AR_ProductName']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2104,7 +2094,7 @@ Record the client's instructions, deviations and implications thereof.
                       <div className='row'>
                           <div className='col-6'>
                               <div className="form-group">
-                                  <input disabled type="text" className="form-control" id="AR_ProductPremium" name='AR_ProductPremium' onChange={(e) => {onChange(e)}} value={FormData['AR_ProductPremium']} aria-describedby="emailHelp" placeholder="" />
+                                  <input disabled type="text" className="form-control" id="AR_ProductPremium" name='AR_ProductPremium' onChange={(e) => {onChange(e)}} value={FormData['AR_ProductPremium']} aria-describedby="emailHelp"  />
                               </div>
                           </div>
                           <div className='col-6'>
@@ -2128,7 +2118,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label className="col-form-label"><b>Premium Pattern</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_ProductPattern" name='AR_ProductPattern' value={FormData['AR_ProductPattern']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_ProductPattern" name='AR_ProductPattern' value={FormData['AR_ProductPattern']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2139,7 +2129,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label htmlFor="id_number" className="col-form-label"><b>Escalation in cover / premium</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled    id="AR_ProductEscalation" name='AR_ProductEscalation' value={FormData['AR_ProductEscalation']} className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled    id="AR_ProductEscalation" name='AR_ProductEscalation' value={FormData['AR_ProductEscalation']} className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2151,7 +2141,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label className="col-form-label"><b>Contracting party</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_ProductContractingParty" name='AR_ProductContractingParty' value={FormData['AR_ProductContractingParty']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_ProductContractingParty" name='AR_ProductContractingParty' value={FormData['AR_ProductContractingParty']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2162,7 +2152,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label htmlFor="id_number" className="col-form-label"><b>Life / Lives covered</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled  id="AR_ProductLivesAssured" name='AR_ProductLivesAssured' value={FormData['AR_ProductLivesAssured']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled  id="AR_ProductLivesAssured" name='AR_ProductLivesAssured' value={FormData['AR_ProductLivesAssured']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2174,7 +2164,7 @@ Record the client's instructions, deviations and implications thereof.
                         <label className="col-form-label"><b>Premium Payer</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_ProductPremiumPayer" name='AR_ProductPremiumPayer' value={FormData['AR_ProductPremiumPayer']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_ProductPremiumPayer" name='AR_ProductPremiumPayer' value={FormData['AR_ProductPremiumPayer']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2188,7 +2178,7 @@ Record the client's instructions, deviations and implications thereof.
                     <div className="col-6">
                       <div className="input-group">
                         <span className="input-group-text">R</span>
-                        <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_Product1stYearCommission" name='AR_Product1stYearCommission' onChange={(e) => {onChange(e)}} value={FormData['AR_Product1stYearCommission']} aria-label="" />
+                        <input disabled type="number" className="form-control"   id="AR_Product1stYearCommission" name='AR_Product1stYearCommission' onChange={(e) => {onChange(e)}} value={FormData['AR_Product1stYearCommission']} aria-label="" />
                       </div>
                     </div>
                 </div>
@@ -2202,7 +2192,7 @@ Record the client's instructions, deviations and implications thereof.
                     <div className="col-6">
                         <div className="input-group">
                           <span className="input-group-text">R</span>
-                          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_Product2ndYearCommission" name='AR_Product2ndYearCommission' onChange={(e) => {onChange(e)}} value={FormData['AR_Product2ndYearCommission']} aria-label="" />
+                          <input disabled type="number" className="form-control"   id="AR_Product2ndYearCommission" name='AR_Product2ndYearCommission' onChange={(e) => {onChange(e)}} value={FormData['AR_Product2ndYearCommission']} aria-label="" />
                         </div>
                     </div>
                 </div>
@@ -2230,7 +2220,7 @@ Record the client's instructions, deviations and implications thereof.
             <div className="col-8" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_BenDesc_1" name='AR_BenDesc_1' value={FormData['AR_BenDesc_1']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_BenDesc_1" name='AR_BenDesc_1' value={FormData['AR_BenDesc_1']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2240,7 +2230,7 @@ Record the client's instructions, deviations and implications thereof.
                     <div className="col-9">
                         <div className="input-group">
                           <span className="input-group-text">R</span>
-                          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BenDesc_CoverAmount1" name='AR_BenDesc_CoverAmount1' onChange={(e) => {onChange(e)}} value={FormData['AR_BenDesc_CoverAmount1']} aria-label="" />
+                          <input disabled type="number" className="form-control"   id="AR_BenDesc_CoverAmount1" name='AR_BenDesc_CoverAmount1' onChange={(e) => {onChange(e)}} value={FormData['AR_BenDesc_CoverAmount1']} aria-label="" />
                         </div>
                     </div> 
                 </div>
@@ -2250,7 +2240,7 @@ Record the client's instructions, deviations and implications thereof.
             <div className="col-8" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_BenDesc_2" name='AR_BenDesc_2' value={FormData['AR_BenDesc_2']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_BenDesc_2" name='AR_BenDesc_2' value={FormData['AR_BenDesc_2']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2260,7 +2250,7 @@ Record the client's instructions, deviations and implications thereof.
                     <div className="col-9">
                         <div className="input-group">
                           <span className="input-group-text">R</span>
-                          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BenDesc_CoverAmount2" name='AR_BenDesc_CoverAmount2' onChange={(e) => {onChange(e)}} value={FormData['AR_BenDesc_CoverAmount2']} aria-label="" />
+                          <input disabled type="number" className="form-control"   id="AR_BenDesc_CoverAmount2" name='AR_BenDesc_CoverAmount2' onChange={(e) => {onChange(e)}} value={FormData['AR_BenDesc_CoverAmount2']} aria-label="" />
                         </div>
                     </div> 
                 </div>
@@ -2270,7 +2260,7 @@ Record the client's instructions, deviations and implications thereof.
             <div className="col-8" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-6">
-                        <input spellCheck="true" disabled   id="AR_BenDesc_3" name='AR_BenDesc_3' value={FormData['AR_BenDesc_3']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder=""  aria-describedby="" />
+                        <input spellCheck="true" disabled   id="AR_BenDesc_3" name='AR_BenDesc_3' value={FormData['AR_BenDesc_3']} onChange={(e) => {onChange(e)}}  className="form-control"   aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -2280,7 +2270,7 @@ Record the client's instructions, deviations and implications thereof.
                     <div className="col-9">
                         <div className="input-group">
                           <span className="input-group-text">R</span>
-                          <input disabled type="number" className="form-control" placeholder='0.00'  id="AR_BenDesc_CoverAmount3" name='AR_BenDesc_CoverAmount3' onChange={(e) => {onChange(e)}} value={FormData['AR_BenDesc_CoverAmount3']} aria-label="" />
+                          <input disabled type="number" className="form-control"   id="AR_BenDesc_CoverAmount3" name='AR_BenDesc_CoverAmount3' onChange={(e) => {onChange(e)}} value={FormData['AR_BenDesc_CoverAmount3']} aria-label="" />
                         </div>
                     </div> 
                 </div>
@@ -2307,12 +2297,11 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control" 
         id="AR_ProductReasons" name='AR_ProductReasons' value={FormData['AR_ProductReasons']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus8}
         onBlur={backgroundInfo_onBlur8}
-        placeholder={
-`Motivate why the chosen product was recommended to best suit your client's needs. `}  aria-describedby=""  ></textarea>
+         aria-describedby=""  ></textarea>
 
 <hr/>
 <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
@@ -2334,12 +2323,11 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control" 
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control" 
         id="AR_ProductMaterialAspects" name='AR_ProductMaterialAspects' value={FormData['AR_ProductMaterialAspects']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus9}
         onBlur={backgroundInfo_onBlur9}
-        placeholder={
-`Explain any deviations from your recommendation and the implications thereof.`}  aria-describedby=""  ></textarea>
+          aria-describedby=""  ></textarea>
 <hr/>
 
 {
@@ -2363,15 +2351,11 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control"  
         id="AR_ProductDetails" name='AR_ProductDetails' value={FormData['AR_ProductDetails']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus10}
         onBlur={backgroundInfo_onBlur10}
-        placeholder={
-`Disclose and explain the following:
-The tax implications for the company, e.g., income tax
-The tax implications for the lives covered, e.g., estate duty, income tax, CGT
-Executor’s fees?`}  aria-describedby=""  ></textarea>
+          aria-describedby=""  ></textarea>
 <hr/>
 
 {
@@ -2394,14 +2378,11 @@ Executor’s fees?`}  aria-describedby=""  ></textarea>
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control"  
         id="AR_ProductBriefSummary" name='AR_ProductBriefSummary' value={FormData['AR_ProductBriefSummary']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus11}
         onBlur={backgroundInfo_onBlur11}
-        placeholder={
-`Provide a brief summary of the contents of the quote with regard to the following:
-Benefit terms (cease ages, cover periods etc.)
-Details of premium and cover pattern structure, frequency etc.`}  aria-describedby=""  ></textarea>
+         aria-describedby=""  ></textarea>
 <hr/>
 
 {
@@ -2421,12 +2402,11 @@ Details of premium and cover pattern structure, frequency etc.`}  aria-described
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control"  
         id="AR_Cessionaries" name='AR_Cessionaries' value={FormData['AR_Cessionaries']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus12}
         onBlur={backgroundInfo_onBlur12}
-        placeholder={
-`Record discussion with regard to cessionaries, if applicable.`}  aria-describedby=""  ></textarea>
+          aria-describedby=""  ></textarea>
 <hr/>
 
 {
@@ -2451,17 +2431,11 @@ Details of premium and cover pattern structure, frequency etc.`}  aria-described
         </>: 
          null
     }
-    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none" }}  className="form-control"  
+    <textarea disabled ref={textareaRef} style={{minHeight: MIN_TEXTAREA_HEIGHT, resize: "none",overflow:"hidden" }}  className="form-control"  
         id="AR_InformationExplained" name='AR_InformationExplained' value={FormData['AR_InformationExplained']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus13}
         onBlur={backgroundInfo_onBlur13}
-        placeholder={
-`Discuss the following information which has been explained to client:
-General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.)
-Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
-Waiting periods
-Cooling off period
-Other relevant information.`}  aria-describedby=""  ></textarea>
+          aria-describedby=""  ></textarea>
 <hr/>
           
           </form>
