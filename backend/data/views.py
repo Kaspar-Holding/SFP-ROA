@@ -118,13 +118,16 @@ def importCSV(request):
         # print(row)
         # importCSV = RiskFactors.objects.filter(RF_ClientId=csvData[i]['RF_ClientId']).values()
         # importCSV = RiskFactors.objects.filter(RF_ClientId=csvData[i]['RF_ClientId'])
+        # Check if Form data exists or not
         importData = RiskFactors.objects.filter(RF_ClientId=row['RF_ClientId'])
+        # If no then create the record
         if len(importData) == 0:
             serializer = RiskFactorsSerializers(data=row, many=False)
             if serializer.is_valid():
                 serializer.create(serializer.validated_data)
             else:
                 return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        # else update it
         else:
             importData = RiskFactors.objects.get(RF_ClientId=row['RF_ClientId'])
             serializer = RiskFactorsSerializers(instance=importData, data=row, partial=True)
