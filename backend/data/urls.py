@@ -3,6 +3,7 @@ from . import views, printFormViews
 
 urlpatterns = [
     path('excel/' , views.excel,name='excel'),
+    path('sample/' , views.sample,name='sample'),
     path('importCSV/' , views.importCSV,name='importCSV'),
     path('all_users/' , views.getData,name='Users List'),
     path('users_stats/' , views.userStats,name='Users Stats'),

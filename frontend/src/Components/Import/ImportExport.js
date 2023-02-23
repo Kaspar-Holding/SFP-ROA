@@ -1,5 +1,5 @@
-import './Styles/CustomNotification.css';
-import  './Styles/CustomButton.css'
+// import './Styles/CustomNotification.css';
+// import  './Styles/CustomButton.css'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux';
@@ -17,6 +17,22 @@ const ImportExport = ({user}) => {
     }
     try {
       const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/excel/`,config)
+      const url = `${process.env.REACT_APP_BACKEND_URL}/${response.data['file']}`
+      window.open(url, '_blank').focus()
+    } catch (error) {
+      // console.log('first', error)
+    }
+  }
+  const ExportCSVSampleFile = async() => {
+    const config = {
+      headers: {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json',
+        'Authorization' : `JWT ${localStorage.getItem('access')}`
+      }
+    }
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/sample/`,config)
       const url = `${process.env.REACT_APP_BACKEND_URL}/${response.data['file']}`
       window.open(url, '_blank').focus()
     } catch (error) {
@@ -52,6 +68,10 @@ const ImportExport = ({user}) => {
     e.preventDefault()
     ExportCSVFile()
   }
+  const onDowloadCSVSample = (e) => {
+    e.preventDefault()
+    ExportCSVSampleFile()
+  }
   const onUpload = (e) => {
     e.preventDefault()
     uploadCSVFile()
@@ -79,12 +99,21 @@ const ImportExport = ({user}) => {
           {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
         </div>
       </div>
-      <button className='btn btn-md btn-primary' onClick={(e)=>{onDowloadCSV(e)}}>Please download the sample CSV file from here</button>
-
+      <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 className="h2">Import / Export Data</h1>
+      </div>
+      <div className='row'>
+        <div className='col-4'>
+          <button className='btn btn-md btn-primary' onClick={(e)=>{onDowloadCSV(e)}}>Please download the All Data CSV file from here</button>
+        </div>
+        <div className='col-4'>
+          <button className='btn btn-md btn-primary' onClick={(e)=>{onDowloadCSVSample(e)}}>Please download the sample CSV file from here</button>
+        </div>
+      </div>
       <div className="alert alert-success text-center" style={{display: SuccessMessageVisibility}} role="alert">
           <p><b>{SuccessMessage} </b></p>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 mt-4">
           <div className="">
               <div className="">
                   <form class="" onSubmit={(e)=>{onUpload(e)}}>

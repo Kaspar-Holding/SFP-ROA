@@ -49,6 +49,16 @@ def excel(request):
     df.to_csv("data/static/csv/%s" %(filename))
     return Response({"file":"static/csv/%s" %(filename)})
 
+@api_view(['GET'])
+def sample(request):
+    forms = RiskFactors.objects.all().values()
+
+    df = pd.DataFrame(data=forms)
+    print(df)
+    filename =  "Export Data - %s.csv" %(uuid.uuid4())
+    df.to_csv("data/static/csv/%s" %(filename))
+    return Response({"file":"static/csv/%s" %(filename)})
+
 @api_view(['POST'])
 def importCSV(request):
     # decrypted = base64.b64decode(request.data['costCsv']).decode('utf-8')
@@ -115,34 +125,20 @@ def importCSV(request):
     # print(csvData)
     data = {"advisorId":1,"RF_Overall_Risk":"","RF_BU_Risk":"2","RF_Date":"2023-02-22","RF_ClientName":"","RF_ClientId":"","RF_CompleteByName":"Armughan","RF_EventID":"","RF_CompleteByRole":"","RF_AdjustedRisk":"","RF_GCO_Risk":"","RF_Approvals":"","RF_ClientType":"1","RF_Occupation":"1","RF_CountryOfBirth":"0","RF_CountryOfResidence":"0","RF_Nationality":"0","RF_Different_Nationality":"0","RF_CountryOfTax":"0","RF_Industry":"0","RF_SourceOfFunds":"0","RF_RelationshipToClient":"0","RF_CountryOfRegistration":"0","RF_CountryOfOperation":"0","RF_Type_Legal_Entity":"0","RF_Client_Relationship":"0","RF_Product_Name":"7","RF_Transaction_Flow":"0","RF_Transaction_Method":"0","RF_Transaction_Reason":"0","RF_High_Transaction_Reason":"0","RF_Transaction_Frequency":"0","RF_Transaction_Value":"0","RF_Currency_Value":"0","RF_Transaction_Geography":"0","RF_Funds_Jurisdiction":"0","RF_Delivery_Channel":"0","RF_Linked_Party_Acting":"0","RF_Linked_Party_Paying":"0","RF_Client_Match":"0","RF_Client_Beneficiaries":"0","RF_Adjust_Risk1":"2","RF_Name":"","RF_ID":"","RF_Linked_Party":"0","RF_RCA":"0","RF_Birth_Country":"0","RF_Residence_Country":"0","RF_Nationality1":"0","RF_Control1":"","RF_Control2":"","RF_Control3":"","RF_Another_Control1":"0","RF_Another_Control2":"0"}
     for row in csvData:
-        # print(row)
+        print(row)
         # importCSV = RiskFactors.objects.filter(RF_ClientId=csvData[i]['RF_ClientId']).values()
         # importCSV = RiskFactors.objects.filter(RF_ClientId=csvData[i]['RF_ClientId'])
-        # Check if Form data exists or not
-        importData = RiskFactors.objects.filter(RF_ClientId=row['RF_ClientId'])
-        # If no then create the record
-        if len(importData) == 0:
-            serializer = RiskFactorsSerializers(data=row, many=False)
-            if serializer.is_valid():
-                serializer.create(serializer.validated_data)
-            else:
-                return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
-        # else update it
+        serializer = RiskFactorsSerializers(data=row, many=False)
+        if serializer.is_valid():
+            serializer.save()
         else:
-            importData = RiskFactors.objects.get(RF_ClientId=row['RF_ClientId'])
-            serializer = RiskFactorsSerializers(instance=importData, data=row, partial=True)
-            if serializer.is_valid():
-                serializer.save()
-            else:
-                return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
-
+            return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
     # serializer = importCSVSerializer(data=csvData,many=True, partial=True)
     # if serializer.is_valid():
     #     serializer.update()
     # print(df.head())
     return Response({"message": "Updated","code":200},200)
     # return Response({"data":csvData})
-
 @api_view(['POST'])
 
 def getData(request):
