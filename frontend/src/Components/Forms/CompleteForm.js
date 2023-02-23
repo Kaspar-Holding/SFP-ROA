@@ -43,10 +43,10 @@ const CompleteForm = () => {
                 <button className="nav-link" id="invest-tab" data-bs-toggle="tab" data-bs-target="#invest" type="button" role="tab" aria-controls="invest" aria-selected="false">Investment Planning</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="assurance1-tab" data-bs-toggle="tab" data-bs-target="#assurance1" type="button" role="tab" aria-controls="assurance1" aria-selected="false">Assurance Risk</button>
+                <button className="nav-link" id="assurance1-tab" data-bs-toggle="tab" data-bs-target="#assurance1" type="button" role="tab" aria-controls="assurance1" aria-selected="false">BA Risk</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="assurance2-tab" data-bs-toggle="tab" data-bs-target="#assurance2" type="button" role="tab" aria-controls="assurance2" aria-selected="false">Assurance Investment</button>
+                <button className="nav-link" id="assurance2-tab" data-bs-toggle="tab" data-bs-target="#assurance2" type="button" role="tab" aria-controls="assurance2" aria-selected="false">BA Investment</button>
             </li>
             <li className="nav-item" role="presentation">
                 <button className="nav-link" id="employee-tab" data-bs-toggle="tab" data-bs-target="#employee" type="button" role="tab" aria-controls="employee" aria-selected="false">Employee Benefits</button>
