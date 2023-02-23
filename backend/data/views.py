@@ -11,6 +11,7 @@ import uuid
 import numpy as np
 import base64
 from functools import reduce
+from datetime import datetime
 @api_view(['GET'])
 def excel(request):
     # RF_BU_Risk = ['low','medium','high']
@@ -51,9 +52,59 @@ def excel(request):
 
 @api_view(['GET'])
 def sample(request):
-    forms = RiskFactors.objects.all().values()
-
-    df = pd.DataFrame(data=forms)
+    # forms = RiskFactors.objects.all().values("advisorId","RF_Overall_Risk","RF_BU_Risk","RF_Date","RF_ClientName","RF_ClientId","RF_CompleteByName","RF_CompleteByRole","RF_ClientType","RF_Occupation","RF_CountryOfBirth","RF_CountryOfResidence","RF_Nationality","RF_Different_Nationality","RF_CountryOfTax","RF_Industry","RF_SourceOfFunds","RF_RelationshipToClient","RF_CountryOfRegistration","RF_CountryOfOperation","RF_Type_Legal_Entity","RF_Client_Relationship","RF_Product_Name","RF_Transaction_Flow","RF_Transaction_Method","RF_Transaction_Reason","RF_High_Transaction_Reason","RF_Transaction_Frequency","RF_Transaction_Value","RF_Currency_Value","RF_Transaction_Geography","RF_Funds_Jurisdiction","RF_Delivery_Channel","RF_Linked_Party_Acting","RF_Linked_Party_Paying","RF_Client_Match","RF_Client_Beneficiaries","RF_Adjust_Risk1","RF_Name","RF_ID","RF_Linked_Party	RF_RCA","RF_Birth_Country","RF_Residence_Country","RF_Nationality1","RF_Control1","RF_Control2","RF_Control3","RF_Another_Control1","RF_Another_Control2")
+    data = [{
+        "RF_Overall_Risk": "",
+        "RF_BU_Risk": "",
+        "RF_Date": datetime.today().strftime('%Y-%m-%d'),
+        "RF_ClientName": "",
+        "RF_ClientId": "",
+        "RF_CompleteByName": "",
+        "RF_CompleteByRole": "",
+        "RF_ClientType": "",
+        "RF_Occupation": "",
+        "RF_CountryOfBirth": "",
+        "RF_CountryOfResidence": "",
+        "RF_Nationality": "",
+        "RF_Different_Nationality": "",
+        "RF_CountryOfTax": "",
+        "RF_Industry": "",
+        "RF_SourceOfFunds": "",
+        "RF_RelationshipToClient": "",
+        "RF_CountryOfRegistration": "",
+        "RF_CountryOfOperation": "",
+        "RF_Type_Legal_Entity": "",
+        "RF_Client_Relationship": "",
+        "RF_Product_Name": "",
+        "RF_Transaction_Flow": "",
+        "RF_Transaction_Method": "",
+        "RF_Transaction_Reason": "",
+        "RF_High_Transaction_Reason": "",
+        "RF_Transaction_Frequency": "",
+        "RF_Transaction_Value": "",
+        "RF_Currency_Value": "",
+        "RF_Transaction_Geography": "",
+        "RF_Funds_Jurisdiction": "",
+        "RF_Delivery_Channel": "",
+        "RF_Linked_Party_Acting": "",
+        "RF_Linked_Party_Paying": "",
+        "RF_Client_Match": "",
+        "RF_Client_Beneficiaries": "",
+        "RF_Adjust_Risk1": "",
+        "RF_Name": "",
+        "RF_ID": "",
+        "RF_Linked_Party": "",
+        "RF_RCA": "",
+        "RF_Birth_Country": "",
+        "RF_Residence_Country": "",
+        "RF_Nationality1": "",
+        "RF_Control1": "",
+        "RF_Control2": "",
+        "RF_Control3": "",
+        "RF_Another_Control1": "",
+        "RF_Another_Control2": ""
+    }]
+    df = pd.DataFrame(data=data)
     print(df)
     filename =  "Export Data - %s.csv" %(uuid.uuid4())
     df.to_csv("data/static/csv/%s" %(filename))
