@@ -1,12 +1,197 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers
-from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form
+from django.core.files.base import ContentFile
+from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskFactorsSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers
+from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
+import pandas as pd
+import uuid
+import numpy as np
+import base64
+from functools import reduce
+from datetime import datetime
+@api_view(['GET'])
+def excel(request):
+    # RF_BU_Risk = ['low','medium','high']
+    # for form in forms:
+    #     RF_BU_Risk_id = int(form['RF_BU_Risk'])
+    #     form['RF_BU_Risk'] = RF_BU_Risk[RF_BU_Risk_id]
+    forms = RiskFactors.objects.all().values()
+    forms2 = AssuranceInvestment.objects.all().values()
+    forms3 = AssuranceRisk.objects.all().values()
+    forms4 = EmployeeBenefits.objects.all().values()
+    forms5 = Fiduciary.objects.all().values()
+    forms6 = GapCover.objects.all().values()
+    forms7 = InvestmentPlanning.objects.all().values()
+    forms8 = RiskPlanning.objects.all().values()
+    forms9 = ShortTermInsuranceCommerical.objects.all().values()
+    forms10 = ShortTermInsurancePersonal.objects.all().values()
+
+    df1 = pd.DataFrame(data=forms)
+    df2 = pd.DataFrame(data=forms2)
+    df3 = pd.DataFrame(data=forms3)
+    df4 = pd.DataFrame(data=forms4)
+    df5 = pd.DataFrame(data=forms5)
+    df6 = pd.DataFrame(data=forms6)
+    df7 = pd.DataFrame(data=forms7)
+    df8 = pd.DataFrame(data=forms8)
+    df9 = pd.DataFrame(data=forms9)
+    df10 = pd.DataFrame(data=forms10)
+    # df = pd.DataFrame(data=pd.concat([df1,df2], axis=0, ignore_index=True))
+    # df = pd.DataFrame(data=)
+    # df = pd.merge(df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, on = "id")
+    dfl=[df1, df2, df3,df4,df5,df6,df7,df8,df9,df10]
+    df = reduce(lambda  left,right: pd.merge(left,right,on=['id'],
+                                            how='outer'), dfl)
+    print(df)
+    filename =  "Export Data - %s.csv" %(uuid.uuid4())
+    df.to_csv("data/static/csv/%s" %(filename))
+    return Response({"file":"static/csv/%s" %(filename)})
+
+@api_view(['GET'])
+def sample(request):
+    # forms = RiskFactors.objects.all().values("advisorId","RF_Overall_Risk","RF_BU_Risk","RF_Date","RF_ClientName","RF_ClientId","RF_CompleteByName","RF_CompleteByRole","RF_ClientType","RF_Occupation","RF_CountryOfBirth","RF_CountryOfResidence","RF_Nationality","RF_Different_Nationality","RF_CountryOfTax","RF_Industry","RF_SourceOfFunds","RF_RelationshipToClient","RF_CountryOfRegistration","RF_CountryOfOperation","RF_Type_Legal_Entity","RF_Client_Relationship","RF_Product_Name","RF_Transaction_Flow","RF_Transaction_Method","RF_Transaction_Reason","RF_High_Transaction_Reason","RF_Transaction_Frequency","RF_Transaction_Value","RF_Currency_Value","RF_Transaction_Geography","RF_Funds_Jurisdiction","RF_Delivery_Channel","RF_Linked_Party_Acting","RF_Linked_Party_Paying","RF_Client_Match","RF_Client_Beneficiaries","RF_Adjust_Risk1","RF_Name","RF_ID","RF_Linked_Party	RF_RCA","RF_Birth_Country","RF_Residence_Country","RF_Nationality1","RF_Control1","RF_Control2","RF_Control3","RF_Another_Control1","RF_Another_Control2")
+    data = [{
+        "RF_Overall_Risk": "",
+        "RF_BU_Risk": "",
+        "RF_Date": datetime.today().strftime('%Y-%m-%d'),
+        "RF_ClientName": "",
+        "RF_ClientId": "",
+        "RF_CompleteByName": "",
+        "RF_CompleteByRole": "",
+        "RF_ClientType": "",
+        "RF_Occupation": "",
+        "RF_CountryOfBirth": "",
+        "RF_CountryOfResidence": "",
+        "RF_Nationality": "",
+        "RF_Different_Nationality": "",
+        "RF_CountryOfTax": "",
+        "RF_Industry": "",
+        "RF_SourceOfFunds": "",
+        "RF_RelationshipToClient": "",
+        "RF_CountryOfRegistration": "",
+        "RF_CountryOfOperation": "",
+        "RF_Type_Legal_Entity": "",
+        "RF_Client_Relationship": "",
+        "RF_Product_Name": "",
+        "RF_Transaction_Flow": "",
+        "RF_Transaction_Method": "",
+        "RF_Transaction_Reason": "",
+        "RF_High_Transaction_Reason": "",
+        "RF_Transaction_Frequency": "",
+        "RF_Transaction_Value": "",
+        "RF_Currency_Value": "",
+        "RF_Transaction_Geography": "",
+        "RF_Funds_Jurisdiction": "",
+        "RF_Delivery_Channel": "",
+        "RF_Linked_Party_Acting": "",
+        "RF_Linked_Party_Paying": "",
+        "RF_Client_Match": "",
+        "RF_Client_Beneficiaries": "",
+        "RF_Adjust_Risk1": "",
+        "RF_Name": "",
+        "RF_ID": "",
+        "RF_Linked_Party": "",
+        "RF_RCA": "",
+        "RF_Birth_Country": "",
+        "RF_Residence_Country": "",
+        "RF_Nationality1": "",
+        "RF_Control1": "",
+        "RF_Control2": "",
+        "RF_Control3": "",
+        "RF_Another_Control1": "",
+        "RF_Another_Control2": ""
+    }]
+    df = pd.DataFrame(data=data)
+    print(df)
+    filename =  "Export Data - %s.csv" %(uuid.uuid4())
+    df.to_csv("data/static/csv/%s" %(filename))
+    return Response({"file":"static/csv/%s" %(filename)})
 
 @api_view(['POST'])
+def importCSV(request):
+    # decrypted = base64.b64decode(request.data['costCsv']).decode('utf-8')
+    csv_data = request.data['exportCSV']
+    format, csvstr = csv_data.split(';base64,')
+    ext = format.split('/')[-1]
+    file_name = "'file." + ext
+    csvData = ContentFile(base64.b64decode(csvstr), name=file_name) 
+    df = pd.read_csv(csvData)
+    csvData = []
+    for i in range(len(df)):
+        csvData.append({
+            "advisorId" : request.data['advisorId'],
+            "RF_Overall_Risk" : str(df['RF_Overall_Risk'][i]) if df['RF_Overall_Risk'][i] is not None else "",
+            "RF_BU_Risk" : str(df['RF_BU_Risk'][i]) if df['RF_BU_Risk'][i] is not None else "",
+            "RF_Date" : str(df['RF_Date'][i]) if df['RF_Date'][i] is not None else "",
+            "RF_ClientName" : str(df['RF_ClientName'][i]) if df['RF_ClientName'][i] is not None else "",
+            "RF_ClientId" : str(df['RF_ClientId'][i]) if df['RF_ClientId'][i] is not None else "",
+            "RF_CompleteByName" : str(df['RF_CompleteByName'][i]) if df['RF_CompleteByName'][i] is not None else "",
+            "RF_CompleteByRole" : str(df['RF_CompleteByRole'][i]) if df['RF_CompleteByRole'][i] is not None else "",
+            "RF_ClientType" : str(df['RF_ClientType'][i]) if df['RF_ClientType'][i] is not None else "",
+            "RF_Occupation" : str(df['RF_Occupation'][i]) if df['RF_Occupation'][i] is not None else "",
+            "RF_CountryOfBirth" : str(df['RF_CountryOfBirth'][i]) if df['RF_CountryOfBirth'][i] is not None else "",
+            "RF_CountryOfResidence" : str(df['RF_CountryOfResidence'][i]) if df['RF_CountryOfResidence'][i] is not None else "",
+            "RF_Nationality" : str(df['RF_Nationality'][i]) if df['RF_Nationality'][i] is not None else "",
+            "RF_Different_Nationality" : str(df['RF_Different_Nationality'][i]) if df['RF_Different_Nationality'][i] is not None else "",
+            "RF_CountryOfTax" : str(df['RF_CountryOfTax'][i]) if df['RF_CountryOfTax'][i] is not None else "",
+            "RF_Industry" : str(df['RF_Industry'][i]) if df['RF_Industry'][i] is not None else "",
+            "RF_SourceOfFunds" : str(df['RF_SourceOfFunds'][i]) if df['RF_SourceOfFunds'][i] is not None else "",
+            "RF_RelationshipToClient" : str(df['RF_RelationshipToClient'][i]) if df['RF_RelationshipToClient'][i] is not None else "",
+            "RF_CountryOfRegistration" : str(df['RF_CountryOfRegistration'][i]) if df['RF_CountryOfRegistration'][i] is not None else "",
+            "RF_CountryOfOperation" : str(df['RF_CountryOfOperation'][i]) if df['RF_CountryOfOperation'][i] is not None else "",
+            "RF_Type_Legal_Entity" : str(df['RF_Type_Legal_Entity'][i]) if df['RF_Type_Legal_Entity'][i] is not None else "",
+            "RF_Client_Relationship" : str(df['RF_Client_Relationship'][i]) if df['RF_Client_Relationship'][i] is not None else "",
+            "RF_Product_Name" : str(df['RF_Product_Name'][i]) if df['RF_Product_Name'][i] is not None else "",
+            "RF_Transaction_Flow" : str(df['RF_Transaction_Flow'][i]) if df['RF_Transaction_Flow'][i] is not None else "",
+            "RF_Transaction_Method" : str(df['RF_Transaction_Method'][i]) if df['RF_Transaction_Method'][i] is not None else "",
+            "RF_Transaction_Reason" : str(df['RF_Transaction_Reason'][i]) if df['RF_Transaction_Reason'][i] is not None else "",
+            "RF_High_Transaction_Reason" : str(df['RF_High_Transaction_Reason'][i]) if df['RF_High_Transaction_Reason'][i] is not None else "",
+            "RF_Transaction_Frequency" : str(df['RF_Transaction_Frequency'][i]) if df['RF_Transaction_Frequency'][i] is not None else "",
+            "RF_Transaction_Value" : str(df['RF_Transaction_Value'][i]) if df['RF_Transaction_Value'][i] is not None else "",
+            "RF_Currency_Value" : str(df['RF_Currency_Value'][i]) if df['RF_Currency_Value'][i] is not None else "",
+            "RF_Transaction_Geography" : str(df['RF_Transaction_Geography'][i]) if df['RF_Transaction_Geography'][i] is not None else "",
+            "RF_Funds_Jurisdiction" : str(df['RF_Funds_Jurisdiction'][i]) if df['RF_Funds_Jurisdiction'][i] is not None else "",
+            "RF_Delivery_Channel" : str(df['RF_Delivery_Channel'][i]) if df['RF_Delivery_Channel'][i] is not None else "",
+            "RF_Linked_Party_Acting" : str(df['RF_Linked_Party_Acting'][i]) if df['RF_Linked_Party_Acting'][i] is not None else "",
+            "RF_Linked_Party_Paying" : str(df['RF_Linked_Party_Paying'][i]) if df['RF_Linked_Party_Paying'][i] is not None else "",
+            "RF_Client_Match" : str(df['RF_Client_Match'][i]) if df['RF_Client_Match'][i] is not None else "",
+            "RF_Client_Beneficiaries" : str(df['RF_Client_Beneficiaries'][i]) if df['RF_Client_Beneficiaries'][i] is not None else "",
+            "RF_Adjust_Risk1" : str(df['RF_Adjust_Risk1'][i]) if df['RF_Adjust_Risk1'][i] is not None else "",
+            "RF_Name" : str(df['RF_Name'][i]) if df['RF_Name'][i] is not None else "",
+            "RF_ID" : str(df['RF_ID'][i]) if df['RF_ID'][i] is not None else "",
+            "RF_Linked_Party" : str(df['RF_Linked_Party'][i]) if df['RF_Linked_Party'][i] is not None else "",
+            "RF_RCA" : str(df['RF_RCA'][i]) if df['RF_RCA'][i] is not None else "",
+            "RF_Birth_Country" : str(df['RF_Birth_Country'][i]) if df['RF_Birth_Country'][i] is not None else "",
+            "RF_Residence_Country" : str(df['RF_Residence_Country'][i]) if df['RF_Residence_Country'][i] is not None else "",
+            "RF_Nationality1" : str(df['RF_Nationality1'][i]) if df['RF_Nationality1'][i] is not None else "",
+            "RF_Control1" : str(df['RF_Control1'][i]) if df['RF_Control1'][i] is not None else "",
+            "RF_Control2" : str(df['RF_Control2'][i]) if df['RF_Control2'][i] is not None else "",
+            "RF_Control3" : str(df['RF_Control3'][i]) if df['RF_Control3'][i] is not None else "",
+            "RF_Another_Control1" : str(df['RF_Another_Control1'][i]) if df['RF_Another_Control1'][i] is not None else "",
+            "RF_Another_Control2" : str(df['RF_Another_Control2'][i]) if df['RF_Another_Control2'][i] is not None else "" ,
+        })
+    # print(csvData)
+    data = {"advisorId":1,"RF_Overall_Risk":"","RF_BU_Risk":"2","RF_Date":"2023-02-22","RF_ClientName":"","RF_ClientId":"","RF_CompleteByName":"Armughan","RF_EventID":"","RF_CompleteByRole":"","RF_AdjustedRisk":"","RF_GCO_Risk":"","RF_Approvals":"","RF_ClientType":"1","RF_Occupation":"1","RF_CountryOfBirth":"0","RF_CountryOfResidence":"0","RF_Nationality":"0","RF_Different_Nationality":"0","RF_CountryOfTax":"0","RF_Industry":"0","RF_SourceOfFunds":"0","RF_RelationshipToClient":"0","RF_CountryOfRegistration":"0","RF_CountryOfOperation":"0","RF_Type_Legal_Entity":"0","RF_Client_Relationship":"0","RF_Product_Name":"7","RF_Transaction_Flow":"0","RF_Transaction_Method":"0","RF_Transaction_Reason":"0","RF_High_Transaction_Reason":"0","RF_Transaction_Frequency":"0","RF_Transaction_Value":"0","RF_Currency_Value":"0","RF_Transaction_Geography":"0","RF_Funds_Jurisdiction":"0","RF_Delivery_Channel":"0","RF_Linked_Party_Acting":"0","RF_Linked_Party_Paying":"0","RF_Client_Match":"0","RF_Client_Beneficiaries":"0","RF_Adjust_Risk1":"2","RF_Name":"","RF_ID":"","RF_Linked_Party":"0","RF_RCA":"0","RF_Birth_Country":"0","RF_Residence_Country":"0","RF_Nationality1":"0","RF_Control1":"","RF_Control2":"","RF_Control3":"","RF_Another_Control1":"0","RF_Another_Control2":"0"}
+    for row in csvData:
+        print(row)
+        # importCSV = RiskFactors.objects.filter(RF_ClientId=csvData[i]['RF_ClientId']).values()
+        # importCSV = RiskFactors.objects.filter(RF_ClientId=csvData[i]['RF_ClientId'])
+        serializer = RiskFactorsSerializers(data=row, many=False)
+        if serializer.is_valid():
+            serializer.save()
+        else:
+            return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+    # serializer = importCSVSerializer(data=csvData,many=True, partial=True)
+    # if serializer.is_valid():
+    #     serializer.update()
+    # print(df.head())
+    return Response({"message": "Updated","code":200},200)
+    # return Response({"data":csvData})
+@api_view(['POST'])
+
 def getData(request):
     limit = 10
     orderBy = request.data['order_by']
@@ -111,7 +296,7 @@ def insertFormData(request):
             serializer2 = FormSerializers(latest, many=False)
             return Response({"message": "Data is inserted","formId":serializer2.data['id'],"code":201,},201)
         else :
-            return Response({'message': "Form Already Exists","code": "200", "formId" : serializer1.data['id']},200)
+            return Response({'message': "Form Already Exists","code": "200", "formData" : serializer1.data},200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
@@ -128,7 +313,7 @@ def viewFormData(request):
         advisorNameSerializer = UserAccountsSerializers(advisorName, many=False)
 
         formData['advisorName'] = advisorNameSerializer.data['name']
-        message = {"message": "Found","code":200,"Data": formData}
+        message = {"message": "Found","code":200,"formData": formData}
         code = 200
     except:
         message = {"message": "Error 404, Not found","code":404}
@@ -147,11 +332,11 @@ def updateFormData(request):
 
 @api_view(['POST'])
 def changeFormStatus(request):
-    form = Form.objects.filter(id=request.data['formId']).first()
-    serializer = FormSerializers(instance=form, data={'status': request.data['formStatus']}, partial=True)
+    form = RiskFactors.objects.filter(id=request.data['formId']).first()
+    serializer = RiskFactorsSerializers(instance=form, data={'status': request.data['formStatus']}, partial=True)
     if serializer.is_valid():
         serializer.save()
-        return Response({"message": "Found","code":200,"Data": serializer.data},200)
+        return Response({"message": "Updated","code":200,"Data": serializer.data},200)
     else:
         return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
 
@@ -195,18 +380,53 @@ def sampleFile(request):
 
 @api_view(['POST'])
 def formStats(request):
-    forms = Form.objects.filter(advisorId = request.data['advisorId'])
-    formSerializer = FormSerializers(forms, many=True)
-    complete_forms = Form.objects.filter(advisorId = request.data['advisorId'],status = 1)
-    complete_serializer = FormSerializers(complete_forms, many=True)
-    incomplete_forms = Form.objects.filter(advisorId = request.data['advisorId'],status = 0)
-    incomplete_serializer = FormSerializers(incomplete_forms, many=True)
-
-    return Response({
-            "completed_forms": len(complete_serializer.data),
-            "incompleted_forms": len(incomplete_serializer.data),
-            "forms" : formSerializer.data
-        },200)
+    # forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
+    # formSerializer = RiskFactorsSerializers(forms, many=True)
+    complete_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 1)
+    complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
+    incomplete_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 0)
+    incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
+    searchQuery = request.data['search_query']
+    riskFactors = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
+    forms_data = []
+    if searchQuery != "":
+        forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId")
+    else:
+        forms_data = riskFactors.order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId")
+    orderBy = request.data['order_by']
+    p = Paginator(forms_data, 10)
+    if request.data['page_number'] <= p.num_pages:
+            
+        return Response(
+            {
+                "completed_forms": len(complete_serializer.data),
+                "incompleted_forms": len(incomplete_serializer.data),
+                "total_pages" : p.num_pages,
+                "has_pages" : p.num_pages,
+                "total_records" : len(forms_data),
+                "pagelimit" : 10,
+                "next" : p.page(request.data['page_number']).has_next(),
+                "results" : p.page(request.data['page_number']).object_list
+            }
+        )
+    else:
+        return Response(
+            {
+                "completed_forms": len(complete_serializer.data),
+                "incompleted_forms": len(incomplete_serializer.data),
+                "total_pages" : p.num_pages,
+                "next" : None,
+                "has_pages" : p.num_pages,
+                "total_records" : len(forms_data),
+                "pagelimit" : 10,
+                "results" : {}
+            }
+        )
+    # return Response({
+    #         "completed_forms": len(complete_serializer.data),
+    #         "incompleted_forms": len(incomplete_serializer.data),
+    #         "forms" : formSerializer.data
+    #     },200)
 
 # Fiduciary
 @api_view(['POST'])
@@ -355,7 +575,7 @@ def viewRiskPlanningData(request):
 
 @api_view(['POST'])
 def updateRiskPlanningData(request):
-    form = RiskPlanning.objects.get(id=request.data['id'])
+    form = RiskPlanning.objects.get(id=request.data['formId'])
     serializer = RiskPlanningSerializers(instance=form, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
@@ -670,6 +890,77 @@ def viewShortTermInsuranceCommericalData(request):
 def updateShortTermInsuranceCommericalData(request):
     form = ShortTermInsuranceCommerical.objects.get(id=request.data['id'])
     serializer = ShortTermInsuranceCommericalSerializers(instance=form, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    else:
+        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+
+
+# Risk Factors
+@api_view(['POST'])
+def insertRiskFactorsData(request):
+    serializer = RiskFactorsSerializers(data=request.data, many=False)
+    if serializer.is_valid():
+        old_form = RiskFactors.objects.filter(advisorId = request.data['advisorId'],RF_ClientId = request.data['RF_ClientId']).first()
+        serializer1 = RiskFactorsSerializers(old_form, many=False)
+        # return Response({"data":serializer1.data, "length": len(serializer1.data['client_id'])})
+        if len(serializer1.data['RF_ClientId']) == 0:
+            serializer.create(serializer.validated_data)
+            latest = RiskFactors.objects.latest('id')
+            serializer2 = RiskFactorsSerializers(latest, many=False)
+            return Response({"message": "Data is inserted","formId":serializer2.data['id'],"code":201,},201)
+        else :
+            return Response({'message': "Form Already Exists","code": "200", "formId" : serializer1.data['id']},200)
+        #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
+    return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
+
+# @api_view(['POST'])
+# def insertRiskFactorsData(request):
+#     serializer = RiskFactorsSerializers(data=request.data, many=False)
+#     if serializer.is_valid():
+#         old_form = RiskFactors.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
+#         # old_form = RiskPlanning.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId'],clientIdNumber = request.data['clientIdNumber']).first()
+#         serializer1 = RiskFactorsSerializers(old_form, many=False)
+#         data = serializer1.data
+#         # return Response({"data":serializer1.data, "length": str(serializer1.data['advisorId'])})
+#         if str(serializer1.data['advisorId']) == "None":
+#             serializer.create(serializer.validated_data)
+#             latest = RiskFactors.objects.latest('id')
+#             serializer2 = RiskFactorsSerializers(latest, many=False)
+#             return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+#         else :
+#             del data['status']
+#             del data['created_at']
+#             del data['updated_at']
+#             return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
+#         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
+#     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
+
+
+    
+
+@api_view(['POST'])
+def viewRiskFactorsData(request):
+    form = RiskFactors.objects.get(id=request.data['formId'], advisorId=request.data['advisorId'])
+    formSerializer = RiskFactorsSerializers(form, many=False)
+    
+    formData = formSerializer.data
+    
+    # advisorName = RiskFactors.objects.get(id=formData.data['advisorId'])
+    # advisorNameSerializer = RiskFactorsSerializers(advisorName, many=False)
+
+    # formData['advisorName'] = advisorNameSerializer.data['name']
+    # if serializer.is_valid():
+    return Response({"message": "Found","code":200,"formData": formData},200)
+    # else:
+    #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+@api_view(['POST'])
+def updateRiskFactorsData(request):
+    form = RiskFactors.objects.get(id=request.data['id'])
+    serializer = RiskFactorsSerializers(instance=form, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
         return Response({"message": "Updated","code":200,"formData": serializer.data},200)

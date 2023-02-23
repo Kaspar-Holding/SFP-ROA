@@ -2,6 +2,9 @@ from django.urls import path
 from . import views, printFormViews
 
 urlpatterns = [
+    path('excel/' , views.excel,name='excel'),
+    path('sample/' , views.sample,name='sample'),
+    path('importCSV/' , views.importCSV,name='importCSV'),
     path('all_users/' , views.getData,name='Users List'),
     path('users_stats/' , views.userStats,name='Users Stats'),
     path('user_details/' , views.userDetails,name='User Details'),
@@ -53,6 +56,10 @@ urlpatterns = [
     path('add_short_term_commerical_data/' , views.insertShortTermInsuranceCommericalData, name="Insert data into Short Term Commerical Collection"),
     path('view_short_term_commerical_data/' , views.viewShortTermInsuranceCommericalData, name="Short Term Commerical data details"),
     path('update_short_term_commerical_data/' , views.updateShortTermInsuranceCommericalData, name="Short Term Commerical data details"),
+    # Risk Factors Commerical
+    path('add_risk_factors_data/' , views.insertRiskFactorsData, name="Insert data into Risk Factors Collection"),
+    path('view_risk_factors_data/' , views.viewRiskFactorsData, name="Risk Factors data details"),
+    path('update_risk_factors_data/' , views.updateRiskFactorsData, name="Risk Factors data details"),
     # PDF Form
     path('pdf/' , printFormViews.pdfForm, name="PDF Form"),
 ]

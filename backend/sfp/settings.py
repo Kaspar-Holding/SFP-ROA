@@ -30,7 +30,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS=['*']
 
@@ -102,7 +102,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DJANGO_DATABASE_DB'),
+        'NAME': env('DJANGO_DATABASE_NAME'),
         'USER' : env('DJANGO_DATABASE_USER'),
         'PASSWORD' : env('DJANGO_DATABASE_PASSWORD'),
         'HOST' : env('DJANGO_DATABASE_HOST'),
@@ -129,7 +129,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# WKHTMLTOPDF_CMD = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
+WKHTMLTOPDF_CMD = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
 WKHTMLTOPDF_CMD_OPTIONS = {
     'quiet': True, 'enable-local-file-access': True, 'disable-javascript' : True
 }
@@ -145,20 +145,21 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'data/static/images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'data/static')
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static')
+# ]
 
-STATIC_ROUTE = os.path.join(BASE_DIR,'static')
+# STATIC_ROUTE = os.path.join(BASE_DIR,'static')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' : [
-        'rest_framework.permissions.IsAuthenticated',
-        'rest_framework.permissions.IsAdminUser'
+        # 'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAdminUser'
     ] ,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -204,7 +205,7 @@ DJOSER = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

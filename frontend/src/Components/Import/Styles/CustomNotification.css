@@ -1,0 +1,10 @@
+
+.notification_container{
+    position: fixed;
+    right: 10vh;
+    top: 10vh;
+}
+.alert-success{
+    background-color: #14848A;
+    color: #ffffff;
+}

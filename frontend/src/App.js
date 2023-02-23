@@ -36,6 +36,7 @@ import UserProfile from './Components/Authentication/UserProfile';
 import Form from './Components/Forms/Form';
 import Fiduciary from './Components/Forms/Fiduciary';
 import PrintForm from './Components/Forms/PrintForm';
+import ImportExport from './Components/Import/ImportExport';
 import AppPrint from './Components/Forms/AppPrint';
 import PrintFormClient from './Components/Forms/PrintFormClient';
 import PrintFormLayout from './Layout/CompleteFormLayout';
@@ -60,6 +61,7 @@ function App() {
                   <Route element={<SidebarLayout /> }>
                     <Route exact path="/" element={<Dashboard name="" /> } />
                     <Route exact path="/createform" element={<CreateForm name="" /> } />
+                    <Route exact path="/importexport" element={<ImportExport name="" /> } />
                     <Route exact path="/completeform" element={<CompleteForm name="" /> } />
                     <Route exact path="/form" element={<Form name="" /> } />
                     <Route element={<SuperUserLayout /> }>

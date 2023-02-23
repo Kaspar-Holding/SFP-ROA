@@ -35,6 +35,12 @@ const Sidebar = ({LogOut, isAuthenticated, user}) => {
                 Create Form
                 </NavLink>
             </li>
+            <li className="nav-item">
+                        <NavLink className="nav-link" to="/importexport">
+                        <span data-feather="file"></span>
+                        Import/Export
+                        </NavLink>
+                    </li>
             {/* <li className="nav-item">
                 <NavLink className="nav-link" to="/print">
                 <span data-feather="file"></span>
@@ -49,6 +55,7 @@ const Sidebar = ({LogOut, isAuthenticated, user}) => {
                         User Management
                         </NavLink>
                     </li>
+                    
                 : <></>
             }
             {/* <li className="nav-item">
