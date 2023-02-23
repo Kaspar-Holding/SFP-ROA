@@ -359,21 +359,21 @@ const CreateForm = ({user}) => {
 
         RF_ClientType : "1",
         RF_Occupation : "1",
-        RF_CountryOfBirth : "0",
-        RF_CountryOfResidence : "0",
-        RF_Nationality : "0",
+        RF_CountryOfBirth : "206",
+        RF_CountryOfResidence : "206",
+        RF_Nationality : "206",
         RF_Different_Nationality : "0",
         RF_CountryOfTax : "0",
         RF_Industry : "0",
         RF_SourceOfFunds : "0",
-        RF_RelationshipToClient : "0",
+        RF_RelationshipToClient : "2",
         RF_CountryOfRegistration : "0",
         RF_CountryOfOperation : "0",
         RF_Type_Legal_Entity : "0",
         RF_SourceOfFunds : "0",
         RF_Client_Relationship : "0",
         RF_Product_Name : "7",
-        RF_Transaction_Flow : "0",
+        RF_Transaction_Flow : "1",
         RF_Transaction_Method : "0",
         RF_Transaction_Reason : "0",
         RF_High_Transaction_Reason : "0",
@@ -6119,12 +6119,8 @@ const CreateForm = ({user}) => {
                     <div className="col-2">
                         <select className="text-start form-select" name='RF_Delivery_Channel' id='RF_Delivery_Channel' value={parseInt(FormData['RF_Transaction_Geography'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
-                            <option value="1">Combination of delivery channels</option>
-                            <option value="2">Digital / Technology</option>  
-                            <option value="3">Direct through Sanlam staff</option>
-                            <option value="4">Intermediaries(Advisors,tied agents)</option>
-                            <option value="5">Intermediaries(Brokers,consultants)</option>
-                            <option value="6">Other third parties</option>  
+                            <option value="1">Intermediaries(Advisors,tied agents)</option>
+                            <option value="2">Intermediaries(Brokers,consultants)</option>
                                 
                         </select>    
                     </div>

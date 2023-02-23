@@ -50,7 +50,7 @@ const ImportExport = ({user}) => {
     const Body = JSON.stringify(csvFile)
     try {
         await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/importCSV/`,Body,config)
-        setSuccessMessage("Successfully Imported")
+        setSuccessMessage("Successfully Updated")
         setSuccessMessageVisibility("block")
         setTimeout(() => {
             setSuccessMessageVisibility("none")
@@ -99,23 +99,14 @@ const ImportExport = ({user}) => {
           {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
         </div>
       </div>
-      <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 className="h2">Export Data</h1>
-      </div>
-      <div className='row'>
-        <div className='col-4'>
-          <button className='btn btn-md btn-primary' onClick={(e)=>{onDowloadCSV(e)}}>Please download the All Data CSV file from here</button>
-        </div>
-        <div className='col-4'>
-          <button className='btn btn-md btn-primary' onClick={(e)=>{onDowloadCSVSample(e)}}>Please download the sample CSV file from here</button>
-        </div>
+      <button className='btn btn-md btn-primary' style={{marginTop:100,marginRight:50}} onClick={(e)=>{onDowloadCSV(e)}}>Please download the All Data CSV file from here</button>
+      <button className='btn btn-md btn-primary' style={{marginTop:100}} onClick={(e)=>{onDowloadCSVSample(e)}}>Please download the sample CSV file from here</button>
+      <div className="alert alert-success text-center" style={{display: SuccessMessageVisibility}} role="alert">
+          <p><b>{SuccessMessage} </b></p>
       </div>
       <div className="mb-4 mt-4">
           <div className="">
-              <h3>Import Data</h3>
-              <hr/>
               <div className="">
-                <p>Note: To import data please download the sample CSV file and input data accordingly</p>
                   <form class="" onSubmit={(e)=>{onUpload(e)}}>
                       <div class="col mb-3">
                           <label htmlFor="importCsv" class="form-label">Import Data</label>
