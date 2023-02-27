@@ -29,7 +29,10 @@ const CompleteForm = () => {
           <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <RiskFactors data={{formId: state['formId']}} />
           </div>
-          
+          {/* <div className='col-6'>
+            <NavLink to={{pathname:"/printform"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-12'>Print</NavLink>
+            <NavLink to={{pathname:"/printformclient"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-12'>Print For Client</NavLink>
+        </div>  */}
 
         <br/>
         <ul className="nav nav-tabs" id="myTab" role="tablist">

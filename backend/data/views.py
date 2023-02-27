@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from django.core.files.base import ContentFile
 from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskFactorsSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers
 from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form
+
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -27,9 +28,11 @@ def excel(request):
     forms8 = RiskPlanning.objects.all().values()
     forms9 = ShortTermInsuranceCommerical.objects.all().values()
     forms10 = ShortTermInsurancePersonal.objects.all().values()
-
+  
     df1 = pd.DataFrame(data=forms)
+   
     df2 = pd.DataFrame(data=forms2)
+
     df3 = pd.DataFrame(data=forms3)
     df4 = pd.DataFrame(data=forms4)
     df5 = pd.DataFrame(data=forms5)
@@ -267,6 +270,166 @@ def viewFormData(request):
     except:
         message = {"message": "Error 404, Not found","code":404}
         code = 404
+    return Response(message,code)
+@api_view(['POST'])
+def printStatus(request):
+    message = {}
+    code = 404
+    # try:
+    print(request.data['formId'])
+    form = Form.objects.get(id=request.data['formId'])
+    formSerializer = FormSerializers(form, many=False)
+    formData = formSerializer.data
+    formData.pop("id")
+    formData.pop("advisorId")
+    formData.pop("formId")
+    formData.pop("status")
+    formData.pop("created_at")
+    formData.pop("updated_at")
+    res = next((k, v) for k, v in formData.items() if v)
+    print(res)
+    form1 = AssuranceInvestment.objects.get(id=request.data['formId'])
+    formSerializer1 = AssuranceInvestmentSerializers(form1, many=False)
+    formData1 = formSerializer1.data
+    formData1.pop("id")
+    formData1.pop("advisorId")
+    formData1.pop("formId")
+    formData1.pop("status")
+    formData1.pop("created_at")
+    formData1.pop("updated_at")
+    res1 = next((k, v) for k, v in formData1.items() if v)
+    if(res1):
+        print(res1)
+    form2 = AssuranceRisk.objects.get(id=request.data['formId'])
+    formSerializer2 = AssuranceRiskSerializers(form2, many=False)
+    formData2 = formSerializer2.data
+    formData2.pop("id")
+    formData2.pop("advisorId")
+    formData2.pop("formId")
+    formData2.pop("status")
+    formData2.pop("created_at")
+    formData2.pop("updated_at")
+    res2 = next(((k, v) for k, v in formData2.items() if v),None)
+    print(res2)
+    form3 = EmployeeBenefits.objects.get(id=request.data['formId'])
+    formSerializer3 = EmployeeBenefitsSerializers(form3, many=False)
+    formData3 = formSerializer3.data
+    formData3.pop("id")
+    formData3.pop("advisorId")
+    formData3.pop("formId")
+    formData3.pop("status")
+    formData3.pop("created_at")
+    formData3.pop("updated_at")
+    res3 = next(((k, v) for k, v in formData3.items() if v),None)
+    print(res3)
+    form4 = Fiduciary.objects.get(id=request.data['formId'])
+    formSerializer4 = FiduciarySerializers(form4, many=False)
+    formData4 = formSerializer4.data
+    formData4.pop("id")
+    formData4.pop("advisorId")
+    formData4.pop("formId")
+    formData4.pop("status")
+    formData4.pop("created_at")
+    formData4.pop("updated_at")
+    res4 = next(((k, v) for k, v in formData4.items() if v),None)
+    print(res4)
+    form5 = GapCover.objects.get(id=request.data['formId'])
+    formSerializer5 = GapCoverSerializers(form5, many=False)
+    formData5 = formSerializer5.data
+    formData5.pop("id")
+    formData5.pop("advisorId")
+    formData5.pop("formId")
+    formData5.pop("status")
+    formData5.pop("created_at")
+    formData5.pop("updated_at")
+    res5 = next(((k, v) for k, v in formData5.items() if v),None)
+    print(res5)
+    form6 = InvestmentPlanning.objects.get(id=request.data['formId'])
+    formSerializer6 = InvestmentPlanningSerializers(form6, many=False)
+    formData6 = formSerializer6.data
+    formData6.pop("id")
+    formData6.pop("advisorId")
+    formData6.pop("formId")
+    formData6.pop("status")
+    formData6.pop("created_at")
+    formData6.pop("updated_at")
+    res6 = next(((k, v) for k, v in formData6.items() if v),None)
+    print(res6)
+    form7 = RiskPlanning.objects.get(id=request.data['formId'])
+    formSerializer7 = RiskPlanningSerializers(form7, many=False)
+    formData7 = formSerializer7.data
+    formData7.pop("id")
+    formData7.pop("advisorId")
+    formData7.pop("formId")
+    formData7.pop("status")
+    formData7.pop("created_at")
+    formData7.pop("updated_at")
+    res7 = next(((k, v) for k, v in formData7.items() if v),None)
+    print(res7)
+    form8 = ShortTermInsuranceCommerical.objects.get(id=request.data['formId'])
+    formSerializer8 = ShortTermInsuranceCommericalSerializers(form8, many=False)
+    formData8 = formSerializer8.data
+    formData8.pop("id")
+    formData8.pop("advisorId")
+    formData8.pop("status")
+    formData8.pop("formId")
+    formData8.pop("created_at")
+    formData8.pop("updated_at")
+    res8 = next(((k, v) for k, v in formData8.items() if v),None)
+    print(res8)
+    form9 = ShortTermInsurancePersonal.objects.get(id=request.data['formId'])
+    formSerializer9 = ShortTermInsurancePersonalSerializers(form9, many=False)
+    formData9 = formSerializer9.data
+    formData9.pop("id")
+    formData9.pop("advisorId")
+    formData9.pop("formId")
+    formData9.pop("status")
+    formData9.pop("created_at")
+    formData9.pop("updated_at")
+    res9 = next(((k, v) for k, v in formData9.items() if v),None)
+    print(res9)
+    if res != None:
+        RecordOfAdvice1 = False
+    else:
+        RecordOfAdvice1 = False
+    if res1 != None:
+        AssuranceInvestment1 = True
+    else:
+        AssuranceInvestment1 = False
+    if res2 != None:
+        AssuranceRisk1 = True
+    else:
+        AssuranceRisk1 = False
+    if res3 != None:
+        EmployeeBenefits1 = True
+    else:
+        EmployeeBenefits1 = False
+    if res4 != None:
+        Fiduciary1 = True
+    else:
+        Fiduciary1 = False
+    if res5 != None:
+        GapCover1 = False
+    else:
+        GapCover1 = False
+    if res6 != None:
+        InvestmentPlanning1 = True
+    else:
+        InvestmentPlanning1 = False
+    if res7 != None:
+        RiskPlanning1 = True
+    else:
+        RiskPlanning1 = False
+    if res8 != None:
+        ShortTermInsuranceCommerical1 = True
+    else:
+        ShortTermInsuranceCommerical1 = False
+    if res9 != None:
+        ShortTermInsurancePersonal1 = True
+    else:
+        ShortTermInsurancePersonal1 = False
+    message = {"message": "Found","code":200,"componentStatus": {"RecordOfAdvice":RecordOfAdvice1,"AssuranceInvestment":AssuranceInvestment1,"AssuranceRisk":AssuranceRisk1,"EmployeeBenefits":EmployeeBenefits1,"Fiduciary":Fiduciary1,"GapCover":GapCover1,"InvestmentPlanning":InvestmentPlanning1,"RiskPlanning":RiskPlanning1,"ShortTermInsuranceCommerical":ShortTermInsuranceCommerical1,"ShortTermInsurancePersonal":ShortTermInsurancePersonal1}}
+    code = 200
     return Response(message,code)
 
 @api_view(['POST'])

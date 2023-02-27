@@ -301,10 +301,10 @@ const CompleteForm = () => {
                                             <button className='btn btn-primary col-12'>Edit</button>
                                         </form>
                                     </div>                        
-                                    <div className='col-6'>
+                                    {/* <div className='col-6'>
                                         <NavLink to={{pathname:"/printform"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-12'>Print</NavLink>
                                         <NavLink to={{pathname:"/printformclient"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-12'>Print For Client</NavLink>
-                                    </div> 
+                                    </div>  */}
                                 </div>        
                             </div>                   
                         </> : 
