@@ -343,7 +343,8 @@ const CreateForm = ({user}) => {
 
     const [FormData, setFormData] = useState({
     
-        advisorId : user['id'],            
+        advisorId : user['id'],     
+        advisorName:user['is_superuser'] ,       
         RF_Overall_Risk : "",
         RF_BU_Risk : "2",
         RF_Date : CurrentData,
@@ -399,7 +400,8 @@ const CreateForm = ({user}) => {
         RF_Control2 : "",
         RF_Control3 : "",
         RF_Another_Control1 : "0",
-        RF_Another_Control2 : "0",    
+        RF_Another_Control2 : "0",   
+
 
 
 
@@ -724,17 +726,28 @@ const CreateForm = ({user}) => {
         </div>
 
             
-            <div className="col-1">
-                <label className="col-form-label"><b>Score</b></label>
-            </div>
+            
+               
+            {(() => {
+                if(FormData['advisorName']==="True")
+                {
+                    return (<>
+                    
+                    <div className="col-1">       
+                        <label className="col-form-label"><b>Score</b></label>
+                    </div>
+                    <div className="col-1">
+                        <label className="col-form-label"><b>Weight</b></label>
+                    </div>
 
-            <div className="col-1">
-                <label className="col-form-label"><b>Weight</b></label>
-            </div>
-
-            <div className="col-2">
-                <label className="col-form-label"><b>Risk Factor</b></label>
-            </div>
+                    <div className="col-2">
+                        <label className="col-form-label"><b>Risk Factor</b></label>
+                    </div>
+                        </>)
+                }    
+            })()}
+            
+            
 
         </div>
     </div>
@@ -746,10 +759,17 @@ const CreateForm = ({user}) => {
             <div className="col-2">
                 <label className="col-form-label"><b>A. Client Risk</b></label>
             </div>
-
-            <div className="col-2">
-                <label className="col-form-label"></label>
-            </div>
+            {(() => {
+                if(FormData['advisorName']==="True")
+                {
+                    return (<>
+                        <div className="col-2">
+                            <label className="col-form-label"></label>
+                        </div>
+                        </>)
+                }    
+            })()}
+            
 
             {/* <div className="col-2">
                 <label className="col-form-label">Adjust Risk on GCO Approval</label>
@@ -773,7 +793,11 @@ const CreateForm = ({user}) => {
             </div>
             
             <div className="col-2">
-            {(() => { 
+            {(() => {
+                if(FormData['advisorName']==="True")
+                {
+                    return (<>
+                         {(() => { 
                             var val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11
                             
                             
@@ -1175,6 +1199,10 @@ const CreateForm = ({user}) => {
                             
                         
             })()}
+                        </>)
+                }    
+            })()}
+           
 
             </div>
 
@@ -1242,33 +1270,45 @@ const CreateForm = ({user}) => {
                     </div>
                     
                     <div className="col-1">
-                        {(() => { 
-                            
-                        if(FormData['RF_Occupation']==="1" || FormData['RF_Occupation']==="2" || FormData['RF_Occupation']==="3" || FormData['RF_Occupation']==="5")
+                    {(() => {
+                        if(FormData['advisorName']==="True")
                         {
-                            val1=1;
-                            
                             return (<>
+                                     {(() => { 
+                            
+                            if(FormData['RF_Occupation']==="1" || FormData['RF_Occupation']==="2" || FormData['RF_Occupation']==="3" || FormData['RF_Occupation']==="5")
+                            {
+                                val1=1;
+                                
+                                return (<>
+                                        
+                                    <label className="col-form-label">1</label>
                                     
-                                <label className="col-form-label">1</label>
-                                
-                            </>);
-                        }
-
-                        else if(FormData['RF_Occupation']==="4" || FormData['RF_Occupation']==="6")
-                        {
-                            return (<>
-                                
-                                <label className="col-form-label">3</label>
-                                
-                            </>);
-                        }
-
-                        })()}
+                                </>);
+                            }
+    
+                            else if(FormData['RF_Occupation']==="4" || FormData['RF_Occupation']==="6")
+                            {
+                                return (<>
+                                    
+                                    <label className="col-form-label">3</label>
+                                    
+                                </>);
+                            }
+    
+                            })()}
+                                </>)
+                        }    
+                    })()}
+                       
                     </div>
 
                     <div className="col-1">
-                    {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                    {(() => { 
                         
                         if(FormData['RF_Occupation']==="1" || FormData['RF_Occupation']==="2" || FormData['RF_Occupation']==="3" || FormData['RF_Occupation']==="5" || FormData['RF_Occupation']==="4" || FormData['RF_Occupation']==="6")
                         {
@@ -1281,10 +1321,18 @@ const CreateForm = ({user}) => {
 
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                    
                     </div>
 
                     <div className="col-2">
-                    {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                 {(() => { 
                         
                         if(FormData['RF_Occupation']==="1" || FormData['RF_Occupation']==="2" || FormData['RF_Occupation']==="3" || FormData['RF_Occupation']==="5")
                         {
@@ -1305,6 +1353,10 @@ const CreateForm = ({user}) => {
                         }
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                   
                     </div>
 
                     <br/>
@@ -1582,7 +1634,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                    {(() => { 
                         
                         if(FormData['RF_CountryOfBirth']==="1" || FormData['RF_CountryOfBirth']==="2" || FormData['RF_CountryOfBirth']==="3" || FormData['RF_CountryOfBirth']==="4" || FormData['RF_CountryOfBirth']==="6" || FormData['RF_CountryOfBirth']==="8" || FormData['RF_CountryOfBirth']==="10" || FormData['RF_CountryOfBirth']==="13" || FormData['RF_CountryOfBirth']==="16" || FormData['RF_CountryOfBirth']==="17" || FormData['RF_CountryOfBirth']==="19" || FormData['RF_CountryOfBirth']==="20" || FormData['RF_CountryOfBirth']==="24" || FormData['RF_CountryOfBirth']==="27"
                             || FormData['RF_CountryOfBirth']==="28" || FormData['RF_CountryOfBirth']==="29" || FormData['RF_CountryOfBirth']==="31" || FormData['RF_CountryOfBirth']==="32" || FormData['RF_CountryOfBirth']==="33" || FormData['RF_CountryOfBirth']==="36" || FormData['RF_CountryOfBirth']==="37" || FormData['RF_CountryOfBirth']==="39" || FormData['RF_CountryOfBirth']==="41" || FormData['RF_CountryOfBirth']==="42" || FormData['RF_CountryOfBirth']==="43" || FormData['RF_CountryOfBirth']==="46" || FormData['RF_CountryOfBirth']==="47" || FormData['RF_CountryOfBirth']==="48" || FormData['RF_CountryOfBirth']==="49" || FormData['RF_CountryOfBirth']==="50" || FormData['RF_CountryOfBirth']==="51" || FormData['RF_CountryOfBirth']==="52" || FormData['RF_CountryOfBirth']==="53"
@@ -1645,18 +1701,30 @@ const CreateForm = ({user}) => {
                         }
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
                         
-                                    
-                                <label className="col-form-label">3</label>
-                                
-                            
-                    </div>
+                        {(() => {
+                            if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                     <label className="col-form-label">3</label>
+                                    </>)
+                            }    
+                        })()}      
+                        </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                 {(() => { 
                         
                         if(
                                 FormData['RF_CountryOfBirth']==="1" || FormData['RF_CountryOfBirth']==="2" || FormData['RF_CountryOfBirth']==="3" || FormData['RF_CountryOfBirth']==="4" || FormData['RF_CountryOfBirth']==="6" || FormData['RF_CountryOfBirth']==="8" || FormData['RF_CountryOfBirth']==="10" || FormData['RF_CountryOfBirth']==="13" || FormData['RF_CountryOfBirth']==="16" || FormData['RF_CountryOfBirth']==="17" || FormData['RF_CountryOfBirth']==="19" || FormData['RF_CountryOfBirth']==="20" || FormData['RF_CountryOfBirth']==="24"
@@ -1722,6 +1790,10 @@ const CreateForm = ({user}) => {
 
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                       
                     </div>
 
                     <br/>
@@ -1997,7 +2069,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                    {(() => { 
                         
                         if(parseInt((FormData['RF_CountryOfResidence']))===1 || parseInt((FormData['RF_CountryOfResidence']))===2 || parseInt((FormData['RF_CountryOfResidence']))===3 || parseInt((FormData['RF_CountryOfResidence']))===4 || parseInt((FormData['RF_CountryOfResidence']))===6 || parseInt((FormData['RF_CountryOfResidence']))===8 || parseInt((FormData['RF_CountryOfResidence']))===10 || parseInt((FormData['RF_CountryOfResidence']))===13 || parseInt((FormData['RF_CountryOfResidence']))===16 || parseInt((FormData['RF_CountryOfResidence']))===17 || parseInt((FormData['RF_CountryOfResidence']))===19 || parseInt((FormData['RF_CountryOfResidence']))===20 || parseInt((FormData['RF_CountryOfResidence']))===24 || parseInt((FormData['RF_CountryOfResidence']))===27
                             || parseInt((FormData['RF_CountryOfResidence']))===28 || parseInt((FormData['RF_CountryOfResidence']))===29 || parseInt((FormData['RF_CountryOfResidence']))===31 || parseInt((FormData['RF_CountryOfResidence']))===32 || parseInt((FormData['RF_CountryOfResidence']))===33 || parseInt((FormData['RF_CountryOfResidence']))===36 || parseInt((FormData['RF_CountryOfResidence']))===37 || parseInt((FormData['RF_CountryOfResidence']))===39 || parseInt((FormData['RF_CountryOfResidence']))===41 || parseInt((FormData['RF_CountryOfResidence']))===42 || parseInt((FormData['RF_CountryOfResidence']))===43 || parseInt((FormData['RF_CountryOfResidence']))===46 || parseInt((FormData['RF_CountryOfResidence']))===47 || parseInt((FormData['RF_CountryOfResidence']))===48 || parseInt((FormData['RF_CountryOfResidence']))===49 || parseInt((FormData['RF_CountryOfResidence']))===50 || parseInt((FormData['RF_CountryOfResidence']))===51 || parseInt((FormData['RF_CountryOfResidence']))===52 || parseInt((FormData['RF_CountryOfResidence']))===53
@@ -2061,18 +2137,30 @@ const CreateForm = ({user}) => {
                         }
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
                         
-                                    
-                                <label className="col-form-label">3</label>
-                                
-                            
-                    </div>
+                        {(() => {
+                            if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                     <label className="col-form-label">3</label>
+                                    </>)
+                            }    
+                        })()}      
+                        </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                {(() => { 
                         
                         if(parseInt((FormData['RF_CountryOfResidence']))===1 || parseInt((FormData['RF_CountryOfResidence']))===2 || parseInt((FormData['RF_CountryOfResidence']))===3 || parseInt((FormData['RF_CountryOfResidence']))===4 || parseInt((FormData['RF_CountryOfResidence']))===6 || parseInt((FormData['RF_CountryOfResidence']))===8 || parseInt((FormData['RF_CountryOfResidence']))===10 || parseInt((FormData['RF_CountryOfResidence']))===13 || parseInt((FormData['RF_CountryOfResidence']))===16 || parseInt((FormData['RF_CountryOfResidence']))===17 || parseInt((FormData['RF_CountryOfResidence']))===19 || parseInt((FormData['RF_CountryOfResidence']))===20 || parseInt((FormData['RF_CountryOfResidence']))===24
                             || parseInt((FormData['RF_CountryOfResidence']))===27 || parseInt((FormData['RF_CountryOfResidence']))===28 || parseInt((FormData['RF_CountryOfResidence']))===29 || parseInt((FormData['RF_CountryOfResidence']))===30 || parseInt((FormData['RF_CountryOfResidence']))===31 || parseInt((FormData['RF_CountryOfResidence']))===32 || parseInt((FormData['RF_CountryOfResidence']))===33 || parseInt((FormData['RF_CountryOfResidence']))===36 || parseInt((FormData['RF_CountryOfResidence']))===37 || parseInt((FormData['RF_CountryOfResidence']))===39 || parseInt((FormData['RF_CountryOfResidence']))===41 || parseInt((FormData['RF_CountryOfResidence']))===42 || parseInt((FormData['RF_CountryOfResidence']))===43
@@ -2138,6 +2226,10 @@ const CreateForm = ({user}) => {
 
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                        
                     </div>
 
 
@@ -2414,7 +2506,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                {(() => { 
                         
                         if(parseInt((FormData['RF_Nationality']))===1 || parseInt((FormData['RF_Nationality']))===2 || parseInt((FormData['RF_Nationality']))===3 || parseInt((FormData['RF_Nationality']))===4 || parseInt((FormData['RF_Nationality']))===6 || parseInt((FormData['RF_Nationality']))===8 || parseInt((FormData['RF_Nationality']))===10 || parseInt((FormData['RF_Nationality']))===13 || parseInt((FormData['RF_Nationality']))===16 || parseInt((FormData['RF_Nationality']))===17 || parseInt((FormData['RF_Nationality']))===19 || parseInt((FormData['RF_Nationality']))===20 || parseInt((FormData['RF_Nationality']))===24 || parseInt((FormData['RF_Nationality']))===27
                             || parseInt((FormData['RF_Nationality']))===28 || parseInt((FormData['RF_Nationality']))===29 || parseInt((FormData['RF_Nationality']))===31 || parseInt((FormData['RF_Nationality']))===32 || parseInt((FormData['RF_Nationality']))===33 || parseInt((FormData['RF_Nationality']))===36 || parseInt((FormData['RF_Nationality']))===37 || parseInt((FormData['RF_Nationality']))===39 || parseInt((FormData['RF_Nationality']))===41 || parseInt((FormData['RF_Nationality']))===42 || parseInt((FormData['RF_Nationality']))===43 || parseInt((FormData['RF_Nationality']))===46 || parseInt((FormData['RF_Nationality']))===47 || parseInt((FormData['RF_Nationality']))===48 || parseInt((FormData['RF_Nationality']))===49 || parseInt((FormData['RF_Nationality']))===50 || parseInt((FormData['RF_Nationality']))===51 || parseInt((FormData['RF_Nationality']))===52 || parseInt((FormData['RF_Nationality']))===53
@@ -2478,18 +2574,30 @@ const CreateForm = ({user}) => {
                         }
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
                         
-                                    
-                                <label className="col-form-label">3</label>
-                                
-                            
-                    </div>
+                        {(() => {
+                            if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                     <label className="col-form-label">3</label>
+                                    </>)
+                            }    
+                        })()}      
+                        </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                    {(() => { 
                         
                         if(parseInt((FormData['RF_Nationality']))===1 || parseInt((FormData['RF_Nationality']))===2 || parseInt((FormData['RF_Nationality']))===3 || parseInt((FormData['RF_Nationality']))===4 || parseInt((FormData['RF_Nationality']))===6 || parseInt((FormData['RF_Nationality']))===8 || parseInt((FormData['RF_Nationality']))===10 || parseInt((FormData['RF_Nationality']))===13 || parseInt((FormData['RF_Nationality']))===16 || parseInt((FormData['RF_Nationality']))===17 || parseInt((FormData['RF_Nationality']))===19 || parseInt((FormData['RF_Nationality']))===20 || parseInt((FormData['RF_Nationality']))===24
                             || parseInt((FormData['RF_Nationality']))===27 || parseInt((FormData['RF_Nationality']))===28 || parseInt((FormData['RF_Nationality']))===29 || parseInt((FormData['RF_Nationality']))===30 || parseInt((FormData['RF_Nationality']))===31 || parseInt((FormData['RF_Nationality']))===32 || parseInt((FormData['RF_Nationality']))===33 || parseInt((FormData['RF_Nationality']))===36 || parseInt((FormData['RF_Nationality']))===37 || parseInt((FormData['RF_Nationality']))===39 || parseInt((FormData['RF_Nationality']))===41 || parseInt((FormData['RF_Nationality']))===42 || parseInt((FormData['RF_Nationality']))===43
@@ -2555,6 +2663,10 @@ const CreateForm = ({user}) => {
 
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                        
                     </div>
 
                     <br/>
@@ -2856,7 +2968,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                   {(() => { 
                         
                         if(parseInt((FormData['RF_CountryOfTax']))===1 || parseInt((FormData['RF_CountryOfTax']))===2 || parseInt((FormData['RF_CountryOfTax']))===3 || parseInt((FormData['RF_CountryOfTax']))===4 || parseInt((FormData['RF_CountryOfTax']))===6 || parseInt((FormData['RF_CountryOfTax']))===8 || parseInt((FormData['RF_CountryOfTax']))===10 || parseInt((FormData['RF_CountryOfTax']))===13 || parseInt((FormData['RF_CountryOfTax']))===16 || parseInt((FormData['RF_CountryOfTax']))===17 || parseInt((FormData['RF_CountryOfTax']))===19 || parseInt((FormData['RF_CountryOfTax']))===20 || parseInt((FormData['RF_CountryOfTax']))===24 || parseInt((FormData['RF_CountryOfTax']))===27
                             || parseInt((FormData['RF_CountryOfTax']))===28 || parseInt((FormData['RF_CountryOfTax']))===29 || parseInt((FormData['RF_CountryOfTax']))===31 || parseInt((FormData['RF_CountryOfTax']))===32 || parseInt((FormData['RF_CountryOfTax']))===33 || parseInt((FormData['RF_CountryOfTax']))===36 || parseInt((FormData['RF_CountryOfTax']))===37 || parseInt((FormData['RF_CountryOfTax']))===39 || parseInt((FormData['RF_CountryOfTax']))===41 || parseInt((FormData['RF_CountryOfTax']))===42 || parseInt((FormData['RF_CountryOfTax']))===43 || parseInt((FormData['RF_CountryOfTax']))===46 || parseInt((FormData['RF_CountryOfTax']))===47 || parseInt((FormData['RF_CountryOfTax']))===48 || parseInt((FormData['RF_CountryOfTax']))===49 || parseInt((FormData['RF_CountryOfTax']))===50 || parseInt((FormData['RF_CountryOfTax']))===51 || parseInt((FormData['RF_CountryOfTax']))===52 || parseInt((FormData['RF_CountryOfTax']))===53
@@ -2920,16 +3036,30 @@ const CreateForm = ({user}) => {
                         }
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                     
                     </div>
 
                     <div className="col-1">
-                            
-                        <label className="col-form-label">3</label>
-                                    
+                        
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                 <label className="col-form-label">3</label>
+                                </>)
+                        }    
+                    })()}      
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                 {(() => { 
                         
                         if(parseInt((FormData['RF_CountryOfTax']))===1 || parseInt((FormData['RF_CountryOfTax']))===2 || parseInt((FormData['RF_CountryOfTax']))===3 || parseInt((FormData['RF_CountryOfTax']))===4 || parseInt((FormData['RF_CountryOfTax']))===6 || parseInt((FormData['RF_CountryOfTax']))===8 || parseInt((FormData['RF_CountryOfTax']))===10 || parseInt((FormData['RF_CountryOfTax']))===13 || parseInt((FormData['RF_CountryOfTax']))===16 || parseInt((FormData['RF_CountryOfTax']))===17 || parseInt((FormData['RF_CountryOfTax']))===19 || parseInt((FormData['RF_CountryOfTax']))===20 || parseInt((FormData['RF_CountryOfTax']))===24
                             || parseInt((FormData['RF_CountryOfTax']))===27 || parseInt((FormData['RF_CountryOfTax']))===28 || parseInt((FormData['RF_CountryOfTax']))===29 || parseInt((FormData['RF_CountryOfTax']))===30 || parseInt((FormData['RF_CountryOfTax']))===31 || parseInt((FormData['RF_CountryOfTax']))===32 || parseInt((FormData['RF_CountryOfTax']))===33 || parseInt((FormData['RF_CountryOfTax']))===36 || parseInt((FormData['RF_CountryOfTax']))===37 || parseInt((FormData['RF_CountryOfTax']))===39 || parseInt((FormData['RF_CountryOfTax']))===41 || parseInt((FormData['RF_CountryOfTax']))===42 || parseInt((FormData['RF_CountryOfTax']))===43
@@ -2995,6 +3125,10 @@ const CreateForm = ({user}) => {
 
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                       
                     </div>
 
                     <br/>
@@ -3063,7 +3197,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                     {(() => { 
                         
                         if(parseInt((FormData['RF_Industry']))===1 || parseInt((FormData['RF_Industry']))===3 || parseInt((FormData['RF_Industry']))===15 || parseInt((FormData['RF_Industry']))===19)
                         {
@@ -3113,14 +3251,30 @@ const CreateForm = ({user}) => {
                         }
 
                     })()}
+                                    </>)
+                            }    
+                    })()}
+                       
                     </div>
 
                     <div className="col-1">
-                        <label className="col-form-label">1</label>
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    <label className="col-form-label">1</label>
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                     {(() => { 
                         
                         if(parseInt((FormData['RF_Industry']))===1 || parseInt((FormData['RF_Industry']))===3 || parseInt((FormData['RF_Industry']))===15 || parseInt((FormData['RF_Industry']))===19)
                         {
@@ -3171,6 +3325,10 @@ const CreateForm = ({user}) => {
                         }
 
                     })()}
+                                    </>)
+                            }    
+                    })()}
+                       
                     </div>
 
                     <hr/>
@@ -3229,7 +3387,75 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                                {
+                                    return (<>
+                                            {(() => { 
+                                            
+                                            if(parseInt((FormData['RF_SourceOfFunds']))===1 || parseInt((FormData['RF_SourceOfFunds']))===6 || parseInt((FormData['RF_SourceOfFunds']))===12 || parseInt((FormData['RF_SourceOfFunds']))===13 || parseInt((FormData['RF_SourceOfFunds']))===16)
+                                            {
+                                                return (<>
+                                                        
+                                                    <label className="col-form-label">3</label>
+                                                    
+                                                </>);
+                                            }
+
+                                            else if(parseInt((FormData['RF_SourceOfFunds']))===2 || parseInt((FormData['RF_SourceOfFunds']))===3 || parseInt((FormData['RF_SourceOfFunds']))===8 || parseInt((FormData['RF_SourceOfFunds']))===9 || parseInt((FormData['RF_SourceOfFunds']))===14 || parseInt((FormData['RF_SourceOfFunds']))===17 || parseInt((FormData['RF_SourceOfFunds']))===18 || parseInt((FormData['RF_SourceOfFunds']))===20
+                                                || parseInt((FormData['RF_SourceOfFunds']))===22 || parseInt((FormData['RF_SourceOfFunds']))===23 || parseInt((FormData['RF_SourceOfFunds']))===25 || parseInt((FormData['RF_SourceOfFunds']))===26 || parseInt((FormData['RF_SourceOfFunds']))===29 || parseInt((FormData['RF_SourceOfFunds']))===31 || parseInt((FormData['RF_SourceOfFunds']))===32 || parseInt((FormData['RF_SourceOfFunds']))===33)
+                                            {
+                                                return (<>
+                                                        
+                                                    <label className="col-form-label">1</label>
+                                                    
+                                                </>);
+                                            }
+
+                                            else if(parseInt((FormData['RF_SourceOfFunds']))===4 || parseInt((FormData['RF_SourceOfFunds']))===5 || parseInt((FormData['RF_SourceOfFunds']))===7 || parseInt((FormData['RF_SourceOfFunds']))===10 || parseInt((FormData['RF_SourceOfFunds']))===11 || parseInt((FormData['RF_SourceOfFunds']))===15 || parseInt((FormData['RF_SourceOfFunds']))===19 || parseInt((FormData['RF_SourceOfFunds']))===24
+                                                || parseInt((FormData['RF_SourceOfFunds']))===27 || parseInt((FormData['RF_SourceOfFunds']))===28 || parseInt((FormData['RF_SourceOfFunds']))===30)
+                                            {
+                                                return (<>
+                                                        
+                                                    <label className="col-form-label">2</label>
+                                                    
+                                                </>);
+                                            }
+
+                                            else if(parseInt((FormData['RF_SourceOfFunds']))===21)
+                                            {
+                                                return (<>
+                                                        
+                                                    <label className="col-form-label">0</label>
+                                                    
+                                                </>);
+                                            }
+
+                                            
+                                        })()}
+                                        </>)
+                                    }    
+                    })()}
+                    </div>
+
+                    <div className="col-1">
+                        
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                 <label className="col-form-label">1</label>
+                                </>)
+                        }    
+                    })()}      
+                    </div>
+
+                    <div className="col-1">
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt((FormData['RF_SourceOfFunds']))===1 || parseInt((FormData['RF_SourceOfFunds']))===6 || parseInt((FormData['RF_SourceOfFunds']))===12 || parseInt((FormData['RF_SourceOfFunds']))===13 || parseInt((FormData['RF_SourceOfFunds']))===16)
                         {
@@ -3268,58 +3494,13 @@ const CreateForm = ({user}) => {
                                 
                             </>);
                         }
-
-                        
-                    })()}
-                    </div>
-
-                    <div className="col-1">
-                        <label className="col-form-label">1</label>
-                    </div>
-
-                    <div className="col-1">
-                        {(() => { 
-                        
-                        if(parseInt((FormData['RF_SourceOfFunds']))===1 || parseInt((FormData['RF_SourceOfFunds']))===6 || parseInt((FormData['RF_SourceOfFunds']))===12 || parseInt((FormData['RF_SourceOfFunds']))===13 || parseInt((FormData['RF_SourceOfFunds']))===16)
-                        {
-                            return (<>
-                                    
-                                <label className="col-form-label">3</label>
-                                
-                            </>);
-                        }
-
-                        else if(parseInt((FormData['RF_SourceOfFunds']))===2 || parseInt((FormData['RF_SourceOfFunds']))===3 || parseInt((FormData['RF_SourceOfFunds']))===8 || parseInt((FormData['RF_SourceOfFunds']))===9 || parseInt((FormData['RF_SourceOfFunds']))===14 || parseInt((FormData['RF_SourceOfFunds']))===17 || parseInt((FormData['RF_SourceOfFunds']))===18 || parseInt((FormData['RF_SourceOfFunds']))===20
-                            || parseInt((FormData['RF_SourceOfFunds']))===22 || parseInt((FormData['RF_SourceOfFunds']))===23 || parseInt((FormData['RF_SourceOfFunds']))===25 || parseInt((FormData['RF_SourceOfFunds']))===26 || parseInt((FormData['RF_SourceOfFunds']))===29 || parseInt((FormData['RF_SourceOfFunds']))===31 || parseInt((FormData['RF_SourceOfFunds']))===32 || parseInt((FormData['RF_SourceOfFunds']))===33)
-                        {
-                            return (<>
-                                    
-                                <label className="col-form-label">1</label>
-                                
-                            </>);
-                        }
-
-                        else if(parseInt((FormData['RF_SourceOfFunds']))===4 || parseInt((FormData['RF_SourceOfFunds']))===5 || parseInt((FormData['RF_SourceOfFunds']))===7 || parseInt((FormData['RF_SourceOfFunds']))===10 || parseInt((FormData['RF_SourceOfFunds']))===11 || parseInt((FormData['RF_SourceOfFunds']))===15 || parseInt((FormData['RF_SourceOfFunds']))===19 || parseInt((FormData['RF_SourceOfFunds']))===24
-                            || parseInt((FormData['RF_SourceOfFunds']))===27 || parseInt((FormData['RF_SourceOfFunds']))===28 || parseInt((FormData['RF_SourceOfFunds']))===30)
-                        {
-                            return (<>
-                                    
-                                <label className="col-form-label">2</label>
-                                
-                            </>);
-                        }
-
-                        else if(parseInt((FormData['RF_SourceOfFunds']))===21)
-                        {
-                            return (<>
-                                    
-                                <label className="col-form-label">0</label>
-                                
-                            </>);
-                        }
                         
 
                     })()}
+                                    </>)
+                            }    
+                    })()}
+                       
                     </div>
 
                     <hr/>
@@ -3361,7 +3542,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                         {(() => { 
                         
                         if(parseInt((FormData['RF_RelationshipToClient']))===1 || parseInt((FormData['RF_RelationshipToClient']))===2 || parseInt((FormData['RF_RelationshipToClient']))===4 || parseInt((FormData['RF_RelationshipToClient']))===6 || parseInt((FormData['RF_RelationshipToClient']))===7 || parseInt((FormData['RF_RelationshipToClient']))===9 || parseInt((FormData['RF_RelationshipToClient']))===11
                             || parseInt((FormData['RF_RelationshipToClient']))===13 || parseInt((FormData['RF_RelationshipToClient']))===15)
@@ -3388,14 +3573,30 @@ const CreateForm = ({user}) => {
 
                         
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                       
                     </div>
 
                     <div className="col-1">
-                        <label className="col-form-label">1</label>
+                        
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                 <label className="col-form-label">1</label>
+                                </>)
+                        }    
+                    })()}      
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt((FormData['RF_RelationshipToClient']))===1 || parseInt((FormData['RF_RelationshipToClient']))===2 || parseInt((FormData['RF_RelationshipToClient']))===4 || parseInt((FormData['RF_RelationshipToClient']))===6 || parseInt((FormData['RF_RelationshipToClient']))===7 || parseInt((FormData['RF_RelationshipToClient']))===9 || parseInt((FormData['RF_RelationshipToClient']))===11 
                         || parseInt((FormData['RF_RelationshipToClient']))===13 || parseInt((FormData['RF_RelationshipToClient']))===15)
@@ -3418,6 +3619,10 @@ const CreateForm = ({user}) => {
 
                         
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                                     
@@ -3714,8 +3919,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_CountryOfRegistration']) === "1" || parseInt(FormData['RF_CountryOfRegistration']) === "2" || parseInt(FormData['RF_CountryOfRegistration']) === "3" || parseInt(FormData['RF_CountryOfRegistration']) === "4" || parseInt(FormData['RF_CountryOfRegistration']) === "6" || parseInt(FormData['RF_CountryOfRegistration']) === "8" || parseInt(FormData['RF_CountryOfRegistration']) === "10" || parseInt(FormData['RF_CountryOfRegistration']) === "13" || parseInt(FormData['RF_CountryOfRegistration']) === "16" || parseInt(FormData['RF_CountryOfRegistration']) === "17" || parseInt(FormData['RF_CountryOfRegistration']) === "19" || parseInt(FormData['RF_CountryOfRegistration']) === "20" || parseInt(FormData['RF_CountryOfRegistration']) === "24" || parseInt(FormData['RF_CountryOfRegistration']) === "27"
                             || parseInt(FormData['RF_CountryOfRegistration']) === "28" || parseInt(FormData['RF_CountryOfRegistration']) === "29" || parseInt(FormData['RF_CountryOfRegistration']) === "31" || parseInt(FormData['RF_CountryOfRegistration']) === "32" || parseInt(FormData['RF_CountryOfRegistration']) === "33" || parseInt(FormData['RF_CountryOfRegistration']) === "36" || parseInt(FormData['RF_CountryOfRegistration']) === "37" || parseInt(FormData['RF_CountryOfRegistration']) === "39" || parseInt(FormData['RF_CountryOfRegistration']) === "41" || parseInt(FormData['RF_CountryOfRegistration']) === "42" || parseInt(FormData['RF_CountryOfRegistration']) === "43" || parseInt(FormData['RF_CountryOfRegistration']) === "46" || parseInt(FormData['RF_CountryOfRegistration']) === "47" || parseInt(FormData['RF_CountryOfRegistration']) === "48" || parseInt(FormData['RF_CountryOfRegistration']) === "49" || parseInt(FormData['RF_CountryOfRegistration']) === "50" || parseInt(FormData['RF_CountryOfRegistration']) === "51" || parseInt(FormData['RF_CountryOfRegistration']) === "52" || parseInt(FormData['RF_CountryOfRegistration']) === "53"
@@ -3778,18 +3986,30 @@ const CreateForm = ({user}) => {
                         }
 
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
                         
-                                    
-                                <label className="col-form-label">3</label>
-                                
-                            
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                 <label className="col-form-label">3</label>
+                                </>)
+                        }    
+                    })()}      
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_CountryOfRegistration'])==="1" || parseInt(FormData['RF_CountryOfRegistration'])==="2" || parseInt(FormData['RF_CountryOfRegistration'])==="3" || parseInt(FormData['RF_CountryOfRegistration'])==="4" || parseInt(FormData['RF_CountryOfRegistration'])==="6" || parseInt(FormData['RF_CountryOfRegistration'])==="8" || parseInt(FormData['RF_CountryOfRegistration'])==="10" || parseInt(FormData['RF_CountryOfRegistration'])==="13" || parseInt(FormData['RF_CountryOfRegistration'])==="16" || parseInt(FormData['RF_CountryOfRegistration'])==="17" || parseInt(FormData['RF_CountryOfRegistration'])==="19" || parseInt(FormData['RF_CountryOfRegistration'])==="20" || parseInt(FormData['RF_CountryOfRegistration'])==="24"
                             || parseInt(FormData['RF_CountryOfRegistration'])==="27" || parseInt(FormData['RF_CountryOfRegistration'])==="28" || parseInt(FormData['RF_CountryOfRegistration'])==="29" || parseInt(FormData['RF_CountryOfRegistration'])==="30" || parseInt(FormData['RF_CountryOfRegistration'])==="31" || parseInt(FormData['RF_CountryOfRegistration'])==="32" || parseInt(FormData['RF_CountryOfRegistration'])==="33" || parseInt(FormData['RF_CountryOfRegistration'])==="36" || parseInt(FormData['RF_CountryOfRegistration'])==="37" || parseInt(FormData['RF_CountryOfRegistration'])==="39" || parseInt(FormData['RF_CountryOfRegistration'])==="41" || parseInt(FormData['RF_CountryOfRegistration'])==="42" || parseInt(FormData['RF_CountryOfRegistration'])==="43"
@@ -3853,6 +4073,10 @@ const CreateForm = ({user}) => {
 
 
                         })()}
+                                    </>)
+                            }    
+                })()}
+                        
 
                     </div>
 
@@ -4128,7 +4352,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                    {(() => { 
                         
                         if(FormData['RF_CountryOfOperation']==="1" || FormData['RF_CountryOfOperation']==="2" || FormData['RF_CountryOfOperation']==="3" || FormData['RF_CountryOfOperation']==="4" || FormData['RF_CountryOfOperation']==="6" || FormData['RF_CountryOfOperation']==="8" || FormData['RF_CountryOfOperation']==="10" || FormData['RF_CountryOfOperation']==="13" || FormData['RF_CountryOfOperation']==="16" || FormData['RF_CountryOfOperation']==="17" || FormData['RF_CountryOfOperation']==="19" || FormData['RF_CountryOfOperation']==="20" || FormData['RF_CountryOfOperation']==="24" || FormData['RF_CountryOfOperation']==="27"
                             || FormData['RF_CountryOfOperation']==="28" || FormData['RF_CountryOfOperation']==="29" || FormData['RF_CountryOfOperation']==="31" || FormData['RF_CountryOfOperation']==="32" || FormData['RF_CountryOfOperation']==="33" || FormData['RF_CountryOfOperation']==="36" || FormData['RF_CountryOfOperation']==="37" || FormData['RF_CountryOfOperation']==="39" || FormData['RF_CountryOfOperation']==="41" || FormData['RF_CountryOfOperation']==="42" || FormData['RF_CountryOfOperation']==="43" || FormData['RF_CountryOfOperation']==="46" || FormData['RF_CountryOfOperation']==="47" || FormData['RF_CountryOfOperation']==="48" || FormData['RF_CountryOfOperation']==="49" || FormData['RF_CountryOfOperation']==="50" || FormData['RF_CountryOfOperation']==="51" || FormData['RF_CountryOfOperation']==="52" || FormData['RF_CountryOfOperation']==="53"
@@ -4192,18 +4420,30 @@ const CreateForm = ({user}) => {
                         }
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
                         
-                                    
-                                <label className="col-form-label">3</label>
-                                
-                            
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                 <label className="col-form-label">3</label>
+                                </>)
+                        }    
+                    })()}      
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                 {(() => { 
                         
                         if(FormData['RF_CountryOfOperation']==="1" || FormData['RF_CountryOfOperation']==="2" || FormData['RF_CountryOfOperation']==="3" || FormData['RF_CountryOfOperation']==="4" || FormData['RF_CountryOfOperation']==="6" || FormData['RF_CountryOfOperation']==="8" || FormData['RF_CountryOfOperation']==="10" || FormData['RF_CountryOfOperation']==="13" || FormData['RF_CountryOfOperation']==="16" || FormData['RF_CountryOfOperation']===17 || FormData['RF_CountryOfOperation']==="19" || FormData['RF_CountryOfOperation']==="20" || FormData['RF_CountryOfOperation']===24
                             || FormData['RF_CountryOfOperation']==="27" || FormData['RF_CountryOfOperation']==="28" || FormData['RF_CountryOfOperation']==="29" || FormData['RF_CountryOfOperation']==="30" || FormData['RF_CountryOfOperation']==="31" || FormData['RF_CountryOfOperation']==="32" || FormData['RF_CountryOfOperation']==="33" || FormData['RF_CountryOfOperation']==="36" || FormData['RF_CountryOfOperation']==="37" || FormData['RF_CountryOfOperation']==="39" || FormData['RF_CountryOfOperation']==="41" || FormData['RF_CountryOfOperation']==="42" || FormData['RF_CountryOfOperation']==="43"
@@ -4269,6 +4509,10 @@ const CreateForm = ({user}) => {
 
 
                         })()}
+                                </>)
+                        }    
+                    })()}
+                       
                     </div>
 
                     <br/>
@@ -4319,47 +4563,67 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                    {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
-                    if(parseInt(FormData['RF_Type_Legal_Entity'])===1 || parseInt(FormData['RF_Type_Legal_Entity'])===4 || parseInt(FormData['RF_Type_Legal_Entity'])===6 || parseInt(FormData['RF_Type_Legal_Entity'])===8 || parseInt(FormData['RF_Type_Legal_Entity'])===13 || parseInt(FormData['RF_Type_Legal_Entity'])===15 || parseInt(FormData['RF_Type_Legal_Entity'])===16
-                        || parseInt(FormData['RF_Type_Legal_Entity'])===20 || parseInt(FormData['RF_Type_Legal_Entity'])===21 || parseInt(FormData['RF_Type_Legal_Entity'])===25)
-                    {
-                        return (<>
-                                    
-                            <label className="col-form-label">1</label>
-                                    
-                        </>);
-                    }
-
-                    else if(parseInt(FormData['RF_Type_Legal_Entity'])===2 || parseInt(FormData['RF_Type_Legal_Entity'])===3 || parseInt(FormData['RF_Type_Legal_Entity'])===7 || parseInt(FormData['RF_Type_Legal_Entity'])===9 || parseInt(FormData['RF_Type_Legal_Entity'])===10 || parseInt(FormData['RF_Type_Legal_Entity'])===11 || parseInt(FormData['RF_Type_Legal_Entity'])===12
-                        || parseInt(FormData['RF_Type_Legal_Entity'])===17 || parseInt(FormData['RF_Type_Legal_Entity'])===18 || parseInt(FormData['RF_Type_Legal_Entity'])===22 || parseInt(FormData['RF_Type_Legal_Entity'])===23)
-                    {
-                        return (<>
-                                    
-                            <label className="col-form-label">3</label>
-                                    
-                        </>);
-                    }
-
-                    else if(parseInt(FormData['RF_Type_Legal_Entity'])===5 || parseInt(FormData['RF_Type_Legal_Entity'])===14 || parseInt(FormData['RF_Type_Legal_Entity'])===19 || parseInt(FormData['RF_Type_Legal_Entity'])===24)
-                    {
-                        return (<>
-                                    
-                            <label className="col-form-label">2</label>
-                                    
-                        </>);
-                    }
-
-
+                        if(parseInt(FormData['RF_Type_Legal_Entity'])===1 || parseInt(FormData['RF_Type_Legal_Entity'])===4 || parseInt(FormData['RF_Type_Legal_Entity'])===6 || parseInt(FormData['RF_Type_Legal_Entity'])===8 || parseInt(FormData['RF_Type_Legal_Entity'])===13 || parseInt(FormData['RF_Type_Legal_Entity'])===15 || parseInt(FormData['RF_Type_Legal_Entity'])===16
+                            || parseInt(FormData['RF_Type_Legal_Entity'])===20 || parseInt(FormData['RF_Type_Legal_Entity'])===21 || parseInt(FormData['RF_Type_Legal_Entity'])===25)
+                        {
+                            return (<>
+                                        
+                                <label className="col-form-label">1</label>
+                                        
+                            </>);
+                        }
+    
+                        else if(parseInt(FormData['RF_Type_Legal_Entity'])===2 || parseInt(FormData['RF_Type_Legal_Entity'])===3 || parseInt(FormData['RF_Type_Legal_Entity'])===7 || parseInt(FormData['RF_Type_Legal_Entity'])===9 || parseInt(FormData['RF_Type_Legal_Entity'])===10 || parseInt(FormData['RF_Type_Legal_Entity'])===11 || parseInt(FormData['RF_Type_Legal_Entity'])===12
+                            || parseInt(FormData['RF_Type_Legal_Entity'])===17 || parseInt(FormData['RF_Type_Legal_Entity'])===18 || parseInt(FormData['RF_Type_Legal_Entity'])===22 || parseInt(FormData['RF_Type_Legal_Entity'])===23)
+                        {
+                            return (<>
+                                        
+                                <label className="col-form-label">3</label>
+                                        
+                            </>);
+                        }
+    
+                        else if(parseInt(FormData['RF_Type_Legal_Entity'])===5 || parseInt(FormData['RF_Type_Legal_Entity'])===14 || parseInt(FormData['RF_Type_Legal_Entity'])===19 || parseInt(FormData['RF_Type_Legal_Entity'])===24)
+                        {
+                            return (<>
+                                        
+                                <label className="col-form-label">2</label>
+                                        
+                            </>);
+                        }
+    
+    
+                        })()}
+                                    </>)
+                            }    
                     })()}
+                    
                     </div>
 
                     <div className="col-1">
-                        <label className="col-form-label">1</label>
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    <label className="col-form-label">1</label>
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
-                    {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_Type_Legal_Entity'])===1 || parseInt(FormData['RF_Type_Legal_Entity'])===4 || parseInt(FormData['RF_Type_Legal_Entity'])===6 || parseInt(FormData['RF_Type_Legal_Entity'])===8 || parseInt(FormData['RF_Type_Legal_Entity'])===13 || parseInt(FormData['RF_Type_Legal_Entity'])===15 || parseInt(FormData['RF_Type_Legal_Entity'])===16
                             || parseInt(FormData['RF_Type_Legal_Entity'])===20 || parseInt(FormData['RF_Type_Legal_Entity'])===21 || parseInt(FormData['RF_Type_Legal_Entity'])===25)
@@ -4391,6 +4655,10 @@ const CreateForm = ({user}) => {
                         }
 
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                    
                     </div>
 
                     <br/>
@@ -4965,7 +5233,11 @@ const CreateForm = ({user}) => {
             </div>
 
             <div className="col-1">
-                {(() => { 
+            {(() => {
+                if(FormData['advisorName']==="True")
+                    {
+                        return (<>
+                            {(() => { 
                         
                         if(parseInt(FormData['RF_Product_Name'])===1 || parseInt(FormData['RF_Product_Name'])===2 || parseInt(FormData['RF_Product_Name'])===6 || parseInt(FormData['RF_Product_Name'])===9 || parseInt(FormData['RF_Product_Name'])===12 || parseInt(FormData['RF_Product_Name'])===13 || parseInt(FormData['RF_Product_Name'])===16
                             || parseInt(FormData['RF_Product_Name'])===19 || parseInt(FormData['RF_Product_Name'])===20 || parseInt(FormData['RF_Product_Name'])===24 || parseInt(FormData['RF_Product_Name'])===26 || parseInt(FormData['RF_Product_Name'])===27)
@@ -4997,14 +5269,30 @@ const CreateForm = ({user}) => {
                         }
             
                     })()}
+                            </>)
+                    }    
+            })()}
+                
                 </div>
 
                 <div className="col-1">
-                    <label className="col-form-label">2</label>
+                {(() => {
+                    if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                <label className="col-form-label">2</label>
+                                </>)
+                        }    
+                })()}
+                    
                 </div>
 
                 <div className="col-2">
-                {(() => { 
+                {(() => {
+                    if(FormData['advisorName']==="True")
+                        {
+                            return (<>
+                                  {(() => { 
                         
                         if(parseInt(FormData['RF_Product_Name'])===1 || parseInt(FormData['RF_Product_Name'])===2 || parseInt(FormData['RF_Product_Name'])===6 || parseInt(FormData['RF_Product_Name'])===9 || parseInt(FormData['RF_Product_Name'])===12 || parseInt(FormData['RF_Product_Name'])===13 || parseInt(FormData['RF_Product_Name'])===16
                             || parseInt(FormData['RF_Product_Name'])===19 || parseInt(FormData['RF_Product_Name'])===20 || parseInt(FormData['RF_Product_Name'])===24 || parseInt(FormData['RF_Product_Name'])===26 || parseInt(FormData['RF_Product_Name'])===27)
@@ -5035,7 +5323,11 @@ const CreateForm = ({user}) => {
                             </>);
                         }
             
-                    })()}
+                    })()} 
+                                </>)
+                        }    
+                })()}
+              
                 </div>
 
                 <hr/>
@@ -5278,7 +5570,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_Transaction_Method'])===3 || parseInt(FormData['RF_Transaction_Method'])===6 || parseInt(FormData['RF_Transaction_Method'])===9 || parseInt(FormData['RF_Transaction_Method'])===10 || parseInt(FormData['RF_Transaction_Method'])===12)
                         {
@@ -5308,14 +5604,30 @@ const CreateForm = ({user}) => {
                         }
                                                 
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
-                        <label className="col-form-label">2</label>
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                     <label className="col-form-label">2</label>
+                                    </>)
+                            }    
+                    })()}
+                       
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_Transaction_Method'])===1 || parseInt(FormData['RF_Transaction_Method'])===4 || parseInt(FormData['RF_Transaction_Method'])===5 || parseInt(FormData['RF_Transaction_Method'])===7 || parseInt(FormData['RF_Transaction_Method'])===8)
                         {
@@ -5345,6 +5657,10 @@ const CreateForm = ({user}) => {
                         }
                                                 
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <hr/>
@@ -5383,7 +5699,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(FormData['RF_Transaction_Reason']===1)
                         {
@@ -5404,14 +5724,30 @@ const CreateForm = ({user}) => {
                         } 
                                                 
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
-                        <label className="col-form-label">1</label>
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    <label className="col-form-label">1</label>   
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(FormData['RF_Transaction_Reason']===1)
                         {
@@ -5432,6 +5768,10 @@ const CreateForm = ({user}) => {
                         } 
                                                 
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <hr/>
@@ -5447,12 +5787,24 @@ const CreateForm = ({user}) => {
                         </select>    
                     </div>
                     
-                    <div className="col-1">       
-                        <label className="col-form-label"></label>
+                    <div className="col-1">
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    <label className="col-form-label"></label>
+                                    </>)
+                            }    
+                    })()}       
+                        
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_High_Transaction_Reason'])===1)
                         {
@@ -5473,14 +5825,30 @@ const CreateForm = ({user}) => {
                         } 
                                                 
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
-
-                    <div className="col-1">       
-                        <label className="col-form-label">2</label>
+                        
+                    <div className="col-1">   
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    <label className="col-form-label">2</label>
+                                    </>)
+                            }    
+                    })()}    
+                        
                     </div> 
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_High_Transaction_Reason'])===1)
                         {
@@ -5501,6 +5869,10 @@ const CreateForm = ({user}) => {
                         } 
                                                 
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <hr/>
@@ -5528,7 +5900,11 @@ const CreateForm = ({user}) => {
                     </div> 
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                     {(() => { 
                         
                         if(parseInt(FormData['RF_Transaction_Frequency'])===1 || parseInt(FormData['RF_Transaction_Frequency'])===2 || parseInt(FormData['RF_Transaction_Frequency'])===3)
                         {
@@ -5548,15 +5924,31 @@ const CreateForm = ({user}) => {
                             </>);
                         } 
                                                 
-                        })()}
+                        })()} 
+                                    </>)
+                            }    
+                    })()}
+                       
                     </div> 
 
-                    <div className="col-1">       
-                        <label className="col-form-label">1</label>
+                    <div className="col-1">  
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    <label className="col-form-label">1</label>
+                                    </>)
+                            }    
+                    })()}     
+                        
                     </div> 
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_Transaction_Frequency'])===1 || parseInt(FormData['RF_Transaction_Frequency'])===2 || parseInt(FormData['RF_Transaction_Frequency'])===3)
                         {
@@ -5577,6 +5969,10 @@ const CreateForm = ({user}) => {
                         } 
                                                 
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div> 
 
                     <hr/>
@@ -5601,15 +5997,15 @@ const CreateForm = ({user}) => {
                     </div> 
 
                     <div className="col-1">       
-                        <label className="col-form-label">0</label>
+                        <label className="col-form-label"></label>
                     </div> 
 
                     <div className="col-1">       
-                        <label className="col-form-label">1</label>
+                        <label className="col-form-label"></label>
                     </div> 
 
                     <div className="col-1">       
-                        <label className="col-form-label">0</label>
+                        <label className="col-form-label"></label>
                     </div> 
 
                     <hr/>
@@ -5636,7 +6032,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_Transaction_Geography'])===1)
                         {
@@ -5657,14 +6057,30 @@ const CreateForm = ({user}) => {
                         } 
                                                 
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div> 
 
                     <div className="col-1">
-                        <label className="col-form-label">1</label>
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    <label className="col-form-label">1</label>
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_Transaction_Geography'])===1)
                         {
@@ -5685,11 +6101,18 @@ const CreateForm = ({user}) => {
                         } 
                                                 
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div> 
 
                     <hr/>
-                    
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                     {(() => { 
                         
                         if(parseInt(FormData['RF_Transaction_Geography'])===1)
                         {
@@ -5963,6 +6386,14 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    
+                                    </>)
+                            }    
+                    })()}
                         {(() => { 
                         
                         if(parseInt(FormData['RF_Funds_Jurisdiction'])===1 || parseInt(FormData['RF_Funds_Jurisdiction'])===2 || parseInt(FormData['RF_Funds_Jurisdiction'])===3 || parseInt(FormData['RF_Funds_Jurisdiction'])===4 || parseInt(FormData['RF_Funds_Jurisdiction'])===6 || parseInt(FormData['RF_Funds_Jurisdiction'])===8 || parseInt(FormData['RF_Funds_Jurisdiction'])===10 || parseInt(FormData['RF_Funds_Jurisdiction'])===13 || parseInt(FormData['RF_Funds_Jurisdiction'])===16 || parseInt(FormData['RF_Funds_Jurisdiction'])===17 || parseInt(FormData['RF_Funds_Jurisdiction'])===19 || parseInt(FormData['RF_Funds_Jurisdiction'])===20 || parseInt(FormData['RF_Funds_Jurisdiction'])===24 || parseInt(FormData['RF_Funds_Jurisdiction'])===27
@@ -6035,8 +6466,11 @@ const CreateForm = ({user}) => {
                                 
                             
                     </div>
-
-                    <div className="col-1">
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    <div className="col-1">
                         {(() => { 
                         
                         if(parseInt(FormData['RF_Funds_Jurisdiction'])===1 || parseInt(FormData['RF_Funds_Jurisdiction'])===2 || parseInt(FormData['RF_Funds_Jurisdiction'])===3 || parseInt(FormData['RF_Funds_Jurisdiction'])===4 || parseInt(FormData['RF_Funds_Jurisdiction'])===6 || parseInt(FormData['RF_Funds_Jurisdiction'])===8 || parseInt(FormData['RF_Funds_Jurisdiction'])===10 || parseInt(FormData['RF_Funds_Jurisdiction'])===13 || parseInt(FormData['RF_Funds_Jurisdiction'])===16 || parseInt(FormData['RF_Funds_Jurisdiction'])===17 || parseInt(FormData['RF_Funds_Jurisdiction'])===19 || parseInt(FormData['RF_Funds_Jurisdiction'])===20 || parseInt(FormData['RF_Funds_Jurisdiction'])===24
@@ -6104,6 +6538,11 @@ const CreateForm = ({user}) => {
 
                         })()}
                     </div>
+                                    </>)
+                            }    
+                    })()}
+
+                    
                     <hr/>
                                 
                                 
@@ -6111,6 +6550,10 @@ const CreateForm = ({user}) => {
                         } 
                                             
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                       
                     
                     <div className="col-2">
                         <label className="col-form-label">Delivery channel</label>
@@ -6134,7 +6577,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_Transaction_Geography'])===1)
                         {
@@ -6164,14 +6611,30 @@ const CreateForm = ({user}) => {
                         } 
                                                     
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
-                        <label className="col-form-label">1</label>
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    <label className="col-form-label">1</label>
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_Transaction_Geography'])===1)
                         {
@@ -6201,6 +6664,10 @@ const CreateForm = ({user}) => {
                         } 
                                                     
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <hr/>
@@ -6226,7 +6693,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                     {(() => { 
                         
                         if(parseInt(FormData['RF_Linked_Party_Acting'])===1 || parseInt(FormData['RF_Linked_Party_Acting'])===2)
                         {
@@ -6247,14 +6718,30 @@ const CreateForm = ({user}) => {
                         } 
                                                     
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                       
                     </div>
 
                     <div className="col-1">
-                        <label className="col-form-label">1</label>
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    <label className="col-form-label">1</label>
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                     {(() => { 
                         
                         if(parseInt(FormData['RF_Linked_Party_Acting'])===1 || parseInt(FormData['RF_Linked_Party_Acting'])===2)
                         {
@@ -6275,6 +6762,10 @@ const CreateForm = ({user}) => {
                         } 
                                                     
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                       
                     </div>
 
                     <hr/>
@@ -6300,7 +6791,11 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_Linked_Party_Paying'])===1 )
                         {
@@ -6321,14 +6816,30 @@ const CreateForm = ({user}) => {
                         } 
                                             
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <div className="col-1">
-                        <label className="col-form-label">1</label>
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                     <label className="col-form-label">1</label>
+                                    </>)
+                            }    
+                    })()}
+                       
                     </div>
 
                     <div className="col-1">
-                        {(() => { 
+                    {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_Linked_Party_Paying'])===1 )
                         {
@@ -6349,6 +6860,10 @@ const CreateForm = ({user}) => {
                         } 
                                             
                         })()}
+                                    </>)
+                            }    
+                    })()}
+                        
                     </div>
 
                     <hr/>
@@ -6449,7 +6964,11 @@ const CreateForm = ({user}) => {
                 </div>
 
                 <div className="col-2">
-                {(() => { 
+                {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt(FormData['RF_Client_Match'])===1 || parseInt(FormData['RF_Client_Match'])===4 || parseInt(FormData['RF_Client_Match'])===7)
                         {
@@ -6489,6 +7008,10 @@ const CreateForm = ({user}) => {
                             </>);
                         }
                     })()}
+                                    </>)
+                            }    
+                    })()}
+                
                 </div>
 
             </div>
@@ -6531,7 +7054,11 @@ const CreateForm = ({user}) => {
                 </div>
 
                 <div className="col-1">
-                {(() => { 
+                {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt((FormData['RF_Client_Match']))===1 || parseInt((FormData['RF_Client_Match']))===4 || parseInt((FormData['RF_Client_Match']))===7)
                         {
@@ -6570,10 +7097,18 @@ const CreateForm = ({user}) => {
                             </>);
                         }
                     })()}
+                                    </>)
+                            }    
+                    })()}
+                
                 </div>
 
                 <div className="col-1">
-                {(() => { 
+                {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt((FormData['RF_Client_Match']))===1 || parseInt((FormData['RF_Client_Match']))===2 || parseInt((FormData['RF_Client_Match']))===3 || parseInt((FormData['RF_Client_Match']))===4 || parseInt((FormData['RF_Client_Match']))===5|| parseInt((FormData['RF_Client_Match']))===6 || parseInt((FormData['RF_Client_Match']))===7 || parseInt((FormData['RF_Client_Match']))===8 || parseInt((FormData['RF_Client_Match']))===9 || parseInt((FormData['RF_Client_Match']))===10 || parseInt((FormData['RF_Client_Match']))===11)
                         {
@@ -6584,10 +7119,18 @@ const CreateForm = ({user}) => {
                             </>);
                         }
                     })()}
+                                    </>)
+                            }    
+                    })()}
+                
                 </div>
 
                 <div className="col-2">
-                {(() => { 
+                {(() => {
+                        if(FormData['advisorName']==="True")
+                            {
+                                return (<>
+                                    {(() => { 
                         
                         if(parseInt((FormData['RF_Client_Match']))===1 || parseInt((FormData['RF_Client_Match']))===4 || parseInt((FormData['RF_Client_Match']))===7)
                         {
@@ -6626,6 +7169,10 @@ const CreateForm = ({user}) => {
                             </>);
                         }
                     })()}
+                                    </>)
+                            }    
+                    })()}
+                
                 </div>
 
 
@@ -6926,6 +7473,7 @@ const CreateForm = ({user}) => {
                                 </div>
 
                                 <div className="col-1">
+                                    
                                 {(() => { 
                                         
                                         if(parseInt(FormData['RF_RCA'])===1)
@@ -6941,11 +7489,23 @@ const CreateForm = ({user}) => {
                                 </div>
 
                                 <div className="col-1">
-                                    <label className="col-form-label">1</label>
+                                {(() => {
+                                    if(FormData['advisorName']==="True")
+                                        {
+                                            return (<>
+                                                <label className="col-form-label">1</label>
+                                                </>)
+                                        }    
+                                })()}
+                                    
                                 </div>
 
                                 <div className="col-1">
-                                {(() => { 
+                                {(() => {
+                                    if(FormData['advisorName']==="True")
+                                        {
+                                            return (<>
+                                                {(() => { 
                                         
                                         if(parseInt(FormData['RF_RCA'])===1)
                                         {
@@ -6966,6 +7526,10 @@ const CreateForm = ({user}) => {
                                         }
                                     
                                     })()}
+                                                </>)
+                                        }    
+                                })()}
+                                
                                 </div>
 
                                 <hr/>
@@ -7238,7 +7802,11 @@ const CreateForm = ({user}) => {
                                 </div>
 
                                 <div className="col-1">
-                                    {(() => { 
+                                {(() => {
+                                    if(FormData['advisorName']==="True")
+                                        {
+                                            return (<>
+                                                 {(() => { 
                                     
                                     if(parseInt(FormData['RF_Birth_Country'])===1 || parseInt(FormData['RF_Birth_Country'])===2 || parseInt(FormData['RF_Birth_Country'])===3 || parseInt(FormData['RF_Birth_Country'])===4 || parseInt(FormData['RF_Birth_Country'])===6 || parseInt(FormData['RF_Birth_Country'])===8 || parseInt(FormData['RF_Birth_Country'])===10 || parseInt(FormData['RF_Birth_Country'])===13 || parseInt(FormData['RF_Birth_Country'])===16 || parseInt(FormData['RF_Birth_Country'])===17 || parseInt(FormData['RF_Birth_Country'])===19 || parseInt(FormData['RF_Birth_Country'])===20 || parseInt(FormData['RF_Birth_Country'])===24 || parseInt(FormData['RF_Birth_Country'])===27
                                         || parseInt(FormData['RF_Birth_Country'])===28 || parseInt(FormData['RF_Birth_Country'])===29 || parseInt(FormData['RF_Birth_Country'])===31 || parseInt(FormData['RF_Birth_Country'])===32 || parseInt(FormData['RF_Birth_Country'])===33 || parseInt(FormData['RF_Birth_Country'])===36 || parseInt(FormData['RF_Birth_Country'])===37 || parseInt(FormData['RF_Birth_Country'])===39 || parseInt(FormData['RF_Birth_Country'])===41 || parseInt(FormData['RF_Birth_Country'])===42 || parseInt(FormData['RF_Birth_Country'])===43 || parseInt(FormData['RF_Birth_Country'])===46 || parseInt(FormData['RF_Birth_Country'])===47 || parseInt(FormData['RF_Birth_Country'])===48 || parseInt(FormData['RF_Birth_Country'])===49 || parseInt(FormData['RF_Birth_Country'])===50 || parseInt(FormData['RF_Birth_Country'])===51 || parseInt(FormData['RF_Birth_Country'])===52 || parseInt(FormData['RF_Birth_Country'])===53
@@ -7302,17 +7870,32 @@ const CreateForm = ({user}) => {
                                     }
             
                                     })()}
+                                                </>)
+                                        }    
+                                })()}
+                                   
                                 </div>
 
                                 <div className="col-1">
-                                                                
-                                    <label className="col-form-label">3</label>
+                                {(() => {
+                                    if(FormData['advisorName']==="True")
+                                        {
+                                            return (<>
+                                                <label className="col-form-label">3</label>
+                                                </>)
+                                        }    
+                                })()}                          
+                                    
                                             
                                     
                                 </div>
 
                                 <div className="col-1">
-                                    {(() => { 
+                                {(() => {
+                                    if(FormData['advisorName']==="True")
+                                        {
+                                            return (<>
+                                              {(() => { 
                                     
                                     if(parseInt(FormData['RF_Birth_Country'])===1 || parseInt(FormData['RF_Birth_Country'])===2 || parseInt(FormData['RF_Birth_Country'])===3 || parseInt(FormData['RF_Birth_Country'])===4 || parseInt(FormData['RF_Birth_Country'])===6 || parseInt(FormData['RF_Birth_Country'])===8 || parseInt(FormData['RF_Birth_Country'])===10 || parseInt(FormData['RF_Birth_Country'])===13 || parseInt(FormData['RF_Birth_Country'])===16 || parseInt(FormData['RF_Birth_Country'])===17 || parseInt(FormData['RF_Birth_Country'])===19 || parseInt(FormData['RF_Birth_Country'])===20 || parseInt(FormData['RF_Birth_Country'])===24
                                         || parseInt(FormData['RF_Birth_Country'])===27 || parseInt(FormData['RF_Birth_Country'])===28 || parseInt(FormData['RF_Birth_Country'])===29 || parseInt(FormData['RF_Birth_Country'])===30 || parseInt(FormData['RF_Birth_Country'])===31 || parseInt(FormData['RF_Birth_Country'])===32 || parseInt(FormData['RF_Birth_Country'])===33 || parseInt(FormData['RF_Birth_Country'])===36 || parseInt(FormData['RF_Birth_Country'])===37 || parseInt(FormData['RF_Birth_Country'])===39 || parseInt(FormData['RF_Birth_Country'])===41 || parseInt(FormData['RF_Birth_Country'])===42 || parseInt(FormData['RF_Birth_Country'])===43
@@ -7377,7 +7960,11 @@ const CreateForm = ({user}) => {
                                     }
             
             
-                                    })()}
+                                    })()}  
+                                                </>)
+                                        }    
+                                })()}
+                                    
                                 </div>
 
                                 <hr/>
@@ -7650,7 +8237,11 @@ const CreateForm = ({user}) => {
                                 </div>
 
                                 <div className="col-1">
-                                    {(() => { 
+                                {(() => {
+                                    if(FormData['advisorName']==="True")
+                                        {
+                                            return (<>
+                                                {(() => { 
                                     
                                     if(parseInt(FormData['RF_Residence_Country'])===1 || parseInt(FormData['RF_Residence_Country'])===2 || parseInt(FormData['RF_Residence_Country'])===3 || parseInt(FormData['RF_Residence_Country'])===4 || parseInt(FormData['RF_Residence_Country'])===6 || parseInt(FormData['RF_Residence_Country'])===8 || parseInt(FormData['RF_Residence_Country'])===10 || parseInt(FormData['RF_Residence_Country'])===13 || parseInt(FormData['RF_Residence_Country'])===16 || parseInt(FormData['RF_Residence_Country'])===17 || parseInt(FormData['RF_Residence_Country'])===19 || parseInt(FormData['RF_Residence_Country'])===20 || parseInt(FormData['RF_Residence_Country'])===24 || parseInt(FormData['RF_Residence_Country'])===27
                                         || parseInt(FormData['RF_Residence_Country'])===28 || parseInt(FormData['RF_Residence_Country'])===29 || parseInt(FormData['RF_Residence_Country'])===31 || parseInt(FormData['RF_Residence_Country'])===32 || parseInt(FormData['RF_Residence_Country'])===33 || parseInt(FormData['RF_Residence_Country'])===36 || parseInt(FormData['RF_Residence_Country'])===37 || parseInt(FormData['RF_Residence_Country'])===39 || parseInt(FormData['RF_Residence_Country'])===41 || parseInt(FormData['RF_Residence_Country'])===42 || parseInt(FormData['RF_Residence_Country'])===43 || parseInt(FormData['RF_Residence_Country'])===46 || parseInt(FormData['RF_Residence_Country'])===47 || parseInt(FormData['RF_Residence_Country'])===48 || parseInt(FormData['RF_Residence_Country'])===49 || parseInt(FormData['RF_Residence_Country'])===50 || parseInt(FormData['RF_Residence_Country'])===51 || parseInt(FormData['RF_Residence_Country'])===52 || parseInt(FormData['RF_Residence_Country'])===53
@@ -7714,16 +8305,31 @@ const CreateForm = ({user}) => {
                                     }
             
                                     })()}
+                                                </>)
+                                        }    
+                                })()}
+                                    
                                 </div>
 
                                 <div className="col-1">
-                                                                
-                                    <label className="col-form-label">3</label>
+                                {(() => {
+                                    if(FormData['advisorName']==="True")
+                                        {
+                                            return (<>
+                                                <label className="col-form-label">3</label>
+                                                </>)
+                                        }    
+                                })()}                          
+                                    
                                                     
                                 </div>
 
                                 <div className="col-1">
-                                    {(() => { 
+                                {(() => {
+                                    if(FormData['advisorName']==="True")
+                                        {
+                                            return (<>
+                                                {(() => { 
                                     
                                     if(parseInt(FormData['RF_Residence_Country'])===1 || parseInt(FormData['RF_Residence_Country'])===2 || parseInt(FormData['RF_Residence_Country'])===3 || parseInt(FormData['RF_Residence_Country'])===4 || parseInt(FormData['RF_Residence_Country'])===6 || parseInt(FormData['RF_Residence_Country'])===8 || parseInt(FormData['RF_Residence_Country'])===10 || parseInt(FormData['RF_Residence_Country'])===13 || parseInt(FormData['RF_Residence_Country'])===16 || parseInt(FormData['RF_Residence_Country'])===17 || parseInt(FormData['RF_Residence_Country'])===19 || parseInt(FormData['RF_Residence_Country'])===20 || parseInt(FormData['RF_Residence_Country'])===24
                                         || parseInt(FormData['RF_Residence_Country'])===27 || parseInt(FormData['RF_Residence_Country'])===28 || parseInt(FormData['RF_Residence_Country'])===29 || parseInt(FormData['RF_Residence_Country'])===30 || parseInt(FormData['RF_Residence_Country'])===31 || parseInt(FormData['RF_Residence_Country'])===32 || parseInt(FormData['RF_Residence_Country'])===33 || parseInt(FormData['RF_Residence_Country'])===36 || parseInt(FormData['RF_Residence_Country'])===37 || parseInt(FormData['RF_Residence_Country'])===39 || parseInt(FormData['RF_Residence_Country'])===41 || parseInt(FormData['RF_Residence_Country'])===42 || parseInt(FormData['RF_Residence_Country'])===43
@@ -7791,6 +8397,10 @@ const CreateForm = ({user}) => {
             
             
                                     })()}
+                                                </>)
+                                        }    
+                                })()}
+                                    
                                 </div>
 
                                 <hr/>
@@ -8063,7 +8673,11 @@ const CreateForm = ({user}) => {
                                 </div>
 
                                 <div className="col-1">
-                                {(() => { 
+                                {(() => {
+                                    if(FormData['advisorName']==="True")
+                                        {
+                                            return (<>
+                                                {(() => { 
                                 
                                 if(parseInt(FormData['RF_Nationality1'])===1 || parseInt(FormData['RF_Nationality1'])===2 || parseInt(FormData['RF_Nationality1'])===3 || parseInt(FormData['RF_Nationality1'])===4 || parseInt(FormData['RF_Nationality1'])===6 || parseInt(FormData['RF_Nationality1'])===8 || parseInt(FormData['RF_Nationality1'])===10 || parseInt(FormData['RF_Nationality1'])===13 || parseInt(FormData['RF_Nationality1'])===16 || parseInt(FormData['RF_Nationality1'])===17 || parseInt(FormData['RF_Nationality1'])===19 || parseInt(FormData['RF_Nationality1'])===20 || parseInt(FormData['RF_Nationality1'])===24 || parseInt(FormData['RF_Nationality1'])===27
                                     || parseInt(FormData['RF_Nationality1'])===28 || parseInt(FormData['RF_Nationality1'])===29 || parseInt(FormData['RF_Nationality1'])===31 || parseInt(FormData['RF_Nationality1'])===32 || parseInt(FormData['RF_Nationality1'])===33 || parseInt(FormData['RF_Nationality1'])===36 || parseInt(FormData['RF_Nationality1'])===37 || parseInt(FormData['RF_Nationality1'])===39 || parseInt(FormData['RF_Nationality1'])===41 || parseInt(FormData['RF_Nationality1'])===42 || parseInt(FormData['RF_Nationality1'])===43 || parseInt(FormData['RF_Nationality1'])===46 || parseInt(FormData['RF_Nationality1'])===47 || parseInt(FormData['RF_Nationality1'])===48 || parseInt(FormData['RF_Nationality1'])===49 || parseInt(FormData['RF_Nationality1'])===50 || parseInt(FormData['RF_Nationality1'])===51 || parseInt(FormData['RF_Nationality1'])===52 || parseInt(FormData['RF_Nationality1'])===53
@@ -8127,16 +8741,31 @@ const CreateForm = ({user}) => {
                                 }
         
                                 })()}
+                                                </>)
+                                        }    
+                                })()}
+                                
                             </div>
 
                             <div className="col-1">
-                                                            
-                                <label className="col-form-label">3</label>
+                            {(() => {
+                                if(FormData['advisorName']==="True")
+                                    {
+                                        return (<>
+                                            <label className="col-form-label">3</label>
+                                            </>)
+                                    }    
+                            })()}                      
+                                
                                                 
                             </div>
 
                             <div className="col-1">
-                                {(() => { 
+                            {(() => {
+                                if(FormData['advisorName']==="True")
+                                    {
+                                        return (<>
+                                            {(() => { 
                                 
                                 if(parseInt(FormData['RF_Nationality1'])===1 || parseInt(FormData['RF_Nationality1'])===2 || parseInt(FormData['RF_Nationality1'])===3 || parseInt(FormData['RF_Nationality1'])===4 || parseInt(FormData['RF_Nationality1'])===6 || parseInt(FormData['RF_Nationality1'])===8 || parseInt(FormData['RF_Nationality1'])===10 || parseInt(FormData['RF_Nationality1'])===13 || parseInt(FormData['RF_Nationality1'])===16 || parseInt(FormData['RF_Nationality1'])===17 || parseInt(FormData['RF_Nationality1'])===19 || parseInt(FormData['RF_Nationality1'])===20 || parseInt(FormData['RF_Nationality1'])===24
                                     || parseInt(FormData['RF_Nationality1'])===27 || parseInt(FormData['RF_Nationality1'])===28 || parseInt(FormData['RF_Nationality1'])===29 || parseInt(FormData['RF_Nationality1'])===30 || parseInt(FormData['RF_Nationality1'])===31 || parseInt(FormData['RF_Nationality1'])===32 || parseInt(FormData['RF_Nationality1'])===33 || parseInt(FormData['RF_Nationality1'])===36 || parseInt(FormData['RF_Nationality1'])===37 || parseInt(FormData['RF_Nationality1'])===39 || parseInt(FormData['RF_Nationality1'])===41 || parseInt(FormData['RF_Nationality1'])===42 || parseInt(FormData['RF_Nationality1'])===43
@@ -8204,6 +8833,10 @@ const CreateForm = ({user}) => {
         
         
                                 })()}
+                                            </>)
+                                    }    
+                            })()}
+                                
                             </div>
 
 

@@ -160,6 +160,7 @@ const Dashboard = ({user}) => {
                                 {/* <th scope="col">Client Email</th> */}
                                 <th scope="col">Client ID Number</th>
                                 {/* <th scope="col">Client Risk Status</th> */}
+                                <th scope="col">Risk Weight</th>
                                 <th scope="col">Form Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -172,7 +173,56 @@ const Dashboard = ({user}) => {
                                         <td>{formList[i]['RF_ClientName']}</td>
                                         {/* <td>{formList[i]['clientEmail']}</td> */}
                                         <td>{formList[i]['RF_ClientId']}</td>
-                                        {/* <td>{formList[i]['RF_Overall_Risk']}</td> */}
+                                       
+                                        
+                                        {(() => { 
+                                            if(parseInt(formList[i]['RF_Client_Match'])===1)
+                                            {
+                                                return (<>
+                                                    <td>Medium</td>
+
+                                                </>);
+                                            }
+
+                                            if(parseInt(formList[i]['RF_Client_Match'])===2 || parseInt(formList[i]['RF_Client_Match'])===5 || parseInt(formList[i]['RF_Client_Match'])===8 || parseInt(formList[i]['RF_Client_Match'])===11)
+                                            {
+                                                return (<>
+                                                    <td>High</td>
+
+                                                </>);
+                                            }
+
+                                            if(parseInt(formList[i]['RF_Client_Match'])===3 || parseInt(formList[i]['RF_Client_Match'])===6)
+                                            {
+                                                return (<>
+                                                     <td>Low</td>
+
+                                                </>);
+                                            }
+
+                                            if(parseInt(formList[i]['RF_Client_Match'])===4 || parseInt(formList[i]['RF_Client_Match'])===7)
+                                            {
+                                                return (<>
+                                                     <td>Medium</td>
+                                                </>);
+                                            }
+
+                                            if(parseInt(formList[i]['RF_Client_Match'])===9 || parseInt(formList[i]['RF_Client_Match'])===10) 
+                                            {
+                                                return (<>
+                                                     <td>Intolerable</td>
+
+                                                </>);
+                                            }
+
+                                            else
+                                            {
+                                                return (<>
+                                                    <td>Undetermined</td>
+                                                </>);
+                                            }
+                                            })()}
+                                        
                                         <td>{formList[i]['status'] === 0 ? "Incomplete" : "Completed"}</td>
                                         <td>
                                             <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
