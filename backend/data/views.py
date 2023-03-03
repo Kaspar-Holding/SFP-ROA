@@ -14,11 +14,38 @@ import base64
 from functools import reduce
 @api_view(['GET'])
 def excel(request):
-    # RF_BU_Risk = ['low','medium','high']
-    # for form in forms:
-    #     RF_BU_Risk_id = int(form['RF_BU_Risk'])
-    #     form['RF_BU_Risk'] = RF_BU_Risk[RF_BU_Risk_id]
     forms = RiskFactors.objects.all().values()
+    RF_BU_Risk = ['low','medium','high']
+    RF_ClientType = ['Individual','Legal']
+    RF_Occupation = ['Minor/Scholar','Retired','Salaried Employee','Self Employed','Student','Unemployed']
+    RF_Industry = ['Administrative and support services','Adult Entertainment','Agriculture,forestry and fishing','Arts,Entertainment and Recreation','Broadcasting and Entertainment','Chemical engineering/manufacturing',
+    'Community and social activities','Construction and civil engineering','Consumer goods:wholesale and retail','Education','Electricity,solar,water,gas','Entrepreneurship','Estate living and family trusts','Extractive services,mining and quarrying','Financial and insurance','Gambling','Government services,armed and state owned enterprise','Health care and medical','Information technology,communication and telecom','Legal practitioner','Manufacturing','Motor wholesale,retail trade and repair','Non profit organization','Non government organization(NGO)','other','PFMA schedule 1','PFMA schedule 2','PFMA schedule 3A','Professional sport','Real estate and property services','Shell Banking','Transport storage,courier and freight','Travel,tourism and accomodation','Virtual currencies']
+    RF_CountryOfBirth =['Afghanistan','Albania','Algeria','American Samoa','Andora','Angola','Anguilla','Antarctica','Antigua and Barbuda','Argentina','Armania','Aruba','Aucland Islands','Australia','Austria','Azerbaijan','Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bermuda','Bhutan','Bonaire','Bosnia','Botswana','Bouvet Islands','Brazil','British Indian OceanTeritory','Brunei Darussalam','Bulgaria','Burkina Faso','Burundi','Cabo Verde','Cambodia','Cameroon','Canada','Cayman Islands','Central African Republic','Chad','Chile','China','Christmas Island','Cocos','Colombia','Comoros','Congo Democratic','Congo Republic','Cook Islands','Costa Rica','Ivory Cost','Croatia','Cuba','Curacao','Cyprus','Czech Republic','Denmark','Djibouti','Dominica','Ecuador','Egypt','EI Salvador','Equatorial Guinea','Eritrea','Estonia','eSwaitini','Ethiopia','Falkland Islands','Faroe Islands','Fiji','Finland','France','French Guiana','French Polynesia','French Southern Territories','Gabon','Gambia','Georgia','Germany','Ghana','Gibralter','Greece','Greenland','Guadeloupe','Guam','Guatemala','Guernsey','Guinea','Guinea Bissau','Guyana','Haiti','Herd Island','Holy See','Honduras','Hongkong','Hungary','Iceland','India','Indonessia','Iran','Iraq','Ireland','Isle of man','Italy','Jamaica','Japan','Jersey','Jordan','Kazakhstan','Kenya','Kiribati','Korea North','Korea South','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Liberia','Libya','Liechtenstein','Lithuania','Luxembourg','Macao','Macedonia','Malawi','Malaysia','Maldives','Mali','Malta','Marshall Islands','Martinique','Mauritania','Mauritius','Mayotte','Mexico','Moldova','Monaco','Mongolia','Montenegro','Montserrat','Morocco','Mozambique','Mynamar','Namabia','Nauru','Nepal','Netherlands','New Celedonia','Newzealand','Niger','Nigeria','Norfolk Island','Nothern Mariana Islands','Norway','Nuie','Oman','Pakistan','Palau','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Pitcaim','Poland','Portugal','Puerto Rico','Qatar','Reunion','Roman','Russia','Rwanda','Saint Barthelemy','Saint Helena','Saint Kitts','Saint Lucia','Saint Martin','Saint Pierre','Saint Vincent','Samoa','Saint Marino','Sao Tome','Saudia Arabia','Senegal','Serbia','Seychelles','Sierra Leone','Singapore','Sint Martin','Slovekia','Slovenia','Solomon Islands','Somalia','South Africa','South Georgia','South Sudan','SPain','Srilanka','Sudan','Suriname','Svalbard','Sweden','Switxerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','Timor Leste','Togo','Tokelau','Tonga','Trinidad','Tunisia','Turkey','Turkmenistan','Turks','Tuvalu','Uganda','Ukraine','United Arab Emirates','United Kingdom','United States Minor','United States of America','Uruguay','Uzbekistan','Vanuatu','Venezuela','Vietnam','Virgin Islands(British)','Virgin Islands(US)','Wallis and Fatuna','West Bank','Western Sahara','Yemen','Zambia','Zimbabwe']
+    RF_SourceOfFunds = ['Allowance','Bonus','Bursary','Company profits','Company sale','Cryptocurrency','Debt capital','Disability/social grant','Dividends from investment','Divorce settlement','Equity capital','Gambling winnings','Gift','Income from previous employment','Inherritance','Loan','Lottery winnings','Maintainance(Formal agreement)','Maintainance(Informal agreement)','Maturing Investments','Other','Pension','Provident fund','Rental Propert','Retirement Funds','Salary','Salary asset/property','Sale of shares','Sanlam payout','Savings','Settlement','Transfer to/from approved funds','Trust Income']
+    
+    for form in forms:
+        RF_Occupation_id = int(form['RF_Occupation'])
+        RF_BU_Risk_id = int(form['RF_BU_Risk'])
+        RF_ClientType_id = int(form['RF_ClientType'])
+        RF_Industry_id = int(form['RF_Industry'])
+        RF_CountryOfBirth_id = int(form['RF_CountryOfBirth'])
+        RF_CountryOfResidence_id = int(form['RF_CountryOfResidence'])
+        RF_Nationality_id = int(form['RF_Nationality'])
+        RF_Different_Nationality_id = int(form['RF_Different_Nationality'])
+        RF_CountryOfTax_id = int(form['RF_CountryOfTax'])
+        RF_SourceOfFunds_id = int(form['RF_SourceOfFunds'])
+        form['RF_Occupation'] = RF_Occupation[RF_Occupation_id]
+        form['RF_BU_Risk'] = RF_BU_Risk[RF_BU_Risk_id]
+        form['RF_ClientType'] = RF_ClientType[RF_ClientType_id]
+        form['RF_Industry'] = RF_Industry[RF_Industry_id]
+        form['RF_CountryOfBirth'] = RF_CountryOfBirth[RF_CountryOfBirth_id]
+        form['RF_Different_Nationality'] = RF_CountryOfBirth[RF_Different_Nationality_id]
+        form['RF_CountryOfResidence'] = RF_CountryOfBirth[RF_CountryOfResidence_id]
+        form['RF_Nationality'] = RF_CountryOfBirth[RF_Nationality_id]
+        form['RF_CountryOfTax'] = RF_CountryOfBirth[RF_CountryOfTax_id]
+        form['RF_SourceOfFunds'] =  RF_SourceOfFunds[ RF_SourceOfFunds_id]
+
+   
     forms2 = AssuranceInvestment.objects.all().values()
     forms3 = AssuranceRisk.objects.all().values()
     forms4 = EmployeeBenefits.objects.all().values()
