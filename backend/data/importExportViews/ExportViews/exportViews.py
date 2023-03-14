@@ -5956,7 +5956,7 @@ def exportData(request):
 
         
         GC_Data = GapCover.objects.filter(formId=form['id']).values()
-        if len(Fid_Data) != 0:                
+        if len(GC_Data) != 0:                
             GC_Data = GapCover.objects.filter(formId=form['id']).values().first()
             form['Gap_Cover_ClientName'] = GC_Data['GP_ClientName'] 
             form['Gap_Cover_ClientIdNumber'] = GC_Data['GP_ClientIdNumber'] 
