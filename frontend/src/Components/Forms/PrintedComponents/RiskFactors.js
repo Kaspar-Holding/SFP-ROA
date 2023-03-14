@@ -383,8 +383,8 @@ const RiskFactors = ({user}) => {
             RF_Transaction_Reason : "0",
             RF_High_Transaction_Reason : "0",
             RF_Transaction_Frequency : "0",
-            RF_Transaction_Value : "0",
-            RF_Currency_Value : "0",
+            RF_Transaction_Value : "",
+            RF_Currency_Value : "",
             RF_Transaction_Geography : "0",
             RF_Funds_Jurisdiction : "0",
             RF_Delivery_Channel : "0",
@@ -473,35 +473,52 @@ const RiskFactors = ({user}) => {
                 <br/>
                 <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
                     <div className="row">
+                        {
+                            user['is_superuser'] ? 
+                            <>
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label className="col-form-label"><b>Business Unit Risk</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                        <select disabled className="text-start form-select" id="RF_BU_Risk" name='RF_BU_Risk' value={FormData['RF_BU_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                                            <option value="0">Select Option</option>
+                                            <option value="1">Low</option>
+                                            <option value="2">Medium</option>
+                                            <option value="3">High</option>
+                                            <option value="4">Intolerable</option>
+                                        
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                            <div className="row g-3 align-items-center">
-                                <div className="col-4">
-                                    <label className="col-form-label"><b>Business Unit Risk</b></label>
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true" disabled type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}}  aria-describedby="" />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="col-6">
-                                <select disabled className="text-start form-select" id="RF_BU_Risk" name='RF_BU_Risk' value={FormData['RF_BU_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
-                                    <option value="0">Select Option</option>
-                                    <option value="1">Low</option>
-                                    <option value="2">Medium</option>
-                                    <option value="3">High</option>
-                                    <option value="4">Intolerable</option>
-                                
-                                </select>
+                            </>
+                            :
+                            <>
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true" disabled type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}}  aria-describedby="" />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                            <div className="row g-3 align-items-center">
-                                <div className="col-4">
-                                    <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
-                                </div>
-                                <div className="col-6">
-                                    <input spellCheck="true" disabled type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}}  aria-describedby="" />
-                                </div>
-                            </div>
-                        </div>
+                            </>
+                        }
 
                         <hr className="col-11" />
                         <div className="col-6" style={{paddingBottom: "0.5%"}}>
@@ -5561,7 +5578,7 @@ const RiskFactors = ({user}) => {
                         </div>
 
                         <div className="col-2">
-                            <input disabled spellCheck="true" id="RF_Transaction_Value" name='RF_Transaction_Value' className="form-control" aria-describedby="" />
+                            <input disabled spellCheck="true" id="RF_Transaction_Value" name='RF_Transaction_Value' value={FormData['RF_Transaction_Value']} onChange={(e)=>{onChange(e)}} className="form-control" aria-describedby="" />
                         </div>
 
                         <div className="col-1">       
@@ -5569,7 +5586,7 @@ const RiskFactors = ({user}) => {
                         </div>
 
                         <div className="col-2">
-                            <input disabled spellCheck="true" id="RF_Currency_Value" name='RF_Currency_Value' className="form-control" aria-describedby="" />
+                            <input disabled spellCheck="true" id="RF_Currency_Value" name='RF_Currency_Value' value={FormData['RF_Currency_Value']} onChange={(e)=>{onChange(e)}} className="form-control" aria-describedby="" />
                         </div>
 
                         <div className="col-1">       

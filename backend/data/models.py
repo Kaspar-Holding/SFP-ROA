@@ -803,7 +803,7 @@ class EmployeeBenefits(models.Model):
     EB_BusRecom_ProductName = models.CharField(max_length=256, default="", blank=True)
     EB_BusRecom_FundType = models.CharField(max_length=256, default="", blank=True)
     EB_BusRecom_RecommendationFundType = models.CharField(max_length=256, default="", blank=True)
-    EB_BusRecom_Porfolio = models.IntegerField(default=0)
+    EB_BusRecom_Portfolio = models.IntegerField(default=0)
     EB_BusRecom_ClientAccepted = models.IntegerField(default=0)
     EB_BusRecom_ClientRisks = models.CharField(max_length=256, default="", blank=True)
 
@@ -1940,9 +1940,9 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_Applicant_ContactNumber = models.CharField(max_length=256, default="", blank=True)
 
     STIP_General_Refused = models.IntegerField(default=0)
-    STIP_General_RefusedDetails = models.IntegerField(default=0)
+    STIP_General_RefusedDetails = models.CharField(max_length=256, default="", blank=True)
     STIP_General_Risks = models.IntegerField(default=0)
-    STIP_General_RisksDetails = models.IntegerField(default=0)
+    STIP_General_RisksDetails = models.CharField(max_length=256, default="", blank=True)
     STIP_General_LastDate = models.CharField(max_length=256, default="", blank=True)
     STIP_General_InsurerName = models.CharField(max_length=256, default="", blank=True)
 

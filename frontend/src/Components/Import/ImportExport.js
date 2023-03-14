@@ -99,8 +99,11 @@ const ImportExport = ({user}) => {
           {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
         </div>
       </div>
-      <button className='btn btn-md btn-primary' style={{marginTop:100,marginRight:50}} onClick={(e)=>{onDowloadCSV(e)}}>Please download the All Data CSV file from here</button>
-      <button className='btn btn-md btn-primary' style={{marginTop:100}} onClick={(e)=>{onDowloadCSVSample(e)}}>Please download the sample CSV file from here</button>
+      <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 className="h2">Import Export Wizard</h1>
+      </div>
+      <button className='btn btn-md btn-primary' style={{marginRight:50}} onClick={(e)=>{onDowloadCSV(e)}}>Please download the All Data CSV file from here</button>
+      <button className='btn btn-md btn-primary' style={{}} onClick={(e)=>{onDowloadCSVSample(e)}}>Please download the sample CSV file from here</button>
       <div className="alert alert-success text-center" style={{display: SuccessMessageVisibility}} role="alert">
           <p><b>{SuccessMessage} </b></p>
       </div>

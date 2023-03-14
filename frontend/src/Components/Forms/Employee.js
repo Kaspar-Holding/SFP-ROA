@@ -202,7 +202,7 @@ const Employee = ({user}) =>
         EB_BusRecom_ProductName : "",
         EB_BusRecom_FundType : "",
         EB_BusRecom_RecommendationFundType : "",
-        EB_BusRecom_Porfolio : 0,
+        EB_BusRecom_Portfolio : 0,
         EB_BusRecom_ClientAccepted : 0,
         EB_BusRecom_ClientRisks : "",
 

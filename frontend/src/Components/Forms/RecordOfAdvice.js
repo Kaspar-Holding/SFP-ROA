@@ -175,6 +175,7 @@ const RecordOfAdvice = ({user}) => {
         // window.location.reload();
     }
         // window.location.reload();
+        // console.log(JSON.stringify(FormData))
     useEffect(() => {
         createRecordOfAdviceForm(FormData)
     }, []);
@@ -440,7 +441,7 @@ const RecordOfAdvice = ({user}) => {
                                             </> : 
                                             null
                                         }
-                                        <textarea  id="provided_identity" required={FormData['clientFica'] === "0" ? true : false} value={FormData['clientFica']} name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea  id="provided_identity" required={FormData['clientFica'] === "0" ? true : false} value={FormData['clientFicaReason']} name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['fica'] === "1" ? null : 

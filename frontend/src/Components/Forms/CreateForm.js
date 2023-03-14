@@ -340,11 +340,10 @@ const CreateForm = ({user}) => {
 
     const [updateErrorVisibilty, setUpdateErrorVisibility] = useState("none")
 
-
+    
     const [FormData, setFormData] = useState({
     
-        advisorId : user['id'],     
-        advisorName:user['is_superuser'] ,       
+        advisorId : user['id'],           
         RF_Overall_Risk : "",
         RF_BU_Risk : "2",
         RF_Date : CurrentData,
@@ -405,7 +404,8 @@ const CreateForm = ({user}) => {
 
 
 
-    })    
+    })
+    // console.log(FormData)    
     var val1;
     const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
     const navigate = useNavigate()
@@ -497,35 +497,51 @@ const CreateForm = ({user}) => {
 
             <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
                 <div className="row">
+                    {
+                        user['is_superuser'] ? 
+                        <>
+                            <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                <div className="row g-3 align-items-center">
+                                    <div className="col-4">
+                                        <label className="col-form-label"><b>Business Unit Risk</b></label>
+                                    </div>
+                                    <div className="col-6">
+                                    <select className="text-start form-select" id="RF_BU_Risk" name='RF_BU_Risk' value={FormData['RF_BU_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                                        <option value="0">Select Option</option>
+                                        <option value="1">Low</option>
+                                        <option value="2">Medium</option>
+                                        <option value="3">High</option>
+                                        <option value="4">Intolerable</option>
+                                    
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                        <div className="row g-3 align-items-center">
-                            <div className="col-4">
-                                <label className="col-form-label"><b>Business Unit Risk</b></label>
+                            <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                <div className="row g-3 align-items-center">
+                                    <div className="col-4">
+                                        <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
+                                    </div>
+                                    <div className="col-6">
+                                        <input spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="col-6">
-                            <select className="text-start form-select" id="RF_BU_Risk" name='RF_BU_Risk' value={FormData['RF_BU_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
-                                <option value="0">Select Option</option>
-                                <option value="1">Low</option>
-                                <option value="2">Medium</option>
-                                <option value="3">High</option>
-                                <option value="4">Intolerable</option>
-                            
-                            </select>
+                        </> :
+                        <>
+                            <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                                <div className="row g-3 align-items-center">
+                                    <div className="col-4">
+                                        <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
+                                    </div>
+                                    <div className="col-6">
+                                        <input spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                        <div className="row g-3 align-items-center">
-                            <div className="col-4">
-                                <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
-                            </div>
-                            <div className="col-6">
-                                <input spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
-                            </div>
-                        </div>
-                    </div>
+                        </>
+                    }
 
                     <hr className="col-11" />
                     <div className="col-6" style={{paddingBottom: "0.5%"}}>
@@ -729,7 +745,7 @@ const CreateForm = ({user}) => {
             
                
             {(() => {
-                if(FormData['advisorName']==="True")
+                if(user['is_superuser'])
                 {
                     return (<>
                     
@@ -760,7 +776,7 @@ const CreateForm = ({user}) => {
                 <label className="col-form-label"><b>A. Client Risk</b></label>
             </div>
             {(() => {
-                if(FormData['advisorName']==="True")
+                if(user['is_superuser'])
                 {
                     return (<>
                         <div className="col-2">
@@ -794,7 +810,7 @@ const CreateForm = ({user}) => {
             
             <div className="col-2">
             {(() => {
-                if(FormData['advisorName']==="True")
+                if(user['is_superuser'])
                 {
                     return (<>
                          {(() => { 
@@ -1271,7 +1287,7 @@ const CreateForm = ({user}) => {
                     
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                      {(() => { 
@@ -1305,7 +1321,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                     {(() => { 
@@ -1329,7 +1345,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-2">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                  {(() => { 
@@ -1604,22 +1620,22 @@ const CreateForm = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
                                 
 
                         </select>    
@@ -1635,7 +1651,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                     {(() => { 
@@ -1710,7 +1726,7 @@ const CreateForm = ({user}) => {
                     <div className="col-1">
                         
                         {(() => {
-                            if(FormData['advisorName']==="True")
+                            if(user['is_superuser'])
                             {
                                 return (<>
                                      <label className="col-form-label">3</label>
@@ -1721,7 +1737,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                  {(() => { 
@@ -2040,22 +2056,22 @@ const CreateForm = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
 
                         </select>    
                     </div>
@@ -2070,7 +2086,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                     {(() => { 
@@ -2146,7 +2162,7 @@ const CreateForm = ({user}) => {
                     <div className="col-1">
                         
                         {(() => {
-                            if(FormData['advisorName']==="True")
+                            if(user['is_superuser'])
                             {
                                 return (<>
                                      <label className="col-form-label">3</label>
@@ -2157,7 +2173,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                 {(() => { 
@@ -2477,22 +2493,22 @@ const CreateForm = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
 
                         </select>    
                     </div>
@@ -2507,7 +2523,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                 {(() => { 
@@ -2583,7 +2599,7 @@ const CreateForm = ({user}) => {
                     <div className="col-1">
                         
                         {(() => {
-                            if(FormData['advisorName']==="True")
+                            if(user['is_superuser'])
                             {
                                 return (<>
                                      <label className="col-form-label">3</label>
@@ -2594,7 +2610,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                     {(() => { 
@@ -2939,22 +2955,22 @@ const CreateForm = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
 
                             </select> 
                         </div>
@@ -2969,7 +2985,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                    {(() => { 
@@ -3045,7 +3061,7 @@ const CreateForm = ({user}) => {
                     <div className="col-1">
                         
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                  <label className="col-form-label">3</label>
@@ -3056,7 +3072,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                  {(() => { 
@@ -3198,7 +3214,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -3259,7 +3275,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -3271,7 +3287,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -3388,7 +3404,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                                 {
                                     return (<>
                                             {(() => { 
@@ -3441,7 +3457,7 @@ const CreateForm = ({user}) => {
                     <div className="col-1">
                         
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                  <label className="col-form-label">1</label>
@@ -3452,7 +3468,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -3543,7 +3559,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                          {(() => { 
@@ -3582,7 +3598,7 @@ const CreateForm = ({user}) => {
                     <div className="col-1">
                         
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                  <label className="col-form-label">1</label>
@@ -3593,7 +3609,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -3888,22 +3904,22 @@ const CreateForm = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
                                 
 
                         </select>    
@@ -3920,7 +3936,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -3995,7 +4011,7 @@ const CreateForm = ({user}) => {
                     <div className="col-1">
                         
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                  <label className="col-form-label">3</label>
@@ -4006,7 +4022,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -4323,22 +4339,22 @@ const CreateForm = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
 
                         </select>    
                     </div>
@@ -4353,7 +4369,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                     {(() => { 
@@ -4429,7 +4445,7 @@ const CreateForm = ({user}) => {
                     <div className="col-1">
                         
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                  <label className="col-form-label">3</label>
@@ -4440,7 +4456,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                         {
                             return (<>
                                  {(() => { 
@@ -4564,7 +4580,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -4608,7 +4624,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -4620,7 +4636,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5234,7 +5250,7 @@ const CreateForm = ({user}) => {
 
             <div className="col-1">
             {(() => {
-                if(FormData['advisorName']==="True")
+                if(user['is_superuser'])
                     {
                         return (<>
                             {(() => { 
@@ -5277,7 +5293,7 @@ const CreateForm = ({user}) => {
 
                 <div className="col-1">
                 {(() => {
-                    if(FormData['advisorName']==="True")
+                    if(user['is_superuser'])
                         {
                             return (<>
                                 <label className="col-form-label">2</label>
@@ -5289,7 +5305,7 @@ const CreateForm = ({user}) => {
 
                 <div className="col-2">
                 {(() => {
-                    if(FormData['advisorName']==="True")
+                    if(user['is_superuser'])
                         {
                             return (<>
                                   {(() => { 
@@ -5571,7 +5587,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5612,7 +5628,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                      <label className="col-form-label">2</label>
@@ -5624,7 +5640,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5700,7 +5716,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5732,7 +5748,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>   
@@ -5744,7 +5760,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5789,7 +5805,7 @@ const CreateForm = ({user}) => {
                     
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label"></label>
@@ -5801,7 +5817,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5833,7 +5849,7 @@ const CreateForm = ({user}) => {
                         
                     <div className="col-1">   
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">2</label>
@@ -5845,7 +5861,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5901,7 +5917,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -5933,7 +5949,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">  
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -5945,7 +5961,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5981,7 +5997,7 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <input spellCheck="true" id="RF_Transaction_Value" name='RF_Transaction_Value' className="form-control" aria-describedby="" />
+                        <input spellCheck="true" id="RF_Transaction_Value" name='RF_Transaction_Value' value={FormData['RF_Transaction_Value']} onChange={(e)=>{onChange(e)}} className="form-control" aria-describedby="" />
                     </div>
 
                     <div className="col-1">       
@@ -5989,7 +6005,7 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <input spellCheck="true" id="RF_Currency_Value" name='RF_Currency_Value' className="form-control" aria-describedby="" />
+                        <input spellCheck="true" id="RF_Currency_Value" name='RF_Currency_Value' value={FormData['RF_Currency_Value']} onChange={(e)=>{onChange(e)}} className="form-control" aria-describedby="" />
                     </div>
 
                     <div className="col-1">       
@@ -6033,7 +6049,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6065,7 +6081,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -6077,7 +6093,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6109,7 +6125,7 @@ const CreateForm = ({user}) => {
 
                     <hr/>
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -6357,22 +6373,22 @@ const CreateForm = ({user}) => {
                                     <option value="231">Uganda</option>
                                     <option value="232">Ukraine</option>
                                     <option value="233">United Arab Emirates</option>
-                                    <option value="224">United Kingdom</option>
-                                    <option value="225">United States Minor</option>
-                                    <option value="226">United States of America</option>
-                                    <option value="227">Uruguay</option>
-                                    <option value="228">Uzbekistan</option>
-                                    <option value="229">Vanuatu</option>
-                                    <option value="230">Venezuela</option>
-                                    <option value="231">Vietnam</option>
-                                    <option value="232">Virgin Islands(British)</option>
-                                    <option value="233">Virgin Islands(US)</option>
-                                    <option value="234">Wallis and Fatuna</option>
-                                    <option value="235">West Bank</option>
-                                    <option value="236">Western Sahara</option>
-                                    <option value="237">Yemen</option>
-                                    <option value="238">Zambia</option>
-                                    <option value="239">Zimbabwe</option>
+                                    <option value="234">United Kingdom</option>
+                                    <option value="235">United States Minor</option>
+                                    <option value="236">United States of America</option>
+                                    <option value="237">Uruguay</option>
+                                    <option value="238">Uzbekistan</option>
+                                    <option value="239">Vanuatu</option>
+                                    <option value="240">Venezuela</option>
+                                    <option value="241">Vietnam</option>
+                                    <option value="242">Virgin Islands(British)</option>
+                                    <option value="243">Virgin Islands(US)</option>
+                                    <option value="244">Wallis and Fatuna</option>
+                                    <option value="245">West Bank</option>
+                                    <option value="246">Western Sahara</option>
+                                    <option value="247">Yemen</option>
+                                    <option value="248">Zambia</option>
+                                    <option value="249">Zimbabwe</option>
 
                                 </select> 
                             </div>
@@ -6387,7 +6403,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     
@@ -6467,7 +6483,7 @@ const CreateForm = ({user}) => {
                             
                     </div>
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     <div className="col-1">
@@ -6562,7 +6578,7 @@ const CreateForm = ({user}) => {
                     <div className="col-2">
                         <select className="text-start form-select" name='RF_Delivery_Channel' id='RF_Delivery_Channel' value={parseInt(FormData['RF_Transaction_Geography'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
-                            <option value="1">Intermediaries(Advisors,tied agents)</option>
+                            <option value="1">Intermediaries (Brokers, consultants)</option>
                             <option value="2">Intermediaries(Brokers,consultants)</option>
                                 
                         </select>    
@@ -6578,7 +6594,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6619,7 +6635,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -6631,7 +6647,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6694,7 +6710,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -6726,7 +6742,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -6738,7 +6754,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -6792,7 +6808,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6824,7 +6840,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                      <label className="col-form-label">1</label>
@@ -6836,7 +6852,7 @@ const CreateForm = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6965,7 +6981,7 @@ const CreateForm = ({user}) => {
 
                 <div className="col-2">
                 {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -7055,7 +7071,7 @@ const CreateForm = ({user}) => {
 
                 <div className="col-1">
                 {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -7105,7 +7121,7 @@ const CreateForm = ({user}) => {
 
                 <div className="col-1">
                 {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -7127,7 +7143,7 @@ const CreateForm = ({user}) => {
 
                 <div className="col-2">
                 {(() => {
-                        if(FormData['advisorName']==="True")
+                        if(user['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -7490,7 +7506,7 @@ const CreateForm = ({user}) => {
 
                                 <div className="col-1">
                                 {(() => {
-                                    if(FormData['advisorName']==="True")
+                                    if(user['is_superuser'])
                                         {
                                             return (<>
                                                 <label className="col-form-label">1</label>
@@ -7502,7 +7518,7 @@ const CreateForm = ({user}) => {
 
                                 <div className="col-1">
                                 {(() => {
-                                    if(FormData['advisorName']==="True")
+                                    if(user['is_superuser'])
                                         {
                                             return (<>
                                                 {(() => { 
@@ -7773,22 +7789,22 @@ const CreateForm = ({user}) => {
                                         <option value="231">Uganda</option>
                                         <option value="232">Ukraine</option>
                                         <option value="233">United Arab Emirates</option>
-                                        <option value="224">United Kingdom</option>
-                                        <option value="225">United States Minor</option>
-                                        <option value="226">United States of America</option>
-                                        <option value="227">Uruguay</option>
-                                        <option value="228">Uzbekistan</option>
-                                        <option value="229">Vanuatu</option>
-                                        <option value="230">Venezuela</option>
-                                        <option value="231">Vietnam</option>
-                                        <option value="232">Virgin Islands(British)</option>
-                                        <option value="233">Virgin Islands(US)</option>
-                                        <option value="234">Wallis and Fatuna</option>
-                                        <option value="235">West Bank</option>
-                                        <option value="236">Western Sahara</option>
-                                        <option value="237">Yemen</option>
-                                        <option value="238">Zambia</option>
-                                        <option value="239">Zimbabwe</option>
+                                        <option value="234">United Kingdom</option>
+                                        <option value="235">United States Minor</option>
+                                        <option value="236">United States of America</option>
+                                        <option value="237">Uruguay</option>
+                                        <option value="238">Uzbekistan</option>
+                                        <option value="239">Vanuatu</option>
+                                        <option value="240">Venezuela</option>
+                                        <option value="241">Vietnam</option>
+                                        <option value="242">Virgin Islands(British)</option>
+                                        <option value="243">Virgin Islands(US)</option>
+                                        <option value="244">Wallis and Fatuna</option>
+                                        <option value="245">West Bank</option>
+                                        <option value="246">Western Sahara</option>
+                                        <option value="247">Yemen</option>
+                                        <option value="248">Zambia</option>
+                                        <option value="249">Zimbabwe</option>
 
                                     </select> 
                                 </div>
@@ -7803,7 +7819,7 @@ const CreateForm = ({user}) => {
 
                                 <div className="col-1">
                                 {(() => {
-                                    if(FormData['advisorName']==="True")
+                                    if(user['is_superuser'])
                                         {
                                             return (<>
                                                  {(() => { 
@@ -7878,7 +7894,7 @@ const CreateForm = ({user}) => {
 
                                 <div className="col-1">
                                 {(() => {
-                                    if(FormData['advisorName']==="True")
+                                    if(user['is_superuser'])
                                         {
                                             return (<>
                                                 <label className="col-form-label">3</label>
@@ -7892,7 +7908,7 @@ const CreateForm = ({user}) => {
 
                                 <div className="col-1">
                                 {(() => {
-                                    if(FormData['advisorName']==="True")
+                                    if(user['is_superuser'])
                                         {
                                             return (<>
                                               {(() => { 
@@ -8208,22 +8224,22 @@ const CreateForm = ({user}) => {
                                         <option value="231">Uganda</option>
                                         <option value="232">Ukraine</option>
                                         <option value="233">United Arab Emirates</option>
-                                        <option value="224">United Kingdom</option>
-                                        <option value="225">United States Minor</option>
-                                        <option value="226">United States of America</option>
-                                        <option value="227">Uruguay</option>
-                                        <option value="228">Uzbekistan</option>
-                                        <option value="229">Vanuatu</option>
-                                        <option value="230">Venezuela</option>
-                                        <option value="231">Vietnam</option>
-                                        <option value="232">Virgin Islands(British)</option>
-                                        <option value="233">Virgin Islands(US)</option>
-                                        <option value="234">Wallis and Fatuna</option>
-                                        <option value="235">West Bank</option>
-                                        <option value="236">Western Sahara</option>
-                                        <option value="237">Yemen</option>
-                                        <option value="238">Zambia</option>
-                                        <option value="239">Zimbabwe</option>
+                                        <option value="234">United Kingdom</option>
+                                        <option value="235">United States Minor</option>
+                                        <option value="236">United States of America</option>
+                                        <option value="237">Uruguay</option>
+                                        <option value="238">Uzbekistan</option>
+                                        <option value="239">Vanuatu</option>
+                                        <option value="240">Venezuela</option>
+                                        <option value="241">Vietnam</option>
+                                        <option value="242">Virgin Islands(British)</option>
+                                        <option value="243">Virgin Islands(US)</option>
+                                        <option value="244">Wallis and Fatuna</option>
+                                        <option value="245">West Bank</option>
+                                        <option value="246">Western Sahara</option>
+                                        <option value="247">Yemen</option>
+                                        <option value="248">Zambia</option>
+                                        <option value="249">Zimbabwe</option>
 
                                     </select> 
                                 </div>
@@ -8238,7 +8254,7 @@ const CreateForm = ({user}) => {
 
                                 <div className="col-1">
                                 {(() => {
-                                    if(FormData['advisorName']==="True")
+                                    if(user['is_superuser'])
                                         {
                                             return (<>
                                                 {(() => { 
@@ -8313,7 +8329,7 @@ const CreateForm = ({user}) => {
 
                                 <div className="col-1">
                                 {(() => {
-                                    if(FormData['advisorName']==="True")
+                                    if(user['is_superuser'])
                                         {
                                             return (<>
                                                 <label className="col-form-label">3</label>
@@ -8326,7 +8342,7 @@ const CreateForm = ({user}) => {
 
                                 <div className="col-1">
                                 {(() => {
-                                    if(FormData['advisorName']==="True")
+                                    if(user['is_superuser'])
                                         {
                                             return (<>
                                                 {(() => { 
@@ -8644,22 +8660,22 @@ const CreateForm = ({user}) => {
                                         <option value="231">Uganda</option>
                                         <option value="232">Ukraine</option>
                                         <option value="233">United Arab Emirates</option>
-                                        <option value="224">United Kingdom</option>
-                                        <option value="225">United States Minor</option>
-                                        <option value="226">United States of America</option>
-                                        <option value="227">Uruguay</option>
-                                        <option value="228">Uzbekistan</option>
-                                        <option value="229">Vanuatu</option>
-                                        <option value="230">Venezuela</option>
-                                        <option value="231">Vietnam</option>
-                                        <option value="232">Virgin Islands(British)</option>
-                                        <option value="233">Virgin Islands(US)</option>
-                                        <option value="234">Wallis and Fatuna</option>
-                                        <option value="235">West Bank</option>
-                                        <option value="236">Western Sahara</option>
-                                        <option value="237">Yemen</option>
-                                        <option value="238">Zambia</option>
-                                        <option value="239">Zimbabwe</option>
+                                        <option value="234">United Kingdom</option>
+                                        <option value="235">United States Minor</option>
+                                        <option value="236">United States of America</option>
+                                        <option value="237">Uruguay</option>
+                                        <option value="238">Uzbekistan</option>
+                                        <option value="239">Vanuatu</option>
+                                        <option value="240">Venezuela</option>
+                                        <option value="241">Vietnam</option>
+                                        <option value="242">Virgin Islands(British)</option>
+                                        <option value="243">Virgin Islands(US)</option>
+                                        <option value="244">Wallis and Fatuna</option>
+                                        <option value="245">West Bank</option>
+                                        <option value="246">Western Sahara</option>
+                                        <option value="247">Yemen</option>
+                                        <option value="248">Zambia</option>
+                                        <option value="249">Zimbabwe</option>
 
                                     </select> 
                                 </div>
@@ -8674,7 +8690,7 @@ const CreateForm = ({user}) => {
 
                                 <div className="col-1">
                                 {(() => {
-                                    if(FormData['advisorName']==="True")
+                                    if(user['is_superuser'])
                                         {
                                             return (<>
                                                 {(() => { 
@@ -8749,7 +8765,7 @@ const CreateForm = ({user}) => {
 
                             <div className="col-1">
                             {(() => {
-                                if(FormData['advisorName']==="True")
+                                if(user['is_superuser'])
                                     {
                                         return (<>
                                             <label className="col-form-label">3</label>
@@ -8762,7 +8778,7 @@ const CreateForm = ({user}) => {
 
                             <div className="col-1">
                             {(() => {
-                                if(FormData['advisorName']==="True")
+                                if(user['is_superuser'])
                                     {
                                         return (<>
                                             {(() => { 

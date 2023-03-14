@@ -26,6 +26,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
     path('auth/', include('djoser.urls.authtoken')),
     path('api/', include('data.urls')),
+    path('api/printing/', include('printingApp.urls')),
     # re_path(r"^$", render_react),
     # re_path(r"^(?:.*)/?$", render_react),
     

@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'wkhtmltopdf',
     'data',
+    'printingApp',
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
@@ -102,11 +103,11 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DJANGO_DATABASE_NAME'),
-        'USER' : os.environ.get('DJANGO_DATABASE_USER'),
-        'PASSWORD' : os.environ.get('DJANGO_DATABASE_PASSWORD'),
-        'HOST' : os.environ.get('DJANGO_DATABASE_HOST'),
-        'PORT' : os.environ.get('DJANGO_DATABASE_PORT')
+        'NAME': env('DJANGO_DATABASE_NAME'),
+        'USER' : env('DJANGO_DATABASE_USER'),
+        'PASSWORD' : env('DJANGO_DATABASE_PASSWORD'),
+        'HOST' : env('DJANGO_DATABASE_HOST'),
+        'PORT' : env('DJANGO_DATABASE_PORT')
     }
 }
 

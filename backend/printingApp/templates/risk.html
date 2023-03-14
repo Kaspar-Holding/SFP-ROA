@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        {% load static %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+
+        <link rel="stylesheet" href="{% static 'riskfactors.css' %}">
+        <style>
+            .row {margin: 0 -5px;}
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="text-start" style="color: '#14848A';font-size:'30px';font-family:'Arial Narrow';fontWeight:'bold'" >
+            <b style="font-family:'Arial Narrow'">Dynamic Risk Assessment</b>
+        </div>
+        <div>
+            <br/>
+            <div style='font-family: "Arial Narrow", Arial, sans-serif;;font-size: "9px"'>
+                <div class="row">
+
+                    <div class="col-6" style="padding-bottom: '0.5%'">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                <label class=""><b>Business Unit Risk</b></label>
+                            </div>
+                            <div class="col-6">
+                            <select disabled class="text-start form-select" id="RF_BU_Risk" name='RF_BU_Risk' value={{RF_BU_Risk}} aria-label="Default select example">
+                                <option value="0">Select Option</option>
+                                <option value="1">Low</option>
+                                <option value="2">Medium</option>
+                                <option value="3">High</option>
+                                <option value="4">Intolerable</option>
+                            
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6" style="padding-bottom: '0.5%'">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-4">
+                                <label htmlFor="id_number" class=""><b>Date</b></label>
+                            </div>
+                            <div class="col-6">
+                                <input spellCheck="true" disabled type="date" id="RF_Date" name="RF_Date" value={{RF_Date}} class="form-control"  aria-describedby="" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="col-11" />
+                    <div class="col-6" style="padding-bottom: '0.5%'">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-4">
+                                <label htmlFor="address" class=""><b>Client Name</b></label>
+                            </div>
+                            <div class="col-6">
+                                <input spellCheck="true" disabled id="RF_ClientName" name="RF_ClientName" value={{RF_ClientName}} class="form-control"    aria-describedby="" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6" style="padding-bottom: '0.5%'">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-4">
+                                <label htmlFor="address" class=""><b>Client ID</b></label>
+                            </div>
+                            <div class="col-6">
+                                <input spellCheck="true" disabled id="RF_ClientId" name="RF_ClientId" value={{RF_ClientId}} class="form-control"   aria-describedby="" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="col-11" />
+                    
+
+                    <div class="col-6" style="padding-bottom: '0.5%'">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-4">
+                                <label htmlFor="email" class=""><b>Completed By: Name</b></label>
+                            </div>
+                            <div class="col-6">
+                                <input spellCheck="true" disabled id="RF_CompleteByName" name="RF_CompleteByName" value={{RF_CompleteByName}} class="form-control"  aria-describedby="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -10253,10 +10253,6 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Business Limitation:</td>
       <td>
-        <input type="radio" id="htmlss" name="fav_languagess"/> 
-          <label for="htmlss">Yes</label>  
-          &nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="radio" id="cssss" name="fav_languagess"/>
           <label for="cssss">No</label><div className="row col-6 align-items-center">
             <div className="col-3">
                 <input className="form-check-input" checked={FormData["STIC_Sec17_10"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_10" name="STIC_Sec17_10" />

@@ -1,7 +1,16 @@
 .env
+
 productenvfile.sh
 sfp_venv
 sfp/__pycache__
 data/__pycache__
 data/migrations/__pycache__
 data/sfp_venv
+
+*.pyc
+
+*/*/*/__pycache__/
+
+*/*/__pycache__/
+
+*/__pycache__/
