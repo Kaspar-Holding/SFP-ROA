@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.core.files.base import ContentFile
-from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskFactorsSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers
-from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form
+from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskFactorsSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
+from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -10,9 +10,9 @@ import pandas as pd
 import uuid
 import numpy as np
 import base64
-from functools import reduce
 from datetime import datetime
-
+from dateutil import parser as datetimeparser
+import numpy as np
 @api_view(['GET'])
 def sample(request):
     # forms = RiskFactors.objects.all().values("advisorId","RF_Overall_Risk","RF_BU_Risk","RF_Date","RF_ClientName","RF_ClientId","RF_CompleteByName","RF_CompleteByRole","RF_ClientType","RF_Occupation","RF_CountryOfBirth","RF_CountryOfResidence","RF_Nationality","RF_Different_Nationality","RF_CountryOfTax","RF_Industry","RF_SourceOfFunds","RF_RelationshipToClient","RF_CountryOfRegistration","RF_CountryOfOperation","RF_Type_Legal_Entity","RF_Client_Relationship","RF_Product_Name","RF_Transaction_Flow","RF_Transaction_Method","RF_Transaction_Reason","RF_High_Transaction_Reason","RF_Transaction_Frequency","RF_Transaction_Value","RF_Currency_Value","RF_Transaction_Geography","RF_Funds_Jurisdiction","RF_Delivery_Channel","RF_Linked_Party_Acting","RF_Linked_Party_Paying","RF_Client_Match","RF_Client_Beneficiaries","RF_Adjust_Risk1","RF_Name","RF_ID","RF_Linked_Party	RF_RCA","RF_Birth_Country","RF_Residence_Country","RF_Nationality1","RF_Control1","RF_Control2","RF_Control3","RF_Another_Control1","RF_Another_Control2")
@@ -76,82 +76,155 @@ def sample(request):
 @api_view(['POST'])
 def importCSV(request):
     # decrypted = base64.b64decode(request.data['costCsv']).decode('utf-8')
+    RF_BU_Risk = ['low','medium','high']
+    RF_ClientType = ['','Individual','Legal']
+    RF_Occupation = ['','Minor/Scholar','Retired','Salaried Employee','Self Employed','Student','Unemployed']
+    RF_Industry = ['','Administrative and support services','Adult Entertainment','Agriculture,forestry and fishing','Arts,Entertainment and Recreation','Broadcasting and Entertainment','Chemical engineering/manufacturing',
+    'Community and social activities','Construction and civil engineering','Consumer goods:wholesale and retail','Education','Electricity,solar,water,gas','Entrepreneurship','Estate living and family trusts','Extractive services,mining and quarrying','Financial and insurance','Gambling','Government services,armed and state owned enterprise','Health care and medical','Information technology,communication and telecom','Legal practitioner','Manufacturing','Motor wholesale,retail trade and repair','Non profit organization','Non government organization(NGO)','other','PFMA schedule 1','PFMA schedule 2','PFMA schedule 3A','Professional sport','Real estate and property services','Shell Banking','Transport storage,courier and freight','Travel,tourism and accomodation','Virtual currencies']
+    RF_CountryOfBirth =['','Afghanistan','Albania','Algeria','American Samoa','Andora','Angola','Anguilla','Antarctica','Antigua and Barbuda','Argentina','Armania','Aruba','Auckland Islands','Australia','Austria','Azerbaijan','Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bermuda','Bhutan','Bolivia','Bonaire','Bosnia','Botswana','Bouvet Islands','Brazil','British Indian Ocean Teritory','Brunei Darussalam','Bulgaria','Burkina Faso','Burundi','Cabo Verde','Cambodia','Cameroon','Canada','Cayman Islands','Central African Republic','Chad','Chile','China','Christmas Island','Cocos','Colombia','Comoros','Congo Democratic','Congo Republic','Cook Islands','Costa Rica','Ivory Cost','Croatia','Cuba','Curacao','Cyprus','Czech Republic','Denmark','Djibouti','Dominica','Dominican Republic','Ecuador','Egypt','EI Salvador','Equatorial Guinea','Eritrea','Estonia','eSwaitini','Ethiopia','Falkland Islands','Faroe Islands','Fiji','Finland','France','French Guiana','French Polynesia','French Southern Territories','Gabon','Gambia','Georgia','Germany','Ghana','Gibralter','Greece','Greenland','Grenada','Guadeloupe','Guam','Guatemala','Guernsey','Guinea','Guinea Bissau','Guyana','Haiti','Herd Island','Holy See','Honduras','Hongkong','Hungary','Iceland','India','Indonessia','Iran','Iraq','Ireland','Isle of man','Israel','Italy','Jamaica','Japan','Jersey','Jordan','Kazakhstan','Kenya','Kiribati','Korea North','Korea South','Kosovo','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Liberia','Libya','Liechtenstein','Lithuania','Luxembourg','Macao','Macedonia','Madagascar','Malawi','Malaysia','Maldives','Mali','Malta','Marshall Islands','Martinique','Mauritania','Mauritius','Mayotte','Mexico','Micronessia','Moldova','Monaco','Mongolia','Montenegro','Montserrat','Morocco','Mozambique','Mynamar','Namabia','Nauru','Nepal','Netherlands','New Celedonia','Newzealand','Niger','Nigeria','Norfolk Island','Nothern Mariana Islands','Norway','Nuie','Oman','Pakistan','Palau','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Pitcaim','Poland','Portugal','Puerto Rico','Qatar','Reunion','Roman','Russia','Rwanda','Saint Barthelemy','Saint Helena','Saint Kitts','Saint Lucia','Saint Martin','Saint Pierre','Saint Vincent','Samoa','Saint Marino','Sao Tome','Saudia Arabia','Senegal','Serbia','Seychelles','Sierra Leone','Singapore','Sint Martin','Slovekia','Slovenia','Solomon Islands','Somalia','South Africa','South Georgia','South Sudan','SPain','Srilanka','Sudan','Suriname','Svalbard','Sweden','Switxerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','Timor Leste','Togo','Tokelau','Tonga','Trinidad','Tunisia','Turkey','Turkmenistan','Turks','Tuvalu','Uganda','Ukraine','United Arab Emirates','United Kingdom','United States Minor','United States of America','Uruguay','Uzbekistan','Vanuatu','Venezuela','Vietnam','Virgin Islands(British)','Virgin Islands(US)','Wallis and Fatuna','West Bank','Western Sahara','Yemen','Zambia','Zimbabwe']
+    RF_Nationality =['','Afghanistan','Albania','Algeria','American Samoa','Andora','Angola','Anguilla','Antarctica','Antigua and Barbuda','Argentina','Armania','Aruba','Auckland Islands','Australia','Austria','Azerbaijan','Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bermuda','Bhutan','Bolivia','Bonaire','Bosnia','Botswana','Bouvet Islands','Brazil','British Indian Ocean Teritory','Brunei Darussalam','Bulgaria','Burkina Faso','Burundi','Cabo Verde','Cambodia','Cameroon','Canada','Cayman Islands','Central African Republic','Chad','Chile','China','Christmas Island','Cocos','Colombia','Comoros','Congo Democratic','Congo Republic','Cook Islands','Costa Rica','Ivory Cost','Croatia','Cuba','Curacao','Cyprus','Czech Republic','Denmark','Djibouti','Dominica','Dominican Republic','Ecuador','Egypt','EI Salvador','Equatorial Guinea','Eritrea','Estonia','eSwaitini','Ethiopia','Falkland Islands','Faroe Islands','Fiji','Finland','France','French Guiana','French Polynesia','French Southern Territories','Gabon','Gambia','Georgia','Germany','Ghana','Gibralter','Greece','Greenland','Grenada','Guadeloupe','Guam','Guatemala','Guernsey','Guinea','Guinea Bissau','Guyana','Haiti','Herd Island','Holy See','Honduras','Hongkong','Hungary','Iceland','India','Indonessia','Iran','Iraq','Ireland','Isle of man','Israel','Italy','Jamaica','Japan','Jersey','Jordan','Kazakhstan','Kenya','Kiribati','Korea North','Korea South','Kosovo','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Liberia','Libya','Liechtenstein','Lithuania','Luxembourg','Macao','Macedonia','Madagascar','Malawi','Malaysia','Maldives','Mali','Malta','Marshall Islands','Martinique','Mauritania','Mauritius','Mayotte','Mexico','Micronessia','Moldova','Monaco','Mongolia','Montenegro','Montserrat','Morocco','Mozambique','Mynamar','Namabia','Nauru','Nepal','Netherlands','New Celedonia','Newzealand','Niger','Nigeria','Norfolk Island','Nothern Mariana Islands','Norway','Nuie','Oman','Pakistan','Palau','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Pitcaim','Poland','Portugal','Puerto Rico','Qatar','Reunion','Roman','Russia','Rwanda','Saint Barthelemy','Saint Helena','Saint Kitts','Saint Lucia','Saint Martin','Saint Pierre','Saint Vincent','Samoa','Saint Marino','Sao Tome','Saudia Arabia','Senegal','Serbia','Seychelles','Sierra Leone','Singapore','Sint Martin','Slovekia','Slovenia','Solomon Islands','Somalia','South African','South Georgia','South Sudan','SPain','Srilanka','Sudan','Suriname','Svalbard','Sweden','Switxerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','Timor Leste','Togo','Tokelau','Tonga','Trinidad','Tunisia','Turkey','Turkmenistan','Turks','Tuvalu','Uganda','Ukraine','United Arab Emirates','United Kingdom','United States Minor','United States of America','Uruguay','Uzbekistan','Vanuatu','Venezuela','Vietnam','Virgin Islands(British)','Virgin Islands(US)','Wallis and Fatuna','West Bank','Western Sahara','Yemen','Zambia','Zimbabwe']
+    RF_SourceOfFunds = ['','Allowance','Bonus','Bursary','Company profits','Company sale','Cryptocurrency','Debt capital','Disability/social grant','Dividends from investment','Divorce settlement','Equity capital','Gambling winnings','Gift','Income from previous employment','Inherritance','Loan','Lottery winnings','Maintainance(Formal agreement)','Maintainance(Informal agreement)','Maturing Investments','Other','Pension','Provident fund','Rental Propert','Retirement Funds','Salary','Salary asset/property','Sale of shares','Sanlam payout','Savings','Settlement','Transfer to/from approved funds','Trust Income']
+    RF_RelationshipToClient =['','Annuitant','Applicant','Authorised Representative','Cessionary','Curator','Executor','Fund Annuitant','Gurantor','Legal Guardian','Legal owner','Multi data client','Nominee of ownership','Policy owner','Power of Attorney','Premium Payer','Surety']
+    # RF_CountryOfRegistration =
+    # RF_CountryOfOperation =
+    RF_Type_Legal_Entity = ['','Body corporate','Charitable organization','Church/religious organization','Closed corporation','Club','Deceased Estate','Foreign government','Foreign listed company','Foreign state owned entity','Foreign trust','Foreign Unlisted company','Foundation','Fund','Insolvent Estate','Listed company','Non government organization','Non profit organization','Other corporate arrangement','Retirement fund','School/university','State owned Enterprise','Stokvel','Trade Union','Trust','Unlisted company']
+    RF_Client_Relationship = ['','Beneficial owner','Beneficiary','Co-policy owner','Dependent','EFT third party','Individual acting on behalf of an entity','Individual exercising control other than owner','Individual linked to a partnership','Individual linked to a trust','Legal entity acting on behalf of individual','Legal entity acting on behalf of other legal entity','Legal Entity exercising control over another Legal Entity','Legal Entity has legal relationship with other Legal Entity','Legal Entity linked to a Trust','Legal guardian','Life assured','Natural guardian','Nominee for ownership','Principal owner','Security cession','Signatory','Trust has control over another trust','Trustee','Unit transfer investment owner']
+    RF_Product_Name = ['','Access to funds or benefits restricted to specific contractual events (specified termination, uncertain insured event)','Access to primary benefits only at claim stage','Access to primary benefits only at claim stage, but have access to cash during the lifetime of the product','Access to the values may be limited by legislation','Accumulation of cash values','AAdministrative service provided','Advisory or intermediary services only with commission based inflow','Allows for restricted number of withdrawals','Benefits governed by specific regulatory- and tax regimes','Can be accessed without any restrictions by law or product provider','Can be offered as security and be transferred to another person (ceded)','Cannot be offered as security or ceded','Contributions are limited by legislation or regulation','Contributions from Third Parties are allowed','Funds can be accumulated and easily accessed','Funds linked to a specific source (Estate, Order of Court, Retirement Fund Benefits, Employer)','Investments are made with discretionary money','Lump sum payments, including ad-hoc lump sum payments allowed','No or little accumulation of cash values during the lifetime of the product','Not available to retail investors','Online transactability and automated access','Payments to foreign bank accounts are allowed','Product allows for investment in or via a foreign jurisdiction(s)','Product only provides a structured flow of transactions','Significant fund flows are involved','Third Party EFT services provided','Third Party non-financial services provided','Transparency is limited in respect of source of funds','Unlimited contributions and withdrawals']
+    RF_Transaction_Flow = ['','Inflow','Outflow','Not Applicable']
+    RF_Transaction_Method = ['','Bank Transfer','Cash','Debit order','Debit/credit card','EFT','File/API Transfer','Mobile payment','Retailer/Merchant payment','Script Transfer','Stop order','Straight through processing','Unit Transfer']
+    RF_Transaction_Reason = ['','Additional Premium','Cession','Client/Policy change','Combined alteration','Commission/Service fee','Continuation','Conversion','New business','Premium arrears','Re-issue','Renewal','Review underwriting','Switch in','Transfer of value']
+    RF_High_Transaction_Reason = ['','Yes','No']
+    RF_Transaction_Frequency = ['','Ad hoc','Lump sum and recurring combination','Once off/Lump sum','Recurring']
+    # RF_Transaction_Value = []
+    # RF_Currency_Value = []
+    RF_Transaction_Geography = ['','Cross Border','In-country','Not Applicable']
+    # RF_Funds_Jurisdiction = []
+    RF_Delivery_Channel = ['','Intermediaries(Advisors,tied agents)','Intermediaries(Brokers,consultants)</']
+    RF_Linked_Party_Acting = ['','Not Applicable','No','Yes']
+    RF_Linked_Party_Paying = ['','Not applicable','Paying funds','Received funds']
+    RF_Client_Match = ['','Adverse Media','Enforcement,SIP,SIE','False Positive','False Positive-Unsure','False Positive-Unsure:Sanctions','No Alert','PEP-Domestic','PEP-Foreign','Sanction','Sanlam Do not Trnsact List','SOE']
+    RF_Client_Beneficiaries = ['','Yes','No']
+    RF_Adjust_Risk1 = ['','Low','Medium','High','Intolerable']
+    RF_BU_Risk = ['','Low','Medium','High']
+    RF_RCA = ['','Yes','No']
     csv_data = request.data['exportCSV']
     format, csvstr = csv_data.split(';base64,')
     ext = format.split('/')[-1]
     file_name = "'file." + ext
     csvData = ContentFile(base64.b64decode(csvstr), name=file_name) 
     df = pd.read_csv(csvData)
+    df.fillna('', inplace=True)
     csvData = []
     for i in range(len(df)):
         csvData.append({
             "advisorId" : request.data['advisorId'],
-            "RF_Overall_Risk" : str(df['RF_Overall_Risk'][i]) if df['RF_Overall_Risk'][i] is not None else "",
-            "RF_BU_Risk" : str(df['RF_BU_Risk'][i]) if df['RF_BU_Risk'][i] is not None else "",
-            "RF_Date" : str(df['RF_Date'][i]) if df['RF_Date'][i] is not None else "",
-            "RF_ClientName" : str(df['RF_ClientName'][i]) if df['RF_ClientName'][i] is not None else "",
-            "RF_ClientId" : str(df['RF_ClientId'][i]) if df['RF_ClientId'][i] is not None else "",
-            "RF_CompleteByName" : str(df['RF_CompleteByName'][i]) if df['RF_CompleteByName'][i] is not None else "",
-            "RF_CompleteByRole" : str(df['RF_CompleteByRole'][i]) if df['RF_CompleteByRole'][i] is not None else "",
-            "RF_ClientType" : str(df['RF_ClientType'][i]) if df['RF_ClientType'][i] is not None else "",
-            "RF_Occupation" : str(df['RF_Occupation'][i]) if df['RF_Occupation'][i] is not None else "",
-            "RF_CountryOfBirth" : str(df['RF_CountryOfBirth'][i]) if df['RF_CountryOfBirth'][i] is not None else "",
-            "RF_CountryOfResidence" : str(df['RF_CountryOfResidence'][i]) if df['RF_CountryOfResidence'][i] is not None else "",
-            "RF_Nationality" : str(df['RF_Nationality'][i]) if df['RF_Nationality'][i] is not None else "",
-            "RF_Different_Nationality" : str(df['RF_Different_Nationality'][i]) if df['RF_Different_Nationality'][i] is not None else "",
-            "RF_CountryOfTax" : str(df['RF_CountryOfTax'][i]) if df['RF_CountryOfTax'][i] is not None else "",
-            "RF_Industry" : str(df['RF_Industry'][i]) if df['RF_Industry'][i] is not None else "",
-            "RF_SourceOfFunds" : str(df['RF_SourceOfFunds'][i]) if df['RF_SourceOfFunds'][i] is not None else "",
-            "RF_RelationshipToClient" : str(df['RF_RelationshipToClient'][i]) if df['RF_RelationshipToClient'][i] is not None else "",
-            "RF_CountryOfRegistration" : str(df['RF_CountryOfRegistration'][i]) if df['RF_CountryOfRegistration'][i] is not None else "",
-            "RF_CountryOfOperation" : str(df['RF_CountryOfOperation'][i]) if df['RF_CountryOfOperation'][i] is not None else "",
-            "RF_Type_Legal_Entity" : str(df['RF_Type_Legal_Entity'][i]) if df['RF_Type_Legal_Entity'][i] is not None else "",
-            "RF_Client_Relationship" : str(df['RF_Client_Relationship'][i]) if df['RF_Client_Relationship'][i] is not None else "",
-            "RF_Product_Name" : str(df['RF_Product_Name'][i]) if df['RF_Product_Name'][i] is not None else "",
-            "RF_Transaction_Flow" : str(df['RF_Transaction_Flow'][i]) if df['RF_Transaction_Flow'][i] is not None else "",
-            "RF_Transaction_Method" : str(df['RF_Transaction_Method'][i]) if df['RF_Transaction_Method'][i] is not None else "",
-            "RF_Transaction_Reason" : str(df['RF_Transaction_Reason'][i]) if df['RF_Transaction_Reason'][i] is not None else "",
-            "RF_High_Transaction_Reason" : str(df['RF_High_Transaction_Reason'][i]) if df['RF_High_Transaction_Reason'][i] is not None else "",
-            "RF_Transaction_Frequency" : str(df['RF_Transaction_Frequency'][i]) if df['RF_Transaction_Frequency'][i] is not None else "",
-            "RF_Transaction_Value" : str(df['RF_Transaction_Value'][i]) if df['RF_Transaction_Value'][i] is not None else "",
-            "RF_Currency_Value" : str(df['RF_Currency_Value'][i]) if df['RF_Currency_Value'][i] is not None else "",
-            "RF_Transaction_Geography" : str(df['RF_Transaction_Geography'][i]) if df['RF_Transaction_Geography'][i] is not None else "",
-            "RF_Funds_Jurisdiction" : str(df['RF_Funds_Jurisdiction'][i]) if df['RF_Funds_Jurisdiction'][i] is not None else "",
-            "RF_Delivery_Channel" : str(df['RF_Delivery_Channel'][i]) if df['RF_Delivery_Channel'][i] is not None else "",
-            "RF_Linked_Party_Acting" : str(df['RF_Linked_Party_Acting'][i]) if df['RF_Linked_Party_Acting'][i] is not None else "",
-            "RF_Linked_Party_Paying" : str(df['RF_Linked_Party_Paying'][i]) if df['RF_Linked_Party_Paying'][i] is not None else "",
-            "RF_Client_Match" : str(df['RF_Client_Match'][i]) if df['RF_Client_Match'][i] is not None else "",
-            "RF_Client_Beneficiaries" : str(df['RF_Client_Beneficiaries'][i]) if df['RF_Client_Beneficiaries'][i] is not None else "",
-            "RF_Adjust_Risk1" : str(df['RF_Adjust_Risk1'][i]) if df['RF_Adjust_Risk1'][i] is not None else "",
-            "RF_Name" : str(df['RF_Name'][i]) if df['RF_Name'][i] is not None else "",
-            "RF_ID" : str(df['RF_ID'][i]) if df['RF_ID'][i] is not None else "",
-            "RF_Linked_Party" : str(df['RF_Linked_Party'][i]) if df['RF_Linked_Party'][i] is not None else "",
-            "RF_RCA" : str(df['RF_RCA'][i]) if df['RF_RCA'][i] is not None else "",
-            "RF_Birth_Country" : str(df['RF_Birth_Country'][i]) if df['RF_Birth_Country'][i] is not None else "",
-            "RF_Residence_Country" : str(df['RF_Residence_Country'][i]) if df['RF_Residence_Country'][i] is not None else "",
-            "RF_Nationality1" : str(df['RF_Nationality1'][i]) if df['RF_Nationality1'][i] is not None else "",
-            "RF_Control1" : str(df['RF_Control1'][i]) if df['RF_Control1'][i] is not None else "",
-            "RF_Control2" : str(df['RF_Control2'][i]) if df['RF_Control2'][i] is not None else "",
-            "RF_Control3" : str(df['RF_Control3'][i]) if df['RF_Control3'][i] is not None else "",
-            "RF_Another_Control1" : str(df['RF_Another_Control1'][i]) if df['RF_Another_Control1'][i] is not None else "",
-            "RF_Another_Control2" : str(df['RF_Another_Control2'][i]) if df['RF_Another_Control2'][i] is not None else "" ,
+            "RF_Overall_Risk" : str(df['RF_Overall_Risk'][i]) if df['RF_Overall_Risk'][i] else "",
+            "RF_BU_Risk" : RF_BU_Risk.index(str(df['RF_BU_Risk'][i])) if df['RF_BU_Risk'][i] else "1",
+            "RF_Date" : datetimeparser.parse(str(df['RF_Date'][i])).strftime('%Y-%m-%d') if df['RF_Date'][i] else datetime.today().strftime('%Y-%m-%d'),
+            "RF_ClientName" : str(df['RF_ClientName'][i]) if df['RF_ClientName'][i] else "",
+            "RF_ClientId" : str(df['RF_ClientId'][i]) if df['RF_ClientId'][i] else "",
+            "RF_CompleteByName" : UserAccount.objects.filter(id=request.data['advisorId']).values('name').first()['name'],
+            "RF_CompleteByRole" : str(df['RF_CompleteByRole'][i]) if df['RF_CompleteByRole'][i] else "",
+            "RF_ClientType" : RF_ClientType.index(str(df['RF_ClientType'][i])) if df['RF_ClientType'][i] != '' else "1",
+            "RF_Occupation" : RF_Occupation.index(str(df['RF_Occupation'][i])) if df['RF_Occupation'][i] != '' else "1",
+            "RF_CountryOfBirth" : RF_CountryOfBirth.index(str(df['RF_CountryOfBirth'][i])) if df['RF_CountryOfBirth'][i] != '' else "1",
+            "RF_CountryOfResidence" : RF_CountryOfBirth.index(str(df['RF_CountryOfResidence'][i])) if df['RF_CountryOfResidence'][i] != '' else "1",
+            "RF_Nationality" : RF_Nationality.index(str(df['RF_Nationality'][i])) if df['RF_Nationality'][i] != '' else "1",
+            "RF_Different_Nationality" : RF_Nationality.index(str(df['RF_Different_Nationality'][i])) if df['RF_Different_Nationality'][i] != '' else "1",
+            "RF_CountryOfTax" : RF_CountryOfBirth.index(str(df['RF_CountryOfTax'][i])) if df['RF_CountryOfTax'][i] != '' else "1",
+            "RF_Industry" : RF_Industry.index(str(df['RF_Industry'][i])) if df['RF_Industry'][i] != '' else "1",
+            "RF_SourceOfFunds" : RF_SourceOfFunds.index(str(df['RF_SourceOfFunds'][i])) if df['RF_SourceOfFunds'][i] != '' else "",
+            "RF_RelationshipToClient" : RF_RelationshipToClient.index(str(df['RF_RelationshipToClient'][i])) if df['RF_RelationshipToClient'][i] != '' else "1",
+            "RF_CountryOfRegistration" : RF_CountryOfBirth.index(str(df['RF_CountryOfRegistration'][i])) if df['RF_CountryOfRegistration'][i] != '' else "206",
+            "RF_CountryOfOperation" : RF_CountryOfBirth.index(str(df['RF_CountryOfOperation'][i])) if df['RF_CountryOfOperation'][i] != '' else "206",
+            "RF_Type_Legal_Entity" : RF_Type_Legal_Entity.index(str(df['RF_Type_Legal_Entity'][i])) if df['RF_Type_Legal_Entity'][i] != '' else "",
+            "RF_Client_Relationship" : RF_Client_Relationship.index(str(df['RF_Client_Relationship'][i])) if df['RF_Client_Relationship'][i] != '' else "1",
+            "RF_Product_Name" : RF_Product_Name.index(str(df['RF_Product_Name'][i])) if df['RF_Product_Name'][i] != '' else "1",
+            "RF_Transaction_Flow" : RF_Transaction_Flow.index(str(df['RF_Transaction_Flow'][i])) if df['RF_Transaction_Flow'][i] != '' else "1",
+            "RF_Transaction_Method" : RF_Transaction_Method.index(str(df['RF_Transaction_Method'][i])) if df['RF_Transaction_Method'][i] != '' else "",
+            "RF_Transaction_Reason" : RF_Transaction_Reason.index(str(df['RF_Transaction_Reason'][i])) if df['RF_Transaction_Reason'][i] != '' else "",
+            "RF_High_Transaction_Reason" : RF_High_Transaction_Reason.index(str(df['RF_High_Transaction_Reason'][i])) if df['RF_High_Transaction_Reason'][i] != '' else "",
+            "RF_Transaction_Frequency" : RF_Transaction_Frequency.index(str(df['RF_Transaction_Frequency'][i])) if df['RF_Transaction_Frequency'][i] != '' else "",
+            "RF_Transaction_Value" : str(df['RF_Transaction_Value'][i]) if df['RF_Transaction_Value'][i] != '' else "",
+            "RF_Currency_Value" : str(df['RF_Currency_Value'][i]) if df['RF_Currency_Value'][i] != '' else "",
+            "RF_Transaction_Geography" : RF_Transaction_Geography.index(str(df['RF_Transaction_Geography'][i])) if df['RF_Transaction_Geography'][i] != '' else "",
+            "RF_Funds_Jurisdiction" : RF_CountryOfBirth.index(str(df['RF_Funds_Jurisdiction'][i])) if df['RF_Funds_Jurisdiction'][i] != '' else "",
+            "RF_Delivery_Channel" : RF_Delivery_Channel.index(str(df['RF_Delivery_Channel'][i])) if df['RF_Delivery_Channel'][i] != '' else "",
+            "RF_Linked_Party_Acting" : RF_Linked_Party_Acting.index(str(df['RF_Linked_Party_Acting'][i])) if df['RF_Linked_Party_Acting'][i] != '' else "1",
+            "RF_Linked_Party_Paying" : RF_Linked_Party_Paying.index(str(df['RF_Linked_Party_Paying'][i])) if df['RF_Linked_Party_Paying'][i] != '' else "",
+            "RF_Client_Match" : RF_Client_Match.index(str(df['RF_Client_Match'][i])) if df['RF_Client_Match'][i] != '' or df['RF_Client_Match'][i] != 'nan' else "",
+            "RF_Client_Beneficiaries" : RF_Client_Beneficiaries.index(str(df['RF_Client_Beneficiaries'][i])) if df['RF_Client_Beneficiaries'][i] != '' else "",
+            "RF_Adjust_Risk1" : RF_Adjust_Risk1.index(str(df['RF_Adjust_Risk1'][i])) if df['RF_Adjust_Risk1'][i] != '' else "",
+            "RF_Name" : str(df['RF_Name'][i]) if df['RF_Name'][i] != '' else "",
+            "RF_ID" : str(df['RF_ID'][i]) if df['RF_ID'][i] != '' else "",
+            "RF_Linked_Party" : str(df['RF_Linked_Party'][i]) if df['RF_Linked_Party'][i] != '' else "",
+            "RF_RCA" : RF_RCA.index(str(df['RF_RCA'][i])) if df['RF_RCA'][i] != '' else "",
+            "RF_Birth_Country" : str(df['RF_Birth_Country'][i]) if df['RF_Birth_Country'][i] != '' else "",
+            "RF_Residence_Country" : str(df['RF_Residence_Country'][i]) if df['RF_Residence_Country'][i] != '' else "",
+            "RF_Nationality1" : str(df['RF_Nationality1'][i]) if df['RF_Nationality1'][i] != '' else "",
+            "RF_Control1" : str(df['RF_Control1'][i]) if df['RF_Control1'][i] != '' else "",
+            "RF_Control2" : str(df['RF_Control2'][i]) if df['RF_Control2'][i] != '' else "",
+            "RF_Control3" : str(df['RF_Control3'][i]) if df['RF_Control3'][i] != '' else "",
+            "RF_Another_Control1" : str(df['RF_Another_Control1'][i]) if df['RF_Another_Control1'][i] != '' else "",
+            "RF_Another_Control2" : str(df['RF_Another_Control2'][i]) if df['RF_Another_Control2'][i] != '' else "" ,
         })
     # print(csvData)
     data = {"advisorId":1,"RF_Overall_Risk":"","RF_BU_Risk":"2","RF_Date":"2023-02-22","RF_ClientName":"","RF_ClientId":"","RF_CompleteByName":"Armughan","RF_EventID":"","RF_CompleteByRole":"","RF_AdjustedRisk":"","RF_GCO_Risk":"","RF_Approvals":"","RF_ClientType":"1","RF_Occupation":"1","RF_CountryOfBirth":"0","RF_CountryOfResidence":"0","RF_Nationality":"0","RF_Different_Nationality":"0","RF_CountryOfTax":"0","RF_Industry":"0","RF_SourceOfFunds":"0","RF_RelationshipToClient":"0","RF_CountryOfRegistration":"0","RF_CountryOfOperation":"0","RF_Type_Legal_Entity":"0","RF_Client_Relationship":"0","RF_Product_Name":"7","RF_Transaction_Flow":"0","RF_Transaction_Method":"0","RF_Transaction_Reason":"0","RF_High_Transaction_Reason":"0","RF_Transaction_Frequency":"0","RF_Transaction_Value":"0","RF_Currency_Value":"0","RF_Transaction_Geography":"0","RF_Funds_Jurisdiction":"0","RF_Delivery_Channel":"0","RF_Linked_Party_Acting":"0","RF_Linked_Party_Paying":"0","RF_Client_Match":"0","RF_Client_Beneficiaries":"0","RF_Adjust_Risk1":"2","RF_Name":"","RF_ID":"","RF_Linked_Party":"0","RF_RCA":"0","RF_Birth_Country":"0","RF_Residence_Country":"0","RF_Nationality1":"0","RF_Control1":"","RF_Control2":"","RF_Control3":"","RF_Another_Control1":"0","RF_Another_Control2":"0"}
+    low = 0
+    medium = 0
+    high = 0
+    undertermined = 0
+    intolerable = 0
     for row in csvData:
-        print(row)
+        if int(row['RF_Client_Match']) == 1 or int(row['RF_Client_Match']) == 4 or int(row['RF_Client_Match']) == 7:
+            medium += 1
+        elif int(row['RF_Client_Match']) == 2 or int(row['RF_Client_Match']) == 5 or int(row['RF_Client_Match']) == 8 or int(row['RF_Client_Match']) == 11:
+            high += 1
+        elif int(row['RF_Client_Match']) == 3 or int(row['RF_Client_Match']) == 6:
+            low += 1
+        elif int(row['RF_Client_Match']) == 9 or int(row['RF_Client_Match']) == 10:
+            intolerable += 1
+        else:
+            undertermined += 1
+        # print(row)
         # importCSV = RiskFactors.objects.filter(RF_ClientId=csvData[i]['RF_ClientId']).values()
         # importCSV = RiskFactors.objects.filter(RF_ClientId=csvData[i]['RF_ClientId'])
-        serializer = RiskFactorsSerializers(data=row, many=False)
+        old_form = RiskFactors.objects.filter(advisorId = row['advisorId'],RF_ClientId = row['RF_ClientId']).first()
+        serializer = RiskFactorsSerializers(instance=old_form, data=row, partial=True)
         if serializer.is_valid():
-            serializer.save()
+            print(not RiskFactors.objects.filter(advisorId = row['advisorId'],RF_ClientId = row['RF_ClientId']).exists())
+            if not RiskFactors.objects.filter(advisorId = row['advisorId'],RF_ClientId = row['RF_ClientId']).exists():                
+                serializer = RiskFactorsSerializers(data=row, many=False)
+                if serializer.is_valid():
+                    serializer.create(serializer.validated_data)
+            else:
+                if serializer.is_valid():
+                    serializer.save()
+                else:
+                    print({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
         else:
-            return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+            print({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+    importResult = [
+                        ['Undertermined',undertermined],
+                        ['Low',low],['Medium', medium],
+                        ['High', high],
+                        ['Intolerable', intolerable]
+                    ]
+    importResultResponse = {
+                        'Undertermined':undertermined,
+                        'Low':low,
+                        'Medium': medium,
+                        'High': high,
+                        'Intolerable': intolerable
+                    }
+    result_df = pd.DataFrame(columns=[['Risk Weight','Count']], data=importResult)
+    filename =  "Import Result - %s.csv" %(uuid.uuid4())
+    result_df.to_csv("data/static/csv/%s" %(filename))
     # serializer = importCSVSerializer(data=csvData,many=True, partial=True)
     # if serializer.is_valid():
     #     serializer.update()
     # print(df.head())
-    return Response({"message": "Updated","code":200},200)
+    return Response({"message": "Updated","code":200,"importResult": importResultResponse,"file":"static/csv/%s" %(filename)},200)
     # return Response({"data":csvData})
 @api_view(['POST'])
 
@@ -353,9 +426,9 @@ def formStats(request):
     riskFactors = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
     forms_data = []
     if searchQuery != "":
-        forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId")
+        forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
     else:
-        forms_data = riskFactors.order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId")
+        forms_data = riskFactors.order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
     orderBy = request.data['order_by']
     p = Paginator(forms_data, 10)
     if request.data['page_number'] <= p.num_pages:
@@ -800,6 +873,58 @@ def viewShortTermInsurancePersonalData(request):
 def updateShortTermInsurancePersonalData(request):
     form = ShortTermInsurancePersonal.objects.get(id=request.data['id'])
     serializer = ShortTermInsurancePersonalSerializers(instance=form, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    else:
+        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+
+# Short Term Insurance Personal
+@api_view(['POST'])
+def insertMedicalData(request):
+    serializer = MedicalSerializers(data=request.data, many=False)
+    if serializer.is_valid():
+        old_form = Medical.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
+        # old_form = RiskPlanning.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId'],clientIdNumber = request.data['clientIdNumber']).first()
+        serializer1 = MedicalSerializers(old_form, many=False)
+        data = serializer1.data
+        # return Response({"data":serializer1.data, "length": str(serializer1.data['advisorId'])})
+        if str(serializer1.data['advisorId']) == "None":
+            serializer.create(serializer.validated_data)
+            latest = Medical.objects.latest('id')
+            serializer2 = MedicalSerializers(latest, many=False)
+            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+        else :
+            del data['status']
+            del data['created_at']
+            del data['updated_at']
+            return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
+        #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
+    return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
+
+    
+
+@api_view(['POST'])
+def viewMedicalData(request):
+    form = Medical.objects.get(id=request.data['formId'])
+    formSerializer = MedicalSerializers(form, many=False)
+    
+    formData = formSerializer.data
+    
+    advisorName = Medical.objects.get(id=formData.data['advisorId'])
+    advisorNameSerializer = MedicalSerializers(advisorName, many=False)
+
+    formData['advisorName'] = advisorNameSerializer.data['name']
+    # if serializer.is_valid():
+    return Response({"message": "Found","code":200,"Data": formData},200)
+    # else:
+    #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+@api_view(['POST'])
+def updateMedicalData(request):
+    form = Medical.objects.get(id=request.data['id'])
+    serializer = MedicalSerializers(instance=form, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
         return Response({"message": "Updated","code":200,"formData": serializer.data},200)

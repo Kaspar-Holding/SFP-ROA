@@ -16,6 +16,7 @@ import GapCover from './GapCover';
 import RiskFactors from './RiskFactors';
 import Footer from '../Footer';
 import RecordOfAdvice from './RecordOfAdvice';
+import Medical from './Medical';
 const CompleteForm = () => {
     const location = useLocation();
     const { state } = location;
@@ -64,6 +65,9 @@ const CompleteForm = () => {
                 <button className="nav-link" id="Short-term-Personal-tab" data-bs-toggle="tab" data-bs-target="#Short-term-Personal" type="button" role="tab" aria-controls="Short-term-Personal" aria-selected="false">Short-term Personal</button>
             </li>
             <li className="nav-item" role="presentation">
+                <button className="nav-link" id="Medical-tab" data-bs-toggle="tab" data-bs-target="#Medical" type="button" role="tab" aria-controls="Medical" aria-selected="false">Medical</button>
+            </li>
+            <li className="nav-item" role="presentation">
                 <button className="nav-link" id="Gap-Cover-tab" data-bs-toggle="tab" data-bs-target="#Gap-Cover" type="button" role="tab" aria-controls="Gap-Cover" aria-selected="false">Gap Cover</button>
             </li>
             <br/>
@@ -85,6 +89,7 @@ const CompleteForm = () => {
                 <div className="tab-pane fade" id="Short-term-Commercial" role="tabpanel" aria-labelledby="Short-term-Commercial-tab"><Short_term_Commercial data={{formId: state['formId']}}/></div>
                 <div className="tab-pane fade" id="Gap-Cover" role="tabpanel" aria-labelledby="Gap-Cover-tab"><GapCover /></div>
                 <div className="tab-pane fade" id="Short-term-Personal" role="tabpanel" aria-labelledby="Short-term-Personal-tab"><Short_term_Personal data={{formId: state['formId']}}/></div>
+                <div className="tab-pane fade" id="Medical" role="tabpanel" aria-labelledby="Medical-tab"><Medical data={{formId: state['formId']}}/></div>
             </div>
       </main>
         <Footer />

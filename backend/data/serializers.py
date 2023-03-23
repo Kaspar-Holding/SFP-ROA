@@ -2,6 +2,7 @@
 from datetime import datetime, timezone
 from rest_framework import serializers
 from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, InvestmentPlanning, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
+from .models import Medical
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
 
@@ -1747,6 +1748,111 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.save()
         return instance
 
+
+class MedicalSerializers(serializers.ModelSerializer):
+    class Meta():
+        model = Medical
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return Medical.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.advisorId = validated_data.get('advisorId', instance.advisorId)
+        instance.formId = validated_data.get('formId', instance.formId)
+        
+        instance.MSA_ClientName = validated_data.get("MSA_ClientName", instance.MSA_ClientName)
+        instance.MSA_ClientIdNumber = validated_data.get("MSA_ClientIdNumber", instance.MSA_ClientIdNumber)
+        instance.MSA_ClientAddress = validated_data.get("MSA_ClientAddress", instance.MSA_ClientAddress)
+        instance.MSA_ClientEmail = validated_data.get("MSA_ClientEmail", instance.MSA_ClientEmail)
+        instance.MSA_ClientPhone = validated_data.get("MSA_ClientPhone", instance.MSA_ClientPhone)
+        instance.MSA_ClientDate = validated_data.get("MSA_ClientDate", instance.MSA_ClientDate)
+
+        instance.MSA_Name = validated_data.get("MSA_Name", instance.MSA_Name)
+        instance.MSA_MaritalStatus = validated_data.get("MSA_MaritalStatus", instance.MSA_MaritalStatus)
+        instance.MSA_Gender = validated_data.get("MSA_Gender", instance.MSA_Gender)
+        instance.MSA_Occupation = validated_data.get("MSA_Occupation", instance.MSA_Occupation)
+        instance.MSA_Income = validated_data.get("MSA_Income", instance.MSA_Income)
+        instance.MSA_Subsidy = validated_data.get("MSA_Subsidy", instance.MSA_Subsidy)
+        instance.MSA_Dependant = validated_data.get("MSA_Dependant", instance.MSA_Dependant)
+        instance.MSA_Spouse = validated_data.get("MSA_Spouse", instance.MSA_Spouse)
+        instance.MSA_AdultDependant = validated_data.get("MSA_AdultDependant", instance.MSA_AdultDependant)
+        instance.MSA_ChronicM = validated_data.get("MSA_ChronicM", instance.MSA_ChronicM)
+        instance.MSA_ChronicS = validated_data.get("MSA_ChronicM", instance.MSA_ChronicM)
+        instance.MSA_ChronicAD = validated_data.get("MSA_ChronicAD", instance.MSA_ChronicAD)
+        instance.MSA_ChronicC = validated_data.get("MSA_ChronicC", instance.MSA_ChronicC)
+        instance.MSA_ChronicOC = validated_data.get("MSA_ChronicOC", instance.MSA_ChronicOC)
+        instance.MSA_PFromDate = validated_data.get("MSA_PFromDate", instance.MSA_PFromDate)
+        instance.MSA_PTODate = validated_data.get("MSA_PTODate", instance.MSA_PTODate)
+
+        instance.BackInfo = validated_data.get("BackInfo", instance.BackInfo)
+            
+        instance.SNA_Needs1 = validated_data.get("SNA_Needs1", instance.SNA_Needs1)
+        instance.SNA_Comments1 = validated_data.get("SNA_Comments1", instance.SNA_Comments1)
+        instance.SNA_Needs2 = validated_data.get("SNA_Needs2", instance.SNA_Needs2)
+        instance.SNA_Comments2 = validated_data.get("SNA_Comments2", instance.SNA_Comments2)
+        instance.SNA_Needs3 = validated_data.get("SNA_Needs3", instance.SNA_Needs3)
+        instance.SNA_Comments3 = validated_data.get("SNA_Comments3", instance.SNA_Comments3)
+        instance.SNA_Needs4 = validated_data.get("SNA_Needs4", instance.SNA_Needs4)
+        instance.SNA_Comments4 = validated_data.get("SNA_Comments4", instance.SNA_Comments4)
+        instance.SNA_Needs5 = validated_data.get("SNA_Needs5", instance.SNA_Needs5)
+        instance.SNA_Comments5 = validated_data.get("SNA_Comments5", instance.SNA_Comments5)
+        instance.SNA_Needs6 = validated_data.get("SNA_Needs6", instance.SNA_Needs6)
+        instance.SNA_Comments6 = validated_data.get("SNA_Comments6", instance.SNA_Comments6)
+        instance.SNA_Needs7 = validated_data.get("SNA_Needs7", instance.SNA_Needs7)
+        instance.SNA_Comments7 = validated_data.get("SNA_Comments7", instance.SNA_Comments7)
+        instance.SNA_Needs8 = validated_data.get("SNA_Needs8", instance.SNA_Needs8)
+        instance.SNA_Comments8 = validated_data.get("SNA_Comments8", instance.SNA_Comments8)
+        instance.SNA_Needs9 = validated_data.get("SNA_Needs9", instance.SNA_Needs9)
+        instance.SNA_Comments9 = validated_data.get("SNA_Comments9", instance.SNA_Comments9)
+        instance.SNA_Needs10 = validated_data.get("SNA_Needs10", instance.SNA_Needs10)
+        instance.SNA_Comments10 = validated_data.get("SNA_Comments10", instance.SNA_Comments1)
+            
+        instance.CoMAB_Current1 = validated_data.get("CoMAB_Current1", instance.CoMAB_Current1)
+        instance.CoMAB_Replaced1 = validated_data.get("CoMAB_Replaced1", instance.CoMAB_Replaced1)
+        instance.CoMAB_Current2 = validated_data.get("CoMAB_Current2", instance.CoMAB_Current2)
+        instance.CoMAB_Replaced2 = validated_data.get("CoMAB_Replaced2", instance.CoMAB_Replaced2)
+        instance.CoMAB_Current3 = validated_data.get("CoMAB_Current3", instance.CoMAB_Current3)
+        instance.CoMAB_Replaced3 = validated_data.get("CoMAB_Replaced3", instance.CoMAB_Replaced3)
+        instance.CoMAB_Current4 = validated_data.get("CoMAB_Current4", instance.CoMAB_Current4)
+        instance.CoMAB_Replaced4 = validated_data.get("CoMAB_Replaced4", instance.CoMAB_Replaced4)
+        instance.CoMAB_Current5 = validated_data.get("CoMAB_Current5", instance.CoMAB_Current5)
+        instance.CoMAB_Replaced5 = validated_data.get("CoMAB_Replaced5", instance.CoMAB_Replaced5)
+        instance.CoMAB_Current6 = validated_data.get("CoMAB_Current6", instance.CoMAB_Current6)
+        instance.CoMAB_Replaced6 = validated_data.get("CoMAB_Replaced6", instance.CoMAB_Replaced6)
+        instance.CoMAB_Current7 = validated_data.get("CoMAB_Current7", instance.CoMAB_Current7)
+        instance.CoMAB_Replaced7 = validated_data.get("CoMAB_Replaced7", instance.CoMAB_Replaced7)
+        instance.CoMAB_Current8 = validated_data.get("CoMAB_Current8", instance.CoMAB_Current8)
+        instance.CoMAB_Replaced8 = validated_data.get("CoMAB_Replaced8", instance.CoMAB_Replaced8)
+        instance.CoMAB_Current9 = validated_data.get("CoMAB_Current9", instance.CoMAB_Current9)
+        instance.CoMAB_Replaced9 = validated_data.get("CoMAB_Replaced9", instance.CoMAB_Replaced9)
+        instance.CoMAB_Current10 = validated_data.get("CoMAB_Current10", instance.CoMAB_Current10)
+        instance.CoMAB_Replaced10 = validated_data.get("CoMAB_Replaced10", instance.CoMAB_Replaced10)
+        instance.CoMAB_Current11 = validated_data.get("CoMAB_Current11", instance.CoMAB_Current11)
+        instance.CoMAB_Replaced11 = validated_data.get("CoMAB_Replaced11", instance.CoMAB_Replaced11)
+        instance.CoMAB_Current12 = validated_data.get("CoMAB_Current12", instance.CoMAB_Current12)
+        instance.CoMAB_Replaced12 = validated_data.get("CoMAB_Replaced12", instance.CoMAB_Replaced1)
+
+        instance.SectionD_SnF = validated_data.get("SectionD_SnF", instance.SectionD_SnF)
+        instance.SectionE_PMB = validated_data.get("SectionE_PMB", instance.SectionE_PMB)
+
+        instance.SectionF_NotAccepted = validated_data.get("SectionF_NotAccepted", instance.SectionF_NotAccepted)
+        instance.SectionF_Reasons = validated_data.get("SectionF_Reasons", instance.SectionF_Reasons)
+        instance.SectionF_Consequences = validated_data.get("SectionF_Consequences", instance.SectionF_Consequences)
+        instance.SectionF_Fee = validated_data.get("SectionF_Fee", instance.SectionF_Fee)
+        instance.SectionF_Comments = validated_data.get("SectionF_Comments", instance.SectionF_Comments)
+        instance.SectionF_Date = validated_data.get("SectionF_Date", instance.SectionF_Date)
+        instance.SectionF_ClientName = validated_data.get("SectionF_ClientName", instance.SectionF_ClientName)
+
+
+        instance.updated_at = datetime.now(timezone.utc)
+
+        
+        instance.save()
+        return instance
+
+        
 
 class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
     class Meta():
@@ -3761,6 +3867,7 @@ class RiskFactorsSerializers(serializers.ModelSerializer):
         instance.RF_Type_Legal_Entity = validated_data.get('RF_Type_Legal_Entity', instance.RF_Type_Legal_Entity)
         instance.RF_Client_Relationship = validated_data.get('RF_Client_Relationship', instance.RF_Client_Relationship)
         instance.RF_Product_Name = validated_data.get('RF_Product_Name', instance.RF_Product_Name)
+        instance.RF_Product_Category = validated_data.get('RF_Product_Category', instance.RF_Product_Category)
         instance.RF_Transaction_Flow = validated_data.get('RF_Transaction_Flow', instance.RF_Transaction_Flow)
         instance.RF_Transaction_Method = validated_data.get('RF_Transaction_Method', instance.RF_Transaction_Method)
         instance.RF_Transaction_Reason = validated_data.get('RF_Transaction_Reason', instance.RF_Transaction_Reason)

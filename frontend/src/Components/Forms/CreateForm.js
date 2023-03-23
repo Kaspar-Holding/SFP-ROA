@@ -373,13 +373,14 @@ const CreateForm = ({user}) => {
         RF_SourceOfFunds : "0",
         RF_Client_Relationship : "0",
         RF_Product_Name : "7",
+        RF_Product_Category : "",
         RF_Transaction_Flow : "1",
         RF_Transaction_Method : "0",
         RF_Transaction_Reason : "0",
         RF_High_Transaction_Reason : "0",
         RF_Transaction_Frequency : "0",
         RF_Transaction_Value : "0",
-        RF_Currency_Value : "0",
+        RF_Currency_Value : "",
         RF_Transaction_Geography : "0",
         RF_Funds_Jurisdiction : "0",
         RF_Delivery_Channel : "0",
@@ -5354,7 +5355,7 @@ const CreateForm = ({user}) => {
             </div>
 
             <div className="col-2">
-                <input spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' className="form-control" placeholder=""  aria-describedby="" value="Advisory or intermediary services only with commission based inflow" />
+                <input spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' value={FormData['RF_Product_Category']} className="form-control" placeholder=""  aria-describedby="" />
             </div>
 
 

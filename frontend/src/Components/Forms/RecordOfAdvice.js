@@ -268,10 +268,10 @@ const RecordOfAdvice = ({user}) => {
                             <div className="col-6" style={{paddingBottom: "0.5%"}}>
                                 <div className="row g-3 align-items-center">
                                     <div className="col-4">
-                                        <label htmlFor="date_of_birth" className="col-form-label"><b>Date:</b></label>
+                                        <label htmlFor="clientDateOfBirth" className="col-form-label"><b>Date:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true"  type="date"  id="date_of_birth" value={FormData['date_of_birth']} onChange={e => onChange(e)} name="clientDateOfBirth" className="form-control" placeholder="date_of_birth"  aria-describedby="" />
+                                        <input required spellCheck="true"  type="date"  id="clientDateOfBirth" value={FormData['clientDateOfBirth']} onChange={e => onChange(e)} name="clientDateOfBirth" className="form-control" placeholder="date_of_birth"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -290,7 +290,7 @@ const RecordOfAdvice = ({user}) => {
                                         <div className="row">
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input className="form-check-input" checked={FormData['clientLetterOfIntroduction'] === "1" ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
+                                                    <input className="form-check-input" checked={FormData['clientLetterOfIntroduction'] === 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -300,7 +300,7 @@ const RecordOfAdvice = ({user}) => {
                                             </div>
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input className="form-check-input" checked={FormData['clientLetterOfIntroduction'] === "1" ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
+                                                    <input className="form-check-input" checked={FormData['clientLetterOfIntroduction'] === 1 ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -320,7 +320,7 @@ const RecordOfAdvice = ({user}) => {
                                             </> :
                                             null
                                         }
-                                        <textarea id="letter_of_introduction" required={FormData['clientLetterOfIntroduction'] === "0" ? true : false} value={FormData['clientLetterOfIntroductionReason']} name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea id="letter_of_introduction" required={FormData['clientLetterOfIntroduction'] === 0 ? true : false} value={FormData['clientLetterOfIntroductionReason']} maxLength={256} name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['letterOfIntroduction'] === "1" ?
@@ -350,7 +350,7 @@ const RecordOfAdvice = ({user}) => {
                                         <div className="row">
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] === "1" ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
+                                                    <input required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] === 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -360,7 +360,7 @@ const RecordOfAdvice = ({user}) => {
                                             </div>
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] === "1" ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
+                                                    <input required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] === 1 ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -380,7 +380,7 @@ const RecordOfAdvice = ({user}) => {
                                             </> :
                                             null
                                         }
-                                        <textarea id="authority_access" required={FormData['clientLetterOfIntroductionAccess'] === "0" ? true : false} name="clientLetterOfIntroductionAccessReason" value={FormData['clientLetterOfIntroductionAccessReason']}  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea id="authority_access" required={FormData['clientLetterOfIntroductionAccess'] === 0 ? true : false}  maxLength={256} name="clientLetterOfIntroductionAccessReason" value={FormData['clientLetterOfIntroductionAccessReason']}  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['letterOfIntroductionAccess'] === "1" ?
@@ -411,7 +411,7 @@ const RecordOfAdvice = ({user}) => {
                                         <div className="row">
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input required className="form-check-input" checked={FormData['clientFica'] === "1" ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientFica"/>
+                                                    <input required className="form-check-input" checked={FormData['clientFica'] === 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientFica"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -421,7 +421,7 @@ const RecordOfAdvice = ({user}) => {
                                             </div>
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input required className="form-check-input" checked={FormData['clientFica'] === "1" ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientFica"/>
+                                                    <input required className="form-check-input" checked={FormData['clientFica'] === 1 ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientFica"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -441,7 +441,7 @@ const RecordOfAdvice = ({user}) => {
                                             </> : 
                                             null
                                         }
-                                        <textarea  id="provided_identity" required={FormData['clientFica'] === "0" ? true : false} value={FormData['clientFicaReason']} name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        <textarea  id="provided_identity" required={FormData['clientFica'] === 0 ? true : false} value={FormData['clientFicaReason']}  maxLength={256} name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
                                     </div>
                                     {/* {
                                         FormData['fica'] === "1" ? null : 
@@ -491,6 +491,7 @@ const RecordOfAdvice = ({user}) => {
                             onFocus={backgroundInfo_onFocus} required
                             onBlur={backgroundInfo_onBlur}
                             onChange={e => onChange(e)}
+                            maxLength={1000}
                             value={FormData['clientBackgroundInfo']}
                             placeholder={
                                 `                       Provide a detailed description of the client’s:

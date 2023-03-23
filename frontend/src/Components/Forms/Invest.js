@@ -963,7 +963,7 @@ const Invest = ({user}) =>
                             <option value="0" selected>Choose Product</option>
                             <option value="1">Endowment</option>
                             <option value="2">RA</option>
-                            <option value="3">TSFA</option>
+                            <option value="3">TFSA</option>
                             <option value="4">Unit Trust</option>
                             <option value="5">Life Annuity</option>
                             <option value="6">Living Annuity</option>

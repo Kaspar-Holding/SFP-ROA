@@ -40,7 +40,7 @@ def exportData(request):
     # RF_Currency_Value = []
     RF_Transaction_Geography = ['','Cross Border','In-country','Not Applicable']
     # RF_Funds_Jurisdiction = []
-    RF_Delivery_Channel = ['','Intermediaries(Advisors,tied agents)','Intermediaries(Brokers,consultants)</']
+    RF_Delivery_Channel = ['','AFP','SFP']
     RF_Linked_Party_Acting = ['','Not Applicable','No','Yes']
     RF_Linked_Party_Paying = ['','Not applicable','Paying funds','Received funds']
     RF_Client_Match = ['','Adverse Media','Enforcement,SIP,SIE','False Positive','False Positive-Unsure','False Positive-Unsure:Sanctions','No Alert','PEP-Domestic','PEP-Foreign','Sanction','Sanlam Do not Trnsact List','SOE']

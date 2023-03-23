@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 const ImportExport = ({user}) => {
   const [SuccessMessage, setSuccessMessage] = useState("")
   const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
+  const [ImportResult, setImportResult] = useState([])
   const ExportCSVFile = async() => {
     const config = {
       headers: {
@@ -49,21 +50,26 @@ const ImportExport = ({user}) => {
     }
     const Body = JSON.stringify(csvFile)
     try {
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/importCSV/`,Body,config)
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/importCSV/`,Body,config)
         setSuccessMessage("Successfully Updated")
         setSuccessMessageVisibility("block")
+        setImportResult(response.data['importResult'])
+        const url = `${process.env.REACT_APP_BACKEND_URL}/${response.data['file']}`
+        window.open(url, '_blank').focus()
         setTimeout(() => {
             setSuccessMessageVisibility("none")
         }, 5000)
-    } catch (error) {
-      console.log('first', error.response.data['Errors'])
+      } catch (error) {
+        console.log('first', error.response.data['Errors'])
+      setImportResult({})
       setSuccessMessage(error.response.Errors)
       setSuccessMessageVisibility("block")
       setTimeout(() => {
         setSuccessMessageVisibility("none")
-    }, 5000)
+      }, 5000)
     }
   }
+  console.log(ImportResult)
   const onDowloadCSV = (e) => {
     e.preventDefault()
     ExportCSVFile()
@@ -81,7 +87,7 @@ const ImportExport = ({user}) => {
     advisorId: user.id
   })
 
-  console.log(JSON.stringify(csvFile))
+  // console.log(JSON.stringify(csvFile))
   const convertToBase64 = (e) => {
     const reader = new FileReader()
     reader.readAsDataURL(e.target.files[0])    
@@ -96,7 +102,7 @@ const ImportExport = ({user}) => {
       <div className="notification_container">
         <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
           {SuccessMessage}
-          {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
+          {/* <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
         </div>
       </div>
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -110,10 +116,10 @@ const ImportExport = ({user}) => {
       <div className="mb-4 mt-4">
           <div className="">
               <div className="">
-                  <form class="" onSubmit={(e)=>{onUpload(e)}}>
-                      <div class="col mb-3">
-                          <label htmlFor="importCsv" class="form-label">Import Data</label>
-                          <input type="file" required id="importCsv" accept='.csv' class="form-control" name="exportCSV" multiple={false} onChange={(e)=>(convertToBase64(e))} placeholder="Cost .csv file" />
+                  <form className="" onSubmit={(e)=>{onUpload(e)}}>
+                      <div className="col mb-3">
+                          <label htmlFor="importCsv" className="form-label">Import Data</label>
+                          <input type="file" required id="importCsv" accept='.csv' className="form-control" name="exportCSV" multiple={false} onChange={(e)=>(convertToBase64(e))} placeholder="Cost .csv file" />
                       </div>
                       <button type='submit' className="btn btn-md btn-primary col-12">Upload</button>
 
@@ -121,6 +127,44 @@ const ImportExport = ({user}) => {
               </div>
 
           </div>
+          {
+            ImportResult ? 
+            <>
+              <hr />
+              <label htmlFor="importCsv" className="h2">Import Result</label>
+              <br/>
+              <label htmlFor="importCsv" className="">Following Table show the results of CSV File and their risk weight</label>
+              <div className='table-responsive'>
+                    <table className="table table-hover">
+                        <thead>
+                          <tr>
+                              <th>
+                                Risk Weight
+                              </th>
+                              <th>
+                                Count
+                              </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {
+                              Object.keys(ImportResult).map((keyName, i) => (
+                                <tr>
+                                  <td>
+                                    {keyName}
+                                  </td>
+                                  <td>
+                                    {ImportResult[keyName]}
+                                  </td>
+                                </tr>
+                              ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </>
+            : <></>
+          }
 
       </div>
     </>

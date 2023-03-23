@@ -348,7 +348,7 @@ const RiskFactors = ({user}) => {
         const [FormData, setFormData] = useState({
         
             advisorId : user['id'],
-               advisorName:user['is_superuser'] ,            
+            advisorName:user['is_superuser'] ,            
             RF_Overall_Risk: "Undetermined",
             RF_BU_Risk : "2",
             RF_Date : "",
@@ -378,7 +378,8 @@ const RiskFactors = ({user}) => {
             RF_Industry : "0",
             RF_SourceOfFunds : "0",
             RF_Client_Relationship : "2",
-            RF_Product_Name : "Advisory or intermediary services only with commission based inflow",
+            RF_Product_Name : "0",
+            RF_Product_Category : "",
             RF_Transaction_Flow : "1",
             RF_Transaction_Method : "0",
             RF_Transaction_Reason : "0",
@@ -5453,7 +5454,7 @@ const RiskFactors = ({user}) => {
             </div>
 
             <div className="col-2">
-                <input spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' className="form-control" placeholder=""  aria-describedby="" value="Advisory or intermediary services only with commission based inflow" />
+                <input spellCheck="true" id="RF_Product_Category" name='RF_Product_Category' value={FormData['RF_Product_Category']} className="form-control" onChange={(e)=>{onChange(e)}} placeholder=""  aria-describedby="" />
             </div>
 
 
@@ -5490,14 +5491,6 @@ const RiskFactors = ({user}) => {
                     
                 })()}
 
-            </div>
-
-            <div className="col-2">
-                <label className="col-form-label"></label>
-            </div>
-
-            <div className="col-2">
-                <label className="col-form-label"></label>
             </div>
 
             <div className="col-2">
@@ -5597,7 +5590,7 @@ const RiskFactors = ({user}) => {
                             val20=3
                         } 
 
-                        if(parseInt(FormData['RF_Transaction_Flow'])==='1' || parseInt(FormData['RF_Transaction_Flow'])==='2')
+                        if(parseInt(FormData['RF_Transaction_Flow'])===1 || parseInt(FormData['RF_Transaction_Flow'])===2)
                         {
                             var val4n=val13+val14+val15+val16+val17+val18+val19+val20
                             return (<>
@@ -5609,6 +5602,14 @@ const RiskFactors = ({user}) => {
                         }
                                                 
                         })()}
+            </div>
+
+            <div className="col-2">
+                <label className="col-form-label"></label>
+            </div>
+
+            <div className="col-2">
+                <label className="col-form-label"></label>
             </div>
 
         </div>
@@ -6088,7 +6089,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <input spellCheck="true" id="RF_Transaction_Value" name='RF_Transaction_Value' className="form-control" aria-describedby="" />
+                        <input spellCheck="true" id="RF_Transaction_Value" name='RF_Transaction_Value' value={FormData['RF_Transaction_Value']} onChange={(e)=>{onChange(e)}} className="form-control" aria-describedby="" />
                     </div>
 
                     <div className="col-1">       
@@ -6096,7 +6097,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <input spellCheck="true" id="RF_Currency_Value" name='RF_Currency_Value' className="form-control" aria-describedby="" />
+                        <input spellCheck="true" id="RF_Currency_Value" name='RF_Currency_Value' value={FormData['RF_Currency_Value']} onChange={(e)=>{onChange(e)}} className="form-control" aria-describedby="" />
                     </div>
 
                     <div className="col-1">       
@@ -6651,10 +6652,10 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select className="text-start form-select" name='RF_Delivery_Channel' id='RF_Delivery_Channel' value={parseInt(FormData['RF_Transaction_Geography'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select className="text-start form-select" name='RF_Delivery_Channel' id='RF_Delivery_Channel' value={parseInt(FormData['RF_Delivery_Channel'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
-                            <option value="1">Intermediaries (Brokers, consultants)</option>
-                            <option value="2">Intermediaries(Brokers,consultants)</option>
+                            <option value="1">Intermediaries (Brokers)</option>
+                            <option value="2">Intermediaries (Consultants)</option>
                                 
                         </select>    
                     </div>
@@ -6674,7 +6675,7 @@ const RiskFactors = ({user}) => {
                                 return (<>
                                     {(() => { 
                         
-                        if(parseInt(FormData['RF_Transaction_Geography'])===1)
+                        if(parseInt(FormData['RF_Delivery_Channel'])===1)
                         {
                             return (<>
                                     
@@ -6683,7 +6684,7 @@ const RiskFactors = ({user}) => {
                             </>);
                         } 
 
-                        else if(parseInt(FormData['RF_Transaction_Geography'])===2 || parseInt(FormData['RF_Transaction_Geography'])===5 || parseInt(FormData['RF_Transaction_Geography'])===6)
+                        else if(parseInt(FormData['RF_Delivery_Channel'])===2 || parseInt(FormData['RF_Delivery_Channel'])===5 || parseInt(FormData['RF_Delivery_Channel'])===6)
                         {
                             return (<>
                                     
@@ -6692,7 +6693,7 @@ const RiskFactors = ({user}) => {
                             </>);
                         } 
 
-                        else if(parseInt(FormData['RF_Transaction_Geography'])===3 || parseInt(FormData['RF_Transaction_Geography'])===4)
+                        else if(parseInt(FormData['RF_Delivery_Channel'])===3 || parseInt(FormData['RF_Delivery_Channel'])===4)
                         {
                             return (<>
                                     
@@ -6727,7 +6728,7 @@ const RiskFactors = ({user}) => {
                                 return (<>
                                     {(() => { 
                         
-                        if(parseInt(FormData['RF_Transaction_Geography'])===1)
+                        if(parseInt(FormData['RF_Delivery_Channel'])===1)
                         {
                             return (<>
                                     
@@ -6736,7 +6737,7 @@ const RiskFactors = ({user}) => {
                             </>);
                         } 
 
-                        else if(parseInt(FormData['RF_Transaction_Geography'])===2 || parseInt(FormData['RF_Transaction_Geography'])===5 || parseInt(FormData['RF_Transaction_Geography'])===6)
+                        else if(parseInt(FormData['RF_Delivery_Channel'])===2 || parseInt(FormData['RF_Delivery_Channel'])===5 || parseInt(FormData['RF_Delivery_Channel'])===6)
                         {
                             return (<>
                                     
@@ -6745,7 +6746,7 @@ const RiskFactors = ({user}) => {
                             </>);
                         } 
 
-                        else if(parseInt(FormData['RF_Transaction_Geography'])===3 || parseInt(FormData['RF_Transaction_Geography'])===4)
+                        else if(parseInt(FormData['RF_Delivery_Channel'])===3 || parseInt(FormData['RF_Delivery_Channel'])===4)
                         {
                             return (<>
                                     
@@ -7055,14 +7056,6 @@ const RiskFactors = ({user}) => {
                 </div>
 
                 <div className="col-2">
-                    <label className="col-form-label"></label>
-                </div>
-
-                <div className="col-2">
-                    <label className="col-form-label"></label>
-                </div>
-
-                <div className="col-2">
                 {(() => {
                     if(user['is_superuser'])
                         {
@@ -7110,6 +7103,15 @@ const RiskFactors = ({user}) => {
                                 </>)
                         }    
                 })()}
+                </div>
+
+                <div className="col-2">
+                    <label className="col-form-label"></label>
+                </div>
+
+                <div className="col-2">
+                    <label className="col-form-label"></label>
+                
                 
                 </div>
 
@@ -7582,12 +7584,20 @@ const RiskFactors = ({user}) => {
                                                 
                                             </>);
                                         }
+                                        if(parseInt(FormData['RF_RCA'])===2)
+                                        {
+                                            return (<>
+                                                
+                                                <label className="col-form-label">0</label>
+                                                
+                                            </>);
+                                        }
                                     
                                     })()}
                                 </div>
 
                                 <div className="col-1">
-                                    <label className="col-form-label"></label>
+                                    <label className="col-form-label">1</label>
                                 </div>
 
                                 <div className="col-1">
@@ -7952,7 +7962,7 @@ const RiskFactors = ({user}) => {
 
                                 <div className="col-1">
                                                                 
-                                    <label className="col-form-label"></label>
+                                    <label className="col-form-label">3</label>
                                             
                                     
                                 </div>

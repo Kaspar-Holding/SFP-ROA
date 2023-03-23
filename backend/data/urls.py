@@ -50,6 +50,10 @@ urlpatterns = [
     path('add_gap_cover_data/' , views.insertGapCoverData, name="Insert data into Gap Cover Collection"),
     path('view_gap_cover_data/' , views.viewGapCoverData, name="Gap Cover data details"),
     path('update_gap_cover_data/' , views.updateGapCoverData, name="Gap Cover data details"),
+    # Medical
+    path('add_medical_data/' , views.insertMedicalData, name="Insert data into Medical Collection"),
+    path('view_medical_data/' , views.viewMedicalData, name="Medical data details"),
+    path('update_medical_data/' , views.updateMedicalData, name="Medical data details"),
     # Short Term Personal
     path('add_short_term_personal_data/' , views.insertShortTermInsurancePersonalData, name="Insert data into Short Term Personal Collection"),
     path('view_short_term_personal_data/' , views.viewShortTermInsurancePersonalData, name="Short Term Personal data details"),

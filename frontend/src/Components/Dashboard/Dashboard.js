@@ -49,16 +49,51 @@ const Dashboard = ({user}) => {
         setLoader("none")
         setDashboardVisibility("block")
     }
+    const onLoadFormsStats = async(page_number, order_by, search_query) => {
+        const config = {
+          headers: {
+              'Content-Type' : 'application/json',
+              'Authorization' : `JWT ${localStorage.getItem('access')}`,
+              'Accept' : 'application/json'
+          }
+        }
+        const Body = JSON.stringify(
+            {
+                "advisorId" : user['id'],
+                "page_number" : page_number,
+                "order_by" : order_by,
+                "search_query" : search_query
+            }
+        )
+        try {
+          const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/forms_stats/`, Body,config)
+          setFormStats(response.data)
+          setFormList(response.data['results'])
+          setTotalForms(response.data['total_records'])
+          setPageLimit(response.data['pagelimit'])
+        //   console.log('Users', JSON.stringify(response.data))
+        } catch (error) {
+          console.log('first', error.response.statusText)
+        //   setResponseError(error.response.statusText)
+        }
+    }
     const onSearchQueryChange = (e) => {
         e.preventDefault()
         setTotalForms(0)
-        loadFormsStats(1, OrderBy, SearchQuery)    
+        setSearchQuery(e.target.value)
+        onLoadFormsStats(1, OrderBy, e.target.value)    
+    }
+    const onFilterChange = (e) => {
+        e.preventDefault()
+        setTotalForms(0)
+        setSearchQuery(e.target.value)
+        onLoadFormsStats(1, OrderBy, e.target.value)    
     }
     const resetForm = (e) => {
         e.preventDefault()
         setOrderBy("")
         setSearchQuery("")
-        loadFormsStats(1,"","")
+        onLoadFormsStats(1,"","")
     }
     // console.log(formStats)
     useEffect(() => {
@@ -131,21 +166,20 @@ const Dashboard = ({user}) => {
                         <div>
                             {/* <label htmlFor="defaultFormControlInput" className="form-label">Name</label> */}
                             <div className='row'>
-                                <div className='col-10'>
-                                    <form onSubmit={(e)=>{onSearchQueryChange(e)}} >
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            id="clientNameIdSearchQuery"
-                                            value={SearchQuery}
-                                            placeholder="Client Name / Client ID"
-                                            onChange={(e)=>{setSearchQuery(e.target.value)}}    
-                                        />
-                                    </form>
+                                <div className='col-12'>
+                                    {/* <form onSubmit={(e)=>{onSearchQueryChange(e)}} > */}
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="clientNameIdSearchQuery"
+                                        placeholder="Client Name / Client ID"
+                                        onChange={(e)=>{onFilterChange(e)}}    
+                                    />
+                                    {/* </form> */}
                                 </div>
-                                <div className='col-2'>
+                                {/* <div className='col-2'>
                                     <button onClick={(e)=>{resetForm(e)}} className='btn btn-md btn-primary'>Reset Search</button>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
@@ -167,6 +201,7 @@ const Dashboard = ({user}) => {
                         </thead>
                         <tbody>
                             {
+                                TotalForms > 0 ?
                                 Object.keys(formList).map((keyName, i) => (
                                     <tr>
                                         <th scope="row">{i+1}</th>
@@ -229,7 +264,8 @@ const Dashboard = ({user}) => {
                                             {/* <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : data[i]['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink> */}
                                         </td>
                                     </tr>
-                                ))
+                                )) 
+                                : <></>
                             }                        
                             {/* <tr>
                                 <th scope="row">1</th>
@@ -244,7 +280,7 @@ const Dashboard = ({user}) => {
                 <div className='d-flex justify-content-center'>
                 {
                     TotalForms > 0 ?
-                    <Pagination  totalRecords={TotalForms} pageLimit={PageLimit} paginationSearchQuery={SearchQuery} paginationOrderBy={OrderBy} onPageChanged={loadFormsStats} />
+                    <Pagination  totalRecords={TotalForms} pageLimit={PageLimit} paginationSearchQuery={SearchQuery} paginationOrderBy={OrderBy} onPageChanged={onLoadFormsStats} />
                     : <></>
                 }
             </div>

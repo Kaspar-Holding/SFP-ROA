@@ -378,6 +378,7 @@ const RiskFactors = ({user}) => {
             RF_SourceOfFunds : "0",
             RF_Client_Relationship : "0",
             RF_Product_Name : "0",
+            RF_Product_Category : "",
             RF_Transaction_Flow : "0",
             RF_Transaction_Method : "0",
             RF_Transaction_Reason : "0",
@@ -5039,7 +5040,7 @@ const RiskFactors = ({user}) => {
                 </div>
 
                 <div className="col-2">
-                    <input disabled spellCheck="true" id="RF_Product_Category" name='EB_ClientPhoneNumber' className="form-control"  aria-describedby="" />
+                    <input disabled spellCheck="true" id="RF_Product_Category" value={FormData['RF_Product_Category']} name='EB_ClientPhoneNumber' className="form-control"  aria-describedby="" />
                 </div>
 
 
