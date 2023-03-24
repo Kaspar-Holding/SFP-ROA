@@ -85,7 +85,7 @@ const Employee = ({user}) =>
         EB_BusinessCellNumber : "",
         EB_BusinessEmail : "",
         EB_BusinessNature : "",
-        EB_BusinessUnion : 0,
+        EB_BusinessUnion : 2,
         EB_BusinessDetails : "",
         EB_BusinessNumberOfEmployees : "",
         EB_BusinessNumberOfEligibleEmployees : "",
@@ -99,20 +99,20 @@ const Employee = ({user}) =>
         EB_BusEx_FundsFullyReasonForChange : "",
 
         EB_BusB_CoverType : 0,
-        EB_BusB_Cover : 1,
+        EB_BusB_Cover : 3,
         EB_BusB_CoverDetails : "",
 
-        EB_BusEmp_Retire_In5Years : 0,
+        EB_BusEmp_Retire_In5Years : 2,
         EB_BusEmp_Retire_In5YearsPercentage : "",
-        EB_BusEmp_Fin_Illiterate : 0,
+        EB_BusEmp_Fin_Illiterate : 2,
         EB_BusEmp_Fin_IlliteratePercentage : "",
-        EB_BusEmp_Fin_Sophisticated : 0,
+        EB_BusEmp_Fin_Sophisticated : 2,
         EB_BusEmp_Fin_SophisticatedPercentage : "",
-        EB_BusHS_TurnOver : 0,
+        EB_BusHS_TurnOver : 2,
         EB_BusHS_TurnOverPercentage : "",
-        EB_BusI_Choice : 0,
+        EB_BusI_Choice : 2,
         EB_BusI_ChoicePercentage : "",
-        EB_BusinessItP : 0,
+        EB_BusinessItP : 2,
         EB_BusinessItP_Percentage : "",
         
         EB_BusEmp_AdditionalComments : "",
@@ -262,7 +262,6 @@ const Employee = ({user}) =>
 
 
       })
-
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
       const createEBForm = async(data) => {
         const config = {
@@ -403,8 +402,10 @@ const Employee = ({user}) =>
 
                           <div className="col-6" style={{paddingBottom: "0.5%"}}>
                               <div className="row g-3 align-items-center">
+                                  <div className="col-4">
+                                    <label htmlFor="email" className="col-form-label"><b>Phone:</b></label>
+                                  </div>
                                   <div className="col-6">
-                                  <label htmlFor="email" className="col-form-label"><b>Phone:</b></label>
                                     <input spellCheck="true" id="EB_ClientCellNumber" name='EB_ClientCellNumber' value={FormData['EB_ClientCellNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Cell Number"  aria-describedby="" />
                                   </div>
                               </div>
@@ -440,7 +441,7 @@ const Employee = ({user}) =>
                                   <label htmlFor="advisor" className="col-form-label"><b>Financial Advisor:</b></label>
                                   </div>
                                   <div className="col-6">
-                                  <input spellCheck="true"  id="advisor" name="advisor" className="form-control" placeholder="Primary Intermediary’s name"  aria-describedby="" />
+                                  <input spellCheck="true"  id="EB_ClientFinancialAdvisor" name="EB_ClientFinancialAdvisor" onChange={(e)=>{onChange(e)}} value={FormData['EB_ClientFinancialAdvisor']} className="form-control" placeholder="Primary Intermediary’s name"  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -559,12 +560,12 @@ const Employee = ({user}) =>
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === 1 ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
+                                        <input type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === "1" ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
                                     </label>
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === 1 ? false : true} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
+                                        <input type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === "0" ? true : false} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
                                     </label>
                                   </div>
                               </div>
@@ -708,7 +709,7 @@ const Employee = ({user}) =>
                  <div className="row g-3 align-items-center">
                     <div className="col-6">
                         <div className='col-6'>
-                            <select className="text-start form-select" multiple id="EB_BusB_CoverType" name='EB_BusB_CoverType' value={FormData['EB_BusB_CoverType']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                            <select className="text-start form-select" multiple id="EB_BusB_CoverType" name='EB_BusB_CoverType' values={FormData['EB_BusB_CoverType']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                                 <option value="0" selected>Select the type of benefit cover.</option>
                                 <option value="1">Retirement Benefits</option>
                                 <option value="2">Type of fund/scheme</option>
@@ -726,7 +727,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 1 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input className="form-check-input" type="radio" value="1"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === "1" ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -737,7 +738,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 0 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input className="form-check-input" type="radio" value="0"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === "0" ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -748,7 +749,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="2" id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === 2 ? true : false } onChange={(e) => {onChange(e)}}  />
+                                    <input className="form-check-input" type="radio" value="2" id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === "2" ? true : false } onChange={(e) => {onChange(e)}}  />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -798,7 +799,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Retire_In5Years" >
@@ -809,7 +810,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Retire_In5Years" >
@@ -835,7 +836,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Illiterate" >
@@ -846,7 +847,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Illiterate" >
@@ -872,7 +873,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Sophisticated" >
@@ -883,7 +884,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Sophisticated" >
@@ -909,7 +910,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusHS_TurnOver" >
@@ -920,7 +921,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusHS_TurnOver" >
@@ -946,7 +947,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusI_Choice" >
@@ -957,7 +958,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusI_Choice" >
@@ -983,7 +984,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="1" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusinessItP" >
@@ -994,7 +995,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                                    <input className="form-check-input" type="radio" value="0" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusinessItP" >
@@ -1194,7 +1195,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] === 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_Approved" >
@@ -1251,7 +1252,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] === 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_UnApproved" >
@@ -1311,7 +1312,7 @@ const Employee = ({user}) =>
 
             <div className="row col-2 align-items-center">
                 <div className="col-2">
-                    <input className="form-check-input" type="radio" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                    <input className="form-check-input" type="radio" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] === 0 ? true : false } onChange={(e) => {onChange(e)}} />
                 </div>
                 <div className="col-2">
                     <label className="form-check-label" htmlFor="EB_BusinessRiskFundTakeOver" >
@@ -1489,7 +1490,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] === 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_Approved" >
@@ -1546,7 +1547,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] === 1 ? false : true } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] === 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_UnApproved" >
@@ -1959,7 +1960,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] === 0 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1996,7 +1997,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] === 0 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2091,7 +2092,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input className="form-check-input" type="radio" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] === 1 ? false : true} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] === 0 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >

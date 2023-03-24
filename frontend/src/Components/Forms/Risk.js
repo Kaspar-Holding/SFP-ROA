@@ -180,9 +180,9 @@ const Risk = ({user}) =>
         RP_DrC_OtherExistingShortfallSurplus2 : "",
         RP_DrC_OtherExistingriskPlannings2 : "", 
     
-        RPDreadComments : "",
+        RP_DrC_Comments : "",
       
-        RPLifeCoverFinancialSolutions : "",
+        RP_LC_FinancialSolutions : "",
         RP_DiC_FinancialSolutions : "",
         RP_DrC_FinancialSolutions : "",
     
@@ -405,28 +405,28 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_FB_IncomeTotalNeed' value={FormData['RP_DC_FB_IncomeTotalNeed']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DC_FB_TotalNeed' value={FormData['RP_DC_FB_TotalNeed']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_FB_IncomeExistingProvisions' value={FormData['RP_DC_FB_IncomeExistingProvisions']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DC_FB_ExistingProvisions' value={FormData['RP_DC_FB_ExistingProvisions']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_FB_IncomeExistingShortfallSurplus' value={FormData['RP_DC_FB_IncomeExistingShortfallSurplus']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DC_FB_ExistingShortfallSurplus' value={FormData['RP_DC_FB_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_FB_IncomeInvestments' value={FormData['RP_DC_FB_IncomeInvestments']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DC_FB_Investments' value={FormData['RP_DC_FB_Investments']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
         </div>
       </td>
     </tr>
@@ -435,34 +435,34 @@ const Risk = ({user}) =>
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
         <div className="form-group">
-            <input type="text"  name='RP_DC_Other' value={FormData['RP_DC_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <input type="text"  name='RP_DC_Other' value={FormData['RP_DC_Other']} maxLength={500} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
       </td>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_OtherIncomeTotalNeed' value={FormData['RP_DC_OtherIncomeTotalNeed']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
-        </div>
-      </td>
-
-      <td>
-        <div className="input-group">
-          <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_OtherIncomeExistingProvisions' value={FormData['RP_DC_OtherIncomeExistingProvisions']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DC_OtherTotalNeed' value={FormData['RP_DC_OtherTotalNeed']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_OtherIncomeExistingShortfallSurplus' value={FormData['RP_DC_OtherIncomeExistingShortfallSurplus']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DC_OtherExistingProvisions' value={FormData['RP_DC_OtherExistingProvisions']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_OtherIncomeInvestments' value={FormData['RP_DC_OtherIncomeInvestments']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DC_OtherExistingShortfallSurplus' value={FormData['RP_DC_OtherExistingShortfallSurplus']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
+        </div>
+      </td>
+
+      <td>
+        <div className="input-group">
+          <span className="input-group-text">R</span>
+          <input type="number" className="form-control" name='RP_DC_OtherInvestments' value={FormData['RP_DC_OtherInvestments']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
         </div>
       </td>
     </tr>
@@ -609,7 +609,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DiC_SiB_Investments' value={FormData['RP_DiC_SIB_Investments']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DiC_SiB_Investments' value={FormData['RP_DiC_SiB_Investments']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
     </tr>
@@ -618,7 +618,7 @@ const Risk = ({user}) =>
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
       <div className="form-group">
-            <input type="text"  name='RP_DiC_Other1' value={FormData['RP_DiC_Other1']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <input type="text"  name='RP_DiC_Other1' value={FormData['RP_DiC_Other1']} maxLength={500} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
       </td>
       <td>
@@ -654,7 +654,7 @@ const Risk = ({user}) =>
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
       <div className="form-group">
-            <input type="text"  name='RP_DiC_Other2' value={FormData['RP_DiC_Other2']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <input type="text"  name='RP_DiC_Other2' value={FormData['RP_DiC_Other2']} maxLength={500} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
       </td>
       <td>
@@ -691,7 +691,7 @@ const Risk = ({user}) =>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</td>
         <td>  
           <div className="form-group">
-            <input type="email" className="form-control" id="RP_DiC_Comments" name='RP_DiC_Comments' value={FormData['RP_DiC_Comments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
+            <input type="text" className="form-control" id="RP_DiC_Comments" name='RP_DiC_Comments' value={FormData['RP_DiC_Comments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
           </div>
        </td>
        <td></td>  
@@ -778,7 +778,7 @@ const Risk = ({user}) =>
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
       <div className="form-group">
-            <input type="text"  name='RP_DrC_Other1' value={FormData['RP_DrC_Other1']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <input type="text"  name='RP_DrC_Other1' value={FormData['RP_DrC_Other1']} maxLength={500} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
       </td>
       <td>
@@ -813,7 +813,7 @@ const Risk = ({user}) =>
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
       <div className="form-group">
-            <input type="text"  name='RP_DrC_Other2' value={FormData['RP_DrC_Other2']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <input type="text"  name='RP_DrC_Other2' value={FormData['RP_DrC_Other2']} maxLength={500} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
       </td>
       <td>
@@ -850,7 +850,7 @@ const Risk = ({user}) =>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</td>
         <td>  
         <div className="form-group">
-          <input type="email" className="form-control" id="RP_DrC_Comments" name='RP_DrC_Comments' value={FormData['RP_DrC_Comments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
+          <input type="text" className="form-control" id="RP_DrC_Comments" name='RP_DrC_Comments' value={FormData['RP_DrC_Comments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
         </div>
        </td> 
        <td></td>  
@@ -891,9 +891,9 @@ const Risk = ({user}) =>
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '100px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '100px'}} 
         id="RP_LC_FinancialSolutions" name='RP_LC_FinancialSolutions' value={FormData['RP_LC_FinancialSolutions']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus1}
+        onFocus={backgroundInfo_onFocus1} 
         onBlur={backgroundInfo_onBlur1}
         placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. 
 Record the client's instructions, deviations and implications thereof.
@@ -920,7 +920,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '100px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '100px'}} 
         id="RP_DiC_FinancialSolutions" name='RP_DiC_FinancialSolutions' value={FormData['RP_DiC_FinancialSolutions']} onChange={(e) => {onChange(e)}}    
         onFocus={backgroundInfo_onFocus2}
         onBlur={backgroundInfo_onBlur2}
@@ -950,7 +950,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '100px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '100px'}} 
         id="RP_DrC_FinancialSolutions" name='RP_DrC_FinancialSolutions' value={FormData['RP_DrC_FinancialSolutions']} onChange={(e) => {onChange(e)}}    
         onFocus={backgroundInfo_onFocus3}
         onBlur={backgroundInfo_onBlur3}
@@ -981,7 +981,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
         id="RP_AltS_1" name='RP_AltS_1' value={FormData['RP_AltS_1']} onChange={(e) => {onChange(e)}}    
         onFocus={backgroundInfo_onFocus4}
         onBlur={backgroundInfo_onBlur4}
@@ -1006,7 +1006,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
         id="RP_AltS_2" name='RP_AltS_2' value={FormData['RP_AltS_2']} onChange={(e) => {onChange(e)}}    
         onFocus={backgroundInfo_onFocus5}
         onBlur={backgroundInfo_onBlur5}
@@ -1031,7 +1031,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
         id="RP_AltS_3" name='RP_AltS_3' value={FormData['RP_AltS_3']} onChange={(e) => {onChange(e)}}    
         onFocus={backgroundInfo_onFocus6}
         onBlur={backgroundInfo_onBlur6}
@@ -1448,7 +1448,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
         id="RP_ProductReasons" name='RP_ProductReasons' value={FormData['RP_ProductReasons']} onChange={(e) => {onChange(e)}}    
         onFocus={backgroundInfo_onFocus7}
         onBlur={backgroundInfo_onBlur7}
@@ -1473,7 +1473,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
         id="RP_ProductMaterialAspects" name='RP_ProductMaterialAspects' value={FormData['RP_ProductMaterialAspects']} onChange={(e) => {onChange(e)}}    
         onFocus={backgroundInfo_onFocus8}
         onBlur={backgroundInfo_onBlur8}
@@ -1497,7 +1497,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
         id="RP_ProductDetails" name='RP_ProductDetails' value={FormData['RP_ProductDetails']} onChange={(e) => {onChange(e)}}    
         onFocus={backgroundInfo_onFocus9}
         onBlur={backgroundInfo_onBlur9}
@@ -1527,7 +1527,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '200px'}} 
+    <textarea maxLength={2000} className="form-control"  style={{height: '200px'}} 
         id="RP_ExecutorFee" name='RP_ExecutorFee' value={FormData['RP_ExecutorFee']} onChange={(e) => {onChange(e)}}    
         onFocus={backgroundInfo_onFocus10}
         onBlur={backgroundInfo_onBlur10}
@@ -1558,7 +1558,7 @@ Details of premium and cover pattern structure, frequency etc.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '100px'}} 
+    <textarea maxLength={2000} className="form-control"  style={{height: '100px'}} 
         id="RP_NominationOfBeneficiaries" name='RP_NominationOfBeneficiaries' value={FormData['RP_NominationOfBeneficiaries']} onChange={(e) => {onChange(e)}}    
         onFocus={backgroundInfo_onFocus11}
         onBlur={backgroundInfo_onBlur11}
@@ -1589,7 +1589,7 @@ Details of premium and cover pattern structure, frequency etc.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '220px'}} 
+    <textarea maxLength={2000} className="form-control"  style={{height: '220px'}} 
         id="RP_InformationExplained" name='RP_InformationExplained' value={FormData['RP_InformationExplained']} onChange={(e) => {onChange(e)}}    
         onFocus={backgroundInfo_onFocus12}
         onBlur={backgroundInfo_onBlur12}

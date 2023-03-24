@@ -441,12 +441,12 @@ class RiskPlanning(models.Model):
     RP_BenDesc_7 = models.CharField(max_length=500, default="", blank=True)
     RP_BenDesc_CoverAmount7 = models.CharField(max_length=500, default="", blank=True)
     
-    RP_ProductReasons = models.CharField(max_length=500, default="", blank=True)
-    RP_ProductMaterialAspects = models.CharField(max_length=500, default="", blank=True)
-    RP_ProductDetails = models.CharField(max_length=500, default="", blank=True)
-    RP_ExecutorFee = models.CharField(max_length=500, default="", blank=True)
-    RP_NominationOfBeneficiaries = models.CharField(max_length=500, default="", blank=True)
-    RP_InformationExplained = models.CharField(max_length=500, default="", blank=True)
+    RP_ProductReasons = models.CharField(max_length=2000, default="", blank=True)
+    RP_ProductMaterialAspects = models.CharField(max_length=2000, default="", blank=True)
+    RP_ProductDetails = models.CharField(max_length=2000, default="", blank=True)
+    RP_ExecutorFee = models.CharField(max_length=2000, default="", blank=True)
+    RP_NominationOfBeneficiaries = models.CharField(max_length=2000, default="", blank=True)
+    RP_InformationExplained = models.CharField(max_length=2000, default="", blank=True)
 
     status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)

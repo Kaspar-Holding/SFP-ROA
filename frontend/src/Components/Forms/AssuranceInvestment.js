@@ -302,7 +302,7 @@ const AssuranceInvestment = ({user}) =>
         AI_TermDetails : "",  
         // AI_Type : 1,    
         // AI_TypeDetails : "",    
-        AI_PremiumType : 1,    
+        AI_PremiumType : 2,    
         AI_PremiumTypeDetails : "",       
         AI_Strategy : 1,    
         AI_StrategyDetails : "",    
@@ -356,7 +356,7 @@ const AssuranceInvestment = ({user}) =>
 
         AI_Portfolio : "",
         
-        AI_SourceOfFunds : "",
+        AI_SourceOfFunds : 0,
         AI_SourceOfFundsDetail : "",
         
         AI_PF_1 : "",
@@ -400,6 +400,7 @@ const AssuranceInvestment = ({user}) =>
         AI_PF_NominationOfBeneficiaries : "",
 
       })
+      console.log(FormData['AI_PF_Pr_Details'])
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
       const createAIForm = async(data) => {
         const config = {
@@ -494,7 +495,7 @@ const AssuranceInvestment = ({user}) =>
       
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
         <div className="row">
-
+{/* 
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-4">
@@ -509,7 +510,7 @@ const AssuranceInvestment = ({user}) =>
                         <label htmlFor="id_number" className="col-form-label"><b>Needs</b></label>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
@@ -545,7 +546,7 @@ const AssuranceInvestment = ({user}) =>
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
         name='AI_TermDetails' value={FormData['AI_TermDetails']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus14}
         onBlur={backgroundInfo_onBlur14}
@@ -573,7 +574,7 @@ const AssuranceInvestment = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AI_PremiumType'] === 1 ? false : true} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="0" />
+                                <input className="form-check-input" checked={FormData['AI_PremiumType'] === 0 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="0" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn3" >
@@ -596,7 +597,7 @@ const AssuranceInvestment = ({user}) =>
                         </> : 
                         null
                     }
-                    <textarea   onFocus={sica1_onFocus} onBlur={sica1_onBlur} className="form-control" placeholder="Notes" aria-describedby="" ></textarea>
+                    <textarea maxLength={500}   onFocus={sica1_onFocus} onBlur={sica1_onBlur} className="form-control" placeholder="Notes" aria-describedby="" ></textarea>
                     </div>
                     <hr/>
                     </>
@@ -619,8 +620,8 @@ const AssuranceInvestment = ({user}) =>
         </>: 
          null
     }
-    <textarea  
-        id="AI_PremiumDetails" name='AI_PremiumDetails' value={FormData['AI_PremiumDetails']} onChange={(e) => {onChange(e)}}
+    <textarea maxLength={500}  
+        id="AI_PremiumTypeDetails" name='AI_PremiumTypeDetails' value={FormData['AI_PremiumTypeDetails']} onChange={(e) => {onChange(e)}}
         className="form-control"  style={{height: '80px'}} 
         onFocus={backgroundInfo_onFocus15}
         onBlur={backgroundInfo_onBlur15}
@@ -658,7 +659,7 @@ const AssuranceInvestment = ({user}) =>
         </>: 
          null
     }
-    <textarea id="AI_StrategyDetails" name='AI_StrategyDetails' value={FormData['AI_StrategyDetails']} onChange={(e) => {onChange(e)}}
+    <textarea maxLength={500} id="AI_StrategyDetails" name='AI_StrategyDetails' value={FormData['AI_StrategyDetails']} onChange={(e) => {onChange(e)}}
         className="form-control"  style={{height: '80px'}} 
         onFocus={backgroundInfo_onFocus16}
         onBlur={backgroundInfo_onBlur16}
@@ -696,7 +697,7 @@ const AssuranceInvestment = ({user}) =>
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}}
+    <textarea maxLength={500} className="form-control"  style={{height: '80px'}}
         id="AI_ReturnRequiredDetails" name='AI_ReturnRequiredDetails' value={FormData['AI_ReturnRequiredDetails']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus17}
         onBlur={backgroundInfo_onBlur17}
@@ -735,7 +736,7 @@ const AssuranceInvestment = ({user}) =>
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
         id="AI_RiskProfileDetails" name='AI_RiskProfileDetails' value={FormData['AI_RiskProfileDetails']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus18}
         onBlur={backgroundInfo_onBlur18}
@@ -897,7 +898,7 @@ const AssuranceInvestment = ({user}) =>
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '150px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '150px'}} 
         id="AI_FinancialSolutions" name='AI_FinancialSolutions' value={FormData['AI_FinancialSolutions']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus19}
         onBlur={backgroundInfo_onBlur19}
@@ -930,7 +931,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
         id="AI_AltS_1" name='AI_AltS_1' value={FormData['AI_AltS_1']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus20}
         onBlur={backgroundInfo_onBlur20}
@@ -956,7 +957,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
         id="AI_AltS_2" name='AI_AltS_2' value={FormData['AI_AltS_2']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus21}
         onBlur={backgroundInfo_onBlur21}
@@ -982,7 +983,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '80px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
         id="AI_AltS_3" name='AI_AltS_3' value={FormData['AI_AltS_3']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus22}
         onBlur={backgroundInfo_onBlur22}
@@ -1005,7 +1006,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Product Provider</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_Taken" name='AI_Pr_Taken' value={FormData['AI_Pr_Taken']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" id="AI_Pr_Provider" name='AI_Pr_Provider' value={FormData['AI_Pr_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1016,7 +1017,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Policy number</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_Provider" name='AI_Pr_Provider' value={FormData['AI_Pr_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" id="AI_Pr_PolicyNumber" name='AI_Pr_PolicyNumber' value={FormData['AI_Pr_PolicyNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1038,21 +1039,23 @@ How it will meet the business need
                     <div className="col-4">
                         <label htmlFor="id_number" className="col-form-label"><b>Premium</b></label>
                     </div>
-                    <div className='row'>
-                      <div className='col-6'>
-                          <div className="form-group">
-                            <input type="text" className="form-control" id="AI_Pr_Premium" name='AI_Pr_Premium' value={FormData['AI_Pr_Premium']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" />
+                    <div className="col-6">
+                        <div className='row'>
+                          <div className='col-6'>
+                              <div className="form-group">
+                                <input type="text" className="form-control" id="AI_Pr_Premium" name='AI_Pr_Premium' value={FormData['AI_Pr_Premium']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" />
+                              </div>
                           </div>
-                      </div>
-                      <div className='col-6'>
-                          <select className="text-start form-select" id="AI_Pr_PremiumFrequency" name='AI_Pr_PremiumFrequency' value={FormData['AI_Pr_PremiumFrequency']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
-                              <option value="0" selected>Frequeny</option>
-                              <option value="1">Monthly</option>
-                              <option value="2">Quarterly</option>
-                              <option value="3">Annually</option>
-                              <option value="4">Once Off</option>
-                          </select>
-                      </div>
+                          <div className='col-6'>
+                              <select className="text-start form-select" id="AI_Pr_PremiumFrequency" name='AI_Pr_PremiumFrequency' value={FormData['AI_Pr_PremiumFrequency']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                                  <option value="0" selected>Frequeny</option>
+                                  <option value="1">Monthly</option>
+                                  <option value="2">Quarterly</option>
+                                  <option value="3">Annually</option>
+                                  <option value="4">Once Off</option>
+                              </select>
+                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1187,7 +1190,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '300px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '300px'}} 
         id="AI_Portfolio" name='AI_Portfolio' value={FormData['AI_Portfolio']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus23}
         onBlur={backgroundInfo_onBlur23}
@@ -1469,7 +1472,7 @@ o	meeting the investment objectives of the clients
                   </>: 
                 null
             }
-            <textarea className="form-control"  style={{height: '100px'}} 
+            <textarea maxLength={500} className="form-control"  style={{height: '100px'}} 
                 name='AI_SourceOfFundsDetail' onChange={(e) => {onChange(e)}} value={FormData['AI_SourceOfFundsDetail']}
                 onFocus={backgroundInfo_onFocus10_1}
                 onBlur={backgroundInfo_onBlur10_1}
@@ -1495,7 +1498,7 @@ o	meeting the investment objectives of the clients
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '100px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '100px'}} 
         id="AI_PF_Reasons" name='AI_PF_Reasons' value={FormData['AI_PF_Reasons']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus24}
         onBlur={backgroundInfo_onBlur24}
@@ -1525,7 +1528,7 @@ o	meeting the investment objectives of the clients
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '150px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '150px'}} 
         id="AI_PF_MaterialAspects" name='AI_PF_MaterialAspects' value={FormData['AI_PF_MaterialAspects']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus25}
         onBlur={backgroundInfo_onBlur25}
@@ -1562,7 +1565,7 @@ The tax implications, i.e. estate duty, income tax (e.g. interest received), CGT
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '300px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '300px'}} 
         id="AI_PF_Pr_Details" name='AI_PF_Pr_Details' value={FormData['AI_PF_Pr_Details']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus26}
         onBlur={backgroundInfo_onBlur26}
@@ -1598,7 +1601,7 @@ Other relevant information
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '150px'}} 
+    <textarea maxLength={500} className="form-control"  style={{height: '150px'}} 
         id="AI_PF_NominationOfBeneficiaries" name='AI_PF_NominationOfBeneficiaries' value={FormData['AI_PF_NominationOfBeneficiaries']} onChange={(e) => {onChange(e)}} 
         onFocus={backgroundInfo_onFocus27}
         onBlur={backgroundInfo_onBlur27}

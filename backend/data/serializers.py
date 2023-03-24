@@ -439,7 +439,7 @@ class AssuranceInvestmentSerializers(serializers.ModelSerializer):
 
         instance.AI_PF_Reasons = validated_data.get('AI_PF_Reasons', instance.AI_PF_Reasons)
         instance.AI_PF_MaterialAspects = validated_data.get('AI_PF_MaterialAspects', instance.AI_PF_MaterialAspects)
-        instance.AI_PF_Pr_Details = validated_data.get('AI__', instance.AI_PF_Pr_Details)
+        instance.AI_PF_Pr_Details = validated_data.get('AI_PF_Pr_Details', instance.AI_PF_Pr_Details)
         instance.AI_PF_NominationOfBeneficiaries = validated_data.get('AI_PF_NominationOfBeneficiaries', instance.AI_PF_NominationOfBeneficiaries)
 
         instance.AI_SourceOfFunds = validated_data.get('AI_SourceOfFunds', instance.AI_SourceOfFunds)
@@ -730,7 +730,7 @@ class EmployeeBenefitsSerializers(serializers.ModelSerializer):
         instance.EB_BusI_Choice = validated_data.get('EB_BusI_Choice', instance.EB_BusI_Choice)
         instance.EB_BusI_ChoicePercentage = validated_data.get('EB_BusI_ChoicePercentage', instance.EB_BusI_ChoicePercentage)
         instance.EB_BusinessItP = validated_data.get('EB_BusinessItP', instance.EB_BusinessItP)
-        instance.EB_BusinessItP_Percentage = validated_data.get('EB_BusinessItPPercentage', instance.EB_BusinessItP_Percentage)
+        instance.EB_BusinessItP_Percentage = validated_data.get('EB_BusinessItP_Percentage', instance.EB_BusinessItP_Percentage)
         
         instance.EB_BusEmp_AdditionalComments = validated_data.get('EB_BusEmp_AdditionalComments', instance.EB_BusEmp_AdditionalComments)
 
@@ -819,7 +819,7 @@ class EmployeeBenefitsSerializers(serializers.ModelSerializer):
         instance.EB_BusRecom_ProductName = validated_data.get('EB_BusRecom_ProductName', instance.EB_BusRecom_ProductName)
         instance.EB_BusRecom_FundType = validated_data.get('EB_BusRecom_FundType', instance.EB_BusRecom_FundType)
         instance.EB_BusRecom_RecommendationFundType = validated_data.get('EB_BusRecom_RecommendationFundType', instance.EB_BusRecom_RecommendationFundType)
-        instance.EB_BusRecom_Porfolio = validated_data.get('EB_BusRecom_Porfolio', instance.EB_BusRecom_Porfolio)
+        # instance.EB_BusRecom_Porfolio = validated_data.get('EB_BusRecom_Porfolio', instance.EB_BusRecom_Porfolio)
         instance.EB_BusRecom_ClientAccepted = validated_data.get('EB_BusRecom_ClientAccepted', instance.EB_BusRecom_ClientAccepted)
         instance.EB_BusRecom_ClientRisks = validated_data.get('EB_BusRecom_ClientRisks', instance.EB_BusRecom_ClientRisks)
 

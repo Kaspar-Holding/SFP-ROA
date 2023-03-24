@@ -8,6 +8,10 @@ This project is built on the following Stack
 
 ## Updates
 
+### 24 March 2023:
+- 60% of the form is now PDF ready
+- Change Request 2 and 3 are done
+
 ### 26 January 2023:
 - Fields removal of risk assessment module
 - Tooltips added to form data

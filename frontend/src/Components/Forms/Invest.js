@@ -19,19 +19,19 @@ const Invest = ({user}) =>
         IP_OtherSourceOfIncome : "",    
         IP_InvestmentTerm : "",    
         IP_InvestmentTermDetails : "",    
-        IP_Liquidity : 0,    
+        IP_Liquidity : 2,    
         IP_LiquidityDetails : "",    
-        IP_Type : 0,    
+        IP_Type : 2,    
         IP_TypeDetails : "",    
-        IP_PremiumType : 0,    
+        IP_PremiumType : 2,    
         IP_PremiumTypeDetails : "",    
-        IP_IncomeRequired : 0,    
+        IP_IncomeRequired : 2,    
         IP_IncomeRequiredDetails : "",    
-        IP_InvestmentStrategy : 0,    
+        IP_InvestmentStrategy : 2,    
         IP_InvestmentStrategyDetails : "",    
-        IP_ReturnRequired : 0,    
+        IP_ReturnRequired : 2,    
         IP_ReturnRequiredDetails : "",    
-        IP_RiskProfile : 0,      
+        IP_RiskProfile : 2,      
         IP_RiskProfileDetails : "",      
 
         IP_RecommendationSummary : "",    
@@ -400,7 +400,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info10" className="form-control"  style={{height: '100px'}} 
+            <textarea maxLength={500}   id="background_info10" className="form-control"  style={{height: '100px'}} 
                 name='IP_OtherSourceOfIncome' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_OtherSourceOfIncome']}
                 onFocus={backgroundInfo_onFocus10}
@@ -453,7 +453,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info11" className="form-control"
+            <textarea maxLength={500}   id="background_info11" className="form-control"
                 name='IP_InvestmentTermDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_InvestmentTermDetails']}
                 onFocus={backgroundInfo_onFocus11}
@@ -471,7 +471,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Liquidity'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Liquidity" name="IP_Liquidity" />
+                                <input className="form-check-input" checked={FormData['IP_Liquidity'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Liquidity" name="IP_Liquidity" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -482,7 +482,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Liquidity'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Liquidity" name="IP_Liquidity" />
+                                <input className="form-check-input" checked={FormData['IP_Liquidity'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Liquidity" name="IP_Liquidity" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -511,7 +511,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info11" className="form-control"
+            <textarea maxLength={500}   id="background_info11" className="form-control"
                 name='IP_LiquidityDetails' onChange={(e) => {onChange(e)}} value={FormData['IP_LiquidityDetails']}
                 onFocus={backgroundInfo_onFocus12}
                 onBlur={backgroundInfo_onBlur12}
@@ -527,7 +527,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Type'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Type" name="IP_Type" />
+                                <input className="form-check-input" checked={FormData['IP_Type'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Type" name="IP_Type" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -538,7 +538,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Type'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Type" name="IP_Type" />
+                                <input className="form-check-input" checked={FormData['IP_Type'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Type" name="IP_Type" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -566,7 +566,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info11" className="form-control" 
+            <textarea maxLength={500}   id="background_info11" className="form-control" 
                 name='IP_TypeDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_TypeDetails']}
                 onFocus={backgroundInfo_onFocus13}
@@ -584,7 +584,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_PremiumType'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_PremiumType" name="IP_PremiumType"/>
+                                <input className="form-check-input" checked={FormData['IP_PremiumType'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_PremiumType" name="IP_PremiumType"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -595,7 +595,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_PremiumType'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_PremiumType" name="IP_PremiumType"/>
+                                <input className="form-check-input" checked={FormData['IP_PremiumType'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_PremiumType" name="IP_PremiumType"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -623,7 +623,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info11" className="form-control"
+            <textarea maxLength={500}   id="background_info11" className="form-control"
                 name='IP_PremiumTypeDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_PremiumTypeDetails']}
                 onFocus={backgroundInfo_onFocus14}
@@ -640,7 +640,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
+                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
                             </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -651,7 +651,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
+                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -678,7 +678,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info11" className="form-control"
+            <textarea maxLength={500}   id="background_info11" className="form-control"
                 name='IP_IncomeRequiredDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_IncomeRequiredDetails']}
                 onFocus={backgroundInfo_onFocus15}
@@ -721,7 +721,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info1" className="form-control"  style={{height: '80px'}}
+            <textarea maxLength={500}   id="background_info1" className="form-control"  style={{height: '80px'}}
                 name='IP_InvestmentStrategyDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_InvestmentStrategyDetails']}
                 onFocus={backgroundInfo_onFocus1}
@@ -763,7 +763,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info2" className="form-control"  style={{height: '80px'}} 
+            <textarea maxLength={500}   id="background_info2" className="form-control"  style={{height: '80px'}} 
                 name='IP_ReturnRequiredDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_ReturnRequiredDetails']}
                 onFocus={backgroundInfo_onFocus2}
@@ -808,7 +808,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info3" className="form-control"  style={{height: '80px'}} 
+            <textarea maxLength={500}   id="background_info3" className="form-control"  style={{height: '80px'}} 
                 name='IP_RiskProfileDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_RiskProfileDetails']} 
                 onFocus={backgroundInfo_onFocus3}
@@ -847,7 +847,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info" className="form-control"  style={{height: '120px'}} 
+            <textarea maxLength={500}   id="background_info" className="form-control"  style={{height: '120px'}} 
                 name='IP_RecommendationSummary' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_RecommendationSummary']}
                 onFocus={backgroundInfo_onFocus}
@@ -879,7 +879,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info4" className="form-control"  style={{height: '60px'}} 
+            <textarea maxLength={500}   id="background_info4" className="form-control"  style={{height: '60px'}} 
                 name='IP_AltS_1' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_1']}
                 onFocus={backgroundInfo_onFocus4}
@@ -905,7 +905,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info5" className="form-control"  style={{height: '60px'}} 
+            <textarea maxLength={500}   id="background_info5" className="form-control"  style={{height: '60px'}} 
                 name='IP_AltS_2' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_2']}
                 onFocus={backgroundInfo_onFocus5}
@@ -931,7 +931,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info6" className="form-control"  style={{height: '60px'}} 
+            <textarea maxLength={500}   id="background_info6" className="form-control"  style={{height: '60px'}} 
                 name='IP_AltS_3' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_3']}
                 onFocus={backgroundInfo_onFocus6}
@@ -959,7 +959,7 @@ const Invest = ({user}) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product:</td>
                     <td>  
                     <div className=''>
-                        <select className="text-start form-select" name='IP_ProductTaken' value={value} onChange={handleChange} aria-label="Default select example">
+                        <select className="text-start form-select" name='IP_ProductTaken' value={FormData['IP_ProductTaken']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                             <option value="0" selected>Choose Product</option>
                             <option value="1">Endowment</option>
                             <option value="2">RA</option>
@@ -1111,11 +1111,11 @@ const Invest = ({user}) =>
                             <input type="text" className="form-control" name='IP_Product_OnC_Percentage' value={FormData['IP_Product_OnC_Percentage']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%
                         </div>
                     </td> 
-                    <td>
+                    {/* <td>
                         <div className="form-group">
                             <input type="text" className="form-control" name='IP_SFPSolutionFunds' value={FormData['IP_SFPSolutionFunds']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="Total" style={{width: '120px'}}/>
                         </div>
-                    </td>      
+                    </td>       */}
 
                 </tr>
 
@@ -1140,7 +1140,7 @@ const Invest = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData['IP_SFPSolutionFundsDetails'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_SFPSolutionFundsDetails" name="IP_SFPSolutionFundsDetails"/>
+                                    <input className="form-check-input" checked={FormData['IP_SFPSolutionFunds'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_SFPSolutionFunds" name="IP_SFPSolutionFunds"/>
                                 </div>
                                     <div className="col-2">
                                         <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -1151,7 +1151,7 @@ const Invest = ({user}) =>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData["IP_SFPSolutionFundsDetails"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_SFPSolutionFundsDetails" name="IP_SFPSolutionFundsDetails"/>
+                                    <input className="form-check-input" checked={FormData["IP_SFPSolutionFunds"] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_SFPSolutionFunds" name="IP_SFPSolutionFunds"/>
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -1171,7 +1171,7 @@ const Invest = ({user}) =>
                             </> : 
                         null
                     }
-                        <textarea  id="provided_identity2" name="IP_SFPSolutionFundsDetailsDetails" onChange={(e) => {onChange(e)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" placeholder="State the motivation" aria-describedby="" ></textarea>
+                        <textarea maxLength={500}   id="provided_identity2" name="IP_SFPSolutionFundsDetails" value={FormData['IP_SFPSolutionFundsDetails']} onChange={(e) => {onChange(e)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" placeholder="State the motivation" aria-describedby="" ></textarea>
                     </div>
             </div>
             <hr/>
@@ -1201,7 +1201,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea  id="background_info7" className="form-control"  style={{height: '400px'}} 
+            <textarea maxLength={500}   id="background_info7" className="form-control"  style={{height: '400px'}} 
                 name='IP_ItP' value={FormData['IP_ItP']} onChange={(e) => {onChange(e)}} 
                 onFocus={backgroundInfo_onFocus7}
                 onBlur={backgroundInfo_onBlur7}
@@ -1486,7 +1486,7 @@ const Invest = ({user}) =>
             </>: 
             null
         }
-        <textarea  id="background_info8" className="form-control"  style={{height: '60px'}} 
+        <textarea maxLength={500}   id="background_info8" className="form-control"  style={{height: '60px'}} 
             name='IP_ItP_FundsReasons' value={FormData['IP_ItP_FundsReasons']} onChange={(e) => {onChange(e)}} 
             onFocus={backgroundInfo_onFocus8}
             onBlur={backgroundInfo_onBlur8}

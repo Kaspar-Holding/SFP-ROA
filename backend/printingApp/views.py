@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from django_pdfkit import PDFView
 from django.core.files.base import ContentFile
 import uuid
-from data.models import RiskFactors, Form, UserAccount, AssuranceRisk, RiskPlanning
+from data.models import RiskFactors, Form, UserAccount, AssuranceRisk, RiskPlanning, GapCover, Medical, Fiduciary, InvestmentPlanning, EmployeeBenefits, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, AssuranceInvestment
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -12,6 +12,7 @@ from xhtml2pdf import pisa
 from wkhtmltopdf.views import PDFTemplateView, PDFTemplateResponse
 from django.template.loader import render_to_string
 from datetime import datetime
+from dateutil import parser as datetimeparser
 @api_view(['GET'])
 def pdf(request):
     data = RiskFactors.objects.filter(id=26).values().first()
@@ -491,6 +492,11 @@ def wkhtmltopdfapi(request):
     data['RF_Type_Legal_Entity_id'] = int(data['RF_Type_Legal_Entity']) if data['RF_Type_Legal_Entity'] != '' else 0
     data['RF_Type_Legal_Entity'] = RF_Type_Legal_Entity[data['RF_Type_Legal_Entity_id']]
     data['RF_ClientType'] = int(data['RF_ClientType'])
+    
+    if(int(data['RF_Transaction_Flow_id']) == 1 or int(data['RF_Transaction_Flow_id']) == 2):
+        val4n=val13+val14+val15+val16+val17+val18+val19+val20
+    data['val4n'] = val4n
+
     data['RoA'] = Form.objects.filter(formId = data['id']).values().first()
     if (
         data['RoA']['clientEmail'] != "" and 
@@ -509,73 +515,74 @@ def wkhtmltopdfapi(request):
     else:
         data['roa_status'] = False
     data['RoA']['clientAdvisor'] = UserAccount.objects.filter(id=data['RoA']['advisorId']).values('name').first()['name']
+    data['RoA']['clientDateOfBirth'] = (data['RoA']['clientDateOfBirth']).strftime('%d %b %Y')
     data['RP'] = RiskPlanning.objects.filter(formId = data['id']).values().first()
     print(data['RP']['RP_DC_LumpSumExistingProvisions'] != "")
     if (
         data['RP']['RP_DC_LumpSumTotalNeed'] != "" and 
         data['RP']['RP_DC_LumpSumExistingProvisions'] != "" and 
-        data['RP']['RP_DC_LumpSumExistingShandtfallSurplus'] != "" and 
+        data['RP']['RP_DC_LumpSumExistingShortfallSurplus'] != "" and 
         data['RP']['RP_DC_LumpSumInvestments'] != "" and         
         data['RP']['RP_DC_IncomeTotalNeed'] != "" and 
         data['RP']['RP_DC_IncomeExistingProvisions'] != "" and 
-        data['RP']['RP_DC_IncomeExistingShandtfallSurplus'] != "" and 
+        data['RP']['RP_DC_IncomeExistingShortfallSurplus'] != "" and 
         data['RP']['RP_DC_IncomeInvestments'] != "" and         
         data['RP']['RP_DC_FB_TotalNeed'] != "" and 
         data['RP']['RP_DC_FB_ExistingProvisions'] != "" and 
-        data['RP']['RP_DC_FB_ExistingShandtfallSurplus'] != "" and 
+        data['RP']['RP_DC_FB_ExistingShortfallSurplus'] != "" and 
         data['RP']['RP_DC_FB_Investments'] != "" and     
         data['RP']['RP_DC_Other'] != "" and 
         data['RP']['RP_DC_OtherTotalNeed'] != "" and 
         data['RP']['RP_DC_OtherExistingProvisions'] != "" and 
-        data['RP']['RP_DC_OtherExistingShandtfallSurplus'] != "" and 
+        data['RP']['RP_DC_OtherExistingShortfallSurplus'] != "" and 
         data['RP']['RP_DC_OtherInvestments'] != "" and         
         data['RP']['RP_DC_Comments'] != "" and     
         data['RP']['RP_DiC_LumpSumTotalNeed'] != "" and 
         data['RP']['RP_DiC_LumpSumExistingProvisions'] != "" and 
-        data['RP']['RP_DiC_LumpSumExistingShandtfallSurplus'] != "" and 
+        data['RP']['RP_DiC_LumpSumExistingShortfallSurplus'] != "" and 
         data['RP']['RP_DiC_LumpSumInvestments'] != "" and         
         data['RP']['RP_DiC_PI_TotalNeed'] != "" and 
         data['RP']['RP_DiC_PI_ExistingProvisions'] != "" and 
-        data['RP']['RP_DiC_PI_ExistingShandtfallSurplus'] != "" and 
+        data['RP']['RP_DiC_PI_ExistingShortfallSurplus'] != "" and 
         data['RP']['RP_DiC_PI_Investments'] != "" and         
         data['RP']['RP_DiC_TI_TotalNeed'] != "" and 
         data['RP']['RP_DiC_TI_ExistingProvisions'] != "" and 
-        data['RP']['RP_DiC_TI_ExistingShandtfallSurplus'] != "" and 
+        data['RP']['RP_DiC_TI_ExistingShortfallSurplus'] != "" and 
         data['RP']['RP_DiC_TI_Investments'] != "" and             
         data['RP']['RP_DiC_SiB_TotalNeed'] != "" and 
         data['RP']['RP_DiC_SiB_ExistingProvisions'] != "" and 
-        data['RP']['RP_DiC_SiB_ExistingShandtfallSurplus'] != "" and 
+        data['RP']['RP_DiC_SiB_ExistingShortfallSurplus'] != "" and 
         data['RP']['RP_DiC_SiB_Investments'] != "" and       
         data['RP']['RP_DiC_Other1'] != "" and 
         data['RP']['RP_DiC_OtherTotalNeed1'] != "" and 
         data['RP']['RP_DiC_OtherExistingProvisions1'] != "" and 
-        data['RP']['RP_DiC_OtherExistingShandtfallSurplus1'] != "" and 
+        data['RP']['RP_DiC_OtherExistingShortfallSurplus1'] != "" and 
         data['RP']['RP_DiC_OtherInvestments1'] != "" and          
         data['RP']['RP_DiC_Other2'] != "" and 
         data['RP']['RP_DiC_OtherTotalNeed2'] != "" and 
         data['RP']['RP_DiC_OtherExistingProvisions2'] != "" and 
-        data['RP']['RP_DiC_OtherExistingShandtfallSurplus2'] != "" and 
+        data['RP']['RP_DiC_OtherExistingShortfallSurplus2'] != "" and 
         data['RP']['RP_DiC_OtherInvestments2'] != "" and      
         data['RP']['RP_DiC_Comments'] != "" and         
         data['RP']['RP_DrC_LumpSumTotalNeed'] != "" and 
         data['RP']['RP_DrC_LumpSumExistingProvisions'] != "" and 
-        data['RP']['RP_DrC_LumpSumExistingShandtfallSurplus'] != "" and 
+        data['RP']['RP_DrC_LumpSumExistingShortfallSurplus'] != "" and 
         data['RP']['RP_DrC_LumpSumInvestments'] != "" and         
         data['RP']['RP_DrC_IncomeTotalNeed'] != "" and 
         data['RP']['RP_DrC_IncomeExistingProvisions'] != "" and 
-        data['RP']['RP_DrC_IncomeExistingShandtfallSurplus'] != "" and 
+        data['RP']['RP_DrC_IncomeExistingShortfallSurplus'] != "" and 
         data['RP']['RP_DrC_IncomeInvestments'] != "" and         
         data['RP']['RP_DrC_Other1'] != "" and 
         data['RP']['RP_DrC_OtherTotalNeed1'] != "" and 
         data['RP']['RP_DrC_OtherExistingProvisions1'] != "" and 
-        data['RP']['RP_DrC_OtherExistingShandtfallSurplus1'] != "" and 
+        data['RP']['RP_DrC_OtherExistingShortfallSurplus1'] != "" and 
         data['RP']['RP_DrC_OtherInvestments1'] != "" and          
         data['RP']['RP_DrC_Other2'] != "" and 
         data['RP']['RP_DrC_OtherTotalNeed2'] != "" and 
         data['RP']['RP_DrC_OtherExistingProvisions2'] != "" and 
-        data['RP']['RP_DrC_OtherExistingShandtfallSurplus2'] != "" and     
-        data['RP']['RPDreadComments'] != "" and       
-        data['RP']['RPLifeCoverFinancialSolutions'] != "" and 
+        data['RP']['RP_DrC_OtherExistingShortfallSurplus2'] != "" and     
+        data['RP']['RP_DrC_Comments'] != "" and       
+        data['RP']['RP_LC_FinancialSolutions'] != "" and 
         data['RP']['RP_DiC_FinancialSolutions'] != "" and 
         data['RP']['RP_DrC_FinancialSolutions'] != "" and     
         data['RP']['RP_AltS_1'] != "" and 
@@ -586,7 +593,7 @@ def wkhtmltopdfapi(request):
         data['RP']['RP_Policy_Number'] != "" and 
         data['RP']['RP_Product_Name'] != "" and 
         data['RP']['RP_Product_Premium'] != "" and 
-        data['RP']['RP_Product_PremiumFrequency'] != "0" and  
+        data['RP']['RP_Product_PremiumFrequency'] != 0 and  
         data['RP']['RP_Product_Pattern'] != "" and 
         data['RP']['RP_Product_Escalation'] != "" and 
         data['RP']['RP_Product_ContractingParty'] != "" and 
@@ -597,7 +604,7 @@ def wkhtmltopdfapi(request):
         data['RP']['RP_Product_2ndYearCommission'] != "" and 
         data['RP']['RP_Product_OngoingFees'] != "" and 
         data['RP']['RP_Product_OngoingFeesFrequency'] != "" and 
-        data['RP']['RP_Product_OngoingFeesFrequency1'] != "0" and     
+        data['RP']['RP_Product_OngoingFeesFrequency1'] != 0 and     
         data['RP']['RP_TotalFees_n_Commissions'] != "" and         
         data['RP']['RP_BenDesc_1'] != "" and 
         data['RP']['RP_BenDesc_CoverAmount1'] != "" and 
@@ -623,12 +630,55 @@ def wkhtmltopdfapi(request):
         data['rp_status'] = True
     else:
         data['rp_status'] = False
+    PremiumFrequency = [ "" ,"Monthly", "Quarterly", "Annually", "Once Off"]
+    SourceOfFunds = ["", "Salary", "Savings", "Inheritence", "Resignation", "Retirement", "Other", ]
+    IP_InvestmentStrategy = ["", "Capital Reservation", "Income", "Goal Specification Investment"]
+    IP_ReturnRequired = ["","Market Linked Return","Targeted Return","Benchmark"]
+    IP_RiskProfile = ["","Conservative","Cautious","Moderate","Moderately Aggressive","Aggressive"]
+    IP_ProductTaken = ["","Endowment","RA","TSFA","Unit Trust","Life Annuity","Living Annuity","Other"]
+                
+    data['RP']['RP_Product_PremiumFrequency'] = PremiumFrequency[int(data['RP']['RP_Product_PremiumFrequency'])]
+    data['RP']['RP_Product_OngoingFeesFrequency1'] = PremiumFrequency[int(data['RP']['RP_Product_OngoingFeesFrequency1'])]
 
-    if(int(data['RF_Transaction_Flow_id']) == 1 or int(data['RF_Transaction_Flow_id']) == 2):
-        val4n=val13+val14+val15+val16+val17+val18+val19+val20
-    data['val4n'] = val4n
+    data['IP'] = InvestmentPlanning.objects.filter(formId=data['id']).values().first()
+    data['IP']['IP_SourceOfIncome'] = SourceOfFunds[int(data['IP']['IP_SourceOfIncome'])]
+    data['IP']['IP_InvestmentStrategy'] = IP_InvestmentStrategy[int(data['IP']['IP_InvestmentStrategy'])]
+    data['IP']['IP_ReturnRequired'] = IP_ReturnRequired[int(data['IP']['IP_ReturnRequired'])]
+    data['IP']['IP_RiskProfile'] = IP_RiskProfile[int(data['IP']['IP_RiskProfile'])]
+    data['IP']['IP_ProductTaken'] = IP_ProductTaken[int(data['IP']['IP_ProductTaken'])]
+    data['IP']['IP_ProductPremiumFrequency'] = PremiumFrequency[int(data['IP']['IP_ProductPremiumFrequency'])]
+    
+    data['BA_Risk'] = AssuranceRisk.objects.filter(formId=data['id']).values().first()
+    data['BA_Risk']['AR_BusinessDate'] = datetimeparser.parse(data['BA_Risk']['AR_BusinessDate']).strftime('%d %b %Y') 
+    data['BA_Risk']['AR_ProductPremiumFrequency'] = PremiumFrequency[int(data['BA_Risk']['AR_ProductPremiumFrequency'])]
+
+    InvestmentStrategy = ["" ,"Capital Growth" , "Capital Preservtion", "Income", "Specified Goal Investment"]    
+    ReturnRequired = ["" ,"Guaranteed Return", "Marketed Linked Return", "Targeted Return", "Benchmark"]      
+    RiskProfile = ["" , "Ultra Conservative", "Conservative", "Cautious", "Moderate"] 
+    SourceOfFunds = ["", "Salary", "Savings", "Inheritence", "Resignation", "Retirement", "Other", ]
+        
+    data['BA_Investment'] = AssuranceInvestment.objects.filter(formId=data['id']).values().first()
+    data['BA_Investment']['AI_Strategy'] = InvestmentStrategy[int(data['BA_Investment']['AI_Strategy'])]
+    data['BA_Investment']['AI_ReturnRequired'] = ReturnRequired[int(data['BA_Investment']['AI_ReturnRequired'])]
+    data['BA_Investment']['AI_RiskProfile'] = RiskProfile[int(data['BA_Investment']['AI_RiskProfile'])]
+    data['BA_Investment']['AI_SourceOfFunds'] = SourceOfFunds[int(data['BA_Investment']['AI_SourceOfFunds'])]
+    data['BA_Investment']['AI_Pr_PremiumFrequency'] = PremiumFrequency[int(data['BA_Investment']['AI_Pr_PremiumFrequency'])]
+    
+    data['EB'] = EmployeeBenefits.objects.filter(formId=data['id']).values().first()
+    data['EB']['EB_ClientDate'] = datetimeparser.parse(data['EB']['EB_ClientDate']).strftime('%d %b %Y')
+    eb_cnr = ["", "Retirement Benefits", "Type of fund/scheme", "Truama Benefits", "Funeral Benefits", "Accidental Benefits", "Group Life Cover", "Lump Sum Disability Cover", "Spouse Life Cover", "Disability Income Cover", ]     
+    data['EB']['EB_BusB_CoverType'] = eb_cnr[int(data['EB']['EB_BusB_CoverType'])]
+    
+    data['Fiduciary'] = Fiduciary.objects.filter(formId=data['id']).values().first()
+    data['Fiduciary']['fiduciaryWillUpdationDate'] = datetimeparser.parse(data['Fiduciary']['fiduciaryWillUpdationDate']).strftime('%d %b %Y') 
     template = get_template('risk.html')
-    response =  PDFTemplateResponse(request=request, template=template,context=data)
+    cmd_options = {
+      'page-size': 'Letter',
+      'viewport-size' : '1920x1080',
+      'footer-center' : '[page]/[topage]',
+      'no-outline' : True,
+   }
+    response =  PDFTemplateResponse(request=request, template=template,context=data, cmd_options=cmd_options)
     fileName = "Sample"
     with open("static/pdf/%s.pdf"%(fileName), "wb") as f:
         f.write(response.rendered_content)
