@@ -102,50 +102,51 @@ const Medical = ({user}) => {
 
         BackInfo: "",
         
-        SNA_Needs1 : 1,
+        SNA_Needs1 : 2,
         SNA_Comments1: "",
-        SNA_Needs2 : 1,
+        SNA_Needs2 : 2,
         SNA_Comments2: "",
-        SNA_Needs3 : 1,
+        SNA_Needs3 : 2,
         SNA_Comments3: "",
-        SNA_Needs4 : 1,
+        SNA_Needs4 : 2,
         SNA_Comments4: "",
-        SNA_Needs5 : 1,
+        SNA_Needs5 : 2,
         SNA_Comments5: "",
-        SNA_Needs6 : 1,
+        SNA_Needs6 : 2,
         SNA_Comments6: "",
-        SNA_Needs7 : 1,
+        SNA_Needs7 : 2,
         SNA_Comments7: "",
-        SNA_Needs8 : 1,
+        SNA_Needs8 : 2,
         SNA_Comments8: "",
-        SNA_Needs9 : 1,
+        SNA_Needs9 : 2,
         SNA_Comments9: "",
-        SNA_Needs10 : 1,
+        SNA_Other : "",
+        SNA_Needs10 : 2,
         SNA_Comments10: "",
         
-        CoMAB_Current1: 1,
+        CoMAB_Current1: "",
         CoMAB_Replaced1: "",
-        CoMAB_Current2: 1,
+        CoMAB_Current2: "",
         CoMAB_Replaced2: "",
-        CoMAB_Current3: 1,
+        CoMAB_Current3: "",
         CoMAB_Replaced3: "",
-        CoMAB_Current4: 1,
+        CoMAB_Current4: "",
         CoMAB_Replaced4: "",
-        CoMAB_Current5: 1,
+        CoMAB_Current5: "",
         CoMAB_Replaced5: "",
-        CoMAB_Current6: 1,
+        CoMAB_Current6: "",
         CoMAB_Replaced6: "",
-        CoMAB_Current7: 1,
+        CoMAB_Current7: "",
         CoMAB_Replaced7: "",
-        CoMAB_Current8: 1,
+        CoMAB_Current8: "",
         CoMAB_Replaced8: "",
-        CoMAB_Current9: 1,
+        CoMAB_Current9: "",
         CoMAB_Replaced9: "",
-        CoMAB_Current10: 1,
+        CoMAB_Current10: "",
         CoMAB_Replaced10: "",
-        CoMAB_Current11: 1,
+        CoMAB_Current11: "",
         CoMAB_Replaced11: "",
-        CoMAB_Current12: 1,
+        CoMAB_Current12: "",
         CoMAB_Replaced12: "",
 
         SectionD_SnF: "",
@@ -153,7 +154,7 @@ const Medical = ({user}) => {
 
         SectionF_NotAccepted: "",
         SectionF_Reasons: "",
-        SectionF_Consequences : 1,
+        SectionF_Consequences : 2,
         SectionF_Fee: "",
         SectionF_Comments: "",
         SectionF_Date: "",
@@ -558,7 +559,7 @@ const Medical = ({user}) => {
           </>: 
           null
       }
-      <textarea  id="BackInfo"  className="form-control"  style={{height: '160px'}}  
+      <textarea maxLength={1000}  id="BackInfo"  className="form-control"  style={{height: '160px'}}  
       name='BackInfo' value={FormData['BackInfo']} onChange={(e) => {onChange(e)}} 
       onFocus={backgroundInfo_onFocus}
       onBlur={backgroundInfo_onBlur}
@@ -598,7 +599,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs1"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs1" name="SNA_Needs1" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs1" name="SNA_Needs1" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -606,7 +607,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs1"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs1" name="SNA_Needs1" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs1" name="SNA_Needs1" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -630,7 +631,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs2"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs2" name="SNA_Needs2" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs2" name="SNA_Needs2" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -638,7 +639,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs2"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs2" name="SNA_Needs2" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs2" name="SNA_Needs2" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -662,7 +663,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs3"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs3" name="SNA_Needs3" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs3" name="SNA_Needs3" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -670,7 +671,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs3"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs3" name="SNA_Needs3" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs3" name="SNA_Needs3" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -694,7 +695,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs4"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs4" name="SNA_Needs4" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs4" name="SNA_Needs4" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -702,7 +703,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs4"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs4" name="SNA_Needs4" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs4" name="SNA_Needs4" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -726,7 +727,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs5"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs5" name="SNA_Needs5" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs5" name="SNA_Needs5" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -734,7 +735,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs5"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs5" name="SNA_Needs5" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs5" name="SNA_Needs5" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -758,7 +759,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs6"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs6" name="SNA_Needs6" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs6" name="SNA_Needs6" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -766,7 +767,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs6"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs6" name="SNA_Needs6" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs6" name="SNA_Needs6" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -790,7 +791,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs7"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs7" name="SNA_Needs7" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs7" name="SNA_Needs7" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -798,7 +799,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs7"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs7" name="SNA_Needs7" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs7" name="SNA_Needs7" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -822,7 +823,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs8"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs8" name="SNA_Needs8" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs8"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs8" name="SNA_Needs8" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -830,7 +831,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs8"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs8" name="SNA_Needs8" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs8"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs8" name="SNA_Needs8" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -854,7 +855,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs9"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs9" name="SNA_Needs9" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs9"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs9" name="SNA_Needs9" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -862,7 +863,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs9"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs9" name="SNA_Needs9" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs9"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs9" name="SNA_Needs9" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -881,12 +882,12 @@ const Medical = ({user}) => {
         <div className="col-16" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
               <div className="col-4">
-                <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}}/>
+                <input spellCheck="true"  id="SNA_Other" name='SNA_Other' value={FormData['SNA_Other']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}}/>
               </div>
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs10"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs10" name="SNA_Needs10" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs10"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs10" name="SNA_Needs10" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -894,7 +895,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SNA_Needs10"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs10" name="SNA_Needs10" />
+                      <input className="form-check-input" checked={FormData["SNA_Needs10"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs10" name="SNA_Needs10" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -947,7 +948,7 @@ const Medical = ({user}) => {
                   <label className="col-form-label"><b>Name:</b></label>
               </div>
               <div className="col-4">
-                <input spellCheck="true"  id="CoMAB_Current1" name='CoMAB_Current1' value={FormData['CoMAB_Current1']} onChange={(e) => {onChange(e)}} clasCoMABme="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
+                <input spellCheck="true"  id="CoMAB_Current1" name='CoMAB_Current1' value={FormData['CoMAB_Current1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
               </div>
               <div className="col-4">
                 <input spellCheck="true"  id="CoMAB_Replaced1" name='CoMAB_Replaced1' value={FormData['CoMAB_Replaced1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
@@ -1137,7 +1138,7 @@ const Medical = ({user}) => {
                   <label className="col-form-label"><b>Scheme and Fund recommended and/or selected by you:</b></label>
               </div>
               <div className="col-6">
-                <input spellCheck="true"  id="SectionD_SnF" name='SectionD_SnF' value={FormData['SectionD_SnF']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Motivation for recommendations – State why the product purchased will suit the client"  aria-describedby="" style={{height:"150px"}}/>
+                <textarea maxLength={1000} spellCheck="true"  id="SectionD_SnF" name='SectionD_SnF' value={FormData['SectionD_SnF']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Motivation for recommendations – State why the product purchased will suit the client"  aria-describedby="" style={{height:"150px"}}/>
               </div>
             </div>
         </div>
@@ -1151,7 +1152,7 @@ const Medical = ({user}) => {
 
     <div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>IMPORTANT INFORMATION HIGHLIGHTED TO YOU</b></div>
     <hr/>
-    <input spellCheck="true"  id="SectionE_PMB" name='SectionE_PMB' value={FormData['SectionE_PMB']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc."  aria-describedby="" style={{height:"80px"}}/>
+    <textarea maxLength={1000} spellCheck="true"  id="SectionE_PMB" name='SectionE_PMB' value={FormData['SectionE_PMB']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc."  aria-describedby="" style={{height:"80px"}}/>
     <hr/>
 
     
@@ -1195,7 +1196,7 @@ const Medical = ({user}) => {
               <div className="col-6">
                 <div className="row col-6 align-items-center">
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SectionF_Consequences"] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SectionF_Consequences" name="SectionF_Consequences" />
+                      <input className="form-check-input" checked={FormData["SectionF_Consequences"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SectionF_Consequences" name="SectionF_Consequences" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -1203,7 +1204,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input className="form-check-input" checked={FormData["SectionF_Consequences"] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SectionF_Consequences" name="SectionF_Consequences" />
+                      <input className="form-check-input" checked={FormData["SectionF_Consequences"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SectionF_Consequences" name="SectionF_Consequences" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >

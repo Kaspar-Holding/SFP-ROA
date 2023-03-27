@@ -8,6 +8,10 @@ This project is built on the following Stack
 
 ## Updates
 
+### 28 March 2023:
+- 80% of the form is now PDF ready
+- Only Short Term Personal and Commerical are remaining
+
 ### 24 March 2023:
 - 60% of the form is now PDF ready
 - Change Request 2 and 3 are done

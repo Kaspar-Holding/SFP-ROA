@@ -1208,7 +1208,7 @@ const Short_term_Commercial= ({user}) => {
                                     <label className="col-form-label">Inception Date:</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" id="STIC_Inception_Date" onChange={(e) => {onChange(e)}} value={FormData['STIC_Inception_Date']}  name="STIC_Inception_Date"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" />
+                                    <input type={"date"} spellCheck="true" id="STIC_Inception_Date" onChange={(e) => {onChange(e)}} value={FormData['STIC_Inception_Date']}  name="STIC_Inception_Date"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1219,7 +1219,7 @@ const Short_term_Commercial= ({user}) => {
                                     <label htmlFor="id_number" className="col-form-label">Renewal Date: (If any):</label>
                                   </div>
                                   <div className="col-6">
-                                    <input spellCheck="true" id="STIC_Renewal_Date" onChange={(e) => {onChange(e)}} value={FormData['STIC_Renewal_Date']}  name="STIC_Quotation_Number" className="form-control" placeholder="Click or tap here to enter text." aria-describedby="" />
+                                    <input type={"date"} spellCheck="true" id="STIC_Renewal_Date" onChange={(e) => {onChange(e)}} value={FormData['STIC_Renewal_Date']}  name="STIC_Renewal_Date" className="form-control" placeholder="Click or tap here to enter text." aria-describedby="" />
                                   </div>
                               </div>
                           </div>
@@ -1510,7 +1510,7 @@ const Short_term_Commercial= ({user}) => {
                           <div className="col-6" style={{paddingBottom: "0.5%"}}>
                               <div className="row g-3 align-items-center">
                                   <div className="col-6">
-                                    <label className="col-form-label">email-address:</label>
+                                    <label className="col-form-label">Email Address:</label>
                                   </div>
                                   <div className="col-6">
                                     <input spellCheck="true" id="STIC_Email" onChange={(e) => {onChange(e)}} value={FormData['STIC_Email']}  name="STIC_Email"  className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" style={{width:"800px"}} />
@@ -1619,7 +1619,7 @@ const Short_term_Commercial= ({user}) => {
                                       <div className="row">
                                           <div className="row col-2 align-items-center">
                                               <div className="col-2">
-                                                  <input className="form-check-input" checked={FormData['STIC_General_Cancelled'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_General_Cancelled" name="STIC_General_Cancelled" />
+                                                  <input className="form-check-input" checked={FormData['STIC_General_Cancelled'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_General_Cancelled" name="STIC_General_Cancelled" />
                                               </div>
                                               <div className="col-2">
                                                   <label className="form-check-label" htmlFor="STIC_General_Cancelled" >
@@ -1629,7 +1629,7 @@ const Short_term_Commercial= ({user}) => {
                                           </div>
                                           <div className="row col-2 align-items-center">
                                               <div className="col-2">
-                                                  <input className="form-check-input" checked={FormData['STIC_General_Cancelled'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_General_Cancelled" name="STIC_General_Cancelled" />
+                                                  <input className="form-check-input" checked={FormData['STIC_General_Cancelled'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_General_Cancelled" name="STIC_General_Cancelled" />
                                               </div>
                                               <div className="col-2">
                                                   <label className="form-check-label" htmlFor="STIC_General_Cancelled" >
@@ -1725,21 +1725,21 @@ const Short_term_Commercial= ({user}) => {
                                       <div className="row">
                                           <div className="row col-2 align-items-center">
                                               <div className="col-2">
-                                                  <input className="form-check-input" type="radio" value="1" checked={FormData['STIC_Replacement_Advise'] === "1" ? true : false} id="STIC_Replacement_Advise" name="STIC_Replacement_Advise" onChange={(e) => {onChange(e)}}/>
+                                                  <input className="form-check-input" type="radio" value="1" checked={FormData['STIC_Replacement_Advise'] == 1 ? true : false} id="STIC_Replacement_Advise" name="STIC_Replacement_Advise" onChange={(e) => {onChange(e)}}/>
                                               </div>
                                               <div className="col-2">
                                                   <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
-                                                      No
+                                                      Yes
                                                   </label>
                                               </div>
                                           </div>
                                           <div className="row col-2 align-items-center">
                                               <div className="col-2">
-                                                  <input className="form-check-input" type="radio" value="0" checked={FormData['STIC_Replacement_Advise'] === "1" ? false : true} id="STIC_Replacement_Advise" name="STIC_Replacement_Advise" onChange={(e) => {onChange(e)}}/>
+                                                  <input className="form-check-input" type="radio" value="0" checked={FormData['STIC_Replacement_Advise'] == 0 ? true : false} id="STIC_Replacement_Advise" name="STIC_Replacement_Advise" onChange={(e) => {onChange(e)}}/>
                                               </div>
                                               <div className="col-2">
                                                   <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
-                                                      Yes
+                                                      No
                                                   </label>
                                               </div>
                                           </div>
@@ -2094,11 +2094,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Office contents</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended3"] === 1 ? true : false} name="STIC_ProdComp_Recommended3" onChange={(e)=>{FormData["STIC_ProdComp_Recommended3"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended3"] === 1 ? true : false} name="STIC_ProdComp_Recommended3" onChange={(e)=>{FormData["STIC_ProdComp_Recommended3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted3"] === 1 ? true : false} name="STIC_ProdComp_Accepted3" onChange={(e)=>{FormData["STIC_ProdComp_Accepted3"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted3"] === 1 ? true : false} name="STIC_ProdComp_Accepted3" onChange={(e)=>{FormData["STIC_ProdComp_Accepted3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2143,11 +2143,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Business Interruption</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended4"] === 1 ? true : false} name="STIC_ProdComp_Recommended4" onChange={(e)=>{FormData["STIC_ProdComp_Recommended4"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended4"] === 1 ? true : false} name="STIC_ProdComp_Recommended4" onChange={(e)=>{FormData["STIC_ProdComp_Recommended4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted4"] === 1 ? true : false} name="STIC_ProdComp_Accepted4" onChange={(e)=>{FormData["STIC_ProdComp_Accepted4"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted4"] === 1 ? true : false} name="STIC_ProdComp_Accepted4" onChange={(e)=>{FormData["STIC_ProdComp_Accepted4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2192,11 +2192,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Machinery Breakdown</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended5"] === 1 ? true : false} name="STIC_ProdComp_Recommended5" onChange={(e)=>{FormData["STIC_ProdComp_Recommended5"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended5"] === 1 ? true : false} name="STIC_ProdComp_Recommended5" onChange={(e)=>{FormData["STIC_ProdComp_Recommended5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted5"] === 1 ? true : false} name="STIC_ProdComp_Accepted5" onChange={(e)=>{FormData["STIC_ProdComp_Accepted5"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted5"] === 1 ? true : false} name="STIC_ProdComp_Accepted5" onChange={(e)=>{FormData["STIC_ProdComp_Accepted5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2241,11 +2241,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Machinery breakdown:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loss of profits</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended6"] === 1 ? true : false} name="STIC_ProdComp_Recommended6" onChange={(e)=>{FormData["STIC_ProdComp_Recommended6"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended6"] === 1 ? true : false} name="STIC_ProdComp_Recommended6" onChange={(e)=>{FormData["STIC_ProdComp_Recommended6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted6"] === 1 ? true : false} name="STIC_ProdComp_Accepted6" onChange={(e)=>{FormData["STIC_ProdComp_Accepted6"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted6"] === 1 ? true : false} name="STIC_ProdComp_Accepted6" onChange={(e)=>{FormData["STIC_ProdComp_Accepted6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2290,11 +2290,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Deterioration of stock</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended7"] === 1 ? true : false} name="STIC_ProdComp_Recommended7" onChange={(e)=>{FormData["STIC_ProdComp_Recommended7"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended7"] === 1 ? true : false} name="STIC_ProdComp_Recommended7" onChange={(e)=>{FormData["STIC_ProdComp_Recommended7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted7"] === 1 ? true : false} name="STIC_ProdComp_Accepted7" onChange={(e)=>{FormData["STIC_ProdComp_Accepted7"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted7"] === 1 ? true : false} name="STIC_ProdComp_Accepted7" onChange={(e)=>{FormData["STIC_ProdComp_Accepted7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2339,11 +2339,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Accounts receiveable</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended8"] === 1 ? true : false} name="STIC_ProdComp_Recommended8" onChange={(e)=>{FormData["STIC_ProdComp_Recommended8"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended8"] === 1 ? true : false} name="STIC_ProdComp_Recommended8" onChange={(e)=>{FormData["STIC_ProdComp_Recommended8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted8"] === 1 ? true : false} name="STIC_ProdComp_Accepted8" onChange={(e)=>{FormData["STIC_ProdComp_Accepted8"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted8"] === 1 ? true : false} name="STIC_ProdComp_Accepted8" onChange={(e)=>{FormData["STIC_ProdComp_Accepted8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2388,11 +2388,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Theft</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended9"] === 1 ? true : false} name="STIC_ProdComp_Recommended9" onChange={(e)=>{FormData["STIC_ProdComp_Recommended9"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended9"] === 1 ? true : false} name="STIC_ProdComp_Recommended9" onChange={(e)=>{FormData["STIC_ProdComp_Recommended9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted9"] === 1 ? true : false} name="STIC_ProdComp_Accepted9" onChange={(e)=>{FormData["STIC_ProdComp_Accepted9"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted9"] === 1 ? true : false} name="STIC_ProdComp_Accepted9" onChange={(e)=>{FormData["STIC_ProdComp_Accepted9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2437,11 +2437,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Money</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended10"] === 1 ? true : false} name="STIC_ProdComp_Recommended10" onChange={(e)=>{FormData["STIC_ProdComp_Recommended10"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended10"] === 1 ? true : false} name="STIC_ProdComp_Recommended10" onChange={(e)=>{FormData["STIC_ProdComp_Recommended10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted10"] === 1 ? true : false} name="STIC_ProdComp_Accepted10" onChange={(e)=>{FormData["STIC_ProdComp_Accepted10"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted10"] === 1 ? true : false} name="STIC_ProdComp_Accepted10" onChange={(e)=>{FormData["STIC_ProdComp_Accepted10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2486,11 +2486,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Glass</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended11"] === 1 ? true : false} name="STIC_ProdComp_Recommended11" onChange={(e)=>{FormData["STIC_ProdComp_Recommended11"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended11"] === 1 ? true : false} name="STIC_ProdComp_Recommended11" onChange={(e)=>{FormData["STIC_ProdComp_Recommended11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted11"] === 1 ? true : false} name="STIC_ProdComp_Accepted11" onChange={(e)=>{FormData["STIC_ProdComp_Accepted11"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted11"] === 1 ? true : false} name="STIC_ProdComp_Accepted11" onChange={(e)=>{FormData["STIC_ProdComp_Accepted11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2535,11 +2535,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Fidelity gurantee</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended12"] === 1 ? true : false} name="STIC_ProdComp_Recommended12" onChange={(e)=>{FormData["STIC_ProdComp_Recommended12"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended12"] === 1 ? true : false} name="STIC_ProdComp_Recommended12" onChange={(e)=>{FormData["STIC_ProdComp_Recommended12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted12"] === 1 ? true : false} name="STIC_ProdComp_Accepted12" onChange={(e)=>{FormData["STIC_ProdComp_Accepted12"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted12"] === 1 ? true : false} name="STIC_ProdComp_Accepted12" onChange={(e)=>{FormData["STIC_ProdComp_Accepted12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2584,11 +2584,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Goods in transit</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended13"] === 1 ? true : false} name="STIC_ProdComp_Recommended13" onChange={(e)=>{FormData["STIC_ProdComp_Recommended13"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended13"] === 1 ? true : false} name="STIC_ProdComp_Recommended13" onChange={(e)=>{FormData["STIC_ProdComp_Recommended13"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted13"] === 1 ? true : false} name="STIC_ProdComp_Accepted13" onChange={(e)=>{FormData["STIC_ProdComp_Accepted13"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted13"] === 1 ? true : false} name="STIC_ProdComp_Accepted13" onChange={(e)=>{FormData["STIC_ProdComp_Accepted13"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2633,11 +2633,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Business all risks</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended14"] === 1 ? true : false} name="STIC_ProdComp_Recommended14" onChange={(e)=>{FormData["STIC_ProdComp_Recommended14"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended14"] === 1 ? true : false} name="STIC_ProdComp_Recommended14" onChange={(e)=>{FormData["STIC_ProdComp_Recommended14"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted14"] === 1 ? true : false} name="STIC_ProdComp_Accepted14" onChange={(e)=>{FormData["STIC_ProdComp_Accepted14"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted14"] === 1 ? true : false} name="STIC_ProdComp_Accepted14" onChange={(e)=>{FormData["STIC_ProdComp_Accepted14"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2682,11 +2682,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Accidental damage</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended15"] === 1 ? true : false} name="STIC_ProdComp_Recommended15" onChange={(e)=>{FormData["STIC_ProdComp_Recommended15"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended15"] === 1 ? true : false} name="STIC_ProdComp_Recommended15" onChange={(e)=>{FormData["STIC_ProdComp_Recommended15"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted15"] === 1 ? true : false} name="STIC_ProdComp_Accepted15" onChange={(e)=>{FormData["STIC_ProdComp_Accepted15"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted15"] === 1 ? true : false} name="STIC_ProdComp_Accepted15" onChange={(e)=>{FormData["STIC_ProdComp_Accepted15"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2731,11 +2731,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Public liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended16"] === 1 ? true : false} name="STIC_ProdComp_Recommended16" onChange={(e)=>{FormData["STIC_ProdComp_Recommended16"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended16"] === 1 ? true : false} name="STIC_ProdComp_Recommended16" onChange={(e)=>{FormData["STIC_ProdComp_Recommended16"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted16"] === 1 ? true : false} name="STIC_ProdComp_Accepted16" onChange={(e)=>{FormData["STIC_ProdComp_Accepted16"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted16"] === 1 ? true : false} name="STIC_ProdComp_Accepted16" onChange={(e)=>{FormData["STIC_ProdComp_Accepted16"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2780,11 +2780,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Top up personal Liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended17"] === 1 ? true : false} name="STIC_ProdComp_Recommended17" onChange={(e)=>{FormData["STIC_ProdComp_Recommended17"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended17"] === 1 ? true : false} name="STIC_ProdComp_Recommended17" onChange={(e)=>{FormData["STIC_ProdComp_Recommended17"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted17"] === 1 ? true : false} name="STIC_ProdComp_Accepted17" onChange={(e)=>{FormData["STIC_ProdComp_Accepted17"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted17"] === 1 ? true : false} name="STIC_ProdComp_Accepted17" onChange={(e)=>{FormData["STIC_ProdComp_Accepted17"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2829,11 +2829,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Commercial umberella &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended18"] === 1 ? true : false} name="STIC_ProdComp_Recommended18" onChange={(e)=>{FormData["STIC_ProdComp_Recommended18"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended18"] === 1 ? true : false} name="STIC_ProdComp_Recommended18" onChange={(e)=>{FormData["STIC_ProdComp_Recommended18"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted18"] === 1 ? true : false} name="STIC_ProdComp_Accepted18" onChange={(e)=>{FormData["STIC_ProdComp_Accepted18"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted18"] === 1 ? true : false} name="STIC_ProdComp_Accepted18" onChange={(e)=>{FormData["STIC_ProdComp_Accepted18"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2878,11 +2878,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Products gurantee</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended19"] === 1 ? true : false} name="STIC_ProdComp_Recommended19" onChange={(e)=>{FormData["STIC_ProdComp_Recommended19"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended19"] === 1 ? true : false} name="STIC_ProdComp_Recommended19" onChange={(e)=>{FormData["STIC_ProdComp_Recommended19"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted19"] === 1 ? true : false} name="STIC_ProdComp_Accepted19" onChange={(e)=>{FormData["STIC_ProdComp_Accepted19"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted19"] === 1 ? true : false} name="STIC_ProdComp_Accepted19" onChange={(e)=>{FormData["STIC_ProdComp_Accepted19"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2927,11 +2927,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Cyber Risks</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended20"] === 1 ? true : false} name="STIC_ProdComp_Recommended20" onChange={(e)=>{FormData["STIC_ProdComp_Recommended20"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended20"] === 1 ? true : false} name="STIC_ProdComp_Recommended20" onChange={(e)=>{FormData["STIC_ProdComp_Recommended20"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted20"] === 1 ? true : false} name="STIC_ProdComp_Accepted20" onChange={(e)=>{FormData["STIC_ProdComp_Accepted20"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted20"] === 1 ? true : false} name="STIC_ProdComp_Accepted20" onChange={(e)=>{FormData["STIC_ProdComp_Accepted20"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2976,11 +2976,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Director and officer's &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended21"] === 1 ? true : false} name="STIC_ProdComp_Recommended21" onChange={(e)=>{FormData["STIC_ProdComp_Recommended21"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended21"] === 1 ? true : false} name="STIC_ProdComp_Recommended21" onChange={(e)=>{FormData["STIC_ProdComp_Recommended21"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted21"] === 1 ? true : false} name="STIC_ProdComp_Accepted21" onChange={(e)=>{FormData["STIC_ProdComp_Accepted21"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted21"] === 1 ? true : false} name="STIC_ProdComp_Accepted21" onChange={(e)=>{FormData["STIC_ProdComp_Accepted21"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3025,11 +3025,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Employer practices &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended22"] === 1 ? true : false} name="STIC_ProdComp_Recommended22" onChange={(e)=>{FormData["STIC_ProdComp_Recommended22"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended22"] === 1 ? true : false} name="STIC_ProdComp_Recommended22" onChange={(e)=>{FormData["STIC_ProdComp_Recommended22"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted22"] === 1 ? true : false} name="STIC_ProdComp_Accepted22" onChange={(e)=>{FormData["STIC_ProdComp_Accepted22"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted22"] === 1 ? true : false} name="STIC_ProdComp_Accepted22" onChange={(e)=>{FormData["STIC_ProdComp_Accepted22"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3074,11 +3074,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Product inefficacy</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended23"] === 1 ? true : false} name="STIC_ProdComp_Recommended23" onChange={(e)=>{FormData["STIC_ProdComp_Recommended23"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended23"] === 1 ? true : false} name="STIC_ProdComp_Recommended23" onChange={(e)=>{FormData["STIC_ProdComp_Recommended23"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted23"] === 1 ? true : false} name="STIC_ProdComp_Accepted23" onChange={(e)=>{FormData["STIC_ProdComp_Accepted23"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted23"] === 1 ? true : false} name="STIC_ProdComp_Accepted23" onChange={(e)=>{FormData["STIC_ProdComp_Accepted23"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3123,11 +3123,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Product guarantee</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended24"] === 1 ? true : false} name="STIC_ProdComp_Recommended24" onChange={(e)=>{FormData["STIC_ProdComp_Recommended24"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended24"] === 1 ? true : false} name="STIC_ProdComp_Recommended24" onChange={(e)=>{FormData["STIC_ProdComp_Recommended24"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted24"] === 1 ? true : false} name="STIC_ProdComp_Accepted24" onChange={(e)=>{FormData["STIC_ProdComp_Accepted24"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted24"] === 1 ? true : false} name="STIC_ProdComp_Accepted24" onChange={(e)=>{FormData["STIC_ProdComp_Accepted24"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3175,11 +3175,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Warehousemen's &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended25"] === 1 ? true : false} name="STIC_ProdComp_Recommended25" onChange={(e)=>{FormData["STIC_ProdComp_Recommended25"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended25"] === 1 ? true : false} name="STIC_ProdComp_Recommended25" onChange={(e)=>{FormData["STIC_ProdComp_Recommended25"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted25"] === 1 ? true : false} name="STIC_ProdComp_Accepted25" onChange={(e)=>{FormData["STIC_ProdComp_Accepted25"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted25"] === 1 ? true : false} name="STIC_ProdComp_Accepted25" onChange={(e)=>{FormData["STIC_ProdComp_Accepted25"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3224,11 +3224,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Employer liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended26"] === 1 ? true : false} name="STIC_ProdComp_Recommended26" onChange={(e)=>{FormData["STIC_ProdComp_Recommended26"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended26"] === 1 ? true : false} name="STIC_ProdComp_Recommended26" onChange={(e)=>{FormData["STIC_ProdComp_Recommended26"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted26"] === 1 ? true : false} name="STIC_ProdComp_Accepted26" onChange={(e)=>{FormData["STIC_ProdComp_Accepted26"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted26"] === 1 ? true : false} name="STIC_ProdComp_Accepted26" onChange={(e)=>{FormData["STIC_ProdComp_Accepted26"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3273,11 +3273,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Stated benefits</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended27"] === 1 ? true : false} name="STIC_ProdComp_Recommended27" onChange={(e)=>{FormData["STIC_ProdComp_Recommended27"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended27"] === 1 ? true : false} name="STIC_ProdComp_Recommended27" onChange={(e)=>{FormData["STIC_ProdComp_Recommended27"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted27"] === 1 ? true : false} name="STIC_ProdComp_Accepted27" onChange={(e)=>{FormData["STIC_ProdComp_Accepted27"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted27"] === 1 ? true : false} name="STIC_ProdComp_Accepted27" onChange={(e)=>{FormData["STIC_ProdComp_Accepted27"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3322,11 +3322,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Personal and group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; accident</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended28"] === 1 ? true : false} name="STIC_ProdComp_Recommended28" onChange={(e)=>{FormData["STIC_ProdComp_Recommended28"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended28"] === 1 ? true : false} name="STIC_ProdComp_Recommended28" onChange={(e)=>{FormData["STIC_ProdComp_Recommended28"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted28"] === 1 ? true : false} name="STIC_ProdComp_Accepted28" onChange={(e)=>{FormData["STIC_ProdComp_Accepted28"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted28"] === 1 ? true : false} name="STIC_ProdComp_Accepted28" onChange={(e)=>{FormData["STIC_ProdComp_Accepted28"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3371,11 +3371,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Group personal accident</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended29"] === 1 ? true : false} name="STIC_ProdComp_Recommended29" onChange={(e)=>{FormData["STIC_ProdComp_Recommended29"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended29"] === 1 ? true : false} name="STIC_ProdComp_Recommended29" onChange={(e)=>{FormData["STIC_ProdComp_Recommended29"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted29"] === 1 ? true : false} name="STIC_ProdComp_Accepted29" onChange={(e)=>{FormData["STIC_ProdComp_Accepted29"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted29"] === 1 ? true : false} name="STIC_ProdComp_Accepted29" onChange={(e)=>{FormData["STIC_ProdComp_Accepted29"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3420,11 +3420,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Motor</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended30"] === 1 ? true : false} name="STIC_ProdComp_Recommended30" onChange={(e)=>{FormData["STIC_ProdComp_Recommended30"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended30"] === 1 ? true : false} name="STIC_ProdComp_Recommended30" onChange={(e)=>{FormData["STIC_ProdComp_Recommended30"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted30"] === 1 ? true : false} name="STIC_ProdComp_Accepted30" onChange={(e)=>{FormData["STIC_ProdComp_Accepted30"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted30"] === 1 ? true : false} name="STIC_ProdComp_Accepted30" onChange={(e)=>{FormData["STIC_ProdComp_Accepted30"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3469,11 +3469,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor car hire extension</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended31"] === 1 ? true : false} name="STIC_ProdComp_Recommended31" onChange={(e)=>{FormData["STIC_ProdComp_Recommended31"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended31"] === 1 ? true : false} name="STIC_ProdComp_Recommended31" onChange={(e)=>{FormData["STIC_ProdComp_Recommended31"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted31"] === 1 ? true : false} name="STIC_ProdComp_Accepted31" onChange={(e)=>{FormData["STIC_ProdComp_Accepted31"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted31"] === 1 ? true : false} name="STIC_ProdComp_Accepted31" onChange={(e)=>{FormData["STIC_ProdComp_Accepted31"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3518,11 +3518,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: internal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;risk</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended32"] === 1 ? true : false} name="STIC_ProdComp_Recommended32" onChange={(e)=>{FormData["STIC_ProdComp_Recommended32"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended32"] === 1 ? true : false} name="STIC_ProdComp_Recommended32" onChange={(e)=>{FormData["STIC_ProdComp_Recommended32"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted32"] === 1 ? true : false} name="STIC_ProdComp_Accepted32" onChange={(e)=>{FormData["STIC_ProdComp_Accepted32"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted32"] === 1 ? true : false} name="STIC_ProdComp_Accepted32" onChange={(e)=>{FormData["STIC_ProdComp_Accepted32"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3567,11 +3567,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: internal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;risk</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended33"] === 1 ? true : false} name="STIC_ProdComp_Recommended33" onChange={(e)=>{FormData["STIC_ProdComp_Recommended33"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended33"] === 1 ? true : false} name="STIC_ProdComp_Recommended33" onChange={(e)=>{FormData["STIC_ProdComp_Recommended33"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted33"] === 1 ? true : false} name="STIC_ProdComp_Accepted33" onChange={(e)=>{FormData["STIC_ProdComp_Accepted33"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted33"] === 1 ? true : false} name="STIC_ProdComp_Accepted33" onChange={(e)=>{FormData["STIC_ProdComp_Accepted33"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3616,11 +3616,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Electronic equipment</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended34"] === 1 ? true : false} name="STIC_ProdComp_Recommended34\" onChange={(e)=>{FormData["STIC_ProdComp_Recommended34"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended34"] === 1 ? true : false} name="STIC_ProdComp_Recommended34\" onChange={(e)=>{FormData["STIC_ProdComp_Recommended34"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted34"] === 1 ? true : false} name="STIC_ProdComp_Accepted34" onChange={(e)=>{FormData["STIC_ProdComp_Accepted34"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted34"] === 1 ? true : false} name="STIC_ProdComp_Accepted34" onChange={(e)=>{FormData["STIC_ProdComp_Accepted34"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3665,11 +3665,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>House owner</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended35"] === 1 ? true : false} name="STIC_ProdComp_Recommended35" onChange={(e)=>{FormData["STIC_ProdComp_Recommended35"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended35"] === 1 ? true : false} name="STIC_ProdComp_Recommended35" onChange={(e)=>{FormData["STIC_ProdComp_Recommended35"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted35"] === 1 ? true : false} name="STIC_ProdComp_Accepted35" onChange={(e)=>{FormData["STIC_ProdComp_Accepted35"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted35"] === 1 ? true : false} name="STIC_ProdComp_Accepted35" onChange={(e)=>{FormData["STIC_ProdComp_Accepted35"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3714,11 +3714,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>House holders</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended35"] === 1 ? true : false} name="STIC_ProdComp_Recommended35" onChange={(e)=>{FormData["STIC_ProdComp_Recommended35"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended35"] === 1 ? true : false} name="STIC_ProdComp_Recommended35" onChange={(e)=>{FormData["STIC_ProdComp_Recommended35"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted35"] === 1 ? true : false} name="STIC_ProdComp_Accepted35" onChange={(e)=>{FormData["STIC_ProdComp_Accepted35"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted35"] === 1 ? true : false} name="STIC_ProdComp_Accepted35" onChange={(e)=>{FormData["STIC_ProdComp_Accepted35"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3763,11 +3763,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Professional indenmity</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended36"] === 1 ? true : false} name="STIC_ProdComp_Recommended36" onChange={(e)=>{FormData["STIC_ProdComp_Recommended36"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended36"] === 1 ? true : false} name="STIC_ProdComp_Recommended36" onChange={(e)=>{FormData["STIC_ProdComp_Recommended36"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted36"] === 1 ? true : false} name="STIC_ProdComp_Accepted36" onChange={(e)=>{FormData["STIC_ProdComp_Accepted36"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted36"] === 1 ? true : false} name="STIC_ProdComp_Accepted36" onChange={(e)=>{FormData["STIC_ProdComp_Accepted36"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3812,11 +3812,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Marine/hull</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended37"] === 1 ? true : false} name="STIC_ProdComp_Recommended37" onChange={(e)=>{FormData["STIC_ProdComp_Recommended37"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended37"] === 1 ? true : false} name="STIC_ProdComp_Recommended37" onChange={(e)=>{FormData["STIC_ProdComp_Recommended37"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted37"] === 1 ? true : false} name="STIC_ProdComp_Accepted37" onChange={(e)=>{FormData["STIC_ProdComp_Accepted37"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted37"] === 1 ? true : false} name="STIC_ProdComp_Accepted37" onChange={(e)=>{FormData["STIC_ProdComp_Accepted37"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3861,11 +3861,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>contractors all risks:construction and engineering</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended38"] === 1 ? true : false} name="STIC_ProdComp_Recommended38" onChange={(e)=>{FormData["STIC_ProdComp_Recommended38"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended38"] === 1 ? true : false} name="STIC_ProdComp_Recommended38" onChange={(e)=>{FormData["STIC_ProdComp_Recommended38"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted38"] === 1 ? true : false} name="STIC_ProdComp_Accepted38" onChange={(e)=>{FormData["STIC_ProdComp_Accepted38"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted38"] === 1 ? true : false} name="STIC_ProdComp_Accepted38" onChange={(e)=>{FormData["STIC_ProdComp_Accepted38"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3910,11 +3910,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Body corporate</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended39"] === 1 ? true : false} name="STIC_ProdComp_Recommended39" onChange={(e)=>{FormData["STIC_ProdComp_Recommended39"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended39"] === 1 ? true : false} name="STIC_ProdComp_Recommended39" onChange={(e)=>{FormData["STIC_ProdComp_Recommended39"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted39"] === 1 ? true : false} name="STIC_ProdComp_Accepted39" onChange={(e)=>{FormData["STIC_ProdComp_Accepted39"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted39"] === 1 ? true : false} name="STIC_ProdComp_Accepted39" onChange={(e)=>{FormData["STIC_ProdComp_Accepted39"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3959,11 +3959,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Aviation</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended40"] === 1 ? true : false} name="STIC_ProdComp_Recommended40" onChange={(e)=>{FormData["STIC_ProdComp_Recommended40"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended40"] === 1 ? true : false} name="STIC_ProdComp_Recommended40" onChange={(e)=>{FormData["STIC_ProdComp_Recommended40"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted40"] === 1 ? true : false} name="STIC_ProdComp_Accepted40" onChange={(e)=>{FormData["STIC_ProdComp_Accepted40"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted40"] === 1 ? true : false} name="STIC_ProdComp_Accepted40" onChange={(e)=>{FormData["STIC_ProdComp_Accepted40"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -4008,11 +4008,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Travel insurance</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended41"] === 1 ? true : false} name="STIC_ProdComp_Recommended41" onChange={(e)=>{FormData["STIC_ProdComp_Recommended41"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended41"] === 1 ? true : false} name="STIC_ProdComp_Recommended41" onChange={(e)=>{FormData["STIC_ProdComp_Recommended41"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted41"] === 1 ? true : false} name="STIC_ProdComp_Accepted41" onChange={(e)=>{FormData["STIC_ProdComp_Accepted41"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted41"] === 1 ? true : false} name="STIC_ProdComp_Accepted41" onChange={(e)=>{FormData["STIC_ProdComp_Accepted41"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -4057,11 +4057,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Sasria</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended42"] === 1 ? true : false} name="STIC_ProdComp_Recommended42" onChange={(e)=>{FormData["STIC_ProdComp_Recommended42"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended42"] === 1 ? true : false} name="STIC_ProdComp_Recommended42" onChange={(e)=>{FormData["STIC_ProdComp_Recommended42"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted42"] === 1 ? true : false} name="STIC_ProdComp_Accepted42" onChange={(e)=>{FormData["STIC_ProdComp_Accepted42"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted42"] === 1 ? true : false} name="STIC_ProdComp_Accepted42" onChange={(e)=>{FormData["STIC_ProdComp_Accepted42"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -4106,11 +4106,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Legal fees</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended43"] === 1 ? true : false} name="STIC_ProdComp_Recommended43" onChange={(e)=>{FormData["STIC_ProdComp_Recommended43"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                              <input type="checkbox" checked={FormData["STIC_ProdComp_Recommended43"] === 1 ? true : false} name="STIC_ProdComp_Recommended43" onChange={(e)=>{FormData["STIC_ProdComp_Recommended43"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted43"] === 1 ? true : false} name="STIC_ProdComp_Accepted43" onChange={(e)=>{FormData["STIC_ProdComp_Accepted43"] === 3 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 3})}} align="centre"/>
+                                            <input type="checkbox" checked={FormData["STIC_ProdComp_Accepted43"] === 1 ? true : false} name="STIC_ProdComp_Accepted43" onChange={(e)=>{FormData["STIC_ProdComp_Accepted43"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>

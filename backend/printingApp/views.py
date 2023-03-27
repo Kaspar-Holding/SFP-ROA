@@ -649,7 +649,7 @@ def wkhtmltopdfapi(request):
     data['IP']['IP_ProductPremiumFrequency'] = PremiumFrequency[int(data['IP']['IP_ProductPremiumFrequency'])]
     
     data['BA_Risk'] = AssuranceRisk.objects.filter(formId=data['id']).values().first()
-    data['BA_Risk']['AR_BusinessDate'] = datetimeparser.parse(data['BA_Risk']['AR_BusinessDate']).strftime('%d %b %Y') 
+    data['BA_Risk']['AR_BusinessDate'] = datetimeparser.parse(data['BA_Risk']['AR_BusinessDate']).strftime('%d %b %Y') if data['BA_Risk']['AR_BusinessDate'] != "" else "N.A."
     data['BA_Risk']['AR_ProductPremiumFrequency'] = PremiumFrequency[int(data['BA_Risk']['AR_ProductPremiumFrequency'])]
 
     InvestmentStrategy = ["" ,"Capital Growth" , "Capital Preservtion", "Income", "Specified Goal Investment"]    
@@ -665,12 +665,35 @@ def wkhtmltopdfapi(request):
     data['BA_Investment']['AI_Pr_PremiumFrequency'] = PremiumFrequency[int(data['BA_Investment']['AI_Pr_PremiumFrequency'])]
     
     data['EB'] = EmployeeBenefits.objects.filter(formId=data['id']).values().first()
-    data['EB']['EB_ClientDate'] = datetimeparser.parse(data['EB']['EB_ClientDate']).strftime('%d %b %Y')
+    data['EB']['EB_ClientDate'] = datetimeparser.parse(data['EB']['EB_ClientDate']).strftime('%d %b %Y') if data['EB']['EB_ClientDate'] != "" else "N.A."
     eb_cnr = ["", "Retirement Benefits", "Type of fund/scheme", "Truama Benefits", "Funeral Benefits", "Accidental Benefits", "Group Life Cover", "Lump Sum Disability Cover", "Spouse Life Cover", "Disability Income Cover", ]     
     data['EB']['EB_BusB_CoverType'] = eb_cnr[int(data['EB']['EB_BusB_CoverType'])]
-    
+    waitingPeriod = ['', '1', '3', '6', '12', '24']
+    benefit = ['', '% of group life cover', 'x annual salary']
+    data['EB']['EB_BusRB_DiIBenWaitPer_Category1'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category1'])]
+    data['EB']['EB_BusRB_DiIBenWaitPer_Category2'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category2'])]
+    data['EB']['EB_BusRB_DiIBenWaitPer_Category3'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category3'])]
+    data['EB']['EB_BusRB_DiIBenWaitPer_Category4'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category4'])]
+    data['EB']['EB_BusRB_AccidentBenefit'] = benefit[int(data['EB']['EB_BusRB_AccidentBenefit'])]
+
     data['Fiduciary'] = Fiduciary.objects.filter(formId=data['id']).values().first()
-    data['Fiduciary']['fiduciaryWillUpdationDate'] = datetimeparser.parse(data['Fiduciary']['fiduciaryWillUpdationDate']).strftime('%d %b %Y') 
+    data['Fiduciary']['fiduciaryWillUpdationDate'] = datetimeparser.parse(data['Fiduciary']['fiduciaryWillUpdationDate']).strftime('%d %b %Y')  if data['Fiduciary']['fiduciaryWillUpdationDate'] != "" else "N.A."
+    
+    data['MD'] = Medical.objects.filter(formId=data['id']).values().first()
+    data['MD']['MSA_ClientDate'] = datetimeparser.parse(data['MD']['MSA_ClientDate']).strftime('%d %b %Y') if data['MD']['MSA_ClientDate'] != "" else "N.A."
+    data['MD']['MSA_PFromDate'] = datetimeparser.parse(data['MD']['MSA_PFromDate']).strftime('%d %b %Y') if data['MD']['MSA_PFromDate'] != "" else "N.A."
+    data['MD']['MSA_PTODate'] = datetimeparser.parse(data['MD']['MSA_PTODate']).strftime('%d %b %Y') if data['MD']['MSA_PTODate'] != "" else "N.A."
+    data['MD']['SectionF_Date'] = datetimeparser.parse(data['MD']['SectionF_Date']).strftime('%d %b %Y') if data['MD']['SectionF_Date'] != "" else "N.A."
+    
+    data['GP'] = GapCover.objects.filter(formId=data['id']).values().first()
+    data['GP']['GP_ClientInceptionDate'] = datetimeparser.parse(data['GP']['GP_ClientInceptionDate']).strftime('%d %b %Y') if data['GP']['GP_ClientInceptionDate'] != "" else "N.A."
+    data['GP']['GP_Date'] = datetimeparser.parse(data['GP']['GP_Date']).strftime('%d %b %Y') if data['GP']['GP_Date'] != "" else "N.A."
+    data['GP']['GP_FinanAdvisor_Date'] = datetimeparser.parse(data['GP']['GP_FinanAdvisor_Date']).strftime('%d %b %Y') if data['GP']['GP_FinanAdvisor_Date'] != "" else "N.A."
+    
+    data['STIC'] = ShortTermInsuranceCommerical.objects.filter(formId=data['id']).values().first()
+    data['STIC']['STIC_Inception_Date'] = datetimeparser.parse(data['STIC']['STIC_Inception_Date']).strftime('%d %b %Y') if data['STIC']['STIC_Inception_Date'] != "" else "N.A."
+    data['STIC']['STIC_Renewal_Date'] = datetimeparser.parse(data['STIC']['STIC_Renewal_Date']).strftime('%d %b %Y') if data['STIC']['STIC_Renewal_Date'] != "" else "N.A."
+    
     template = get_template('risk.html')
     cmd_options = {
       'page-size': 'Letter',

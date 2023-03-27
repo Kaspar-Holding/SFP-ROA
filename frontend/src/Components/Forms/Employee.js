@@ -138,18 +138,18 @@ const Employee = ({user}) =>
         EB_BusRB_NormRetire_AgeCategory4 : "",
 
         EB_BusRB_FlexibleGroupLife : "",
-        EB_BusRB_Approved : 1,
+        EB_BusRB_Approved : 2,
         EB_BusRB_ApprovedCategory1 : "",
         EB_BusRB_ApprovedCategory2 : "",
         EB_BusRB_ApprovedCategory3 : "",
         EB_BusRB_ApprovedCategory4 : "",
-        EB_BusRB_UnApproved : 1,
+        EB_BusRB_UnApproved : 2,
         EB_BusRB_UnApprovedCategory1 : "",
         EB_BusRB_UnApprovedCategory2 : "",
         EB_BusRB_UnApprovedCategory3 : "",
         EB_BusRB_UnApprovedCategory4 : "",
 
-        EB_BusinessRiskFundTakeOver : 1,
+        EB_BusinessRiskFundTakeOver : 2,
 
         EB_BusRB_SpouseLC_Category1 : "",
         EB_BusRB_SpouseLC_Category2 : "",
@@ -167,12 +167,12 @@ const Employee = ({user}) =>
         EB_BusRB_FB_CoverCategory3 : "",
         EB_BusRB_FB_CoverCategory4 : "",
         
-        EB_BusRB_CapDisBen_Approved : 1,
+        EB_BusRB_CapDisBen_Approved : 2,
         EB_BusRB_CapDisBen_ApprovedCategory1 : "",
         EB_BusRB_CapDisBen_ApprovedCategory2 : "",
         EB_BusRB_CapDisBen_ApprovedCategory3 : "",
         EB_BusRB_CapDisBen_ApprovedCategory4 : "",
-        EB_BusRB_CapDisBen_UnApproved : 1,
+        EB_BusRB_CapDisBen_UnApproved : 2,
         EB_BusRB_CapDisBen_UnApprovedCategory1 : "",
         EB_BusRB_CapDisBen_UnApprovedCategory2 : "",
         EB_BusRB_CapDisBen_UnApprovedCategory3 : "",
@@ -202,14 +202,14 @@ const Employee = ({user}) =>
         EB_BusRecom_ProductName : "",
         EB_BusRecom_FundType : "",
         EB_BusRecom_RecommendationFundType : "",
-        EB_BusRecom_Portfolio : 0,
-        EB_BusRecom_ClientAccepted : 0,
+        EB_BusRecom_Portfolio : 2,
+        EB_BusRecom_ClientAccepted : 2,
         EB_BusRecom_ClientRisks : "",
 
         EB_BusFReplace_Name : "",
         EB_BusFReplace_RegNo : "",
         EB_BusFReplace_Type : "",
-        EB_BusFReplace_Detail : 0,
+        EB_BusFReplace_Detail : 2,
 
         EB_BusFReplace_FeeChargesReplaced : "",
         EB_BusFReplace_FeeChargesExisting : "",
@@ -779,7 +779,7 @@ const Employee = ({user}) =>
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '100px'}}
+    <textarea maxLength={1000} className="form-control"  style={{height: '100px'}}
         id="EB_BusB_CoverDetails" name='EB_BusB_CoverDetails' value={FormData['EB_BusB_CoverDetails']} onChange={(e) => {onChange(e)}}  
         onFocus={backgroundInfo_onFocus1}
         onBlur={backgroundInfo_onBlur1}
@@ -1184,7 +1184,7 @@ const Employee = ({user}) =>
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_Approved" >
@@ -1195,7 +1195,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] === 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_Approved" >
@@ -1241,7 +1241,7 @@ const Employee = ({user}) =>
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_UnApproved" >
@@ -1252,7 +1252,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] === 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_UnApproved" >
@@ -1301,7 +1301,7 @@ const Employee = ({user}) =>
         <div className="row">
             <div className="row col-2 align-items-center">
                 <div className="col-2">
-                    <input className="form-check-input" type="radio" value="1" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                    <input className="form-check-input" type="radio" value="1" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                 </div>
                 <div className="col-2">
                     <label className="form-check-label" htmlFor="EB_BusinessRiskFundTakeOver" >
@@ -1312,7 +1312,7 @@ const Employee = ({user}) =>
 
             <div className="row col-2 align-items-center">
                 <div className="col-2">
-                    <input className="form-check-input" type="radio" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] === 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                    <input className="form-check-input" type="radio" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                 </div>
                 <div className="col-2">
                     <label className="form-check-label" htmlFor="EB_BusinessRiskFundTakeOver" >
@@ -1332,7 +1332,7 @@ const Employee = ({user}) =>
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input type="number" id="EB_BusRB_SpouseLC_Category1" name='EB_BusRB_SpouseLC_Category' value={FormData['EB_BusRB_SpouseLC_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input type="number" id="EB_BusRB_SpouseLC_Category1" name='EB_BusRB_SpouseLC_Category1' value={FormData['EB_BusRB_SpouseLC_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
@@ -1362,7 +1362,7 @@ const Employee = ({user}) =>
       <td style={{fontSize:'14px'}} align="left">Notes on Spouse cover</td>
       <td>
         <div >
-            <input type="number" id="EB_BusRB_SpouseLC_Notes" name='EB_BusRB_SpouseLC_Notes' value={FormData['EB_BusRB_SpouseLC_Notes']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder="Notes on Spouse cover"/>
+            <input type="text" id="EB_BusRB_SpouseLC_Notes" name='EB_BusRB_SpouseLC_Notes' value={FormData['EB_BusRB_SpouseLC_Notes']} onChange={(e) => {onChange(e)}} className="form-control" aria-describedby="emailHelp" placeholder="Notes on Spouse cover"/>
         </div>
       </td>
 
@@ -1479,7 +1479,7 @@ const Employee = ({user}) =>
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_Approved" >
@@ -1490,7 +1490,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] === 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_Approved" >
@@ -1536,7 +1536,7 @@ const Employee = ({user}) =>
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] === 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_UnApproved" >
@@ -1547,7 +1547,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] === 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_UnApproved" >
@@ -1778,7 +1778,7 @@ const Employee = ({user}) =>
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '140px'}} 
+    <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
         id="EB_BusRB_AccidentBenefitReason" name='EB_BusRB_AccidentBenefitReason' value={FormData['EB_BusRB_AccidentBenefitReason']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus2}
         onBlur={backgroundInfo_onBlur2}
@@ -1811,7 +1811,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '140px'}} 
+    <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
         id="EB_BusRB_DiC_Reason" name='EB_BusRB_DiC_Reason' value={FormData['EB_BusRB_DiC_Reason']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus4}
         onBlur={backgroundInfo_onBlur4}
@@ -1845,7 +1845,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea className="form-control"  style={{height: '140px'}} 
+    <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
         id="EB_BusRB_DrC_Reason" name='EB_BusRB_DrC_Reason' value={FormData['EB_BusRB_DrC_Reason']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus3}
         onBlur={backgroundInfo_onBlur3}
@@ -1855,7 +1855,6 @@ Record the client's instructions, deviations and implications thereof.
         
         
         `}  aria-describedby=""  ></textarea>
-
 <hr/>
 
         {
@@ -1874,7 +1873,7 @@ Record the client's instructions, deviations and implications thereof.
             null
         }
 
-        <textarea className="form-control"  style={{height: '140px'}} 
+        <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
         id="EB_BusRB_DrC_Summary" name='EB_BusRB_DrC_Summary' value={FormData['EB_BusRB_DrC_Summary']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus5}
         onBlur={backgroundInfo_onBlur5}
@@ -1949,7 +1948,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input className="form-check-input" type="radio" value="1" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="1" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1960,7 +1959,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] === 0 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 0 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1986,7 +1985,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input className="form-check-input" type="radio" value="1" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="1" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -1997,7 +1996,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] === 0 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 0 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2081,7 +2080,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input className="form-check-input" type="radio" value="1" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] === 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="1" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2092,7 +2091,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input className="form-check-input" type="radio" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] === 0 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input className="form-check-input" type="radio" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 0 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2755,22 +2754,22 @@ Record the client's instructions, deviations and implications thereof.
                 2.&nbsp;&nbsp;&nbsp;I confirm that I required the financial adviser to render the financial services set out in the Service Level Agreement, a copy of which has been provided to me.<br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                3.&nbsp;&nbsp;&nbsp;I understand that the accuracy of a needs analysis is dependent upon the information provided to or obtained by the financial adviser. The advice furnished and product &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recommendations made by the financial adviser are based largely on the information I provided to the financial adviser. I understand that material non-disclosures and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; misrepresentations could result in inappropriate product(s) being recommended and purchased by me.<br/>
+                3.&nbsp;&nbsp;&nbsp;I understand that the accuracy of a needs analysis is dependent upon the information provided to or obtained by the financial adviser. The advice furnished and product recommendations made by the financial adviser are based largely on the information I provided to the financial adviser. I understand that material non-disclosures and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; misrepresentations could result in inappropriate product(s) being recommended and purchased by me.<br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                4.&nbsp;&nbsp;&nbsp;I confirm that I was provided with copies of quotations, fund fact sheet(s), marketing brochures and rates and benefit sheets for the product(s) selected. All material terms &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and conditions of the product(s) selected were explained to me prior to any decision made.  <br/>
+                4.&nbsp;&nbsp;&nbsp;I confirm that I was provided with copies of quotations, fund fact sheet(s), marketing brochures and rates and benefit sheets for the product(s) selected. All material terms and conditions of the product(s) selected were explained to me prior to any decision made.  <br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                5.&nbsp;&nbsp;&nbsp;I have been informed of and understand all costs, charges, penalties, liquidity limitations and tax implications where applicable.  I understand the risks / guarantees (or &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;absence thereof) associated with the product(s) and /or underlying fund(s) selected.<br/>
+                5.&nbsp;&nbsp;&nbsp;I have been informed of and understand all costs, charges, penalties, liquidity limitations and tax implications where applicable.  I understand the risks / guarantees (or absence thereof) associated with the product(s) and /or underlying fund(s) selected.<br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 6.&nbsp;&nbsp;&nbsp;I confirm that all documents signed by me were fully completed prior to my signing them.<br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                7.&nbsp;&nbsp;&nbsp;I confirm that the financial adviser has made enquiries to ascertain whether the product(s) selected are intended to replace any existing financial products held by me and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where applicable, has informed me of the financial implications, costs and consequences of replacement.<br/>
+                7.&nbsp;&nbsp;&nbsp;I confirm that the financial adviser has made enquiries to ascertain whether the product(s) selected are intended to replace any existing financial products held by me and where applicable, has informed me of the financial implications, costs and consequences of replacement.<br/>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                8.&nbsp;&nbsp;&nbsp;Notwithstanding the information provided by the Advisor, I acknowledge that I have an obligation to familiarize myself with the terms and conditions of the product(s) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that I have purchased.<br/>
+                8.&nbsp;&nbsp;&nbsp;Notwithstanding the information provided by the Advisor, I acknowledge that I have an obligation to familiarize myself with the terms and conditions of the product(s) that I have purchased.<br/>
 
                 </p>
             

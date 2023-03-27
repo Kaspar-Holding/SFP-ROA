@@ -819,7 +819,7 @@ class EmployeeBenefitsSerializers(serializers.ModelSerializer):
         instance.EB_BusRecom_ProductName = validated_data.get('EB_BusRecom_ProductName', instance.EB_BusRecom_ProductName)
         instance.EB_BusRecom_FundType = validated_data.get('EB_BusRecom_FundType', instance.EB_BusRecom_FundType)
         instance.EB_BusRecom_RecommendationFundType = validated_data.get('EB_BusRecom_RecommendationFundType', instance.EB_BusRecom_RecommendationFundType)
-        # instance.EB_BusRecom_Porfolio = validated_data.get('EB_BusRecom_Porfolio', instance.EB_BusRecom_Porfolio)
+        instance.EB_BusRecom_Portfolio = validated_data.get('EB_BusRecom_Portfolio', instance.EB_BusRecom_Portfolio)
         instance.EB_BusRecom_ClientAccepted = validated_data.get('EB_BusRecom_ClientAccepted', instance.EB_BusRecom_ClientAccepted)
         instance.EB_BusRecom_ClientRisks = validated_data.get('EB_BusRecom_ClientRisks', instance.EB_BusRecom_ClientRisks)
 
@@ -1806,6 +1806,7 @@ class MedicalSerializers(serializers.ModelSerializer):
         instance.SNA_Comments8 = validated_data.get("SNA_Comments8", instance.SNA_Comments8)
         instance.SNA_Needs9 = validated_data.get("SNA_Needs9", instance.SNA_Needs9)
         instance.SNA_Comments9 = validated_data.get("SNA_Comments9", instance.SNA_Comments9)
+        instance.SNA_Other = validated_data.get("SNA_Other", instance.SNA_Other)
         instance.SNA_Needs10 = validated_data.get("SNA_Needs10", instance.SNA_Needs10)
         instance.SNA_Comments10 = validated_data.get("SNA_Comments10", instance.SNA_Comments1)
             

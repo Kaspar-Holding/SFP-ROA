@@ -22,7 +22,7 @@ const GapCover = ({user}) => {
         GP_Date : "",
         
         GP_Benefits : "",
-        GP_MedicalDependent : 1,
+        GP_MedicalDependent : 2,
 
         GP_MemberName1 : "",
         GP_MemberRelationship1 : "",
@@ -75,13 +75,13 @@ const GapCover = ({user}) => {
         GP_CP_Specific_P : "",
         GP_NP_Specific_P : "",
 
-        GP_Exclusions : 1,
+        GP_Exclusions : 2,
         GP_Other_Exclusions : "",
         GP_GeneralComments : "",
         
         GP_FinanAdvisor_ProdRecomm : "",
         GP_FinanAdvisor_Reasons : "",
-        GP_FinanAdvisor_Consequences : 1,
+        GP_FinanAdvisor_Consequences : 2,
         GP_FinanAdvisor_FeeCommission : "",
         GP_FinanAdvisor_OtherComments : "",
         GP_FinanAdvisor_Date : "",
@@ -227,7 +227,7 @@ const GapCover = ({user}) => {
                             <label htmlFor="email" className="col-form-label"><b>Medical Aid:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true"  id="GP_ClientMedicalAid" onChange={(e) => {onChange(e)}} value={FormData['GP_ClientMedicalAid']}  name="GP_ClientMedicalAid"  className="form-control" placeholder="Medical Aid Name"  aria-describedby="" />
+                            <input spellCheck="true"  id="GP_ClientMedicalAidName" onChange={(e) => {onChange(e)}} value={FormData['GP_ClientMedicalAidName']}  name="GP_ClientMedicalAidName"  className="form-control" placeholder="Medical Aid Name"  aria-describedby="" />
                         </div>
                     </div>
                 </div>
@@ -285,7 +285,7 @@ const GapCover = ({user}) => {
                             <label htmlFor="id_number" className="col-form-label"><b>Details:</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true" id="GP_Benefits" onChange={(e) => {onChange(e)}} value={FormData['GP_Benefits']}  name="GP_Benefits"  className="form-control" placeholder="Details"  aria-describedby="" style={{width:"900px",height:"80px"}} />
+                            <textarea maxLength={1000} spellCheck="true" id="GP_Benefits" onChange={(e) => {onChange(e)}} value={FormData['GP_Benefits']}  name="GP_Benefits"  className="form-control" placeholder="Details"  aria-describedby="" style={{width:"900px",height:"80px"}} />
                         </div>
                     </div>
                 </div>
@@ -299,9 +299,9 @@ const GapCover = ({user}) => {
                             <label htmlFor="id_number" className="col-form-label"><b>Are all dependents on the same medical aid and same medical aid plan? </b></label>
                         </div>
                         <div className="col-6">
-                            <input type="radio" id="GP_MedicalDependent" onChange={(e) => {onChange(e)}} value={FormData['GP_MedicalDependent'] === 1 ? true : false}  name="1"/>
+                            <input className='form-check-input' type="radio" id="GP_MedicalDependent" onChange={(e) => {onChange(e)}} checked={FormData['GP_MedicalDependent'] == 1 ? true : false} name="GP_MedicalDependent" value="1"/>
                                 <label for="yes9">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" id="GP_MedicalDependent" onChange={(e) => {onChange(e)}} value={FormData['GP_MedicalDependent'] === 1 ? false : true}  name="0"/>
+                            <input className='form-check-input' type="radio" id="GP_MedicalDependent" onChange={(e) => {onChange(e)}} checked={FormData['GP_MedicalDependent'] == 0 ? true : false} name="GP_MedicalDependent" value="0"/>
                                 <label for="no9">No</label>
                         </div>
                     </div>
@@ -615,7 +615,7 @@ const GapCover = ({user}) => {
                                 <input spellCheck="true"  id="GP_CP_Specific_P" onChange={(e) => {onChange(e)}} value={FormData['GP_CP_Specific_P']}  name="GP_CP_Specific_P" className="form-control" placeholder="Current Product"  aria-describedby=""  />
                             </td>
                             <td>
-                                <input spellCheck="true"  id="GP_NP_Specific_P" onChange={(e) => {onChange(e)}} value={FormData['GP_NP_Specific_P']}  name="GP_CP_Specific_P" className="form-control" placeholder="New Product"  aria-describedby=""  />
+                                <input spellCheck="true"  id="GP_NP_Specific_P" onChange={(e) => {onChange(e)}} value={FormData['GP_NP_Specific_P']}  name="GP_NP_Specific_P" className="form-control" placeholder="New Product"  aria-describedby=""  />
                             </td>
                         </tr>
 
@@ -633,7 +633,7 @@ const GapCover = ({user}) => {
                             <div className="row">
                                 <div className="row col-3 align-items-center">
                                     <div className="col-2">
-                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="GP_Exclusions" name="GP_Exclusions" />
+                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="GP_Exclusions" name="GP_Exclusions" />
                                     </div>
                                     <div className="col-8">
                                         <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -644,7 +644,7 @@ const GapCover = ({user}) => {
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div className="row col-3 align-items-center">
                                     <div className="col-2">
-                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="GP_Exclusions" name="GP_Exclusions" />
+                                        <input className="form-check-input" checked={FormData['GP_Exclusions'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="GP_Exclusions" name="GP_Exclusions" />
                                     </div>
                                     <div className="col-8">
                                         <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -666,7 +666,7 @@ const GapCover = ({user}) => {
                             <label htmlFor="id_number" className="col-form-label"><b>Other Exclusions</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true"  id="GP_Other_Exclusions" onChange={(e) => {onChange(e)}} value={FormData['GP_Other_Exclusions']}  name="GP_Other_Exclusions" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  />
+                            <textarea maxLength={1000} spellCheck="true"  id="GP_Other_Exclusions" onChange={(e) => {onChange(e)}} value={FormData['GP_Other_Exclusions']}  name="GP_Other_Exclusions" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  />
                         </div>
                     </div>
                     <hr/>
@@ -676,7 +676,7 @@ const GapCover = ({user}) => {
                             <label htmlFor="id_number" className="col-form-label"><b>General comments</b></label>
                         </div>
                         <div className="col-6">
-                            <input spellCheck="true"  id="GP_GeneralComments" onChange={(e) => {onChange(e)}} value={FormData['GP_GeneralComments']}  name="GP_GeneralComments" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  />
+                            <textarea maxLength={1000} spellCheck="true"  id="GP_GeneralComments" onChange={(e) => {onChange(e)}} value={FormData['GP_GeneralComments']}  name="GP_GeneralComments" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  />
                         </div>
                     </div>
                     <hr/>
@@ -733,7 +733,7 @@ const GapCover = ({user}) => {
                         <div className="row">
                             <div className="row col-3 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] === "1" ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
                                 </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -744,7 +744,7 @@ const GapCover = ({user}) => {
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-3 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] === "1" ? false : true} onChange={(e) => {onChange(e)}} type="radio" value="0" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
+                                    <input className="form-check-input" checked={FormData['GP_FinanAdvisor_Consequences'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="GP_FinanAdvisor_Consequences" name="GP_FinanAdvisor_Consequences" />
                                 </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -776,10 +776,10 @@ const GapCover = ({user}) => {
                     <br />
                     <div className="row g-3">
                         <div className="col-4">
-                            <input spellCheck="true"  id="GP_FinanAdvisor_Date" onChange={(e) => {onChange(e)}} value={FormData['GP_FinanAdvisor_Date']}  name="GP_FinanAdvisor_Date" className="form-control" placeholder="Sign here"  aria-describedby=""  />
+                            <p>Sign Here</p>    
                         </div>
                         <div className="col-6">
-                            <input type="date" name="client_name" className="form-control" placeholder="Click here to enter text"  aria-describedby=""  />
+                            <input type="date" id="GP_FinanAdvisor_Date" onChange={(e) => {onChange(e)}} value={FormData['GP_FinanAdvisor_Date']}  name="GP_FinanAdvisor_Date" className="form-control" placeholder="Click here to enter text"  aria-describedby=""  />
                         </div>
                     </div>
                     <div className="container1">
