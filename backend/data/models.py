@@ -12,7 +12,7 @@ class UserAccountManager(BaseUserManager):
             raise ValueError("Please enter email")
 
         email = self.normalize_email(email)
-        user = self.model(email=email, name=name, username = email)
+        user = self.model(email=email, name=name)
         user.set_password(password)
         user.save()
 
