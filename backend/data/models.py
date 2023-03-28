@@ -41,7 +41,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     username = models.CharField(max_length=255, unique=True,blank=True,null=True,)
     name = models.CharField(max_length=255)
-    partial_password = models.BooleanField(default=True)
+    # partial_password = models.BooleanField(default=True)
     # firstname = models.CharField(max_length=255)
     # lastname = models.CharField(max_length=255)
     admin_id = models.IntegerField(default=0)
