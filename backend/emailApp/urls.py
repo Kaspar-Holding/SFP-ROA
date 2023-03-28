@@ -1,5 +1,5 @@
 from django.urls import path
-
+from . import views
 urlpatterns = [
-    # path('pdf/' , PDFView.as_view(template_name='test.html'),name='excel'),
+    path('alert/' , views.sendEmail,name='Alert Email'),
 ]

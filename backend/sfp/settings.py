@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'wkhtmltopdf',
     'data',
     'printingApp',
+    'emailApp',
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
