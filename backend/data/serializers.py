@@ -2239,6 +2239,14 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_ProdComp_RecommP_Premium43 = validated_data.get("STIC_ProdComp_RecommP_Premium43",instance.STIC_ProdComp_RecommP_Premium43)
         instance.STIC_ProdComp_RecommP_Excess43 = validated_data.get("STIC_ProdComp_RecommP_Excess43",instance.STIC_ProdComp_RecommP_Excess43)
 
+        instance.STIC_ProdComp_Recommended44 = validated_data.get("STIC_ProdComp_Recommended44",instance.STIC_ProdComp_Recommended44) 
+        instance.STIC_ProdComp_Accepted44 = validated_data.get("STIC_ProdComp_Accepted44",instance.STIC_ProdComp_Accepted44) 
+        instance.STIC_ProdComp_CoverAmount44 = validated_data.get("STIC_ProdComp_CoverAmount44",instance.STIC_ProdComp_CoverAmount44)
+        instance.STIC_ProdComp_ExistP_Premium44 = validated_data.get("STIC_ProdComp_ExistP_Premium44",instance.STIC_ProdComp_ExistP_Premium44)
+        instance.STIC_ProdComp_ExistP_Excess44 = validated_data.get("STIC_ProdComp_ExistP_Excess44",instance.STIC_ProdComp_ExistP_Excess44)
+        instance.STIC_ProdComp_RecommP_Premium44 = validated_data.get("STIC_ProdComp_RecommP_Premium44",instance.STIC_ProdComp_RecommP_Premium44)
+        instance.STIC_ProdComp_RecommP_Excess44 = validated_data.get("STIC_ProdComp_RecommP_Excess44",instance.STIC_ProdComp_RecommP_Excess44)
+
         instance.STIC_ProdComp_FeeNCharges = validated_data.get("STIC_ProdComp_FeeNCharges",instance.STIC_ProdComp_FeeNCharges)
         instance.STIC_ProdComp_Commission = validated_data.get("STIC_ProdComp_Commission",instance.STIC_ProdComp_Commission)
         instance.STIC_ProdComp_TotalPremium = validated_data.get("STIC_ProdComp_TotalPremium",instance.STIC_ProdComp_TotalPremium)
