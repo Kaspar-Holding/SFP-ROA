@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            .invoice-title h2, .invoice-title h3 {
+                display: inline-block;
+            }
+            
+            .table > tbody > tr > .no-line {
+                border-top: none;
+            }
+            
+            .table > thead > tr > .no-line {
+                border-bottom: none;
+            }
+            
+            .table > tbody > tr > .thick-line {
+                border-top: 2px solid;
+            }          
+            body{
+                text-transform: none;
+            }      
+            .floating-left {
+                float: left;
+                margin: 0px;
+                {% comment %} width: 50%; {% endcomment %}
+            }
+            .floating-right {
+                float: right;
+                margin: 0px;
+                {% comment %} width: 50%; {% endcomment %}
+            }
+            .logo {
+                display: grid;
+                padding: 2rem;
+                grid-template-columns: 300px 1fr;
+                gap: 1rem;
+                align-items: center;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .iconDetails {
+                margin-left:2%;
+               float:left; 
+               width:20%;	
+            } 
+               
+            .container2 {
+                width:100%;
+                height:auto;
+                padding:1%;
+            }
+            h3, h4 {
+                margin:0px;
+            }
+              
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+              
+            img {
+                border-radius: 5px 5px 0 0;
+            }
+              
+            .card-container {
+                padding: 16px 16px 16px 16px;
+            }
+            .column {
+                float: left;
+                width: 22%;
+                padding: 0 10px;
+            }
+            .card {
+                padding: 16px;
+                display: grid;
+                grid-template-rows: 20px 50px 1fr 50px;
+                border-radius: 10px;
+                border-color: white;
+                box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+                transition: all 0.2s;
+                text-align: center;
+            }
+              
+            .card:hover {
+                box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+                transform: scale(1.01);
+            }
+              
+            .card__link,
+            .card__exit,
+            .card__icon {
+                position: relative;
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.9);
+            }
+              
+            .card__link::after {
+                position: absolute;
+                padding: 16px;
+                top: 25px;
+                left: 0;
+                content: "";
+                width: 0%;
+                height: 3px;
+                background-color: rgba(255, 255, 255, 0.6);
+                transition: all 0.5s;
+            }
+              
+            .card__link:hover::after {
+                width: 100%;
+            }
+              
+            .card__exit {
+                grid-row: 1/2;
+                justify-self: end;
+            }
+              
+            .card__icon {
+                grid-row: 2/3;
+                font-size: 30px;
+            }
+              
+            .card__title {
+                grid-row: 3/4;
+                font-weight: 400;
+                color: #ffffff;
+            }
+            .card__subtitle {
+                grid-row: 3/4;
+                font-weight: 200;
+                color: #ffffff;
+            }
+              
+            .card__apply {
+                grid-row: 4/5;
+                align-self: center;
+            }
+              
+              /* CARD BACKGROUNDS */
+              
+            .card-1 {
+                /* background: -webkit-linear-gradient(#1fe4f5, #3fbafe); */
+                background: -webkit-linear-gradient(#213F9A, #1fe4f5);
+            }
+              
+            .card-2 {
+                background: -webkit-linear-gradient(#fbc1cc, #fa99b2);
+            }
+              
+            .card-3 {
+                background: -webkit-linear-gradient(#76b2fe, #b69efe);
+            }
+              
+            .card-4 {
+                background: -webkit-linear-gradient(#fdcf84, #ff9d00);
+                {% comment %} background: -webkit-linear-gradient(#60efbc, #58d5c9); {% endcomment %}
+            }
+              
+            .card-5 {
+                background: -webkit-linear-gradient(#f588d8, #c0a3e5);
+            }
+            .row {margin: 0 -5px;}
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            #sfpTable {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                border-radius: 10px;
+            }
+              
+            #sfpTable td, #sfpTable th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+              
+            #sfpTable tr:nth-child(even){background-color: #f2f2f2;}
+              
+            #sfpTable tr:hover {background-color: #ddd;}
+              
+            #sfpTable th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #213F9A;
+                color: white;
+            }
+              
+        </style>
+    </head>
+    <body>
+        {% load static %}
+        
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <p>outdated</p> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="" id='report' style="background-color: white; font-family: 'Calibri';">
+            <div class='container' style="margin-left: 5%;margin-right: 5%;">
+                <div class='container2'>
+                    <div style='margin-top:30px;'>
+                        <div style="float:left;">
+                        <h4>Succession Finance Planning</h4>
+                    </div>                    
+                    <div>
+                        <p>Good Day <b>{{ user.name }}!</b></p>
+                        <p>Following Agent has filed a DRA with <b>HIGH</b> risk</p>
+                    </div>
+                </div>
+                <br/><br/><br/><br/><br/><br/>
+                <hr/>
+                <table id="sfpTable">
+                    <thead style="border-radius: 14px;">
+                    <th>Form ID</th>
+                    <th>Client Name</th>
+                    <th>Agent Name</th>
+                    <th>URL</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{data.id}}</td>
+                            <td>{{ data.clientName }}</td>
+                            <td class='container2'>
+                                <div>
+                                    {{ agent.name }}
+                                </div>
+                            </td>
+                            <td>#</td>
+                            {% comment %} <td><img src={{ product.image_url}} width="30%" style="border-radius: 50%;" />{{ product.product_title }}</td> {% endcomment %}
+                            
+                        </tr>        
+                    </tbody>
+                </table>
+                
+                </div>
+                
+            </div>
+        </div>
+    </body>
+</html>
