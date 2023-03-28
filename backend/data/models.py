@@ -7,12 +7,12 @@ from pytz import timezone
 from uritemplate import partial
 
 class UserAccountManager(BaseUserManager):
-    def create_user(self, email, name, password=None,is_superuser=False):
+    def create_user(self, email, name, password=None,is_superuser=False, admin_id=None):
         if not email:
             raise ValueError("Please enter email")
 
         email = self.normalize_email(email)
-        user = self.model(email=email, name=name)
+        user = self.model(email=email, name=name, admin_id=admin_id)
         user.set_password(password)
         user.save()
 
@@ -23,12 +23,13 @@ class UserAccountManager(BaseUserManager):
 
         return user
 
-    def create_superuser(self, email, name, password=None):
+    def create_superuser(self, email, name, password=None, admin_id=None):
         
         user = self.create_user(
             email,
             name,
-            password=password
+            password=password,
+            admin_id=admin_id
         )
         user.is_staff = True
         user.is_superuser = True
@@ -53,7 +54,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     objects = UserAccountManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name','password','is_superuser'] 
+    REQUIRED_FIELDS = ['name','password','is_superuser', 'admin_id'] 
 
     def get_full_name(self):
         return self.name
