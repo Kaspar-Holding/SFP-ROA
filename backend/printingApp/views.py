@@ -517,7 +517,7 @@ def wkhtmltopdfapi(request):
     data['RoA']['clientAdvisor'] = UserAccount.objects.filter(id=data['RoA']['advisorId']).values('name').first()['name']
     data['RoA']['clientDateOfBirth'] = (data['RoA']['clientDateOfBirth']).strftime('%d %b %Y')
     data['RP'] = RiskPlanning.objects.filter(formId = data['id']).values().first()
-    print(data['RP']['RP_DC_LumpSumExistingProvisions'] != "")
+    # print(data['RP']['RP_DC_LumpSumExistingProvisions'] != "")
     if (
         data['RP']['RP_DC_LumpSumTotalNeed'] != "" and 
         data['RP']['RP_DC_LumpSumExistingProvisions'] != "" and 
@@ -698,6 +698,11 @@ def wkhtmltopdfapi(request):
     data['STIC']['STIC_SecD_13'] = datetimeparser.parse(data['STIC']['STIC_SecD_13']).strftime('%d/%m/%Y') if data['STIC']['STIC_SecD_13'] != "" else "N.A."
     data['STIC']['STIC_Sec15_2_1'] = datetimeparser.parse(data['STIC']['STIC_Sec15_2_1']).strftime('%d/%m/%Y') if data['STIC']['STIC_Sec15_2_1'] != "" else "N.A."
     
+    data['STIP'] = ShortTermInsurancePersonal.objects.filter(formId=data['id']).values().first()
+    data['STIP']['STIP_Inception_Date'] = datetimeparser.parse(data['STIP']['STIP_Inception_Date']).strftime('%d %b %Y') if data['STIP']['STIP_Inception_Date'] != "" else "N.A."
+    data['STIP']['STIP_Applicant_DateofBirth'] = datetimeparser.parse(data['STIP']['STIP_Applicant_DateofBirth']).strftime('%d %b %Y') if data['STIP']['STIP_Applicant_DateofBirth'] != "" else "N.A."
+    data['STIP']['STIP_Applicant_DateofBirth'] = datetimeparser.parse(data['STIP']['STIP_Applicant_DateofBirth']).strftime('%d %b %Y') if data['STIP']['STIP_General_LastDate'] != "" else "N.A."
+    # print(data['STIP']['STIP_Applicant_Gender'])
     template = get_template('risk.html')
     cmd_options = {
       'page-size': 'Letter',

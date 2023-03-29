@@ -1,0 +1,933 @@
+<b class="header">INVESTMENT AND SAVINGS</b>
+        <br/>
+        <div style='font-family:  Arial, sans-serif;font-size: 14px;;'>
+            <b class="background">Source of Funds</b>
+            <div class='row div'>
+                <div class="column6">
+                    <span>Identify the source of funds being invested</span>
+                </div>
+                <div class="column5">
+                    {{IP.IP_SourceOfIncome}}
+                </div>
+            </div>
+            <hr/>
+            <div class="row div">
+                <div class="column12">
+                    {{IP.IP_OtherSourceOfIncome|linebreaks}}
+                </div>
+            </div>
+            <hr/>
+        </div>
+        <div style='font-family:  Arial, sans-serif;font-size: 14px;;'>
+            <b class="background">Analysis of Client's Circumstances</b>
+            <div class='row div'>
+                <div class="column12">
+                    <span>The analysis of your personal circumstances as described above.</span>
+                </div>
+            </div>
+            <div class='row div'>
+                <div class="column6">
+                    <b>Investment Requirements</b>
+                </div>
+                <div class="column5">
+                    <b>Need</b>
+                </div>
+            </div>
+            <div class='row div'>
+                <div class="column6">
+                    <span>2.1 Investment term</span>
+                </div>
+                <div class="column5">
+                    <span>{{IP.IP_InvestmentTerm}} </span>
+                    <span>Years</span>
+                </div>
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <p>{{IP.IP_InvestmentTermDetails|linebreaks}} </p>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>2.2 Liquidity/Access required during term</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if IP.IP_Liquidity == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if IP.IP_Liquidity == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <p>{{IP.IP_LiquidityDetails|linebreaks}} </p>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>2.3 Voluntary or compulsory investment</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if IP.IP_Type == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Voluntary
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if IP.IP_Type == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                Compulsory
+                            </label>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <p>{{IP.IP_TypeDetails|linebreaks}} </p>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>2.4 Lump sum or recurring premium</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if IP.IP_PremiumType == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Lump Sum
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if IP.IP_PremiumType == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                Recurring
+                            </label>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <p>{{IP.IP_PremiumTypeDetails|linebreaks}} </p>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>2.5 Income Required</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if IP.IP_IncomeRequired == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if IP.IP_IncomeRequired == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <p>{{IP.IP_IncomeRequiredDetails|linebreaks}} </p>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>2.6 Investment Strategy</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        {{IP.IP_InvestmentStrategy}}
+                    </div>
+                </div>  
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <p>{{IP.IP_InvestmentStrategyDetails|linebreaks}} </p>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>2.7 Return Required</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        {{IP.IP_ReturnRequired}}
+                    </div>
+                </div>  
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <p>{{IP.IP_ReturnRequiredDetails|linebreaks}} </p>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>2.8 Risk Profile</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        {{IP.IP_RiskProfile}}
+                    </div>
+                </div>  
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <p>{{IP.IP_RiskProfileDetails}} </p>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="">
+                    <b style='font-size: 18px'>SECTION C:</b>
+                </div>    
+            </div>  
+            <div>
+                <b class="background" style="">
+                    Financial Solutions:
+                </b>
+                <p>Summary of recommendations to address your identified needs</p>
+            </div>  
+            <div class='row div'>
+                <div class="column12">
+                    <p>{{IP.IP_RecommendationSummary|linebreaks}} </p>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="">
+                    <b style='font-size: 18px'>SECTION D:</b>
+                </div>    
+            </div>  
+            <div>
+                <b class="background" style="">
+                    Alternative Solutions Considered
+                </b>
+            </div>    
+            {% if IP.IP_AltS_1 or IP.IP_AltS_2 or IP.IP_AltS_3 %}
+                <div class='row div'>
+                    <div class="column12">
+                        <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
+                        {% if IP.IP_AltS_1 %}
+                            <hr/>
+                            <p>{{IP.IP_AltS_1|linebreaks}}</p>
+                        {% endif %}
+                        {% if IP.IP_AltS_2 %}
+                            <hr/>
+                            <p>{{IP.IP_AltS_2|linebreaks}}</p>
+                        {% endif %}
+                        {% if IP.IP_AltS_3 %}
+                            <hr/>
+                            <p>{{IP.IP_AltS_3|linebreaks}}</p>
+                        {% endif %}
+                    </div>                                    
+                </div>     
+            {% endif %}
+            <div class='row div'>
+                <div class="">
+                    <b style='font-size: 18px'>SECTION D:</b>
+                </div>    
+            </div>  
+            <div>
+                <b class="background" style="">
+                    Product Taken
+                </b>
+            </div>    
+            <div class='row div'>
+                <div class="column12">
+                    <p>Products accepted by you to meet your requirements</p>                    
+                </div>                                
+            </div>     
+            <div class='row div'>
+                <div class="column2">
+                    <b>Product:</b>
+                </div>
+                <div class="column2">                        
+                    <span>{{IP.IP_ProductTaken}}</span>
+                </div> 
+            </div>    
+            <hr/> 
+            <div class='row div'>
+                <div class="column2">
+                    <b>Product Provider:</b>
+                </div>
+                <div class="column2">                        
+                    <span>{{IP.IP_ProductProvider}}</span>
+                </div> 
+                <div class="column2">
+                    <b>Policy Number:</b>
+                </div>
+                <div class="column2">                        
+                    <span>{{IP.IP_PolicyNumber}}</span>
+                </div> 
+            </div>   
+            <hr/>  
+            <div class='row div'>
+                <div class="column2">
+                    <b>Product Name:</b>
+                </div>
+                <div class="column2">                        
+                    <span>{{IP.IP_ProductName}}</span>
+                </div> 
+                <div class="column2">
+                    <b>Frequency:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{IP.IP_ProductPremium}}</span>  
+                    <span>{{IP.IP_ProductPremiumFrequency}}</span>
+                </div> 
+            </div> 
+            <hr/>    
+            <div class='row div'>
+                <div class="column2">
+                    <b>Escalation:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{IP.IP_ProductEscalation}}</span>
+                </div> 
+                <div class="column2">
+                    <b>Total estimated annual cost (EAC):</b>
+                </div>
+                <div class="column2">        
+                    <span>{{IP.IP_ProductEAC}}</span>
+                </div> 
+            </div>  
+            <hr/>   
+            <div class='row div'>
+                <div class="column2">
+                    <b>Contracting Party:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{IP.IP_ProductContractingParty}}</span>
+                </div> 
+                <div class="column2">
+                    <b>Life/Lives Assured:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{IP.IP_ProductLivesAssured}}</span>
+                </div> 
+            </div>     
+            <hr/>
+            <div class='row div'>
+                <div class="column2">
+                    <b>Premium Layer:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{IP.IP_ProductPremiumLayer}}</span>
+                </div> 
+                <div class="column2">
+                    <b>Beneficial/Cessionary:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{IP.IP_ProductBeneficiary}}</span>
+                </div> 
+            </div>    
+            <hr/> 
+            <div class='row div'>
+                <div class="column2">
+                    <b>Initial Commission:</b>
+                </div>
+                <div class="column2">        
+                    <span>R {{IP.IP_Product_IniC}} ({{IP.IP_Product_IniC_Percentage}}%)</span>
+                </div> 
+                <div class="column2">
+                    <b>Ongoing Commission:</b>
+                </div>
+                <div class="column2">        
+                    <span>R {{IP.IP_Product_OnC}} ({{IP.IP_Product_OnC_Percentage}}%)</span>
+                </div> 
+            </div> 
+            <hr/>   
+            <div class='row div'>
+                <div class="column6">
+                    <span>Were the SFP Solution Funds (multi-managed wrap funds) considered?</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if IP.IP_SFPSolutionFunds == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if IP.IP_SFPSolutionFunds == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div> 
+                <div class='row div'>
+                    <div class="column12">
+                        <p>{{IP.IP_SFPSolutionFundsDetails|linebreaks}}</p>
+                    </div>
+                </div>  
+                   
+                                                       
+            </div>
+            <hr/> 
+            <div class='row div'>
+                <div class="column12">
+                    <b>Investment portfolio</b>
+                    <div class="column12">
+                        <p>{{IP.IP_ItP|linebreaks}}</p>
+                    </div>
+                </div>                                 
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column2">
+                    <b style="color: white">0</b>
+                </div>                                 
+                <div class="column2">
+                    <b style="color: white">0</b>
+                </div>                                  
+                <div class="column5">
+                    <span>Fund Fact Sheets to client</span>
+                </div>                                 
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column2">
+                    <span>Funds</span>
+                </div>                                 
+                <div class="column2">
+                    <span>%</span>
+                </div>                                 
+                <div class="column2">
+                    <span>Provided</span>
+                </div>                                 
+                <div class="column2">
+                    <span>Discussed</span>
+                </div>                                 
+            </div>
+            <hr/>
+            {% if IP.IP_ItP_Fund %}
+                <div class='row div'>
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_Fund}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_FundPercentage}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundProvided == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundProvided == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundDiscussed == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundDiscussed == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                </div>
+                <hr/>
+            {% endif %}
+            {% if IP.IP_ItP_Fund1 %}
+                <div class='row div'>
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_Fund1}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_FundPercentage1}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundProvided1 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundProvided1 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundDiscussed1 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundDiscussed1 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                </div>
+                <hr/>
+            {% endif %}
+            {% if IP.IP_ItP_Fund2 %}
+                <div class='row div'>
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_Fund2}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_FundPercentage2}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundProvided2 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundProvided2 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundDiscussed2 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundDiscussed2 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                </div>
+                <hr/>
+            {% endif %}
+            {% if IP.IP_ItP_Fund3 %}
+                <div class='row div'>
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_Fund3}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_FundPercentage3}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundProvided3 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundProvided3 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundDiscussed3 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundDiscussed3 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                </div>
+                <hr/>
+            {% endif %}
+            {% if IP.IP_ItP_Fund4 %}
+                <div class='row div'>
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_Fund4}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_FundPercentage4}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundProvided4 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundProvided4 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundDiscussed4 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundDiscussed4 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                </div>
+                <hr/>
+            {% endif %}
+            {% if IP.IP_ItP_Fund5 %}
+                <div class='row div'>
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_Fund5}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_FundPercentage5}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundProvided5 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundProvided5 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundDiscussed5 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundDiscussed5 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                </div>
+                <hr/>
+            {% endif %}
+            {% if IP.IP_ItP_Fund6 %}
+                <div class='row div'>
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_Fund6}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_FundPercentage6}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundProvided6 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundProvided6 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundDiscussed6 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundDiscussed6 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                </div>
+                <hr/>
+            {% endif %}
+            {% if IP.IP_ItP_Fund7 %}
+                <div class='row div'>
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_Fund7}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        <span>{{IP.IP_ItP_FundPercentage7}}</span>
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundProvided7 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundProvided7 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                    <div class="column2">
+                        {% if IP.IP_ItP_FundDiscussed7 == 1 %}
+                            <div class="column4">
+                                <input checked type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                        {% elif IP.IP_ItP_FundDiscussed7 == 0 %}
+                            <div class="column4">
+                                <input type="checkbox" />
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    No
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>                                 
+                </div>
+                <hr/>
+            {% endif %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>The following are reasons why the abovementioned product best suits your needs and objectives:</span>
+                    <div class="column12">
+                        <p>{{IP.IP_ItP_FundsReasons}}</p>
+                    </div>
+                </div>                                 
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <span>The details of the material aspects of the selected product that were discussed with you are outlined below:</span>
+                </div>                                 
+            </div>
+
+            
+            
+        </div>

@@ -1,0 +1,812 @@
+<b class="header">INVESTMENT & SAVINGS</b>
+<div style='font-family:  Arial, sans-serif;font-size: 14px;;  '>
+    <b style='font-size: 18px'>SECTION B:</b>
+    <br/>
+    <b class="background" style="">
+        Analysis of Business’s Circumstances
+    </b>
+    <div class="row div">                 
+        <div class='row div'>
+            <div class="column12">
+                <span>The analysis of your personal circumstances as described above</span>
+            </div>                                  
+        </div>
+        <br/>
+        <div class='row div'>
+            <div class="column6">
+                <b>Investment requirements</b>
+            </div>                                  
+            <div class="column5">
+                <b>Need</b>
+            </div>                                  
+        </div>
+        <div class='row div'>
+            <div class="column6">
+                <span>Investment term</span>
+            </div>                                  
+            <div class="column5">
+                <span>{{BA_Investment.AI_Term}} Years</span>
+            </div>      
+            <br/>                            
+            <br/>                            
+            <div class="column12">
+                <span>{{BA_Investment.AI_TermDetails|linebreaks}}</span>
+            </div>                                  
+        </div>
+        <hr/>
+        <div class='row div'>
+            <div class="column6">
+                <span>Lump sum or recurring premium.</span>
+            </div>
+            <div class="column5">                        
+                <div class='row div'>
+                    <div class="column4">
+                        {% if BA_Investment.AI_PremiumType == 1 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label >
+                            Lump Sum
+                        </label>
+                    </div>
+                    <div class="column4">
+                        {% if BA_Investment.AI_PremiumType == 0 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label>
+                            Recurring
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="">
+            {{ BA_Investment.AI_PremiumTypeDetails|linebreaks }}
+        </div>                                
+        <hr/>
+        <div class='row div'>
+            <div class="column6">
+                <span>Investment Strategy</span>
+            </div>
+            <div class="column5">                        
+                <span>{{BA_Investment.AI_Strategy|linebreaks}}</span>
+            </div>  
+        </div>
+        <hr/>     
+        <div class="column12">
+            {{ BA_Investment.AI_StrategyDetails }}
+        </div>                                
+        <hr/>
+        <div class='row div'>
+            <div class="column6">
+                <span>Return Required</span>
+            </div>
+            <div class="column5">                        
+                <span>{{BA_Investment.AI_ReturnRequired}}</span>
+            </div>   
+            <br/>
+        </div>
+        <hr/>     
+        <div class="column12">
+            {{ BA_Investment.AI_ReturnRequiredDetails|linebreaks }}
+        </div>                                
+        <hr/>
+        <div class='row div'>
+            <div class="column6">
+                <span>Risk Profile</span>
+            </div>
+            <div class="column5">                        
+                <span>{{BA_Investment.AI_RiskProfile}}</span>
+            </div>   
+            <br/>
+        </div>
+        <hr/>     
+        <div class="column12">
+            {{ BA_Investment.AI_RiskProfileDetails|linebreaks }}
+        </div>                                
+        <hr/>
+                    
+        <div class='row div'>
+            <div class="column12">
+                <span>Funding of future expenses and/or deferred gratuities</span>
+            </div>                                  
+        </div>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Financial Planning Need/Objective</b>
+            </div>
+            <div class="column31">
+                <b>Total need identified</b>
+            </div>
+            <div class="column31">
+                <b>Existing provisions</b>
+            </div>
+            <div class="column31">
+                <b>Shortfall/ Surplus</b>
+            </div>
+            <div class="column31">
+                <b>Cover taken up now</b>
+            </div>
+                                
+        </div>
+        <hr/>
+
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Payment of trade restraint agreements</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_TRP_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_TRP_ExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_TRP_ExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_TRP_ExistingInvestments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Replacement of assets</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_RA_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_RA_ExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_RA_ExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_RA_ExistingInvestments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Compulsory refurbishing of franchises</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_CR_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_CR_ExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_CR_ExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Investment.AI_CR_ExistingInvestments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        {% if BA_Investment.AI_Other %}
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Other: {{BA_Investment.AI_Other}}</b>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Investment.AI_Other_TotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Investment.AI_Other_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Investment.AI_Other_ExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Investment.AI_Other_ExistingInvestments}}</span>
+                </div>                                    
+            </div>
+        {% endif %}
+        <hr/>            
+        <b style='font-size: 18px'>SECTION C:</b>
+        <div>
+            <b class="background" style="">
+                Financial Solutions:
+            </b>
+        </div>   
+        <div class="column12">
+            <span>Summary of recommendations to address the business’s needs identified</span>
+            <br/>
+            <span>{{BA_Investment.AI_FinancialSolutions|linebreaks}}</span>
+            
+        </div>   
+        <b style='font-size: 18px'>SECTION D:</b>
+        <div>
+            <b class="background" style="">
+                Alternative Solutions Considered
+            </b>
+        </div>    
+        {% if BA_Investment.AI_AltS_1 or BA_Investment.AI_AltS_2 or BA_Investment.AI_AltS_3 %}
+            <div class='row div'>
+                <div class="column12">
+                    <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
+                    {% if BA_Investment.AI_AltS_1 %}
+                        <hr/>
+                        <p>{{BA_Investment.AI_AltS_1|linebreaks}}</p>
+                    {% endif %}
+                    {% if BA_Investment.AI_AltS_2 %}
+                        <hr/>
+                        <p>{{BA_Investment.AI_AltS_2|linebreaks}}</p>
+                    {% endif %}
+                    {% if BA_Investment.AI_AltS_3 %}
+                        <hr/>
+                        <p>{{BA_Investment.AI_AltS_3|linebreaks}}</p>
+                    {% endif %}
+                </div>                                    
+            </div>     
+        {% endif %}
+        <hr/>
+        <b style='font-size: 18px'>SECTION E:</b>
+        <div>
+            <b class="background" style="">
+                Product Taken (Each additional need must be accompanied by its own product annexure.)
+            </b>
+        </div>    
+        <div class='row div'>
+            <div class="column12">
+                <p>Products accepted by you to meet your requirements to meet the business’s requirements</p>                    
+            </div>                                
+        </div>     
+        <div class='row div'>
+            <div class="column2">
+                <b>Product Provider:</b>
+            </div>
+            <div class="column2">                        
+                <span>{{BA_Investment.AI_Pr_Provider}}</span>
+            </div> 
+            <div class="column2">
+                <b>Policy Number:</b>
+            </div>
+            <div class="column2">                        
+                <span>{{BA_Investment.AI_Pr_Number}}</span>
+            </div> 
+        </div>   
+        <hr/>  
+        <div class='row div'>
+            <div class="column2">
+                <b>Product Name:</b>
+            </div>
+            <div class="column2">                        
+                <span>{{BA_Investment.AI_Pr_Name}}</span>
+            </div> 
+            <div class="column2">
+                <b>Frequency:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Investment.AI_Pr_Premium}}</span>  
+                <span>{{BA_Investment.AI_Pr_PremiumFrequency}}</span>
+            </div> 
+        </div> 
+        <hr/>    
+        <div class='row div'>
+            <div class="column2">
+                <b>Premium Pattern:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Investment.AI_Pr_Pattern}}</span>
+            </div> 
+            <div class="column2">
+                <b>Escalation in cover/premium:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Investment.AI_Pr_Escalation}}</span>
+            </div> 
+        </div>  
+        <hr/>   
+        <div class='row div'>
+            <div class="column2">
+                <b>Contracting Party:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Investment.AI_Pr_ContractingParty}}</span>
+            </div> 
+            <div class="column2">
+                <b>Life/Lives covered:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Investment.AI_Pr_LivesAssured}}</span>
+            </div> 
+        </div>     
+        <hr/>
+        <div class='row div'>
+            <div class="column2">
+                <b>Beneficial/Cessionary:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Investment.AI_Pr_Beneficiary}}</span>
+            </div> 
+            <div class="column2">
+                <b>Premium payer(s):</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Investment.AI_Pr_PremiumPayer}}</span>
+            </div> 
+        </div>    
+        <hr/> 
+        <div class='row div'>
+            <div class="column2">
+                <b>Intial commission:</b>
+            </div>
+            <div class="column2">        
+                <span>R {{BA_Investment.AI_Pr_IniC}} ({{BA_Investment.AI_Pr_IniC_Percentage}}%)</span>
+            </div> 
+            <div class="column2">
+                <b>Ongoing commission:</b>
+            </div>
+            <div class="column2">        
+                <span>R {{BA_Investment.AI_Pr_OnC}} ({{BA_Investment.AI_Pr_OnC_Percentage}}%)</span>
+            </div> 
+        </div>    
+        <hr/>  
+        <b class="background" style="">
+            <p>Investment Portfolio</p>                          
+        </b>
+        <div class='row div'>
+            <div class="column12">
+                <span>{{BA_Investment.AI_Portfolio|linebreaks}}</span>
+            </div>
+        </div>
+        <hr/>
+        <div class='row div'>
+            <div class="column2">
+                <b style="color: white">0</b>
+            </div>                                 
+            <div class="column2">
+                <b style="color: white">0</b>
+            </div>                                  
+            <div class="column5">
+                <span>Fund Fact Sheets to client</span>
+            </div>                                 
+        </div>
+        <hr/>
+        <div class='row div'>
+            <div class="column2">
+                <span>Funds</span>
+            </div>                                 
+            <div class="column2">
+                <span>%</span>
+            </div>                                 
+            <div class="column2">
+                <span>Provided</span>
+            </div>                                 
+            <div class="column2">
+                <span>Discussed</span>
+            </div>                                 
+        </div>
+        <hr/>
+        {% if BA_Investment.AI_PF_1 %}
+            <div class='row div'>
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_1}}</span>
+                </div>                                 
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_Percentage1}}</span>
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Provided1 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Provided1 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Discussed1 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Discussed1 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+            </div>
+            <hr/>
+        {% endif %}
+        {% if BA_Investment.AI_PF_2 %}
+            <div class='row div'>
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_2}}</span>
+                </div>                                 
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_Percentage2}}</span>
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Provided2 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Provided2 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Discussed2 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Discussed2 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+            </div>
+            <hr/>
+        {% endif %}
+        {% if BA_Investment.AI_PF_3 %}
+            <div class='row div'>
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_3}}</span>
+                </div>                                 
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_Percentage3}}</span>
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Provided3 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Provided3 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Discussed3 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Discussed3 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+            </div>
+            <hr/>
+        {% endif %}
+        {% if BA_Investment.AI_PF_4 %}
+            <div class='row div'>
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_4}}</span>
+                </div>                                 
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_Percentage4}}</span>
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Provided4 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Provided4 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Discussed4 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Discussed4 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+            </div>
+            <hr/>
+        {% endif %}
+        {% if BA_Investment.AI_PF_5 %}
+            <div class='row div'>
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_5}}</span>
+                </div>                                 
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_Percentage5}}</span>
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Provided5 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Provided5 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Discussed5 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Discussed5 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+            </div>
+            <hr/>
+        {% endif %}
+        {% if BA_Investment.AI_PF_6 %}
+            <div class='row div'>
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_6}}</span>
+                </div>                                 
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_Percentage6}}</span>
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Provided6 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Provided6 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Discussed6 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Discussed6 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+            </div>
+            <hr/>
+        {% endif %}
+        {% if BA_Investment.AI_PF_7 %}
+            <div class='row div'>
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_7}}</span>
+                </div>                                 
+                <div class="column2">
+                    <span>{{BA_Investment.AI_PF_Percentage7}}</span>
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Provided7 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Provided7 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+                <div class="column2">
+                    {% if BA_Investment.AI_PF_Discussed7 == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                    {% elif BA_Investment.AI_PF_Discussed7 == 0 %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="column2">
+                            <label >
+                                No
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>                                 
+            </div>
+            <hr/>
+        {% endif %}
+        <b class="background" style="">
+            <p>Source of Funds</p>                          
+        </b>
+        <div class="row div">
+            <div class="column6">
+                <span>Identify the source of funds being invested</span>
+            </div>
+            <div class="column5">
+                {{BA_Investment.AI_SourceOfFunds|linebreaks}}
+            </div>
+        </div>
+        <hr/>
+        <div class="row div">
+            <div class="column12">
+                {{BA_Investment.AI_SourceOfFundsDetail|linebreaks}}
+            </div>
+        </div>
+        <hr/>
+        <div class="">
+            <div class="">
+                <span>The following are reasons why the abovementioned product best suits the business’s needs and objectives:</span>
+            </div>
+            <div class="">
+                {{BA_Investment.AI_PF_Reasons|linebreaks}}
+            </div>
+        </div>
+        <hr/>
+        <div class="">
+            <div class="">
+                <span>The details of the material aspects of the selected product that were discussed with you are outlined below:</span>
+            </div>
+            <div class="">
+                {{BA_Investment.AI_PF_MaterialAspects|linebreaks}}
+            </div>
+        </div>
+        <hr/>
+        <div class="">
+            <div class="">
+                {{BA_Investment.AI_PF_Pr_Details|linebreaks}}
+            </div>
+        </div>
+        <hr/>
+        <div class="">
+            <div class="">
+                {{BA_Investment.AI_PF_NominationOfBeneficiaries|linebreaks}}
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>

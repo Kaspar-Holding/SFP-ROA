@@ -1,0 +1,4095 @@
+
+{% load static %}
+{% load intlib %}
+<b class="header">SHORT-TERM INSURANCE: PERSONAL LINES</b>
+
+<hr/>
+<div style='font-family:  Arial, sans-serif;font-size: 14px;;  '>
+    <div class='row div'>
+        <div class="column12">
+            <span>
+                In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. 
+                This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. 
+                If you have any questions concerning the content, please contact your advisor. 
+                You are entitled to a copy of this document for your records. 
+                You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). 
+                You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. 
+                You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href='https://www.sfpadvice.co.za' target='_blank'>https://www.sfpadvice.co.za</a>
+            </span>
+        </div>                                    
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="col3">
+            <br/>
+            <br/>
+            <br/>
+            <b>Very Important:</b>
+        </div>                                    
+        <div class="col7">
+            <p>You are strongly advised to study your policy to acquaint yourself with the detail of all special terms and conditions for liability. If you have any questions or queries regarding the terms of your policy contract, you are advised to immediately contact the intermediary whose details appear in the sections below so that these issues can be addressed.</p>
+        </div>                                    
+    </div>
+    <p>This document serves to record advice and the basis on which it was given. Kindly safeguard this record for future reference.</p>
+    <div class='row div'>
+        <div class="column2">
+            <b>Underwritten by:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Underwritten_By %}
+                <span>{{ STIP.STIP_Underwritten_By }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+        <div class="column2">
+            <b>Branch Name:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Branch_Name %}
+                <span>{{ STIP.STIP_Branch_Name }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column2">
+            <b>Branch Number:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Branch_Number %}
+                <span>{{ STIP.STIP_Branch_Number }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+        <div class="column2">
+            <b>Quotation Number:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Quotation_Number %}
+                <span>{{ STIP.STIP_Quotation_Number }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column2">
+            <b>Renewal Date: (If any):</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Policy_Number %}
+                <span>{{ STIP.STIP_Policy_Number }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+        <div class="column2">
+            <b>Inception Date:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Inception_Date %}
+                <span>{{ STIP.STIP_Inception_Date }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+    </div>
+    <b>INFORMATION ON ITEMS AND RISKS TO BE INSURED</b>
+    <hr/>
+    <div class='row div'>
+        <div class="col3">
+            <br/>
+            <br/>
+            <br/>
+            <b>Note:</b>
+        </div>                                    
+        <div class="col7">
+            <p>If any section needs to be completed more than what is provided for (e.g., for more than one motorcycle), you may duplicate the section by clicking on the ‘+’ on the bottom right-hand corner of the section.</p>
+        </div>                                    
+    </div>
+    <div style="color: #14848A ,font-size:'18px',font-family:'Arial Bold',font-weight:bold" > <b>DETAILS OF APPLICANT</b></div>
+    <hr/>
+    <div class='row div'>
+        <div class="column2">
+            <b>Surname:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Applicant_Surname %}
+                <span>{{ STIP.STIP_Applicant_Surname }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+        <div class="column2">
+            <b>Gender:</b>
+        </div>
+        <div class="column2">
+            <div class="column4">
+                {% if STIP.STIP_Applicant_Gender|to_int == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label >
+                    Male 
+                </label>
+            </div>
+            <div class="column4">
+                {% if STIP.STIP_Applicant_Gender|to_int == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label>
+                    Female
+                </label>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column2">
+            <b>Initials:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Applicant_Initials %}
+                <span>{{ STIP.STIP_Applicant_Initials }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+        <div class="column2">
+            <b>Title:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Applicant_Title %}
+                <span>{{ STIP.STIP_Applicant_Title }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column2">
+            <b>Date of birth</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Applicant_DateofBirth %}
+                <span>{{ STIP.STIP_Applicant_DateofBirth }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+        <div class="column2">
+            <b>Identity Number:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Applicant_IdNumber %}
+                <span>{{ STIP.STIP_Applicant_IdNumber }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column2">
+            <b>Email Address:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Applicant_Email %}
+                <span>{{ STIP.STIP_Applicant_Email }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+        <div class="column2">
+            <b>Contact Number:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Applicant_ContactNumber %}
+                <span>{{ STIP.STIP_Applicant_ContactNumber }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+    </div>
+    <hr/>
+    <div style="color: #14848A ,font-size:'18px',font-family:'Arial Bold',font-weight:bold" > <b>GENERAL</b></div>
+    <hr/>
+    <div class='row div'>
+        <div class="col7">
+            <label>3.	Has an insurer ever refused any proposal of yours, cancelled any policy (or section thereof), refused to renew any policy (or section thereof), or imposed any special conditions?</label>
+        </div>
+        <div class="col3">
+            <div class="column4">
+                {% if STIP.STIP_General_Refused|to_int == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label >
+                    Yes 
+                </label>
+            </div>
+            <div class="column4">
+                {% if STIP.STIP_General_Refused|to_int == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label>
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+    <p>{{STIP.STIP_General_RefusedDetails|linebreaks}}</p>
+    <hr/>
+    <div class='row div'>
+        <div class="col7">
+            <label >4.	Are you currently insured against the risks you are applying for?  </label>
+        </div>
+        <div class="col3">
+            <div class="column4">
+                {% if STIP.STIP_General_Risks|to_int == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label >
+                    Yes 
+                </label>
+            </div>
+            <div class="column4">
+                {% if STIP.STIP_General_Risks|to_int == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label>
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+    <p>{{STIP.STIP_General_RisksDetails|linebreaks}}</p>
+    <hr/>
+    <div class='row div'>
+        <p>5. If you were previously insured but currently NOT, provide the following:</p>
+        <br/>
+        <div class="column2">
+            Last date of insurance:
+        </div>
+        <div class="column2">
+            {{STIP.STIP_General_LastDate}}
+        </div>
+        <div class="column2">
+            Name of insurer:
+        </div>
+        <div class="column2">
+            {{STIP.STIP_General_InsurerName}}
+        </div>
+    </div>
+    <hr/>
+    {% if STIP.STIP_General_TypeOfLoss or STIP.STIP_General_LossYear or STIP.STIP_General_LossAmount or STIP.STIP_General_LossInsurer %}
+        <div class='row div'>
+            <div class="column2">
+                <b>TYPE OF LOSS</b>
+            </div>
+            <div class="column2">
+                <b>YEAR</b>
+            </div>
+            <div class="column2">
+                <b>AMOUNT (R)</b>
+            </div>
+            <div class="column2">
+                <b>INSURER</b>
+            </div>
+        </div>
+        <div class='row div'>
+            <div class="column2">
+                <span>{{ STIP.STIP_General_TypeOfLoss }}</span>
+            </div>
+            <div class="column2">
+                <span>{{ STIP.STIP_General_LossYear }}</span>
+            </div>
+            <div class="column2">
+                <span>R {{ STIP.STIP_General_LossAmount }}</span>
+            </div>
+            <div class="column2">
+                <span>{{ STIP.STIP_General_LossInsurer }}</span>
+            </div>
+        </div>
+    {% endif %}
+    <hr/>
+    <p><b>COVER AND REPLACEMENT OF INSURANCE</b></p>
+    <hr/>
+    <div style="text-align: center">
+        <span style="color: #14848A">PRODUCT COMPARISON AND REPLACEMENT</span>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span>Existing Product</span>
+            <br/>
+            <span>{{STIP.STIP_CnRI_Existing_Company}}</span>
+        </div>
+        <div class="column2">
+            <span>Replacement Product</span>
+            <br/>
+            <span>{{STIP.STIP_CnRI_Replacement_Company}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span>{{STIP.STIP_CnRI_Existing_Provider}}</span>
+        </div>
+        <div class="column2">
+            <span>{{STIP.STIP_CnRI_Replacement_Provider}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span>{{STIP.STIP_CnRI_Existing_Product}}</span>
+        </div>
+        <div class="column2">
+            <span>{{STIP.STIP_CnRI_Replacement_Product}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <b>Cover</b>
+                </div>
+                <div class="column5">
+                    <b>Recommended</b>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <b>Accepted</b>
+                </div>
+                <div class="column5">
+                    <b>Cover amount</b>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <b>Premium</b>
+                </div>
+                <div class="column5">
+                    <b>Excess</b>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <b>Premium</b>
+                </div>
+                <div class="column5">
+                    <b>Excess</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>House content</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_1_Recomm|to_int == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_1_Accepted|to_int == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_1_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_1_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_1_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_1_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_1_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Buildings</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_2_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_2_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_2_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_2_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_2_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_2_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_2_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Subsidence and landslip</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_3_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_3_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_3_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_3_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_3_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_3_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_3_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Accidental damage</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_4_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_4_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_4_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_4_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_4_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_4_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_4_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>All Risk(General)</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_5_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_5_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_5_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_5_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_5_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_5_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_5_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Clothing and personal</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_6_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_6_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_6_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_6_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_6_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_6_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_6_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Keys and locks</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_7_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_7_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_7_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_7_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_7_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_7_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_7_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Wheelchairs</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_8_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_8_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_8_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_8_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_8_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_8_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_8_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Bicycles</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_9_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_9_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_9_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_9_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_9_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_9_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_9_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Cellular telephones</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_10_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_10_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_10_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_10_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_10_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_10_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_10_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>TV,VCR,Decoders</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_11_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_11_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_11_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_11_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_11_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_11_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_11_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>All Risk Specified</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_12_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_12_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_12_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_12_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_12_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_12_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_12_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Computer equipment</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_13_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_13_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_13_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_13_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_13_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_13_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_13_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Items in bank vault</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_14_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_14_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_14_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_14_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_14_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_14_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_14_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Jewellery(All jewellery)</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_15_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_15_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_15_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_15_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_15_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_15_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_15_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Photographic equipment</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_16_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_16_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_16_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_16_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_16_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_16_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_16_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Sound Equipment</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_17_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_17_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_17_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_17_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_17_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_17_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_17_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Other specify</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_18_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_18_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_18_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_18_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_18_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_18_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_18_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Personal legal liability</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_19_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_19_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_19_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_19_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_19_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_19_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_19_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>(PLIP)</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_20_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_20_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_20_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_20_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_20_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_20_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_20_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Vehicles(Refer to quote/policy)</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_21_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_21_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_21_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_21_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_21_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_21_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_21_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Car hire</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_22_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_22_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_22_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_22_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_22_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_22_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_22_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Excess waiver</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_23_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_23_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_23_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_23_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_23_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_23_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_23_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Credit shortfall</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_24_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_24_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_24_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_24_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_24_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_24_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_24_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Watercraft</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_25_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_25_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_25_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_25_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_25_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_25_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_25_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Sasria</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_26_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_26_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_26_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_26_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_26_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_26_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_26_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Legal access</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_27_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRI_27_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_27_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_27_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_27_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_27_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRI_27_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <span>Fees and charges</span>
+        </div>
+        <div class="col7">
+            <span>R {{STIP.STIP_CnRI_FeeCharges}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <span>Commissions</span>
+        </div>
+        <div class="col7">
+            <span>R {{STIP.STIP_CnRI_Commission}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <span>Total premium</span>
+        </div>
+        <div class="col7">
+            <span>R {{STIP.STIP_CnRI_TotalPremium}}</span>
+        </div>
+    </div>
+    <hr/>    
+    <p><b>COVER AND RENEWAL OF INSURANCE</b></p>
+    <hr/>
+    <div style="text-align: center">
+        <span style="color: #14848A">PRODUCT COMPARISON AND REPLACEMENT</span>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span>Existing Product</span>
+            <br/>
+            <span>{{STIP.STIP_CnRen_Existing_Company}}</span>
+        </div>
+        <div class="column2">
+            <span>Replacement Product</span>
+            <br/>
+            <span>{{STIP.STIP_CnRen_Replacement_Company}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span>{{STIP.STIP_CnRen_Existing_Provider}}</span>
+        </div>
+        <div class="column2">
+            <span>{{STIP.STIP_CnRen_Replacement_Provider}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2">
+            <span>{{STIP.STIP_CnRen_Existing_Product}}</span>
+        </div>
+        <div class="column2">
+            <span>{{STIP.STIP_CnRen_Replacement_Product}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <b>Cover</b>
+                </div>
+                <div class="column5">
+                    <b>Recommended</b>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <b>Accepted</b>
+                </div>
+                <div class="column5">
+                    <b>Cover amount</b>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <b>Premium</b>
+                </div>
+                <div class="column5">
+                    <b>Excess</b>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <b>Premium</b>
+                </div>
+                <div class="column5">
+                    <b>Excess</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>House content</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_1_Recomm|to_int == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_1_Accepted|to_int == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_1_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_1_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_1_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_1_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_1_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Buildings</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_2_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_2_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_2_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_2_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_2_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_2_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_2_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Subsidence and landslip</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_3_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_3_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_3_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_3_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_3_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_3_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_3_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Accidental damage</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_4_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_4_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_4_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_4_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_4_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_4_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_4_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>All Risk(General)</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_5_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_5_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_5_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_5_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_5_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_5_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_5_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Clothing and personal</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_6_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_6_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_6_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_6_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_6_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_6_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_6_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Keys and locks</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_7_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_7_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_7_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_7_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_7_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_7_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_7_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Wheelchairs</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_8_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_8_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_8_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_8_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_8_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_8_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_8_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Bicycles</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_9_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_9_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_9_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_9_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_9_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_9_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_9_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Cellular telephones</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_10_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_10_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_10_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_10_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_10_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_10_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_10_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>TV,VCR,Decoders</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_11_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_11_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_11_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_11_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_11_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_11_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_11_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>All Risk Specified</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_12_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_12_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_12_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_12_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_12_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_12_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_12_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Computer equipment</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_13_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_13_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_13_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_13_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_13_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_13_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_13_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Items in bank vault</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_14_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_14_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_14_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_14_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_14_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_14_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_14_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Jewellery(All jewellery)</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_15_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_15_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_15_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_15_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_15_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_15_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_15_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Photographic equipment</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_16_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_16_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_16_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_16_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_16_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_16_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_16_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Sound Equipment</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_17_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_17_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_17_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_17_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_17_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_17_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_17_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Other specify</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_18_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_18_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_18_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_18_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_18_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_18_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_18_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Personal legal liability</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_19_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_19_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_19_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_19_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_19_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_19_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_19_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>(PLIP)</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_20_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_20_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_20_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_20_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_20_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_20_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_20_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Vehicles(Refer to quote/policy)</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_21_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_21_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_21_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_21_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_21_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_21_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_21_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Car hire</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_22_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_22_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_22_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_22_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_22_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_22_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_22_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Excess waiver</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_23_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_23_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_23_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_23_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_23_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_23_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_23_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Credit shortfall</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_24_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_24_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_24_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_24_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_24_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_24_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_24_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Watercraft</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_25_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_25_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_25_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_25_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_25_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_25_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_25_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Sasria</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_26_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_26_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_26_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_26_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_26_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_26_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_26_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>Legal access</span>
+                </div>
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_27_Recomm == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    {% if STIP.STIP_CnRen_27_Accepted == 1 %}
+                        <div class="column4">
+                            <input checked type="checkbox" />
+                        </div>
+                    {% else %}
+                        <div class="column4">
+                            <input type="checkbox" />
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_27_CoverAmount}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_27_Premium1}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_27_Excess1}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="row div">
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_27_Premium2}}</span>
+                </div>
+                <div class="column5">
+                    <span>R {{STIP.STIP_CnRen_27_Excess2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <span>Fees and charges</span>
+        </div>
+        <div class="col7">
+            <span>R {{STIP.STIP_CnRen_FeeCharges}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <span>Commissions</span>
+        </div>
+        <div class="col7">
+            <span>R {{STIP.STIP_CnRen_Commission}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <span>Total premium</span>
+        </div>
+        <div class="col7">
+            <span>R {{STIP.STIP_CnRen_TotalPremium}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col7">
+            <span>Does the advice given to the client include replacement of an existing financial product?</span>
+        </div>
+        <div class="col3">
+            <div class="column4">
+                {% if STIP.STIP_CnRI_AdviseGiven|to_int == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label >
+                    Yes 
+                </label>
+            </div>
+            <div class="column4">
+                {% if STIP.STIP_CnRI_AdviseGiven|to_int == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label>
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p>If yes,answer the following:</p>
+        <p>What is the purpose of this replacement?</p>
+        <span>{{STIP.STIP_CnRI_ReplacePurpose}}</span>
+        <hr/>
+        <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
+        <span>{{STIP.STIP_CnRI_ReplaceReason}}</span>
+        <hr/>
+        <p>Suppliers of the product(s) to be replaced:</p>
+        <span>{{STIP.STIP_CnRI_ReplaceSupplier}}</span>
+    </div>
+    <div>
+        <p style="color: #14848A"><b>HOUSE CONTENT</b></p>
+        <p><b>Residential area</b></p>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column6">
+            <span>Residential area</span>
+        </div>
+        <div class="column5">
+            {{STIP.STIP_HC_ResidentialArea}}
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column6">
+            <span>Street name,number and suburb</span>
+        </div>
+        <div class="column5">
+            {{STIP.STIP_HC_StreetNumber}}
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column6">
+            <span>Postal code</span>
+        </div>
+        <div class="column5">
+            {{STIP.STIP_HC_PostalCode}}
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column6">
+            <span>Type of residence: (e.g., small holding, farm, residential, flat, other)</span>
+        </div>
+        <div class="column5">
+            {{STIP.STIP_HC_ResidenceType}}
+        </div>
+    </div>
+    <hr/>
+
+    <hr/>
+    <div><i>(Mark the applicable option with an 'X')</i></div> 
+    <div><b>Note that the cover amount must be at replacement value and NOT at municipal valuation.</b></div>
+    <div class="row div">
+        <div class="col7">
+            <b>If flat, is it above ground level? </b>    
+        </div>
+        <div class="col3">
+            <div class="column4">
+                {% if STIP.STIP_HC_Flat_GroundLevel|to_int == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label >
+                    Yes 
+                </label>
+            </div>
+            <div class="column4">
+                {% if STIP.STIP_HC_Flat_GroundLevel|to_int == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label>
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col7">
+            <b>Wall construction</b>    
+        </div>
+        <div class="col3">
+            <div class="column4">
+                {% if STIP.STIP_HC_WallConstruction|to_int == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label >
+                    Standard 
+                </label>
+            </div>
+            <div class="column4">
+                {% if STIP.STIP_HC_WallConstruction|to_int == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label>
+                    Non Standard
+                </label>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col7">
+            <b>Roof construction</b>    
+        </div>
+        <div class="col3">
+            <div class="column4">
+                {% if STIP.STIP_HC_RoofConstruction|to_int == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label >
+                    Standard 
+                </label>
+            </div>
+            <div class="column4">
+                {% if STIP.STIP_HC_RoofConstruction|to_int == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label>
+                    Non Standard
+                </label>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div><b>Safety measures:</b></div>
+    <div class="row div">
+        <div class="col7">
+            <span>Burglar bars on all windows that open</span>    
+        </div>
+        <div class="col3">
+            <div class="column4">
+                {% if STIP.STIP_HC_SM_BurglarBar|to_int == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label >
+                    Yes 
+                </label>
+            </div>
+            <div class="column4">
+                {% if STIP.STIP_HC_SM_BurglarBar|to_int == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label>
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col7">
+            <span>Security gates at all doors that open (including sliding doors) </span>    
+        </div>
+        <div class="col3">
+            <div class="column4">
+                {% if STIP.STIP_HC_SM_SecurityGate|to_int == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label >
+                    Yes 
+                </label>
+            </div>
+            <div class="column4">
+                {% if STIP.STIP_HC_SM_SecurityGate|to_int == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label>
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col7">
+            <span>24 hours monitored linked alarm system  </span>    
+        </div>
+        <div class="col3">
+            <div class="column4">
+                {% if STIP.STIP_HC_SM_AlarmSystem|to_int == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label >
+                    Yes 
+                </label>
+            </div>
+            <div class="column4">
+                {% if STIP.STIP_HC_SM_AlarmSystem|to_int == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label>
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col7">
+            <span>Security area (fencing/wall with electric wiring + 24-hour guards and access control)  </span>    
+        </div>
+        <div class="col3">
+            <div class="column4">
+                {% if STIP.STIP_HC_SM_SecurityArea|to_int == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label >
+                    Yes 
+                </label>
+            </div>
+            <div class="column4">
+                {% if STIP.STIP_HC_SM_SecurityArea|to_int == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column2">
+                <label>
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+    <hr/>
+
+
+    <hr/>
+</div>

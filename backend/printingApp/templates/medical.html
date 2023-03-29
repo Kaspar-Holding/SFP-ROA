@@ -1,0 +1,911 @@
+
+<b class="header">Medical</b>
+<hr/>
+<div style='font-family:  Arial, sans-serif;font-size: 14px;;  '>
+    <b style='font-size: 18px; color: #14848A;'>MEDICAL SCHEMES ANALYSIS</b>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Client name:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ClientName }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>ID Number:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ClientIdNumber }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Address:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ClientAddress }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Address:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ClientEmail }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Phone:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ClientPhone }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Financial advisor:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ClientPhone }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Date:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ClientDate }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column12">
+            <span>
+                In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. 
+                This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. 
+                If you have any questions concerning the content, please contact your advisor. 
+                You are entitled to a copy of this document for your records. 
+                You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). 
+                You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. 
+                You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href='https://www.sfpadvice.co.za' target='_blank'>https://www.sfpadvice.co.za</a>
+            </span>
+        </div>
+                            
+    </div>
+    <br/>
+    <b style='font-size: 18px'>SECTION A:</b>
+    <br/>
+    <b style='font-size: 18px; color: #14848A;'>MEDICAL SCHEMES ANALYSIS</b>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Name and surname:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_Name }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Marital status:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_MaritalStatus }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Gender:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_Gender }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Occupation:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_Occupation }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Income per month(if income plan is selected):</b>
+        </div>
+        <div class="column6">
+            <span>R {{ MD.MSA_Income }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Subsidy:</b>
+        </div>
+        <div class="column6">
+            <span>R {{ MD.MSA_Subsidy }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Number of Dependants:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_Dependant }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Spouse:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_Spouse }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Other Adult Dependents (Parents, Guardians, Legal dependents):</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_AdultDependant }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Chronic conditions(Member):</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ChronicM }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Chronic conditions(Spouse):</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ChronicS }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Chronic conditions(Adult Dependents):</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ChronicAD }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Chronic conditions(Children):</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ChronicC }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Other medical pre existing conditions:</b>
+        </div>
+        <div class="column6">
+            <span>{{ MD.MSA_ChronicOC }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Period that you have been part of your previous Medical Aid:</b>
+        </div>
+        <div class="column6">
+            <div class="row div">
+                <div class="column5">
+                    <span>From: {{ MD.MSA_PFromDate }}</span>
+                </div>
+                <div class="column5">
+                    <span>To: {{ MD.MSA_PTODate }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <b style='font-size: 18px'>SECTION B:</b>
+    <br/>
+    <b style='font-size: 18px; color: #14848A;'>BACKGROUND INFORMATION</b>
+    <hr/>
+    <span>Your personal circumstances that formed the basis for my recommendation</span>
+    <div class="row div">
+        <div class="column12">
+            {{ MD.BackInfo|linebreaks }}
+        </div>
+    </div>
+    <hr/>
+    <b style='font-size: 18px; color: #14848A;'>SUMMARY NEEDS ANALYSIS</b>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Need</b>
+        </div>
+        <div class="col3">
+            <b>Need Identified</b>
+        </div>
+        <div class="col3">
+            <b>Comments</b>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Hospital cover</b>
+        </div>
+        <div class="col3">
+            <div class='row div'>
+                <div class="column4">
+                    {% if MD.SNA_Needs1 == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if MD.SNA_Needs1 == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col3">
+            <span>{{ MD.SNA_Comments1 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Day to Day Benefits</b>
+        </div>
+        <div class="col3">
+            <div class='row div'>
+                <div class="column4">
+                    {% if MD.SNA_Needs2 == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if MD.SNA_Needs2 == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col3">
+            <span>{{ MD.SNA_Comments2 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Threshhold Benefits</b>
+        </div>
+        <div class="col3">
+            <div class='row div'>
+                <div class="column4">
+                    {% if MD.SNA_Needs3 == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if MD.SNA_Needs3 == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col3">
+            <span>{{ MD.SNA_Comments3 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Chronic Benefits</b>
+        </div>
+        <div class="col3">
+            <div class='row div'>
+                <div class="column4">
+                    {% if MD.SNA_Needs4 == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if MD.SNA_Needs4 == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col3">
+            <span>{{ MD.SNA_Comments4 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Savings Account</b>
+        </div>
+        <div class="col3">
+            <div class='row div'>
+                <div class="column4">
+                    {% if MD.SNA_Needs5 == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if MD.SNA_Needs5 == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col3">
+            <span>{{ MD.SNA_Comments5 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Affordable Premium</b>
+        </div>
+        <div class="col3">
+            <div class='row div'>
+                <div class="column4">
+                    {% if MD.SNA_Needs6 == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if MD.SNA_Needs6 == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col3">
+            <span>{{ MD.SNA_Comments6 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Hospital Preference</b>
+        </div>
+        <div class="col3">
+            <div class='row div'>
+                <div class="column4">
+                    {% if MD.SNA_Needs7 == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if MD.SNA_Needs7 == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col3">
+            <span>{{ MD.SNA_Comments7 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>PMB</b>
+        </div>
+        <div class="col3">
+            <div class='row div'>
+                <div class="column4">
+                    {% if MD.SNA_Needs8 == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if MD.SNA_Needs8 == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col3">
+            <span>{{ MD.SNA_Comments8 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Doctor/Specialist/Hospital network</b>
+        </div>
+        <div class="col3">
+            <div class='row div'>
+                <div class="column4">
+                    {% if MD.SNA_Needs9 == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if MD.SNA_Needs9 == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col3">
+            <span>{{ MD.SNA_Comments9 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>{{MD.SNA_Other}}</b>
+        </div>
+        <div class="col3">
+            <div class='row div'>
+                <div class="column4">
+                    {% if MD.SNA_Needs10 == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if MD.SNA_Needs10 == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col3">
+            <span>{{ MD.SNA_Comments10 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <b style='font-size: 18px'>SECTION C:</b>
+    <br/>
+    <b style='font-size: 18px; color: #14848A;'>SUMMARY: COMPARISON OF MEDICAL AID BENEFITS</b>
+    <br/>
+    <span style='color: #14848A;'>(Indicate whether a new medical scheme(s) is recommended or an existing scheme is to be replaced)</span>
+    <br/>
+    <br/>
+    <div class="row div">
+        <div class="col3">
+            <b>Details</b>
+        </div>
+        <div class="col3">
+            <b>Current Medical Scheme / Proposed Medical Scheme What are we expecting to be answered here</b>
+        </div>
+        <div class="col3">
+            <b>Replaced Medical Scheme / Proposed Medical Scheme</b>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Name:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current1 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced1 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Contribution/Premium:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current2 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced2 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Benefits:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current3 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced3 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Savings Account:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current4 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced4 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Chronic Benefits:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current5 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced5 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Hospital Cover:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current6 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced6 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Limits on cover:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current7 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced7 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>General Waiting Period:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current8 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced8 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Condition Specific Waiting Period:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current9 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced9 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Legislated Prescribed Minimum Benefits:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current10 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced10 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Later Joiner Penalty:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current11 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced11 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="col3">
+            <b>Reward/Loyalty Programme:</b>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Current12 }}</span>
+        </div>
+        <div class="col3">
+            <span>{{ MD.CoMAB_Replaced12 }}</span>
+        </div>
+    </div>
+    <hr/>
+    <b style='font-size: 18px'>SECTION D:</b>
+    <br/>
+    <b style='font-size: 18px; color: #14848A;'>INITIAL RECOMMENDATION/ADVICE & MOTIVATION</b>
+    <br/>
+    <br/>
+    <div class="row div">
+        <div class="column6">
+            <b>Scheme and Fund recommended and/or selected by you:</b>
+        </div>
+        <div class="column5">
+            <span>{{MD.SectionD_SnF|linebreaks}}</span>
+        </div>
+    </div>
+    <hr/>
+    <b style='font-size: 18px'>SECTION E:</b>
+    <br/>
+    <b style='font-size: 18px; color: #14848A;'>IMPORTANT INFORMATION HIGHLIGHTED TO YOU</b>
+    <hr/>
+    <div class="row div">
+        <div class="column12">
+            <span>{{MD.SectionE_PMB|linebreaks}}</span>
+        </div>
+    </div>
+    <hr/>
+    <b style='font-size: 18px'>SECTION F:</b>
+    <br/>
+    <b style='font-size: 18px; color: #14848A;'>FINANCIAL ADVISER'S DECLARATION</b>
+    <hr/>
+    <div class="row div">
+        <div class="column6">
+            <span>You have elected not to accept the following product recommendations:</span>
+        </div>
+        <div class="column5">
+            <span>{{MD.SectionF_NotAccepted}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column6">
+            <span>For the following reasons:</span>
+        </div>
+        <div class="column5">
+            <span>{{MD.SectionF_Reasons}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column6">
+            <span>The consequences thereof have been clearly explained to you:</span>
+        </div>
+        <div class="column5">
+            <div class='row div'>
+                <div class="column4">
+                    {% if MD.SectionF_Consequences == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if MD.SectionF_Consequences == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>            
+    <div class="row div">
+        <div class="column6">
+            <span>Fees and/or commission:</span>
+        </div>
+        <div class="column5">
+            <span>{{MD.SectionF_Fee}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column12">
+            <span>{{MD.SectionF_Comments}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column6">
+            <br/>
+            <br/>
+            <br/>
+            <span>Sign Here</span>
+        </div>
+        <div class="column5">
+            <div class="row div">
+                <br/>
+                <br/>
+                <br/>
+                <div class="column2">
+                    <span>Date:</span>
+                </div>
+                <div class="column2">
+                    {{MD.SectionF_Date}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column12">
+            <span>{{MD.SectionF_ClientName}}</span>
+        </div>
+    </div>            
+</div>

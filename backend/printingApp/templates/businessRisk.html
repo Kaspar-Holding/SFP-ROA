@@ -1,0 +1,1290 @@
+
+<b class="header">BUSINESS ASSURANCE</b>
+<hr/>
+<div style='font-family:  Arial, sans-serif;font-size: 14px;;  '>
+    <div class='row div'>
+        <div class="column5">
+            <b>Trade name of Business:</b>
+        </div>
+        <div class="column6">
+            <span>{{ BA_Risk.AR_BusinessTradeName }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Registered name of Business:</b>
+        </div>
+        <div class="column6">
+            <span>{{ BA_Risk.AR_BusinessRegisteredName }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Authorised Person(s):</b>
+        </div>
+        <div class="column6">
+            <span>{{ BA_Risk.AR_BusinessAuthorisedPersons }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Financial Advisor:</b>
+        </div>
+        <div class="column6">
+            <span>{{ BA_Risk.AR_BusinessFinancialAdvisor }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Address:</b>
+        </div>
+        <div class="column6">
+            <span>{{ BA_Risk.AR_BusinessAddress }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Email:</b>
+        </div>
+        <div class="column6">
+            <span>{{ BA_Risk.AR_BusinessEmail }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Phone:</b>
+        </div>
+        <div class="column6">
+            <span>{{ BA_Risk.AR_BusinessPhoneNumber }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column5">
+            <b>Date:</b>
+        </div>
+        <div class="column6">
+            <span>{{ BA_Risk.AR_BusinessDate }}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class='row div'>
+        <div class="column12">
+            <span>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), 
+                we must provide you (the client) with a record of advice. 
+                This document is a summary that intends to confirm the advisory process you recently 
+                undertook with your advisor. If you have any questions concerning the content, 
+                please contact your advisor. You are entitled to a copy of this document for your records. 
+                You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA).
+                 You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. 
+                 You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. 
+                 Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a></span>
+        </div>
+    </div>
+    <div class='row div'>
+        <div class="">
+            <b style='font-size: 18px'>SECTION A:</b>
+        </div>    
+        <ol>
+            <li>
+                <b style="">
+                    Compulsory Disclosures
+                </b>
+            </li>                            
+            <div class='row div'>
+                <div class="column6">
+                    <span>Client was provided with a copy of the Letter of Introduction.</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if BA_Risk.AR_ComDisc_AuthorizedPerson == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if BA_Risk.AR_ComDisc_AuthorizedPerson == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>                                        
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {{BA_Risk.AR_ComDisc_AuthorizedPersonDetail|linebreaks}}
+                    </span>
+                </div>                                               
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>Client has provided authority to access information.</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if BA_Risk.AR_ComDisc_Authority == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if BA_Risk.AR_ComDisc_Authority == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>                                        
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {{BA_Risk.AR_ComDisc_AuthorityDetail|linebreaks}}
+                    </span>
+                </div>                                               
+            </div>
+            <hr/>
+            <li>
+                <b style="">
+                    Financial Intelligence Centre Act (FICA)
+                </b>
+            </li>                            
+            <div class='row div'>
+                <div class="column6">
+                    <span>Client has provided a clear copy of his/her identity document.</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if BA_Risk.AR_FICA == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if BA_Risk.AR_FICA == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>                                        
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {{BA_Risk.AR_FICADetail|linebreaks}}
+                    </span>
+                </div>                                               
+            </div>
+            <hr/>
+            <li>
+                <b style="">
+                    Replacements
+                </b>
+            </li>                            
+            <div class='row div'>
+                <div class="column6">
+                    <span>Does/Do the product(s) taken replace an existing product(s)?</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if BA_Risk.AR_RepPrs_Taken == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if BA_Risk.AR_RepPrs_Taken == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>                                        
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {{BA_Risk.AR_RepPrs_TakenDetail|linebreaks}}
+                    </span>
+                </div>                                               
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>If “Yes” (above), the Financial Adviser confirms that all disclosures on the Replacement Product Comparison document have been explained to the client.</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if BA_Risk.AR_RepPrs_Explained == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if BA_Risk.AR_RepPrs_Explained == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>                                        
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {{BA_Risk.AR_RepPrs_ExplainedDetail|linebreaks}}
+                    </span>
+                </div>                                               
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>The client has confirmed that no financial products were canceled, Lapsed forfeited, surrendered, or partially surrendered in the 6 months preceding and does not intend to cancel a financial product in the next 6 months.</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if BA_Risk.AR_RepPrs_Cancelled == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if BA_Risk.AR_RepPrs_Cancelled == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>                                        
+            </div>
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {{BA_Risk.AR_RepPrs_CancelledDetail|linebreaks}}
+                    </span>
+                </div>                                               
+            </div>
+            <hr/>
+        </ol> 
+        <div class='row div'>
+            <div class="">
+                <b style='font-size: 18px'>SECTION B:</b>
+            </div>    
+        </div>  
+        <div>
+            <b class="background" style="">
+                Background information
+            </b>
+        </div>                  
+        <div class='row div'>
+            <div class="column12">
+                <span>Provide a brief description of the business</span>
+            </div>                                  
+        </div>
+        <div class='row div'>
+            <div class="column12">
+                <span>
+                    {{BA_Risk.AR_ReplacementBackInfo|linebreaks}}
+                </span>
+            </div>                                               
+        </div>   
+        <hr/>
+        <div class='row div'>
+            <div class="">
+                <b>Business Needs Identified</b><br/>
+                <b style='font-size: 18px'>PART I: RISK</b>
+            </div>    
+        </div>  
+        <div>
+            <b class="background" style="">
+                2. Financial Needs Analysis Summary: Business Assurance
+            </b>
+            <br/>
+            <br/>
+            <b>Business assurance needs identified</b>
+            <br/>
+            <br/>
+        </div>   
+        <div class="row div" style="text-align: left">
+            <div class="column2">
+                <div class='row div'>
+                    <div class="column4">
+                        {% if BA_Risk.AR_BusA_BnS == 1 %}
+                            <input checked type="checkbox" />
+                        {% else %}
+                            <input type="checkbox" />
+                        {% endif %}
+                    </div>
+                    <div class="column11">
+                        <label>
+                            Funding of Buy-and-Sell Agreement
+                        </label>
+                    </div>
+                </div>  
+            </div>
+            <div class="column2">
+                <div class='row div'>
+                    <div class="column4">
+                        {% if BA_Risk.AR_BusA_KeyP_Insurance == 1 %}
+                            <input checked type="checkbox" />
+                        {% else %}
+                            <input type="checkbox" />
+                        {% endif %}
+                    </div>
+                    <div class="column11">
+                        <label>
+                            Key Person Insurance
+                        </label>
+                    </div>
+                </div>  
+            </div>
+            <div class="column2">
+                <div class='row div'>
+                    <div class="column4">
+                        {% if BA_Risk.AR_BusA_ContingentLiability == 1 %}
+                            <input checked type="checkbox" />
+                        {% else %}
+                            <input type="checkbox" />
+                        {% endif %}
+                    </div>
+                    <div class="column11">
+                        <label>
+                            Contingent liability
+                        </label>
+                    </div>
+                </div>  
+            </div>
+            <div class="column2">
+                <div class='row div'>
+                    <div class="column4">
+                        {% if BA_Risk.AR_BusA_BusOvProt == 1 %}
+                            <input checked type="checkbox" />
+                        {% else %}
+                            <input type="checkbox" />
+                        {% endif %}
+                    </div>
+                    <div class="column11">
+                        <label>
+                            Business Overheads Protection
+                        </label>
+                    </div>
+                </div>  
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div class="column2">
+                <div class='row div'>
+                    <div class="column4">
+                        {% if BA_Risk.AR_BusA_CLARedm == 1 %}
+                            <input checked type="checkbox" />
+                        {% else %}
+                            <input type="checkbox" />
+                        {% endif %}
+                    </div>
+                    <div class="column11">
+                        <label>
+                            Credit Loan Account Redemption
+                        </label>
+                    </div>
+                </div>  
+            </div>
+            <div class="column2">
+                <div class='row div'>
+                    <div class="column4">
+                        {% if BA_Risk.AR_BusA_DebitLoanRedemption == 1 %}
+                            <input checked type="checkbox" />
+                        {% else %}
+                            <input type="checkbox" />
+                        {% endif %}
+                    </div>
+                    <div class="column11">
+                        <label>
+                            Debit Loan Redemption
+                        </label>
+                    </div>
+                </div>  
+            </div>
+            <div class="column2">
+                <div class='row div'>
+                    <div class="column4">
+                        {% if BA_Risk.AR_BusA_FundingOfFutureExpenses == 1 %}
+                            <input checked type="checkbox" />
+                        {% else %}
+                            <input type="checkbox" />
+                        {% endif %}
+                    </div>
+                    <div class="column11">
+                        <label>
+                            Funding of Future Expenses
+                        </label>
+                    </div>
+                </div>  
+            </div>
+            <div class="column2">
+                <div class='row div'>
+                    <div class="column4">
+                        {% if BA_Risk.AR_BusA_FundingOfDeferredGratuities == 1 %}
+                            <input checked type="checkbox" />
+                        {% else %}
+                            <input type="checkbox" />
+                        {% endif %}
+                    </div>
+                    <div class="column11">
+                        <label>
+                            Funding of Deferred Gratuities
+                        </label>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class='row div'>
+            <div class="column12">
+                <span>
+                    {{BA_Risk.AR_BusA_Details|linebreaks}}
+                </span>
+            </div>                                               
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Financial Planning Need/Objective</b>
+            </div>
+            <div class="column31">
+                <b>Total need identified</b>
+            </div>
+            <div class="column31">
+                <b>Existing provisions</b>
+            </div>
+            <div class="column31">
+                <b>Shortfall/ Surplus</b>
+            </div>
+            <div class="column31">
+                <b>Cover taken up now</b>
+            </div>
+                                
+        </div>
+        <hr/>
+        
+        <div class='row1 div'>
+            <div class="column12">
+                <b style='color: #14848A'>Buy and Sell:</b>
+            </div>                                        
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Death</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BnS_DC_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BnS_DC_Provisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BnS_DC_ShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BnS_DC_Investments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Disability</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BnS_DiC_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BnS_DiC_ExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BnS_DiC_ExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BnS_DiC_Investments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        {% if BA_Risk.AR_BnS_Other %}
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Other: {{BA_Risk.AR_BnS_Other}}</b>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_BnS_OtherTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_BnS_OtherExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_BnS_OtherExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_BnS_OtherInvestments}}</span>
+                </div>                                                               
+            </div>
+            <hr/>            
+        {% endif %}
+        
+        <div class='row div'>
+            <div class="column2">
+                <b>Comments</b>
+            </div>
+            <div class="column5">                        
+                <span>
+                    {{BA_Risk.AR_BnS_Comments|linebreaks}}
+                </span>
+            </div>                                        
+        </div>
+        
+        <hr/>
+        <div class='row1 div'>
+            <div class="column12">
+                <b style='color: #14848A'>Key person:</b>
+            </div>
+                                
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Death</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_DC_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_DC_ExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_DC_ExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_DC_Investments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Disability</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_DiC_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_DiC_ExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_DiC_ExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_DiC_Investments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Temporary Income (p.m.)</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_TI_CoverTotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_TI_CoverExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_TI_CoverExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_TI_CoverInvestments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Permanent Income (p.m.)</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_PI_CoverTotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_PI_CoverExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_PI_CoverExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_KeyP_PI_CoverInvestments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        {% if BA_Risk.AR_KeyP_Other %}
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Other: {{BA_Risk.AR_KeyP_Other}}</b>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_KeyP_OtherTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_KeyP_OtherExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_KeyP_OtherExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_KeyP_OtherInvestments}}</span>
+                </div>                                                               
+            </div>
+            <hr/>            
+        {% endif %}
+        
+        <div class='row div'>
+            <div class="column2">
+                <b>Comments</b>
+            </div>
+            <div class="column5">                        
+                <span>
+                    {{BA_Risk.AR_KeyP_Comments|linebreaks}}
+                </span>
+            </div>                                        
+        </div>
+        
+        <hr/>
+        <div class='row1 div'>
+            <div class="column12">
+                <b style='color: #14848A'>Suretyship and Liability:</b>
+            </div>    
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Death</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_SureNLia_DC_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_SureNLia_DC_Provisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_SureNLia_DC_ShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_SureNLia_DC_Investments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Disability</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_SureNLia_DiC_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_SureNLia_DiC_Provisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_SureNLia_DiC_ShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_SureNLia_DiC_Investments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        {% if BA_Risk.AR_SureNLia_Other %}
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Other: {{BA_Risk.AR_SureNLia_Other}}</b>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_SureNLia_OtherTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_SureNLia_OtherProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_SureNLia_OtherShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_SureNLia_OtherInvestments}}</span>
+                </div>                                                               
+            </div>
+            <hr/>            
+        {% endif %}
+        
+        <div class='row div'>
+            <div class="column2">
+                <b>Comments</b>
+            </div>
+            <div class="column5">                        
+                <span>
+                    {{BA_Risk.AR_SureNLia_Comments|linebreaks}}
+                </span>
+            </div>                                        
+        </div>
+        <hr/>
+        
+        <div class='row1 div'>
+            <div class="column12">
+                <b style='color: #14848A'>Business Overheads Protection:</b>
+            </div>                                        
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Temporary Income(p.m.)</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BusOvProt_TI_CoverTotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BusOvProt_TI_CoverExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BusOvProt_TI_CoverExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BusOvProt_TI_CoverInvestments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Permanant Income(p.m.)</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BusOvProt_PI_CoverTotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BusOvProt_PI_CoverExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BusOvProt_PI_CoverExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_BusOvProt_PI_CoverInvestments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        {% if BA_Risk.AR_BusOvProt_Other %}
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Other: {{BA_Risk.AR_BusOvProt_Other}}</b>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_BusOvProt_OtherTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_BusOvProt_OtherProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_BusOvProt_OtherShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_BusOvProt_OtherInvestments}}</span>
+                </div>                                                               
+            </div>
+            <hr/>            
+        {% endif %}
+        
+        <div class='row div'>
+            <div class="column2">
+                <b>Comments</b>
+            </div>
+            <div class="column5">                        
+                <span>
+                    {{BA_Risk.AR_BusOvProt_Comments|linebreaks}}
+                </span>
+            </div>                                        
+        </div>
+        
+        <hr/>
+        
+        <div class='row1 div'>
+            <div class="column12">
+                <b style='color: #14848A'>Credit Loan Account Redemption:</b>
+            </div>
+                                
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Temporary Income (p.m.)</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_CLARedm_DC_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_CLARedm_DC_ExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_CLARedm_DC_ExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_CLARedm_DC_Investments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Permanant Income (p.m.)</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_CLARedm_DiC_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_CLARedm_DiC_ExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_CLARedm_DiC_ExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_CLARedm_DiC_Investments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        {% if BA_Risk.AR_CLARedm_Other %}
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Other: {{BA_Risk.AR_CLARedm_Other}}</b>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_CLARedm_OtherTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_CLARedm_OtherExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_CLARedm_OtherExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_CLARedm_OtherInvestments}}</span>
+                </div>                                                               
+            </div>
+            <hr/>            
+        {% endif %}
+        
+
+        <div class='row1 div'>
+            <div class="column12">
+                <b style='color: #14848A'>Debit Loan Account Redemption:</b>
+            </div>
+                                
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Temporary Income (p.m.)</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_DLARedm_DC_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_DLARedm_DC_ExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_DLARedm_DC_ExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_DLARedm_DC_Investments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        <div class='row1 div'>
+            <div class="column31">
+                <b>Permanant Income (p.m.)</b>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_DLARedm_DiC_TotalNeed}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_DLARedm_DiC_ExistingProvisions}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_DLARedm_DiC_ExistingShortfallSurplus}}</span>
+            </div>
+            <div class="column32">
+                <span>R {{BA_Risk.AR_DLARedm_DiC_Investments}}</span>
+            </div>                                    
+        </div>
+        <hr/>
+        {% if BA_Risk.AR_DLARedm_Other %}
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Other: {{BA_Risk.AR_DLARedm_Other}}</b>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_DLARedm_OtherTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_DLARedm_OtherExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_DLARedm_OtherExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{BA_Risk.AR_DLARedm_OtherInvestments}}</span>
+                </div>                                                               
+            </div>
+        {% endif %} 
+        <hr/>            
+        <div class='row div'>
+            <div class="">
+                <b style='font-size: 18px'>SECTION B:</b>
+            </div>    
+        </div>  
+        <div>
+            <b class="background" style="">
+                Financial Solutions
+            </b>
+        </div>                  
+        <div class='row div'>
+            <div class="column12">
+                <span>Summary of recommendations to address the business's needs identified.</span>
+            </div>                                  
+        </div>
+        <hr/>
+        <div class='row div'>
+            <div class="column12">
+                <span>Life Cover</span>
+            </div>                                  
+        </div>
+        <hr/>
+        <div class='row div'>
+            <div class="column12">
+                <span>
+                    {{BA_Risk.AR_LifeCoverFinancialSolutions|linebreaks}}
+                </span>
+            </div>                                               
+        </div> 
+        <hr/>
+        <div class='row div'>
+            <div class="column12">
+                <span>Disability Cover</span>
+            </div>                                  
+        </div>
+        <hr/>
+        <div class='row div'>
+            <div class="column12">
+                <span>
+                    {{BA_Risk.AR_DiC_FinancialSolutions|linebreaks}}
+                </span>
+            </div>                                               
+        </div> 
+        <hr />
+        <div class='row div'>
+            <div class="">
+                <b style='font-size: 18px'>SECTION C:</b>
+            </div>    
+        </div>  
+        <div>
+            <b class="background" style="">
+                Alternative Solutions Considered
+            </b>
+        </div>    
+        {% if BA_Risk.AR_AltS_1 or BA_Risk.AR_AltS_2 or BA_Risk.AR_AltS_3 %}
+            <div class='row div'>
+                <div class="column12">
+                    <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
+                    {% if BA_Risk.AR_AltS_1 %}
+                        <hr/>
+                        <p>{{BA_Risk.AR_AltS_1|linebreaks}}</p>
+                    {% endif %}
+                    {% if BA_Risk.AR_AltS_2 %}
+                        <hr/>
+                        <p>{{BA_Risk.AR_AltS_2|linebreaks}}</p>
+                    {% endif %}
+                    {% if BA_Risk.AR_AltS_3 %}
+                        <hr/>
+                        <p>{{BA_Risk.AR_AltS_3|linebreaks}}</p>
+                    {% endif %}
+                </div>                                    
+            </div>     
+        {% endif %}
+        <div class='row div'>
+            <div class="">
+                <b style='font-size: 18px'>SECTION E:</b>
+            </div>    
+        </div>  
+        <div>
+            <b class="background" style="">
+                Product Taken
+            </b>
+        </div>    
+        <div class='row div'>
+            <div class="column12">
+                <p>Products accepted by you to meet your requirements</p>                    
+            </div>                                
+        </div>      
+        <hr/> 
+        <div class='row div'>
+            <div class="column2">
+                <b>Product Provider:</b>
+            </div>
+            <div class="column2">                        
+                <span>{{BA_Risk.AR_ProductProvider}}</span>
+            </div> 
+            <div class="column2">
+                <b>Policy Number:</b>
+            </div>
+            <div class="column2">                        
+                <span>{{BA_Risk.AR_PolicyNumber}}</span>
+            </div> 
+        </div>   
+        <hr/>  
+        <div class='row div'>
+            <div class="column2">
+                <b>Product Name:</b>
+            </div>
+            <div class="column2">                        
+                <span>{{BA_Risk.AR_ProductName}}</span>
+            </div> 
+            <div class="column2">
+                <b>Frequency:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Risk.AR_ProductPremium}}</span>  
+                <span>{{BA_Risk.AR_ProductPremiumFrequency}}</span>
+            </div> 
+        </div> 
+        <hr/>    
+        <div class='row div'>
+            <div class="column2">
+                <b>Premium Pattern:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Risk.AR_ProductPattern}}</span>
+            </div> 
+            <div class="column2">
+                <b>Escalation in cover/premium:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Risk.AR_ProductEscalation}}</span>
+            </div> 
+        </div>  
+        <hr/>   
+        <div class='row div'>
+            <div class="column2">
+                <b>Contracting Party:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Risk.AR_ProductContractingParty}}</span>
+            </div> 
+            <div class="column2">
+                <b>Life/Lives covered:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Risk.AR_ProductLivesAssured}}</span>
+            </div> 
+        </div>     
+        <hr/>
+        <div class='row div'> 
+            <div class="column2">
+                <b>Premium Payer:</b>
+            </div>
+            <div class="column2">        
+                <span>{{BA_Risk.AR_ProductPremiumPayer}}</span>
+            </div> 
+        </div>    
+        <hr/> 
+        <div class='row div'>
+            <div class="column2">
+                <b>1st year commission:</b>
+            </div>
+            <div class="column2">        
+                <span>R {{BA_Risk.AR_Product1stYearCommission}}</span>
+            </div> 
+            <div class="column2">
+                <b>2nd year commission:</b>
+            </div>
+            <div class="column2">        
+                <span>R {{BA_Risk.AR_Product2ndYearCommission}}</span>
+            </div> 
+        </div>    
+        <hr/> 
+        <div class='row div'>
+            <div class="column61">
+                <b>Benefit description: life cover, disability etc:</b>
+            </div>
+            <div class="column61">        
+                <b>Cover amount</b>
+            </div> 
+        </div> 
+        <hr/>
+        {% if BA_Risk.AR_BenDesc_1 %}
+            <div class='row div'>
+                <div class="column61">
+                    <span>{{BA_Risk.AR_BenDesc_1}}</span>
+                </div>
+                <div class="column61">        
+                    <span>R {{BA_Risk.AR_BenDesc_CoverAmount1}}</span>
+                </div> 
+            </div>
+            <hr/>
+        {% endif %}  
+        {% if BA_Risk.AR_BenDesc_2 %}
+            <div class='row div'>
+                <div class="column61">
+                    <span>{{BA_Risk.AR_BenDesc_2}}</span>
+                </div>
+                <div class="column61">        
+                    <span>R {{BA_Risk.AR_BenDesc_CoverAmount2}}</span>
+                </div> 
+            </div>
+            <hr/>
+        {% endif %}  
+        {% if BA_Risk.AR_BenDesc_3 %}
+            <div class='row div'>
+                <div class="column61">
+                    <span>{{BA_Risk.AR_BenDesc_3}}</span>
+                </div>
+                <div class="column61">        
+                    <span>R {{BA_Risk.AR_BenDesc_CoverAmount3}}</span>
+                </div> 
+            </div>
+            <hr/>
+        {% endif %}  
+        <div class='row div'>
+            <div class="column12">
+                <p>The following are reasons why the abovementioned product best suits the business’s needs and objectives:</p>
+                <br/>
+                <span>{{ BA_Risk.AR_ProductReasons|linebreaks }}</span>
+            </div>
+        </div>
+        <hr/>
+        <div class='row div'>
+            <div class="column12">
+                <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
+                <br/>
+                <span>{{ BA_Risk.AR_ProductMaterialAspects|linebreaks }}</span>
+            </div>
+        </div>
+        <hr/>
+        {% if BA_Risk.AR_ProductDetails %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>{{ BA_Risk.AR_ProductDetails|linebreaks }}</span>
+                </div>
+            </div>
+            <hr/>
+        {% endif %}
+        {% if BA_Risk.AR_ProductBriefSummary %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>{{ BA_Risk.AR_ProductBriefSummary|linebreaks }}</span>
+                </div>
+            </div>
+            <hr/>
+        {% endif %}
+        {% if BA_Risk.AR_Cessionaries %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>{{ BA_Risk.AR_Cessionaries|linebreaks }}</span>
+                </div>
+            </div>
+            <hr/>
+        {% endif %}
+        {% if BA_Risk.AR_InformationExplained %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>{{ BA_Risk.AR_InformationExplained|linebreaks }}</span>
+                </div>
+            </div>
+            <hr/>
+        {% endif %}
+        
+    </div>                    
+</div>
+<hr/>

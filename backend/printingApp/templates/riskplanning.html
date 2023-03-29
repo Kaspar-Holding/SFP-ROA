@@ -1,0 +1,676 @@
+<b class="header">Risk</b>
+        <br/>
+        <div style='font-family:  Arial, sans-serif;font-size: 14px;;  '>
+            <b class="background">Financial Needs Analysis Summary</b>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Financial Planning Need/Objective</b>
+                </div>
+                <div class="column31">
+                    <b>Total need identified</b>
+                </div>
+                <div class="column31">
+                    <b>Existing provisions</b>
+                </div>
+                <div class="column31">
+                    <b>Shortfall/ Surplus</b>
+                </div>
+                <div class="column31">
+                    <b>Cover taken up now</b>
+                </div>
+                                    
+            </div>
+            <hr/>
+            
+            <div class='row1 div'>
+                <div class="column12">
+                    <b style='color: #14848A'>Death Cover:</b>
+                </div>                                    
+            </div>
+            <hr/>
+
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Death Cover:Lump sum</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_LumpSumTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_LumpSumExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_LumpSumExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_LumpSumInvestments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Death Cover: Income (p.m.)</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_IncomeTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_IncomeExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_IncomeExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_IncomeInvestments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Funeral Benefit (p.m.)</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_FB_TotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_FB_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_FB_ExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_FB_Investments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            {% if RP.RP_DC_Other %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{RP.RP_DC_Other}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DC_OtherTotalNeed}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DC_OtherExistingProvisions}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DC_OtherExistingShortfallSurplus}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DC_OtherInvestments}}</span>
+                    </div>                                    
+                </div>
+                <hr/>            
+            {% endif %}
+            
+            <div class='row div'>
+                <div class="column2">
+                    <b>Comments</b>
+                </div>
+                <div class="column5">                        
+                    <span>
+                        {{RP.RP_DC_Comments}}
+                    </span>
+                </div>                                        
+            </div>
+            <hr />
+            <div class='row1 div'>
+                <div class="column12">
+                    <b style='color: #14848A'>Disabiltiy Cover:</b>
+                </div>          
+            </div>
+            <hr/>
+
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Lump sum</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_LumpSumTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_LumpSumExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_LumpSumExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_LumpSumInvestments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Permanent Income (p.m.)</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_PI_TotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_PI_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_PI_ExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_PI_Investments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Temporary Income (p.m.)</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_TI_TotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_TI_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_TI_ExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_TI_Investments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Sickness Benefit</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_SiB_TotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_SiB_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_SiB_ExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_SiB_Investments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            {% if RP.RP_DiC_Other1 %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{RP.RP_DiC_Other1}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DiC_OtherTotalNeed1}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DiC_OtherExistingProvisions1}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DiC_OtherExistingShortfallSurplus1}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DiC_OtherInvestments1}}</span>
+                    </div>                                    
+                </div>
+                <hr/>            
+            {% endif %}
+            {% if RP.RP_DiC_Other2 %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{RP.RP_DiC_Other2}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DiC_OtherTotalNeed2}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DiC_OtherExistingProvisions2}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DiC_OtherExistingShortfallSurplus2}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DiC_OtherInvestments2}}</span>
+                    </div>                                    
+                </div>
+                <hr/>            
+            {% endif %}
+            
+            <div class='row div'>
+                <div class="column2">
+                    <b>Comments</b>
+                </div>
+                <div class="column5">                        
+                    <span>
+                        {{RP.RP_DiC_Comments}}
+                    </span>
+                </div>                                        
+            </div>
+            <hr />
+            <div class='row1 div'>
+                <div class="column12">
+                    <b style='color: #14848A'>Dread Cover:</b>
+                </div>                                    
+            </div>
+            <hr/>
+
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Dread Disease:Lump Sum</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_LumpSumTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_LumpSumExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_LumpSumExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_LumpSumInvestments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Dread Disease:Income(p.m)</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_IncomeTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_IncomeExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_IncomeExistingShortfallSurplus}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_IncomeInvestments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            {% if RP.RP_DrC_Other1 %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{RP.RP_DrC_Other1}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DrC_OtherTotalNeed1}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DrC_OtherExistingProvisions1}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DrC_OtherExistingShortfallSurplus1}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DrC_OtherInvestments1}}</span>
+                    </div>                                    
+                </div>
+                <hr/>            
+            {% endif %}
+            {% if RP.RP_DrC_Other2 %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{RP.RP_DrC_Other2}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DrC_OtherTotalNeed2}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DrC_OtherExistingProvisions2}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DrC_OtherExistingShortfallSurplus2}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{RP.RP_DrC_OtherInvestments2}}</span>
+                    </div>                                    
+                </div>
+                <hr/>            
+            {% endif %}
+            
+            <div class='row div'>
+                <div class="column2">
+                    <b>Comments</b>
+                </div>
+                <div class="column5">                        
+                    <span>
+                        {{RP.RP_DrC_Comments}}
+                    </span>
+                </div>                                        
+            </div>
+            <hr />
+            <div class='row div'>
+                <div class="">
+                    <b style='font-size: 18px'>SECTION C:</b>
+                </div>    
+            </div>  
+            <div>
+                <b class="background" style="">
+                    Financial Solutions:
+                </b>
+            </div>    
+            <div class='row div'>
+                <div class="column12">
+                    <p>Summary of recommendations to address your identified needs</p>
+                    <p>No cash values are payable/accessible unless a specified event has occurred, i.e., the life event for which cover is taken; in which case the proceeds are payable tax-free. The premiums are not tax-deductible according to current legislation and loans against the policy are not permitted.</p>
+                    <p>Should the policy have an accelerator benefit attached, it means that upon a claim of that benefit the life cover amount will reduce by the claim amount. Standalone benefits are independent of the life cover, and you may claim without affecting the life cover amounts.</p>
+                    <p><u>Life Cover:</u></p>
+                    <p>Policies payable to the estate will attract executors’ fees at a maximum of 3.99% + VAT. Where there is a beneficiary the executors fees will not be levied. Executors’ fees are applicable to all assets in the estate of a client and the exemption only applies to policies with beneficiaries.</p>
+                    <p>Death benefits will not be paid where the life insured commits suicide within 2 years of commencement or reinstatement of the cover.</p>
+                    <hr/>
+                    <p>{{RP.RP_LC_FinancialSolutions|linebreaks}}</p>
+                    <hr/>
+                    <p><u>Disability Cover:</u></p>
+                    <hr/>
+                    <p>{{RP.RP_DiC_FinancialSolutions|linebreaks}}</p>
+                    <hr/>
+                    <p><u>Dread Disease Cover:</u></p>
+                    <hr/>
+                    <p>{{RP.RP_DrC_FinancialSolutions|linebreaks}}</p>
+                    <hr/>
+                </div>                                    
+            </div>     
+            <hr />
+            <div class='row div'>
+                <div class="">
+                    <b style='font-size: 18px'>SECTION D:</b>
+                </div>    
+            </div>  
+            <div>
+                <b class="background" style="">
+                    Alternative Solutions Considered
+                </b>
+            </div>    
+            {% if RP.RP_AltS_1 or RP.RP_AltS_2 or RP.RP_AltS_3 %}
+                <div class='row div'>
+                    <div class="column12">
+                        <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
+                        {% if RP.RP_AltS_1 %}
+                            <hr/>
+                            <p>{{RP.RP_AltS_1|linebreaks}}</p>
+                        {% endif %}
+                        {% if RP.RP_AltS_2 %}
+                            <hr/>
+                            <p>{{RP.RP_AltS_2|linebreaks}}</p>
+                        {% endif %}
+                        {% if RP.RP_AltS_3 %}
+                            <hr/>
+                            <p>{{RP.RP_AltS_3|linebreaks}}</p>
+                        {% endif %}
+                    </div>                                    
+                </div>     
+            {% endif %}
+            <div class='row div'>
+                <div class="">
+                    <b style='font-size: 18px'>SECTION E:</b>
+                </div>    
+            </div>  
+            <div>
+                <b class="background" style="">
+                    Product Taken
+                </b>
+            </div>    
+            <div class='row div'>
+                <div class="column12">
+                    <p>Products accepted by you to meet your requirements</p>                    
+                </div>                                
+            </div>     
+            <div class='row div'>
+                <div class="column2">
+                    <b>Product:</b>
+                </div>
+                <div class="column2">                        
+                    <span>{{RP.RP_Product_Taken}}</span>
+                </div> 
+            </div>    
+            <hr/> 
+            <div class='row div'>
+                <div class="column2">
+                    <b>Product Provider:</b>
+                </div>
+                <div class="column2">                        
+                    <span>{{RP.RP_Product_Provider}}</span>
+                </div> 
+                <div class="column2">
+                    <b>Policy Number:</b>
+                </div>
+                <div class="column2">                        
+                    <span>{{RP.RP_Policy_Number}}</span>
+                </div> 
+            </div>   
+            <hr/>  
+            <div class='row div'>
+                <div class="column2">
+                    <b>Product Name:</b>
+                </div>
+                <div class="column2">                        
+                    <span>{{RP.RP_Product_Name}}</span>
+                </div> 
+                <div class="column2">
+                    <b>Frequency:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{RP.RP_Product_Premium}}</span>  
+                    <span>{{RP.RP_Product_PremiumFrequency}}</span>
+                </div> 
+            </div> 
+            <hr/>    
+            <div class='row div'>
+                <div class="column2">
+                    <b>Premium Pattern:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{RP.RP_Product_Pattern}}</span>
+                </div> 
+                <div class="column2">
+                    <b>Escalation in cover/premium:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{RP.RP_Product_Escalation}}</span>
+                </div> 
+            </div>  
+            <hr/>   
+            <div class='row div'>
+                <div class="column2">
+                    <b>Contracting Party:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{RP.RP_Product_ContractingParty}}</span>
+                </div> 
+                <div class="column2">
+                    <b>Life/Lives covered:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{RP.RP_Product_LivesAssured}}</span>
+                </div> 
+            </div>     
+            <hr/>
+            <div class='row div'>
+                <div class="column2">
+                    <b>Beneficial/Cessionary:</b>
+                </div>
+                <div class="column2">        
+                    <span>{{RP.RP_Product_Beneficiary}}</span>
+                </div> 
+                <div class="column2">
+                    <b>Premium payer(s):</b>
+                </div>
+                <div class="column2">        
+                    <span>{{RP.RP_Product_PremiumPayer}}</span>
+                </div> 
+            </div>    
+            <hr/> 
+            <div class='row div'>
+                <div class="column2">
+                    <b>1st year commission:</b>
+                </div>
+                <div class="column2">        
+                    <span>R {{RP.RP_Product_1stYearCommission}}</span>
+                </div> 
+                <div class="column2">
+                    <b>2nd year commission:</b>
+                </div>
+                <div class="column2">        
+                    <span>R {{RP.RP_Product_2ndYearCommission}}</span>
+                </div> 
+            </div>    
+            <hr/> 
+            <div class='row div'>
+                <div class="column2">
+                    <b>Ongoing fees:</b>
+                </div>
+                <div class="column2">        
+                    <span>R {{RP.RP_Product_OngoingFees}}</span>
+                </div> 
+                <div class="column2">
+                    <b>Frequency:</b>
+                </div>
+                <div class="column2">        
+                    <span>R {{RP.RP_Product_OngoingFeesFrequency}}</span>
+                    <span>{{RP.RP_Product_OngoingFeesFrequency1}}</span>
+                </div> 
+            </div> 
+            <hr/>    
+            <div class='row div'>
+                <div class="column2">
+                    <b>Total fees and commission:</b>
+                </div>
+                <div class="column2">        
+                    <span>R {{RP.RP_TotalFees_n_Commissions}}</span>
+                </div> 
+            </div> 
+            <hr/>    
+            <div class='row div'>
+                <div class="column61">
+                    <b>Benefit description: life cover, disability etc:</b>
+                </div>
+                <div class="column61">        
+                    <b>Cover amount</b>
+                </div> 
+            </div> 
+            <hr/>
+            {% if RP.RP_BenDesc_1 %}
+                <div class='row div'>
+                    <div class="column61">
+                        <span>{{RP.RP_BenDesc_1}}</span>
+                    </div>
+                    <div class="column61">        
+                        <span>R {{RP.RP_BenDesc_CoverAmount1}}</span>
+                    </div> 
+                </div>
+                <hr/>
+            {% endif %}  
+            {% if RP.RP_BenDesc_2 %}
+                <div class='row div'>
+                    <div class="column61">
+                        <span>{{RP.RP_BenDesc_2}}</span>
+                    </div>
+                    <div class="column61">        
+                        <span>R {{RP.RP_BenDesc_CoverAmount2}}</span>
+                    </div> 
+                </div>
+                <hr/>
+            {% endif %}  
+            {% if RP.RP_BenDesc_3 %}
+                <div class='row div'>
+                    <div class="column61">
+                        <span>{{RP.RP_BenDesc_3}}</span>
+                    </div>
+                    <div class="column61">        
+                        <span>R {{RP.RP_BenDesc_CoverAmount3}}</span>
+                    </div> 
+                </div>
+                <hr/>
+            {% endif %}  
+            {% if RP.RP_BenDesc_4 %}
+                <div class='row div'>
+                    <div class="column61">
+                        <span>{{RP.RP_BenDesc_4}}</span>
+                    </div>
+                    <div class="column61">        
+                        <span>R {{RP.RP_BenDesc_CoverAmount4}}</span>
+                    </div> 
+                </div>
+                <hr/>
+            {% endif %}  
+            {% if RP.RP_BenDesc_5 %}
+                <div class='row div'>
+                    <div class="column61">
+                        <span>{{RP.RP_BenDesc_5}}</span>
+                    </div>
+                    <div class="column61">        
+                        <span>R {{RP.RP_BenDesc_CoverAmount5}}</span>
+                    </div> 
+                </div>
+                <hr/>
+            {% endif %}  
+            {% if RP.RP_BenDesc_6 %}
+                <div class='row div'>
+                    <div class="column61">
+                        <span>{{RP.RP_BenDesc_6}}</span>
+                    </div>
+                    <div class="column61">        
+                        <span>R {{RP.RP_BenDesc_CoverAmount6}}</span>
+                    </div> 
+                </div>
+                <hr/>
+            {% endif %}  
+            {% if RP.RP_BenDesc_7 %}
+                <div class='row div'>
+                    <div class="column61">
+                        <span>{{RP.RP_BenDesc_7}}</span>
+                    </div>
+                    <div class="column61">        
+                        <span>R {{RP.RP_BenDesc_CoverAmount7}}</span>
+                    </div> 
+                </div>
+                <hr/>
+            {% endif %}  
+            
+            <div class='row div'>
+                <div class="column12">
+                    <p>The following are reasons why the above-mentioned product best suits your needs and objectives</p>                    
+                </div>                             
+            </div>    
+            <hr/>             
+            <div class='row div'>          
+                <div class="column12">
+                    <p>{{RP.RP_ProductReasons|linebreaks}}</p>                    
+                </div>                                
+            </div> 
+            <hr/>   
+            <div class='row div'>
+                <div class="column12">
+                    <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>                    
+                </div>                             
+            </div>    
+            <hr/>             
+            <div class='row div'>          
+                <div class="column12">
+                    <p>{{RP.RP_ProductMaterialAspects|linebreaks}}</p>                    
+                </div>                                
+            </div>    
+            <div class='row div'>          
+                <div class="column12">
+                    <p>{{RP.RP_ProductDetails|linebreaks}}</p>                    
+                </div>                                
+            </div>    
+            <div class='row div'>          
+                <div class="column12">
+                    <p>{{RP.RP_ExecutorFee|linebreaks}}</p>                    
+                </div>                                
+            </div>    
+            <div class='row div'>          
+                <div class="column12">
+                    <p>{{RP.RP_NominationOfBeneficiaries|linebreaks}}</p>                    
+                </div>                                
+            </div>    
+            <div class='row div'>          
+                <div class="column12">
+                    <p>{{RP.RP_InformationExplained|linebreaks}}</p>                    
+                </div>                                
+            </div>    
+        </div>
+        

@@ -1,0 +1,1864 @@
+<b class="header">Employee Benefits</b>
+        <br/>
+        <hr/>
+        <div style='font-family:  Arial, sans-serif;font-size: 15px;;  '>
+            <div class='row div'>
+                <div class="column2">
+                    <b>Client Name:</b>
+                </div>
+                <div class="column2">                        
+                    <span>
+                        {{EB.EB_ClientName}}
+                    </span>
+                </div>                     
+                <div class="column2">
+                    <b>ID number:</b>
+                </div>
+                <div class="column2">                        
+                    <span>
+                        {{EB.EB_ClientIdNumber}}
+                    </span>
+                </div>                     
+            </div>
+            <hr/>
+            
+            <div class='row div'>
+                <div class="column2">
+                    <b>Address</b>
+                </div>
+                <div class="column5">                        
+                    <span>
+                        {{EB.EB_ClientAddress}}
+                    </span>
+                </div>                                        
+            </div>
+            <hr />
+            
+            <div class='row div'>
+                <div class="column2">
+                    <b>Phone (Tel):</b>
+                </div>
+                <div class="column2">                        
+                    <span>
+                        {{EB.EB_ClientPhoneNumber}}
+                    </span>
+                </div>                     
+                <div class="column2">
+                    <b>Phone (Cell):</b>
+                </div>
+                <div class="column2">                        
+                    <span>
+                        {{EB.EB_ClientCellNumber}}
+                    </span>
+                </div>                     
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column2">
+                    <b>Email:</b>
+                </div>
+                <div class="column2">                        
+                    <span>
+                        {{EB.EB_ClientEmail}}
+                    </span>
+                </div>                     
+                <div class="column2">
+                    <b>Date:</b>
+                </div>
+                <div class="column2">                        
+                    <span>
+                        {{EB.EB_ClientDate}}
+                    </span>
+                </div>                     
+            </div>
+            <hr/>
+            
+            <div class='row div'>
+                <div class="column2">
+                    <b>Financial Advisor:</b>
+                </div>
+                <div class="column2">                        
+                    <span>
+                        {{EB.EB_ClientFinancialAdvisor}}
+                    </span>
+                </div>                     
+                <div class="column2">
+                    <b>Details of fee:</b>
+                </div>
+                <div class="column2">                        
+                    <span>
+                        {{EB.EB_ClientFeeDetails}}
+                    </span>
+                </div>                     
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. 
+                        This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. 
+                        If you have any questions concerning the content, please contact your advisor. 
+                        You are entitled to a copy of this document for your records. 
+                        You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA).               
+                        You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. 
+                        You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href='https://www.sfpadvice.co.za' target='_blank'>https://www.sfpadvice.co.za</a>
+                    </span>
+                </div>
+                                    
+            </div>
+            <hr/>
+            <b style='font-size: 18px; color: #14848A;'>Section A:Employer Information:</b>
+            <div class='row div'>
+                <div class="column5">
+                    <b>Name of business entity:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusinessName }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <b>Physical Business Address:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusinessAddress }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <b>Employer contact person:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusinessContactPerson }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column2">
+                    <b>Office Tel No:</b>
+                </div>
+                <div class="column2">
+                    <span>{{ EB.EB_BusinessPhoneNumber }}</span>
+                </div>
+                <div class="column2">
+                    <b>Cell Phone:</b>
+                </div>
+                <div class="column2">
+                    <span>{{ EB.EB_BusinessCellNumber }}</span>
+                </div>
+            </div>
+            <hr/>
+            
+            <div class='row div'>
+                <div class="column5">
+                    <b>Email Address:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusinessEmail }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <b>Nature of business & Type of industry:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusinessNature }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>Do the employees belong to Trade Union/ Bargaining Council?:</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusinessUnion == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusinessUnion == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>                                        
+            </div>
+            <hr/>
+            
+            <div class='row div'>
+                <div class="column5">
+                    <b>Details:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusinessDetails }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <b>Total number of employees:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusinessNumberOfEmployees }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <b>Total number of eligible employees:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusinessNumberOfEligibleEmployees }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <b>Specify and explain categories of members excluded:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusinessNumberOfExcludedCategories }}</span>
+                </div>
+            </div>
+            <hr/>
+            <b style='font-size: 18px; color: #14848A;'>Section B: Take-over of existing fund</b>
+            <br/>
+            <br/>
+
+            <div class='row div'>
+                <div class="column5">
+                    <b>Name of existing fund & PF Reg no:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusEx_FundsName }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <b>Name of previous Insurer/ Administrator:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusEx_FundsAdmin }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <b>Current total fund value:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusEx_FundsCurrentValue }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <b>Number of current active members:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusEx_FundsActiveMembers }}</span>
+                </div>
+            </div>
+            <hr/>
+            
+            <div class='row div'>
+                <div class="column5">
+                    <b>Number of fully paid-up members:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusEx_FundsFullyPaidMembers }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <b>Reason for change:</b>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusEx_FundsFullyReasonForChange }}</span>
+                </div>
+            </div>
+            
+            <b style='font-size: 18px; color: #14848A;'>Section C: Clients Needs and Requirements</b>
+            <br/>
+            <br/>
+            <div class='row div'>
+                <div class="column6">
+                    <span>{{EB.EB_BusB_CoverType}}</span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusB_Cover == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column4">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusB_Cover == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column4">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusB_Cover == 2 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column4">
+                            <label>
+                                Undecided
+                            </label>
+                        </div>
+                    </div>
+                </div>                                        
+            </div>
+            <br/>
+            <div class="row div">
+                <div class="column12">
+                    {{EB.EB_BusB_CoverDetails|linebreaks}}
+                </div>
+            </div>
+            <b style='font-size: 18px; color: #14848A;'>Section D: Investment Indicator</b>
+            <br/>
+            <br/>
+            <div class="row div">
+                <div class="column6">
+                    <span>
+                        Are some of the employees within five years of retirement?
+                    </span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusEmp_Retire_In5Years == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusEmp_Retire_In5Years == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                        <div class="column41">
+                            <span>
+                                {{ EB.EB_BusEmp_Retire_In5YearsPercentage }} %
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row div">
+                <div class="column6">
+                    <span>
+                        Indicate the percentage of employees that are financially illiterate?
+                    </span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusEmp_Fin_Illiterate == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusEmp_Fin_Illiterate == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                        <div class="column41">
+                            <span>
+                                {{ EB.EB_BusEmp_Fin_IlliteratePercentage }} %
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row div">
+                <div class="column6">
+                    <span>
+                        Indicate the percentage of employees that are financially sophisticated
+                    </span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusEmp_Fin_Sophisticated == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusEmp_Fin_Sophisticated == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                        <div class="column41">
+                            <span>
+                                {{ EB.EB_BusEmp_Fin_SophisticatedPercentage }} %
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row div">
+                <div class="column6">
+                    <span>
+                        Is there a high staff turnover?
+                    </span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusHS_TurnOver == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusHS_TurnOver == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                        <div class="column41">
+                            <span>
+                                {{ EB.EB_BusHS_TurnOverPercentage }} %
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row div">
+                <div class="column6">
+                    <span>
+                        Is individual member investment choice required?
+                    </span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusI_Choice == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusI_Choice == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                        <div class="column41">
+                            <span>
+                                {{ EB.EB_BusI_ChoicePercentage }} %
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row div">
+                <div class="column6">
+                    <span>
+                        Is a Default Investment Portfolio required?
+                    </span>
+                </div>
+                <div class="column5">                        
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusinessItP == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusinessItP == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                        <div class="column41">
+                            <span>
+                                {{ EB.EB_BusinessItP_Percentage }} %
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row div">
+                <div class="column6">
+                    <span>
+                        Additional Comments
+                    </span>
+                </div>
+                <div class="column5">                        
+                    {{ EB.EB_BusEmp_AdditionalComments|linebreaks }}
+                </div>
+            </div>
+            <hr/>
+            <b style='font-size: 18px; color: #14848A;'>Section E: Risk Benefits</b>
+            <br/>
+            <br/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Categories (description)</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_Category1 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_Category2 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_Category3 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_Category4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Member Contributions</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_MemContrib_Category1 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_MemContrib_Category2 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_MemContrib_Category3 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_MemContrib_Category4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Employer contributions</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_EmpContrib_Category1 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_EmpContrib_Category2 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_EmpContrib_Category3 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_EmpContrib_Category4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Normal Retirement age</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_NormRetire_AgeCategory1 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_NormRetire_AgeCategory2 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_NormRetire_AgeCategory3 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_NormRetire_AgeCategory4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Death Benefits</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Flexible group life</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_FlexibleGroupLife }} (Multiple of Salary)</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <div class="column12">                        
+                        <p>Approved</p>
+                        <div class='row div'>
+                            <div class="column4">
+                                {% if EB.EB_BusRB_Approved == 1 %}
+                                    <input checked type="radio" />
+                                {% else %}
+                                    <input type="radio" />
+                                {% endif %}
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="column4">
+                                {% if EB.EB_BusRB_Approved == 0 %}
+                                    <input checked type="radio" />
+                                {% else %}
+                                    <input type="radio" />
+                                {% endif %}
+                            </div>
+                            <div class="column2">
+                                <label>
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="column33">                       
+                    <p style="color: white">Approved</p>
+                    <span>{{ EB.EB_BusRB_ApprovedCategory1 }}</span>
+                </div>
+                <div class="column33">                       
+                    <p style="color: white">Approved</p>
+                    <span>{{ EB.EB_BusRB_ApprovedCategory2 }}</span>
+                </div>
+                <div class="column33">                       
+                    <p style="color: white">Approved</p>
+                    <span>{{ EB.EB_BusRB_ApprovedCategory3 }}</span>
+                </div>
+                <div class="column33">                       
+                    <p style="color: white">Approved</p>
+                    <span>{{ EB.EB_BusRB_ApprovedCategory4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <div class="column12">                        
+                        <p>Unapproved</p>
+                        <div class='row div'>
+                            <div class="column4">
+                                {% if EB.EB_BusRB_UnApproved == 1 %}
+                                    <input checked type="radio" />
+                                {% else %}
+                                    <input type="radio" />
+                                {% endif %}
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="column4">
+                                {% if EB.EB_BusRB_UnApproved == 0 %}
+                                    <input checked type="radio" />
+                                {% else %}
+                                    <input type="radio" />
+                                {% endif %}
+                            </div>
+                            <div class="column2">
+                                <label>
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="column33">     
+                    <p style="color: white">Unapproved</p>
+                    <span>{{ EB.EB_BusRB_UnApprovedCategory1 }}</span>
+                </div>
+                <div class="column33">     
+                    <p style="color: white">Unapproved</p>
+                    <span>{{ EB.EB_BusRB_UnApprovedCategory2 }}</span>
+                </div>
+                <div class="column33">     
+                    <p style="color: white">Unapproved</p>
+                    <span>{{ EB.EB_BusRB_UnApprovedCategory3 }}</span>
+                </div>
+                <div class="column33">     
+                    <p style="color: white">Unapproved</p>
+                    <span>{{ EB.EB_BusRB_UnApprovedCategory4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column6">     
+                    <p>Will the new fund be taking over the life cover of existing disability claims?</p>
+                </div>
+                <div class="column5">
+                    <p style="color: white">0</p>
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusinessRiskFundTakeOver == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusinessRiskFundTakeOver == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div> 
+                </div>                                   
+            </div>
+            <hr/>
+            
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Spouse life cover</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_SpouseLC_Category1 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_SpouseLC_Category2 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_SpouseLC_Category3 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_SpouseLC_Category4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class="row1 div">
+                <div class="column33">
+                    <span>
+                        Notes on Spouse cover
+                    </span>
+                </div>
+                <div class="column5">
+                    <span>
+                        {{ EB.EB_BusRB_SpouseLC_Notes }}
+                    </span>                        
+                </div>
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Trauma Benefits</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Multiple of Salary</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_TrauBenSa_Category1 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_TrauBenSa_Category2 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_TrauBenSa_Category3 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_TrauBenSa_Category4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Funeral Benefits</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Cover required</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_FB_CoverCategory1 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_FB_CoverCategory2 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_FB_CoverCategory3 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_FB_CoverCategory4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Capital Disability Benefit</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <div class="column12">                        
+                        <p>Approved</p>
+                        <div class='row div'>
+                            <div class="column4">
+                                {% if EB.EB_BusRB_CapDisBen_Approved == 1 %}
+                                    <input checked type="radio" />
+                                {% else %}
+                                    <input type="radio" />
+                                {% endif %}
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="column4">
+                                {% if EB.EB_BusRB_CapDisBen_Approved == 0 %}
+                                    <input checked type="radio" />
+                                {% else %}
+                                    <input type="radio" />
+                                {% endif %}
+                            </div>
+                            <div class="column2">
+                                <label>
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="column33">                       
+                    <p style="color: white">Approved</p>
+                    <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory1 }}</span>
+                </div>
+                <div class="column33">                       
+                    <p style="color: white">Approved</p>
+                    <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory2 }}</span>
+                </div>
+                <div class="column33">                       
+                    <p style="color: white">Approved</p>
+                    <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory3 }}</span>
+                </div>
+                <div class="column33">                       
+                    <p style="color: white">Approved</p>
+                    <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <div class="column12">                        
+                        <p>Unapproved</p>
+                        <div class='row div'>
+                            <div class="column4">
+                                {% if EB.EB_BusRB_CapDisBen_UnApproved == 1 %}
+                                    <input checked type="radio" />
+                                {% else %}
+                                    <input type="radio" />
+                                {% endif %}
+                            </div>
+                            <div class="column2">
+                                <label >
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="column4">
+                                {% if EB.EB_BusRB_CapDisBen_UnApproved == 0 %}
+                                    <input checked type="radio" />
+                                {% else %}
+                                    <input type="radio" />
+                                {% endif %}
+                            </div>
+                            <div class="column2">
+                                <label>
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="column33">     
+                    <p style="color: white">Unapproved</p>
+                    <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory1 }}</span>
+                </div>
+                <div class="column33">     
+                    <p style="color: white">Unapproved</p>
+                    <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory2 }}</span>
+                </div>
+                <div class="column33">     
+                    <p style="color: white">Unapproved</p>
+                    <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory3 }}</span>
+                </div>
+                <div class="column33">     
+                    <p style="color: white">Unapproved</p>
+                    <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Cover required</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_FB_CoverCategory1 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_FB_CoverCategory2 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_FB_CoverCategory3 }}</span>
+                </div>
+                <div class="column33">
+                    <span>R {{ EB.EB_BusRB_FB_CoverCategory4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Disability Income Benefit</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Waiting period</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category1 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category2 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category3 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class="row1 div">
+                <div class="column33">
+                    <span>
+                        Conversion option:
+                    </span>
+                </div>
+                <div class="column5">
+                    <span>
+                        {{ EB.EB_BusRB_ConvOp }}
+                    </span>                        
+                </div>
+            </div>
+            <hr/>
+            <div class="row1 div">
+                <div class="column33">
+                    <span>
+                        Growth rates for income benefits:
+                    </span>
+                </div>
+                <div class="column5">
+                    <span>
+                        {{ EB.EB_BusRB_GrowthRates }}
+                    </span>                        
+                </div>
+            </div>
+            <hr/>
+            <div class="row1 div">
+                <div class="column33">
+                    <span>
+                        Notes on Disability Benefits:
+                    </span>
+                </div>
+                <div class="column5">
+                    <span>
+                        {{ EB.EB_BusRB_DisabilityBenefitsNotes }}
+                    </span>                        
+                </div>
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Accident Benefit</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>
+                <div class="column33">
+                    <span style="color: white">0</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column33">
+                    <span>Benefit ({{ EB.EB_BusRB_AccidentBenefit }})</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_AccidentBenefitCategory1 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_AccidentBenefitCategory2 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_AccidentBenefitCategory3 }}</span>
+                </div>
+                <div class="column33">
+                    <span>{{ EB.EB_BusRB_AccidentBenefitCategory4 }}</span>
+                </div>                                    
+            </div>
+            <hr/>              
+            <div class='row div'>          
+                <div class="column12">
+                    <p>{{ EB.EB_BusRB_AccidentBenefitReason|linebreaks }}</p>                    
+                </div>                                
+            </div>  
+            <hr/>
+            <div class='row div'>
+                <div class="column12">
+                    <p>Disability Cover:</p>                    
+                </div>                             
+            </div>    
+            <hr/>             
+            <div class='row div'>          
+                <div class="column12">
+                    <p>{{EB.EB_BusRB_DiC_Reason|linebreaks}}</p>                    
+                </div>                                
+            </div>  
+            <hr/>
+            <div class='row div'>
+                <div class="column12">
+                    <p>Dread Disease Cover:</p>                    
+                </div>                             
+            </div>    
+            <hr/>             
+            <div class='row div'>          
+                <div class="column12">
+                    <p>{{EB.EB_BusRB_DrC_Reason|linebreaks}}</p>                    
+                </div>                                
+            </div>  
+            <hr/>
+            <div class='row div'>          
+                <div class="column12">
+                    <p>{{EB.EB_BusRB_DrC_Summary|linebreaks}}</p>                    
+                </div>                                
+            </div>  
+            <hr/>
+            <b style='font-size: 18px; color: #14848A;'>Section F: Recommendations</b>
+            <br/>
+            <hr/>
+            <p>Submit a copy of the accepted proposal with all details of new fund/scheme and benefits with this document.</p>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Product provider/ Administrator:</p>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusRecom_ProductAdmin }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <span>Product name:</span>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusRecom_ProductName }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <span>Type of fund:</span>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusRecom_FundType }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <span>Motivation for recommendations of fund/scheme and type:</span>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusRecom_RecommendationFundType }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <span>Is a Default Investment Portfolio required?</span>
+                </div>
+                <div class="column6">
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusRecom_Portfolio == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusRecom_Portfolio == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>
+                <div class="column5">
+                    <span>The client has accepted the recommendations</span>
+                </div>
+                <div class="column6">
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusRecom_ClientAccepted == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusRecom_ClientAccepted == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column5">
+                    <span>If the client has decided to conclude a transaction that differs from the recommended solution, has the employer been informed of the risks? What risks have been pointed out?</span>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusRecom_ClientRisks }}</span>
+                </div>
+            </div>
+            <hr/>
+            <hr/>
+            <b style='font-size: 18px; color: #14848A;'>Section G: Fund Replacement</b>
+            <br/>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Name of fund replaced:</p>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusFReplace_Name }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Reg No:</p>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusFReplace_RegNo }}</span>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Type of fund replaced:</p>
+                </div>
+                <div class="column6">
+                    <span>{{ EB.EB_BusFReplace_Type }}</span>
+                </div>
+            </div>
+            <hr/>            
+            <div class='row div'>
+                <div class="column5">
+                    <span>Detail (as applicable) of the actual and potential financial implications, costs & consequences of the replacement as disclosed to the client.</span>
+                </div>
+                <div class="column6">
+                    <div class='row div'>
+                        <div class="column4">
+                            {% if EB.EB_BusFReplace_Detail == 1 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label >
+                                Yes
+                            </label>
+                        </div>
+                        <div class="column4">
+                            {% if EB.EB_BusFReplace_Detail == 0 %}
+                                <input checked type="radio" />
+                            {% else %}
+                                <input type="radio" />
+                            {% endif %}
+                        </div>
+                        <div class="column2">
+                            <label>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>            
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Fees and charges in respect of the replacement fund:</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_FeeChargesReplaced }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_FeeChargesExisting }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Special terms and conditions, exclusions of liability, waiting periods, loadings, penalties, excesses, pre-existing conditions, restrictions or circumstances in which benefits will not be provided, which may be applicable to the replacement product:</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_TnC_Replaced }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_TnC_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>In the case of risk benefits, the impact of age and health changes on the premium payable:</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_HealthChangesReplaced }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_HealthChangesExisting }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Differences between the tax implications of the replacement fund and the terminated fund:</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_TaxImplicationsReplaced }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_TaxImplicationsExisting }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Material differences between the investment risk of the replacement fund and the terminated fund:</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_MaterialDifferencesReplaced }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_MaterialDifferencesExisting }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Penalties or un-recouped expenses deductible or payable due to termination of the terminated fund:</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_PenaltiesReplaced }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_PenaltiesExisting }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>The extent to which the replacement fund is readily realisable or the relevant funds accessible, compared to the terminated fund:</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_RealisedReplaced }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_RealisedExisting }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>The extent to which the replacement fund is readily realisable or the relevant funds accessible, compared to the terminated fund:</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_RealisedReplaced }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_RealisedExisting }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Comparison of Benefits</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>Proposed</span>
+                        </div>
+                        <div class="column5">
+                            <span>Existing Fund</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Eligible groups</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_EligGr_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_EligGr_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Member contribution % / rate</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_MemContrib_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_MemContrib_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Employer contribution % / rate</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_EmpContrib_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_EmpContrib_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Is the employer contribution % inclusive or exclusive of risk and administration fees?</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_AdminFee_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_AdminFee_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Benefit payable on death</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_BenPayD_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_BenPayD_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Benefit payable on disability (if admitted by underwriter)</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_BenPayDis_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_BenPayDis_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Benefit payable on withdrawal</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_BenPayW_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_BenPayW_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Benefit payable on retirement</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_BenPayRe_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_BenPayRe_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Normal retirement age</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_NormRetire_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_NormRetire_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Conversion option available and for which benefits?</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_ConvOp_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_ConvOp_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Are housing loans provided?</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_HouseL_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_HouseL_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>What is the cost of administration and related costs (e.g. commission) as a % of employer’s contributionEB_BusFReplace_AdminC</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_AdminC_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_AdminC_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>What are the investments fees?</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_InvestFee_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_InvestFee_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>What is the cost of risk cover as a % of the employer’s contribution?</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_CoR_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_CoR_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Are any other benefits available to members on old fund/scheme that are not under the new fund/scheme (e.g. funeral or monthly disability benefits)?</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_BenA_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_BenA_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>Is there investment choice and if so who qualifies?</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_InvestCh_Proposed }}</span>
+                        </div>
+                        <div class="column5">
+                            <span>{{ EB.EB_BusFReplace_InvestCh_Existing }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            
+            <b style='font-size: 18px; color: #14848A;'>Section H: Clients Declarations</b>
+            <br/>
+            <p>(Please note that it is of utmost importance that you read this section carefully and understand it fully).</p>
+            <ol style="text-align: justify;">
+                <li style="color: black">
+                    I confirm that a Contact Stage Disclosure letter, setting out the financial adviser’s full particulars, experience and services offered has been provided to me.
+                </li>
+                <li style="color: black">
+                    I confirm that I required the financial adviser to render the financial services set out in the Service Level Agreement, a copy of which has been provided to me
+                </li>
+                <li style="color: black">
+                    I understand that the accuracy of a needs analysis is dependent upon the information provided to or obtained by the financial adviser. The advice furnished and product recommendations made by the financial adviser are based largely on the information I provided to the financial adviser. I understand that material non-disclosures and misrepresentations could result in inappropriate product(s) being recommended and purchased by me
+                </li>
+                <li style="color: black">
+                    I confirm that I was provided with copies of quotations, fund fact sheet(s), marketing brochures and rates and benefit sheets for the product(s) selected. All material terms and conditions of the product(s) selected were explained to me prior to any decision made.
+                </li>
+                <li style="color: black">
+                    I have been informed of and understand all costs, charges, penalties, liquidity limitations and tax implications where applicable. I understand the risks / guarantees (or absence thereof) associated with the product(s) and /or underlying fund(s) selected.
+                </li>
+                <li style="color: black">
+                    I confirm that all documents signed by me were fully completed prior to my signing them.
+                </li>
+                <li style="color: black">
+                    I confirm that the financial adviser has made enquiries to ascertain whether the product(s) selected are intended to replace any existing financial products held by me and where applicable, has informed me of the financial implications, costs and consequences of replacement.
+                </li>
+                <li style="color: black">
+                    Notwithstanding the information provided by the Advisor, I acknowledge that I have an obligation to familiarize myself with the terms and conditions of the product(s) that I have purchased.
+                </li>
+            </ol>
+            <hr/>
+        </div>

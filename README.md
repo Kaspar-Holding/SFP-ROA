@@ -8,6 +8,10 @@ This project is built on the following Stack
 
 ## Updates
 
+### 29 March 2023:
+- 50% of the STIP is now PDF ready
+- Only Short Term Personal and Commerical are remaining
+
 ### 28 March 2023:
 - 80% of the form is now PDF ready
 - Only Short Term Personal and Commerical are remaining
