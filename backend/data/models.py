@@ -1401,6 +1401,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_BusInt_Type23_1 = models.CharField(max_length=50, default="", blank=True)
 
     STIC_BusInt_TotalPremium = models.CharField(max_length=50, default="", blank=True)
+    # STIC_BusInt2_TotalPremium = models.CharField(max_length=50, default="", blank=True)
     STIC_BusInt_Comments = models.CharField(max_length=1000, default="", blank=True)
     STIC_BusInt_PremisesNumber = models.CharField(max_length=50, default="", blank=True)
     STIC_BusInt_Basis = models.CharField(max_length=50, default="", blank=True)

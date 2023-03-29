@@ -693,6 +693,10 @@ def wkhtmltopdfapi(request):
     data['STIC'] = ShortTermInsuranceCommerical.objects.filter(formId=data['id']).values().first()
     data['STIC']['STIC_Inception_Date'] = datetimeparser.parse(data['STIC']['STIC_Inception_Date']).strftime('%d %b %Y') if data['STIC']['STIC_Inception_Date'] != "" else "N.A."
     data['STIC']['STIC_Renewal_Date'] = datetimeparser.parse(data['STIC']['STIC_Renewal_Date']).strftime('%d %b %Y') if data['STIC']['STIC_Renewal_Date'] != "" else "N.A."
+    data['STIC']['STIC_SecG_3'] = datetimeparser.parse(data['STIC']['STIC_SecG_3']).strftime('%d/%m/%Y') if data['STIC']['STIC_SecG_3'] != "" else "N.A."
+    data['STIC']['STIC_SecD_11'] = datetimeparser.parse(data['STIC']['STIC_SecD_11']).strftime('%d %b %Y') if data['STIC']['STIC_SecD_11'] != "" else "N.A."
+    data['STIC']['STIC_SecD_13'] = datetimeparser.parse(data['STIC']['STIC_SecD_13']).strftime('%d/%m/%Y') if data['STIC']['STIC_SecD_13'] != "" else "N.A."
+    data['STIC']['STIC_Sec15_2_1'] = datetimeparser.parse(data['STIC']['STIC_Sec15_2_1']).strftime('%d/%m/%Y') if data['STIC']['STIC_Sec15_2_1'] != "" else "N.A."
     
     template = get_template('risk.html')
     cmd_options = {

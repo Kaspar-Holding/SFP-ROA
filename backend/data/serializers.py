@@ -2342,6 +2342,7 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_BusInt_Type23 = validated_data.get("STIC_BusInt_Type23",instance.STIC_BusInt_Type23) 
         instance.STIC_BusInt_Type23_1 = validated_data.get("STIC_BusInt_Type23_1",instance.STIC_BusInt_Type23_1)
         instance.STIC_BusInt_TotalPremium = validated_data.get("STIC_BusInt_TotalPremium",instance.STIC_BusInt_TotalPremium)
+        instance.STIC_BusInt2_TotalPremium = validated_data.get("STIC_BusInt2_TotalPremium",instance.STIC_BusInt2_TotalPremium)
         instance.STIC_BusInt_Comments = validated_data.get("STIC_BusInt_Comments",instance.STIC_BusInt_Comments) 
         instance.STIC_BusInt_PremisesNumber = validated_data.get("STIC_BusInt_PremisesNumber",instance.STIC_BusInt_PremisesNumber)
         instance.STIC_BusInt_Basis = validated_data.get("STIC_BusInt_Basis",instance.STIC_BusInt_Basis)

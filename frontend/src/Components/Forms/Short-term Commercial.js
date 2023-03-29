@@ -538,7 +538,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_BusInt_Type7 : 2,
         STIC_BusInt_Type8 : 2,
         
-        STIC_BusInt_Type9 : 2,
+        STIC_BusInt_Type9 : "",
         STIC_BusInt_Type9_1 : "",
         STIC_BusInt_Type10 : "",
         STIC_BusInt_Type11 : 2,
@@ -565,7 +565,6 @@ const Short_term_Commercial= ({user}) => {
         STIC_BusInt_Type23_1 : "",
 
         STIC_BusInt_TotalPremium : "",
-        STIC_BusInt_Comments : "",
         STIC_BusInt_PremisesNumber : "",
         STIC_BusInt_Basis : "",
         STIC_BusInt_IndemPer : "",
@@ -901,7 +900,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec17_6 : 2,
         STIC_Sec17_7 : "",
         STIC_Sec17_8 : "",
-        STIC_Sec17_9 :1,
+        STIC_Sec17_9 :"",
         STIC_Sec17_10 : 2,
         STIC_Sec17_Extension1 : 2,
         STIC_Sec17_ExtensionLimit1 : "",
@@ -6635,7 +6634,7 @@ const Short_term_Commercial= ({user}) => {
         
       </td>
       <td>
-        <input spellCheck="true" id="STIC_BusInt_TotalPremium" onChange={(e) => {onChange(e)}} value={FormData['STIC_BusInt_TotalPremium']}  name="STIC_BusInt_TotalPremium"  className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"150px"}} />
+        <input spellCheck="true" id="STIC_BusInt2_TotalPremium" onChange={(e) => {onChange(e)}} value={FormData['STIC_BusInt2_TotalPremium']}  name="STIC_BusInt2_TotalPremium"  className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"150px"}} />
       </td>
       <td></td>
       <td></td>
@@ -7179,11 +7178,12 @@ const Short_term_Commercial= ({user}) => {
       </td>
       <td>
         <div className='row' style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">
-          <p>Ocupation Description</p>
-          <input spellCheck="true" id="STIC_Sec7_5" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec7_5']}  name="STIC_Sec7_5"  className="form-control" placeholder="Ocupation Description:"  aria-describedby="" style={{width:"200px"}} />
+          <p>Occupation Description</p>
         </div>
       </td>
-      <td></td>
+      <td>
+          <input spellCheck="true" id="STIC_Sec7_5" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec7_5']}  name="STIC_Sec7_5"  className="form-control" placeholder="Occupation Description:"  aria-describedby="" style={{width:"200px"}} />
+      </td>
       <td></td>
     </tr>
 
@@ -10262,7 +10262,8 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Business Limitation:</td>
       <td>
-          <label for="cssss">No</label><div className="row col-6 align-items-center">
+          {/* <label for="cssss">No</label> */}
+          <div className="row col-6 align-items-center">
             <div className="col-3">
                 <input className="form-check-input" checked={FormData["STIC_Sec17_10"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_10" name="STIC_Sec17_10" />
             </div>
@@ -12188,14 +12189,14 @@ const Short_term_Commercial= ({user}) => {
                   <div className="col-4">
                       <input spellCheck="true" id="STIC_SecD_5" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecD_5']}  name="STIC_SecD_5"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
                   </div>
-
+{/* 
                   <div className="col-2">
                       <label className="col-form-label">Postal code:</label>
                   </div>
 
                   <div className="col-4">
                     <input spellCheck="true" id="STIC_SecD_6" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecD_6']}  name="STIC_SecD_6"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
+                  </div> */}
               </div>
           </div>
 
@@ -12254,7 +12255,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" id="STIC_SecD_11" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecD_11']}  name="STIC_SecD_11"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input type="date" spellCheck="true" id="STIC_SecD_11" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecD_11']}  name="STIC_SecD_11"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
                   </div>
 
               </div>
@@ -12264,11 +12265,12 @@ const Short_term_Commercial= ({user}) => {
           <div className="col-16" style={{paddingBottom: "0.5%"}}>
               <div className="row g-3 align-items-center">
                   <div className="col-2">
-                      <label className="col-form-label">Sign:</label>
+                    <label className="col-form-label">Sign:</label>
                   </div>
 
                   <div className="col-4">
-                    <input spellCheck="true" id="STIC_SecD_12" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecD_12']}  name="STIC_SecD_12"  className="form-control" placeholder="Sign here"  aria-describedby="" style={{width:"200px"}} />
+                    <label style={{color: 'white'}} className="col-form-label">Sign:</label>
+                    {/* <input spellCheck="true" id="STIC_SecD_12" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecD_12']}  name="STIC_SecD_12"  className="form-control" placeholder="Sign here"  aria-describedby="" style={{width:"200px"}} /> */}
                   </div>
 
                   <div className="col-2">
@@ -12291,15 +12293,15 @@ const Short_term_Commercial= ({user}) => {
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>E. Record of Advice</b></div>
 
     <p>Products considered appropriate to address the needs of the client</p>
-    <input spellCheck="true" id="STIC_SecE_1" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_1']}  name="STIC_SecE_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
+    <textarea maxLength={500} spellCheck="true" id="STIC_SecE_1" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_1']}  name="STIC_SecE_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
     <hr/>
 
     <p>Recommended product</p>
-    <input spellCheck="true" id="STIC_SecE_2" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_2']}  name="STIC_SecE_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
+    <textarea maxLength={500} spellCheck="true" id="STIC_SecE_2" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_2']}  name="STIC_SecE_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
     <hr/>
 
     <p>Reasons why the recommended product is considered the most suitable for the needs of the client:</p>
-    <input spellCheck="true" id="STIC_SecE_3" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_3']}  name="STIC_SecE_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
+    <textarea maxLength={500} spellCheck="true" id="STIC_SecE_3" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_3']}  name="STIC_SecE_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
     <hr/>
 
     <br/>
@@ -12324,7 +12326,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
 
                   <div className="col-4">
-                      <input spellCheck="true" id="STIC_SecG_2" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecG_2']}  name="STIC_SecG_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input spellCheck="true" id="STIC_SecG_2" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecG_2']}  name="STIC_SecG_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
           </div>
@@ -12347,13 +12349,14 @@ const Short_term_Commercial= ({user}) => {
                   <label className="col-form-label">Signature of intermediary:</label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" id="STIC_Branch_Number" onChange={(e) => {onChange(e)}} value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder="Sign here"  aria-describedby="" style={{width:"200px"}} />
+                  <label className="col-form-label" style={{color: "white"}}>Signature of intermediary:</label>
+                {/* <input spellCheck="true" id="STIC_Branch_Number" onChange={(e) => {onChange(e)}} value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  className="form-control" placeholder="Sign here"  aria-describedby="" style={{width:"200px"}} /> */}
               </div>
               <div className="col-2">
                   <label className="col-form-label">Date(dd/mm/yyyy):</label>
               </div>
               <div className="col-4">
-                <input spellCheck="true" id="STIC_Branch_Number" onChange={(e) => {onChange(e)}} value={FormData['STIC_Branch_Number']}  name="STIC_Branch_Number"  type="date" className="form-control" placeholder="Sign here"  aria-describedby="" style={{width:"200px"}} />
+                <input spellCheck="true" id="STIC_SecG_3" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecG_3']}  name="STIC_SecG_3"  type="date" className="form-control" placeholder="Sign here"  aria-describedby="" style={{width:"200px"}} />
               </div>
             </div>
         </div>
