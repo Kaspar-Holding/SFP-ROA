@@ -11,6 +11,8 @@ This project is built on the following Stack
 ### 29 March 2023:
 - 50% of the STIP is now PDF ready
 - Only Short Term Personal and Commerical are remaining
+- Created 578 Accounts
+- Delivered points 17, 18, 19 and 20
 
 ### 28 March 2023:
 - 80% of the form is now PDF ready

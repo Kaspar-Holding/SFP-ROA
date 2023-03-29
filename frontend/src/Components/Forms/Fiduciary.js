@@ -14,7 +14,7 @@ const Fiduciary = ({user}) => {
     advisorId : user['id'],
     formId : state['formId'],
     // clientIdNumber : propsData['clientIdNumber'],
-    fiduciaryWillInPlace : "1",
+    fiduciaryWillInPlace : 0,
     fiduciaryWillUpdationDate : "",
     fiduciaryWillKeepingPlace : "",
     fiduciaryExecutorDetails : "",
@@ -104,12 +104,12 @@ const Fiduciary = ({user}) => {
                                 </div>
                                 <div className="col-1">
                                   <label className="radio-inline">
-                                      <input type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] === "1" ? true : false} onChange={e => onChange(e)} value="1"/>Yes
+                                      <input type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == 1 ? true : false} onChange={e => onChange(e)} value="1"/>Yes
                                   </label>
                                 </div>
                                 <div className="col-1">
                                   <label className="radio-inline">
-                                      <input type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] === "1" ? false : true} onChange={e => onChange(e)} value="0"/>No
+                                      <input type="radio" name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == 0 ? true : false} onChange={e => onChange(e)} value="0"/>No
                                   </label>
                                 </div>
                             </div>

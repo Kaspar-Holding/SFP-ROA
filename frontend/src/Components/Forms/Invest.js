@@ -57,7 +57,7 @@ const Invest = ({user}) =>
         IP_Product_OnC : "",    
         IP_Product_OnC_Percentage : "",    
 
-        IP_SFPSolutionFunds : 0,
+        IP_SFPSolutionFunds : 2,
         IP_SFPSolutionFundsDetails : "",
 
         IP_ItP : "",
@@ -1140,7 +1140,7 @@ const Invest = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData['IP_SFPSolutionFunds'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_SFPSolutionFunds" name="IP_SFPSolutionFunds"/>
+                                    <input className="form-check-input" checked={FormData['IP_SFPSolutionFunds'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_SFPSolutionFunds" name="IP_SFPSolutionFunds"/>
                                 </div>
                                     <div className="col-2">
                                         <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -1151,7 +1151,7 @@ const Invest = ({user}) =>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData["IP_SFPSolutionFunds"] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_SFPSolutionFunds" name="IP_SFPSolutionFunds"/>
+                                    <input className="form-check-input" checked={FormData["IP_SFPSolutionFunds"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_SFPSolutionFunds" name="IP_SFPSolutionFunds"/>
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >

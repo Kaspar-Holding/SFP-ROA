@@ -22,11 +22,11 @@ const RecordOfAdvice = ({user}) => {
         clientAddress : "",
         clientPhoneNumber : "",
         clientDateOfBirth : Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + (Date_Var.getDate())).slice(-2),
-        clientLetterOfIntroduction : "1",
+        clientLetterOfIntroduction : 2,
         clientLetterOfIntroductionReason : "",
-        clientLetterOfIntroductionAccess : "1",
+        clientLetterOfIntroductionAccess : 2,
         clientLetterOfIntroductionAccessReason : "",
-        clientFica : "1",
+        clientFica : 2,
         clientFicaReason : "",
         clientBackgroundInfo : ""
     })
@@ -300,7 +300,7 @@ const RecordOfAdvice = ({user}) => {
                                             </div>
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input className="form-check-input" checked={FormData['clientLetterOfIntroduction'] === 1 ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
+                                                    <input className="form-check-input" checked={FormData['clientLetterOfIntroduction'] === 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -360,7 +360,7 @@ const RecordOfAdvice = ({user}) => {
                                             </div>
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] === 1 ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
+                                                    <input required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] === 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -421,7 +421,7 @@ const RecordOfAdvice = ({user}) => {
                                             </div>
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input required className="form-check-input" checked={FormData['clientFica'] === 1 ? false : true}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientFica"/>
+                                                    <input required className="form-check-input" checked={FormData['clientFica'] === 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientFica"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >

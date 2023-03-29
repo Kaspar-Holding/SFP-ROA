@@ -45,6 +45,31 @@ const AccountDashboard = ({isAuthenticated, user}) => {
         setLoaderVisibility("none")
         setDataVisibility("block")
     }
+    const onloadUsers = async(page_number, orderBy, searchQuery) => {
+        const config = {
+          headers: {
+              'Content-Type' : 'application/json',
+              'Authorization' : `JWT ${localStorage.getItem('access')}`,
+              'Accept' : 'application/json'
+          }
+        }
+        const Body = JSON.stringify({
+            "page_number" : page_number,
+            "order_by" : orderBy,
+            "search_query" : searchQuery
+          })
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/all_users/`, Body,config)
+            setUsersData(response.data['results'])
+            setTotalUsers(response.data['total_records'])
+            setPageLimit(response.data['pagelimit'])
+        //   console.log('Users', JSON.stringify(response.data.Data))
+        } catch (error) {
+          console.log('first', error.response.statusText)
+          setResponseError(error.response.statusText)
+        }
+        
+    }
     const loadUserStats = async() => {
         const config = {
           headers: {
@@ -86,6 +111,13 @@ const AccountDashboard = ({isAuthenticated, user}) => {
         e.preventDefault()
         setTotalUsers(0)
         loadUsers(1, OrderBy, SearchQuery)    
+    }
+    
+    const onFilterChange = (e) => {
+        e.preventDefault()
+        setSearchQuery(e.target.value)
+        setTotalUsers(0)
+        onloadUsers(1, OrderBy, SearchQuery)    
     }
     const onDeleteButtonClick = (e,id) => {
         e.preventDefault()
@@ -178,16 +210,14 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                 <div className="card-body">
                     <div>
                         {/* <label htmlFor="defaultFormControlInput" className="form-label">Name</label> */}
-                        <form onSubmit={(e)=>{onSearchQueryChange(e)}} >
-                            <input
+                        <input
                             type="text"
                             className="form-control"
                             id="defaultFormControlInput"
                             placeholder="Name / Email"
-                            onChange={(e)=>{setSearchQuery(e.target.value)}}                      
+                            onChange={(e)=>{onFilterChange(e)}}                      
                             aria-describedby="defaultFormControlHelp"
-                            />
-                        </form>
+                        />
                     </div>
                 </div>
             </div>
@@ -250,7 +280,7 @@ const AccountDashboard = ({isAuthenticated, user}) => {
             <div className='d-flex justify-content-center'>
                 {
                     TotalUsers > 0 ?
-                    <Pagination  totalRecords={TotalUsers} pageLimit={PageLimit} paginationSearchQuery={SearchQuery} paginationOrderBy={OrderBy} onPageChanged={loadUsers} />
+                    <Pagination  totalRecords={TotalUsers} pageLimit={PageLimit} paginationSearchQuery={SearchQuery} paginationOrderBy={OrderBy} onPageChanged={onloadUsers} />
                     : <></>
                 }
             </div>
