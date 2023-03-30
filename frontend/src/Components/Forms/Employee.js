@@ -560,12 +560,12 @@ const Employee = ({user}) =>
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === "1" ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
+                                        <input type="radio" className="form-check-input"  id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === "1" ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
                                     </label>
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input type="radio" id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === "0" ? true : false} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
+                                        <input type="radio" className="form-check-input"  id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === "0" ? true : false} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
                                     </label>
                                   </div>
                               </div>

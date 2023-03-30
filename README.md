@@ -8,6 +8,10 @@ This project is built on the following Stack
 
 ## Updates
 
+### 30 March 2023:
+- PDF form is ready and deployed
+- Gathered the new Bugs and Change Requests
+
 ### 29 March 2023:
 - 50% of the STIP is now PDF ready
 - Only Short Term Personal and Commerical are remaining

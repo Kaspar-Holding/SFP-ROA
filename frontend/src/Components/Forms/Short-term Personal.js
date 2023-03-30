@@ -691,7 +691,7 @@ const Short_term_Personal = ({user}) => {
         
         STIP_MotorC_RegOwner: "",
         STIP_MotorC_Usage: "",
-        STIP_MotorC_ONParkingOptions : 2,
+        STIP_MotorC_ONParkingOptions : 0,
         STIP_MotorC_ONParking: "",
         STIP_MotorC_ONOtherParking: "",
         STIP_MotorC_CoverType : 2,
@@ -708,7 +708,7 @@ const Short_term_Personal = ({user}) => {
 
         STIP_Trailer_RegOwner: "",
         STIP_Trailer_Type: "",
-        STIP_Trailer_ONParkingOptions : 2,
+        STIP_Trailer_ONParkingOptions : 0,
         STIP_Trailer_ONOtherParking: "",
         STIP_Trailer_SumInsured: "",
         STIP_Trailer_ClaimBonus: 2,
@@ -3436,7 +3436,7 @@ const Short_term_Personal = ({user}) => {
                   <label className="col-form-label">Street name,number and suburb</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true"  id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
+                  <textarea maxLength={500} spellCheck="true"  id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
               </div>
           </div>
       </div>
@@ -4040,7 +4040,7 @@ const Short_term_Personal = ({user}) => {
                   <label className="col-form-label">Street name,number and suburb</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true"  id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
+                  <textarea maxLength={500} spellCheck="true"  id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
               </div>
           </div>
       </div>
@@ -4124,7 +4124,7 @@ const Short_term_Personal = ({user}) => {
       <div><b>Optional cover</b></div>
       <div className="row g-4 align-items-center">
       <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Subsidence and lanslide</label>
+          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Subsidence and landslide</label>
       </div>
         <div className="col-8">
           <div className="row">
@@ -4318,7 +4318,7 @@ const Short_term_Personal = ({user}) => {
                         <label className="col-form-label">Street name,number and suburb</label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
+                        <textarea maxLength={500} spellCheck="true"  id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
                     </div>
                 </div>
             </div>
@@ -4402,7 +4402,7 @@ const Short_term_Personal = ({user}) => {
 
         <div className="row g-4 align-items-center">
       <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Subsidence and lanslide</label>
+          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Subsidence and landslide</label>
       </div>
         <div className="col-8">
           <div className="row">
@@ -5174,7 +5174,7 @@ const Short_term_Personal = ({user}) => {
                     <div className="row">
                     <div className="row col-6 align-items-center">
                           <div className="col-3">
-                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC3" name="STIP_Vehicle_AC3" />
+                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC3" name="STIP_Vehicle_AC3" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5263,6 +5263,8 @@ const Short_term_Personal = ({user}) => {
                   </div>
 
               </div>
+              <br/>
+              <br/>
               <div className="" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-4">
@@ -6087,7 +6089,7 @@ const Short_term_Personal = ({user}) => {
 
       <br/>
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
-        <input spellCheck="true"  id="STIP_PersonalLL_Comments" name='STIP_PersonalLL_Comments' value={FormData['STIP_PersonalLL_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} />
+        <textare maxLength={500} spellCheck="true"  id="STIP_PersonalLL_Comments" name='STIP_PersonalLL_Comments' value={FormData['STIP_PersonalLL_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} />
 
 
         <br/>
@@ -6285,7 +6287,8 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label">Signature of intermediary</label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_DbyI_Signature" name='IP_InvestmentTerm' value={FormData['STIP_DbyI_Signature']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Sign here"  aria-describedby="" />
+                      <label className="col-form-label" style={{color: 'white'}}>Signature of intermediary</label>
+                      {/* <input spellCheck="true"  id="STIP_DbyI_Signature" name='IP_InvestmentTerm' value={FormData['STIP_DbyI_Signature']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Sign here"  aria-describedby="" /> */}
                   </div>
               </div>
           </div>

@@ -476,7 +476,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Miscellaneous1_Insured : "",
         STIC_Miscellaneous2_Insured : "",
 
-        STIC_Earthquake_Insured : 0,
+        STIC_Earthquake_Insured : 2,
         STIC_Malicious_Damage_Insured : 2,
         STIC_Special_Insured : 2,
         STIC_LeakFull_Insured : 2,
@@ -1627,11 +1627,11 @@ const Short_term_Commercial= ({user}) => {
                                       <div className="row">
                                           <div className="row col-2 align-items-center">
                                               <div className="col-2">
-                                                  <input className="form-check-input" checked={FormData['STIC_General_Cancelled'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_General_Cancelled" name="STIC_General_Cancelled" />
+                                                  <input className="form-check-input" checked={FormData['STIC_General_Cancelled'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_General_Cancelled" name="STIC_General_Cancelled" />
                                               </div>
                                               <div className="col-2">
                                                   <label className="form-check-label" htmlFor="STIC_General_Cancelled" >
-                                                      No
+                                                      Yes
                                                   </label>
                                               </div>
                                           </div>
@@ -1641,7 +1641,7 @@ const Short_term_Commercial= ({user}) => {
                                               </div>
                                               <div className="col-2">
                                                   <label className="form-check-label" htmlFor="STIC_General_Cancelled" >
-                                                      Yes
+                                                      No
                                                   </label>
                                               </div>
                                           </div>
@@ -4643,7 +4643,7 @@ const Short_term_Commercial= ({user}) => {
                                       </div>
                                       <div className="row col-4 align-items-center">
                                           <div className="col-3">
-                                              <input className="form-check-input" checked={FormData['STIC_SnLComprehensive_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SnLComprehensive_Insured" name="STIC_SnLComprehensive_Insured" />
+                                              <input className="form-check-input" checked={FormData['STIC_SnLComprehensive_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SnLComprehensive_Insured" name="STIC_SnLComprehensive_Insured" />
                                           </div>
                                           <div className="col-3">
                                               <label className="form-check-label"  >
@@ -8262,7 +8262,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input className="form-check-input" checked={FormData["STIC_Sec11_1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec11_1" name="STIC_Sec11_2" />
+                <input className="form-check-input" checked={FormData["STIC_Sec11_1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec11_1" name="STIC_Sec11_1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >

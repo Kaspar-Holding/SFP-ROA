@@ -471,7 +471,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Liquidity'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Liquidity" name="IP_Liquidity" />
+                                <input className="form-check-input" checked={FormData['IP_Liquidity'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Liquidity" name="IP_Liquidity" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -482,7 +482,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Liquidity'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Liquidity" name="IP_Liquidity" />
+                                <input className="form-check-input" checked={FormData['IP_Liquidity'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Liquidity" name="IP_Liquidity" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -527,7 +527,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Type'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Type" name="IP_Type" />
+                                <input className="form-check-input" checked={FormData['IP_Type'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Type" name="IP_Type" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -538,7 +538,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Type'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Type" name="IP_Type" />
+                                <input className="form-check-input" checked={FormData['IP_Type'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Type" name="IP_Type" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -584,7 +584,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_PremiumType'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_PremiumType" name="IP_PremiumType"/>
+                                <input className="form-check-input" checked={FormData['IP_PremiumType'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_PremiumType" name="IP_PremiumType"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -595,7 +595,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_PremiumType'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_PremiumType" name="IP_PremiumType"/>
+                                <input className="form-check-input" checked={FormData['IP_PremiumType'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_PremiumType" name="IP_PremiumType"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -640,7 +640,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
+                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
                             </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -651,7 +651,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
+                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -861,7 +861,7 @@ const Invest = ({user}) =>
             <h5 className="text-start " ><b>SECTION D:</b></h5> 
             <h6 className="text-start " style={{ color: "#14848A"}} ><b>Alternative Solutions Considered</b></h6>
 
-            <p>The following solutions were presented to you for consideration but were not value="0" selected for the following reasons:</p>
+            <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
 
             {
                 backgroundInfoVisibility4 ? 
@@ -870,7 +870,7 @@ const Invest = ({user}) =>
                     {/* <p>Discuss the outcome of the FNA</p><br /> */}
                         <ul>
                             <li>
-                            1. Identify the type of product or product provider which was considered but not value="0" selected and motivate..<br />
+                            1. Identify the type of product or product provider which was considered but not selected and motivate..<br />
                             </li>
                         
                         </ul>
@@ -885,7 +885,7 @@ const Invest = ({user}) =>
                 onFocus={backgroundInfo_onFocus4}
                 onBlur={backgroundInfo_onBlur4}
                 placeholder={
-                `1. Identify the type of product or product provider which was considered but not value="0" selected and motivate.. `}  aria-describedby=""  ></textarea>
+                `1. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea>
 
             <hr/>
 
@@ -896,7 +896,7 @@ const Invest = ({user}) =>
                     {/* <p>Discuss the outcome of the FNA</p><br /> */}
                         <ul>
                             <li>
-                            2. Identify the type of product or product provider which was considered but not value="0" selected and motivate..<br />
+                            2. Identify the type of product or product provider which was considered but not selected and motivate..<br />
                             </li>
                         
                         </ul>
@@ -911,7 +911,7 @@ const Invest = ({user}) =>
                 onFocus={backgroundInfo_onFocus5}
                 onBlur={backgroundInfo_onBlur5}
                 placeholder={
-            `2. Identify the type of product or product provider which was considered but not value="0" selected and motivate.. `}  aria-describedby=""  ></textarea>
+            `2. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea>
 
             <hr/>
 
@@ -922,7 +922,7 @@ const Invest = ({user}) =>
                     {/* <p>Discuss the outcome of the FNA</p><br /> */}
                         <ul>
                             <li>
-                            3. Identify the type of product or product provider which was considered but not value="0" selected and motivate..<br />
+                            3. Identify the type of product or product provider which was considered but not selected and motivate..<br />
                             </li>
                         
                         </ul>
@@ -937,7 +937,7 @@ const Invest = ({user}) =>
                 onFocus={backgroundInfo_onFocus6}
                 onBlur={backgroundInfo_onBlur6}
                 placeholder={
-            `3. Identify the type of product or product provider which was considered but not value="0" selected and motivate.. `}  aria-describedby=""  ></textarea>
+            `3. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea>
 
 
 
@@ -1270,12 +1270,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" checked={FormData["IP_ItP_FundProvided"] === 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" checked={FormData["IP_ItP_FundProvided"] == 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" checked={FormData["IP_ItP_FundDiscussed"] === 1 ? true : false} name="IP_ItP_FundDiscussed" onChange={(e)=>{FormData["IP_ItP_FundDiscussed"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" checked={FormData["IP_ItP_FundDiscussed"] == 1 ? true : false} name="IP_ItP_FundDiscussed" onChange={(e)=>{FormData["IP_ItP_FundDiscussed"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
@@ -1296,12 +1296,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided1"] === 1 ? true : false} name="IP_ItP_FundProvided1" onChange={(e)=>{FormData["IP_ItP_FundProvided1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided1"] == 1 ? true : false} name="IP_ItP_FundProvided1" onChange={(e)=>{FormData["IP_ItP_FundProvided1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed1"] === 1 ? true : false} name="IP_ItP_FundDiscussed1" onChange={(e)=>{FormData["IP_ItP_FundDiscussed1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed1"] == 1 ? true : false} name="IP_ItP_FundDiscussed1" onChange={(e)=>{FormData["IP_ItP_FundDiscussed1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
@@ -1322,12 +1322,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided2"] === 1 ? true : false} name="IP_ItP_FundProvided2" onChange={(e)=>{FormData["IP_ItP_FundProvided2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided2"] == 1 ? true : false} name="IP_ItP_FundProvided2" onChange={(e)=>{FormData["IP_ItP_FundProvided2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed2"] === 1 ? true : false} name="IP_ItP_FundDiscussed2" onChange={(e)=>{FormData["IP_ItP_FundDiscussed2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed2"] == 1 ? true : false} name="IP_ItP_FundDiscussed2" onChange={(e)=>{FormData["IP_ItP_FundDiscussed2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
@@ -1348,12 +1348,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided3"] === 1 ? true : false} name="IP_ItP_FundProvided3" onChange={(e)=>{FormData["IP_ItP_FundProvided3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided3"] == 1 ? true : false} name="IP_ItP_FundProvided3" onChange={(e)=>{FormData["IP_ItP_FundProvided3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed3"] === 1 ? true : false} name="IP_ItP_FundDiscussed3" onChange={(e)=>{FormData["IP_ItP_FundDiscussed3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed3"] == 1 ? true : false} name="IP_ItP_FundDiscussed3" onChange={(e)=>{FormData["IP_ItP_FundDiscussed3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
@@ -1374,12 +1374,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided4"] === 1 ? true : false} name="IP_ItP_FundProvided4" onChange={(e)=>{FormData["IP_ItP_FundProvided4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided4"] == 1 ? true : false} name="IP_ItP_FundProvided4" onChange={(e)=>{FormData["IP_ItP_FundProvided4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed4"] === 1 ? true : false} name="IP_ItP_FundDiscussed4" onChange={(e)=>{FormData["IP_ItP_FundDiscussed4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed4"] == 1 ? true : false} name="IP_ItP_FundDiscussed4" onChange={(e)=>{FormData["IP_ItP_FundDiscussed4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
@@ -1400,12 +1400,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided5"] === 1 ? true : false} name="IP_ItP_FundProvided5" onChange={(e)=>{FormData["IP_ItP_FundProvided5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided5"] == 1 ? true : false} name="IP_ItP_FundProvided5" onChange={(e)=>{FormData["IP_ItP_FundProvided5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed5"] === 1 ? true : false} name="IP_ItP_FundDiscussed5" onChange={(e)=>{FormData["IP_ItP_FundDiscussed5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed5"] == 1 ? true : false} name="IP_ItP_FundDiscussed5" onChange={(e)=>{FormData["IP_ItP_FundDiscussed5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td> 
                 </tr>
@@ -1426,12 +1426,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided6"] === 1 ? true : false} name="IP_ItP_FundProvided6" onChange={(e)=>{FormData["IP_ItP_FundProvided6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided6"] == 1 ? true : false} name="IP_ItP_FundProvided6" onChange={(e)=>{FormData["IP_ItP_FundProvided6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed6"] === 1 ? true : false} name="IP_ItP_FundDiscussed6" onChange={(e)=>{FormData["IP_ItP_FundDiscussed6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed6"] == 1 ? true : false} name="IP_ItP_FundDiscussed6" onChange={(e)=>{FormData["IP_ItP_FundDiscussed6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>      
                 </tr>
@@ -1452,12 +1452,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided7"] === 1 ? true : false} name="IP_ItP_FundProvided7" onChange={(e)=>{FormData["IP_ItP_FundProvided7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundProvided7"] == 1 ? true : false} name="IP_ItP_FundProvided7" onChange={(e)=>{FormData["IP_ItP_FundProvided7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed7"] === 1 ? true : false} name="IP_ItP_FundDiscussed7" onChange={(e)=>{FormData["IP_ItP_FundDiscussed7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={FormData["IP_ItP_FundDiscussed7"] == 1 ? true : false} name="IP_ItP_FundDiscussed7" onChange={(e)=>{FormData["IP_ItP_FundDiscussed7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
             </tr>
@@ -1495,11 +1495,9 @@ const Invest = ({user}) =>
 
         <hr/>
         <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
-
-        {(() => {
+        {
           
-          if(value==1){
-            return (<>
+          FormData['IP_ProductTaken']==1 ? <>
             <p>
                 <b>Tax Implications:</b><br/>
                 There are significant tax benefits afforded to Endowment plan investors. With an endowment plan the life insurance company will pay tax on your behalf at a rate of 30%. At maturity date the proceeds of this investment will be tax free.
@@ -1553,11 +1551,8 @@ const Invest = ({user}) =>
             </p>
 
 
-            </>);
-          }
-
-          else if (value==2) {
-              return (<>
+            </> : FormData['IP_ProductTaken']==2 ?
+                <>
                     <p><b>Tax Implications:</b><br/>
                     There are significant tax benefits afforded to RA investors. You are permitted to deduct up to 27.5% of your annual taxable incomes (subject to  R350 000 per year maximum). Contributions in excess of this amount may deducted in the following tax year or at retirement. In addition to this, no income tax or capital gain tax is charged on the investment returns within an RA. Also, the funds housed in your RA do not form part of your estate, which means that this money will not be subject to executors fees or estate duty (except the excess contributions made). At retirement, you will be permitted to withdraw up to 1/3 of the value of the retirement annuity(s) of which the first R500 000 of the total withdrawal is tax-free subject to there being no previous withdrawals from any retirement fund.</p>
                     
@@ -1581,51 +1576,46 @@ const Invest = ({user}) =>
 
                     <p><b>At death</b><br/>
                     You may nominate beneficiaries. However, the trustees of the fund will make the final decision in terms of equitable distribution of the funds. The trustees will take your wishes into account but are not bound by them.</p>
-              </>);
-          }
+              </> 
+              : FormData['IP_ProductTaken']==3 ? 
+              <>
+                <p>
+                    <b>Tax Implications:</b><br/>
+                    The investment will not attract any tax  if contributions are kept within the annual limits which are R36 000 p.a and R500 000 life time. Any excess contributions will be taxed at 40%. 
+                </p>
 
-          else if (value==3) {
-            return (<>
-            <p>
-                <b>Tax Implications:</b><br/>
-                The investment will not attract any tax  if contributions are kept within the annual limits which are R36 000 p.a and R500 000 life time. Any excess contributions will be taxed at 40%. 
-            </p>
+                <p>
+                    <b>Liquidity:</b><br/>
+                    Planner disclose 
+                </p>
 
-            <p>
-                <b>Liquidity:</b><br/>
-                Planner disclose 
-            </p>
+                <p>
+                    <b>Termination Penalties:</b><br/>
+                    Planner to disclosed
+                </p>
 
-            <p>
-                <b>Termination Penalties:</b><br/>
-                Planner to disclosed
-            </p>
+                <p>
+                    <b>Gurantees:</b><br/>
+                    The product does not offer any guarantees. Invested funds will be subject to market fluctuations and may be exposed to capital losses.
+                </p>
 
-            <p>
-                <b>Gurantees:</b><br/>
-                The product does not offer any guarantees. Invested funds will be subject to market fluctuations and may be exposed to capital losses.
-            </p>
+                <p>
+                    <b>Implication of Fees:</b><br/> 
+                    Please note there will be fees levied on the investment, these fees will result in the reduction of the returns generated by the investment and in the event of low growth may also have a negative impact on the fund value. We have also discussed the EAC which is an illustration of the maximum total cost that may be levied on your investment.
+                </p>
 
-            <p>
-                <b>Implication of Fees:</b><br/> 
-                Please note there will be fees levied on the investment, these fees will result in the reduction of the returns generated by the investment and in the event of low growth may also have a negative impact on the fund value. We have also discussed the EAC which is an illustration of the maximum total cost that may be levied on your investment.
-            </p>
+                <p>
+                    <b>Legislative Restrictions:</b><br/> 
+                    There are limits to the annual and life time contributions on this investment. You may have multiple tax free savings accounts but the annual and lifetime limits limits are applied per individual and not per investment.In the event that you make a withdrawal any subsequent replacement of funds above the limit will attract tax at 40%.
+                </p>
 
-            <p>
-                <b>Legislative Restrictions:</b><br/> 
-                There are limits to the annual and life time contributions on this investment. You may have multiple tax free savings accounts but the annual and lifetime limits limits are applied per individual and not per investment.In the event that you make a withdrawal any subsequent replacement of funds above the limit will attract tax at 40%.
-            </p>
+                <p>
+                    <b>Death Benefit</b><br/>
+                    Planner to disclose
+                </p>
 
-            <p>
-                <b>Death Benefit</b><br/>
-                Planner to disclose
-            </p>
-
-            </>);
-          }
-
-          else if (value==4) {
-            return (<>
+                </> : FormData['IP_ProductTaken']==4 ?
+                <>
                 <p>
                     <b>Tax Implications:</b><br/>
                     Your investment will be taxed in accordance with your marginal tax rate. This investment will attract capital gains tax when you change funds or when funds are withdrawn.
@@ -1660,11 +1650,8 @@ const Invest = ({user}) =>
                     <b>At Death</b><br/>
                     You cannot appoint a beneficiary. In the event of death this benefit will pay into the your Estate. The investment will be an asset in your estate and will attract estate duty and executors’ fees. The investment will be distributed in accordance with your instructions in the will.
                 </p>
-            </>);
-          }
-
-          else if (value==5) {
-            return (<>
+            </> : FormData['IP_ProductTaken']==5 ?
+            <>
 
                 <p>
                     <b>Tax Implications:</b><br/>
@@ -1702,11 +1689,7 @@ const Invest = ({user}) =>
                 <p>
                     Please not if death is to occur after the guarantee period no income will be paid to your nominated beneficiary.
                 </p>
-        </>);
-          }
-
-          else if (value==6) {
-            return (<>
+        </> : FormData['IP_ProductTaken']==6 ?<>
 
                 <p>
                     <b>Tax Implications:</b><br/>
@@ -1747,9 +1730,8 @@ const Invest = ({user}) =>
                     In the event of death the investment will pay-out directly to your nominated beneficiary and will not form part of your estate or attract any estate taxes. The beneficiary will be presented with the option to transfer the funds into a new annuity in their name or alternatively take the funds in cash which will attract taxes.The beneficiary also has an option the select the alternatives as a combination.  
                 </p>
 
-           </>);
-          }
-      })()}
+           </> : <></>
+    }
       
       <div className="container1">
             <div className="icon1 update">

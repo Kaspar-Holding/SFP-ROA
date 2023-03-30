@@ -386,7 +386,7 @@ const RiskFactors = ({user}) => {
             RF_High_Transaction_Reason : "0",
             RF_Transaction_Frequency : "0",
             RF_Transaction_Value : "0",
-            RF_Currency_Value : "0",
+            RF_Currency_Value : "ZAR",
             RF_Transaction_Geography : "0",
             RF_Funds_Jurisdiction : "0",
             RF_Delivery_Channel : "0",
@@ -526,6 +526,53 @@ const RiskFactors = ({user}) => {
             updateFromStatus(formStatus)
             // window.location.reload();
         }
+
+        
+        const DownloadDRAPDF = async(e) => {
+            e.preventDefault()
+            const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`
+            }
+            }
+            const Body = JSON.stringify({
+                "formId" : state['formId'],
+                "dra_status" : true,
+                "advisorId" : user['id']
+            })
+            try {
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/printing/downloadPDF/`, Body,config)
+                const url = `${process.env.REACT_APP_BACKEND_URL}/${response.data['file']}`
+                window.open(url, '_blank').focus()
+            } catch (error) {
+            // console.log('first', error)
+            }
+        }
+        const DownloadWithoutDRAPDF = async(e) => {
+            e.preventDefault()
+            const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`
+            }
+            }
+            const Body = JSON.stringify({
+                "formId" : state['formId'],
+                "dra_status" : false,
+                "advisorId" : user['id']
+            })
+            try {
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/printing/downloadPDF/`, Body,config)
+                const url = `${process.env.REACT_APP_BACKEND_URL}/${response.data['file']}`
+                window.open(url, '_blank').focus()
+            } catch (error) {
+            // console.log('first', error)
+            }
+        }
+
         useEffect(() => {
             if (user){
                 LoadRFForm(user['id'],state['formId'])
@@ -559,11 +606,13 @@ const RiskFactors = ({user}) => {
                                         </form>
                                     </div>                        
                                     <div className='col-4'>
-                                        <NavLink to={{pathname:"/printform"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-11'>Print</NavLink>
-                                    
+                                        {/* <NavLink to={{pathname:"/printform"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-11'>Print</NavLink> */}
+                                        <button type='submit' onClick={(e)=>{DownloadDRAPDF(e)}} className="btn btn-success col-11">Print</button><br/>
+
                                     </div> 
                                     <div className='col-4'>
-                                        <NavLink to={{pathname:"/printformclient"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-11'>Print For Client</NavLink>
+                                        {/* <NavLink to={{pathname:"/printformclient"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-11'>Print For Client</NavLink> */}
+                                        <button type='submit' onClick={(e)=>{DownloadWithoutDRAPDF(e)}} className="btn btn-success col-11">Print For Client</button><br/>
                                     </div> 
                                 </div>        
                             </div>                   
@@ -5305,15 +5354,15 @@ const RiskFactors = ({user}) => {
 
             <div className="col-2">
                 <select className="text-start form-select" name='RF_Product_Name' id='RF_Product_Name' value={FormData['RF_Product_Name']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
-                    <option value="0" selected>Select Option</option>
-                    <option value="1">Access to funds or benefits restricted to specific contractual events (specified termination, uncertain insured event)</option>
+                <option value="0" selected>Select Option</option>
+                    {/* <option value="1">Access to funds or benefits restricted to specific contractual events (specified termination, uncertain insured event)</option>
                     <option value="2">Access to primary benefits only at claim stage</option>
                     <option value="3">Access to primary benefits only at claim stage, but have access to cash during the lifetime of the product</option>
                     <option value="4">Access to the values may be limited by legislation</option>
                     <option value="5">Accumulation of cash values</option>
-                    <option value="6">AAdministrative service provided</option>
+                    <option value="6">AAdministrative service provided</option> */}
                     <option value="7">Advisory or intermediary services only with commission based inflow</option>
-                    <option value="8">Allows for restricted number of withdrawals</option>
+                    {/* <option value="8">Allows for restricted number of withdrawals</option>
                     <option value="9">Benefits governed by specific regulatory- and tax regimes</option>
                     <option value="10">Can be accessed without any restrictions by law or product provider</option>
                     <option value="11">Can be offered as security and be transferred to another person (ceded)</option>
@@ -5334,7 +5383,7 @@ const RiskFactors = ({user}) => {
                     <option value="26">Third Party EFT services provided</option>
                     <option value="27">Third Party non-financial services provided</option>
                     <option value="28">Transparency is limited in respect of source of funds</option>
-                    <option value="29">Unlimited contributions and withdrawals</option>
+                    <option value="29">Unlimited contributions and withdrawals</option> */}
                 </select>  
             </div>
 
@@ -5454,7 +5503,8 @@ const RiskFactors = ({user}) => {
             </div>
 
             <div className="col-2">
-                <input spellCheck="true" id="RF_Product_Category" name='RF_Product_Category' value={FormData['RF_Product_Category']} className="form-control" onChange={(e)=>{onChange(e)}} placeholder=""  aria-describedby="" />
+                <label className="col-form-label">Advisory services: non financial</label>
+                {/* <input spellCheck="true" id="RF_Product_Category" name='RF_Product_Category' value={FormData['RF_Product_Category']} className="form-control" onChange={(e)=>{onChange(e)}} placeholder=""  aria-describedby="" /> */}
             </div>
 
 

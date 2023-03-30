@@ -718,7 +718,7 @@ const AssuranceRisk = ({user}) =>
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_ComDisc_AuthorizedPerson'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_ComDisc_AuthorizedPerson" name="AR_ComDisc_AuthorizedPerson" />
+                                <input className="form-check-input" checked={FormData['AR_ComDisc_AuthorizedPerson']== 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_ComDisc_AuthorizedPerson" name="AR_ComDisc_AuthorizedPerson" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -728,7 +728,7 @@ const AssuranceRisk = ({user}) =>
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_ComDisc_AuthorizedPerson'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_ComDisc_AuthorizedPerson" name="AR_ComDisc_AuthorizedPerson" />
+                                <input className="form-check-input" checked={FormData['AR_ComDisc_AuthorizedPerson'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_ComDisc_AuthorizedPerson" name="AR_ComDisc_AuthorizedPerson" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -761,7 +761,7 @@ const AssuranceRisk = ({user}) =>
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_ComDisc_Authority'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_ComDisc_Authority" name="AR_ComDisc_Authority" />
+                                <input className="form-check-input" checked={FormData['AR_ComDisc_Authority']== 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_ComDisc_Authority" name="AR_ComDisc_Authority" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -771,7 +771,7 @@ const AssuranceRisk = ({user}) =>
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_ComDisc_Authority'] === 0  ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_ComDisc_Authority" name="AR_ComDisc_Authority" />
+                                <input className="form-check-input" checked={FormData['AR_ComDisc_Authority'] == 0  ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_ComDisc_Authority" name="AR_ComDisc_Authority" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -806,7 +806,7 @@ const AssuranceRisk = ({user}) =>
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_FICA'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_FICA" name="AR_FICA"/>
+                                <input className="form-check-input" checked={FormData['AR_FICA']== 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_FICA" name="AR_FICA"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -816,7 +816,7 @@ const AssuranceRisk = ({user}) =>
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_FICA'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_FICA" name="AR_FICA"/>
+                                <input className="form-check-input" checked={FormData['AR_FICA'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_FICA" name="AR_FICA"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -851,7 +851,7 @@ const AssuranceRisk = ({user}) =>
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_RepPrs_Taken'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_RepPrs_Taken" name="AR_RepPrs_Taken"/>
+                                <input className="form-check-input" checked={FormData['AR_RepPrs_Taken']== 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_RepPrs_Taken" name="AR_RepPrs_Taken"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -861,7 +861,7 @@ const AssuranceRisk = ({user}) =>
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_RepPrs_Taken'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Taken" name="AR_RepPrs_Taken"/>
+                                <input className="form-check-input" checked={FormData['AR_RepPrs_Taken'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Taken" name="AR_RepPrs_Taken"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -894,7 +894,7 @@ const AssuranceRisk = ({user}) =>
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_RepPrs_Explained'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value={1} id="AR_RepPrs_Explained" name="AR_RepPrs_Explained"/>
+                                <input className="form-check-input" checked={FormData['AR_RepPrs_Explained']== 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value={1} id="AR_RepPrs_Explained" name="AR_RepPrs_Explained"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -904,7 +904,7 @@ const AssuranceRisk = ({user}) =>
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_RepPrs_Explained'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value={0} id="AR_RepPrs_Explained" name="AR_RepPrs_Explained"/>
+                                <input className="form-check-input" checked={FormData['AR_RepPrs_Explained'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value={0} id="AR_RepPrs_Explained" name="AR_RepPrs_Explained"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -937,7 +937,7 @@ const AssuranceRisk = ({user}) =>
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_RepPrs_Cancelled'] === 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_RepPrs_Cancelled" name="AR_RepPrs_Cancelled"/>
+                                <input className="form-check-input" checked={FormData['AR_RepPrs_Cancelled']== 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="AR_RepPrs_Cancelled" name="AR_RepPrs_Cancelled"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -947,7 +947,7 @@ const AssuranceRisk = ({user}) =>
                         </div>
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AR_RepPrs_Cancelled'] === 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Cancelled" name="AR_RepPrs_Cancelled"/>
+                                <input className="form-check-input" checked={FormData['AR_RepPrs_Cancelled'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="AR_RepPrs_Cancelled" name="AR_RepPrs_Cancelled"/>
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >

@@ -563,7 +563,7 @@ const AssuranceInvestment = ({user}) =>
                     <div className="row">
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AI_PremiumType'] === 1 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="1" />
+                                <input className="form-check-input" checked={FormData['AI_PremiumType'] == 1 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="1" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn3" >
@@ -574,7 +574,7 @@ const AssuranceInvestment = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-2 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AI_PremiumType'] === 0 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="0" />
+                                <input className="form-check-input" checked={FormData['AI_PremiumType'] == 0 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="0" />
                             </div>
                             <div className="col-2">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn3" >

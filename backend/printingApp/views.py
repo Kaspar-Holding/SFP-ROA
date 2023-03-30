@@ -43,9 +43,9 @@ def pdfkitapi(request):
     response['Content-Disposition'] = 'attachment; filename="pperson_list_pdf.pdf"'
     return HttpResponse("Generated") 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def wkhtmltopdfapi(request):
-    data = RiskFactors.objects.filter(id=26).values().first()
+    data = RiskFactors.objects.filter(id=request.data['formId']).values().first()
     data['RF_Date'] = data['RF_Date'].strftime("%d %B %Y")
     val1, val2, val3, val4, val5, val6, val7, val8, val9, val10, val11 = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0
     if data['RF_Occupation'] == "1" or data['RF_Occupation'] == "2" or data['RF_Occupation'] == "3" or data['RF_Occupation'] == "5":
@@ -410,51 +410,51 @@ def wkhtmltopdfapi(request):
     
     val13, val14, val15, val16, val17, val18, val19, val20 = 0, 0, 0, 0, 0, 0, 0, 0 
 
-    if(int(data['RF_Transaction_Method']) == 1 or int(data['RF_Transaction_Method']) == 4 or int(data['RF_Transaction_Method']) == 5 or int(data['RF_Transaction_Method']) == 7 or int(data['RF_Transaction_Method']) == 8):
+    if(data['RF_Transaction_Method'] and (int(data['RF_Transaction_Method']) == 1 or int(data['RF_Transaction_Method']) == 4 or int(data['RF_Transaction_Method']) == 5 or int(data['RF_Transaction_Method']) == 7 or int(data['RF_Transaction_Method']) == 8)):
         val13=4
-    if(int(data['RF_Transaction_Method']) == 2 or int(data['RF_Transaction_Method']) == 11):
+    if(data['RF_Transaction_Method'] and (int(data['RF_Transaction_Method']) == 2 or int(data['RF_Transaction_Method']) == 11)):
         val13=6
-    if(int(data['RF_Transaction_Method']) == 3 or int(data['RF_Transaction_Method']) == 6 or int(data['RF_Transaction_Method']) == 9 or int(data['RF_Transaction_Method']) == 10 or int(data['RF_Transaction_Method']) == 12):
+    if(data['RF_Transaction_Method'] and (int(data['RF_Transaction_Method']) == 3 or int(data['RF_Transaction_Method']) == 6 or int(data['RF_Transaction_Method']) == 9 or int(data['RF_Transaction_Method']) == 10 or int(data['RF_Transaction_Method']) == 12)):
         val13=2
-    if(data['RF_Transaction_Reason'] == 1):
+    if(data['RF_Transaction_Reason'] and data['RF_Transaction_Reason'] == 1):
         val14=2  
-    if(data['RF_Transaction_Reason']!=0):
+    if(data['RF_Transaction_Reason'] and data['RF_Transaction_Reason'] !=0):
         val14=1
-    if(int(data['RF_High_Transaction_Reason']) == 1):
+    if(data['RF_High_Transaction_Reason'] and int(data['RF_High_Transaction_Reason']) == 1):
         val15=6
-    if(int(data['RF_High_Transaction_Reason']) == 2):
+    if(data['RF_High_Transaction_Reason'] and int(data['RF_High_Transaction_Reason']) == 2):
         val15=2
-    if(int(data['RF_Transaction_Frequency']) == 1 or int(data['RF_Transaction_Frequency']) == 2 or int(data['RF_Transaction_Frequency']) == 3):
+    if(data['RF_Transaction_Frequency'] and (int(data['RF_Transaction_Frequency']) == 1 or int(data['RF_Transaction_Frequency']) == 2 or int(data['RF_Transaction_Frequency']) == 3)):
         val16=3
-    if(int(data['RF_Transaction_Frequency']) == 4):
+    if(data['RF_Transaction_Frequency'] and (int(data['RF_Transaction_Frequency']) == 4)):
         val16=1
-    if(int(data['RF_Transaction_Geography']) == 1):
+    if(data['RF_Transaction_Geography'] and (int(data['RF_Transaction_Geography']) == 1)):
         val17=2
-    if(int(data['RF_Transaction_Geography']) == 2 or int(data['RF_Transaction_Geography']) == 3):
+    if(data['RF_Transaction_Geography'] and (int(data['RF_Transaction_Geography']) == 2 or int(data['RF_Transaction_Geography']) == 3)):
         val17=1
-    if(int(data['RF_Transaction_Geography']) == 1):
+    if(data['RF_Transaction_Geography'] and (int(data['RF_Transaction_Geography']) == 1)):
         val18=3
-    if(int(data['RF_Transaction_Geography']) == 2 or int(data['RF_Transaction_Geography']) == 5 or int(data['RF_Transaction_Geography']) == 6):
+    if(data['RF_Transaction_Geography'] and (int(data['RF_Transaction_Geography']) == 2 or int(data['RF_Transaction_Geography']) == 5 or int(data['RF_Transaction_Geography']) == 6)):
         val18=2
-    if(int(data['RF_Transaction_Geography']) == 3 or int(data['RF_Transaction_Geography']) == 4):
+    if(data['RF_Transaction_Geography'] and (int(data['RF_Transaction_Geography']) == 3 or int(data['RF_Transaction_Geography']) == 4)):
         val18=1
-    if(int(data['RF_Linked_Party_Acting']) == 1 or int(data['RF_Linked_Party_Acting']) == 2):
+    if(data['RF_Linked_Party_Acting'] and (int(data['RF_Linked_Party_Acting']) == 1 or int(data['RF_Linked_Party_Acting']) == 2)):
         val19=1
-    if(int(data['RF_Linked_Party_Acting']) == 3):
+    if(data['RF_Linked_Party_Acting'] and (int(data['RF_Linked_Party_Acting']) == 3)):
         val19=3
-    if(int(data['RF_Linked_Party_Paying']) == 1 ):
+    if(data['RF_Linked_Party_Paying'] and (int(data['RF_Linked_Party_Paying']) == 1 )):
         val20=0
-    if(int(data['RF_Linked_Party_Paying']) == 2 or int(data['RF_Linked_Party_Paying']) == 3):
+    if(data['RF_Linked_Party_Paying'] and (int(data['RF_Linked_Party_Paying']) == 2 or int(data['RF_Linked_Party_Paying']) == 3)):
         val20=3
     val4n = 0
     
-    data['RF_Transaction_Flow_id'] = int(data['RF_Transaction_Flow'])
+    data['RF_Transaction_Flow_id'] = int(data['RF_Transaction_Flow']) if data['RF_Transaction_Flow'] else 0
     data['RF_Transaction_Flow'] = RF_Transaction_Flow[int(data['RF_Transaction_Flow_id'])]
-    data['RF_Transaction_Method_id'] = int(data['RF_Transaction_Method'])
+    data['RF_Transaction_Method_id'] = int(data['RF_Transaction_Method']) if data['RF_Transaction_Method'] else 0
     data['RF_Transaction_Method'] = Transaction_Method[data['RF_Transaction_Method_id']]
-    data['RF_Transaction_Reason_id'] = int(data['RF_Transaction_Reason'])
+    data['RF_Transaction_Reason_id'] = int(data['RF_Transaction_Reason']) if data['RF_Transaction_Reason'] else 0
     data['RF_Transaction_Reason'] = RF_Transaction_Reason[data['RF_Transaction_Reason_id']]
-    data['RF_High_Transaction_Reason_id'] = int(data['RF_High_Transaction_Reason']) if data['RF_High_Transaction_Reason'] != '' else 0
+    data['RF_High_Transaction_Reason_id'] = data['RF_High_Transaction_Reason'] and int(data['RF_High_Transaction_Reason']) if data['RF_High_Transaction_Reason'] != '' else 0
     data['RF_High_Transaction_Reason'] = RF_High_Transaction_Reason[data['RF_High_Transaction_Reason_id']]
     data['RF_Transaction_Frequency_id'] = int(data['RF_Transaction_Frequency']) if data['RF_Transaction_Frequency'] != '' else 0
     data['RF_Transaction_Frequency'] = RF_Transaction_Frequency[data['RF_Transaction_Frequency_id']]
@@ -475,7 +475,8 @@ def wkhtmltopdfapi(request):
     data['RF_Adjust_Risk1_id'] = int(data['RF_Adjust_Risk1']) if data['RF_Adjust_Risk1'] != '' else 0
     data['RF_Adjust_Risk1'] = RF_Adjust_Risk1[data['RF_Adjust_Risk1_id']]
     data['RF_Client_Relationship'] = RF_Client_Relationship[int(data['RF_Client_Relationship'])]
-    data['RF_Linked_Party_id'] = int(data['RF_Linked_Party']) if data['RF_Linked_Party'] != '' else 0
+    print(request.data)
+    data['RF_Linked_Party_id'] = int(data['RF_Linked_Party']) if data['RF_Linked_Party'] else 0
     data['RF_Linked_Party'] = RF_Client_Match[data['RF_Linked_Party_id']]
     data['RF_RCA_id'] = int(data['RF_RCA']) if data['RF_RCA'] != '' else 0
     data['RF_RCA'] = RF_RCA[data['RF_RCA_id']]
@@ -493,7 +494,7 @@ def wkhtmltopdfapi(request):
     data['RF_Type_Legal_Entity'] = RF_Type_Legal_Entity[data['RF_Type_Legal_Entity_id']]
     data['RF_ClientType'] = int(data['RF_ClientType'])
     
-    if(int(data['RF_Transaction_Flow_id']) == 1 or int(data['RF_Transaction_Flow_id']) == 2):
+    if(data['RF_Transaction_Flow_id'] and (int(data['RF_Transaction_Flow_id']) == 1 or int(data['RF_Transaction_Flow_id']) == 2)):
         val4n=val13+val14+val15+val16+val17+val18+val19+val20
     data['val4n'] = val4n
 
@@ -645,6 +646,7 @@ def wkhtmltopdfapi(request):
     data['IP']['IP_InvestmentStrategy'] = IP_InvestmentStrategy[int(data['IP']['IP_InvestmentStrategy'])]
     data['IP']['IP_ReturnRequired'] = IP_ReturnRequired[int(data['IP']['IP_ReturnRequired'])]
     data['IP']['IP_RiskProfile'] = IP_RiskProfile[int(data['IP']['IP_RiskProfile'])]
+    data['IP']['IP_ProductTaken_id'] = data['IP']['IP_ProductTaken']
     data['IP']['IP_ProductTaken'] = IP_ProductTaken[int(data['IP']['IP_ProductTaken'])]
     data['IP']['IP_ProductPremiumFrequency'] = PremiumFrequency[int(data['IP']['IP_ProductPremiumFrequency'])]
     
@@ -658,11 +660,11 @@ def wkhtmltopdfapi(request):
     SourceOfFunds = ["", "Salary", "Savings", "Inheritence", "Resignation", "Retirement", "Other", ]
         
     data['BA_Investment'] = AssuranceInvestment.objects.filter(formId=data['id']).values().first()
-    data['BA_Investment']['AI_Strategy'] = InvestmentStrategy[int(data['BA_Investment']['AI_Strategy'])]
-    data['BA_Investment']['AI_ReturnRequired'] = ReturnRequired[int(data['BA_Investment']['AI_ReturnRequired'])]
-    data['BA_Investment']['AI_RiskProfile'] = RiskProfile[int(data['BA_Investment']['AI_RiskProfile'])]
-    data['BA_Investment']['AI_SourceOfFunds'] = SourceOfFunds[int(data['BA_Investment']['AI_SourceOfFunds'])]
-    data['BA_Investment']['AI_Pr_PremiumFrequency'] = PremiumFrequency[int(data['BA_Investment']['AI_Pr_PremiumFrequency'])]
+    data['BA_Investment']['AI_Strategy'] = InvestmentStrategy[int(data['BA_Investment']['AI_Strategy'])] if data['BA_Investment']['AI_Strategy'] !='' else InvestmentStrategy[0]
+    data['BA_Investment']['AI_ReturnRequired'] = ReturnRequired[int(data['BA_Investment']['AI_ReturnRequired'])] if data['BA_Investment']['AI_ReturnRequired'] !='' else ReturnRequired[0]
+    data['BA_Investment']['AI_RiskProfile'] = RiskProfile[int(data['BA_Investment']['AI_RiskProfile'])] if data['BA_Investment']['AI_RiskProfile'] !='' else RiskProfile[0]
+    data['BA_Investment']['AI_SourceOfFunds'] = SourceOfFunds[int(data['BA_Investment']['AI_SourceOfFunds'])] if data['BA_Investment']['AI_SourceOfFunds'] !='' else SourceOfFunds[0]
+    data['BA_Investment']['AI_Pr_PremiumFrequency'] = PremiumFrequency[int(data['BA_Investment']['AI_Pr_PremiumFrequency'])] if data['BA_Investment']['AI_Pr_PremiumFrequency'] !='' else PremiumFrequency[0]
     
     data['EB'] = EmployeeBenefits.objects.filter(formId=data['id']).values().first()
     data['EB']['EB_ClientDate'] = datetimeparser.parse(data['EB']['EB_ClientDate']).strftime('%d %b %Y') if data['EB']['EB_ClientDate'] != "" else "N.A."
@@ -702,8 +704,20 @@ def wkhtmltopdfapi(request):
     data['STIP']['STIP_Inception_Date'] = datetimeparser.parse(data['STIP']['STIP_Inception_Date']).strftime('%d %b %Y') if data['STIP']['STIP_Inception_Date'] != "" else "N.A."
     data['STIP']['STIP_Applicant_DateofBirth'] = datetimeparser.parse(data['STIP']['STIP_Applicant_DateofBirth']).strftime('%d %b %Y') if data['STIP']['STIP_Applicant_DateofBirth'] != "" else "N.A."
     data['STIP']['STIP_Applicant_DateofBirth'] = datetimeparser.parse(data['STIP']['STIP_Applicant_DateofBirth']).strftime('%d %b %Y') if data['STIP']['STIP_General_LastDate'] != "" else "N.A."
+    parkOptions = ["", "Overnight Parking", "Locked Garage", "Carport", "Security Complex", "Behind Gates", "Others"]
+    coverTypes = ["", "Comprehensive (cover for comprehensive risks)", "Limited (Fire and Theft)", "Third Party (cover for claims of 3rd parties)", "Third Party - Theft excluded (cover for loss or damage except by theft)"] 
+    data['STIP']['STIP_Vehicle_ONParkingOptions'] = parkOptions[int(data['STIP']['STIP_Vehicle_ONParkingOptions'])]
+    data['STIP']['STIP_Vehicle_CoverType'] = coverTypes[int(data['STIP']['STIP_Vehicle_CoverType'])]
+    data['STIP']['STIP_Vehicle_DriverLicIssDate'] = datetimeparser.parse(data['STIP']['STIP_Vehicle_DriverLicIssDate']).strftime('%d %b %Y') if data['STIP']['STIP_Vehicle_DriverLicIssDate'] != "" else "N.A."
+    data['STIP']['STIP_MotorC_ONParkingOptions'] = parkOptions[int(data['STIP']['STIP_MotorC_ONParkingOptions'])]
+    data['STIP']['STIP_MotorC_CoverType'] = coverTypes[int(data['STIP']['STIP_MotorC_CoverType'])]
+    data['STIP']['STIP_MotorC_DriverLicIssDate'] = datetimeparser.parse(data['STIP']['STIP_MotorC_DriverLicIssDate']).strftime('%d %b %Y') if data['STIP']['STIP_MotorC_DriverLicIssDate'] != "" else "N.A."
+    data['STIP']['STIP_Trailer_ONParkingOptions'] = parkOptions[int(data['STIP']['STIP_Trailer_ONParkingOptions'])]
+    data['STIP']['STIP_DbyI_Date'] = datetimeparser.parse(data['STIP']['STIP_DbyI_Date']).strftime('%d/%m/%Y') if data['STIP']['STIP_DbyI_Date'] != "" else "N.A."
+    data['dra_status'] = request.data['dra_status']
+    data['advisor'] = UserAccount.objects.filter(id=data['RoA']['advisorId']).values('name', 'email', 'is_superuser').first()
     # print(data['STIP']['STIP_Applicant_Gender'])
-    template = get_template('risk.html')
+    template = get_template('pdfForm.html')
     cmd_options = {
       'page-size': 'Letter',
       'viewport-size' : '1920x1080',
@@ -711,7 +725,10 @@ def wkhtmltopdfapi(request):
       'no-outline' : True,
    }
     response =  PDFTemplateResponse(request=request, template=template,context=data, cmd_options=cmd_options)
-    fileName = "Sample"
+    if request.data['dra_status']:
+        fileName = "RoA for %s Filled by %s %s" %(data['RF_ClientName'], data['advisor']['name'] ,uuid.uuid4())
+    else:
+        fileName = "Client RoA for %s Filled by %s %s" %(data['RF_ClientName'], data['advisor']['name'] ,uuid.uuid4())
     with open("static/pdf/%s.pdf"%(fileName), "wb") as f:
         f.write(response.rendered_content)
     return Response({"file":"static/pdf/%s.pdf"%(fileName)})

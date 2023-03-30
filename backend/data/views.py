@@ -157,7 +157,7 @@ def importCSV(request):
             "RF_Adjust_Risk1" : RF_Adjust_Risk1.index(str(df['RF_Adjust_Risk1'][i])) if df['RF_Adjust_Risk1'][i] != '' else "",
             "RF_Name" : str(df['RF_Name'][i]) if df['RF_Name'][i] != '' else "",
             "RF_ID" : str(df['RF_ID'][i]) if df['RF_ID'][i] != '' else "",
-            "RF_Linked_Party" : str(df['RF_Linked_Party'][i]) if df['RF_Linked_Party'][i] != '' else "",
+            "RF_Linked_Party" : RF_Client_Match.index(str(df['RF_Linked_Party'][i])) if df['RF_Linked_Party'][i] != '' or df['RF_Linked_Party'][i] != 'nan' else "",
             "RF_RCA" : RF_RCA.index(str(df['RF_RCA'][i])) if df['RF_RCA'][i] != '' else "",
             "RF_Birth_Country" : str(df['RF_Birth_Country'][i]) if df['RF_Birth_Country'][i] != '' else "",
             "RF_Residence_Country" : str(df['RF_Residence_Country'][i]) if df['RF_Residence_Country'][i] != '' else "",
