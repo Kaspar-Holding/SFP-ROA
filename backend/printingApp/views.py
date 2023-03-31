@@ -3004,6 +3004,7 @@ def wkhtmltopdfapi(request):
         not data['GP_status']
     ):
         return Response({"message": "No Data found, please fill the one of the component before printing", "status": 404}, 404)
+    data['logo'] = 'static/images/logo.png'
     response =  PDFTemplateResponse(request=request, template=template,context=data, cmd_options=cmd_options)
     if request.data['dra_status']:
         fileName = "RoA for %s Filled by %s %s" %(data['RF_ClientName'], data['advisor']['name'] ,uuid.uuid4())

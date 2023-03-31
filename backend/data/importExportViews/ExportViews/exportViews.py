@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.core.files.base import ContentFile
 from data.serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskFactorsSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers
-from data.models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form
+from data.models import Medical, AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -49,7 +49,7 @@ def exportData(request):
     # RF_Name = []
     # RF_ID = []
     RF_Linked_Party = ['Adverse Media','Enforcement,SIP,SIE','False Positive','False Positive-Unsure','False Positive-Unsure:Sanctions','No Alert','PEP-Domestic','PEP-Foreign','Sanction','Sanlam Do not Trnsact List','SOE']
-    RF_RCA = ['Yes','No']
+    RF_RCA = ['','Yes','No']
     # RF_Birth_Country = []
     # RF_Residence_Country = []
     # RF_Nationality1 = []
@@ -66,44 +66,44 @@ def exportData(request):
         else:
             form['RF_Overall_Risk'] = "Undetermined"
 
-        RF_Occupation_id = int(form['RF_Occupation'])
-        RF_BU_Risk_id = int(form['RF_BU_Risk'])
-        RF_ClientType_id = int(form['RF_ClientType'])
-        RF_Industry_id = int(form['RF_Industry'])
-        RF_CountryOfBirth_id = int(form['RF_CountryOfBirth'])
-        RF_CountryOfResidence_id = int(form['RF_CountryOfResidence'])
-        RF_Nationality_id = int(form['RF_Nationality'])
-        RF_Different_Nationality_id = int(form['RF_Different_Nationality'])
-        RF_CountryOfTax_id = int(form['RF_CountryOfTax'])
-        RF_SourceOfFunds_id = int(form['RF_SourceOfFunds'])
-        RF_CountryOfRegistration_id = int(form['RF_CountryOfRegistration'])
-        RF_CountryOfOperation_id = int(form['RF_CountryOfOperation'])
-        RF_RelationshipToClient_id = int(form['RF_RelationshipToClient'])
-        RF_Type_Legal_Entity_id = int(form['RF_Type_Legal_Entity'])
-        RF_Client_Relationship_id = int(form['RF_Client_Relationship'])
-        RF_Product_Name_id = int(form['RF_Product_Name'])
-        RF_Transaction_Flow_id = int(form['RF_Transaction_Flow'])
-        RF_Transaction_Method_id = int(form['RF_Transaction_Method'])
-        RF_Transaction_Reason_id = int(form['RF_Transaction_Reason'])
-        RF_High_Transaction_Reason_id = int(form['RF_High_Transaction_Reason'])
-        RF_Transaction_Frequency_id = int(form['RF_Transaction_Frequency'])
+        RF_Occupation_id = int(form['RF_Occupation']) if form['RF_Occupation'] != "" else 0
+        RF_BU_Risk_id = int(form['RF_BU_Risk']) if form['RF_BU_Risk'] != "" else 0
+        RF_ClientType_id = int(form['RF_ClientType']) if form['RF_ClientType'] != "" else 0
+        RF_Industry_id = int(form['RF_Industry']) if form['RF_Industry'] != "" else 0
+        RF_CountryOfBirth_id = int(form['RF_CountryOfBirth']) if form['RF_CountryOfBirth'] != "" else 0
+        RF_CountryOfResidence_id = int(form['RF_CountryOfResidence']) if form['RF_CountryOfResidence'] != "" else 0
+        RF_Nationality_id = int(form['RF_Nationality']) if form['RF_Nationality'] != "" else 0
+        RF_Different_Nationality_id = int(form['RF_Different_Nationality']) if form['RF_Different_Nationality'] != "" else 0
+        RF_CountryOfTax_id = int(form['RF_CountryOfTax']) if form['RF_CountryOfTax'] != "" else 0
+        RF_SourceOfFunds_id = int(form['RF_SourceOfFunds']) if form['RF_SourceOfFunds'] != "" else 0
+        RF_CountryOfRegistration_id = int(form['RF_CountryOfRegistration']) if form['RF_CountryOfRegistration'] != "" else 0
+        RF_CountryOfOperation_id = int(form['RF_CountryOfOperation']) if form['RF_CountryOfOperation'] != "" else 0
+        RF_RelationshipToClient_id = int(form['RF_RelationshipToClient']) if form['RF_RelationshipToClient'] != "" else 0
+        RF_Type_Legal_Entity_id = int(form['RF_Type_Legal_Entity']) if form['RF_Type_Legal_Entity'] != "" else 0
+        RF_Client_Relationship_id = int(form['RF_Client_Relationship']) if form['RF_Client_Relationship'] != "" else 0
+        RF_Product_Name_id = int(form['RF_Product_Name']) if form['RF_Product_Name'] != "" else 0
+        RF_Transaction_Flow_id = int(form['RF_Transaction_Flow']) if form['RF_Transaction_Flow'] != "" else 0
+        RF_Transaction_Method_id = int(form['RF_Transaction_Method']) if form['RF_Transaction_Method'] != "" else 0
+        RF_Transaction_Reason_id = int(form['RF_Transaction_Reason']) if form['RF_Transaction_Reason'] != "" else 0
+        RF_High_Transaction_Reason_id = int(form['RF_High_Transaction_Reason']) if form['RF_High_Transaction_Reason'] != "" else 0
+        RF_Transaction_Frequency_id = int(form['RF_Transaction_Frequency']) if form['RF_Transaction_Frequency'] != "" else 0
         # RF_Transaction_Value_id = int(form['RF_Transaction_Value'])
         # RF_Currency_Value_id = int(form['RF_Currency_Value'])
-        RF_Transaction_Geography_id = int(form['RF_Transaction_Geography'])
-        RF_Funds_Jurisdiction_id = int(form['RF_Funds_Jurisdiction'])
-        RF_Delivery_Channel_id = int(form['RF_Delivery_Channel'])
-        RF_Linked_Party_Acting_id = int(form['RF_Linked_Party_Acting'])
-        RF_Linked_Party_Paying_id = int(form['RF_Linked_Party_Paying'])
-        RF_Client_Match_id = int(form['RF_Client_Match'])
-        RF_Client_Beneficiaries_id = int(form['RF_Client_Beneficiaries'])
-        RF_Adjust_Risk1_id = int(form['RF_Adjust_Risk1'])
+        RF_Transaction_Geography_id = int(form['RF_Transaction_Geography']) if form['RF_Transaction_Geography'] != "" else 0
+        RF_Funds_Jurisdiction_id = int(form['RF_Funds_Jurisdiction']) if form['RF_Funds_Jurisdiction'] != "" else 0
+        RF_Delivery_Channel_id = int(form['RF_Delivery_Channel']) if form['RF_Delivery_Channel'] != "" else 0
+        RF_Linked_Party_Acting_id = int(form['RF_Linked_Party_Acting']) if form['RF_Linked_Party_Acting'] != "" else 0
+        RF_Linked_Party_Paying_id = int(form['RF_Linked_Party_Paying']) if form['RF_Linked_Party_Paying'] != "" else 0
+        RF_Client_Match_id = int(form['RF_Client_Match']) if form['RF_Client_Match'] != "" else 0
+        RF_Client_Beneficiaries_id = int(form['RF_Client_Beneficiaries']) if form['RF_Client_Beneficiaries'] != "" else 0
+        RF_Adjust_Risk1_id = int(form['RF_Adjust_Risk1']) if form['RF_Adjust_Risk1'] != "" else 0
         # RF_Name_id = int(form['RF_Name'])
         # RF_ID_id = int(form['RF_ID'])
-        RF_Linked_Party_id = int(form['RF_Linked_Party'])
-        RF_RCA_id = int(form['RF_RCA'])
-        RF_Birth_Country_id = int(form['RF_Birth_Country'])
-        RF_Residence_Country_id = int(form['RF_Residence_Country'])
-        RF_Nationality1_id = int(form['RF_Nationality1'])
+        RF_Linked_Party_id = int(form['RF_Linked_Party']) if form['RF_Linked_Party'] != "" else 0
+        RF_RCA_id = int(form['RF_RCA']) if form['RF_RCA'] != "" else 0
+        RF_Birth_Country_id = int(form['RF_Birth_Country']) if form['RF_Birth_Country'] != "" else 0
+        RF_Residence_Country_id = int(form['RF_Residence_Country']) if form['RF_Residence_Country'] != "" else 0
+        RF_Nationality1_id = int(form['RF_Nationality1']) if form['RF_Nationality1'] != "" else 0
         advisor = UserAccount.objects.filter(id=form['advisorId']).values().first()
         form['advisorName'] = advisor['name']
         form['RF_Occupation'] = RF_Occupation[RF_Occupation_id]
@@ -5210,82 +5210,7 @@ def exportData(request):
             form['Short_term_personal_DbyI_Code'] = STP_Data['STIP_DbyI_Code'] 
             form['Short_term_personal_DbyI_Signature'] = STP_Data['STIP_DbyI_Signature'] 
             form['Short_term_personal_DbyI_Date'] = STP_Data['STIP_DbyI_Date'] 
-            form['Short_term_personal_MSA_ClientName'] = STP_Data['STIP_MSA_ClientName'] 
-            form['Short_term_personal_MSA_ClientIdNumber'] = STP_Data['STIP_MSA_ClientIdNumber'] 
-            form['Short_term_personal_MSA_ClientAddress'] = STP_Data['STIP_MSA_ClientAddress'] 
-            form['Short_term_personal_MSA_ClientEmail'] = STP_Data['STIP_MSA_ClientEmail'] 
-            form['Short_term_personal_MSA_ClientPhone'] = STP_Data['STIP_MSA_ClientPhone'] 
-            form['Short_term_personal_MSA_ClientDate'] = STP_Data['STIP_MSA_ClientDate'] 
-            form['Short_term_personal_MSA_Name'] = STP_Data['STIP_MSA_Name'] 
-            form['Short_term_personal_MSA_MaritalStatus'] = STP_Data['STIP_MSA_MaritalStatus'] 
-            form['Short_term_personal_MSA_Gender'] = STP_Data['STIP_MSA_Gender'] 
-            form['Short_term_personal_MSA_Occupation'] = STP_Data['STIP_MSA_Occupation'] 
-            form['Short_term_personal_MSA_Income'] = STP_Data['STIP_MSA_Income'] 
-            form['Short_term_personal_MSA_Subsidy'] = STP_Data['STIP_MSA_Subsidy'] 
-            form['Short_term_personal_MSA_Dependant'] = STP_Data['STIP_MSA_Dependant'] 
-            form['Short_term_personal_MSA_Spouse'] = STP_Data['STIP_MSA_Spouse'] 
-            form['Short_term_personal_MSA_AdultDependant'] = STP_Data['STIP_MSA_AdultDependant'] 
-            form['Short_term_personal_MSA_ChronicM'] = STP_Data['STIP_MSA_ChronicM'] 
-            form['Short_term_personal_MSA_ChronicS'] = STP_Data['STIP_MSA_ChronicS'] 
-            form['Short_term_personal_MSA_ChronicAD'] = STP_Data['STIP_MSA_ChronicAD'] 
-            form['Short_term_personal_MSA_ChronicC'] = STP_Data['STIP_MSA_ChronicC'] 
-            form['Short_term_personal_MSA_ChronicOC'] = STP_Data['STIP_MSA_ChronicOC'] 
-            form['Short_term_personal_MSA_PFromDate'] = STP_Data['STIP_MSA_PFromDate'] 
-            form['Short_term_personal_MSA_PTODate'] = STP_Data['STIP_MSA_PTODate'] 
-            form['Short_term_personal_BackInfo'] = STP_Data['STIP_BackInfo'] 
-            form['Short_term_personal_SNA_Needs1'] = STP_Data['STIP_SNA_Needs1'] 
-            form['Short_term_personal_SNA_Comments1'] = STP_Data['STIP_SNA_Comments1'] 
-            form['Short_term_personal_SNA_Needs2'] = STP_Data['STIP_SNA_Needs2'] 
-            form['Short_term_personal_SNA_Comments2'] = STP_Data['STIP_SNA_Comments2'] 
-            form['Short_term_personal_SNA_Needs3'] = STP_Data['STIP_SNA_Needs3'] 
-            form['Short_term_personal_SNA_Comments3'] = STP_Data['STIP_SNA_Comments3'] 
-            form['Short_term_personal_SNA_Needs4'] = STP_Data['STIP_SNA_Needs4'] 
-            form['Short_term_personal_SNA_Comments4'] = STP_Data['STIP_SNA_Comments4'] 
-            form['Short_term_personal_SNA_Needs5'] = STP_Data['STIP_SNA_Needs5'] 
-            form['Short_term_personal_SNA_Comments5'] = STP_Data['STIP_SNA_Comments5'] 
-            form['Short_term_personal_SNA_Needs6'] = STP_Data['STIP_SNA_Needs6'] 
-            form['Short_term_personal_SNA_Comments6'] = STP_Data['STIP_SNA_Comments6'] 
-            form['Short_term_personal_SNA_Needs7'] = STP_Data['STIP_SNA_Needs7'] 
-            form['Short_term_personal_SNA_Comments7'] = STP_Data['STIP_SNA_Comments7'] 
-            form['Short_term_personal_SNA_Needs8'] = STP_Data['STIP_SNA_Needs8'] 
-            form['Short_term_personal_SNA_Comments8'] = STP_Data['STIP_SNA_Comments8'] 
-            form['Short_term_personal_SNA_Needs9'] = STP_Data['STIP_SNA_Needs9'] 
-            form['Short_term_personal_SNA_Comments9'] = STP_Data['STIP_SNA_Comments9'] 
-            form['Short_term_personal_SNA_Needs10'] = STP_Data['STIP_SNA_Needs10'] 
-            form['Short_term_personal_SNA_Comments10'] = STP_Data['STIP_SNA_Comments10'] 
-            form['Short_term_personal_CoMAB_Current1'] = STP_Data['STIP_CoMAB_Current1'] 
-            form['Short_term_personal_CoMAB_Replaced1'] = STP_Data['STIP_CoMAB_Replaced1'] 
-            form['Short_term_personal_CoMAB_Current2'] = STP_Data['STIP_CoMAB_Current2'] 
-            form['Short_term_personal_CoMAB_Replaced2'] = STP_Data['STIP_CoMAB_Replaced2'] 
-            form['Short_term_personal_CoMAB_Current3'] = STP_Data['STIP_CoMAB_Current3'] 
-            form['Short_term_personal_CoMAB_Replaced3'] = STP_Data['STIP_CoMAB_Replaced3'] 
-            form['Short_term_personal_CoMAB_Current4'] = STP_Data['STIP_CoMAB_Current4'] 
-            form['Short_term_personal_CoMAB_Replaced4'] = STP_Data['STIP_CoMAB_Replaced4'] 
-            form['Short_term_personal_CoMAB_Current5'] = STP_Data['STIP_CoMAB_Current5'] 
-            form['Short_term_personal_CoMAB_Replaced5'] = STP_Data['STIP_CoMAB_Replaced5'] 
-            form['Short_term_personal_CoMAB_Current6'] = STP_Data['STIP_CoMAB_Current6'] 
-            form['Short_term_personal_CoMAB_Replaced6'] = STP_Data['STIP_CoMAB_Replaced6'] 
-            form['Short_term_personal_CoMAB_Current7'] = STP_Data['STIP_CoMAB_Current7'] 
-            form['Short_term_personal_CoMAB_Replaced7'] = STP_Data['STIP_CoMAB_Replaced7'] 
-            form['Short_term_personal_CoMAB_Current8'] = STP_Data['STIP_CoMAB_Current8'] 
-            form['Short_term_personal_CoMAB_Replaced8'] = STP_Data['STIP_CoMAB_Replaced8'] 
-            form['Short_term_personal_CoMAB_Current9'] = STP_Data['STIP_CoMAB_Current9'] 
-            form['Short_term_personal_CoMAB_Replaced9'] = STP_Data['STIP_CoMAB_Replaced9'] 
-            form['Short_term_personal_CoMAB_Current10'] = STP_Data['STIP_CoMAB_Current10'] 
-            form['Short_term_personal_CoMAB_Replaced10'] = STP_Data['STIP_CoMAB_Replaced10'] 
-            form['Short_term_personal_CoMAB_Current11'] = STP_Data['STIP_CoMAB_Current11'] 
-            form['Short_term_personal_CoMAB_Replaced11'] = STP_Data['STIP_CoMAB_Replaced11'] 
-            form['Short_term_personal_CoMAB_Current12'] = STP_Data['STIP_CoMAB_Current12'] 
-            form['Short_term_personal_CoMAB_Replaced12'] = STP_Data['STIP_CoMAB_Replaced12'] 
-            form['Short_term_personal_SectionD_SnF'] = STP_Data['STIP_SectionD_SnF'] 
-            form['Short_term_personal_SectionE_PMB'] = STP_Data['STIP_SectionE_PMB'] 
-            form['Short_term_personal_SectionF_NotAccepted'] = STP_Data['STIP_SectionF_NotAccepted'] 
-            form['Short_term_personal_SectionF_Reasons'] = STP_Data['STIP_SectionF_Reasons'] 
-            form['Short_term_personal_SectionF_Consequences'] = STP_Data['STIP_SectionF_Consequences'] 
-            form['Short_term_personal_SectionF_Fee'] = STP_Data['STIP_SectionF_Fee'] 
-            form['Short_term_personal_SectionF_Comments'] = STP_Data['STIP_SectionF_Comments'] 
-            form['Short_term_personal_SectionF_Date'] = STP_Data['STIP_SectionF_Date'] 
-            form['Short_term_personal_SectionF_ClientName'] = STP_Data['STIP_SectionF_ClientName'] 
+ 
         else:
             form['Short_term_personal_Underwritten_By'] = "N.A." 
             form['Short_term_personal_Branch_Name'] = "N.A." 
@@ -5954,7 +5879,163 @@ def exportData(request):
             form['Short_term_personal_SectionF_Date'] = "N.A." 
             form['Short_term_personal_SectionF_ClientName'] = "N.A." 
 
-        
+        Medical_Data = Medical.objects.filter(formId=form['id']).values()
+        if len(Medical_Data) != 0:
+            Medical_Data = Medical.objects.filter(formId=form['id']).values().first()
+            form['Medical_MSA_ClientName'] = Medical_Data['MSA_ClientName'] 
+            form['Medical_MSA_ClientIdNumber'] = Medical_Data['MSA_ClientIdNumber'] 
+            form['Medical_MSA_ClientAddress'] = Medical_Data['MSA_ClientAddress'] 
+            form['Medical_MSA_ClientEmail'] = Medical_Data['MSA_ClientEmail'] 
+            form['Medical_MSA_ClientPhone'] = Medical_Data['MSA_ClientPhone'] 
+            form['Medical_MSA_ClientDate'] = Medical_Data['MSA_ClientDate'] 
+            form['Medical_MSA_Name'] = Medical_Data['MSA_Name'] 
+            form['Medical_MSA_MaritalStatus'] = Medical_Data['MSA_MaritalStatus'] 
+            form['Medical_MSA_Gender'] = Medical_Data['MSA_Gender'] 
+            form['Medical_MSA_Occupation'] = Medical_Data['MSA_Occupation'] 
+            form['Medical_MSA_Income'] = Medical_Data['MSA_Income'] 
+            form['Medical_MSA_Subsidy'] = Medical_Data['MSA_Subsidy'] 
+            form['Medical_MSA_Dependant'] = Medical_Data['MSA_Dependant'] 
+            form['Medical_MSA_Spouse'] = Medical_Data['MSA_Spouse'] 
+            form['Medical_MSA_AdultDependant'] = Medical_Data['MSA_AdultDependant'] 
+            form['Medical_MSA_ChronicM'] = Medical_Data['MSA_ChronicM'] 
+            form['Medical_MSA_ChronicS'] = Medical_Data['MSA_ChronicS'] 
+            form['Medical_MSA_ChronicAD'] = Medical_Data['MSA_ChronicAD'] 
+            form['Medical_MSA_ChronicC'] = Medical_Data['MSA_ChronicC'] 
+            form['Medical_MSA_ChronicOC'] = Medical_Data['MSA_ChronicOC'] 
+            form['Medical_MSA_PFromDate'] = Medical_Data['MSA_PFromDate'] 
+            form['Medical_MSA_PTODate'] = Medical_Data['MSA_PTODate'] 
+            form['Medical_BackInfo'] = Medical_Data['BackInfo'] 
+            form['Medical_SNA_Needs1'] = Medical_Data['SNA_Needs1'] 
+            form['Medical_SNA_Comments1'] = Medical_Data['SNA_Comments1'] 
+            form['Medical_SNA_Needs2'] = Medical_Data['SNA_Needs2'] 
+            form['Medical_SNA_Comments2'] = Medical_Data['SNA_Comments2'] 
+            form['Medical_SNA_Needs3'] = Medical_Data['SNA_Needs3'] 
+            form['Medical_SNA_Comments3'] = Medical_Data['SNA_Comments3'] 
+            form['Medical_SNA_Needs4'] = Medical_Data['SNA_Needs4'] 
+            form['Medical_SNA_Comments4'] = Medical_Data['SNA_Comments4'] 
+            form['Medical_SNA_Needs5'] = Medical_Data['SNA_Needs5'] 
+            form['Medical_SNA_Comments5'] = Medical_Data['SNA_Comments5'] 
+            form['Medical_SNA_Needs6'] = Medical_Data['SNA_Needs6'] 
+            form['Medical_SNA_Comments6'] = Medical_Data['SNA_Comments6'] 
+            form['Medical_SNA_Needs7'] = Medical_Data['SNA_Needs7'] 
+            form['Medical_SNA_Comments7'] = Medical_Data['SNA_Comments7'] 
+            form['Medical_SNA_Needs8'] = Medical_Data['SNA_Needs8'] 
+            form['Medical_SNA_Comments8'] = Medical_Data['SNA_Comments8'] 
+            form['Medical_SNA_Needs9'] = Medical_Data['SNA_Needs9'] 
+            form['Medical_SNA_Comments9'] = Medical_Data['SNA_Comments9'] 
+            form['Medical_SNA_Needs10'] = Medical_Data['SNA_Needs10'] 
+            form['Medical_SNA_Comments10'] = Medical_Data['SNA_Comments10'] 
+            form['Medical_CoMAB_Current1'] = Medical_Data['CoMAB_Current1'] 
+            form['Medical_CoMAB_Replaced1'] = Medical_Data['CoMAB_Replaced1'] 
+            form['Medical_CoMAB_Current2'] = Medical_Data['CoMAB_Current2'] 
+            form['Medical_CoMAB_Replaced2'] = Medical_Data['CoMAB_Replaced2'] 
+            form['Medical_CoMAB_Current3'] = Medical_Data['CoMAB_Current3'] 
+            form['Medical_CoMAB_Replaced3'] = Medical_Data['CoMAB_Replaced3'] 
+            form['Medical_CoMAB_Current4'] = Medical_Data['CoMAB_Current4'] 
+            form['Medical_CoMAB_Replaced4'] = Medical_Data['CoMAB_Replaced4'] 
+            form['Medical_CoMAB_Current5'] = Medical_Data['CoMAB_Current5'] 
+            form['Medical_CoMAB_Replaced5'] = Medical_Data['CoMAB_Replaced5'] 
+            form['Medical_CoMAB_Current6'] = Medical_Data['CoMAB_Current6'] 
+            form['Medical_CoMAB_Replaced6'] = Medical_Data['CoMAB_Replaced6'] 
+            form['Medical_CoMAB_Current7'] = Medical_Data['CoMAB_Current7'] 
+            form['Medical_CoMAB_Replaced7'] = Medical_Data['CoMAB_Replaced7'] 
+            form['Medical_CoMAB_Current8'] = Medical_Data['CoMAB_Current8'] 
+            form['Medical_CoMAB_Replaced8'] = Medical_Data['CoMAB_Replaced8'] 
+            form['Medical_CoMAB_Current9'] = Medical_Data['CoMAB_Current9'] 
+            form['Medical_CoMAB_Replaced9'] = Medical_Data['CoMAB_Replaced9'] 
+            form['Medical_CoMAB_Current10'] = Medical_Data['CoMAB_Current10'] 
+            form['Medical_CoMAB_Replaced10'] = Medical_Data['CoMAB_Replaced10'] 
+            form['Medical_CoMAB_Current11'] = Medical_Data['CoMAB_Current11'] 
+            form['Medical_CoMAB_Replaced11'] = Medical_Data['CoMAB_Replaced11'] 
+            form['Medical_CoMAB_Current12'] = Medical_Data['CoMAB_Current12'] 
+            form['Medical_CoMAB_Replaced12'] = Medical_Data['CoMAB_Replaced12'] 
+            form['Medical_SectionD_SnF'] = Medical_Data['SectionD_SnF'] 
+            form['Medical_SectionE_PMB'] = Medical_Data['SectionE_PMB'] 
+            form['Medical_SectionF_NotAccepted'] = Medical_Data['SectionF_NotAccepted'] 
+            form['Medical_SectionF_Reasons'] = Medical_Data['SectionF_Reasons'] 
+            form['Medical_SectionF_Consequences'] = Medical_Data['SectionF_Consequences'] 
+            form['Medical_SectionF_Fee'] = Medical_Data['SectionF_Fee'] 
+            form['Medical_SectionF_Comments'] = Medical_Data['SectionF_Comments'] 
+            form['Medical_SectionF_Date'] = Medical_Data['SectionF_Date'] 
+            form['Medical_SectionF_ClientName'] = Medical_Data['SectionF_ClientName']
+        else:
+            form['Medical_MSA_ClientName'] = "N.A." 
+            form['Medical_MSA_ClientIdNumber'] = "N.A." 
+            form['Medical_MSA_ClientAddress'] = "N.A." 
+            form['Medical_MSA_ClientEmail'] = "N.A." 
+            form['Medical_MSA_ClientPhone'] = "N.A." 
+            form['Medical_MSA_ClientDate'] = "N.A." 
+            form['Medical_MSA_Name'] = "N.A." 
+            form['Medical_MSA_MaritalStatus'] = "N.A." 
+            form['Medical_MSA_Gender'] = "N.A." 
+            form['Medical_MSA_Occupation'] = "N.A." 
+            form['Medical_MSA_Income'] = "N.A." 
+            form['Medical_MSA_Subsidy'] = "N.A." 
+            form['Medical_MSA_Dependant'] = "N.A." 
+            form['Medical_MSA_Spouse'] = "N.A." 
+            form['Medical_MSA_AdultDependant'] = "N.A." 
+            form['Medical_MSA_ChronicM'] = "N.A." 
+            form['Medical_MSA_ChronicS'] = "N.A." 
+            form['Medical_MSA_ChronicAD'] = "N.A." 
+            form['Medical_MSA_ChronicC'] = "N.A." 
+            form['Medical_MSA_ChronicOC'] = "N.A." 
+            form['Medical_MSA_PFromDate'] = "N.A." 
+            form['Medical_MSA_PTODate'] = "N.A." 
+            form['Medical_BackInfo'] = "N.A." 
+            form['Medical_SNA_Needs1'] = "N.A." 
+            form['Medical_SNA_Comments1'] = "N.A." 
+            form['Medical_SNA_Needs2'] = "N.A." 
+            form['Medical_SNA_Comments2'] = "N.A." 
+            form['Medical_SNA_Needs3'] = "N.A." 
+            form['Medical_SNA_Comments3'] = "N.A." 
+            form['Medical_SNA_Needs4'] = "N.A." 
+            form['Medical_SNA_Comments4'] = "N.A." 
+            form['Medical_SNA_Needs5'] = "N.A." 
+            form['Medical_SNA_Comments5'] = "N.A." 
+            form['Medical_SNA_Needs6'] = "N.A." 
+            form['Medical_SNA_Comments6'] = "N.A." 
+            form['Medical_SNA_Needs7'] = "N.A." 
+            form['Medical_SNA_Comments7'] = "N.A." 
+            form['Medical_SNA_Needs8'] = "N.A." 
+            form['Medical_SNA_Comments8'] = "N.A." 
+            form['Medical_SNA_Needs9'] = "N.A." 
+            form['Medical_SNA_Comments9'] = "N.A." 
+            form['Medical_SNA_Needs10'] = "N.A." 
+            form['Medical_SNA_Comments10'] = "N.A." 
+            form['Medical_CoMAB_Current1'] = "N.A." 
+            form['Medical_CoMAB_Replaced1'] = "N.A." 
+            form['Medical_CoMAB_Current2'] = "N.A." 
+            form['Medical_CoMAB_Replaced2'] = "N.A." 
+            form['Medical_CoMAB_Current3'] = "N.A." 
+            form['Medical_CoMAB_Replaced3'] = "N.A." 
+            form['Medical_CoMAB_Current4'] = "N.A." 
+            form['Medical_CoMAB_Replaced4'] = "N.A." 
+            form['Medical_CoMAB_Current5'] = "N.A." 
+            form['Medical_CoMAB_Replaced5'] = "N.A." 
+            form['Medical_CoMAB_Current6'] = "N.A." 
+            form['Medical_CoMAB_Replaced6'] = "N.A." 
+            form['Medical_CoMAB_Current7'] = "N.A." 
+            form['Medical_CoMAB_Replaced7'] = "N.A." 
+            form['Medical_CoMAB_Current8'] = "N.A." 
+            form['Medical_CoMAB_Replaced8'] = "N.A." 
+            form['Medical_CoMAB_Current9'] = "N.A." 
+            form['Medical_CoMAB_Replaced9'] = "N.A." 
+            form['Medical_CoMAB_Current10'] = "N.A." 
+            form['Medical_CoMAB_Replaced10'] = "N.A." 
+            form['Medical_CoMAB_Current11'] = "N.A." 
+            form['Medical_CoMAB_Replaced11'] = "N.A." 
+            form['Medical_CoMAB_Current12'] = "N.A." 
+            form['Medical_CoMAB_Replaced12'] = "N.A." 
+            form['Medical_SectionD_SnF'] = "N.A." 
+            form['Medical_SectionE_PMB'] = "N.A." 
+            form['Medical_SectionF_NotAccepted'] = "N.A." 
+            form['Medical_SectionF_Reasons'] = "N.A." 
+            form['Medical_SectionF_Consequences'] = "N.A." 
+            form['Medical_SectionF_Fee'] = "N.A." 
+            form['Medical_SectionF_Comments'] = "N.A." 
+            form['Medical_SectionF_Date'] = "N.A." 
+            form['Medical_SectionF_ClientName'] = "N.A."
+
         GC_Data = GapCover.objects.filter(formId=form['id']).values()
         if len(GC_Data) != 0:                
             GC_Data = GapCover.objects.filter(formId=form['id']).values().first()
