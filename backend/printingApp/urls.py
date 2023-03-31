@@ -8,5 +8,6 @@ urlpatterns = [
     # path('pdf/' , views.pdf,name='excel'),
     # path('pdf1/' , views.pdfkitapi,name='excel'),
     # path('pdf2/' , views.wkhtmltopdfapi,name='excel'),
-    path('downloadPDF/' , views.wkhtmltopdfapi,name='excel'),
+    path('downloadPDF/' , views.wkhtmltopdfapi,name='download pdf'),
+    # path('test/' , views.test,name='excel'),
 ]

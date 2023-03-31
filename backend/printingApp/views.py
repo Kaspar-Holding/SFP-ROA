@@ -3013,3 +3013,9 @@ def wkhtmltopdfapi(request):
     with open("static/pdf/%s.pdf"%(fileName), "wb") as f:
         f.write(response.rendered_content)
     return Response({"file":"static/pdf/%s.pdf"%(fileName)})
+
+def test(request):
+      
+    # render function takes argument  - request
+    # and return HTML as response
+    return render(request, "test.html")
