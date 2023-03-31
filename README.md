@@ -8,6 +8,10 @@ This project is built on the following Stack
 
 ## Updates
 
+### 31 March 2023:
+- Final Update of PDF is deployed
+- Started working on Duplication Task
+
 ### 30 March 2023:
 - PDF form is ready and deployed
 - Gathered the new Bugs and Change Requests
