@@ -104,92 +104,73 @@ const Risk = ({user}) =>
         RP_DC_LumpSumTotalNeed : "",
         RP_DC_LumpSumExistingProvisions : "",
         RP_DC_LumpSumExistingShortfallSurplus : "",
-        RP_DC_LumpSumInvestments : "",
-        
+        RP_DC_LumpSumInvestments : "",        
         RP_DC_IncomeTotalNeed : "",
         RP_DC_IncomeExistingProvisions : "",
         RP_DC_IncomeExistingShortfallSurplus : "",
-        RP_DC_IncomeInvestments : "",
-        
+        RP_DC_IncomeInvestments : "",        
         RP_DC_FB_TotalNeed : "",
         RP_DC_FB_ExistingProvisions : "",
         RP_DC_FB_ExistingShortfallSurplus : "",
-        RP_DC_FB_Investments : "",
-    
+        RP_DC_FB_Investments : "",    
         RP_DC_Other : "",
         RP_DC_OtherTotalNeed : "",
         RP_DC_OtherExistingProvisions : "",
         RP_DC_OtherExistingShortfallSurplus : "",
-        RP_DC_OtherInvestments : "",
-        
-        RP_DC_Comments : "",
-    
+        RP_DC_OtherInvestments : "",        
+        RP_DC_Comments : "",    
         RP_DiC_LumpSumTotalNeed : "",
         RP_DiC_LumpSumExistingProvisions : "",
         RP_DiC_LumpSumExistingShortfallSurplus : "",
-        RP_DiC_LumpSumInvestments : "",
-        
+        RP_DiC_LumpSumInvestments : "",        
         RP_DiC_PI_TotalNeed : "",
         RP_DiC_PI_ExistingProvisions : "",
         RP_DiC_PI_ExistingShortfallSurplus : "",
-        RP_DiC_PI_Investments : "",
-        
+        RP_DiC_PI_Investments : "",        
         RP_DiC_TI_TotalNeed : "",
         RP_DiC_TI_ExistingProvisions : "",
         RP_DiC_TI_ExistingShortfallSurplus : "",
-        RP_DiC_TI_Investments : "",    
-        
+        RP_DiC_TI_Investments : "",            
         RP_DiC_SiB_TotalNeed : "",
         RP_DiC_SiB_ExistingProvisions : "",
         RP_DiC_SiB_ExistingShortfallSurplus : "",
-        RP_DiC_SiB_Investments : "",  
-    
+        RP_DiC_SiB_Investments : "",      
         RP_DiC_Other1 : "",
         RP_DiC_OtherTotalNeed1 : "",
         RP_DiC_OtherExistingProvisions1 : "",
         RP_DiC_OtherExistingShortfallSurplus1 : "",
-        RP_DiC_OtherInvestments1 : "", 
-        
+        RP_DiC_OtherInvestments1 : "",         
         RP_DiC_Other2 : "",
         RP_DiC_OtherTotalNeed2 : "",
         RP_DiC_OtherExistingProvisions2 : "",
         RP_DiC_OtherExistingShortfallSurplus2 : "",
-        RP_DiC_OtherInvestments2 : "", 
-    
-        RP_DiC_Comments : "",
-        
+        RP_DiC_OtherInvestments2 : "",     
+        RP_DiC_Comments : "",        
         RP_DrC_LumpSumTotalNeed : "",
         RP_DrC_LumpSumExistingProvisions : "",
         RP_DrC_LumpSumExistingShortfallSurplus : "",
-        RP_DrC_LumpSumInvestments : "",
-        
+        RP_DrC_LumpSumInvestments : "",        
         RP_DrC_IncomeTotalNeed : "",
         RP_DrC_IncomeExistingProvisions : "",
         RP_DrC_IncomeExistingShortfallSurplus : "",
-        RP_DrC_IncomeInvestments : "",
-        
+        RP_DrC_IncomeInvestments : "",        
         RP_DrC_Other1 : "",
         RP_DrC_OtherTotalNeed1 : "",
         RP_DrC_OtherExistingProvisions1 : "",
         RP_DrC_OtherExistingShortfallSurplus1 : "",
-        RP_DrC_OtherInvestments1 : "", 
-        
+        RP_DrC_OtherInvestments1 : "",         
         RP_DrC_Other2 : "",
         RP_DrC_OtherTotalNeed2 : "",
         RP_DrC_OtherExistingProvisions2 : "",
         RP_DrC_OtherExistingShortfallSurplus2 : "",
-        RP_DrC_OtherExistingriskPlannings2 : "", 
-    
-        RP_DrC_Comments : "",
-      
+        RP_DrC_OtherExistingriskPlannings2 : "",     
+        RP_DrC_Comments : "",      
         RP_LC_FinancialSolutions : "",
         RP_DiC_FinancialSolutions : "",
-        RP_DrC_FinancialSolutions : "",
-    
+        RP_DrC_FinancialSolutions : "",    
         RP_AltS_1 : "",
         RP_AltS_2 : "",
-        RP_AltS_3 : "",
-    
+        RP_AltS_3 : "",    
         RP_Product_Taken : "",  
         RP_Product_Provider : "",
         RP_Policy_Number : "",
@@ -206,10 +187,8 @@ const Risk = ({user}) =>
         RP_Product_2ndYearCommission : "",
         RP_Product_OngoingFees : "",
         RP_Product_OngoingFeesFrequency : "",
-        RP_Product_OngoingFeesFrequency1 : "0",
-    
-        RP_TotalFees_n_Commissions : "",
-        
+        RP_Product_OngoingFeesFrequency1 : "0",    
+        RP_TotalFees_n_Commissions : "",        
         RP_BenDesc_1 : "",
         RP_BenDesc_CoverAmount1 : "",
         RP_BenDesc_2 : "",
@@ -223,15 +202,13 @@ const Risk = ({user}) =>
         RP_BenDesc_6 : "",
         RP_BenDesc_CoverAmount6 : "",
         RP_BenDesc_7 : "",
-        RP_BenDesc_CoverAmount7 : "",
-        
+        RP_BenDesc_CoverAmount7 : "",        
         RP_ProductReasons : "",
         RP_ProductMaterialAspects : "",
         RP_ProductDetails : "",
         RP_ExecutorFee : "",
         RP_NominationOfBeneficiaries : "",
-        RP_InformationExplained : "",
-    
+        RP_InformationExplained : "",    
       })
       // console.log(JSON.stringify(FormData))
       const [SuccessMessage, setSuccessMessage] = useState("")

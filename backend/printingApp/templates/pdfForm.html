@@ -1805,6 +1805,7 @@
             </div>
             <br/>
             <div>
+            <hr/>
         {% endif %}
         {% if roa_status == True %}
             {% include 'roa.html' with RoA=RoA %}
@@ -1814,8 +1815,10 @@
             {% include 'riskplanning.html' with RP=RP %}
             <hr/>
         {% endif %}
-        {% include 'investmentplanning.html' with IP=IP %}    
-        <hr/>
+        {% if ip_status %}
+            {% include 'investmentplanning.html' with IP=IP %}    
+            <hr/>
+        {% endif %}
         {% include 'businessRisk.html' with BA_Risk=BA_Risk %}
         <hr/>
         {% include 'businessAssurance.html' with BA_Investment=BA_Investment %}

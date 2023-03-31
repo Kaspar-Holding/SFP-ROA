@@ -13,12 +13,14 @@
                 </div>
             </div>
             <hr/>
-            <div class="row div">
-                <div class="column12">
-                    {{IP.IP_OtherSourceOfIncome|linebreaks}}
+            {% if IP.IP_OtherSourceOfIncome %}
+                <div class="row div">
+                    <div class="column12">
+                        {{IP.IP_OtherSourceOfIncome|linebreaks}}
+                    </div>
                 </div>
-            </div>
-            <hr/>
+                <hr/>
+            {% endif %}
         </div>
         <div style='font-family:  Arial, sans-serif;font-size: 14px;;'>
             <b class="background">Analysis of Client's Circumstances</b>
