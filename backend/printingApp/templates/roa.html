@@ -7,17 +7,25 @@
             <b>Client Name:</b>
         </div>
         <div class="column2">                        
-            <span>
-                {{RoA.clientName}}
-            </span>
+            {% if RoA.clientName %}
+                <span>
+                    {{RoA.clientName}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
         </div>                     
         <div class="column2">
             <b>ID number:</b>
         </div>
         <div class="column2">                        
-            <span>
-                {{RoA.clientIdNumber}}
-            </span>
+            {% if RoA.clientIdNumber %}
+                <span>
+                    {{RoA.clientIdNumber}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
         </div>                     
     </div>
     <hr/>
@@ -27,9 +35,13 @@
             <b>Address</b>
         </div>
         <div class="column5">                        
-            <span>
-                {{RoA.clientAddress}}
-            </span>
+            {% if RoA.clientAddress %}
+                <span>
+                    {{RoA.clientAddress}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
         </div>                                        
     </div>
     <hr />
@@ -39,17 +51,25 @@
             <b>Email:</b>
         </div>
         <div class="column2">                        
-            <span>
-                {{RoA.clientEmail}}
-            </span>
+            {% if RoA.clientEmail %}
+                <span>
+                    {{RoA.clientEmail}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
         </div>                     
         <div class="column2">
             <b>Phone:</b>
         </div>
         <div class="column2">                        
-            <span>
-                {{RoA.clientPhoneNumber}}
-            </span>
+            {% if RoA.clientPhoneNumber %}
+                <span>
+                    {{RoA.clientPhoneNumber}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
         </div>                     
     </div>
     <hr/>
@@ -59,17 +79,25 @@
             <b>Financial Advisor:</b>
         </div>
         <div class="column2">                        
-            <span>
-                {{RoA.clientAdvisor}}
-            </span>
+            {% if RoA.clientAdvisor %}
+                <span>
+                    {{RoA.clientAdvisor}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
         </div>                     
         <div class="column2">
             <b>Date:</b>
         </div>
         <div class="column2">                        
-            <span>
-                {{RoA.clientDateOfBirth}}
-            </span>
+            {% if RoA.clientDateOfBirth %}
+                <span>
+                    {{RoA.clientDateOfBirth}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
         </div>                     
     </div>
     <hr/>
@@ -134,13 +162,15 @@
                 </div>
             </div>                                        
         </div>
-        <div class='row div'>
-            <div class="column12">
-                <span>
-                    {{RoA.clientLetterOfIntroductionReason|linebreaks}}
-                </span>
-            </div>                                               
-        </div>
+        {% if RoA.clientLetterOfIntroductionReason %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {{RoA.clientLetterOfIntroductionReason|linebreaks}}
+                    </span>
+                </div>                                               
+            </div>
+        {% endif %}
         <hr/>
         <div class='row div'>
             <div class="column6">
@@ -175,13 +205,15 @@
                 </div>
             </div>                                        
         </div>
-        <div class='row div'>
-            <div class="column12">
-                <span>
-                    {{RoA.clientLetterOfIntroductionAccessReason|linebreaks}}
-                </span>
-            </div>                                               
-        </div>
+        {% if RoA.clientLetterOfIntroductionAccessReason %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {{RoA.clientLetterOfIntroductionAccessReason|linebreaks}}
+                    </span>
+                </div>                                               
+            </div>
+        {% endif %}
         <hr/>
         <li>
             <b style="">
@@ -221,13 +253,15 @@
                 </div>
             </div>                                        
         </div>
-        <div class='row div'>
-            <div class="column12">
-                <span>
-                    {{RoA.clientFicaReason|linebreaks}}
-                </span>
-            </div>                                               
-        </div>
+        {% if RoA.clientFicaReason %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {{RoA.clientFicaReason|linebreaks}}
+                    </span>
+                </div>                                               
+            </div>
+        {% endif %}
         <hr/>
     </ol>   
     <div class='row div'>
@@ -245,12 +279,14 @@
             <span>Your personal circumstances that formed the basis for my recommendation</span>
         </div>                                  
     </div>
-    <div class='row div'>
-        <div class="column12">
-            <span>
-                {{RoA.clientBackgroundInfo|linebreaks}}
-            </span>
-        </div>                                               
-    </div> 
+    {% if RoA.clientBackgroundInfo %}
+        <div class='row div'>
+            <div class="column12">
+                <span>
+                    {{RoA.clientBackgroundInfo|linebreaks}}
+                </span>
+            </div>                                               
+        </div> 
+    {% endif %}
     <br/>
 </div>

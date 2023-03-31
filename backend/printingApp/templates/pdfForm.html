@@ -246,15 +246,14 @@
                             <b class="" >
                                 {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}
                                 Medium
-                                {% endif %}
-                                {% if RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8  or RF_Client_Match_id == 11 %}
+                                {% elif RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8  or RF_Client_Match_id == 11 %}
                                 High
-                                {% endif %}
-                                {% if RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}
+                                {% elif RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}
                                 Low
-                                {% endif %}
-                                {% if RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}
+                                {% elif RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}
                                 Intolerable
+                                {% else %}
+                                Undetermined
                                 {% endif %}
                             </b>
                         </div>                     
@@ -295,9 +294,10 @@
                             <span>
                                 {% if RF_ClientType == 1 %}
                                     {{val2n}}
-                                {% endif %}
-                                {% if RF_ClientType == 2 %}
+                                {% elif RF_ClientType == 2 %}
                                     {{val3n}}
+                                {% else %}
+                                    0
                                 {% endif %}
                             </span>
                         </div>   
@@ -656,7 +656,11 @@
                             </div>
                             <div class="column2">                        
                                 <span>
-                                    {{RF_Type_Legal_Entity}}
+                                    {% if RF_Type_Legal_Entity %}
+                                        {{RF_Type_Legal_Entity}}
+                                    {% else %}
+                                        N.A.
+                                    {% endif %}
                                 </span>
                             </div>                     
                             <div class="column4">                        
@@ -703,22 +707,36 @@
                         <div class="column2">
                             <span>Industry</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Industry}}
-                            </span>
+                        <div class="column2">  
+                            {% if RF_Industry %}
+                                <span>
+                                    {{RF_Industry}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %} 
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
                         </div>         
                         {% if advisor.is_superuser %}
                             <div class="column3">                        
+                                {% if RF_Industry_id == 1 or RF_Industry_id == 3 or RF_Industry_id == 15 or RF_Industry_id == 19 %}
+                                    <span>1</span>
+                                {% elif RF_Industry_id == 2 or RF_Industry_id == 12 or RF_Industry_id == 14 or RF_Industry_id == 16 or RF_Industry_id == 17 or RF_Industry_id == 20 or RF_Industry_id == 23 or RF_Industry_id == 24 or RF_Industry_id == 26 or RF_Industry_id == 27 or RF_Industry_id == 28 or RF_Industry_id == 30 or RF_Industry_id == 34 %}
+                                    <span>3</span>
+                                {% elif RF_Industry_id == 4 or RF_Industry_id == 5 or RF_Industry_id == 6 or RF_Industry_id == 7 or RF_Industry_id == 8 or RF_Industry_id == 9 or RF_Industry_id == 10 or RF_Industry_id == 11 or RF_Industry_id == 13 or RF_Industry_id == 18 or RF_Industry_id == 21 or RF_Industry_id == 22 or RF_Industry_id == 29 or RF_Industry_id == 32 or RF_Industry_id == 33 %}
+                                    <span>2</span>
+                                {% elif RF_Industry_id_id == 25 %}
+                                    <span>0</span>
+                                {% elif RF_Industry_id_id == 31 %}
+                                    <span>4</span>
+                                {% else %}
+                                    <span class="white">0</span>
+                                {% endif %}
                                 <span>
-                                    {% if RF_Industry_id == 1 or RF_Industry_id == 3 or RF_Industry_id == 15 or RF_Industry_id == 19 %}1{% endif %}
-                                    {% if RF_Industry_id == 2 or RF_Industry_id == 12 or RF_Industry_id == 14 or RF_Industry_id == 16 or RF_Industry_id == 17 or RF_Industry_id == 20 or RF_Industry_id == 23 or RF_Industry_id == 24 or RF_Industry_id == 26 or RF_Industry_id == 27 or RF_Industry_id == 28 or RF_Industry_id == 30 or RF_Industry_id == 34 %}3{% endif %}
-                                    {% if RF_Industry_id == 4 or RF_Industry_id == 5 or RF_Industry_id == 6 or RF_Industry_id == 7 or RF_Industry_id == 8 or RF_Industry_id == 9 or RF_Industry_id == 10 or RF_Industry_id == 11 or RF_Industry_id == 13 or RF_Industry_id == 18 or RF_Industry_id == 21 or RF_Industry_id == 22 or RF_Industry_id == 29 or RF_Industry_id == 32 or RF_Industry_id == 33 %}2{% endif %}
-                                    {% if RF_Industry_id_id == 25 %}0{% endif %}
-                                    {% if RF_Industry_id_id == 31 %}4{% endif %}
                                 </span>
                             </div>                     
                             <div class="column3">                        
@@ -726,11 +744,19 @@
                             </div>                     
                             <div class="column3">                        
                                 <span>
-                                    {% if RF_Industry_id == 1 or RF_Industry_id == 3 or RF_Industry_id == 15 or RF_Industry_id == 19 %}1{% endif %}
-                                    {% if RF_Industry_id == 2 or RF_Industry_id == 12 or RF_Industry_id == 14 or RF_Industry_id == 16 or RF_Industry_id == 17 or RF_Industry_id == 20 or RF_Industry_id == 23 or RF_Industry_id == 24 or RF_Industry_id == 26 or RF_Industry_id == 27 or RF_Industry_id == 28 or RF_Industry_id == 30 or RF_Industry_id == 34 %}3{% endif %}
-                                    {% if RF_Industry_id == 4 or RF_Industry_id == 5 or RF_Industry_id == 6 or RF_Industry_id == 7 or RF_Industry_id == 8 or RF_Industry_id == 9 or RF_Industry_id == 10 or RF_Industry_id == 11 or RF_Industry_id == 13 or RF_Industry_id == 18 or RF_Industry_id == 21 or RF_Industry_id == 22 or RF_Industry_id == 29 or RF_Industry_id == 32 or RF_Industry_id == 33 %}2{% endif %}
-                                    {% if RF_Industry_id == 25 %}0{% endif %}
-                                    {% if RF_Industry_id == 31 %}4{% endif %}
+                                    {% if RF_Industry_id == 1 or RF_Industry_id == 3 or RF_Industry_id == 15 or RF_Industry_id == 19 %}
+                                        <span>1</span>
+                                    {% elif RF_Industry_id == 2 or RF_Industry_id == 12 or RF_Industry_id == 14 or RF_Industry_id == 16 or RF_Industry_id == 17 or RF_Industry_id == 20 or RF_Industry_id == 23 or RF_Industry_id == 24 or RF_Industry_id == 26 or RF_Industry_id == 27 or RF_Industry_id == 28 or RF_Industry_id == 30 or RF_Industry_id == 34 %}
+                                        <span>3</span>
+                                    {% elif RF_Industry_id == 4 or RF_Industry_id == 5 or RF_Industry_id == 6 or RF_Industry_id == 7 or RF_Industry_id == 8 or RF_Industry_id == 9 or RF_Industry_id == 10 or RF_Industry_id == 11 or RF_Industry_id == 13 or RF_Industry_id == 18 or RF_Industry_id == 21 or RF_Industry_id == 22 or RF_Industry_id == 29 or RF_Industry_id == 32 or RF_Industry_id == 33 %}
+                                        <span>2</span>
+                                    {% elif RF_Industry_id == 25 %}
+                                        0
+                                    {% elif RF_Industry_id == 31 %}
+                                        4
+                                    {% else %}
+                                        <span class="white">0</span>
+                                    {% endif %}
                                 </span>
                             </div>                     
                         {% endif %}             
@@ -741,10 +767,16 @@
                         <div class="column2">
                             <span>Source of Funds</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_SourceOfFunds}}
-                            </span>
+                        <div class="column2">  
+                            {% if RF_SourceOfFunds %}
+                                <span>
+                                    {{RF_SourceOfFunds}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %} 
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -755,15 +787,16 @@
                                 <span>
                                     {% if RF_SourceOfFunds_id == 1 or RF_SourceOfFunds_id == 6 or RF_SourceOfFunds_id == 12 or RF_SourceOfFunds_id == 13 or RF_SourceOfFunds_id == 16 %}
                                         3
-                                    {% endif %}
-                                    {% if RF_SourceOfFunds_id == 2 or RF_SourceOfFunds_id == 3 or RF_SourceOfFunds_id == 8 or RF_SourceOfFunds_id == 9 or RF_SourceOfFunds_id == 14 or RF_SourceOfFunds_id == 17 or RF_SourceOfFunds_id == 18 or RF_SourceOfFunds_id == 20 or RF_SourceOfFunds_id == 22 or RF_SourceOfFunds_id == 23 or RF_SourceOfFunds_id == 25 or RF_SourceOfFunds_id == 26 or RF_SourceOfFunds_id == 29 or RF_SourceOfFunds_id == 31 or RF_SourceOfFunds_id == 32 or RF_SourceOfFunds_id == 33 %}
+                                    {% elif RF_SourceOfFunds_id == 2 or RF_SourceOfFunds_id == 3 or RF_SourceOfFunds_id == 8 or RF_SourceOfFunds_id == 9 or RF_SourceOfFunds_id == 14 or RF_SourceOfFunds_id == 17 or RF_SourceOfFunds_id == 18 or RF_SourceOfFunds_id == 20 or RF_SourceOfFunds_id == 22 or RF_SourceOfFunds_id == 23 or RF_SourceOfFunds_id == 25 or RF_SourceOfFunds_id == 26 or RF_SourceOfFunds_id == 29 or RF_SourceOfFunds_id == 31 or RF_SourceOfFunds_id == 32 or RF_SourceOfFunds_id == 33 %}
                                         1
-                                    {% endif %}
-                                    {% if RF_SourceOfFunds_id == 4 or RF_SourceOfFunds_id == 5 or RF_SourceOfFunds_id == 7 or RF_SourceOfFunds_id == 10 or RF_SourceOfFunds_id == 11 or RF_SourceOfFunds_id == 15 or RF_SourceOfFunds_id == 19 or RF_SourceOfFunds_id == 24 or RF_SourceOfFunds_id == 27 or RF_SourceOfFunds_id == 28 or RF_SourceOfFunds_id == 30 %}
+                                    {% elif RF_SourceOfFunds_id == 4 or RF_SourceOfFunds_id == 5 or RF_SourceOfFunds_id == 7 or RF_SourceOfFunds_id == 10 or RF_SourceOfFunds_id == 11 or RF_SourceOfFunds_id == 15 or RF_SourceOfFunds_id == 19 or RF_SourceOfFunds_id == 24 or RF_SourceOfFunds_id == 27 or RF_SourceOfFunds_id == 28 or RF_SourceOfFunds_id == 30 %}
                                         2
-                                    {% endif %}
-                                    {% if RF_SourceOfFunds_id == 21 %}
+                                    {% elif RF_SourceOfFunds_id == 21 %}
                                         2
+                                    {% else %}
+                                        <span class="white">
+                                            0
+                                        </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -774,15 +807,16 @@
                                 <span>
                                     {% if RF_SourceOfFunds_id == 1 or RF_SourceOfFunds_id == 6 or RF_SourceOfFunds_id == 12 or RF_SourceOfFunds_id == 13 or RF_SourceOfFunds_id == 16 %}
                                         3
-                                    {% endif %}
-                                    {% if RF_SourceOfFunds_id == 2 or RF_SourceOfFunds_id == 3 or RF_SourceOfFunds_id == 8 or RF_SourceOfFunds_id == 9 or RF_SourceOfFunds_id == 14 or RF_SourceOfFunds_id == 17 or RF_SourceOfFunds_id == 18 or RF_SourceOfFunds_id == 20 or RF_SourceOfFunds_id == 22 or RF_SourceOfFunds_id == 23 or RF_SourceOfFunds_id == 25 or RF_SourceOfFunds_id == 26 or RF_SourceOfFunds_id == 29 or RF_SourceOfFunds_id == 31 or RF_SourceOfFunds_id == 32 or RF_SourceOfFunds_id == 33 %}
+                                    {% elif RF_SourceOfFunds_id == 2 or RF_SourceOfFunds_id == 3 or RF_SourceOfFunds_id == 8 or RF_SourceOfFunds_id == 9 or RF_SourceOfFunds_id == 14 or RF_SourceOfFunds_id == 17 or RF_SourceOfFunds_id == 18 or RF_SourceOfFunds_id == 20 or RF_SourceOfFunds_id == 22 or RF_SourceOfFunds_id == 23 or RF_SourceOfFunds_id == 25 or RF_SourceOfFunds_id == 26 or RF_SourceOfFunds_id == 29 or RF_SourceOfFunds_id == 31 or RF_SourceOfFunds_id == 32 or RF_SourceOfFunds_id == 33 %}
                                         1
-                                    {% endif %}
-                                    {% if RF_SourceOfFunds_id == 4 or RF_SourceOfFunds_id == 5 or RF_SourceOfFunds_id == 7 or RF_SourceOfFunds_id == 10 or RF_SourceOfFunds_id == 11 or RF_SourceOfFunds_id == 15 or RF_SourceOfFunds_id == 19 or RF_SourceOfFunds_id == 24 or RF_SourceOfFunds_id == 27 or RF_SourceOfFunds_id == 28 or RF_SourceOfFunds_id == 30 %}
+                                    {% elif RF_SourceOfFunds_id == 4 or RF_SourceOfFunds_id == 5 or RF_SourceOfFunds_id == 7 or RF_SourceOfFunds_id == 10 or RF_SourceOfFunds_id == 11 or RF_SourceOfFunds_id == 15 or RF_SourceOfFunds_id == 19 or RF_SourceOfFunds_id == 24 or RF_SourceOfFunds_id == 27 or RF_SourceOfFunds_id == 28 or RF_SourceOfFunds_id == 30 %}
                                         2
-                                    {% endif %}
-                                    {% if RF_SourceOfFunds_id == 21 %}
+                                    {% elif RF_SourceOfFunds_id == 21 %}
                                         2
+                                    {% else %}
+                                        <span class="white">
+                                            0
+                                        </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -794,10 +828,16 @@
                         <div class="column2">
                             <span>Relationship to client</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_RelationshipToClient}}
-                            </span>
+                        <div class="column2">  
+                            {% if RF_RelationshipToClient %}
+                                <span>
+                                    {{RF_RelationshipToClient}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}        
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -807,9 +847,12 @@
                                 <span>
                                     {% if RF_RelationshipToClient_id == 1 or RF_RelationshipToClient_id == 2 or RF_RelationshipToClient_id == 4 or RF_RelationshipToClient_id == 6 or RF_RelationshipToClient_id == 7 or RF_RelationshipToClient_id == 9 or RF_RelationshipToClient_id == 11 or RF_RelationshipToClient_id == 13 or RF_RelationshipToClient_id == 15 %}
                                         1
-                                    {% endif %}
-                                    {% if RF_RelationshipToClient_id == 3 or RF_RelationshipToClient_id == 5 or RF_RelationshipToClient_id == 8 or RF_RelationshipToClient_id == 10 or RF_RelationshipToClient_id == 12 or RF_RelationshipToClient_id == 14 or RF_RelationshipToClient_id == 16 %}
+                                    {% elif RF_RelationshipToClient_id == 3 or RF_RelationshipToClient_id == 5 or RF_RelationshipToClient_id == 8 or RF_RelationshipToClient_id == 10 or RF_RelationshipToClient_id == 12 or RF_RelationshipToClient_id == 14 or RF_RelationshipToClient_id == 16 %}
                                         2
+                                    {% else %}
+                                        <span class="white">
+                                            0
+                                        </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -820,9 +863,12 @@
                                 <span>
                                     {% if RF_RelationshipToClient_id == 1 or RF_RelationshipToClient_id == 2 or RF_RelationshipToClient_id == 4 or RF_RelationshipToClient_id == 6 or RF_RelationshipToClient_id == 7 or RF_RelationshipToClient_id == 9 or RF_RelationshipToClient_id == 11 or RF_RelationshipToClient_id == 13 or RF_RelationshipToClient_id == 15 %}
                                         1
-                                    {% endif %}
-                                    {% if RF_RelationshipToClient_id == 3 or RF_RelationshipToClient_id == 5 or RF_RelationshipToClient_id == 8 or RF_RelationshipToClient_id == 10 or RF_RelationshipToClient_id == 12 or RF_RelationshipToClient_id == 14 or RF_RelationshipToClient_id == 16 %}
+                                    {% elif RF_RelationshipToClient_id == 3 or RF_RelationshipToClient_id == 5 or RF_RelationshipToClient_id == 8 or RF_RelationshipToClient_id == 10 or RF_RelationshipToClient_id == 12 or RF_RelationshipToClient_id == 14 or RF_RelationshipToClient_id == 16 %}
                                         2
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -858,10 +904,16 @@
                         <div class="column2">
                             <span>Product/Service Risk</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Product_Name}}
-                            </span>
+                        <div class="column2">   
+                            {% if RF_Product_Name %}
+                                <span>
+                                    {{RF_Product_Name}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}  
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -871,12 +923,14 @@
                                 <span>
                                     {% if RF_Product_Name_id == 1 or RF_Product_Name_id == 2 or RF_Product_Name_id == 6 or RF_Product_Name_id == 9 or RF_Product_Name_id == 12 or RF_Product_Name_id == 13 or RF_Product_Name_id == 16 or RF_Product_Name_id == 19 or RF_Product_Name_id == 20 or RF_Product_Name_id == 24 or RF_Product_Name_id == 26 or RF_Product_Name_id == 27 %}
                                         1
-                                    {% endif %}
-                                    {% if RF_Product_Name_id == 3 or RF_Product_Name_id == 4 or RF_Product_Name_id == 5 or RF_Product_Name_id == 8 or RF_Product_Name_id == 11 or RF_Product_Name_id == 18 or RF_Product_Name_id == 21 %}
+                                    {% elif RF_Product_Name_id == 3 or RF_Product_Name_id == 4 or RF_Product_Name_id == 5 or RF_Product_Name_id == 8 or RF_Product_Name_id == 11 or RF_Product_Name_id == 18 or RF_Product_Name_id == 21 %}
                                         2
-                                    {% endif %}
-                                    {% if RF_Product_Name_id == 7 or RF_Product_Name_id == 10 or RF_Product_Name_id == 14 or RF_Product_Name_id == 15 or RF_Product_Name_id == 17 or RF_Product_Name_id == 22 or RF_Product_Name_id == 23 or RF_Product_Name_id == 25 or RF_Product_Name_id == 28 or RF_Product_Name_id == 29 %}
+                                    {% elif RF_Product_Name_id == 7 or RF_Product_Name_id == 10 or RF_Product_Name_id == 14 or RF_Product_Name_id == 15 or RF_Product_Name_id == 17 or RF_Product_Name_id == 22 or RF_Product_Name_id == 23 or RF_Product_Name_id == 25 or RF_Product_Name_id == 28 or RF_Product_Name_id == 29 %}
                                         3
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -887,12 +941,14 @@
                                 <span>
                                     {% if RF_Product_Name_id == 1 or RF_Product_Name_id == 2 or RF_Product_Name_id == 6 or RF_Product_Name_id == 9 or RF_Product_Name_id == 12 or RF_Product_Name_id == 13 or RF_Product_Name_id == 16 or RF_Product_Name_id == 19 or RF_Product_Name_id == 20 or RF_Product_Name_id == 24 or RF_Product_Name_id == 26 or RF_Product_Name_id == 27 %}
                                         1
-                                    {% endif %}
-                                    {% if RF_Product_Name_id == 3 or RF_Product_Name_id == 4 or RF_Product_Name_id == 5 or RF_Product_Name_id == 8 or RF_Product_Name_id == 11 or RF_Product_Name_id == 18 or RF_Product_Name_id == 21 %}
+                                    {% elif RF_Product_Name_id == 3 or RF_Product_Name_id == 4 or RF_Product_Name_id == 5 or RF_Product_Name_id == 8 or RF_Product_Name_id == 11 or RF_Product_Name_id == 18 or RF_Product_Name_id == 21 %}
                                         2
-                                    {% endif %}
-                                    {% if RF_Product_Name_id == 7 or RF_Product_Name_id == 10 or RF_Product_Name_id == 14 or RF_Product_Name_id == 15 or RF_Product_Name_id == 17 or RF_Product_Name_id == 22 or RF_Product_Name_id == 23 or RF_Product_Name_id == 25 or RF_Product_Name_id == 28 or RF_Product_Name_id == 29 %}
+                                    {% elif RF_Product_Name_id == 7 or RF_Product_Name_id == 10 or RF_Product_Name_id == 14 or RF_Product_Name_id == 15 or RF_Product_Name_id == 17 or RF_Product_Name_id == 22 or RF_Product_Name_id == 23 or RF_Product_Name_id == 25 or RF_Product_Name_id == 28 or RF_Product_Name_id == 29 %}
                                         3
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -936,7 +992,7 @@
                         </div>                     
                         <div class="column4">                        
                             <span>
-                                {% if val4n %}{{val4n}}{% else %}{% endif %}
+                                {% if val4n %}{{val4n}}{% else %}0{% endif %}
                             </span>
                         </div>            
                         {% if advisor.is_superuser %}
@@ -957,8 +1013,16 @@
                         <div class="column2">
                             <span>Transaction Flow</span>
                         </div>
-                        <div class="column2">                        
-                            <span>{{RF_Transaction_Flow}}</span>
+                        <div class="column2">           
+                            {% if RF_Transaction_Flow %}
+                                <span>
+                                    {{RF_Transaction_Flow}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}               
                         </div>                     
                         <div class="column4">
                             {% if RF_Transaction_Flow_id == 3 %}
@@ -986,10 +1050,16 @@
                         <div class="column2">
                             <span>Method of Transaction</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Transaction_Method}}
-                            </span>
+                        <div class="column2">          
+                            {% if RF_Transaction_Method %}
+                                <span>
+                                    {{RF_Transaction_Method}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}  
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -999,12 +1069,14 @@
                                 <span>
                                     {% if RF_Transaction_Method_id == 3 or RF_Transaction_Method_id == 6 or RF_Transaction_Method_id == 9 or RF_Transaction_Method_id == 10 or RF_Transaction_Method_id == 12 %}
                                         1
-                                    {% endif %}
-                                    {% if RF_Transaction_Method_id == 1 or RF_Transaction_Method_id == 4 or RF_Transaction_Method_id == 5 or RF_Transaction_Method_id == 7 or RF_Transaction_Method_id == 8 %}
+                                    {% elif RF_Transaction_Method_id == 1 or RF_Transaction_Method_id == 4 or RF_Transaction_Method_id == 5 or RF_Transaction_Method_id == 7 or RF_Transaction_Method_id == 8 %}
                                         2
-                                    {% endif %}
-                                    {% if RF_Transaction_Method_id == 2 or RF_Transaction_Method_id == 11 %}
+                                    {% elif RF_Transaction_Method_id == 2 or RF_Transaction_Method_id == 11 %}
                                         3
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1015,12 +1087,14 @@
                                 <span>
                                     {% if RF_Transaction_Method_id == 1 or RF_Transaction_Method_id == 4 or RF_Transaction_Method_id == 5 or RF_Transaction_Method_id == 7 or RF_Transaction_Method_id == 8 %}
                                         4
-                                    {% endif %}
-                                    {% if RF_Transaction_Method_id == 3 or RF_Transaction_Method_id == 6 or RF_Transaction_Method_id == 9 or RF_Transaction_Method_id == 10 or RF_Transaction_Method_id == 12 %}
+                                    {% elif RF_Transaction_Method_id == 3 or RF_Transaction_Method_id == 6 or RF_Transaction_Method_id == 9 or RF_Transaction_Method_id == 10 or RF_Transaction_Method_id == 12 %}
                                         2
-                                    {% endif %}
-                                    {% if RF_Transaction_Method_id == 2 or RF_Transaction_Method_id == 11 %}
+                                    {% elif RF_Transaction_Method_id == 2 or RF_Transaction_Method_id == 11 %}
                                         6
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1032,10 +1106,16 @@
                         <div class="column2">
                             <span>Reason of Transaction</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Transaction_Reason}}
-                            </span>
+                        <div class="column2">         
+                            {% if RF_Transaction_Reason %}
+                                <span>
+                                    {{RF_Transaction_Reason}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}     
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -1047,6 +1127,10 @@
                                         2
                                     {% elif RF_Transaction_Reason_id != 0 %}
                                         1
+                                    {% else %}
+                                        <span class="white">
+                                            0
+                                        </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1059,6 +1143,10 @@
                                         2
                                     {% elif RF_Transaction_Reason_id != 0 %}
                                         1
+                                    {% else %}
+                                        <span class="white">
+                                            0
+                                        </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1069,10 +1157,16 @@
                         <div class="column2">
                             <span>Has this Reason for Transaction been considered as a High Risk in any Typology report/guidance?</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_High_Transaction_Reason}}
-                            </span>
+                        <div class="column2">          
+                            {% if RF_High_Transaction_Reason %}
+                                <span>
+                                    {{RF_High_Transaction_Reason}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}     
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -1082,9 +1176,12 @@
                                 <span>
                                     {% if RF_High_Transaction_Reason_id == 1 %}
                                         3
-                                    {% endif %}
-                                    {% if RF_High_Transaction_Reason_id == 2 %}
+                                    {% elif RF_High_Transaction_Reason_id == 2 %}
                                         1
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1095,9 +1192,12 @@
                                 <span>
                                     {% if RF_High_Transaction_Reason_id == 1 %}
                                         6
-                                    {% endif %}
-                                    {% if RF_High_Transaction_Reason_id == 2 %}
+                                    {% elif RF_High_Transaction_Reason_id == 2 %}
                                         2
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1108,10 +1208,16 @@
                         <div class="column2">
                             <span>Frequency of Transaction</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Transaction_Frequency}}
-                            </span>
+                        <div class="column2">          
+                            {% if RF_Transaction_Frequency %}
+                                <span>
+                                    {{RF_Transaction_Frequency}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %} 
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -1121,9 +1227,12 @@
                                 <span>
                                     {% if RF_Transaction_Frequency_id == 1 or RF_Transaction_Frequency_id == 2 or RF_Transaction_Frequency_id == 3 %}
                                         3
-                                    {% endif %}
-                                    {% if RF_Transaction_Frequency_id == 4 %}
+                                    {% elif RF_Transaction_Frequency_id == 4 %}
                                         1
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1134,9 +1243,12 @@
                                 <span>
                                     {% if RF_Transaction_Frequency_id == 1 or RF_Transaction_Frequency_id == 2 or RF_Transaction_Frequency_id == 3 %}
                                         3
-                                    {% endif %}
-                                    {% if RF_Transaction_Frequency_id == 4 %}
+                                    {% elif RF_Transaction_Frequency_id == 4 %}
                                         1
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1147,10 +1259,16 @@
                         <div class="column2">
                             <span>Value of Transaction:</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Transaction_Value}}
-                            </span>
+                        <div class="column2">         
+                            {% if RF_Transaction_Value %}
+                                <span>
+                                    {{RF_Transaction_Value}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}
                         </div>                     
                         <div class="column2">
                             <span>Currency:</span>
@@ -1166,10 +1284,16 @@
                         <div class="column2">
                             <span>Transaction Geography</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Transaction_Geography}}
-                            </span>
+                        <div class="column2">       
+                            {% if RF_Transaction_Geography %}
+                                <span>
+                                    {{RF_Transaction_Geography}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}   
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -1179,9 +1303,12 @@
                                 <span>
                                     {% if RF_Transaction_Geography_id == 1 %}
                                         2
-                                    {% endif %}
-                                    {% if RF_Transaction_Geography_id == 3 or RF_Transaction_Geography_id == 3 %}
+                                    {% elif RF_Transaction_Geography_id == 3 or RF_Transaction_Geography_id == 3 %}
                                         1
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1192,9 +1319,12 @@
                                 <span>
                                     {% if RF_Transaction_Geography_id == 1 %}
                                         2
-                                    {% endif %}
-                                    {% if RF_Transaction_Geography_id == 3 or RF_Transaction_Geography_id == 3 %}
+                                    {% elif RF_Transaction_Geography_id == 3 or RF_Transaction_Geography_id == 3 %}
                                         1
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1205,10 +1335,16 @@
                         <div class="column2">
                             <span>Jurisdiction of funds</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Funds_Jurisdiction}}
-                            </span>
+                        <div class="column2">      
+                            {% if RF_Funds_Jurisdiction %}
+                                <span>
+                                    {{RF_Funds_Jurisdiction}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}  
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -1218,10 +1354,16 @@
                                 <span>
                                     {% if RF_Funds_Jurisdiction_id == 1 or RF_Funds_Jurisdiction_id == 2 or RF_Funds_Jurisdiction_id == 3 or RF_Funds_Jurisdiction_id == 4 or RF_Funds_Jurisdiction_id == 6 or RF_Funds_Jurisdiction_id == 8 or RF_Funds_Jurisdiction_id == 10 or RF_Funds_Jurisdiction_id == 13 or RF_Funds_Jurisdiction_id == 16 or RF_Funds_Jurisdiction_id == 17 or RF_Funds_Jurisdiction_id == 19 or RF_Funds_Jurisdiction_id == 20 or RF_Funds_Jurisdiction_id == 24 or RF_Funds_Jurisdiction_id == 27 or RF_Funds_Jurisdiction_id == 28 or RF_Funds_Jurisdiction_id == 29 or RF_Funds_Jurisdiction_id == 31 or RF_Funds_Jurisdiction_id == 32 or RF_Funds_Jurisdiction_id == 33 or RF_Funds_Jurisdiction_id == 36 or RF_Funds_Jurisdiction_id == 37 or RF_Funds_Jurisdiction_id == 39 or RF_Funds_Jurisdiction_id == 41 or RF_Funds_Jurisdiction_id == 42 or RF_Funds_Jurisdiction_id == 43 or RF_Funds_Jurisdiction_id == 46 or RF_Funds_Jurisdiction_id == 47 or RF_Funds_Jurisdiction_id == 48 or RF_Funds_Jurisdiction_id == 49 or RF_Funds_Jurisdiction_id == 50 or RF_Funds_Jurisdiction_id == 51 or RF_Funds_Jurisdiction_id == 52 or RF_Funds_Jurisdiction_id == 53 or RF_Funds_Jurisdiction_id == 55 or RF_Funds_Jurisdiction_id == 58 or RF_Funds_Jurisdiction_id == 62 or RF_Funds_Jurisdiction_id == 64 or RF_Funds_Jurisdiction_id == 65 or RF_Funds_Jurisdiction_id == 66 or RF_Funds_Jurisdiction_id == 67 or RF_Funds_Jurisdiction_id == 68 or RF_Funds_Jurisdiction_id == 69 or RF_Funds_Jurisdiction_id == 71 or RF_Funds_Jurisdiction_id == 72 or RF_Funds_Jurisdiction_id == 73 or RF_Funds_Jurisdiction_id == 74 or RF_Funds_Jurisdiction_id == 82 or RF_Funds_Jurisdiction_id == 85 or RF_Funds_Jurisdiction_id == 86 or RF_Funds_Jurisdiction_id == 90 or RF_Funds_Jurisdiction_id == 91 or RF_Funds_Jurisdiction_id == 92 or RF_Funds_Jurisdiction_id == 93 or RF_Funds_Jurisdiction_id == 94 or RF_Funds_Jurisdiction_id == 95 or RF_Funds_Jurisdiction_id == 97 or RF_Funds_Jurisdiction_id == 98 or RF_Funds_Jurisdiction_id == 99 or RF_Funds_Jurisdiction_id == 100 or RF_Funds_Jurisdiction_id == 103 or RF_Funds_Jurisdiction_id == 109  or RF_Funds_Jurisdiction_id == 112  or RF_Funds_Jurisdiction_id == 115  or RF_Funds_Jurisdiction_id == 116  or RF_Funds_Jurisdiction_id == 117  or RF_Funds_Jurisdiction_id == 121  or RF_Funds_Jurisdiction_id == 123  or RF_Funds_Jurisdiction_id == 124 or RF_Funds_Jurisdiction_id == 126  or RF_Funds_Jurisdiction_id == 127  or RF_Funds_Jurisdiction_id == 128  or RF_Funds_Jurisdiction_id == 129  or RF_Funds_Jurisdiction_id == 134  or RF_Funds_Jurisdiction_id == 135  or RF_Funds_Jurisdiction_id == 136 or RF_Funds_Jurisdiction_id == 139  or RF_Funds_Jurisdiction_id == 143  or RF_Funds_Jurisdiction_id == 145  or RF_Funds_Jurisdiction_id == 146  or RF_Funds_Jurisdiction_id == 148  or RF_Funds_Jurisdiction_id == 150 or RF_Funds_Jurisdiction_id == 151 or RF_Funds_Jurisdiction_id == 152 or RF_Funds_Jurisdiction_id == 153 or RF_Funds_Jurisdiction_id == 154 or RF_Funds_Jurisdiction_id == 155 or RF_Funds_Jurisdiction_id == 158 or RF_Funds_Jurisdiction_id == 160 or RF_Funds_Jurisdiction_id == 162 or RF_Funds_Jurisdiction_id == 163 or RF_Funds_Jurisdiction_id == 164 or RF_Funds_Jurisdiction_id == 165 or RF_Funds_Jurisdiction_id == 166 or RF_Funds_Jurisdiction_id == 168 or RF_Funds_Jurisdiction_id == 170 or RF_Funds_Jurisdiction_id == 172 or RF_Funds_Jurisdiction_id == 173 or RF_Funds_Jurisdiction_id == 174 or RF_Funds_Jurisdiction_id == 175 or RF_Funds_Jurisdiction_id == 176 or RF_Funds_Jurisdiction_id == 177 or RF_Funds_Jurisdiction_id == 186 or RF_Funds_Jurisdiction_id == 187 or RF_Funds_Jurisdiction_id == 188 or RF_Funds_Jurisdiction_id == 190 or RF_Funds_Jurisdiction_id == 191 or RF_Funds_Jurisdiction_id == 193 or RF_Funds_Jurisdiction_id == 195 or RF_Funds_Jurisdiction_id == 197 or RF_Funds_Jurisdiction_id == 198 or RF_Funds_Jurisdiction_id == 200 or RF_Funds_Jurisdiction_id == 202 or RF_Funds_Jurisdiction_id == 203 or RF_Funds_Jurisdiction_id == 206 or RF_Funds_Jurisdiction_id == 208 or RF_Funds_Jurisdiction_id == 209 or RF_Funds_Jurisdiction_id == 211 or RF_Funds_Jurisdiction_id == 212 or RF_Funds_Jurisdiction_id == 213 or RF_Funds_Jurisdiction_id == 214 or RF_Funds_Jurisdiction_id == 219 or RF_Funds_Jurisdiction_id == 220 or RF_Funds_Jurisdiction_id == 221 or RF_Funds_Jurisdiction_id == 222 or RF_Funds_Jurisdiction_id == 223 or RF_Funds_Jurisdiction_id == 224 or RF_Funds_Jurisdiction_id == 226 or RF_Funds_Jurisdiction_id == 230 or RF_Funds_Jurisdiction_id == 232 or RF_Funds_Jurisdiction_id == 233 or RF_Funds_Jurisdiction_id == 236 or RF_Funds_Jurisdiction_id == 237 or RF_Funds_Jurisdiction_id == 238 or RF_Funds_Jurisdiction_id == 239 %}
                                         3
+                                    {% elif RF_Funds_Jurisdiction_id == 5 or RF_Funds_Jurisdiction_id == 7 or RF_Funds_Jurisdiction_id == 9 or RF_Funds_Jurisdiction_id == 12 or RF_Funds_Jurisdiction_id == 25 or RF_Funds_Jurisdiction_id == 34 or RF_Funds_Jurisdiction_id == 35 or RF_Funds_Jurisdiction_id == 61 or RF_Funds_Jurisdiction_id == 76 or RF_Funds_Jurisdiction_id == 84 or RF_Funds_Jurisdiction_id == 88 or RF_Funds_Jurisdiction_id == 114 or RF_Funds_Jurisdiction_id == 130 or RF_Funds_Jurisdiction_id == 132 or RF_Funds_Jurisdiction_id == 142 or RF_Funds_Jurisdiction_id == 149 or RF_Funds_Jurisdiction_id == 159 or RF_Funds_Jurisdiction_id == 161  or RF_Funds_Jurisdiction_id == 167 or RF_Funds_Jurisdiction_id == 194 or RF_Funds_Jurisdiction_id == 215 or RF_Funds_Jurisdiction_id == 216 %}
+                                    1{% elif RF_Funds_Jurisdiction_id == 11 or RF_Funds_Jurisdiction_id == 14 or RF_Funds_Jurisdiction_id == 15 or RF_Funds_Jurisdiction_id == 18 or RF_Funds_Jurisdiction_id == 22 or RF_Funds_Jurisdiction_id == 23 or RF_Funds_Jurisdiction_id == 26 or RF_Funds_Jurisdiction_id == 30 or RF_Funds_Jurisdiction_id == 38 or RF_Funds_Jurisdiction_id == 40 or RF_Funds_Jurisdiction_id == 44 or RF_Funds_Jurisdiction_id == 45 or RF_Funds_Jurisdiction_id == 54 or RF_Funds_Jurisdiction_id == 56 or RF_Funds_Jurisdiction_id == 59 or RF_Funds_Jurisdiction_id == 60 or RF_Funds_Jurisdiction_id == 63 or RF_Funds_Jurisdiction_id == 70 or RF_Funds_Jurisdiction_id == 75 or RF_Funds_Jurisdiction_id == 77 or RF_Funds_Jurisdiction_id == 78 or RF_Funds_Jurisdiction_id == 79 or RF_Funds_Jurisdiction_id == 80 or RF_Funds_Jurisdiction_id == 81 or RF_Funds_Jurisdiction_id == 83 or RF_Funds_Jurisdiction_id == 87 or RF_Funds_Jurisdiction_id == 89 or RF_Funds_Jurisdiction_id == 96 or RF_Funds_Jurisdiction_id == 101 or RF_Funds_Jurisdiction_id == 104 or RF_Funds_Jurisdiction_id == 105 or RF_Funds_Jurisdiction_id == 108 or RF_Funds_Jurisdiction_id == 110 or RF_Funds_Jurisdiction_id == 111 or RF_Funds_Jurisdiction_id == 113 or RF_Funds_Jurisdiction_id == 118 or RF_Funds_Jurisdiction_id == 120 or RF_Funds_Jurisdiction_id == 125 or RF_Funds_Jurisdiction_id == 131 or RF_Funds_Jurisdiction_id == 133 or  RF_Funds_Jurisdiction_id == 137 or RF_Funds_Jurisdiction_id == 138 or RF_Funds_Jurisdiction_id == 140 or RF_Funds_Jurisdiction_id == 141 or RF_Funds_Jurisdiction_id == 144 or RF_Funds_Jurisdiction_id == 147 or RF_Funds_Jurisdiction_id == 156 or RF_Funds_Jurisdiction_id == 157 or RF_Funds_Jurisdiction_id == 169 or RF_Funds_Jurisdiction_id == 171 or RF_Funds_Jurisdiction_id == 178 or RF_Funds_Jurisdiction_id == 179 or RF_Funds_Jurisdiction_id == 180 or RF_Funds_Jurisdiction_id == 181 or RF_Funds_Jurisdiction_id == 182 or RF_Funds_Jurisdiction_id == 183 or RF_Funds_Jurisdiction_id == 185 or RF_Funds_Jurisdiction_id == 189 or RF_Funds_Jurisdiction_id == 192 or RF_Funds_Jurisdiction_id == 196 or RF_Funds_Jurisdiction_id == 199 or RF_Funds_Jurisdiction_id == 201 or RF_Funds_Jurisdiction_id == 204 or RF_Funds_Jurisdiction_id == 205 or RF_Funds_Jurisdiction_id == 207 or RF_Funds_Jurisdiction_id == 210 or RF_Funds_Jurisdiction_id == 218 or RF_Funds_Jurisdiction_id == 225 or RF_Funds_Jurisdiction_id == 231 or RF_Funds_Jurisdiction_id == 234 or RF_Funds_Jurisdiction_id == 235 or RF_Funds_Jurisdiction_id == 237 or RF_Funds_Jurisdiction_id == 238  %}
+                                    2{% elif RF_Funds_Jurisdiction_id == 21 or RF_Funds_Jurisdiction_id == 57 or RF_Funds_Jurisdiction_id == 106 or RF_Funds_Jurisdiction_id == 107 or RF_Funds_Jurisdiction_id == 119 or RF_Funds_Jurisdiction_id == 187 or RF_Funds_Jurisdiction_id == 217 %}
+                                    4
+                                    
+                                    {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
                                     {% endif %}
-                                    {% if RF_Funds_Jurisdiction_id == 5 or RF_Funds_Jurisdiction_id == 7 or RF_Funds_Jurisdiction_id == 9 or RF_Funds_Jurisdiction_id == 12 or RF_Funds_Jurisdiction_id == 25 or RF_Funds_Jurisdiction_id == 34 or RF_Funds_Jurisdiction_id == 35 or RF_Funds_Jurisdiction_id == 61 or RF_Funds_Jurisdiction_id == 76 or RF_Funds_Jurisdiction_id == 84 or RF_Funds_Jurisdiction_id == 88 or RF_Funds_Jurisdiction_id == 114 or RF_Funds_Jurisdiction_id == 130 or RF_Funds_Jurisdiction_id == 132 or RF_Funds_Jurisdiction_id == 142 or RF_Funds_Jurisdiction_id == 149 or RF_Funds_Jurisdiction_id == 159 or RF_Funds_Jurisdiction_id == 161  or RF_Funds_Jurisdiction_id == 167 or RF_Funds_Jurisdiction_id == 194 or RF_Funds_Jurisdiction_id == 215 or RF_Funds_Jurisdiction_id == 216 %}1{% endif %}
-                                    {% if RF_Funds_Jurisdiction_id == 11 or RF_Funds_Jurisdiction_id == 14 or RF_Funds_Jurisdiction_id == 15 or RF_Funds_Jurisdiction_id == 18 or RF_Funds_Jurisdiction_id == 22 or RF_Funds_Jurisdiction_id == 23 or RF_Funds_Jurisdiction_id == 26 or RF_Funds_Jurisdiction_id == 30 or RF_Funds_Jurisdiction_id == 38 or RF_Funds_Jurisdiction_id == 40 or RF_Funds_Jurisdiction_id == 44 or RF_Funds_Jurisdiction_id == 45 or RF_Funds_Jurisdiction_id == 54 or RF_Funds_Jurisdiction_id == 56 or RF_Funds_Jurisdiction_id == 59 or RF_Funds_Jurisdiction_id == 60 or RF_Funds_Jurisdiction_id == 63 or RF_Funds_Jurisdiction_id == 70 or RF_Funds_Jurisdiction_id == 75 or RF_Funds_Jurisdiction_id == 77 or RF_Funds_Jurisdiction_id == 78 or RF_Funds_Jurisdiction_id == 79 or RF_Funds_Jurisdiction_id == 80 or RF_Funds_Jurisdiction_id == 81 or RF_Funds_Jurisdiction_id == 83 or RF_Funds_Jurisdiction_id == 87 or RF_Funds_Jurisdiction_id == 89 or RF_Funds_Jurisdiction_id == 96 or RF_Funds_Jurisdiction_id == 101 or RF_Funds_Jurisdiction_id == 104 or RF_Funds_Jurisdiction_id == 105 or RF_Funds_Jurisdiction_id == 108 or RF_Funds_Jurisdiction_id == 110 or RF_Funds_Jurisdiction_id == 111 or RF_Funds_Jurisdiction_id == 113 or RF_Funds_Jurisdiction_id == 118 or RF_Funds_Jurisdiction_id == 120 or RF_Funds_Jurisdiction_id == 125 or RF_Funds_Jurisdiction_id == 131 or RF_Funds_Jurisdiction_id == 133 or  RF_Funds_Jurisdiction_id == 137 or RF_Funds_Jurisdiction_id == 138 or RF_Funds_Jurisdiction_id == 140 or RF_Funds_Jurisdiction_id == 141 or RF_Funds_Jurisdiction_id == 144 or RF_Funds_Jurisdiction_id == 147 or RF_Funds_Jurisdiction_id == 156 or RF_Funds_Jurisdiction_id == 157 or RF_Funds_Jurisdiction_id == 169 or RF_Funds_Jurisdiction_id == 171 or RF_Funds_Jurisdiction_id == 178 or RF_Funds_Jurisdiction_id == 179 or RF_Funds_Jurisdiction_id == 180 or RF_Funds_Jurisdiction_id == 181 or RF_Funds_Jurisdiction_id == 182 or RF_Funds_Jurisdiction_id == 183 or RF_Funds_Jurisdiction_id == 185 or RF_Funds_Jurisdiction_id == 189 or RF_Funds_Jurisdiction_id == 192 or RF_Funds_Jurisdiction_id == 196 or RF_Funds_Jurisdiction_id == 199 or RF_Funds_Jurisdiction_id == 201 or RF_Funds_Jurisdiction_id == 204 or RF_Funds_Jurisdiction_id == 205 or RF_Funds_Jurisdiction_id == 207 or RF_Funds_Jurisdiction_id == 210 or RF_Funds_Jurisdiction_id == 218 or RF_Funds_Jurisdiction_id == 225 or RF_Funds_Jurisdiction_id == 231 or RF_Funds_Jurisdiction_id == 234 or RF_Funds_Jurisdiction_id == 235 or RF_Funds_Jurisdiction_id == 237 or RF_Funds_Jurisdiction_id == 238  %}2{% endif %}
-                                    {% if RF_Funds_Jurisdiction_id == 21 or RF_Funds_Jurisdiction_id == 57 or RF_Funds_Jurisdiction_id == 106 or RF_Funds_Jurisdiction_id == 107 or RF_Funds_Jurisdiction_id == 119 or RF_Funds_Jurisdiction_id == 187 or RF_Funds_Jurisdiction_id == 217 %}4{% endif %}
                                 </span>
                             </div>                     
                             <div class="column3">                        
@@ -1231,10 +1373,19 @@
                             </div>                     
                             <div class="column3">                        
                                 <span>
-                                    {% if RF_Funds_Jurisdiction_id == 1 or RF_Funds_Jurisdiction_id == 2 or RF_Funds_Jurisdiction_id == 3 or RF_Funds_Jurisdiction_id == 4 or RF_Funds_Jurisdiction_id == 6 or RF_Funds_Jurisdiction_id == 8 or RF_Funds_Jurisdiction_id == 10 or RF_Funds_Jurisdiction_id == 13 or RF_Funds_Jurisdiction_id == 16 or RF_Funds_Jurisdiction_id == 17 or RF_Funds_Jurisdiction_id == 19 or RF_Funds_Jurisdiction_id == 20 or RF_Funds_Jurisdiction_id == 24 or RF_Funds_Jurisdiction_id == 27 or RF_Funds_Jurisdiction_id == 28 or RF_Funds_Jurisdiction_id == 29 or RF_Funds_Jurisdiction_id == 30 or RF_Funds_Jurisdiction_id == 31 or RF_Funds_Jurisdiction_id == 32 or RF_Funds_Jurisdiction_id == 33 or RF_Funds_Jurisdiction_id == 36 or RF_Funds_Jurisdiction_id == 37 or RF_Funds_Jurisdiction_id == 39 or RF_Funds_Jurisdiction_id == 41 or RF_Funds_Jurisdiction_id == 42 or RF_Funds_Jurisdiction_id == 43 or RF_Funds_Jurisdiction_id == 46 or RF_Funds_Jurisdiction_id == 47 or RF_Funds_Jurisdiction_id == 48 or RF_Funds_Jurisdiction_id == 49 or RF_Funds_Jurisdiction_id == 50 or RF_Funds_Jurisdiction_id == 51 or RF_Funds_Jurisdiction_id == 52 or RF_Funds_Jurisdiction_id == 53 or RF_Funds_Jurisdiction_id == 55 or RF_Funds_Jurisdiction_id == 58 or RF_Funds_Jurisdiction_id == 62 or RF_Funds_Jurisdiction_id == 64 or RF_Funds_Jurisdiction_id == 65 or RF_Funds_Jurisdiction_id == 66  or RF_Funds_Jurisdiction_id == 67 or RF_Funds_Jurisdiction_id == 68 or RF_Funds_Jurisdiction_id == 69 or RF_Funds_Jurisdiction_id == 70 or RF_Funds_Jurisdiction_id == 71 or RF_Funds_Jurisdiction_id == 72 or RF_Funds_Jurisdiction_id == 73 or RF_Funds_Jurisdiction_id == 74 or RF_Funds_Jurisdiction_id == 82 or RF_Funds_Jurisdiction_id == 85 or RF_Funds_Jurisdiction_id == 86 or RF_Funds_Jurisdiction_id == 90 or RF_Funds_Jurisdiction_id == 91 or RF_Funds_Jurisdiction_id == 92 or RF_Funds_Jurisdiction_id == 93 or RF_Funds_Jurisdiction_id == 94 or RF_Funds_Jurisdiction_id == 95 or RF_Funds_Jurisdiction_id == 96 or RF_Funds_Jurisdiction_id == 97 or RF_Funds_Jurisdiction_id == 98 or RF_Funds_Jurisdiction_id == 99 or RF_Funds_Jurisdiction_id == 100 or RF_Funds_Jurisdiction_id == 102 or RF_Funds_Jurisdiction_id == 103 or RF_Funds_Jurisdiction_id == 109  or RF_Funds_Jurisdiction_id == 112  or RF_Funds_Jurisdiction_id == 115  or RF_Funds_Jurisdiction_id == 116  or RF_Funds_Jurisdiction_id == 117  or RF_Funds_Jurisdiction_id == 121  or RF_Funds_Jurisdiction_id == 123  or RF_Funds_Jurisdiction_id == 124 or RF_Funds_Jurisdiction_id == 126  or RF_Funds_Jurisdiction_id == 127  or RF_Funds_Jurisdiction_id == 128  or RF_Funds_Jurisdiction_id == 129  or RF_Funds_Jurisdiction_id == 134  or RF_Funds_Jurisdiction_id == 135  or RF_Funds_Jurisdiction_id == 136 or RF_Funds_Jurisdiction_id == 139  or RF_Funds_Jurisdiction_id == 143  or RF_Funds_Jurisdiction_id == 145  or RF_Funds_Jurisdiction_id == 146  or RF_Funds_Jurisdiction_id == 148  or RF_Funds_Jurisdiction_id == 150 or RF_Funds_Jurisdiction_id == 151 or RF_Funds_Jurisdiction_id == 152 or RF_Funds_Jurisdiction_id == 153 or RF_Funds_Jurisdiction_id == 154 or RF_Funds_Jurisdiction_id == 155 or RF_Funds_Jurisdiction_id == 158 or RF_Funds_Jurisdiction_id == 160 or RF_Funds_Jurisdiction_id == 162  or RF_Funds_Jurisdiction_id == 163 or RF_Funds_Jurisdiction_id == 164 or RF_Funds_Jurisdiction_id == 165 or RF_Funds_Jurisdiction_id == 166 or RF_Funds_Jurisdiction_id == 168 or RF_Funds_Jurisdiction_id == 170 or RF_Funds_Jurisdiction_id == 172 or RF_Funds_Jurisdiction_id == 173 or RF_Funds_Jurisdiction_id == 174 or RF_Funds_Jurisdiction_id == 175 or RF_Funds_Jurisdiction_id == 176 or RF_Funds_Jurisdiction_id == 177 or RF_Funds_Jurisdiction_id == 186 or RF_Funds_Jurisdiction_id == 187 or RF_Funds_Jurisdiction_id == 188 or RF_Funds_Jurisdiction_id == 190 or RF_Funds_Jurisdiction_id == 191 or RF_Funds_Jurisdiction_id == 193 or RF_Funds_Jurisdiction_id == 195 or RF_Funds_Jurisdiction_id == 197 or RF_Funds_Jurisdiction_id == 198 or RF_Funds_Jurisdiction_id == 200 or RF_Funds_Jurisdiction_id == 202 or RF_Funds_Jurisdiction_id == 203 or RF_Funds_Jurisdiction_id == 206 or RF_Funds_Jurisdiction_id == 208 or RF_Funds_Jurisdiction_id == 209 or RF_Funds_Jurisdiction_id == 211 or RF_Funds_Jurisdiction_id == 212 or RF_Funds_Jurisdiction_id == 213 or RF_Funds_Jurisdiction_id == 214 or RF_Funds_Jurisdiction_id == 219 or RF_Funds_Jurisdiction_id == 220 or RF_Funds_Jurisdiction_id == 221 or RF_Funds_Jurisdiction_id == 222 or RF_Funds_Jurisdiction_id == 223 or RF_Funds_Jurisdiction_id == 224 or RF_Funds_Jurisdiction_id == 226 or RF_Funds_Jurisdiction_id == 230 or RF_Funds_Jurisdiction_id == 232 or RF_Funds_Jurisdiction_id == 233 or RF_Funds_Jurisdiction_id == 236 or RF_Funds_Jurisdiction_id == 237 or RF_Funds_Jurisdiction_id == 238 or RF_Funds_Jurisdiction_id == 239 %}9{% endif %}
-                                    {% if RF_Funds_Jurisdiction_id == 5 or RF_Funds_Jurisdiction_id == 7 or RF_Funds_Jurisdiction_id == 9 or RF_Funds_Jurisdiction_id == 12 or RF_Funds_Jurisdiction_id == 25 or RF_Funds_Jurisdiction_id == 34 or RF_Funds_Jurisdiction_id == 35 or RF_Funds_Jurisdiction_id == 61 or RF_Funds_Jurisdiction_id == 76 or RF_Funds_Jurisdiction_id == 84 or RF_Funds_Jurisdiction_id == 88 or RF_Funds_Jurisdiction_id == 114 or RF_Funds_Jurisdiction_id == 130 or RF_Funds_Jurisdiction_id == 132 or RF_Funds_Jurisdiction_id == 142 or RF_Funds_Jurisdiction_id == 149 or RF_Funds_Jurisdiction_id == 159 or RF_Funds_Jurisdiction_id == 161  or RF_Funds_Jurisdiction_id == 167 or RF_Funds_Jurisdiction_id == 194 or RF_Funds_Jurisdiction_id == 215 or RF_Funds_Jurisdiction_id == 216 %}3{% endif %}
-                                    {% if RF_Funds_Jurisdiction_id == 11 or RF_Funds_Jurisdiction_id == 14 or RF_Funds_Jurisdiction_id == 15 or RF_Funds_Jurisdiction_id == 18 or RF_Funds_Jurisdiction_id == 22 or RF_Funds_Jurisdiction_id == 23 or RF_Funds_Jurisdiction_id == 26 or RF_Funds_Jurisdiction_id == 30 or RF_Funds_Jurisdiction_id == 38 or RF_Funds_Jurisdiction_id == 40 or RF_Funds_Jurisdiction_id == 44 or RF_Funds_Jurisdiction_id == 45 or RF_Funds_Jurisdiction_id == 54 or RF_Funds_Jurisdiction_id == 56 or RF_Funds_Jurisdiction_id == 59 or RF_Funds_Jurisdiction_id == 60 or RF_Funds_Jurisdiction_id == 63 or RF_Funds_Jurisdiction_id == 70 or RF_Funds_Jurisdiction_id == 75 or RF_Funds_Jurisdiction_id == 77  or RF_Funds_Jurisdiction_id == 78 or RF_Funds_Jurisdiction_id == 79 or RF_Funds_Jurisdiction_id == 80 or RF_Funds_Jurisdiction_id == 81 or RF_Funds_Jurisdiction_id == 83 or RF_Funds_Jurisdiction_id == 87 or RF_Funds_Jurisdiction_id == 89 or RF_Funds_Jurisdiction_id == 96 or RF_Funds_Jurisdiction_id == 97 or RF_Funds_Jurisdiction_id == 98  or RF_Funds_Jurisdiction_id == 99 or RF_Funds_Jurisdiction_id == 100 or RF_Funds_Jurisdiction_id == 101 or RF_Funds_Jurisdiction_id == 102 or RF_Funds_Jurisdiction_id == 104 or RF_Funds_Jurisdiction_id == 105 or RF_Funds_Jurisdiction_id == 108 or RF_Funds_Jurisdiction_id == 110 or RF_Funds_Jurisdiction_id == 111 or RF_Funds_Jurisdiction_id == 113 or RF_Funds_Jurisdiction_id == 118 or RF_Funds_Jurisdiction_id == 120 or RF_Funds_Jurisdiction_id == 125 or RF_Funds_Jurisdiction_id == 131 or RF_Funds_Jurisdiction_id == 133 or  RF_Funds_Jurisdiction_id == 137 or RF_Funds_Jurisdiction_id == 138 or RF_Funds_Jurisdiction_id == 140 or RF_Funds_Jurisdiction_id == 141 or RF_Funds_Jurisdiction_id == 144 or RF_Funds_Jurisdiction_id == 147 or RF_Funds_Jurisdiction_id == 156 or RF_Funds_Jurisdiction_id == 157 or RF_Funds_Jurisdiction_id == 169 or RF_Funds_Jurisdiction_id == 171 or RF_Funds_Jurisdiction_id == 178 or RF_Funds_Jurisdiction_id == 179 or RF_Funds_Jurisdiction_id == 180 or RF_Funds_Jurisdiction_id == 181 or RF_Funds_Jurisdiction_id == 182 or RF_Funds_Jurisdiction_id == 183 or RF_Funds_Jurisdiction_id == 185 or RF_Funds_Jurisdiction_id == 189 or RF_Funds_Jurisdiction_id == 192 or RF_Funds_Jurisdiction_id == 196 or RF_Funds_Jurisdiction_id == 199 or RF_Funds_Jurisdiction_id == 201 or RF_Funds_Jurisdiction_id == 204 or RF_Funds_Jurisdiction_id == 205 or RF_Funds_Jurisdiction_id == 207 or RF_Funds_Jurisdiction_id == 210 or RF_Funds_Jurisdiction_id == 218 or RF_Funds_Jurisdiction_id == 225 or RF_Funds_Jurisdiction_id == 231 or RF_Funds_Jurisdiction_id == 234 or RF_Funds_Jurisdiction_id == 235 or RF_Funds_Jurisdiction_id == 237 or RF_Funds_Jurisdiction_id == 238 %}6{% endif %}
-                                    {% if RF_Funds_Jurisdiction_id == 21 or RF_Funds_Jurisdiction_id == 57 or RF_Funds_Jurisdiction_id == 106 or RF_Funds_Jurisdiction_id == 107 or RF_Funds_Jurisdiction_id == 119 or RF_Funds_Jurisdiction_id == 187 or RF_Funds_Jurisdiction_id == 217 %}12{% endif %}
+                                    {% if RF_Funds_Jurisdiction_id == 1 or RF_Funds_Jurisdiction_id == 2 or RF_Funds_Jurisdiction_id == 3 or RF_Funds_Jurisdiction_id == 4 or RF_Funds_Jurisdiction_id == 6 or RF_Funds_Jurisdiction_id == 8 or RF_Funds_Jurisdiction_id == 10 or RF_Funds_Jurisdiction_id == 13 or RF_Funds_Jurisdiction_id == 16 or RF_Funds_Jurisdiction_id == 17 or RF_Funds_Jurisdiction_id == 19 or RF_Funds_Jurisdiction_id == 20 or RF_Funds_Jurisdiction_id == 24 or RF_Funds_Jurisdiction_id == 27 or RF_Funds_Jurisdiction_id == 28 or RF_Funds_Jurisdiction_id == 29 or RF_Funds_Jurisdiction_id == 30 or RF_Funds_Jurisdiction_id == 31 or RF_Funds_Jurisdiction_id == 32 or RF_Funds_Jurisdiction_id == 33 or RF_Funds_Jurisdiction_id == 36 or RF_Funds_Jurisdiction_id == 37 or RF_Funds_Jurisdiction_id == 39 or RF_Funds_Jurisdiction_id == 41 or RF_Funds_Jurisdiction_id == 42 or RF_Funds_Jurisdiction_id == 43 or RF_Funds_Jurisdiction_id == 46 or RF_Funds_Jurisdiction_id == 47 or RF_Funds_Jurisdiction_id == 48 or RF_Funds_Jurisdiction_id == 49 or RF_Funds_Jurisdiction_id == 50 or RF_Funds_Jurisdiction_id == 51 or RF_Funds_Jurisdiction_id == 52 or RF_Funds_Jurisdiction_id == 53 or RF_Funds_Jurisdiction_id == 55 or RF_Funds_Jurisdiction_id == 58 or RF_Funds_Jurisdiction_id == 62 or RF_Funds_Jurisdiction_id == 64 or RF_Funds_Jurisdiction_id == 65 or RF_Funds_Jurisdiction_id == 66  or RF_Funds_Jurisdiction_id == 67 or RF_Funds_Jurisdiction_id == 68 or RF_Funds_Jurisdiction_id == 69 or RF_Funds_Jurisdiction_id == 70 or RF_Funds_Jurisdiction_id == 71 or RF_Funds_Jurisdiction_id == 72 or RF_Funds_Jurisdiction_id == 73 or RF_Funds_Jurisdiction_id == 74 or RF_Funds_Jurisdiction_id == 82 or RF_Funds_Jurisdiction_id == 85 or RF_Funds_Jurisdiction_id == 86 or RF_Funds_Jurisdiction_id == 90 or RF_Funds_Jurisdiction_id == 91 or RF_Funds_Jurisdiction_id == 92 or RF_Funds_Jurisdiction_id == 93 or RF_Funds_Jurisdiction_id == 94 or RF_Funds_Jurisdiction_id == 95 or RF_Funds_Jurisdiction_id == 96 or RF_Funds_Jurisdiction_id == 97 or RF_Funds_Jurisdiction_id == 98 or RF_Funds_Jurisdiction_id == 99 or RF_Funds_Jurisdiction_id == 100 or RF_Funds_Jurisdiction_id == 102 or RF_Funds_Jurisdiction_id == 103 or RF_Funds_Jurisdiction_id == 109  or RF_Funds_Jurisdiction_id == 112  or RF_Funds_Jurisdiction_id == 115  or RF_Funds_Jurisdiction_id == 116  or RF_Funds_Jurisdiction_id == 117  or RF_Funds_Jurisdiction_id == 121  or RF_Funds_Jurisdiction_id == 123  or RF_Funds_Jurisdiction_id == 124 or RF_Funds_Jurisdiction_id == 126  or RF_Funds_Jurisdiction_id == 127  or RF_Funds_Jurisdiction_id == 128  or RF_Funds_Jurisdiction_id == 129  or RF_Funds_Jurisdiction_id == 134  or RF_Funds_Jurisdiction_id == 135  or RF_Funds_Jurisdiction_id == 136 or RF_Funds_Jurisdiction_id == 139  or RF_Funds_Jurisdiction_id == 143  or RF_Funds_Jurisdiction_id == 145  or RF_Funds_Jurisdiction_id == 146  or RF_Funds_Jurisdiction_id == 148  or RF_Funds_Jurisdiction_id == 150 or RF_Funds_Jurisdiction_id == 151 or RF_Funds_Jurisdiction_id == 152 or RF_Funds_Jurisdiction_id == 153 or RF_Funds_Jurisdiction_id == 154 or RF_Funds_Jurisdiction_id == 155 or RF_Funds_Jurisdiction_id == 158 or RF_Funds_Jurisdiction_id == 160 or RF_Funds_Jurisdiction_id == 162  or RF_Funds_Jurisdiction_id == 163 or RF_Funds_Jurisdiction_id == 164 or RF_Funds_Jurisdiction_id == 165 or RF_Funds_Jurisdiction_id == 166 or RF_Funds_Jurisdiction_id == 168 or RF_Funds_Jurisdiction_id == 170 or RF_Funds_Jurisdiction_id == 172 or RF_Funds_Jurisdiction_id == 173 or RF_Funds_Jurisdiction_id == 174 or RF_Funds_Jurisdiction_id == 175 or RF_Funds_Jurisdiction_id == 176 or RF_Funds_Jurisdiction_id == 177 or RF_Funds_Jurisdiction_id == 186 or RF_Funds_Jurisdiction_id == 187 or RF_Funds_Jurisdiction_id == 188 or RF_Funds_Jurisdiction_id == 190 or RF_Funds_Jurisdiction_id == 191 or RF_Funds_Jurisdiction_id == 193 or RF_Funds_Jurisdiction_id == 195 or RF_Funds_Jurisdiction_id == 197 or RF_Funds_Jurisdiction_id == 198 or RF_Funds_Jurisdiction_id == 200 or RF_Funds_Jurisdiction_id == 202 or RF_Funds_Jurisdiction_id == 203 or RF_Funds_Jurisdiction_id == 206 or RF_Funds_Jurisdiction_id == 208 or RF_Funds_Jurisdiction_id == 209 or RF_Funds_Jurisdiction_id == 211 or RF_Funds_Jurisdiction_id == 212 or RF_Funds_Jurisdiction_id == 213 or RF_Funds_Jurisdiction_id == 214 or RF_Funds_Jurisdiction_id == 219 or RF_Funds_Jurisdiction_id == 220 or RF_Funds_Jurisdiction_id == 221 or RF_Funds_Jurisdiction_id == 222 or RF_Funds_Jurisdiction_id == 223 or RF_Funds_Jurisdiction_id == 224 or RF_Funds_Jurisdiction_id == 226 or RF_Funds_Jurisdiction_id == 230 or RF_Funds_Jurisdiction_id == 232 or RF_Funds_Jurisdiction_id == 233 or RF_Funds_Jurisdiction_id == 236 or RF_Funds_Jurisdiction_id == 237 or RF_Funds_Jurisdiction_id == 238 or RF_Funds_Jurisdiction_id == 239 %}
+                                    9
+                                    {% elif RF_Funds_Jurisdiction_id == 5 or RF_Funds_Jurisdiction_id == 7 or RF_Funds_Jurisdiction_id == 9 or RF_Funds_Jurisdiction_id == 12 or RF_Funds_Jurisdiction_id == 25 or RF_Funds_Jurisdiction_id == 34 or RF_Funds_Jurisdiction_id == 35 or RF_Funds_Jurisdiction_id == 61 or RF_Funds_Jurisdiction_id == 76 or RF_Funds_Jurisdiction_id == 84 or RF_Funds_Jurisdiction_id == 88 or RF_Funds_Jurisdiction_id == 114 or RF_Funds_Jurisdiction_id == 130 or RF_Funds_Jurisdiction_id == 132 or RF_Funds_Jurisdiction_id == 142 or RF_Funds_Jurisdiction_id == 149 or RF_Funds_Jurisdiction_id == 159 or RF_Funds_Jurisdiction_id == 161  or RF_Funds_Jurisdiction_id == 167 or RF_Funds_Jurisdiction_id == 194 or RF_Funds_Jurisdiction_id == 215 or RF_Funds_Jurisdiction_id == 216 %}
+                                    3
+                                    {% elif RF_Funds_Jurisdiction_id == 11 or RF_Funds_Jurisdiction_id == 14 or RF_Funds_Jurisdiction_id == 15 or RF_Funds_Jurisdiction_id == 18 or RF_Funds_Jurisdiction_id == 22 or RF_Funds_Jurisdiction_id == 23 or RF_Funds_Jurisdiction_id == 26 or RF_Funds_Jurisdiction_id == 30 or RF_Funds_Jurisdiction_id == 38 or RF_Funds_Jurisdiction_id == 40 or RF_Funds_Jurisdiction_id == 44 or RF_Funds_Jurisdiction_id == 45 or RF_Funds_Jurisdiction_id == 54 or RF_Funds_Jurisdiction_id == 56 or RF_Funds_Jurisdiction_id == 59 or RF_Funds_Jurisdiction_id == 60 or RF_Funds_Jurisdiction_id == 63 or RF_Funds_Jurisdiction_id == 70 or RF_Funds_Jurisdiction_id == 75 or RF_Funds_Jurisdiction_id == 77  or RF_Funds_Jurisdiction_id == 78 or RF_Funds_Jurisdiction_id == 79 or RF_Funds_Jurisdiction_id == 80 or RF_Funds_Jurisdiction_id == 81 or RF_Funds_Jurisdiction_id == 83 or RF_Funds_Jurisdiction_id == 87 or RF_Funds_Jurisdiction_id == 89 or RF_Funds_Jurisdiction_id == 96 or RF_Funds_Jurisdiction_id == 97 or RF_Funds_Jurisdiction_id == 98  or RF_Funds_Jurisdiction_id == 99 or RF_Funds_Jurisdiction_id == 100 or RF_Funds_Jurisdiction_id == 101 or RF_Funds_Jurisdiction_id == 102 or RF_Funds_Jurisdiction_id == 104 or RF_Funds_Jurisdiction_id == 105 or RF_Funds_Jurisdiction_id == 108 or RF_Funds_Jurisdiction_id == 110 or RF_Funds_Jurisdiction_id == 111 or RF_Funds_Jurisdiction_id == 113 or RF_Funds_Jurisdiction_id == 118 or RF_Funds_Jurisdiction_id == 120 or RF_Funds_Jurisdiction_id == 125 or RF_Funds_Jurisdiction_id == 131 or RF_Funds_Jurisdiction_id == 133 or  RF_Funds_Jurisdiction_id == 137 or RF_Funds_Jurisdiction_id == 138 or RF_Funds_Jurisdiction_id == 140 or RF_Funds_Jurisdiction_id == 141 or RF_Funds_Jurisdiction_id == 144 or RF_Funds_Jurisdiction_id == 147 or RF_Funds_Jurisdiction_id == 156 or RF_Funds_Jurisdiction_id == 157 or RF_Funds_Jurisdiction_id == 169 or RF_Funds_Jurisdiction_id == 171 or RF_Funds_Jurisdiction_id == 178 or RF_Funds_Jurisdiction_id == 179 or RF_Funds_Jurisdiction_id == 180 or RF_Funds_Jurisdiction_id == 181 or RF_Funds_Jurisdiction_id == 182 or RF_Funds_Jurisdiction_id == 183 or RF_Funds_Jurisdiction_id == 185 or RF_Funds_Jurisdiction_id == 189 or RF_Funds_Jurisdiction_id == 192 or RF_Funds_Jurisdiction_id == 196 or RF_Funds_Jurisdiction_id == 199 or RF_Funds_Jurisdiction_id == 201 or RF_Funds_Jurisdiction_id == 204 or RF_Funds_Jurisdiction_id == 205 or RF_Funds_Jurisdiction_id == 207 or RF_Funds_Jurisdiction_id == 210 or RF_Funds_Jurisdiction_id == 218 or RF_Funds_Jurisdiction_id == 225 or RF_Funds_Jurisdiction_id == 231 or RF_Funds_Jurisdiction_id == 234 or RF_Funds_Jurisdiction_id == 235 or RF_Funds_Jurisdiction_id == 237 or RF_Funds_Jurisdiction_id == 238 %}
+                                    6
+                                    {% elif RF_Funds_Jurisdiction_id == 21 or RF_Funds_Jurisdiction_id == 57 or RF_Funds_Jurisdiction_id == 106 or RF_Funds_Jurisdiction_id == 107 or RF_Funds_Jurisdiction_id == 119 or RF_Funds_Jurisdiction_id == 187 or RF_Funds_Jurisdiction_id == 217 %}1
+                                    2
+                                    {% else %}
+                                        <span class="white">
+                                            0
+                                        </span>
+                                    {% endif %}
                                 </span>
                             </div>                         
                         {% endif %}            
@@ -1258,12 +1409,14 @@
                                 <span>
                                     {% if RF_Delivery_Channel_id == 1 %}
                                         3
-                                    {% endif %}
-                                    {% if RF_Delivery_Channel_id == 2 or RF_Delivery_Channel_id == 5 or RF_Delivery_Channel_id == 6 %}
+                                    {% elif RF_Delivery_Channel_id == 2 or RF_Delivery_Channel_id == 5 or RF_Delivery_Channel_id == 6 %}
                                         2
-                                    {% endif %}
-                                    {% if RF_Delivery_Channel_id == 3 or RF_Delivery_Channel_id == 4 %}
+                                    {% elif RF_Delivery_Channel_id == 3 or RF_Delivery_Channel_id == 4 %}
                                         1
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1274,12 +1427,14 @@
                                 <span>
                                     {% if RF_Delivery_Channel_id == 1 %}
                                         3
-                                    {% endif %}
-                                    {% if RF_Delivery_Channel_id == 2 or RF_Delivery_Channel_id == 5 or RF_Delivery_Channel_id == 6 %}
+                                    {% elif RF_Delivery_Channel_id == 2 or RF_Delivery_Channel_id == 5 or RF_Delivery_Channel_id == 6 %}
                                         2
-                                    {% endif %}
-                                    {% if RF_Delivery_Channel_id == 3 or RF_Delivery_Channel_id == 4 %}
+                                    {% elif RF_Delivery_Channel_id == 3 or RF_Delivery_Channel_id == 4 %}
                                         1
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                         
@@ -1290,10 +1445,16 @@
                         <div class="column2">
                             <span>Linked Party acting on behalf of Client?</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Linked_Party_Acting}}
-                            </span>
+                        <div class="column2">       
+                            {% if RF_Linked_Party_Acting %}
+                                <span>
+                                    {{RF_Linked_Party_Acting}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %} 
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -1303,9 +1464,12 @@
                                 <span>
                                     {% if RF_Linked_Party_Acting_id == 1 or RF_Linked_Party_Acting_id == 2 %}
                                         1
-                                    {% endif %}
-                                    {% if RF_Linked_Party_Acting_id == 3 %}
+                                    {% elif RF_Linked_Party_Acting_id == 3 %}
                                         3
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1316,9 +1480,12 @@
                                 <span>
                                     {% if RF_Linked_Party_Acting_id == 1 or RF_Linked_Party_Acting_id == 2 %}
                                         1
-                                    {% endif %}
-                                    {% if RF_Linked_Party_Acting_id == 3 %}
+                                    {% elif RF_Linked_Party_Acting_id == 3 %}
                                         3
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1330,10 +1497,16 @@
                         <div class="column2">
                             <span>Linked Party paying / receiving funds</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Linked_Party_Paying}}
-                            </span>
+                        <div class="column2">      
+                            {% if RF_Linked_Party_Paying %}
+                                <span>
+                                    {{RF_Linked_Party_Paying}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %} 
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -1343,9 +1516,12 @@
                                 <span>
                                     {% if RF_Linked_Party_Paying_id == 1 %}
                                         0
-                                    {% endif %}
-                                    {% if RF_Product_Name_id == 3 or RF_Product_Name_id == 2 %}
+                                    {% elif RF_Product_Name_id == 3 or RF_Product_Name_id == 2 %}
                                         3
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1356,9 +1532,12 @@
                                 <span>
                                     {% if RF_Linked_Party_Paying_id == 1 %}
                                         0
-                                    {% endif %}
-                                    {% if RF_Product_Name_id == 3 or RF_Product_Name_id == 2 %}
+                                    {% elif RF_Product_Name_id == 3 or RF_Product_Name_id == 2 %}
                                         3
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                     {% endif %}
                                 </span>
                             </div>                     
@@ -1381,10 +1560,19 @@
                         </div>                     
                         <div class="column4">                        
                             <span>
-                                {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}2{% endif %}
-                                {% if RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8 or RF_Client_Match_id == 11 %}3{% endif %}
-                                {% if RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}1{% endif %}
-                                {% if RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}4{% endif %}
+                                {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}
+                                2
+                                {% elif RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8 or RF_Client_Match_id == 11 %}
+                                3
+                                {% elif RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}
+                                1
+                                {% elif RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}
+                                4
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %}
                             </span>
                         </div>       
                         {% if advisor.is_superuser %}
@@ -1405,10 +1593,16 @@
                         <div class="column2">
                             <span>Client is a true match on:</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Client_Match}}
-                            </span>
+                        <div class="column2">    
+                            {% if RF_Client_Match %}
+                                <span>
+                                    {{RF_Client_Match}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}  
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -1416,10 +1610,16 @@
                         {% if advisor.is_superuser %}
                             <div class="column3">                        
                                 <span>
-                                    {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}2{% endif %}
-                                    {% if RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8 or RF_Client_Match_id == 11 %}3{% endif %}
-                                    {% if RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}1{% endif %}
-                                    {% if RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}4{% endif %}
+                                    {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}
+                                    2{% elif RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8 or RF_Client_Match_id == 11 %}
+                                    3{% elif RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}
+                                    1{% elif RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}
+                                    4
+                                    {% else %}
+                                        <span class="white">
+                                            0
+                                        </span>
+                                    {% endif %}
                                 </span>
                             </div>                     
                             <div class="column3">                        
@@ -1427,10 +1627,16 @@
                             </div>                     
                             <div class="column3">                        
                                 <span>
-                                    {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}2{% endif %}
-                                    {% if RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8 or RF_Client_Match_id == 11 %}3{% endif %}
-                                    {% if RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}1{% endif %}
-                                    {% if RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}4{% endif %}
+                                    {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}
+                                    2{% elif RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8 or RF_Client_Match_id == 11 %}
+                                    3{% elif RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}
+                                    1{% elif RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}
+                                        4
+                                    {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                    {% endif %}
                                 </span>
                             </div>                     
                         {% endif %}              
@@ -1441,10 +1647,16 @@
                         <div class="column2">
                             <span>Are there Linked Parties / Beneficiaries to Client?</span>
                         </div>
-                        <div class="column2">                        
-                            <span>
-                                {{RF_Client_Beneficiaries}}
-                            </span>
+                        <div class="column2">   
+                            {% if RF_Client_Beneficiaries %}
+                                <span>
+                                    {{RF_Client_Beneficiaries}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}  
                         </div>                     
                         <div class="column4">                        
                             <b style="color: white">0</b>
@@ -1469,17 +1681,26 @@
                             </div>
                             <div class="column2">      
                                 <b>
-                                    {% if RF_Adjust_Risk1_id == 1 %}Low{% endif %}
-                                    {% if RF_Adjust_Risk1_id == 2 %}Medium{% endif %}
-                                    {% if RF_Adjust_Risk1_id == 3 %}High{% endif %}
-                                    {% if RF_Adjust_Risk1_id == 4 %}Intolerable{% endif %}
+                                    {% if RF_Adjust_Risk1_id == 1 %}Low
+                                    {% elif RF_Adjust_Risk1_id == 2 %}Medium
+                                    {% elif RF_Adjust_Risk1_id == 3 %}High
+                                    {% elif RF_Adjust_Risk1_id == 4 %}Intolerable
+                                    {% else %}N.A.{% endif %}
                                 </b>
                             </div>                     
                             <div class="column2">
                                 <b>Adjust Risk</b>
                             </div>
-                            <div class="column2">                        
-                                <span>{{RF_Adjust_Risk1}}</span>
+                            <div class="column2"> 
+                                {% if RF_Adjust_Risk1 %}
+                                    <span>
+                                        {{RF_Adjust_Risk1}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %}                        
                             </div>                     
                         </div>
                         <hr />
@@ -1488,10 +1709,16 @@
                             <div class="column2">
                                 <span>Name and surname</span>
                             </div>
-                            <div class="column2">                        
-                                <span>
-                                    {{RF_Name}}
-                                </span>
+                            <div class="column2">  
+                                {% if RF_Name %}
+                                    <span>
+                                        {{RF_Name}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %}    
                             </div>                     
                             <div class="column4">                        
                                 <b style="color: white">0</b>
@@ -1514,10 +1741,16 @@
                             <div class="column2">
                                 <span>Relationship to client</span>
                             </div>
-                            <div class="column2">                        
-                                <span>
-                                    {{RF_Client_Relationship}}
-                                </span>
+                            <div class="column2">   
+                                {% if RF_Client_Relationship %}
+                                    <span>
+                                        {{RF_Client_Relationship}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %}  
                             </div>                     
                             <div class="column4">                        
                                 <b style="color: white">0</b>
@@ -1540,10 +1773,16 @@
                             <div class="column2">
                                 <span>ID/Passport Number/Tax Number</span>
                             </div>
-                            <div class="column2">                        
-                                <span>
-                                    {{RF_ID}}
-                                </span>
+                            <div class="column2">  
+                                {% if RF_ID %}
+                                    <span>
+                                        {{RF_ID}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %}   
                             </div>                     
                             <div class="column4">                        
                                 <b style="color: white">0</b>
@@ -1566,10 +1805,16 @@
                             <div class="column2">
                                 <span>Linked Party is a true match on</span>
                             </div>
-                            <div class="column2">                        
-                                <span>
-                                    {{RF_Linked_Party}}
-                                </span>
+                            <div class="column2">  
+                                {% if RF_Linked_Party %}
+                                    <span>
+                                        {{RF_Linked_Party}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %}
                             </div>                     
                             <div class="column4">                        
                                 <b style="color: white">0</b>
@@ -1579,15 +1824,16 @@
                                     <span>
                                         {% if RF_Linked_Party_id == 1 or RF_Linked_Party_id == 4 or RF_Linked_Party_id == 7 %}
                                             2
-                                        {% endif %}
-                                        {% if RF_Linked_Party_id == 2 or RF_Linked_Party_id == 5 or RF_Linked_Party_id == 8 or RF_Linked_Party_id == 11 %}
+                                        {% elif RF_Linked_Party_id == 2 or RF_Linked_Party_id == 5 or RF_Linked_Party_id == 8 or RF_Linked_Party_id == 11 %}
                                             3
-                                        {% endif %}
-                                        {% if RF_Linked_Party_id == 3 or RF_Linked_Party_id == 6 %}
+                                        {% elif RF_Linked_Party_id == 3 or RF_Linked_Party_id == 6 %}
                                             3
-                                        {% endif %}
-                                        {% if RF_Linked_Party_id == 9 or RF_Linked_Party_id == 10 %}
+                                        {% elif RF_Linked_Party_id == 9 or RF_Linked_Party_id == 10 %}
                                             4
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
                                         {% endif %}
                                     </span>
                                 </div>                     
@@ -1598,15 +1844,16 @@
                                     <span>
                                         {% if RF_Linked_Party_id == 1 or RF_Linked_Party_id == 4 or RF_Linked_Party_id == 7 %}
                                             2
-                                        {% endif %}
-                                        {% if RF_Linked_Party_id == 2 or RF_Linked_Party_id == 5 or RF_Linked_Party_id == 8 or RF_Linked_Party_id == 11 %}
+                                        {% elif RF_Linked_Party_id == 2 or RF_Linked_Party_id == 5 or RF_Linked_Party_id == 8 or RF_Linked_Party_id == 11 %}
                                             3
-                                        {% endif %}
-                                        {% if RF_Linked_Party_id == 3 or RF_Linked_Party_id == 6 %}
+                                        {% elif RF_Linked_Party_id == 3 or RF_Linked_Party_id == 6 %}
                                             3
-                                        {% endif %}
-                                        {% if RF_Linked_Party_id == 9 or RF_Linked_Party_id == 10 %}
+                                        {% elif RF_Linked_Party_id == 9 or RF_Linked_Party_id == 10 %}
                                             4
+                                            {% else %}
+                                                <span class="white">
+                                                    0
+                                                </span>
                                         {% endif %}
                                     </span>
                                 </div>                     
@@ -1618,10 +1865,16 @@
                             <div class="column2">
                                 <span>Is this a RCA (relative / close associate) to Client?</span>
                             </div>
-                            <div class="column2">                        
-                                <span>
-                                    {{RF_RCA}}
-                                </span>
+                            <div class="column2">  
+                                {% if RF_RCA %}
+                                    <span>
+                                        {{RF_RCA}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %} 
                             </div>                     
                             <div class="column4">                        
                                 <b style="color: white">0</b>
@@ -1631,9 +1884,12 @@
                                     <span>
                                         {% if RF_RCA_id == 1 %}
                                             2
-                                        {% endif %}
-                                        {% if RF_RCA_id == 2 %}
+                                        {% elif RF_RCA_id == 2 %}
                                             0
+                                            {% else %}
+                                                <span class="white">
+                                                    0
+                                                </span>
                                         {% endif %}
                                     </span>
                                 </div>                     
@@ -1644,9 +1900,12 @@
                                     <span>
                                         {% if RF_RCA_id == 1 %}
                                             2
-                                        {% endif %}
-                                        {% if RF_RCA_id == 2 %}
+                                        {% elif RF_RCA_id == 2 %}
                                             0
+                                            {% else %}
+                                                <span class="white">
+                                                    0
+                                                </span>
                                         {% endif %}
                                     </span>
                                 </div>                     
@@ -1658,10 +1917,16 @@
                             <div class="column2">
                                 <span>Country of Birth</span>
                             </div>
-                            <div class="column2">                        
-                                <span>
-                                    {{RF_Birth_Country}}
-                                </span>
+                            <div class="column2">  
+                                {% if RF_Birth_Country %}
+                                    <span>
+                                        {{RF_Birth_Country}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %}   
                             </div>                     
                             <div class="column4">                        
                                 <b style="color: white">0</b>
@@ -1671,10 +1936,14 @@
                                     <span>
                                         {% if RF_Birth_Country_id == 1 or RF_Birth_Country_id == 2 or RF_Birth_Country_id == 3 or RF_Birth_Country_id == 4 or RF_Birth_Country_id == 6 or RF_Birth_Country_id == 8 or RF_Birth_Country_id == 10 or RF_Birth_Country_id == 13 or RF_Birth_Country_id == 16 or RF_Birth_Country_id == 17 or RF_Birth_Country_id == 19 or RF_Birth_Country_id == 20 or RF_Birth_Country_id == 24 or RF_Birth_Country_id == 27 or RF_Birth_Country_id == 28 or RF_Birth_Country_id == 29 or RF_Birth_Country_id == 31 or RF_Birth_Country_id == 32 or RF_Birth_Country_id == 33 or RF_Birth_Country_id == 36 or RF_Birth_Country_id == 37 or RF_Birth_Country_id == 39 or RF_Birth_Country_id == 41 or RF_Birth_Country_id == 42 or RF_Birth_Country_id == 43 or RF_Birth_Country_id == 46 or RF_Birth_Country_id == 47 or RF_Birth_Country_id == 48 or RF_Birth_Country_id == 49 or RF_Birth_Country_id == 50 or RF_Birth_Country_id == 51 or RF_Birth_Country_id == 52 or RF_Birth_Country_id == 53 or RF_Birth_Country_id == 55 or RF_Birth_Country_id == 58 or RF_Birth_Country_id == 62 or RF_Birth_Country_id == 64 or RF_Birth_Country_id == 65 or RF_Birth_Country_id == 66 or RF_Birth_Country_id == 67 or RF_Birth_Country_id == 68 or RF_Birth_Country_id == 69 or RF_Birth_Country_id == 71 or RF_Birth_Country_id == 72 or RF_Birth_Country_id == 73 or RF_Birth_Country_id == 74 or RF_Birth_Country_id == 82 or RF_Birth_Country_id == 85 or RF_Birth_Country_id == 86 or RF_Birth_Country_id == 90 or RF_Birth_Country_id == 91 or RF_Birth_Country_id == 92 or RF_Birth_Country_id == 93 or RF_Birth_Country_id == 94 or RF_Birth_Country_id == 95 or RF_Birth_Country_id == 97 or RF_Birth_Country_id == 98 or RF_Birth_Country_id == 99 or RF_Birth_Country_id == 100 or RF_Birth_Country_id == 103 or RF_Birth_Country_id == 109  or RF_Birth_Country_id == 112  or RF_Birth_Country_id == 115  or RF_Birth_Country_id == 116  or RF_Birth_Country_id == 117  or RF_Birth_Country_id == 121  or RF_Birth_Country_id == 123  or RF_Birth_Country_id == 124 or RF_Birth_Country_id == 126  or RF_Birth_Country_id == 127  or RF_Birth_Country_id == 128  or RF_Birth_Country_id == 129  or RF_Birth_Country_id == 134  or RF_Birth_Country_id == 135  or RF_Birth_Country_id == 136 or RF_Birth_Country_id == 139  or RF_Birth_Country_id == 143  or RF_Birth_Country_id == 145  or RF_Birth_Country_id == 146  or RF_Birth_Country_id == 148  or RF_Birth_Country_id == 150 or RF_Birth_Country_id == 151 or RF_Birth_Country_id == 152 or RF_Birth_Country_id == 153 or RF_Birth_Country_id == 154 or RF_Birth_Country_id == 155 or RF_Birth_Country_id == 158 or RF_Birth_Country_id == 160 or RF_Birth_Country_id == 162 or RF_Birth_Country_id == 163 or RF_Birth_Country_id == 164 or RF_Birth_Country_id == 165 or RF_Birth_Country_id == 166 or RF_Birth_Country_id == 168 or RF_Birth_Country_id == 170 or RF_Birth_Country_id == 172 or RF_Birth_Country_id == 173 or RF_Birth_Country_id == 174 or RF_Birth_Country_id == 175 or RF_Birth_Country_id == 176 or RF_Birth_Country_id == 177 or RF_Birth_Country_id == 186 or RF_Birth_Country_id == 187 or RF_Birth_Country_id == 188 or RF_Birth_Country_id == 190 or RF_Birth_Country_id == 191 or RF_Birth_Country_id == 193 or RF_Birth_Country_id == 195 or RF_Birth_Country_id == 197 or RF_Birth_Country_id == 198 or RF_Birth_Country_id == 200 or RF_Birth_Country_id == 202 or RF_Birth_Country_id == 203 or RF_Birth_Country_id == 206 or RF_Birth_Country_id == 208 or RF_Birth_Country_id == 209 or RF_Birth_Country_id == 211 or RF_Birth_Country_id == 212 or RF_Birth_Country_id == 213 or RF_Birth_Country_id == 214 or RF_Birth_Country_id == 219 or RF_Birth_Country_id == 220 or RF_Birth_Country_id == 221 or RF_Birth_Country_id == 222 or RF_Birth_Country_id == 223 or RF_Birth_Country_id == 224 or RF_Birth_Country_id == 226 or RF_Birth_Country_id == 230 or RF_Birth_Country_id == 232 or RF_Birth_Country_id == 233 or RF_Birth_Country_id == 236 or RF_Birth_Country_id == 237 or RF_Birth_Country_id == 238 or RF_Birth_Country_id == 239 %}
                                             3
-                                        {% endif %}
-                                        {% if RF_Birth_Country_id == 5 or RF_Birth_Country_id == 7 or RF_Birth_Country_id == 9 or RF_Birth_Country_id == 12 or RF_Birth_Country_id == 25 or RF_Birth_Country_id == 34 or RF_Birth_Country_id == 35 or RF_Birth_Country_id == 61 or RF_Birth_Country_id == 76 or RF_Birth_Country_id == 84 or RF_Birth_Country_id == 88 or RF_Birth_Country_id == 114 or RF_Birth_Country_id == 130 or RF_Birth_Country_id == 132 or RF_Birth_Country_id == 142 or RF_Birth_Country_id == 149 or RF_Birth_Country_id == 159 or RF_Birth_Country_id == 161  or RF_Birth_Country_id == 167 or RF_Birth_Country_id == 194 or RF_Birth_Country_id == 215 or RF_Birth_Country_id == 216 %}1{% endif %}
-                                        {% if RF_Birth_Country_id == 11 or RF_Birth_Country_id == 14 or RF_Birth_Country_id == 15 or RF_Birth_Country_id == 18 or RF_Birth_Country_id == 22 or RF_Birth_Country_id == 23 or RF_Birth_Country_id == 26 or RF_Birth_Country_id == 30 or RF_Birth_Country_id == 38 or RF_Birth_Country_id == 40 or RF_Birth_Country_id == 44 or RF_Birth_Country_id == 45 or RF_Birth_Country_id == 54 or RF_Birth_Country_id == 56 or RF_Birth_Country_id == 59 or RF_Birth_Country_id == 60 or RF_Birth_Country_id == 63 or RF_Birth_Country_id == 70 or RF_Birth_Country_id == 75 or RF_Birth_Country_id == 77 or RF_Birth_Country_id == 78 or RF_Birth_Country_id == 79 or RF_Birth_Country_id == 80 or RF_Birth_Country_id == 81 or RF_Birth_Country_id == 83 or RF_Birth_Country_id == 87 or RF_Birth_Country_id == 89 or RF_Birth_Country_id == 96 or RF_Birth_Country_id == 101 or RF_Birth_Country_id == 104 or RF_Birth_Country_id == 105 or RF_Birth_Country_id == 108 or RF_Birth_Country_id == 110 or RF_Birth_Country_id == 111 or RF_Birth_Country_id == 113 or RF_Birth_Country_id == 118 or RF_Birth_Country_id == 120 or RF_Birth_Country_id == 125 or RF_Birth_Country_id == 131 or RF_Birth_Country_id == 133 or  RF_Birth_Country_id == 137 or RF_Birth_Country_id == 138 or RF_Birth_Country_id == 140 or RF_Birth_Country_id == 141 or RF_Birth_Country_id == 144 or RF_Birth_Country_id == 147 or RF_Birth_Country_id == 156 or RF_Birth_Country_id == 157 or RF_Birth_Country_id == 169 or RF_Birth_Country_id == 171 or RF_Birth_Country_id == 178 or RF_Birth_Country_id == 179 or RF_Birth_Country_id == 180 or RF_Birth_Country_id == 181 or RF_Birth_Country_id == 182 or RF_Birth_Country_id == 183 or RF_Birth_Country_id == 185 or RF_Birth_Country_id == 189 or RF_Birth_Country_id == 192 or RF_Birth_Country_id == 196 or RF_Birth_Country_id == 199 or RF_Birth_Country_id == 201 or RF_Birth_Country_id == 204 or RF_Birth_Country_id == 205 or RF_Birth_Country_id == 207 or RF_Birth_Country_id == 210 or RF_Birth_Country_id == 218 or RF_Birth_Country_id == 225 or RF_Birth_Country_id == 231 or RF_Birth_Country_id == 234 or RF_Birth_Country_id == 235 or RF_Birth_Country_id == 237 or RF_Birth_Country_id == 238  %}2{% endif %}
-                                        {% if RF_Birth_Country_id == 21 or RF_Birth_Country_id == 57 or RF_Birth_Country_id == 106 or RF_Birth_Country_id == 107 or RF_Birth_Country_id == 119 or RF_Birth_Country_id == 187 or RF_Birth_Country_id == 217 %}4{% endif %}
+                                        {% elif RF_Birth_Country_id == 5 or RF_Birth_Country_id == 7 or RF_Birth_Country_id == 9 or RF_Birth_Country_id == 12 or RF_Birth_Country_id == 25 or RF_Birth_Country_id == 34 or RF_Birth_Country_id == 35 or RF_Birth_Country_id == 61 or RF_Birth_Country_id == 76 or RF_Birth_Country_id == 84 or RF_Birth_Country_id == 88 or RF_Birth_Country_id == 114 or RF_Birth_Country_id == 130 or RF_Birth_Country_id == 132 or RF_Birth_Country_id == 142 or RF_Birth_Country_id == 149 or RF_Birth_Country_id == 159 or RF_Birth_Country_id == 161  or RF_Birth_Country_id == 167 or RF_Birth_Country_id == 194 or RF_Birth_Country_id == 215 or RF_Birth_Country_id == 216 %}
+                                        1{% elif RF_Birth_Country_id == 11 or RF_Birth_Country_id == 14 or RF_Birth_Country_id == 15 or RF_Birth_Country_id == 18 or RF_Birth_Country_id == 22 or RF_Birth_Country_id == 23 or RF_Birth_Country_id == 26 or RF_Birth_Country_id == 30 or RF_Birth_Country_id == 38 or RF_Birth_Country_id == 40 or RF_Birth_Country_id == 44 or RF_Birth_Country_id == 45 or RF_Birth_Country_id == 54 or RF_Birth_Country_id == 56 or RF_Birth_Country_id == 59 or RF_Birth_Country_id == 60 or RF_Birth_Country_id == 63 or RF_Birth_Country_id == 70 or RF_Birth_Country_id == 75 or RF_Birth_Country_id == 77 or RF_Birth_Country_id == 78 or RF_Birth_Country_id == 79 or RF_Birth_Country_id == 80 or RF_Birth_Country_id == 81 or RF_Birth_Country_id == 83 or RF_Birth_Country_id == 87 or RF_Birth_Country_id == 89 or RF_Birth_Country_id == 96 or RF_Birth_Country_id == 101 or RF_Birth_Country_id == 104 or RF_Birth_Country_id == 105 or RF_Birth_Country_id == 108 or RF_Birth_Country_id == 110 or RF_Birth_Country_id == 111 or RF_Birth_Country_id == 113 or RF_Birth_Country_id == 118 or RF_Birth_Country_id == 120 or RF_Birth_Country_id == 125 or RF_Birth_Country_id == 131 or RF_Birth_Country_id == 133 or  RF_Birth_Country_id == 137 or RF_Birth_Country_id == 138 or RF_Birth_Country_id == 140 or RF_Birth_Country_id == 141 or RF_Birth_Country_id == 144 or RF_Birth_Country_id == 147 or RF_Birth_Country_id == 156 or RF_Birth_Country_id == 157 or RF_Birth_Country_id == 169 or RF_Birth_Country_id == 171 or RF_Birth_Country_id == 178 or RF_Birth_Country_id == 179 or RF_Birth_Country_id == 180 or RF_Birth_Country_id == 181 or RF_Birth_Country_id == 182 or RF_Birth_Country_id == 183 or RF_Birth_Country_id == 185 or RF_Birth_Country_id == 189 or RF_Birth_Country_id == 192 or RF_Birth_Country_id == 196 or RF_Birth_Country_id == 199 or RF_Birth_Country_id == 201 or RF_Birth_Country_id == 204 or RF_Birth_Country_id == 205 or RF_Birth_Country_id == 207 or RF_Birth_Country_id == 210 or RF_Birth_Country_id == 218 or RF_Birth_Country_id == 225 or RF_Birth_Country_id == 231 or RF_Birth_Country_id == 234 or RF_Birth_Country_id == 235 or RF_Birth_Country_id == 237 or RF_Birth_Country_id == 238  %}
+                                        2{% elif RF_Birth_Country_id == 21 or RF_Birth_Country_id == 57 or RF_Birth_Country_id == 106 or RF_Birth_Country_id == 107 or RF_Birth_Country_id == 119 or RF_Birth_Country_id == 187 or RF_Birth_Country_id == 217 %}
+                                        4
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>{% endif %}
                                     </span>
                                 </div>                     
                                 <div class="column3">                        
@@ -1684,10 +1953,14 @@
                                     <span>
                                         {% if RF_Birth_Country_id == 1 or RF_Birth_Country_id == 2 or RF_Birth_Country_id == 3 or RF_Birth_Country_id == 4 or RF_Birth_Country_id == 6 or RF_Birth_Country_id == 8 or RF_Birth_Country_id == 10 or RF_Birth_Country_id == 13 or RF_Birth_Country_id == 16 or RF_Birth_Country_id == 17 or RF_Birth_Country_id == 19 or RF_Birth_Country_id == 20 or RF_Birth_Country_id == 24 or RF_Birth_Country_id == 27 or RF_Birth_Country_id == 28 or RF_Birth_Country_id == 29 or RF_Birth_Country_id == 31 or RF_Birth_Country_id == 32 or RF_Birth_Country_id == 33 or RF_Birth_Country_id == 36 or RF_Birth_Country_id == 37 or RF_Birth_Country_id == 39 or RF_Birth_Country_id == 41 or RF_Birth_Country_id == 42 or RF_Birth_Country_id == 43 or RF_Birth_Country_id == 46 or RF_Birth_Country_id == 47 or RF_Birth_Country_id == 48 or RF_Birth_Country_id == 49 or RF_Birth_Country_id == 50 or RF_Birth_Country_id == 51 or RF_Birth_Country_id == 52 or RF_Birth_Country_id == 53 or RF_Birth_Country_id == 55 or RF_Birth_Country_id == 58 or RF_Birth_Country_id == 62 or RF_Birth_Country_id == 64 or RF_Birth_Country_id == 65 or RF_Birth_Country_id == 66 or RF_Birth_Country_id == 67 or RF_Birth_Country_id == 68 or RF_Birth_Country_id == 69 or RF_Birth_Country_id == 71 or RF_Birth_Country_id == 72 or RF_Birth_Country_id == 73 or RF_Birth_Country_id == 74 or RF_Birth_Country_id == 82 or RF_Birth_Country_id == 85 or RF_Birth_Country_id == 86 or RF_Birth_Country_id == 90 or RF_Birth_Country_id == 91 or RF_Birth_Country_id == 92 or RF_Birth_Country_id == 93 or RF_Birth_Country_id == 94 or RF_Birth_Country_id == 95 or RF_Birth_Country_id == 97 or RF_Birth_Country_id == 98 or RF_Birth_Country_id == 99 or RF_Birth_Country_id == 100 or RF_Birth_Country_id == 103 or RF_Birth_Country_id == 109  or RF_Birth_Country_id == 112  or RF_Birth_Country_id == 115  or RF_Birth_Country_id == 116  or RF_Birth_Country_id == 117  or RF_Birth_Country_id == 121  or RF_Birth_Country_id == 123  or RF_Birth_Country_id == 124 or RF_Birth_Country_id == 126  or RF_Birth_Country_id == 127  or RF_Birth_Country_id == 128  or RF_Birth_Country_id == 129  or RF_Birth_Country_id == 134  or RF_Birth_Country_id == 135  or RF_Birth_Country_id == 136 or RF_Birth_Country_id == 139  or RF_Birth_Country_id == 143  or RF_Birth_Country_id == 145  or RF_Birth_Country_id == 146  or RF_Birth_Country_id == 148  or RF_Birth_Country_id == 150 or RF_Birth_Country_id == 151 or RF_Birth_Country_id == 152 or RF_Birth_Country_id == 153 or RF_Birth_Country_id == 154 or RF_Birth_Country_id == 155 or RF_Birth_Country_id == 158 or RF_Birth_Country_id == 160 or RF_Birth_Country_id == 162 or RF_Birth_Country_id == 163 or RF_Birth_Country_id == 164 or RF_Birth_Country_id == 165 or RF_Birth_Country_id == 166 or RF_Birth_Country_id == 168 or RF_Birth_Country_id == 170 or RF_Birth_Country_id == 172 or RF_Birth_Country_id == 173 or RF_Birth_Country_id == 174 or RF_Birth_Country_id == 175 or RF_Birth_Country_id == 176 or RF_Birth_Country_id == 177 or RF_Birth_Country_id == 186 or RF_Birth_Country_id == 187 or RF_Birth_Country_id == 188 or RF_Birth_Country_id == 190 or RF_Birth_Country_id == 191 or RF_Birth_Country_id == 193 or RF_Birth_Country_id == 195 or RF_Birth_Country_id == 197 or RF_Birth_Country_id == 198 or RF_Birth_Country_id == 200 or RF_Birth_Country_id == 202 or RF_Birth_Country_id == 203 or RF_Birth_Country_id == 206 or RF_Birth_Country_id == 208 or RF_Birth_Country_id == 209 or RF_Birth_Country_id == 211 or RF_Birth_Country_id == 212 or RF_Birth_Country_id == 213 or RF_Birth_Country_id == 214 or RF_Birth_Country_id == 219 or RF_Birth_Country_id == 220 or RF_Birth_Country_id == 221 or RF_Birth_Country_id == 222 or RF_Birth_Country_id == 223 or RF_Birth_Country_id == 224 or RF_Birth_Country_id == 226 or RF_Birth_Country_id == 230 or RF_Birth_Country_id == 232 or RF_Birth_Country_id == 233 or RF_Birth_Country_id == 236 or RF_Birth_Country_id == 237 or RF_Birth_Country_id == 238 or RF_Birth_Country_id == 239 %}
                                             9
-                                        {% endif %}
-                                        {% if RF_Birth_Country_id == 5 or RF_Birth_Country_id == 7 or RF_Birth_Country_id == 9 or RF_Birth_Country_id == 12 or RF_Birth_Country_id == 25 or RF_Birth_Country_id == 34 or RF_Birth_Country_id == 35 or RF_Birth_Country_id == 61 or RF_Birth_Country_id == 76 or RF_Birth_Country_id == 84 or RF_Birth_Country_id == 88 or RF_Birth_Country_id == 114 or RF_Birth_Country_id == 130 or RF_Birth_Country_id == 132 or RF_Birth_Country_id == 142 or RF_Birth_Country_id == 149 or RF_Birth_Country_id == 159 or RF_Birth_Country_id == 161  or RF_Birth_Country_id == 167 or RF_Birth_Country_id == 194 or RF_Birth_Country_id == 215 or RF_Birth_Country_id == 216 %}3{% endif %}
-                                        {% if RF_Birth_Country_id == 11 or RF_Birth_Country_id == 14 or RF_Birth_Country_id == 15 or RF_Birth_Country_id == 18 or RF_Birth_Country_id == 22 or RF_Birth_Country_id == 23 or RF_Birth_Country_id == 26 or RF_Birth_Country_id == 30 or RF_Birth_Country_id == 38 or RF_Birth_Country_id == 40 or RF_Birth_Country_id == 44 or RF_Birth_Country_id == 45 or RF_Birth_Country_id == 54 or RF_Birth_Country_id == 56 or RF_Birth_Country_id == 59 or RF_Birth_Country_id == 60 or RF_Birth_Country_id == 63 or RF_Birth_Country_id == 70 or RF_Birth_Country_id == 75 or RF_Birth_Country_id == 77 or RF_Birth_Country_id == 78 or RF_Birth_Country_id == 79 or RF_Birth_Country_id == 80 or RF_Birth_Country_id == 81 or RF_Birth_Country_id == 83 or RF_Birth_Country_id == 87 or RF_Birth_Country_id == 89 or RF_Birth_Country_id == 96 or RF_Birth_Country_id == 101 or RF_Birth_Country_id == 104 or RF_Birth_Country_id == 105 or RF_Birth_Country_id == 108 or RF_Birth_Country_id == 110 or RF_Birth_Country_id == 111 or RF_Birth_Country_id == 113 or RF_Birth_Country_id == 118 or RF_Birth_Country_id == 120 or RF_Birth_Country_id == 125 or RF_Birth_Country_id == 131 or RF_Birth_Country_id == 133 or  RF_Birth_Country_id == 137 or RF_Birth_Country_id == 138 or RF_Birth_Country_id == 140 or RF_Birth_Country_id == 141 or RF_Birth_Country_id == 144 or RF_Birth_Country_id == 147 or RF_Birth_Country_id == 156 or RF_Birth_Country_id == 157 or RF_Birth_Country_id == 169 or RF_Birth_Country_id == 171 or RF_Birth_Country_id == 178 or RF_Birth_Country_id == 179 or RF_Birth_Country_id == 180 or RF_Birth_Country_id == 181 or RF_Birth_Country_id == 182 or RF_Birth_Country_id == 183 or RF_Birth_Country_id == 185 or RF_Birth_Country_id == 189 or RF_Birth_Country_id == 192 or RF_Birth_Country_id == 196 or RF_Birth_Country_id == 199 or RF_Birth_Country_id == 201 or RF_Birth_Country_id == 204 or RF_Birth_Country_id == 205 or RF_Birth_Country_id == 207 or RF_Birth_Country_id == 210 or RF_Birth_Country_id == 218 or RF_Birth_Country_id == 225 or RF_Birth_Country_id == 231 or RF_Birth_Country_id == 234 or RF_Birth_Country_id == 235 or RF_Birth_Country_id == 237 or RF_Birth_Country_id == 238  %}6{% endif %}
-                                        {% if RF_Birth_Country_id == 21 or RF_Birth_Country_id == 57 or RF_Birth_Country_id == 106 or RF_Birth_Country_id == 107 or RF_Birth_Country_id == 119 or RF_Birth_Country_id == 187 or RF_Birth_Country_id == 217 %}12{% endif %}
+                                        {% elif RF_Birth_Country_id == 5 or RF_Birth_Country_id == 7 or RF_Birth_Country_id == 9 or RF_Birth_Country_id == 12 or RF_Birth_Country_id == 25 or RF_Birth_Country_id == 34 or RF_Birth_Country_id == 35 or RF_Birth_Country_id == 61 or RF_Birth_Country_id == 76 or RF_Birth_Country_id == 84 or RF_Birth_Country_id == 88 or RF_Birth_Country_id == 114 or RF_Birth_Country_id == 130 or RF_Birth_Country_id == 132 or RF_Birth_Country_id == 142 or RF_Birth_Country_id == 149 or RF_Birth_Country_id == 159 or RF_Birth_Country_id == 161  or RF_Birth_Country_id == 167 or RF_Birth_Country_id == 194 or RF_Birth_Country_id == 215 or RF_Birth_Country_id == 216 %}
+                                        3{% elif RF_Birth_Country_id == 11 or RF_Birth_Country_id == 14 or RF_Birth_Country_id == 15 or RF_Birth_Country_id == 18 or RF_Birth_Country_id == 22 or RF_Birth_Country_id == 23 or RF_Birth_Country_id == 26 or RF_Birth_Country_id == 30 or RF_Birth_Country_id == 38 or RF_Birth_Country_id == 40 or RF_Birth_Country_id == 44 or RF_Birth_Country_id == 45 or RF_Birth_Country_id == 54 or RF_Birth_Country_id == 56 or RF_Birth_Country_id == 59 or RF_Birth_Country_id == 60 or RF_Birth_Country_id == 63 or RF_Birth_Country_id == 70 or RF_Birth_Country_id == 75 or RF_Birth_Country_id == 77 or RF_Birth_Country_id == 78 or RF_Birth_Country_id == 79 or RF_Birth_Country_id == 80 or RF_Birth_Country_id == 81 or RF_Birth_Country_id == 83 or RF_Birth_Country_id == 87 or RF_Birth_Country_id == 89 or RF_Birth_Country_id == 96 or RF_Birth_Country_id == 101 or RF_Birth_Country_id == 104 or RF_Birth_Country_id == 105 or RF_Birth_Country_id == 108 or RF_Birth_Country_id == 110 or RF_Birth_Country_id == 111 or RF_Birth_Country_id == 113 or RF_Birth_Country_id == 118 or RF_Birth_Country_id == 120 or RF_Birth_Country_id == 125 or RF_Birth_Country_id == 131 or RF_Birth_Country_id == 133 or  RF_Birth_Country_id == 137 or RF_Birth_Country_id == 138 or RF_Birth_Country_id == 140 or RF_Birth_Country_id == 141 or RF_Birth_Country_id == 144 or RF_Birth_Country_id == 147 or RF_Birth_Country_id == 156 or RF_Birth_Country_id == 157 or RF_Birth_Country_id == 169 or RF_Birth_Country_id == 171 or RF_Birth_Country_id == 178 or RF_Birth_Country_id == 179 or RF_Birth_Country_id == 180 or RF_Birth_Country_id == 181 or RF_Birth_Country_id == 182 or RF_Birth_Country_id == 183 or RF_Birth_Country_id == 185 or RF_Birth_Country_id == 189 or RF_Birth_Country_id == 192 or RF_Birth_Country_id == 196 or RF_Birth_Country_id == 199 or RF_Birth_Country_id == 201 or RF_Birth_Country_id == 204 or RF_Birth_Country_id == 205 or RF_Birth_Country_id == 207 or RF_Birth_Country_id == 210 or RF_Birth_Country_id == 218 or RF_Birth_Country_id == 225 or RF_Birth_Country_id == 231 or RF_Birth_Country_id == 234 or RF_Birth_Country_id == 235 or RF_Birth_Country_id == 237 or RF_Birth_Country_id == 238  %}
+                                        6{% elif RF_Birth_Country_id == 21 or RF_Birth_Country_id == 57 or RF_Birth_Country_id == 106 or RF_Birth_Country_id == 107 or RF_Birth_Country_id == 119 or RF_Birth_Country_id == 187 or RF_Birth_Country_id == 217 %}
+                                        12
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>{% endif %}
                                     </span>
                                 </div>                     
                             {% endif %}       
@@ -1698,10 +1971,16 @@
                             <div class="column2">
                                 <span>Country of Residence</span>
                             </div>
-                            <div class="column2">                        
-                                <span>
-                                    {{RF_Residence_Country}}
-                                </span>
+                            <div class="column2">    
+                                {% if RF_Residence_Country %}
+                                    <span>
+                                        {{RF_Residence_Country}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %}  
                             </div>                     
                             <div class="column4">                        
                                 <b style="color: white">0</b>
@@ -1711,10 +1990,14 @@
                                     <span>
                                         {% if RF_Residence_Country_id == 1 or RF_Residence_Country_id == 2 or RF_Residence_Country_id == 3 or RF_Residence_Country_id == 4 or RF_Residence_Country_id == 6 or RF_Residence_Country_id == 8 or RF_Residence_Country_id == 10 or RF_Residence_Country_id == 13 or RF_Residence_Country_id == 16 or RF_Residence_Country_id == 17 or RF_Residence_Country_id == 19 or RF_Residence_Country_id == 20 or RF_Residence_Country_id == 24 or RF_Residence_Country_id == 27 or RF_Residence_Country_id == 28 or RF_Residence_Country_id == 29 or RF_Residence_Country_id == 31 or RF_Residence_Country_id == 32 or RF_Residence_Country_id == 33 or RF_Residence_Country_id == 36 or RF_Residence_Country_id == 37 or RF_Residence_Country_id == 39 or RF_Residence_Country_id == 41 or RF_Residence_Country_id == 42 or RF_Residence_Country_id == 43 or RF_Residence_Country_id == 46 or RF_Residence_Country_id == 47 or RF_Residence_Country_id == 48 or RF_Residence_Country_id == 49 or RF_Residence_Country_id == 50 or RF_Residence_Country_id == 51 or RF_Residence_Country_id == 52 or RF_Residence_Country_id == 53 or RF_Residence_Country_id == 55 or RF_Residence_Country_id == 58 or RF_Residence_Country_id == 62 or RF_Residence_Country_id == 64 or RF_Residence_Country_id == 65 or RF_Residence_Country_id == 66 or RF_Residence_Country_id == 67 or RF_Residence_Country_id == 68 or RF_Residence_Country_id == 69 or RF_Residence_Country_id == 71 or RF_Residence_Country_id == 72 or RF_Residence_Country_id == 73 or RF_Residence_Country_id == 74 or RF_Residence_Country_id == 82 or RF_Residence_Country_id == 85 or RF_Residence_Country_id == 86 or RF_Residence_Country_id == 90 or RF_Residence_Country_id == 91 or RF_Residence_Country_id == 92 or RF_Residence_Country_id == 93 or RF_Residence_Country_id == 94 or RF_Residence_Country_id == 95 or RF_Residence_Country_id == 97 or RF_Residence_Country_id == 98 or RF_Residence_Country_id == 99 or RF_Residence_Country_id == 100 or RF_Residence_Country_id == 103 or RF_Residence_Country_id == 109  or RF_Residence_Country_id == 112  or RF_Residence_Country_id == 115  or RF_Residence_Country_id == 116  or RF_Residence_Country_id == 117  or RF_Residence_Country_id == 121  or RF_Residence_Country_id == 123  or RF_Residence_Country_id == 124 or RF_Residence_Country_id == 126  or RF_Residence_Country_id == 127  or RF_Residence_Country_id == 128  or RF_Residence_Country_id == 129  or RF_Residence_Country_id == 134  or RF_Residence_Country_id == 135  or RF_Residence_Country_id == 136 or RF_Residence_Country_id == 139  or RF_Residence_Country_id == 143  or RF_Residence_Country_id == 145  or RF_Residence_Country_id == 146  or RF_Residence_Country_id == 148  or RF_Residence_Country_id == 150 or RF_Residence_Country_id == 151 or RF_Residence_Country_id == 152 or RF_Residence_Country_id == 153 or RF_Residence_Country_id == 154 or RF_Residence_Country_id == 155 or RF_Residence_Country_id == 158 or RF_Residence_Country_id == 160 or RF_Residence_Country_id == 162 or RF_Residence_Country_id == 163 or RF_Residence_Country_id == 164 or RF_Residence_Country_id == 165 or RF_Residence_Country_id == 166 or RF_Residence_Country_id == 168 or RF_Residence_Country_id == 170 or RF_Residence_Country_id == 172 or RF_Residence_Country_id == 173 or RF_Residence_Country_id == 174 or RF_Residence_Country_id == 175 or RF_Residence_Country_id == 176 or RF_Residence_Country_id == 177 or RF_Residence_Country_id == 186 or RF_Residence_Country_id == 187 or RF_Residence_Country_id == 188 or RF_Residence_Country_id == 190 or RF_Residence_Country_id == 191 or RF_Residence_Country_id == 193 or RF_Residence_Country_id == 195 or RF_Residence_Country_id == 197 or RF_Residence_Country_id == 198 or RF_Residence_Country_id == 200 or RF_Residence_Country_id == 202 or RF_Residence_Country_id == 203 or RF_Residence_Country_id == 206 or RF_Residence_Country_id == 208 or RF_Residence_Country_id == 209 or RF_Residence_Country_id == 211 or RF_Residence_Country_id == 212 or RF_Residence_Country_id == 213 or RF_Residence_Country_id == 214 or RF_Residence_Country_id == 219 or RF_Residence_Country_id == 220 or RF_Residence_Country_id == 221 or RF_Residence_Country_id == 222 or RF_Residence_Country_id == 223 or RF_Residence_Country_id == 224 or RF_Residence_Country_id == 226 or RF_Residence_Country_id == 230 or RF_Residence_Country_id == 232 or RF_Residence_Country_id == 233 or RF_Residence_Country_id == 236 or RF_Residence_Country_id == 237 or RF_Residence_Country_id == 238 or RF_Residence_Country_id == 239 %}
                                             3
-                                        {% endif %}
-                                        {% if RF_Residence_Country_id == 5 or RF_Residence_Country_id == 7 or RF_Residence_Country_id == 9 or RF_Residence_Country_id == 12 or RF_Residence_Country_id == 25 or RF_Residence_Country_id == 34 or RF_Residence_Country_id == 35 or RF_Residence_Country_id == 61 or RF_Residence_Country_id == 76 or RF_Residence_Country_id == 84 or RF_Residence_Country_id == 88 or RF_Residence_Country_id == 114 or RF_Residence_Country_id == 130 or RF_Residence_Country_id == 132 or RF_Residence_Country_id == 142 or RF_Residence_Country_id == 149 or RF_Residence_Country_id == 159 or RF_Residence_Country_id == 161  or RF_Residence_Country_id == 167 or RF_Residence_Country_id == 194 or RF_Residence_Country_id == 215 or RF_Residence_Country_id == 216 %}1{% endif %}
-                                        {% if RF_Residence_Country_id == 11 or RF_Residence_Country_id == 14 or RF_Residence_Country_id == 15 or RF_Residence_Country_id == 18 or RF_Residence_Country_id == 22 or RF_Residence_Country_id == 23 or RF_Residence_Country_id == 26 or RF_Residence_Country_id == 30 or RF_Residence_Country_id == 38 or RF_Residence_Country_id == 40 or RF_Residence_Country_id == 44 or RF_Residence_Country_id == 45 or RF_Residence_Country_id == 54 or RF_Residence_Country_id == 56 or RF_Residence_Country_id == 59 or RF_Residence_Country_id == 60 or RF_Residence_Country_id == 63 or RF_Residence_Country_id == 70 or RF_Residence_Country_id == 75 or RF_Residence_Country_id == 77 or RF_Residence_Country_id == 78 or RF_Residence_Country_id == 79 or RF_Residence_Country_id == 80 or RF_Residence_Country_id == 81 or RF_Residence_Country_id == 83 or RF_Residence_Country_id == 87 or RF_Residence_Country_id == 89 or RF_Residence_Country_id == 96 or RF_Residence_Country_id == 101 or RF_Residence_Country_id == 104 or RF_Residence_Country_id == 105 or RF_Residence_Country_id == 108 or RF_Residence_Country_id == 110 or RF_Residence_Country_id == 111 or RF_Residence_Country_id == 113 or RF_Residence_Country_id == 118 or RF_Residence_Country_id == 120 or RF_Residence_Country_id == 125 or RF_Residence_Country_id == 131 or RF_Residence_Country_id == 133 or  RF_Residence_Country_id == 137 or RF_Residence_Country_id == 138 or RF_Residence_Country_id == 140 or RF_Residence_Country_id == 141 or RF_Residence_Country_id == 144 or RF_Residence_Country_id == 147 or RF_Residence_Country_id == 156 or RF_Residence_Country_id == 157 or RF_Residence_Country_id == 169 or RF_Residence_Country_id == 171 or RF_Residence_Country_id == 178 or RF_Residence_Country_id == 179 or RF_Residence_Country_id == 180 or RF_Residence_Country_id == 181 or RF_Residence_Country_id == 182 or RF_Residence_Country_id == 183 or RF_Residence_Country_id == 185 or RF_Residence_Country_id == 189 or RF_Residence_Country_id == 192 or RF_Residence_Country_id == 196 or RF_Residence_Country_id == 199 or RF_Residence_Country_id == 201 or RF_Residence_Country_id == 204 or RF_Residence_Country_id == 205 or RF_Residence_Country_id == 207 or RF_Residence_Country_id == 210 or RF_Residence_Country_id == 218 or RF_Residence_Country_id == 225 or RF_Residence_Country_id == 231 or RF_Residence_Country_id == 234 or RF_Residence_Country_id == 235 or RF_Residence_Country_id == 237 or RF_Residence_Country_id == 238  %}2{% endif %}
-                                        {% if RF_Residence_Country_id == 21 or RF_Residence_Country_id == 57 or RF_Residence_Country_id == 106 or RF_Residence_Country_id == 107 or RF_Residence_Country_id == 119 or RF_Residence_Country_id == 187 or RF_Residence_Country_id == 217 %}4{% endif %}
+                                        {% elif RF_Residence_Country_id == 5 or RF_Residence_Country_id == 7 or RF_Residence_Country_id == 9 or RF_Residence_Country_id == 12 or RF_Residence_Country_id == 25 or RF_Residence_Country_id == 34 or RF_Residence_Country_id == 35 or RF_Residence_Country_id == 61 or RF_Residence_Country_id == 76 or RF_Residence_Country_id == 84 or RF_Residence_Country_id == 88 or RF_Residence_Country_id == 114 or RF_Residence_Country_id == 130 or RF_Residence_Country_id == 132 or RF_Residence_Country_id == 142 or RF_Residence_Country_id == 149 or RF_Residence_Country_id == 159 or RF_Residence_Country_id == 161  or RF_Residence_Country_id == 167 or RF_Residence_Country_id == 194 or RF_Residence_Country_id == 215 or RF_Residence_Country_id == 216 %}
+                                        1{% elif RF_Residence_Country_id == 11 or RF_Residence_Country_id == 14 or RF_Residence_Country_id == 15 or RF_Residence_Country_id == 18 or RF_Residence_Country_id == 22 or RF_Residence_Country_id == 23 or RF_Residence_Country_id == 26 or RF_Residence_Country_id == 30 or RF_Residence_Country_id == 38 or RF_Residence_Country_id == 40 or RF_Residence_Country_id == 44 or RF_Residence_Country_id == 45 or RF_Residence_Country_id == 54 or RF_Residence_Country_id == 56 or RF_Residence_Country_id == 59 or RF_Residence_Country_id == 60 or RF_Residence_Country_id == 63 or RF_Residence_Country_id == 70 or RF_Residence_Country_id == 75 or RF_Residence_Country_id == 77 or RF_Residence_Country_id == 78 or RF_Residence_Country_id == 79 or RF_Residence_Country_id == 80 or RF_Residence_Country_id == 81 or RF_Residence_Country_id == 83 or RF_Residence_Country_id == 87 or RF_Residence_Country_id == 89 or RF_Residence_Country_id == 96 or RF_Residence_Country_id == 101 or RF_Residence_Country_id == 104 or RF_Residence_Country_id == 105 or RF_Residence_Country_id == 108 or RF_Residence_Country_id == 110 or RF_Residence_Country_id == 111 or RF_Residence_Country_id == 113 or RF_Residence_Country_id == 118 or RF_Residence_Country_id == 120 or RF_Residence_Country_id == 125 or RF_Residence_Country_id == 131 or RF_Residence_Country_id == 133 or  RF_Residence_Country_id == 137 or RF_Residence_Country_id == 138 or RF_Residence_Country_id == 140 or RF_Residence_Country_id == 141 or RF_Residence_Country_id == 144 or RF_Residence_Country_id == 147 or RF_Residence_Country_id == 156 or RF_Residence_Country_id == 157 or RF_Residence_Country_id == 169 or RF_Residence_Country_id == 171 or RF_Residence_Country_id == 178 or RF_Residence_Country_id == 179 or RF_Residence_Country_id == 180 or RF_Residence_Country_id == 181 or RF_Residence_Country_id == 182 or RF_Residence_Country_id == 183 or RF_Residence_Country_id == 185 or RF_Residence_Country_id == 189 or RF_Residence_Country_id == 192 or RF_Residence_Country_id == 196 or RF_Residence_Country_id == 199 or RF_Residence_Country_id == 201 or RF_Residence_Country_id == 204 or RF_Residence_Country_id == 205 or RF_Residence_Country_id == 207 or RF_Residence_Country_id == 210 or RF_Residence_Country_id == 218 or RF_Residence_Country_id == 225 or RF_Residence_Country_id == 231 or RF_Residence_Country_id == 234 or RF_Residence_Country_id == 235 or RF_Residence_Country_id == 237 or RF_Residence_Country_id == 238  %}
+                                        2{% elif RF_Residence_Country_id == 21 or RF_Residence_Country_id == 57 or RF_Residence_Country_id == 106 or RF_Residence_Country_id == 107 or RF_Residence_Country_id == 119 or RF_Residence_Country_id == 187 or RF_Residence_Country_id == 217 %}
+                                        4
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>{% endif %}
                                     </span>
                                 </div>                     
                                 <div class="column3">                        
@@ -1724,10 +2007,14 @@
                                     <span>
                                         {% if RF_Residence_Country_id == 1 or RF_Residence_Country_id == 2 or RF_Residence_Country_id == 3 or RF_Residence_Country_id == 4 or RF_Residence_Country_id == 6 or RF_Residence_Country_id == 8 or RF_Residence_Country_id == 10 or RF_Residence_Country_id == 13 or RF_Residence_Country_id == 16 or RF_Residence_Country_id == 17 or RF_Residence_Country_id == 19 or RF_Residence_Country_id == 20 or RF_Residence_Country_id == 24 or RF_Residence_Country_id == 27 or RF_Residence_Country_id == 28 or RF_Residence_Country_id == 29 or RF_Residence_Country_id == 31 or RF_Residence_Country_id == 32 or RF_Residence_Country_id == 33 or RF_Residence_Country_id == 36 or RF_Residence_Country_id == 37 or RF_Residence_Country_id == 39 or RF_Residence_Country_id == 41 or RF_Residence_Country_id == 42 or RF_Residence_Country_id == 43 or RF_Residence_Country_id == 46 or RF_Residence_Country_id == 47 or RF_Residence_Country_id == 48 or RF_Residence_Country_id == 49 or RF_Residence_Country_id == 50 or RF_Residence_Country_id == 51 or RF_Residence_Country_id == 52 or RF_Residence_Country_id == 53 or RF_Residence_Country_id == 55 or RF_Residence_Country_id == 58 or RF_Residence_Country_id == 62 or RF_Residence_Country_id == 64 or RF_Residence_Country_id == 65 or RF_Residence_Country_id == 66 or RF_Residence_Country_id == 67 or RF_Residence_Country_id == 68 or RF_Residence_Country_id == 69 or RF_Residence_Country_id == 71 or RF_Residence_Country_id == 72 or RF_Residence_Country_id == 73 or RF_Residence_Country_id == 74 or RF_Residence_Country_id == 82 or RF_Residence_Country_id == 85 or RF_Residence_Country_id == 86 or RF_Residence_Country_id == 90 or RF_Residence_Country_id == 91 or RF_Residence_Country_id == 92 or RF_Residence_Country_id == 93 or RF_Residence_Country_id == 94 or RF_Residence_Country_id == 95 or RF_Residence_Country_id == 97 or RF_Residence_Country_id == 98 or RF_Residence_Country_id == 99 or RF_Residence_Country_id == 100 or RF_Residence_Country_id == 103 or RF_Residence_Country_id == 109  or RF_Residence_Country_id == 112  or RF_Residence_Country_id == 115  or RF_Residence_Country_id == 116  or RF_Residence_Country_id == 117  or RF_Residence_Country_id == 121  or RF_Residence_Country_id == 123  or RF_Residence_Country_id == 124 or RF_Residence_Country_id == 126  or RF_Residence_Country_id == 127  or RF_Residence_Country_id == 128  or RF_Residence_Country_id == 129  or RF_Residence_Country_id == 134  or RF_Residence_Country_id == 135  or RF_Residence_Country_id == 136 or RF_Residence_Country_id == 139  or RF_Residence_Country_id == 143  or RF_Residence_Country_id == 145  or RF_Residence_Country_id == 146  or RF_Residence_Country_id == 148  or RF_Residence_Country_id == 150 or RF_Residence_Country_id == 151 or RF_Residence_Country_id == 152 or RF_Residence_Country_id == 153 or RF_Residence_Country_id == 154 or RF_Residence_Country_id == 155 or RF_Residence_Country_id == 158 or RF_Residence_Country_id == 160 or RF_Residence_Country_id == 162 or RF_Residence_Country_id == 163 or RF_Residence_Country_id == 164 or RF_Residence_Country_id == 165 or RF_Residence_Country_id == 166 or RF_Residence_Country_id == 168 or RF_Residence_Country_id == 170 or RF_Residence_Country_id == 172 or RF_Residence_Country_id == 173 or RF_Residence_Country_id == 174 or RF_Residence_Country_id == 175 or RF_Residence_Country_id == 176 or RF_Residence_Country_id == 177 or RF_Residence_Country_id == 186 or RF_Residence_Country_id == 187 or RF_Residence_Country_id == 188 or RF_Residence_Country_id == 190 or RF_Residence_Country_id == 191 or RF_Residence_Country_id == 193 or RF_Residence_Country_id == 195 or RF_Residence_Country_id == 197 or RF_Residence_Country_id == 198 or RF_Residence_Country_id == 200 or RF_Residence_Country_id == 202 or RF_Residence_Country_id == 203 or RF_Residence_Country_id == 206 or RF_Residence_Country_id == 208 or RF_Residence_Country_id == 209 or RF_Residence_Country_id == 211 or RF_Residence_Country_id == 212 or RF_Residence_Country_id == 213 or RF_Residence_Country_id == 214 or RF_Residence_Country_id == 219 or RF_Residence_Country_id == 220 or RF_Residence_Country_id == 221 or RF_Residence_Country_id == 222 or RF_Residence_Country_id == 223 or RF_Residence_Country_id == 224 or RF_Residence_Country_id == 226 or RF_Residence_Country_id == 230 or RF_Residence_Country_id == 232 or RF_Residence_Country_id == 233 or RF_Residence_Country_id == 236 or RF_Residence_Country_id == 237 or RF_Residence_Country_id == 238 or RF_Residence_Country_id == 239 %}
                                             9
-                                        {% endif %}
-                                        {% if RF_Residence_Country_id == 5 or RF_Residence_Country_id == 7 or RF_Residence_Country_id == 9 or RF_Residence_Country_id == 12 or RF_Residence_Country_id == 25 or RF_Residence_Country_id == 34 or RF_Residence_Country_id == 35 or RF_Residence_Country_id == 61 or RF_Residence_Country_id == 76 or RF_Residence_Country_id == 84 or RF_Residence_Country_id == 88 or RF_Residence_Country_id == 114 or RF_Residence_Country_id == 130 or RF_Residence_Country_id == 132 or RF_Residence_Country_id == 142 or RF_Residence_Country_id == 149 or RF_Residence_Country_id == 159 or RF_Residence_Country_id == 161  or RF_Residence_Country_id == 167 or RF_Residence_Country_id == 194 or RF_Residence_Country_id == 215 or RF_Residence_Country_id == 216 %}3{% endif %}
-                                        {% if RF_Residence_Country_id == 11 or RF_Residence_Country_id == 14 or RF_Residence_Country_id == 15 or RF_Residence_Country_id == 18 or RF_Residence_Country_id == 22 or RF_Residence_Country_id == 23 or RF_Residence_Country_id == 26 or RF_Residence_Country_id == 30 or RF_Residence_Country_id == 38 or RF_Residence_Country_id == 40 or RF_Residence_Country_id == 44 or RF_Residence_Country_id == 45 or RF_Residence_Country_id == 54 or RF_Residence_Country_id == 56 or RF_Residence_Country_id == 59 or RF_Residence_Country_id == 60 or RF_Residence_Country_id == 63 or RF_Residence_Country_id == 70 or RF_Residence_Country_id == 75 or RF_Residence_Country_id == 77 or RF_Residence_Country_id == 78 or RF_Residence_Country_id == 79 or RF_Residence_Country_id == 80 or RF_Residence_Country_id == 81 or RF_Residence_Country_id == 83 or RF_Residence_Country_id == 87 or RF_Residence_Country_id == 89 or RF_Residence_Country_id == 96 or RF_Residence_Country_id == 101 or RF_Residence_Country_id == 104 or RF_Residence_Country_id == 105 or RF_Residence_Country_id == 108 or RF_Residence_Country_id == 110 or RF_Residence_Country_id == 111 or RF_Residence_Country_id == 113 or RF_Residence_Country_id == 118 or RF_Residence_Country_id == 120 or RF_Residence_Country_id == 125 or RF_Residence_Country_id == 131 or RF_Residence_Country_id == 133 or  RF_Residence_Country_id == 137 or RF_Residence_Country_id == 138 or RF_Residence_Country_id == 140 or RF_Residence_Country_id == 141 or RF_Residence_Country_id == 144 or RF_Residence_Country_id == 147 or RF_Residence_Country_id == 156 or RF_Residence_Country_id == 157 or RF_Residence_Country_id == 169 or RF_Residence_Country_id == 171 or RF_Residence_Country_id == 178 or RF_Residence_Country_id == 179 or RF_Residence_Country_id == 180 or RF_Residence_Country_id == 181 or RF_Residence_Country_id == 182 or RF_Residence_Country_id == 183 or RF_Residence_Country_id == 185 or RF_Residence_Country_id == 189 or RF_Residence_Country_id == 192 or RF_Residence_Country_id == 196 or RF_Residence_Country_id == 199 or RF_Residence_Country_id == 201 or RF_Residence_Country_id == 204 or RF_Residence_Country_id == 205 or RF_Residence_Country_id == 207 or RF_Residence_Country_id == 210 or RF_Residence_Country_id == 218 or RF_Residence_Country_id == 225 or RF_Residence_Country_id == 231 or RF_Residence_Country_id == 234 or RF_Residence_Country_id == 235 or RF_Residence_Country_id == 237 or RF_Residence_Country_id == 238  %}6{% endif %}
-                                        {% if RF_Residence_Country_id == 21 or RF_Residence_Country_id == 57 or RF_Residence_Country_id == 106 or RF_Residence_Country_id == 107 or RF_Residence_Country_id == 119 or RF_Residence_Country_id == 187 or RF_Residence_Country_id == 217 %}12{% endif %}
+                                        {% elif RF_Residence_Country_id == 5 or RF_Residence_Country_id == 7 or RF_Residence_Country_id == 9 or RF_Residence_Country_id == 12 or RF_Residence_Country_id == 25 or RF_Residence_Country_id == 34 or RF_Residence_Country_id == 35 or RF_Residence_Country_id == 61 or RF_Residence_Country_id == 76 or RF_Residence_Country_id == 84 or RF_Residence_Country_id == 88 or RF_Residence_Country_id == 114 or RF_Residence_Country_id == 130 or RF_Residence_Country_id == 132 or RF_Residence_Country_id == 142 or RF_Residence_Country_id == 149 or RF_Residence_Country_id == 159 or RF_Residence_Country_id == 161  or RF_Residence_Country_id == 167 or RF_Residence_Country_id == 194 or RF_Residence_Country_id == 215 or RF_Residence_Country_id == 216 %}
+                                        3{% elif RF_Residence_Country_id == 11 or RF_Residence_Country_id == 14 or RF_Residence_Country_id == 15 or RF_Residence_Country_id == 18 or RF_Residence_Country_id == 22 or RF_Residence_Country_id == 23 or RF_Residence_Country_id == 26 or RF_Residence_Country_id == 30 or RF_Residence_Country_id == 38 or RF_Residence_Country_id == 40 or RF_Residence_Country_id == 44 or RF_Residence_Country_id == 45 or RF_Residence_Country_id == 54 or RF_Residence_Country_id == 56 or RF_Residence_Country_id == 59 or RF_Residence_Country_id == 60 or RF_Residence_Country_id == 63 or RF_Residence_Country_id == 70 or RF_Residence_Country_id == 75 or RF_Residence_Country_id == 77 or RF_Residence_Country_id == 78 or RF_Residence_Country_id == 79 or RF_Residence_Country_id == 80 or RF_Residence_Country_id == 81 or RF_Residence_Country_id == 83 or RF_Residence_Country_id == 87 or RF_Residence_Country_id == 89 or RF_Residence_Country_id == 96 or RF_Residence_Country_id == 101 or RF_Residence_Country_id == 104 or RF_Residence_Country_id == 105 or RF_Residence_Country_id == 108 or RF_Residence_Country_id == 110 or RF_Residence_Country_id == 111 or RF_Residence_Country_id == 113 or RF_Residence_Country_id == 118 or RF_Residence_Country_id == 120 or RF_Residence_Country_id == 125 or RF_Residence_Country_id == 131 or RF_Residence_Country_id == 133 or  RF_Residence_Country_id == 137 or RF_Residence_Country_id == 138 or RF_Residence_Country_id == 140 or RF_Residence_Country_id == 141 or RF_Residence_Country_id == 144 or RF_Residence_Country_id == 147 or RF_Residence_Country_id == 156 or RF_Residence_Country_id == 157 or RF_Residence_Country_id == 169 or RF_Residence_Country_id == 171 or RF_Residence_Country_id == 178 or RF_Residence_Country_id == 179 or RF_Residence_Country_id == 180 or RF_Residence_Country_id == 181 or RF_Residence_Country_id == 182 or RF_Residence_Country_id == 183 or RF_Residence_Country_id == 185 or RF_Residence_Country_id == 189 or RF_Residence_Country_id == 192 or RF_Residence_Country_id == 196 or RF_Residence_Country_id == 199 or RF_Residence_Country_id == 201 or RF_Residence_Country_id == 204 or RF_Residence_Country_id == 205 or RF_Residence_Country_id == 207 or RF_Residence_Country_id == 210 or RF_Residence_Country_id == 218 or RF_Residence_Country_id == 225 or RF_Residence_Country_id == 231 or RF_Residence_Country_id == 234 or RF_Residence_Country_id == 235 or RF_Residence_Country_id == 237 or RF_Residence_Country_id == 238  %}
+                                        6{% elif RF_Residence_Country_id == 21 or RF_Residence_Country_id == 57 or RF_Residence_Country_id == 106 or RF_Residence_Country_id == 107 or RF_Residence_Country_id == 119 or RF_Residence_Country_id == 187 or RF_Residence_Country_id == 217 %}
+                                        12
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>{% endif %}
                                     </span>  
                                 </div>                 
                             {% endif %} 
@@ -1738,10 +2025,16 @@
                             <div class="column2">
                                 <span>Nationality</span>
                             </div>
-                            <div class="column2">                        
-                                <span>
-                                    {{RF_Nationality1}}
-                                </span>
+                            <div class="column2">  
+                                {% if RF_Nationality1 %}
+                                    <span>
+                                        {{RF_Nationality1}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %} 
                             </div>                     
                             <div class="column4">                        
                                 <b style="color: white">0</b>
@@ -1751,10 +2044,14 @@
                                     <span>
                                         {% if RF_Nationality1_id == 1 or RF_Nationality1_id == 2 or RF_Nationality1_id == 3 or RF_Nationality1_id == 4 or RF_Nationality1_id == 6 or RF_Nationality1_id == 8 or RF_Nationality1_id == 10 or RF_Nationality1_id == 13 or RF_Nationality1_id == 16 or RF_Nationality1_id == 17 or RF_Nationality1_id == 19 or RF_Nationality1_id == 20 or RF_Nationality1_id == 24 or RF_Nationality1_id == 27 or RF_Nationality1_id == 28 or RF_Nationality1_id == 29 or RF_Nationality1_id == 31 or RF_Nationality1_id == 32 or RF_Nationality1_id == 33 or RF_Nationality1_id == 36 or RF_Nationality1_id == 37 or RF_Nationality1_id == 39 or RF_Nationality1_id == 41 or RF_Nationality1_id == 42 or RF_Nationality1_id == 43 or RF_Nationality1_id == 46 or RF_Nationality1_id == 47 or RF_Nationality1_id == 48 or RF_Nationality1_id == 49 or RF_Nationality1_id == 50 or RF_Nationality1_id == 51 or RF_Nationality1_id == 52 or RF_Nationality1_id == 53 or RF_Nationality1_id == 55 or RF_Nationality1_id == 58 or RF_Nationality1_id == 62 or RF_Nationality1_id == 64 or RF_Nationality1_id == 65 or RF_Nationality1_id == 66 or RF_Nationality1_id == 67 or RF_Nationality1_id == 68 or RF_Nationality1_id == 69 or RF_Nationality1_id == 71 or RF_Nationality1_id == 72 or RF_Nationality1_id == 73 or RF_Nationality1_id == 74 or RF_Nationality1_id == 82 or RF_Nationality1_id == 85 or RF_Nationality1_id == 86 or RF_Nationality1_id == 90 or RF_Nationality1_id == 91 or RF_Nationality1_id == 92 or RF_Nationality1_id == 93 or RF_Nationality1_id == 94 or RF_Nationality1_id == 95 or RF_Nationality1_id == 97 or RF_Nationality1_id == 98 or RF_Nationality1_id == 99 or RF_Nationality1_id == 100 or RF_Nationality1_id == 103 or RF_Nationality1_id == 109  or RF_Nationality1_id == 112  or RF_Nationality1_id == 115  or RF_Nationality1_id == 116  or RF_Nationality1_id == 117  or RF_Nationality1_id == 121  or RF_Nationality1_id == 123  or RF_Nationality1_id == 124 or RF_Nationality1_id == 126  or RF_Nationality1_id == 127  or RF_Nationality1_id == 128  or RF_Nationality1_id == 129  or RF_Nationality1_id == 134  or RF_Nationality1_id == 135  or RF_Nationality1_id == 136 or RF_Nationality1_id == 139  or RF_Nationality1_id == 143  or RF_Nationality1_id == 145  or RF_Nationality1_id == 146  or RF_Nationality1_id == 148  or RF_Nationality1_id == 150 or RF_Nationality1_id == 151 or RF_Nationality1_id == 152 or RF_Nationality1_id == 153 or RF_Nationality1_id == 154 or RF_Nationality1_id == 155 or RF_Nationality1_id == 158 or RF_Nationality1_id == 160 or RF_Nationality1_id == 162 or RF_Nationality1_id == 163 or RF_Nationality1_id == 164 or RF_Nationality1_id == 165 or RF_Nationality1_id == 166 or RF_Nationality1_id == 168 or RF_Nationality1_id == 170 or RF_Nationality1_id == 172 or RF_Nationality1_id == 173 or RF_Nationality1_id == 174 or RF_Nationality1_id == 175 or RF_Nationality1_id == 176 or RF_Nationality1_id == 177 or RF_Nationality1_id == 186 or RF_Nationality1_id == 187 or RF_Nationality1_id == 188 or RF_Nationality1_id == 190 or RF_Nationality1_id == 191 or RF_Nationality1_id == 193 or RF_Nationality1_id == 195 or RF_Nationality1_id == 197 or RF_Nationality1_id == 198 or RF_Nationality1_id == 200 or RF_Nationality1_id == 202 or RF_Nationality1_id == 203 or RF_Nationality1_id == 206 or RF_Nationality1_id == 208 or RF_Nationality1_id == 209 or RF_Nationality1_id == 211 or RF_Nationality1_id == 212 or RF_Nationality1_id == 213 or RF_Nationality1_id == 214 or RF_Nationality1_id == 219 or RF_Nationality1_id == 220 or RF_Nationality1_id == 221 or RF_Nationality1_id == 222 or RF_Nationality1_id == 223 or RF_Nationality1_id == 224 or RF_Nationality1_id == 226 or RF_Nationality1_id == 230 or RF_Nationality1_id == 232 or RF_Nationality1_id == 233 or RF_Nationality1_id == 236 or RF_Nationality1_id == 237 or RF_Nationality1_id == 238 or RF_Nationality1_id == 239 %}
                                             3
-                                        {% endif %}
-                                        {% if RF_Nationality1_id == 5 or RF_Nationality1_id == 7 or RF_Nationality1_id == 9 or RF_Nationality1_id == 12 or RF_Nationality1_id == 25 or RF_Nationality1_id == 34 or RF_Nationality1_id == 35 or RF_Nationality1_id == 61 or RF_Nationality1_id == 76 or RF_Nationality1_id == 84 or RF_Nationality1_id == 88 or RF_Nationality1_id == 114 or RF_Nationality1_id == 130 or RF_Nationality1_id == 132 or RF_Nationality1_id == 142 or RF_Nationality1_id == 149 or RF_Nationality1_id == 159 or RF_Nationality1_id == 161  or RF_Nationality1_id == 167 or RF_Nationality1_id == 194 or RF_Nationality1_id == 215 or RF_Nationality1_id == 216 %}1{% endif %}
-                                        {% if RF_Nationality1_id == 11 or RF_Nationality1_id == 14 or RF_Nationality1_id == 15 or RF_Nationality1_id == 18 or RF_Nationality1_id == 22 or RF_Nationality1_id == 23 or RF_Nationality1_id == 26 or RF_Nationality1_id == 30 or RF_Nationality1_id == 38 or RF_Nationality1_id == 40 or RF_Nationality1_id == 44 or RF_Nationality1_id == 45 or RF_Nationality1_id == 54 or RF_Nationality1_id == 56 or RF_Nationality1_id == 59 or RF_Nationality1_id == 60 or RF_Nationality1_id == 63 or RF_Nationality1_id == 70 or RF_Nationality1_id == 75 or RF_Nationality1_id == 77 or RF_Nationality1_id == 78 or RF_Nationality1_id == 79 or RF_Nationality1_id == 80 or RF_Nationality1_id == 81 or RF_Nationality1_id == 83 or RF_Nationality1_id == 87 or RF_Nationality1_id == 89 or RF_Nationality1_id == 96 or RF_Nationality1_id == 101 or RF_Nationality1_id == 104 or RF_Nationality1_id == 105 or RF_Nationality1_id == 108 or RF_Nationality1_id == 110 or RF_Nationality1_id == 111 or RF_Nationality1_id == 113 or RF_Nationality1_id == 118 or RF_Nationality1_id == 120 or RF_Nationality1_id == 125 or RF_Nationality1_id == 131 or RF_Nationality1_id == 133 or  RF_Nationality1_id == 137 or RF_Nationality1_id == 138 or RF_Nationality1_id == 140 or RF_Nationality1_id == 141 or RF_Nationality1_id == 144 or RF_Nationality1_id == 147 or RF_Nationality1_id == 156 or RF_Nationality1_id == 157 or RF_Nationality1_id == 169 or RF_Nationality1_id == 171 or RF_Nationality1_id == 178 or RF_Nationality1_id == 179 or RF_Nationality1_id == 180 or RF_Nationality1_id == 181 or RF_Nationality1_id == 182 or RF_Nationality1_id == 183 or RF_Nationality1_id == 185 or RF_Nationality1_id == 189 or RF_Nationality1_id == 192 or RF_Nationality1_id == 196 or RF_Nationality1_id == 199 or RF_Nationality1_id == 201 or RF_Nationality1_id == 204 or RF_Nationality1_id == 205 or RF_Nationality1_id == 207 or RF_Nationality1_id == 210 or RF_Nationality1_id == 218 or RF_Nationality1_id == 225 or RF_Nationality1_id == 231 or RF_Nationality1_id == 234 or RF_Nationality1_id == 235 or RF_Nationality1_id == 237 or RF_Nationality1_id == 238  %}2{% endif %}
-                                        {% if RF_Nationality1_id == 21 or RF_Nationality1_id == 57 or RF_Nationality1_id == 106 or RF_Nationality1_id == 107 or RF_Nationality1_id == 119 or RF_Nationality1_id == 187 or RF_Nationality1_id == 217 %}4{% endif %}
+                                        {% elif RF_Nationality1_id == 5 or RF_Nationality1_id == 7 or RF_Nationality1_id == 9 or RF_Nationality1_id == 12 or RF_Nationality1_id == 25 or RF_Nationality1_id == 34 or RF_Nationality1_id == 35 or RF_Nationality1_id == 61 or RF_Nationality1_id == 76 or RF_Nationality1_id == 84 or RF_Nationality1_id == 88 or RF_Nationality1_id == 114 or RF_Nationality1_id == 130 or RF_Nationality1_id == 132 or RF_Nationality1_id == 142 or RF_Nationality1_id == 149 or RF_Nationality1_id == 159 or RF_Nationality1_id == 161  or RF_Nationality1_id == 167 or RF_Nationality1_id == 194 or RF_Nationality1_id == 215 or RF_Nationality1_id == 216 %}
+                                        1{% elif RF_Nationality1_id == 11 or RF_Nationality1_id == 14 or RF_Nationality1_id == 15 or RF_Nationality1_id == 18 or RF_Nationality1_id == 22 or RF_Nationality1_id == 23 or RF_Nationality1_id == 26 or RF_Nationality1_id == 30 or RF_Nationality1_id == 38 or RF_Nationality1_id == 40 or RF_Nationality1_id == 44 or RF_Nationality1_id == 45 or RF_Nationality1_id == 54 or RF_Nationality1_id == 56 or RF_Nationality1_id == 59 or RF_Nationality1_id == 60 or RF_Nationality1_id == 63 or RF_Nationality1_id == 70 or RF_Nationality1_id == 75 or RF_Nationality1_id == 77 or RF_Nationality1_id == 78 or RF_Nationality1_id == 79 or RF_Nationality1_id == 80 or RF_Nationality1_id == 81 or RF_Nationality1_id == 83 or RF_Nationality1_id == 87 or RF_Nationality1_id == 89 or RF_Nationality1_id == 96 or RF_Nationality1_id == 101 or RF_Nationality1_id == 104 or RF_Nationality1_id == 105 or RF_Nationality1_id == 108 or RF_Nationality1_id == 110 or RF_Nationality1_id == 111 or RF_Nationality1_id == 113 or RF_Nationality1_id == 118 or RF_Nationality1_id == 120 or RF_Nationality1_id == 125 or RF_Nationality1_id == 131 or RF_Nationality1_id == 133 or  RF_Nationality1_id == 137 or RF_Nationality1_id == 138 or RF_Nationality1_id == 140 or RF_Nationality1_id == 141 or RF_Nationality1_id == 144 or RF_Nationality1_id == 147 or RF_Nationality1_id == 156 or RF_Nationality1_id == 157 or RF_Nationality1_id == 169 or RF_Nationality1_id == 171 or RF_Nationality1_id == 178 or RF_Nationality1_id == 179 or RF_Nationality1_id == 180 or RF_Nationality1_id == 181 or RF_Nationality1_id == 182 or RF_Nationality1_id == 183 or RF_Nationality1_id == 185 or RF_Nationality1_id == 189 or RF_Nationality1_id == 192 or RF_Nationality1_id == 196 or RF_Nationality1_id == 199 or RF_Nationality1_id == 201 or RF_Nationality1_id == 204 or RF_Nationality1_id == 205 or RF_Nationality1_id == 207 or RF_Nationality1_id == 210 or RF_Nationality1_id == 218 or RF_Nationality1_id == 225 or RF_Nationality1_id == 231 or RF_Nationality1_id == 234 or RF_Nationality1_id == 235 or RF_Nationality1_id == 237 or RF_Nationality1_id == 238  %}
+                                        2{% elif RF_Nationality1_id == 21 or RF_Nationality1_id == 57 or RF_Nationality1_id == 106 or RF_Nationality1_id == 107 or RF_Nationality1_id == 119 or RF_Nationality1_id == 187 or RF_Nationality1_id == 217 %}
+                                        4
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>{% endif %}
                                     </span>
                                 </div>                     
                                 <div class="column3">                        
@@ -1764,10 +2061,14 @@
                                     <span>
                                         {% if RF_Nationality1_id == 1 or RF_Nationality1_id == 2 or RF_Nationality1_id == 3 or RF_Nationality1_id == 4 or RF_Nationality1_id == 6 or RF_Nationality1_id == 8 or RF_Nationality1_id == 10 or RF_Nationality1_id == 13 or RF_Nationality1_id == 16 or RF_Nationality1_id == 17 or RF_Nationality1_id == 19 or RF_Nationality1_id == 20 or RF_Nationality1_id == 24 or RF_Nationality1_id == 27 or RF_Nationality1_id == 28 or RF_Nationality1_id == 29 or RF_Nationality1_id == 31 or RF_Nationality1_id == 32 or RF_Nationality1_id == 33 or RF_Nationality1_id == 36 or RF_Nationality1_id == 37 or RF_Nationality1_id == 39 or RF_Nationality1_id == 41 or RF_Nationality1_id == 42 or RF_Nationality1_id == 43 or RF_Nationality1_id == 46 or RF_Nationality1_id == 47 or RF_Nationality1_id == 48 or RF_Nationality1_id == 49 or RF_Nationality1_id == 50 or RF_Nationality1_id == 51 or RF_Nationality1_id == 52 or RF_Nationality1_id == 53 or RF_Nationality1_id == 55 or RF_Nationality1_id == 58 or RF_Nationality1_id == 62 or RF_Nationality1_id == 64 or RF_Nationality1_id == 65 or RF_Nationality1_id == 66 or RF_Nationality1_id == 67 or RF_Nationality1_id == 68 or RF_Nationality1_id == 69 or RF_Nationality1_id == 71 or RF_Nationality1_id == 72 or RF_Nationality1_id == 73 or RF_Nationality1_id == 74 or RF_Nationality1_id == 82 or RF_Nationality1_id == 85 or RF_Nationality1_id == 86 or RF_Nationality1_id == 90 or RF_Nationality1_id == 91 or RF_Nationality1_id == 92 or RF_Nationality1_id == 93 or RF_Nationality1_id == 94 or RF_Nationality1_id == 95 or RF_Nationality1_id == 97 or RF_Nationality1_id == 98 or RF_Nationality1_id == 99 or RF_Nationality1_id == 100 or RF_Nationality1_id == 103 or RF_Nationality1_id == 109  or RF_Nationality1_id == 112  or RF_Nationality1_id == 115  or RF_Nationality1_id == 116  or RF_Nationality1_id == 117  or RF_Nationality1_id == 121  or RF_Nationality1_id == 123  or RF_Nationality1_id == 124 or RF_Nationality1_id == 126  or RF_Nationality1_id == 127  or RF_Nationality1_id == 128  or RF_Nationality1_id == 129  or RF_Nationality1_id == 134  or RF_Nationality1_id == 135  or RF_Nationality1_id == 136 or RF_Nationality1_id == 139  or RF_Nationality1_id == 143  or RF_Nationality1_id == 145  or RF_Nationality1_id == 146  or RF_Nationality1_id == 148  or RF_Nationality1_id == 150 or RF_Nationality1_id == 151 or RF_Nationality1_id == 152 or RF_Nationality1_id == 153 or RF_Nationality1_id == 154 or RF_Nationality1_id == 155 or RF_Nationality1_id == 158 or RF_Nationality1_id == 160 or RF_Nationality1_id == 162 or RF_Nationality1_id == 163 or RF_Nationality1_id == 164 or RF_Nationality1_id == 165 or RF_Nationality1_id == 166 or RF_Nationality1_id == 168 or RF_Nationality1_id == 170 or RF_Nationality1_id == 172 or RF_Nationality1_id == 173 or RF_Nationality1_id == 174 or RF_Nationality1_id == 175 or RF_Nationality1_id == 176 or RF_Nationality1_id == 177 or RF_Nationality1_id == 186 or RF_Nationality1_id == 187 or RF_Nationality1_id == 188 or RF_Nationality1_id == 190 or RF_Nationality1_id == 191 or RF_Nationality1_id == 193 or RF_Nationality1_id == 195 or RF_Nationality1_id == 197 or RF_Nationality1_id == 198 or RF_Nationality1_id == 200 or RF_Nationality1_id == 202 or RF_Nationality1_id == 203 or RF_Nationality1_id == 206 or RF_Nationality1_id == 208 or RF_Nationality1_id == 209 or RF_Nationality1_id == 211 or RF_Nationality1_id == 212 or RF_Nationality1_id == 213 or RF_Nationality1_id == 214 or RF_Nationality1_id == 219 or RF_Nationality1_id == 220 or RF_Nationality1_id == 221 or RF_Nationality1_id == 222 or RF_Nationality1_id == 223 or RF_Nationality1_id == 224 or RF_Nationality1_id == 226 or RF_Nationality1_id == 230 or RF_Nationality1_id == 232 or RF_Nationality1_id == 233 or RF_Nationality1_id == 236 or RF_Nationality1_id == 237 or RF_Nationality1_id == 238 or RF_Nationality1_id == 239 %}
                                             9
-                                        {% endif %}
-                                        {% if RF_Nationality1_id == 5 or RF_Nationality1_id == 7 or RF_Nationality1_id == 9 or RF_Nationality1_id == 12 or RF_Nationality1_id == 25 or RF_Nationality1_id == 34 or RF_Nationality1_id == 35 or RF_Nationality1_id == 61 or RF_Nationality1_id == 76 or RF_Nationality1_id == 84 or RF_Nationality1_id == 88 or RF_Nationality1_id == 114 or RF_Nationality1_id == 130 or RF_Nationality1_id == 132 or RF_Nationality1_id == 142 or RF_Nationality1_id == 149 or RF_Nationality1_id == 159 or RF_Nationality1_id == 161  or RF_Nationality1_id == 167 or RF_Nationality1_id == 194 or RF_Nationality1_id == 215 or RF_Nationality1_id == 216 %}3{% endif %}
-                                        {% if RF_Nationality1_id == 11 or RF_Nationality1_id == 14 or RF_Nationality1_id == 15 or RF_Nationality1_id == 18 or RF_Nationality1_id == 22 or RF_Nationality1_id == 23 or RF_Nationality1_id == 26 or RF_Nationality1_id == 30 or RF_Nationality1_id == 38 or RF_Nationality1_id == 40 or RF_Nationality1_id == 44 or RF_Nationality1_id == 45 or RF_Nationality1_id == 54 or RF_Nationality1_id == 56 or RF_Nationality1_id == 59 or RF_Nationality1_id == 60 or RF_Nationality1_id == 63 or RF_Nationality1_id == 70 or RF_Nationality1_id == 75 or RF_Nationality1_id == 77 or RF_Nationality1_id == 78 or RF_Nationality1_id == 79 or RF_Nationality1_id == 80 or RF_Nationality1_id == 81 or RF_Nationality1_id == 83 or RF_Nationality1_id == 87 or RF_Nationality1_id == 89 or RF_Nationality1_id == 96 or RF_Nationality1_id == 101 or RF_Nationality1_id == 104 or RF_Nationality1_id == 105 or RF_Nationality1_id == 108 or RF_Nationality1_id == 110 or RF_Nationality1_id == 111 or RF_Nationality1_id == 113 or RF_Nationality1_id == 118 or RF_Nationality1_id == 120 or RF_Nationality1_id == 125 or RF_Nationality1_id == 131 or RF_Nationality1_id == 133 or  RF_Nationality1_id == 137 or RF_Nationality1_id == 138 or RF_Nationality1_id == 140 or RF_Nationality1_id == 141 or RF_Nationality1_id == 144 or RF_Nationality1_id == 147 or RF_Nationality1_id == 156 or RF_Nationality1_id == 157 or RF_Nationality1_id == 169 or RF_Nationality1_id == 171 or RF_Nationality1_id == 178 or RF_Nationality1_id == 179 or RF_Nationality1_id == 180 or RF_Nationality1_id == 181 or RF_Nationality1_id == 182 or RF_Nationality1_id == 183 or RF_Nationality1_id == 185 or RF_Nationality1_id == 189 or RF_Nationality1_id == 192 or RF_Nationality1_id == 196 or RF_Nationality1_id == 199 or RF_Nationality1_id == 201 or RF_Nationality1_id == 204 or RF_Nationality1_id == 205 or RF_Nationality1_id == 207 or RF_Nationality1_id == 210 or RF_Nationality1_id == 218 or RF_Nationality1_id == 225 or RF_Nationality1_id == 231 or RF_Nationality1_id == 234 or RF_Nationality1_id == 235 or RF_Nationality1_id == 237 or RF_Nationality1_id == 238  %}6{% endif %}
-                                        {% if RF_Nationality1_id == 21 or RF_Nationality1_id == 57 or RF_Nationality1_id == 106 or RF_Nationality1_id == 107 or RF_Nationality1_id == 119 or RF_Nationality1_id == 187 or RF_Nationality1_id == 217 %}12{% endif %}
+                                        {% elif RF_Nationality1_id == 5 or RF_Nationality1_id == 7 or RF_Nationality1_id == 9 or RF_Nationality1_id == 12 or RF_Nationality1_id == 25 or RF_Nationality1_id == 34 or RF_Nationality1_id == 35 or RF_Nationality1_id == 61 or RF_Nationality1_id == 76 or RF_Nationality1_id == 84 or RF_Nationality1_id == 88 or RF_Nationality1_id == 114 or RF_Nationality1_id == 130 or RF_Nationality1_id == 132 or RF_Nationality1_id == 142 or RF_Nationality1_id == 149 or RF_Nationality1_id == 159 or RF_Nationality1_id == 161  or RF_Nationality1_id == 167 or RF_Nationality1_id == 194 or RF_Nationality1_id == 215 or RF_Nationality1_id == 216 %}
+                                        3{% elif RF_Nationality1_id == 11 or RF_Nationality1_id == 14 or RF_Nationality1_id == 15 or RF_Nationality1_id == 18 or RF_Nationality1_id == 22 or RF_Nationality1_id == 23 or RF_Nationality1_id == 26 or RF_Nationality1_id == 30 or RF_Nationality1_id == 38 or RF_Nationality1_id == 40 or RF_Nationality1_id == 44 or RF_Nationality1_id == 45 or RF_Nationality1_id == 54 or RF_Nationality1_id == 56 or RF_Nationality1_id == 59 or RF_Nationality1_id == 60 or RF_Nationality1_id == 63 or RF_Nationality1_id == 70 or RF_Nationality1_id == 75 or RF_Nationality1_id == 77 or RF_Nationality1_id == 78 or RF_Nationality1_id == 79 or RF_Nationality1_id == 80 or RF_Nationality1_id == 81 or RF_Nationality1_id == 83 or RF_Nationality1_id == 87 or RF_Nationality1_id == 89 or RF_Nationality1_id == 96 or RF_Nationality1_id == 101 or RF_Nationality1_id == 104 or RF_Nationality1_id == 105 or RF_Nationality1_id == 108 or RF_Nationality1_id == 110 or RF_Nationality1_id == 111 or RF_Nationality1_id == 113 or RF_Nationality1_id == 118 or RF_Nationality1_id == 120 or RF_Nationality1_id == 125 or RF_Nationality1_id == 131 or RF_Nationality1_id == 133 or  RF_Nationality1_id == 137 or RF_Nationality1_id == 138 or RF_Nationality1_id == 140 or RF_Nationality1_id == 141 or RF_Nationality1_id == 144 or RF_Nationality1_id == 147 or RF_Nationality1_id == 156 or RF_Nationality1_id == 157 or RF_Nationality1_id == 169 or RF_Nationality1_id == 171 or RF_Nationality1_id == 178 or RF_Nationality1_id == 179 or RF_Nationality1_id == 180 or RF_Nationality1_id == 181 or RF_Nationality1_id == 182 or RF_Nationality1_id == 183 or RF_Nationality1_id == 185 or RF_Nationality1_id == 189 or RF_Nationality1_id == 192 or RF_Nationality1_id == 196 or RF_Nationality1_id == 199 or RF_Nationality1_id == 201 or RF_Nationality1_id == 204 or RF_Nationality1_id == 205 or RF_Nationality1_id == 207 or RF_Nationality1_id == 210 or RF_Nationality1_id == 218 or RF_Nationality1_id == 225 or RF_Nationality1_id == 231 or RF_Nationality1_id == 234 or RF_Nationality1_id == 235 or RF_Nationality1_id == 237 or RF_Nationality1_id == 238  %}
+                                        6{% elif RF_Nationality1_id == 21 or RF_Nationality1_id == 57 or RF_Nationality1_id == 106 or RF_Nationality1_id == 107 or RF_Nationality1_id == 119 or RF_Nationality1_id == 187 or RF_Nationality1_id == 217 %}
+                                        12
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>{% endif %}
                                     </span> 
                                 </div>           
                             {% endif %} 
@@ -1805,9 +2106,8 @@
             </div>
             <br/>
             <div>
-            <hr/>
         {% endif %}
-        {% if roa_status == True %}
+        {% if roa_status %}
             {% include 'roa.html' with RoA=RoA %}
             <hr/>
         {% endif %}
@@ -1819,22 +2119,37 @@
             {% include 'investmentplanning.html' with IP=IP %}    
             <hr/>
         {% endif %}
-        {% include 'businessRisk.html' with BA_Risk=BA_Risk %}
-        <hr/>
-        {% include 'businessAssurance.html' with BA_Investment=BA_Investment %}
-        <hr/>
-        {% include 'employee.html' with EB=EB %}
-        <hr/>
-        {% include 'stic.html' with STIC=STIC %}
-        <hr/>
-        {% include 'short-term-personal.html' with STIP=STIP %}
-        <hr/>
-        {% include 'fiduciary.html' with Fiduciary=Fiduciary %}
-        <hr/>
-        {% include 'medical.html' with MD=MD %}
-        <hr/>
-        {% include 'gapCover.html' with GP=GP %}
-        <hr/> 
+        {% if BA_Risk_status %}
+            {% include 'businessRisk.html' with BA_Risk=BA_Risk %}
+            <hr/>
+        {% endif %}
+        {% if BA_Investment_status %}
+            {% include 'businessAssurance.html' with BA_Investment=BA_Investment %}
+            <hr/>
+        {% endif %}
+        {% if EB_status %}
+            {% include 'employee.html' with EB=EB %}
+            <hr/>
+        {% endif %}
+        {% if STIC_status %}
+            {% include 'short-term-commercial.html' with STIC=STIC %}
+            <hr/>
+        {% endif %}
+        {% if STIP_status %}
+            {% include 'short-term-personal.html' with STIP=STIP %}
+            <hr/>
+        {% endif %}
+        {% if Fiduciary_status %}
+            {% include 'fiduciary.html' with Fiduciary=Fiduciary %}
+        {% endif %}
+        {% if MD_status %}
+            {% include 'medical.html' with MD=MD %}
+            <hr/>
+        {% endif %}
+        {% if GP_status %}
+            {% include 'gapCover.html' with GP=GP %}
+            <hr/> 
+        {% endif %}
 
     </body>
 </html>

@@ -8,7 +8,7 @@
         </div>
         <div class="column2">                        
             <span>
-                {% if GP.GP_ClientName %}{{GP.GP_ClientName}}{% else %}N.A.{% endif %}
+                {% if GP.GP_ClientName %}{{GP.GP_ClientName}}{% else %}<span class="white">0</span>{% endif %}
             </span>
         </div>                     
         <div class="column2">
@@ -16,7 +16,7 @@
         </div>
         <div class="column2">                        
             <span>
-                {% if GP.GP_ClientIdNumber %}{{GP.GP_ClientIdNumber}}{% else %}N.A.{% endif %}
+                {% if GP.GP_ClientIdNumber %}{{GP.GP_ClientIdNumber}}{% else %}<span class="white">0</span>{% endif %}
             </span>
         </div>                     
     </div>
@@ -28,7 +28,7 @@
         </div>
         <div class="column5">                        
             <span>
-                {% if GP.GP_ClientAddress %}{{GP.GP_ClientAddress}}{% else %}N.A.{% endif %}
+                {% if GP.GP_ClientAddress %}{{GP.GP_ClientAddress}}{% else %}<span class="white">0</span>{% endif %}
             </span>
         </div>                                        
     </div>
@@ -40,7 +40,7 @@
         </div>
         <div class="column2">                        
             <span>
-                {% if GP.GP_ClientEmail %}{{GP.GP_ClientEmail}}{% else %}N.A.{% endif %}
+                {% if GP.GP_ClientEmail %}{{GP.GP_ClientEmail}}{% else %}<span class="white">0</span>{% endif %}
             </span>
         </div>                     
         <div class="column2">
@@ -48,7 +48,7 @@
         </div>
         <div class="column2">                        
             <span>
-                {% if GP.GP_ClientPhoneNumber %}{{GP.GP_ClientPhoneNumber}}{% else %}N.A.{% endif %}
+                {% if GP.GP_ClientPhoneNumber %}{{GP.GP_ClientPhoneNumber}}{% else %}<span class="white">0</span>{% endif %}
             </span>
         </div>                     
     </div>
@@ -64,7 +64,7 @@
                 </span>
             {% else %}                    
                 <span>
-                    N.A.
+                    <span class="white">0</span>
                 </span>
             {% endif %}     
         </div>                     
@@ -78,7 +78,7 @@
                 </span>
             {% else %}                    
                 <span>
-                    N.A.
+                    <span class="white">0</span>
                 </span>
             {% endif %}   
         </div>                     
@@ -95,7 +95,7 @@
                 </span>
             {% else %}                    
                 <span>
-                    N.A.
+                    <span class="white">0</span>
                 </span>
             {% endif %}
         </div>                     
@@ -109,7 +109,7 @@
                 </span>
             {% else %}                    
                 <span>
-                    N.A.
+                    <span class="white">0</span>
                 </span>
             {% endif %}
         </div>                     
@@ -201,21 +201,21 @@
                     {% if GP.GP_MemberName1 %}
                         <span>{{ GP.GP_MemberName1 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
                 <div class="col3">
                     {% if GP.GP_MemberRelationship1 %}
                         <span>{{ GP.GP_MemberRelationship1 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
                 <div class="col3">
                     {% if GP.GP_MemberAidPlan1 %}
                         <span>{{ GP.GP_MemberAidPlan1 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
             </div>
@@ -227,21 +227,21 @@
                     {% if GP.GP_MemberName2 %}
                         <span>{{ GP.GP_MemberName2 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
                 <div class="col3">
                     {% if GP.GP_MemberRelationship2 %}
                         <span>{{ GP.GP_MemberRelationship2 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
                 <div class="col3">
                     {% if GP.GP_MemberAidPlan2 %}
                         <span>{{ GP.GP_MemberAidPlan2 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
             </div>
@@ -253,21 +253,21 @@
                     {% if GP.GP_MemberName3 %}
                         <span>{{ GP.GP_MemberName3 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
                 <div class="col3">
                     {% if GP.GP_MemberRelationship3 %}
                         <span>{{ GP.GP_MemberRelationship3 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
                 <div class="col3">
                     {% if GP.GP_MemberAidPlan3 %}
                         <span>{{ GP.GP_MemberAidPlan3 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
             </div>
@@ -279,21 +279,21 @@
                     {% if GP.GP_MemberName4 %}
                         <span>{{ GP.GP_MemberName4 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
                 <div class="col3">
                     {% if GP.GP_MemberRelationship4 %}
                         <span>{{ GP.GP_MemberRelationship4 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
                 <div class="col3">
                     {% if GP.GP_MemberAidPlan4 %}
                         <span>{{ GP.GP_MemberAidPlan4 }}</span>
                     {% else %}
-                        <span>N.A.</span>
+                        <span><span class="white">0</span></span>
                     {% endif %}
                 </div>
             </div>
@@ -383,10 +383,10 @@
                 <b>Gap Cover rate</b>
             </div>
             <div class="col3">
-                {% if GP.GP_CP_Rate %}{{GP.GP_CP_Rate}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_Rate %}{{GP.GP_CP_Rate}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_Rate %}{{GP.GP_NP_Rate}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_Rate %}{{GP.GP_NP_Rate}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>
@@ -395,10 +395,10 @@
                 <b>Overall annual limit</b>
             </div>
             <div class="col3">
-                {% if GP.GP_CP_Overall %}{{GP.GP_CP_Overall}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_Overall %}{{GP.GP_CP_Overall}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_Overall %}{{GP.GP_NP_Overall}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_Overall %}{{GP.GP_NP_Overall}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>
@@ -407,10 +407,10 @@
                 <b>Co-payment benefit</b>
             </div>
             <div class="col3">
-                {% if GP.GP_CP_CoPayment_B %}{{GP.GP_CP_CoPayment_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_CoPayment_B %}{{GP.GP_CP_CoPayment_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_CoPayment_B %}{{GP.GP_NP_CoPayment_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_CoPayment_B %}{{GP.GP_NP_CoPayment_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>
@@ -419,10 +419,10 @@
                 <b>Sub-limit benefit</b>
             </div>                    
             <div class="col3">
-                {% if GP.GP_CP_SubLimit_B %}{{GP.GP_CP_SubLimit_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_SubLimit_B %}{{GP.GP_CP_SubLimit_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_SubLimit_B %}{{GP.GP_NP_SubLimit_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_SubLimit_B %}{{GP.GP_NP_SubLimit_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>
@@ -431,10 +431,10 @@
                 <b>Cancer benefit</b>
             </div>                 
             <div class="col3">
-                {% if GP.GP_CP_Cancer_B %}{{GP.GP_CP_Cancer_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_Cancer_B %}{{GP.GP_CP_Cancer_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_Cancer_B %}{{GP.GP_NP_Cancer_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_Cancer_B %}{{GP.GP_NP_Cancer_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>
@@ -443,10 +443,10 @@
                 <b>Cancer diagnose benefit</b>
             </div>                                     
             <div class="col3">
-                {% if GP.GP_CP_CancerD_B %}{{GP.GP_CP_CancerD_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_CancerD_B %}{{GP.GP_CP_CancerD_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_CancerD_B %}{{GP.GP_NP_CancerD_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_CancerD_B %}{{GP.GP_NP_CancerD_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>
@@ -455,10 +455,10 @@
                 <b>Other benefit</b>
             </div>
             <div class="col3">
-                {% if GP.GP_CP_OtherB %}{{GP.GP_CP_OtherB}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_OtherB %}{{GP.GP_CP_OtherB}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_OtherB %}{{GP.GP_NP_OtherB}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_OtherB %}{{GP.GP_NP_OtherB}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>
@@ -467,10 +467,10 @@
                 <b>Casualty benefit(In case of accident)</b>
             </div>                 
             <div class="col3">
-                {% if GP.GP_CP_CasualB %}{{GP.GP_CP_CasualB}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_CasualB %}{{GP.GP_CP_CasualB}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_CasualB %}{{GP.GP_NP_CasualB}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_CasualB %}{{GP.GP_NP_CasualB}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>
@@ -479,10 +479,10 @@
                 <b>Trauma counselling benefit</b>
             </div>                 
             <div class="col3">
-                {% if GP.GP_CP_TraumaB %}{{GP.GP_CP_TraumaB}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_TraumaB %}{{GP.GP_CP_TraumaB}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_TraumaB %}{{GP.GP_NP_TraumaB}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_TraumaB %}{{GP.GP_NP_TraumaB}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>
@@ -491,10 +491,10 @@
                 <b>Gap Cover premium waiver benefit</b>
             </div>                                     
             <div class="col3">
-                {% if GP.GP_CP_PreW_B %}{{GP.GP_CP_PreW_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_PreW_B %}{{GP.GP_CP_PreW_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_PreW_B %}{{GP.GP_NP_PreW_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_PreW_B %}{{GP.GP_NP_PreW_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>
@@ -503,10 +503,10 @@
                 <b>Medical scheme waiver benefit</b>
             </div>                                    
             <div class="col3">
-                {% if GP.GP_CP_Med_SW_B %}{{GP.GP_CP_Med_SW_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_Med_SW_B %}{{GP.GP_CP_Med_SW_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_Med_SW_B %}{{GP.GP_NP_Med_SW_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_Med_SW_B %}{{GP.GP_NP_Med_SW_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>
@@ -515,10 +515,10 @@
                 <b>Accidental death cover benefit</b>
             </div>                                  
             <div class="col3">
-                {% if GP.GP_CP_Accidental_DC_B %}{{GP.GP_CP_Accidental_DC_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_CP_Accidental_DC_B %}{{GP.GP_CP_Accidental_DC_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
             <div class="col3">
-                {% if GP.GP_NP_Accidental_DC_B %}{{GP.GP_NP_Accidental_DC_B}}{% else %}N.A.{% endif %}
+                {% if GP.GP_NP_Accidental_DC_B %}{{GP.GP_NP_Accidental_DC_B}}{% else %}<span class="white">0</span>{% endif %}
             </div>
         </div>
         <hr/>

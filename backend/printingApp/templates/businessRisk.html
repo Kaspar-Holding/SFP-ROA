@@ -1064,17 +1064,17 @@
             </div>                                               
         </div> 
         <hr />
-        <div class='row div'>
-            <div class="">
-                <b style='font-size: 18px'>SECTION C:</b>
-            </div>    
-        </div>  
-        <div>
-            <b class="background" style="">
-                Alternative Solutions Considered
-            </b>
-        </div>    
         {% if BA_Risk.AR_AltS_1 or BA_Risk.AR_AltS_2 or BA_Risk.AR_AltS_3 %}
+            <div class='row div'>
+                <div class="">
+                    <b style='font-size: 18px'>SECTION C:</b>
+                </div>    
+            </div>  
+            <div>
+                <b class="background" style="">
+                    Alternative Solutions Considered
+                </b>
+            </div>    
             <div class='row div'>
                 <div class="column12">
                     <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
@@ -1095,7 +1095,7 @@
         {% endif %}
         <div class='row div'>
             <div class="">
-                <b style='font-size: 18px'>SECTION E:</b>
+                <b style='font-size: 18px'>SECTION D:</b>
             </div>    
         </div>  
         <div>
@@ -1114,13 +1114,21 @@
                 <b>Product Provider:</b>
             </div>
             <div class="column2">                        
-                <span>{{BA_Risk.AR_ProductProvider}}</span>
+                {% if BA_Risk.AR_ProductProvider %}
+                    <span>{{BA_Risk.AR_ProductProvider}}</span>
+                    {% else %}
+                    <span class="white">0</span>
+                {% endif %}
             </div> 
             <div class="column2">
                 <b>Policy Number:</b>
             </div>
             <div class="column2">                        
-                <span>{{BA_Risk.AR_PolicyNumber}}</span>
+                {% if BA_Risk.AR_PolicyNumber %}
+                    <span>{{BA_Risk.AR_PolicyNumber}}</span>
+                    {% else %}
+                    <span class="white">0</span>
+                {% endif %}
             </div> 
         </div>   
         <hr/>  
@@ -1129,14 +1137,26 @@
                 <b>Product Name:</b>
             </div>
             <div class="column2">                        
-                <span>{{BA_Risk.AR_ProductName}}</span>
+                {% if BA_Risk.AR_ProductName %}
+                    <span>{{BA_Risk.AR_ProductName}}</span>
+                    {% else %}
+                    <span class="white">0</span>
+                {% endif %}
             </div> 
             <div class="column2">
                 <b>Frequency:</b>
             </div>
-            <div class="column2">        
-                <span>{{BA_Risk.AR_ProductPremium}}</span>  
-                <span>{{BA_Risk.AR_ProductPremiumFrequency}}</span>
+            <div class="column2">                         
+                {% if BA_Risk.AR_ProductPremium %}
+                    <span>{{BA_Risk.AR_ProductName}}</span>
+                    {% else %}
+                    <span class="white">0</span>
+                {% endif %}         
+                {% if BA_Risk.AR_ProductPremiumFrequency %}
+                    <span>{{BA_Risk.AR_ProductPremiumFrequency}}</span>
+                    {% else %}
+                    <span class="white">0</span>
+                {% endif %}         
             </div> 
         </div> 
         <hr/>    
@@ -1145,13 +1165,21 @@
                 <b>Premium Pattern:</b>
             </div>
             <div class="column2">        
-                <span>{{BA_Risk.AR_ProductPattern}}</span>
+                {% if BA_Risk.AR_ProductPattern %}
+                    <span>{{BA_Risk.AR_ProductPattern}}</span>
+                    {% else %}
+                    <span class="white">0</span>
+                {% endif %}
             </div> 
             <div class="column2">
                 <b>Escalation in cover/premium:</b>
             </div>
             <div class="column2">        
-                <span>{{BA_Risk.AR_ProductEscalation}}</span>
+                {% if BA_Risk.AR_ProductEscalation %}
+                    <span>{{BA_Risk.AR_ProductEscalation}}</span>
+                    {% else %}
+                    <span class="white">0</span>
+                {% endif %}
             </div> 
         </div>  
         <hr/>   
@@ -1160,13 +1188,21 @@
                 <b>Contracting Party:</b>
             </div>
             <div class="column2">        
-                <span>{{BA_Risk.AR_ProductContractingParty}}</span>
+                {% if BA_Risk.AR_ProductContractingParty %}
+                    <span>{{BA_Risk.AR_ProductContractingParty}}</span>
+                    {% else %}
+                    <span class="white">0</span>
+                {% endif %}
             </div> 
             <div class="column2">
                 <b>Life/Lives covered:</b>
             </div>
             <div class="column2">        
-                <span>{{BA_Risk.AR_ProductLivesAssured}}</span>
+                {% if BA_Risk.AR_ProductLivesAssured %}
+                    <span>{{BA_Risk.AR_ProductLivesAssured}}</span>
+                    {% else %}
+                    <span class="white">0</span>
+                {% endif %}
             </div> 
         </div>     
         <hr/>
@@ -1175,7 +1211,11 @@
                 <b>Premium Payer:</b>
             </div>
             <div class="column2">        
-                <span>{{BA_Risk.AR_ProductPremiumPayer}}</span>
+                {% if BA_Risk.AR_ProductPremiumPayer %}
+                    <span>{{BA_Risk.AR_ProductPremiumPayer}}</span>
+                    {% else %}
+                    <span class="white">0</span>
+                {% endif %}
             </div> 
         </div>    
         <hr/> 
@@ -1183,72 +1223,86 @@
             <div class="column2">
                 <b>1st year commission:</b>
             </div>
-            <div class="column2">        
-                <span>R {{BA_Risk.AR_Product1stYearCommission}}</span>
+            <div class="column2">                         
+                {% if BA_Risk.AR_Product1stYearCommission %}
+                    <span>R {{BA_Risk.AR_Product1stYearCommission}}</span>
+                {% else %}
+                    <span class="white">0</span>
+                {% endif %}          
             </div> 
             <div class="column2">
                 <b>2nd year commission:</b>
             </div>
-            <div class="column2">        
-                <span>R {{BA_Risk.AR_Product2ndYearCommission}}</span>
+            <div class="column2">                        
+                {% if BA_Risk.AR_Product2ndYearCommission %}
+                    <span>R {{BA_Risk.AR_Product2ndYearCommission}}</span>
+                {% else %}
+                    <span class="white">0</span>
+                {% endif %}           
             </div> 
         </div>    
         <hr/> 
-        <div class='row div'>
-            <div class="column61">
-                <b>Benefit description: life cover, disability etc:</b>
-            </div>
-            <div class="column61">        
-                <b>Cover amount</b>
+        {% if BA_Risk.AR_BenDesc_1 and BA_Risk.AR_BenDesc_2 and BA_Risk.AR_BenDesc_3 %}
+            <div class='row div'>
+                <div class="column61">
+                    <b>Benefit description: life cover, disability etc:</b>
+                </div>
+                <div class="column61">        
+                    <b>Cover amount</b>
+                </div> 
             </div> 
-        </div> 
-        <hr/>
-        {% if BA_Risk.AR_BenDesc_1 %}
-            <div class='row div'>
-                <div class="column61">
-                    <span>{{BA_Risk.AR_BenDesc_1}}</span>
-                </div>
-                <div class="column61">        
-                    <span>R {{BA_Risk.AR_BenDesc_CoverAmount1}}</span>
-                </div> 
-            </div>
             <hr/>
-        {% endif %}  
-        {% if BA_Risk.AR_BenDesc_2 %}
-            <div class='row div'>
-                <div class="column61">
-                    <span>{{BA_Risk.AR_BenDesc_2}}</span>
+            {% if BA_Risk.AR_BenDesc_1 %}
+                <div class='row div'>
+                    <div class="column61">
+                        <span>{{BA_Risk.AR_BenDesc_1}}</span>
+                    </div>
+                    <div class="column61">        
+                        <span>R {{BA_Risk.AR_BenDesc_CoverAmount1}}</span>
+                    </div> 
                 </div>
-                <div class="column61">        
-                    <span>R {{BA_Risk.AR_BenDesc_CoverAmount2}}</span>
-                </div> 
-            </div>
-            <hr/>
-        {% endif %}  
-        {% if BA_Risk.AR_BenDesc_3 %}
-            <div class='row div'>
-                <div class="column61">
-                    <span>{{BA_Risk.AR_BenDesc_3}}</span>
+                <hr/>
+            {% endif %}  
+            {% if BA_Risk.AR_BenDesc_2 %}
+                <div class='row div'>
+                    <div class="column61">
+                        <span>{{BA_Risk.AR_BenDesc_2}}</span>
+                    </div>
+                    <div class="column61">        
+                        <span>R {{BA_Risk.AR_BenDesc_CoverAmount2}}</span>
+                    </div> 
                 </div>
-                <div class="column61">        
-                    <span>R {{BA_Risk.AR_BenDesc_CoverAmount3}}</span>
-                </div> 
-            </div>
-            <hr/>
-        {% endif %}  
+                <hr/>
+            {% endif %}  
+            {% if BA_Risk.AR_BenDesc_3 %}
+                <div class='row div'>
+                    <div class="column61">
+                        <span>{{BA_Risk.AR_BenDesc_3}}</span>
+                    </div>
+                    <div class="column61">        
+                        <span>R {{BA_Risk.AR_BenDesc_CoverAmount3}}</span>
+                    </div> 
+                </div>
+                <hr/>
+            {% endif %}  
+        {% endif %}
         <div class='row div'>
             <div class="column12">
                 <p>The following are reasons why the abovementioned product best suits the business’s needs and objectives:</p>
-                <br/>
-                <span>{{ BA_Risk.AR_ProductReasons|linebreaks }}</span>
+                {% if BA_Risk.AR_ProductReasons %}
+                    <br/>
+                    <span>{{ BA_Risk.AR_ProductReasons|linebreaks }}</span>
+                {% endif %}
             </div>
         </div>
         <hr/>
         <div class='row div'>
             <div class="column12">
                 <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
-                <br/>
-                <span>{{ BA_Risk.AR_ProductMaterialAspects|linebreaks }}</span>
+                {% if BA_Risk.AR_ProductMaterialAspects %}
+                    <br/>
+                    <span>{{ BA_Risk.AR_ProductMaterialAspects|linebreaks }}</span>
+                {% endif %}
             </div>
         </div>
         <hr/>

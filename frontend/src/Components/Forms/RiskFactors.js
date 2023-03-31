@@ -528,7 +528,7 @@ const RiskFactors = ({user}) => {
         }
 
         
-        const DownloadDRAPDF = async(e) => {
+        const DownloadDRAPDF = async(e, dra_status) => {
             e.preventDefault()
             const config = {
             headers: {
@@ -539,7 +539,7 @@ const RiskFactors = ({user}) => {
             }
             const Body = JSON.stringify({
                 "formId" : state['formId'],
-                "dra_status" : true,
+                "dra_status" : dra_status,
                 "advisorId" : user['id']
             })
             try {
@@ -547,32 +547,18 @@ const RiskFactors = ({user}) => {
                 const url = `${process.env.REACT_APP_BACKEND_URL}/${response.data['file']}`
                 window.open(url, '_blank').focus()
             } catch (error) {
+                console.log(error.response.data)
+                if (error.response.data['status'] === 404) {
+                    setSuccessMessage(error.response.data['message'])
+                    setSuccessMessageVisibility("block")
+                    setTimeout(() => {
+                        setSuccessMessageVisibility("none")
+                    }, 5000)
+                }
             // console.log('first', error)
             }
         }
-        const DownloadWithoutDRAPDF = async(e) => {
-            e.preventDefault()
-            const config = {
-            headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json',
-                'Authorization' : `JWT ${localStorage.getItem('access')}`
-            }
-            }
-            const Body = JSON.stringify({
-                "formId" : state['formId'],
-                "dra_status" : false,
-                "advisorId" : user['id']
-            })
-            try {
-                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/printing/downloadPDF/`, Body,config)
-                const url = `${process.env.REACT_APP_BACKEND_URL}/${response.data['file']}`
-                window.open(url, '_blank').focus()
-            } catch (error) {
-            // console.log('first', error)
-            }
-        }
-
+        
         useEffect(() => {
             if (user){
                 LoadRFForm(user['id'],state['formId'])
@@ -607,12 +593,12 @@ const RiskFactors = ({user}) => {
                                     </div>                        
                                     <div className='col-4'>
                                         {/* <NavLink to={{pathname:"/printform"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-11'>Print</NavLink> */}
-                                        <button type='submit' onClick={(e)=>{DownloadDRAPDF(e)}} className="btn btn-success col-11">Print</button><br/>
+                                        <button type='submit' onClick={(e)=>{DownloadDRAPDF(e, true)}} className="btn btn-success col-11">Print</button><br/>
 
                                     </div> 
                                     <div className='col-4'>
                                         {/* <NavLink to={{pathname:"/printformclient"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-11'>Print For Client</NavLink> */}
-                                        <button type='submit' onClick={(e)=>{DownloadWithoutDRAPDF(e)}} className="btn btn-success col-11">Print For Client</button><br/>
+                                        <button type='submit' onClick={(e)=>{DownloadDRAPDF(e, false)}} className="btn btn-success col-11">Print For Client</button><br/>
                                     </div> 
                                 </div>        
                             </div>                   

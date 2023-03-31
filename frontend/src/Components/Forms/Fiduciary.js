@@ -14,7 +14,7 @@ const Fiduciary = ({user}) => {
     advisorId : user['id'],
     formId : state['formId'],
     // clientIdNumber : propsData['clientIdNumber'],
-    fiduciaryWillInPlace : 0,
+    fiduciaryWillInPlace : 2,
     fiduciaryWillUpdationDate : "",
     fiduciaryWillKeepingPlace : "",
     fiduciaryExecutorDetails : "",

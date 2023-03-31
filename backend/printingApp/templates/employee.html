@@ -7,17 +7,29 @@
                     <b>Client Name:</b>
                 </div>
                 <div class="column2">                        
-                    <span>
-                        {{EB.EB_ClientName}}
-                    </span>
+                    {% if EB.EB_ClientName %}
+                        <span>
+                            {{EB.EB_ClientName}}
+                        </span>
+                    {% else %}
+                        <span class="white">
+                            0
+                        </span>
+                    {% endif %}
                 </div>                     
                 <div class="column2">
                     <b>ID number:</b>
                 </div>
                 <div class="column2">                        
-                    <span>
-                        {{EB.EB_ClientIdNumber}}
-                    </span>
+                    {% if EB.EB_ClientIdNumber %}
+                        <span>
+                            {{EB.EB_ClientIdNumber}}
+                        </span>
+                    {% else %}
+                        <span class="white">
+                            0
+                        </span>
+                    {% endif %}
                 </div>                     
             </div>
             <hr/>
@@ -27,9 +39,15 @@
                     <b>Address</b>
                 </div>
                 <div class="column5">                        
-                    <span>
-                        {{EB.EB_ClientAddress}}
-                    </span>
+                    {% if EB.EB_ClientAddress %}
+                        <span>
+                            {{EB.EB_ClientAddress}}
+                        </span>
+                    {% else %}
+                        <span class="white">
+                            0
+                        </span>
+                    {% endif %}
                 </div>                                        
             </div>
             <hr />
@@ -39,17 +57,29 @@
                     <b>Phone (Tel):</b>
                 </div>
                 <div class="column2">                        
-                    <span>
-                        {{EB.EB_ClientPhoneNumber}}
-                    </span>
+                    {% if EB.EB_ClientPhoneNumber %}
+                        <span>
+                            {{EB.EB_ClientPhoneNumber}}
+                        </span>
+                    {% else %}
+                        <span class="white">
+                            0
+                        </span>
+                    {% endif %}
                 </div>                     
                 <div class="column2">
                     <b>Phone (Cell):</b>
                 </div>
                 <div class="column2">                        
-                    <span>
-                        {{EB.EB_ClientCellNumber}}
-                    </span>
+                    {% if EB.EB_ClientCellNumber %}
+                        <span>
+                            {{EB.EB_ClientCellNumber}}
+                        </span>
+                    {% else %}
+                        <span class="white">
+                            0
+                        </span>
+                    {% endif %}
                 </div>                     
             </div>
             <hr/>
@@ -58,17 +88,29 @@
                     <b>Email:</b>
                 </div>
                 <div class="column2">                        
-                    <span>
-                        {{EB.EB_ClientEmail}}
-                    </span>
+                    {% if EB.EB_ClientEmail %}
+                        <span>
+                            {{EB.EB_ClientEmail}}
+                        </span>
+                    {% else %}
+                        <span class="white">
+                            0
+                        </span>
+                    {% endif %}
                 </div>                     
                 <div class="column2">
                     <b>Date:</b>
                 </div>
-                <div class="column2">                        
-                    <span>
-                        {{EB.EB_ClientDate}}
-                    </span>
+                <div class="column2">                          
+                    {% if EB.EB_ClientDate %}
+                        <span>
+                            {{EB.EB_ClientDate}}
+                        </span>
+                    {% else %}
+                        <span class="white">
+                            0
+                        </span>
+                    {% endif %} 
                 </div>                     
             </div>
             <hr/>
@@ -78,17 +120,29 @@
                     <b>Financial Advisor:</b>
                 </div>
                 <div class="column2">                        
-                    <span>
-                        {{EB.EB_ClientFinancialAdvisor}}
-                    </span>
+                    {% if EB.EB_ClientFinancialAdvisor %}
+                        <span>
+                            {{EB.EB_ClientFinancialAdvisor}}
+                        </span>
+                    {% else %}
+                        <span class="white">
+                            0
+                        </span>
+                    {% endif %}
                 </div>                     
                 <div class="column2">
                     <b>Details of fee:</b>
                 </div>
                 <div class="column2">                        
-                    <span>
-                        {{EB.EB_ClientFeeDetails}}
-                    </span>
+                    {% if EB.EB_ClientFeeDetails %}
+                        <span>
+                            {{EB.EB_ClientFeeDetails}}
+                        </span>
+                    {% else %}
+                        <span class="white">
+                            0
+                        </span>
+                    {% endif %}
                 </div>                     
             </div>
             <hr/>
@@ -113,7 +167,11 @@
                     <b>Name of business entity:</b>
                 </div>
                 <div class="column6">
-                    <span>{{ EB.EB_BusinessName }}</span>
+                    {% if EB.EB_BusinessName %}
+                        <span>{{ EB.EB_BusinessName }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
             </div>
             <hr/>
@@ -122,7 +180,11 @@
                     <b>Physical Business Address:</b>
                 </div>
                 <div class="column6">
-                    <span>{{ EB.EB_BusinessAddress }}</span>
+                    {% if EB.EB_BusinessAddress %}
+                        <span>{{ EB.EB_BusinessAddress }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
             </div>
             <hr/>
@@ -131,7 +193,11 @@
                     <b>Employer contact person:</b>
                 </div>
                 <div class="column6">
-                    <span>{{ EB.EB_BusinessContactPerson }}</span>
+                    {% if EB.EB_BusinessContactPerson %}
+                        <span>{{ EB.EB_BusinessContactPerson }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
             </div>
             <hr/>
@@ -140,13 +206,21 @@
                     <b>Office Tel No:</b>
                 </div>
                 <div class="column2">
-                    <span>{{ EB.EB_BusinessPhoneNumber }}</span>
+                    {% if EB.EB_BusinessPhoneNumber %}
+                        <span>{{ EB.EB_BusinessPhoneNumber }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
                 <div class="column2">
                     <b>Cell Phone:</b>
                 </div>
                 <div class="column2">
-                    <span>{{ EB.EB_BusinessCellNumber }}</span>
+                    {% if EB.EB_BusinessCellNumber %}
+                        <span>{{ EB.EB_BusinessCellNumber }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
             </div>
             <hr/>
@@ -156,7 +230,11 @@
                     <b>Email Address:</b>
                 </div>
                 <div class="column6">
-                    <span>{{ EB.EB_BusinessEmail }}</span>
+                    {% if EB.EB_BusinessEmail %}
+                        <span>{{ EB.EB_BusinessEmail }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
             </div>
             <hr/>
@@ -165,7 +243,11 @@
                     <b>Nature of business & Type of industry:</b>
                 </div>
                 <div class="column6">
-                    <span>{{ EB.EB_BusinessNature }}</span>
+                    {% if EB.EB_BusinessNature %}
+                        <span>{{ EB.EB_BusinessNature }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
             </div>
             <hr/>
@@ -304,7 +386,11 @@
             <br/>
             <div class='row div'>
                 <div class="column6">
-                    <span>{{EB.EB_BusB_CoverType}}</span>
+                    {% if EB.EB_BusB_CoverType %}
+                        <span>{{EB.EB_BusB_CoverType}}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
                 <div class="column5">                        
                     <div class='row div'>
@@ -1015,19 +1101,35 @@
                 </div>
                 <div class="column33">                       
                     <p style="color: white">Approved</p>
-                    <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory1 }}</span>
+                    {% if EB.EB_BusRB_CapDisBen_ApprovedCategory1 %}
+                        <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory1 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
                 <div class="column33">                       
                     <p style="color: white">Approved</p>
-                    <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory2 }}</span>
+                    {% if EB.EB_BusRB_CapDisBen_ApprovedCategory2 %}
+                        <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory2 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
                 <div class="column33">                       
                     <p style="color: white">Approved</p>
-                    <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory3 }}</span>
+                    {% if EB.EB_BusRB_CapDisBen_ApprovedCategory3 %}
+                        <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory3 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
                 <div class="column33">                       
                     <p style="color: white">Approved</p>
-                    <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory4 }}</span>
+                    {% if EB.EB_BusRB_CapDisBen_ApprovedCategory4 %}
+                        <span>{{ EB.EB_BusRB_CapDisBen_ApprovedCategory4 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>                                    
             </div>
             <hr/>
@@ -1065,19 +1167,35 @@
                 </div>
                 <div class="column33">     
                     <p style="color: white">Unapproved</p>
-                    <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory1 }}</span>
+                    {% if EB.EB_BusRB_CapDisBen_UnApprovedCategory1 %}
+                        <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory1 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
                 <div class="column33">     
                     <p style="color: white">Unapproved</p>
-                    <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory2 }}</span>
+                    {% if EB.EB_BusRB_CapDisBen_UnApprovedCategory2 %}
+                        <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory2 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
                 <div class="column33">     
                     <p style="color: white">Unapproved</p>
-                    <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory3 }}</span>
+                    {% if EB.EB_BusRB_CapDisBen_UnApprovedCategory3 %}
+                        <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory3 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
                 <div class="column33">     
                     <p style="color: white">Unapproved</p>
-                    <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory4 }}</span>
+                    {% if EB.EB_BusRB_CapDisBen_UnApprovedCategory4 %}
+                        <span>{{ EB.EB_BusRB_CapDisBen_UnApprovedCategory4 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>                                    
             </div>
             <hr/>
@@ -1122,16 +1240,32 @@
                     <span>Waiting period</span>
                 </div>
                 <div class="column33">
-                    <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category1 }}</span>
+                    {% if EB.EB_BusRB_DiIBenWaitPer_Category1 %}
+                        <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category1 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
                 <div class="column33">
-                    <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category2 }}</span>
+                    {% if EB.EB_BusRB_DiIBenWaitPer_Category2 %}
+                        <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category2 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
                 <div class="column33">
-                    <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category3 }}</span>
+                    {% if EB.EB_BusRB_DiIBenWaitPer_Category3 %}
+                        <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category3 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>
                 <div class="column33">
-                    <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category4 }}</span>
+                    {% if EB.EB_BusRB_DiIBenWaitPer_Category4 %}
+                        <span>{{ EB.EB_BusRB_DiIBenWaitPer_Category4 }}</span>
+                    {% else %}
+                        <span class="white">0</span>
+                    {% endif %}
                 </div>                                    
             </div>
             <hr/>
@@ -1364,7 +1498,6 @@
                 </div>
             </div>
             <hr/>
-            <hr/>
             <b style='font-size: 18px; color: #14848A;'>Section G: Fund Replacement</b>
             <br/>
             <hr/>
@@ -1436,10 +1569,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_FeeChargesReplaced }}</span>
+                            {% if EB.EB_BusFReplace_FeeChargesReplaced %}
+                                <span>{{ EB.EB_BusFReplace_FeeChargesReplaced }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_FeeChargesExisting }}</span>
+                            {% if EB.EB_BusFReplace_FeeChargesExisting %}
+                                <span>{{ EB.EB_BusFReplace_FeeChargesExisting }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1452,10 +1593,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_TnC_Replaced }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_TnC_Replaced }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_TnC_Existing }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_TnC_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1468,10 +1617,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_HealthChangesReplaced }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_HealthChangesReplaced }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_HealthChangesExisting }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_HealthChangesExisting }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1484,10 +1641,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_TaxImplicationsReplaced }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_TaxImplicationsReplaced }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_TaxImplicationsExisting }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_TaxImplicationsExisting }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1500,10 +1665,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_MaterialDifferencesReplaced }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_MaterialDifferencesReplaced }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_MaterialDifferencesExisting }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_MaterialDifferencesExisting }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1516,26 +1689,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_PenaltiesReplaced }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_PenaltiesReplaced }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_PenaltiesExisting }}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr/>
-            <div class='row div'>                                   
-                <div class="column5">
-                    <p>The extent to which the replacement fund is readily realisable or the relevant funds accessible, compared to the terminated fund:</p>
-                </div>
-                <div class="column6">
-                    <div class='row div'>                                   
-                        <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_RealisedReplaced }}</span>
-                        </div>
-                        <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_RealisedExisting }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_PenaltiesExisting }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1548,10 +1713,42 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_RealisedReplaced }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_RealisedReplaced }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
-                            <span>{{ EB.EB_BusFReplace_RealisedExisting }}</span>
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_RealisedExisting }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='row div'>                                   
+                <div class="column5">
+                    <p>The extent to which the replacement fund is readily realisable or the relevant funds accessible, compared to the terminated fund:</p>
+                </div>
+                <div class="column6">
+                    <div class='row div'>                                   
+                        <div class="column5">
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_RealisedReplaced }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div>
+                        <div class="column5">
+                            {% if  %}
+                                <span>{{ EB.EB_BusFReplace_RealisedExisting }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1581,10 +1778,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_EligGr_Proposed %}
                             <span>{{ EB.EB_BusFReplace_EligGr_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_EligGr_Existing %}
                             <span>{{ EB.EB_BusFReplace_EligGr_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1597,10 +1802,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_MemContrib_Proposed %}
                             <span>{{ EB.EB_BusFReplace_MemContrib_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_MemContrib_Existing %}
                             <span>{{ EB.EB_BusFReplace_MemContrib_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1613,10 +1826,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_EmpContrib_Proposed %}
                             <span>{{ EB.EB_BusFReplace_EmpContrib_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_EmpContrib_Existing %}
                             <span>{{ EB.EB_BusFReplace_EmpContrib_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1629,10 +1850,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_AdminFee_Proposed %}
                             <span>{{ EB.EB_BusFReplace_AdminFee_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_AdminFee_Existing %}
                             <span>{{ EB.EB_BusFReplace_AdminFee_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1645,10 +1874,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_BenPayD_Proposed %}
                             <span>{{ EB.EB_BusFReplace_BenPayD_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_BenPayD_Existing %}
                             <span>{{ EB.EB_BusFReplace_BenPayD_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1661,10 +1898,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_BenPayDis_Proposed %}
                             <span>{{ EB.EB_BusFReplace_BenPayDis_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_BenPayDis_Existing %}
                             <span>{{ EB.EB_BusFReplace_BenPayDis_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1677,10 +1922,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_BenPayW_Proposed %}
                             <span>{{ EB.EB_BusFReplace_BenPayW_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_BenPayW_Existing %}
                             <span>{{ EB.EB_BusFReplace_BenPayW_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1693,10 +1946,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_BenPayRe_Proposed %}
                             <span>{{ EB.EB_BusFReplace_BenPayRe_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_BenPayRe_Existing %}
                             <span>{{ EB.EB_BusFReplace_BenPayRe_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1709,10 +1970,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_NormRetire_Proposed %}
                             <span>{{ EB.EB_BusFReplace_NormRetire_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_NormRetire_Existing %}
                             <span>{{ EB.EB_BusFReplace_NormRetire_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1725,10 +1994,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_ConvOp_Proposed %}
                             <span>{{ EB.EB_BusFReplace_ConvOp_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_ConvOp_Existing %}
                             <span>{{ EB.EB_BusFReplace_ConvOp_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1741,10 +2018,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_HouseL_Proposed %}
                             <span>{{ EB.EB_BusFReplace_HouseL_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_HouseL_Existing %}
                             <span>{{ EB.EB_BusFReplace_HouseL_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1757,10 +2042,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_AdminC_Proposed %}
                             <span>{{ EB.EB_BusFReplace_AdminC_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_AdminC_Existing %}
                             <span>{{ EB.EB_BusFReplace_AdminC_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1773,10 +2066,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_InvestFee_Proposed %}
                             <span>{{ EB.EB_BusFReplace_InvestFee_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_InvestFee_Existing %}
                             <span>{{ EB.EB_BusFReplace_InvestFee_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1789,10 +2090,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_CoR_Proposed %}
                             <span>{{ EB.EB_BusFReplace_CoR_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_CoR_Existing %}
                             <span>{{ EB.EB_BusFReplace_CoR_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1805,10 +2114,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_BenA_Proposed %}
                             <span>{{ EB.EB_BusFReplace_BenA_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_BenA_Existing %}
                             <span>{{ EB.EB_BusFReplace_BenA_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -1821,10 +2138,18 @@
                 <div class="column6">
                     <div class='row div'>                                   
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_InvestCh_Proposed %}
                             <span>{{ EB.EB_BusFReplace_InvestCh_Proposed }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                         <div class="column5">
+                            {% if EB.EB_BusFReplace_InvestCh_Existing %}
                             <span>{{ EB.EB_BusFReplace_InvestCh_Existing }}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

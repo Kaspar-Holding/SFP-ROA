@@ -397,14 +397,14 @@ const AssuranceRisk = ({user}) =>
         AR_SureNLia_DeathAssuranceInvestments : "",   
             
         AR_SureNLia_DiC_TotalNeed : "",   
-        AR_SureNLia_DiC_ExistingProvisions : "",   
-        AR_SureNLia_DiC_ExistingShortfallSurplus : "",   
+        AR_SureNLia_DiC_Provisions : "",   
+        AR_SureNLia_DiC_ShortfallSurplus : "",   
         AR_SureNLia_DiC_Investments : "",      
 
         AR_SureNLia_Other : "",   
         AR_SureNLia_OtherTotalNeed : "",   
-        AR_SureNLia_OtherExistingProvisions : "",   
-        AR_SureNLia_OtherExistingShortfallSurplus : "",   
+        AR_SureNLia_OtherProvisions : "",   
+        AR_SureNLia_OtherShortfallSurplus : "",   
         AR_SureNLia_OtherInvestments : "",   
             
         AR_SureNLia_Comments : "",   
@@ -1565,14 +1565,14 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_ExistingProvisions" name='AR_SureNLia_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_ExistingProvisions']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_Provisions" name='AR_SureNLia_DiC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_Provisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_ExistingShortfallSurplus" name='AR_SureNLia_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_ExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_ShortfallSurplus" name='AR_SureNLia_DiC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_ShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
@@ -1601,14 +1601,14 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherExistingProvisions" name='AR_SureNLia_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherExistingProvisions']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherProvisions" name='AR_SureNLia_OtherProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherExistingShortfallSurplus" name='AR_SureNLia_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherShortfallSurplus" name='AR_SureNLia_OtherShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherShortfallSurplus']} aria-label="" />
         </div>
       </td>
 
