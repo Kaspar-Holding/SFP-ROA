@@ -74,7 +74,7 @@ export const checkAuthenticated = () => async dispatch => {
         const body = JSON.stringify({'token': localStorage.getItem('access')})
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/jwt/verify/`, body, config)
-            console.log(response)
+            // console.log(response)
             dispatch({
                 type: AUTHENTICATED_SUCCESS
             })

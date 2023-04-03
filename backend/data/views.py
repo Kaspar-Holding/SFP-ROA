@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.core.files.base import ContentFile
-from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RiskFactorsSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
-from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
+from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RiskFactorsSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
+from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, InvestmentPlanning, RF_LinkedParty, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -989,16 +989,22 @@ def updateShortTermInsuranceCommericalData(request):
 # Risk Factors
 @api_view(['POST'])
 def insertRiskFactorsData(request):
-    serializer = RiskFactorsSerializers(data=request.data, many=False)
+    rf_data = request.data['RF_Data']
+    serializer = RiskFactorsSerializers(data=rf_data, many=False)
     if serializer.is_valid():
-        old_form = RiskFactors.objects.filter(advisorId = request.data['advisorId'],RF_ClientId = request.data['RF_ClientId']).first()
+        old_form = RiskFactors.objects.filter(advisorId = rf_data['advisorId'],RF_ClientId = rf_data['RF_ClientId']).first()
         serializer1 = RiskFactorsSerializers(old_form, many=False)
         # return Response({"data":serializer1.data, "length": len(serializer1.data['client_id'])})
         if len(serializer1.data['RF_ClientId']) == 0:
-            serializer.create(serializer.validated_data)
-            latest = RiskFactors.objects.latest('id')
-            serializer2 = RiskFactorsSerializers(latest, many=False)
-            return Response({"message": "Data is inserted","formId":serializer2.data['id'],"code":201,},201)
+            saved_data = serializer.create(serializer.validated_data)
+            formId = saved_data.pk
+            lp_data = request.data['LP_Data']
+            for row in lp_data:
+                row['formId'] = formId
+            lp_serializer = RF_LinkedPartySerializers(data=lp_data, many=True)
+            if lp_serializer.is_valid():
+                lp_serializer.create(lp_serializer.validated_data)
+            return Response({"message": "Data is inserted","formId":formId,"code":201,},201)
         else :
             return Response({'message': "Form Already Exists","code": "200", "formId" : serializer1.data['id']},200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)

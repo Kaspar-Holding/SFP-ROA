@@ -8,6 +8,10 @@ This project is built on the following Stack
 
 ## Updates
 
+### 3 March 2023:
+- Linked Party Duplication in Dynamic Risk Assessment is done
+- Duplication Task started on Completed Form
+
 ### 31 March 2023:
 - Final Update of PDF is deployed
 - Started working on Duplication Task

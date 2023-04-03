@@ -1,7 +1,7 @@
 
 from datetime import datetime, timezone
 from rest_framework import serializers
-from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, InvestmentPlanning, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
+from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, InvestmentPlanning, RF_LinkedParty, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
 from .models import Medical
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
@@ -3906,6 +3906,38 @@ class RiskFactorsSerializers(serializers.ModelSerializer):
         instance.RF_Another_Control1 = validated_data.get('RF_Another_Control1', instance.RF_Another_Control1)
         instance.RF_Another_Control2 = validated_data.get('RF_Another_Control2', instance.RF_Another_Control2)
         instance.status = validated_data.get("status", instance.status)
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class RF_LinkedPartySerializers(serializers.ModelSerializer):
+    class Meta():
+        model = RF_LinkedParty
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return RF_LinkedParty.objects.create(**validated_data)
+
+    def updateStatus(self, instance, validated_data):
+        instance.status = validated_data.get("status", instance.status)
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+    def update(self, instance, validated_data):
+        instance.advisorId = validated_data.get('advisorId', instance.advisorId)
+        instance.formId = validated_data.get('formId', instance.formId)
+        instance.RF_LP_Adjust_Risk = validated_data.get('RF_LP_Adjust_Risk', instance.RF_LP_Adjust_Risk)
+        instance.RF_LP_Name = validated_data.get('RF_LP_Name', instance.RF_LP_Name)
+        instance.RF_LP_Client_Relationship = validated_data.get('RF_LP_Client_Relationship', instance.RF_LP_Client_Relationship)
+        instance.RF_LP_ID = validated_data.get('RF_LP_ID', instance.RF_LP_ID)
+        instance.RF_LP_Linked_Party = validated_data.get('RF_LP_Linked_Party', instance.RF_LP_Linked_Party)
+        instance.RF_LP_RCA = validated_data.get('RF_LP_RCA', instance.RF_LP_RCA)
+        instance.RF_LP_Birth_Country = validated_data.get('RF_LP_Birth_Country', instance.RF_LP_Birth_Country)
+        instance.RF_LP_Residence_Country = validated_data.get('RF_LP_Residence_Country', instance.RF_LP_Residence_Country)
+        instance.RF_LP_Nationality = validated_data.get('RF_LP_Nationality', instance.RF_LP_Nationality)
         
         instance.updated_at = datetime.now(timezone.utc)
         instance.save()

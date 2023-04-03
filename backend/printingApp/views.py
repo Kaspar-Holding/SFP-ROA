@@ -2379,6 +2379,10 @@ def wkhtmltopdfapi(request):
         data['STIC_status'] = False
     if ShortTermInsurancePersonal.objects.filter(formId=data['id']).exists():
         data['STIP'] = ShortTermInsurancePersonal.objects.filter(formId=data['id']).values().first()
+        stip_status1 = False
+        stip_status2 = False
+        stip_status3 = False
+        stip_status4 = False
         if (
             data["STIP"]['STIP_Underwritten_By'] == "" and
             data["STIP"]['STIP_Branch_Name'] == "" and
@@ -2606,7 +2610,12 @@ def wkhtmltopdfapi(request):
             data["STIP"]['STIP_CnRI_27_Excess2'] == "" and
             data["STIP"]['STIP_CnRI_FeeCharges'] == "" and
             data["STIP"]['STIP_CnRI_Commission'] == "" and
-            data["STIP"]['STIP_CnRI_TotalPremium'] == "" and
+            data["STIP"]['STIP_CnRI_TotalPremium'] == "" 
+        ):
+            stip_status1 = True
+        else:
+            stip_status1 = False
+        if (
             data["STIP"]['STIP_CnRen_Existing_Company'] == "" and
             data["STIP"]['STIP_CnRen_Replacement_Company'] == "" and
             data["STIP"]['STIP_CnRen_Existing_Provider'] == "" and
@@ -2811,7 +2820,12 @@ def wkhtmltopdfapi(request):
             data["STIP"]['STIP_CnRen_27_Excess2'] == "" and
             data["STIP"]['STIP_CnRen_FeeCharges'] == "" and
             data["STIP"]['STIP_CnRen_Commission'] == "" and
-            data["STIP"]['STIP_CnRen_TotalPremium'] == "" and
+            data["STIP"]['STIP_CnRen_TotalPremium'] == ""
+        ):
+            stip_status2 = True
+        else:
+            stip_status2 = False
+        if (
             data["STIP"]['STIP_CnRI_AdviseGiven'] == 2 and
             data["STIP"]['STIP_CnRI_ReplacePurpose'] == "" and
             data["STIP"]['STIP_CnRI_ReplaceReason'] == "" and
@@ -2938,7 +2952,12 @@ def wkhtmltopdfapi(request):
             data["STIP"]['STIP_MotorC_Fees'] == "" and
             data["STIP"]['STIP_MotorC_Commission'] == "" and
             data["STIP"]['STIP_MotorC_TotalPremium'] == "" and
-            data["STIP"]['STIP_MotorC_Comments'] == "" and
+            data["STIP"]['STIP_MotorC_Comments'] == ""
+        ):
+            stip_status3 = True
+        else:
+            stip_status3 = False
+        if (
             data["STIP"]['STIP_Trailer_RegOwner'] == "" and
             data["STIP"]['STIP_Trailer_Type'] == "" and
             data["STIP"]['STIP_Trailer_ONParkingOptions'] == 0 and
@@ -2981,8 +3000,12 @@ def wkhtmltopdfapi(request):
             data["STIP"]['STIP_DbyI_IName'] == "" and
             data["STIP"]['STIP_DbyI_Code'] == "" and
             data["STIP"]['STIP_DbyI_Signature'] == "" and
-            data["STIP"]['STIP_DbyI_Date'] == "" 
+            data["STIP"]['STIP_DbyI_Date'] == ""
         ):
+            stip_status4 = True
+        else:
+            stip_status4 = False
+        if stip_status1 == True and stip_status2 == True and stip_status3 == True and stip_status4 == True:
             data['STIP_status'] = False
         else:
             data['STIP_status'] = True
