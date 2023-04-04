@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import './Styles/Form.css'
 import {Navigate, NavLink, useNavigate} from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import  './Styles/CustomNotification.css'
 import  './Styles/CustomButton.css'
-
+import { Editor } from '@tinymce/tinymce-react';
 
 const RecordOfAdvice = ({user}) => {
     const location = useLocation();
@@ -176,6 +176,10 @@ const RecordOfAdvice = ({user}) => {
     }
         // window.location.reload();
         // console.log(JSON.stringify(FormData))
+    const backgroundEditorRef = useRef(null);
+    const compulsoryAEditorRef = useRef(null);
+    const compulsoryBEditorRef = useRef(null);
+    const FICAEditorRef = useRef(null);
     useEffect(() => {
         createRecordOfAdviceForm(FormData)
     }, []);
@@ -320,7 +324,30 @@ const RecordOfAdvice = ({user}) => {
                                             </> :
                                             null
                                         }
-                                        <textarea id="letter_of_introduction" required={FormData['clientLetterOfIntroduction'] === 0 ? true : false} value={FormData['clientLetterOfIntroductionReason']} maxLength={256} name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        {/* <textarea id="letter_of_introduction" required={FormData['clientLetterOfIntroduction'] === 0 ? true : false} value={FormData['clientLetterOfIntroductionReason']} maxLength={256} name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
+                                        <Editor
+                                            onInit={(evt, editor) => compulsoryAEditorRef.current = editor}
+                                            value={FormData['clientLetterOfIntroductionReason']}
+                                            onEditorChange={(e)=>{ setFormData({...FormData, ['clientLetterOfIntroductionReason']: compulsoryAEditorRef.current.getContent() }) }}
+                                            onFocus={(e)=>{letter_of_introduction_onFocus()}}
+                                            onBlur={(e)=>{letter_of_introduction_onBlur()}}
+                                            name="clientBackgroundInfo"
+                                            init={{
+                                                selector: "textarea",
+                                                height: 300,
+                                                menubar: true,
+                                                plugins: [
+                                                    'advlist autolink link lists image charmap print preview anchor',
+                                                    'searchreplace visualblocks code fullscreen',
+                                                    'insertdatetime media table paste code help wordcount',
+                                                ],
+                                                toolbar: 'styles | undo redo | formatselect | ' +
+                                                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                                'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
+                                                'removeformat',
+                                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }'
+                                            }}
+                                        />
                                     </div>
                                     {/* {
                                         FormData['letterOfIntroduction'] === "1" ?
@@ -380,7 +407,30 @@ const RecordOfAdvice = ({user}) => {
                                             </> :
                                             null
                                         }
-                                        <textarea id="authority_access" required={FormData['clientLetterOfIntroductionAccess'] === 0 ? true : false}  maxLength={256} name="clientLetterOfIntroductionAccessReason" value={FormData['clientLetterOfIntroductionAccessReason']}  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        {/* <textarea id="authority_access" required={FormData['clientLetterOfIntroductionAccess'] === 0 ? true : false}  maxLength={256} name="clientLetterOfIntroductionAccessReasonReason" value={FormData['clientLetterOfIntroductionAccessReason']}  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocusReason} onBlur={letter_of_introduction_access_onBlurReason} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
+                                        <Editor
+                                            onInit={(evt, editor) => compulsoryBEditorRef.current = editor}
+                                            value={FormData['clientLetterOfIntroductionAccessReason']}
+                                            onEditorChange={(e)=>{ setFormData({...FormData, ['clientLetterOfIntroductionAccessReason']: compulsoryBEditorRef.current.getContent() }) }}
+                                            onFocus={(e)=>{setletterOfIntroductionAccessVisibility(true)}}
+                                            onBlur={(e)=>{setletterOfIntroductionAccessVisibility(false)}}
+                                            name="clientBackgroundInfo"
+                                            init={{
+                                                selector: "textarea",
+                                                height: 300,
+                                                menu: true,
+                                                plugins: [
+                                                    'lists advlist autolink link image charmap print preview anchor',
+                                                    'searchreplace visualblocks code fullscreen',
+                                                    'insertdatetime media table paste help wordcount',
+                                                ],
+                                                toolbar: 'styles | undo redo | formatselect | ' +
+                                                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                                'bullist numlist | outdent indent | link | copy paste undo redo | ' +
+                                                'code | removeformat ',
+                                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }'
+                                            }}
+                                        />
                                     </div>
                                     {/* {
                                         FormData['letterOfIntroductionAccess'] === "1" ?
@@ -441,7 +491,30 @@ const RecordOfAdvice = ({user}) => {
                                             </> : 
                                             null
                                         }
-                                        <textarea  id="provided_identity" required={FormData['clientFica'] === 0 ? true : false} value={FormData['clientFicaReason']}  maxLength={256} name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                        {/* <textarea  id="provided_identity" required={FormData['clientFica'] === 0 ? true : false} value={FormData['clientFicaReason']}  maxLength={256} name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
+                                        <Editor
+                                            onInit={(evt, editor) => FICAEditorRef.current = editor}
+                                            value={FormData['clientFicaReason']}
+                                            onEditorChange={(e)=>{ setFormData({...FormData, ['clientFicaReason']: FICAEditorRef.current.getContent() }) }}
+                                            onFocus={(e)=>{fica_onFocus()}}
+                                            onBlur={(e)=>{fica_onBlur()}}
+                                            name="clientBackgroundInfo"
+                                            init={{
+                                                selector: "textarea",
+                                                height: 300,
+                                                menu: true,
+                                                plugins: [
+                                                    'advlist autolink link lists image charmap print preview anchor',
+                                                    'searchreplace visualblocks code fullscreen',
+                                                    'insertdatetime media table paste code help wordcount',
+                                                ],
+                                                toolbar: 'styles | undo redo | formatselect | ' +
+                                                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                                'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
+                                                'removeformat',
+                                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }'
+                                            }}
+                                        />
                                     </div>
                                     {/* {
                                         FormData['fica'] === "1" ? null : 
@@ -487,7 +560,7 @@ const RecordOfAdvice = ({user}) => {
                                 </>: 
                                 null
                             }
-                            <textarea  id="clientBackgroundInfo" name="clientBackgroundInfo" className="form-control"  style={{height: '160px'}} 
+                            {/* <textarea  id="clientBackgroundInfo" name="clientBackgroundInfo" className="form-control"  style={{height: '160px'}} 
                             onFocus={backgroundInfo_onFocus} required
                             onBlur={backgroundInfo_onBlur}
                             onChange={e => onChange(e)}
@@ -499,10 +572,33 @@ const RecordOfAdvice = ({user}) => {
                                 •	needs that have been identified, 
                                 •	and relevant information 
                             that formed the basis for the financial solution recommended`}  aria-describedby=""  ></textarea>
-                            
+                             */}
                             {/* <NavLink to="/remaining_form" className='btn btn-primary' value="Next" /> */}
                             {/* <NavLink to="/remaining_form" className='btn btn-primary'>Next</NavLink> */}
                             <br />
+                            <Editor
+                                onInit={(evt, editor) => backgroundEditorRef.current = editor}
+                                value={FormData['clientBackgroundInfo']}
+                                onEditorChange={(e)=>{ setFormData({...FormData, ['clientBackgroundInfo']: backgroundEditorRef.current.getContent() }) }}
+                                onFocus={(e)=>{backgroundInfo_onFocus()}}
+                                onBlur={(e)=>{backgroundInfo_onBlur()}}
+                                name="clientBackgroundInfo"
+                                init={{
+                                    selector: "textarea",
+                                    height: 300,
+                                    menu: true,
+                                    plugins: [
+                                        'advlist autolink link lists image charmap print preview anchor',
+                                        'searchreplace visualblocks code fullscreen',
+                                        'insertdatetime media table paste code help wordcount',
+                                    ],
+                                    toolbar: 'styles | undo redo | formatselect | ' +
+                                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                    'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
+                                    'removeformat',
+                                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }'
+                                }}
+                            />
                         </div>
                     </div>
                     <div className="container1">

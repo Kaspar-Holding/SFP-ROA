@@ -7481,12 +7481,12 @@ const CreateForm = ({user}) => {
                                 </select>  
                             </div>
                             <div className="col-2">
-                                <label className="col-form-label" onClick={(e)=>{AddNewLP_Data(e)}}><FontAwesomeIcon icon={faPlus} /></label>
+                                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewLP_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Linked Party</button>
                             </div>
                             {
                                 LP_Data.length > 1 ?
                                 <div className="col-2">
-                                    <label className="col-form-label" onClick={(e)=>{RemoveNewLP_Data(e)}}><FontAwesomeIcon icon={faMinus} /></label>
+                                    <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewLP_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Linked Party</button>
                                 </div>
                                 : <></>
                             }

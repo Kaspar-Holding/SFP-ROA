@@ -66,6 +66,10 @@ urlpatterns = [
     path('add_risk_factors_data/' , views.insertRiskFactorsData, name="Insert data into Risk Factors Collection"),
     path('view_risk_factors_data/' , views.viewRiskFactorsData, name="Risk Factors data details"),
     path('update_risk_factors_data/' , views.updateRiskFactorsData, name="Risk Factors data details"),
+    # APIs for data with duplication
+    path('update_linked_party_data/' , views.updateLinkedPartyData, name="Risk Factors Linked Part data details"),
+    path('update_rp_ProductTaken_Data/' , views.update_rp_ProductTaken_Data, name="Risk Planning Product Taken data details"),
+    path('update_ip_ProductTaken_Data/' , views.update_ip_ProductTaken_Data, name="Investment Planning Product Taken data details"),
     # PDF Form
     path('pdf/' , printFormViews.pdfForm, name="PDF Form"),
 ]

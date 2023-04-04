@@ -5,6 +5,8 @@ import { useLocation } from 'react-router-dom';
 import  './Styles/CustomNotification.css'
 import  './Styles/CustomButton.css'
 import { connect } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 // import './Header.css';
 const Risk = ({user}) =>
 {
@@ -170,46 +172,106 @@ const Risk = ({user}) =>
         RP_DrC_FinancialSolutions : "",    
         RP_AltS_1 : "",
         RP_AltS_2 : "",
-        RP_AltS_3 : "",    
-        RP_Product_Taken : "",  
-        RP_Product_Provider : "",
-        RP_Policy_Number : "",
-        RP_Product_Name : "",
-        RP_Product_Premium : "",
-        RP_Product_PremiumFrequency : "0", 
-        RP_Product_Pattern : "",
-        RP_Product_Escalation : "",
-        RP_Product_ContractingParty : "",
-        RP_Product_LivesAssured : "",
-        RP_Product_Beneficiary : "",
-        RP_Product_PremiumPayer : "",
-        RP_Product_1stYearCommission : "",
-        RP_Product_2ndYearCommission : "",
-        RP_Product_OngoingFees : "",
-        RP_Product_OngoingFeesFrequency : "",
-        RP_Product_OngoingFeesFrequency1 : "0",    
-        RP_TotalFees_n_Commissions : "",        
-        RP_BenDesc_1 : "",
-        RP_BenDesc_CoverAmount1 : "",
-        RP_BenDesc_2 : "",
-        RP_BenDesc_CoverAmount2 : "",
-        RP_BenDesc_3 : "",
-        RP_BenDesc_CoverAmount3 : "",
-        RP_BenDesc_4 : "",
-        RP_BenDesc_CoverAmount4 : "",
-        RP_BenDesc_5 : "",
-        RP_BenDesc_CoverAmount5 : "",
-        RP_BenDesc_6 : "",
-        RP_BenDesc_CoverAmount6 : "",
-        RP_BenDesc_7 : "",
-        RP_BenDesc_CoverAmount7 : "",        
-        RP_ProductReasons : "",
-        RP_ProductMaterialAspects : "",
-        RP_ProductDetails : "",
-        RP_ExecutorFee : "",
-        RP_NominationOfBeneficiaries : "",
-        RP_InformationExplained : "",    
+        RP_AltS_3 : "",       
       })
+      const [ProductTaken, setProductTaken] = useState([{
+        advisorId : user['id'],  
+        formId : state['formId'],  
+        Product_Taken : "",  
+        Product_Provider : "",
+        Policy_Number : "",
+        Product_Name : "",
+        Product_Premium : "",
+        Product_PremiumFrequency : "0", 
+        Product_Pattern : "",
+        Product_Escalation : "",
+        Product_ContractingParty : "",
+        Product_LivesAssured : "",
+        Product_Beneficiary : "",
+        Product_PremiumPayer : "",
+        Product_1stYearCommission : "",
+        Product_2ndYearCommission : "",
+        Product_OngoingFees : "",
+        Product_OngoingFeesFrequency : "",
+        Product_OngoingFeesFrequency1 : "0",    
+        TotalFees_n_Commissions : "",        
+        BenDesc_1 : "",
+        BenDesc_CoverAmount1 : "",
+        BenDesc_2 : "",
+        BenDesc_CoverAmount2 : "",
+        BenDesc_3 : "",
+        BenDesc_CoverAmount3 : "",
+        BenDesc_4 : "",
+        BenDesc_CoverAmount4 : "",
+        BenDesc_5 : "",
+        BenDesc_CoverAmount5 : "",
+        BenDesc_6 : "",
+        BenDesc_CoverAmount6 : "",
+        BenDesc_7 : "",
+        BenDesc_CoverAmount7 : "",        
+        ProductReasons : "",
+        ProductMaterialAspects : "",
+        ProductDetails : "",
+        ExecutorFee : "",
+        NominationOfBeneficiaries : "",
+        InformationExplained : ""
+      }])
+      const AddNewProductTaken = (e) => {
+        const current = [...ProductTaken]
+        current.push({
+          advisorId : user['id'],  
+          formId : state['formId'],  
+          Product_Taken : "",  
+          Product_Provider : "",
+          Policy_Number : "",
+          Product_Name : "",
+          Product_Premium : "",
+          Product_PremiumFrequency : "0", 
+          Product_Pattern : "",
+          Product_Escalation : "",
+          Product_ContractingParty : "",
+          Product_LivesAssured : "",
+          Product_Beneficiary : "",
+          Product_PremiumPayer : "",
+          Product_1stYearCommission : "",
+          Product_2ndYearCommission : "",
+          Product_OngoingFees : "",
+          Product_OngoingFeesFrequency : "",
+          Product_OngoingFeesFrequency1 : "0",    
+          TotalFees_n_Commissions : "",        
+          BenDesc_1 : "",
+          BenDesc_CoverAmount1 : "",
+          BenDesc_2 : "",
+          BenDesc_CoverAmount2 : "",
+          BenDesc_3 : "",
+          BenDesc_CoverAmount3 : "",
+          BenDesc_4 : "",
+          BenDesc_CoverAmount4 : "",
+          BenDesc_5 : "",
+          BenDesc_CoverAmount5 : "",
+          BenDesc_6 : "",
+          BenDesc_CoverAmount6 : "",
+          BenDesc_7 : "",
+          BenDesc_CoverAmount7 : "",        
+          ProductReasons : "",
+          ProductMaterialAspects : "",
+          ProductDetails : "",
+          ExecutorFee : "",
+          NominationOfBeneficiaries : "",
+          InformationExplained : ""
+        })
+        setProductTaken(current)
+    }
+    const RemoveNewProductTaken = (e) => {
+        const current = [...ProductTaken]
+        current.pop()
+        setProductTaken(current)
+    }
+    const on_ProductTaken_Change = (e, i) => {
+        let newProductTaken = [...ProductTaken]
+        newProductTaken[i][e.target.name] = e.target.value
+        setProductTaken(newProductTaken)
+    }
       // console.log(JSON.stringify(FormData))
       const [SuccessMessage, setSuccessMessage] = useState("")
       const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
@@ -230,6 +292,52 @@ const Risk = ({user}) =>
                 setFormData(response.data['formData'])
             } else {
                 setFormData(response.data['formData'])
+                if (response.data['ProductTaken'].length > 0) {
+                  setProductTaken(response.data['ProductTaken'])
+                } else {
+                  setProductTaken([{
+                    advisorId : user['id'],  
+                    formId : state['formId'],  
+                    Product_Taken : "",  
+                    Product_Provider : "",
+                    Policy_Number : "",
+                    Product_Name : "",
+                    Product_Premium : "",
+                    Product_PremiumFrequency : "0", 
+                    Product_Pattern : "",
+                    Product_Escalation : "",
+                    Product_ContractingParty : "",
+                    Product_LivesAssured : "",
+                    Product_Beneficiary : "",
+                    Product_PremiumPayer : "",
+                    Product_1stYearCommission : "",
+                    Product_2ndYearCommission : "",
+                    Product_OngoingFees : "",
+                    Product_OngoingFeesFrequency : "",
+                    Product_OngoingFeesFrequency1 : "0",    
+                    TotalFees_n_Commissions : "",        
+                    BenDesc_1 : "",
+                    BenDesc_CoverAmount1 : "",
+                    BenDesc_2 : "",
+                    BenDesc_CoverAmount2 : "",
+                    BenDesc_3 : "",
+                    BenDesc_CoverAmount3 : "",
+                    BenDesc_4 : "",
+                    BenDesc_CoverAmount4 : "",
+                    BenDesc_5 : "",
+                    BenDesc_CoverAmount5 : "",
+                    BenDesc_6 : "",
+                    BenDesc_CoverAmount6 : "",
+                    BenDesc_7 : "",
+                    BenDesc_CoverAmount7 : "",        
+                    ProductReasons : "",
+                    ProductMaterialAspects : "",
+                    ProductDetails : "",
+                    ExecutorFee : "",
+                    NominationOfBeneficiaries : "",
+                    InformationExplained : ""
+                  }])
+                }
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
@@ -258,6 +366,13 @@ const Risk = ({user}) =>
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
+        }
+        
+        const ProductTaken_Body = JSON.stringify(ProductTaken)
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_rp_ProductTaken_Data/`, ProductTaken_Body ,config) 
+        } catch (error) {
+            
         }
       }
       const onSubmit = e => {
@@ -1014,570 +1129,837 @@ Record the client's instructions, deviations and implications thereof.
         onBlur={backgroundInfo_onBlur6}
         placeholder={`3. Identify the type of product or product provider which was considered but not selected and motivate.
         `}  aria-describedby=""  ></textarea>
+    {
+      ProductTaken.map((key,i) => {
+        // console.log(i+1)
+          return (
+            <>
 
-<h5 className="text-start " ><b>SECTION E:</b></h5> 
-        <h6 className="text-start " style={{ color: "#14848A"}} ><b>Product Taken</b></h6>
+            <h5 className="text-start " ><b>SECTION E:</b></h5> 
+                  <h6 className="text-start " style={{ color: "#14848A"}} ><b>Product Taken {i+1}</b></h6>
 
-        <p className="text-start ">Products accepted by you to meet your requirements. </p> 
+                  <p className="text-start ">Products accepted by you to meet your requirements. </p> 
 
-
-  <div className="container mt-3">          
-  <table className="table">
-    
-    <tbody>
-      <tr>
-        <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product:</td>
-        <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_Product_Taken" name='RP_Product_Taken' value={FormData['RP_Product_Taken']} onChange={(e) => {onChange(e)}}  aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td>  
-       <td></td>
-       
-       <td></td>
-
-        <td></td> 
-        
-        <td></td>      
-      </tr>
-     
-      <tr>
-        <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Provider:</td>
-        <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_Product_Provider" name='RP_Product_Provider' value={FormData['RP_Product_Provider']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td>  
-       <td></td>
-       
-       <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Policy No:</td>
-       <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_Policy_Number" name='RP_Policy_Number' value={FormData['RP_Policy_Number']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td> 
-
-        <td></td> 
-        
-        <td></td>      
-      </tr>
-      <tr>
-            <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Name:</td>
-            <td>  
-            <div className="form-group">
-                <input type="text" className="form-control" id="RP_Product_Name" name='RP_Product_Name' value={FormData['RP_Product_Name']} onChange={(e) => {onChange(e)}}  aria-describedby="emailHelp" placeholder="" />
-            </div>
-        </td>  
-        <td></td>
-        
-        <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Premium</td>
-        <td>  
-            <div className='row'>
-                <div className='col-6'>
-                    <div className="form-group">
-                        <input type="text" className="form-control" id="RP_Product_Premium" name='RP_Product_Premium' value={FormData['RP_Product_Premium']} onChange={(e) => {onChange(e)}}  aria-describedby="emailHelp" placeholder="" />
+                  <div className="row">
+                <div className="col-6">
+                    <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+                </div>
+                {
+                    ProductTaken.length > 1 ?
+                    <div className="col-6">
+                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
                     </div>
-                </div>
-                <div className='col-6'>
-                    <select className="text-start form-select" id="RP_Product_PremiumFrequency" name='RP_Product_PremiumFrequency' value={FormData['RP_Product_PremiumFrequency']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
-                        <option value="0" selected>Frequeny</option>
-                        <option value="1">Monthly</option>
-                        <option value="2">Quarterly</option>
-                        <option value="3">Annually</option>
-                        <option value="4">Once Off</option>
-                    </select>
-                </div>
-            </div>
-            
-        </td> 
-      </tr>
-      <tr>
-        <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Premium Pattern:</td>
-        <td>  
-          <div className="form-group">
-              <input type="text" className="form-control" id="RP_Product_Pattern" name='RP_Product_Pattern' value={FormData['RP_Product_Pattern']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-          </div>
-        </td>  
-        <td>
-        </td>
-       
-       <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Escalation in<br/>cover/premium</td>
-       <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_Product_Escalation" name='RP_Product_Escalation' value={FormData['RP_Product_Escalation']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td> 
-        <td></td> 
-
-        <td></td>      
-      </tr>
-      
-      <tr>
-        <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Contracting Party:</td>
-        <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_Product_ContractingParty" name='RP_Product_ContractingParty' value={FormData['RP_Product_ContractingParty']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td>  
-       <td></td>
-       
-       <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Life/Lives<br/>covered</td>
-       <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_Product_LivesAssured" name='RP_Product_LivesAssured' value={FormData['RP_Product_LivesAssured']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td> 
-        <td></td> 
-        <td></td>      
-      </tr>
-
-      <tr>
-        <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Beneficial/<br/>Cessionary</td>
-        <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_Product_Beneficiary" name='RP_Product_Beneficiary' value={FormData['RP_Product_Beneficiary']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td>  
-       <td></td>
-       
-       <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Premium<br/>payer(s)</td>
-       <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_Product_PremiumPayer" name='RP_Product_PremiumPayer' value={FormData['RP_Product_PremiumPayer']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td> 
-        <td></td> 
-        <td></td>      
-      </tr>
-
-      <tr>
-        <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">1st year<br/>commission</td>
-        <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_Product_1stYearCommission" name='RP_Product_1stYearCommission' value={FormData['RP_Product_1stYearCommission']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td>  
-       <td></td>
-       <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">2nd year<br/>commission</td>
-       <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_Product_2ndYearCommission" name='RP_Product_2ndYearCommission' value={FormData['RP_Product_2ndYearCommission']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td> 
-        <td></td> 
-        <td></td>      
-      </tr>
-
-      <tr>
-        <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Ongoing fees</td>
-        <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_Product_OngoingFees" name='RP_Product_OngoingFees' value={FormData['RP_Product_OngoingFees']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td>  
-       <td></td>
-       <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Frequency</td>
-       <td>  
-        <div className='row'>
-          <div className='col-6'>
-              <div className="form-group">
-                  <input type="text" className="form-control" id="RP_Product_OngoingFeesFrequency" name='RP_Product_OngoingFeesFrequency' value={FormData['RP_Product_OngoingFeesFrequency']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" />
+                    : <></>
+                }
               </div>
-          </div>
-          <div className='col-6'>
-              <select className="text-start form-select" id="RP_Product_OngoingFeesFrequency1" name='RP_Product_OngoingFeesFrequency1' value={FormData['RP_Product_OngoingFeesFrequency1']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
-                  <option value="0" selected>Frequeny</option>
-                  <option value="1">Monthly</option>
-                  <option value="2">Quarterly</option>
-                  <option value="3">Annually</option>
-                  <option value="4">Once Off</option>
-              </select>
-          </div>
-        </div>
-       </td> 
-        <td></td> 
-        <td></td>      
-      </tr>
-
-      
-
-      <tr>
-        <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start"></td>
-         
-       <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Total fees and commission</td>
-
-       {/* <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Frequency</td> */}
-       <td>  
-        <div className="form-group">
-            <input type="text" className="form-control" id="RP_TotalFees_n_Commissions" name='RP_TotalFees_n_Commissions' value={FormData['RP_TotalFees_n_Commissions']}  onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td>
-       <td></td> 
-       <td></td>
-       <td></td>
+            <div className="container mt-3">          
+            <table className="table">
               
-      </tr>
-
-
-      <tr>
-        
-      </tr>
-
-     
-    </tbody>
-  </table>
-</div>
-
-<div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-        <div className="row">
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-8">
-                        <label className="col-form-label"><b>Benefit description: life cover, disability etc</b></label>
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label htmlFor="id_number" className="col-form-label"><b>Cover amount</b></label>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-
-   
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <input spellCheck="true" id="RP_BenDesc_1" name='RP_BenDesc_1' value={FormData['RP_BenDesc_1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <div className="input-group">
-                          <span className="input-group-text">R</span>
-                          <input type="number" className="form-control" id="RP_BenDesc_CoverAmount1" name='RP_BenDesc_CoverAmount1' value={FormData['RP_BenDesc_CoverAmount1']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-
-            
-   
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <input spellCheck="true" id="RP_BenDesc_2" name='RP_BenDesc_2' value={FormData['RP_BenDesc_2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <div className="input-group">
-                          <span className="input-group-text">R</span>
-                          <input type="number" className="form-control" id="RP_BenDesc_CoverAmount2" name='RP_BenDesc_CoverAmount2' value={FormData['RP_BenDesc_CoverAmount2']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-
-            
-   
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <input spellCheck="true" id="RP_BenDesc_3" name='RP_BenDesc_3' value={FormData['RP_BenDesc_3']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <div className="input-group">
-                          <span className="input-group-text">R</span>
-                          <input type="number" className="form-control" id="RP_BenDesc_CoverAmount3" name='RP_BenDesc_CoverAmount3' value={FormData['RP_BenDesc_CoverAmount3']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-
-            
-   
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <input spellCheck="true" id="RP_BenDesc_4" name='RP_BenDesc_4' value={FormData['RP_BenDesc_4']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <div className="input-group">
-                          <span className="input-group-text">R</span>
-                          <input type="number" className="form-control" id="RP_BenDesc_CoverAmount4" name='RP_BenDesc_CoverAmount4' value={FormData['RP_BenDesc_CoverAmount4']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-
-            
-   
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <input spellCheck="true" id="RP_BenDesc_5" name='RP_BenDesc_5' value={FormData['RP_BenDesc_5']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <div className="input-group">
-                          <span className="input-group-text">R</span>
-                          <input type="number" className="form-control" id="RP_BenDesc_CoverAmount5" name='RP_BenDesc_CoverAmount5' value={FormData['RP_BenDesc_CoverAmount5']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-
-            
-   
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <input spellCheck="true" id="RP_BenDesc_6" name='RP_BenDesc_6' value={FormData['RP_BenDesc_6']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <div className="input-group">
-                          <span className="input-group-text">R</span>
-                          <input type="number" className="form-control" id="RP_BenDesc_CoverAmount6" name='RP_BenDesc_CoverAmount6' value={FormData['RP_BenDesc_CoverAmount6']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-
-            
-   
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <input spellCheck="true" id="RP_BenDesc_7" name='RP_BenDesc_7' value={FormData['RP_BenDesc_7']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <div className="input-group">
-                          <span className="input-group-text">R</span>
-                          <input type="number" className="form-control" id="RP_BenDesc_CoverAmount7" name='RP_BenDesc_CoverAmount7' value={FormData['RP_BenDesc_CoverAmount7']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-
-            
-            <hr/>
-        </div> 
-    </div>  
-
-
-<p className="text-start">The following are reasons why the above-mentioned product best suits your needs and objectives</p>
-
-{
-        backgroundInfoVisibility7 ? 
-        <>
-        <div id="background_info_instructions7" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Motivate why the chosen product was recommended to best suit your client’s needs.
-
-                    </li>
-                   
-                </ul>
+              <tbody>
+                <tr>
+                  <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product:</td>
+                  <td>  
+                  <div className="form-group">
+                      {/* <input type="text" className="form-control" id="Product_Taken" name='Product_Taken' value={key.Product_Taken} onChange={(e) => {on_ProductTaken_Change(e, i)}}  aria-describedby="emailHelp" placeholder=""/> */}
+                      <select className="text-start form-select" name='Product_Taken' value={key.Product_Taken} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                            <option value="0" selected>Choose Product</option>
+                            <option value="1">Endowment</option>
+                            <option value="2">RA</option>
+                            <option value="3">TFSA</option>
+                            <option value="4">Unit Trust</option>
+                            <option value="5">Life Annuity</option>
+                            <option value="6">Living Annuity</option>
+                            <option value="7">Other</option>
+                        </select>
+                  </div>
+                </td>  
+                <td></td>
                 
-        </div>
-        </>: 
-         null
-    }
-    <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
-        id="RP_ProductReasons" name='RP_ProductReasons' value={FormData['RP_ProductReasons']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus7}
-        onBlur={backgroundInfo_onBlur7}
-        placeholder={`Motivate why the chosen product was recommended to best suit your client’s needs.
-        `}  aria-describedby=""  ></textarea>
-<hr/>
-<p className="text-start">The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
+                <td></td>
 
-    {
-        backgroundInfoVisibility8 ? 
-        <>
-        <div id="background_info_instructions8" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Explain any deviations from your recommendation and the implications thereof.
-                    </li>
-                   
-                </ul>
+                  <td></td> 
+                  
+                  <td></td>      
+                </tr>
+              
+                <tr>
+                  <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Provider:</td>
+                  <td>  
+                  <div className="form-group">
+                      <input type="text" className="form-control" id="Product_Provider" name='Product_Provider' value={key.Product_Provider} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                  </div>
+                </td>  
+                <td></td>
                 
-        </div>
-        </>: 
-         null
-    }
-    <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
-        id="RP_ProductMaterialAspects" name='RP_ProductMaterialAspects' value={FormData['RP_ProductMaterialAspects']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus8}
-        onBlur={backgroundInfo_onBlur8}
-        placeholder={`Explain any deviations from your recommendation and the implications thereof.
-        `}  aria-describedby=""  ></textarea>
+                <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Policy No:</td>
+                <td>  
+                  <div className="form-group">
+                      <input type="text" className="form-control" id="Policy_Number" name='Policy_Number' required value={key.Policy_Number} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                  </div>
+                </td> 
 
-<br/>
-    {
-        backgroundInfoVisibility9 ? 
-        <>
-        <div id="background_info_instructions9" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
-                    </li>
-                   
-                </ul>
+                  <td></td> 
+                  
+                  <td></td>      
+                </tr>
+                <tr>
+                      <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Name:</td>
+                      <td>  
+                      <div className="form-group">
+                          <input type="text" className="form-control" id="Product_Name" name='Product_Name' value={key.Product_Name} onChange={(e) => {on_ProductTaken_Change(e, i)}}  aria-describedby="emailHelp" placeholder="" />
+                      </div>
+                  </td>  
+                  <td></td>
+                  
+                  <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Premium</td>
+                  <td>  
+                      <div className='row'>
+                          <div className='col-6'>
+                              <div className="form-group">
+                                  <input type="text" className="form-control" id="Product_Premium" name='Product_Premium' value={key.Product_Premium} onChange={(e) => {on_ProductTaken_Change(e, i)}}  aria-describedby="emailHelp" placeholder="" />
+                              </div>
+                          </div>
+                          <div className='col-6'>
+                              <select className="text-start form-select" id="Product_PremiumFrequency" name='Product_PremiumFrequency' value={key.Product_PremiumFrequency} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                                  <option value="0" selected>Frequeny</option>
+                                  <option value="1">Monthly</option>
+                                  <option value="2">Quarterly</option>
+                                  <option value="3">Annually</option>
+                                  <option value="4">Once Off</option>
+                              </select>
+                          </div>
+                      </div>
+                      
+                  </td> 
+                </tr>
+                <tr>
+                  <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Premium Pattern:</td>
+                  <td>  
+                    <div className="form-group">
+                        <input type="text" className="form-control" id="Product_Pattern" name='Product_Pattern' value={key.Product_Pattern}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                    </div>
+                  </td>  
+                  <td>
+                  </td>
                 
-        </div>
-        </>: 
-         null
-    }
-    <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
-        id="RP_ProductDetails" name='RP_ProductDetails' value={FormData['RP_ProductDetails']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus9}
-        onBlur={backgroundInfo_onBlur9}
-        placeholder={`The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
-        `}  aria-describedby=""  ></textarea>
+                <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Escalation in<br/>cover/premium</td>
+                <td>  
+                  <div className="form-group">
+                      <input type="text" className="form-control" id="Product_Escalation" name='Product_Escalation' value={key.Product_Escalation}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                  </div>
+                </td> 
+                  <td></td> 
 
-
-    <br/>
-    {
-        backgroundInfoVisibility10 ? 
-        <>
-        <div id="background_info_instructions10" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Executor’s fees?<br/>
-                    Does the policy offer any liquidity?<br/>
-                    Provide a summary of the contents of the quote with regard to the following:<br/>
-                    Benefit terms (cease ages, cover periods etc.)<br/>
-                    Details of premium and cover pattern structure, frequency etc.
-
-                    </li>
-                   
-                </ul>
+                  <td></td>      
+                </tr>
                 
-        </div>
-        </>: 
-         null
-    }
-    <textarea maxLength={2000} className="form-control"  style={{height: '200px'}} 
-        id="RP_ExecutorFee" name='RP_ExecutorFee' value={FormData['RP_ExecutorFee']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus10}
-        onBlur={backgroundInfo_onBlur10}
-        placeholder={`Executor’s fees?
-Does the policy offer any liquidity?
-Provide a summary of the contents of the quote with regard to the following:
-Benefit terms (cease ages, cover periods etc.)
-Details of premium and cover pattern structure, frequency etc.
-        
-        `}  aria-describedby=""  ></textarea>
-
-
-<br/>
-    {
-        backgroundInfoVisibility11 ? 
-        <>
-        <div id="background_info_instructions11" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Record discussion with regard to nomination of beneficiaries or cessionaries.
-
-                    </li>
-                   
-                </ul>
+                <tr>
+                  <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Contracting Party:</td>
+                  <td>  
+                  <div className="form-group">
+                      <input type="text" className="form-control" id="Product_ContractingParty" name='Product_ContractingParty' value={key.Product_ContractingParty}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                  </div>
+                </td>  
+                <td></td>
                 
-        </div>
-        </>: 
-         null
-    }
-    <textarea maxLength={2000} className="form-control"  style={{height: '100px'}} 
-        id="RP_NominationOfBeneficiaries" name='RP_NominationOfBeneficiaries' value={FormData['RP_NominationOfBeneficiaries']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus11}
-        onBlur={backgroundInfo_onBlur11}
-        placeholder={`Record discussion with regard to nomination of beneficiaries or cessionaries.
-        
-        `}  aria-describedby=""  ></textarea>
+                <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Life/Lives<br/>covered</td>
+                <td>  
+                  <div className="form-group">
+                      <input type="text" className="form-control" id="Product_LivesAssured" name='Product_LivesAssured' value={key.Product_LivesAssured}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                  </div>
+                </td> 
+                  <td></td> 
+                  <td></td>      
+                </tr>
 
-
-<br/>
-    {
-        backgroundInfoVisibility12 ? 
-        <>
-        <div id="background_info_instructions12" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Discuss the following information which has been explained to client.<br/>
-                    General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)<br/>
-                    Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)<br/>
-                    Waiting periods<br/>
-                    Cooling off period
-
-                    </li>
-                   
-                </ul>
+                <tr>
+                  <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Beneficial/<br/>Cessionary</td>
+                  <td>  
+                  <div className="form-group">
+                      <input type="text" className="form-control" id="Product_Beneficiary" name='Product_Beneficiary' value={key.Product_Beneficiary}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                  </div>
+                </td>  
+                <td></td>
                 
-        </div>
-        </>: 
-         null
+                <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Premium<br/>payer(s)</td>
+                <td>  
+                  <div className="form-group">
+                      <input type="text" className="form-control" id="Product_PremiumPayer" name='Product_PremiumPayer' value={key.Product_PremiumPayer}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                  </div>
+                </td> 
+                  <td></td> 
+                  <td></td>      
+                </tr>
+
+                <tr>
+                  <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">1st year<br/>commission</td>
+                  <td>  
+                  <div className="form-group">
+                      <input type="text" className="form-control" id="Product_1stYearCommission" name='Product_1stYearCommission' value={key.Product_1stYearCommission}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                  </div>
+                </td>  
+                <td></td>
+                <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">2nd year<br/>commission</td>
+                <td>  
+                  <div className="form-group">
+                      <input type="text" className="form-control" id="Product_2ndYearCommission" name='Product_2ndYearCommission' value={key.Product_2ndYearCommission}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                  </div>
+                </td> 
+                  <td></td> 
+                  <td></td>      
+                </tr>
+
+                <tr>
+                  <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Ongoing fees</td>
+                  <td>  
+                  <div className="form-group">
+                      <input type="text" className="form-control" id="Product_OngoingFees" name='Product_OngoingFees' value={key.Product_OngoingFees}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                  </div>
+                </td>  
+                <td></td>
+                <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Frequency</td>
+                <td>  
+                  <div className='row'>
+                    <div className='col-6'>
+                        <div className="form-group">
+                            <input type="text" className="form-control" id="Product_OngoingFeesFrequency" name='Product_OngoingFeesFrequency' value={key.Product_OngoingFeesFrequency} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
+                        </div>
+                    </div>
+                    <div className='col-6'>
+                        <select className="text-start form-select" id="Product_OngoingFeesFrequency1" name='Product_OngoingFeesFrequency1' value={key.Product_OngoingFeesFrequency1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                            <option value="0" selected>Frequeny</option>
+                            <option value="1">Monthly</option>
+                            <option value="2">Quarterly</option>
+                            <option value="3">Annually</option>
+                            <option value="4">Once Off</option>
+                        </select>
+                    </div>
+                  </div>
+                </td> 
+                  <td></td> 
+                  <td></td>      
+                </tr>
+
+                
+
+                <tr>
+                  <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start"></td>
+                  
+                <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Total fees and commission</td>
+
+                {/* <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Frequency</td> */}
+                <td>  
+                  <div className="form-group">
+                      <input type="text" className="form-control" id="TotalFees_n_Commissions" name='TotalFees_n_Commissions' value={key.TotalFees_n_Commissions}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                  </div>
+                </td>
+                <td></td> 
+                <td></td>
+                <td></td>
+                        
+                </tr>
+
+
+                <tr>
+                  
+                </tr>
+
+              
+              </tbody>
+            </table>
+            </div>
+
+            <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+                  <div className="row">
+                      <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                  <label className="col-form-label"><b>Benefit description: life cover, disability etc</b></label>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-4">
+                                  <label htmlFor="id_number" className="col-form-label"><b>Cover amount</b></label>
+                              </div> 
+                          </div>
+                      </div>
+                      <hr/>
+
+            
+                      <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <input spellCheck="true" id="BenDesc_1" name='BenDesc_1' value={key.BenDesc_1} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                              </div>
+                          </div>
+                      </div>
+
+                      <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <div className="input-group">
+                                    <span className="input-group-text">R</span>
+                                    <input type="number" className="form-control" id="BenDesc_CoverAmount1" name='BenDesc_CoverAmount1' value={key.BenDesc_CoverAmount1} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                  </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <hr/>
+
+                      
+            
+                      <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <input spellCheck="true" id="BenDesc_2" name='BenDesc_2' value={key.BenDesc_2} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                              </div>
+                          </div>
+                      </div>
+
+                      <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <div className="input-group">
+                                    <span className="input-group-text">R</span>
+                                    <input type="number" className="form-control" id="BenDesc_CoverAmount2" name='BenDesc_CoverAmount2' value={key.BenDesc_CoverAmount2} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                  </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <hr/>
+
+                      
+            
+                      <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <input spellCheck="true" id="BenDesc_3" name='BenDesc_3' value={key.BenDesc_3} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                              </div>
+                          </div>
+                      </div>
+
+                      <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <div className="input-group">
+                                    <span className="input-group-text">R</span>
+                                    <input type="number" className="form-control" id="BenDesc_CoverAmount3" name='BenDesc_CoverAmount3' value={key.BenDesc_CoverAmount3} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                  </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <hr/>
+
+                      
+            
+                      <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <input spellCheck="true" id="BenDesc_4" name='BenDesc_4' value={key.BenDesc_4} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                              </div>
+                          </div>
+                      </div>
+
+                      <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <div className="input-group">
+                                    <span className="input-group-text">R</span>
+                                    <input type="number" className="form-control" id="BenDesc_CoverAmount4" name='BenDesc_CoverAmount4' value={key.BenDesc_CoverAmount4} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                  </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <hr/>
+
+                      
+            
+                      <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <input spellCheck="true" id="BenDesc_5" name='BenDesc_5' value={key.BenDesc_5} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                              </div>
+                          </div>
+                      </div>
+
+                      <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <div className="input-group">
+                                    <span className="input-group-text">R</span>
+                                    <input type="number" className="form-control" id="BenDesc_CoverAmount5" name='BenDesc_CoverAmount5' value={key.BenDesc_CoverAmount5} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                  </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <hr/>
+
+                      
+            
+                      <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <input spellCheck="true" id="BenDesc_6" name='BenDesc_6' value={key.BenDesc_6} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                              </div>
+                          </div>
+                      </div>
+
+                      <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <div className="input-group">
+                                    <span className="input-group-text">R</span>
+                                    <input type="number" className="form-control" id="BenDesc_CoverAmount6" name='BenDesc_CoverAmount6' value={key.BenDesc_CoverAmount6} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                  </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <hr/>
+
+                      
+            
+                      <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <input spellCheck="true" id="BenDesc_7" name='BenDesc_7' value={key.BenDesc_7} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                              </div>
+                          </div>
+                      </div>
+
+                      <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                              <div className="col-6">
+                                  <div className="input-group">
+                                    <span className="input-group-text">R</span>
+                                    <input type="number" className="form-control" id="BenDesc_CoverAmount7" name='BenDesc_CoverAmount7' value={key.BenDesc_CoverAmount7} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                  </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <hr/>
+
+                      
+                      <hr/>
+                  </div> 
+              </div>  
+
+
+            <p className="text-start">The following are reasons why the above-mentioned product best suits your needs and objectives</p>
+
+            {
+                  backgroundInfoVisibility7 ? 
+                  <>
+                  <div id="background_info_instructions7" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              Motivate why the chosen product was recommended to best suit your client’s needs.
+
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                  null
+              }
+              <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
+                  id="ProductReasons" name='ProductReasons' value={key.ProductReasons} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
+                  onFocus={backgroundInfo_onFocus7}
+                  onBlur={backgroundInfo_onBlur7}
+                  placeholder={`Motivate why the chosen product was recommended to best suit your client’s needs.
+                  `}  aria-describedby=""  ></textarea>
+            <hr/>
+            <p className="text-start">The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
+              {
+                parseInt(key.Product_Taken)===1 ? <>
+                <p>
+                    <b>Tax Implications:</b><br/>
+                    There are significant tax benefits afforded to Endowment plan investors. With an endowment plan the life insurance company will pay tax on your behalf at a rate of 30%. At maturity date the proceeds of this investment will be tax free.
+                </p>
+    
+                <p>
+                    <b>Liquidity:</b><br/> 
+                    In the first five years of this investment your access to your funds are restricted. During this period access is limited to one partial withdrawal or a full surrender or a loan subject to penalties.
+                </p>
+    
+                <p>
+                    <b>Termination Penalties:</b>
+                    The will be termination penalties levied in the event of early access to funds during the restriction period of the first 5 years of the investment.
+                    The following events will be deemed as trigger events, where applicable:
+                    <ul>
+                        <li>Stopping contributions</li>
+                        <li>Reducing contributions</li>
+                        <li>Partial withdrawal</li>
+                        <li>Loan</li>
+                        <li>Full surrender</li>
+                    </ul>
+                    As discussed please refer to the sliding scale in the policy documents illustrating the penalties to be levied at a given period.
+                </p>
+    
+                <p>
+                    <b>Gurantees:</b><br/>
+                    The product does not offer any guarantees. Invested funds will be subject to market fluctuations and may be exposed to capital losses 
+                </p>
+    
+                <p>
+                    <b>Legislative Restrictions:</b><br/>
+                    In the event of a withdrawal there may be restrictions on the maximum amount allowed as a withdrawal, any excess amount above the 
+                    allowed limit will have to remain invested until the end of the restricted period.
+                    In the event of any increase in contributions in which an increase of more than 20% of the preceeding two years premiums occurs a new restriction period of 5 years will apply
+    
+                </p>
+    
+                <p>
+                    <b>Implication of Fees:</b><br/> 
+                    Please note there will be fees levied on the investment, these fees will result in the reduction of the returns generated by the investment and in the event of low growth may also have a negative impact on the fund value. We have also discussed the EAC which is an illustration of the maximum total cost that may be levied on your investment.
+                </p>
+    
+                <p>
+                    <b>At death-Endownment:</b><br/>
+                    The proceeds will pay-out to your nominated beneficiary and will attract estate duty at a maximum of 25%. Should the beneficiary be your estate executors fees will be applicable. 
+                </p>
+    
+                <p>
+                    <b>At death-sinking fund</b><br/>
+                    The policy will be enforced with the new owner as stipulated.
+                </p>
+    
+    
+                </> : parseInt(key.Product_Taken)===2 ?
+                    <>
+                        <p><b>Tax Implications:</b><br/>
+                        There are significant tax benefits afforded to RA investors. You are permitted to deduct up to 27.5% of your annual taxable incomes (subject to  R350 000 per year maximum). Contributions in excess of this amount may deducted in the following tax year or at retirement. In addition to this, no income tax or capital gain tax is charged on the investment returns within an RA. Also, the funds housed in your RA do not form part of your estate, which means that this money will not be subject to executors fees or estate duty (except the excess contributions made). At retirement, you will be permitted to withdraw up to 1/3 of the value of the retirement annuity(s) of which the first R500 000 of the total withdrawal is tax-free subject to there being no previous withdrawals from any retirement fund.</p>
+                        
+                        <p><b>Liquidity:</b><br/>
+                        You will only be able to access the funds from age 55 onwards, subject to formal emigration from South Africa after a period of 3 years or at early retirement due to permanent disability.</p>
+    
+                        <p><b>Termination Penalties:</b><br/>
+                        Planner disclose as per the product</p>
+                        
+                        <p><b>Gurantees:</b><br/>
+                        The product does not offer any guarantees. Invested funds will be subject to market fluctuations and may be exposed to capital losses.</p>
+    
+                        <p><b>Legislative Restrictions:</b><br/>
+                        At retirement you have the option to withdraw 1/3 of the investment in cash. The remaining two-thirds must be used to purchase a pension income to sustain you during retirement. Alternatively you may choose to purchase an income with the full amount. Retirement annuity withdrawals are taxed according to the retirement lumpsum tax tables</p>
+    
+                        <p><b>Implication of Fees:</b><br/>
+                        Please note there will be fees levied on the investment, these fees will result in the reduction of the returns generated by the investment and in the event of low growth may also have a negative impact on the fund value. We have also discussed the EAC which is an illustration of the maximum total cost that may be levied on your investment.</p>
+    
+                        <p><b>Commutation at Retirement:</b><br/>
+                        You are allowed to commute the entire fund value provided the minimum fund value of R247 500 is met. This rule is applied per retirement fund and not per client. </p>
+    
+                        <p><b>At death</b><br/>
+                        You may nominate beneficiaries. However, the trustees of the fund will make the final decision in terms of equitable distribution of the funds. The trustees will take your wishes into account but are not bound by them.</p>
+                  </> 
+                  : parseInt(key.Product_Taken)===3 ? 
+                  <>
+                    <p>
+                        <b>Tax Implications:</b><br/>
+                        The investment will not attract any tax  if contributions are kept within the annual limits which are R36 000 p.a and R500 000 life time. Any excess contributions will be taxed at 40%. 
+                    </p>
+    
+                    <p>
+                        <b>Liquidity:</b><br/>
+                        Planner disclose 
+                    </p>
+    
+                    <p>
+                        <b>Termination Penalties:</b><br/>
+                        Planner to disclosed
+                    </p>
+    
+                    <p>
+                        <b>Gurantees:</b><br/>
+                        The product does not offer any guarantees. Invested funds will be subject to market fluctuations and may be exposed to capital losses.
+                    </p>
+    
+                    <p>
+                        <b>Implication of Fees:</b><br/> 
+                        Please note there will be fees levied on the investment, these fees will result in the reduction of the returns generated by the investment and in the event of low growth may also have a negative impact on the fund value. We have also discussed the EAC which is an illustration of the maximum total cost that may be levied on your investment.
+                    </p>
+    
+                    <p>
+                        <b>Legislative Restrictions:</b><br/> 
+                        There are limits to the annual and life time contributions on this investment. You may have multiple tax free savings accounts but the annual and lifetime limits limits are applied per individual and not per investment.In the event that you make a withdrawal any subsequent replacement of funds above the limit will attract tax at 40%.
+                    </p>
+    
+                    <p>
+                        <b>Death Benefit</b><br/>
+                        Planner to disclose
+                    </p>
+    
+                    </> : parseInt(key.Product_Taken)===4 ?
+                    <>
+                    <p>
+                        <b>Tax Implications:</b><br/>
+                        Your investment will be taxed in accordance with your marginal tax rate. This investment will attract capital gains tax when you change funds or when funds are withdrawn.
+                    </p>
+    
+                    <p>
+                        <b>Liquidity:</b><br/>
+                        You are allowed to make regular withdrawals.
+                    </p>
+    
+                    <p>
+                        <b>Termination Penalties:</b><br/> 
+                        No termination penalties 
+                    </p>
+    
+                    <p>
+                        <b>Gurantees:</b><br/>
+                        The product does not offer any guarantees. Invested funds will be subject to market fluctuations and may be exposed to capital losses.
+                    </p>
+                    
+                    <p>
+                        <b>Implication of Fees:</b><br/> 
+                        Please note there will be fees levied on the investment, these fees will result in the reduction of the returns generated by the investment and in the event of low growth may also have a negative impact on the fund value. We have also discussed the EAC which is an illustration of the maximum total cost that may be levied on your investment.
+                    </p>
+    
+                    <p>
+                        <b>Legislative Restrictions:</b><br/>
+                        The are no legislative restrictions on this investment 
+                    </p>
+    
+                    <p>
+                        <b>At Death</b><br/>
+                        You cannot appoint a beneficiary. In the event of death this benefit will pay into the your Estate. The investment will be an asset in your estate and will attract estate duty and executors’ fees. The investment will be distributed in accordance with your instructions in the will.
+                    </p>
+                </> : parseInt(key.Product_Taken)===5 ?
+                <>
+    
+                    <p>
+                        <b>Tax Implications:</b><br/>
+                        The income drawn form this investmenet will be taxed at your marginal tax rate taking into consideration your gross income form all your income streams. Due to this you may pay a higher tax than illustrated when looking at this investment individually.
+                    </p>
+    
+                    <p>
+                        <b>Termination Penalties:</b><br/> 
+                        This investment cannot be terminated
+                    </p>
+    
+                    <p>
+                        <b>Gurantees:</b><br/>
+                        The income amount paid out by this investment is guaranteed for life, if you have selecetd an escalation for your income the income will increase by the selected escalation annually. Selecting an escalation on your income will result I the initial income amount being substantially lower than if the level income option is selected.
+                    </p>
+    
+                    <p>
+                        <b>Implication of Fees:</b><br/>  
+                        The fees levied on this investment are priced into the product
+                    </p>
+    
+                    <p>
+                        <b>Legislative Restrictions:</b><br/> 
+                        The decision to invest in this product cannot be reversed, the income amount cannot be altered you will only receive annual increases if you have selected the escalation option
+                    </p>
+    
+                    <p>
+                        <b>At Death</b><br/>
+                        Single Life: If you have selecetd the single life option the income paid out on this investment will cease in the event of your death, the product does not have a death benefit this means no funds will be paid out.<br/><br/>
+                        Joint Life : If you have selected the joint life option it means you have elecetd to have two life assured on the product. In the event of the 1st life assureds death the income will continue paying out to the second life assured, the income paid out to the second life assured maybe reduced subject to the option you have selected. At the death of the second life assured income will cease and no death benefit will be paid out.<br/><br/>
+                        Guarantee Period : In the event that you have seleceted a guarantee period this means that in the event of your death or the death of both life assured in the case of a joint life within the guarantee period the income on this investment will continue to pay to your nominated beneficiary until the end of the guarantee period.
+    
+                    </p>
+    
+                    <p>
+                        Please not if death is to occur after the guarantee period no income will be paid to your nominated beneficiary.
+                    </p>
+            </> : parseInt(key.Product_Taken)===6 ?<>
+    
+                    <p>
+                        <b>Tax Implications:</b><br/>
+                        The growth on this investment will not attract any tax, but the income drawn will be taxed at your marginal tax rate taking into consideration all gross income generated form all available income streams. Due to this you may pay a higher tax than illustrated when looking at this investment individually.
+                    </p>
+    
+                    <p>
+                        <b>Liquidity:</b><br/> 
+                        This investment does not allow you to access the invested capital not even in the event of termination 
+                    </p>
+    
+                    <p>
+                        <b>Termination Penalties:</b><br/>
+                        In the event that you terminate this investment any applicable termination fees will be disclosed in the termination quotation 
+                    </p>
+    
+                    <p>
+                        <b>Gurantees:</b><br/>
+                        The product does not offer any guarantees, invested funds will be subject to markert fluctuations and pontential capital losses
+                    </p>
+    
+                    <p>
+                        <b>Implication of Fees:</b><br/> 
+                        Please note there will be fees levied on the invetsment, these fees will result in the reduction of returns generated by the investment and in the event of low growth may alos have a negative impact on the fund value. We have also discussed the EAC which is an illustration  the maximum tatal cost that may be levied on the investment. It also important to not that as a general rule and for longegivity the icnome withdrwaa rate should be kept lower than the invetsment return rate. I have also made you aware of inflation that is the risk that the buying power of your funds over time may be depleted and eroded . 
+                    </p>
+    
+                    <p>
+                        <b>Legislative Restrictions:</b><br/>
+                        There are limits imposed on the income witdrawal rate, currntly as legislation stands you are allowed a minimum of 2.5% and a maximum of 17.5%. The income withdrawal rate can be changed once a year depending on your income objectives at the time. It should be noted that changes in income rates should be considered in consideration to expected investment returns and adjustments and realingment consindered accordingly.  
+                    </p>
+    
+                    <p>
+                        In the event that this invetsment is terminated you will not have access to the inevsted capital but will be required to transffer the fund value to an alternative annuity vehicle, life or living annuity.
+                    </p>
+    
+                    <p>
+                        <b>At Death</b><br/>
+                        In the event of death the investment will pay-out directly to your nominated beneficiary and will not form part of your estate or attract any estate taxes. The beneficiary will be presented with the option to transfer the funds into a new annuity in their name or alternatively take the funds in cash which will attract taxes.The beneficiary also has an option the select the alternatives as a combination.  
+                    </p>
+    
+               </> : <></>
+              }
+              {
+                  backgroundInfoVisibility8 ? 
+                  <>
+                  <div id="background_info_instructions8" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              Explain any deviations from your recommendation and the implications thereof.
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                  null
+              }
+              <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
+                  id="ProductMaterialAspects" name='ProductMaterialAspects' value={key.ProductMaterialAspects} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
+                  onFocus={backgroundInfo_onFocus8}
+                  onBlur={backgroundInfo_onBlur8}
+                  placeholder={`Explain any deviations from your recommendation and the implications thereof.
+                  `}  aria-describedby=""  ></textarea>
+
+            <br/>
+              {
+                  backgroundInfoVisibility9 ? 
+                  <>
+                  <div id="background_info_instructions9" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                  null
+              }
+              <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
+                  id="ProductDetails" name='ProductDetails' value={key.ProductDetails} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
+                  onFocus={backgroundInfo_onFocus9}
+                  onBlur={backgroundInfo_onBlur9}
+                  placeholder={`The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
+                  `}  aria-describedby=""  ></textarea>
+
+
+              <br/>
+              {
+                  backgroundInfoVisibility10 ? 
+                  <>
+                  <div id="background_info_instructions10" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              Executor’s fees?<br/>
+                              Does the policy offer any liquidity?<br/>
+                              Provide a summary of the contents of the quote with regard to the following:<br/>
+                              Benefit terms (cease ages, cover periods etc.)<br/>
+                              Details of premium and cover pattern structure, frequency etc.
+
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                  null
+              }
+              <textarea maxLength={2000} className="form-control"  style={{height: '200px'}} 
+                  id="ExecutorFee" name='ExecutorFee' value={key.ExecutorFee} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
+                  onFocus={backgroundInfo_onFocus10}
+                  onBlur={backgroundInfo_onBlur10}
+                  placeholder={`Executor’s fees?
+            Does the policy offer any liquidity?
+            Provide a summary of the contents of the quote with regard to the following:
+            Benefit terms (cease ages, cover periods etc.)
+            Details of premium and cover pattern structure, frequency etc.
+                  
+                  `}  aria-describedby=""  ></textarea>
+
+
+            <br/>
+              {
+                  backgroundInfoVisibility11 ? 
+                  <>
+                  <div id="background_info_instructions11" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              Record discussion with regard to nomination of beneficiaries or cessionaries.
+
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                  null
+              }
+              <textarea maxLength={2000} className="form-control"  style={{height: '100px'}} 
+                  id="NominationOfBeneficiaries" name='NominationOfBeneficiaries' value={key.NominationOfBeneficiaries} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
+                  onFocus={backgroundInfo_onFocus11}
+                  onBlur={backgroundInfo_onBlur11}
+                  placeholder={`Record discussion with regard to nomination of beneficiaries or cessionaries.
+                  
+                  `}  aria-describedby=""  ></textarea>
+
+
+            <br/>
+              {
+                  backgroundInfoVisibility12 ? 
+                  <>
+                  <div id="background_info_instructions12" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              Discuss the following information which has been explained to client.<br/>
+                              General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)<br/>
+                              Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)<br/>
+                              Waiting periods<br/>
+                              Cooling off period
+
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                  null
+              }
+              <textarea maxLength={2000} className="form-control"  style={{height: '220px'}} 
+                  id="InformationExplained" name='InformationExplained' value={key.InformationExplained} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
+                  onFocus={backgroundInfo_onFocus12}
+                  onBlur={backgroundInfo_onBlur12}
+                  placeholder={`Discuss the following information which has been explained to client.
+            General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)
+            Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
+            Waiting periods
+            Cooling off period
+                  
+                  
+                  `}  aria-describedby=""  ></textarea>
+              
+            </>
+          ) 
+        }
+      )
     }
-    <textarea maxLength={2000} className="form-control"  style={{height: '220px'}} 
-        id="RP_InformationExplained" name='RP_InformationExplained' value={FormData['RP_InformationExplained']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus12}
-        onBlur={backgroundInfo_onBlur12}
-        placeholder={`Discuss the following information which has been explained to client.
-General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)
-Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
-Waiting periods
-Cooling off period
-        
-        
-        `}  aria-describedby=""  ></textarea>
 
                             <div className="container1">
                                 <div className="icon1 update">

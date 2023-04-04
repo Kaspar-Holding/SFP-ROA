@@ -7,6 +7,9 @@ import Tippy from '@tippyjs/react';
 import { connect } from 'react-redux'
 import 'tippy.js/dist/tippy.css'; // optional
 import Loader from '../Loader/Loader';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+
 const RiskFactors = ({user}) => {
     const [LoaderVisibility, setLoaderVisibility] = useState("none")
     const [dataVisibility, setDataVisibility] = useState("none")
@@ -393,23 +396,51 @@ const RiskFactors = ({user}) => {
             RF_Linked_Party_Acting : "0",
             RF_Linked_Party_Paying : "0",
             RF_Client_Match : "0",
-            RF_Client_Beneficiaries : "0",
-            RF_Adjust_Risk1 : "2",
-            RF_Name : "",
-            RF_ID : "",
-            RF_Linked_Party : "0",
-            RF_RCA : "0",
-            RF_Birth_Country : "0",
-            RF_Residence_Country : "0",
-            RF_Nationality1 : "0",
-            RF_Control1 : "",
-            RF_Control2 : "",
-            RF_Control3 : "",
-            RF_Another_Control1 : "0",
-            RF_Another_Control2 : "0",
+            RF_Client_Beneficiaries : "0"
 
     
         })    
+        const [LP_Data, setLP_Data] = useState([{
+            advisorId : user['id'],  
+            RF_LP_Adjust_Risk : 0,
+            RF_LP_Name : "",
+            RF_LP_Client_ID : "",
+            RF_LP_Client_Relationship : 0,
+            RF_LP_ID : "",
+            RF_LP_Linked_Party : 0,
+            RF_LP_RCA : 0,
+            RF_LP_Birth_Country : 206,
+            RF_LP_Residence_Country : 206,
+            RF_LP_Nationality : 206,
+        }])
+        const AddNewLP_Data = (e) => {
+            const current = [...LP_Data]
+            current.push({
+                advisorId : user['id'],  
+                formId : state['formId'], 
+                RF_LP_Adjust_Risk : 0,
+                RF_LP_Name : "",
+                RF_LP_Client_ID : "",
+                RF_LP_Client_Relationship : 0,
+                RF_LP_ID : "",
+                RF_LP_Linked_Party : 0,
+                RF_LP_RCA : 0,
+                RF_LP_Birth_Country : 206,
+                RF_LP_Residence_Country : 206,
+                RF_LP_Nationality : 206,
+            })
+            setLP_Data(current)
+        }
+        const RemoveNewLP_Data = (e) => {
+            const current = [...LP_Data]
+            current.pop()
+            setLP_Data(current)
+        }
+        const on_LP_Change = (e, i) => {
+            let newLP_Data = [...LP_Data]
+            newLP_Data[i][e.target.name] = e.target.value
+            setLP_Data(newLP_Data)
+        }
         var val1;
         const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
 
@@ -429,9 +460,25 @@ const RiskFactors = ({user}) => {
             })
             try {
                 const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/view_risk_factors_data/`, Body ,config)
-                // console.log(response.data['formData'])
                 if (response.status === 200) {
                     setFormData(response.data['formData'])
+                    if (response.data['LP_Data'].length > 0) {
+                        setLP_Data(response.data['LP_Data'])
+                    } else {
+                        setLP_Data([{
+                            advisorId : user['id'],  
+                            RF_LP_Adjust_Risk : 0,
+                            RF_LP_Name : "",
+                            RF_LP_Client_ID : "",
+                            RF_LP_Client_Relationship : 0,
+                            RF_LP_ID : "",
+                            RF_LP_Linked_Party : 0,
+                            RF_LP_RCA : 0,
+                            RF_LP_Birth_Country : 206,
+                            RF_LP_Residence_Country : 206,
+                            RF_LP_Nationality : 206,
+                        }])
+                    }
                 } 
                 // setSubmissionMessageVisibility("block")
             } catch (error) {
@@ -445,7 +492,6 @@ const RiskFactors = ({user}) => {
             setLoaderVisibility("none")
             setDataVisibility("block")
         }
-
         const [SuccessMessage, setSuccessMessage] = useState("")
         const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
         const updateRFForm = async() => {
@@ -477,6 +523,12 @@ const RiskFactors = ({user}) => {
                     message: error.response.statusText
                 })
                 setUpdateErrorVisibility("block")
+            }
+            const LP_Body = JSON.stringify(LP_Data)
+            try {
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_linked_party_data/`, LP_Body ,config) 
+            } catch (error) {
+                
             }
         }
         // console.log(FormData)
@@ -7334,631 +7386,219 @@ const RiskFactors = ({user}) => {
                         <option value="2">No</option>
                     </select>  
                 </div>
+                {
+                    parseInt(FormData['RF_Client_Beneficiaries']) === 1 ?
+                    LP_Data.map((key,i) => {
+                        // console.log(i+1)
+                        return (<>
+                            <hr/>
+                            <div className="col-2">
+                                <label className="col-form-label"><b>Linked Party {i+1}</b></label>
+                            </div>
 
-                {(() => { 
-                        
-                        if(parseInt(FormData['RF_Client_Beneficiaries'])===1)
-                        {
-                            return (<>
-                                <hr/>
+                            <div className="col-2">
+                            {(() => { 
+                    
+                            if(parseInt(key.RF_LP_Nationality)===1)
+                            {
+                                return (<>
+                                
                                 <div className="col-2">
-                                    <label className="col-form-label"><b>&nbsp;&nbsp;&nbsp;Linked Party 1</b></label>
+                                    <label className="col-form-label"><b>Low</b></label>
                                 </div>
+                                </>)
+                            }
 
+                            else if(parseInt(key.RF_LP_Nationality)===2)
+                            {
+                                return (<>
+                                
                                 <div className="col-2">
-                                {(() => { 
-                        
-                                if(parseInt(FormData['RF_Adjust_Risk1'])===1)
-                                {
-                                    return (<>
-                                    
-                                    <div className="col-2">
-                                        <label className="col-form-label"><b>Low</b></label>
-                                    </div>
-                                    </>)
-                                }
+                                    <label className="col-form-label"><b>Medium</b></label>
+                                </div>
+                                </>)
+                            }
 
-                                else if(parseInt(FormData['RF_Adjust_Risk1'])===2)
-                                {
-                                    return (<>
-                                    
-                                    <div className="col-2">
-                                        <label className="col-form-label"><b>Medium</b></label>
-                                    </div>
-                                    </>)
-                                }
+                            if(parseInt(key.RF_LP_Nationality)===3)
+                            {
+                                return (<>
+                                
+                                <div className="col-2">
+                                    <label className="col-form-label"><b>High</b></label>
+                                </div>
+                                </>)
+                            }
 
-                                if(parseInt(FormData['RF_Adjust_Risk1'])===3)
-                                {
-                                    return (<>
-                                    
-                                    <div className="col-2">
-                                        <label className="col-form-label"><b>High</b></label>
-                                    </div>
-                                    </>)
-                                }
+                            if(parseInt(key.RF_LP_Nationality)===4)
+                            {
+                                return (<>
+                                
+                                <div className="col-2">
+                                    <label className="col-form-label"><b>Intolerable</b></label>
+                                </div>
+                                </>)
+                            }
 
-                                if(parseInt(FormData['RF_Adjust_Risk1'])===4)
-                                {
-                                    return (<>
-                                    
-                                    <div className="col-2">
-                                        <label className="col-form-label"><b>Intolerable</b></label>
-                                    </div>
-                                    </>)
-                                }
+                            })()}
+                            </div>
 
+                            <div className="col-2">
+                                <label className="col-form-label"><b>Adjust Risk</b></label>
+                            </div>
+
+                            <div className="col-2">
+                                <select className="text-start form-select" name='RF_LP_Adjust_Risk' id='RF_LP_Adjust_Risk' value={key.RF_LP_Adjust_Risk} onChange={(e)=>{on_LP_Change(e,i)}} aria-label="Default select example">
+                                    <option value="0">Select Adjust Risk</option>
+                                    <option value="1">Low</option>
+                                    <option value="2">Medium</option>
+                                    <option value="3">High</option>
+                                    <option value="4">Intolerable</option>
+                                </select>  
+                            </div>
+                            <div className="col-2">
+                                                                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewLP_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Linked Party</button>
+                                {/* <label className="col-form-label" onClick={(e)=>{AddNewLP_Data(e)}}><FontAwesomeIcon icon={faPlus} /></label> */}
+                            </div>
+                            {
+                                LP_Data.length > 1 ?
+                                <div className="col-2">
+                                                                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewLP_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Linked Party</button>
+                                    {/* <label className="col-form-label" onClick={(e)=>{RemoveNewLP_Data(e)}}><FontAwesomeIcon icon={faMinus} /></label> */}
+                                </div>
+                                : <></>
+                            }
+
+                            <hr/>
+                            <div className="col-2">
+                                <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name and surname</label>
+                            </div>
+
+                            <div className="col-2">
+                            <input spellCheck="true" id="RF_LP_Name" name='RF_LP_Name' className="form-control" required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} value={key.RF_LP_Name}  onChange={(e) => {on_LP_Change(e,i)}} placeholder=""  aria-describedby="" />
+                            </div>
+
+                            <hr/>
+                            <div className="col-2">
+                                <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relationship to client</label>
+                            </div>
+
+                            <div className="col-2">
+                                <select className="text-start form-select" name='RF_LP_Client_Relationship' required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} id='RF_LP_Client_Relationship' value={key.RF_LP_Client_Relationship} onChange={(e) => {on_LP_Change(e,i)}} aria-label="Default select example">
+                                    <option value="0" selected>Select Option</option>
+                                    <option value="1">Beneficial owner</option>
+                                    <option value="2">Beneficiary</option>
+                                    <option value="3">Co-policy owner</option>
+                                    <option value="4">Dependent</option>
+                                    <option value="5">EFT third party</option>
+                                    <option value="6">Individual acting on behalf of an entity</option>
+                                    <option value="7">Individual exercising control other than owner</option>
+                                    <option value="8">Individual linked to a partnership</option>
+                                    <option value="9">Individual linked to a trust</option>
+                                    <option value="10">Legal entity acting on behalf of individual</option>
+                                    <option value="11">Legal entity acting on behalf of other legal entity</option>
+                                    <option value="12">Legal Entity exercising control over another Legal Entity</option>
+                                    <option value="13">Legal Entity has legal relationship with other Legal Entity</option>
+                                    <option value="14">Legal Entity linked to a Trust</option>
+                                    <option value="15">Legal guardian</option>
+                                    <option value="16">Life assured</option>
+                                    <option value="17">Natural guardian</option>
+                                    <option value="18">Nominee for ownership</option>
+                                    <option value="19">Principal owner</option>
+                                    <option value="20">Security cession</option>
+                                    <option value="21">Signatory</option>
+                                    <option value="22">Trust has control over another trust</option>
+                                    <option value="23">Trustee</option>
+                                    <option value="24">Unit transfer investment owner</option>
+                                    
+                                </select>  
+                            </div>
+
+                            <hr/>
+                            <div className="col-2">
+                                <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID/Passport Number/Tax Number</label>
+                            </div>
+
+                            <div className="col-2">
+                                <input spellCheck="true" id="RF_LP_ID" name='RF_LP_ID' required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} className="form-control" value={key.RF_LP_ID} onChange={(e) => {on_LP_Change(e,i)}} placeholder=""  aria-describedby="" />
+                            </div>
+                            
+                            <hr/>
+                            <div className="col-2">
+                                <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linked Party is a true match on</label>
+                            </div>
+
+                            <div className="col-2">
+                                <select className="text-start form-select" name='RF_LP_Linked_Party' id='RF_LP_Linked_Party' required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} value={parseInt(key.RF_LP_Linked_Party)} onChange={(e)=>{on_LP_Change(e,i)}} aria-label="Default select example">
+                                    <option value="0" selected>Select Option</option>
+                                    <option value="1">Adverse Media</option>
+                                    <option value="2">Enforcement,SIP,SIE</option>
+                                    <option value="3">False Positive</option>
+                                    <option value="4">False Positive-Unsure</option>
+                                    <option value="5">False Positive-Unsure:Sanctions</option>
+                                    <option value="6">No Alert</option>
+                                    <option value="7">PEP-Domestic</option>
+                                    <option value="8">PEP-Foreign</option>
+                                    <option value="9">Sanction</option>
+                                    <option value="10">Sanlam Do not Transact List</option>
+                                    <option value="11">SOE</option>
+
+                                </select>  
+                            </div>
+
+                            <div className="col-2">
+                                <label className="col-form-label"></label>
+                            </div>
+
+                            <div className="col-2">
+                                <label className="col-form-label"></label>
+                            </div>
+
+                            <div className="col-1">
+                            {(() => { 
+                                    
+                                    if(parseInt(key.RF_LP_Linked_Party)===1 || parseInt(key.RF_LP_Linked_Party)===4 || parseInt(key.RF_LP_Linked_Party)===7)
+                                    {
+                                        return (<>
+                                            
+                                            <label className="col-form-label">2</label>
+                                            
+                                        </>);
+                                    }
+
+                                    if(parseInt(key.RF_LP_Linked_Party)===2 || parseInt(key.RF_LP_Linked_Party)===5 || parseInt(key.RF_LP_Linked_Party)===8 || parseInt(key.RF_LP_Linked_Party)===11)
+                                    {
+                                        return (<>
+                                            
+                                            <label className="col-form-label">3</label>
+                                            
+                                        </>);
+                                    }
+
+                                    
+                                    if(parseInt(key.RF_LP_Linked_Party)===3 || parseInt(key.RF_LP_Linked_Party)===6)
+                                    {
+                                        return (<>
+                                            
+                                            <label className="col-form-label">1</label>
+                                            
+                                        </>);
+                                    }
+
+                                    if(parseInt(key.RF_LP_Linked_Party)===9 || parseInt(key.RF_LP_Linked_Party)===10)
+                                    {
+                                        return (<>
+                                            
+                                            <label className="col-form-label">4</label>
+                                            
+                                        </>);
+                                    }
                                 })()}
-                                </div>
+                            </div>
 
-                                <div className="col-2">
-                                    <label className="col-form-label"><b>Adjust Risk</b></label>
-                                </div>
-
-                                <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Adjust_Risk1' id='RF_Adjust_Risk1' value={parseInt(FormData['RF_Adjust_Risk1'])} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
-                                        <option value="0"></option>
-                                        <option value="1">Low</option>
-                                        <option value="2">Medium</option>
-                                        <option value="3">High</option>
-                                        <option value="4">Intolerable</option>
-                                    </select>  
-                                </div>
-
-                                <hr/>
-                                <div className="col-2">
-                                    <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name and surname</label>
-                                </div>
-
-                                <div className="col-2">
-                                <input spellCheck="true" id="RF_Name" name='RF_Name' className="form-control" value={FormData['RF_Name']}  onChange={(e) => {onChange(e)}} placeholder=""  aria-describedby="" />
-                                </div>
-
-                                <hr/>
-                                <div className="col-2">
-                                    <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relationship to client</label>
-                                </div>
-
-                                <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Client_Relationship' id='RF_Client_Relationship' value={FormData['RF_Client_Relationship']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
-                                        <option value="0" selected>Select Option</option>
-                                        <option value="1">Beneficial owner</option>
-                                        <option value="2">Beneficiary</option>
-                                        <option value="3">Co-policy owner</option>
-                                        <option value="4">Dependent</option>
-                                        <option value="5">EFT third party</option>
-                                        <option value="6">Individual acting on behalf of an entity</option>
-                                        <option value="7">Individual exercising control other than owner</option>
-                                        <option value="8">Individual linked to a partnership</option>
-                                        <option value="9">Individual linked to a trust</option>
-                                        <option value="10">Legal entity acting on behalf of individual</option>
-                                        <option value="11">Legal entity acting on behalf of other legal entity</option>
-                                        <option value="12">Legal Entity exercising control over another Legal Entity</option>
-                                        <option value="13">Legal Entity has legal relationship with other Legal Entity</option>
-                                        <option value="14">Legal Entity linked to a Trust</option>
-                                        <option value="15">Legal guardian</option>
-                                        <option value="16">Life assured</option>
-                                        <option value="17">Natural guardian</option>
-                                        <option value="18">Nominee for ownership</option>
-                                        <option value="19">Principal owner</option>
-                                        <option value="20">Security cession</option>
-                                        <option value="21">Signatory</option>
-                                        <option value="22">Trust has control over another trust</option>
-                                        <option value="23">Trustee</option>
-                                        <option value="24">Unit transfer investment owner</option>
-                                        
-                                    </select>  
-                                </div>
-
-                                <hr/>
-                                <div className="col-2">
-                                    <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID/Passport Number/Tax &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number</label>
-                                </div>
-
-                                <div className="col-2">
-                                    <input spellCheck="true" id="RF_ID" name='RF_ID' className="form-control" value={FormData['RF_ID']} onChange={(e) => {onChange(e)}} placeholder=""  aria-describedby="" />
-                                </div>
-                                
-                                <hr/>
-                                <div className="col-2">
-                                    <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linked Party is a true&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; match on</label>
-                                </div>
-
-                                <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Linked_Party' id='RF_Linked_Party' value={parseInt(FormData['RF_Linked_Party'])} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
-                                        <option value="0" selected>Select Option</option>
-                                        <option value="1">Adverse Media</option>
-                                        <option value="2">Enforcement,SIP,SIE</option>
-                                        <option value="3">False Positive</option>
-                                        <option value="4">False Positive-Unsure</option>
-                                        <option value="5">False Positive-Unsure:Sanctions</option>
-                                        <option value="6">No Alert</option>
-                                        <option value="7">PEP-Domestic</option>
-                                        <option value="8">PEP-Foreign</option>
-                                        <option value="9">Sanction</option>
-                                        <option value="10">Sanlam Do not Trnsact List</option>
-                                        <option value="11">SOE</option>
-
-                                    </select>  
-                                </div>
-
-                                <div className="col-2">
-                                    <label className="col-form-label"></label>
-                                </div>
-
-                                <div className="col-2">
-                                    <label className="col-form-label"></label>
-                                </div>
-
-                                <div className="col-1">
-                                {(() => { 
-                                        
-                                        if(parseInt(FormData['RF_Linked_Party'])===1 || parseInt(FormData['RF_Linked_Party'])===4 || parseInt(FormData['RF_Linked_Party'])===7)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">2</label>
-                                                
-                                            </>);
-                                        }
-
-                                        if(parseInt(FormData['RF_Linked_Party'])===2 || parseInt(FormData['RF_Linked_Party'])===5 || parseInt(FormData['RF_Linked_Party'])===8 || parseInt(FormData['RF_Linked_Party'])===11)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">3</label>
-                                                
-                                            </>);
-                                        }
-
-                                        
-                                        if(parseInt(FormData['RF_Linked_Party'])===3 || parseInt(FormData['RF_Linked_Party'])===6)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">1</label>
-                                                
-                                            </>);
-                                        }
-
-                                        if(parseInt(FormData['RF_Linked_Party'])===9 || parseInt(FormData['RF_Linked_Party'])===10)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">4</label>
-                                                
-                                            </>);
-                                        }
-                                    })()}
-                                </div>
-
-                                <div className="col-1">
-                                {(() => { 
-                                        
-                                        if(parseInt(FormData['RF_Linked_Party'])===1 || parseInt(FormData['RF_Linked_Party'])===2 || parseInt(FormData['RF_Linked_Party'])===3 || parseInt(FormData['RF_Linked_Party'])===4 || parseInt(FormData['RF_Linked_Party'])===5|| parseInt(FormData['RF_Linked_Party'])===6 || parseInt(FormData['RF_Linked_Party'])===7 || parseInt(FormData['RF_Linked_Party'])===8 || parseInt(FormData['RF_Linked_Party'])===9 || parseInt(FormData['RF_Linked_Party'])===10 || parseInt(FormData['RF_Linked_Party'])===11)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">1</label>
-                                                
-                                            </>);
-                                        }
-                                    })()}
-                                </div>
-
-                                <div className="col-2">
-                                {(() => { 
-                                        
-                                        if(parseInt(FormData['RF_Linked_Party'])===1 || parseInt(FormData['RF_Linked_Party'])===4 || parseInt(FormData['RF_Linked_Party'])===7)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">2</label>
-                                                
-                                            </>);
-                                        }
-
-                                        
-                                        if(parseInt(FormData['RF_Linked_Party'])===2 || parseInt(FormData['RF_Linked_Party'])===5 || parseInt(FormData['RF_Linked_Party'])===8 || parseInt(FormData['RF_Linked_Party'])===11)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">3</label>
-                                                
-                                            </>);
-                                        }
-
-                                        if(parseInt(FormData['RF_Linked_Party'])===3 || parseInt(FormData['RF_Linked_Party'])===6)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">1</label>
-                                                
-                                            </>);
-                                        }
-
-                                        if(parseInt(FormData['RF_Linked_Party'])===9 || parseInt(FormData['RF_Linked_Party'])===10)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">4</label>
-                                                
-                                            </>);
-                                        }
-                                    })()}
-                                </div>
-
-                                <hr/>
-                                <div className="col-2">
-                                    <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Is this a RCA (relative / close associate) to Client? </label>
-                                </div>
-
-                                <div className="col-2">
-                                    <select className="text-start form-select" name='RF_RCA' id='RF_RCA' value={parseInt(FormData['RF_RCA'])} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
-                                        <option value="0" selected>Select Option</option>
-                                        <option value="1">Yes</option>
-                                        <option value="2">No</option>
-                                    </select>  
-                                </div>
-
-                                <div className="col-2">
-                                    <label className="col-form-label"></label>
-                                </div>
-
-                                <div className="col-2">
-                                    <label className="col-form-label"></label>
-                                </div>
-
-                                <div className="col-1">
-                                {(() => { 
-                                        
-                                        if(parseInt(FormData['RF_RCA'])===1)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">2</label>
-                                                
-                                            </>);
-                                        }
-                                        if(parseInt(FormData['RF_RCA'])===2)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">0</label>
-                                                
-                                            </>);
-                                        }
+                            <div className="col-1">
+                            {(() => { 
                                     
-                                    })()}
-                                </div>
-
-                                <div className="col-1">
-                                    <label className="col-form-label">1</label>
-                                </div>
-
-                                <div className="col-1">
-                                {(() => { 
-                                        
-                                        if(parseInt(FormData['RF_RCA'])===1)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">2</label>
-                                                
-                                            </>);
-                                        }
-
-                                        else if(parseInt(FormData['RF_RCA'])===2)
-                                        {
-                                            return (<>
-                                                
-                                                <label className="col-form-label">0</label>
-                                                
-                                            </>);
-                                        }
-                                    
-                                    })()}
-                                </div>
-
-                                <hr/>
-                                <div className="col-2">
-                                    <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country of Birth </label>
-                                </div>
-
-                                <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Birth_Country' id='RF_Birth_Country' value={parseInt(FormData['RF_Birth_Country'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
-                                        <option value="0" selected>Select Option</option>
-                                        <option value="1">Afghanistan</option>
-                                        <option value="2">Albania</option>
-                                        <option value="3">Algeria</option>
-                                        <option value="4">American Samoa</option>
-                                        <option value="5">Andora</option>
-                                        <option value="6">Angola</option>
-                                        <option value="7">Anguilla</option>
-                                        <option value="8">Antarctica</option>
-                                        <option value="9">Antigua and Barbuda</option>
-                                        <option value="10">Argentina</option>
-                                        <option value="11">Armania</option>
-                                        <option value="12">Aruba</option>
-                                        <option value="13">Auckland Islands</option>
-                                        <option value="14">Australia</option>
-                                        <option value="15">Austria</option>
-                                        <option value="16">Azerbaijan</option>
-                                        <option value="17">Bahamas</option>
-                                        <option value="18">Bahrain</option>
-                                        <option value="19">Bangladesh</option>
-                                        <option value="20">Barbados</option>
-                                        <option value="21">Belarus</option>
-                                        <option value="22">Belgium</option>
-                                        <option value="23">Belize</option>
-                                        <option value="24">Benin</option>
-                                        <option value="25">Bermuda</option>
-                                        <option value="26">Bhutan</option>
-                                        <option value="27">Bolivia</option>
-                                        <option value="28">Bonaire</option>
-                                        <option value="29">Bosnia</option>
-                                        <option value="30">Botswana</option>
-                                        <option value="31">Bouvet Islands</option>
-                                        <option value="32">Brazil</option>
-                                        <option value="33">British Indian Ocean Teritory</option>
-                                        <option value="34">Brunei Darussalam</option>
-                                        <option value="35">Bulgaria</option>
-                                        <option value="36">Burkina Faso</option>
-                                        <option value="37">Burundi</option>
-                                        <option value="38">Cabo Verde</option>
-                                        <option value="39">Cambodia</option>
-                                        <option value="40">Cameroon</option>
-                                        <option value="41">Canada</option>
-                                        <option value="42">Cayman Islands</option>
-                                        <option value="43">Central African Republic</option>
-                                        <option value="44">Chad</option>
-                                        <option value="45">Chile</option>
-                                        <option value="46">China</option>
-                                        <option value="47">Christmas Island</option>
-                                        <option value="48">Cocos</option>
-                                        <option value="49">Colombia</option>
-                                        <option value="50">Comoros</option>
-                                        <option value="51">Congo Democratic</option>
-                                        <option value="52">Congo Republic</option>
-                                        <option value="53">Cook Islands</option>
-                                        <option value="54">Costa Rica</option>
-                                        <option value="55">Ivory Cost</option>
-                                        <option value="56">Croatia</option>
-                                        <option value="57">Cuba</option>
-                                        <option value="58">Curacao</option>
-                                        <option value="59">Cyprus</option>
-                                        <option value="60">Czech Republic</option>
-                                        <option value="61">Denmark</option>
-                                        <option value="62">Djibouti</option>
-                                        <option value="63">Dominica</option>
-                                        <option value="64">Dominican Republic</option>
-                                        <option value="65">Ecuador</option>
-                                        <option value="66">Egypt</option>
-                                        <option value="67">EI Salvador</option>
-                                        <option value="68">Equatorial Guinea</option>
-                                        <option value="69">Eritrea</option>
-                                        <option value="70">Estonia</option>
-                                        <option value="71">eSwaitini</option>
-                                        <option value="72">Ethiopia</option>
-                                        <option value="73">Falkland Islands</option>
-                                        <option value="74">Faroe Islands</option>
-                                        <option value="75">Fiji</option>
-                                        <option value="76">Finland</option>
-                                        <option value="77">France</option>
-                                        <option value="78">French Guiana</option>
-                                        <option value="79">French Polynesia</option>
-                                        <option value="80">French Southern Territories</option>
-                                        <option value="81">Gabon</option>
-                                        <option value="82">Gambia</option>
-                                        <option value="83">Georgia</option>
-                                        <option value="84">Germany</option>
-                                        <option value="85">Ghana</option>
-                                        <option value="86">Gibralter</option>
-                                        <option value="87">Greece</option>
-                                        <option value="88">Greenland</option>
-                                        <option value="89">Grenada</option>
-                                        <option value="90">Guadeloupe</option>
-                                        <option value="91">Guam</option>
-                                        <option value="92">Guatemala</option>
-                                        <option value="93">Guernsey</option>
-                                        <option value="94">Guinea</option>
-                                        <option value="95">Guinea Bissau</option>
-                                        <option value="96">Guyana</option>
-                                        <option value="97">Haiti</option>
-                                        <option value="98">Herd Island</option>
-                                        <option value="99">Holy See</option>
-                                        <option value="100">Honduras</option>
-                                        <option value="101">Hongkong</option>
-                                        <option value="102">Hungary</option>
-                                        <option value="103">Iceland</option>
-                                        <option value="104">India</option>
-                                        <option value="105">Indonessia</option>
-                                        <option value="106">Iran</option>
-                                        <option value="107">Iraq</option>
-                                        <option value="108">Ireland</option>
-                                        <option value="109">Isle of man</option>
-                                        <option value="110">Israel</option>
-                                        <option value="111">Italy</option>
-                                        <option value="112">Jamaica</option>
-                                        <option value="113">Japan</option>
-                                        <option value="114">Jersey</option>
-                                        <option value="115">Jordan</option>
-                                        <option value="116">Kazakhstan</option>
-                                        <option value="117">Kenya</option>
-                                        <option value="118">Kiribati</option>
-                                        <option value="119">Korea North</option>
-                                        <option value="120">Korea South</option>
-                                        <option value="121">Kosovo</option>
-                                        <option value="122">Kuwait</option>
-                                        <option value="123">Kyrgyzstan</option>
-                                        <option value="124">Laos</option>
-                                        <option value="125">Latvia</option>
-                                        <option value="126">Lebanon</option>
-                                        <option value="127">Lesotho</option>
-                                        <option value="128">Liberia</option>
-                                        <option value="129">Libya</option>
-                                        <option value="130">Liechtenstein</option>
-                                        <option value="131">Lithuania</option>
-                                        <option value="132">Luxembourg</option>
-                                        <option value="133">Macao</option>
-                                        <option value="134">Macedonia</option>
-                                        <option value="135">Madagascar</option>
-                                        <option value="136">Malawi</option>
-                                        <option value="137">Malaysia</option>
-                                        <option value="138">Maldives</option>
-                                        <option value="139">Mali</option>
-                                        <option value="140">Malta</option>
-                                        <option value="141">Marshall Islands</option>
-                                        <option value="142">Martinique</option>
-                                        <option value="143">Mauritania</option>
-                                        <option value="144">Mauritius</option>
-                                        <option value="145">Mayotte</option>
-                                        <option value="146">Mexico</option>
-                                        <option value="147">Micronessia</option>
-                                        <option value="148">Moldova</option>
-                                        <option value="149">Monaco</option>
-                                        <option value="150">Mongolia</option>
-                                        <option value="151">Montenegro</option>
-                                        <option value="152">Montserrat</option>
-                                        <option value="153">Morocco</option>
-                                        <option value="154">Mozambique</option>
-                                        <option value="155">Mynamar</option>
-                                        <option value="156">Namabia</option>
-                                        <option value="157">Nauru</option>
-                                        <option value="158">Nepal</option>
-                                        <option value="159">Netherlands</option>
-                                        <option value="160">New Celedonia</option>
-                                        <option value="161">Newzealand</option>
-                                        <option value="162">Niger</option>
-                                        <option value="163">Nigeria</option>
-                                        <option value="164">Norfolk Island</option>
-                                        <option value="165">Nothern Mariana Islands</option>
-                                        <option value="166">Norway</option>
-                                        <option value="167">Nuie</option>
-                                        <option value="168">Oman</option>
-                                        <option value="169">Pakistan</option>
-                                        <option value="170">Palau</option>
-                                        <option value="171">Panama</option>
-                                        <option value="172">Papua New Guinea</option>
-                                        <option value="173">Paraguay</option>
-                                        <option value="174">Peru</option>
-                                        <option value="175">Philippines</option>
-                                        <option value="176">Pitcaim</option>
-                                        <option value="177">Poland</option>
-                                        <option value="178">Portugal</option>
-                                        <option value="179">Puerto Rico</option>
-                                        <option value="180">Qatar</option>
-                                        <option value="181">Reunion</option>
-                                        <option value="182">Roman</option>
-                                        <option value="183">Russia</option>
-                                        <option value="184">Rwanda</option>
-                                        <option value="185">Saint Barthelemy</option>
-                                        <option value="186">Saint Helena</option>
-                                        <option value="187">Saint Kitts</option>
-                                        <option value="188">Saint Lucia</option>
-                                        <option value="189">Saint Martin</option>
-                                        <option value="190">Saint Pierre</option>
-                                        <option value="191">Saint Vincent</option>
-                                        <option value="192">Samoa</option>
-                                        <option value="193">Saint Marino</option>
-                                        <option value="194">Sao Tome</option>
-                                        <option value="195">Saudia Arabia</option>
-                                        <option value="196">Senegal</option>
-                                        <option value="197">Serbia</option>
-                                        <option value="198">Seychelles</option>
-                                        <option value="199">Sierra Leone</option>
-                                        <option value="200">Singapore</option>
-                                        <option value="201">Sint Martin</option>
-                                        <option value="202">Slovekia</option>
-                                        <option value="203">Slovenia</option>
-                                        <option value="204">Solomon Islands</option>
-                                        <option value="205">Somalia</option>
-                                        <option value="206">South Africa</option>
-                                        <option value="207">South Georgia</option>
-                                        <option value="208">South Sudan</option>
-                                        <option value="209">SPain</option>
-                                        <option value="210">Srilanka</option>
-                                        <option value="211">Sudan</option>
-                                        <option value="212">Suriname</option>
-                                        <option value="213">Svalbard</option>
-                                        <option value="214">Sweden</option>
-                                        <option value="215">Switxerland</option>
-                                        <option value="216">Syria</option>
-                                        <option value="217">Taiwan</option>
-                                        <option value="218">Tajikistan</option>
-                                        <option value="219">Tanzania</option>
-                                        <option value="220">Thailand</option>
-                                        <option value="221">Timor Leste</option>
-                                        <option value="222">Togo</option>
-                                        <option value="223">Tokelau</option>
-                                        <option value="224">Tonga</option>
-                                        <option value="225">Trinidad</option>
-                                        <option value="226">Tunisia</option>
-                                        <option value="227">Turkey</option>
-                                        <option value="228">Turkmenistan</option>
-                                        <option value="229">Turks</option>
-                                        <option value="230">Tuvalu</option>
-                                        <option value="231">Uganda</option>
-                                        <option value="232">Ukraine</option>
-                                        <option value="233">United Arab Emirates</option>
-                                        <option value="224">United Kingdom</option>
-                                        <option value="225">United States Minor</option>
-                                        <option value="226">United States of America</option>
-                                        <option value="227">Uruguay</option>
-                                        <option value="228">Uzbekistan</option>
-                                        <option value="229">Vanuatu</option>
-                                        <option value="230">Venezuela</option>
-                                        <option value="231">Vietnam</option>
-                                        <option value="232">Virgin Islands(British)</option>
-                                        <option value="233">Virgin Islands(US)</option>
-                                        <option value="234">Wallis and Fatuna</option>
-                                        <option value="235">West Bank</option>
-                                        <option value="236">Western Sahara</option>
-                                        <option value="237">Yemen</option>
-                                        <option value="238">Zambia</option>
-                                        <option value="239">Zimbabwe</option>
-
-                                    </select> 
-                                </div>
-
-                                <div className="col-2">
-                                    <label className="col-form-label"></label>
-                                </div>
-
-                                <div className="col-2">
-                                    <label className="col-form-label"></label>
-                                </div>
-
-                                <div className="col-1">
-                                    {(() => { 
-                                    
-                                    if(parseInt(FormData['RF_Birth_Country'])===1 || parseInt(FormData['RF_Birth_Country'])===2 || parseInt(FormData['RF_Birth_Country'])===3 || parseInt(FormData['RF_Birth_Country'])===4 || parseInt(FormData['RF_Birth_Country'])===6 || parseInt(FormData['RF_Birth_Country'])===8 || parseInt(FormData['RF_Birth_Country'])===10 || parseInt(FormData['RF_Birth_Country'])===13 || parseInt(FormData['RF_Birth_Country'])===16 || parseInt(FormData['RF_Birth_Country'])===17 || parseInt(FormData['RF_Birth_Country'])===19 || parseInt(FormData['RF_Birth_Country'])===20 || parseInt(FormData['RF_Birth_Country'])===24 || parseInt(FormData['RF_Birth_Country'])===27
-                                        || parseInt(FormData['RF_Birth_Country'])===28 || parseInt(FormData['RF_Birth_Country'])===29 || parseInt(FormData['RF_Birth_Country'])===31 || parseInt(FormData['RF_Birth_Country'])===32 || parseInt(FormData['RF_Birth_Country'])===33 || parseInt(FormData['RF_Birth_Country'])===36 || parseInt(FormData['RF_Birth_Country'])===37 || parseInt(FormData['RF_Birth_Country'])===39 || parseInt(FormData['RF_Birth_Country'])===41 || parseInt(FormData['RF_Birth_Country'])===42 || parseInt(FormData['RF_Birth_Country'])===43 || parseInt(FormData['RF_Birth_Country'])===46 || parseInt(FormData['RF_Birth_Country'])===47 || parseInt(FormData['RF_Birth_Country'])===48 || parseInt(FormData['RF_Birth_Country'])===49 || parseInt(FormData['RF_Birth_Country'])===50 || parseInt(FormData['RF_Birth_Country'])===51 || parseInt(FormData['RF_Birth_Country'])===52 || parseInt(FormData['RF_Birth_Country'])===53
-                                        || parseInt(FormData['RF_Birth_Country'])===55 || parseInt(FormData['RF_Birth_Country'])===58 || parseInt(FormData['RF_Birth_Country'])===62 || parseInt(FormData['RF_Birth_Country'])===64 || parseInt(FormData['RF_Birth_Country'])===65 || parseInt(FormData['RF_Birth_Country'])===66 || parseInt(FormData['RF_Birth_Country'])===67 || parseInt(FormData['RF_Birth_Country'])===68 || parseInt(FormData['RF_Birth_Country'])===69 || parseInt(FormData['RF_Birth_Country'])===71 || parseInt(FormData['RF_Birth_Country'])===72 || parseInt(FormData['RF_Birth_Country'])===73 || parseInt(FormData['RF_Birth_Country'])===74
-                                        || parseInt(FormData['RF_Birth_Country'])===82 || parseInt(FormData['RF_Birth_Country'])===85 || parseInt(FormData['RF_Birth_Country'])===86 || parseInt(FormData['RF_Birth_Country'])===90 || parseInt(FormData['RF_Birth_Country'])===91 || parseInt(FormData['RF_Birth_Country'])===92 || parseInt(FormData['RF_Birth_Country'])===93
-                                        || parseInt(FormData['RF_Birth_Country'])===94 || parseInt(FormData['RF_Birth_Country'])===95 || parseInt(FormData['RF_Birth_Country'])===97 || parseInt(FormData['RF_Birth_Country'])===98 || parseInt(FormData['RF_Birth_Country'])===99 || parseInt(FormData['RF_Birth_Country'])===100 || parseInt(FormData['RF_Birth_Country'])===103 
-                                        
-                                        || parseInt(FormData['RF_Birth_Country'])===109 || parseInt(FormData['RF_Birth_Country'])===112  || parseInt(FormData['RF_Birth_Country'])===115 || parseInt(FormData['RF_Birth_Country'])===116  || parseInt(FormData['RF_Birth_Country'])===117  || parseInt(FormData['RF_Birth_Country'])===121  || parseInt(FormData['RF_Birth_Country'])===123  || parseInt(FormData['RF_Birth_Country'])===124
-                                        || parseInt(FormData['RF_Birth_Country'])===126 || parseInt(FormData['RF_Birth_Country'])===127  || parseInt(FormData['RF_Birth_Country'])===128 || parseInt(FormData['RF_Birth_Country'])===129  || parseInt(FormData['RF_Birth_Country'])===134  || parseInt(FormData['RF_Birth_Country'])===135  || parseInt(FormData['RF_Birth_Country'])===136
-                                        || parseInt(FormData['RF_Birth_Country'])===139 || parseInt(FormData['RF_Birth_Country'])===143  || parseInt(FormData['RF_Birth_Country'])===145 || parseInt(FormData['RF_Birth_Country'])===146  || parseInt(FormData['RF_Birth_Country'])===148  || parseInt(FormData['RF_Birth_Country'])===150 || parseInt(FormData['RF_Birth_Country'])===151
-                                        || parseInt(FormData['RF_Birth_Country'])===152 || parseInt(FormData['RF_Birth_Country'])===153 || parseInt(FormData['RF_Birth_Country'])===154 || parseInt(FormData['RF_Birth_Country'])===155 || parseInt(FormData['RF_Birth_Country'])===158 || parseInt(FormData['RF_Birth_Country'])===160 || parseInt(FormData['RF_Birth_Country'])===162 
-                                        || parseInt(FormData['RF_Birth_Country'])===163 || parseInt(FormData['RF_Birth_Country'])===164 || parseInt(FormData['RF_Birth_Country'])===165 || parseInt(FormData['RF_Birth_Country'])===166 || parseInt(FormData['RF_Birth_Country'])===168 || parseInt(FormData['RF_Birth_Country'])===170 || parseInt(FormData['RF_Birth_Country'])===172 || parseInt(FormData['RF_Birth_Country'])===173 || parseInt(FormData['RF_Birth_Country'])===174 || parseInt(FormData['RF_Birth_Country'])===175 || parseInt(FormData['RF_Birth_Country'])===176 || parseInt(FormData['RF_Birth_Country'])===177
-                                        || parseInt(FormData['RF_Birth_Country'])===186 || parseInt(FormData['RF_Birth_Country'])===187 || parseInt(FormData['RF_Birth_Country'])===188 || parseInt(FormData['RF_Birth_Country'])===190 || parseInt(FormData['RF_Birth_Country'])===191 || parseInt(FormData['RF_Birth_Country'])===193 || parseInt(FormData['RF_Birth_Country'])===195
-                                        || parseInt(FormData['RF_Birth_Country'])===197 || parseInt(FormData['RF_Birth_Country'])===198 || parseInt(FormData['RF_Birth_Country'])===200 || parseInt(FormData['RF_Birth_Country'])===202 || parseInt(FormData['RF_Birth_Country'])===203 || parseInt(FormData['RF_Birth_Country'])===206 || parseInt(FormData['RF_Birth_Country'])===208 || parseInt(FormData['RF_Birth_Country'])===209
-                                        || parseInt(FormData['RF_Birth_Country'])===211 || parseInt(FormData['RF_Birth_Country'])===212 || parseInt(FormData['RF_Birth_Country'])===213 || parseInt(FormData['RF_Birth_Country'])===214 || parseInt(FormData['RF_Birth_Country'])===219 || parseInt(FormData['RF_Birth_Country'])===220 || parseInt(FormData['RF_Birth_Country'])===221 || parseInt(FormData['RF_Birth_Country'])===222 || parseInt(FormData['RF_Birth_Country'])===223 || parseInt(FormData['RF_Birth_Country'])===224
-                                        || parseInt(FormData['RF_Birth_Country'])===226 || parseInt(FormData['RF_Birth_Country'])===230 || parseInt(FormData['RF_Birth_Country'])===232 || parseInt(FormData['RF_Birth_Country'])===233 || parseInt(FormData['RF_Birth_Country'])===236 || parseInt(FormData['RF_Birth_Country'])===237 || parseInt(FormData['RF_Birth_Country'])===238 || parseInt(FormData['RF_Birth_Country'])===239)
-                                    {
-                                        return (<>
-                                            
-                                            <label className="col-form-label">3</label>
-                                            
-                                        </>);
-                                    }
-
-                                    else if(parseInt(FormData['RF_Birth_Country'])===5 || parseInt(FormData['RF_Birth_Country'])===7 || parseInt(FormData['RF_Birth_Country'])===9 || parseInt(FormData['RF_Birth_Country'])===12 || parseInt(FormData['RF_Birth_Country'])===25 || parseInt(FormData['RF_Birth_Country'])===34 || parseInt(FormData['RF_Birth_Country'])===35 || parseInt(FormData['RF_Birth_Country'])===61 || parseInt(FormData['RF_Birth_Country'])===76 || parseInt(FormData['RF_Birth_Country'])===84 || parseInt(FormData['RF_Birth_Country'])===88
-                                        
-                                        || parseInt(FormData['RF_Birth_Country'])===114 || parseInt(FormData['RF_Birth_Country'])===130 || parseInt(FormData['RF_Birth_Country'])===132 || parseInt(FormData['RF_Birth_Country'])===142 || parseInt(FormData['RF_Birth_Country'])===149 || parseInt(FormData['RF_Birth_Country'])===159 || parseInt(FormData['RF_Birth_Country'])===161 
-                                        || parseInt(FormData['RF_Birth_Country'])===167 || parseInt(FormData['RF_Birth_Country'])===194 || parseInt(FormData['RF_Birth_Country'])===215 || parseInt(FormData['RF_Birth_Country'])===216 )
+                                    if(parseInt(key.RF_LP_Linked_Party)===1 || parseInt(key.RF_LP_Linked_Party)===2 || parseInt(key.RF_LP_Linked_Party)===3 || parseInt(key.RF_LP_Linked_Party)===4 || parseInt(key.RF_LP_Linked_Party)===5|| parseInt(key.RF_LP_Linked_Party)===6 || parseInt(key.RF_LP_Linked_Party)===7 || parseInt(key.RF_LP_Linked_Party)===8 || parseInt(key.RF_LP_Linked_Party)===9 || parseInt(key.RF_LP_Linked_Party)===10 || parseInt(key.RF_LP_Linked_Party)===11)
                                     {
                                         return (<>
                                             
@@ -7966,16 +7606,13 @@ const RiskFactors = ({user}) => {
                                             
                                         </>);
                                     }
+                                })()}
+                            </div>
 
-                                    else if(parseInt(FormData['RF_Birth_Country'])===11 || parseInt(FormData['RF_Birth_Country'])===14 || parseInt(FormData['RF_Birth_Country'])===15 || parseInt(FormData['RF_Birth_Country'])===18 || parseInt(FormData['RF_Birth_Country'])===22 || parseInt(FormData['RF_Birth_Country'])===23 || parseInt(FormData['RF_Birth_Country'])===26 || parseInt(FormData['RF_Birth_Country'])===30 || parseInt(FormData['RF_Birth_Country'])===38 || parseInt(FormData['RF_Birth_Country'])===40 || parseInt(FormData['RF_Birth_Country'])===44 || parseInt(FormData['RF_Birth_Country'])===45
-                                        || parseInt(FormData['RF_Birth_Country'])===54 || parseInt(FormData['RF_Birth_Country'])===56 || parseInt(FormData['RF_Birth_Country'])===59 || parseInt(FormData['RF_Birth_Country'])===60 || parseInt(FormData['RF_Birth_Country'])===63 || parseInt(FormData['RF_Birth_Country'])===70 || parseInt(FormData['RF_Birth_Country'])===75 || parseInt(FormData['RF_Birth_Country'])===77 || parseInt(FormData['RF_Birth_Country'])===78 || parseInt(FormData['RF_Birth_Country'])===79 || parseInt(FormData['RF_Birth_Country'])===80 || parseInt(FormData['RF_Birth_Country'])===81
-                                        || parseInt(FormData['RF_Birth_Country'])===83 || parseInt(FormData['RF_Birth_Country'])===87 || parseInt(FormData['RF_Birth_Country'])===89 || parseInt(FormData['RF_Birth_Country'])===96 || parseInt(FormData['RF_Birth_Country'])===101 || parseInt(FormData['RF_Birth_Country'])===104 || parseInt(FormData['RF_Birth_Country'])===105
-                                        
-                                        || parseInt(FormData['RF_Birth_Country'])===108 || parseInt(FormData['RF_Birth_Country'])===110 || parseInt(FormData['RF_Birth_Country'])===111 || parseInt(FormData['RF_Birth_Country'])===113 || parseInt(FormData['RF_Birth_Country'])===118 || parseInt(FormData['RF_Birth_Country'])===120 || parseInt(FormData['RF_Birth_Country'])===125
-                                        || parseInt(FormData['RF_Birth_Country'])===131 || parseInt(FormData['RF_Birth_Country'])===133 || parseInt(FormData['RF_Birth_Country'])===137 || parseInt(FormData['RF_Birth_Country'])===138 || parseInt(FormData['RF_Birth_Country'])===140 || parseInt(FormData['RF_Birth_Country'])===141
-                                        || parseInt(FormData['RF_Birth_Country'])===144 || parseInt(FormData['RF_Birth_Country'])===147 || parseInt(FormData['RF_Birth_Country'])===156 || parseInt(FormData['RF_Birth_Country'])===157 || parseInt(FormData['RF_Birth_Country'])===169 || parseInt(FormData['RF_Birth_Country'])===171 || parseInt(FormData['RF_Birth_Country'])===178 || parseInt(FormData['RF_Birth_Country'])===179 || parseInt(FormData['RF_Birth_Country'])===180 || parseInt(FormData['RF_Birth_Country'])===181 || parseInt(FormData['RF_Birth_Country'])===182 || parseInt(FormData['RF_Birth_Country'])===183
-                                        || parseInt(FormData['RF_Birth_Country'])===185 || parseInt(FormData['RF_Birth_Country'])===189 || parseInt(FormData['RF_Birth_Country'])===192 || parseInt(FormData['RF_Birth_Country'])===196 || parseInt(FormData['RF_Birth_Country'])===199 || parseInt(FormData['RF_Birth_Country'])===201 || parseInt(FormData['RF_Birth_Country'])===204 || parseInt(FormData['RF_Birth_Country'])===205
-                                        || parseInt(FormData['RF_Birth_Country'])===207 || parseInt(FormData['RF_Birth_Country'])===210 || parseInt(FormData['RF_Birth_Country'])===218 || parseInt(FormData['RF_Birth_Country'])===225 || parseInt(FormData['RF_Birth_Country'])===231 || parseInt(FormData['RF_Birth_Country'])===234 || parseInt(FormData['RF_Birth_Country'])===235 || parseInt(FormData['RF_Birth_Country'])===237 || parseInt(FormData['RF_Birth_Country'])===238)
+                            <div className="col-2">
+                            {(() => { 
+                                    
+                                    if(parseInt(key.RF_LP_Linked_Party)===1 || parseInt(key.RF_LP_Linked_Party)===4 || parseInt(key.RF_LP_Linked_Party)===7)
                                     {
                                         return (<>
                                             
@@ -7984,55 +7621,8 @@ const RiskFactors = ({user}) => {
                                         </>);
                                     }
 
-                                    else if(parseInt(FormData['RF_Birth_Country'])===21 || parseInt(FormData['RF_Birth_Country'])===57 || parseInt(FormData['RF_Birth_Country'])===106 || parseInt(FormData['RF_Birth_Country'])===107 || parseInt(FormData['RF_Birth_Country'])===119 || parseInt(FormData['RF_Birth_Country'])===187 || parseInt(FormData['RF_Birth_Country'])===217 )
-                                    {
-                                        return (<>
-                                            
-                                            <label className="col-form-label">4</label>
-                                            
-                                        </>);
-                                    }
-            
-                                    })()}
-                                </div>
-
-                                <div className="col-1">
-                                                                
-                                    <label className="col-form-label">3</label>
-                                            
                                     
-                                </div>
-
-                                <div className="col-1">
-                                    {(() => { 
-                                    
-                                    if(parseInt(FormData['RF_Birth_Country'])===1 || parseInt(FormData['RF_Birth_Country'])===2 || parseInt(FormData['RF_Birth_Country'])===3 || parseInt(FormData['RF_Birth_Country'])===4 || parseInt(FormData['RF_Birth_Country'])===6 || parseInt(FormData['RF_Birth_Country'])===8 || parseInt(FormData['RF_Birth_Country'])===10 || parseInt(FormData['RF_Birth_Country'])===13 || parseInt(FormData['RF_Birth_Country'])===16 || parseInt(FormData['RF_Birth_Country'])===17 || parseInt(FormData['RF_Birth_Country'])===19 || parseInt(FormData['RF_Birth_Country'])===20 || parseInt(FormData['RF_Birth_Country'])===24
-                                        || parseInt(FormData['RF_Birth_Country'])===27 || parseInt(FormData['RF_Birth_Country'])===28 || parseInt(FormData['RF_Birth_Country'])===29 || parseInt(FormData['RF_Birth_Country'])===30 || parseInt(FormData['RF_Birth_Country'])===31 || parseInt(FormData['RF_Birth_Country'])===32 || parseInt(FormData['RF_Birth_Country'])===33 || parseInt(FormData['RF_Birth_Country'])===36 || parseInt(FormData['RF_Birth_Country'])===37 || parseInt(FormData['RF_Birth_Country'])===39 || parseInt(FormData['RF_Birth_Country'])===41 || parseInt(FormData['RF_Birth_Country'])===42 || parseInt(FormData['RF_Birth_Country'])===43
-                                        || parseInt(FormData['RF_Birth_Country'])===46 || parseInt(FormData['RF_Birth_Country'])===47 || parseInt(FormData['RF_Birth_Country'])===48 || parseInt(FormData['RF_Birth_Country'])===49 || parseInt(FormData['RF_Birth_Country'])===50 || parseInt(FormData['RF_Birth_Country'])===51 || parseInt(FormData['RF_Birth_Country'])===52 || parseInt(FormData['RF_Birth_Country'])===53 || parseInt(FormData['RF_Birth_Country'])===55 || parseInt(FormData['RF_Birth_Country'])===58 || parseInt(FormData['RF_Birth_Country'])===62 || parseInt(FormData['RF_Birth_Country'])===64 || parseInt(FormData['RF_Birth_Country'])===65 || parseInt(FormData['RF_Birth_Country'])===66 
-                                        || parseInt(FormData['RF_Birth_Country'])===67 || parseInt(FormData['RF_Birth_Country'])===68 || parseInt(FormData['RF_Birth_Country'])===69 || parseInt(FormData['RF_Birth_Country'])===70 || parseInt(FormData['RF_Birth_Country'])===71 || parseInt(FormData['RF_Birth_Country'])===72 || parseInt(FormData['RF_Birth_Country'])===73 || parseInt(FormData['RF_Birth_Country'])===74 || parseInt(FormData['RF_Birth_Country'])===82 || parseInt(FormData['RF_Birth_Country'])===85 || parseInt(FormData['RF_Birth_Country'])===86 || parseInt(FormData['RF_Birth_Country'])===90 || parseInt(FormData['RF_Birth_Country'])===91 || parseInt(FormData['RF_Birth_Country'])===92 || parseInt(FormData['RF_Birth_Country'])===93
-                                        || parseInt(FormData['RF_Birth_Country'])===94 || parseInt(FormData['RF_Birth_Country'])===95 || parseInt(FormData['RF_Birth_Country'])===96 || parseInt(FormData['RF_Birth_Country'])===97 || parseInt(FormData['RF_Birth_Country'])===98 || parseInt(FormData['RF_Birth_Country'])===99 || parseInt(FormData['RF_Birth_Country'])===100 || parseInt(FormData['RF_Birth_Country'])===102 || parseInt(FormData['RF_Birth_Country'])===103
-                                        
-                                        || parseInt(FormData['RF_Birth_Country'])===109 || parseInt(FormData['RF_Birth_Country'])===112 || parseInt(FormData['RF_Birth_Country'])===115 || parseInt(FormData['RF_Birth_Country'])===116 || parseInt(FormData['RF_Birth_Country'])===117 || parseInt(FormData['RF_Birth_Country'])===121 || parseInt(FormData['RF_Birth_Country'])===123 || parseInt(FormData['RF_Birth_Country'])===124
-                                        || parseInt(FormData['RF_Birth_Country'])===126 || parseInt(FormData['RF_Birth_Country'])===127 || parseInt(FormData['RF_Birth_Country'])===128 || parseInt(FormData['RF_Birth_Country'])===129 || parseInt(FormData['RF_Birth_Country'])===134 || parseInt(FormData['RF_Birth_Country'])===135 || parseInt(FormData['RF_Birth_Country'])===136
-                                        || parseInt(FormData['RF_Birth_Country'])===139 || parseInt(FormData['RF_Birth_Country'])===143 || parseInt(FormData['RF_Birth_Country'])===145 || parseInt(FormData['RF_Birth_Country'])===146 || parseInt(FormData['RF_Birth_Country'])===148 || parseInt(FormData['RF_Birth_Country'])===150 || parseInt(FormData['RF_Birth_Country'])===151
-                                        || parseInt(FormData['RF_Birth_Country'])===152 || parseInt(FormData['RF_Birth_Country'])===153 || parseInt(FormData['RF_Birth_Country'])===154 || parseInt(FormData['RF_Birth_Country'])===155 || parseInt(FormData['RF_Birth_Country'])===158 || parseInt(FormData['RF_Birth_Country'])===160 || parseInt(FormData['RF_Birth_Country'])===162 
-                                        || parseInt(FormData['RF_Birth_Country'])===163 || parseInt(FormData['RF_Birth_Country'])===164 || parseInt(FormData['RF_Birth_Country'])===165 || parseInt(FormData['RF_Birth_Country'])===166 || parseInt(FormData['RF_Birth_Country'])===168 || parseInt(FormData['RF_Birth_Country'])===170 || parseInt(FormData['RF_Birth_Country'])===172 || parseInt(FormData['RF_Birth_Country'])===173 || parseInt(FormData['RF_Birth_Country'])===174 || parseInt(FormData['RF_Birth_Country'])===175 || parseInt(FormData['RF_Birth_Country'])===176 || parseInt(FormData['RF_Birth_Country'])===177
-                                        || parseInt(FormData['RF_Birth_Country'])===186 || parseInt(FormData['RF_Birth_Country'])===187 || parseInt(FormData['RF_Birth_Country'])===188 || parseInt(FormData['RF_Birth_Country'])===190 || parseInt(FormData['RF_Birth_Country'])===191 || parseInt(FormData['RF_Birth_Country'])===193 || parseInt(FormData['RF_Birth_Country'])===195
-                                        || parseInt(FormData['RF_Birth_Country'])===197 || parseInt(FormData['RF_Birth_Country'])===198 || parseInt(FormData['RF_Birth_Country'])===200 || parseInt(FormData['RF_Birth_Country'])===202 || parseInt(FormData['RF_Birth_Country'])===203 || parseInt(FormData['RF_Birth_Country'])===206 || parseInt(FormData['RF_Birth_Country'])===208 || parseInt(FormData['RF_Birth_Country'])===209
-                                        || parseInt(FormData['RF_Birth_Country'])===211 || parseInt(FormData['RF_Birth_Country'])===212 || parseInt(FormData['RF_Birth_Country'])===213 || parseInt(FormData['RF_Birth_Country'])===214 || parseInt(FormData['RF_Birth_Country'])===219 || parseInt(FormData['RF_Birth_Country'])===220 || parseInt(FormData['RF_Birth_Country'])===221 || parseInt(FormData['RF_Birth_Country'])===222 || parseInt(FormData['RF_Birth_Country'])===223 || parseInt(FormData['RF_Birth_Country'])===224
-                                        || parseInt(FormData['RF_Birth_Country'])===226 || parseInt(FormData['RF_Birth_Country'])===230 || parseInt(FormData['RF_Birth_Country'])===232 || parseInt(FormData['RF_Birth_Country'])===233 || parseInt(FormData['RF_Birth_Country'])===236 || parseInt(FormData['RF_Birth_Country'])===237 || parseInt(FormData['RF_Birth_Country'])===238 || parseInt(FormData['RF_Birth_Country'])===239)
-                                    {
-                                        return (<>
-                                            
-                                            <label className="col-form-label">9</label>
-                                            
-                                        </>);
-                                    }
-
-                                    else if(parseInt(FormData['RF_Birth_Country'])===5 || parseInt(FormData['RF_Birth_Country'])===7 || parseInt(FormData['RF_Birth_Country'])===9 || parseInt(FormData['RF_Birth_Country'])===12 || parseInt(FormData['RF_Birth_Country'])===25 || parseInt(FormData['RF_Birth_Country'])===34 || parseInt(FormData['RF_Birth_Country'])===35 || parseInt(FormData['RF_Birth_Country'])===61 || parseInt(FormData['RF_Birth_Country'])===76 || parseInt(FormData['RF_Birth_Country'])===84|| parseInt(FormData['RF_Birth_Country'])===88
-                                        
-                                        || parseInt(FormData['RF_Birth_Country'])===114 || parseInt(FormData['RF_Birth_Country'])===130 || parseInt(FormData['RF_Birth_Country'])===132 || parseInt(FormData['RF_Birth_Country'])===142 || parseInt(FormData['RF_Birth_Country'])===149 || parseInt(FormData['RF_Birth_Country'])===159 || parseInt(FormData['RF_Birth_Country'])===161 
-                                        || parseInt(FormData['RF_Birth_Country'])===167 || parseInt(FormData['RF_Birth_Country'])===194 || parseInt(FormData['RF_Birth_Country'])===215 || parseInt(FormData['RF_Birth_Country'])===216)
+                                    if(parseInt(key.RF_LP_Linked_Party)===2 || parseInt(key.RF_LP_Linked_Party)===5 || parseInt(key.RF_LP_Linked_Party)===8 || parseInt(key.RF_LP_Linked_Party)===11)
                                     {
                                         return (<>
                                             
@@ -8041,336 +7631,7 @@ const RiskFactors = ({user}) => {
                                         </>);
                                     }
 
-                                    else if(parseInt(FormData['RF_Birth_Country'])===11 || parseInt(FormData['RF_Birth_Country'])===14 || parseInt(FormData['RF_Birth_Country'])===15 || parseInt(FormData['RF_Birth_Country'])===18 || parseInt(FormData['RF_Birth_Country'])===22 || parseInt(FormData['RF_Birth_Country'])===23 || parseInt(FormData['RF_Birth_Country'])===26 || parseInt(FormData['RF_Birth_Country'])===30 || parseInt(FormData['RF_Birth_Country'])===38 || parseInt(FormData['RF_Birth_Country'])===40
-                                        || parseInt(FormData['RF_Birth_Country'])===44 || parseInt(FormData['RF_Birth_Country'])===45 || parseInt(FormData['RF_Birth_Country'])===54 || parseInt(FormData['RF_Birth_Country'])===56 || parseInt(FormData['RF_Birth_Country'])===59 || parseInt(FormData['RF_Birth_Country'])===60 || parseInt(FormData['RF_Birth_Country'])===63 || parseInt(FormData['RF_Birth_Country'])===70 || parseInt(FormData['RF_Birth_Country'])===75 || parseInt(FormData['RF_Birth_Country'])===77 
-                                        || parseInt(FormData['RF_Birth_Country'])===78 || parseInt(FormData['RF_Birth_Country'])===79 || parseInt(FormData['RF_Birth_Country'])===80 || parseInt(FormData['RF_Birth_Country'])===81 || parseInt(FormData['RF_Birth_Country'])===83 || parseInt(FormData['RF_Birth_Country'])===87 || parseInt(FormData['RF_Birth_Country'])===89 || parseInt(FormData['RF_Birth_Country'])===96 || parseInt(FormData['RF_Birth_Country'])===97 || parseInt(FormData['RF_Birth_Country'])===98 
-                                        || parseInt(FormData['RF_Birth_Country'])===99 || parseInt(FormData['RF_Birth_Country'])===100 || parseInt(FormData['RF_Birth_Country'])===101 || parseInt(FormData['RF_Birth_Country'])===102 || parseInt(FormData['RF_Birth_Country'])===104 || parseInt(FormData['RF_Birth_Country'])===105
-                                        
-                                        || parseInt(FormData['RF_Birth_Country'])===108 || parseInt(FormData['RF_Birth_Country'])===110 || parseInt(FormData['RF_Birth_Country'])===111 || parseInt(FormData['RF_Birth_Country'])===113 || parseInt(FormData['RF_Birth_Country'])===118 || parseInt(FormData['RF_Birth_Country'])===120 || parseInt(FormData['RF_Birth_Country'])===125
-                                        || parseInt(FormData['RF_Birth_Country'])===131 || parseInt(FormData['RF_Birth_Country'])===133 || parseInt(FormData['RF_Birth_Country'])===137 || parseInt(FormData['RF_Birth_Country'])===138 || parseInt(FormData['RF_Birth_Country'])===140 || parseInt(FormData['RF_Birth_Country'])===141
-                                        || parseInt(FormData['RF_Birth_Country'])===144 || parseInt(FormData['RF_Birth_Country'])===147 || parseInt(FormData['RF_Birth_Country'])===156 || parseInt(FormData['RF_Birth_Country'])===157 || parseInt(FormData['RF_Birth_Country'])===169 || parseInt(FormData['RF_Birth_Country'])===171 || parseInt(FormData['RF_Birth_Country'])===178 || parseInt(FormData['RF_Birth_Country'])===179 || parseInt(FormData['RF_Birth_Country'])===180 || parseInt(FormData['RF_Birth_Country'])===181 || parseInt(FormData['RF_Birth_Country'])===182 || parseInt(FormData['RF_Birth_Country'])===183
-                                        || parseInt(FormData['RF_Birth_Country'])===185 || parseInt(FormData['RF_Birth_Country'])===189 || parseInt(FormData['RF_Birth_Country'])===192 || parseInt(FormData['RF_Birth_Country'])===196 || parseInt(FormData['RF_Birth_Country'])===199 || parseInt(FormData['RF_Birth_Country'])===201 || parseInt(FormData['RF_Birth_Country'])===204 || parseInt(FormData['RF_Birth_Country'])===205
-                                        || parseInt(FormData['RF_Birth_Country'])===207 || parseInt(FormData['RF_Birth_Country'])===210 || parseInt(FormData['RF_Birth_Country'])===218 || parseInt(FormData['RF_Birth_Country'])===225 || parseInt(FormData['RF_Birth_Country'])===231 || parseInt(FormData['RF_Birth_Country'])===234 || parseInt(FormData['RF_Birth_Country'])===235 || parseInt(FormData['RF_Birth_Country'])===237 || parseInt(FormData['RF_Birth_Country'])===238)
-                                    {
-                                        return (<>
-                                            
-                                            <label className="col-form-label">6</label>
-                                            
-                                        </>);
-                                    }
-
-                                    else if(parseInt(FormData['RF_Birth_Country'])===21 || parseInt(FormData['RF_Birth_Country'])===57 || parseInt(FormData['RF_Birth_Country'])===106 || parseInt(FormData['RF_Birth_Country'])===107 || parseInt(FormData['RF_Birth_Country'])===119 || parseInt(FormData['RF_Birth_Country'])===187 || parseInt(FormData['RF_Birth_Country'])===217)
-                                    {
-                                        return (<>
-                                            
-                                            <label className="col-form-label">12</label>
-                                            
-                                        </>);
-                                    }
-            
-            
-                                    })()}
-                                </div>
-
-                                <hr/>
-                                <div className="col-2">
-                                    <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country of Residence </label>
-                                </div>
-
-                                <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Residence_Country' id='RF_Residence_Country' value={FormData['RF_Residence_Country']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
-                                        <option value="0" selected>Select Option</option>
-                                        <option value="1">Afghanistan</option>
-                                        <option value="2">Albania</option>
-                                        <option value="3">Algeria</option>
-                                        <option value="4">American Samoa</option>
-                                        <option value="5">Andora</option>
-                                        <option value="6">Angola</option>
-                                        <option value="7">Anguilla</option>
-                                        <option value="8">Antarctica</option>
-                                        <option value="9">Antigua and Barbuda</option>
-                                        <option value="10">Argentina</option>
-                                        <option value="11">Armania</option>
-                                        <option value="12">Aruba</option>
-                                        <option value="13">Auckland Islands</option>
-                                        <option value="14">Australia</option>
-                                        <option value="15">Austria</option>
-                                        <option value="16">Azerbaijan</option>
-                                        <option value="17">Bahamas</option>
-                                        <option value="18">Bahrain</option>
-                                        <option value="19">Bangladesh</option>
-                                        <option value="20">Barbados</option>
-                                        <option value="21">Belarus</option>
-                                        <option value="22">Belgium</option>
-                                        <option value="23">Belize</option>
-                                        <option value="24">Benin</option>
-                                        <option value="25">Bermuda</option>
-                                        <option value="26">Bhutan</option>
-                                        <option value="27">Bolivia</option>
-                                        <option value="28">Bonaire</option>
-                                        <option value="29">Bosnia</option>
-                                        <option value="30">Botswana</option>
-                                        <option value="31">Bouvet Islands</option>
-                                        <option value="32">Brazil</option>
-                                        <option value="33">British Indian Ocean Teritory</option>
-                                        <option value="34">Brunei Darussalam</option>
-                                        <option value="35">Bulgaria</option>
-                                        <option value="36">Burkina Faso</option>
-                                        <option value="37">Burundi</option>
-                                        <option value="38">Cabo Verde</option>
-                                        <option value="39">Cambodia</option>
-                                        <option value="40">Cameroon</option>
-                                        <option value="41">Canada</option>
-                                        <option value="42">Cayman Islands</option>
-                                        <option value="43">Central African Republic</option>
-                                        <option value="44">Chad</option>
-                                        <option value="45">Chile</option>
-                                        <option value="46">China</option>
-                                        <option value="47">Christmas Island</option>
-                                        <option value="48">Cocos</option>
-                                        <option value="49">Colombia</option>
-                                        <option value="50">Comoros</option>
-                                        <option value="51">Congo Democratic</option>
-                                        <option value="52">Congo Republic</option>
-                                        <option value="53">Cook Islands</option>
-                                        <option value="54">Costa Rica</option>
-                                        <option value="55">Ivory Cost</option>
-                                        <option value="56">Croatia</option>
-                                        <option value="57">Cuba</option>
-                                        <option value="58">Curacao</option>
-                                        <option value="59">Cyprus</option>
-                                        <option value="60">Czech Republic</option>
-                                        <option value="61">Denmark</option>
-                                        <option value="62">Djibouti</option>
-                                        <option value="63">Dominica</option>
-                                        <option value="64">Dominican Republic</option>
-                                        <option value="65">Ecuador</option>
-                                        <option value="66">Egypt</option>
-                                        <option value="67">EI Salvador</option>
-                                        <option value="68">Equatorial Guinea</option>
-                                        <option value="69">Eritrea</option>
-                                        <option value="70">Estonia</option>
-                                        <option value="71">eSwaitini</option>
-                                        <option value="72">Ethiopia</option>
-                                        <option value="73">Falkland Islands</option>
-                                        <option value="74">Faroe Islands</option>
-                                        <option value="75">Fiji</option>
-                                        <option value="76">Finland</option>
-                                        <option value="77">France</option>
-                                        <option value="78">French Guiana</option>
-                                        <option value="79">French Polynesia</option>
-                                        <option value="80">French Southern Territories</option>
-                                        <option value="81">Gabon</option>
-                                        <option value="82">Gambia</option>
-                                        <option value="83">Georgia</option>
-                                        <option value="84">Germany</option>
-                                        <option value="85">Ghana</option>
-                                        <option value="86">Gibralter</option>
-                                        <option value="87">Greece</option>
-                                        <option value="88">Greenland</option>
-                                        <option value="89">Grenada</option>
-                                        <option value="90">Guadeloupe</option>
-                                        <option value="91">Guam</option>
-                                        <option value="92">Guatemala</option>
-                                        <option value="93">Guernsey</option>
-                                        <option value="94">Guinea</option>
-                                        <option value="95">Guinea Bissau</option>
-                                        <option value="96">Guyana</option>
-                                        <option value="97">Haiti</option>
-                                        <option value="98">Herd Island</option>
-                                        <option value="99">Holy See</option>
-                                        <option value="100">Honduras</option>
-                                        <option value="101">Hongkong</option>
-                                        <option value="102">Hungary</option>
-                                        <option value="103">Iceland</option>
-                                        <option value="104">India</option>
-                                        <option value="105">Indonessia</option>
-                                        <option value="106">Iran</option>
-                                        <option value="107">Iraq</option>
-                                        <option value="108">Ireland</option>
-                                        <option value="109">Isle of man</option>
-                                        <option value="110">Israel</option>
-                                        <option value="111">Italy</option>
-                                        <option value="112">Jamaica</option>
-                                        <option value="113">Japan</option>
-                                        <option value="114">Jersey</option>
-                                        <option value="115">Jordan</option>
-                                        <option value="116">Kazakhstan</option>
-                                        <option value="117">Kenya</option>
-                                        <option value="118">Kiribati</option>
-                                        <option value="119">Korea North</option>
-                                        <option value="120">Korea South</option>
-                                        <option value="121">Kosovo</option>
-                                        <option value="122">Kuwait</option>
-                                        <option value="123">Kyrgyzstan</option>
-                                        <option value="124">Laos</option>
-                                        <option value="125">Latvia</option>
-                                        <option value="126">Lebanon</option>
-                                        <option value="127">Lesotho</option>
-                                        <option value="128">Liberia</option>
-                                        <option value="129">Libya</option>
-                                        <option value="130">Liechtenstein</option>
-                                        <option value="131">Lithuania</option>
-                                        <option value="132">Luxembourg</option>
-                                        <option value="133">Macao</option>
-                                        <option value="134">Macedonia</option>
-                                        <option value="135">Madagascar</option>
-                                        <option value="136">Malawi</option>
-                                        <option value="137">Malaysia</option>
-                                        <option value="138">Maldives</option>
-                                        <option value="139">Mali</option>
-                                        <option value="140">Malta</option>
-                                        <option value="141">Marshall Islands</option>
-                                        <option value="142">Martinique</option>
-                                        <option value="143">Mauritania</option>
-                                        <option value="144">Mauritius</option>
-                                        <option value="145">Mayotte</option>
-                                        <option value="146">Mexico</option>
-                                        <option value="147">Micronessia</option>
-                                        <option value="148">Moldova</option>
-                                        <option value="149">Monaco</option>
-                                        <option value="150">Mongolia</option>
-                                        <option value="151">Montenegro</option>
-                                        <option value="152">Montserrat</option>
-                                        <option value="153">Morocco</option>
-                                        <option value="154">Mozambique</option>
-                                        <option value="155">Mynamar</option>
-                                        <option value="156">Namabia</option>
-                                        <option value="157">Nauru</option>
-                                        <option value="158">Nepal</option>
-                                        <option value="159">Netherlands</option>
-                                        <option value="160">New Celedonia</option>
-                                        <option value="161">Newzealand</option>
-                                        <option value="162">Niger</option>
-                                        <option value="163">Nigeria</option>
-                                        <option value="164">Norfolk Island</option>
-                                        <option value="165">Nothern Mariana Islands</option>
-                                        <option value="166">Norway</option>
-                                        <option value="167">Nuie</option>
-                                        <option value="168">Oman</option>
-                                        <option value="169">Pakistan</option>
-                                        <option value="170">Palau</option>
-                                        <option value="171">Panama</option>
-                                        <option value="172">Papua New Guinea</option>
-                                        <option value="173">Paraguay</option>
-                                        <option value="174">Peru</option>
-                                        <option value="175">Philippines</option>
-                                        <option value="176">Pitcaim</option>
-                                        <option value="177">Poland</option>
-                                        <option value="178">Portugal</option>
-                                        <option value="179">Puerto Rico</option>
-                                        <option value="180">Qatar</option>
-                                        <option value="181">Reunion</option>
-                                        <option value="182">Roman</option>
-                                        <option value="183">Russia</option>
-                                        <option value="184">Rwanda</option>
-                                        <option value="185">Saint Barthelemy</option>
-                                        <option value="186">Saint Helena</option>
-                                        <option value="187">Saint Kitts</option>
-                                        <option value="188">Saint Lucia</option>
-                                        <option value="189">Saint Martin</option>
-                                        <option value="190">Saint Pierre</option>
-                                        <option value="191">Saint Vincent</option>
-                                        <option value="192">Samoa</option>
-                                        <option value="193">Saint Marino</option>
-                                        <option value="194">Sao Tome</option>
-                                        <option value="195">Saudia Arabia</option>
-                                        <option value="196">Senegal</option>
-                                        <option value="197">Serbia</option>
-                                        <option value="198">Seychelles</option>
-                                        <option value="199">Sierra Leone</option>
-                                        <option value="200">Singapore</option>
-                                        <option value="201">Sint Martin</option>
-                                        <option value="202">Slovekia</option>
-                                        <option value="203">Slovenia</option>
-                                        <option value="204">Solomon Islands</option>
-                                        <option value="205">Somalia</option>
-                                        <option value="206">South Africa</option>
-                                        <option value="207">South Georgia</option>
-                                        <option value="208">South Sudan</option>
-                                        <option value="209">SPain</option>
-                                        <option value="210">Srilanka</option>
-                                        <option value="211">Sudan</option>
-                                        <option value="212">Suriname</option>
-                                        <option value="213">Svalbard</option>
-                                        <option value="214">Sweden</option>
-                                        <option value="215">Switxerland</option>
-                                        <option value="216">Syria</option>
-                                        <option value="217">Taiwan</option>
-                                        <option value="218">Tajikistan</option>
-                                        <option value="219">Tanzania</option>
-                                        <option value="220">Thailand</option>
-                                        <option value="221">Timor Leste</option>
-                                        <option value="222">Togo</option>
-                                        <option value="223">Tokelau</option>
-                                        <option value="224">Tonga</option>
-                                        <option value="225">Trinidad</option>
-                                        <option value="226">Tunisia</option>
-                                        <option value="227">Turkey</option>
-                                        <option value="228">Turkmenistan</option>
-                                        <option value="229">Turks</option>
-                                        <option value="230">Tuvalu</option>
-                                        <option value="231">Uganda</option>
-                                        <option value="232">Ukraine</option>
-                                        <option value="233">United Arab Emirates</option>
-                                        <option value="224">United Kingdom</option>
-                                        <option value="225">United States Minor</option>
-                                        <option value="226">United States of America</option>
-                                        <option value="227">Uruguay</option>
-                                        <option value="228">Uzbekistan</option>
-                                        <option value="229">Vanuatu</option>
-                                        <option value="230">Venezuela</option>
-                                        <option value="231">Vietnam</option>
-                                        <option value="232">Virgin Islands(British)</option>
-                                        <option value="233">Virgin Islands(US)</option>
-                                        <option value="234">Wallis and Fatuna</option>
-                                        <option value="235">West Bank</option>
-                                        <option value="236">Western Sahara</option>
-                                        <option value="237">Yemen</option>
-                                        <option value="238">Zambia</option>
-                                        <option value="239">Zimbabwe</option>
-
-                                    </select> 
-                                </div>
-
-                                <div className="col-2">
-                                    <label className="col-form-label"></label>
-                                </div>
-
-                                <div className="col-2">
-                                    <label className="col-form-label"></label>
-                                </div>
-
-                                <div className="col-1">
-                                    {(() => { 
-                                    
-                                    if(parseInt(FormData['RF_Residence_Country'])===1 || parseInt(FormData['RF_Residence_Country'])===2 || parseInt(FormData['RF_Residence_Country'])===3 || parseInt(FormData['RF_Residence_Country'])===4 || parseInt(FormData['RF_Residence_Country'])===6 || parseInt(FormData['RF_Residence_Country'])===8 || parseInt(FormData['RF_Residence_Country'])===10 || parseInt(FormData['RF_Residence_Country'])===13 || parseInt(FormData['RF_Residence_Country'])===16 || parseInt(FormData['RF_Residence_Country'])===17 || parseInt(FormData['RF_Residence_Country'])===19 || parseInt(FormData['RF_Residence_Country'])===20 || parseInt(FormData['RF_Residence_Country'])===24 || parseInt(FormData['RF_Residence_Country'])===27
-                                        || parseInt(FormData['RF_Residence_Country'])===28 || parseInt(FormData['RF_Residence_Country'])===29 || parseInt(FormData['RF_Residence_Country'])===31 || parseInt(FormData['RF_Residence_Country'])===32 || parseInt(FormData['RF_Residence_Country'])===33 || parseInt(FormData['RF_Residence_Country'])===36 || parseInt(FormData['RF_Residence_Country'])===37 || parseInt(FormData['RF_Residence_Country'])===39 || parseInt(FormData['RF_Residence_Country'])===41 || parseInt(FormData['RF_Residence_Country'])===42 || parseInt(FormData['RF_Residence_Country'])===43 || parseInt(FormData['RF_Residence_Country'])===46 || parseInt(FormData['RF_Residence_Country'])===47 || parseInt(FormData['RF_Residence_Country'])===48 || parseInt(FormData['RF_Residence_Country'])===49 || parseInt(FormData['RF_Residence_Country'])===50 || parseInt(FormData['RF_Residence_Country'])===51 || parseInt(FormData['RF_Residence_Country'])===52 || parseInt(FormData['RF_Residence_Country'])===53
-                                        || parseInt(FormData['RF_Residence_Country'])===55 || parseInt(FormData['RF_Residence_Country'])===58 || parseInt(FormData['RF_Residence_Country'])===62 || parseInt(FormData['RF_Residence_Country'])===64 || parseInt(FormData['RF_Residence_Country'])===65 || parseInt(FormData['RF_Residence_Country'])===66 || parseInt(FormData['RF_Residence_Country'])===67 || parseInt(FormData['RF_Residence_Country'])===68 || parseInt(FormData['RF_Residence_Country'])===69 || parseInt(FormData['RF_Residence_Country'])===71 || parseInt(FormData['RF_Residence_Country'])===72 || parseInt(FormData['RF_Residence_Country'])===73 || parseInt(FormData['RF_Residence_Country'])===74
-                                        || parseInt(FormData['RF_Residence_Country'])===82 || parseInt(FormData['RF_Residence_Country'])===85 || parseInt(FormData['RF_Residence_Country'])===86 || parseInt(FormData['RF_Residence_Country'])===90 || parseInt(FormData['RF_Residence_Country'])===91 || parseInt(FormData['RF_Residence_Country'])===92 || parseInt(FormData['RF_Residence_Country'])===93
-                                        || parseInt(FormData['RF_Residence_Country'])===94 || parseInt(FormData['RF_Residence_Country'])===95 || parseInt(FormData['RF_Residence_Country'])===97 || parseInt(FormData['RF_Residence_Country'])===98 || parseInt(FormData['RF_Residence_Country'])===99 || parseInt(FormData['RF_Residence_Country'])===100 || parseInt(FormData['RF_Residence_Country'])===103 
-                                        
-                                        || parseInt(FormData['RF_Residence_Country'])===109 || parseInt(FormData['RF_Residence_Country'])===112  || parseInt(FormData['RF_Residence_Country'])===115 || parseInt(FormData['RF_Residence_Country'])===116 || parseInt(FormData['RF_Residence_Country'])===117 || parseInt(FormData['RF_Residence_Country'])===121 || parseInt(FormData['RF_Residence_Country'])===123  || parseInt(FormData['RF_Residence_Country'])===124
-                                        || parseInt(FormData['RF_Residence_Country'])===126 || parseInt(FormData['RF_Residence_Country'])===127  || parseInt(FormData['RF_Residence_Country'])===128 || parseInt(FormData['RF_Residence_Country'])===129 || parseInt(FormData['RF_Residence_Country'])===134 || parseInt(FormData['RF_Residence_Country'])===135 || parseInt(FormData['RF_Residence_Country'])===136
-                                        || parseInt(FormData['RF_Residence_Country'])===139 || parseInt(FormData['RF_Residence_Country'])===143  || parseInt(FormData['RF_Residence_Country'])===145 || parseInt(FormData['RF_Residence_Country'])===146 || parseInt(FormData['RF_Residence_Country'])===148 || parseInt(FormData['RF_Residence_Country'])===150 || parseInt(FormData['RF_Residence_Country'])===151
-                                        || parseInt(FormData['RF_Residence_Country'])===152 || parseInt(FormData['RF_Residence_Country'])===153 || parseInt(FormData['RF_Residence_Country'])===154 || parseInt(FormData['RF_Residence_Country'])===155 || parseInt(FormData['RF_Residence_Country'])===158 || parseInt(FormData['RF_Residence_Country'])===160 || parseInt(FormData['RF_Residence_Country'])===162 
-                                        || parseInt(FormData['RF_Residence_Country'])===163 || parseInt(FormData['RF_Residence_Country'])===164 || parseInt(FormData['RF_Residence_Country'])===165 || parseInt(FormData['RF_Residence_Country'])===166 || parseInt(FormData['RF_Residence_Country'])===168 || parseInt(FormData['RF_Residence_Country'])===170 || parseInt(FormData['RF_Residence_Country'])===172 || parseInt(FormData['RF_Residence_Country'])===173 || parseInt(FormData['RF_Residence_Country'])===174 || parseInt(FormData['RF_Residence_Country'])===175 || parseInt(FormData['RF_Residence_Country'])===176 || parseInt(FormData['RF_Residence_Country'])===177
-                                        || parseInt(FormData['RF_Residence_Country'])===186 || parseInt(FormData['RF_Residence_Country'])===187 || parseInt(FormData['RF_Residence_Country'])===188 || parseInt(FormData['RF_Residence_Country'])===190 || parseInt(FormData['RF_Residence_Country'])===191 || parseInt(FormData['RF_Residence_Country'])===193 || parseInt(FormData['RF_Residence_Country'])===195
-                                        || parseInt(FormData['RF_Residence_Country'])===197 || parseInt(FormData['RF_Residence_Country'])===198 || parseInt(FormData['RF_Residence_Country'])===200 || parseInt(FormData['RF_Residence_Country'])===202 || parseInt(FormData['RF_Residence_Country'])===203 || parseInt(FormData['RF_Residence_Country'])===206 || parseInt(FormData['RF_Residence_Country'])===208 || parseInt(FormData['RF_Residence_Country'])===209
-                                        || parseInt(FormData['RF_Residence_Country'])===211 || parseInt(FormData['RF_Residence_Country'])===212 || parseInt(FormData['RF_Residence_Country'])===213 || parseInt(FormData['RF_Residence_Country'])===214 || parseInt(FormData['RF_Residence_Country'])===219 || parseInt(FormData['RF_Residence_Country'])===220 || parseInt(FormData['RF_Residence_Country'])===221 || parseInt(FormData['RF_Residence_Country'])===222 || parseInt(FormData['RF_Residence_Country'])===223 || parseInt(FormData['RF_Residence_Country'])===224
-                                        || parseInt(FormData['RF_Residence_Country'])===226 || parseInt(FormData['RF_Residence_Country'])===230 || parseInt(FormData['RF_Residence_Country'])===232 || parseInt(FormData['RF_Residence_Country'])===233 || parseInt(FormData['RF_Residence_Country'])===236 || parseInt(FormData['RF_Residence_Country'])===237 || parseInt(FormData['RF_Residence_Country'])===238 || parseInt(FormData['RF_Residence_Country'])===239)
-                                    {
-                                        return (<>
-                                            
-                                            <label className="col-form-label">3</label>
-                                            
-                                        </>);
-                                    }
-
-                                    else if(parseInt(FormData['RF_Residence_Country'])===5 || parseInt(FormData['RF_Residence_Country'])===7 || parseInt(FormData['RF_Residence_Country'])===9 || parseInt(FormData['RF_Residence_Country'])===12 || parseInt(FormData['RF_Residence_Country'])===25 || parseInt(FormData['RF_Residence_Country'])===34 || parseInt(FormData['RF_Residence_Country'])===35 || parseInt(FormData['RF_Residence_Country'])===61 || parseInt(FormData['RF_Residence_Country'])===76 || parseInt(FormData['RF_Residence_Country'])===84 || parseInt(FormData['RF_Residence_Country'])===88
-                                        
-                                        || parseInt(FormData['RF_Residence_Country'])===114 || parseInt(FormData['RF_Residence_Country'])===130 || parseInt(FormData['RF_Residence_Country'])===132 || parseInt(FormData['RF_Residence_Country'])===142 || parseInt(FormData['RF_Residence_Country'])===149 || parseInt(FormData['RF_Residence_Country'])===159 || parseInt(FormData['RF_Residence_Country'])===161 
-                                        || parseInt(FormData['RF_Residence_Country'])===167 || parseInt(FormData['RF_Residence_Country'])===194 || parseInt(FormData['RF_Residence_Country'])===215 || parseInt(FormData['RF_Residence_Country'])===216 )
+                                    if(parseInt(key.RF_LP_Linked_Party)===3 || parseInt(key.RF_LP_Linked_Party)===6)
                                     {
                                         return (<>
                                             
@@ -8379,15 +7640,74 @@ const RiskFactors = ({user}) => {
                                         </>);
                                     }
 
-                                    else if(parseInt(FormData['RF_Residence_Country'])===11 || parseInt(FormData['RF_Residence_Country'])===14 || parseInt(FormData['RF_Residence_Country'])===15 || parseInt(FormData['RF_Residence_Country'])===18 || parseInt(FormData['RF_Residence_Country'])===22 || parseInt(FormData['RF_Residence_Country'])===23 || parseInt(FormData['RF_Residence_Country'])===26 || parseInt(FormData['RF_Residence_Country'])===30 || parseInt(FormData['RF_Residence_Country'])===38 || parseInt(FormData['RF_Residence_Country'])===40 || parseInt(FormData['RF_Residence_Country'])===44 || parseInt(FormData['RF_Residence_Country'])===45
-                                        || parseInt(FormData['RF_Residence_Country'])===54 || parseInt(FormData['RF_Residence_Country'])===56 || parseInt(FormData['RF_Residence_Country'])===59 || parseInt(FormData['RF_Residence_Country'])===60 || parseInt(FormData['RF_Residence_Country'])===63 || parseInt(FormData['RF_Residence_Country'])===70 || parseInt(FormData['RF_Residence_Country'])===75 || parseInt(FormData['RF_Residence_Country'])===77 || parseInt(FormData['RF_Residence_Country'])===78 || parseInt(FormData['RF_Residence_Country'])===79 || parseInt(FormData['RF_Residence_Country'])===80 || parseInt(FormData['RF_Residence_Country'])===81
-                                        || parseInt(FormData['RF_Residence_Country'])===83 || parseInt(FormData['RF_Residence_Country'])===87 || parseInt(FormData['RF_Residence_Country'])===89 || parseInt(FormData['RF_Residence_Country'])===96 || parseInt(FormData['RF_Residence_Country'])===101 || parseInt(FormData['RF_Residence_Country'])===104 || parseInt(FormData['RF_Residence_Country'])===105
-                                        
-                                        || parseInt(FormData['RF_Residence_Country'])===108 || parseInt(FormData['RF_Residence_Country'])===110 || parseInt(FormData['RF_Residence_Country'])===111 || parseInt(FormData['RF_Residence_Country'])===113 || parseInt(FormData['RF_Residence_Country'])===118 || parseInt(FormData['RF_Residence_Country'])===120 || parseInt(FormData['RF_Residence_Country'])===125
-                                        || parseInt(FormData['RF_Residence_Country'])===131 || parseInt(FormData['RF_Residence_Country'])===133 || parseInt(FormData['RF_Residence_Country'])===137 || parseInt(FormData['RF_Residence_Country'])===138 || parseInt(FormData['RF_Residence_Country'])===140 || parseInt(FormData['RF_Residence_Country'])===141
-                                        || parseInt(FormData['RF_Residence_Country'])===144 || parseInt(FormData['RF_Residence_Country'])===147 || parseInt(FormData['RF_Residence_Country'])===156 || parseInt(FormData['RF_Residence_Country'])===157 || parseInt(FormData['RF_Residence_Country'])===169 || parseInt(FormData['RF_Residence_Country'])===171 || parseInt(FormData['RF_Residence_Country'])===178 || parseInt(FormData['RF_Residence_Country'])===179 || parseInt(FormData['RF_Residence_Country'])===180 || parseInt(FormData['RF_Residence_Country'])===181 || parseInt(FormData['RF_Residence_Country'])===182 || parseInt(FormData['RF_Residence_Country'])===183
-                                        || parseInt(FormData['RF_Residence_Country'])===185 || parseInt(FormData['RF_Residence_Country'])===189 || parseInt(FormData['RF_Residence_Country'])===192 || parseInt(FormData['RF_Residence_Country'])===196 || parseInt(FormData['RF_Residence_Country'])===199 || parseInt(FormData['RF_Residence_Country'])===201 || parseInt(FormData['RF_Residence_Country'])===204 || parseInt(FormData['RF_Residence_Country'])===205
-                                        || parseInt(FormData['RF_Residence_Country'])===207 || parseInt(FormData['RF_Residence_Country'])===210 || parseInt(FormData['RF_Residence_Country'])===218 || parseInt(FormData['RF_Residence_Country'])===225 || parseInt(FormData['RF_Residence_Country'])===231 || parseInt(FormData['RF_Residence_Country'])===234 || parseInt(FormData['RF_Residence_Country'])===235 || parseInt(FormData['RF_Residence_Country'])===237 || parseInt(FormData['RF_Residence_Country'])===238)
+                                    if(parseInt(key.RF_LP_Linked_Party)===9 || parseInt(key.RF_LP_Linked_Party)===10)
+                                    {
+                                        return (<>
+                                            
+                                            <label className="col-form-label">4</label>
+                                            
+                                        </>);
+                                    }
+                                })()}
+                            </div>
+
+                            <hr/>
+                            <div className="col-2">
+                                <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Is this a RCA (relative / close associate) to Client? </label>
+                            </div>
+
+                            <div className="col-2">
+                                <select className="text-start form-select" name='RF_LP_RCA' id='RF_LP_RCA' value={parseInt(key.RF_LP_RCA)} onChange={(e)=>{on_LP_Change(e,i)}} aria-label="Default select example">
+                                    <option value="0" selected>Select Option</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                                </select>  
+                            </div>
+
+                            <div className="col-2">
+                                <label className="col-form-label"></label>
+                            </div>
+
+                            <div className="col-2">
+                                <label className="col-form-label"></label>
+                            </div>
+
+                            <div className="col-1">
+                                
+                            {(() => { 
+                                    
+                                    if(parseInt(key.RF_LP_RCA)===1)
+                                    {
+                                        return (<>
+                                            
+                                            <label className="col-form-label">2</label>
+                                            
+                                        </>);
+                                    }
+                                
+                                })()}
+                            </div>
+
+                            <div className="col-1">
+                            {(() => {
+                                if(user['is_superuser'])
+                                    {
+                                        return (<>
+                                            <label className="col-form-label">1</label>
+                                            </>)
+                                    }    
+                            })()}
+                                
+                            </div>
+
+                            <div className="col-1">
+                            {(() => {
+                                if(user['is_superuser'])
+                                    {
+                                        return (<>
+                                            {(() => { 
+                                    
+                                    if(parseInt(key.RF_LP_RCA)===1)
                                     {
                                         return (<>
                                             
@@ -8396,382 +7716,313 @@ const RiskFactors = ({user}) => {
                                         </>);
                                     }
 
-                                    else if(parseInt(FormData['RF_Residence_Country'])===21 || parseInt(FormData['RF_Residence_Country'])===57 || parseInt(FormData['RF_Residence_Country'])===106 || parseInt(FormData['RF_Residence_Country'])===107 || parseInt(FormData['RF_Residence_Country'])===119 || parseInt(FormData['RF_Residence_Country'])===187 || parseInt(FormData['RF_Residence_Country'])===217 )
+                                    else if(parseInt(key.RF_LP_RCA)===2)
                                     {
                                         return (<>
                                             
-                                            <label className="col-form-label">4</label>
+                                            <label className="col-form-label">0</label>
                                             
                                         </>);
                                     }
-            
-                                    })()}
-                                </div>
-
-                                <div className="col-1">
-                                                                
-                                    <label className="col-form-label"></label>
-                                                    
-                                </div>
-
-                                <div className="col-1">
-                                    {(() => { 
-                                    
-                                    if(parseInt(FormData['RF_Residence_Country'])===1 || parseInt(FormData['RF_Residence_Country'])===2 || parseInt(FormData['RF_Residence_Country'])===3 || parseInt(FormData['RF_Residence_Country'])===4 || parseInt(FormData['RF_Residence_Country'])===6 || parseInt(FormData['RF_Residence_Country'])===8 || parseInt(FormData['RF_Residence_Country'])===10 || parseInt(FormData['RF_Residence_Country'])===13 || parseInt(FormData['RF_Residence_Country'])===16 || parseInt(FormData['RF_Residence_Country'])===17 || parseInt(FormData['RF_Residence_Country'])===19 || parseInt(FormData['RF_Residence_Country'])===20 || parseInt(FormData['RF_Residence_Country'])===24
-                                        || parseInt(FormData['RF_Residence_Country'])===27 || parseInt(FormData['RF_Residence_Country'])===28 || parseInt(FormData['RF_Residence_Country'])===29 || parseInt(FormData['RF_Residence_Country'])===30 || parseInt(FormData['RF_Residence_Country'])===31 || parseInt(FormData['RF_Residence_Country'])===32 || parseInt(FormData['RF_Residence_Country'])===33 || parseInt(FormData['RF_Residence_Country'])===36 || parseInt(FormData['RF_Residence_Country'])===37 || parseInt(FormData['RF_Residence_Country'])===39 || parseInt(FormData['RF_Residence_Country'])===41 || parseInt(FormData['RF_Residence_Country'])===42 || parseInt(FormData['RF_Residence_Country'])===43
-                                        || parseInt(FormData['RF_Residence_Country'])===46 || parseInt(FormData['RF_Residence_Country'])===47 || parseInt(FormData['RF_Residence_Country'])===48 || parseInt(FormData['RF_Residence_Country'])===49 || parseInt(FormData['RF_Residence_Country'])===50 || parseInt(FormData['RF_Residence_Country'])===51 || parseInt(FormData['RF_Residence_Country'])===52 || parseInt(FormData['RF_Residence_Country'])===53 || parseInt(FormData['RF_Residence_Country'])===55 || parseInt(FormData['RF_Residence_Country'])===58 || parseInt(FormData['RF_Residence_Country'])===62 || parseInt(FormData['RF_Residence_Country'])===64 || parseInt(FormData['RF_Residence_Country'])===65 || parseInt(FormData['RF_Residence_Country'])===66 
-                                        || parseInt(FormData['RF_Residence_Country'])===67 || parseInt(FormData['RF_Residence_Country'])===68 || parseInt(FormData['RF_Residence_Country'])===69 || parseInt(FormData['RF_Residence_Country'])===70 || parseInt(FormData['RF_Residence_Country'])===71 || parseInt(FormData['RF_Residence_Country'])===72 || parseInt(FormData['RF_Residence_Country'])===73 || parseInt(FormData['RF_Residence_Country'])===74 || parseInt(FormData['RF_Residence_Country'])===82 || parseInt(FormData['RF_Residence_Country'])===85 || parseInt(FormData['RF_Residence_Country'])===86 || parseInt(FormData['RF_Residence_Country'])===90 || parseInt(FormData['RF_Residence_Country'])===91 || parseInt(FormData['RF_Residence_Country'])===92 || parseInt(FormData['RF_Residence_Country'])===93
-                                        || parseInt(FormData['RF_Residence_Country'])===94 || parseInt(FormData['RF_Residence_Country'])===95 || parseInt(FormData['RF_Residence_Country'])===96 || parseInt(FormData['RF_Residence_Country'])===97 || parseInt(FormData['RF_Residence_Country'])===98 || parseInt(FormData['RF_Residence_Country'])===99 || parseInt(FormData['RF_Residence_Country'])===100 || parseInt(FormData['RF_Residence_Country'])===102 || parseInt(FormData['RF_Residence_Country'])===103
-                                        
-                                        || parseInt(FormData['RF_Residence_Country'])===109 || parseInt(FormData['RF_Residence_Country'])===112 || parseInt(FormData['RF_Residence_Country'])===115 || parseInt(FormData['RF_Residence_Country'])===116 || parseInt(FormData['RF_Residence_Country'])===117 || parseInt(FormData['RF_Residence_Country'])===121 || parseInt(FormData['RF_Residence_Country'])===123 || parseInt(FormData['RF_Residence_Country'])===124
-                                        || parseInt(FormData['RF_Residence_Country'])===126 || parseInt(FormData['RF_Residence_Country'])===127 || parseInt(FormData['RF_Residence_Country'])===128 || parseInt(FormData['RF_Residence_Country'])===129 || parseInt(FormData['RF_Residence_Country'])===134 || parseInt(FormData['RF_Residence_Country'])===135 || parseInt(FormData['RF_Residence_Country'])===136
-                                        || parseInt(FormData['RF_Residence_Country'])===139 || parseInt(FormData['RF_Residence_Country'])===143 || parseInt(FormData['RF_Residence_Country'])===145 || parseInt(FormData['RF_Residence_Country'])===146 || parseInt(FormData['RF_Residence_Country'])===148 || parseInt(FormData['RF_Residence_Country'])===150 || parseInt(FormData['RF_Residence_Country'])===151
-                                        || parseInt(FormData['RF_Residence_Country'])===152 || parseInt(FormData['RF_Residence_Country'])===153 || parseInt(FormData['RF_Residence_Country'])===154 || parseInt(FormData['RF_Residence_Country'])===155 || parseInt(FormData['RF_Residence_Country'])===158 || parseInt(FormData['RF_Residence_Country'])===160 || parseInt(FormData['RF_Residence_Country'])===162 
-                                        || parseInt(FormData['RF_Residence_Country'])===163 || parseInt(FormData['RF_Residence_Country'])===164 || parseInt(FormData['RF_Residence_Country'])===165 || parseInt(FormData['RF_Residence_Country'])===166 || parseInt(FormData['RF_Residence_Country'])===168 || parseInt(FormData['RF_Residence_Country'])===170 || parseInt(FormData['RF_Residence_Country'])===172 || parseInt(FormData['RF_Residence_Country'])===173 || parseInt(FormData['RF_Residence_Country'])===174 || parseInt(FormData['RF_Residence_Country'])===175 || parseInt(FormData['RF_Residence_Country'])===176 || parseInt(FormData['RF_Residence_Country'])===177
-                                        || parseInt(FormData['RF_Residence_Country'])===186 || parseInt(FormData['RF_Residence_Country'])===187 || parseInt(FormData['RF_Residence_Country'])===188 || parseInt(FormData['RF_Residence_Country'])===190 || parseInt(FormData['RF_Residence_Country'])===191 || parseInt(FormData['RF_Residence_Country'])===193 || parseInt(FormData['RF_Residence_Country'])===195
-                                        || parseInt(FormData['RF_Residence_Country'])===197 || parseInt(FormData['RF_Residence_Country'])===198 || parseInt(FormData['RF_Residence_Country'])===200 || parseInt(FormData['RF_Residence_Country'])===202 || parseInt(FormData['RF_Residence_Country'])===203 || parseInt(FormData['RF_Residence_Country'])===206 || parseInt(FormData['RF_Residence_Country'])===208 || parseInt(FormData['RF_Residence_Country'])===209
-                                        || parseInt(FormData['RF_Residence_Country'])===211 || parseInt(FormData['RF_Residence_Country'])===212 || parseInt(FormData['RF_Residence_Country'])===213 || parseInt(FormData['RF_Residence_Country'])===214 || parseInt(FormData['RF_Residence_Country'])===219 || parseInt(FormData['RF_Residence_Country'])===220 || parseInt(FormData['RF_Residence_Country'])===221 || parseInt(FormData['RF_Residence_Country'])===222 || parseInt(FormData['RF_Residence_Country'])===223 || parseInt(FormData['RF_Residence_Country'])===224
-                                        || parseInt(FormData['RF_Residence_Country'])===226 || parseInt(FormData['RF_Residence_Country'])===230 || parseInt(FormData['RF_Residence_Country'])===232 || parseInt(FormData['RF_Residence_Country'])===233 || parseInt(FormData['RF_Residence_Country'])===236 || parseInt(FormData['RF_Residence_Country'])===237 || parseInt(FormData['RF_Residence_Country'])===238 || parseInt(FormData['RF_Residence_Country'])===239)
-                                    {
-                                        return (<>
-                                            
-                                            <label className="col-form-label">9</label>
-                                            
-                                        </>);
-                                    }
-
-                                    else if(parseInt(FormData['RF_Residence_Country'])===5 || parseInt(FormData['RF_Residence_Country'])===7 || parseInt(FormData['RF_Residence_Country'])===9 || parseInt(FormData['RF_Residence_Country'])===12 || parseInt(FormData['RF_Residence_Country'])===25 || parseInt(FormData['RF_Residence_Country'])===34 || parseInt(FormData['RF_Residence_Country'])===35 || parseInt(FormData['RF_Residence_Country'])===61 || parseInt(FormData['RF_Residence_Country'])===76 || parseInt(FormData['RF_Residence_Country'])===84|| parseInt(FormData['RF_Residence_Country'])===88
-                                        
-                                        || parseInt(FormData['RF_Residence_Country'])===114 || parseInt(FormData['RF_Residence_Country'])===130 || parseInt(FormData['RF_Residence_Country'])===132 || parseInt(FormData['RF_Residence_Country'])===142 || parseInt(FormData['RF_Residence_Country'])===149 || parseInt(FormData['RF_Residence_Country'])===159 || parseInt(FormData['RF_Residence_Country'])===161 
-                                        || parseInt(FormData['RF_Residence_Country'])===167 || parseInt(FormData['RF_Residence_Country'])===194 || parseInt(FormData['RF_Residence_Country'])===215 || parseInt(FormData['RF_Residence_Country'])===216)
-                                    {
-                                        return (<>
-                                            
-                                            <label className="col-form-label">3</label>
-                                            
-                                        </>);
-                                    }
-
-                                    else if(parseInt(FormData['RF_Residence_Country'])===11 || parseInt(FormData['RF_Residence_Country'])===14 || parseInt(FormData['RF_Residence_Country'])===15 || parseInt(FormData['RF_Residence_Country'])===18 || parseInt(FormData['RF_Residence_Country'])===22 || parseInt(FormData['RF_Residence_Country'])===23 || parseInt(FormData['RF_Residence_Country'])===26 || parseInt(FormData['RF_Residence_Country'])===30 || parseInt(FormData['RF_Residence_Country'])===38 || parseInt(FormData['RF_Residence_Country'])===40
-                                        || parseInt(FormData['RF_Residence_Country'])===44 || parseInt(FormData['RF_Residence_Country'])===45 || parseInt(FormData['RF_Residence_Country'])===54 || parseInt(FormData['RF_Residence_Country'])===56 || parseInt(FormData['RF_Residence_Country'])===59 || parseInt(FormData['RF_Residence_Country'])===60 || parseInt(FormData['RF_Residence_Country'])===63 || parseInt(FormData['RF_Residence_Country'])===70 || parseInt(FormData['RF_Residence_Country'])===75 || parseInt(FormData['RF_Residence_Country'])===77 
-                                        || parseInt(FormData['RF_Residence_Country'])===78 || parseInt(FormData['RF_Residence_Country'])===79 || parseInt(FormData['RF_Residence_Country'])===80 || parseInt(FormData['RF_Residence_Country'])===81 || parseInt(FormData['RF_Residence_Country'])===83 || parseInt(FormData['RF_Residence_Country'])===87 || parseInt(FormData['RF_Residence_Country'])===89 || parseInt(FormData['RF_Residence_Country'])===96 || parseInt(FormData['RF_Residence_Country'])===97 || parseInt(FormData['RF_Residence_Country'])===98 
-                                        || parseInt(FormData['RF_Residence_Country'])===99 || parseInt(FormData['RF_Residence_Country'])===100 || parseInt(FormData['RF_Residence_Country'])===101 || parseInt(FormData['RF_Residence_Country'])===102 || parseInt(FormData['RF_Residence_Country'])===104 || parseInt(FormData['RF_Residence_Country'])===105
-                                        
-                                        || parseInt(FormData['RF_Residence_Country'])===108 || parseInt(FormData['RF_Residence_Country'])===110 || parseInt(FormData['RF_Residence_Country'])===111 || parseInt(FormData['RF_Residence_Country'])===113 || parseInt(FormData['RF_Residence_Country'])===118 || parseInt(FormData['RF_Residence_Country'])===120 || parseInt(FormData['RF_Residence_Country'])===125
-                                        || parseInt(FormData['RF_Residence_Country'])===131 || parseInt(FormData['RF_Residence_Country'])===133 || parseInt(FormData['RF_Residence_Country'])===137 || parseInt(FormData['RF_Residence_Country'])===138 || parseInt(FormData['RF_Residence_Country'])===140 || parseInt(FormData['RF_Residence_Country'])===141
-                                        || parseInt(FormData['RF_Residence_Country'])===144 || parseInt(FormData['RF_Residence_Country'])===147 || parseInt(FormData['RF_Residence_Country'])===156 || parseInt(FormData['RF_Residence_Country'])===157 || parseInt(FormData['RF_Residence_Country'])===169 || parseInt(FormData['RF_Residence_Country'])===171 || parseInt(FormData['RF_Residence_Country'])===178 || parseInt(FormData['RF_Residence_Country'])===179 || parseInt(FormData['RF_Residence_Country'])===180 || parseInt(FormData['RF_Residence_Country'])===181 || parseInt(FormData['RF_Residence_Country'])===182 || parseInt(FormData['RF_Residence_Country'])===183
-                                        || parseInt(FormData['RF_Residence_Country'])===185 || parseInt(FormData['RF_Residence_Country'])===189 || parseInt(FormData['RF_Residence_Country'])===192 || parseInt(FormData['RF_Residence_Country'])===196 || parseInt(FormData['RF_Residence_Country'])===199 || parseInt(FormData['RF_Residence_Country'])===201 || parseInt(FormData['RF_Residence_Country'])===204 || parseInt(FormData['RF_Residence_Country'])===205
-                                        || parseInt(FormData['RF_Residence_Country'])===207 || parseInt(FormData['RF_Residence_Country'])===210 || parseInt(FormData['RF_Residence_Country'])===218 || parseInt(FormData['RF_Residence_Country'])===225 || parseInt(FormData['RF_Residence_Country'])===231 || parseInt(FormData['RF_Residence_Country'])===234 || parseInt(FormData['RF_Residence_Country'])===235 || parseInt(FormData['RF_Residence_Country'])===237 || parseInt(FormData['RF_Residence_Country'])===238)
-                                    {
-                                        return (<>
-                                            
-                                            <label className="col-form-label">6</label>
-                                            
-                                        </>);
-                                    }
-
-                                    else if(parseInt(FormData['RF_Residence_Country'])===21 || parseInt(FormData['RF_Residence_Country'])===57 || parseInt(FormData['RF_Residence_Country'])===106 || parseInt(FormData['RF_Residence_Country'])===107 || parseInt(FormData['RF_Residence_Country'])===119 || parseInt(FormData['RF_Residence_Country'])===187 || parseInt(FormData['RF_Residence_Country'])===217)
-                                    {
-                                        return (<>
-                                            
-                                            <label className="col-form-label">12</label>
-                                            
-                                        </>);
-                                    }
-
-                                    
-            
-            
-                                    })()}
-                                </div>
-
-                                <hr/>
-                                <div className="col-2">
-                                    <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nationality</label>
-                                </div>
-
-                                <div className="col-2">
-                                    <select className="text-start form-select" name='RF_Nationality1' id='RF_Nationality1' value={FormData['RF_Nationality1']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
-                                        <option value="0" selected>Select Option</option>
-                                        <option value="1">Afghanistan</option>
-                                        <option value="2">Albania</option>
-                                        <option value="3">Algeria</option>
-                                        <option value="4">American Samoa</option>
-                                        <option value="5">Andora</option>
-                                        <option value="6">Angola</option>
-                                        <option value="7">Anguilla</option>
-                                        <option value="8">Antarctica</option>
-                                        <option value="9">Antigua and Barbuda</option>
-                                        <option value="10">Argentina</option>
-                                        <option value="11">Armania</option>
-                                        <option value="12">Aruba</option>
-                                        <option value="13">Auckland Islands</option>
-                                        <option value="14">Australia</option>
-                                        <option value="15">Austria</option>
-                                        <option value="16">Azerbaijan</option>
-                                        <option value="17">Bahamas</option>
-                                        <option value="18">Bahrain</option>
-                                        <option value="19">Bangladesh</option>
-                                        <option value="20">Barbados</option>
-                                        <option value="21">Belarus</option>
-                                        <option value="22">Belgium</option>
-                                        <option value="23">Belize</option>
-                                        <option value="24">Benin</option>
-                                        <option value="25">Bermuda</option>
-                                        <option value="26">Bhutan</option>
-                                        <option value="27">Bolivia</option>
-                                        <option value="28">Bonaire</option>
-                                        <option value="29">Bosnia</option>
-                                        <option value="30">Botswana</option>
-                                        <option value="31">Bouvet Islands</option>
-                                        <option value="32">Brazil</option>
-                                        <option value="33">British Indian Ocean Teritory</option>
-                                        <option value="34">Brunei Darussalam</option>
-                                        <option value="35">Bulgaria</option>
-                                        <option value="36">Burkina Faso</option>
-                                        <option value="37">Burundi</option>
-                                        <option value="38">Cabo Verde</option>
-                                        <option value="39">Cambodia</option>
-                                        <option value="40">Cameroon</option>
-                                        <option value="41">Canada</option>
-                                        <option value="42">Cayman Islands</option>
-                                        <option value="43">Central African Republic</option>
-                                        <option value="44">Chad</option>
-                                        <option value="45">Chile</option>
-                                        <option value="46">China</option>
-                                        <option value="47">Christmas Island</option>
-                                        <option value="48">Cocos</option>
-                                        <option value="49">Colombia</option>
-                                        <option value="50">Comoros</option>
-                                        <option value="51">Congo Democratic</option>
-                                        <option value="52">Congo Republic</option>
-                                        <option value="53">Cook Islands</option>
-                                        <option value="54">Costa Rica</option>
-                                        <option value="55">Ivory Cost</option>
-                                        <option value="56">Croatia</option>
-                                        <option value="57">Cuba</option>
-                                        <option value="58">Curacao</option>
-                                        <option value="59">Cyprus</option>
-                                        <option value="60">Czech Republic</option>
-                                        <option value="61">Denmark</option>
-                                        <option value="62">Djibouti</option>
-                                        <option value="63">Dominica</option>
-                                        <option value="64">Dominican Republic</option>
-                                        <option value="65">Ecuador</option>
-                                        <option value="66">Egypt</option>
-                                        <option value="67">EI Salvador</option>
-                                        <option value="68">Equatorial Guinea</option>
-                                        <option value="69">Eritrea</option>
-                                        <option value="70">Estonia</option>
-                                        <option value="71">eSwaitini</option>
-                                        <option value="72">Ethiopia</option>
-                                        <option value="73">Falkland Islands</option>
-                                        <option value="74">Faroe Islands</option>
-                                        <option value="75">Fiji</option>
-                                        <option value="76">Finland</option>
-                                        <option value="77">France</option>
-                                        <option value="78">French Guiana</option>
-                                        <option value="79">French Polynesia</option>
-                                        <option value="80">French Southern Territories</option>
-                                        <option value="81">Gabon</option>
-                                        <option value="82">Gambia</option>
-                                        <option value="83">Georgia</option>
-                                        <option value="84">Germany</option>
-                                        <option value="85">Ghana</option>
-                                        <option value="86">Gibralter</option>
-                                        <option value="87">Greece</option>
-                                        <option value="88">Greenland</option>
-                                        <option value="89">Grenada</option>
-                                        <option value="90">Guadeloupe</option>
-                                        <option value="91">Guam</option>
-                                        <option value="92">Guatemala</option>
-                                        <option value="93">Guernsey</option>
-                                        <option value="94">Guinea</option>
-                                        <option value="95">Guinea Bissau</option>
-                                        <option value="96">Guyana</option>
-                                        <option value="97">Haiti</option>
-                                        <option value="98">Herd Island</option>
-                                        <option value="99">Holy See</option>
-                                        <option value="100">Honduras</option>
-                                        <option value="101">Hongkong</option>
-                                        <option value="102">Hungary</option>
-                                        <option value="103">Iceland</option>
-                                        <option value="104">India</option>
-                                        <option value="105">Indonessia</option>
-                                        <option value="106">Iran</option>
-                                        <option value="107">Iraq</option>
-                                        <option value="108">Ireland</option>
-                                        <option value="109">Isle of man</option>
-                                        <option value="110">Israel</option>
-                                        <option value="111">Italy</option>
-                                        <option value="112">Jamaica</option>
-                                        <option value="113">Japan</option>
-                                        <option value="114">Jersey</option>
-                                        <option value="115">Jordan</option>
-                                        <option value="116">Kazakhstan</option>
-                                        <option value="117">Kenya</option>
-                                        <option value="118">Kiribati</option>
-                                        <option value="119">Korea North</option>
-                                        <option value="120">Korea South</option>
-                                        <option value="121">Kosovo</option>
-                                        <option value="122">Kuwait</option>
-                                        <option value="123">Kyrgyzstan</option>
-                                        <option value="124">Laos</option>
-                                        <option value="125">Latvia</option>
-                                        <option value="126">Lebanon</option>
-                                        <option value="127">Lesotho</option>
-                                        <option value="128">Liberia</option>
-                                        <option value="129">Libya</option>
-                                        <option value="130">Liechtenstein</option>
-                                        <option value="131">Lithuania</option>
-                                        <option value="132">Luxembourg</option>
-                                        <option value="133">Macao</option>
-                                        <option value="134">Macedonia</option>
-                                        <option value="135">Madagascar</option>
-                                        <option value="136">Malawi</option>
-                                        <option value="137">Malaysia</option>
-                                        <option value="138">Maldives</option>
-                                        <option value="139">Mali</option>
-                                        <option value="140">Malta</option>
-                                        <option value="141">Marshall Islands</option>
-                                        <option value="142">Martinique</option>
-                                        <option value="143">Mauritania</option>
-                                        <option value="144">Mauritius</option>
-                                        <option value="145">Mayotte</option>
-                                        <option value="146">Mexico</option>
-                                        <option value="147">Micronessia</option>
-                                        <option value="148">Moldova</option>
-                                        <option value="149">Monaco</option>
-                                        <option value="150">Mongolia</option>
-                                        <option value="151">Montenegro</option>
-                                        <option value="152">Montserrat</option>
-                                        <option value="153">Morocco</option>
-                                        <option value="154">Mozambique</option>
-                                        <option value="155">Mynamar</option>
-                                        <option value="156">Namabia</option>
-                                        <option value="157">Nauru</option>
-                                        <option value="158">Nepal</option>
-                                        <option value="159">Netherlands</option>
-                                        <option value="160">New Celedonia</option>
-                                        <option value="161">Newzealand</option>
-                                        <option value="162">Niger</option>
-                                        <option value="163">Nigeria</option>
-                                        <option value="164">Norfolk Island</option>
-                                        <option value="165">Nothern Mariana Islands</option>
-                                        <option value="166">Norway</option>
-                                        <option value="167">Nuie</option>
-                                        <option value="168">Oman</option>
-                                        <option value="169">Pakistan</option>
-                                        <option value="170">Palau</option>
-                                        <option value="171">Panama</option>
-                                        <option value="172">Papua New Guinea</option>
-                                        <option value="173">Paraguay</option>
-                                        <option value="174">Peru</option>
-                                        <option value="175">Philippines</option>
-                                        <option value="176">Pitcaim</option>
-                                        <option value="177">Poland</option>
-                                        <option value="178">Portugal</option>
-                                        <option value="179">Puerto Rico</option>
-                                        <option value="180">Qatar</option>
-                                        <option value="181">Reunion</option>
-                                        <option value="182">Roman</option>
-                                        <option value="183">Russia</option>
-                                        <option value="184">Rwanda</option>
-                                        <option value="185">Saint Barthelemy</option>
-                                        <option value="186">Saint Helena</option>
-                                        <option value="187">Saint Kitts</option>
-                                        <option value="188">Saint Lucia</option>
-                                        <option value="189">Saint Martin</option>
-                                        <option value="190">Saint Pierre</option>
-                                        <option value="191">Saint Vincent</option>
-                                        <option value="192">Samoa</option>
-                                        <option value="193">Saint Marino</option>
-                                        <option value="194">Sao Tome</option>
-                                        <option value="195">Saudia Arabia</option>
-                                        <option value="196">Senegal</option>
-                                        <option value="197">Serbia</option>
-                                        <option value="198">Seychelles</option>
-                                        <option value="199">Sierra Leone</option>
-                                        <option value="200">Singapore</option>
-                                        <option value="201">Sint Martin</option>
-                                        <option value="202">Slovekia</option>
-                                        <option value="203">Slovenia</option>
-                                        <option value="204">Solomon Islands</option>
-                                        <option value="205">Somalia</option>
-                                        <option value="206">South African</option>
-                                        <option value="207">South Georgia</option>
-                                        <option value="208">South Sudan</option>
-                                        <option value="209">SPain</option>
-                                        <option value="210">Srilanka</option>
-                                        <option value="211">Sudan</option>
-                                        <option value="212">Suriname</option>
-                                        <option value="213">Svalbard</option>
-                                        <option value="214">Sweden</option>
-                                        <option value="215">Switxerland</option>
-                                        <option value="216">Syria</option>
-                                        <option value="217">Taiwan</option>
-                                        <option value="218">Tajikistan</option>
-                                        <option value="219">Tanzania</option>
-                                        <option value="220">Thailand</option>
-                                        <option value="221">Timor Leste</option>
-                                        <option value="222">Togo</option>
-                                        <option value="223">Tokelau</option>
-                                        <option value="224">Tonga</option>
-                                        <option value="225">Trinidad</option>
-                                        <option value="226">Tunisia</option>
-                                        <option value="227">Turkey</option>
-                                        <option value="228">Turkmenistan</option>
-                                        <option value="229">Turks</option>
-                                        <option value="230">Tuvalu</option>
-                                        <option value="231">Uganda</option>
-                                        <option value="232">Ukraine</option>
-                                        <option value="233">United Arab Emirates</option>
-                                        <option value="224">United Kingdom</option>
-                                        <option value="225">United States Minor</option>
-                                        <option value="226">United States of America</option>
-                                        <option value="227">Uruguay</option>
-                                        <option value="228">Uzbekistan</option>
-                                        <option value="229">Vanuatu</option>
-                                        <option value="230">Venezuela</option>
-                                        <option value="231">Vietnam</option>
-                                        <option value="232">Virgin Islands(British)</option>
-                                        <option value="233">Virgin Islands(US)</option>
-                                        <option value="234">Wallis and Fatuna</option>
-                                        <option value="235">West Bank</option>
-                                        <option value="236">Western Sahara</option>
-                                        <option value="237">Yemen</option>
-                                        <option value="238">Zambia</option>
-                                        <option value="239">Zimbabwe</option>
-
-                                    </select> 
-                                </div>
-
-                                <div className="col-2">
-                                    <label className="col-form-label"></label>
-                                </div>
-
-                                <div className="col-2">
-                                    <label className="col-form-label"></label>
-                                </div>
-
-                                <div className="col-1">
-                                {(() => { 
                                 
-                                if(parseInt(FormData['RF_Nationality1'])===1 || parseInt(FormData['RF_Nationality1'])===2 || parseInt(FormData['RF_Nationality1'])===3 || parseInt(FormData['RF_Nationality1'])===4 || parseInt(FormData['RF_Nationality1'])===6 || parseInt(FormData['RF_Nationality1'])===8 || parseInt(FormData['RF_Nationality1'])===10 || parseInt(FormData['RF_Nationality1'])===13 || parseInt(FormData['RF_Nationality1'])===16 || parseInt(FormData['RF_Nationality1'])===17 || parseInt(FormData['RF_Nationality1'])===19 || parseInt(FormData['RF_Nationality1'])===20 || parseInt(FormData['RF_Nationality1'])===24 || parseInt(FormData['RF_Nationality1'])===27
-                                    || parseInt(FormData['RF_Nationality1'])===28 || parseInt(FormData['RF_Nationality1'])===29 || parseInt(FormData['RF_Nationality1'])===31 || parseInt(FormData['RF_Nationality1'])===32 || parseInt(FormData['RF_Nationality1'])===33 || parseInt(FormData['RF_Nationality1'])===36 || parseInt(FormData['RF_Nationality1'])===37 || parseInt(FormData['RF_Nationality1'])===39 || parseInt(FormData['RF_Nationality1'])===41 || parseInt(FormData['RF_Nationality1'])===42 || parseInt(FormData['RF_Nationality1'])===43 || parseInt(FormData['RF_Nationality1'])===46 || parseInt(FormData['RF_Nationality1'])===47 || parseInt(FormData['RF_Nationality1'])===48 || parseInt(FormData['RF_Nationality1'])===49 || parseInt(FormData['RF_Nationality1'])===50 || parseInt(FormData['RF_Nationality1'])===51 || parseInt(FormData['RF_Nationality1'])===52 || parseInt(FormData['RF_Nationality1'])===53
-                                    || parseInt(FormData['RF_Nationality1'])===55 || parseInt(FormData['RF_Nationality1'])===58 || parseInt(FormData['RF_Nationality1'])===62 || parseInt(FormData['RF_Nationality1'])===64 || parseInt(FormData['RF_Nationality1'])===65 || parseInt(FormData['RF_Nationality1'])===66 || parseInt(FormData['RF_Nationality1'])===67 || parseInt(FormData['RF_Nationality1'])===68 || parseInt(FormData['RF_Nationality1'])===69 || parseInt(FormData['RF_Nationality1'])===71 || parseInt(FormData['RF_Nationality1'])===72 || parseInt(FormData['RF_Nationality1'])===73 || parseInt(FormData['RF_Nationality1'])===74
-                                    || parseInt(FormData['RF_Nationality1'])===82 || parseInt(FormData['RF_Nationality1'])===85 || parseInt(FormData['RF_Nationality1'])===86 || parseInt(FormData['RF_Nationality1'])===90 || parseInt(FormData['RF_Nationality1'])===91 || parseInt(FormData['RF_Nationality1'])===92 || parseInt(FormData['RF_Nationality1'])===93
-                                    || parseInt(FormData['RF_Nationality1'])===94 || parseInt(FormData['RF_Nationality1'])===95 || parseInt(FormData['RF_Nationality1'])===97 || parseInt(FormData['RF_Nationality1'])===98 || parseInt(FormData['RF_Nationality1'])===99 || parseInt(FormData['RF_Nationality1'])===100 || parseInt(FormData['RF_Nationality1'])===103 
+                                })()}
+                                            </>)
+                                    }    
+                            })()}
+                            
+                            </div>
+
+                            <hr/>
+                            <div className="col-2">
+                                <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country of Birth </label>
+                            </div>
+
+                            <div className="col-2">
+                                <select className="text-start form-select" name='RF_LP_Birth_Country' id='RF_LP_Birth_Country' value={parseInt(key.RF_LP_Birth_Country)} onChange={(e)=>{on_LP_Change(e,i)}}  aria-label="Default select example">
+                                    <option value="0" selected>Select Option</option>
+                                    <option value="1">Afghanistan</option>
+                                    <option value="2">Albania</option>
+                                    <option value="3">Algeria</option>
+                                    <option value="4">American Samoa</option>
+                                    <option value="5">Andora</option>
+                                    <option value="6">Angola</option>
+                                    <option value="7">Anguilla</option>
+                                    <option value="8">Antarctica</option>
+                                    <option value="9">Antigua and Barbuda</option>
+                                    <option value="10">Argentina</option>
+                                    <option value="11">Armania</option>
+                                    <option value="12">Aruba</option>
+                                    <option value="13">Auckland Islands</option>
+                                    <option value="14">Australia</option>
+                                    <option value="15">Austria</option>
+                                    <option value="16">Azerbaijan</option>
+                                    <option value="17">Bahamas</option>
+                                    <option value="18">Bahrain</option>
+                                    <option value="19">Bangladesh</option>
+                                    <option value="20">Barbados</option>
+                                    <option value="21">Belarus</option>
+                                    <option value="22">Belgium</option>
+                                    <option value="23">Belize</option>
+                                    <option value="24">Benin</option>
+                                    <option value="25">Bermuda</option>
+                                    <option value="26">Bhutan</option>
+                                    <option value="27">Bolivia</option>
+                                    <option value="28">Bonaire</option>
+                                    <option value="29">Bosnia</option>
+                                    <option value="30">Botswana</option>
+                                    <option value="31">Bouvet Islands</option>
+                                    <option value="32">Brazil</option>
+                                    <option value="33">British Indian Ocean Teritory</option>
+                                    <option value="34">Brunei Darussalam</option>
+                                    <option value="35">Bulgaria</option>
+                                    <option value="36">Burkina Faso</option>
+                                    <option value="37">Burundi</option>
+                                    <option value="38">Cabo Verde</option>
+                                    <option value="39">Cambodia</option>
+                                    <option value="40">Cameroon</option>
+                                    <option value="41">Canada</option>
+                                    <option value="42">Cayman Islands</option>
+                                    <option value="43">Central African Republic</option>
+                                    <option value="44">Chad</option>
+                                    <option value="45">Chile</option>
+                                    <option value="46">China</option>
+                                    <option value="47">Christmas Island</option>
+                                    <option value="48">Cocos</option>
+                                    <option value="49">Colombia</option>
+                                    <option value="50">Comoros</option>
+                                    <option value="51">Congo Democratic</option>
+                                    <option value="52">Congo Republic</option>
+                                    <option value="53">Cook Islands</option>
+                                    <option value="54">Costa Rica</option>
+                                    <option value="55">Ivory Cost</option>
+                                    <option value="56">Croatia</option>
+                                    <option value="57">Cuba</option>
+                                    <option value="58">Curacao</option>
+                                    <option value="59">Cyprus</option>
+                                    <option value="60">Czech Republic</option>
+                                    <option value="61">Denmark</option>
+                                    <option value="62">Djibouti</option>
+                                    <option value="63">Dominica</option>
+                                    <option value="64">Dominican Republic</option>
+                                    <option value="65">Ecuador</option>
+                                    <option value="66">Egypt</option>
+                                    <option value="67">EI Salvador</option>
+                                    <option value="68">Equatorial Guinea</option>
+                                    <option value="69">Eritrea</option>
+                                    <option value="70">Estonia</option>
+                                    <option value="71">eSwaitini</option>
+                                    <option value="72">Ethiopia</option>
+                                    <option value="73">Falkland Islands</option>
+                                    <option value="74">Faroe Islands</option>
+                                    <option value="75">Fiji</option>
+                                    <option value="76">Finland</option>
+                                    <option value="77">France</option>
+                                    <option value="78">French Guiana</option>
+                                    <option value="79">French Polynesia</option>
+                                    <option value="80">French Southern Territories</option>
+                                    <option value="81">Gabon</option>
+                                    <option value="82">Gambia</option>
+                                    <option value="83">Georgia</option>
+                                    <option value="84">Germany</option>
+                                    <option value="85">Ghana</option>
+                                    <option value="86">Gibralter</option>
+                                    <option value="87">Greece</option>
+                                    <option value="88">Greenland</option>
+                                    <option value="89">Grenada</option>
+                                    <option value="90">Guadeloupe</option>
+                                    <option value="91">Guam</option>
+                                    <option value="92">Guatemala</option>
+                                    <option value="93">Guernsey</option>
+                                    <option value="94">Guinea</option>
+                                    <option value="95">Guinea Bissau</option>
+                                    <option value="96">Guyana</option>
+                                    <option value="97">Haiti</option>
+                                    <option value="98">Herd Island</option>
+                                    <option value="99">Holy See</option>
+                                    <option value="100">Honduras</option>
+                                    <option value="101">Hongkong</option>
+                                    <option value="102">Hungary</option>
+                                    <option value="103">Iceland</option>
+                                    <option value="104">India</option>
+                                    <option value="105">Indonessia</option>
+                                    <option value="106">Iran</option>
+                                    <option value="107">Iraq</option>
+                                    <option value="108">Ireland</option>
+                                    <option value="109">Isle of man</option>
+                                    <option value="110">Israel</option>
+                                    <option value="111">Italy</option>
+                                    <option value="112">Jamaica</option>
+                                    <option value="113">Japan</option>
+                                    <option value="114">Jersey</option>
+                                    <option value="115">Jordan</option>
+                                    <option value="116">Kazakhstan</option>
+                                    <option value="117">Kenya</option>
+                                    <option value="118">Kiribati</option>
+                                    <option value="119">Korea North</option>
+                                    <option value="120">Korea South</option>
+                                    <option value="121">Kosovo</option>
+                                    <option value="122">Kuwait</option>
+                                    <option value="123">Kyrgyzstan</option>
+                                    <option value="124">Laos</option>
+                                    <option value="125">Latvia</option>
+                                    <option value="126">Lebanon</option>
+                                    <option value="127">Lesotho</option>
+                                    <option value="128">Liberia</option>
+                                    <option value="129">Libya</option>
+                                    <option value="130">Liechtenstein</option>
+                                    <option value="131">Lithuania</option>
+                                    <option value="132">Luxembourg</option>
+                                    <option value="133">Macao</option>
+                                    <option value="134">Macedonia</option>
+                                    <option value="135">Madagascar</option>
+                                    <option value="136">Malawi</option>
+                                    <option value="137">Malaysia</option>
+                                    <option value="138">Maldives</option>
+                                    <option value="139">Mali</option>
+                                    <option value="140">Malta</option>
+                                    <option value="141">Marshall Islands</option>
+                                    <option value="142">Martinique</option>
+                                    <option value="143">Mauritania</option>
+                                    <option value="144">Mauritius</option>
+                                    <option value="145">Mayotte</option>
+                                    <option value="146">Mexico</option>
+                                    <option value="147">Micronessia</option>
+                                    <option value="148">Moldova</option>
+                                    <option value="149">Monaco</option>
+                                    <option value="150">Mongolia</option>
+                                    <option value="151">Montenegro</option>
+                                    <option value="152">Montserrat</option>
+                                    <option value="153">Morocco</option>
+                                    <option value="154">Mozambique</option>
+                                    <option value="155">Mynamar</option>
+                                    <option value="156">Namabia</option>
+                                    <option value="157">Nauru</option>
+                                    <option value="158">Nepal</option>
+                                    <option value="159">Netherlands</option>
+                                    <option value="160">New Celedonia</option>
+                                    <option value="161">Newzealand</option>
+                                    <option value="162">Niger</option>
+                                    <option value="163">Nigeria</option>
+                                    <option value="164">Norfolk Island</option>
+                                    <option value="165">Nothern Mariana Islands</option>
+                                    <option value="166">Norway</option>
+                                    <option value="167">Nuie</option>
+                                    <option value="168">Oman</option>
+                                    <option value="169">Pakistan</option>
+                                    <option value="170">Palau</option>
+                                    <option value="171">Panama</option>
+                                    <option value="172">Papua New Guinea</option>
+                                    <option value="173">Paraguay</option>
+                                    <option value="174">Peru</option>
+                                    <option value="175">Philippines</option>
+                                    <option value="176">Pitcaim</option>
+                                    <option value="177">Poland</option>
+                                    <option value="178">Portugal</option>
+                                    <option value="179">Puerto Rico</option>
+                                    <option value="180">Qatar</option>
+                                    <option value="181">Reunion</option>
+                                    <option value="182">Roman</option>
+                                    <option value="183">Russia</option>
+                                    <option value="184">Rwanda</option>
+                                    <option value="185">Saint Barthelemy</option>
+                                    <option value="186">Saint Helena</option>
+                                    <option value="187">Saint Kitts</option>
+                                    <option value="188">Saint Lucia</option>
+                                    <option value="189">Saint Martin</option>
+                                    <option value="190">Saint Pierre</option>
+                                    <option value="191">Saint Vincent</option>
+                                    <option value="192">Samoa</option>
+                                    <option value="193">Saint Marino</option>
+                                    <option value="194">Sao Tome</option>
+                                    <option value="195">Saudia Arabia</option>
+                                    <option value="196">Senegal</option>
+                                    <option value="197">Serbia</option>
+                                    <option value="198">Seychelles</option>
+                                    <option value="199">Sierra Leone</option>
+                                    <option value="200">Singapore</option>
+                                    <option value="201">Sint Martin</option>
+                                    <option value="202">Slovekia</option>
+                                    <option value="203">Slovenia</option>
+                                    <option value="204">Solomon Islands</option>
+                                    <option value="205">Somalia</option>
+                                    <option value="206">South Africa</option>
+                                    <option value="207">South Georgia</option>
+                                    <option value="208">South Sudan</option>
+                                    <option value="209">SPain</option>
+                                    <option value="210">Srilanka</option>
+                                    <option value="211">Sudan</option>
+                                    <option value="212">Suriname</option>
+                                    <option value="213">Svalbard</option>
+                                    <option value="214">Sweden</option>
+                                    <option value="215">Switxerland</option>
+                                    <option value="216">Syria</option>
+                                    <option value="217">Taiwan</option>
+                                    <option value="218">Tajikistan</option>
+                                    <option value="219">Tanzania</option>
+                                    <option value="220">Thailand</option>
+                                    <option value="221">Timor Leste</option>
+                                    <option value="222">Togo</option>
+                                    <option value="223">Tokelau</option>
+                                    <option value="224">Tonga</option>
+                                    <option value="225">Trinidad</option>
+                                    <option value="226">Tunisia</option>
+                                    <option value="227">Turkey</option>
+                                    <option value="228">Turkmenistan</option>
+                                    <option value="229">Turks</option>
+                                    <option value="230">Tuvalu</option>
+                                    <option value="231">Uganda</option>
+                                    <option value="232">Ukraine</option>
+                                    <option value="233">United Arab Emirates</option>
+                                    <option value="234">United Kingdom</option>
+                                    <option value="235">United States Minor</option>
+                                    <option value="236">United States of America</option>
+                                    <option value="237">Uruguay</option>
+                                    <option value="238">Uzbekistan</option>
+                                    <option value="239">Vanuatu</option>
+                                    <option value="240">Venezuela</option>
+                                    <option value="241">Vietnam</option>
+                                    <option value="242">Virgin Islands(British)</option>
+                                    <option value="243">Virgin Islands(US)</option>
+                                    <option value="244">Wallis and Fatuna</option>
+                                    <option value="245">West Bank</option>
+                                    <option value="246">Western Sahara</option>
+                                    <option value="247">Yemen</option>
+                                    <option value="248">Zambia</option>
+                                    <option value="249">Zimbabwe</option>
+
+                                </select> 
+                            </div>
+
+                            <div className="col-2">
+                                <label className="col-form-label"></label>
+                            </div>
+
+                            <div className="col-2">
+                                <label className="col-form-label"></label>
+                            </div>
+
+                            <div className="col-1">
+                            {(() => {
+                                if(user['is_superuser'])
+                                    {
+                                        return (<>
+                                             {(() => { 
+                                
+                                if(parseInt(key.RF_LP_Birth_Country)===1 || parseInt(key.RF_LP_Birth_Country)===2 || parseInt(key.RF_LP_Birth_Country)===3 || parseInt(key.RF_LP_Birth_Country)===4 || parseInt(key.RF_LP_Birth_Country)===6 || parseInt(key.RF_LP_Birth_Country)===8 || parseInt(key.RF_LP_Birth_Country)===10 || parseInt(key.RF_LP_Birth_Country)===13 || parseInt(key.RF_LP_Birth_Country)===16 || parseInt(key.RF_LP_Birth_Country)===17 || parseInt(key.RF_LP_Birth_Country)===19 || parseInt(key.RF_LP_Birth_Country)===20 || parseInt(key.RF_LP_Birth_Country)===24 || parseInt(key.RF_LP_Birth_Country)===27
+                                    || parseInt(key.RF_LP_Birth_Country)===28 || parseInt(key.RF_LP_Birth_Country)===29 || parseInt(key.RF_LP_Birth_Country)===31 || parseInt(key.RF_LP_Birth_Country)===32 || parseInt(key.RF_LP_Birth_Country)===33 || parseInt(key.RF_LP_Birth_Country)===36 || parseInt(key.RF_LP_Birth_Country)===37 || parseInt(key.RF_LP_Birth_Country)===39 || parseInt(key.RF_LP_Birth_Country)===41 || parseInt(key.RF_LP_Birth_Country)===42 || parseInt(key.RF_LP_Birth_Country)===43 || parseInt(key.RF_LP_Birth_Country)===46 || parseInt(key.RF_LP_Birth_Country)===47 || parseInt(key.RF_LP_Birth_Country)===48 || parseInt(key.RF_LP_Birth_Country)===49 || parseInt(key.RF_LP_Birth_Country)===50 || parseInt(key.RF_LP_Birth_Country)===51 || parseInt(key.RF_LP_Birth_Country)===52 || parseInt(key.RF_LP_Birth_Country)===53
+                                    || parseInt(key.RF_LP_Birth_Country)===55 || parseInt(key.RF_LP_Birth_Country)===58 || parseInt(key.RF_LP_Birth_Country)===62 || parseInt(key.RF_LP_Birth_Country)===64 || parseInt(key.RF_LP_Birth_Country)===65 || parseInt(key.RF_LP_Birth_Country)===66 || parseInt(key.RF_LP_Birth_Country)===67 || parseInt(key.RF_LP_Birth_Country)===68 || parseInt(key.RF_LP_Birth_Country)===69 || parseInt(key.RF_LP_Birth_Country)===71 || parseInt(key.RF_LP_Birth_Country)===72 || parseInt(key.RF_LP_Birth_Country)===73 || parseInt(key.RF_LP_Birth_Country)===74
+                                    || parseInt(key.RF_LP_Birth_Country)===82 || parseInt(key.RF_LP_Birth_Country)===85 || parseInt(key.RF_LP_Birth_Country)===86 || parseInt(key.RF_LP_Birth_Country)===90 || parseInt(key.RF_LP_Birth_Country)===91 || parseInt(key.RF_LP_Birth_Country)===92 || parseInt(key.RF_LP_Birth_Country)===93
+                                    || parseInt(key.RF_LP_Birth_Country)===94 || parseInt(key.RF_LP_Birth_Country)===95 || parseInt(key.RF_LP_Birth_Country)===97 || parseInt(key.RF_LP_Birth_Country)===98 || parseInt(key.RF_LP_Birth_Country)===99 || parseInt(key.RF_LP_Birth_Country)===100 || parseInt(key.RF_LP_Birth_Country)===103 
                                     
-                                    || parseInt(FormData['RF_Nationality1'])===109 || parseInt(FormData['RF_Nationality1'])===112  || parseInt(FormData['RF_Nationality1'])===115 || parseInt(FormData['RF_Nationality1'])===116 || parseInt(FormData['RF_Nationality1'])===117 || parseInt(FormData['RF_Nationality1'])===121 || parseInt(FormData['RF_Nationality1'])===123  || parseInt(FormData['RF_Nationality1'])===124
-                                    || parseInt(FormData['RF_Nationality1'])===126 || parseInt(FormData['RF_Nationality1'])===127  || parseInt(FormData['RF_Nationality1'])===128 || parseInt(FormData['RF_Nationality1'])===129 || parseInt(FormData['RF_Nationality1'])===134 || parseInt(FormData['RF_Nationality1'])===135 || parseInt(FormData['RF_Nationality1'])===136
-                                    || parseInt(FormData['RF_Nationality1'])===139 || parseInt(FormData['RF_Nationality1'])===143  || parseInt(FormData['RF_Nationality1'])===145 || parseInt(FormData['RF_Nationality1'])===146 || parseInt(FormData['RF_Nationality1'])===148 || parseInt(FormData['RF_Nationality1'])===150 || parseInt(FormData['RF_Nationality1'])===151
-                                    || parseInt(FormData['RF_Nationality1'])===152 || parseInt(FormData['RF_Nationality1'])===153 || parseInt(FormData['RF_Nationality1'])===154 || parseInt(FormData['RF_Nationality1'])===155 || parseInt(FormData['RF_Nationality1'])===158 || parseInt(FormData['RF_Nationality1'])===160 || parseInt(FormData['RF_Nationality1'])===162 
-                                    || parseInt(FormData['RF_Nationality1'])===163 || parseInt(FormData['RF_Nationality1'])===164 || parseInt(FormData['RF_Nationality1'])===165 || parseInt(FormData['RF_Nationality1'])===166 || parseInt(FormData['RF_Nationality1'])===168 || parseInt(FormData['RF_Nationality1'])===170 || parseInt(FormData['RF_Nationality1'])===172 || parseInt(FormData['RF_Nationality1'])===173 || parseInt(FormData['RF_Nationality1'])===174 || parseInt(FormData['RF_Nationality1'])===175 || parseInt(FormData['RF_Nationality1'])===176 || parseInt(FormData['RF_Nationality1'])===177
-                                    || parseInt(FormData['RF_Nationality1'])===186 || parseInt(FormData['RF_Nationality1'])===187 || parseInt(FormData['RF_Nationality1'])===188 || parseInt(FormData['RF_Nationality1'])===190 || parseInt(FormData['RF_Nationality1'])===191 || parseInt(FormData['RF_Nationality1'])===193 || parseInt(FormData['RF_Nationality1'])===195
-                                    || parseInt(FormData['RF_Nationality1'])===197 || parseInt(FormData['RF_Nationality1'])===198 || parseInt(FormData['RF_Nationality1'])===200 || parseInt(FormData['RF_Nationality1'])===202 || parseInt(FormData['RF_Nationality1'])===203 || parseInt(FormData['RF_Nationality1'])===206 || parseInt(FormData['RF_Nationality1'])===208 || parseInt(FormData['RF_Nationality1'])===209
-                                    || parseInt(FormData['RF_Nationality1'])===211 || parseInt(FormData['RF_Nationality1'])===212 || parseInt(FormData['RF_Nationality1'])===213 || parseInt(FormData['RF_Nationality1'])===214 || parseInt(FormData['RF_Nationality1'])===219 || parseInt(FormData['RF_Nationality1'])===220 || parseInt(FormData['RF_Nationality1'])===221 || parseInt(FormData['RF_Nationality1'])===222 || parseInt(FormData['RF_Nationality1'])===223 || parseInt(FormData['RF_Nationality1'])===224
-                                    || parseInt(FormData['RF_Nationality1'])===226 || parseInt(FormData['RF_Nationality1'])===230 || parseInt(FormData['RF_Nationality1'])===232 || parseInt(FormData['RF_Nationality1'])===233 || parseInt(FormData['RF_Nationality1'])===236 || parseInt(FormData['RF_Nationality1'])===237 || parseInt(FormData['RF_Nationality1'])===238 || parseInt(FormData['RF_Nationality1'])===239)
+                                    || parseInt(key.RF_LP_Birth_Country)===109 || parseInt(key.RF_LP_Birth_Country)===112  || parseInt(key.RF_LP_Birth_Country)===115 || parseInt(key.RF_LP_Birth_Country)===116  || parseInt(key.RF_LP_Birth_Country)===117  || parseInt(key.RF_LP_Birth_Country)===121  || parseInt(key.RF_LP_Birth_Country)===123  || parseInt(key.RF_LP_Birth_Country)===124
+                                    || parseInt(key.RF_LP_Birth_Country)===126 || parseInt(key.RF_LP_Birth_Country)===127  || parseInt(key.RF_LP_Birth_Country)===128 || parseInt(key.RF_LP_Birth_Country)===129  || parseInt(key.RF_LP_Birth_Country)===134  || parseInt(key.RF_LP_Birth_Country)===135  || parseInt(key.RF_LP_Birth_Country)===136
+                                    || parseInt(key.RF_LP_Birth_Country)===139 || parseInt(key.RF_LP_Birth_Country)===143  || parseInt(key.RF_LP_Birth_Country)===145 || parseInt(key.RF_LP_Birth_Country)===146  || parseInt(key.RF_LP_Birth_Country)===148  || parseInt(key.RF_LP_Birth_Country)===150 || parseInt(key.RF_LP_Birth_Country)===151
+                                    || parseInt(key.RF_LP_Birth_Country)===152 || parseInt(key.RF_LP_Birth_Country)===153 || parseInt(key.RF_LP_Birth_Country)===154 || parseInt(key.RF_LP_Birth_Country)===155 || parseInt(key.RF_LP_Birth_Country)===158 || parseInt(key.RF_LP_Birth_Country)===160 || parseInt(key.RF_LP_Birth_Country)===162 
+                                    || parseInt(key.RF_LP_Birth_Country)===163 || parseInt(key.RF_LP_Birth_Country)===164 || parseInt(key.RF_LP_Birth_Country)===165 || parseInt(key.RF_LP_Birth_Country)===166 || parseInt(key.RF_LP_Birth_Country)===168 || parseInt(key.RF_LP_Birth_Country)===170 || parseInt(key.RF_LP_Birth_Country)===172 || parseInt(key.RF_LP_Birth_Country)===173 || parseInt(key.RF_LP_Birth_Country)===174 || parseInt(key.RF_LP_Birth_Country)===175 || parseInt(key.RF_LP_Birth_Country)===176 || parseInt(key.RF_LP_Birth_Country)===177
+                                    || parseInt(key.RF_LP_Birth_Country)===186 || parseInt(key.RF_LP_Birth_Country)===187 || parseInt(key.RF_LP_Birth_Country)===188 || parseInt(key.RF_LP_Birth_Country)===190 || parseInt(key.RF_LP_Birth_Country)===191 || parseInt(key.RF_LP_Birth_Country)===193 || parseInt(key.RF_LP_Birth_Country)===195
+                                    || parseInt(key.RF_LP_Birth_Country)===197 || parseInt(key.RF_LP_Birth_Country)===198 || parseInt(key.RF_LP_Birth_Country)===200 || parseInt(key.RF_LP_Birth_Country)===202 || parseInt(key.RF_LP_Birth_Country)===203 || parseInt(key.RF_LP_Birth_Country)===206 || parseInt(key.RF_LP_Birth_Country)===208 || parseInt(key.RF_LP_Birth_Country)===209
+                                    || parseInt(key.RF_LP_Birth_Country)===211 || parseInt(key.RF_LP_Birth_Country)===212 || parseInt(key.RF_LP_Birth_Country)===213 || parseInt(key.RF_LP_Birth_Country)===214 || parseInt(key.RF_LP_Birth_Country)===219 || parseInt(key.RF_LP_Birth_Country)===220 || parseInt(key.RF_LP_Birth_Country)===221 || parseInt(key.RF_LP_Birth_Country)===222 || parseInt(key.RF_LP_Birth_Country)===223 || parseInt(key.RF_LP_Birth_Country)===224
+                                    || parseInt(key.RF_LP_Birth_Country)===226 || parseInt(key.RF_LP_Birth_Country)===230 || parseInt(key.RF_LP_Birth_Country)===232 || parseInt(key.RF_LP_Birth_Country)===233 || parseInt(key.RF_LP_Birth_Country)===236 || parseInt(key.RF_LP_Birth_Country)===237 || parseInt(key.RF_LP_Birth_Country)===238 || parseInt(key.RF_LP_Birth_Country)===239)
                                 {
                                     return (<>
                                         
@@ -8780,10 +8031,10 @@ const RiskFactors = ({user}) => {
                                     </>);
                                 }
 
-                                else if(parseInt(FormData['RF_Nationality1'])===5 || parseInt(FormData['RF_Nationality1'])===7 || parseInt(FormData['RF_Nationality1'])===9 || parseInt(FormData['RF_Nationality1'])===12 || parseInt(FormData['RF_Nationality1'])===25 || parseInt(FormData['RF_Nationality1'])===34 || parseInt(FormData['RF_Nationality1'])===35 || parseInt(FormData['RF_Nationality1'])===61 || parseInt(FormData['RF_Nationality1'])===76 || parseInt(FormData['RF_Nationality1'])===84 || parseInt(FormData['RF_Nationality1'])===88
+                                else if(parseInt(key.RF_LP_Birth_Country)===5 || parseInt(key.RF_LP_Birth_Country)===7 || parseInt(key.RF_LP_Birth_Country)===9 || parseInt(key.RF_LP_Birth_Country)===12 || parseInt(key.RF_LP_Birth_Country)===25 || parseInt(key.RF_LP_Birth_Country)===34 || parseInt(key.RF_LP_Birth_Country)===35 || parseInt(key.RF_LP_Birth_Country)===61 || parseInt(key.RF_LP_Birth_Country)===76 || parseInt(key.RF_LP_Birth_Country)===84 || parseInt(key.RF_LP_Birth_Country)===88
                                     
-                                    || parseInt(FormData['RF_Nationality1'])===114 || parseInt(FormData['RF_Nationality1'])===130 || parseInt(FormData['RF_Nationality1'])===132 || parseInt(FormData['RF_Nationality1'])===142 || parseInt(FormData['RF_Nationality1'])===149 || parseInt(FormData['RF_Nationality1'])===159 || parseInt(FormData['RF_Nationality1'])===161 
-                                    || parseInt(FormData['RF_Nationality1'])===167 || parseInt(FormData['RF_Nationality1'])===194 || parseInt(FormData['RF_Nationality1'])===215 || parseInt(FormData['RF_Nationality1'])===216 )
+                                    || parseInt(key.RF_LP_Birth_Country)===114 || parseInt(key.RF_LP_Birth_Country)===130 || parseInt(key.RF_LP_Birth_Country)===132 || parseInt(key.RF_LP_Birth_Country)===142 || parseInt(key.RF_LP_Birth_Country)===149 || parseInt(key.RF_LP_Birth_Country)===159 || parseInt(key.RF_LP_Birth_Country)===161 
+                                    || parseInt(key.RF_LP_Birth_Country)===167 || parseInt(key.RF_LP_Birth_Country)===194 || parseInt(key.RF_LP_Birth_Country)===215 || parseInt(key.RF_LP_Birth_Country)===216 )
                                 {
                                     return (<>
                                         
@@ -8792,15 +8043,15 @@ const RiskFactors = ({user}) => {
                                     </>);
                                 }
 
-                                else if(parseInt(FormData['RF_Nationality1'])===11 || parseInt(FormData['RF_Nationality1'])===14 || parseInt(FormData['RF_Nationality1'])===15 || parseInt(FormData['RF_Nationality1'])===18 || parseInt(FormData['RF_Nationality1'])===22 || parseInt(FormData['RF_Nationality1'])===23 || parseInt(FormData['RF_Nationality1'])===26 || parseInt(FormData['RF_Nationality1'])===30 || parseInt(FormData['RF_Nationality1'])===38 || parseInt(FormData['RF_Nationality1'])===40 || parseInt(FormData['RF_Nationality1'])===44 || parseInt(FormData['RF_Nationality1'])===45
-                                    || parseInt(FormData['RF_Nationality1'])===54 || parseInt(FormData['RF_Nationality1'])===56 || parseInt(FormData['RF_Nationality1'])===59 || parseInt(FormData['RF_Nationality1'])===60 || parseInt(FormData['RF_Nationality1'])===63 || parseInt(FormData['RF_Nationality1'])===70 || parseInt(FormData['RF_Nationality1'])===75 || parseInt(FormData['RF_Nationality1'])===77 || parseInt(FormData['RF_Nationality1'])===78 || parseInt(FormData['RF_Nationality1'])===79 || parseInt(FormData['RF_Nationality1'])===80 || parseInt(FormData['RF_Nationality1'])===81
-                                    || parseInt(FormData['RF_Nationality1'])===83 || parseInt(FormData['RF_Nationality1'])===87 || parseInt(FormData['RF_Nationality1'])===89 || parseInt(FormData['RF_Nationality1'])===96 || parseInt(FormData['RF_Nationality1'])===101 || parseInt(FormData['RF_Nationality1'])===104 || parseInt(FormData['RF_Nationality1'])===105
+                                else if(parseInt(key.RF_LP_Birth_Country)===11 || parseInt(key.RF_LP_Birth_Country)===14 || parseInt(key.RF_LP_Birth_Country)===15 || parseInt(key.RF_LP_Birth_Country)===18 || parseInt(key.RF_LP_Birth_Country)===22 || parseInt(key.RF_LP_Birth_Country)===23 || parseInt(key.RF_LP_Birth_Country)===26 || parseInt(key.RF_LP_Birth_Country)===30 || parseInt(key.RF_LP_Birth_Country)===38 || parseInt(key.RF_LP_Birth_Country)===40 || parseInt(key.RF_LP_Birth_Country)===44 || parseInt(key.RF_LP_Birth_Country)===45
+                                    || parseInt(key.RF_LP_Birth_Country)===54 || parseInt(key.RF_LP_Birth_Country)===56 || parseInt(key.RF_LP_Birth_Country)===59 || parseInt(key.RF_LP_Birth_Country)===60 || parseInt(key.RF_LP_Birth_Country)===63 || parseInt(key.RF_LP_Birth_Country)===70 || parseInt(key.RF_LP_Birth_Country)===75 || parseInt(key.RF_LP_Birth_Country)===77 || parseInt(key.RF_LP_Birth_Country)===78 || parseInt(key.RF_LP_Birth_Country)===79 || parseInt(key.RF_LP_Birth_Country)===80 || parseInt(key.RF_LP_Birth_Country)===81
+                                    || parseInt(key.RF_LP_Birth_Country)===83 || parseInt(key.RF_LP_Birth_Country)===87 || parseInt(key.RF_LP_Birth_Country)===89 || parseInt(key.RF_LP_Birth_Country)===96 || parseInt(key.RF_LP_Birth_Country)===101 || parseInt(key.RF_LP_Birth_Country)===104 || parseInt(key.RF_LP_Birth_Country)===105
                                     
-                                    || parseInt(FormData['RF_Nationality1'])===108 || parseInt(FormData['RF_Nationality1'])===110 || parseInt(FormData['RF_Nationality1'])===111 || parseInt(FormData['RF_Nationality1'])===113 || parseInt(FormData['RF_Nationality1'])===118 || parseInt(FormData['RF_Nationality1'])===120 || parseInt(FormData['RF_Nationality1'])===125
-                                    || parseInt(FormData['RF_Nationality1'])===131 || parseInt(FormData['RF_Nationality1'])===133 || parseInt(FormData['RF_Nationality1'])===137 || parseInt(FormData['RF_Nationality1'])===138 || parseInt(FormData['RF_Nationality1'])===140 || parseInt(FormData['RF_Nationality1'])===141
-                                    || parseInt(FormData['RF_Nationality1'])===144 || parseInt(FormData['RF_Nationality1'])===147 || parseInt(FormData['RF_Nationality1'])===156 || parseInt(FormData['RF_Nationality1'])===157 || parseInt(FormData['RF_Nationality1'])===169 || parseInt(FormData['RF_Nationality1'])===171 || parseInt(FormData['RF_Nationality1'])===178 || parseInt(FormData['RF_Nationality1'])===179 || parseInt(FormData['RF_Nationality1'])===180 || parseInt(FormData['RF_Nationality1'])===181 || parseInt(FormData['RF_Nationality1'])===182 || parseInt(FormData['RF_Nationality1'])===183
-                                    || parseInt(FormData['RF_Nationality1'])===185 || parseInt(FormData['RF_Nationality1'])===189 || parseInt(FormData['RF_Nationality1'])===192 || parseInt(FormData['RF_Nationality1'])===196 || parseInt(FormData['RF_Nationality1'])===199 || parseInt(FormData['RF_Nationality1'])===201 || parseInt(FormData['RF_Nationality1'])===204 || parseInt(FormData['RF_Nationality1'])===205
-                                    || parseInt(FormData['RF_Nationality1'])===207 || parseInt(FormData['RF_Nationality1'])===210 || parseInt(FormData['RF_Nationality1'])===218 || parseInt(FormData['RF_Nationality1'])===225 || parseInt(FormData['RF_Nationality1'])===231 || parseInt(FormData['RF_Nationality1'])===234 || parseInt(FormData['RF_Nationality1'])===235 || parseInt(FormData['RF_Nationality1'])===237 || parseInt(FormData['RF_Nationality1'])===238)
+                                    || parseInt(key.RF_LP_Birth_Country)===108 || parseInt(key.RF_LP_Birth_Country)===110 || parseInt(key.RF_LP_Birth_Country)===111 || parseInt(key.RF_LP_Birth_Country)===113 || parseInt(key.RF_LP_Birth_Country)===118 || parseInt(key.RF_LP_Birth_Country)===120 || parseInt(key.RF_LP_Birth_Country)===125
+                                    || parseInt(key.RF_LP_Birth_Country)===131 || parseInt(key.RF_LP_Birth_Country)===133 || parseInt(key.RF_LP_Birth_Country)===137 || parseInt(key.RF_LP_Birth_Country)===138 || parseInt(key.RF_LP_Birth_Country)===140 || parseInt(key.RF_LP_Birth_Country)===141
+                                    || parseInt(key.RF_LP_Birth_Country)===144 || parseInt(key.RF_LP_Birth_Country)===147 || parseInt(key.RF_LP_Birth_Country)===156 || parseInt(key.RF_LP_Birth_Country)===157 || parseInt(key.RF_LP_Birth_Country)===169 || parseInt(key.RF_LP_Birth_Country)===171 || parseInt(key.RF_LP_Birth_Country)===178 || parseInt(key.RF_LP_Birth_Country)===179 || parseInt(key.RF_LP_Birth_Country)===180 || parseInt(key.RF_LP_Birth_Country)===181 || parseInt(key.RF_LP_Birth_Country)===182 || parseInt(key.RF_LP_Birth_Country)===183
+                                    || parseInt(key.RF_LP_Birth_Country)===185 || parseInt(key.RF_LP_Birth_Country)===189 || parseInt(key.RF_LP_Birth_Country)===192 || parseInt(key.RF_LP_Birth_Country)===196 || parseInt(key.RF_LP_Birth_Country)===199 || parseInt(key.RF_LP_Birth_Country)===201 || parseInt(key.RF_LP_Birth_Country)===204 || parseInt(key.RF_LP_Birth_Country)===205
+                                    || parseInt(key.RF_LP_Birth_Country)===207 || parseInt(key.RF_LP_Birth_Country)===210 || parseInt(key.RF_LP_Birth_Country)===218 || parseInt(key.RF_LP_Birth_Country)===225 || parseInt(key.RF_LP_Birth_Country)===231 || parseInt(key.RF_LP_Birth_Country)===234 || parseInt(key.RF_LP_Birth_Country)===235 || parseInt(key.RF_LP_Birth_Country)===237 || parseInt(key.RF_LP_Birth_Country)===238)
                                 {
                                     return (<>
                                         
@@ -8809,7 +8060,7 @@ const RiskFactors = ({user}) => {
                                     </>);
                                 }
 
-                                else if(parseInt(FormData['RF_Nationality1'])===21 || parseInt(FormData['RF_Nationality1'])===57 || parseInt(FormData['RF_Nationality1'])===106 || parseInt(FormData['RF_Nationality1'])===107 || parseInt(FormData['RF_Nationality1'])===119 || parseInt(FormData['RF_Nationality1'])===187 || parseInt(FormData['RF_Nationality1'])===217 )
+                                else if(parseInt(key.RF_LP_Birth_Country)===21 || parseInt(key.RF_LP_Birth_Country)===57 || parseInt(key.RF_LP_Birth_Country)===106 || parseInt(key.RF_LP_Birth_Country)===107 || parseInt(key.RF_LP_Birth_Country)===119 || parseInt(key.RF_LP_Birth_Country)===187 || parseInt(key.RF_LP_Birth_Country)===217 )
                                 {
                                     return (<>
                                         
@@ -8819,32 +8070,48 @@ const RiskFactors = ({user}) => {
                                 }
         
                                 })()}
+                                            </>)
+                                    }    
+                            })()}
+                               
                             </div>
 
                             <div className="col-1">
-                                                            
-                                <label className="col-form-label"></label>
-                                                
-                            </div>
-
-                            <div className="col-1">
-                                {(() => { 
+                            {(() => {
+                                if(user['is_superuser'])
+                                    {
+                                        return (<>
+                                            <label className="col-form-label">3</label>
+                                            </>)
+                                    }    
+                            })()}                          
                                 
-                                if(parseInt(FormData['RF_Nationality1'])===1 || parseInt(FormData['RF_Nationality1'])===2 || parseInt(FormData['RF_Nationality1'])===3 || parseInt(FormData['RF_Nationality1'])===4 || parseInt(FormData['RF_Nationality1'])===6 || parseInt(FormData['RF_Nationality1'])===8 || parseInt(FormData['RF_Nationality1'])===10 || parseInt(FormData['RF_Nationality1'])===13 || parseInt(FormData['RF_Nationality1'])===16 || parseInt(FormData['RF_Nationality1'])===17 || parseInt(FormData['RF_Nationality1'])===19 || parseInt(FormData['RF_Nationality1'])===20 || parseInt(FormData['RF_Nationality1'])===24
-                                    || parseInt(FormData['RF_Nationality1'])===27 || parseInt(FormData['RF_Nationality1'])===28 || parseInt(FormData['RF_Nationality1'])===29 || parseInt(FormData['RF_Nationality1'])===30 || parseInt(FormData['RF_Nationality1'])===31 || parseInt(FormData['RF_Nationality1'])===32 || parseInt(FormData['RF_Nationality1'])===33 || parseInt(FormData['RF_Nationality1'])===36 || parseInt(FormData['RF_Nationality1'])===37 || parseInt(FormData['RF_Nationality1'])===39 || parseInt(FormData['RF_Nationality1'])===41 || parseInt(FormData['RF_Nationality1'])===42 || parseInt(FormData['RF_Nationality1'])===43
-                                    || parseInt(FormData['RF_Nationality1'])===46 || parseInt(FormData['RF_Nationality1'])===47 || parseInt(FormData['RF_Nationality1'])===48 || parseInt(FormData['RF_Nationality1'])===49 || parseInt(FormData['RF_Nationality1'])===50 || parseInt(FormData['RF_Nationality1'])===51 || parseInt(FormData['RF_Nationality1'])===52 || parseInt(FormData['RF_Nationality1'])===53 || parseInt(FormData['RF_Nationality1'])===55 || parseInt(FormData['RF_Nationality1'])===58 || parseInt(FormData['RF_Nationality1'])===62 || parseInt(FormData['RF_Nationality1'])===64 || parseInt(FormData['RF_Nationality1'])===65 || parseInt(FormData['RF_Nationality1'])===66 
-                                    || parseInt(FormData['RF_Nationality1'])===67 || parseInt(FormData['RF_Nationality1'])===68 || parseInt(FormData['RF_Nationality1'])===69 || parseInt(FormData['RF_Nationality1'])===70 || parseInt(FormData['RF_Nationality1'])===71 || parseInt(FormData['RF_Nationality1'])===72 || parseInt(FormData['RF_Nationality1'])===73 || parseInt(FormData['RF_Nationality1'])===74 || parseInt(FormData['RF_Nationality1'])===82 || parseInt(FormData['RF_Nationality1'])===85 || parseInt(FormData['RF_Nationality1'])===86 || parseInt(FormData['RF_Nationality1'])===90 || parseInt(FormData['RF_Nationality1'])===91 || parseInt(FormData['RF_Nationality1'])===92 || parseInt(FormData['RF_Nationality1'])===93
-                                    || parseInt(FormData['RF_Nationality1'])===94 || parseInt(FormData['RF_Nationality1'])===95 || parseInt(FormData['RF_Nationality1'])===96 || parseInt(FormData['RF_Nationality1'])===97 || parseInt(FormData['RF_Nationality1'])===98 || parseInt(FormData['RF_Nationality1'])===99 || parseInt(FormData['RF_Nationality1'])===100 || parseInt(FormData['RF_Nationality1'])===102 || parseInt(FormData['RF_Nationality1'])===103
+                                        
+                                
+                            </div>
+
+                            <div className="col-1">
+                            {(() => {
+                                if(user['is_superuser'])
+                                    {
+                                        return (<>
+                                          {(() => { 
+                                
+                                if(parseInt(key.RF_LP_Birth_Country)===1 || parseInt(key.RF_LP_Birth_Country)===2 || parseInt(key.RF_LP_Birth_Country)===3 || parseInt(key.RF_LP_Birth_Country)===4 || parseInt(key.RF_LP_Birth_Country)===6 || parseInt(key.RF_LP_Birth_Country)===8 || parseInt(key.RF_LP_Birth_Country)===10 || parseInt(key.RF_LP_Birth_Country)===13 || parseInt(key.RF_LP_Birth_Country)===16 || parseInt(key.RF_LP_Birth_Country)===17 || parseInt(key.RF_LP_Birth_Country)===19 || parseInt(key.RF_LP_Birth_Country)===20 || parseInt(key.RF_LP_Birth_Country)===24
+                                    || parseInt(key.RF_LP_Birth_Country)===27 || parseInt(key.RF_LP_Birth_Country)===28 || parseInt(key.RF_LP_Birth_Country)===29 || parseInt(key.RF_LP_Birth_Country)===30 || parseInt(key.RF_LP_Birth_Country)===31 || parseInt(key.RF_LP_Birth_Country)===32 || parseInt(key.RF_LP_Birth_Country)===33 || parseInt(key.RF_LP_Birth_Country)===36 || parseInt(key.RF_LP_Birth_Country)===37 || parseInt(key.RF_LP_Birth_Country)===39 || parseInt(key.RF_LP_Birth_Country)===41 || parseInt(key.RF_LP_Birth_Country)===42 || parseInt(key.RF_LP_Birth_Country)===43
+                                    || parseInt(key.RF_LP_Birth_Country)===46 || parseInt(key.RF_LP_Birth_Country)===47 || parseInt(key.RF_LP_Birth_Country)===48 || parseInt(key.RF_LP_Birth_Country)===49 || parseInt(key.RF_LP_Birth_Country)===50 || parseInt(key.RF_LP_Birth_Country)===51 || parseInt(key.RF_LP_Birth_Country)===52 || parseInt(key.RF_LP_Birth_Country)===53 || parseInt(key.RF_LP_Birth_Country)===55 || parseInt(key.RF_LP_Birth_Country)===58 || parseInt(key.RF_LP_Birth_Country)===62 || parseInt(key.RF_LP_Birth_Country)===64 || parseInt(key.RF_LP_Birth_Country)===65 || parseInt(key.RF_LP_Birth_Country)===66 
+                                    || parseInt(key.RF_LP_Birth_Country)===67 || parseInt(key.RF_LP_Birth_Country)===68 || parseInt(key.RF_LP_Birth_Country)===69 || parseInt(key.RF_LP_Birth_Country)===70 || parseInt(key.RF_LP_Birth_Country)===71 || parseInt(key.RF_LP_Birth_Country)===72 || parseInt(key.RF_LP_Birth_Country)===73 || parseInt(key.RF_LP_Birth_Country)===74 || parseInt(key.RF_LP_Birth_Country)===82 || parseInt(key.RF_LP_Birth_Country)===85 || parseInt(key.RF_LP_Birth_Country)===86 || parseInt(key.RF_LP_Birth_Country)===90 || parseInt(key.RF_LP_Birth_Country)===91 || parseInt(key.RF_LP_Birth_Country)===92 || parseInt(key.RF_LP_Birth_Country)===93
+                                    || parseInt(key.RF_LP_Birth_Country)===94 || parseInt(key.RF_LP_Birth_Country)===95 || parseInt(key.RF_LP_Birth_Country)===96 || parseInt(key.RF_LP_Birth_Country)===97 || parseInt(key.RF_LP_Birth_Country)===98 || parseInt(key.RF_LP_Birth_Country)===99 || parseInt(key.RF_LP_Birth_Country)===100 || parseInt(key.RF_LP_Birth_Country)===102 || parseInt(key.RF_LP_Birth_Country)===103
                                     
-                                    || parseInt(FormData['RF_Nationality1'])===109 || parseInt(FormData['RF_Nationality1'])===112 || parseInt(FormData['RF_Nationality1'])===115 || parseInt(FormData['RF_Nationality1'])===116 || parseInt(FormData['RF_Nationality1'])===117 || parseInt(FormData['RF_Nationality1'])===121 || parseInt(FormData['RF_Nationality1'])===123 || parseInt(FormData['RF_Nationality1'])===124
-                                    || parseInt(FormData['RF_Nationality1'])===126 || parseInt(FormData['RF_Nationality1'])===127 || parseInt(FormData['RF_Nationality1'])===128 || parseInt(FormData['RF_Nationality1'])===129 || parseInt(FormData['RF_Nationality1'])===134 || parseInt(FormData['RF_Nationality1'])===135 || parseInt(FormData['RF_Nationality1'])===136
-                                    || parseInt(FormData['RF_Nationality1'])===139 || parseInt(FormData['RF_Nationality1'])===143 || parseInt(FormData['RF_Nationality1'])===145 || parseInt(FormData['RF_Nationality1'])===146 || parseInt(FormData['RF_Nationality1'])===148 || parseInt(FormData['RF_Nationality1'])===150 || parseInt(FormData['RF_Nationality1'])===151
-                                    || parseInt(FormData['RF_Nationality1'])===152 || parseInt(FormData['RF_Nationality1'])===153 || parseInt(FormData['RF_Nationality1'])===154 || parseInt(FormData['RF_Nationality1'])===155 || parseInt(FormData['RF_Nationality1'])===158 || parseInt(FormData['RF_Nationality1'])===160 || parseInt(FormData['RF_Nationality1'])===162 
-                                    || parseInt(FormData['RF_Nationality1'])===163 || parseInt(FormData['RF_Nationality1'])===164 || parseInt(FormData['RF_Nationality1'])===165 || parseInt(FormData['RF_Nationality1'])===166 || parseInt(FormData['RF_Nationality1'])===168 || parseInt(FormData['RF_Nationality1'])===170 || parseInt(FormData['RF_Nationality1'])===172 || parseInt(FormData['RF_Nationality1'])===173 || parseInt(FormData['RF_Nationality1'])===174 || parseInt(FormData['RF_Nationality1'])===175 || parseInt(FormData['RF_Nationality1'])===176 || parseInt(FormData['RF_Nationality1'])===177
-                                    || parseInt(FormData['RF_Nationality1'])===186 || parseInt(FormData['RF_Nationality1'])===187 || parseInt(FormData['RF_Nationality1'])===188 || parseInt(FormData['RF_Nationality1'])===190 || parseInt(FormData['RF_Nationality1'])===191 || parseInt(FormData['RF_Nationality1'])===193 || parseInt(FormData['RF_Nationality1'])===195
-                                    || parseInt(FormData['RF_Nationality1'])===197 || parseInt(FormData['RF_Nationality1'])===198 || parseInt(FormData['RF_Nationality1'])===200 || parseInt(FormData['RF_Nationality1'])===202 || parseInt(FormData['RF_Nationality1'])===203 || parseInt(FormData['RF_Nationality1'])===206 || parseInt(FormData['RF_Nationality1'])===208 || parseInt(FormData['RF_Nationality1'])===209
-                                    || parseInt(FormData['RF_Nationality1'])===211 || parseInt(FormData['RF_Nationality1'])===212 || parseInt(FormData['RF_Nationality1'])===213 || parseInt(FormData['RF_Nationality1'])===214 || parseInt(FormData['RF_Nationality1'])===219 || parseInt(FormData['RF_Nationality1'])===220 || parseInt(FormData['RF_Nationality1'])===221 || parseInt(FormData['RF_Nationality1'])===222 || parseInt(FormData['RF_Nationality1'])===223 || parseInt(FormData['RF_Nationality1'])===224
-                                    || parseInt(FormData['RF_Nationality1'])===226 || parseInt(FormData['RF_Nationality1'])===230 || parseInt(FormData['RF_Nationality1'])===232 || parseInt(FormData['RF_Nationality1'])===233 || parseInt(FormData['RF_Nationality1'])===236 || parseInt(FormData['RF_Nationality1'])===237 || parseInt(FormData['RF_Nationality1'])===238 || parseInt(FormData['RF_Nationality1'])===239)
+                                    || parseInt(key.RF_LP_Birth_Country)===109 || parseInt(key.RF_LP_Birth_Country)===112 || parseInt(key.RF_LP_Birth_Country)===115 || parseInt(key.RF_LP_Birth_Country)===116 || parseInt(key.RF_LP_Birth_Country)===117 || parseInt(key.RF_LP_Birth_Country)===121 || parseInt(key.RF_LP_Birth_Country)===123 || parseInt(key.RF_LP_Birth_Country)===124
+                                    || parseInt(key.RF_LP_Birth_Country)===126 || parseInt(key.RF_LP_Birth_Country)===127 || parseInt(key.RF_LP_Birth_Country)===128 || parseInt(key.RF_LP_Birth_Country)===129 || parseInt(key.RF_LP_Birth_Country)===134 || parseInt(key.RF_LP_Birth_Country)===135 || parseInt(key.RF_LP_Birth_Country)===136
+                                    || parseInt(key.RF_LP_Birth_Country)===139 || parseInt(key.RF_LP_Birth_Country)===143 || parseInt(key.RF_LP_Birth_Country)===145 || parseInt(key.RF_LP_Birth_Country)===146 || parseInt(key.RF_LP_Birth_Country)===148 || parseInt(key.RF_LP_Birth_Country)===150 || parseInt(key.RF_LP_Birth_Country)===151
+                                    || parseInt(key.RF_LP_Birth_Country)===152 || parseInt(key.RF_LP_Birth_Country)===153 || parseInt(key.RF_LP_Birth_Country)===154 || parseInt(key.RF_LP_Birth_Country)===155 || parseInt(key.RF_LP_Birth_Country)===158 || parseInt(key.RF_LP_Birth_Country)===160 || parseInt(key.RF_LP_Birth_Country)===162 
+                                    || parseInt(key.RF_LP_Birth_Country)===163 || parseInt(key.RF_LP_Birth_Country)===164 || parseInt(key.RF_LP_Birth_Country)===165 || parseInt(key.RF_LP_Birth_Country)===166 || parseInt(key.RF_LP_Birth_Country)===168 || parseInt(key.RF_LP_Birth_Country)===170 || parseInt(key.RF_LP_Birth_Country)===172 || parseInt(key.RF_LP_Birth_Country)===173 || parseInt(key.RF_LP_Birth_Country)===174 || parseInt(key.RF_LP_Birth_Country)===175 || parseInt(key.RF_LP_Birth_Country)===176 || parseInt(key.RF_LP_Birth_Country)===177
+                                    || parseInt(key.RF_LP_Birth_Country)===186 || parseInt(key.RF_LP_Birth_Country)===187 || parseInt(key.RF_LP_Birth_Country)===188 || parseInt(key.RF_LP_Birth_Country)===190 || parseInt(key.RF_LP_Birth_Country)===191 || parseInt(key.RF_LP_Birth_Country)===193 || parseInt(key.RF_LP_Birth_Country)===195
+                                    || parseInt(key.RF_LP_Birth_Country)===197 || parseInt(key.RF_LP_Birth_Country)===198 || parseInt(key.RF_LP_Birth_Country)===200 || parseInt(key.RF_LP_Birth_Country)===202 || parseInt(key.RF_LP_Birth_Country)===203 || parseInt(key.RF_LP_Birth_Country)===206 || parseInt(key.RF_LP_Birth_Country)===208 || parseInt(key.RF_LP_Birth_Country)===209
+                                    || parseInt(key.RF_LP_Birth_Country)===211 || parseInt(key.RF_LP_Birth_Country)===212 || parseInt(key.RF_LP_Birth_Country)===213 || parseInt(key.RF_LP_Birth_Country)===214 || parseInt(key.RF_LP_Birth_Country)===219 || parseInt(key.RF_LP_Birth_Country)===220 || parseInt(key.RF_LP_Birth_Country)===221 || parseInt(key.RF_LP_Birth_Country)===222 || parseInt(key.RF_LP_Birth_Country)===223 || parseInt(key.RF_LP_Birth_Country)===224
+                                    || parseInt(key.RF_LP_Birth_Country)===226 || parseInt(key.RF_LP_Birth_Country)===230 || parseInt(key.RF_LP_Birth_Country)===232 || parseInt(key.RF_LP_Birth_Country)===233 || parseInt(key.RF_LP_Birth_Country)===236 || parseInt(key.RF_LP_Birth_Country)===237 || parseInt(key.RF_LP_Birth_Country)===238 || parseInt(key.RF_LP_Birth_Country)===239)
                                 {
                                     return (<>
                                         
@@ -8853,10 +8120,10 @@ const RiskFactors = ({user}) => {
                                     </>);
                                 }
 
-                                else if(parseInt(FormData['RF_Nationality1'])===5 || parseInt(FormData['RF_Nationality1'])===7 || parseInt(FormData['RF_Nationality1'])===9 || parseInt(FormData['RF_Nationality1'])===12 || parseInt(FormData['RF_Nationality1'])===25 || parseInt(FormData['RF_Nationality1'])===34 || parseInt(FormData['RF_Nationality1'])===35 || parseInt(FormData['RF_Nationality1'])===61 || parseInt(FormData['RF_Nationality1'])===76 || parseInt(FormData['RF_Nationality1'])===84|| parseInt(FormData['RF_Nationality1'])===88
+                                else if(parseInt(key.RF_LP_Birth_Country)===5 || parseInt(key.RF_LP_Birth_Country)===7 || parseInt(key.RF_LP_Birth_Country)===9 || parseInt(key.RF_LP_Birth_Country)===12 || parseInt(key.RF_LP_Birth_Country)===25 || parseInt(key.RF_LP_Birth_Country)===34 || parseInt(key.RF_LP_Birth_Country)===35 || parseInt(key.RF_LP_Birth_Country)===61 || parseInt(key.RF_LP_Birth_Country)===76 || parseInt(key.RF_LP_Birth_Country)===84|| parseInt(key.RF_LP_Birth_Country)===88
                                     
-                                    || parseInt(FormData['RF_Nationality1'])===114 || parseInt(FormData['RF_Nationality1'])===130 || parseInt(FormData['RF_Nationality1'])===132 || parseInt(FormData['RF_Nationality1'])===142 || parseInt(FormData['RF_Nationality1'])===149 || parseInt(FormData['RF_Nationality1'])===159 || parseInt(FormData['RF_Nationality1'])===161 
-                                    || parseInt(FormData['RF_Nationality1'])===167 || parseInt(FormData['RF_Nationality1'])===194 || parseInt(FormData['RF_Nationality1'])===215 || parseInt(FormData['RF_Nationality1'])===216)
+                                    || parseInt(key.RF_LP_Birth_Country)===114 || parseInt(key.RF_LP_Birth_Country)===130 || parseInt(key.RF_LP_Birth_Country)===132 || parseInt(key.RF_LP_Birth_Country)===142 || parseInt(key.RF_LP_Birth_Country)===149 || parseInt(key.RF_LP_Birth_Country)===159 || parseInt(key.RF_LP_Birth_Country)===161 
+                                    || parseInt(key.RF_LP_Birth_Country)===167 || parseInt(key.RF_LP_Birth_Country)===194 || parseInt(key.RF_LP_Birth_Country)===215 || parseInt(key.RF_LP_Birth_Country)===216)
                                 {
                                     return (<>
                                         
@@ -8865,16 +8132,16 @@ const RiskFactors = ({user}) => {
                                     </>);
                                 }
 
-                                else if(parseInt(FormData['RF_Nationality1'])===11 || parseInt(FormData['RF_Nationality1'])===14 || parseInt(FormData['RF_Nationality1'])===15 || parseInt(FormData['RF_Nationality1'])===18 || parseInt(FormData['RF_Nationality1'])===22 || parseInt(FormData['RF_Nationality1'])===23 || parseInt(FormData['RF_Nationality1'])===26 || parseInt(FormData['RF_Nationality1'])===30 || parseInt(FormData['RF_Nationality1'])===38 || parseInt(FormData['RF_Nationality1'])===40
-                                    || parseInt(FormData['RF_Nationality1'])===44 || parseInt(FormData['RF_Nationality1'])===45 || parseInt(FormData['RF_Nationality1'])===54 || parseInt(FormData['RF_Nationality1'])===56 || parseInt(FormData['RF_Nationality1'])===59 || parseInt(FormData['RF_Nationality1'])===60 || parseInt(FormData['RF_Nationality1'])===63 || parseInt(FormData['RF_Nationality1'])===70 || parseInt(FormData['RF_Nationality1'])===75 || parseInt(FormData['RF_Nationality1'])===77 
-                                    || parseInt(FormData['RF_Nationality1'])===78 || parseInt(FormData['RF_Nationality1'])===79 || parseInt(FormData['RF_Nationality1'])===80 || parseInt(FormData['RF_Nationality1'])===81 || parseInt(FormData['RF_Nationality1'])===83 || parseInt(FormData['RF_Nationality1'])===87 || parseInt(FormData['RF_Nationality1'])===89 || parseInt(FormData['RF_Nationality1'])===96 || parseInt(FormData['RF_Nationality1'])===97 || parseInt(FormData['RF_Nationality1'])===98 
-                                    || parseInt(FormData['RF_Nationality1'])===99 || parseInt(FormData['RF_Nationality1'])===100 || parseInt(FormData['RF_Nationality1'])===101 || parseInt(FormData['RF_Nationality1'])===102 || parseInt(FormData['RF_Nationality1'])===104 || parseInt(FormData['RF_Nationality1'])===105
+                                else if(parseInt(key.RF_LP_Birth_Country)===11 || parseInt(key.RF_LP_Birth_Country)===14 || parseInt(key.RF_LP_Birth_Country)===15 || parseInt(key.RF_LP_Birth_Country)===18 || parseInt(key.RF_LP_Birth_Country)===22 || parseInt(key.RF_LP_Birth_Country)===23 || parseInt(key.RF_LP_Birth_Country)===26 || parseInt(key.RF_LP_Birth_Country)===30 || parseInt(key.RF_LP_Birth_Country)===38 || parseInt(key.RF_LP_Birth_Country)===40
+                                    || parseInt(key.RF_LP_Birth_Country)===44 || parseInt(key.RF_LP_Birth_Country)===45 || parseInt(key.RF_LP_Birth_Country)===54 || parseInt(key.RF_LP_Birth_Country)===56 || parseInt(key.RF_LP_Birth_Country)===59 || parseInt(key.RF_LP_Birth_Country)===60 || parseInt(key.RF_LP_Birth_Country)===63 || parseInt(key.RF_LP_Birth_Country)===70 || parseInt(key.RF_LP_Birth_Country)===75 || parseInt(key.RF_LP_Birth_Country)===77 
+                                    || parseInt(key.RF_LP_Birth_Country)===78 || parseInt(key.RF_LP_Birth_Country)===79 || parseInt(key.RF_LP_Birth_Country)===80 || parseInt(key.RF_LP_Birth_Country)===81 || parseInt(key.RF_LP_Birth_Country)===83 || parseInt(key.RF_LP_Birth_Country)===87 || parseInt(key.RF_LP_Birth_Country)===89 || parseInt(key.RF_LP_Birth_Country)===96 || parseInt(key.RF_LP_Birth_Country)===97 || parseInt(key.RF_LP_Birth_Country)===98 
+                                    || parseInt(key.RF_LP_Birth_Country)===99 || parseInt(key.RF_LP_Birth_Country)===100 || parseInt(key.RF_LP_Birth_Country)===101 || parseInt(key.RF_LP_Birth_Country)===102 || parseInt(key.RF_LP_Birth_Country)===104 || parseInt(key.RF_LP_Birth_Country)===105
                                     
-                                    || parseInt(FormData['RF_Nationality1'])===108 || parseInt(FormData['RF_Nationality1'])===110 || parseInt(FormData['RF_Nationality1'])===111 || parseInt(FormData['RF_Nationality1'])===113 || parseInt(FormData['RF_Nationality1'])===118 || parseInt(FormData['RF_Nationality1'])===120 || parseInt(FormData['RF_Nationality1'])===125
-                                    || parseInt(FormData['RF_Nationality1'])===131 || parseInt(FormData['RF_Nationality1'])===133 || parseInt(FormData['RF_Nationality1'])===137 || parseInt(FormData['RF_Nationality1'])===138 || parseInt(FormData['RF_Nationality1'])===140 || parseInt(FormData['RF_Nationality1'])===141
-                                    || parseInt(FormData['RF_Nationality1'])===144 || parseInt(FormData['RF_Nationality1'])===147 || parseInt(FormData['RF_Nationality1'])===156 || parseInt(FormData['RF_Nationality1'])===157 || parseInt(FormData['RF_Nationality1'])===169 || parseInt(FormData['RF_Nationality1'])===171 || parseInt(FormData['RF_Nationality1'])===178 || parseInt(FormData['RF_Nationality1'])===179 || parseInt(FormData['RF_Nationality1'])===180 || parseInt(FormData['RF_Nationality1'])===181 || parseInt(FormData['RF_Nationality1'])===182 || parseInt(FormData['RF_Nationality1'])===183
-                                    || parseInt(FormData['RF_Nationality1'])===185 || parseInt(FormData['RF_Nationality1'])===189 || parseInt(FormData['RF_Nationality1'])===192 || parseInt(FormData['RF_Nationality1'])===196 || parseInt(FormData['RF_Nationality1'])===199 || parseInt(FormData['RF_Nationality1'])===201 || parseInt(FormData['RF_Nationality1'])===204 || parseInt(FormData['RF_Nationality1'])===205
-                                    || parseInt(FormData['RF_Nationality1'])===207 || parseInt(FormData['RF_Nationality1'])===210 || parseInt(FormData['RF_Nationality1'])===218 || parseInt(FormData['RF_Nationality1'])===225 || parseInt(FormData['RF_Nationality1'])===231 || parseInt(FormData['RF_Nationality1'])===234 || parseInt(FormData['RF_Nationality1'])===235 || parseInt(FormData['RF_Nationality1'])===237 || parseInt(FormData['RF_Nationality1'])===238)
+                                    || parseInt(key.RF_LP_Birth_Country)===108 || parseInt(key.RF_LP_Birth_Country)===110 || parseInt(key.RF_LP_Birth_Country)===111 || parseInt(key.RF_LP_Birth_Country)===113 || parseInt(key.RF_LP_Birth_Country)===118 || parseInt(key.RF_LP_Birth_Country)===120 || parseInt(key.RF_LP_Birth_Country)===125
+                                    || parseInt(key.RF_LP_Birth_Country)===131 || parseInt(key.RF_LP_Birth_Country)===133 || parseInt(key.RF_LP_Birth_Country)===137 || parseInt(key.RF_LP_Birth_Country)===138 || parseInt(key.RF_LP_Birth_Country)===140 || parseInt(key.RF_LP_Birth_Country)===141
+                                    || parseInt(key.RF_LP_Birth_Country)===144 || parseInt(key.RF_LP_Birth_Country)===147 || parseInt(key.RF_LP_Birth_Country)===156 || parseInt(key.RF_LP_Birth_Country)===157 || parseInt(key.RF_LP_Birth_Country)===169 || parseInt(key.RF_LP_Birth_Country)===171 || parseInt(key.RF_LP_Birth_Country)===178 || parseInt(key.RF_LP_Birth_Country)===179 || parseInt(key.RF_LP_Birth_Country)===180 || parseInt(key.RF_LP_Birth_Country)===181 || parseInt(key.RF_LP_Birth_Country)===182 || parseInt(key.RF_LP_Birth_Country)===183
+                                    || parseInt(key.RF_LP_Birth_Country)===185 || parseInt(key.RF_LP_Birth_Country)===189 || parseInt(key.RF_LP_Birth_Country)===192 || parseInt(key.RF_LP_Birth_Country)===196 || parseInt(key.RF_LP_Birth_Country)===199 || parseInt(key.RF_LP_Birth_Country)===201 || parseInt(key.RF_LP_Birth_Country)===204 || parseInt(key.RF_LP_Birth_Country)===205
+                                    || parseInt(key.RF_LP_Birth_Country)===207 || parseInt(key.RF_LP_Birth_Country)===210 || parseInt(key.RF_LP_Birth_Country)===218 || parseInt(key.RF_LP_Birth_Country)===225 || parseInt(key.RF_LP_Birth_Country)===231 || parseInt(key.RF_LP_Birth_Country)===234 || parseInt(key.RF_LP_Birth_Country)===235 || parseInt(key.RF_LP_Birth_Country)===237 || parseInt(key.RF_LP_Birth_Country)===238)
                                 {
                                     return (<>
                                         
@@ -8883,7 +8150,441 @@ const RiskFactors = ({user}) => {
                                     </>);
                                 }
 
-                                else if(parseInt(FormData['RF_Nationality1'])===21 || parseInt(FormData['RF_Nationality1'])===57 || parseInt(FormData['RF_Nationality1'])===106 || parseInt(FormData['RF_Nationality1'])===107 || parseInt(FormData['RF_Nationality1'])===119 || parseInt(FormData['RF_Nationality1'])===187 || parseInt(FormData['RF_Nationality1'])===217)
+                                else if(parseInt(key.RF_LP_Birth_Country)===21 || parseInt(key.RF_LP_Birth_Country)===57 || parseInt(key.RF_LP_Birth_Country)===106 || parseInt(key.RF_LP_Birth_Country)===107 || parseInt(key.RF_LP_Birth_Country)===119 || parseInt(key.RF_LP_Birth_Country)===187 || parseInt(key.RF_LP_Birth_Country)===217)
+                                {
+                                    return (<>
+                                        
+                                        <label className="col-form-label">12</label>
+                                        
+                                    </>);
+                                }
+        
+        
+                                })()}  
+                                            </>)
+                                    }    
+                            })()}
+                                
+                            </div>
+
+                            <hr/>
+                            <div className="col-2">
+                                <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country of Residence </label>
+                            </div>
+
+                            <div className="col-2">
+                                <select className="text-start form-select" name='RF_LP_Residence_Country' id='RF_LP_Residence_Country' value={key.RF_LP_Residence_Country} onChange={(e)=>{on_LP_Change(e,i)}}  aria-label="Default select example">
+                                    <option value="0" selected>Select Option</option>
+                                    <option value="1">Afghanistan</option>
+                                    <option value="2">Albania</option>
+                                    <option value="3">Algeria</option>
+                                    <option value="4">American Samoa</option>
+                                    <option value="5">Andora</option>
+                                    <option value="6">Angola</option>
+                                    <option value="7">Anguilla</option>
+                                    <option value="8">Antarctica</option>
+                                    <option value="9">Antigua and Barbuda</option>
+                                    <option value="10">Argentina</option>
+                                    <option value="11">Armania</option>
+                                    <option value="12">Aruba</option>
+                                    <option value="13">Auckland Islands</option>
+                                    <option value="14">Australia</option>
+                                    <option value="15">Austria</option>
+                                    <option value="16">Azerbaijan</option>
+                                    <option value="17">Bahamas</option>
+                                    <option value="18">Bahrain</option>
+                                    <option value="19">Bangladesh</option>
+                                    <option value="20">Barbados</option>
+                                    <option value="21">Belarus</option>
+                                    <option value="22">Belgium</option>
+                                    <option value="23">Belize</option>
+                                    <option value="24">Benin</option>
+                                    <option value="25">Bermuda</option>
+                                    <option value="26">Bhutan</option>
+                                    <option value="27">Bolivia</option>
+                                    <option value="28">Bonaire</option>
+                                    <option value="29">Bosnia</option>
+                                    <option value="30">Botswana</option>
+                                    <option value="31">Bouvet Islands</option>
+                                    <option value="32">Brazil</option>
+                                    <option value="33">British Indian Ocean Teritory</option>
+                                    <option value="34">Brunei Darussalam</option>
+                                    <option value="35">Bulgaria</option>
+                                    <option value="36">Burkina Faso</option>
+                                    <option value="37">Burundi</option>
+                                    <option value="38">Cabo Verde</option>
+                                    <option value="39">Cambodia</option>
+                                    <option value="40">Cameroon</option>
+                                    <option value="41">Canada</option>
+                                    <option value="42">Cayman Islands</option>
+                                    <option value="43">Central African Republic</option>
+                                    <option value="44">Chad</option>
+                                    <option value="45">Chile</option>
+                                    <option value="46">China</option>
+                                    <option value="47">Christmas Island</option>
+                                    <option value="48">Cocos</option>
+                                    <option value="49">Colombia</option>
+                                    <option value="50">Comoros</option>
+                                    <option value="51">Congo Democratic</option>
+                                    <option value="52">Congo Republic</option>
+                                    <option value="53">Cook Islands</option>
+                                    <option value="54">Costa Rica</option>
+                                    <option value="55">Ivory Cost</option>
+                                    <option value="56">Croatia</option>
+                                    <option value="57">Cuba</option>
+                                    <option value="58">Curacao</option>
+                                    <option value="59">Cyprus</option>
+                                    <option value="60">Czech Republic</option>
+                                    <option value="61">Denmark</option>
+                                    <option value="62">Djibouti</option>
+                                    <option value="63">Dominica</option>
+                                    <option value="64">Dominican Republic</option>
+                                    <option value="65">Ecuador</option>
+                                    <option value="66">Egypt</option>
+                                    <option value="67">EI Salvador</option>
+                                    <option value="68">Equatorial Guinea</option>
+                                    <option value="69">Eritrea</option>
+                                    <option value="70">Estonia</option>
+                                    <option value="71">eSwaitini</option>
+                                    <option value="72">Ethiopia</option>
+                                    <option value="73">Falkland Islands</option>
+                                    <option value="74">Faroe Islands</option>
+                                    <option value="75">Fiji</option>
+                                    <option value="76">Finland</option>
+                                    <option value="77">France</option>
+                                    <option value="78">French Guiana</option>
+                                    <option value="79">French Polynesia</option>
+                                    <option value="80">French Southern Territories</option>
+                                    <option value="81">Gabon</option>
+                                    <option value="82">Gambia</option>
+                                    <option value="83">Georgia</option>
+                                    <option value="84">Germany</option>
+                                    <option value="85">Ghana</option>
+                                    <option value="86">Gibralter</option>
+                                    <option value="87">Greece</option>
+                                    <option value="88">Greenland</option>
+                                    <option value="89">Grenada</option>
+                                    <option value="90">Guadeloupe</option>
+                                    <option value="91">Guam</option>
+                                    <option value="92">Guatemala</option>
+                                    <option value="93">Guernsey</option>
+                                    <option value="94">Guinea</option>
+                                    <option value="95">Guinea Bissau</option>
+                                    <option value="96">Guyana</option>
+                                    <option value="97">Haiti</option>
+                                    <option value="98">Herd Island</option>
+                                    <option value="99">Holy See</option>
+                                    <option value="100">Honduras</option>
+                                    <option value="101">Hongkong</option>
+                                    <option value="102">Hungary</option>
+                                    <option value="103">Iceland</option>
+                                    <option value="104">India</option>
+                                    <option value="105">Indonessia</option>
+                                    <option value="106">Iran</option>
+                                    <option value="107">Iraq</option>
+                                    <option value="108">Ireland</option>
+                                    <option value="109">Isle of man</option>
+                                    <option value="110">Israel</option>
+                                    <option value="111">Italy</option>
+                                    <option value="112">Jamaica</option>
+                                    <option value="113">Japan</option>
+                                    <option value="114">Jersey</option>
+                                    <option value="115">Jordan</option>
+                                    <option value="116">Kazakhstan</option>
+                                    <option value="117">Kenya</option>
+                                    <option value="118">Kiribati</option>
+                                    <option value="119">Korea North</option>
+                                    <option value="120">Korea South</option>
+                                    <option value="121">Kosovo</option>
+                                    <option value="122">Kuwait</option>
+                                    <option value="123">Kyrgyzstan</option>
+                                    <option value="124">Laos</option>
+                                    <option value="125">Latvia</option>
+                                    <option value="126">Lebanon</option>
+                                    <option value="127">Lesotho</option>
+                                    <option value="128">Liberia</option>
+                                    <option value="129">Libya</option>
+                                    <option value="130">Liechtenstein</option>
+                                    <option value="131">Lithuania</option>
+                                    <option value="132">Luxembourg</option>
+                                    <option value="133">Macao</option>
+                                    <option value="134">Macedonia</option>
+                                    <option value="135">Madagascar</option>
+                                    <option value="136">Malawi</option>
+                                    <option value="137">Malaysia</option>
+                                    <option value="138">Maldives</option>
+                                    <option value="139">Mali</option>
+                                    <option value="140">Malta</option>
+                                    <option value="141">Marshall Islands</option>
+                                    <option value="142">Martinique</option>
+                                    <option value="143">Mauritania</option>
+                                    <option value="144">Mauritius</option>
+                                    <option value="145">Mayotte</option>
+                                    <option value="146">Mexico</option>
+                                    <option value="147">Micronessia</option>
+                                    <option value="148">Moldova</option>
+                                    <option value="149">Monaco</option>
+                                    <option value="150">Mongolia</option>
+                                    <option value="151">Montenegro</option>
+                                    <option value="152">Montserrat</option>
+                                    <option value="153">Morocco</option>
+                                    <option value="154">Mozambique</option>
+                                    <option value="155">Mynamar</option>
+                                    <option value="156">Namabia</option>
+                                    <option value="157">Nauru</option>
+                                    <option value="158">Nepal</option>
+                                    <option value="159">Netherlands</option>
+                                    <option value="160">New Celedonia</option>
+                                    <option value="161">Newzealand</option>
+                                    <option value="162">Niger</option>
+                                    <option value="163">Nigeria</option>
+                                    <option value="164">Norfolk Island</option>
+                                    <option value="165">Nothern Mariana Islands</option>
+                                    <option value="166">Norway</option>
+                                    <option value="167">Nuie</option>
+                                    <option value="168">Oman</option>
+                                    <option value="169">Pakistan</option>
+                                    <option value="170">Palau</option>
+                                    <option value="171">Panama</option>
+                                    <option value="172">Papua New Guinea</option>
+                                    <option value="173">Paraguay</option>
+                                    <option value="174">Peru</option>
+                                    <option value="175">Philippines</option>
+                                    <option value="176">Pitcaim</option>
+                                    <option value="177">Poland</option>
+                                    <option value="178">Portugal</option>
+                                    <option value="179">Puerto Rico</option>
+                                    <option value="180">Qatar</option>
+                                    <option value="181">Reunion</option>
+                                    <option value="182">Roman</option>
+                                    <option value="183">Russia</option>
+                                    <option value="184">Rwanda</option>
+                                    <option value="185">Saint Barthelemy</option>
+                                    <option value="186">Saint Helena</option>
+                                    <option value="187">Saint Kitts</option>
+                                    <option value="188">Saint Lucia</option>
+                                    <option value="189">Saint Martin</option>
+                                    <option value="190">Saint Pierre</option>
+                                    <option value="191">Saint Vincent</option>
+                                    <option value="192">Samoa</option>
+                                    <option value="193">Saint Marino</option>
+                                    <option value="194">Sao Tome</option>
+                                    <option value="195">Saudia Arabia</option>
+                                    <option value="196">Senegal</option>
+                                    <option value="197">Serbia</option>
+                                    <option value="198">Seychelles</option>
+                                    <option value="199">Sierra Leone</option>
+                                    <option value="200">Singapore</option>
+                                    <option value="201">Sint Martin</option>
+                                    <option value="202">Slovekia</option>
+                                    <option value="203">Slovenia</option>
+                                    <option value="204">Solomon Islands</option>
+                                    <option value="205">Somalia</option>
+                                    <option value="206">South Africa</option>
+                                    <option value="207">South Georgia</option>
+                                    <option value="208">South Sudan</option>
+                                    <option value="209">SPain</option>
+                                    <option value="210">Srilanka</option>
+                                    <option value="211">Sudan</option>
+                                    <option value="212">Suriname</option>
+                                    <option value="213">Svalbard</option>
+                                    <option value="214">Sweden</option>
+                                    <option value="215">Switxerland</option>
+                                    <option value="216">Syria</option>
+                                    <option value="217">Taiwan</option>
+                                    <option value="218">Tajikistan</option>
+                                    <option value="219">Tanzania</option>
+                                    <option value="220">Thailand</option>
+                                    <option value="221">Timor Leste</option>
+                                    <option value="222">Togo</option>
+                                    <option value="223">Tokelau</option>
+                                    <option value="224">Tonga</option>
+                                    <option value="225">Trinidad</option>
+                                    <option value="226">Tunisia</option>
+                                    <option value="227">Turkey</option>
+                                    <option value="228">Turkmenistan</option>
+                                    <option value="229">Turks</option>
+                                    <option value="230">Tuvalu</option>
+                                    <option value="231">Uganda</option>
+                                    <option value="232">Ukraine</option>
+                                    <option value="233">United Arab Emirates</option>
+                                    <option value="234">United Kingdom</option>
+                                    <option value="235">United States Minor</option>
+                                    <option value="236">United States of America</option>
+                                    <option value="237">Uruguay</option>
+                                    <option value="238">Uzbekistan</option>
+                                    <option value="239">Vanuatu</option>
+                                    <option value="240">Venezuela</option>
+                                    <option value="241">Vietnam</option>
+                                    <option value="242">Virgin Islands(British)</option>
+                                    <option value="243">Virgin Islands(US)</option>
+                                    <option value="244">Wallis and Fatuna</option>
+                                    <option value="245">West Bank</option>
+                                    <option value="246">Western Sahara</option>
+                                    <option value="247">Yemen</option>
+                                    <option value="248">Zambia</option>
+                                    <option value="249">Zimbabwe</option>
+
+                                </select> 
+                            </div>
+
+                            <div className="col-2">
+                                <label className="col-form-label"></label>
+                            </div>
+
+                            <div className="col-2">
+                                <label className="col-form-label"></label>
+                            </div>
+
+                            <div className="col-1">
+                            {(() => {
+                                if(user['is_superuser'])
+                                    {
+                                        return (<>
+                                            {(() => { 
+                                
+                                if(parseInt(key.RF_LP_Residence_Country)===1 || parseInt(key.RF_LP_Residence_Country)===2 || parseInt(key.RF_LP_Residence_Country)===3 || parseInt(key.RF_LP_Residence_Country)===4 || parseInt(key.RF_LP_Residence_Country)===6 || parseInt(key.RF_LP_Residence_Country)===8 || parseInt(key.RF_LP_Residence_Country)===10 || parseInt(key.RF_LP_Residence_Country)===13 || parseInt(key.RF_LP_Residence_Country)===16 || parseInt(key.RF_LP_Residence_Country)===17 || parseInt(key.RF_LP_Residence_Country)===19 || parseInt(key.RF_LP_Residence_Country)===20 || parseInt(key.RF_LP_Residence_Country)===24 || parseInt(key.RF_LP_Residence_Country)===27
+                                    || parseInt(key.RF_LP_Residence_Country)===28 || parseInt(key.RF_LP_Residence_Country)===29 || parseInt(key.RF_LP_Residence_Country)===31 || parseInt(key.RF_LP_Residence_Country)===32 || parseInt(key.RF_LP_Residence_Country)===33 || parseInt(key.RF_LP_Residence_Country)===36 || parseInt(key.RF_LP_Residence_Country)===37 || parseInt(key.RF_LP_Residence_Country)===39 || parseInt(key.RF_LP_Residence_Country)===41 || parseInt(key.RF_LP_Residence_Country)===42 || parseInt(key.RF_LP_Residence_Country)===43 || parseInt(key.RF_LP_Residence_Country)===46 || parseInt(key.RF_LP_Residence_Country)===47 || parseInt(key.RF_LP_Residence_Country)===48 || parseInt(key.RF_LP_Residence_Country)===49 || parseInt(key.RF_LP_Residence_Country)===50 || parseInt(key.RF_LP_Residence_Country)===51 || parseInt(key.RF_LP_Residence_Country)===52 || parseInt(key.RF_LP_Residence_Country)===53
+                                    || parseInt(key.RF_LP_Residence_Country)===55 || parseInt(key.RF_LP_Residence_Country)===58 || parseInt(key.RF_LP_Residence_Country)===62 || parseInt(key.RF_LP_Residence_Country)===64 || parseInt(key.RF_LP_Residence_Country)===65 || parseInt(key.RF_LP_Residence_Country)===66 || parseInt(key.RF_LP_Residence_Country)===67 || parseInt(key.RF_LP_Residence_Country)===68 || parseInt(key.RF_LP_Residence_Country)===69 || parseInt(key.RF_LP_Residence_Country)===71 || parseInt(key.RF_LP_Residence_Country)===72 || parseInt(key.RF_LP_Residence_Country)===73 || parseInt(key.RF_LP_Residence_Country)===74
+                                    || parseInt(key.RF_LP_Residence_Country)===82 || parseInt(key.RF_LP_Residence_Country)===85 || parseInt(key.RF_LP_Residence_Country)===86 || parseInt(key.RF_LP_Residence_Country)===90 || parseInt(key.RF_LP_Residence_Country)===91 || parseInt(key.RF_LP_Residence_Country)===92 || parseInt(key.RF_LP_Residence_Country)===93
+                                    || parseInt(key.RF_LP_Residence_Country)===94 || parseInt(key.RF_LP_Residence_Country)===95 || parseInt(key.RF_LP_Residence_Country)===97 || parseInt(key.RF_LP_Residence_Country)===98 || parseInt(key.RF_LP_Residence_Country)===99 || parseInt(key.RF_LP_Residence_Country)===100 || parseInt(key.RF_LP_Residence_Country)===103 
+                                    
+                                    || parseInt(key.RF_LP_Residence_Country)===109 || parseInt(key.RF_LP_Residence_Country)===112  || parseInt(key.RF_LP_Residence_Country)===115 || parseInt(key.RF_LP_Residence_Country)===116 || parseInt(key.RF_LP_Residence_Country)===117 || parseInt(key.RF_LP_Residence_Country)===121 || parseInt(key.RF_LP_Residence_Country)===123  || parseInt(key.RF_LP_Residence_Country)===124
+                                    || parseInt(key.RF_LP_Residence_Country)===126 || parseInt(key.RF_LP_Residence_Country)===127  || parseInt(key.RF_LP_Residence_Country)===128 || parseInt(key.RF_LP_Residence_Country)===129 || parseInt(key.RF_LP_Residence_Country)===134 || parseInt(key.RF_LP_Residence_Country)===135 || parseInt(key.RF_LP_Residence_Country)===136
+                                    || parseInt(key.RF_LP_Residence_Country)===139 || parseInt(key.RF_LP_Residence_Country)===143  || parseInt(key.RF_LP_Residence_Country)===145 || parseInt(key.RF_LP_Residence_Country)===146 || parseInt(key.RF_LP_Residence_Country)===148 || parseInt(key.RF_LP_Residence_Country)===150 || parseInt(key.RF_LP_Residence_Country)===151
+                                    || parseInt(key.RF_LP_Residence_Country)===152 || parseInt(key.RF_LP_Residence_Country)===153 || parseInt(key.RF_LP_Residence_Country)===154 || parseInt(key.RF_LP_Residence_Country)===155 || parseInt(key.RF_LP_Residence_Country)===158 || parseInt(key.RF_LP_Residence_Country)===160 || parseInt(key.RF_LP_Residence_Country)===162 
+                                    || parseInt(key.RF_LP_Residence_Country)===163 || parseInt(key.RF_LP_Residence_Country)===164 || parseInt(key.RF_LP_Residence_Country)===165 || parseInt(key.RF_LP_Residence_Country)===166 || parseInt(key.RF_LP_Residence_Country)===168 || parseInt(key.RF_LP_Residence_Country)===170 || parseInt(key.RF_LP_Residence_Country)===172 || parseInt(key.RF_LP_Residence_Country)===173 || parseInt(key.RF_LP_Residence_Country)===174 || parseInt(key.RF_LP_Residence_Country)===175 || parseInt(key.RF_LP_Residence_Country)===176 || parseInt(key.RF_LP_Residence_Country)===177
+                                    || parseInt(key.RF_LP_Residence_Country)===186 || parseInt(key.RF_LP_Residence_Country)===187 || parseInt(key.RF_LP_Residence_Country)===188 || parseInt(key.RF_LP_Residence_Country)===190 || parseInt(key.RF_LP_Residence_Country)===191 || parseInt(key.RF_LP_Residence_Country)===193 || parseInt(key.RF_LP_Residence_Country)===195
+                                    || parseInt(key.RF_LP_Residence_Country)===197 || parseInt(key.RF_LP_Residence_Country)===198 || parseInt(key.RF_LP_Residence_Country)===200 || parseInt(key.RF_LP_Residence_Country)===202 || parseInt(key.RF_LP_Residence_Country)===203 || parseInt(key.RF_LP_Residence_Country)===206 || parseInt(key.RF_LP_Residence_Country)===208 || parseInt(key.RF_LP_Residence_Country)===209
+                                    || parseInt(key.RF_LP_Residence_Country)===211 || parseInt(key.RF_LP_Residence_Country)===212 || parseInt(key.RF_LP_Residence_Country)===213 || parseInt(key.RF_LP_Residence_Country)===214 || parseInt(key.RF_LP_Residence_Country)===219 || parseInt(key.RF_LP_Residence_Country)===220 || parseInt(key.RF_LP_Residence_Country)===221 || parseInt(key.RF_LP_Residence_Country)===222 || parseInt(key.RF_LP_Residence_Country)===223 || parseInt(key.RF_LP_Residence_Country)===224
+                                    || parseInt(key.RF_LP_Residence_Country)===226 || parseInt(key.RF_LP_Residence_Country)===230 || parseInt(key.RF_LP_Residence_Country)===232 || parseInt(key.RF_LP_Residence_Country)===233 || parseInt(key.RF_LP_Residence_Country)===236 || parseInt(key.RF_LP_Residence_Country)===237 || parseInt(key.RF_LP_Residence_Country)===238 || parseInt(key.RF_LP_Residence_Country)===239)
+                                {
+                                    return (<>
+                                        
+                                        <label className="col-form-label">3</label>
+                                        
+                                    </>);
+                                }
+
+                                else if(parseInt(key.RF_LP_Residence_Country)===5 || parseInt(key.RF_LP_Residence_Country)===7 || parseInt(key.RF_LP_Residence_Country)===9 || parseInt(key.RF_LP_Residence_Country)===12 || parseInt(key.RF_LP_Residence_Country)===25 || parseInt(key.RF_LP_Residence_Country)===34 || parseInt(key.RF_LP_Residence_Country)===35 || parseInt(key.RF_LP_Residence_Country)===61 || parseInt(key.RF_LP_Residence_Country)===76 || parseInt(key.RF_LP_Residence_Country)===84 || parseInt(key.RF_LP_Residence_Country)===88
+                                    
+                                    || parseInt(key.RF_LP_Residence_Country)===114 || parseInt(key.RF_LP_Residence_Country)===130 || parseInt(key.RF_LP_Residence_Country)===132 || parseInt(key.RF_LP_Residence_Country)===142 || parseInt(key.RF_LP_Residence_Country)===149 || parseInt(key.RF_LP_Residence_Country)===159 || parseInt(key.RF_LP_Residence_Country)===161 
+                                    || parseInt(key.RF_LP_Residence_Country)===167 || parseInt(key.RF_LP_Residence_Country)===194 || parseInt(key.RF_LP_Residence_Country)===215 || parseInt(key.RF_LP_Residence_Country)===216 )
+                                {
+                                    return (<>
+                                        
+                                        <label className="col-form-label">1</label>
+                                        
+                                    </>);
+                                }
+
+                                else if(parseInt(key.RF_LP_Residence_Country)===11 || parseInt(key.RF_LP_Residence_Country)===14 || parseInt(key.RF_LP_Residence_Country)===15 || parseInt(key.RF_LP_Residence_Country)===18 || parseInt(key.RF_LP_Residence_Country)===22 || parseInt(key.RF_LP_Residence_Country)===23 || parseInt(key.RF_LP_Residence_Country)===26 || parseInt(key.RF_LP_Residence_Country)===30 || parseInt(key.RF_LP_Residence_Country)===38 || parseInt(key.RF_LP_Residence_Country)===40 || parseInt(key.RF_LP_Residence_Country)===44 || parseInt(key.RF_LP_Residence_Country)===45
+                                    || parseInt(key.RF_LP_Residence_Country)===54 || parseInt(key.RF_LP_Residence_Country)===56 || parseInt(key.RF_LP_Residence_Country)===59 || parseInt(key.RF_LP_Residence_Country)===60 || parseInt(key.RF_LP_Residence_Country)===63 || parseInt(key.RF_LP_Residence_Country)===70 || parseInt(key.RF_LP_Residence_Country)===75 || parseInt(key.RF_LP_Residence_Country)===77 || parseInt(key.RF_LP_Residence_Country)===78 || parseInt(key.RF_LP_Residence_Country)===79 || parseInt(key.RF_LP_Residence_Country)===80 || parseInt(key.RF_LP_Residence_Country)===81
+                                    || parseInt(key.RF_LP_Residence_Country)===83 || parseInt(key.RF_LP_Residence_Country)===87 || parseInt(key.RF_LP_Residence_Country)===89 || parseInt(key.RF_LP_Residence_Country)===96 || parseInt(key.RF_LP_Residence_Country)===101 || parseInt(key.RF_LP_Residence_Country)===104 || parseInt(key.RF_LP_Residence_Country)===105
+                                    
+                                    || parseInt(key.RF_LP_Residence_Country)===108 || parseInt(key.RF_LP_Residence_Country)===110 || parseInt(key.RF_LP_Residence_Country)===111 || parseInt(key.RF_LP_Residence_Country)===113 || parseInt(key.RF_LP_Residence_Country)===118 || parseInt(key.RF_LP_Residence_Country)===120 || parseInt(key.RF_LP_Residence_Country)===125
+                                    || parseInt(key.RF_LP_Residence_Country)===131 || parseInt(key.RF_LP_Residence_Country)===133 || parseInt(key.RF_LP_Residence_Country)===137 || parseInt(key.RF_LP_Residence_Country)===138 || parseInt(key.RF_LP_Residence_Country)===140 || parseInt(key.RF_LP_Residence_Country)===141
+                                    || parseInt(key.RF_LP_Residence_Country)===144 || parseInt(key.RF_LP_Residence_Country)===147 || parseInt(key.RF_LP_Residence_Country)===156 || parseInt(key.RF_LP_Residence_Country)===157 || parseInt(key.RF_LP_Residence_Country)===169 || parseInt(key.RF_LP_Residence_Country)===171 || parseInt(key.RF_LP_Residence_Country)===178 || parseInt(key.RF_LP_Residence_Country)===179 || parseInt(key.RF_LP_Residence_Country)===180 || parseInt(key.RF_LP_Residence_Country)===181 || parseInt(key.RF_LP_Residence_Country)===182 || parseInt(key.RF_LP_Residence_Country)===183
+                                    || parseInt(key.RF_LP_Residence_Country)===185 || parseInt(key.RF_LP_Residence_Country)===189 || parseInt(key.RF_LP_Residence_Country)===192 || parseInt(key.RF_LP_Residence_Country)===196 || parseInt(key.RF_LP_Residence_Country)===199 || parseInt(key.RF_LP_Residence_Country)===201 || parseInt(key.RF_LP_Residence_Country)===204 || parseInt(key.RF_LP_Residence_Country)===205
+                                    || parseInt(key.RF_LP_Residence_Country)===207 || parseInt(key.RF_LP_Residence_Country)===210 || parseInt(key.RF_LP_Residence_Country)===218 || parseInt(key.RF_LP_Residence_Country)===225 || parseInt(key.RF_LP_Residence_Country)===231 || parseInt(key.RF_LP_Residence_Country)===234 || parseInt(key.RF_LP_Residence_Country)===235 || parseInt(key.RF_LP_Residence_Country)===237 || parseInt(key.RF_LP_Residence_Country)===238)
+                                {
+                                    return (<>
+                                        
+                                        <label className="col-form-label">2</label>
+                                        
+                                    </>);
+                                }
+
+                                else if(parseInt(key.RF_LP_Residence_Country)===21 || parseInt(key.RF_LP_Residence_Country)===57 || parseInt(key.RF_LP_Residence_Country)===106 || parseInt(key.RF_LP_Residence_Country)===107 || parseInt(key.RF_LP_Residence_Country)===119 || parseInt(key.RF_LP_Residence_Country)===187 || parseInt(key.RF_LP_Residence_Country)===217 )
+                                {
+                                    return (<>
+                                        
+                                        <label className="col-form-label">4</label>
+                                        
+                                    </>);
+                                }
+        
+                                })()}
+                                            </>)
+                                    }    
+                            })()}
+                                
+                            </div>
+
+                            <div className="col-1">
+                            {(() => {
+                                if(user['is_superuser'])
+                                    {
+                                        return (<>
+                                            <label className="col-form-label">3</label>
+                                            </>)
+                                    }    
+                            })()}                          
+                                
+                                                
+                            </div>
+
+                            <div className="col-1">
+                            {(() => {
+                                if(user['is_superuser'])
+                                    {
+                                        return (<>
+                                            {(() => { 
+                                
+                                if(parseInt(key.RF_LP_Residence_Country)===1 || parseInt(key.RF_LP_Residence_Country)===2 || parseInt(key.RF_LP_Residence_Country)===3 || parseInt(key.RF_LP_Residence_Country)===4 || parseInt(key.RF_LP_Residence_Country)===6 || parseInt(key.RF_LP_Residence_Country)===8 || parseInt(key.RF_LP_Residence_Country)===10 || parseInt(key.RF_LP_Residence_Country)===13 || parseInt(key.RF_LP_Residence_Country)===16 || parseInt(key.RF_LP_Residence_Country)===17 || parseInt(key.RF_LP_Residence_Country)===19 || parseInt(key.RF_LP_Residence_Country)===20 || parseInt(key.RF_LP_Residence_Country)===24
+                                    || parseInt(key.RF_LP_Residence_Country)===27 || parseInt(key.RF_LP_Residence_Country)===28 || parseInt(key.RF_LP_Residence_Country)===29 || parseInt(key.RF_LP_Residence_Country)===30 || parseInt(key.RF_LP_Residence_Country)===31 || parseInt(key.RF_LP_Residence_Country)===32 || parseInt(key.RF_LP_Residence_Country)===33 || parseInt(key.RF_LP_Residence_Country)===36 || parseInt(key.RF_LP_Residence_Country)===37 || parseInt(key.RF_LP_Residence_Country)===39 || parseInt(key.RF_LP_Residence_Country)===41 || parseInt(key.RF_LP_Residence_Country)===42 || parseInt(key.RF_LP_Residence_Country)===43
+                                    || parseInt(key.RF_LP_Residence_Country)===46 || parseInt(key.RF_LP_Residence_Country)===47 || parseInt(key.RF_LP_Residence_Country)===48 || parseInt(key.RF_LP_Residence_Country)===49 || parseInt(key.RF_LP_Residence_Country)===50 || parseInt(key.RF_LP_Residence_Country)===51 || parseInt(key.RF_LP_Residence_Country)===52 || parseInt(key.RF_LP_Residence_Country)===53 || parseInt(key.RF_LP_Residence_Country)===55 || parseInt(key.RF_LP_Residence_Country)===58 || parseInt(key.RF_LP_Residence_Country)===62 || parseInt(key.RF_LP_Residence_Country)===64 || parseInt(key.RF_LP_Residence_Country)===65 || parseInt(key.RF_LP_Residence_Country)===66 
+                                    || parseInt(key.RF_LP_Residence_Country)===67 || parseInt(key.RF_LP_Residence_Country)===68 || parseInt(key.RF_LP_Residence_Country)===69 || parseInt(key.RF_LP_Residence_Country)===70 || parseInt(key.RF_LP_Residence_Country)===71 || parseInt(key.RF_LP_Residence_Country)===72 || parseInt(key.RF_LP_Residence_Country)===73 || parseInt(key.RF_LP_Residence_Country)===74 || parseInt(key.RF_LP_Residence_Country)===82 || parseInt(key.RF_LP_Residence_Country)===85 || parseInt(key.RF_LP_Residence_Country)===86 || parseInt(key.RF_LP_Residence_Country)===90 || parseInt(key.RF_LP_Residence_Country)===91 || parseInt(key.RF_LP_Residence_Country)===92 || parseInt(key.RF_LP_Residence_Country)===93
+                                    || parseInt(key.RF_LP_Residence_Country)===94 || parseInt(key.RF_LP_Residence_Country)===95 || parseInt(key.RF_LP_Residence_Country)===96 || parseInt(key.RF_LP_Residence_Country)===97 || parseInt(key.RF_LP_Residence_Country)===98 || parseInt(key.RF_LP_Residence_Country)===99 || parseInt(key.RF_LP_Residence_Country)===100 || parseInt(key.RF_LP_Residence_Country)===102 || parseInt(key.RF_LP_Residence_Country)===103
+                                    
+                                    || parseInt(key.RF_LP_Residence_Country)===109 || parseInt(key.RF_LP_Residence_Country)===112 || parseInt(key.RF_LP_Residence_Country)===115 || parseInt(key.RF_LP_Residence_Country)===116 || parseInt(key.RF_LP_Residence_Country)===117 || parseInt(key.RF_LP_Residence_Country)===121 || parseInt(key.RF_LP_Residence_Country)===123 || parseInt(key.RF_LP_Residence_Country)===124
+                                    || parseInt(key.RF_LP_Residence_Country)===126 || parseInt(key.RF_LP_Residence_Country)===127 || parseInt(key.RF_LP_Residence_Country)===128 || parseInt(key.RF_LP_Residence_Country)===129 || parseInt(key.RF_LP_Residence_Country)===134 || parseInt(key.RF_LP_Residence_Country)===135 || parseInt(key.RF_LP_Residence_Country)===136
+                                    || parseInt(key.RF_LP_Residence_Country)===139 || parseInt(key.RF_LP_Residence_Country)===143 || parseInt(key.RF_LP_Residence_Country)===145 || parseInt(key.RF_LP_Residence_Country)===146 || parseInt(key.RF_LP_Residence_Country)===148 || parseInt(key.RF_LP_Residence_Country)===150 || parseInt(key.RF_LP_Residence_Country)===151
+                                    || parseInt(key.RF_LP_Residence_Country)===152 || parseInt(key.RF_LP_Residence_Country)===153 || parseInt(key.RF_LP_Residence_Country)===154 || parseInt(key.RF_LP_Residence_Country)===155 || parseInt(key.RF_LP_Residence_Country)===158 || parseInt(key.RF_LP_Residence_Country)===160 || parseInt(key.RF_LP_Residence_Country)===162 
+                                    || parseInt(key.RF_LP_Residence_Country)===163 || parseInt(key.RF_LP_Residence_Country)===164 || parseInt(key.RF_LP_Residence_Country)===165 || parseInt(key.RF_LP_Residence_Country)===166 || parseInt(key.RF_LP_Residence_Country)===168 || parseInt(key.RF_LP_Residence_Country)===170 || parseInt(key.RF_LP_Residence_Country)===172 || parseInt(key.RF_LP_Residence_Country)===173 || parseInt(key.RF_LP_Residence_Country)===174 || parseInt(key.RF_LP_Residence_Country)===175 || parseInt(key.RF_LP_Residence_Country)===176 || parseInt(key.RF_LP_Residence_Country)===177
+                                    || parseInt(key.RF_LP_Residence_Country)===186 || parseInt(key.RF_LP_Residence_Country)===187 || parseInt(key.RF_LP_Residence_Country)===188 || parseInt(key.RF_LP_Residence_Country)===190 || parseInt(key.RF_LP_Residence_Country)===191 || parseInt(key.RF_LP_Residence_Country)===193 || parseInt(key.RF_LP_Residence_Country)===195
+                                    || parseInt(key.RF_LP_Residence_Country)===197 || parseInt(key.RF_LP_Residence_Country)===198 || parseInt(key.RF_LP_Residence_Country)===200 || parseInt(key.RF_LP_Residence_Country)===202 || parseInt(key.RF_LP_Residence_Country)===203 || parseInt(key.RF_LP_Residence_Country)===206 || parseInt(key.RF_LP_Residence_Country)===208 || parseInt(key.RF_LP_Residence_Country)===209
+                                    || parseInt(key.RF_LP_Residence_Country)===211 || parseInt(key.RF_LP_Residence_Country)===212 || parseInt(key.RF_LP_Residence_Country)===213 || parseInt(key.RF_LP_Residence_Country)===214 || parseInt(key.RF_LP_Residence_Country)===219 || parseInt(key.RF_LP_Residence_Country)===220 || parseInt(key.RF_LP_Residence_Country)===221 || parseInt(key.RF_LP_Residence_Country)===222 || parseInt(key.RF_LP_Residence_Country)===223 || parseInt(key.RF_LP_Residence_Country)===224
+                                    || parseInt(key.RF_LP_Residence_Country)===226 || parseInt(key.RF_LP_Residence_Country)===230 || parseInt(key.RF_LP_Residence_Country)===232 || parseInt(key.RF_LP_Residence_Country)===233 || parseInt(key.RF_LP_Residence_Country)===236 || parseInt(key.RF_LP_Residence_Country)===237 || parseInt(key.RF_LP_Residence_Country)===238 || parseInt(key.RF_LP_Residence_Country)===239)
+                                {
+                                    return (<>
+                                        
+                                        <label className="col-form-label">9</label>
+                                        
+                                    </>);
+                                }
+
+                                else if(parseInt(key.RF_LP_Residence_Country)===5 || parseInt(key.RF_LP_Residence_Country)===7 || parseInt(key.RF_LP_Residence_Country)===9 || parseInt(key.RF_LP_Residence_Country)===12 || parseInt(key.RF_LP_Residence_Country)===25 || parseInt(key.RF_LP_Residence_Country)===34 || parseInt(key.RF_LP_Residence_Country)===35 || parseInt(key.RF_LP_Residence_Country)===61 || parseInt(key.RF_LP_Residence_Country)===76 || parseInt(key.RF_LP_Residence_Country)===84|| parseInt(key.RF_LP_Residence_Country)===88
+                                    
+                                    || parseInt(key.RF_LP_Residence_Country)===114 || parseInt(key.RF_LP_Residence_Country)===130 || parseInt(key.RF_LP_Residence_Country)===132 || parseInt(key.RF_LP_Residence_Country)===142 || parseInt(key.RF_LP_Residence_Country)===149 || parseInt(key.RF_LP_Residence_Country)===159 || parseInt(key.RF_LP_Residence_Country)===161 
+                                    || parseInt(key.RF_LP_Residence_Country)===167 || parseInt(key.RF_LP_Residence_Country)===194 || parseInt(key.RF_LP_Residence_Country)===215 || parseInt(key.RF_LP_Residence_Country)===216)
+                                {
+                                    return (<>
+                                        
+                                        <label className="col-form-label">3</label>
+                                        
+                                    </>);
+                                }
+
+                                else if(parseInt(key.RF_LP_Residence_Country)===11 || parseInt(key.RF_LP_Residence_Country)===14 || parseInt(key.RF_LP_Residence_Country)===15 || parseInt(key.RF_LP_Residence_Country)===18 || parseInt(key.RF_LP_Residence_Country)===22 || parseInt(key.RF_LP_Residence_Country)===23 || parseInt(key.RF_LP_Residence_Country)===26 || parseInt(key.RF_LP_Residence_Country)===30 || parseInt(key.RF_LP_Residence_Country)===38 || parseInt(key.RF_LP_Residence_Country)===40
+                                    || parseInt(key.RF_LP_Residence_Country)===44 || parseInt(key.RF_LP_Residence_Country)===45 || parseInt(key.RF_LP_Residence_Country)===54 || parseInt(key.RF_LP_Residence_Country)===56 || parseInt(key.RF_LP_Residence_Country)===59 || parseInt(key.RF_LP_Residence_Country)===60 || parseInt(key.RF_LP_Residence_Country)===63 || parseInt(key.RF_LP_Residence_Country)===70 || parseInt(key.RF_LP_Residence_Country)===75 || parseInt(key.RF_LP_Residence_Country)===77 
+                                    || parseInt(key.RF_LP_Residence_Country)===78 || parseInt(key.RF_LP_Residence_Country)===79 || parseInt(key.RF_LP_Residence_Country)===80 || parseInt(key.RF_LP_Residence_Country)===81 || parseInt(key.RF_LP_Residence_Country)===83 || parseInt(key.RF_LP_Residence_Country)===87 || parseInt(key.RF_LP_Residence_Country)===89 || parseInt(key.RF_LP_Residence_Country)===96 || parseInt(key.RF_LP_Residence_Country)===97 || parseInt(key.RF_LP_Residence_Country)===98 
+                                    || parseInt(key.RF_LP_Residence_Country)===99 || parseInt(key.RF_LP_Residence_Country)===100 || parseInt(key.RF_LP_Residence_Country)===101 || parseInt(key.RF_LP_Residence_Country)===102 || parseInt(key.RF_LP_Residence_Country)===104 || parseInt(key.RF_LP_Residence_Country)===105
+                                    
+                                    || parseInt(key.RF_LP_Residence_Country)===108 || parseInt(key.RF_LP_Residence_Country)===110 || parseInt(key.RF_LP_Residence_Country)===111 || parseInt(key.RF_LP_Residence_Country)===113 || parseInt(key.RF_LP_Residence_Country)===118 || parseInt(key.RF_LP_Residence_Country)===120 || parseInt(key.RF_LP_Residence_Country)===125
+                                    || parseInt(key.RF_LP_Residence_Country)===131 || parseInt(key.RF_LP_Residence_Country)===133 || parseInt(key.RF_LP_Residence_Country)===137 || parseInt(key.RF_LP_Residence_Country)===138 || parseInt(key.RF_LP_Residence_Country)===140 || parseInt(key.RF_LP_Residence_Country)===141
+                                    || parseInt(key.RF_LP_Residence_Country)===144 || parseInt(key.RF_LP_Residence_Country)===147 || parseInt(key.RF_LP_Residence_Country)===156 || parseInt(key.RF_LP_Residence_Country)===157 || parseInt(key.RF_LP_Residence_Country)===169 || parseInt(key.RF_LP_Residence_Country)===171 || parseInt(key.RF_LP_Residence_Country)===178 || parseInt(key.RF_LP_Residence_Country)===179 || parseInt(key.RF_LP_Residence_Country)===180 || parseInt(key.RF_LP_Residence_Country)===181 || parseInt(key.RF_LP_Residence_Country)===182 || parseInt(key.RF_LP_Residence_Country)===183
+                                    || parseInt(key.RF_LP_Residence_Country)===185 || parseInt(key.RF_LP_Residence_Country)===189 || parseInt(key.RF_LP_Residence_Country)===192 || parseInt(key.RF_LP_Residence_Country)===196 || parseInt(key.RF_LP_Residence_Country)===199 || parseInt(key.RF_LP_Residence_Country)===201 || parseInt(key.RF_LP_Residence_Country)===204 || parseInt(key.RF_LP_Residence_Country)===205
+                                    || parseInt(key.RF_LP_Residence_Country)===207 || parseInt(key.RF_LP_Residence_Country)===210 || parseInt(key.RF_LP_Residence_Country)===218 || parseInt(key.RF_LP_Residence_Country)===225 || parseInt(key.RF_LP_Residence_Country)===231 || parseInt(key.RF_LP_Residence_Country)===234 || parseInt(key.RF_LP_Residence_Country)===235 || parseInt(key.RF_LP_Residence_Country)===237 || parseInt(key.RF_LP_Residence_Country)===238)
+                                {
+                                    return (<>
+                                        
+                                        <label className="col-form-label">6</label>
+                                        
+                                    </>);
+                                }
+
+                                else if(parseInt(key.RF_LP_Residence_Country)===21 || parseInt(key.RF_LP_Residence_Country)===57 || parseInt(key.RF_LP_Residence_Country)===106 || parseInt(key.RF_LP_Residence_Country)===107 || parseInt(key.RF_LP_Residence_Country)===119 || parseInt(key.RF_LP_Residence_Country)===187 || parseInt(key.RF_LP_Residence_Country)===217)
                                 {
                                     return (<>
                                         
@@ -8896,17 +8597,454 @@ const RiskFactors = ({user}) => {
         
         
                                 })()}
+                                            </>)
+                                    }    
+                            })()}
+                                
                             </div>
 
+                            <hr/>
+                            <div className="col-2">
+                                <label className="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nationality</label>
+                            </div>
 
-                            </>);
-                        }
+                            <div className="col-2">
+                                <select className="text-start form-select" name='RF_LP_Nationality' id='RF_LP_Nationality' value={key.RF_LP_Nationality} onChange={(e)=>{on_LP_Change(e,i)}}  aria-label="Default select example">
+                                    <option value="0" selected>Select Option</option>
+                                    <option value="1">Afghanistan</option>
+                                    <option value="2">Albania</option>
+                                    <option value="3">Algeria</option>
+                                    <option value="4">American Samoa</option>
+                                    <option value="5">Andora</option>
+                                    <option value="6">Angola</option>
+                                    <option value="7">Anguilla</option>
+                                    <option value="8">Antarctica</option>
+                                    <option value="9">Antigua and Barbuda</option>
+                                    <option value="10">Argentina</option>
+                                    <option value="11">Armania</option>
+                                    <option value="12">Aruba</option>
+                                    <option value="13">Auckland Islands</option>
+                                    <option value="14">Australia</option>
+                                    <option value="15">Austria</option>
+                                    <option value="16">Azerbaijan</option>
+                                    <option value="17">Bahamas</option>
+                                    <option value="18">Bahrain</option>
+                                    <option value="19">Bangladesh</option>
+                                    <option value="20">Barbados</option>
+                                    <option value="21">Belarus</option>
+                                    <option value="22">Belgium</option>
+                                    <option value="23">Belize</option>
+                                    <option value="24">Benin</option>
+                                    <option value="25">Bermuda</option>
+                                    <option value="26">Bhutan</option>
+                                    <option value="27">Bolivia</option>
+                                    <option value="28">Bonaire</option>
+                                    <option value="29">Bosnia</option>
+                                    <option value="30">Botswana</option>
+                                    <option value="31">Bouvet Islands</option>
+                                    <option value="32">Brazil</option>
+                                    <option value="33">British Indian Ocean Teritory</option>
+                                    <option value="34">Brunei Darussalam</option>
+                                    <option value="35">Bulgaria</option>
+                                    <option value="36">Burkina Faso</option>
+                                    <option value="37">Burundi</option>
+                                    <option value="38">Cabo Verde</option>
+                                    <option value="39">Cambodia</option>
+                                    <option value="40">Cameroon</option>
+                                    <option value="41">Canada</option>
+                                    <option value="42">Cayman Islands</option>
+                                    <option value="43">Central African Republic</option>
+                                    <option value="44">Chad</option>
+                                    <option value="45">Chile</option>
+                                    <option value="46">China</option>
+                                    <option value="47">Christmas Island</option>
+                                    <option value="48">Cocos</option>
+                                    <option value="49">Colombia</option>
+                                    <option value="50">Comoros</option>
+                                    <option value="51">Congo Democratic</option>
+                                    <option value="52">Congo Republic</option>
+                                    <option value="53">Cook Islands</option>
+                                    <option value="54">Costa Rica</option>
+                                    <option value="55">Ivory Cost</option>
+                                    <option value="56">Croatia</option>
+                                    <option value="57">Cuba</option>
+                                    <option value="58">Curacao</option>
+                                    <option value="59">Cyprus</option>
+                                    <option value="60">Czech Republic</option>
+                                    <option value="61">Denmark</option>
+                                    <option value="62">Djibouti</option>
+                                    <option value="63">Dominica</option>
+                                    <option value="64">Dominican Republic</option>
+                                    <option value="65">Ecuador</option>
+                                    <option value="66">Egypt</option>
+                                    <option value="67">EI Salvador</option>
+                                    <option value="68">Equatorial Guinea</option>
+                                    <option value="69">Eritrea</option>
+                                    <option value="70">Estonia</option>
+                                    <option value="71">eSwaitini</option>
+                                    <option value="72">Ethiopia</option>
+                                    <option value="73">Falkland Islands</option>
+                                    <option value="74">Faroe Islands</option>
+                                    <option value="75">Fiji</option>
+                                    <option value="76">Finland</option>
+                                    <option value="77">France</option>
+                                    <option value="78">French Guiana</option>
+                                    <option value="79">French Polynesia</option>
+                                    <option value="80">French Southern Territories</option>
+                                    <option value="81">Gabon</option>
+                                    <option value="82">Gambia</option>
+                                    <option value="83">Georgia</option>
+                                    <option value="84">Germany</option>
+                                    <option value="85">Ghana</option>
+                                    <option value="86">Gibralter</option>
+                                    <option value="87">Greece</option>
+                                    <option value="88">Greenland</option>
+                                    <option value="89">Grenada</option>
+                                    <option value="90">Guadeloupe</option>
+                                    <option value="91">Guam</option>
+                                    <option value="92">Guatemala</option>
+                                    <option value="93">Guernsey</option>
+                                    <option value="94">Guinea</option>
+                                    <option value="95">Guinea Bissau</option>
+                                    <option value="96">Guyana</option>
+                                    <option value="97">Haiti</option>
+                                    <option value="98">Herd Island</option>
+                                    <option value="99">Holy See</option>
+                                    <option value="100">Honduras</option>
+                                    <option value="101">Hongkong</option>
+                                    <option value="102">Hungary</option>
+                                    <option value="103">Iceland</option>
+                                    <option value="104">India</option>
+                                    <option value="105">Indonessia</option>
+                                    <option value="106">Iran</option>
+                                    <option value="107">Iraq</option>
+                                    <option value="108">Ireland</option>
+                                    <option value="109">Isle of man</option>
+                                    <option value="110">Israel</option>
+                                    <option value="111">Italy</option>
+                                    <option value="112">Jamaica</option>
+                                    <option value="113">Japan</option>
+                                    <option value="114">Jersey</option>
+                                    <option value="115">Jordan</option>
+                                    <option value="116">Kazakhstan</option>
+                                    <option value="117">Kenya</option>
+                                    <option value="118">Kiribati</option>
+                                    <option value="119">Korea North</option>
+                                    <option value="120">Korea South</option>
+                                    <option value="121">Kosovo</option>
+                                    <option value="122">Kuwait</option>
+                                    <option value="123">Kyrgyzstan</option>
+                                    <option value="124">Laos</option>
+                                    <option value="125">Latvia</option>
+                                    <option value="126">Lebanon</option>
+                                    <option value="127">Lesotho</option>
+                                    <option value="128">Liberia</option>
+                                    <option value="129">Libya</option>
+                                    <option value="130">Liechtenstein</option>
+                                    <option value="131">Lithuania</option>
+                                    <option value="132">Luxembourg</option>
+                                    <option value="133">Macao</option>
+                                    <option value="134">Macedonia</option>
+                                    <option value="135">Madagascar</option>
+                                    <option value="136">Malawi</option>
+                                    <option value="137">Malaysia</option>
+                                    <option value="138">Maldives</option>
+                                    <option value="139">Mali</option>
+                                    <option value="140">Malta</option>
+                                    <option value="141">Marshall Islands</option>
+                                    <option value="142">Martinique</option>
+                                    <option value="143">Mauritania</option>
+                                    <option value="144">Mauritius</option>
+                                    <option value="145">Mayotte</option>
+                                    <option value="146">Mexico</option>
+                                    <option value="147">Micronessia</option>
+                                    <option value="148">Moldova</option>
+                                    <option value="149">Monaco</option>
+                                    <option value="150">Mongolia</option>
+                                    <option value="151">Montenegro</option>
+                                    <option value="152">Montserrat</option>
+                                    <option value="153">Morocco</option>
+                                    <option value="154">Mozambique</option>
+                                    <option value="155">Mynamar</option>
+                                    <option value="156">Namabia</option>
+                                    <option value="157">Nauru</option>
+                                    <option value="158">Nepal</option>
+                                    <option value="159">Netherlands</option>
+                                    <option value="160">New Celedonia</option>
+                                    <option value="161">Newzealand</option>
+                                    <option value="162">Niger</option>
+                                    <option value="163">Nigeria</option>
+                                    <option value="164">Norfolk Island</option>
+                                    <option value="165">Nothern Mariana Islands</option>
+                                    <option value="166">Norway</option>
+                                    <option value="167">Nuie</option>
+                                    <option value="168">Oman</option>
+                                    <option value="169">Pakistan</option>
+                                    <option value="170">Palau</option>
+                                    <option value="171">Panama</option>
+                                    <option value="172">Papua New Guinea</option>
+                                    <option value="173">Paraguay</option>
+                                    <option value="174">Peru</option>
+                                    <option value="175">Philippines</option>
+                                    <option value="176">Pitcaim</option>
+                                    <option value="177">Poland</option>
+                                    <option value="178">Portugal</option>
+                                    <option value="179">Puerto Rico</option>
+                                    <option value="180">Qatar</option>
+                                    <option value="181">Reunion</option>
+                                    <option value="182">Roman</option>
+                                    <option value="183">Russia</option>
+                                    <option value="184">Rwanda</option>
+                                    <option value="185">Saint Barthelemy</option>
+                                    <option value="186">Saint Helena</option>
+                                    <option value="187">Saint Kitts</option>
+                                    <option value="188">Saint Lucia</option>
+                                    <option value="189">Saint Martin</option>
+                                    <option value="190">Saint Pierre</option>
+                                    <option value="191">Saint Vincent</option>
+                                    <option value="192">Samoa</option>
+                                    <option value="193">Saint Marino</option>
+                                    <option value="194">Sao Tome</option>
+                                    <option value="195">Saudia Arabia</option>
+                                    <option value="196">Senegal</option>
+                                    <option value="197">Serbia</option>
+                                    <option value="198">Seychelles</option>
+                                    <option value="199">Sierra Leone</option>
+                                    <option value="200">Singapore</option>
+                                    <option value="201">Sint Martin</option>
+                                    <option value="202">Slovekia</option>
+                                    <option value="203">Slovenia</option>
+                                    <option value="204">Solomon Islands</option>
+                                    <option value="205">Somalia</option>
+                                    <option value="206">South African</option>
+                                    <option value="207">South Georgia</option>
+                                    <option value="208">South Sudan</option>
+                                    <option value="209">SPain</option>
+                                    <option value="210">Srilanka</option>
+                                    <option value="211">Sudan</option>
+                                    <option value="212">Suriname</option>
+                                    <option value="213">Svalbard</option>
+                                    <option value="214">Sweden</option>
+                                    <option value="215">Switxerland</option>
+                                    <option value="216">Syria</option>
+                                    <option value="217">Taiwan</option>
+                                    <option value="218">Tajikistan</option>
+                                    <option value="219">Tanzania</option>
+                                    <option value="220">Thailand</option>
+                                    <option value="221">Timor Leste</option>
+                                    <option value="222">Togo</option>
+                                    <option value="223">Tokelau</option>
+                                    <option value="224">Tonga</option>
+                                    <option value="225">Trinidad</option>
+                                    <option value="226">Tunisia</option>
+                                    <option value="227">Turkey</option>
+                                    <option value="228">Turkmenistan</option>
+                                    <option value="229">Turks</option>
+                                    <option value="230">Tuvalu</option>
+                                    <option value="231">Uganda</option>
+                                    <option value="232">Ukraine</option>
+                                    <option value="233">United Arab Emirates</option>
+                                    <option value="234">United Kingdom</option>
+                                    <option value="235">United States Minor</option>
+                                    <option value="236">United States of America</option>
+                                    <option value="237">Uruguay</option>
+                                    <option value="238">Uzbekistan</option>
+                                    <option value="239">Vanuatu</option>
+                                    <option value="240">Venezuela</option>
+                                    <option value="241">Vietnam</option>
+                                    <option value="242">Virgin Islands(British)</option>
+                                    <option value="243">Virgin Islands(US)</option>
+                                    <option value="244">Wallis and Fatuna</option>
+                                    <option value="245">West Bank</option>
+                                    <option value="246">Western Sahara</option>
+                                    <option value="247">Yemen</option>
+                                    <option value="248">Zambia</option>
+                                    <option value="249">Zimbabwe</option>
 
-                        
+                                </select> 
+                            </div>
 
-                        
-                        
-                    })()}
+                            <div className="col-2">
+                                <label className="col-form-label"></label>
+                            </div>
+
+                            <div className="col-2">
+                                <label className="col-form-label"></label>
+                            </div>
+
+                            <div className="col-1">
+                            {(() => {
+                                if(user['is_superuser'])
+                                    {
+                                        return (<>
+                                            {(() => { 
+                            
+                            if(parseInt(key.RF_LP_Nationality)===1 || parseInt(key.RF_LP_Nationality)===2 || parseInt(key.RF_LP_Nationality)===3 || parseInt(key.RF_LP_Nationality)===4 || parseInt(key.RF_LP_Nationality)===6 || parseInt(key.RF_LP_Nationality)===8 || parseInt(key.RF_LP_Nationality)===10 || parseInt(key.RF_LP_Nationality)===13 || parseInt(key.RF_LP_Nationality)===16 || parseInt(key.RF_LP_Nationality)===17 || parseInt(key.RF_LP_Nationality)===19 || parseInt(key.RF_LP_Nationality)===20 || parseInt(key.RF_LP_Nationality)===24 || parseInt(key.RF_LP_Nationality)===27
+                                || parseInt(key.RF_LP_Nationality)===28 || parseInt(key.RF_LP_Nationality)===29 || parseInt(key.RF_LP_Nationality)===31 || parseInt(key.RF_LP_Nationality)===32 || parseInt(key.RF_LP_Nationality)===33 || parseInt(key.RF_LP_Nationality)===36 || parseInt(key.RF_LP_Nationality)===37 || parseInt(key.RF_LP_Nationality)===39 || parseInt(key.RF_LP_Nationality)===41 || parseInt(key.RF_LP_Nationality)===42 || parseInt(key.RF_LP_Nationality)===43 || parseInt(key.RF_LP_Nationality)===46 || parseInt(key.RF_LP_Nationality)===47 || parseInt(key.RF_LP_Nationality)===48 || parseInt(key.RF_LP_Nationality)===49 || parseInt(key.RF_LP_Nationality)===50 || parseInt(key.RF_LP_Nationality)===51 || parseInt(key.RF_LP_Nationality)===52 || parseInt(key.RF_LP_Nationality)===53
+                                || parseInt(key.RF_LP_Nationality)===55 || parseInt(key.RF_LP_Nationality)===58 || parseInt(key.RF_LP_Nationality)===62 || parseInt(key.RF_LP_Nationality)===64 || parseInt(key.RF_LP_Nationality)===65 || parseInt(key.RF_LP_Nationality)===66 || parseInt(key.RF_LP_Nationality)===67 || parseInt(key.RF_LP_Nationality)===68 || parseInt(key.RF_LP_Nationality)===69 || parseInt(key.RF_LP_Nationality)===71 || parseInt(key.RF_LP_Nationality)===72 || parseInt(key.RF_LP_Nationality)===73 || parseInt(key.RF_LP_Nationality)===74
+                                || parseInt(key.RF_LP_Nationality)===82 || parseInt(key.RF_LP_Nationality)===85 || parseInt(key.RF_LP_Nationality)===86 || parseInt(key.RF_LP_Nationality)===90 || parseInt(key.RF_LP_Nationality)===91 || parseInt(key.RF_LP_Nationality)===92 || parseInt(key.RF_LP_Nationality)===93
+                                || parseInt(key.RF_LP_Nationality)===94 || parseInt(key.RF_LP_Nationality)===95 || parseInt(key.RF_LP_Nationality)===97 || parseInt(key.RF_LP_Nationality)===98 || parseInt(key.RF_LP_Nationality)===99 || parseInt(key.RF_LP_Nationality)===100 || parseInt(key.RF_LP_Nationality)===103 
+                                
+                                || parseInt(key.RF_LP_Nationality)===109 || parseInt(key.RF_LP_Nationality)===112  || parseInt(key.RF_LP_Nationality)===115 || parseInt(key.RF_LP_Nationality)===116 || parseInt(key.RF_LP_Nationality)===117 || parseInt(key.RF_LP_Nationality)===121 || parseInt(key.RF_LP_Nationality)===123  || parseInt(key.RF_LP_Nationality)===124
+                                || parseInt(key.RF_LP_Nationality)===126 || parseInt(key.RF_LP_Nationality)===127  || parseInt(key.RF_LP_Nationality)===128 || parseInt(key.RF_LP_Nationality)===129 || parseInt(key.RF_LP_Nationality)===134 || parseInt(key.RF_LP_Nationality)===135 || parseInt(key.RF_LP_Nationality)===136
+                                || parseInt(key.RF_LP_Nationality)===139 || parseInt(key.RF_LP_Nationality)===143  || parseInt(key.RF_LP_Nationality)===145 || parseInt(key.RF_LP_Nationality)===146 || parseInt(key.RF_LP_Nationality)===148 || parseInt(key.RF_LP_Nationality)===150 || parseInt(key.RF_LP_Nationality)===151
+                                || parseInt(key.RF_LP_Nationality)===152 || parseInt(key.RF_LP_Nationality)===153 || parseInt(key.RF_LP_Nationality)===154 || parseInt(key.RF_LP_Nationality)===155 || parseInt(key.RF_LP_Nationality)===158 || parseInt(key.RF_LP_Nationality)===160 || parseInt(key.RF_LP_Nationality)===162 
+                                || parseInt(key.RF_LP_Nationality)===163 || parseInt(key.RF_LP_Nationality)===164 || parseInt(key.RF_LP_Nationality)===165 || parseInt(key.RF_LP_Nationality)===166 || parseInt(key.RF_LP_Nationality)===168 || parseInt(key.RF_LP_Nationality)===170 || parseInt(key.RF_LP_Nationality)===172 || parseInt(key.RF_LP_Nationality)===173 || parseInt(key.RF_LP_Nationality)===174 || parseInt(key.RF_LP_Nationality)===175 || parseInt(key.RF_LP_Nationality)===176 || parseInt(key.RF_LP_Nationality)===177
+                                || parseInt(key.RF_LP_Nationality)===186 || parseInt(key.RF_LP_Nationality)===187 || parseInt(key.RF_LP_Nationality)===188 || parseInt(key.RF_LP_Nationality)===190 || parseInt(key.RF_LP_Nationality)===191 || parseInt(key.RF_LP_Nationality)===193 || parseInt(key.RF_LP_Nationality)===195
+                                || parseInt(key.RF_LP_Nationality)===197 || parseInt(key.RF_LP_Nationality)===198 || parseInt(key.RF_LP_Nationality)===200 || parseInt(key.RF_LP_Nationality)===202 || parseInt(key.RF_LP_Nationality)===203 || parseInt(key.RF_LP_Nationality)===206 || parseInt(key.RF_LP_Nationality)===208 || parseInt(key.RF_LP_Nationality)===209
+                                || parseInt(key.RF_LP_Nationality)===211 || parseInt(key.RF_LP_Nationality)===212 || parseInt(key.RF_LP_Nationality)===213 || parseInt(key.RF_LP_Nationality)===214 || parseInt(key.RF_LP_Nationality)===219 || parseInt(key.RF_LP_Nationality)===220 || parseInt(key.RF_LP_Nationality)===221 || parseInt(key.RF_LP_Nationality)===222 || parseInt(key.RF_LP_Nationality)===223 || parseInt(key.RF_LP_Nationality)===224
+                                || parseInt(key.RF_LP_Nationality)===226 || parseInt(key.RF_LP_Nationality)===230 || parseInt(key.RF_LP_Nationality)===232 || parseInt(key.RF_LP_Nationality)===233 || parseInt(key.RF_LP_Nationality)===236 || parseInt(key.RF_LP_Nationality)===237 || parseInt(key.RF_LP_Nationality)===238 || parseInt(key.RF_LP_Nationality)===239)
+                            {
+                                return (<>
+                                    
+                                    <label className="col-form-label">3</label>
+                                    
+                                </>);
+                            }
+
+                            else if(parseInt(key.RF_LP_Nationality)===5 || parseInt(key.RF_LP_Nationality)===7 || parseInt(key.RF_LP_Nationality)===9 || parseInt(key.RF_LP_Nationality)===12 || parseInt(key.RF_LP_Nationality)===25 || parseInt(key.RF_LP_Nationality)===34 || parseInt(key.RF_LP_Nationality)===35 || parseInt(key.RF_LP_Nationality)===61 || parseInt(key.RF_LP_Nationality)===76 || parseInt(key.RF_LP_Nationality)===84 || parseInt(key.RF_LP_Nationality)===88
+                                
+                                || parseInt(key.RF_LP_Nationality)===114 || parseInt(key.RF_LP_Nationality)===130 || parseInt(key.RF_LP_Nationality)===132 || parseInt(key.RF_LP_Nationality)===142 || parseInt(key.RF_LP_Nationality)===149 || parseInt(key.RF_LP_Nationality)===159 || parseInt(key.RF_LP_Nationality)===161 
+                                || parseInt(key.RF_LP_Nationality)===167 || parseInt(key.RF_LP_Nationality)===194 || parseInt(key.RF_LP_Nationality)===215 || parseInt(key.RF_LP_Nationality)===216 )
+                            {
+                                return (<>
+                                    
+                                    <label className="col-form-label">1</label>
+                                    
+                                </>);
+                            }
+
+                            else if(parseInt(key.RF_LP_Nationality)===11 || parseInt(key.RF_LP_Nationality)===14 || parseInt(key.RF_LP_Nationality)===15 || parseInt(key.RF_LP_Nationality)===18 || parseInt(key.RF_LP_Nationality)===22 || parseInt(key.RF_LP_Nationality)===23 || parseInt(key.RF_LP_Nationality)===26 || parseInt(key.RF_LP_Nationality)===30 || parseInt(key.RF_LP_Nationality)===38 || parseInt(key.RF_LP_Nationality)===40 || parseInt(key.RF_LP_Nationality)===44 || parseInt(key.RF_LP_Nationality)===45
+                                || parseInt(key.RF_LP_Nationality)===54 || parseInt(key.RF_LP_Nationality)===56 || parseInt(key.RF_LP_Nationality)===59 || parseInt(key.RF_LP_Nationality)===60 || parseInt(key.RF_LP_Nationality)===63 || parseInt(key.RF_LP_Nationality)===70 || parseInt(key.RF_LP_Nationality)===75 || parseInt(key.RF_LP_Nationality)===77 || parseInt(key.RF_LP_Nationality)===78 || parseInt(key.RF_LP_Nationality)===79 || parseInt(key.RF_LP_Nationality)===80 || parseInt(key.RF_LP_Nationality)===81
+                                || parseInt(key.RF_LP_Nationality)===83 || parseInt(key.RF_LP_Nationality)===87 || parseInt(key.RF_LP_Nationality)===89 || parseInt(key.RF_LP_Nationality)===96 || parseInt(key.RF_LP_Nationality)===101 || parseInt(key.RF_LP_Nationality)===104 || parseInt(key.RF_LP_Nationality)===105
+                                
+                                || parseInt(key.RF_LP_Nationality)===108 || parseInt(key.RF_LP_Nationality)===110 || parseInt(key.RF_LP_Nationality)===111 || parseInt(key.RF_LP_Nationality)===113 || parseInt(key.RF_LP_Nationality)===118 || parseInt(key.RF_LP_Nationality)===120 || parseInt(key.RF_LP_Nationality)===125
+                                || parseInt(key.RF_LP_Nationality)===131 || parseInt(key.RF_LP_Nationality)===133 || parseInt(key.RF_LP_Nationality)===137 || parseInt(key.RF_LP_Nationality)===138 || parseInt(key.RF_LP_Nationality)===140 || parseInt(key.RF_LP_Nationality)===141
+                                || parseInt(key.RF_LP_Nationality)===144 || parseInt(key.RF_LP_Nationality)===147 || parseInt(key.RF_LP_Nationality)===156 || parseInt(key.RF_LP_Nationality)===157 || parseInt(key.RF_LP_Nationality)===169 || parseInt(key.RF_LP_Nationality)===171 || parseInt(key.RF_LP_Nationality)===178 || parseInt(key.RF_LP_Nationality)===179 || parseInt(key.RF_LP_Nationality)===180 || parseInt(key.RF_LP_Nationality)===181 || parseInt(key.RF_LP_Nationality)===182 || parseInt(key.RF_LP_Nationality)===183
+                                || parseInt(key.RF_LP_Nationality)===185 || parseInt(key.RF_LP_Nationality)===189 || parseInt(key.RF_LP_Nationality)===192 || parseInt(key.RF_LP_Nationality)===196 || parseInt(key.RF_LP_Nationality)===199 || parseInt(key.RF_LP_Nationality)===201 || parseInt(key.RF_LP_Nationality)===204 || parseInt(key.RF_LP_Nationality)===205
+                                || parseInt(key.RF_LP_Nationality)===207 || parseInt(key.RF_LP_Nationality)===210 || parseInt(key.RF_LP_Nationality)===218 || parseInt(key.RF_LP_Nationality)===225 || parseInt(key.RF_LP_Nationality)===231 || parseInt(key.RF_LP_Nationality)===234 || parseInt(key.RF_LP_Nationality)===235 || parseInt(key.RF_LP_Nationality)===237 || parseInt(key.RF_LP_Nationality)===238)
+                            {
+                                return (<>
+                                    
+                                    <label className="col-form-label">2</label>
+                                    
+                                </>);
+                            }
+
+                            else if(parseInt(key.RF_LP_Nationality)===21 || parseInt(key.RF_LP_Nationality)===57 || parseInt(key.RF_LP_Nationality)===106 || parseInt(key.RF_LP_Nationality)===107 || parseInt(key.RF_LP_Nationality)===119 || parseInt(key.RF_LP_Nationality)===187 || parseInt(key.RF_LP_Nationality)===217 )
+                            {
+                                return (<>
+                                    
+                                    <label className="col-form-label">4</label>
+                                    
+                                </>);
+                            }
+    
+                            })()}
+                                            </>)
+                                    }    
+                            })()}
+                            
+                        </div>
+
+                        <div className="col-1">
+                        {(() => {
+                            if(user['is_superuser'])
+                                {
+                                    return (<>
+                                        <label className="col-form-label">3</label>
+                                        </>)
+                                }    
+                        })()}                      
+                            
+                                            
+                        </div>
+
+                        <div className="col-1">
+                        {(() => {
+                            if(user['is_superuser'])
+                                {
+                                    return (<>
+                                        {(() => { 
+                            
+                            if(parseInt(key.RF_LP_Nationality)===1 || parseInt(key.RF_LP_Nationality)===2 || parseInt(key.RF_LP_Nationality)===3 || parseInt(key.RF_LP_Nationality)===4 || parseInt(key.RF_LP_Nationality)===6 || parseInt(key.RF_LP_Nationality)===8 || parseInt(key.RF_LP_Nationality)===10 || parseInt(key.RF_LP_Nationality)===13 || parseInt(key.RF_LP_Nationality)===16 || parseInt(key.RF_LP_Nationality)===17 || parseInt(key.RF_LP_Nationality)===19 || parseInt(key.RF_LP_Nationality)===20 || parseInt(key.RF_LP_Nationality)===24
+                                || parseInt(key.RF_LP_Nationality)===27 || parseInt(key.RF_LP_Nationality)===28 || parseInt(key.RF_LP_Nationality)===29 || parseInt(key.RF_LP_Nationality)===30 || parseInt(key.RF_LP_Nationality)===31 || parseInt(key.RF_LP_Nationality)===32 || parseInt(key.RF_LP_Nationality)===33 || parseInt(key.RF_LP_Nationality)===36 || parseInt(key.RF_LP_Nationality)===37 || parseInt(key.RF_LP_Nationality)===39 || parseInt(key.RF_LP_Nationality)===41 || parseInt(key.RF_LP_Nationality)===42 || parseInt(key.RF_LP_Nationality)===43
+                                || parseInt(key.RF_LP_Nationality)===46 || parseInt(key.RF_LP_Nationality)===47 || parseInt(key.RF_LP_Nationality)===48 || parseInt(key.RF_LP_Nationality)===49 || parseInt(key.RF_LP_Nationality)===50 || parseInt(key.RF_LP_Nationality)===51 || parseInt(key.RF_LP_Nationality)===52 || parseInt(key.RF_LP_Nationality)===53 || parseInt(key.RF_LP_Nationality)===55 || parseInt(key.RF_LP_Nationality)===58 || parseInt(key.RF_LP_Nationality)===62 || parseInt(key.RF_LP_Nationality)===64 || parseInt(key.RF_LP_Nationality)===65 || parseInt(key.RF_LP_Nationality)===66 
+                                || parseInt(key.RF_LP_Nationality)===67 || parseInt(key.RF_LP_Nationality)===68 || parseInt(key.RF_LP_Nationality)===69 || parseInt(key.RF_LP_Nationality)===70 || parseInt(key.RF_LP_Nationality)===71 || parseInt(key.RF_LP_Nationality)===72 || parseInt(key.RF_LP_Nationality)===73 || parseInt(key.RF_LP_Nationality)===74 || parseInt(key.RF_LP_Nationality)===82 || parseInt(key.RF_LP_Nationality)===85 || parseInt(key.RF_LP_Nationality)===86 || parseInt(key.RF_LP_Nationality)===90 || parseInt(key.RF_LP_Nationality)===91 || parseInt(key.RF_LP_Nationality)===92 || parseInt(key.RF_LP_Nationality)===93
+                                || parseInt(key.RF_LP_Nationality)===94 || parseInt(key.RF_LP_Nationality)===95 || parseInt(key.RF_LP_Nationality)===96 || parseInt(key.RF_LP_Nationality)===97 || parseInt(key.RF_LP_Nationality)===98 || parseInt(key.RF_LP_Nationality)===99 || parseInt(key.RF_LP_Nationality)===100 || parseInt(key.RF_LP_Nationality)===102 || parseInt(key.RF_LP_Nationality)===103
+                                
+                                || parseInt(key.RF_LP_Nationality)===109 || parseInt(key.RF_LP_Nationality)===112 || parseInt(key.RF_LP_Nationality)===115 || parseInt(key.RF_LP_Nationality)===116 || parseInt(key.RF_LP_Nationality)===117 || parseInt(key.RF_LP_Nationality)===121 || parseInt(key.RF_LP_Nationality)===123 || parseInt(key.RF_LP_Nationality)===124
+                                || parseInt(key.RF_LP_Nationality)===126 || parseInt(key.RF_LP_Nationality)===127 || parseInt(key.RF_LP_Nationality)===128 || parseInt(key.RF_LP_Nationality)===129 || parseInt(key.RF_LP_Nationality)===134 || parseInt(key.RF_LP_Nationality)===135 || parseInt(key.RF_LP_Nationality)===136
+                                || parseInt(key.RF_LP_Nationality)===139 || parseInt(key.RF_LP_Nationality)===143 || parseInt(key.RF_LP_Nationality)===145 || parseInt(key.RF_LP_Nationality)===146 || parseInt(key.RF_LP_Nationality)===148 || parseInt(key.RF_LP_Nationality)===150 || parseInt(key.RF_LP_Nationality)===151
+                                || parseInt(key.RF_LP_Nationality)===152 || parseInt(key.RF_LP_Nationality)===153 || parseInt(key.RF_LP_Nationality)===154 || parseInt(key.RF_LP_Nationality)===155 || parseInt(key.RF_LP_Nationality)===158 || parseInt(key.RF_LP_Nationality)===160 || parseInt(key.RF_LP_Nationality)===162 
+                                || parseInt(key.RF_LP_Nationality)===163 || parseInt(key.RF_LP_Nationality)===164 || parseInt(key.RF_LP_Nationality)===165 || parseInt(key.RF_LP_Nationality)===166 || parseInt(key.RF_LP_Nationality)===168 || parseInt(key.RF_LP_Nationality)===170 || parseInt(key.RF_LP_Nationality)===172 || parseInt(key.RF_LP_Nationality)===173 || parseInt(key.RF_LP_Nationality)===174 || parseInt(key.RF_LP_Nationality)===175 || parseInt(key.RF_LP_Nationality)===176 || parseInt(key.RF_LP_Nationality)===177
+                                || parseInt(key.RF_LP_Nationality)===186 || parseInt(key.RF_LP_Nationality)===187 || parseInt(key.RF_LP_Nationality)===188 || parseInt(key.RF_LP_Nationality)===190 || parseInt(key.RF_LP_Nationality)===191 || parseInt(key.RF_LP_Nationality)===193 || parseInt(key.RF_LP_Nationality)===195
+                                || parseInt(key.RF_LP_Nationality)===197 || parseInt(key.RF_LP_Nationality)===198 || parseInt(key.RF_LP_Nationality)===200 || parseInt(key.RF_LP_Nationality)===202 || parseInt(key.RF_LP_Nationality)===203 || parseInt(key.RF_LP_Nationality)===206 || parseInt(key.RF_LP_Nationality)===208 || parseInt(key.RF_LP_Nationality)===209
+                                || parseInt(key.RF_LP_Nationality)===211 || parseInt(key.RF_LP_Nationality)===212 || parseInt(key.RF_LP_Nationality)===213 || parseInt(key.RF_LP_Nationality)===214 || parseInt(key.RF_LP_Nationality)===219 || parseInt(key.RF_LP_Nationality)===220 || parseInt(key.RF_LP_Nationality)===221 || parseInt(key.RF_LP_Nationality)===222 || parseInt(key.RF_LP_Nationality)===223 || parseInt(key.RF_LP_Nationality)===224
+                                || parseInt(key.RF_LP_Nationality)===226 || parseInt(key.RF_LP_Nationality)===230 || parseInt(key.RF_LP_Nationality)===232 || parseInt(key.RF_LP_Nationality)===233 || parseInt(key.RF_LP_Nationality)===236 || parseInt(key.RF_LP_Nationality)===237 || parseInt(key.RF_LP_Nationality)===238 || parseInt(key.RF_LP_Nationality)===239)
+                            {
+                                return (<>
+                                    
+                                    <label className="col-form-label">9</label>
+                                    
+                                </>);
+                            }
+
+                            else if(parseInt(key.RF_LP_Nationality)===5 || parseInt(key.RF_LP_Nationality)===7 || parseInt(key.RF_LP_Nationality)===9 || parseInt(key.RF_LP_Nationality)===12 || parseInt(key.RF_LP_Nationality)===25 || parseInt(key.RF_LP_Nationality)===34 || parseInt(key.RF_LP_Nationality)===35 || parseInt(key.RF_LP_Nationality)===61 || parseInt(key.RF_LP_Nationality)===76 || parseInt(key.RF_LP_Nationality)===84|| parseInt(key.RF_LP_Nationality)===88
+                                
+                                || parseInt(key.RF_LP_Nationality)===114 || parseInt(key.RF_LP_Nationality)===130 || parseInt(key.RF_LP_Nationality)===132 || parseInt(key.RF_LP_Nationality)===142 || parseInt(key.RF_LP_Nationality)===149 || parseInt(key.RF_LP_Nationality)===159 || parseInt(key.RF_LP_Nationality)===161 
+                                || parseInt(key.RF_LP_Nationality)===167 || parseInt(key.RF_LP_Nationality)===194 || parseInt(key.RF_LP_Nationality)===215 || parseInt(key.RF_LP_Nationality)===216)
+                            {
+                                return (<>
+                                    
+                                    <label className="col-form-label">3</label>
+                                    
+                                </>);
+                            }
+
+                            else if(parseInt(key.RF_LP_Nationality)===11 || parseInt(key.RF_LP_Nationality)===14 || parseInt(key.RF_LP_Nationality)===15 || parseInt(key.RF_LP_Nationality)===18 || parseInt(key.RF_LP_Nationality)===22 || parseInt(key.RF_LP_Nationality)===23 || parseInt(key.RF_LP_Nationality)===26 || parseInt(key.RF_LP_Nationality)===30 || parseInt(key.RF_LP_Nationality)===38 || parseInt(key.RF_LP_Nationality)===40
+                                || parseInt(key.RF_LP_Nationality)===44 || parseInt(key.RF_LP_Nationality)===45 || parseInt(key.RF_LP_Nationality)===54 || parseInt(key.RF_LP_Nationality)===56 || parseInt(key.RF_LP_Nationality)===59 || parseInt(key.RF_LP_Nationality)===60 || parseInt(key.RF_LP_Nationality)===63 || parseInt(key.RF_LP_Nationality)===70 || parseInt(key.RF_LP_Nationality)===75 || parseInt(key.RF_LP_Nationality)===77 
+                                || parseInt(key.RF_LP_Nationality)===78 || parseInt(key.RF_LP_Nationality)===79 || parseInt(key.RF_LP_Nationality)===80 || parseInt(key.RF_LP_Nationality)===81 || parseInt(key.RF_LP_Nationality)===83 || parseInt(key.RF_LP_Nationality)===87 || parseInt(key.RF_LP_Nationality)===89 || parseInt(key.RF_LP_Nationality)===96 || parseInt(key.RF_LP_Nationality)===97 || parseInt(key.RF_LP_Nationality)===98 
+                                || parseInt(key.RF_LP_Nationality)===99 || parseInt(key.RF_LP_Nationality)===100 || parseInt(key.RF_LP_Nationality)===101 || parseInt(key.RF_LP_Nationality)===102 || parseInt(key.RF_LP_Nationality)===104 || parseInt(key.RF_LP_Nationality)===105
+                                
+                                || parseInt(key.RF_LP_Nationality)===108 || parseInt(key.RF_LP_Nationality)===110 || parseInt(key.RF_LP_Nationality)===111 || parseInt(key.RF_LP_Nationality)===113 || parseInt(key.RF_LP_Nationality)===118 || parseInt(key.RF_LP_Nationality)===120 || parseInt(key.RF_LP_Nationality)===125
+                                || parseInt(key.RF_LP_Nationality)===131 || parseInt(key.RF_LP_Nationality)===133 || parseInt(key.RF_LP_Nationality)===137 || parseInt(key.RF_LP_Nationality)===138 || parseInt(key.RF_LP_Nationality)===140 || parseInt(key.RF_LP_Nationality)===141
+                                || parseInt(key.RF_LP_Nationality)===144 || parseInt(key.RF_LP_Nationality)===147 || parseInt(key.RF_LP_Nationality)===156 || parseInt(key.RF_LP_Nationality)===157 || parseInt(key.RF_LP_Nationality)===169 || parseInt(key.RF_LP_Nationality)===171 || parseInt(key.RF_LP_Nationality)===178 || parseInt(key.RF_LP_Nationality)===179 || parseInt(key.RF_LP_Nationality)===180 || parseInt(key.RF_LP_Nationality)===181 || parseInt(key.RF_LP_Nationality)===182 || parseInt(key.RF_LP_Nationality)===183
+                                || parseInt(key.RF_LP_Nationality)===185 || parseInt(key.RF_LP_Nationality)===189 || parseInt(key.RF_LP_Nationality)===192 || parseInt(key.RF_LP_Nationality)===196 || parseInt(key.RF_LP_Nationality)===199 || parseInt(key.RF_LP_Nationality)===201 || parseInt(key.RF_LP_Nationality)===204 || parseInt(key.RF_LP_Nationality)===205
+                                || parseInt(key.RF_LP_Nationality)===207 || parseInt(key.RF_LP_Nationality)===210 || parseInt(key.RF_LP_Nationality)===218 || parseInt(key.RF_LP_Nationality)===225 || parseInt(key.RF_LP_Nationality)===231 || parseInt(key.RF_LP_Nationality)===234 || parseInt(key.RF_LP_Nationality)===235 || parseInt(key.RF_LP_Nationality)===237 || parseInt(key.RF_LP_Nationality)===238)
+                            {
+                                return (<>
+                                    
+                                    <label className="col-form-label">6</label>
+                                    
+                                </>);
+                            }
+
+                            else if(parseInt(key.RF_LP_Nationality)===21 || parseInt(key.RF_LP_Nationality)===57 || parseInt(key.RF_LP_Nationality)===106 || parseInt(key.RF_LP_Nationality)===107 || parseInt(key.RF_LP_Nationality)===119 || parseInt(key.RF_LP_Nationality)===187 || parseInt(key.RF_LP_Nationality)===217)
+                            {
+                                return (<>
+                                    
+                                    <label className="col-form-label">12</label>
+                                    
+                                </>);
+                            }
+
+                            
+    
+    
+                            })()}
+                                        </>)
+                                }    
+                        })()}
+                            
+                        </div>
+
+
+                        </>);
+                    })
+                    : <></>
+                }
+                    
 
             </div>
         </div>

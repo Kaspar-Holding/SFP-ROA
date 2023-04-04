@@ -8,7 +8,12 @@ This project is built on the following Stack
 
 ## Updates
 
-### 3 March 2023:
+### 4 April 2023:
+- Linked Party Duplication in Investment and Risk Planning is done
+- Duplication Task started on BA Risk Form
+- Added TinyMCE editor in Record of Advice to handle complex text
+
+### 3 April 2023:
 - Linked Party Duplication in Dynamic Risk Assessment is done
 - Duplication Task started on Completed Form
 

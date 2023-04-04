@@ -1,7 +1,7 @@
 
 from datetime import datetime, timezone
 from rest_framework import serializers
-from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, InvestmentPlanning, RF_LinkedParty, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
+from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
 from .models import Medical
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
@@ -108,72 +108,6 @@ class InvestmentPlanningSerializers(serializers.ModelSerializer):
         instance.IP_AltS_1 = validated_data.get('IP_AltS_1', instance.IP_AltS_1)    
         instance.IP_AltS_2 = validated_data.get('IP_AltS_2', instance.IP_AltS_2)    
         instance.IP_AltS_3 = validated_data.get('IP_AltS_3', instance.IP_AltS_3)    
-
-        instance.IP_ProductTaken = validated_data.get('IP_ProductTaken', instance.IP_ProductTaken)    
-        instance.IP_ProductProvider = validated_data.get('IP_ProductProvider', instance.IP_ProductProvider)    
-        instance.IP_PolicyNumber = validated_data.get('IP_PolicyNumber', instance.IP_PolicyNumber)    
-        instance.IP_ProductName = validated_data.get('IP_ProductName', instance.IP_ProductName)    
-        instance.IP_ProductPremium = validated_data.get('IP_ProductPremium', instance.IP_ProductPremium)    
-        instance.IP_ProductPremiumFrequency = validated_data.get('IP_ProductPremiumFrequency', instance.IP_ProductPremiumFrequency)   
-        instance.IP_ProductEscalation = validated_data.get('IP_ProductEscalation', instance.IP_ProductEscalation)    
-        instance.IP_ProductEAC = validated_data.get('IP_ProductEAC', instance.IP_ProductEAC)    
-        instance.IP_ProductContractingParty = validated_data.get('IP_ProductContractingParty', instance.IP_ProductContractingParty)    
-        instance.IP_ProductLivesAssured = validated_data.get('IP_ProductLivesAssured', instance.IP_ProductLivesAssured)    
-        instance.IP_ProductPremiumLayer = validated_data.get('IP_ProductPremiumLayer', instance.IP_ProductPremiumLayer)    
-        instance.IP_ProductBeneficiary = validated_data.get('IP_ProductBeneficiary', instance.IP_ProductBeneficiary)    
-        instance.IP_Product_IniC = validated_data.get('IP_Product_IniC', instance.IP_Product_IniC)    
-        instance.IP_Product_IniC_Percentage = validated_data.get('IP_Product_IniC_Percentage', instance.IP_Product_IniC_Percentage)    
-        instance.IP_Product_OnC = validated_data.get('IP_Product_OnC', instance.IP_Product_OnC)    
-        instance.IP_Product_OnC_Percentage = validated_data.get('IP_Product_OnC_Percentage', instance.IP_Product_OnC_Percentage)    
-
-        instance.IP_SFPSolutionFunds = validated_data.get('IP_SFPSolutionFunds', instance.IP_SFPSolutionFunds)
-        instance.IP_SFPSolutionFundsDetails = validated_data.get('IP_SFPSolutionFundsDetails', instance.IP_SFPSolutionFundsDetails)
-
-        instance.IP_ItP = validated_data.get('IP_ItP', instance.IP_ItP)
-        instance.IP_ItP_Fund = validated_data.get('IP_ItP_Fund', instance.IP_ItP_Fund)
-        instance.IP_ItP_FundPercentage = validated_data.get('IP_ItP_FundPercentage', instance.IP_ItP_FundPercentage)
-        instance.IP_ItP_FundProvided = validated_data.get('IP_ItP_FundProvided', instance.IP_ItP_FundProvided)
-        instance.IP_ItP_FundDiscussed = validated_data.get('IP_ItP_FundDiscussed', instance.IP_ItP_FundDiscussed)
-        
-        instance.IP_ItP_Fund1 = validated_data.get('IP_ItP_Fund1', instance.IP_ItP_Fund1)
-        instance.IP_ItP_FundPercentage1 = validated_data.get('IP_ItP_FundPercentage1', instance.IP_ItP_FundPercentage1)
-        instance.IP_ItP_FundProvided1 = validated_data.get('IP_ItP_FundProvided1', instance.IP_ItP_FundProvided1)
-        instance.IP_ItP_FundDiscussed1 = validated_data.get('IP_ItP_FundDiscussed1', instance.IP_ItP_FundDiscussed1)
-        
-        instance.IP_ItP_Fund2 = validated_data.get('IP_ItP_Fund2', instance.IP_ItP_Fund2)
-        instance.IP_ItP_FundPercentage2 = validated_data.get('IP_ItP_FundPercentage2', instance.IP_ItP_FundPercentage2)
-        instance.IP_ItP_FundProvided2 = validated_data.get('IP_ItP_FundProvided2', instance.IP_ItP_FundProvided2)
-        instance.IP_ItP_FundDiscussed2 = validated_data.get('IP_ItP_FundDiscussed2', instance.IP_ItP_FundDiscussed2)
-        
-        instance.IP_ItP_Fund3 = validated_data.get('IP_ItP_Fund3', instance.IP_ItP_Fund3)
-        instance.IP_ItP_FundPercentage3 = validated_data.get('IP_ItP_FundPercentage3', instance.IP_ItP_FundPercentage3)
-        instance.IP_ItP_FundProvided3 = validated_data.get('IP_ItP_FundProvided3', instance.IP_ItP_FundProvided3)
-        instance.IP_ItP_FundDiscussed3 = validated_data.get('IP_ItP_FundDiscussed3', instance.IP_ItP_FundDiscussed3)
-        
-        instance.IP_ItP_Fund4 = validated_data.get('IP_ItP_Fund4', instance.IP_ItP_Fund4)
-        instance.IP_ItP_FundPercentage4 = validated_data.get('IP_ItP_FundPercentage4', instance.IP_ItP_FundPercentage4)
-        instance.IP_ItP_FundProvided4 = validated_data.get('IP_ItP_FundProvided4', instance.IP_ItP_FundProvided4)
-        instance.IP_ItP_FundDiscussed4 = validated_data.get('IP_ItP_FundDiscussed4', instance.IP_ItP_FundDiscussed4)
-        
-        instance.IP_ItP_Fund5 = validated_data.get('IP_ItP_Fund5', instance.IP_ItP_Fund5)
-        instance.IP_ItP_FundPercentage5 = validated_data.get('IP_ItP_FundPercentage5', instance.IP_ItP_FundPercentage5)
-        instance.IP_ItP_FundProvided5 = validated_data.get('IP_ItP_FundProvided5', instance.IP_ItP_FundProvided5)
-        instance.IP_ItP_FundDiscussed5 = validated_data.get('IP_ItP_FundDiscussed5', instance.IP_ItP_FundDiscussed5)
-        
-        instance.IP_ItP_Fund6 = validated_data.get('IP_ItP_Fund6', instance.IP_ItP_Fund6)
-        instance.IP_ItP_FundPercentage6 = validated_data.get('IP_ItP_FundPercentage6', instance.IP_ItP_FundPercentage6)
-        instance.IP_ItP_FundProvided6 = validated_data.get('IP_ItP_FundProvided6', instance.IP_ItP_FundProvided6)
-        instance.IP_ItP_FundDiscussed6 = validated_data.get('IP_ItP_FundDiscussed6', instance.IP_ItP_FundDiscussed6)
-        
-        instance.IP_ItP_Fund7 = validated_data.get('IP_ItP_Fund7', instance.IP_ItP_Fund7)
-        instance.IP_ItP_FundPercentage7 = validated_data.get('IP_ItP_FundPercentage7', instance.IP_ItP_FundPercentage7)
-        instance.IP_ItP_FundProvided7 = validated_data.get('IP_ItP_FundProvided7', instance.IP_ItP_FundProvided7)
-        instance.IP_ItP_FundDiscussed7 = validated_data.get('IP_ItP_FundDiscussed7', instance.IP_ItP_FundDiscussed7)
-            
-        instance.IP_ItP_FundsReasons = validated_data.get('IP_ItP_FundsReasons', instance.IP_ItP_FundsReasons)
-
-        instance.IP_ItP_FundsMaterialAspects = validated_data.get('IP_ItP_FundsMaterialAspects', instance.IP_ItP_FundsMaterialAspects)
-        
         instance.updated_at = datetime.now(timezone.utc)
 
         
@@ -282,47 +216,6 @@ class RiskPlanningSerializers(serializers.ModelSerializer):
         instance.RP_AltS_2 = validated_data.get('RP_AltS_2', instance.RP_AltS_2)
         instance.RP_AltS_3 = validated_data.get('RP_AltS_3', instance.RP_AltS_3)
 
-        instance.RP_Product_Taken = validated_data.get('RP_Product_Taken', instance.RP_Product_Taken)    
-        instance.RP_Product_Provider = validated_data.get('RP_Product_Provider', instance.RP_Product_Provider)
-        instance.RP_Policy_Number = validated_data.get('RP_Policy_Number', instance.RP_Policy_Number)
-        instance.RP_Product_Name = validated_data.get('RP_Product_Name', instance.RP_Product_Name)
-        instance.RP_Product_Premium = validated_data.get('RP_Product_Premium', instance.RP_Product_Premium)
-        instance.RP_Product_PremiumFrequency = validated_data.get('RP_Product_PremiumFrequency', instance.RP_Product_PremiumFrequency) 
-        instance.RP_Product_Pattern = validated_data.get('RP_Product_Pattern', instance.RP_Product_Pattern)
-        instance.RP_Product_Escalation = validated_data.get('RP_Product_Escalation', instance.RP_Product_Escalation)
-        instance.RP_Product_ContractingParty = validated_data.get('RP_Product_ContractingParty', instance.RP_Product_ContractingParty)
-        instance.RP_Product_LivesAssured = validated_data.get('RP_Product_LivesAssured', instance.RP_Product_LivesAssured)
-        instance.RP_Product_Beneficiary = validated_data.get('RP_Product_Beneficiary', instance.RP_Product_Beneficiary)
-        instance.RP_Product_PremiumPayer = validated_data.get('RP_Product_PremiumPayer', instance.RP_Product_PremiumPayer)
-        instance.RP_Product_1stYearCommission = validated_data.get('RP_Product_1stYearCommission', instance.RP_Product_1stYearCommission)
-        instance.RP_Product_2ndYearCommission = validated_data.get('RP_Product_2ndYearCommission', instance.RP_Product_2ndYearCommission)
-        instance.RP_Product_OngoingFees = validated_data.get('RP_Product_OngoingFees', instance.RP_Product_OngoingFees)
-        instance.RP_Product_OngoingFeesFrequency = validated_data.get('RP_Product_OngoingFeesFrequency', instance.RP_Product_OngoingFeesFrequency)
-        instance.RP_Product_OngoingFeesFrequency1 = validated_data.get('RP_Product_OngoingFeesFrequency1', instance.RP_Product_OngoingFeesFrequency1)
-
-        instance.RP_TotalFees_n_Commissions = validated_data.get('RP_TotalFees_n_Commissions', instance.RP_TotalFees_n_Commissions)
-
-        instance.RP_BenDesc_1 = validated_data.get('RP_BenDesc_1', instance.RP_BenDesc_1)
-        instance.RP_BenDesc_CoverAmount1 = validated_data.get('RP_BenDesc_CoverAmount1', instance.RP_BenDesc_CoverAmount1)
-        instance.RP_BenDesc_2 = validated_data.get('RP_BenDesc_2', instance.RP_BenDesc_2)
-        instance.RP_BenDesc_CoverAmount2 = validated_data.get('RP_BenDesc_CoverAmount2', instance.RP_BenDesc_CoverAmount2)
-        instance.RP_BenDesc_3 = validated_data.get('RP_BenDesc_3', instance.RP_BenDesc_3)
-        instance.RP_BenDesc_CoverAmount3 = validated_data.get('RP_BenDesc_CoverAmount3', instance.RP_BenDesc_CoverAmount3)
-        instance.RP_BenDesc_4 = validated_data.get('RP_BenDesc_4', instance.RP_BenDesc_4)
-        instance.RP_BenDesc_CoverAmount4 = validated_data.get('RP_BenDesc_CoverAmount4', instance.RP_BenDesc_CoverAmount4)
-        instance.RP_BenDesc_5 = validated_data.get('RP_BenDesc_5', instance.RP_BenDesc_5)
-        instance.RP_BenDesc_CoverAmount5 = validated_data.get('RP_BenDesc_CoverAmount5', instance.RP_BenDesc_CoverAmount5)
-        instance.RP_BenDesc_6 = validated_data.get('RP_BenDesc_6', instance.RP_BenDesc_6)
-        instance.RP_BenDesc_CoverAmount6 = validated_data.get('RP_BenDesc_CoverAmount6', instance.RP_BenDesc_CoverAmount6)
-        instance.RP_BenDesc_7 = validated_data.get('RP_BenDesc_7', instance.RP_BenDesc_7)
-        instance.RP_BenDesc_CoverAmount7 = validated_data.get('RP_BenDesc_CoverAmount7', instance.RP_BenDesc_CoverAmount7)
-
-        instance.RP_ProductReasons = validated_data.get('RP_ProductReasons', instance.RP_ProductReasons)
-        instance.RP_ProductMaterialAspects = validated_data.get('RP_ProductMaterialAspects', instance.RP_ProductMaterialAspects)
-        instance.RP_ProductDetails = validated_data.get('RP_ProductDetails', instance.RP_ProductDetails)
-        instance.RP_ExecutorFee = validated_data.get('RP_ExecutorFee', instance.RP_ExecutorFee)
-        instance.RP_NominationOfBeneficiaries = validated_data.get('RP_NominationOfBeneficiaries', instance.RP_NominationOfBeneficiaries)
-        instance.RP_InformationExplained = validated_data.get('RP_InformationExplained', instance.RP_InformationExplained)
 
 
         instance.updated_at = datetime.now(timezone.utc)
@@ -591,6 +484,7 @@ class AssuranceRiskSerializers(serializers.ModelSerializer):
         instance.AR_CLARedm_DC_Investments = validated_data.get('AR_CLARedm_DC_Investments', instance.AR_CLARedm_DC_Investments)    
         
         instance.AR_CLARedm_DiC_TotalNeed = validated_data.get('AR_CLARedm_DiC_TotalNeed', instance.AR_CLARedm_DiC_TotalNeed)    
+
         instance.AR_CLARedm_DiC_ExistingProvisions = validated_data.get('AR_CLARedm_DiC_ExistingProvisions', instance.AR_CLARedm_DiC_ExistingProvisions)    
         instance.AR_CLARedm_DiC_ExistingShortfallSurplus = validated_data.get('AR_CLARedm_DiC_ExistingShortfallSurplus', instance.AR_CLARedm_DiC_ExistingShortfallSurplus)    
         instance.AR_CLARedm_DiC_Investments = validated_data.get('AR_CLARedm_DiC_Investments', instance.AR_CLARedm_DiC_Investments)    
@@ -3892,19 +3786,19 @@ class RiskFactorsSerializers(serializers.ModelSerializer):
         instance.RF_Linked_Party_Paying = validated_data.get('RF_Linked_Party_Paying', instance.RF_Linked_Party_Paying)
         instance.RF_Client_Match = validated_data.get('RF_Client_Match', instance.RF_Client_Match)
         instance.RF_Client_Beneficiaries = validated_data.get('RF_Client_Beneficiaries', instance.RF_Client_Beneficiaries)
-        instance.RF_Adjust_Risk1 = validated_data.get('RF_Adjust_Risk1', instance.RF_Adjust_Risk1)
-        instance.RF_Name = validated_data.get('RF_Name', instance.RF_Name)
-        instance.RF_ID = validated_data.get('RF_ID', instance.RF_ID)
-        instance.RF_Linked_Party = validated_data.get('RF_Linked_Party', instance.RF_Linked_Party)
-        instance.RF_RCA = validated_data.get('RF_RCA', instance.RF_RCA)
-        instance.RF_Birth_Country = validated_data.get('RF_Birth_Country', instance.RF_Birth_Country)
-        instance.RF_Residence_Country = validated_data.get('RF_Residence_Country', instance.RF_Residence_Country)
-        instance.RF_Nationality1 = validated_data.get('RF_Nationality1', instance.RF_Nationality1)
-        instance.RF_Control1 = validated_data.get('RF_Control1', instance.RF_Control1)
-        instance.RF_Control2 = validated_data.get('RF_Control2', instance.RF_Control2)
-        instance.RF_Control3 = validated_data.get('RF_Control3', instance.RF_Control3)
-        instance.RF_Another_Control1 = validated_data.get('RF_Another_Control1', instance.RF_Another_Control1)
-        instance.RF_Another_Control2 = validated_data.get('RF_Another_Control2', instance.RF_Another_Control2)
+        # instance.RF_Adjust_Risk1 = validated_data.get('RF_Adjust_Risk1', instance.RF_Adjust_Risk1)
+        # instance.RF_Name = validated_data.get('RF_Name', instance.RF_Name)
+        # instance.RF_ID = validated_data.get('RF_ID', instance.RF_ID)
+        # instance.RF_Linked_Party = validated_data.get('RF_Linked_Party', instance.RF_Linked_Party)
+        # instance.RF_RCA = validated_data.get('RF_RCA', instance.RF_RCA)
+        # instance.RF_Birth_Country = validated_data.get('RF_Birth_Country', instance.RF_Birth_Country)
+        # instance.RF_Residence_Country = validated_data.get('RF_Residence_Country', instance.RF_Residence_Country)
+        # instance.RF_Nationality1 = validated_data.get('RF_Nationality1', instance.RF_Nationality1)
+        # instance.RF_Control1 = validated_data.get('RF_Control1', instance.RF_Control1)
+        # instance.RF_Control2 = validated_data.get('RF_Control2', instance.RF_Control2)
+        # instance.RF_Control3 = validated_data.get('RF_Control3', instance.RF_Control3)
+        # instance.RF_Another_Control1 = validated_data.get('RF_Another_Control1', instance.RF_Another_Control1)
+        # instance.RF_Another_Control2 = validated_data.get('RF_Another_Control2', instance.RF_Another_Control2)
         instance.status = validated_data.get("status", instance.status)
         
         instance.updated_at = datetime.now(timezone.utc)
@@ -3938,6 +3832,173 @@ class RF_LinkedPartySerializers(serializers.ModelSerializer):
         instance.RF_LP_Birth_Country = validated_data.get('RF_LP_Birth_Country', instance.RF_LP_Birth_Country)
         instance.RF_LP_Residence_Country = validated_data.get('RF_LP_Residence_Country', instance.RF_LP_Residence_Country)
         instance.RF_LP_Nationality = validated_data.get('RF_LP_Nationality', instance.RF_LP_Nationality)
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class RP_ProductTakenSerializer(serializers.ModelSerializer):
+    class Meta():
+        model = RP_ProductTaken
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return RP_ProductTaken.objects.create(**validated_data)
+
+    def updateStatus(self, instance, validated_data):
+        instance.status = validated_data.get("status", instance.status)
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+    def update(self, instance, validated_data):
+        instance.advisorId = validated_data.get('advisorId', instance.advisorId)
+        instance.formId = validated_data.get('formId', instance.formId)
+        instance.Product_Taken = validated_data.get('Product_Taken', instance.Product_Taken)
+        instance.Product_Provider = validated_data.get('Product_Provider', instance.Product_Provider)
+        instance.Policy_Number = validated_data.get('Policy_Number', instance.Policy_Number)
+        instance.Product_Name = validated_data.get('Product_Name', instance.Product_Name)
+        instance.Product_Premium = validated_data.get('Product_Premium', instance.Product_Premium)
+        instance.Product_PremiumFrequency = validated_data.get('Product_PremiumFrequency', instance.Product_PremiumFrequency)
+        instance.Product_Pattern = validated_data.get('Product_Pattern', instance.Product_Pattern)
+        instance.Product_Escalation = validated_data.get('Product_Escalation', instance.Product_Escalation)
+        instance.Product_ContractingParty = validated_data.get('Product_ContractingParty', instance.Product_ContractingParty)
+        instance.Product_LivesAssured = validated_data.get('Product_LivesAssured', instance.Product_LivesAssured)
+        instance.Product_Beneficiary = validated_data.get('Product_Beneficiary', instance.Product_Beneficiary)
+        instance.Product_PremiumPayer = validated_data.get('Product_PremiumPayer', instance.Product_PremiumPayer)
+        instance.Product_1stYearCommission = validated_data.get('Product_1stYearCommission', instance.Product_1stYearCommission)
+        instance.Product_2ndYearCommission = validated_data.get('Product_2ndYearCommission', instance.Product_2ndYearCommission)
+        instance.Product_OngoingFees = validated_data.get('Product_OngoingFees', instance.Product_OngoingFees)
+        instance.Product_OngoingFeesFrequency = validated_data.get('Product_OngoingFeesFrequency', instance.Product_OngoingFeesFrequency)
+        instance.Product_OngoingFeesFrequency1 = validated_data.get('Product_OngoingFeesFrequency1', instance.Product_OngoingFeesFrequency1)
+        instance.TotalFees_n_Commissions = validated_data.get('TotalFees_n_Commissions', instance.TotalFees_n_Commissions)
+        instance.ProductReasons = validated_data.get('ProductReasons', instance.ProductReasons)
+        instance.ProductMaterialAspects = validated_data.get('ProductMaterialAspects', instance.ProductMaterialAspects)
+        instance.ProductDetails = validated_data.get('ProductDetails', instance.ProductDetails)
+        instance.ExecutorFee = validated_data.get('ExecutorFee', instance.ExecutorFee)
+        instance.NominationOfBeneficiaries = validated_data.get('NominationOfBeneficiaries', instance.NominationOfBeneficiaries)
+        instance.InformationExplained = validated_data.get('InformationExplained', instance.InformationExplained)
+        instance.BenDesc_1 = validated_data.get('BenDesc_1', instance.BenDesc_1)
+        instance.BenDesc_2 = validated_data.get('BenDesc_2', instance.BenDesc_2)
+        instance.BenDesc_3 = validated_data.get('BenDesc_3', instance.BenDesc_3)
+        instance.BenDesc_4 = validated_data.get('BenDesc_4', instance.BenDesc_4)
+        instance.BenDesc_5 = validated_data.get('BenDesc_5', instance.BenDesc_5)
+        instance.BenDesc_6 = validated_data.get('BenDesc_6', instance.BenDesc_6)
+        instance.BenDesc_7 = validated_data.get('BenDesc_7', instance.BenDesc_7)
+        instance.BenDesc_CoverAmount_1 = validated_data.get('BenDesc_CoverAmount_1', instance.BenDesc_CoverAmount_1)
+        instance.BenDesc_CoverAmount_2 = validated_data.get('BenDesc_CoverAmount_2', instance.BenDesc_CoverAmount_2)
+        instance.BenDesc_CoverAmount_3 = validated_data.get('BenDesc_CoverAmount_3', instance.BenDesc_CoverAmount_3)
+        instance.BenDesc_CoverAmount_4 = validated_data.get('BenDesc_CoverAmount_4', instance.BenDesc_CoverAmount_4)
+        instance.BenDesc_CoverAmount_5 = validated_data.get('BenDesc_CoverAmount_5', instance.BenDesc_CoverAmount_5)
+        instance.BenDesc_CoverAmount_6 = validated_data.get('BenDesc_CoverAmount_6', instance.BenDesc_CoverAmount_6)
+        instance.BenDesc_CoverAmount_7 = validated_data.get('BenDesc_CoverAmount_7', instance.BenDesc_CoverAmount_7)
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class RP_ProductTaken_BenDescSerializers(serializers.ModelSerializer):
+    class Meta():
+        model = RP_ProductTaken_BenDesc
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return RP_ProductTaken_BenDesc.objects.create(**validated_data)
+
+    def updateStatus(self, instance, validated_data):
+        instance.status = validated_data.get("status", instance.status)
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+    def update(self, instance, validated_data):
+        instance.advisorId = validated_data.get('advisorId', instance.advisorId)
+        instance.formId = validated_data.get('formId', instance.formId)
+        instance.productTakenId = validated_data.get('productTakenId', instance.productTakenId)
+        instance.BenDesc = validated_data.get('BenDesc', instance.BenDesc)
+        instance.BenDesc_CoverAmount = validated_data.get('BenDesc_CoverAmount', instance.BenDesc_CoverAmount)
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class IP_ProductTakenSerializer(serializers.ModelSerializer):
+    class Meta():
+        model = IP_ProductTaken
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return IP_ProductTaken.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.ProductTaken = validated_data.get('ProductTaken', instance.ProductTaken)    
+        instance.ProductProvider = validated_data.get('ProductProvider', instance.ProductProvider)    
+        instance.PolicyNumber = validated_data.get('PolicyNumber', instance.PolicyNumber)    
+        instance.ProductName = validated_data.get('ProductName', instance.ProductName)    
+        instance.ProductPremium = validated_data.get('ProductPremium', instance.ProductPremium)    
+        instance.ProductPremiumFrequency = validated_data.get('ProductPremiumFrequency', instance.ProductPremiumFrequency)   
+        instance.ProductEscalation = validated_data.get('ProductEscalation', instance.ProductEscalation)    
+        instance.ProductEAC = validated_data.get('ProductEAC', instance.ProductEAC)    
+        instance.ProductContractingParty = validated_data.get('ProductContractingParty', instance.ProductContractingParty)    
+        instance.ProductLivesAssured = validated_data.get('ProductLivesAssured', instance.ProductLivesAssured)    
+        instance.ProductPremiumLayer = validated_data.get('ProductPremiumLayer', instance.ProductPremiumLayer)    
+        instance.ProductBeneficiary = validated_data.get('ProductBeneficiary', instance.ProductBeneficiary)    
+        instance.Product_IniC = validated_data.get('Product_IniC', instance.Product_IniC)    
+        instance.Product_IniC_Percentage = validated_data.get('Product_IniC_Percentage', instance.Product_IniC_Percentage)    
+        instance.Product_OnC = validated_data.get('Product_OnC', instance.Product_OnC)    
+        instance.Product_OnC_Percentage = validated_data.get('Product_OnC_Percentage', instance.Product_OnC_Percentage)    
+
+        instance.SFPSolutionFunds = validated_data.get('SFPSolutionFunds', instance.SFPSolutionFunds)
+        instance.SFPSolutionFundsDetails = validated_data.get('SFPSolutionFundsDetails', instance.SFPSolutionFundsDetails)
+
+        instance.ItP = validated_data.get('ItP', instance.ItP)
+        instance.ItP_Fund = validated_data.get('ItP_Fund', instance.ItP_Fund)
+        instance.ItP_FundPercentage = validated_data.get('ItP_FundPercentage', instance.ItP_FundPercentage)
+        instance.ItP_FundProvided = validated_data.get('ItP_FundProvided', instance.ItP_FundProvided)
+        instance.ItP_FundDiscussed = validated_data.get('ItP_FundDiscussed', instance.ItP_FundDiscussed)
+        
+        instance.ItP_Fund1 = validated_data.get('ItP_Fund1', instance.ItP_Fund1)
+        instance.ItP_FundPercentage1 = validated_data.get('ItP_FundPercentage1', instance.ItP_FundPercentage1)
+        instance.ItP_FundProvided1 = validated_data.get('ItP_FundProvided1', instance.ItP_FundProvided1)
+        instance.ItP_FundDiscussed1 = validated_data.get('ItP_FundDiscussed1', instance.ItP_FundDiscussed1)
+        
+        instance.ItP_Fund2 = validated_data.get('ItP_Fund2', instance.ItP_Fund2)
+        instance.ItP_FundPercentage2 = validated_data.get('ItP_FundPercentage2', instance.ItP_FundPercentage2)
+        instance.ItP_FundProvided2 = validated_data.get('ItP_FundProvided2', instance.ItP_FundProvided2)
+        instance.ItP_FundDiscussed2 = validated_data.get('ItP_FundDiscussed2', instance.ItP_FundDiscussed2)
+        
+        instance.ItP_Fund3 = validated_data.get('ItP_Fund3', instance.ItP_Fund3)
+        instance.ItP_FundPercentage3 = validated_data.get('ItP_FundPercentage3', instance.ItP_FundPercentage3)
+        instance.ItP_FundProvided3 = validated_data.get('ItP_FundProvided3', instance.ItP_FundProvided3)
+        instance.ItP_FundDiscussed3 = validated_data.get('ItP_FundDiscussed3', instance.ItP_FundDiscussed3)
+        
+        instance.ItP_Fund4 = validated_data.get('ItP_Fund4', instance.ItP_Fund4)
+        instance.ItP_FundPercentage4 = validated_data.get('ItP_FundPercentage4', instance.ItP_FundPercentage4)
+        instance.ItP_FundProvided4 = validated_data.get('ItP_FundProvided4', instance.ItP_FundProvided4)
+        instance.ItP_FundDiscussed4 = validated_data.get('ItP_FundDiscussed4', instance.ItP_FundDiscussed4)
+        
+        instance.ItP_Fund5 = validated_data.get('ItP_Fund5', instance.ItP_Fund5)
+        instance.ItP_FundPercentage5 = validated_data.get('ItP_FundPercentage5', instance.ItP_FundPercentage5)
+        instance.ItP_FundProvided5 = validated_data.get('ItP_FundProvided5', instance.ItP_FundProvided5)
+        instance.ItP_FundDiscussed5 = validated_data.get('ItP_FundDiscussed5', instance.ItP_FundDiscussed5)
+        
+        instance.ItP_Fund6 = validated_data.get('ItP_Fund6', instance.ItP_Fund6)
+        instance.ItP_FundPercentage6 = validated_data.get('ItP_FundPercentage6', instance.ItP_FundPercentage6)
+        instance.ItP_FundProvided6 = validated_data.get('ItP_FundProvided6', instance.ItP_FundProvided6)
+        instance.ItP_FundDiscussed6 = validated_data.get('ItP_FundDiscussed6', instance.ItP_FundDiscussed6)
+        
+        instance.ItP_Fund7 = validated_data.get('ItP_Fund7', instance.ItP_Fund7)
+        instance.ItP_FundPercentage7 = validated_data.get('ItP_FundPercentage7', instance.ItP_FundPercentage7)
+        instance.ItP_FundProvided7 = validated_data.get('ItP_FundProvided7', instance.ItP_FundProvided7)
+        instance.ItP_FundDiscussed7 = validated_data.get('ItP_FundDiscussed7', instance.ItP_FundDiscussed7)
+            
+        instance.ItP_FundsReasons = validated_data.get('ItP_FundsReasons', instance.ItP_FundsReasons)
+
+        instance.ItP_FundsMaterialAspects = validated_data.get('ItP_FundsMaterialAspects', instance.ItP_FundsMaterialAspects)
         
         instance.updated_at = datetime.now(timezone.utc)
         instance.save()
