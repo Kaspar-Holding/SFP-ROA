@@ -199,6 +199,11 @@ const Invest = ({user}) =>
         newProductTaken[i][e.target.name] = e.target.value
         setProductTaken(newProductTaken)
     }
+    const on_ProductTaken_CheckBox_Change = (e, i, value) => {
+        let newProductTaken = [...ProductTaken]
+        newProductTaken[i][e.target.name] = value
+        setProductTaken(newProductTaken)
+    }
     // console.log(JSON.stringify(FormData))
     const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
     // console.log(JSON.stringify(FormData))
@@ -488,7 +493,11 @@ const Invest = ({user}) =>
         } catch (error) {
             console.log(error)
         }
-        const ProductTaken_Body = JSON.stringify(ProductTaken)
+        
+        const ProductTaken_Body = JSON.stringify({
+            "formId" : state['formId'],
+            "ip_data" : ProductTaken
+          })
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_ip_ProductTaken_Data/`, ProductTaken_Body ,config) 
         } catch (error) {
@@ -1458,12 +1467,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" checked={FormData["ItP_FundProvided"] == 1 ? true : false} name="ItP_FundProvided" onChange={(e)=>{FormData["ItP_FundProvided"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" checked={key.ItP_FundProvided === 1 ? true : false} name="ItP_FundProvided" onChange={(e)=>{key.ItP_FundProvided === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" checked={FormData["ItP_FundDiscussed"] == 1 ? true : false} name="ItP_FundDiscussed" onChange={(e)=>{FormData["ItP_FundDiscussed"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" checked={key.ItP_FundDiscussed === 1 ? true : false} name="ItP_FundDiscussed" onChange={(e)=>{key.ItP_FundDiscussed === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
@@ -1484,12 +1493,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundProvided1"] == 1 ? true : false} name="ItP_FundProvided1" onChange={(e)=>{FormData["ItP_FundProvided1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided1 === 1 ? true : false} name="ItP_FundProvided1" onChange={(e)=>{key.ItP_FundProvided1 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundDiscussed1"] == 1 ? true : false} name="ItP_FundDiscussed1" onChange={(e)=>{FormData["ItP_FundDiscussed1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed1 === 1 ? true : false} name="ItP_FundDiscussed1" onChange={(e)=>{key.ItP_FundDiscussed1 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
@@ -1510,12 +1519,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundProvided2"] == 1 ? true : false} name="ItP_FundProvided2" onChange={(e)=>{FormData["ItP_FundProvided2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided2 === 1 ? true : false} name="ItP_FundProvided2" onChange={(e)=>{key.ItP_FundProvided2 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundDiscussed2"] == 1 ? true : false} name="ItP_FundDiscussed2" onChange={(e)=>{FormData["ItP_FundDiscussed2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed2 === 1 ? true : false} name="ItP_FundDiscussed2" onChange={(e)=>{key.ItP_FundDiscussed2 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
@@ -1536,12 +1545,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundProvided3"] == 1 ? true : false} name="ItP_FundProvided3" onChange={(e)=>{FormData["ItP_FundProvided3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided3 === 1 ? true : false} name="ItP_FundProvided3" onChange={(e)=>{key.ItP_FundProvided3 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundDiscussed3"] == 1 ? true : false} name="ItP_FundDiscussed3" onChange={(e)=>{FormData["ItP_FundDiscussed3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed3 === 1 ? true : false} name="ItP_FundDiscussed3" onChange={(e)=>{key.ItP_FundDiscussed3 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
@@ -1562,12 +1571,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundProvided4"] == 1 ? true : false} name="ItP_FundProvided4" onChange={(e)=>{FormData["ItP_FundProvided4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided4 === 1 ? true : false} name="ItP_FundProvided4" onChange={(e)=>{key.ItP_FundProvided4 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundDiscussed4"] == 1 ? true : false} name="ItP_FundDiscussed4" onChange={(e)=>{FormData["ItP_FundDiscussed4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed4 === 1 ? true : false} name="ItP_FundDiscussed4" onChange={(e)=>{key.ItP_FundDiscussed4 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
@@ -1588,12 +1597,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundProvided5"] == 1 ? true : false} name="ItP_FundProvided5" onChange={(e)=>{FormData["ItP_FundProvided5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided5 === 1 ? true : false} name="ItP_FundProvided5" onChange={(e)=>{key.ItP_FundProvided5 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundDiscussed5"] == 1 ? true : false} name="ItP_FundDiscussed5" onChange={(e)=>{FormData["ItP_FundDiscussed5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed5 === 1 ? true : false} name="ItP_FundDiscussed5" onChange={(e)=>{key.ItP_FundDiscussed5 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td> 
                 </tr>
@@ -1614,12 +1623,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundProvided6"] == 1 ? true : false} name="ItP_FundProvided6" onChange={(e)=>{FormData["ItP_FundProvided6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided6 === 1 ? true : false} name="ItP_FundProvided6" onChange={(e)=>{key.ItP_FundProvided6 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundDiscussed6"] == 1 ? true : false} name="ItP_FundDiscussed6" onChange={(e)=>{FormData["ItP_FundDiscussed6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed6 === 1 ? true : false} name="ItP_FundDiscussed6" onChange={(e)=>{key.ItP_FundDiscussed6 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>      
                 </tr>
@@ -1640,12 +1649,12 @@ const Invest = ({user}) =>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundProvided7"] == 1 ? true : false} name="ItP_FundProvided7" onChange={(e)=>{FormData["ItP_FundProvided7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided7 === 1 ? true : false} name="ItP_FundProvided7" onChange={(e)=>{key.ItP_FundProvided7 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={FormData["ItP_FundDiscussed7"] == 1 ? true : false} name="ItP_FundDiscussed7" onChange={(e)=>{FormData["ItP_FundDiscussed7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed7 === 1 ? true : false} name="ItP_FundDiscussed7" onChange={(e)=>{key.ItP_FundDiscussed7 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
             </tr>

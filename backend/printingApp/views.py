@@ -498,7 +498,7 @@ def wkhtmltopdfapi(request):
         val4n=val13+val14+val15+val16+val17+val18+val19+val20
     data['val4n'] = val4n
     if Form.objects.filter(formId = data['id']).exists():            
-        data['RoA'] = Form.objects.filter(formId = data['id']).values()
+        data['RoA'] = Form.objects.filter(formId = data['id']).values().first()
         if (
             data['RoA']['clientEmail'] == "" and 
             data['RoA']['clientAddress'] == "" and 

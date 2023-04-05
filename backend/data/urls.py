@@ -70,6 +70,9 @@ urlpatterns = [
     path('update_linked_party_data/' , views.updateLinkedPartyData, name="Risk Factors Linked Part data details"),
     path('update_rp_ProductTaken_Data/' , views.update_rp_ProductTaken_Data, name="Risk Planning Product Taken data details"),
     path('update_ip_ProductTaken_Data/' , views.update_ip_ProductTaken_Data, name="Investment Planning Product Taken data details"),
+    path('update_ar_ProductTaken_Data/' , views.update_ar_ProductTaken_Data, name="Assurance Risk Product Taken data details"),
+    path('update_ai_ProductTaken_Data/' , views.update_ai_ProductTaken_Data, name="Assurance Investment Product Taken data details"),
+    path('update_eb_coverData/' , views.update_eb_cover_Data, name="Employee Benefits cover data details"),
     # PDF Form
     path('pdf/' , printFormViews.pdfForm, name="PDF Form"),
 ]

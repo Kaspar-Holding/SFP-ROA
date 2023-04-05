@@ -345,7 +345,11 @@ const RecordOfAdvice = ({user}) => {
                                                 'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
                                                 'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
                                                 'removeformat',
-                                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }'
+                                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                                init_instance_callback : function(editor) {
+                                                    var freeTiny = document.querySelector('.tox .tox-notification--in');
+                                                   freeTiny.style.display = 'none';
+                                                }
                                             }}
                                         />
                                     </div>
@@ -428,7 +432,12 @@ const RecordOfAdvice = ({user}) => {
                                                 'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
                                                 'bullist numlist | outdent indent | link | copy paste undo redo | ' +
                                                 'code | removeformat ',
-                                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }'
+                                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                                init_instance_callback : function(editor) {
+                                                    var freeTiny = document.querySelector('.tox .tox-notification--in');
+                                                   freeTiny.style.display = 'none';
+                                                }
+                                            
                                             }}
                                         />
                                     </div>
@@ -512,7 +521,11 @@ const RecordOfAdvice = ({user}) => {
                                                 'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
                                                 'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
                                                 'removeformat',
-                                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }'
+                                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                                init_instance_callback : function(editor) {
+                                                    var freeTiny = document.querySelector('.tox .tox-notification--in');
+                                                   freeTiny.style.display = 'none';
+                                                }
                                             }}
                                         />
                                     </div>
@@ -596,7 +609,11 @@ const RecordOfAdvice = ({user}) => {
                                     'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
                                     'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
                                     'removeformat',
-                                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }'
+                                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                    init_instance_callback : function(editor) {
+                                        var freeTiny = document.querySelector('.tox .tox-notification--in');
+                                       freeTiny.style.display = 'none';
+                                    }
                                 }}
                             />
                         </div>

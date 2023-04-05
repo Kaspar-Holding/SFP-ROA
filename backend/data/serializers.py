@@ -1,7 +1,7 @@
 
 from datetime import datetime, timezone
 from rest_framework import serializers
-from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
+from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
 from .models import Medical
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
@@ -276,67 +276,67 @@ class AssuranceInvestmentSerializers(serializers.ModelSerializer):
         instance.AI_AltS_2 = validated_data.get('AI_AltS_2', instance.AI_AltS_2)  
         instance.AI_AltS_3 = validated_data.get('AI_AltS_3', instance.AI_AltS_3)  
 
-        instance.AI_Pr_Taken = validated_data.get('AI_Pr_Taken', instance.AI_Pr_Taken)  
-        instance.AI_Pr_Provider = validated_data.get('AI_Pr_Provider', instance.AI_Pr_Provider)    
-        instance.AI_Pr_PolicyNumber = validated_data.get('AI_Pr_PolicyNumber', instance.AI_Pr_PolicyNumber)    
-        instance.AI_Pr_Name = validated_data.get('AI_Pr_Name', instance.AI_Pr_Name)    
-        instance.AI_Pr_Premium = validated_data.get('AI_Pr_Premium', instance.AI_Pr_Premium)    
-        instance.AI_Pr_PremiumFrequency = validated_data.get('AI_Pr_PremiumFrequency', instance.AI_Pr_PremiumFrequency) 
-        instance.AI_Pr_Escalation = validated_data.get('AI_Pr_Escalation', instance.AI_Pr_Escalation)    
-        instance.AI_Pr_EAC = validated_data.get('AI_Pr_EAC', instance.AI_Pr_EAC)    
-        instance.AI_Pr_ContractingParty = validated_data.get('AI_Pr_ContractingParty', instance.AI_Pr_ContractingParty)    
-        instance.AI_Pr_LivesAssured = validated_data.get('AI_Pr_LivesAssured', instance.AI_Pr_LivesAssured)    
-        instance.AI_Pr_PremiumPayer = validated_data.get('AI_Pr_PremiumPayer', instance.AI_Pr_PremiumPayer)    
-        instance.AI_Pr_Beneficiary = validated_data.get('AI_Pr_Beneficiary', instance.AI_Pr_Beneficiary)    
-        instance.AI_Pr_IniC = validated_data.get('AI_Pr_IniC', instance.AI_Pr_IniC)    
-        instance.AI_Pr_IniC_Percentage = validated_data.get('AI_Pr_IniC_Percentage', instance.AI_Pr_IniC_Percentage)    
-        instance.AI_Pr_OnC = validated_data.get('AI_Pr_OnC', instance.AI_Pr_OnC)    
-        instance.AI_Pr_OnC_Percentage = validated_data.get('AI_Pr_OnC_Percentage', instance.AI_Pr_OnC_Percentage)
+        # instance.AI_Pr_Taken = validated_data.get('AI_Pr_Taken', instance.AI_Pr_Taken)  
+        # instance.AI_Pr_Provider = validated_data.get('AI_Pr_Provider', instance.AI_Pr_Provider)    
+        # instance.AI_Pr_PolicyNumber = validated_data.get('AI_Pr_PolicyNumber', instance.AI_Pr_PolicyNumber)    
+        # instance.AI_Pr_Name = validated_data.get('AI_Pr_Name', instance.AI_Pr_Name)    
+        # instance.AI_Pr_Premium = validated_data.get('AI_Pr_Premium', instance.AI_Pr_Premium)    
+        # instance.AI_Pr_PremiumFrequency = validated_data.get('AI_Pr_PremiumFrequency', instance.AI_Pr_PremiumFrequency) 
+        # instance.AI_Pr_Escalation = validated_data.get('AI_Pr_Escalation', instance.AI_Pr_Escalation)    
+        # instance.AI_Pr_EAC = validated_data.get('AI_Pr_EAC', instance.AI_Pr_EAC)    
+        # instance.AI_Pr_ContractingParty = validated_data.get('AI_Pr_ContractingParty', instance.AI_Pr_ContractingParty)    
+        # instance.AI_Pr_LivesAssured = validated_data.get('AI_Pr_LivesAssured', instance.AI_Pr_LivesAssured)    
+        # instance.AI_Pr_PremiumPayer = validated_data.get('AI_Pr_PremiumPayer', instance.AI_Pr_PremiumPayer)    
+        # instance.AI_Pr_Beneficiary = validated_data.get('AI_Pr_Beneficiary', instance.AI_Pr_Beneficiary)    
+        # instance.AI_Pr_IniC = validated_data.get('AI_Pr_IniC', instance.AI_Pr_IniC)    
+        # instance.AI_Pr_IniC_Percentage = validated_data.get('AI_Pr_IniC_Percentage', instance.AI_Pr_IniC_Percentage)    
+        # instance.AI_Pr_OnC = validated_data.get('AI_Pr_OnC', instance.AI_Pr_OnC)    
+        # instance.AI_Pr_OnC_Percentage = validated_data.get('AI_Pr_OnC_Percentage', instance.AI_Pr_OnC_Percentage)
 
-        instance.AI_Portfolio = validated_data.get('AI_Portfolio', instance.AI_Portfolio)
+        # instance.AI_Portfolio = validated_data.get('AI_Portfolio', instance.AI_Portfolio)
         
-        instance.AI_PF_1 = validated_data.get('AI_PF_1', instance.AI_PF_1)
-        instance.AI_PF_Percentage1 = validated_data.get('AI_PF_Percentage1', instance.AI_PF_Percentage1)
-        instance.AI_PF_Provided1 = validated_data.get('AI_PF_Provided1', instance.AI_PF_Provided1)
-        instance.AI_PF_Discussed1 = validated_data.get('AI_PF_Discussed1', instance.AI_PF_Discussed1)
+        # instance.AI_PF_1 = validated_data.get('AI_PF_1', instance.AI_PF_1)
+        # instance.AI_PF_Percentage1 = validated_data.get('AI_PF_Percentage1', instance.AI_PF_Percentage1)
+        # instance.AI_PF_Provided1 = validated_data.get('AI_PF_Provided1', instance.AI_PF_Provided1)
+        # instance.AI_PF_Discussed1 = validated_data.get('AI_PF_Discussed1', instance.AI_PF_Discussed1)
         
-        instance.AI_PF_2 = validated_data.get('AI_PF_2', instance.AI_PF_2)
-        instance.AI_PF_Percentage2 = validated_data.get('AI_PF_Percentage2', instance.AI_PF_Percentage2)
-        instance.AI_PF_Provided2 = validated_data.get('AI_PF_Provided2', instance.AI_PF_Provided2)
-        instance.AI_PF_Discussed2 = validated_data.get('AI_PF_Discussed2', instance.AI_PF_Discussed2)
+        # instance.AI_PF_2 = validated_data.get('AI_PF_2', instance.AI_PF_2)
+        # instance.AI_PF_Percentage2 = validated_data.get('AI_PF_Percentage2', instance.AI_PF_Percentage2)
+        # instance.AI_PF_Provided2 = validated_data.get('AI_PF_Provided2', instance.AI_PF_Provided2)
+        # instance.AI_PF_Discussed2 = validated_data.get('AI_PF_Discussed2', instance.AI_PF_Discussed2)
         
-        instance.AI_PF_3 = validated_data.get('AI_PF_3', instance.AI_PF_3)
-        instance.AI_PF_Percentage3 = validated_data.get('AI_PF_Percentage3', instance.AI_PF_Percentage3)
-        instance.AI_PF_Provided3 = validated_data.get('AI_PF_Provided3', instance.AI_PF_Provided3)
-        instance.AI_PF_Discussed3 = validated_data.get('AI_PF_Discussed3', instance.AI_PF_Discussed3)
+        # instance.AI_PF_3 = validated_data.get('AI_PF_3', instance.AI_PF_3)
+        # instance.AI_PF_Percentage3 = validated_data.get('AI_PF_Percentage3', instance.AI_PF_Percentage3)
+        # instance.AI_PF_Provided3 = validated_data.get('AI_PF_Provided3', instance.AI_PF_Provided3)
+        # instance.AI_PF_Discussed3 = validated_data.get('AI_PF_Discussed3', instance.AI_PF_Discussed3)
         
-        instance.AI_PF_4 = validated_data.get('AI_PF_4', instance.AI_PF_4)
-        instance.AI_PF_Percentage4 = validated_data.get('AI_PF_Percentage4', instance.AI_PF_Percentage4)
-        instance.AI_PF_Provided4 = validated_data.get('AI_PF_Provided4', instance.AI_PF_Provided4)
-        instance.AI_PF_Discussed4 = validated_data.get('AI_PF_Discussed4', instance.AI_PF_Discussed4)
+        # instance.AI_PF_4 = validated_data.get('AI_PF_4', instance.AI_PF_4)
+        # instance.AI_PF_Percentage4 = validated_data.get('AI_PF_Percentage4', instance.AI_PF_Percentage4)
+        # instance.AI_PF_Provided4 = validated_data.get('AI_PF_Provided4', instance.AI_PF_Provided4)
+        # instance.AI_PF_Discussed4 = validated_data.get('AI_PF_Discussed4', instance.AI_PF_Discussed4)
         
-        instance.AI_PF_5 = validated_data.get('AI_PF_5', instance.AI_PF_5)
-        instance.AI_PF_Percentage5 = validated_data.get('AI_PF_Percentage5', instance.AI_PF_Percentage5)
-        instance.AI_PF_Provided5 = validated_data.get('AI_PF_Provided5', instance.AI_PF_Provided5)
-        instance.AI_PF_Discussed5 = validated_data.get('AI_PF_Discussed5', instance.AI_PF_Discussed5)
+        # instance.AI_PF_5 = validated_data.get('AI_PF_5', instance.AI_PF_5)
+        # instance.AI_PF_Percentage5 = validated_data.get('AI_PF_Percentage5', instance.AI_PF_Percentage5)
+        # instance.AI_PF_Provided5 = validated_data.get('AI_PF_Provided5', instance.AI_PF_Provided5)
+        # instance.AI_PF_Discussed5 = validated_data.get('AI_PF_Discussed5', instance.AI_PF_Discussed5)
         
-        instance.AI_PF_6 = validated_data.get('AI_PF_6', instance.AI_PF_6)
-        instance.AI_PF_Percentage6 = validated_data.get('AI_PF_Percentage6', instance.AI_PF_Percentage6)
-        instance.AI_PF_Provided6 = validated_data.get('AI_PF_Provided6', instance.AI_PF_Provided6)
-        instance.AI_PF_Discussed6 = validated_data.get('AI_PF_Discussed6', instance.AI_PF_Discussed6)
+        # instance.AI_PF_6 = validated_data.get('AI_PF_6', instance.AI_PF_6)
+        # instance.AI_PF_Percentage6 = validated_data.get('AI_PF_Percentage6', instance.AI_PF_Percentage6)
+        # instance.AI_PF_Provided6 = validated_data.get('AI_PF_Provided6', instance.AI_PF_Provided6)
+        # instance.AI_PF_Discussed6 = validated_data.get('AI_PF_Discussed6', instance.AI_PF_Discussed6)
         
-        instance.AI_PF_7 = validated_data.get('AI_PF_7', instance.AI_PF_7)
-        instance.AI_PF_Percentage7 = validated_data.get('AI_PF_Percentage7', instance.AI_PF_Percentage7)
-        instance.AI_PF_Provided7 = validated_data.get('AI_PF_Provided7', instance.AI_PF_Provided7)
-        instance.AI_PF_Discussed7 = validated_data.get('AI_PF_Discussed7', instance.AI_PF_Discussed7)
+        # instance.AI_PF_7 = validated_data.get('AI_PF_7', instance.AI_PF_7)
+        # instance.AI_PF_Percentage7 = validated_data.get('AI_PF_Percentage7', instance.AI_PF_Percentage7)
+        # instance.AI_PF_Provided7 = validated_data.get('AI_PF_Provided7', instance.AI_PF_Provided7)
+        # instance.AI_PF_Discussed7 = validated_data.get('AI_PF_Discussed7', instance.AI_PF_Discussed7)
 
-        instance.AI_PF_Reasons = validated_data.get('AI_PF_Reasons', instance.AI_PF_Reasons)
-        instance.AI_PF_MaterialAspects = validated_data.get('AI_PF_MaterialAspects', instance.AI_PF_MaterialAspects)
-        instance.AI_PF_Pr_Details = validated_data.get('AI_PF_Pr_Details', instance.AI_PF_Pr_Details)
-        instance.AI_PF_NominationOfBeneficiaries = validated_data.get('AI_PF_NominationOfBeneficiaries', instance.AI_PF_NominationOfBeneficiaries)
+        # instance.AI_PF_Reasons = validated_data.get('AI_PF_Reasons', instance.AI_PF_Reasons)
+        # instance.AI_PF_MaterialAspects = validated_data.get('AI_PF_MaterialAspects', instance.AI_PF_MaterialAspects)
+        # instance.AI_PF_Pr_Details = validated_data.get('AI_PF_Pr_Details', instance.AI_PF_Pr_Details)
+        # instance.AI_PF_NominationOfBeneficiaries = validated_data.get('AI_PF_NominationOfBeneficiaries', instance.AI_PF_NominationOfBeneficiaries)
 
-        instance.AI_SourceOfFunds = validated_data.get('AI_SourceOfFunds', instance.AI_SourceOfFunds)
-        instance.AI_SourceOfFundsDetail = validated_data.get('AI_SourceOfFundsDetail', instance.AI_SourceOfFundsDetail)
+        # instance.AI_SourceOfFunds = validated_data.get('AI_SourceOfFunds', instance.AI_SourceOfFunds)
+        # instance.AI_SourceOfFundsDetail = validated_data.get('AI_SourceOfFundsDetail', instance.AI_SourceOfFundsDetail)
         
         instance.updated_at = datetime.now(timezone.utc)
 
@@ -522,42 +522,42 @@ class AssuranceRiskSerializers(serializers.ModelSerializer):
         instance.AR_AltS_2 = validated_data.get('AR_AltS_2', instance.AR_AltS_2)    
         instance.AR_AltS_3 = validated_data.get('AR_AltS_3', instance.AR_AltS_3)    
 
-        instance.AR_ProductProvider = validated_data.get('AR_ProductProvider', instance.AR_ProductProvider)    
-        instance.AR_PolicyNumber = validated_data.get('AR_PolicyNumber', instance.AR_PolicyNumber)    
-        instance.AR_ProductName = validated_data.get('AR_ProductName', instance.AR_ProductName)    
-        instance.AR_ProductPremium = validated_data.get('AR_ProductPremium', instance.AR_ProductPremium)    
-        instance.AR_ProductPremiumFrequency = validated_data.get('AR_ProductPremiumFrequency', instance.AR_ProductPremiumFrequency)
-        instance.AR_ProductPattern = validated_data.get('AR_ProductPattern', instance.AR_ProductPattern)    
-        instance.AR_ProductEscalation = validated_data.get('AR_ProductEscalation', instance.AR_ProductEscalation)    
-        instance.AR_ProductContractingParty = validated_data.get('AR_ProductContractingParty', instance.AR_ProductContractingParty)    
-        instance.AR_ProductLivesAssured = validated_data.get('AR_ProductLivesAssured', instance.AR_ProductLivesAssured)    
-        instance.AR_ProductPremiumPayer = validated_data.get('AR_ProductPremiumPayer', instance.AR_ProductPremiumPayer)    
-        instance.AR_Product1stYearCommission = validated_data.get('AR_Product1stYearCommission', instance.AR_Product1stYearCommission)    
-        instance.AR_Product2ndYearCommission = validated_data.get('AR_Product2ndYearCommission', instance.AR_Product2ndYearCommission)    
-        # instance.AR_ProductOngoingFees = validated_data.get('AR_ProductOngoingFees', instance.AR_ProductOngoingFees)    
-        # instance.AR_ProductOngoingFeesFrequency = validated_data.get('AR_ProductOngoingFeesFrequency', instance.AR_ProductOngoingFeesFrequency)    
+        # instance.AR_ProductProvider = validated_data.get('AR_ProductProvider', instance.AR_ProductProvider)    
+        # instance.AR_PolicyNumber = validated_data.get('AR_PolicyNumber', instance.AR_PolicyNumber)    
+        # instance.AR_ProductName = validated_data.get('AR_ProductName', instance.AR_ProductName)    
+        # instance.AR_ProductPremium = validated_data.get('AR_ProductPremium', instance.AR_ProductPremium)    
+        # instance.AR_ProductPremiumFrequency = validated_data.get('AR_ProductPremiumFrequency', instance.AR_ProductPremiumFrequency)
+        # instance.AR_ProductPattern = validated_data.get('AR_ProductPattern', instance.AR_ProductPattern)    
+        # instance.AR_ProductEscalation = validated_data.get('AR_ProductEscalation', instance.AR_ProductEscalation)    
+        # instance.AR_ProductContractingParty = validated_data.get('AR_ProductContractingParty', instance.AR_ProductContractingParty)    
+        # instance.AR_ProductLivesAssured = validated_data.get('AR_ProductLivesAssured', instance.AR_ProductLivesAssured)    
+        # instance.AR_ProductPremiumPayer = validated_data.get('AR_ProductPremiumPayer', instance.AR_ProductPremiumPayer)    
+        # instance.AR_Product1stYearCommission = validated_data.get('AR_Product1stYearCommission', instance.AR_Product1stYearCommission)    
+        # instance.AR_Product2ndYearCommission = validated_data.get('AR_Product2ndYearCommission', instance.AR_Product2ndYearCommission)    
+        # # instance.AR_ProductOngoingFees = validated_data.get('AR_ProductOngoingFees', instance.AR_ProductOngoingFees)    
+        # # instance.AR_ProductOngoingFeesFrequency = validated_data.get('AR_ProductOngoingFeesFrequency', instance.AR_ProductOngoingFeesFrequency)    
             
-        instance.AR_BenDesc_1 = validated_data.get('AR_BenDesc_1', instance.AR_BenDesc_1)
-        instance.AR_BenDesc_CoverAmount1 = validated_data.get('AR_BenDesc_CoverAmount1', instance.AR_BenDesc_CoverAmount1)
-        instance.AR_BenDesc_2 = validated_data.get('AR_BenDesc_2', instance.AR_BenDesc_2)
-        instance.AR_BenDesc_CoverAmount2 = validated_data.get('AR_BenDesc_CoverAmount2', instance.AR_BenDesc_CoverAmount2)
-        instance.AR_BenDesc_3 = validated_data.get('AR_BenDesc_3', instance.AR_BenDesc_3)
-        instance.AR_BenDesc_CoverAmount3 = validated_data.get('AR_BenDesc_CoverAmount3', instance.AR_BenDesc_CoverAmount3)
-        # instance.AR_BenDesc_4 = validated_data.get('AR_BenDesc_4', instance.AR_BenDesc_4)
-        # instance.AR_BenDesc_CoverAmount4 = validated_data.get('AR_BenDesc_CoverAmount4', instance.AR_BenDesc_CoverAmount4)
-        # instance.AR_BenDesc_5 = validated_data.get('AR_BenDesc_5', instance.AR_BenDesc_5)
-        # instance.AR_BenDesc_CoverAmount5 = validated_data.get('AR_BenDesc_CoverAmount5', instance.AR_BenDesc_CoverAmount5)
-        # instance.AR_BenDesc_6 = validated_data.get('AR_BenDesc_6', instance.AR_BenDesc_6)
-        # instance.AR_BenDesc_CoverAmount6 = validated_data.get('AR_BenDesc_CoverAmount6', instance.AR_BenDesc_CoverAmount6)
-        # instance.AR_BenDesc_7 = validated_data.get('AR_BenDesc_7', instance.AR_BenDesc_7)
-        # instance.AR_BenDesc_CoverAmount7 = validated_data.get('AR_BenDesc_CoverAmount7', instance.AR_BenDesc_CoverAmount7)
+        # instance.AR_BenDesc_1 = validated_data.get('AR_BenDesc_1', instance.AR_BenDesc_1)
+        # instance.AR_BenDesc_CoverAmount1 = validated_data.get('AR_BenDesc_CoverAmount1', instance.AR_BenDesc_CoverAmount1)
+        # instance.AR_BenDesc_2 = validated_data.get('AR_BenDesc_2', instance.AR_BenDesc_2)
+        # instance.AR_BenDesc_CoverAmount2 = validated_data.get('AR_BenDesc_CoverAmount2', instance.AR_BenDesc_CoverAmount2)
+        # instance.AR_BenDesc_3 = validated_data.get('AR_BenDesc_3', instance.AR_BenDesc_3)
+        # instance.AR_BenDesc_CoverAmount3 = validated_data.get('AR_BenDesc_CoverAmount3', instance.AR_BenDesc_CoverAmount3)
+        # # instance.AR_BenDesc_4 = validated_data.get('AR_BenDesc_4', instance.AR_BenDesc_4)
+        # # instance.AR_BenDesc_CoverAmount4 = validated_data.get('AR_BenDesc_CoverAmount4', instance.AR_BenDesc_CoverAmount4)
+        # # instance.AR_BenDesc_5 = validated_data.get('AR_BenDesc_5', instance.AR_BenDesc_5)
+        # # instance.AR_BenDesc_CoverAmount5 = validated_data.get('AR_BenDesc_CoverAmount5', instance.AR_BenDesc_CoverAmount5)
+        # # instance.AR_BenDesc_6 = validated_data.get('AR_BenDesc_6', instance.AR_BenDesc_6)
+        # # instance.AR_BenDesc_CoverAmount6 = validated_data.get('AR_BenDesc_CoverAmount6', instance.AR_BenDesc_CoverAmount6)
+        # # instance.AR_BenDesc_7 = validated_data.get('AR_BenDesc_7', instance.AR_BenDesc_7)
+        # # instance.AR_BenDesc_CoverAmount7 = validated_data.get('AR_BenDesc_CoverAmount7', instance.AR_BenDesc_CoverAmount7)
             
-        instance.AR_ProductReasons = validated_data.get('AR_ProductReasons', instance.AR_ProductReasons)
-        instance.AR_ProductMaterialAspects = validated_data.get('AR_ProductMaterialAspects', instance.AR_ProductMaterialAspects)
-        instance.AR_ProductDetails = validated_data.get('AR_ProductDetails', instance.AR_ProductDetails)
-        instance.AR_ProductBriefSummary = validated_data.get('AR_ProductBriefSummary', instance.AR_ProductBriefSummary)
-        instance.AR_Cessionaries = validated_data.get('AR_Cessionaries', instance.AR_Cessionaries)
-        instance.AR_InformationExplained = validated_data.get('AR_InformationExplained', instance.AR_InformationExplained)
+        # instance.AR_ProductReasons = validated_data.get('AR_ProductReasons', instance.AR_ProductReasons)
+        # instance.AR_ProductMaterialAspects = validated_data.get('AR_ProductMaterialAspects', instance.AR_ProductMaterialAspects)
+        # instance.AR_ProductDetails = validated_data.get('AR_ProductDetails', instance.AR_ProductDetails)
+        # instance.AR_ProductBriefSummary = validated_data.get('AR_ProductBriefSummary', instance.AR_ProductBriefSummary)
+        # instance.AR_Cessionaries = validated_data.get('AR_Cessionaries', instance.AR_Cessionaries)
+        # instance.AR_InformationExplained = validated_data.get('AR_InformationExplained', instance.AR_InformationExplained)
 
         
         instance.updated_at = datetime.now(timezone.utc)
@@ -3999,6 +3999,155 @@ class IP_ProductTakenSerializer(serializers.ModelSerializer):
         instance.ItP_FundsReasons = validated_data.get('ItP_FundsReasons', instance.ItP_FundsReasons)
 
         instance.ItP_FundsMaterialAspects = validated_data.get('ItP_FundsMaterialAspects', instance.ItP_FundsMaterialAspects)
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class AR_ProductTakenSerializer(serializers.ModelSerializer):
+    class Meta():
+        model = AR_ProductTaken
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return AR_ProductTaken.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.ProductTaken = validated_data.get('ProductTaken', instance.ProductTaken)    
+        instance.ProductProvider = validated_data.get('ProductProvider', instance.ProductProvider)    
+        instance.PolicyNumber = validated_data.get('PolicyNumber', instance.PolicyNumber)    
+        instance.ProductName = validated_data.get('ProductName', instance.ProductName)    
+        instance.ProductPremium = validated_data.get('ProductPremium', instance.ProductPremium)    
+        instance.ProductPremiumFrequency = validated_data.get('ProductPremiumFrequency', instance.ProductPremiumFrequency)   
+        instance.ProductPattern = validated_data.get('ProductPattern', instance.ProductPattern)    
+        instance.ProductEscalation = validated_data.get('ProductEscalation', instance.ProductEscalation)    
+        instance.ProductContractingParty = validated_data.get('ProductContractingParty', instance.ProductContractingParty)    
+        instance.ProductLivesAssured = validated_data.get('ProductLivesAssured', instance.ProductLivesAssured)    
+        instance.ProductPremiumPayer = validated_data.get('ProductPremiumPayer', instance.ProductPremiumPayer)    
+        instance.Product1stYearCommission = validated_data.get('Product1stYearCommission', instance.Product1stYearCommission)    
+        instance.Product2ndYearCommission = validated_data.get('Product2ndYearCommission', instance.Product2ndYearCommission)    
+        
+        instance.BenDesc_1 = validated_data.get('BenDesc_1', instance.BenDesc_1)    
+        instance.BenDesc_CoverAmount1 = validated_data.get('BenDesc_CoverAmount1', instance.BenDesc_CoverAmount1)    
+        instance.BenDesc_2 = validated_data.get('BenDesc_2', instance.BenDesc_2)    
+        instance.BenDesc_CoverAmount2 = validated_data.get('BenDesc_CoverAmount2', instance.BenDesc_CoverAmount2)    
+        instance.BenDesc_3 = validated_data.get('BenDesc_3', instance.BenDesc_3)    
+        instance.BenDesc_CoverAmount3 = validated_data.get('BenDesc_CoverAmount3', instance.BenDesc_CoverAmount3)    
+        instance.BenDesc_4 = validated_data.get('BenDesc_4', instance.BenDesc_4)    
+        instance.BenDesc_CoverAmount4 = validated_data.get('BenDesc_CoverAmount4', instance.BenDesc_CoverAmount4)    
+        instance.BenDesc_5 = validated_data.get('BenDesc_5', instance.BenDesc_5)    
+        instance.BenDesc_CoverAmount5 = validated_data.get('BenDesc_CoverAmount5', instance.BenDesc_CoverAmount5)    
+        instance.BenDesc_6 = validated_data.get('BenDesc_6', instance.BenDesc_6)    
+        instance.BenDesc_CoverAmount6 = validated_data.get('BenDesc_CoverAmount6', instance.BenDesc_CoverAmount6)    
+        instance.BenDesc_7 = validated_data.get('BenDesc_7', instance.BenDesc_7)    
+        instance.BenDesc_CoverAmount7 = validated_data.get('BenDesc_CoverAmount7', instance.BenDesc_CoverAmount7)    
+        
+        instance.ProductReasons = validated_data.get('ProductReasons', instance.ProductReasons)    
+        instance.ProductMaterialAspects = validated_data.get('ProductMaterialAspects', instance.ProductMaterialAspects)    
+        instance.ProductDetails = validated_data.get('ProductDetails', instance.ProductDetails)    
+        instance.ProductBriefSummary = validated_data.get('ProductBriefSummary', instance.ProductBriefSummary)    
+        instance.Cessionaries = validated_data.get('Cessionaries', instance.Cessionaries)    
+        instance.InformationExplained = validated_data.get('InformationExplained', instance.InformationExplained)    
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class AI_ProductTakenSerializer(serializers.ModelSerializer):
+    class Meta():
+        model = AI_ProductTaken
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return AI_ProductTaken.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Pr_Taken = validated_data.get('Pr_Taken', instance.Pr_Taken)  
+        instance.Pr_Provider = validated_data.get('Pr_Provider', instance.Pr_Provider)    
+        instance.Pr_PolicyNumber = validated_data.get('Pr_PolicyNumber', instance.Pr_PolicyNumber)    
+        instance.Pr_Name = validated_data.get('Pr_Name', instance.Pr_Name)    
+        instance.Pr_Premium = validated_data.get('Pr_Premium', instance.Pr_Premium)    
+        instance.Pr_PremiumFrequency = validated_data.get('Pr_PremiumFrequency', instance.Pr_PremiumFrequency) 
+        instance.Pr_Escalation = validated_data.get('Pr_Escalation', instance.Pr_Escalation)    
+        instance.Pr_EAC = validated_data.get('Pr_EAC', instance.Pr_EAC)    
+        instance.Pr_ContractingParty = validated_data.get('Pr_ContractingParty', instance.Pr_ContractingParty)    
+        instance.Pr_LivesAssured = validated_data.get('Pr_LivesAssured', instance.Pr_LivesAssured)    
+        instance.Pr_PremiumPayer = validated_data.get('Pr_PremiumPayer', instance.Pr_PremiumPayer)    
+        instance.Pr_Beneficiary = validated_data.get('Pr_Beneficiary', instance.Pr_Beneficiary)    
+        instance.Pr_IniC = validated_data.get('Pr_IniC', instance.Pr_IniC)    
+        instance.Pr_IniC_Percentage = validated_data.get('Pr_IniC_Percentage', instance.Pr_IniC_Percentage)    
+        instance.Pr_OnC = validated_data.get('Pr_OnC', instance.Pr_OnC)    
+        instance.Pr_OnC_Percentage = validated_data.get('Pr_OnC_Percentage', instance.Pr_OnC_Percentage)
+
+        instance.Portfolio = validated_data.get('Portfolio', instance.Portfolio)
+        
+        instance.PF_1 = validated_data.get('PF_1', instance.PF_1)
+        instance.PF_Percentage1 = validated_data.get('PF_Percentage1', instance.PF_Percentage1)
+        instance.PF_Provided1 = validated_data.get('PF_Provided1', instance.PF_Provided1)
+        instance.PF_Discussed1 = validated_data.get('PF_Discussed1', instance.PF_Discussed1)
+        
+        instance.PF_2 = validated_data.get('PF_2', instance.PF_2)
+        instance.PF_Percentage2 = validated_data.get('PF_Percentage2', instance.PF_Percentage2)
+        instance.PF_Provided2 = validated_data.get('PF_Provided2', instance.PF_Provided2)
+        instance.PF_Discussed2 = validated_data.get('PF_Discussed2', instance.PF_Discussed2)
+        
+        instance.PF_3 = validated_data.get('PF_3', instance.PF_3)
+        instance.PF_Percentage3 = validated_data.get('PF_Percentage3', instance.PF_Percentage3)
+        instance.PF_Provided3 = validated_data.get('PF_Provided3', instance.PF_Provided3)
+        instance.PF_Discussed3 = validated_data.get('PF_Discussed3', instance.PF_Discussed3)
+        
+        instance.PF_4 = validated_data.get('PF_4', instance.PF_4)
+        instance.PF_Percentage4 = validated_data.get('PF_Percentage4', instance.PF_Percentage4)
+        instance.PF_Provided4 = validated_data.get('PF_Provided4', instance.PF_Provided4)
+        instance.PF_Discussed4 = validated_data.get('PF_Discussed4', instance.PF_Discussed4)
+        
+        instance.PF_5 = validated_data.get('PF_5', instance.PF_5)
+        instance.PF_Percentage5 = validated_data.get('PF_Percentage5', instance.PF_Percentage5)
+        instance.PF_Provided5 = validated_data.get('PF_Provided5', instance.PF_Provided5)
+        instance.PF_Discussed5 = validated_data.get('PF_Discussed5', instance.PF_Discussed5)
+        
+        instance.PF_6 = validated_data.get('PF_6', instance.PF_6)
+        instance.PF_Percentage6 = validated_data.get('PF_Percentage6', instance.PF_Percentage6)
+        instance.PF_Provided6 = validated_data.get('PF_Provided6', instance.PF_Provided6)
+        instance.PF_Discussed6 = validated_data.get('PF_Discussed6', instance.PF_Discussed6)
+        
+        instance.PF_7 = validated_data.get('PF_7', instance.PF_7)
+        instance.PF_Percentage7 = validated_data.get('PF_Percentage7', instance.PF_Percentage7)
+        instance.PF_Provided7 = validated_data.get('PF_Provided7', instance.PF_Provided7)
+        instance.PF_Discussed7 = validated_data.get('PF_Discussed7', instance.PF_Discussed7)
+
+        instance.PF_Reasons = validated_data.get('PF_Reasons', instance.PF_Reasons)
+        instance.PF_MaterialAspects = validated_data.get('PF_MaterialAspects', instance.PF_MaterialAspects)
+        instance.PF_Pr_Details = validated_data.get('PF_Pr_Details', instance.PF_Pr_Details)
+        instance.PF_NominationOfBeneficiaries = validated_data.get('PF_NominationOfBeneficiaries', instance.PF_NominationOfBeneficiaries)
+
+        instance.SourceOfFunds = validated_data.get('SourceOfFunds', instance.SourceOfFunds)
+        instance.SourceOfFundsDetail = validated_data.get('SourceOfFundsDetail', instance.SourceOfFundsDetail)
+         
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class EB_CoverSerializer(serializers.ModelSerializer):
+    class Meta():
+        model = EB_Cover
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return EB_Cover.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.BusB_CoverType = validated_data.get('BusB_CoverType', instance.BusB_CoverType)  
+        instance.BusB_Cover = validated_data.get('BusB_Cover', instance.BusB_Cover)    
+        instance.BusB_CoverDetails = validated_data.get('BusB_CoverDetails', instance.BusB_CoverDetails)    
+         
         
         instance.updated_at = datetime.now(timezone.utc)
         instance.save()

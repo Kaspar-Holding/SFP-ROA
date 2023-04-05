@@ -524,9 +524,13 @@ const RiskFactors = ({user}) => {
                 })
                 setUpdateErrorVisibility("block")
             }
-            const LP_Body = JSON.stringify(LP_Data)
+            const LP_Body = JSON.stringify({
+                "formId":state['formId'],
+                "lp_data":LP_Data
+            })
             try {
                 const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_linked_party_data/`, LP_Body ,config) 
+                setLP_Data(response.data['LP_Data'])
             } catch (error) {
                 
             }

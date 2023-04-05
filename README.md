@@ -8,6 +8,11 @@ This project is built on the following Stack
 
 ## Updates
 
+### 5 April 2023:
+- Duplication Task is now completed
+- Working on TinyMCE in remaining components
+- Working on PDF Tool for duplication changes 
+
 ### 4 April 2023:
 - Linked Party Duplication in Investment and Risk Planning is done
 - Duplication Task started on BA Risk Form

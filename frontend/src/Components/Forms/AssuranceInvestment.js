@@ -3,7 +3,9 @@ import React, {useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 const AssuranceInvestment = ({user}) =>
 {
@@ -335,73 +337,164 @@ const AssuranceInvestment = ({user}) =>
         AI_FinancialSolutions : "",    
         AI_AltS_1 : "",    
         AI_AltS_2 : "",    
-        AI_AltS_3 : "",    
-
-        AI_Pr_Taken : 0,    
-        AI_Pr_Provider : "",    
-        AI_Pr_PolicyNumber : "",    
-        AI_Pr_Name : "",    
-        AI_Pr_Premium : "",    
-        AI_Pr_PremiumFrequency : 0,   
-        AI_Pr_Escalation : "",    
-        AI_Pr_EAC : "",    
-        AI_Pr_ContractingParty : "",    
-        AI_Pr_LivesAssured : "",    
-        AI_Pr_PremiumPayer : "",    
-        AI_Pr_Beneficiary : "",    
-        AI_Pr_IniC : "",    
-        AI_Pr_IniC_Percentage : "",    
-        AI_Pr_OnC : "",    
-        AI_Pr_OnC_Percentage : "",
-
-        AI_Portfolio : "",
-        
-        AI_SourceOfFunds : 0,
-        AI_SourceOfFundsDetail : "",
-        
-        AI_PF_1 : "",
-        AI_PF_Percentage1 : "",
-        AI_PF_Provided1 : false,
-        AI_PF_Discussed1 : false,
-
-        AI_PF_2 : "",
-        AI_PF_Percentage2 : "",
-        AI_PF_Provided2 : false,
-        AI_PF_Discussed2 : false,
-
-        AI_PF_3 : "",
-        AI_PF_Percentage3 : "",
-        AI_PF_Provided3 : false,
-        AI_PF_Discussed3 : false,
-
-        AI_PF_4 : "",
-        AI_PF_Percentage4 : "",
-        AI_PF_Provided4 : false,
-        AI_PF_Discussed4 : false,
-
-        AI_PF_5 : "",
-        AI_PF_Percentage5 : "",
-        AI_PF_Provided5 : false,
-        AI_PF_Discussed5 : false,
-
-        AI_PF_6 : "",
-        AI_PF_Percentage6 : "",
-        AI_PF_Provided6 : false,
-        AI_PF_Discussed6 : false,
-
-        AI_PF_7 : "",
-        AI_PF_Reasons : "",
-        AI_PF_Provided7 : false,
-        AI_PF_Discussed7 : false,
-
-        AI_PF_Reasons : "",
-        AI_PF_MaterialAspects : "",
-        AI_PF_Pr_Details : "",
-        AI_PF_NominationOfBeneficiaries : "",
+        AI_AltS_3 : ""
 
       })
-      console.log(FormData['AI_PF_Pr_Details'])
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
+      
+      const [ProductTaken, setProductTaken] = useState([{
+        advisorId : user['id'],  
+        formId : state['formId'],  
+               
+        Pr_Taken : 0,    
+        Pr_Provider : "",    
+        Pr_PolicyNumber : "",    
+        Pr_Name : "",    
+        Pr_Premium : "",    
+        Pr_PremiumFrequency : 0,   
+        Pr_Escalation : "",    
+        Pr_EAC : "",    
+        Pr_ContractingParty : "",    
+        Pr_LivesAssured : "",    
+        Pr_PremiumPayer : "",    
+        Pr_Beneficiary : "",    
+        Pr_IniC : "",    
+        Pr_IniC_Percentage : "",    
+        Pr_OnC : "",    
+        Pr_OnC_Percentage : "",
+
+        Portfolio : "",
+        
+        SourceOfFunds : 0,
+        SourceOfFundsDetail : "",
+        
+        PF_1 : "",
+        PF_Percentage1 : "",
+        PF_Provided1 : false,
+        PF_Discussed1 : false,
+
+        PF_2 : "",
+        PF_Percentage2 : "",
+        PF_Provided2 : false,
+        PF_Discussed2 : false,
+
+        PF_3 : "",
+        PF_Percentage3 : "",
+        PF_Provided3 : false,
+        PF_Discussed3 : false,
+
+        PF_4 : "",
+        PF_Percentage4 : "",
+        PF_Provided4 : false,
+        PF_Discussed4 : false,
+
+        PF_5 : "",
+        PF_Percentage5 : "",
+        PF_Provided5 : false,
+        PF_Discussed5 : false,
+
+        PF_6 : "",
+        PF_Percentage6 : "",
+        PF_Provided6 : false,
+        PF_Discussed6 : false,
+
+        PF_7 : "",
+        PF_Reasons : "",
+        PF_Provided7 : false,
+        PF_Discussed7 : false,
+
+        PF_Reasons : "",
+        PF_MaterialAspects : "",
+        PF_Pr_Details : "",
+        PF_NominationOfBeneficiaries : ""
+      }])
+      const AddNewProductTaken = (e) => {
+        const current = [...ProductTaken]
+        current.push({
+            advisorId : user['id'],  
+            formId : state['formId'],  
+            
+                    
+            Pr_Taken : 0,    
+            Pr_Provider : "",    
+            Pr_PolicyNumber : "",    
+            Pr_Name : "",    
+            Pr_Premium : "",    
+            Pr_PremiumFrequency : 0,   
+            Pr_Escalation : "",    
+            Pr_EAC : "",    
+            Pr_ContractingParty : "",    
+            Pr_LivesAssured : "",    
+            Pr_PremiumPayer : "",    
+            Pr_Beneficiary : "",    
+            Pr_IniC : "",    
+            Pr_IniC_Percentage : "",    
+            Pr_OnC : "",    
+            Pr_OnC_Percentage : "",
+
+            Portfolio : "",
+            
+            SourceOfFunds : 0,
+            SourceOfFundsDetail : "",
+            
+            PF_1 : "",
+            PF_Percentage1 : "",
+            PF_Provided1 : false,
+            PF_Discussed1 : false,
+
+            PF_2 : "",
+            PF_Percentage2 : "",
+            PF_Provided2 : false,
+            PF_Discussed2 : false,
+
+            PF_3 : "",
+            PF_Percentage3 : "",
+            PF_Provided3 : false,
+            PF_Discussed3 : false,
+
+            PF_4 : "",
+            PF_Percentage4 : "",
+            PF_Provided4 : false,
+            PF_Discussed4 : false,
+
+            PF_5 : "",
+            PF_Percentage5 : "",
+            PF_Provided5 : false,
+            PF_Discussed5 : false,
+
+            PF_6 : "",
+            PF_Percentage6 : "",
+            PF_Provided6 : false,
+            PF_Discussed6 : false,
+
+            PF_7 : "",
+            PF_Reasons : "",
+            PF_Provided7 : false,
+            PF_Discussed7 : false,
+
+            PF_Reasons : "",
+            PF_MaterialAspects : "",
+            PF_Pr_Details : "",
+            PF_NominationOfBeneficiaries : ""
+        })
+        setProductTaken(current)
+    }
+    const RemoveNewProductTaken = (e) => {
+        const current = [...ProductTaken]
+        current.pop()
+        setProductTaken(current)
+    }
+    const on_ProductTaken_Change = (e, i) => {
+        let newProductTaken = [...ProductTaken]
+        newProductTaken[i][e.target.name] = e.target.value
+        setProductTaken(newProductTaken)
+    }
+    
+    const on_ProductTaken_CheckBox_Change = (e, i, value) => {
+        let newProductTaken = [...ProductTaken]
+        newProductTaken[i][e.target.name] = value
+        setProductTaken(newProductTaken)
+    }
       const createAIForm = async(data) => {
         const config = {
             headers: {
@@ -418,6 +511,77 @@ const AssuranceInvestment = ({user}) =>
                 setFormData(response.data['formData'])
             } else {
                 setFormData(response.data['formData'])
+            }
+            if (response.data['ProductTaken'].length > 0) {
+                setProductTaken(response.data['ProductTaken'])
+            } else {
+                setProductTaken([{
+                        advisorId : user['id'],  
+                        formId : state['formId'],  
+                        
+                        Pr_Taken : 0,    
+                        Pr_Provider : "",    
+                        Pr_PolicyNumber : "",    
+                        Pr_Name : "",    
+                        Pr_Premium : "",    
+                        Pr_PremiumFrequency : 0,   
+                        Pr_Escalation : "",    
+                        Pr_EAC : "",    
+                        Pr_ContractingParty : "",    
+                        Pr_LivesAssured : "",    
+                        Pr_PremiumPayer : "",    
+                        Pr_Beneficiary : "",    
+                        Pr_IniC : "",    
+                        Pr_IniC_Percentage : "",    
+                        Pr_OnC : "",    
+                        Pr_OnC_Percentage : "",
+
+                        Portfolio : "",
+                        
+                        SourceOfFunds : 0,
+                        SourceOfFundsDetail : "",
+                        
+                        PF_1 : "",
+                        PF_Percentage1 : "",
+                        PF_Provided1 : false,
+                        PF_Discussed1 : false,
+
+                        PF_2 : "",
+                        PF_Percentage2 : "",
+                        PF_Provided2 : false,
+                        PF_Discussed2 : false,
+
+                        PF_3 : "",
+                        PF_Percentage3 : "",
+                        PF_Provided3 : false,
+                        PF_Discussed3 : false,
+
+                        PF_4 : "",
+                        PF_Percentage4 : "",
+                        PF_Provided4 : false,
+                        PF_Discussed4 : false,
+
+                        PF_5 : "",
+                        PF_Percentage5 : "",
+                        PF_Provided5 : false,
+                        PF_Discussed5 : false,
+
+                        PF_6 : "",
+                        PF_Percentage6 : "",
+                        PF_Provided6 : false,
+                        PF_Discussed6 : false,
+
+                        PF_7 : "",
+                        PF_Reasons : "",
+                        PF_Provided7 : false,
+                        PF_Discussed7 : false,
+
+                        PF_Reasons : "",
+                        PF_MaterialAspects : "",
+                        PF_Pr_Details : "",
+                        PF_NominationOfBeneficiaries : ""
+                      }]
+                )
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
@@ -458,6 +622,15 @@ const AssuranceInvestment = ({user}) =>
                 message: error.response.statusText
               })
               setUpdateErrorVisibility("block")
+          }
+          const ProductTaken_Body = JSON.stringify({
+            "formId" : state['formId'],
+            "ai_data" : ProductTaken
+          })
+          try {
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_ai_ProductTaken_Data/`, ProductTaken_Body ,config) 
+          } catch (error) {
+              
           }
       }
       const onSubmit = e => {
@@ -995,9 +1168,25 @@ How it will meet the business need
 <h5 className="section_class"><b>SECTION E:</b></h5>
     <div className="h6 fw-bold" style={{color: '#00788A'}}>Product Taken (Each additional need must be accompanied by its own product annexure.)</div> 
 <p>Products accepted by you to meet the business’s requirements.</p>
-
 <hr/>
-    <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+{
+    ProductTaken.map((key,i) => {
+        // console.log(i+1)
+        return (
+            <>
+            <div className="row">
+                <div className="col-6">
+                    <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+                </div>
+                {
+                    ProductTaken.length > 1 ?
+                    <div className="col-6">
+                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                    </div>
+                    : <></>
+                }
+                </div>
+            <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
         <div className="row">
 
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
@@ -1006,7 +1195,7 @@ How it will meet the business need
                       <label className="col-form-label"><b>Product Taken</b></label>
                   </div>
                   <div className="col-6">
-                      <select className="text-start form-select" name='AI_Pr_Taken' value={FormData['AI_Pr_Taken']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                      <select className="text-start form-select" name='Pr_Taken' value={key.Pr_Taken} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
                           <option value="0" selected>Choose Product</option>
                           <option value="1">Endowment</option>
                           <option value="2">RA</option>
@@ -1020,7 +1209,6 @@ How it will meet the business need
               </div>
             </div>
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
-              <span style={{color: 'white'}}>0</span>
             </div>
             <hr/>
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
@@ -1029,7 +1217,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Product Provider</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_Provider" name='AI_Pr_Provider' value={FormData['AI_Pr_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_Provider" name='Pr_Provider' value={key.Pr_Provider} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1040,7 +1228,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Policy number</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_PolicyNumber" name='AI_Pr_PolicyNumber' value={FormData['AI_Pr_PolicyNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_PolicyNumber" name='Pr_PolicyNumber' value={key.Pr_PolicyNumber} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1052,7 +1240,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Product Name</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_Name" name='AI_Pr_Name' value={FormData['AI_Pr_Name']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_Name" name='Pr_Name' value={key.Pr_Name} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1066,11 +1254,11 @@ How it will meet the business need
                         <div className='row'>
                           <div className='col-6'>
                               <div className="form-group">
-                                <input type="text" className="form-control" id="AI_Pr_Premium" name='AI_Pr_Premium' value={FormData['AI_Pr_Premium']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" />
+                                <input type="text" className="form-control" id="Pr_Premium" name='Pr_Premium' value={key.Pr_Premium} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                               </div>
                           </div>
                           <div className='col-6'>
-                              <select className="text-start form-select" id="AI_Pr_PremiumFrequency" name='AI_Pr_PremiumFrequency' value={FormData['AI_Pr_PremiumFrequency']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                              <select className="text-start form-select" id="Pr_PremiumFrequency" name='Pr_PremiumFrequency' value={key.Pr_PremiumFrequency} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-label="Default select example">
                                   <option value="0" selected>Frequeny</option>
                                   <option value="1">Monthly</option>
                                   <option value="2">Quarterly</option>
@@ -1090,7 +1278,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Escalation</b></label>
                     </div>
                     <div className="col-6"> 
-                        <input spellCheck="true" id="AI_Pr_Escalation" name='AI_Pr_Escalation' value={FormData['AI_Pr_Escalation']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_Escalation" name='Pr_Escalation' value={key.Pr_Escalation} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1101,7 +1289,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Effective annual cost (EAC)</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_EAC" name='AI_Pr_EAC' value={FormData['AI_Pr_EAC']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_EAC" name='Pr_EAC' value={key.Pr_EAC} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1113,7 +1301,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Contracting party</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_ContractingParty" name='AI_Pr_ContractingParty' value={FormData['AI_Pr_ContractingParty']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_ContractingParty" name='Pr_ContractingParty' value={key.Pr_ContractingParty} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1124,7 +1312,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Life / Lives covered</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_LivesAssured" name='AI_Pr_LivesAssured' value={FormData['AI_Pr_LivesAssured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_LivesAssured" name='Pr_LivesAssured' value={key.Pr_LivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1136,7 +1324,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Premium Payer</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_PremiumPayer" name='AI_Pr_PremiumPayer' value={FormData['AI_Pr_PremiumPayer']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_PremiumPayer" name='Pr_PremiumPayer' value={key.Pr_PremiumPayer} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1146,7 +1334,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Beneficiary/cessionary</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="AI_Pr_Beneficiary" name='AI_Pr_Beneficiary' value={FormData['AI_Pr_Beneficiary']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_Beneficiary" name='Pr_Beneficiary' value={key.Pr_Beneficiary} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1158,10 +1346,10 @@ How it will meet the business need
                         <label className="col-form-label"><b>Initial commission</b></label>
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="AI_Pr_IniC" name='AI_Pr_IniC' value={FormData['AI_Pr_IniC']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_IniC" name='Pr_IniC' value={key.Pr_IniC} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="AI_Pr_IniC_Percentage" name='AI_Pr_IniC_Percentage' value={FormData['AI_Pr_IniC_Percentage']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_IniC_Percentage" name='Pr_IniC_Percentage' value={key.Pr_IniC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1172,10 +1360,10 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Ongoing commission</b></label>
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="AI_Pr_OnC" name='AI_Pr_OnC' value={FormData['AI_Pr_OnC']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_OnC" name='Pr_OnC' value={key.Pr_OnC} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="AI_Pr_OnC_Percentage" name='AI_Pr_OnC_Percentage' value={FormData['AI_Pr_OnC_Percentage']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
+                        <input spellCheck="true" id="Pr_OnC_Percentage" name='Pr_OnC_Percentage' value={key.Pr_OnC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1214,7 +1402,7 @@ How it will meet the business need
          null
     }
     <textarea maxLength={500} className="form-control"  style={{height: '300px'}} 
-        id="AI_Portfolio" name='AI_Portfolio' value={FormData['AI_Portfolio']} onChange={(e) => {onChange(e)}}
+        id="Portfolio" name='Portfolio' value={key.Portfolio} onChange={(e) => {on_ProductTaken_Change(e, i)}}
         onFocus={backgroundInfo_onFocus23}
         onBlur={backgroundInfo_onBlur23}
         placeholder={
@@ -1261,7 +1449,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td>
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_1" name='AI_PF_1' value={FormData['AI_PF_1']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_1" name='PF_1' value={key.PF_1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1269,18 +1457,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_Percentage1" name='AI_PF_Percentage1' value={FormData['AI_PF_Percentage1']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_Percentage1" name='PF_Percentage1' value={key.PF_Percentage1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={FormData["AI_PF_Provided1"]} name="AI_PF_Provided1" onChange={(e)=>{FormData["AI_PF_Provided1"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Provided1} name="PF_Provided1" onChange={(e)=>{key.PF_Provided1 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={FormData["AI_PF_Discussed1"]} name="AI_PF_Discussed1" onChange={(e)=>{FormData["AI_PF_Discussed1"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Discussed1} name="PF_Discussed1" onChange={(e)=>{key.PF_Discussed1 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>  
       </tr>
@@ -1288,7 +1476,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td>
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_2" name='AI_PF_2' value={FormData['AI_PF_2']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_2" name='PF_2' value={key.PF_2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1296,18 +1484,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_Percentage2" name='AI_PF_Percentage2' value={FormData['AI_PF_Percentage2']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_Percentage2" name='PF_Percentage2' value={key.PF_Percentage2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={FormData["AI_PF_Provided2"]} name="AI_PF_Provided2" onChange={(e)=>{FormData["AI_PF_Provided2"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Provided2} name="PF_Provided2" onChange={(e)=>{key.PF_Provided2 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={FormData["AI_PF_Discussed2"]} name="AI_PF_Discussed2" onChange={(e)=>{FormData["AI_PF_Discussed2"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Discussed2} name="PF_Discussed2" onChange={(e)=>{key.PF_Discussed2 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>   
       </tr>
@@ -1315,7 +1503,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td>
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_3" name='AI_PF_3' value={FormData['AI_PF_3']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_3" name='PF_3' value={key.PF_3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1323,18 +1511,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_Percentage3" name='AI_PF_Percentage3' value={FormData['AI_PF_Percentage3']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_Percentage3" name='PF_Percentage3' value={key.PF_Percentage3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={FormData["AI_PF_Provided3"]} name="AI_PF_Provided3" onChange={(e)=>{FormData["AI_PF_Provided3"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Provided3} name="PF_Provided3" onChange={(e)=>{key.PF_Provided3 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={FormData["AI_PF_Discussed3"]} name="AI_PF_Discussed3" onChange={(e)=>{FormData["AI_PF_Discussed3"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Discussed3} name="PF_Discussed3" onChange={(e)=>{key.PF_Discussed3 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>       
       </tr>
@@ -1342,7 +1530,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td>
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_4" name='AI_PF_4' value={FormData['AI_PF_4']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_4" name='PF_4' value={key.PF_4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1350,18 +1538,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_Percentage4" name='AI_PF_Percentage4' value={FormData['AI_PF_Percentage4']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_Percentage4" name='PF_Percentage4' value={key.PF_Percentage4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={FormData["AI_PF_Provided4"]} name="AI_PF_Provided4" onChange={(e)=>{FormData["AI_PF_Provided4"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Provided4} name="PF_Provided4" onChange={(e)=>{key.PF_Provided4 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={FormData["AI_PF_Discussed4"]} name="AI_PF_Discussed4" onChange={(e)=>{FormData["AI_PF_Discussed4"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Discussed4} name="PF_Discussed4" onChange={(e)=>{key.PF_Discussed4 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>      
       </tr>
@@ -1369,7 +1557,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td >
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_5" name='AI_PF_5' value={FormData['AI_PF_5']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_5" name='PF_5' value={key.PF_5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1377,18 +1565,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_Percentage5" name='AI_PF_Percentage5' value={FormData['AI_PF_Percentage5']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_Percentage5" name='PF_Percentage5' value={key.PF_Percentage5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={FormData["AI_PF_Provided5"]} name="AI_PF_Provided5" onChange={(e)=>{FormData["AI_PF_Provided5"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Provided5} name="PF_Provided5" onChange={(e)=>{key.PF_Provided5 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={FormData["AI_PF_Discussed5"]} name="AI_PF_Discussed5" onChange={(e)=>{FormData["AI_PF_Discussed5"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Discussed5} name="PF_Discussed5" onChange={(e)=>{key.PF_Discussed5 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>        
       </tr>
@@ -1397,7 +1585,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td >
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_6" name='AI_PF_6' value={FormData['AI_PF_6']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_6" name='PF_6' value={key.PF_6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1405,18 +1593,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_Percentage6" name='AI_PF_Percentage6' value={FormData['AI_PF_Percentage6']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_Percentage6" name='PF_Percentage6' value={key.PF_Percentage6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={FormData["AI_PF_Provided6"]} name="AI_PF_Provided6" onChange={(e)=>{FormData["AI_PF_Provided6"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Provided6} name="PF_Provided6" onChange={(e)=>{key.PF_Provided6 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={FormData["AI_PF_Discussed6"]} name="AI_PF_Discussed6" onChange={(e)=>{FormData["AI_PF_Discussed6"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Discussed6} name="PF_Discussed6" onChange={(e)=>{key.PF_Discussed6 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>   
       </tr>
@@ -1425,7 +1613,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td >
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_7" name='AI_PF_7' value={FormData['AI_PF_7']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_7" name='PF_7' value={key.PF_7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1433,18 +1621,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="AI_PF_Percentage7" name='AI_PF_Percentage7' value={FormData['AI_PF_Percentage7']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input type="text" className="form-control" id="PF_Percentage7" name='PF_Percentage7' value={key.PF_Percentage7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={FormData["AI_PF_Provided7"]} name="AI_PF_Provided7" onChange={(e)=>{FormData["AI_PF_Provided7"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Provided7} name="PF_Provided7" onChange={(e)=>{key.PF_Provided7 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={FormData["AI_PF_Discussed7"]} name="AI_PF_Discussed7" onChange={(e)=>{FormData["AI_PF_Discussed7"] === true ? setFormData({...FormData, [e.target.name]: false}) : setFormData({...FormData, [e.target.name]: true})}} />
+            <input type="checkbox" checked={key.PF_Discussed7} name="PF_Discussed7" onChange={(e)=>{key.PF_Discussed7 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>   
       </tr>
@@ -1465,7 +1653,7 @@ o	meeting the investment objectives of the clients
                 </div>
                 <div className='col-6'>
                     <div className='col-6'>
-                        <select className="text-start form-select" name='AI_SourceOfFunds' value={FormData['AI_SourceOfFunds']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                        <select className="text-start form-select" name='SourceOfFunds' value={key.SourceOfFunds} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-label="Default select example">
                             <option value="0" selected>Choose Source of funds</option>
                             <option value="1">Salary</option>
                             <option value="2">Savings</option>
@@ -1496,7 +1684,7 @@ o	meeting the investment objectives of the clients
                 null
             }
             <textarea maxLength={500} className="form-control"  style={{height: '100px'}} 
-                name='AI_SourceOfFundsDetail' onChange={(e) => {onChange(e)}} value={FormData['AI_SourceOfFundsDetail']}
+                name='SourceOfFundsDetail' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.SourceOfFundsDetail}
                 onFocus={backgroundInfo_onFocus10_1}
                 onBlur={backgroundInfo_onBlur10_1}
                 placeholder={`Define Other Source of Funds.
@@ -1522,7 +1710,7 @@ o	meeting the investment objectives of the clients
          null
     }
     <textarea maxLength={500} className="form-control"  style={{height: '100px'}} 
-        id="AI_PF_Reasons" name='AI_PF_Reasons' value={FormData['AI_PF_Reasons']} onChange={(e) => {onChange(e)}} 
+        id="PF_Reasons" name='PF_Reasons' value={key.PF_Reasons} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
         onFocus={backgroundInfo_onFocus24}
         onBlur={backgroundInfo_onBlur24}
         placeholder={
@@ -1534,7 +1722,7 @@ o	meeting the investment objectives of the clients
 <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
 {
           
-          FormData['AI_Pr_Taken']==1 ? <>
+          parseInt(key.Pr_Taken) ===1 ? <>
             <p>
                 <b>Tax Implications:</b><br/>
                 There are significant tax benefits afforded to Endowment plan investors. With an endowment plan the life insurance company will pay tax on your behalf at a rate of 30%. At maturity date the proceeds of this investment will be tax free.
@@ -1588,7 +1776,7 @@ o	meeting the investment objectives of the clients
             </p>
       
       
-            </> : FormData['AI_Pr_Taken']==2 ?
+            </> : parseInt(key.Pr_Taken) ===2 ?
                 <>
                     <p><b>Tax Implications:</b><br/>
                     There are significant tax benefits afforded to RA investors. You are permitted to deduct up to 27.5% of your annual taxable incomes (subject to  R350 000 per year maximum). Contributions in excess of this amount may deducted in the following tax year or at retirement. In addition to this, no income tax or capital gain tax is charged on the investment returns within an RA. Also, the funds housed in your RA do not form part of your estate, which means that this money will not be subject to executors fees or estate duty (except the excess contributions made). At retirement, you will be permitted to withdraw up to 1/3 of the value of the retirement annuity(s) of which the first R500 000 of the total withdrawal is tax-free subject to there being no previous withdrawals from any retirement fund.</p>
@@ -1614,7 +1802,7 @@ o	meeting the investment objectives of the clients
                     <p><b>At death</b><br/>
                     You may nominate beneficiaries. However, the trustees of the fund will make the final decision in terms of equitable distribution of the funds. The trustees will take your wishes into account but are not bound by them.</p>
               </> 
-              : FormData['AI_Pr_Taken']==3 ? 
+              : parseInt(key.Pr_Taken) ===3 ? 
               <>
                 <p>
                     <b>Tax Implications:</b><br/>
@@ -1651,7 +1839,7 @@ o	meeting the investment objectives of the clients
                     Planner to disclose
                 </p>
       
-                </> : FormData['AI_Pr_Taken']==4 ?
+                </> : parseInt(key.Pr_Taken) ===4 ?
                 <>
                 <p>
                     <b>Tax Implications:</b><br/>
@@ -1687,7 +1875,7 @@ o	meeting the investment objectives of the clients
                     <b>At Death</b><br/>
                     You cannot appoint a beneficiary. In the event of death this benefit will pay into the your Estate. The investment will be an asset in your estate and will attract estate duty and executors’ fees. The investment will be distributed in accordance with your instructions in the will.
                 </p>
-            </> : FormData['AI_Pr_Taken']==5 ?
+            </> : parseInt(key.Pr_Taken) ===5 ?
             <>
       
                 <p>
@@ -1726,7 +1914,7 @@ o	meeting the investment objectives of the clients
                 <p>
                     Please not if death is to occur after the guarantee period no income will be paid to your nominated beneficiary.
                 </p>
-        </> : FormData['AI_Pr_Taken']==6 ?<>
+        </> : parseInt(key.Pr_Taken) ===6 ?<>
       
                 <p>
                     <b>Tax Implications:</b><br/>
@@ -1789,7 +1977,7 @@ o	meeting the investment objectives of the clients
          null
     }
     <textarea maxLength={500} className="form-control"  style={{height: '150px'}} 
-        id="AI_PF_MaterialAspects" name='AI_PF_MaterialAspects' value={FormData['AI_PF_MaterialAspects']} onChange={(e) => {onChange(e)}} 
+        id="PF_MaterialAspects" name='PF_MaterialAspects' value={key.PF_MaterialAspects} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
         onFocus={backgroundInfo_onFocus25}
         onBlur={backgroundInfo_onBlur25}
         placeholder={
@@ -1826,7 +2014,7 @@ The tax implications, i.e. estate duty, income tax (e.g. interest received), CGT
          null
     }
     <textarea maxLength={500} className="form-control"  style={{height: '300px'}} 
-        id="AI_PF_Pr_Details" name='AI_PF_Pr_Details' value={FormData['AI_PF_Pr_Details']} onChange={(e) => {onChange(e)}} 
+        id="PF_Pr_Details" name='PF_Pr_Details' value={key.PF_Pr_Details} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
         onFocus={backgroundInfo_onFocus26}
         onBlur={backgroundInfo_onBlur26}
         placeholder={
@@ -1862,7 +2050,7 @@ Other relevant information
          null
     }
     <textarea maxLength={500} className="form-control"  style={{height: '150px'}} 
-        id="AI_PF_NominationOfBeneficiaries" name='AI_PF_NominationOfBeneficiaries' value={FormData['AI_PF_NominationOfBeneficiaries']} onChange={(e) => {onChange(e)}} 
+        id="PF_NominationOfBeneficiaries" name='PF_NominationOfBeneficiaries' value={key.PF_NominationOfBeneficiaries} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
         onFocus={backgroundInfo_onFocus27}
         onBlur={backgroundInfo_onBlur27}
         placeholder={
@@ -1871,6 +2059,11 @@ Other relevant information
 
 
 `}  aria-describedby=""  ></textarea>
+            </>
+        )
+    })
+}
+    
         <div className="container1">
             <div className="icon1 update">
                 <div className="tooltip1">

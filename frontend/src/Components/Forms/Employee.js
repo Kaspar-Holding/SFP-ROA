@@ -1,9 +1,12 @@
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import { useLocation } from 'react-router-dom';
 import './Styles/CustomNotification.css';
 import './Styles/CustomButton.css';
 import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { Editor } from '@tinymce/tinymce-react'
 const Employee = ({user}) =>
 {
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
@@ -97,10 +100,6 @@ const Employee = ({user}) =>
         EB_BusEx_FundsActiveMembers : "",
         EB_BusEx_FundsFullyPaidMembers : "",
         EB_BusEx_FundsFullyReasonForChange : "",
-
-        EB_BusB_CoverType : 0,
-        EB_BusB_Cover : 3,
-        EB_BusB_CoverDetails : "",
 
         EB_BusEmp_Retire_In5Years : 2,
         EB_BusEmp_Retire_In5YearsPercentage : "",
@@ -263,6 +262,42 @@ const Employee = ({user}) =>
 
       })
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
+      const [CoverData, setCoverData] = useState([{
+            advisorId : user['id'],  
+            formId : state['formId'],  
+            
+            BusB_CoverType : 0,
+            BusB_Cover : 3,
+            BusB_CoverDetails : ""
+        }])
+        const AddNewCoverData = (e) => {
+            const current = [...CoverData]
+            current.push({
+                advisorId : user['id'],  
+                formId : state['formId'],                
+                
+                BusB_CoverType : 0,
+                BusB_Cover : 3,
+                BusB_CoverDetails : ""
+                
+            })
+            setCoverData(current)
+        }
+        const RemoveCoverData = (e) => {
+            const current = [...CoverData]
+            current.pop()
+            setCoverData(current)
+        }
+        const on_CoverData_Change = (e, i) => {
+            let newCoverData = [...CoverData]
+            newCoverData[i][e.target.name] = e.target.value
+            setCoverData(newCoverData)
+        }
+        const on_CoverData_Comments_Change = (name, i, value) => {
+            let newCoverData = [...CoverData]
+            newCoverData[i][name] = value
+            setCoverData(newCoverData)
+        }
       const createEBForm = async(data) => {
         const config = {
             headers: {
@@ -280,6 +315,18 @@ const Employee = ({user}) =>
             } else {
                 setFormData(response.data['formData'])
             }
+            if (response.data['CoverData'].length > 0) {
+                setCoverData(response.data['CoverData'])
+            } else {
+                setCoverData([{
+                    advisorId : user['id'],  
+                    formId : state['formId'],                
+                    
+                    BusB_CoverType : 0,
+                    BusB_Cover : 3,
+                    BusB_CoverDetails : ""
+                }])
+            }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error.response.data)
@@ -289,6 +336,7 @@ const Employee = ({user}) =>
             })
             setResponseErrorVisibility("block")
         }
+
       }
       const [SuccessMessage, setSuccessMessage] = useState("")
       const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
@@ -321,12 +369,22 @@ const Employee = ({user}) =>
               })
               setUpdateErrorVisibility("block")
           }
+            const CoverData_Body = JSON.stringify({
+                "eb_data" : CoverData,
+                "formId" : state['formId']
+            })
+          try {
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_eb_coverData/`, CoverData_Body ,config) 
+          } catch (error) {
+              
+          }
       }
       const onSubmit = e => {
           e.preventDefault()
           updateEBForm()
           // window.location.reload();
       }
+      const CoverEditor = useRef(null)
       useEffect(() => {
         if(user){
             createEBForm(FormData)
@@ -703,91 +761,132 @@ const Employee = ({user}) =>
 
                 <hr/>
                 <h5 style={{color: '#00788A'}}><b>Section C:Clients Needs and Requirements</b></h5>
-
                 
-                <hr/>
-                 <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <div className='col-6'>
-                            <select className="text-start form-select" multiple id="EB_BusB_CoverType" name='EB_BusB_CoverType' values={FormData['EB_BusB_CoverType']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
-                                <option value="0" selected>Select the type of benefit cover.</option>
-                                <option value="1">Retirement Benefits</option>
-                                <option value="2">Type of fund/scheme</option>
-                                <option value="3">Truama Benefits</option>
-                                <option value="4">Funeral Benefits</option>
-                                <option value="5">Accidental Benefits</option>
-                                <option value="6">Group Life Cover</option>
-                                <option value="7">Lump Sum Disability Cover</option>
-                                <option value="8">Spouse Life Cover</option>
-                                <option value="9">Disability Income Cover</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className="col-6">
-                        <div className="row">
-                            <div className="row col-2 align-items-center">
-                                <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="1"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === "1" ? true : false } onChange={(e) => {onChange(e)}}  />
-                                </div>
-                                <div className="col-2">
-                                    <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
-                                        Yes
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div className="row col-2 align-items-center">
-                                <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="0"  id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === "0" ? true : false } onChange={(e) => {onChange(e)}}  />
-                                </div>
-                                <div className="col-2">
-                                    <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
-                                        No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div className="row col-2 align-items-center">
-                                <div className="col-2">
-                                    <input className="form-check-input" type="radio" value="2" id="EB_BusB_Cover" name='EB_BusB_Cover' checked={FormData['EB_BusB_Cover'] === "2" ? true : false } onChange={(e) => {onChange(e)}}  />
-                                </div>
-                                <div className="col-2">
-                                    <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
-                                        Undecided
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr/>
-                                 
-                 </div> 
-        {
-        backgroundInfoVisibility1 ? 
-        <>
-        <div id="background_info_instructions1" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Additional Comments .
-
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
-    <textarea maxLength={1000} className="form-control"  style={{height: '100px'}}
-        id="EB_BusB_CoverDetails" name='EB_BusB_CoverDetails' value={FormData['EB_BusB_CoverDetails']} onChange={(e) => {onChange(e)}}  
-        onFocus={backgroundInfo_onFocus1}
-        onBlur={backgroundInfo_onBlur1}
-        placeholder={`Additional Comments .
-        
-        `}  aria-describedby=""  ></textarea>
-
-    <hr/>
+                {
+                    CoverData.map((key,i) => {
+                        return (
+                            <>
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <button className="btn btn-md" type='button' onClick={(e)=>{AddNewCoverData(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Cover</button>
+                                        </div>
+                                        {
+                                            CoverData.length > 1 ?
+                                            <div className="col-6">
+                                                <button className="btn btn-md" type='button' onClick={(e)=>{RemoveCoverData(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Cover</button>
+                                            </div>
+                                            : <></>
+                                        }
+                                    </div>
+                                    
+                                    
+                                    <hr/>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-6">
+                                            <div className='col-6'>
+                                                <select className="text-start form-select" id="BusB_CoverType" name='BusB_CoverType' value={key.BusB_CoverType} onChange={(e) => {on_CoverData_Change(e, i)}} aria-label="Default select example">
+                                                    <option value="0" selected>Select the type of benefit cover.</option>
+                                                    <option value="1">Retirement Benefits</option>
+                                                    <option value="2">Type of fund/scheme</option>
+                                                    <option value="3">Truama Benefits</option>
+                                                    <option value="4">Funeral Benefits</option>
+                                                    <option value="5">Accidental Benefits</option>
+                                                    <option value="6">Group Life Cover</option>
+                                                    <option value="7">Lump Sum Disability Cover</option>
+                                                    <option value="8">Spouse Life Cover</option>
+                                                    <option value="9">Disability Income Cover</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="col-6">
+                                            <div className="row">
+                                                <div className="row col-2 align-items-center">
+                                                    <div className="col-2">
+                                                        <input className="form-check-input" type="radio" value="1"  id="BusB_Cover" name='BusB_Cover' checked={key.BusB_Cover == 1 ? true : false} onChange={(e) => {on_CoverData_Change(e, i)}}  />
+                                                    </div>
+                                                    <div className="col-2">
+                                                        <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
+                                                            Yes
+                                                        </label>
+                                                    </div>
+                                                </div>
+                    
+                                                <div className="row col-2 align-items-center">
+                                                    <div className="col-2">
+                                                        <input className="form-check-input" type="radio" value="0"  id="BusB_Cover" name='BusB_Cover' checked={key.BusB_Cover == 0 ? true : false} onChange={(e) => {on_CoverData_Change(e, i)}}  />
+                                                    </div>
+                                                    <div className="col-2">
+                                                        <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
+                                                            No
+                                                        </label>
+                                                    </div>
+                                                </div>
+                    
+                                                <div className="row col-2 align-items-center">
+                                                    <div className="col-2">
+                                                        <input className="form-check-input" type="radio" value="2" id="BusB_Cover" name='BusB_Cover' checked={key.BusB_Cover == 2 ? true : false} onChange={(e) => {on_CoverData_Change(e, i)}}  />
+                                                    </div>
+                                                    <div className="col-2">
+                                                        <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
+                                                            Undecided
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                                    
+                                    </div> 
+                                    {
+                                    backgroundInfoVisibility1 ? 
+                                    <>
+                                    <div id="background_info_instructions1" className="hidden_class">
+                                        {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                            <ul>
+                                                <li>
+                                                Additional Comments .
+                            
+                                                </li>
+                                            
+                                            </ul>
+                                            
+                                    </div>
+                                    </>: 
+                                    null
+                                }
+                                <Editor
+                                    onInit={(evt, editor) => CoverEditor.current = editor}
+                                    value={key.BusB_CoverDetails}
+                                    onEditorChange={(e)=>{ on_CoverData_Comments_Change("BusB_CoverDetails", i, CoverEditor.current.getContent()) }}
+                                    // onFocus={(e)=>{backgroundInfo_onFocus1()}}
+                                    // onBlur={(e)=>{backgroundInfo_onBlur1()}}
+                                    name="clientBackgroundInfo"
+                                    init={{
+                                        selector: "textarea",
+                                        height: 300,
+                                        menu: true,
+                                        plugins: [
+                                            'advlist autolink link lists image charmap print preview anchor',
+                                            'searchreplace visualblocks code fullscreen',
+                                            'insertdatetime media table paste code help wordcount',
+                                        ],
+                                        toolbar: 'styles | undo redo | formatselect | ' +
+                                        'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                        'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
+                                        'removeformat',
+                                        content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                        init_instance_callback : function(editor) {
+                                            var freeTiny = document.querySelector('.tox .tox-notification--in');
+                                        freeTiny.style.display = 'none';
+                                        }
+                                    }}
+                                />
+                            
+                                <hr/>
+                            </>
+                        )}
+                    )
+                }
     <h5 style={{color: '#00788A'}}><b>Section D:Investment Indicator</b></h5>
     <hr/>
 

@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.core.files.base import ContentFile
-from .serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
-from .models import AssuranceInvestment, AssuranceRisk, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
+from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, AssuranceInvestmentSerializers, AssuranceRiskSerializers, EB_CoverSerializer, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
+from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -650,7 +650,9 @@ def insertAssuranceInvestmentData(request):
             del data['status']
             del data['created_at']
             del data['updated_at']
-            return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
+            ProductsTaken = AI_ProductTaken.objects.filter(formId=request.data['formId']).values()
+
+            return Response({'message': "Form Already Exists","code": "200", "formData" : data, "ProductTaken" : ProductsTaken},200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
@@ -701,7 +703,9 @@ def insertAssuranceRiskData(request):
             del data['status']
             del data['created_at']
             del data['updated_at']
-            return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
+            ProductsTaken = AR_ProductTaken.objects.filter(formId=request.data['formId']).values()
+            
+            return Response({'message': "Form Already Exists","code": "200", "formData" : data, "ProductTaken" : ProductsTaken},200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
@@ -754,7 +758,9 @@ def insertEmployeeBenefitsData(request):
             del data['status']
             del data['created_at']
             del data['updated_at']
-            return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
+            CoverData = EB_Cover.objects.filter(formId=request.data['formId']).values()
+
+            return Response({'message': "Form Already Exists","code": "200", "formData" : data, "CoverData" : CoverData},200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
@@ -767,10 +773,13 @@ def viewEmployeeBenefitsData(request):
     
     formData = formSerializer.data
     
-    advisorName = EmployeeBenefits.objects.get(id=formData.data['advisorId'])
-    advisorNameSerializer = EmployeeBenefitsSerializers(advisorName, many=False)
+    # advisorName = EmployeeBenefits.objects.get(id=formData.data['advisorId'])
+    # advisorNameSerializer = EmployeeBenefitsSerializers(advisorName, many=False)
 
-    formData['advisorName'] = advisorNameSerializer.data['name']
+    # formData['advisorName'] = advisorNameSerializer.data['name']
+    CoverData = EB_Cover.objects.filter(formId=request.data['formId']).values()
+
+    return Response({'message': "Form Already Exists","code": "200", "formData" : formData, "CoverData" : CoverData},200)
     # if serializer.is_valid():
     return Response({"message": "Found","code":200,"Data": formData},200)
     # else:
@@ -1078,36 +1087,38 @@ def updateRiskFactorsData(request):
 
 @api_view(['POST'])
 def updateLinkedPartyData(request):
-    lp_data = request.data
-    for row in lp_data:
-        if RF_LinkedParty.objects.filter(formId=row['formId'], RF_LP_ID=row['RF_LP_ID']).exists():
-            form = RF_LinkedParty.objects.get(formId=row['formId'], RF_LP_ID=row['RF_LP_ID'])
-            serializer = RF_LinkedPartySerializers(instance=form, data=row, partial=True)
-            if serializer.is_valid():
-                serializer.save()
-        else:
-            lp_serializer = RF_LinkedPartySerializers(data=row, many=False)
-            if lp_serializer.is_valid():
-                lp_serializer.create(lp_serializer.validated_data)
-    return Response({"message": "Updated","code":200,"formData": lp_data},200)
+    lp_data = request.data['lp_data']
+    RF_LinkedParty.objects.filter(formId=request.data['formId']).delete()
+    lp_serializer = RF_LinkedPartySerializers(data=lp_data, many=True)
+    if lp_serializer.is_valid():
+        lp_serializer.create(lp_serializer.validated_data)
+    # for row in lp_data:
+    #     if RF_LinkedParty.objects.filter(formId=row['formId'], RF_LP_ID=row['RF_LP_ID']).exists():
+    #         form = RF_LinkedParty.objects.get(formId=row['formId'], RF_LP_ID=row['RF_LP_ID'])
+    #         serializer = RF_LinkedPartySerializers(instance=form, data=row, partial=True)
+    #         if serializer.is_valid():
+    #             serializer.save()
+    #     else:
+    return Response({"message": "Updated","code":200,"LP_Data": lp_data},200)
     # else:
     #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
 
 @api_view(['POST'])
 def update_rp_ProductTaken_Data(request):
-    product_taken_data = request.data
+    product_taken_data = request.data['rp_data']
     # print(product_taken_data)
-    for row in product_taken_data:
-        if RP_ProductTaken.objects.filter(formId=row['formId'], Policy_Number=row['Policy_Number']).exists():
-            # print(row)
-            form = RP_ProductTaken.objects.get(formId=row['formId'], Policy_Number=row['Policy_Number'])
-            serializer = RP_ProductTakenSerializer(instance=form, data=row, partial=True)
-            if serializer.is_valid():
-                serializer.save()
-        else:
-            rp_product_taken_serializer = RP_ProductTakenSerializer(data=row, many=False)
-            if rp_product_taken_serializer.is_valid():
-                rp_product_taken_serializer.create(rp_product_taken_serializer.validated_data)
+    RP_ProductTaken.objects.filter(formId=request.data['formId']).delete()
+    rp_product_taken_serializer = RP_ProductTakenSerializer(data=product_taken_data, many=True)
+    if rp_product_taken_serializer.is_valid():
+        rp_product_taken_serializer.create(rp_product_taken_serializer.validated_data)
+    # for row in product_taken_data:
+    #     if RP_ProductTaken.objects.filter(formId=row['formId'], Policy_Number=row['Policy_Number']).exists():
+    #         # print(row)
+    #         form = RP_ProductTaken.objects.get(formId=row['formId'], Policy_Number=row['Policy_Number'])
+    #         serializer = RP_ProductTakenSerializer(instance=form, data=row, partial=True)
+    #         if serializer.is_valid():
+    #             serializer.save()
+    #     else:
     return Response({"message": "Updated","code":200,"formData": product_taken_data},200)
     # else:
     #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
@@ -1116,20 +1127,81 @@ def update_rp_ProductTaken_Data(request):
 
 @api_view(['POST'])
 def update_ip_ProductTaken_Data(request):
-    product_taken_data = request.data
+    product_taken_data = request.data['ip_data']
     # print(product_taken_data)
-    for row in product_taken_data:
-        if IP_ProductTaken.objects.filter(formId=row['formId'], PolicyNumber=row['PolicyNumber']).exists():
-            # print(row)
-            form = IP_ProductTaken.objects.get(formId=row['formId'], PolicyNumber=row['PolicyNumber'])
-            serializer = IP_ProductTakenSerializer(instance=form, data=row, partial=True)
-            if serializer.is_valid():
-                serializer.save()
-        else:
-            ip_product_taken_serializer = IP_ProductTakenSerializer(data=row, many=False)
-            if ip_product_taken_serializer.is_valid():
-                ip_product_taken_serializer.create(ip_product_taken_serializer.validated_data)
+    IP_ProductTaken.objects.filter(formId=request.data['formId']).delete()
+    ip_product_taken_serializer = IP_ProductTakenSerializer(data=product_taken_data, many=True)
+    if ip_product_taken_serializer.is_valid():
+        ip_product_taken_serializer.create(ip_product_taken_serializer.validated_data)
+    # for row in product_taken_data:
+    #     if IP_ProductTaken.objects.filter(formId=row['formId'], PolicyNumber=row['PolicyNumber']).exists():
+    #         # print(row)
+    #         form = IP_ProductTaken.objects.get(formId=row['formId'], PolicyNumber=row['PolicyNumber'])
+    #         serializer = IP_ProductTakenSerializer(instance=form, data=row, partial=True)
+    #         if serializer.is_valid():
+    #             serializer.save()
+    #     else:
     return Response({"message": "Updated","code":200,"formData": product_taken_data},200)
+    # else:
+    #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+@api_view(['POST'])
+def update_ar_ProductTaken_Data(request):
+    product_taken_data = request.data['ar_data']
+    # print(product_taken_data)
+    AR_ProductTaken.objects.filter(formId=request.data['formId']).delete()
+    AR_product_taken_serializer = AR_ProductTakenSerializer(data=product_taken_data, many=True)
+    if AR_product_taken_serializer.is_valid():
+        AR_product_taken_serializer.create(AR_product_taken_serializer.validated_data)
+    # for row in product_taken_data:
+    #     if AR_ProductTaken.objects.filter(formId=row['formId'], PolicyNumber=row['PolicyNumber']).exists():
+    #         # print(row)
+    #         form = AR_ProductTaken.objects.get(formId=row['formId'], PolicyNumber=row['PolicyNumber'])
+    #         serializer = AR_ProductTakenSerializer(instance=form, data=row, partial=True)
+    #         if serializer.is_valid():
+    #             serializer.save()
+    #     else:
+    return Response({"message": "Updated","code":200,"formData": product_taken_data},200)
+    # else:
+    #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+@api_view(['POST'])
+def update_ai_ProductTaken_Data(request):
+    product_taken_data = request.data['ai_data']
+    # print(product_taken_data)
+    AI_ProductTaken.objects.filter(formId=request.data['formId']).delete()
+    AI_product_taken_serializer = AI_ProductTakenSerializer(data=product_taken_data , many=True)
+    if AI_product_taken_serializer.is_valid():
+        AI_product_taken_serializer.create(AI_product_taken_serializer.validated_data)
+    # for row in product_taken_data:
+    #     if AI_ProductTaken.objects.filter(formId=row['formId'], Pr_PolicyNumber=row['Pr_PolicyNumber']).exists():
+    #         # print(row)
+    #         form = AI_ProductTaken.objects.get(formId=row['formId'], Pr_PolicyNumber=row['Pr_PolicyNumber'])
+    #         serializer = AI_ProductTakenSerializer(instance=form, data=row, partial=True)
+    #         if serializer.is_valid():
+    #             serializer.save()
+    #     else:
+    return Response({"message": "Updated","code":200,"formData": product_taken_data},200)
+    # else:
+    #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+@api_view(['POST'])
+def update_eb_cover_Data(request):
+    eb_cover_data = request.data['eb_data']
+    # print(eb_cover_data)
+    EB_Cover.objects.filter(formId=request.data['formId']).delete()
+    eb_cover_serializer = EB_CoverSerializer(data=eb_cover_data, many=True)
+    if eb_cover_serializer.is_valid():
+        eb_cover_serializer.create(eb_cover_serializer.validated_data)
+    # for row in eb_cover_data:
+    #     if EB_Cover.objects.filter(formId=row['formId'], BusB_CoverType=row['BusB_CoverType']).exists():
+    #         # print(row)
+    #         form = EB_Cover.objects.get(formId=row['formId'], BusB_CoverType=row['BusB_CoverType'])
+    #         serializer = EB_CoverSerializer(instance=form, data=row, partial=True)
+    #         if serializer.is_valid():
+    #             serializer.save()
+    #     else:
+    return Response({"message": "Updated","code":200,"formData": eb_cover_data},200)
     # else:
     #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
 

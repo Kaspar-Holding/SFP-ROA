@@ -368,7 +368,10 @@ const Risk = ({user}) =>
             console.log(error)
         }
         
-        const ProductTaken_Body = JSON.stringify(ProductTaken)
+        const ProductTaken_Body = JSON.stringify({
+          "formId" : state['formId'],
+          "rp_data" : ProductTaken
+        })
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_rp_ProductTaken_Data/`, ProductTaken_Body ,config) 
         } catch (error) {

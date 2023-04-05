@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import './Styles/CustomButton.css'
 import './Styles/CustomNotification.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 const AssuranceRisk = ({user}) =>
 {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
@@ -468,48 +470,92 @@ const AssuranceRisk = ({user}) =>
 
         AR_AltS_1 : "",   
         AR_AltS_2 : "",   
-        AR_AltS_3 : "",   
-
-        AR_ProductProvider : "",   
-        AR_PolicyNumber : "",   
-        AR_ProductName : "",   
-        AR_ProductPremium : "",   
-        AR_ProductPremiumFrequency : 0,   
-        AR_ProductPattern : "",   
-        AR_ProductEscalation : "",   
-        AR_ProductContractingParty : "",   
-        AR_ProductLivesAssured : "",   
-        AR_ProductPremiumPayer : "",   
-        AR_Product1stYearCommission : "",   
-        AR_Product2ndYearCommission : "",   
-        AR_ProductOngoingFees : "",   
-        AR_ProductOngoingFeesFrequency : "",   
-            
-        AR_BenDesc_1 : "",
-        AR_BenDesc_CoverAmount1 : "",
-        AR_BenDesc_2 : "",
-        AR_BenDesc_CoverAmount2 : "",
-        AR_BenDesc_3 : "",
-        AR_BenDesc_CoverAmount3 : "",
-        // AR_BenDesc_4 : "",
-        // AR_BenDesc_CoverAmount4 : "",
-        // AR_BenDesc_5 : "",
-        // AR_BenDesc_CoverAmount5 : "",
-        // AR_BenDesc_6 : "",
-        // AR_BenDesc_CoverAmount6 : "",
-        // AR_BenDesc_7 : "",
-        // AR_BenDesc_CoverAmount7 : "",
-            
-        AR_ProductReasons : "",
-        AR_ProductMaterialAspects : "",
-        AR_ProductDetails : "",
-        AR_ProductBriefSummary : "",
-        AR_Cessionaries : "",
-        AR_InformationExplained : "",
-
+        AR_AltS_3 : ""
 
       })
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
+      const [ProductTaken, setProductTaken] = useState([{
+        advisorId : user['id'],  
+        formId : state['formId'],  
+        
+        ProductTaken : 0, 
+        ProductProvider : "",   
+        PolicyNumber : "",   
+        ProductName : "",   
+        ProductPremium : "",   
+        ProductPremiumFrequency : 0,   
+        ProductPattern : "",   
+        ProductEscalation : "",   
+        ProductContractingParty : "",   
+        ProductLivesAssured : "",   
+        ProductPremiumPayer : "",   
+        Product1stYearCommission : "",   
+        Product2ndYearCommission : "",   
+        ProductOngoingFees : "",   
+        ProductOngoingFeesFrequency : "",   
+            
+        BenDesc_1 : "",
+        BenDesc_CoverAmount1 : "",
+        BenDesc_2 : "",
+        BenDesc_CoverAmount2 : "",
+        BenDesc_3 : "",
+        BenDesc_CoverAmount3 : "",
+            
+        ProductReasons : "",
+        ProductMaterialAspects : "",
+        ProductDetails : "",
+        ProductBriefSummary : "",
+        Cessionaries : "",
+        InformationExplained : "",
+      }])
+      const AddNewProductTaken = (e) => {
+        const current = [...ProductTaken]
+        current.push({
+            advisorId : user['id'],  
+            formId : state['formId'],  
+            
+            ProductTaken : 0, 
+            ProductProvider : "",   
+            PolicyNumber : "",   
+            ProductName : "",   
+            ProductPremium : "",   
+            ProductPremiumFrequency : 0,   
+            ProductPattern : "",   
+            ProductEscalation : "",   
+            ProductContractingParty : "",   
+            ProductLivesAssured : "",   
+            ProductPremiumPayer : "",   
+            Product1stYearCommission : "",   
+            Product2ndYearCommission : "",   
+            ProductOngoingFees : "",   
+            ProductOngoingFeesFrequency : "",   
+                
+            BenDesc_1 : "",
+            BenDesc_CoverAmount1 : "",
+            BenDesc_2 : "",
+            BenDesc_CoverAmount2 : "",
+            BenDesc_3 : "",
+            BenDesc_CoverAmount3 : "",
+                
+            ProductReasons : "",
+            ProductMaterialAspects : "",
+            ProductDetails : "",
+            ProductBriefSummary : "",
+            Cessionaries : "",
+            InformationExplained : ""
+        })
+        setProductTaken(current)
+    }
+    const RemoveNewProductTaken = (e) => {
+        const current = [...ProductTaken]
+        current.pop()
+        setProductTaken(current)
+    }
+    const on_ProductTaken_Change = (e, i) => {
+        let newProductTaken = [...ProductTaken]
+        newProductTaken[i][e.target.name] = e.target.value
+        setProductTaken(newProductTaken)
+    }
       const createARForm = async(data) => {
         const config = {
             headers: {
@@ -526,6 +572,43 @@ const AssuranceRisk = ({user}) =>
                 setFormData(response.data['formData'])
             } else {
                 setFormData(response.data['formData'])
+            }
+            if (response.data['ProductTaken'].length > 0) {
+              setProductTaken(response.data['ProductTaken'])
+            } else {
+              setProductTaken([{
+                advisorId : user['id'],  
+                formId : state['formId'],  
+                ProductTaken : 0, 
+                ProductProvider : "",   
+                PolicyNumber : "",   
+                ProductName : "",   
+                ProductPremium : "",   
+                ProductPremiumFrequency : 0,   
+                ProductPattern : "",   
+                ProductEscalation : "",   
+                ProductContractingParty : "",   
+                ProductLivesAssured : "",   
+                ProductPremiumPayer : "",   
+                Product1stYearCommission : "",   
+                Product2ndYearCommission : "",   
+                ProductOngoingFees : "",   
+                ProductOngoingFeesFrequency : "",   
+                    
+                BenDesc_1 : "",
+                BenDesc_CoverAmount1 : "",
+                BenDesc_2 : "",
+                BenDesc_CoverAmount2 : "",
+                BenDesc_3 : "",
+                BenDesc_CoverAmount3 : "",
+                    
+                ProductReasons : "",
+                ProductMaterialAspects : "",
+                ProductDetails : "",
+                ProductBriefSummary : "",
+                Cessionaries : "",
+                InformationExplained : "",
+              }])
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
@@ -567,6 +650,17 @@ const AssuranceRisk = ({user}) =>
                 message: error.response.statusText
               })
               setUpdateErrorVisibility("block")
+          }
+          
+          
+          const ProductTaken_Body = JSON.stringify({
+            "formId" : state['formId'],
+            "ar_data" : ProductTaken
+          })
+          try {
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_ar_ProductTaken_Data/`, ProductTaken_Body ,config) 
+          } catch (error) {
+              
           }
       }
       const [Advisor, setAdvisor] = useState("")
@@ -2127,417 +2221,464 @@ Record the client's instructions, deviations and implications thereof.
         placeholder={
 `3. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea>
 
-<br/>
 <h5 className="section_class"><b>SECTION D:</b></h5>
     <div className="h6 fw-bold" style={{color: '#00788A'}}>Product Taken (Each additional need must be accompanied by its own product annexure.)</div>
 
 <p>Products accepted by you to meet the business’s requirements.</p>
-
-<hr/>
-    <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-        <div className="row">
-
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label"><b>Product Provider</b></label>
-                    </div>
-                    <div className="col-6">
-                        <input spellCheck="true"  id="AR_ProductProvider" name='AR_ProductProvider' value={FormData['AR_ProductProvider']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label htmlFor="id_number" className="col-form-label"><b>Policy number</b></label>
-                    </div>
-                    <div className="col-6">
-                        <input spellCheck="true"  id="AR_PolicyNumber" name='AR_PolicyNumber' onChange={(e) => {onChange(e)}} value={FormData['AR_PolicyNumber']} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-            <hr/>
-
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label"><b>Product Name</b></label>
-                    </div>
-                    <div className="col-6">
-                        <input spellCheck="true"  id="AR_ProductName" name='AR_ProductName' value={FormData['AR_ProductName']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label htmlFor="id_number" className="col-form-label"><b>Premium</b></label>
-                    </div>
-                    <div className="col-6">
-                      <div className='row'>
-                          <div className='col-6'>
-                              <div className="form-group">
-                                  <input type="text" className="form-control" id="AR_ProductPremium" name='AR_ProductPremium' onChange={(e) => {onChange(e)}} value={FormData['AR_ProductPremium']} aria-describedby="emailHelp" placeholder="" />
-                              </div>
-                          </div>
-                          <div className='col-6'>
-                              <select className="text-start form-select"  id="AR_ProductPremiumFrequency" name='AR_ProductPremiumFrequency' onChange={(e) => {onChange(e)}} value={FormData['AR_ProductPremiumFrequency']} aria-label="Default select example">
-                                  <option value="0" selected>Frequeny</option>
-                                  <option value="1">Monthly</option>
-                                  <option value="2">Quarterly</option>
-                                  <option value="3">Annually</option>
-                                  <option value="4">Once Off</option>
-                              </select>
-                          </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <hr/>
-
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label"><b>Premium Pattern</b></label>
-                    </div>
-                    <div className="col-6">
-                        <input spellCheck="true"  id="AR_ProductPattern" name='AR_ProductPattern' value={FormData['AR_ProductPattern']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label htmlFor="id_number" className="col-form-label"><b>Escalation in cover / premium</b></label>
-                    </div>
-                    <div className="col-6">
-                        <input spellCheck="true"   id="AR_ProductEscalation" name='AR_ProductEscalation' onChange={(e)=>{onChange(e)}} value={FormData['AR_ProductEscalation']} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-            <hr/>
-
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label"><b>Contracting party</b></label>
-                    </div>
-                    <div className="col-6">
-                        <input spellCheck="true"  id="AR_ProductContractingParty" name='AR_ProductContractingParty' value={FormData['AR_ProductContractingParty']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label htmlFor="id_number" className="col-form-label"><b>Life / Lives covered</b></label>
-                    </div>
-                    <div className="col-6">
-                        <input spellCheck="true" id="AR_ProductLivesAssured" name='AR_ProductLivesAssured' value={FormData['AR_ProductLivesAssured']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-            <hr/>
-
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label"><b>Premium Payer</b></label>
-                    </div>
-                    <div className="col-6">
-                        <input spellCheck="true"  id="AR_ProductPremiumPayer" name='AR_ProductPremiumPayer' value={FormData['AR_ProductPremiumPayer']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-            <hr/>
-
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label"><b>1st year commission</b></label>
-                    </div>
-                    <div className="col-6">
-                      <div className="input-group">
-                        <span className="input-group-text">R</span>
-                        <input type="number" className="form-control" placeholder='0.00'  id="AR_Product1stYearCommission" name='AR_Product1stYearCommission' onChange={(e) => {onChange(e)}} value={FormData['AR_Product1stYearCommission']} aria-label="" />
-                      </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label htmlFor="id_number" className="col-form-label"><b>2nd year commission</b></label>
-                    </div>
-                    <div className="col-6">
-                        <div className="input-group">
-                          <span className="input-group-text">R</span>
-                          <input type="number" className="form-control" placeholder='0.00'  id="AR_Product2ndYearCommission" name='AR_Product2ndYearCommission' onChange={(e) => {onChange(e)}} value={FormData['AR_Product2ndYearCommission']} aria-label="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr/>
-
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label"><b>Benefit description: life cover, disability etc</b></label>
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <label htmlFor="id_number" className="col-form-label"><b>Cover amount</b></label>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-
-
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <input spellCheck="true"  id="AR_BenDesc_1" name='AR_BenDesc_1' value={FormData['AR_BenDesc_1']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-9">
-                        <div className="input-group">
-                          <span className="input-group-text">R</span>
-                          <input type="number" className="form-control" placeholder='0.00'  id="AR_BenDesc_CoverAmount1" name='AR_BenDesc_CoverAmount1' onChange={(e) => {onChange(e)}} value={FormData['AR_BenDesc_CoverAmount1']} aria-label="" />
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <input spellCheck="true"  id="AR_BenDesc_2" name='AR_BenDesc_2' value={FormData['AR_BenDesc_2']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-9">
-                        <div className="input-group">
-                          <span className="input-group-text">R</span>
-                          <input type="number" className="form-control" placeholder='0.00'  id="AR_BenDesc_CoverAmount2" name='AR_BenDesc_CoverAmount2' onChange={(e) => {onChange(e)}} value={FormData['AR_BenDesc_CoverAmount2']} aria-label="" />
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-6">
-                        <input spellCheck="true"  id="AR_BenDesc_3" name='AR_BenDesc_3' value={FormData['AR_BenDesc_3']} onChange={(e) => {onChange(e)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-9">
-                        <div className="input-group">
-                          <span className="input-group-text">R</span>
-                          <input type="number" className="form-control" placeholder='0.00'  id="AR_BenDesc_CoverAmount3" name='AR_BenDesc_CoverAmount3' onChange={(e) => {onChange(e)}} value={FormData['AR_BenDesc_CoverAmount3']} aria-label="" />
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <hr/>
-        </div> 
-    </div>  
-
-    <p>The following are reasons why the abovementioned product best suits the business’s needs and objectives:</p>
-
+<br/>
     {
-        backgroundInfoVisibility8 ? 
-        <>
-        <div id="background_info_instructions8" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Motivate why the chosen product was recommended to best suit your client's needs.<br />
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
+      ProductTaken.map((key,i) => {
+          // console.log(i+1)
+          return (
+              <>
+                  <div className="row">
+                    <div className="col-6">
+                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+                    </div>
+                    {
+                        ProductTaken.length > 1 ?
+                        <div className="col-6">
+                            <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                        </div>
+                        : <></>
+                    }
+                  </div>
+
+                  <hr/>
+                      <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+                          
+                          <div className="row">
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                <div className="row g-3 align-items-center">
+                                  <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                    <b>Product:</b>
+                                  </div>
+                                  <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className=''>
+                                      <select className="text-start form-select" name='ProductTaken' value={parseInt(key.ProductTaken)} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                                          <option value="0" selected>Choose Product</option>
+                                          <option value="1">Endowment</option>
+                                          <option value="2">RA</option>
+                                          <option value="3">TFSA</option>
+                                          <option value="4">Unit Trust</option>
+                                          <option value="5">Life Annuity</option>
+                                          <option value="6">Living Annuity</option>
+                                          <option value="7">Other</option>
+                                      </select>
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                              </div>
+                              <hr/>
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label"><b>Product Provider</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input spellCheck="true"  id="ProductProvider" name='ProductProvider' value={key.ProductProvider} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label htmlFor="id_number" className="col-form-label"><b>Policy number</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input spellCheck="true"  id="PolicyNumber" required name='PolicyNumber' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.PolicyNumber} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+                              <hr/>
+
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label"><b>Product Name</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input spellCheck="true"  id="ProductName" name='ProductName' value={key.ProductName} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label htmlFor="id_number" className="col-form-label"><b>Premium</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                        <div className='row'>
+                                            <div className='col-6'>
+                                                <div className="form-group">
+                                                    <input type="text" className="form-control" id="ProductPremium" name='ProductPremium' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.ProductPremium} aria-describedby="emailHelp" placeholder="" />
+                                                </div>
+                                            </div>
+                                            <div className='col-6'>
+                                                <select className="text-start form-select"  id="ProductPremiumFrequency" name='ProductPremiumFrequency' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.ProductPremiumFrequency} aria-label="Default select example">
+                                                    <option value="0" selected>Frequeny</option>
+                                                    <option value="1">Monthly</option>
+                                                    <option value="2">Quarterly</option>
+                                                    <option value="3">Annually</option>
+                                                    <option value="4">Once Off</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <hr/>
+
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label"><b>Premium Pattern</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input spellCheck="true"  id="ProductPattern" name='ProductPattern' value={key.ProductPattern} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label htmlFor="id_number" className="col-form-label"><b>Escalation in cover / premium</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input spellCheck="true"   id="ProductEscalation" name='ProductEscalation' onChange={(e)=>{on_ProductTaken_Change(e, i)}} value={key.ProductEscalation} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+                              <hr/>
+
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label"><b>Contracting party</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input spellCheck="true"  id="ProductContractingParty" name='ProductContractingParty' value={key.ProductContractingParty} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label htmlFor="id_number" className="col-form-label"><b>Life / Lives covered</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input spellCheck="true" id="ProductLivesAssured" name='ProductLivesAssured' value={key.ProductLivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+                              <hr/>
+
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label"><b>Premium Payer</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input spellCheck="true"  id="ProductPremiumPayer" name='ProductPremiumPayer' value={key.ProductPremiumPayer} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+                              <hr/>
+
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label"><b>1st year commission</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                        <div className="input-group">
+                                          <span className="input-group-text">R</span>
+                                          <input type="number" className="form-control" placeholder='0.00'  id="Product1stYearCommission" name='Product1stYearCommission' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.Product1stYearCommission} aria-label="" />
+                                        </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label htmlFor="id_number" className="col-form-label"><b>2nd year commission</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                          <div className="input-group">
+                                            <span className="input-group-text">R</span>
+                                            <input type="number" className="form-control" placeholder='0.00'  id="Product2ndYearCommission" name='Product2ndYearCommission' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.Product2ndYearCommission} aria-label="" />
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <hr/>
+
+                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label"><b>Benefit description: life cover, disability etc</b></label>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-6">
+                                          <label htmlFor="id_number" className="col-form-label"><b>Cover amount</b></label>
+                                      </div> 
+                                  </div>
+                              </div>
+                              <hr/>
+
+
+                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-6">
+                                          <input spellCheck="true"  id="BenDesc_1" name='BenDesc_1' value={key.BenDesc_1} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-9">
+                                          <div className="input-group">
+                                            <span className="input-group-text">R</span>
+                                            <input type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount1" name='BenDesc_CoverAmount1' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount1} aria-label="" />
+                                          </div>
+                                      </div> 
+                                  </div>
+                              </div>
+                              <hr/>
+
+                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-6">
+                                          <input spellCheck="true"  id="BenDesc_2" name='BenDesc_2' value={key.BenDesc_2} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-9">
+                                          <div className="input-group">
+                                            <span className="input-group-text">R</span>
+                                            <input type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount2" name='BenDesc_CoverAmount2' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount2} aria-label="" />
+                                          </div>
+                                      </div> 
+                                  </div>
+                              </div>
+                              <hr/>
+
+                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-6">
+                                          <input spellCheck="true"  id="BenDesc_3" name='BenDesc_3' value={key.BenDesc_3} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-9">
+                                          <div className="input-group">
+                                            <span className="input-group-text">R</span>
+                                            <input type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount3" name='BenDesc_CoverAmount3' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount3} aria-label="" />
+                                          </div>
+                                      </div> 
+                                  </div>
+                              </div>
+                              <hr/>
+                          </div> 
+                      </div>  
+
+                      <p>The following are reasons why the abovementioned product best suits the business’s needs and objectives:</p>
+
+                      {
+                          backgroundInfoVisibility8 ? 
+                          <>
+                          <div id="background_info_instructions8" className="hidden_class">
+                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                  <ul>
+                                      <li>
+                                      Motivate why the chosen product was recommended to best suit your client's needs.<br />
+                                      </li>
+                                    
+                                  </ul>
+                                  
+                          </div>
+                          </>: 
+                          null
+                      }
+                      <textarea maxLength={500} className="form-control"  style={{height: '60px'}} 
+                          id="ProductReasons" name='ProductReasons' value={key.ProductReasons} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                          onFocus={backgroundInfo_onFocus8}
+                          onBlur={backgroundInfo_onBlur8}
+                          placeholder={
+                  `Motivate why the chosen product was recommended to best suit your client's needs. `}  aria-describedby=""  ></textarea>
+
+                  <hr/>
+                  <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
+
+                  {
+                          backgroundInfoVisibility9 ? 
+                          <>
+                          <div id="background_info_instructions9" className="hidden_class">
+                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                  <ul>
+                                      <li>
+                                      Explain any deviations from your recommendation and the implications thereof.
+
+                                      </li>
+                                    
+                                  </ul>
+                                  
+                          </div>
+                          </>: 
+                          null
+                      }
+                      <textarea maxLength={500} className="form-control"  style={{height: '60px'}} 
+                          id="ProductMaterialAspects" name='ProductMaterialAspects' value={key.ProductMaterialAspects} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                          onFocus={backgroundInfo_onFocus9}
+                          onBlur={backgroundInfo_onBlur9}
+                          placeholder={
+                  `Explain any deviations from your recommendation and the implications thereof.`}  aria-describedby=""  ></textarea>
+                  <hr/>
+
+                  {
+                          backgroundInfoVisibility10 ? 
+                          <>
+                          <div id="background_info_instructions9" className="hidden_class">
+                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                  <ul>
+                                      <li>
+                                      Disclose and explain the following:<br/>
+                                      The tax implications for the company, e.g., income tax<br/>
+                                      The tax implications for the lives covered, e.g., estate duty, income tax, CGT<br/>
+                                      Executor’s fees?
+
+
+                                      </li>
+                                    
+                                  </ul>
+                                  
+                          </div>
+                          </>: 
+                          null
+                      }
+                      <textarea maxLength={500} className="form-control"  style={{height: '140px'}} 
+                          id="ProductDetails" name='ProductDetails' value={key.ProductDetails} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                          onFocus={backgroundInfo_onFocus10}
+                          onBlur={backgroundInfo_onBlur10}
+                          placeholder={
+                  `Disclose and explain the following:
+                  The tax implications for the company, e.g., income tax
+                  The tax implications for the lives covered, e.g., estate duty, income tax, CGT
+                  Executor’s fees?`}  aria-describedby=""  ></textarea>
+                  <hr/>
+
+                  {
+                          backgroundInfoVisibility11 ? 
+                          <>
+                          <div id="background_info_instructions11" className="hidden_class">
+                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                  <ul>
+                                      <li>
+                                      Provide a brief summary of the contents of the quote with regard to the following:<br/>
+                                      Benefit terms (cease ages, cover periods etc.)<br/>
+                                      Details of premium and cover pattern structure, frequency etc.
+
+
+                                      </li>
+                                    
+                                  </ul>
+                                  
+                          </div>
+                          </>: 
+                          null
+                      }
+                      <textarea maxLength={500} className="form-control"  style={{height: '120px'}} 
+                          id="ProductBriefSummary" name='ProductBriefSummary' value={key.ProductBriefSummary} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                          onFocus={backgroundInfo_onFocus11}
+                          onBlur={backgroundInfo_onBlur11}
+                          placeholder={
+                  `Provide a brief summary of the contents of the quote with regard to the following:
+                  Benefit terms (cease ages, cover periods etc.)
+                  Details of premium and cover pattern structure, frequency etc.`}  aria-describedby=""  ></textarea>
+                  <hr/>
+
+                  {
+                          backgroundInfoVisibility12 ? 
+                          <>
+                          <div id="background_info_instructions12" className="hidden_class">
+                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                  <ul>
+                                      <li>
+                                      Record discussion with regard to cessionaries, if applicable.
+
+                                      </li>
+                                    
+                                  </ul>
+                                  
+                          </div>
+                          </>: 
+                          null
+                      }
+                      <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
+                          id="Cessionaries" name='Cessionaries' value={key.Cessionaries} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                          onFocus={backgroundInfo_onFocus12}
+                          onBlur={backgroundInfo_onBlur12}
+                          placeholder={
+                  `Record discussion with regard to cessionaries, if applicable.`}  aria-describedby=""  ></textarea>
+                  <hr/>
+
+                  {
+                          backgroundInfoVisibility13 ? 
+                          <>
+                          <div id="background_info_instructions13" className="hidden_class">
+                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                  <ul>
+                                      <li>Discuss the following information which has been explained to client:<br/>
+                                          General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.)<br/>
+                                          Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)<br/>
+                                          Waiting periods<br/>
+                                          Cooling off period<br/>
+                                          Other relevant information<br/>
+                                          Record discussion with regard to cessionaries, if applicable.<br/>
+
+                                      </li>
+                                    
+                                  </ul>
+                                  
+                          </div>
+                          </>: 
+                          null
+                      }
+                      <textarea maxLength={500} className="form-control"  style={{height: '200px'}} 
+                          id="InformationExplained" name='InformationExplained' value={key.InformationExplained} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                          onFocus={backgroundInfo_onFocus13}
+                          onBlur={backgroundInfo_onBlur13}
+                          placeholder={
+                  `Discuss the following information which has been explained to client:
+                  General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.)
+                  Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
+                  Waiting periods
+                  Cooling off period
+                  Other relevant information.`}  aria-describedby=""  ></textarea>
+              </>
+          )
+        }
+      )
     }
-    <textarea maxLength={500} className="form-control"  style={{height: '60px'}} 
-        id="AR_ProductReasons" name='AR_ProductReasons' value={FormData['AR_ProductReasons']} onChange={(e) => {onChange(e)}} 
-        onFocus={backgroundInfo_onFocus8}
-        onBlur={backgroundInfo_onBlur8}
-        placeholder={
-`Motivate why the chosen product was recommended to best suit your client's needs. `}  aria-describedby=""  ></textarea>
-
-<hr/>
-<p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
-
-{
-        backgroundInfoVisibility9 ? 
-        <>
-        <div id="background_info_instructions9" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Explain any deviations from your recommendation and the implications thereof.
-
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
-    <textarea maxLength={500} className="form-control"  style={{height: '60px'}} 
-        id="AR_ProductMaterialAspects" name='AR_ProductMaterialAspects' value={FormData['AR_ProductMaterialAspects']} onChange={(e) => {onChange(e)}} 
-        onFocus={backgroundInfo_onFocus9}
-        onBlur={backgroundInfo_onBlur9}
-        placeholder={
-`Explain any deviations from your recommendation and the implications thereof.`}  aria-describedby=""  ></textarea>
-<hr/>
-
-{
-        backgroundInfoVisibility10 ? 
-        <>
-        <div id="background_info_instructions9" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Disclose and explain the following:<br/>
-                    The tax implications for the company, e.g., income tax<br/>
-                    The tax implications for the lives covered, e.g., estate duty, income tax, CGT<br/>
-                    Executor’s fees?
-
-
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
-    <textarea maxLength={500} className="form-control"  style={{height: '140px'}} 
-        id="AR_ProductDetails" name='AR_ProductDetails' value={FormData['AR_ProductDetails']} onChange={(e) => {onChange(e)}} 
-        onFocus={backgroundInfo_onFocus10}
-        onBlur={backgroundInfo_onBlur10}
-        placeholder={
-`Disclose and explain the following:
-The tax implications for the company, e.g., income tax
-The tax implications for the lives covered, e.g., estate duty, income tax, CGT
-Executor’s fees?`}  aria-describedby=""  ></textarea>
-<hr/>
-
-{
-        backgroundInfoVisibility11 ? 
-        <>
-        <div id="background_info_instructions11" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Provide a brief summary of the contents of the quote with regard to the following:<br/>
-                    Benefit terms (cease ages, cover periods etc.)<br/>
-                    Details of premium and cover pattern structure, frequency etc.
-
-
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
-    <textarea maxLength={500} className="form-control"  style={{height: '120px'}} 
-        id="AR_ProductBriefSummary" name='AR_ProductBriefSummary' value={FormData['AR_ProductBriefSummary']} onChange={(e) => {onChange(e)}} 
-        onFocus={backgroundInfo_onFocus11}
-        onBlur={backgroundInfo_onBlur11}
-        placeholder={
-`Provide a brief summary of the contents of the quote with regard to the following:
-Benefit terms (cease ages, cover periods etc.)
-Details of premium and cover pattern structure, frequency etc.`}  aria-describedby=""  ></textarea>
-<hr/>
-
-{
-        backgroundInfoVisibility12 ? 
-        <>
-        <div id="background_info_instructions12" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Record discussion with regard to cessionaries, if applicable.
-
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
-    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
-        id="AR_Cessionaries" name='AR_Cessionaries' value={FormData['AR_Cessionaries']} onChange={(e) => {onChange(e)}} 
-        onFocus={backgroundInfo_onFocus12}
-        onBlur={backgroundInfo_onBlur12}
-        placeholder={
-`Record discussion with regard to cessionaries, if applicable.`}  aria-describedby=""  ></textarea>
-<hr/>
-
-{
-        backgroundInfoVisibility13 ? 
-        <>
-        <div id="background_info_instructions13" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>Discuss the following information which has been explained to client:<br/>
-                        General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.)<br/>
-                        Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)<br/>
-                        Waiting periods<br/>
-                        Cooling off period<br/>
-                        Other relevant information<br/>
-                        Record discussion with regard to cessionaries, if applicable.<br/>
-
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
-    <textarea maxLength={500} className="form-control"  style={{height: '200px'}} 
-        id="AR_InformationExplained" name='AR_InformationExplained' value={FormData['AR_InformationExplained']} onChange={(e) => {onChange(e)}} 
-        onFocus={backgroundInfo_onFocus13}
-        onBlur={backgroundInfo_onBlur13}
-        placeholder={
-`Discuss the following information which has been explained to client:
-General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.)
-Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
-Waiting periods
-Cooling off period
-Other relevant information.`}  aria-describedby=""  ></textarea>
 <hr/>
                             <div className="container1">
                                 <div className="icon1 update">
