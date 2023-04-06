@@ -8,6 +8,10 @@ This project is built on the following Stack
 
 ## Updates
 
+### 6 April 2023:
+- Working on PDF Tool for duplication changes 
+- Working on TinyMCE in remaining components
+
 ### 5 April 2023:
 - Duplication Task is now completed
 - Working on TinyMCE in remaining components

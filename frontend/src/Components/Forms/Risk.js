@@ -450,7 +450,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_LumpSumExistingShortfallSurplus' value={FormData['RP_DC_LumpSumExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DC_LumpSumExistingShortfallSurplus' value={FormData['RP_DC_LumpSumTotalNeed'] - FormData['RP_DC_LumpSumExistingProvisions']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -482,7 +482,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_IncomeExistingShortfallSurplus' value={FormData['RP_DC_IncomeExistingShortfallSurplus']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DC_IncomeExistingShortfallSurplus' value={FormData['RP_DC_IncomeTotalNeed'] - FormData['RP_DC_IncomeExistingProvisions']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -514,7 +514,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_FB_ExistingShortfallSurplus' value={FormData['RP_DC_FB_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DC_FB_ExistingShortfallSurplus' value={FormData['RP_DC_FB_TotalNeed'] - FormData['RP_DC_FB_ExistingProvisions']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -550,7 +550,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DC_OtherExistingShortfallSurplus' value={FormData['RP_DC_OtherExistingShortfallSurplus']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DC_OtherExistingShortfallSurplus' value={FormData['RP_DC_OtherTotalNeed'] - FormData['RP_DC_OtherExistingProvisions']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -1132,29 +1132,31 @@ Record the client's instructions, deviations and implications thereof.
         onBlur={backgroundInfo_onBlur6}
         placeholder={`3. Identify the type of product or product provider which was considered but not selected and motivate.
         `}  aria-describedby=""  ></textarea>
+    <hr/>
+    <h5 className="text-start " ><b>SECTION E:</b></h5> 
     {
       ProductTaken.map((key,i) => {
         // console.log(i+1)
           return (
             <>
 
-            <h5 className="text-start " ><b>SECTION E:</b></h5> 
                   <h6 className="text-start " style={{ color: "#14848A"}} ><b>Product Taken {i+1}</b></h6>
 
                   <p className="text-start ">Products accepted by you to meet your requirements. </p> 
-
+                  <hr/>
                   <div className="row">
-                <div className="col-6">
-                    <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
-                </div>
-                {
-                    ProductTaken.length > 1 ?
                     <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
                     </div>
-                    : <></>
-                }
-              </div>
+                    {
+                        ProductTaken.length > 1 ?
+                        <div className="col-6">
+                            <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                        </div>
+                        : <></>
+                      }
+                  </div>
+                  <hr/>
             <div className="container mt-3">          
             <table className="table">
               
@@ -1957,6 +1959,7 @@ Record the client's instructions, deviations and implications thereof.
                   
                   
                   `}  aria-describedby=""  ></textarea>
+                  <hr/>
               
             </>
           ) 

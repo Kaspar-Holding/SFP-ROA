@@ -267,8 +267,7 @@ const Employee = ({user}) =>
             formId : state['formId'],  
             
             BusB_CoverType : 0,
-            BusB_Cover : 3,
-            BusB_CoverDetails : ""
+            BusB_Cover : 3
         }])
         const AddNewCoverData = (e) => {
             const current = [...CoverData]
@@ -277,8 +276,7 @@ const Employee = ({user}) =>
                 formId : state['formId'],                
                 
                 BusB_CoverType : 0,
-                BusB_Cover : 3,
-                BusB_CoverDetails : ""
+                BusB_Cover : 3
                 
             })
             setCoverData(current)
@@ -293,9 +291,9 @@ const Employee = ({user}) =>
             newCoverData[i][e.target.name] = e.target.value
             setCoverData(newCoverData)
         }
-        const on_CoverData_Comments_Change = (name, i, value) => {
+        const on_CoverData_radio_Change = (e, i, value) => {
             let newCoverData = [...CoverData]
-            newCoverData[i][name] = value
+            newCoverData[i][e.target.name] = value
             setCoverData(newCoverData)
         }
       const createEBForm = async(data) => {
@@ -323,8 +321,7 @@ const Employee = ({user}) =>
                     formId : state['formId'],                
                     
                     BusB_CoverType : 0,
-                    BusB_Cover : 3,
-                    BusB_CoverDetails : ""
+                    BusB_Cover : 3
                 }])
             }
             // setSubmissionMessageVisibility("block")
@@ -375,6 +372,7 @@ const Employee = ({user}) =>
             })
           try {
               const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_eb_coverData/`, CoverData_Body ,config) 
+              setCoverData(response.data['formData'])
           } catch (error) {
               
           }
@@ -781,7 +779,7 @@ const Employee = ({user}) =>
                                     
                                     
                                     <hr/>
-                                    <div className="row g-3 align-items-center">
+                                    <div className="row g-3 align-items-center" key={i}>
                                         <div className="col-6">
                                             <div className='col-6'>
                                                 <select className="text-start form-select" id="BusB_CoverType" name='BusB_CoverType' value={key.BusB_CoverType} onChange={(e) => {on_CoverData_Change(e, i)}} aria-label="Default select example">
@@ -802,10 +800,10 @@ const Employee = ({user}) =>
                                             <div className="row">
                                                 <div className="row col-2 align-items-center">
                                                     <div className="col-2">
-                                                        <input className="form-check-input" type="radio" value="1"  id="BusB_Cover" name='BusB_Cover' checked={key.BusB_Cover == 1 ? true : false} onChange={(e) => {on_CoverData_Change(e, i)}}  />
+                                                        <input className="form-check-input" type="checkbox" id={"BusB_Cover-"+i} name='BusB_Cover' checked={key.BusB_Cover == 1} value="1"  onChange={(e) => {on_CoverData_Change(e, i)}}  />
                                                     </div>
                                                     <div className="col-2">
-                                                        <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
+                                                        <label className="form-check-label"  >
                                                             Yes
                                                         </label>
                                                     </div>
@@ -813,10 +811,10 @@ const Employee = ({user}) =>
                     
                                                 <div className="row col-2 align-items-center">
                                                     <div className="col-2">
-                                                        <input className="form-check-input" type="radio" value="0"  id="BusB_Cover" name='BusB_Cover' checked={key.BusB_Cover == 0 ? true : false} onChange={(e) => {on_CoverData_Change(e, i)}}  />
+                                                        <input className="form-check-input" type="checkbox" id={"BusB_Cover-"+i} name='BusB_Cover' checked={key.BusB_Cover == 0} value="0"  onChange={(e) => {on_CoverData_Change(e, i)}}  />
                                                     </div>
                                                     <div className="col-2">
-                                                        <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
+                                                        <label className="form-check-label"  >
                                                             No
                                                         </label>
                                                     </div>
@@ -824,10 +822,10 @@ const Employee = ({user}) =>
                     
                                                 <div className="row col-2 align-items-center">
                                                     <div className="col-2">
-                                                        <input className="form-check-input" type="radio" value="2" id="BusB_Cover" name='BusB_Cover' checked={key.BusB_Cover == 2 ? true : false} onChange={(e) => {on_CoverData_Change(e, i)}}  />
+                                                        <input className="form-check-input" type="checkbox" id={"BusB_Cover-"+i} name='BusB_Cover' checked={key.BusB_Cover == 2} value="2" onChange={(e) => {on_CoverData_Change(e, i)}}  />
                                                     </div>
                                                     <div className="col-2">
-                                                        <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
+                                                        <label className="form-check-label"  >
                                                             Undecided
                                                         </label>
                                                     </div>
@@ -837,7 +835,13 @@ const Employee = ({user}) =>
                                         <hr/>
                                                     
                                     </div> 
-                                    {
+                                    
+                            
+                            </>
+                        )}
+                    )
+                }
+    {
                                     backgroundInfoVisibility1 ? 
                                     <>
                                     <div id="background_info_instructions1" className="hidden_class">
@@ -856,11 +860,11 @@ const Employee = ({user}) =>
                                 }
                                 <Editor
                                     onInit={(evt, editor) => CoverEditor.current = editor}
-                                    value={key.BusB_CoverDetails}
-                                    onEditorChange={(e)=>{ on_CoverData_Comments_Change("BusB_CoverDetails", i, CoverEditor.current.getContent()) }}
-                                    // onFocus={(e)=>{backgroundInfo_onFocus1()}}
-                                    // onBlur={(e)=>{backgroundInfo_onBlur1()}}
-                                    name="clientBackgroundInfo"
+                                    value={FormData['EB_BusB_CoverDetails']}
+                                    // setFormData({...FormData, [e.target.name]: e.target.value})
+                                    onEditorChange={(e)=>{ setFormData({...FormData, ["EB_BusB_CoverDetails"]: CoverEditor.current.getContent()}) }}
+                                    onFocus={(e)=>{backgroundInfo_onFocus1()}}
+                                    onBlur={(e)=>{backgroundInfo_onBlur1()}}
                                     init={{
                                         selector: "textarea",
                                         height: 300,
@@ -881,12 +885,6 @@ const Employee = ({user}) =>
                                         }
                                     }}
                                 />
-                            
-                                <hr/>
-                            </>
-                        )}
-                    )
-                }
     <h5 style={{color: '#00788A'}}><b>Section D:Investment Indicator</b></h5>
     <hr/>
 

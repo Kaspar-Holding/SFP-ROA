@@ -166,7 +166,9 @@
             <div class='row div'>
                 <div class="column12">
                     <span>
-                        {{RoA.clientLetterOfIntroductionReason|linebreaks}}
+                        {% autoescape off %}
+                            {{RoA.clientLetterOfIntroductionReason}}
+                        {% endautoescape %}
                     </span>
                 </div>                                               
             </div>
@@ -209,7 +211,9 @@
             <div class='row div'>
                 <div class="column12">
                     <span>
-                        {{RoA.clientLetterOfIntroductionAccessReason|linebreaks}}
+                        {% autoescape off %}
+                            {{RoA.clientLetterOfIntroductionAccessReason}}
+                        {% endautoescape %}
                     </span>
                 </div>                                               
             </div>
@@ -257,7 +261,9 @@
             <div class='row div'>
                 <div class="column12">
                     <span>
-                        {{RoA.clientFicaReason|linebreaks}}
+                        {% autoescape off %}
+                            {{RoA.clientFicaReason}}
+                        {% endautoescape %}
                     </span>
                 </div>                                               
             </div>
@@ -283,7 +289,9 @@
         <div class='row div'>
             <div class="column12">
                 <span>
-                    {{RoA.clientBackgroundInfo|linebreaks}}
+                    {% autoescape off %}
+                        {{RoA.clientBackgroundInfo}}
+                    {% endautoescape %}
                 </span>
             </div>                                               
         </div> 

@@ -1125,16 +1125,16 @@ const Invest = ({user}) =>
 
 
             <br />
+            <h5 className="text-start " ><b>SECTION E:</b></h5> 
+            <h6 className="text-start " style={{ color: "#14848A"}} ><b>Product Taken</b></h6>
+
+            <p>Products accepted by you to meet your requirements.</p>
 
             {
                 ProductTaken.map((key,i) => {
                     // console.log(i+1)
                       return (
                         <>
-                        <h5 className="text-start " ><b>SECTION E:</b></h5> 
-            <h6 className="text-start " style={{ color: "#14848A"}} ><b>Product Taken</b></h6>
-
-            <p>Products accepted by you to meet your requirements.</p>
             <div className="row">
                 <div className="col-6">
                     <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
