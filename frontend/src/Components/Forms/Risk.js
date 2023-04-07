@@ -1,6 +1,6 @@
 // import { Breadcrumbs } from '@material-ui/core';
 import axios from 'axios';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { useLocation } from 'react-router-dom';
 import  './Styles/CustomNotification.css'
 import  './Styles/CustomButton.css'
@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 // import './Header.css';
+import { Editor } from '@tinymce/tinymce-react'
 const Risk = ({user}) =>
 {
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
@@ -272,6 +273,17 @@ const Risk = ({user}) =>
         newProductTaken[i][e.target.name] = e.target.value
         setProductTaken(newProductTaken)
     }
+    // const on_ProductTaken_Value_Change = (i, name, value) => {
+    //     let newProductTaken = [...ProductTaken]
+    //     newProductTaken[i][name] = value
+    //     setProductTaken(newProductTaken)
+    // }
+    
+    const on_ProductTaken_Value_Change = (name, i, val) => {
+      let newProductTaken = [...ProductTaken]
+      newProductTaken[i][""+name+""] = val
+      setProductTaken(newProductTaken)
+    }
       // console.log(JSON.stringify(FormData))
       const [SuccessMessage, setSuccessMessage] = useState("")
       const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
@@ -383,6 +395,22 @@ const Risk = ({user}) =>
         updateRPForm()
         // window.location.reload();
       }
+        
+      const RP_DC_CommentsRef = useRef(null)
+      const RP_DiC_CommentsRef = useRef(null)
+      const RP_DrC_CommentsRef = useRef(null)
+      const RP_LC_FinancialSolutionsRef = useRef(null)
+      const RP_DiC_FinancialSolutionsRef = useRef(null)
+      const RP_DrC_FinancialSolutionsRef = useRef(null)
+      const RP_AltS_1Ref = useRef(null)
+      const RP_AltS_2Ref = useRef(null)
+      const RP_AltS_3Ref = useRef(null)
+      const ProductReasonsRef = useRef(null)
+      const productExecutorFeeRef = useRef(null)
+      const productProductMaterialAspectsRef = useRef(null)
+      const productProductDetailsRef = useRef(null)
+      const productInformationExplainedRef = useRef(null)
+      const productNominationOfBeneficiariesRef = useRef(null)
       useEffect(() => {
         createRPForm(FormData)
       }, []);
@@ -561,17 +589,41 @@ const Risk = ({user}) =>
         </div>
       </td>
     </tr>
+    </tbody>
+    </table>
+    <div className='row'>
+      <div className='col-12'>
+        <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
+      </div>
+      <div className='col-12'>
+        <Editor
+          onInit={(evt, editor) => RP_DC_CommentsRef.current = editor}
+          value={FormData['RP_DC_Comments']}
+          onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DC_Comments']: RP_DC_CommentsRef.current.getContent() }) }}
+          name="RP_DC_Comments"
+          init={{
+              selector: "textarea",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+      />
+      </div>
 
-
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</td>
-      <td>
-        <div className="form-group">
-            <input type="text"  name='RP_DC_Comments' value={FormData['RP_DC_Comments']} onChange={(e) => {onChange(e)}}  className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=""/>
-        </div>
-      </td>
-    </tr>
-
+    </div>  
+    <hr/>
+    
+    <table className="table">
+      <tbody>  
     <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
       <td style={{color:"#14848a",fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability Cover: </td>
@@ -781,20 +833,41 @@ const Risk = ({user}) =>
       </td>
     </tr>
 
+    </tbody>
+    </table>
+    <div className='row'>
+      <div className='col-12'>
+        <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
+      </div>
+      <div className='col-12'>
+        <Editor
+          onInit={(evt, editor) => RP_DiC_CommentsRef.current = editor}
+          value={FormData['RP_DiC_Comments']}
+          onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DiC_Comments']: RP_DiC_CommentsRef.current.getContent() }) }}
+          name="RP_DiC_Comments"
+          init={{
+              selector: "textarea",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+      />
+      </div>
 
-     <tr> 
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</td>
-        <td>  
-          <div className="form-group">
-            <input type="text" className="form-control" id="RP_DiC_Comments" name='RP_DiC_Comments' value={FormData['RP_DiC_Comments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-          </div>
-       </td>
-       <td></td>  
-       <td></td>
-       <td></td>
-       <td></td> 
-     </tr> 
-
+    </div>  
+    <hr/>
+    
+    <table className="table">
+      <tbody>  
 
     <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
@@ -940,21 +1013,39 @@ const Risk = ({user}) =>
       </td>
     </tr>
 
-
-    <tr> 
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</td>
-        <td>  
-        <div className="form-group">
-          <input type="text" className="form-control" id="RP_DrC_Comments" name='RP_DrC_Comments' value={FormData['RP_DrC_Comments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder=""/>
-        </div>
-       </td> 
-       <td></td>  
-       <td></td>
-       <td></td>
-       <td></td>   
-     </tr> 
     </tbody>
-  </table>
+    </table>
+    <div className='row'>
+      <div className='col-12'>
+        <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
+      </div>
+      <div className='col-12'>
+        <Editor
+          onInit={(evt, editor) => RP_DrC_CommentsRef.current = editor}
+          value={FormData['RP_DrC_Comments']}
+          onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DrC_Comments']: RP_DrC_CommentsRef.current.getContent() }) }}
+          name="RP_DrC_Comments"
+          init={{
+              selector: "textarea",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
+      </div>
+
+    </div>  
+    <hr/>
+    
         
 
   <h5 className="text-start " ><b>SECTION C:</b></h5> 
@@ -974,10 +1065,11 @@ const Risk = ({user}) =>
         <div id="background_info_instructions1" className="hidden_class">
             {/* <p>Discuss the outcome of the FNA</p><br /> */}
                 <ul>
-                    <li>
+                <li>
                     Explain the reasons why life cover benefits were recommended to satisfy this need.<br/>
+                    </li>
+                    <li>
                     Record the client's instructions, deviations and implications thereof.
-
                     </li>
                    
                 </ul>
@@ -986,14 +1078,30 @@ const Risk = ({user}) =>
         </>: 
          null
     }
-    <textarea maxLength={500} className="form-control"  style={{height: '100px'}} 
-        id="RP_LC_FinancialSolutions" name='RP_LC_FinancialSolutions' value={FormData['RP_LC_FinancialSolutions']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus1} 
-        onBlur={backgroundInfo_onBlur1}
-        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. 
-Record the client's instructions, deviations and implications thereof.
-        `}  aria-describedby=""  ></textarea>
-
+    <Editor
+          onInit={(evt, editor) => RP_LC_FinancialSolutionsRef.current = editor}
+          value={FormData['RP_LC_FinancialSolutions']}
+          onEditorChange={(e)=>{ setFormData({...FormData, ['RP_LC_FinancialSolutions']: RP_LC_FinancialSolutionsRef.current.getContent() }) }}
+          onFocus={(e)=>{backgroundInfo_onFocus1()}}
+          onBlur={(e)=>{backgroundInfo_onBlur1()}}                      
+          name="RP_LC_FinancialSolutions"
+          init={{
+              selector: "textarea",
+              placeholder: "Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
 
 
 <p className="text-start"><u>Disability Cover:</u></p>
@@ -1005,8 +1113,9 @@ Record the client's instructions, deviations and implications thereof.
                 <ul>
                     <li>
                     Explain the reasons why life cover benefits were recommended to satisfy this need.<br/>
+                    </li>
+                    <li>
                     Record the client's instructions, deviations and implications thereof.
-
                     </li>
                    
                 </ul>
@@ -1015,15 +1124,30 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea maxLength={500} className="form-control"  style={{height: '100px'}} 
-        id="RP_DiC_FinancialSolutions" name='RP_DiC_FinancialSolutions' value={FormData['RP_DiC_FinancialSolutions']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus2}
-        onBlur={backgroundInfo_onBlur2}
-        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. 
-Record the client's instructions, deviations and implications thereof.
-        `}  aria-describedby=""  ></textarea>
-
-
+    <Editor
+          onInit={(evt, editor) => RP_DiC_FinancialSolutionsRef.current = editor}
+          value={FormData['RP_DiC_FinancialSolutions']}
+          onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DiC_FinancialSolutions']: RP_DiC_FinancialSolutionsRef.current.getContent() }) }}
+          onFocus={(e)=>{backgroundInfo_onFocus2()}}
+          onBlur={(e)=>{backgroundInfo_onBlur2()}}                      
+          name="RP_DiC_FinancialSolutions"
+          init={{
+            selector: "textarea",
+            placeholder: "Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.",
+            height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
 
 
 <p className="text-start"><u>Dread Disease Cover:</u></p>
@@ -1035,9 +1159,11 @@ Record the client's instructions, deviations and implications thereof.
                 <ul>
                     <li>
                     Explain the reasons why life cover benefits were recommended to satisfy this need.<br/>
-                    Record the client's instructions, deviations and implications thereof.
-
                     </li>
+                    <li>
+                    Record the client's instructions, deviations and implications thereof.
+                    </li>
+
                    
                 </ul>
                 
@@ -1045,13 +1171,30 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea maxLength={500} className="form-control"  style={{height: '100px'}} 
-        id="RP_DrC_FinancialSolutions" name='RP_DrC_FinancialSolutions' value={FormData['RP_DrC_FinancialSolutions']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus3}
-        onBlur={backgroundInfo_onBlur3}
-        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. 
-Record the client's instructions, deviations and implications thereof.
-        `}  aria-describedby=""  ></textarea>
+    <Editor
+      onInit={(evt, editor) => RP_DrC_FinancialSolutionsRef.current = editor}
+      value={FormData['RP_DrC_FinancialSolutions']}
+      onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DrC_FinancialSolutions']: RP_DrC_FinancialSolutionsRef.current.getContent() }) }}
+      onFocus={(e)=>{backgroundInfo_onFocus3()}}
+      onBlur={(e)=>{backgroundInfo_onBlur3()}}                      
+      name="RP_DrC_FinancialSolutions"
+      init={{
+          selector: "textarea",
+          placeholder: "Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
 
 
 <h5 className="text-start " ><b>SECTION D:</b></h5> 
@@ -1076,12 +1219,31 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
-        id="RP_AltS_1" name='RP_AltS_1' value={FormData['RP_AltS_1']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus4}
-        onBlur={backgroundInfo_onBlur4}
-        placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.
-        `}  aria-describedby=""  ></textarea>
+    <Editor
+      onInit={(evt, editor) => RP_AltS_1Ref.current = editor}
+      value={FormData['RP_AltS_1']}
+      onEditorChange={(e)=>{ setFormData({...FormData, ['RP_AltS_1']: RP_AltS_1Ref.current.getContent() }) }}
+      onFocus={(e)=>{backgroundInfo_onFocus4()}}
+      onBlur={(e)=>{backgroundInfo_onBlur4()}}                      
+      name="RP_AltS_1"
+      init={{
+          selector: "textarea",
+          placeholder: '1. Identify the type of product or product provider which was considered but not selected and motivate.',
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    
 <br/>
 
     {
@@ -1101,12 +1263,31 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
-        id="RP_AltS_2" name='RP_AltS_2' value={FormData['RP_AltS_2']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus5}
-        onBlur={backgroundInfo_onBlur5}
-        placeholder={`2. Identify the type of product or product provider which was considered but not selected and motivate.
-        `}  aria-describedby=""  ></textarea>
+    
+    <Editor
+      onInit={(evt, editor) => RP_AltS_2Ref.current = editor}
+      value={FormData['RP_AltS_2']}
+      onEditorChange={(e)=>{ setFormData({...FormData, ['RP_AltS_2']: RP_AltS_2Ref.current.getContent() }) }}
+      onFocus={(e)=>{backgroundInfo_onFocus5()}}
+      onBlur={(e)=>{backgroundInfo_onBlur5()}}                      
+      name="RP_AltS_2"
+      init={{
+          selector: "textarea",
+          placeholder: '2. Identify the type of product or product provider which was considered but not selected and motivate.',
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
 
     <br/>
     {
@@ -1126,13 +1307,31 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
-        id="RP_AltS_3" name='RP_AltS_3' value={FormData['RP_AltS_3']} onChange={(e) => {onChange(e)}}    
-        onFocus={backgroundInfo_onFocus6}
-        onBlur={backgroundInfo_onBlur6}
-        placeholder={`3. Identify the type of product or product provider which was considered but not selected and motivate.
-        `}  aria-describedby=""  ></textarea>
-    <hr/>
+    
+    <Editor
+      onInit={(evt, editor) => RP_AltS_3Ref.current = editor}
+      value={FormData['RP_AltS_3']}
+      onEditorChange={(e)=>{ setFormData({...FormData, ['RP_AltS_3']: RP_AltS_3Ref.current.getContent() }) }}
+      onFocus={(e)=>{backgroundInfo_onFocus6()}}
+      onBlur={(e)=>{backgroundInfo_onBlur6()}}                      
+      name="RP_AltS_3"
+      init={{
+          selector: "textarea",
+          placeholder: '3. Identify the type of product or product provider which was considered but not selected and motivate.',
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
     <h5 className="text-start " ><b>SECTION E:</b></h5> 
     {
       ProductTaken.map((key,i) => {
@@ -1356,6 +1555,7 @@ Record the client's instructions, deviations and implications thereof.
                 <td>  
                   <div className="form-group">
                       <input type="text" className="form-control" id="TotalFees_n_Commissions" name='TotalFees_n_Commissions' value={key.TotalFees_n_Commissions}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      
                   </div>
                 </td>
                 <td></td> 
@@ -1571,12 +1771,30 @@ Record the client's instructions, deviations and implications thereof.
                   </>: 
                   null
               }
-              <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
-                  id="ProductReasons" name='ProductReasons' value={key.ProductReasons} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
-                  onFocus={backgroundInfo_onFocus7}
-                  onBlur={backgroundInfo_onBlur7}
-                  placeholder={`Motivate why the chosen product was recommended to best suit your client’s needs.
-                  `}  aria-describedby=""  ></textarea>
+              <Editor
+                  onInit={(evt, editor) => ProductReasonsRef.current = editor}
+                  value={key.ProductReasons}
+                  onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ProductReasons", i, ProductReasonsRef.current.getContent())}}
+                  onFocus={(e)=>{backgroundInfo_onFocus7()}}
+                  onBlur={(e)=>{backgroundInfo_onBlur7()}} 
+                  name="ProductReasons"                     
+                  init={{
+                      selector: "textarea",
+                      placeholder: 'Motivate why the chosen product was recommended to best suit your client’s needs.',
+                      height: 300,
+                      menu: true,
+                      plugins: [
+                          'advlist autolink link lists image charmap print preview anchor',
+                          'searchreplace visualblocks code fullscreen',
+                          'insertdatetime media table paste code help wordcount',
+                      ],
+                      toolbar: 'styles | undo redo | formatselect | ' +
+                      'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                      'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                      'removeformat | wordcount ',
+                      content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                  }}
+                />
             <hr/>
             <p className="text-start">The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
               {
@@ -1830,14 +2048,30 @@ Record the client's instructions, deviations and implications thereof.
                   </div>
                   </>: 
                   null
-              }
-              <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
-                  id="ProductMaterialAspects" name='ProductMaterialAspects' value={key.ProductMaterialAspects} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
-                  onFocus={backgroundInfo_onFocus8}
-                  onBlur={backgroundInfo_onBlur8}
-                  placeholder={`Explain any deviations from your recommendation and the implications thereof.
-                  `}  aria-describedby=""  ></textarea>
-
+              }              
+              <Editor
+                  onInit={(evt, editor) => productProductMaterialAspectsRef.current = editor}
+                  value={key.ProductMaterialAspects}
+                  onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, productProductMaterialAspectsRef.current.getContent())}}
+                  onFocus={(e)=>{backgroundInfo_onFocus8()}}
+                  onBlur={(e)=>{backgroundInfo_onBlur8()}}                      
+                  init={{
+                      selector: "textarea",
+                      placeholder : 'Explain any deviations from your recommendation and the implications thereof.',
+                      height: 300,
+                      menu: true,
+                      plugins: [
+                          'advlist autolink link lists image charmap print preview anchor',
+                          'searchreplace visualblocks code fullscreen',
+                          'insertdatetime media table paste code help wordcount',
+                      ],
+                      toolbar: 'styles | undo redo | formatselect | ' +
+                      'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                      'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                      'removeformat | wordcount ',
+                      content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                  }}
+                />
             <br/>
               {
                   backgroundInfoVisibility9 ? 
@@ -1854,14 +2088,30 @@ Record the client's instructions, deviations and implications thereof.
                   </div>
                   </>: 
                   null
-              }
-              <textarea maxLength={2000} className="form-control"  style={{height: '80px'}} 
-                  id="ProductDetails" name='ProductDetails' value={key.ProductDetails} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
-                  onFocus={backgroundInfo_onFocus9}
-                  onBlur={backgroundInfo_onBlur9}
-                  placeholder={`The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
-                  `}  aria-describedby=""  ></textarea>
-
+              }                          
+              <Editor
+                onInit={(evt, editor) => productProductDetailsRef.current = editor}
+                value={key.ProductDetails}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ProductDetails", i, productProductDetailsRef.current.getContent())}}
+                onFocus={(e)=>{backgroundInfo_onFocus9()}}
+                onBlur={(e)=>{backgroundInfo_onBlur9()}}                      
+                init={{
+                    selector: "textarea",
+                    placeholder: 'The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                  }}
+                />
 
               <br/>
               {
@@ -1885,18 +2135,30 @@ Record the client's instructions, deviations and implications thereof.
                   </>: 
                   null
               }
-              <textarea maxLength={2000} className="form-control"  style={{height: '200px'}} 
-                  id="ExecutorFee" name='ExecutorFee' value={key.ExecutorFee} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
-                  onFocus={backgroundInfo_onFocus10}
-                  onBlur={backgroundInfo_onBlur10}
-                  placeholder={`Executor’s fees?
-            Does the policy offer any liquidity?
-            Provide a summary of the contents of the quote with regard to the following:
-            Benefit terms (cease ages, cover periods etc.)
-            Details of premium and cover pattern structure, frequency etc.
-                  
-                  `}  aria-describedby=""  ></textarea>
-
+                          
+              <Editor
+                onInit={(evt, editor) => productExecutorFeeRef.current = editor}
+                value={key.ExecutorFee}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ExecutorFee", i, productExecutorFeeRef.current.getContent())}}
+                onFocus={(e)=>{backgroundInfo_onFocus10()}}
+                onBlur={(e)=>{backgroundInfo_onBlur10()}}        
+                init={{
+                    selector: "textarea",
+                    height: 300,
+                    placeholder:'Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n',               
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+              />
 
             <br/>
               {
@@ -1916,14 +2178,29 @@ Record the client's instructions, deviations and implications thereof.
                   </>: 
                   null
               }
-              <textarea maxLength={2000} className="form-control"  style={{height: '100px'}} 
-                  id="NominationOfBeneficiaries" name='NominationOfBeneficiaries' value={key.NominationOfBeneficiaries} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
-                  onFocus={backgroundInfo_onFocus11}
-                  onBlur={backgroundInfo_onBlur11}
-                  placeholder={`Record discussion with regard to nomination of beneficiaries or cessionaries.
-                  
-                  `}  aria-describedby=""  ></textarea>
-
+              <Editor
+                onInit={(evt, editor) => productNominationOfBeneficiariesRef.current = editor}
+                value={key.NominationOfBeneficiaries}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("NominationOfBeneficiaries", i, productNominationOfBeneficiariesRef.current.getContent())}}
+                onFocus={(e)=>{backgroundInfo_onFocus11()}}
+                onBlur={(e)=>{backgroundInfo_onBlur11()}}        
+                init={{
+                    selector: "textarea",
+                    height: 300,
+                    placeholder:'Record discussion with regard to nomination of beneficiaries or cessionaries.',               
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+              />
 
             <br/>
               {
@@ -1947,18 +2224,33 @@ Record the client's instructions, deviations and implications thereof.
                   </>: 
                   null
               }
-              <textarea maxLength={2000} className="form-control"  style={{height: '220px'}} 
-                  id="InformationExplained" name='InformationExplained' value={key.InformationExplained} onChange={(e) => {on_ProductTaken_Change(e, i)}}    
-                  onFocus={backgroundInfo_onFocus12}
-                  onBlur={backgroundInfo_onBlur12}
-                  placeholder={`Discuss the following information which has been explained to client.
-            General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)
-            Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
-            Waiting periods
-            Cooling off period
-                  
-                  
-                  `}  aria-describedby=""  ></textarea>
+             <Editor
+                onInit={(evt, editor) => productInformationExplainedRef.current = editor}
+                value={key.InformationExplained}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("InformationExplained", i, productInformationExplainedRef.current.getContent())}}
+                onFocus={(e)=>{backgroundInfo_onFocus12()}}
+                onBlur={(e)=>{backgroundInfo_onBlur12()}}        
+                init={{
+                    selector: "textarea",
+                    height: 300,
+                    placeholder:`Discuss the following information which has been explained to client.
+                    General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)
+                    Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
+                    Waiting periods
+                    Cooling off period`,               
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+              />
                   <hr/>
               
             </>

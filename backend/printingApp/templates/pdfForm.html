@@ -4729,9 +4729,17 @@
             .div {
                 padding-bottom: 1%;
             }
-            .row {margin: 0 -5px;}
+            .row {margin: 0;padding: 0;}
 
             .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            .row2 {margin-left: 5%;}
+            .row3 {margin-left: 2%;}
+
+            .row2:after {
                 content: "";
                 display: table;
                 clear: both;
@@ -4756,6 +4764,18 @@
                 padding: 0 10px;
             }
               
+            .column22 {
+                float: left;
+                width: 40%;
+                padding-left: 10px;
+            }
+              
+            .column21 {
+                float: left;
+                width: 22%;
+                padding: 0px;
+            }
+              
             .white {
                 color: white;
             }
@@ -4769,6 +4789,7 @@
               
             .column11 {
                 float: left;
+                padding-left: 10px;
                 width: 79%;
                 text-align: justify;
             }
@@ -4782,7 +4803,11 @@
             .column4 {
                 float: left;
                 width: 6%;
-                padding: 0 10px;
+            }
+              
+            .column42 {
+                float: left;
+                width: 1%;
             }
               
               
@@ -4795,6 +4820,13 @@
             .col3 {
                 float: left;
                 width: 31%;
+                padding: 0 10px;
+            }
+            
+            
+            .col33 {
+                float: left;
+                width: 25%;
                 padding: 0 10px;
             }
             
@@ -4874,7 +4906,16 @@
             ol > li:marker {
                 font-weight: bold;
             }
-              
+            input[type=radio] { 
+                -webkit-transform: scale(6);
+                transform: scale(6);
+                -webkit-transform-origin: left;
+            }
+            input[type=checkbox] { 
+                -webkit-transform: scale(6);
+                transform: scale(6);
+                -webkit-transform-origin: left;
+            }
         </style>
     </head>
     <body>
@@ -6897,7 +6938,7 @@
             {% include 'riskplanning.html' with RP=RP %}
             <hr/>
         {% endif %}
-        {% comment %} {% if ip_status %}
+        {% if ip_status %}
             {% include 'investmentplanning.html' with IP=IP %}    
             <hr/>
         {% endif %}
@@ -6931,7 +6972,7 @@
         {% if GP_status %}
             {% include 'gapCover.html' with GP=GP %}
             <hr/> 
-        {% endif %} {% endcomment %}
+        {% endif %}
         <hr/>
         <p class="column12" style="font-family:  'Arial Narrow', 'Arial', 'sans-serif';">
             Succession Financial Planning Advisory Services (Pty) Ltd. |
