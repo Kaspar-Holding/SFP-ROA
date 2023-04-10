@@ -9,6 +9,10 @@ This project is built on the following Stack
 ## Updates
 
 ### 7 April 2023:
+- Forgot Password is implemented
+- Working on Alert Email
+
+### 7 April 2023:
 - Working on PDF Tool for duplication changes is done
 - Working on TinyMCE in remaining components is done
 - Deployment pending for 10 April 2023

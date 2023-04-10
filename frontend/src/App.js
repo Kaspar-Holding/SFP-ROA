@@ -8,7 +8,7 @@ import { Content } from './Components/Content';
 import CreateForm from './Components/Forms/CreateForm';
 
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Routes,
   Route,
   Link,
@@ -45,7 +45,8 @@ import ServerDown from './Components/ServerDown';
 import SuperUserLayout from './Layout/SuperUserLayout';
 import NoHead from './Layout/NoHead';
 import UpdatePassword from './Components/Accounts/UpdatePassword';
-
+import ForgetPassword from './Components/Authentication/ForgetPassword'
+import ResetPasswordConfirm from './Components/Authentication/ResetPasswordConfirm'
 
 
 
@@ -82,7 +83,9 @@ function App() {
                       <Route exact path="/printformclient" element={<PrintFormClient name="" /> } />
                   </Route>
                   <Route element={<NonSidebarLayout /> }>
-                    {/* <Route exact path="/" element={<Home /> } siteName={"Home"} /> */}
+                    <Route exact path="/home" element={<Home /> } siteName={"Home"} />
+                    <Route exact path="/reset-password-confirm" element={<ResetPasswordConfirm /> } siteName={"Home"} />
+                    <Route exact path="/reset-password" element={<ForgetPassword /> } siteName={"Home"} />
                     <Route exact path="/server_down" element={<ServerDown /> } siteName={"Server Down"} />
                     <Route exact path="/signin" element={<SignIn /> } siteName={"SignIn"} />
                   </Route>

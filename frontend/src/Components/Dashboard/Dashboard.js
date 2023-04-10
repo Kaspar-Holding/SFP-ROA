@@ -258,9 +258,14 @@ const Dashboard = ({user}) => {
                                             }
                                             })()}
                                         
-                                        <td>{formList[i]['status'] === 0 ? "Incomplete" : "Completed"}</td>
+                                        <td>{formList[i]['status'] === 0 ? "Incomplete" : formList[i]['status'] === 1 ? "Completed" : formList[i]['status'] === 2 ? "Waiting Approval" : "" }</td>
                                         <td>
-                                            <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
+                                            {
+                                                formList[i]['status'] != 2 ?
+                                                <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
+                                                : 
+                                                <button className="btn btn-sm btn-outline-danger" type='button'>Can't Edit</button>
+                                            }
                                             {/* <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : data[i]['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink> */}
                                         </td>
                                     </tr>

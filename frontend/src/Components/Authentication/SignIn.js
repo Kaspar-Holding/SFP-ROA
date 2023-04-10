@@ -123,7 +123,10 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
                   </label>
                 </div> */}
                 <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                <p className="mt-5 mb-3 text-muted text-center">&copy; SFP by KCS 2022–2022</p>
+                <hr/>
+                <p className="mt-5 mb-3 text-center">Forgot your password? <NavLink to="/reset-password">Reset Password</NavLink></p>
+                
+                <p className="mt-5 mb-3 text-muted text-center">&copy; SFP by KCS 2022–2023</p>
             </form>
         </main>
     </div>

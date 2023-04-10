@@ -6,6 +6,10 @@ import {
     AUTHENTICATED_SUCCESS,
     AUTHENTICATED_FAILED,
     SERVER_DOWN,
+    PASSWORD_RESET_SUCCESS,
+    PASSWORD_RESET_FAILED,
+    PASSWORD_RESET_CONFIRM_SUCCESS,
+    PASSWORD_RESET_CONFIRM_FAILED,
     LOGOUT,
     SERVER_UP
 } from '../Actions/Types'
@@ -84,6 +88,13 @@ export default function (state=initalState, action) {
                 refresh: null,
                 isAuthenticated: false,
                 user: null
+            }
+        case PASSWORD_RESET_SUCCESS :
+        case PASSWORD_RESET_FAILED :
+        case PASSWORD_RESET_CONFIRM_SUCCESS :
+        case PASSWORD_RESET_CONFIRM_FAILED :
+            return {
+                ...state
             }
         default:
             return state

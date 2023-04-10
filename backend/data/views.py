@@ -418,12 +418,16 @@ def sampleFile(request):
 def formStats(request):
     # forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
     # formSerializer = RiskFactorsSerializers(forms, many=True)
+    advisor_admin = UserAccount.objects.filter(id=request.data['advisorId']).values('is_superuser').first()
     complete_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 1)
     complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
     incomplete_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 0)
     incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
     searchQuery = request.data['search_query']
-    riskFactors = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
+    if advisor_admin:
+        riskFactors = RiskFactors.objects.all()
+    else:
+        riskFactors = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
     forms_data = []
     if searchQuery != "":
         forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
@@ -1011,6 +1015,12 @@ def updateShortTermInsuranceCommericalData(request):
 @api_view(['POST'])
 def insertRiskFactorsData(request):
     rf_data = request.data['RF_Data']
+    status = 1
+    advisor_admin = UserAccount.objects.filter(id=request.data['advisorId']).values('is_superuser').first()
+    if not advisor_admin:
+        if int(request.data['RF_Data']['RF_Client_Match']) == 2 or int(request.data['RF_Data']['RF_Client_Match']) == 5 or int(request.data['RF_Data']['RF_Client_Match']) == 8 or int(request.data['RF_Data']['RF_Client_Match']) == 11 :
+            rf_data['status'] = 2
+            status = 2
     serializer = RiskFactorsSerializers(data=rf_data, many=False)
     if serializer.is_valid():
         old_form = RiskFactors.objects.filter(advisorId = rf_data['advisorId'],RF_ClientId = rf_data['RF_ClientId']).first()
@@ -1025,6 +1035,8 @@ def insertRiskFactorsData(request):
             lp_serializer = RF_LinkedPartySerializers(data=lp_data, many=True)
             if lp_serializer.is_valid():
                 lp_serializer.create(lp_serializer.validated_data)
+            if not advisor_admin and status == 2:
+                return Response({"message": "Data is inserted","formId":formId,"code":200,},200)
             return Response({"message": "Data is inserted","formId":formId,"code":201,},201)
         else :
             return Response({'message': "Form Already Exists","code": "200", "formId" : serializer1.data['id']},200)

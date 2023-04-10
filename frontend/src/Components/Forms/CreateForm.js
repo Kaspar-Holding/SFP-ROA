@@ -454,6 +454,18 @@ const CreateForm = ({user}) => {
             if (response.status === 201) {
                 navigate("/completeform", {state : {formId: response.data['formId']}})
             }
+            if (response.status === 200) {
+                setErrorData({
+                    status: "HIGH Risk Level",
+                    message: "This form is rated HIGH and awaiting for approval"
+                })
+                setSuccessMessageVisibility("block")
+                setSuccessMessage("HIGH Risk Level" + " : " + "This form is rated HIGH and awaiting for approval")
+                
+                setTimeout(() => {
+                    navigate("/")
+                }, 5000)
+            }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)

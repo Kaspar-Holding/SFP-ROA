@@ -152,6 +152,9 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = ('static',)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'build/static')
+]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/')
 
@@ -186,6 +189,7 @@ EMAIL_HOST_USER = 'sfpkcstesting@gmail.com'
 EMAIL_HOST_PASSWORD = 'qxgcuapwdoizdkzt'
 EMAIL_USE_TLS = True
 
+PASSWORD_RESET_TIMEOUT_DAYS=1
 
 DJOSER = {
     'LOGIN_FIELD' : 'email',
@@ -198,12 +202,17 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': False,
     'SET_USERNAME_RETYPE': True,
     'SET_PASSWORD_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
     'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': 'password/reset/confirm/{uid}/{token}',
     'USERNAME_RESET_SHOW_EMAIL_NOT_FOUND': 'email/reset/confirm/{uid}/{token}',
     'SERIALIZERS': {
         'user_create' : 'data.serializers.UserCreateSerializer',
         'user_delete' : 'djoser.serializers.UserDeleteSerializer',
         'user' : 'data.serializers.UserCreateSerializer',
+    },
+    'EMAIL' : {
+        'password_reset': 'emailApp.views.PasswordResetEmail',
+        'password_changed_confirmation': 'emailApp.views.PasswordChangedConfirmationEmail',
     }
 }
 

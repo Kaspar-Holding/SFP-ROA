@@ -27,3 +27,86 @@ def sendEmail(request):
     msg.send(fail_silently=False)
 
     return Response({'message': "Email Sent"}, 200)
+
+from django.contrib.auth.tokens import default_token_generator
+from templated_mail.mail import BaseEmailMessage
+from django.conf import settings as DjangoSettings
+from djoser import utils
+from djoser.conf import settings
+import environ
+import os
+env = environ.Env(
+    # set casting, default value
+)
+environ.Env.read_env(os.path.join(DjangoSettings.BASE_DIR, '.env'))
+
+class PasswordResetEmail(BaseEmailMessage):
+    template_name = "djoserEmails/password_reset.html"
+
+    def get_context_data(self):
+        # PasswordResetEmail can be deleted
+        context = super().get_context_data()
+
+        user = context.get("user")
+        context["site"] = "SFP Web ROA"
+        context["URL"] = context['site_name'] +"/reset-password-confirm"
+        context["uid"] = utils.encode_uid(user.pk)
+        context["token"] = default_token_generator.make_token(user)
+        context["url"] = settings.PASSWORD_RESET_CONFIRM_URL.format(**context)
+        return context
+
+
+class PasswordChangedConfirmationEmail(BaseEmailMessage):
+    template_name = "djoserEmails/password_changed_confirmation.html"
+    def get_context_data(self):
+        context = super().get_context_data()
+
+        context["site"] = "SFP Web ROA"
+        return context
+
+
+from rest_framework.exceptions import ValidationError
+
+from djoser import utils
+
+@api_view(['POST'])
+def validateUid(request):
+    error_messages = {}
+    uid = utils.decode_uid(request.data['uid'])
+    user = UserAccount.objects.get(pk=uid)
+    if UserAccount.objects.filter(pk=uid).exists():
+        return Response(
+            {"message": "Valid"}
+        )
+    else:
+        return Response(
+            {"message": "Invalid"}
+        )
+    
+@api_view(['POST'])
+def validateUidToken(request):
+    uid = utils.decode_uid(request.data['uid'])
+    user = UserAccount.objects.get(pk=uid)
+    if UserAccount.objects.filter(pk=uid).exists():
+        token_generator = default_token_generator
+        is_token_valid = token_generator.check_token(user, request.data['token'])
+        if is_token_valid:
+            return Response(
+                {"message": "Valid Uid and Token"}, 200
+            )
+        else:
+            return Response(
+                {"message": "Token has expired"}, 404
+            )
+    else:
+        return Response(
+            {"message": "Invalid Uid and Token"}, 400
+        )
+
+    # if is_token_valid:
+    #     return validated_data
+    # else:
+    #     key_error = "invalid_token"
+    #     raise ValidationError(
+    #         {"token": [self.error_messages[key_error]]}, code=key_error
+    #     )

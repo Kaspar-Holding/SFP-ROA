@@ -5,6 +5,10 @@ import {
     USER_LOADED_FAILED,
     AUTHENTICATED_SUCCESS,
     AUTHENTICATED_FAILED,
+    PASSWORD_RESET_SUCCESS,
+    PASSWORD_RESET_FAILED,
+    PASSWORD_RESET_CONFIRM_SUCCESS,
+    PASSWORD_RESET_CONFIRM_FAILED,
     LOGOUT
 } from './Types'
 
@@ -48,7 +52,6 @@ export const LoginUser = (FormData) => async dispatch => {
 
     try {
         const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/jwt/create/`, body, config)
-        console.log(response)
         dispatch({
             type: LOGIN_SUCCESS,
             payload: response.data
@@ -89,6 +92,72 @@ export const checkAuthenticated = () => async dispatch => {
         dispatch({
             type: AUTHENTICATED_FAILED
         })
+    }
+}
+
+export const resetPassword = (FormData) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type' : 'application/json'
+        }
+    }
+    const body = JSON.stringify(FormData)
+    
+    var status
+    var data
+    try {
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/users/reset_password/`, body, config)
+        console.log(response)
+        dispatch({
+            type: PASSWORD_RESET_SUCCESS,
+            payload: response.data
+        })
+        status = response.status
+    } catch (error){
+
+        dispatch({
+            type: PASSWORD_RESET_FAILED
+        })
+        status = error.response.status
+        data = error.response.data
+    }
+    return {
+        "status" : status,
+        "data" : data 
+    }
+}
+
+export const resetPasswordConfirm = (uid, token, new_password, re_new_password) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type' : 'application/json'
+        }
+    }
+    const body = JSON.stringify({
+        "uid":uid, 
+        "token":token,
+        "new_password":new_password, 
+        "re_new_password":re_new_password
+    })
+    var status
+    var data
+    try {
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/users/reset_password_confirm/`, body, config)
+        dispatch({
+            type: PASSWORD_RESET_CONFIRM_SUCCESS,
+            payload: response.data
+        })
+        status = response.status
+    } catch (error){
+        dispatch({
+            type: PASSWORD_RESET_CONFIRM_FAILED
+        })
+        status = error.response.status
+        data = error.response.data
+    }
+    return {
+        "status" : status,
+        "data" : data 
     }
 }
 
