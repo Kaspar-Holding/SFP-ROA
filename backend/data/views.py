@@ -13,6 +13,9 @@ import base64
 from datetime import datetime
 from dateutil import parser as datetimeparser
 import numpy as np
+from emailApp.views import approveDenyEmail, sendAlertEmail
+
+from djoser import utils
 @api_view(['GET'])
 def sample(request):
     # forms = RiskFactors.objects.all().values("advisorId","RF_Overall_Risk","RF_BU_Risk","RF_Date","RF_ClientName","RF_ClientId","RF_CompleteByName","RF_CompleteByRole","RF_ClientType","RF_Occupation","RF_CountryOfBirth","RF_CountryOfResidence","RF_Nationality","RF_Different_Nationality","RF_CountryOfTax","RF_Industry","RF_SourceOfFunds","RF_RelationshipToClient","RF_CountryOfRegistration","RF_CountryOfOperation","RF_Type_Legal_Entity","RF_Client_Relationship","RF_Product_Name","RF_Transaction_Flow","RF_Transaction_Method","RF_Transaction_Reason","RF_High_Transaction_Reason","RF_Transaction_Frequency","RF_Transaction_Value","RF_Currency_Value","RF_Transaction_Geography","RF_Funds_Jurisdiction","RF_Delivery_Channel","RF_Linked_Party_Acting","RF_Linked_Party_Paying","RF_Client_Match","RF_Client_Beneficiaries","RF_Adjust_Risk1","RF_Name","RF_ID","RF_Linked_Party	RF_RCA","RF_Birth_Country","RF_Residence_Country","RF_Nationality1","RF_Control1","RF_Control2","RF_Control3","RF_Another_Control1","RF_Another_Control2")
@@ -356,6 +359,7 @@ def viewFormData(request):
         code = 404
     return Response(message,code)
 
+
 @api_view(['POST'])
 def updateFormData(request):
     form = Form.objects.get(id=request.data['id'])
@@ -423,8 +427,12 @@ def formStats(request):
     complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
     incomplete_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 0)
     incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
+    blocked_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 3)
+    blocked_serializer = RiskFactorsSerializers(blocked_forms, many=True)
+    yet_to_approved_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 2)
+    yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
     searchQuery = request.data['search_query']
-    if advisor_admin:
+    if advisor_admin['is_superuser']:
         riskFactors = RiskFactors.objects.all()
     else:
         riskFactors = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
@@ -441,6 +449,8 @@ def formStats(request):
             {
                 "completed_forms": len(complete_serializer.data),
                 "incompleted_forms": len(incomplete_serializer.data),
+                "yet_to_approved_forms": len(yet_to_approved_serializer.data),
+                "blocked_forms": len(blocked_serializer.data),
                 "total_pages" : p.num_pages,
                 "has_pages" : p.num_pages,
                 "total_records" : len(forms_data),
@@ -454,6 +464,8 @@ def formStats(request):
             {
                 "completed_forms": len(complete_serializer.data),
                 "incompleted_forms": len(incomplete_serializer.data),
+                "yet_to_approved_forms": len(yet_to_approved_serializer.data),
+                "blocked_forms": len(blocked_serializer.data),
                 "total_pages" : p.num_pages,
                 "next" : None,
                 "has_pages" : p.num_pages,
@@ -1016,7 +1028,7 @@ def updateShortTermInsuranceCommericalData(request):
 def insertRiskFactorsData(request):
     rf_data = request.data['RF_Data']
     status = 1
-    advisor_admin = UserAccount.objects.filter(id=request.data['advisorId']).values('is_superuser').first()
+    advisor_admin = UserAccount.objects.filter(id=request.data['RF_Data']['advisorId']).values('is_superuser').first()['is_superuser']
     if not advisor_admin:
         if int(request.data['RF_Data']['RF_Client_Match']) == 2 or int(request.data['RF_Data']['RF_Client_Match']) == 5 or int(request.data['RF_Data']['RF_Client_Match']) == 8 or int(request.data['RF_Data']['RF_Client_Match']) == 11 :
             rf_data['status'] = 2
@@ -1036,6 +1048,7 @@ def insertRiskFactorsData(request):
             if lp_serializer.is_valid():
                 lp_serializer.create(lp_serializer.validated_data)
             if not advisor_admin and status == 2:
+                sendAlertEmail(request=request, formId=formId, advisorId=request.data['RF_Data']['advisorId'])
                 return Response({"message": "Data is inserted","formId":formId,"code":200,},200)
             return Response({"message": "Data is inserted","formId":formId,"code":201,},201)
         else :
@@ -1085,6 +1098,56 @@ def viewRiskFactorsData(request):
     return Response({"message": "Found","code":200,"formData": formData, 'LP_Data': lp_data},200)
     # else:
     #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+@api_view(['POST'])
+def viewHighRiskFactorsData(request):
+    adminId = utils.decode_uid(request.data['userId'])
+    formId = utils.decode_uid(request.data['formId'])
+    if int(adminId) == int(request.data['advisorId']):
+        if RiskFactors.objects.filter(id=formId, status=2).exists():
+            form = RiskFactors.objects.get(id=formId, status=2)
+            formSerializer = RiskFactorsSerializers(form, many=False)
+            
+            formData = formSerializer.data
+            if len(formData) > 0:
+                lp_data = RF_LinkedParty.objects.filter(formId=formId).values()
+                # lp_data_serializer = RF_LinkedPartySerializers(lp_data, many = True)
+                # lp_data = lp_data_serializer.data
+                # advisorName = RiskFactors.objects.get(id=formData.data['advisorId'])
+                # advisorNameSerializer = RiskFactorsSerializers(advisorName, many=False)
+
+                # formData['advisorName'] = advisorNameSerializer.data['name']
+                # if serializer.is_valid():
+                return Response({"message": "Found","code":200,"formData": formData, 'LP_Data': lp_data},200)
+            else:
+                return Response({"message": "Form does not exist","code":404},404)
+        else:
+            return Response({"message": "Form does not exist","code":404},404)
+    else:
+        return Response({"message": "You don't have the access to view this form","code":404},404)
+    # else:
+    #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+
+@api_view(['POST'])
+def approveDenyFormData(request):
+    formId = utils.decode_uid(request.data['formId'])
+    form = RiskFactors.objects.filter(id=formId).first()
+    serializer = RiskFactorsSerializers(instance=form, data={'status': request.data['formStatus']}, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        formData = RiskFactors.objects.filter(id=formId).values().first()
+        userId = RiskFactors.objects.filter(id=formId).values('advisorId').first()
+        userData = UserAccount.objects.filter(id=userId['advisorId']).values().first()
+        status = ""
+        if request.data['formStatus'] == 0:
+            status = "Approved"
+        if request.data['formStatus'] == 2:
+            status = "Denied"
+
+        approveDenyEmail(request=request, adminId=utils.decode_uid(request.data['adminId']), user=userData, formData=formData, status=status)
+        return Response({"message": "Found","code":200,"Data": serializer.data},200)
+    else:
+        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
 
 @api_view(['POST'])
 def updateRiskFactorsData(request):

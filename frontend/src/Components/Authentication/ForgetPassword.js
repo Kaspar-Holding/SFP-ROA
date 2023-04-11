@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 
-const ForgetPassword = ({resetPassword}) => {
+const ForgetPassword = ({resetPassword, isAuthenticated}) => {
   
   const [LoadingVisibility, setLoadingVisibility] = useState("none")
   const [dataVisibility, setDataVisibility] = useState("block")
@@ -73,6 +73,10 @@ const ForgetPassword = ({resetPassword}) => {
     return <Navigate to='/signin' />
   }
   
+  if (isAuthenticated === true){
+    return <Navigate to='/' />
+  }
+  
   return (
     <>
       <div style={{display: LoadingVisibility}}>
@@ -105,4 +109,8 @@ const ForgetPassword = ({resetPassword}) => {
 }
 
 
-export default connect(null, {resetPassword})(ForgetPassword)
+const mapStateToProps = state => ({
+  isAuthenticated: state.Auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, {resetPassword})(ForgetPassword)

@@ -6,6 +6,7 @@ import { Content } from './Components/Content';
 // import { About } from './Components/About';
 // import { Layout } from './Components/Layout';
 import CreateForm from './Components/Forms/CreateForm';
+import ViewDRAForm from './Components/Forms/AttentionForm/ViewDRAForm';
 
 import {
   BrowserRouter as Router,
@@ -70,6 +71,7 @@ function App() {
                       <Route exact path="/users" element={<AccountDashboard name="" /> } />
                       <Route exact path="/newuser" element={<CreateNewAccount name="" /> } />
                       <Route exact path="/userdetails" element={<AccountDetails name="" /> } />
+                      <Route exact path="/alertForm" element={<ViewDRAForm /> } />
                     </Route>
                     <Route exact path="/profile" element={<UserProfile name="" /> } />
                     <Route exact path="/print" element={<PrintStuff name="" /> } />

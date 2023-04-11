@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 
-const ResetPasswordConfirm = ({resetPasswordConfirm, match}) => {
+const ResetPasswordConfirm = ({resetPasswordConfirm, isAuthenticated}) => {
   
   const [LoadingVisibility, setLoadingVisibility] = useState("none")
   const [dataVisibility, setDataVisibility] = useState("block")
@@ -109,6 +109,9 @@ const ResetPasswordConfirm = ({resetPasswordConfirm, match}) => {
     return <Navigate to='/signin' />
   }
   
+  if (isAuthenticated === true){
+    return <Navigate to='/' />
+  }
   return (
     <>
       <div style={{display: LoadingVisibility}}>
@@ -145,4 +148,8 @@ const ResetPasswordConfirm = ({resetPasswordConfirm, match}) => {
 }
 
 
-export default connect(null, {resetPasswordConfirm})(ResetPasswordConfirm)
+const mapStateToProps = state => ({
+  isAuthenticated: state.Auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, {resetPasswordConfirm})(ResetPasswordConfirm)

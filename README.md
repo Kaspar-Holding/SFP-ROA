@@ -8,7 +8,10 @@ This project is built on the following Stack
 
 ## Updates
 
-### 7 April 2023:
+### 11 April 2023:
+- Working on Alert Email was completed
+
+### 10 April 2023:
 - Forgot Password is implemented
 - Working on Alert Email
 

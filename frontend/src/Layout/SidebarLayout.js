@@ -4,7 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
 const SidebarLayout = ({isAuthenticated, user}) => {
-  if(isAuthenticated === null || isAuthenticated === false){
+  if(isAuthenticated === false){
     return <Navigate to="/signin" />
   }
   return (

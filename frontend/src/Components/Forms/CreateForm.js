@@ -558,30 +558,19 @@ const CreateForm = ({user}) => {
                                 </div>
                             </div>
 
-                            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                <div className="row g-3 align-items-center">
-                                    <div className="col-4">
-                                        <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
-                                    </div>
-                                    <div className="col-6">
-                                        <input spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
-                                    </div>
-                                </div>
-                            </div>
                         </> :
-                        <>
-                            <div className="col-12" style={{paddingBottom: "0.5%"}}>
-                                <div className="row g-3 align-items-center">
-                                    <div className="col-4">
-                                        <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
-                                    </div>
-                                    <div className="col-6">
-                                        <input spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </>
+                        <></>
                     }
+                    <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                        <div className="row g-3 align-items-center">
+                            <div className="col-4">
+                                <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
+                            </div>
+                            <div className="col-6">
+                                <input spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
+                            </div>
+                        </div>
+                    </div>
 
                     <hr className="col-11" />
                     <div className="col-6" style={{paddingBottom: "0.5%"}}>
