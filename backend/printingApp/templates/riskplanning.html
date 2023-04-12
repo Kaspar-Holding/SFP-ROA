@@ -361,19 +361,26 @@
                     <p>Death benefits will not be paid where the life insured commits suicide within 2 years of commencement or reinstatement of the cover.</p>
                     <hr/>
                     {% if RP.RP_LC_FinancialSolutions %}
-                        <p>{{RP.RP_LC_FinancialSolutions|linebreaks}}</p>
+                        {% autoescape off %}
+                            <p>{{RP.RP_LC_FinancialSolutions}}</p>
+                        {% endautoescape %}
                         <hr/>
                     {% endif %}
                     <p><u>Disability Cover:</u></p>
                     <hr/>
                     {% if RP.RP_DiC_FinancialSolutions %}
-                        <p>{{RP.RP_DiC_FinancialSolutions|linebreaks}}</p>
+                        {% autoescape off %}
+                        <p>{{RP.RP_DiC_FinancialSolutions}}</p>
+                        {% endautoescape %}
+
                         <hr/>
                     {% endif %}
                     <p><u>Dread Disease Cover:</u></p>
                     <hr/>
                     {% if RP.RP_DrC_FinancialSolutions %}
-                        <p>{{RP.RP_DrC_FinancialSolutions|linebreaks}}</p>
+                    {% autoescape off %}
+                    <p>{{RP.RP_DrC_FinancialSolutions}}</p>
+                    {% endautoescape %}
                         <hr/>
                     {% endif %}
                 </div>                                    
@@ -395,15 +402,21 @@
                         <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
                         {% if RP.RP_AltS_1 %}
                             <hr/>
-                            <p>{{RP.RP_AltS_1|linebreaks}}</p>
+                            {% autoescape off %}
+                                <p>{{RP.RP_AltS_1}}</p>
+                            {% endautoescape %}
                         {% endif %}
                         {% if RP.RP_AltS_2 %}
                             <hr/>
-                            <p>{{RP.RP_AltS_2|linebreaks}}</p>
+                            {% autoescape off %}
+                                <p>{{RP.RP_AltS_2}}</p>
+                            {% endautoescape %}
                         {% endif %}
                         {% if RP.RP_AltS_3 %}
                             <hr/>
-                            <p>{{RP.RP_AltS_3|linebreaks}}</p>
+                            {% autoescape off %}
+                                <p>{{RP.RP_AltS_3}}</p>
+                            {% endautoescape %}
                         {% endif %}
                     </div>                                    
                 </div>     
@@ -719,7 +732,9 @@
                     {% if productTaken.ProductReasons %}
                         <div class='row div'>          
                             <div class="column12">
-                                <p>{{productTaken.ProductReasons|linebreaks}}</p>                    
+                                {% autoescape off %}
+                                    <p>{{productTaken.ProductReasons}}</p>                    
+                                {% endautoescape %}
                             </div>                                
                         </div> 
                         <hr/>   
@@ -733,35 +748,49 @@
                         <hr/>
                         <div class='row div'>          
                             <div class="column12">
-                                <p>{{productTaken.ProductMaterialAspects|linebreaks}}</p>                    
+                                {% autoescape off %}
+                                <p>{{productTaken.ProductMaterialAspects}}</p>                    
+                                {% endautoescape %}
                             </div>                                
                         </div>
                     {% endif %}             
                     {% if productTaken.ProductDetails %}
                         <div class='row div'>          
                             <div class="column12">
-                                <p>{{productTaken.ProductDetails|linebreaks}}</p>                    
+                                
+                                {% autoescape off %}
+                                    <p>{{productTaken.ProductDetails}}</p>                    
+                                {% endautoescape %}
                             </div>                                
                         </div>
                     {% endif %}    
                     {% if productTaken.ExecutorFee %}
                         <div class='row div'>          
                             <div class="column12">
-                                <p>{{productTaken.ExecutorFee|linebreaks}}</p>                    
+                                
+                                {% autoescape off %}
+                                    <p>{{productTaken.ExecutorFee}}</p>                    
+                                {% endautoescape %}
                             </div>                                
                         </div>
                     {% endif %}    
                     {% if productTaken.NominationOfBeneficiaries %}
                         <div class='row div'>          
                             <div class="column12">
-                                <p>{{productTaken.NominationOfBeneficiaries|linebreaks}}</p>                    
+                                
+                                {% autoescape off %}
+                                    <p>{{productTaken.NominationOfBeneficiaries}}</p>                    
+                                {% endautoescape %}
                             </div>                                
                         </div>    
                     {% endif %}    
                     {% if productTaken.InformationExplained %}
                         <div class='row div'>          
                             <div class="column12">
-                                <p>{{productTaken.InformationExplained|linebreaks}}</p>                    
+                                
+                                {% autoescape off %}
+                                    <p>{{productTaken.InformationExplained}}</p>                    
+                                {% endautoescape %}
                             </div>                                
                         </div>    
                     {% endif %}

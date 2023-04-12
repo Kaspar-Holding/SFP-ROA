@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 // import './Header.css';
-import { Editor } from '@tinymce/tinymce-react'
+import { Editor, tinyMCE } from '@tinymce/tinymce-react'
 const Risk = ({user}) =>
 {
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
@@ -1774,7 +1774,8 @@ const Risk = ({user}) =>
               <Editor
                   onInit={(evt, editor) => ProductReasonsRef.current = editor}
                   value={key.ProductReasons}
-                  onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ProductReasons", i, ProductReasonsRef.current.getContent())}}
+                  id={"productTaken"+i}
+                  onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductReasons", i, newText)}}
                   onFocus={(e)=>{backgroundInfo_onFocus7()}}
                   onBlur={(e)=>{backgroundInfo_onBlur7()}} 
                   name="ProductReasons"                     
@@ -2052,7 +2053,7 @@ const Risk = ({user}) =>
               <Editor
                   onInit={(evt, editor) => productProductMaterialAspectsRef.current = editor}
                   value={key.ProductMaterialAspects}
-                  onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, productProductMaterialAspectsRef.current.getContent())}}
+                  onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, newText)}}
                   onFocus={(e)=>{backgroundInfo_onFocus8()}}
                   onBlur={(e)=>{backgroundInfo_onBlur8()}}                      
                   init={{
@@ -2092,7 +2093,7 @@ const Risk = ({user}) =>
               <Editor
                 onInit={(evt, editor) => productProductDetailsRef.current = editor}
                 value={key.ProductDetails}
-                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ProductDetails", i, productProductDetailsRef.current.getContent())}}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ProductDetails", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus9()}}
                 onBlur={(e)=>{backgroundInfo_onBlur9()}}                      
                 init={{
@@ -2139,7 +2140,7 @@ const Risk = ({user}) =>
               <Editor
                 onInit={(evt, editor) => productExecutorFeeRef.current = editor}
                 value={key.ExecutorFee}
-                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ExecutorFee", i, productExecutorFeeRef.current.getContent())}}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ExecutorFee", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus10()}}
                 onBlur={(e)=>{backgroundInfo_onBlur10()}}        
                 init={{
@@ -2181,7 +2182,7 @@ const Risk = ({user}) =>
               <Editor
                 onInit={(evt, editor) => productNominationOfBeneficiariesRef.current = editor}
                 value={key.NominationOfBeneficiaries}
-                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("NominationOfBeneficiaries", i, productNominationOfBeneficiariesRef.current.getContent())}}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("NominationOfBeneficiaries", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus11()}}
                 onBlur={(e)=>{backgroundInfo_onBlur11()}}        
                 init={{
@@ -2227,7 +2228,7 @@ const Risk = ({user}) =>
              <Editor
                 onInit={(evt, editor) => productInformationExplainedRef.current = editor}
                 value={key.InformationExplained}
-                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("InformationExplained", i, productInformationExplainedRef.current.getContent())}}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("InformationExplained", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus12()}}
                 onBlur={(e)=>{backgroundInfo_onBlur12()}}        
                 init={{

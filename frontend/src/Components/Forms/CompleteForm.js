@@ -20,6 +20,9 @@ import Medical from './Medical';
 const CompleteForm = () => {
     const location = useLocation();
     const { state } = location;
+    if (!state) {
+        return <Navigate to="/"/>
+    }
     // alert(state)
     // console.log(state)
     // console.log(JSON.stringify(FiduciaryFormData))

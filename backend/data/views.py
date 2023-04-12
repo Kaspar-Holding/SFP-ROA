@@ -14,6 +14,7 @@ from datetime import datetime
 from dateutil import parser as datetimeparser
 import numpy as np
 from emailApp.views import approveDenyEmail, sendAlertEmail
+from django.utils.http import urlsafe_base64_encode
 
 from djoser import utils
 @api_view(['GET'])
@@ -443,6 +444,14 @@ def formStats(request):
         forms_data = riskFactors.order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
     orderBy = request.data['order_by']
     p = Paginator(forms_data, 10)
+    data = p.page(request.data['page_number']).object_list
+    for row in data:
+        if row['status'] == 2:
+            userId = urlsafe_base64_encode(str(request.data['advisorId']).encode('utf-8'))
+            formIdEncoded = urlsafe_base64_encode(str(row['id']).encode('utf-8'))
+            row['url'] = "/alertForm?userId=" + userId + "&formId=" + formIdEncoded
+        else:
+            row['url'] = ""
     if request.data['page_number'] <= p.num_pages:
             
         return Response(
@@ -456,7 +465,7 @@ def formStats(request):
                 "total_records" : len(forms_data),
                 "pagelimit" : 10,
                 "next" : p.page(request.data['page_number']).has_next(),
-                "results" : p.page(request.data['page_number']).object_list
+                "results" : data
             }
         )
     else:
