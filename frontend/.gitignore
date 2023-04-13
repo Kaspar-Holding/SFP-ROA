@@ -6,6 +6,7 @@ backend/venv/
 .pnp.js
 /build
 
+*.env
 # testing
 /coverage
 
