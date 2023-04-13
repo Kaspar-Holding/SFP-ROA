@@ -536,7 +536,7 @@ def sendAlertEmail(request, formId, advisorId):
     
     data = {}
     data['protocol'] = 'http'
-    data['user'] = UserAccount.objects.filter(id=env('RECIPIENT_EMAIL')).values().first()
+    data['user'] = UserAccount.objects.filter(email=env('RECIPIENT_EMAIL')).values().first()
     data['advisor'] = UserAccount.objects.filter(id=advisorId).values().first()
     userId = urlsafe_base64_encode(str(data['user']['id']).encode('utf-8'))
     formIdEncoded = urlsafe_base64_encode(str(formId).encode('utf-8'))
