@@ -859,10 +859,9 @@ const Employee = ({user}) =>
                                     null
                                 }
                                 <Editor
-                                    onInit={(evt, editor) => CoverEditor.current = editor}
                                     value={FormData['EB_BusB_CoverDetails']}
                                     // setFormData({...FormData, [e.target.name]: e.target.value})
-                                    onEditorChange={(e)=>{ setFormData({...FormData, ["EB_BusB_CoverDetails"]: CoverEditor.current.getContent()}) }}
+                                    onEditorChange={(e)=>{ setFormData({...FormData, ["EB_BusB_CoverDetails"]: e}) }}
                                     onFocus={(e)=>{backgroundInfo_onFocus1()}}
                                     onBlur={(e)=>{backgroundInfo_onBlur1()}}
                                     init={{
@@ -1875,7 +1874,7 @@ const Employee = ({user}) =>
         </>: 
          null
     }
-    <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
+    {/* <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
         id="EB_BusRB_AccidentBenefitReason" name='EB_BusRB_AccidentBenefitReason' value={FormData['EB_BusRB_AccidentBenefitReason']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus2}
         onBlur={backgroundInfo_onBlur2}
@@ -1883,8 +1882,30 @@ const Employee = ({user}) =>
 Record the client's instructions, deviations and implications thereof.
         
         
-        `}  aria-describedby=""  ></textarea>
-            
+        `}  aria-describedby=""  ></textarea> */}
+    <Editor
+        value={FormData['EB_BusRB_AccidentBenefitReason']}
+        onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_AccidentBenefitReason']: newText }) }}
+        onFocus={(e)=>{backgroundInfo_onFocus2()}}
+        onBlur={(e)=>{backgroundInfo_onBlur2()}}                      
+        name="EB_BusRB_AccidentBenefitReason"
+        init={{
+            selector: "textarea",
+            placeholder: "Explain the reasons why life cover benefits were recommended to satisfy this need. \nRecord the client's instructions, deviations and implications thereof.",
+            height: 300,
+            menu: true,
+            plugins: [
+                'advlist autolink link lists image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount',
+            ],
+            toolbar: 'styles | undo redo | formatselect | ' +
+            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+            'removeformat | wordcount ',
+            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+        }}
+    />
             <hr/>
             <p>Disability Cover:</p>
             <hr/>
@@ -1908,7 +1929,7 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
+    {/* <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
         id="EB_BusRB_DiC_Reason" name='EB_BusRB_DiC_Reason' value={FormData['EB_BusRB_DiC_Reason']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus4}
         onBlur={backgroundInfo_onBlur4}
@@ -1916,8 +1937,32 @@ Record the client's instructions, deviations and implications thereof.
 Record the client's instructions, deviations and implications thereof.
         
         
-        `}  aria-describedby=""  ></textarea>
-
+        `}  aria-describedby=""  ></textarea> */}
+    <Editor
+        value={FormData['EB_BusRB_DiC_Reason']}
+        onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DiC_Reason']: newText }) }}
+        onFocus={(e)=>{backgroundInfo_onFocus2()}}
+        onBlur={(e)=>{backgroundInfo_onBlur2()}}                      
+        name="EB_BusRB_DiC_Reason"
+        init={{
+            selector: "textarea",
+            placeholder: `
+                Explain the reasons why disability benefits were recommended to satisfy this need. 
+                Record the client's instructions, deviations and implications thereof.` ,
+            height: 300,
+            menu: true,
+            plugins: [
+                'advlist autolink link lists image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount',
+            ],
+            toolbar: 'styles | undo redo | formatselect | ' +
+            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+            'removeformat | wordcount ',
+            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+        }}
+    />
     <hr/>
     <p>Dread Disease Cover:</p>
     <hr/>
@@ -1942,16 +1987,40 @@ Record the client's instructions, deviations and implications thereof.
         </>: 
          null
     }
-    <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
+    {/* <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
         id="EB_BusRB_DrC_Reason" name='EB_BusRB_DrC_Reason' value={FormData['EB_BusRB_DrC_Reason']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus3}
         onBlur={backgroundInfo_onBlur3}
         placeholder={`Explain the reasons why dread disease cover was recommended to satisfy this need. 
 Record the client's instructions, deviations and implications thereof.
         
+            
         
-        
-        `}  aria-describedby=""  ></textarea>
+        `}  aria-describedby=""  ></textarea> */}
+    <Editor
+        value={FormData['EB_BusRB_DrC_Reason']}
+        onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Reason']: newText }) }}
+        onFocus={(e)=>{backgroundInfo_onFocus3()}}
+        onBlur={(e)=>{backgroundInfo_onBlur3()}}                      
+        name="EB_BusRB_DrC_Reason"
+        init={{
+            selector: "textarea",
+            placeholder: `Explain the reasons why dread disease cover was recommended to satisfy this need. 
+            Record the client's instructions, deviations and implications thereof.` ,
+            height: 300,
+            menu: true,
+            plugins: [
+                'advlist autolink link lists image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount',
+            ],
+            toolbar: 'styles | undo redo | formatselect | ' +
+            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+            'removeformat | wordcount ',
+            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+        }}
+    />
 <hr/>
 
         {
@@ -1970,7 +2039,7 @@ Record the client's instructions, deviations and implications thereof.
             null
         }
 
-        <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
+        {/* <textarea maxLength={1000} className="form-control"  style={{height: '140px'}} 
         id="EB_BusRB_DrC_Summary" name='EB_BusRB_DrC_Summary' value={FormData['EB_BusRB_DrC_Summary']} onChange={(e) => {onChange(e)}}
         onFocus={backgroundInfo_onFocus5}
         onBlur={backgroundInfo_onBlur5}
@@ -1978,7 +2047,30 @@ Record the client's instructions, deviations and implications thereof.
 
 
 
-        `}  aria-describedby=""  ></textarea>
+        `}  aria-describedby=""  ></textarea> */}
+        <Editor
+        value={FormData['EB_BusRB_DrC_Summary']}
+        onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Summary']: newText }) }}
+        onFocus={(e)=>{backgroundInfo_onFocus5()}}
+        onBlur={(e)=>{backgroundInfo_onBlur5()}}                      
+        name="EB_BusRB_DrC_Summary"
+        init={{
+            selector: "textarea",
+            placeholder: `Summary of recommendations to address your identified needs.` ,
+            height: 300,
+            menu: true,
+            plugins: [
+                'advlist autolink link lists image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount',
+            ],
+            toolbar: 'styles | undo redo | formatselect | ' +
+            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+            'removeformat | wordcount ',
+            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+        }}
+    />
 
         <hr/>
 

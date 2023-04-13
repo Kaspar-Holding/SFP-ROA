@@ -32,7 +32,9 @@
                 <br/>                            
                 <br/>                            
                 <div class="column12">
-                    <span>{{BA_Investment.AI_TermDetails|linebreaks}}</span>
+                    {% autoescape off %}
+                        <span>{{BA_Investment.AI_TermDetails}}</span>
+                    {% endautoescape %}
                 </div>                                  
                 <hr/>
             {% endif %}   
@@ -73,7 +75,9 @@
         <hr/>
         {% if BA_Investment.AI_PremiumTypeDetails %}
             <div class="">
-                {{ BA_Investment.AI_PremiumTypeDetails|linebreaks }}
+                {% autoescape off %}
+                    {{ BA_Investment.AI_PremiumTypeDetails }}
+                {% endautoescape %}
             </div>                                
             <hr/>
         {% endif %}
@@ -81,8 +85,10 @@
             <div class="column6">
                 <span>Investment Strategy</span>
             </div>
-            <div class="column5">                        
-                <span>{{BA_Investment.AI_Strategy|linebreaks}}</span>
+            <div class="column5">  
+                {% autoescape off %}
+                    <span>{{BA_Investment.AI_Strategy}}</span>
+                {% endautoescape %}                      
             </div>  
         </div>
         <hr/> 
@@ -104,7 +110,9 @@
         <hr/>  
         {% if BA_Investment.AI_ReturnRequiredDetails %}
             <div class="column12">
-                {{ BA_Investment.AI_ReturnRequiredDetails|linebreaks }}
+                {% autoescape off %}
+                    {{ BA_Investment.AI_ReturnRequiredDetails }}
+                {% endautoescape %}
             </div>                                
             <hr/>
         {% endif %}   
@@ -120,7 +128,9 @@
         <hr/> 
         {% if BA_Investment.AI_RiskProfileDetails %}
             <div class="column12">
-                {{ BA_Investment.AI_RiskProfileDetails|linebreaks }}
+                {% autoescape off %}
+                    {{ BA_Investment.AI_RiskProfileDetails }}
+                {% endautoescape %}
             </div>                                
             <hr/>
         {% endif %}    
@@ -233,7 +243,11 @@
         <div class="column12">
             <span>Summary of recommendations to address the business’s needs identified</span>
             <br/>
-            <span>{{BA_Investment.AI_FinancialSolutions|linebreaks}}</span>
+            <span>
+                {% autoescape off %}
+                    {{BA_Investment.AI_FinancialSolutions}}
+                {% endautoescape %}
+            </span>
             
         </div>   
         {% if BA_Investment.AI_AltS_1 or BA_Investment.AI_AltS_2 or BA_Investment.AI_AltS_3 %}
@@ -248,15 +262,27 @@
                     <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
                     {% if BA_Investment.AI_AltS_1 %}
                         <hr/>
-                        <p>{{BA_Investment.AI_AltS_1|linebreaks}}</p>
+                        <p>
+                            {% autoescape off %}
+                                {{BA_Investment.AI_AltS_1}}
+                            {% endautoescape %}
+                        </p>
                     {% endif %}
                     {% if BA_Investment.AI_AltS_2 %}
                         <hr/>
-                        <p>{{BA_Investment.AI_AltS_2|linebreaks}}</p>
+                        <p>
+                            {% autoescape off %}
+                                {{BA_Investment.AI_AltS_2}}
+                            {% endautoescape %}
+                        </p>
                     {% endif %}
                     {% if BA_Investment.AI_AltS_3 %}
                         <hr/>
-                        <p>{{BA_Investment.AI_AltS_3|linebreaks}}</p>
+                        <p>
+                            {% autoescape off %}
+                                {{BA_Investment.AI_AltS_3}}
+                            {% endautoescape %}
+                        </p>
                     {% endif %}
                 </div>                                    
             </div>     
@@ -427,7 +453,11 @@
                 </b>
                 <div class='row div'>
                     <div class="column12">
-                        <span>{{productTaken.Portfolio|linebreaks}}</span>
+                        <span>
+                            {% autoescape off %}
+                                {{productTaken.Portfolio}}
+                            {% endautoescape %}
+                        </span>
                     </div>
                 </div>
                 <hr/>
@@ -837,14 +867,18 @@
                         <span>Identify the source of funds being invested</span>
                     </div>
                     <div class="column5">
-                        {{productTaken.SourceOfFunds|linebreaks}}
+                        {% autoescape off %}
+                            {{productTaken.SourceOfFunds}}
+                        {% endautoescape %}
                     </div>
                 </div>
                 <hr/>
                 {% if productTaken.SourceOfFundsDetail %}
                     <div class="row div">
                         <div class="column12">
-                            {{productTaken.SourceOfFundsDetail|linebreaks}}
+                            {% autoescape off %}
+                                {{productTaken.SourceOfFundsDetail}}
+                            {% endautoescape %}
                         </div>
                     </div>
                 {% endif %}
@@ -855,7 +889,9 @@
                     </div>
                     {% if productTaken.PF_Reasons %}
                         <div class="">
-                            {{productTaken.PF_Reasons|linebreaks}}
+                            {% autoescape off %}
+                                {{productTaken.PF_Reasons}}
+                            {% endautoescape %}
                         </div>
                     {% endif %}
                 </div>
@@ -1104,14 +1140,18 @@
                 
                 {% if productTaken.PF_MaterialAspects %}
                     <div class="">
-                        {{productTaken.PF_MaterialAspects|linebreaks}}
+                        {% autoescape off %}
+                            {{productTaken.PF_MaterialAspects}}
+                        {% endautoescape %}
                     </div>
                     <hr/>
                 {% endif %}
                 {% if productTaken.PF_Pr_Details %}
                     <div class="">
                         <div class="">
-                            {{productTaken.PF_Pr_Details|linebreaks}}
+                            {% autoescape off %}
+                                {{productTaken.PF_Pr_Details}}
+                            {% endautoescape %}
                         </div>
                     </div>
                     <hr/>
@@ -1119,7 +1159,9 @@
                 {% if productTaken.PF_NominationOfBeneficiaries %}
                     <div class="">
                         <div class="">
-                            {{productTaken.PF_NominationOfBeneficiaries|linebreaks}}
+                            {% autoescape off %}
+                                {{productTaken.PF_NominationOfBeneficiaries}}
+                            {% endautoescape %}
                         </div>
                     </div>
                     <hr/>

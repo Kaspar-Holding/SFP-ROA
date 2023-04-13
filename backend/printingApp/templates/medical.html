@@ -235,7 +235,9 @@
     <span>Your personal circumstances that formed the basis for my recommendation</span>
     <div class="row div">
         <div class="column12">
-            {{ MD.BackInfo|linebreaks }}
+            {% autoescape off %}
+                {{ MD.BackInfo }}
+            {% endautoescape %}
         </div>
     </div>
     <hr/>
@@ -893,7 +895,11 @@
         </div>
         <div class="column5">
             {% if SectionD_SnF %}
-            <span>{{MD.SectionD_SnF|linebreaks}}</span>
+            <span>
+                {% autoescape off %}
+                    {{MD.SectionD_SnF}}
+                {% endautoescape %}
+            </span>
             {% else %}
             <span class="white">0</span>
             {% endif %}
@@ -907,7 +913,11 @@
     <div class="row div">
         <div class="column12">
             {% if MD.SectionE_PMB %}
-            <span>{{MD.SectionE_PMB|linebreaks}}</span>
+            <span>
+                {% autoescape off %}
+                    {{MD.SectionE_PMB}}
+                {% endautoescape %}
+            </span>
             {% else %}
             <span class="white">0</span>
             {% endif %}

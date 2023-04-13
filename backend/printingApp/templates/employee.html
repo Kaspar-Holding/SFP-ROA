@@ -707,8 +707,10 @@
                         Additional Comments
                     </span>
                 </div>
-                <div class="column5">                        
-                    {{ EB.EB_BusEmp_AdditionalComments|linebreaks }}
+                <div class="column5">   
+                    {% autoescape off %}
+                        {{ EB.EB_BusEmp_AdditionalComments }}
+                    {% endautoescape %}                     
                 </div>
             </div>
             <hr/>
@@ -1359,7 +1361,11 @@
             <hr/>              
             <div class='row div'>          
                 <div class="column12">
-                    <p>{{ EB.EB_BusRB_AccidentBenefitReason|linebreaks }}</p>                    
+                    <p>
+                        {% autoescape off %}
+                            {{ EB.EB_BusRB_AccidentBenefitReason  }}
+                        {% endautoescape %}
+                    </p>                    
                 </div>                                
             </div>  
             <hr/>
@@ -1371,7 +1377,11 @@
             <hr/>             
             <div class='row div'>          
                 <div class="column12">
-                    <p>{{EB.EB_BusRB_DiC_Reason|linebreaks}}</p>                    
+                    <p>
+                        {% autoescape off %}
+                            {{EB.EB_BusRB_DiC_Reason }}
+                        {% endautoescape %}
+                    </p>                    
                 </div>                                
             </div>  
             <hr/>
@@ -1383,13 +1393,21 @@
             <hr/>             
             <div class='row div'>          
                 <div class="column12">
-                    <p>{{EB.EB_BusRB_DrC_Reason|linebreaks}}</p>                    
+                    <p>
+                        {% autoescape off %}
+                            {{EB.EB_BusRB_DrC_Reason }}
+                        {% endautoescape %}
+                    </p>                    
                 </div>                                
             </div>  
             <hr/>
             <div class='row div'>          
                 <div class="column12">
-                    <p>{{EB.EB_BusRB_DrC_Summary|linebreaks}}</p>                    
+                    <p>
+                        {% autoescape off %}
+                            {{EB.EB_BusRB_DrC_Summary }}
+                        {% endautoescape %}
+                    </p>                    
                 </div>                                
             </div>  
             <hr/>

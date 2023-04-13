@@ -138,7 +138,9 @@
                 <b>Details:</b>
             </div>
             <div class="column5">
-                <span>{{GP.GP_Benefits|linebreaks}}</span>
+                {% autoescape off %}
+                    <span>{{GP.GP_Benefits}}</span>
+                {% endautoescape %}
             </div>
         </div>
         <hr/>
@@ -606,7 +608,10 @@
                 <b>Other Exclusions</b>
             </div>
             <div class="col7">
-                <span>{{ GP.GP_Other_Exclusions|linebreaks }}</span>
+                <span>
+                    {% autoescape off %}
+                        {{ GP.GP_Other_Exclusions }}</span>
+                    {% endautoescape %}
             </div>
         </div>
         <hr/>
@@ -615,7 +620,10 @@
                 <b>General  Exclusions</b>
             </div>
             <div class="col7">
-                <span>{{ GP.GP_GeneralComments|linebreaks }}</span>
+                <span>
+                    {% autoescape off %}
+                        {{ GP.GP_GeneralComments }}</span>
+                    {% endautoescape %}
             </div>
         </div>
         <hr/>

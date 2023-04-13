@@ -5,6 +5,7 @@ import React, {useEffect, useState} from 'react';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
 import { connect } from 'react-redux';
+import { Editor } from '@tinymce/tinymce-react'
 
 const Short_term_Personal = ({user}) => {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
@@ -1183,7 +1184,30 @@ const Short_term_Personal = ({user}) => {
                 </> :
                 null
             }
-                <textarea  id="STIP_General_RefusedDetails" name='STIP_General_RefusedDetails' value={FormData['STIP_General_RefusedDetails']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If yes, provide details" aria-describedby="" ></textarea>
+            {/* <textarea  id="STIP_General_RefusedDetails" name='STIP_General_RefusedDetails' value={FormData['STIP_General_RefusedDetails']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If yes, provide details" aria-describedby="" ></textarea> */}
+            <Editor
+              value={FormData['STIP_General_RefusedDetails']}
+              onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_General_RefusedDetails']: newText }) }}
+              onFocus={(e)=>{letter_of_introduction_onFocus()}}
+              onBlur={(e)=>{letter_of_introduction_onBlur()}}                      
+              name="STIP_General_RefusedDetails"
+              init={{
+                  selector: "textarea",
+                  placeholder: "If yes, provide details",
+                  height: 300,
+                  menu: true,
+                  plugins: [
+                      'advlist autolink link lists image charmap print preview anchor',
+                      'searchreplace visualblocks code fullscreen',
+                      'insertdatetime media table paste code help wordcount',
+                  ],
+                  toolbar: 'styles | undo redo | formatselect | ' +
+                  'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                  'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                  'removeformat | wordcount ',
+                  content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+              }}
+            />
             </div>
     </div>
     <hr/>
@@ -1222,7 +1246,30 @@ const Short_term_Personal = ({user}) => {
                     </> : 
                     null
                 }
-                <textarea  id="STIP_General_RisksDetails" name='STIP_General_RisksDetails' value={FormData['STIP_General_RisksDetails']} onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If yes,provide name of the issuer" aria-describedby="" ></textarea>
+                {/* <textarea  id="STIP_General_RisksDetails" name='STIP_General_RisksDetails' value={FormData['STIP_General_RisksDetails']} onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If yes,provide name of the issuer" aria-describedby="" ></textarea> */}
+                <Editor
+                  value={FormData['STIP_General_RisksDetails']}
+                  onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_General_RisksDetails']: newText }) }}
+                  onFocus={(e)=>{fica_onFocus()}}
+                  onBlur={(e)=>{fica_onBlur()}}                      
+                  name="STIP_General_RisksDetails"
+                  init={{
+                      selector: "textarea",
+                      placeholder: "If yes,provide name of the issuer",
+                      height: 300,
+                      menu: true,
+                      plugins: [
+                          'advlist autolink link lists image charmap print preview anchor',
+                          'searchreplace visualblocks code fullscreen',
+                          'insertdatetime media table paste code help wordcount',
+                      ],
+                      toolbar: 'styles | undo redo | formatselect | ' +
+                      'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                      'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                      'removeformat | wordcount ',
+                      content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                  }}
+                />
                 </div>
             </div>
             <hr/>
@@ -3396,15 +3443,75 @@ const Short_term_Personal = ({user}) => {
             null
         }
 
-      <p>If yes,answer the following:</p>
+        <p>If yes,answer the following:</p>
         <p>What is the purpose of this replacement?</p>
-        <textarea name='STIP_CnRI_ReplacePurpose' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplacePurpose']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
-      <hr/>
+        {/* <textarea name='STIP_CnRI_ReplacePurpose' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplacePurpose']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
+        <Editor
+          value={FormData['STIP_CnRI_ReplacePurpose']}
+          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplacePurpose']: newText }) }}
+          name="STIP_CnRI_ReplacePurpose"
+          init={{
+              selector: "textarea",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat | wordcount ',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
+        <hr/>
         <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
-        <textarea name='STIP_CnRI_ReplaceReason' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceReason']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+        {/* <textarea name='STIP_CnRI_ReplaceReason' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceReason']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
+        <Editor
+          value={FormData['STIP_CnRI_ReplaceReason']}
+          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceReason']: newText }) }}                     
+          name="STIP_CnRI_ReplaceReason"
+          init={{
+              selector: "textarea",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat | wordcount ',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
         <hr/>
         <p>Suppliers of the product(s) to be replaced:</p>
-        <textarea name='STIP_CnRI_ReplaceSupplier' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceSupplier']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+        {/* <textarea name='STIP_CnRI_ReplaceSupplier' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceSupplier']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
+        <Editor
+          value={FormData['STIP_CnRI_ReplaceSupplier']}
+          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceSupplier']: newText }) }}
+          name="STIP_CnRI_ReplaceSupplier"
+          init={{
+              selector: "textarea",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat | wordcount ',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
 
     </div>
   </div>
@@ -3435,8 +3542,28 @@ const Short_term_Personal = ({user}) => {
               <div className="col-4">
                   <label className="col-form-label">Street name,number and suburb</label>
               </div>
-              <div className="col-6">
-                  <textarea maxLength={500} spellCheck="true"  id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
+              <div className="col-8">
+                  {/* <textarea maxLength={500} spellCheck="true"  id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
+                  <Editor
+                    value={FormData['STIP_HC_StreetNumber']}
+                    onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_HC_StreetNumber']: newText }) }}
+                    name="STIP_HC_StreetNumber"
+                    init={{
+                        selector: "textarea",
+                        height: 300,
+                        menu: true,
+                        plugins: [
+                            'advlist autolink link lists image charmap print preview anchor',
+                            'searchreplace visualblocks code fullscreen',
+                            'insertdatetime media table paste code help wordcount',
+                        ],
+                        toolbar: 'styles | undo redo | formatselect | ' +
+                        'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                        'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                        'removeformat | wordcount ',
+                        content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                    }}
+                  />
               </div>
           </div>
       </div>
@@ -4039,8 +4166,28 @@ const Short_term_Personal = ({user}) => {
               <div className="col-4">
                   <label className="col-form-label">Street name,number and suburb</label>
               </div>
-              <div className="col-6">
-                  <textarea maxLength={500} spellCheck="true"  id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
+              <div className="col-8">
+                  {/* <textarea maxLength={500} spellCheck="true"  id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
+                  <Editor
+                    value={FormData['STIP_Build_StreetNumber']}
+                    onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Build_StreetNumber']: newText }) }}
+                    name="STIP_Build_StreetNumber"
+                    init={{
+                        selector: "textarea",
+                        height: 300,
+                        menu: true,
+                        plugins: [
+                            'advlist autolink link lists image charmap print preview anchor',
+                            'searchreplace visualblocks code fullscreen',
+                            'insertdatetime media table paste code help wordcount',
+                        ],
+                        toolbar: 'styles | undo redo | formatselect | ' +
+                        'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                        'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                        'removeformat | wordcount ',
+                        content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                    }}
+                  />
               </div>
           </div>
       </div>
@@ -4317,8 +4464,28 @@ const Short_term_Personal = ({user}) => {
                     <div className="col-4">
                         <label className="col-form-label">Street name,number and suburb</label>
                     </div>
-                    <div className="col-6">
-                        <textarea maxLength={500} spellCheck="true"  id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/>
+                    <div className="col-8">
+                        {/* <textarea maxLength={500} spellCheck="true"  id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
+                        <Editor
+                          value={FormData['STIP_AddProp_StreetNumber']}
+                          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_AddProp_StreetNumber']: newText }) }}
+                          name="STIP_AddProp_StreetNumber"
+                          init={{
+                              selector: "textarea",
+                              height: 300,
+                              menu: true,
+                              plugins: [
+                                  'advlist autolink link lists image charmap print preview anchor',
+                                  'searchreplace visualblocks code fullscreen',
+                                  'insertdatetime media table paste code help wordcount',
+                              ],
+                              toolbar: 'styles | undo redo | formatselect | ' +
+                              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                              'removeformat | wordcount ',
+                              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                          }}
+                        />
                     </div>
                 </div>
             </div>
@@ -6089,8 +6256,27 @@ const Short_term_Personal = ({user}) => {
 
       <br/>
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
-        <textare maxLength={500} spellCheck="true"  id="STIP_PersonalLL_Comments" name='STIP_PersonalLL_Comments' value={FormData['STIP_PersonalLL_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} />
-
+        {/* <textare maxLength={500} spellCheck="true"  id="STIP_PersonalLL_Comments" name='STIP_PersonalLL_Comments' value={FormData['STIP_PersonalLL_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
+        <Editor
+          value={FormData['STIP_PersonalLL_Comments']}
+          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_PersonalLL_Comments']: newText }) }}
+          name="STIP_PersonalLL_Comments"
+          init={{
+              selector: "textarea",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat | wordcount ',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
 
         <br/>
         <h6 align="left" style={{ color: "#14848A"}}><b>LEGAL ACCESS</b></h6>
@@ -6227,19 +6413,75 @@ const Short_term_Personal = ({user}) => {
         <br/>
         <h6 align="left" style={{ color: "#14848A"}}><b>RECORD OF ADVICE</b></h6>
         <div>Products considered appropriate to address the needs of the client:</div>
-        <input spellCheck="true"  id="STIP_ProductConsidered" name='STIP_ProductConsidered' value={FormData['STIP_ProductConsidered']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} />
-
+        {/* <input spellCheck="true"  id="STIP_ProductConsidered" name='STIP_ProductConsidered' value={FormData['STIP_ProductConsidered']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
+        <Editor
+          value={FormData['STIP_ProductConsidered']}
+          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductConsidered']: newText }) }}
+          name="STIP_ProductConsidered"
+          init={{
+              selector: "textarea",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat | wordcount ',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
         <hr/>
         <div>Recommended product:</div>
-        <input spellCheck="true"  id="STIP_ProductRecommended" name='STIP_ProductRecommended' value={FormData['STIP_ProductRecommended']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} />
-
+        {/* <input spellCheck="true"  id="STIP_ProductRecommended" name='STIP_ProductRecommended' value={FormData['STIP_ProductRecommended']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
+        <Editor
+          value={FormData['STIP_ProductRecommended']}
+          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductRecommended']: newText }) }}
+          name="STIP_ProductRecommended"
+          init={{
+              selector: "textarea",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat | wordcount ',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
         <hr/>
         <div>Reasons why the recommended product is considered the most suitable for the needs of the client:</div>
-        <input spellCheck="true"  id="STIP_ProductReasons" name='STIP_ProductReasons' value={FormData['STIP_ProductReasons']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} />
-
+        {/* <input spellCheck="true"  id="STIP_ProductReasons" name='STIP_ProductReasons' value={FormData['STIP_ProductReasons']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
+        <Editor
+          value={FormData['STIP_ProductReasons']}
+          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductReasons']: newText }) }}
+          name="STIP_ProductReasons"
+          init={{
+              selector: "textarea",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat | wordcount ',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
         <hr/>
         <div><b>Note: The intermediary whose name appears in section below, will be regarded as the person responsible for advice to the client. </b></div>
-
         <br/>
         <h6 align="left" style={{ color: "#14848A"}}><b>DECLARATION BY INTERMEDIARY</b></h6>
 

@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
 import axios from 'axios';
+import { Editor } from '@tinymce/tinymce-react'
 import { connect } from 'react-redux';
 const GapCover = ({user}) => {
     const location = useLocation();
@@ -281,11 +282,36 @@ const GapCover = ({user}) => {
         
                 <div className="col-6" style={{paddingBottom: "0.5%"}}>
                     <div className="row g-3 align-items-center">
-                        <div className="col-4">
+                        <div className="col-12">
                             <label htmlFor="id_number" className="col-form-label"><b>Details:</b></label>
                         </div>
-                        <div className="col-6">
-                            <textarea maxLength={1000} spellCheck="true" id="GP_Benefits" onChange={(e) => {onChange(e)}} value={FormData['GP_Benefits']}  name="GP_Benefits"  className="form-control" placeholder="Details"  aria-describedby="" style={{width:"900px",height:"80px"}} />
+                        <div className="col-12">
+                            {/* <textarea maxLength={1000} spellCheck="true" id="GP_Benefits" onChange={(e) => {onChange(e)}} value={FormData['GP_Benefits']}  name="GP_Benefits"  className="form-control" placeholder="Details"  aria-describedby="" style={{width:"900px",height:"80px"}} /> */}
+                            <Editor
+                                value={FormData['GP_Benefits']}
+                                // setFormData({...FormData, [e.target.name]: e.target.value})
+                                onEditorChange={(e)=>{ setFormData({...FormData, ["GP_Benefits"]: e}) }}
+                                init={{
+                                    selector: "textarea",
+                                    height: 300,
+                                    placeholder: "Details",
+                                    menu: true,
+                                    plugins: [
+                                        'advlist autolink link lists image charmap print preview anchor',
+                                        'searchreplace visualblocks code fullscreen',
+                                        'insertdatetime media table paste code help wordcount',
+                                    ],
+                                    toolbar: 'styles | undo redo | formatselect | ' +
+                                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                    'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
+                                    'removeformat',
+                                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                    init_instance_callback : function(editor) {
+                                        var freeTiny = document.querySelector('.tox .tox-notification--in');
+                                    freeTiny.style.display = 'none';
+                                    }
+                                }}
+                            />
                         </div>
                     </div>
                 </div>
@@ -662,21 +688,71 @@ const GapCover = ({user}) => {
                     <hr/>
 
                     <div className="row g-3 align-items-center">
-                        <div className="col-2">
+                        <div className="col-12">
                             <label htmlFor="id_number" className="col-form-label"><b>Other Exclusions</b></label>
                         </div>
-                        <div className="col-6">
-                            <textarea maxLength={1000} spellCheck="true"  id="GP_Other_Exclusions" onChange={(e) => {onChange(e)}} value={FormData['GP_Other_Exclusions']}  name="GP_Other_Exclusions" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  />
+                        <div className="col-12">
+                            {/* <textarea maxLength={1000} spellCheck="true"  id="GP_Other_Exclusions" onChange={(e) => {onChange(e)}} value={FormData['GP_Other_Exclusions']}  name="GP_Other_Exclusions" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  /> */}
+                            <Editor
+                                value={FormData['GP_Other_Exclusions']}
+                                // setFormData({...FormData, [e.target.name]: e.target.value})
+                                onEditorChange={(e)=>{ setFormData({...FormData, ["GP_Other_Exclusions"]: e}) }}
+                                init={{
+                                    selector: "textarea",
+                                    height: 300,
+                                    placeholder: "Discuss other exclusions",
+                                    menu: true,
+                                    plugins: [
+                                        'advlist autolink link lists image charmap print preview anchor',
+                                        'searchreplace visualblocks code fullscreen',
+                                        'insertdatetime media table paste code help wordcount',
+                                    ],
+                                    toolbar: 'styles | undo redo | formatselect | ' +
+                                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                    'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
+                                    'removeformat',
+                                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                    init_instance_callback : function(editor) {
+                                        var freeTiny = document.querySelector('.tox .tox-notification--in');
+                                    freeTiny.style.display = 'none';
+                                    }
+                                }}
+                            />
                         </div>
                     </div>
                     <hr/>
 
                     <div className="row g-3 align-items-center">
-                        <div className="col-2">
+                        <div className="col-12">
                             <label htmlFor="id_number" className="col-form-label"><b>General comments</b></label>
                         </div>
-                        <div className="col-6">
-                            <textarea maxLength={1000} spellCheck="true"  id="GP_GeneralComments" onChange={(e) => {onChange(e)}} value={FormData['GP_GeneralComments']}  name="GP_GeneralComments" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  />
+                        <div className="col-12">
+                            {/* <textarea maxLength={1000} spellCheck="true"  id="GP_GeneralComments" onChange={(e) => {onChange(e)}} value={FormData['GP_GeneralComments']}  name="GP_GeneralComments" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  /> */}
+                            <Editor
+                                value={FormData['GP_GeneralComments']}
+                                // setFormData({...FormData, [e.target.name]: e.target.value})
+                                onEditorChange={(e)=>{ setFormData({...FormData, ["GP_GeneralComments"]: e}) }}
+                                init={{
+                                    selector: "textarea",
+                                    height: 300,
+                                    placeholder: "Discuss other exclusions",
+                                    menu: true,
+                                    plugins: [
+                                        'advlist autolink link lists image charmap print preview anchor',
+                                        'searchreplace visualblocks code fullscreen',
+                                        'insertdatetime media table paste code help wordcount',
+                                    ],
+                                    toolbar: 'styles | undo redo | formatselect | ' +
+                                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                    'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
+                                    'removeformat',
+                                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                    init_instance_callback : function(editor) {
+                                        var freeTiny = document.querySelector('.tox .tox-notification--in');
+                                    freeTiny.style.display = 'none';
+                                    }
+                                }}
+                            />
                         </div>
                     </div>
                     <hr/>

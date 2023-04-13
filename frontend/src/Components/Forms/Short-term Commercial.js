@@ -5,6 +5,8 @@ import React, {useEffect, useState} from 'react';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
 import { connect } from 'react-redux';
+import { Editor } from '@tinymce/tinymce-react'
+
 const Short_term_Commercial= ({user}) => {
  {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
@@ -1606,9 +1608,30 @@ const Short_term_Commercial= ({user}) => {
                                         </div> 
                                     </div>
                                 </div>
-                                  <div className="col-4">
-                                    <input spellCheck="true" id="STIC_Applicable_Option" onChange={(e) => {onChange(e)}} value={FormData['STIC_Applicable_Option']}  name="STIC_Applicable_Option"  className="form-control" placeholder=""  aria-describedby="" style={{width:"600px",height:"100px"}} />
-                                  </div>
+                                <div className="col-4">
+                                  {/* <input spellCheck="true" id="STIC_Applicable_Option" onChange={(e) => {onChange(e)}} value={FormData['STIC_Applicable_Option']}  name="STIC_Applicable_Option"  className="form-control" placeholder=""  aria-describedby="" style={{width:"600px",height:"100px"}} /> */}
+                                  <Editor
+                                    value={FormData['STIC_Applicable_Option']}
+                                    onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Applicable_Option']: newText }) }}
+                                    name="STIC_Applicable_Option"
+                                    init={{
+                                        selector: "textarea",
+                                        height: '300px',
+                                        width: '600px',
+                                        menu: true,
+                                        plugins: [
+                                            'advlist autolink link lists image charmap print preview anchor',
+                                            'searchreplace visualblocks code fullscreen',
+                                            'insertdatetime media table paste code help wordcount',
+                                        ],
+                                        toolbar: 'styles | undo redo | formatselect | ' +
+                                        'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                        'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                                        'removeformat | wordcount ',
+                                        content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                    }}
+                                  />
+                                </div>
                               </div>
                           </div>
 
@@ -1657,7 +1680,30 @@ const Short_term_Commercial= ({user}) => {
                                           </> :
                                           null
                                       }
-                                      <textarea id="STIC_General_Cancelled_Detail" onChange={(e) => {onChange(e)}} value={FormData['STIC_General_Cancelled_Detail']}  name="STIC_General_Cancelled_Detail"  onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If 'Yes', provide details:" aria-describedby="" ></textarea>
+                                      {/* <textarea id="STIC_General_Cancelled_Detail" onChange={(e) => {onChange(e)}} value={FormData['STIC_General_Cancelled_Detail']}  name="STIC_General_Cancelled_Detail"  onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If 'Yes', provide details:" aria-describedby="" ></textarea> */}
+                                      <Editor
+                                        value={FormData['STIC_General_Cancelled_Detail']}
+                                        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_General_Cancelled_Detail']: newText }) }}
+                                        onFocus={(e)=>{letter_of_introduction_onFocus()}}
+                                        onBlur={(e)=>{letter_of_introduction_onBlur()}}                      
+                                        name="STIC_General_Cancelled_Detail"
+                                        init={{
+                                            selector: "textarea",
+                                            placeholder: "If 'Yes', provide details:",
+                                            height: 300,
+                                            menu: true,
+                                            plugins: [
+                                                'advlist autolink link lists image charmap print preview anchor',
+                                                'searchreplace visualblocks code fullscreen',
+                                                'insertdatetime media table paste code help wordcount',
+                                            ],
+                                            toolbar: 'styles | undo redo | formatselect | ' +
+                                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                                            'removeformat | wordcount ',
+                                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                        }}
+                                      />
                                   </div>
                                   <hr/>
                               </div>
@@ -1767,7 +1813,30 @@ const Short_term_Commercial= ({user}) => {
                                           </> : 
                                           null
                                       }
-                                      <textarea  id="STIC_Replacement_Purpose" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Purpose']}  name="STIC_Replacement_Purpose"  onFocus={STIC_Replacement_Purpose_onFocus} onBlur={STIC_Replacement_Purpose_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+                                      {/* <textarea  id="STIC_Replacement_Purpose" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Purpose']}  name="STIC_Replacement_Purpose"  onFocus={STIC_Replacement_Purpose_onFocus} onBlur={STIC_Replacement_Purpose_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
+                                      <Editor
+                                        value={FormData['STIC_Replacement_Purpose']}
+                                        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Replacement_Purpose']: newText }) }}
+                                        onFocus={(e)=>{STIC_Replacement_Purpose_onFocus()}}
+                                        onBlur={(e)=>{STIC_Replacement_Purpose_onBlur()}}                      
+                                        name="STIC_Replacement_Purpose"
+                                        init={{
+                                            selector: "textarea",
+                                            placeholder: "What is the purpose of this replacement",
+                                            height: 300,
+                                            menu: true,
+                                            plugins: [
+                                                'advlist autolink link lists image charmap print preview anchor',
+                                                'searchreplace visualblocks code fullscreen',
+                                                'insertdatetime media table paste code help wordcount',
+                                            ],
+                                            toolbar: 'styles | undo redo | formatselect | ' +
+                                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                                            'removeformat | wordcount ',
+                                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                        }}
+                                      />
                                       <hr/>
                                       <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
                                       {
@@ -1781,7 +1850,30 @@ const Short_term_Commercial= ({user}) => {
                                           </> : 
                                           null
                                       }
-                                      <textarea  id="STIC_Replacement_Reason" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Reason']}  name="STIC_Replacement_Reason"  onFocus={STIC_Replacement_Reason_onFocus} onBlur={STIC_Replacement_Reason_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
+                                      {/* <textarea  id="STIC_Replacement_Reason" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Reason']}  name="STIC_Replacement_Reason"  onFocus={STIC_Replacement_Reason_onFocus} onBlur={STIC_Replacement_Reason_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
+                                      <Editor
+                                        value={FormData['STIC_Replacement_Reason']}
+                                        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Replacement_Reason']: newText }) }}
+                                        onFocus={(e)=>{STIC_Replacement_Reason_onFocus()}}
+                                        onBlur={(e)=>{STIC_Replacement_Reason_onBlur()}}                      
+                                        name="STIC_Replacement_Reason"
+                                        init={{
+                                            selector: "textarea",
+                                            placeholder: "Reasons why replacement is considered more suitable than retaining or modifying the terminated product?",
+                                            height: 300,
+                                            menu: true,
+                                            plugins: [
+                                                'advlist autolink link lists image charmap print preview anchor',
+                                                'searchreplace visualblocks code fullscreen',
+                                                'insertdatetime media table paste code help wordcount',
+                                            ],
+                                            toolbar: 'styles | undo redo | formatselect | ' +
+                                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                                            'removeformat | wordcount ',
+                                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                        }}
+                                      />
                                       <hr/>
                                       <p>Suppliers of the product(s) to be replaced:</p>
                                       {
@@ -1795,8 +1887,31 @@ const Short_term_Commercial= ({user}) => {
                                           </> : 
                                           null
                                       }
-                                      <textarea  id="STIC_Replacement_Suppliers" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Suppliers']}  name="STIC_Replacement_Suppliers"  onFocus={STIC_Replacement_Suppliers_onFocus} onBlur={STIC_Replacement_Suppliers_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea>
-  
+                                      {/* <textarea  id="STIC_Replacement_Suppliers" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Suppliers']}  name="STIC_Replacement_Suppliers"  onFocus={STIC_Replacement_Suppliers_onFocus} onBlur={STIC_Replacement_Suppliers_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
+                                      <Editor
+                                        value={FormData['STIC_Replacement_Suppliers']}
+                                        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Replacement_Suppliers']: newText }) }}
+                                        onFocus={(e)=>{STIC_Replacement_Suppliers_onFocus()}}
+                                        onBlur={(e)=>{STIC_Replacement_Suppliers_onBlur()}}                      
+                                        name="STIC_Replacement_Suppliers"
+                                        init={{
+                                            selector: "textarea",
+                                            placeholder: "Suppliers of the product(s) to be replaced?",
+                                            height: 300,
+                                            menu: true,
+                                            plugins: [
+                                                'advlist autolink link lists image charmap print preview anchor',
+                                                'searchreplace visualblocks code fullscreen',
+                                                'insertdatetime media table paste code help wordcount',
+                                            ],
+                                            toolbar: 'styles | undo redo | formatselect | ' +
+                                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                                            'removeformat | wordcount ',
+                                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                        }}
+                                      />
+
                                   </div>
                               </div>
                                   <hr/>
@@ -12293,15 +12408,78 @@ const Short_term_Commercial= ({user}) => {
     <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>E. Record of Advice</b></div>
 
     <p>Products considered appropriate to address the needs of the client</p>
-    <textarea maxLength={500} spellCheck="true" id="STIC_SecE_1" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_1']}  name="STIC_SecE_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
+    {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_1" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_1']}  name="STIC_SecE_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
+    <Editor
+      value={FormData['STIC_SecE_1']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_1']: newText }) }}                  
+      name="STIC_SecE_1"
+      init={{
+          selector: "textarea",
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
     <hr/>
 
     <p>Recommended product</p>
-    <textarea maxLength={500} spellCheck="true" id="STIC_SecE_2" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_2']}  name="STIC_SecE_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
+    {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_2" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_2']}  name="STIC_SecE_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
+    <Editor
+      value={FormData['STIC_SecE_2']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_2']: newText }) }}                   
+      name="STIC_SecE_2"
+      init={{
+          selector: "textarea",
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
     <hr/>
 
     <p>Reasons why the recommended product is considered the most suitable for the needs of the client:</p>
-    <textarea maxLength={500} spellCheck="true" id="STIC_SecE_3" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_3']}  name="STIC_SecE_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} />
+    {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_3" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_3']}  name="STIC_SecE_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
+    <Editor
+      value={FormData['STIC_SecE_3']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_3']: newText }) }}                 
+      name="STIC_SecE_3"
+      init={{
+          selector: "textarea",
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
     <hr/>
 
     <br/>

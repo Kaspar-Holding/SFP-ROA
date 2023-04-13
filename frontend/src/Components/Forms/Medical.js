@@ -5,6 +5,7 @@ import React, {useEffect, useState} from 'react';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
 import { connect } from 'react-redux';
+import { Editor, tinyMCE } from '@tinymce/tinymce-react'
 
 const Medical = ({user}) => {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
@@ -559,7 +560,7 @@ const Medical = ({user}) => {
           </>: 
           null
       }
-      <textarea maxLength={1000}  id="BackInfo"  className="form-control"  style={{height: '160px'}}  
+      {/* <textarea maxLength={1000}  id="BackInfo"  className="form-control"  style={{height: '160px'}}  
       name='BackInfo' value={FormData['BackInfo']} onChange={(e) => {onChange(e)}} 
       onFocus={backgroundInfo_onFocus}
       onBlur={backgroundInfo_onBlur}
@@ -568,7 +569,34 @@ const Medical = ({user}) => {
           •	current personal circumstances,
           •	needs that have been identified, 
           •	and relevant information 
-      that formed the basis for the financial solution recommended`}  aria-describedby=""  ></textarea>
+      that formed the basis for the financial solution recommended`}  aria-describedby=""  ></textarea> */}
+      <Editor
+          value={FormData['BackInfo']}
+          onEditorChange={(newText)=>{ setFormData({...FormData, ['BackInfo']: newText }) }}
+          onFocus={(e)=>{backgroundInfo_onFocus()}}
+          onBlur={(e)=>{backgroundInfo_onBlur()}}                      
+          name="BackInfo"
+          init={{
+              selector: "textarea",
+              placeholder: `Provide a detailed description of the client’s:
+              •	current personal circumstances,
+              •	needs that have been identified, 
+              •	and relevant information 
+          that formed the basis for the financial solution recommended`,
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat | wordcount ',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+      />
 
 <br/>
 <div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SUMMARY NEEDS ANALYSIS</b></div>
@@ -1134,11 +1162,34 @@ const Medical = ({user}) => {
 
         <div className="col-16" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
-              <div className="col-3">
+              <div className="col-12">
                   <label className="col-form-label"><b>Scheme and Fund recommended and/or selected by you:</b></label>
               </div>
-              <div className="col-6">
-                <textarea maxLength={1000} spellCheck="true"  id="SectionD_SnF" name='SectionD_SnF' value={FormData['SectionD_SnF']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Motivation for recommendations – State why the product purchased will suit the client"  aria-describedby="" style={{height:"150px"}}/>
+              <div className="col-12">
+                {/* <textarea maxLength={1000} spellCheck="true"  id="SectionD_SnF" name='SectionD_SnF' value={FormData['SectionD_SnF']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Motivation for recommendations – State why the product purchased will suit the client"  aria-describedby="" style={{height:"150px"}}/> */}
+                <Editor
+                value={FormData['SectionD_SnF']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['SectionD_SnF']: newText }) }}
+                // onFocus={(e)=>{backgroundInfo_onFocus10()}}
+                // onBlur={(e)=>{backgroundInfo_onBlur10()}}                      
+                name="SectionD_SnF"
+                init={{
+                    selector: "textarea",
+                    height: 300,
+                    placeholder: "Motivation for recommendations – State why the product purchased will suit the client",
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
               </div>
             </div>
         </div>
@@ -1152,7 +1203,28 @@ const Medical = ({user}) => {
 
     <div className="text-start "style={{ color: "#14848A" ,fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>IMPORTANT INFORMATION HIGHLIGHTED TO YOU</b></div>
     <hr/>
-    <textarea maxLength={1000} spellCheck="true"  id="SectionE_PMB" name='SectionE_PMB' value={FormData['SectionE_PMB']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc."  aria-describedby="" style={{height:"80px"}}/>
+    {/* <textarea maxLength={1000} spellCheck="true"  id="SectionE_PMB" name='SectionE_PMB' value={FormData['SectionE_PMB']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc."  aria-describedby="" style={{height:"80px"}}/> */}
+    <Editor
+        value={FormData['SectionE_PMB']}
+        onEditorChange={(newText)=>{ setFormData({...FormData, ['SectionE_PMB']: newText }) }}
+        name="SectionE_PMB"
+        init={{
+            selector: "textarea",
+            height: 300,
+            menu: true,
+            placeholder: "PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc.",
+            plugins: [
+                'advlist autolink link lists image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount',
+            ],
+            toolbar: 'styles | undo redo | formatselect | ' +
+            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+            'removeformat | wordcount ',
+            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+        }}
+    />      
     <hr/>
 
     

@@ -258,7 +258,10 @@
             </div>
         </div>
     </div>
-    <p>{{STIP.STIP_General_RefusedDetails|linebreaks}}</p>
+    
+    {% autoescape off %}
+    <p>{{STIP.STIP_General_RefusedDetails}}</p>
+    {% endautoescape %}
     <hr/>
     <div class='row div'>
         <div class="col7">
@@ -291,7 +294,11 @@
             </div>
         </div>
     </div>
-    <p>{{STIP.STIP_General_RisksDetails|linebreaks}}</p>
+    {% if STIP.STIP_General_RisksDetails %}
+        {% autoescape off %}
+            <p>{{STIP.STIP_General_RisksDetails}}</p>
+        {% endautoescape %}
+    {% endif %}
     <hr/>
     <div class='row div'>
         <p>5. If you were previously insured but currently NOT, provide the following:</p>
@@ -3839,7 +3846,9 @@
             <span>Street name,number and suburb</span>
         </div>
         <div class="column5">
-            {{STIP.STIP_HC_StreetNumber|linebreaks}}
+            {% autoescape off %}
+                {{STIP.STIP_HC_StreetNumber}}
+            {% endautoescape %}
         </div>
     </div>
     <hr/>
@@ -4447,7 +4456,9 @@
             <span>Street name,number and suburb</span>
         </div>
         <div class="column5">
-            {{STIP.STIP_Build_StreetNumber|linebreaks}}
+            {% autoescape off %}
+                {{STIP.STIP_Build_StreetNumber}}
+            {% endautoescape %}
         </div>
     </div>
     <hr/>
@@ -4681,7 +4692,10 @@
     <div>Additional notes on buildings that may affect cover/advice to the client:</div>
     <div class="row div">
         <div class="column12">
-            <span>{{STIP.STIP_Build_AdditionalAdvise|linebreaks}}</span>
+            {% autoescape off %}
+                <span>{{STIP.STIP_Build_AdditionalAdvise}}</span>
+            {% endautoescape %}
+            
         </div>
     </div>
     <hr/>
@@ -4699,7 +4713,9 @@
             <span>Street name,number and suburb</span>
         </div>
         <div class="column5">
-            {{STIP.STIP_AddProp_StreetNumber|linebreaks}}
+            {% autoescape off %}
+            {{STIP.STIP_AddProp_StreetNumber}}
+            {% endautoescape %}
         </div>
     </div>
     <hr/>
@@ -4933,7 +4949,9 @@
     <div>Additional notes on buildings that may affect cover/advice to the client:</div>
     <div class="row div">
         <div class="column12">
-            <span>{{STIP.STIP_Build_AdditionalAdvise|linebreaks}}</span>
+            {% autoescape off %}
+            <span>{{STIP.STIP_Build_AdditionalAdvise}}</span>
+            {% endautoescape %}
         </div>
     </div>
     <hr/>    
@@ -5478,7 +5496,9 @@
     <div>Additional notes on buildings that may affect cover/advice to the client:</div>
     <div class="row div">
         <div class="column12">
-            <span>{{STIP.STIP_Vehicle_Comments|linebreaks}}</span>
+            {% autoescape off %}
+            <span>{{STIP.STIP_Vehicle_Comments}}</span>
+            {% endautoescape %}
         </div>
     </div>
     <hr/>   
@@ -5622,7 +5642,9 @@
     <div>Additional notes on buildings that may affect cover/advice to the client:</div>
     <div class="row div">
         <div class="column12">
-            <span>{{STIP.STIP_MotorC_Comments|linebreaks}}</span>
+            {% autoescape off %}
+            <span>{{STIP.STIP_MotorC_Comments}}</span>
+            {% endautoescape %}
         </div>
     </div>
     <hr/>   
@@ -5730,7 +5752,9 @@
     <div>Additional notes on buildings that may affect cover/advice to the client:</div>
     <div class="row div">
         <div class="column12">
-            <span>{{STIP.STIP_Trailer_Comments|linebreaks}}</span>
+            {% autoescape off %}
+            <span>{{STIP.STIP_Trailer_Comments}}</span>
+            {% endautoescape %}
         </div>
     </div>
     <hr/>   
@@ -5853,7 +5877,9 @@
     <div>Additional notes on buildings that may affect cover/advice to the client:</div>
     <div class="row div">
         <div class="column12">
-            <span>{{STIP.STIP_WaterC_Comments|linebreaks}}</span>
+            {% autoescape off %}
+            <span>{{STIP.STIP_WaterC_Comments}}</span>
+            {% endautoescape %}
         </div>
     </div>
     <hr/>   
@@ -5926,7 +5952,9 @@
     <div>Additional notes on buildings that may affect cover/advice to the client:</div>
     <div class="row div">
         <div class="column12">
-            <span>{{STIP.STIP_PersonalLL_Comments|linebreaks}}</span>
+            {% autoescape off %}
+            <span>{{STIP.STIP_PersonalLL_Comments}}</span>
+            {% endautoescape %}
         </div>
     </div>
     <hr/>   
@@ -5997,7 +6025,9 @@
     <div>Additional notes on buildings that may affect cover/advice to the client:</div>
     <div class="row div">
         <div class="column12">
-            <span>{{STIP.STIP_LegalA_Comments|linebreaks}}</span>
+            {% autoescape off %}
+            <span>{{STIP.STIP_LegalA_Comments}}</span>
+            {% endautoescape %}
         </div>
     </div>
     <hr/>   
@@ -6034,13 +6064,25 @@
     <div class="row div">
         <div style="padding: 0 10px;">
             <div>Products considered appropriate to address the needs of the client:</div>
-            <div>{{STIP.STIP_ProductConsidered}}</div>
+            <div>
+                {% autoescape off %}
+                    {{STIP.STIP_ProductConsidered}}
+                {% endautoescape %}
+            </div>
             <hr/>
             <div>Recommended product:</div>
-            <div>{{STIP.STIP_ProductRecommended}}</div>
+            <div>
+                {% autoescape off %}
+                    {{STIP.STIP_ProductRecommended}}
+                {% endautoescape %}
+            </div>
             <hr/>
             <div>Reasons why the recommended product is considered the most suitable for the needs of the client::</div>
-            <div>{{STIP.STIP_ProductReasons}}</div>
+            <div>
+                {% autoescape off %}
+                    {{STIP.STIP_ProductReasons}}
+                {% endautoescape %}
+            </div>
             <hr/>
             <div><b>Note: The intermediary whose name appears in section below, will be regarded as the person responsible for advice to the client. </b></div>
         </div>

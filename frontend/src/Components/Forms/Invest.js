@@ -6,6 +6,7 @@ import './Styles/CustomNotification.css';
 import './Styles/CustomButton.css';
 import './Invest.css';
 import { connect } from 'react-redux';
+import { Editor, tinyMCE } from '@tinymce/tinymce-react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
@@ -202,6 +203,12 @@ const Invest = ({user}) =>
     const on_ProductTaken_CheckBox_Change = (e, i, value) => {
         let newProductTaken = [...ProductTaken]
         newProductTaken[i][e.target.name] = value
+        setProductTaken(newProductTaken)
+    }
+    
+    const on_ProductTaken_Value_Change = (name, i, val) => {
+        let newProductTaken = [...ProductTaken]
+        newProductTaken[i][""+name+""] = val
         setProductTaken(newProductTaken)
     }
     // console.log(JSON.stringify(FormData))
@@ -581,15 +588,37 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info10" className="form-control"  style={{height: '100px'}} 
+            {/* <textarea maxLength={500}   id="background_info10" className="form-control"  style={{height: '100px'}} 
                 name='IP_OtherSourceOfIncome' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_OtherSourceOfIncome']}
                 onFocus={backgroundInfo_onFocus10}
                 onBlur={backgroundInfo_onBlur10}
                 placeholder={`Define Other Source of Funds.
                 
-                `}  aria-describedby=""  ></textarea>
-
+                `}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_OtherSourceOfIncome']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_OtherSourceOfIncome']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus10()}}
+                onBlur={(e)=>{backgroundInfo_onBlur10()}}                      
+                name="IP_OtherSourceOfIncome"
+                init={{
+                    selector: "textarea",
+                    placeholder: 'Define Other Source of Funds.',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
             <br/>
             <h6 className="text-start " style={{ color: "#14848A"}} > <b>Analysis of Client's Circumstances</b></h6>
             <p className="text-start">The analysis of your personal circumstances as described above.</p> 
@@ -634,14 +663,36 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info11" className="form-control"
+            {/* <textarea maxLength={500}   id="background_info11" className="form-control"
                 name='IP_InvestmentTermDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_InvestmentTermDetails']}
                 onFocus={backgroundInfo_onFocus11}
                 onBlur={backgroundInfo_onBlur11}
                 placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.
-                `}  aria-describedby=""  ></textarea>
-
+                `}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_InvestmentTermDetails']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_InvestmentTermDetails']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus11()}}
+                onBlur={(e)=>{backgroundInfo_onBlur11()}}                      
+                name="IP_InvestmentTermDetails"
+                init={{
+                    selector: "textarea",
+                    placeholder: 'Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
 
             <hr />
             <div className="row g-3 align-items-center">
@@ -692,13 +743,35 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info11" className="form-control"
+            {/* <textarea maxLength={500}   id="background_info11" className="form-control"
                 name='IP_LiquidityDetails' onChange={(e) => {onChange(e)}} value={FormData['IP_LiquidityDetails']}
                 onFocus={backgroundInfo_onFocus12}
                 onBlur={backgroundInfo_onBlur12}
                 placeholder={`Does the client require access to the investment during the term?                
-                `}  aria-describedby=""  ></textarea>
-
+                `}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_LiquidityDetails']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_LiquidityDetails']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus12()}}
+                onBlur={(e)=>{backgroundInfo_onBlur12()}}                      
+                name="IP_LiquidityDetails"
+                init={{
+                    selector: "textarea",
+                    placeholder: 'Does the client require access to the investment during the term?',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
             <hr/>
             <div className="row g-3 align-items-center">
                 <div className="col-6">
@@ -747,14 +820,36 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info11" className="form-control" 
+            {/* <textarea maxLength={500}   id="background_info11" className="form-control" 
                 name='IP_TypeDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_TypeDetails']}
                 onFocus={backgroundInfo_onFocus13}
                 onBlur={backgroundInfo_onBlur13}
                 placeholder={`Explain?                
-                `}  aria-describedby=""  ></textarea>
-
+                `}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_TypeDetails']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_TypeDetails']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus13()}}
+                onBlur={(e)=>{backgroundInfo_onBlur13()}}                      
+                name="IP_TypeDetails"
+                init={{
+                    selector: "textarea",
+                    placeholder: 'Explain?',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
             <hr/>
 
             <div className="row g-3 align-items-center">
@@ -804,14 +899,36 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info11" className="form-control"
+            {/* <textarea maxLength={500}   id="background_info11" className="form-control"
                 name='IP_PremiumTypeDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_PremiumTypeDetails']}
                 onFocus={backgroundInfo_onFocus14}
                 onBlur={backgroundInfo_onBlur14}
                 placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.
-                `}  aria-describedby=""  ></textarea>
-
+                `}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_PremiumTypeDetails']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_PremiumTypeDetails']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus14()}}
+                onBlur={(e)=>{backgroundInfo_onBlur14()}}                      
+                name="IP_PremiumTypeDetails"
+                init={{
+                    selector: "textarea",
+                    placeholder: 'Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
             <hr/>
             <div className="row g-3 align-items-center">
                 <div className="col-6">
@@ -859,13 +976,36 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info11" className="form-control"
+            {/* <textarea maxLength={500}   id="background_info11" className="form-control"
                 name='IP_IncomeRequiredDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_IncomeRequiredDetails']}
                 onFocus={backgroundInfo_onFocus15}
                 onBlur={backgroundInfo_onBlur15}
                 placeholder={`Details of Income Required.                
-                `}  aria-describedby=""  ></textarea>
+                `}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_IncomeRequiredDetails']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_IncomeRequiredDetails']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus15()}}
+                onBlur={(e)=>{backgroundInfo_onBlur15()}}                      
+                name="IP_IncomeRequiredDetails"
+                init={{
+                    selector: "textarea",
+                    placeholder: 'Details of Income Required.',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
             <hr/>
             <div className='row'>
                 <div className="col-6">
@@ -902,13 +1042,35 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info1" className="form-control"  style={{height: '80px'}}
+            {/* <textarea maxLength={500}   id="background_info1" className="form-control"  style={{height: '80px'}}
                 name='IP_InvestmentStrategyDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_InvestmentStrategyDetails']}
                 onFocus={backgroundInfo_onFocus1}
                 onBlur={backgroundInfo_onBlur1}
-                placeholder={`Notes on discussion with client concerning the investment strategy.`}  aria-describedby=""  ></textarea>
-
+                placeholder={`Notes on discussion with client concerning the investment strategy.`}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_InvestmentStrategyDetails']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_InvestmentStrategyDetails']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus1()}}
+                onBlur={(e)=>{backgroundInfo_onBlur1()}}                      
+                name="IP_InvestmentStrategyDetails"
+                init={{
+                    selector: "textarea",
+                    placeholder: 'Notes on discussion with client concerning the investment strategy.',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
 
             <hr/>
             <div className='row'>
@@ -944,14 +1106,36 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info2" className="form-control"  style={{height: '80px'}} 
+            {/* <textarea maxLength={500}   id="background_info2" className="form-control"  style={{height: '80px'}} 
                 name='IP_ReturnRequiredDetails' onChange={(e) => {onChange(e)}}
                 value={FormData['IP_ReturnRequiredDetails']}
                 onFocus={backgroundInfo_onFocus2}
                 onBlur={backgroundInfo_onBlur2}
                 placeholder={
-            `Notes on discussion with client concerning return expectations.`}  aria-describedby=""  ></textarea>
-
+            `Notes on discussion with client concerning return expectations.`}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_RiskProfileDetails']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_ReturnRequiredDetails']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus2()}}
+                onBlur={(e)=>{backgroundInfo_onBlur2()}}                      
+                name="IP_ReturnRequiredDetails"
+                init={{
+                    selector: "textarea",
+                    placeholder: 'Notes on discussion with client concerning return expectations.',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
             <hr/>
             <div className="col-6">
             </div>
@@ -989,14 +1173,36 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info3" className="form-control"  style={{height: '80px'}} 
+            {/* <textarea maxLength={500}   id="background_info3" className="form-control"  style={{height: '80px'}} 
                 name='IP_RiskProfileDetails' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_RiskProfileDetails']} 
                 onFocus={backgroundInfo_onFocus3}
                 onBlur={backgroundInfo_onBlur3}
                 placeholder={
-            `Notes on the client risk profile.`}  aria-describedby=""  ></textarea>
-
+            `Notes on the client risk profile.`}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_RiskProfileDetails']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_RiskProfileDetails']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus3()}}
+                onBlur={(e)=>{backgroundInfo_onBlur3()}}                      
+                name="IP_RiskProfileDetails"
+                init={{
+                    selector: "textarea",
+                    placeholder: 'Notes on the client risk profile.',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
 
             <hr />
 
@@ -1028,7 +1234,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info" className="form-control"  style={{height: '120px'}} 
+            {/* <textarea maxLength={500}   id="background_info" className="form-control"  style={{height: '120px'}} 
                 name='IP_RecommendationSummary' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_RecommendationSummary']}
                 onFocus={backgroundInfo_onFocus}
@@ -1037,8 +1243,30 @@ const Invest = ({user}) =>
                 `Discuss the outcome of the FNA
                 Qualification of need explaining the reasons why this type of investment vehicle was recommended
                 How it will meet the client's needs
-                                `}  aria-describedby=""  ></textarea>
-
+                                `}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_RecommendationSummary']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_RecommendationSummary']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus()}}
+                onBlur={(e)=>{backgroundInfo_onBlur()}}                      
+                name="IP_RecommendationSummary"
+                init={{
+                    selector: "textarea",
+                    placeholder: "Discuss the outcome of the FNA Qualification of need explaining the reasons why this type of investment vehicle was recommended How it will meet the client's needs",
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
             <h5 className="text-start " ><b>SECTION D:</b></h5> 
             <h6 className="text-start " style={{ color: "#14848A"}} ><b>Alternative Solutions Considered</b></h6>
 
@@ -1060,14 +1288,36 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info4" className="form-control"  style={{height: '60px'}} 
+            {/* <textarea maxLength={500}   id="background_info4" className="form-control"  style={{height: '60px'}} 
                 name='IP_AltS_1' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_1']}
                 onFocus={backgroundInfo_onFocus4}
                 onBlur={backgroundInfo_onBlur4}
                 placeholder={
-                `1. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea>
-
+                `1. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_AltS_1']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_1']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus4()}}
+                onBlur={(e)=>{backgroundInfo_onBlur4()}}                      
+                name="IP_AltS_1"
+                init={{
+                    selector: "textarea",
+                    placeholder: "1. Identify the type of product or product provider which was considered but not selected and motivate.",
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
             <hr/>
 
             {
@@ -1086,14 +1336,36 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info5" className="form-control"  style={{height: '60px'}} 
+            {/* <textarea maxLength={500}   id="background_info5" className="form-control"  style={{height: '60px'}} 
                 name='IP_AltS_2' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_2']}
                 onFocus={backgroundInfo_onFocus5}
                 onBlur={backgroundInfo_onBlur5}
                 placeholder={
-            `2. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea>
-
+            `2. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_AltS_2']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_2']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus5()}}
+                onBlur={(e)=>{backgroundInfo_onBlur5()}}                      
+                name="IP_AltS_2"
+                init={{
+                    selector: "textarea",
+                    placeholder: "2. Identify the type of product or product provider which was considered but not selected and motivate.",
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
             <hr/>
 
             {
@@ -1112,14 +1384,36 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info6" className="form-control"  style={{height: '60px'}} 
+            {/* <textarea maxLength={500}   id="background_info6" className="form-control"  style={{height: '60px'}} 
                 name='IP_AltS_3' onChange={(e) => {onChange(e)}} 
                 value={FormData['IP_AltS_3']}
                 onFocus={backgroundInfo_onFocus6}
                 onBlur={backgroundInfo_onBlur6}
                 placeholder={
-            `3. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea>
-
+            `3. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={FormData['IP_AltS_3']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_3']: newText }) }}
+                onFocus={(e)=>{backgroundInfo_onFocus6()}}
+                onBlur={(e)=>{backgroundInfo_onBlur6()}}                      
+                name="IP_AltS_3"
+                init={{
+                    selector: "textarea",
+                    placeholder: "3. Identify the type of product or product provider which was considered but not selected and motivate.",
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
 
 
 
@@ -1368,7 +1662,30 @@ const Invest = ({user}) =>
                             </> : 
                         null
                     }
-                        <textarea maxLength={500}   id="provided_identity2" name="SFPSolutionFundsDetails" value={key.SFPSolutionFundsDetails} onChange={(e) => {on_ProductTaken_Change(e, i)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" placeholder="State the motivation" aria-describedby="" ></textarea>
+                    {/* <textarea maxLength={500}   id="provided_identity2" name="SFPSolutionFundsDetails" value={key.SFPSolutionFundsDetails} onChange={(e) => {on_ProductTaken_Change(e, i)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" placeholder="State the motivation" aria-describedby="" ></textarea> */}
+                    <Editor
+                        value={key.SFPSolutionFundsDetails}
+                        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("SFPSolutionFundsDetails", i, newText)}}
+                        onFocus={(e)=>{sica_onFocus()}}
+                        onBlur={(e)=>{sica_onBlur()}} 
+                        name="SFPSolutionFundsDetails"                     
+                        init={{
+                            selector: "textarea",
+                            placeholder: 'State the motivation',
+                            height: 300,
+                            menu: true,
+                            plugins: [
+                                'advlist autolink link lists image charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount',
+                            ],
+                            toolbar: 'styles | undo redo | formatselect | ' +
+                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                            'removeformat | wordcount ',
+                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                        }}
+                    />
                     </div>
             </div>
             <hr/>
@@ -1398,7 +1715,7 @@ const Invest = ({user}) =>
                 </>: 
                 null
             }
-            <textarea maxLength={500}   id="background_info7" className="form-control"  style={{height: '400px'}} 
+            {/* <textarea maxLength={500}   id="background_info7" className="form-control"  style={{height: '400px'}} 
                 name='ItP' value={key.ItP} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
                 onFocus={backgroundInfo_onFocus7}
                 onBlur={backgroundInfo_onBlur7}
@@ -1417,8 +1734,45 @@ const Invest = ({user}) =>
 
                 portfolio return;
 
-                meeting the investment objectives of the clients `}  aria-describedby=""  ></textarea>
-
+                meeting the investment objectives of the clients `}  aria-describedby=""  ></textarea> */}
+            <Editor
+                value={key.ItP}
+                onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP", i, newText)}}
+                onFocus={(e)=>{backgroundInfo_onFocus7()}}
+                onBlur={(e)=>{backgroundInfo_onBlur7()}} 
+                name="ItP"                     
+                init={{
+                    selector: "textarea",
+                    placeholder: `
+                    When a wrap fund or a selection of wrap funds is used, motivate, and explain.
+    
+                    Where you have constructed your own portfolio from a selection of funds contained in the SFP Approved Fund List, an analysis (ICE analysis or similar) must be provided:
+    
+                    illustrating the alignment of the risk profile of the constructed portfolio and that of the investor,
+    
+                    motivating the constructed portfolio with reference to the following aspects:
+    
+                    correlation;
+    
+                    drawdown;
+    
+                    portfolio return;
+    
+                    meeting the investment objectives of the clients `,
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
             <br/>
             <table className="table">
                 <thead>
@@ -1683,13 +2037,35 @@ const Invest = ({user}) =>
             </>: 
             null
         }
-        <textarea maxLength={500}   id="background_info8" className="form-control"  style={{height: '60px'}} 
+        {/* <textarea maxLength={500}   id="background_info8" className="form-control"  style={{height: '60px'}} 
             name='ItP_FundsReasons' value={key.ItP_FundsReasons} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
             onFocus={backgroundInfo_onFocus8}
             onBlur={backgroundInfo_onBlur8}
             placeholder={
-        `Motivate why the chosen product was recommended to best suit your client's needs. `}  aria-describedby=""  ></textarea>
-
+        `Motivate why the chosen product was recommended to best suit your client's needs. `}  aria-describedby=""  ></textarea> */}
+        <Editor
+            value={key.ItP_FundsReasons}
+            onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP_FundsReasons", i, newText)}}
+            onFocus={(e)=>{backgroundInfo_onFocus8()}}
+            onBlur={(e)=>{backgroundInfo_onBlur8()}} 
+            name="ItP_FundsReasons"                     
+            init={{
+                selector: "textarea",
+                placeholder: `Motivate why the chosen product was recommended to best suit your client's needs.  `,
+                height: 300,
+                menu: true,
+                plugins: [
+                    'advlist autolink link lists image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount',
+                ],
+                toolbar: 'styles | undo redo | formatselect | ' +
+                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                'removeformat | wordcount ',
+                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+            }}
+        />
         <hr/>
         <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
         {

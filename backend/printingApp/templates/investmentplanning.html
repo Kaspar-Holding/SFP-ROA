@@ -16,7 +16,9 @@
             {% if IP.IP_OtherSourceOfIncome %}
                 <div class="row div">
                     <div class="column12">
-                        {{IP.IP_OtherSourceOfIncome|linebreaks}}
+                        {% autoescape off %}
+                            {{IP.IP_OtherSourceOfIncome}}
+                        {% endautoescape %}
                     </div>
                 </div>
                 <hr/>
@@ -48,7 +50,9 @@
             </div>
             <div class='row div'>
                 <div class="column12">
-                    <p>{{IP.IP_InvestmentTermDetails|linebreaks}} </p>
+                    {% autoescape off %}
+                        {{IP.IP_InvestmentTermDetails}}
+                    {% endautoescape %}
                 </div>
             </div>
             <hr/>
@@ -87,7 +91,9 @@
             </div>
             <div class='row div'>
                 <div class="column12">
-                    <p>{{IP.IP_LiquidityDetails|linebreaks}} </p>
+                    {% autoescape off %}
+                        {{IP.IP_LiquidityDetails}}
+                    {% endautoescape %}
                 </div>
             </div>
             <hr/>
@@ -126,7 +132,9 @@
             </div>
             <div class='row div'>
                 <div class="column12">
-                    <p>{{IP.IP_TypeDetails|linebreaks}} </p>
+                    {% autoescape off %}
+                        {{IP.IP_TypeDetails}}
+                    {% endautoescape %}
                 </div>
             </div>
             <hr/>
@@ -165,7 +173,9 @@
             </div>
             <div class='row div'>
                 <div class="column12">
-                    <p>{{IP.IP_PremiumTypeDetails|linebreaks}} </p>
+                    {% autoescape off %}
+                        {{IP.IP_PremiumTypeDetails}}
+                    {% endautoescape %}
                 </div>
             </div>
             <hr/>
@@ -204,7 +214,9 @@
             </div>
             <div class='row div'>
                 <div class="column12">
-                    <p>{{IP.IP_IncomeRequiredDetails|linebreaks}} </p>
+                    {% autoescape off %}
+                        {{IP.IP_IncomeRequiredDetails}}
+                    {% endautoescape %}
                 </div>
             </div>
             <hr/>
@@ -220,7 +232,9 @@
             </div>
             <div class='row div'>
                 <div class="column12">
-                    <p>{{IP.IP_InvestmentStrategyDetails|linebreaks}} </p>
+                    {% autoescape off %}
+                        {{IP.IP_InvestmentStrategyDetails}}
+                    {% endautoescape %}
                 </div>
             </div>
             <hr/>
@@ -236,7 +250,9 @@
             </div>
             <div class='row div'>
                 <div class="column12">
-                    <p>{{IP.IP_ReturnRequiredDetails|linebreaks}} </p>
+                    {% autoescape off %}
+                        {{IP.IP_ReturnRequiredDetails}}
+                    {% endautoescape %}
                 </div>
             </div>
             <hr/>
@@ -269,7 +285,9 @@
             </div>  
             <div class='row div'>
                 <div class="column12">
-                    <p>{{IP.IP_RecommendationSummary|linebreaks}} </p>
+                    {% autoescape off %}
+                        {{IP.IP_RecommendationSummary}}
+                    {% endautoescape %}
                 </div>
             </div>
             <hr/>
@@ -289,15 +307,27 @@
                         <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
                         {% if IP.IP_AltS_1 %}
                             <hr/>
-                            <p>{{IP.IP_AltS_1|linebreaks}}</p>
+                            <p>
+                                {% autoescape off %}
+                                    {{IP.IP_AltS_1}}
+                                {% endautoescape %}
+                            </p>
                         {% endif %}
                         {% if IP.IP_AltS_2 %}
                             <hr/>
-                            <p>{{IP.IP_AltS_2|linebreaks}}</p>
+                            <p>
+                                {% autoescape off %}
+                                    {{IP.IP_AltS_2}}
+                                {% endautoescape %}
+                            </p>
                         {% endif %}
                         {% if IP.IP_AltS_3 %}
                             <hr/>
-                            <p>{{IP.IP_AltS_3|linebreaks}}</p>
+                            <p>
+                                {% autoescape off %}
+                                    {{IP.IP_AltS_3}}
+                                {% endautoescape %}
+                            </p>
                         {% endif %}
                     </div>                                    
                 </div>     
@@ -453,7 +483,9 @@
                         </div> 
                         <div class='row div'>
                             <div class="column12">
-                                <p>{{productTaken.SFPSolutionFundsDetails|linebreaks}}</p>
+                                {% autoescape off %}
+                                    {{productTaken.SFPSolutionFundsDetails}}
+                                {% endautoescape %}
                             </div>
                         </div>  
                         
@@ -464,7 +496,9 @@
                         <div class="column12">
                             <b>Investment portfolio</b>
                             <div class="column12">
-                                <p>{{productTaken.ItP|linebreaks}}</p>
+                                {% autoescape off %}
+                                    {{productTaken.ItP}}
+                                {% endautoescape %}
                             </div>
                         </div>                                 
                     </div>
@@ -924,7 +958,9 @@
                         <div class="column12">
                             <span>The following are reasons why the abovementioned product best suits your needs and objectives:</span>
                             <div class="column12">
-                                <p>{{productTaken.ItP_FundsReasons}}</p>
+                                {% autoescape off %}
+                                    {{IP.ItP_FundsReasons}}
+                                {% endautoescape %}
                             </div>
                         </div>                                 
                     </div>
