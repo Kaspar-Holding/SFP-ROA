@@ -9,7 +9,7 @@ import CreateForm from './Components/Forms/CreateForm';
 import ViewDRAForm from './Components/Forms/AttentionForm/ViewDRAForm';
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Link,
