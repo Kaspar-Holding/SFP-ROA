@@ -491,8 +491,8 @@ def sendEmail(request):
     
     data = {}
     data['protocol'] = 'http'
-    data['user'] = UserAccount.objects.filter(id=17).values().first()
-    data['advisor'] = UserAccount.objects.filter(id=17).values().first()
+    data['user'] = UserAccount.objects.filter(email=env('RECIPIENT_EMAIL')).values().first()
+    data['advisor'] = UserAccount.objects.filter(email=env('RECIPIENT_EMAIL')).values().first()
     userId = urlsafe_base64_encode(str(data['user']['id']).encode('utf-8'))
     formId = urlsafe_base64_encode(str(76).encode('utf-8'))
     data['URL'] = env('FRONTEND_URL')  +"/alertForm?userId=" + userId + "&formId=" + formId
@@ -502,7 +502,7 @@ def sendEmail(request):
         'HIGH DRA recorded on of %s' %(datetime.today().strftime('%d %b %Y')),
         None, # This is the text context, just send None or Send a string message
         'SFP ROA',
-        ['armughan.ahmad@kasparholdings.com'],
+        [env('RECIPIENT_EMAIL')],
     )
     fileName = alertPDF(request=request, formId=76)
     msg.attach_alternative(template, "text/html")
@@ -536,7 +536,7 @@ def sendAlertEmail(request, formId, advisorId):
     
     data = {}
     data['protocol'] = 'http'
-    data['user'] = UserAccount.objects.filter(id=17).values().first()
+    data['user'] = UserAccount.objects.filter(id=env('RECIPIENT_EMAIL')).values().first()
     data['advisor'] = UserAccount.objects.filter(id=advisorId).values().first()
     userId = urlsafe_base64_encode(str(data['user']['id']).encode('utf-8'))
     formIdEncoded = urlsafe_base64_encode(str(formId).encode('utf-8'))
@@ -547,7 +547,7 @@ def sendAlertEmail(request, formId, advisorId):
         'HIGH DRA recorded on of %s' %(datetime.today().strftime('%d %b %Y')),
         None, # This is the text context, just send None or Send a string message
         'SFP ROA',
-        ['armughan.ahmad@kasparholdings.com'],
+        [env('RECIPIENT_EMAIL')],
     )
     fileName = alertPDF(request=request, formId=formId)
     msg.attach_alternative(template, "text/html")
