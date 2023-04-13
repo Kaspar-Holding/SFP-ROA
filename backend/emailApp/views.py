@@ -3,7 +3,7 @@ from django.template.loader import get_template
 from rest_framework.decorators import api_view
 from django.core.mail import send_mail, EmailMultiAlternatives
 from rest_framework.response import Response
-from data.models import UserAccount, RiskFactors
+from data.models import UserAccount, RiskFactors, RF_LinkedParty
 from wkhtmltopdf.views import PDFTemplateView, PDFTemplateResponse
 from datetime import datetime
 import uuid
