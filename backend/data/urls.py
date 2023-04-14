@@ -19,6 +19,7 @@ urlpatterns = [
     path('updateformdata/' , views.updateFormData, name="Update form data details"),
     path('deleteformdata/' , views.deleteFormData, name="Delete form data details"),
     path('forms_stats/' , views.formStats, name="Forms Data"),
+    path('admin_forms_stats/' , views.adminformStats, name="Forms Data"),
     path('update_form_status/' , views.changeFormStatus, name="Completed Form"),
     # Fiduciary Form Data
     path('addfiduciarydata/' , views.insertFiduciaryData, name="Insert data into Fiduciary Collection"),

@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import Loader from '../Loader/Loader';
 import Pagination from '../Pagination/Pagination';
+import UserDashboard from './UserDashboard';
+import AdminDashboard from './AdminDashboard';
 
 const Dashboard = ({user}) => {
 
@@ -138,196 +140,40 @@ const Dashboard = ({user}) => {
                         </div>
                     </div>
                     <hr/>
-                    <h5 className="h3">Stats</h5>
-                    <div className='row'>
-                        <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
-                            <div className="card">
-                                <h5 className="card-header">Completed Forms</h5>
-                                <div className="card-body">
-                                    <h5 className="card-title">{formStats['completed_forms']}</h5>
-                                    <p className="card-text">Forms completed by {user['name']}.</p>
-                                    {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
-                            <div className="card">
-                                <h5 className="card-header">Incompleted Forms</h5>
-                                <div className="card-body">
-                                    <h5 className="card-title">{formStats['incompleted_forms']}</h5>
-                                    <p className="card-text">Incompleted forms filled by {user['name']}.</p>
-                                    {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
-                            <div className="card">
-                                <h5 className="card-header">Awating Approval Forms</h5>
-                                <div className="card-body">
-                                    <h5 className="card-title">{formStats['yet_to_approved_forms']}</h5>
-                                    <p className="card-text">Awating Approval forms from Admins.</p>
-                                    {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
-                            <div className="card">
-                                <h5 className="card-header">Blocked Forms</h5>
-                                <div className="card-body">
-                                    <h5 className="card-title">{formStats['blocked_forms']}</h5>
-                                    <p className="card-text">Blocked forms filled by Admins.</p>
-                                    {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <h5 className="h3">Form List</h5>
-                    <div className="card mb-4">
-                        <h5 className="card-header">Search Forms</h5>
-                        <div className="card-body">
-                            <div>
-                                {/* <label htmlFor="defaultFormControlInput" className="form-label">Name</label> */}
-                                <div className='row'>
-                                    <div className='col-12'>
-                                        {/* <form onSubmit={(e)=>{onSearchQueryChange(e)}} > */}
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            id="clientNameIdSearchQuery"
-                                            placeholder="Client Name / Client ID"
-                                            onChange={(e)=>{onFilterChange(e)}}    
-                                        />
-                                        {/* </form> */}
-                                    </div>
-                                    {/* <div className='col-2'>
-                                        <button onClick={(e)=>{resetForm(e)}} className='btn btn-md btn-primary'>Reset Search</button>
-                                    </div> */}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className='table-responsive'>
-                        <table className="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Client Name</th>
-                                    {/* <th scope="col">Client Email</th> */}
-                                    <th scope="col">Client ID Number</th>
-                                    {/* <th scope="col">Client Risk Status</th> */}
-                                    <th scope="col">Risk Weight</th>
-                                    <th scope="col">Form Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    TotalForms > 0 ?
-                                    Object.keys(formList).map((keyName, i) => (
-                                        <tr>
-                                            <th scope="row">{i+1}</th>
-                                            <td>{formList[i]['RF_ClientName']}</td>
-                                            {/* <td>{formList[i]['clientEmail']}</td> */}
-                                            <td>{formList[i]['RF_ClientId']}</td>
-                                        
-                                            
-                                            {(() => { 
-                                                if(parseInt(formList[i]['RF_Client_Match'])===1)
-                                                {
-                                                    return (<>
-                                                        <td>Medium</td>
-
-                                                    </>);
-                                                }
-
-                                                if(parseInt(formList[i]['RF_Client_Match'])===2 || parseInt(formList[i]['RF_Client_Match'])===5 || parseInt(formList[i]['RF_Client_Match'])===8 || parseInt(formList[i]['RF_Client_Match'])===11)
-                                                {
-                                                    return (<>
-                                                        <td>High</td>
-
-                                                    </>);
-                                                }
-
-                                                if(parseInt(formList[i]['RF_Client_Match'])===3 || parseInt(formList[i]['RF_Client_Match'])===6)
-                                                {
-                                                    return (<>
-                                                        <td>Low</td>
-
-                                                    </>);
-                                                }
-
-                                                if(parseInt(formList[i]['RF_Client_Match'])===4 || parseInt(formList[i]['RF_Client_Match'])===7)
-                                                {
-                                                    return (<>
-                                                        <td>Medium</td>
-                                                    </>);
-                                                }
-
-                                                if(parseInt(formList[i]['RF_Client_Match'])===9 || parseInt(formList[i]['RF_Client_Match'])===10) 
-                                                {
-                                                    return (<>
-                                                        <td>Intolerable</td>
-
-                                                    </>);
-                                                }
-
-                                                else
-                                                {
-                                                    return (<>
-                                                        <td>Undetermined</td>
-                                                    </>);
-                                                }
-                                                })()}
-                                            
-                                            <td>{formList[i]['status'] === 3 ? "Blocked" : formList[i]['status'] === 0 ? "Incomplete" : formList[i]['status'] === 1 ? "Completed" : formList[i]['status'] === 2 ? "Waiting Approval" : "" }</td>
-                                            {
-                                                user['is_superuser'] ?
-                                                <>
-                                                    <td>
-                                                        {
-                                                            formList[i]['status'] != 2 && formList[i]['status'] != 3 ?
-                                                            <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
-                                                            : 
-                                                            <NavLink type="button" to={{pathname:formList[i]['url']}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn btn-sm btn-outline-warning">Approve/Deny</NavLink>
-                                                            // <button className="btn btn-sm btn-outline-warning" type='button'>Approve/Deny</button>
-                                                        }
-                                                    </td>
-                                                </>
-                                                :
-                                                <>
-                                                    <td>
-                                                        {
-                                                            formList[i]['status'] != 2 && formList[i]['status'] != 3 ?
-                                                            <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
-                                                            : 
-                                                            <button className="btn btn-sm btn-outline-danger" type='button'>Can't Edit</button>
-                                                        }
-                                                    </td>
-                                                </>
-                                            }
-                                        </tr>
-                                    )) 
-                                    : <></>
-                                }                        
-                                {/* <tr>
-                                    <th scope="row">1</th>
-                                    <td>{data[0]['name']}</td>
-                                    <td>{data[0]['email']}</td>
-                                    <td>{data[0]['role'] === true ? "Admin" : "Agent"}</td>
-                                </tr> */}
-                            </tbody>
-                        </table>
-                        <br/>
-                    </div>
-                    <div className='d-flex justify-content-center'>
                     {
-                        TotalForms > 0 ?
-                        <Pagination  totalRecords={TotalForms} pageLimit={PageLimit} paginationSearchQuery={SearchQuery} paginationOrderBy={OrderBy} onPageChanged={onLoadFormsStats} />
-                        : <></>
+                        user['is_superuser'] ? 
+                        <>
+                            <div className="nav-align-top mb-4">
+                                <ul className="nav nav-pills mb-3 justify-content-center" role="tablist">
+                                    <li className="nav-item">
+                                        <button type="button" className={"nav-link"} role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-dashboard-overall" aria-controls="navs-pills-top-overall" aria-selected="true">
+                                            Overall
+                                        </button>
+                                    </li>
+                                    <li className="nav-item">
+                                        <button type="button" className={"nav-link active"} role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-dashboard-user" aria-controls="navs-pills-top-user" aria-selected="true">
+                                            User
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="tab-content" style={{backgroundColor: "transparent", boxShadow: "none", padding: "none"}}>
+                                <div className={"tab-pane fade"} 
+                                        id="navs-pills-dashboard-overall" role="tabpanel">
+                                    <AdminDashboard />
+                                </div>
+                                <div className={"tab-pane fade active show"} 
+                                        id="navs-pills-dashboard-user" role="tabpanel">
+                                    <UserDashboard />
+                                </div>
+                            </div>
+                        </>
+                        : 
+                        <>
+                            <UserDashboard />
+                        </>
                     }
-                </div>
+                    
                 </div>
             </div>
         </>

@@ -433,10 +433,10 @@ def formStats(request):
     yet_to_approved_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 2)
     yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
     searchQuery = request.data['search_query']
-    if advisor_admin['is_superuser']:
-        riskFactors = RiskFactors.objects.all()
-    else:
-        riskFactors = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
+    # if advisor_admin['is_superuser']:
+    #     riskFactors = RiskFactors.objects.all()
+    # else:
+    riskFactors = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
     forms_data = []
     if searchQuery != "":
         forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
@@ -446,6 +446,71 @@ def formStats(request):
     p = Paginator(forms_data, 10)
     data = p.page(request.data['page_number']).object_list
     for row in data:
+        if row['status'] == 2:
+            userId = urlsafe_base64_encode(str(request.data['advisorId']).encode('utf-8'))
+            formIdEncoded = urlsafe_base64_encode(str(row['id']).encode('utf-8'))
+            row['url'] = "/alertForm?userId=" + userId + "&formId=" + formIdEncoded
+        else:
+            row['url'] = ""
+    if request.data['page_number'] <= p.num_pages:
+            
+        return Response(
+            {
+                "completed_forms": len(complete_serializer.data),
+                "incompleted_forms": len(incomplete_serializer.data),
+                "yet_to_approved_forms": len(yet_to_approved_serializer.data),
+                "blocked_forms": len(blocked_serializer.data),
+                "total_pages" : p.num_pages,
+                "has_pages" : p.num_pages,
+                "total_records" : len(forms_data),
+                "pagelimit" : 10,
+                "next" : p.page(request.data['page_number']).has_next(),
+                "results" : data
+            }
+        )
+    else:
+        return Response(
+            {
+                "completed_forms": len(complete_serializer.data),
+                "incompleted_forms": len(incomplete_serializer.data),
+                "yet_to_approved_forms": len(yet_to_approved_serializer.data),
+                "blocked_forms": len(blocked_serializer.data),
+                "total_pages" : p.num_pages,
+                "next" : None,
+                "has_pages" : p.num_pages,
+                "total_records" : len(forms_data),
+                "pagelimit" : 10,
+                "results" : {}
+            }
+        )
+    # return Response({
+    #         "completed_forms": len(complete_serializer.data),
+    #         "incompleted_forms": len(incomplete_serializer.data),
+    #         "forms" : formSerializer.data
+    #     },200)
+
+@api_view(['POST'])
+def adminformStats(request):
+    complete_forms = RiskFactors.objects.filter(status = 1)
+    complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
+    incomplete_forms = RiskFactors.objects.filter(status = 0)
+    incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
+    blocked_forms = RiskFactors.objects.filter(status = 3)
+    blocked_serializer = RiskFactorsSerializers(blocked_forms, many=True)
+    yet_to_approved_forms = RiskFactors.objects.filter(status = 2)
+    yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
+    searchQuery = request.data['search_query']
+    riskFactors = RiskFactors.objects.all()
+    forms_data = []
+    if searchQuery != "":
+        forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
+    else:
+        forms_data = riskFactors.order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
+    orderBy = request.data['order_by']
+    p = Paginator(forms_data, 10)
+    data = p.page(request.data['page_number']).object_list
+    for row in data:
+        row['advisorName'] = UserAccount.objects.filter(id=row['advisorId']).values('name').first()['name']
         if row['status'] == 2:
             userId = urlsafe_base64_encode(str(request.data['advisorId']).encode('utf-8'))
             formIdEncoded = urlsafe_base64_encode(str(row['id']).encode('utf-8'))
@@ -1092,7 +1157,11 @@ def insertRiskFactorsData(request):
 
 @api_view(['POST'])
 def viewRiskFactorsData(request):
-    form = RiskFactors.objects.get(id=request.data['formId'], advisorId=request.data['advisorId'])
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['advisorId']).values('is_superuser').first()['is_superuser']
+    if (advisorAccessLevel):
+        form = RiskFactors.objects.get(id=request.data['formId'], advisorId=request.data['advisorId'])
+    else:
+        form = RiskFactors.objects.get(id=request.data['formId'])
     formSerializer = RiskFactorsSerializers(form, many=False)
     
     formData = formSerializer.data

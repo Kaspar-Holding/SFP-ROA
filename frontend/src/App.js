@@ -17,6 +17,7 @@ import {
 } from "react-router-dom"
 import Layout from './Layout/Layout';
 import CompleteForm from './Components/Forms/CompleteForm';
+import CompleteViewForm from './Components/Forms/AdminView/CompleteForm';
 import Dashboard from './Components/Dashboard/Dashboard';
 import SignIn from './Components/Authentication/SignIn';
 import SidebarLayout from './Layout/SidebarLayout';
@@ -72,6 +73,7 @@ function App() {
                       <Route exact path="/newuser" element={<CreateNewAccount name="" /> } />
                       <Route exact path="/userdetails" element={<AccountDetails name="" /> } />
                       <Route exact path="/alertForm" element={<ViewDRAForm /> } />
+                      <Route exact path="/viewForm" element={<CompleteViewForm /> } />
                     </Route>
                     <Route exact path="/profile" element={<UserProfile name="" /> } />
                     <Route exact path="/print" element={<PrintStuff name="" /> } />

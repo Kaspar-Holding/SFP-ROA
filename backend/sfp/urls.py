@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.shortcuts import render
 from django.views.generic import TemplateView
-
 def render_react(request):
     return render(request, "index.html")
 
