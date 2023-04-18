@@ -65,12 +65,12 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
-    # 'social_django',
+    'social_django',
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    # 'social_django.middleware.SocialAuthExceptionMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -93,8 +93,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'social_django.context_processors.backends',
-                # 'social_django.context_processors.login_redirect',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -199,11 +199,11 @@ EMAIL_USE_TLS = True
 
 PASSWORD_RESET_TIMEOUT_DAYS=1
 
-# AUTHENTICATION_BACKENDS = (
-#     'social_core.backends.azuread.AzureADOAuth2',
-#     'social_core.backends.google.GoogleOAuth2',
-#     'django.contrib.auth.backends.ModelBackend',
-# )
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.azuread.AzureADOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 DJOSER = {
     'LOGIN_FIELD' : 'email',
@@ -219,8 +219,8 @@ DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
     'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': 'password/reset/confirm/{uid}/{token}',
     'USERNAME_RESET_SHOW_EMAIL_NOT_FOUND': 'email/reset/confirm/{uid}/{token}',
-    # 'SOCIAL_AUTH_TOKEN_STRATEGY': 'djoser.social.token.jwt.TokenStrategy',
-    # 'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['http://localhost:8000'],
+    'SOCIAL_AUTH_TOKEN_STRATEGY': 'djoser.social.token.jwt.TokenStrategy',
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': [env('SOCIAL_REDIRECT_URI')],
     'SERIALIZERS': {
         'user_create' : 'data.serializers.UserCreateSerializer',
         'user_delete' : 'djoser.serializers.UserDeleteSerializer',
@@ -239,10 +239,10 @@ DJOSER = {
 # SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile', 'openid']
 # SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name','last_name']
 
-# SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = env('SOCIAL_AUTH_AZUREAD_OAUTH2_KEY')
-# SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = env('SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET')
-# SOCIAL_AUTH_AZUREAD_OAUTH2_SCOPE = ['https://graph.microsoft.com/User.Read','openid']
-# SOCIAL_AUTH_AZUREAD_OAUTH2_EXTRA_DATA = ['first_name','last_name']
+SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = env('SOCIAL_AUTH_AZUREAD_OAUTH2_KEY')
+SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = env('SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET')
+SOCIAL_AUTH_AZUREAD_OAUTH2_SCOPE = ['https://graph.microsoft.com/User.Read','openid']
+SOCIAL_AUTH_AZUREAD_OAUTH2_EXTRA_DATA = ['first_name','last_name']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
