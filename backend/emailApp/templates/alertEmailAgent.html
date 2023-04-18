@@ -206,7 +206,7 @@
     <body>
         <img  src="{% get_media_prefix %}logo.png" class='iconDetails'/>
         <div>
-            <p>Good Day <b>{{ user.name }}!</b></p>
+            <p>Good Day <b>{{ user.first_name }} {{ user.last_name }}!</b></p>
             <p>Your filed form request for Client {{formData.RF_ClientName}} ({{formData.RF_ClientId}}) was marked <b>High</b> and has been sent to Admins for Approval.</p>
             <p>You will be notified once approved or denied.</p>
         </div>

@@ -343,72 +343,7 @@ const AssuranceInvestment = ({user}) =>
       })
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
       
-      const [ProductTaken, setProductTaken] = useState([{
-        advisorId : user['id'],  
-        formId : state['formId'],  
-               
-        Pr_Taken : 0,    
-        Pr_Provider : "",    
-        Pr_PolicyNumber : "",    
-        Pr_Name : "",    
-        Pr_Premium : "",    
-        Pr_PremiumFrequency : 0,   
-        Pr_Escalation : "",    
-        Pr_EAC : "",    
-        Pr_ContractingParty : "",    
-        Pr_LivesAssured : "",    
-        Pr_PremiumPayer : "",    
-        Pr_Beneficiary : "",    
-        Pr_IniC : "",    
-        Pr_IniC_Percentage : "",    
-        Pr_OnC : "",    
-        Pr_OnC_Percentage : "",
-
-        Portfolio : "",
-        
-        SourceOfFunds : 0,
-        SourceOfFundsDetail : "",
-        
-        PF_1 : "",
-        PF_Percentage1 : "",
-        PF_Provided1 : false,
-        PF_Discussed1 : false,
-
-        PF_2 : "",
-        PF_Percentage2 : "",
-        PF_Provided2 : false,
-        PF_Discussed2 : false,
-
-        PF_3 : "",
-        PF_Percentage3 : "",
-        PF_Provided3 : false,
-        PF_Discussed3 : false,
-
-        PF_4 : "",
-        PF_Percentage4 : "",
-        PF_Provided4 : false,
-        PF_Discussed4 : false,
-
-        PF_5 : "",
-        PF_Percentage5 : "",
-        PF_Provided5 : false,
-        PF_Discussed5 : false,
-
-        PF_6 : "",
-        PF_Percentage6 : "",
-        PF_Provided6 : false,
-        PF_Discussed6 : false,
-
-        PF_7 : "",
-        PF_Reasons : "",
-        PF_Provided7 : false,
-        PF_Discussed7 : false,
-
-        PF_Reasons : "",
-        PF_MaterialAspects : "",
-        PF_Pr_Details : "",
-        PF_NominationOfBeneficiaries : ""
-      }])
+      const [ProductTaken, setProductTaken] = useState([])
       const AddNewProductTaken = (e) => {
         const current = [...ProductTaken]
         current.push({
@@ -518,77 +453,77 @@ const AssuranceInvestment = ({user}) =>
             } else {
                 setFormData(response.data['formData'])
             }
-            if (response.data['ProductTaken'].length > 0) {
-                setProductTaken(response.data['ProductTaken'])
-            } else {
-                setProductTaken([{
-                        advisorId : user['id'],  
-                        formId : state['formId'],  
+            setProductTaken(response.data['ProductTaken'])
+            // if (response.data['ProductTaken'].length > 0) {
+            // } else {
+            //     setProductTaken([{
+            //             advisorId : user['id'],  
+            //             formId : state['formId'],  
                         
-                        Pr_Taken : 0,    
-                        Pr_Provider : "",    
-                        Pr_PolicyNumber : "",    
-                        Pr_Name : "",    
-                        Pr_Premium : "",    
-                        Pr_PremiumFrequency : 0,   
-                        Pr_Escalation : "",    
-                        Pr_EAC : "",    
-                        Pr_ContractingParty : "",    
-                        Pr_LivesAssured : "",    
-                        Pr_PremiumPayer : "",    
-                        Pr_Beneficiary : "",    
-                        Pr_IniC : "",    
-                        Pr_IniC_Percentage : "",    
-                        Pr_OnC : "",    
-                        Pr_OnC_Percentage : "",
+            //             Pr_Taken : 0,    
+            //             Pr_Provider : "",    
+            //             Pr_PolicyNumber : "",    
+            //             Pr_Name : "",    
+            //             Pr_Premium : "",    
+            //             Pr_PremiumFrequency : 0,   
+            //             Pr_Escalation : "",    
+            //             Pr_EAC : "",    
+            //             Pr_ContractingParty : "",    
+            //             Pr_LivesAssured : "",    
+            //             Pr_PremiumPayer : "",    
+            //             Pr_Beneficiary : "",    
+            //             Pr_IniC : "",    
+            //             Pr_IniC_Percentage : "",    
+            //             Pr_OnC : "",    
+            //             Pr_OnC_Percentage : "",
 
-                        Portfolio : "",
+            //             Portfolio : "",
                         
-                        SourceOfFunds : 0,
-                        SourceOfFundsDetail : "",
+            //             SourceOfFunds : 0,
+            //             SourceOfFundsDetail : "",
                         
-                        PF_1 : "",
-                        PF_Percentage1 : "",
-                        PF_Provided1 : false,
-                        PF_Discussed1 : false,
+            //             PF_1 : "",
+            //             PF_Percentage1 : "",
+            //             PF_Provided1 : false,
+            //             PF_Discussed1 : false,
 
-                        PF_2 : "",
-                        PF_Percentage2 : "",
-                        PF_Provided2 : false,
-                        PF_Discussed2 : false,
+            //             PF_2 : "",
+            //             PF_Percentage2 : "",
+            //             PF_Provided2 : false,
+            //             PF_Discussed2 : false,
 
-                        PF_3 : "",
-                        PF_Percentage3 : "",
-                        PF_Provided3 : false,
-                        PF_Discussed3 : false,
+            //             PF_3 : "",
+            //             PF_Percentage3 : "",
+            //             PF_Provided3 : false,
+            //             PF_Discussed3 : false,
 
-                        PF_4 : "",
-                        PF_Percentage4 : "",
-                        PF_Provided4 : false,
-                        PF_Discussed4 : false,
+            //             PF_4 : "",
+            //             PF_Percentage4 : "",
+            //             PF_Provided4 : false,
+            //             PF_Discussed4 : false,
 
-                        PF_5 : "",
-                        PF_Percentage5 : "",
-                        PF_Provided5 : false,
-                        PF_Discussed5 : false,
+            //             PF_5 : "",
+            //             PF_Percentage5 : "",
+            //             PF_Provided5 : false,
+            //             PF_Discussed5 : false,
 
-                        PF_6 : "",
-                        PF_Percentage6 : "",
-                        PF_Provided6 : false,
-                        PF_Discussed6 : false,
+            //             PF_6 : "",
+            //             PF_Percentage6 : "",
+            //             PF_Provided6 : false,
+            //             PF_Discussed6 : false,
 
-                        PF_7 : "",
-                        PF_Reasons : "",
-                        PF_Provided7 : false,
-                        PF_Discussed7 : false,
+            //             PF_7 : "",
+            //             PF_Reasons : "",
+            //             PF_Provided7 : false,
+            //             PF_Discussed7 : false,
 
-                        PF_Reasons : "",
-                        PF_MaterialAspects : "",
-                        PF_Pr_Details : "",
-                        PF_NominationOfBeneficiaries : ""
-                      }]
-                )
-            }
+            //             PF_Reasons : "",
+            //             PF_MaterialAspects : "",
+            //             PF_Pr_Details : "",
+            //             PF_NominationOfBeneficiaries : ""
+            //           }]
+            //     )
+            // }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
@@ -614,7 +549,7 @@ const AssuranceInvestment = ({user}) =>
               const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_assurance_investment_data/`, Body ,config)
               // console.log(response.data['formData'])
               setFormData(response.data['formData'])
-              setSuccessMessage("Assurance Investment data is successfully updated")
+              setSuccessMessage("BA Investment data is successfully updated")
               setSuccessMessageVisibility("block")
               setTimeout(() => {
                 setSuccessMessageVisibility("none")
@@ -645,7 +580,14 @@ const AssuranceInvestment = ({user}) =>
           // window.location.reload();
       }
       useEffect(() => {
-          createAIForm(FormData)
+        createAIForm(FormData)
+        const interval = setInterval(() => {
+            const baInvestformSubmitButton = document.querySelector(".updateBAInvestFormBTN")
+            baInvestformSubmitButton.click()
+        }, 10000)
+        return () => {
+            clearInterval(interval);
+        }
           // setInterval(updateIPForm, 20000);
       }, []);
       // console.log(JSON.stringify(FormData))
@@ -1369,6 +1311,16 @@ How it will meet the business need
 <p>Products accepted by you to meet the business’s requirements.</p>
 <hr/>
 {
+    ProductTaken.length === 0 ?
+    <>
+        <div className="col-6">
+            <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+        </div>
+    </>
+    : <></>
+}
+{
+    ProductTaken.length > 0 ?
     ProductTaken.map((key,i) => {
         // console.log(i+1)
         return (
@@ -1377,13 +1329,13 @@ How it will meet the business need
                 <div className="col-6">
                     <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
                 </div>
-                {
+                <div className="col-6">
+                    <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                </div>
+                {/* {
                     ProductTaken.length > 1 ?
-                    <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
-                    </div>
                     : <></>
-                }
+                } */}
                 </div>
             <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
         <div className="row">
@@ -2396,6 +2348,7 @@ Other relevant information
             </>
         )
     })
+    : <></>
 }
     
         <div className="container1">
@@ -2403,7 +2356,7 @@ Other relevant information
                 <div className="tooltip1">
                     Update
                 </div>
-                <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+                <span><button type="submit" className="updateBAInvestFormBTN" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
             </div>
         </div>
 

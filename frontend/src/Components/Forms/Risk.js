@@ -175,48 +175,7 @@ const Risk = ({user}) =>
         RP_AltS_2 : "",
         RP_AltS_3 : "",       
       })
-      const [ProductTaken, setProductTaken] = useState([{
-        advisorId : user['id'],  
-        formId : state['formId'],  
-        Product_Taken : "",  
-        Product_Provider : "",
-        Policy_Number : "",
-        Product_Name : "",
-        Product_Premium : "",
-        Product_PremiumFrequency : "0", 
-        Product_Pattern : "",
-        Product_Escalation : "",
-        Product_ContractingParty : "",
-        Product_LivesAssured : "",
-        Product_Beneficiary : "",
-        Product_PremiumPayer : "",
-        Product_1stYearCommission : "",
-        Product_2ndYearCommission : "",
-        Product_OngoingFees : "",
-        Product_OngoingFeesFrequency : "",
-        Product_OngoingFeesFrequency1 : "0",    
-        TotalFees_n_Commissions : "",        
-        BenDesc_1 : "",
-        BenDesc_CoverAmount1 : "",
-        BenDesc_2 : "",
-        BenDesc_CoverAmount2 : "",
-        BenDesc_3 : "",
-        BenDesc_CoverAmount3 : "",
-        BenDesc_4 : "",
-        BenDesc_CoverAmount4 : "",
-        BenDesc_5 : "",
-        BenDesc_CoverAmount5 : "",
-        BenDesc_6 : "",
-        BenDesc_CoverAmount6 : "",
-        BenDesc_7 : "",
-        BenDesc_CoverAmount7 : "",        
-        ProductReasons : "",
-        ProductMaterialAspects : "",
-        ProductDetails : "",
-        ExecutorFee : "",
-        NominationOfBeneficiaries : "",
-        InformationExplained : ""
-      }])
+      const [ProductTaken, setProductTaken] = useState([])
       const AddNewProductTaken = (e) => {
         const current = [...ProductTaken]
         current.push({
@@ -304,52 +263,52 @@ const Risk = ({user}) =>
                 setFormData(response.data['formData'])
             } else {
                 setFormData(response.data['formData'])
-                if (response.data['ProductTaken'].length > 0) {
-                  setProductTaken(response.data['ProductTaken'])
-                } else {
-                  setProductTaken([{
-                    advisorId : user['id'],  
-                    formId : state['formId'],  
-                    Product_Taken : "",  
-                    Product_Provider : "",
-                    Policy_Number : "",
-                    Product_Name : "",
-                    Product_Premium : "",
-                    Product_PremiumFrequency : "0", 
-                    Product_Pattern : "",
-                    Product_Escalation : "",
-                    Product_ContractingParty : "",
-                    Product_LivesAssured : "",
-                    Product_Beneficiary : "",
-                    Product_PremiumPayer : "",
-                    Product_1stYearCommission : "",
-                    Product_2ndYearCommission : "",
-                    Product_OngoingFees : "",
-                    Product_OngoingFeesFrequency : "",
-                    Product_OngoingFeesFrequency1 : "0",    
-                    TotalFees_n_Commissions : "",        
-                    BenDesc_1 : "",
-                    BenDesc_CoverAmount1 : "",
-                    BenDesc_2 : "",
-                    BenDesc_CoverAmount2 : "",
-                    BenDesc_3 : "",
-                    BenDesc_CoverAmount3 : "",
-                    BenDesc_4 : "",
-                    BenDesc_CoverAmount4 : "",
-                    BenDesc_5 : "",
-                    BenDesc_CoverAmount5 : "",
-                    BenDesc_6 : "",
-                    BenDesc_CoverAmount6 : "",
-                    BenDesc_7 : "",
-                    BenDesc_CoverAmount7 : "",        
-                    ProductReasons : "",
-                    ProductMaterialAspects : "",
-                    ProductDetails : "",
-                    ExecutorFee : "",
-                    NominationOfBeneficiaries : "",
-                    InformationExplained : ""
-                  }])
-                }
+                setProductTaken(response.data['ProductTaken'])
+                // if (response.data['ProductTaken'].length > 0) {
+                // } else {
+                //   setProductTaken([{
+                //     advisorId : user['id'],  
+                //     formId : state['formId'],  
+                //     Product_Taken : "",  
+                //     Product_Provider : "",
+                //     Policy_Number : "",
+                //     Product_Name : "",
+                //     Product_Premium : "",
+                //     Product_PremiumFrequency : "0", 
+                //     Product_Pattern : "",
+                //     Product_Escalation : "",
+                //     Product_ContractingParty : "",
+                //     Product_LivesAssured : "",
+                //     Product_Beneficiary : "",
+                //     Product_PremiumPayer : "",
+                //     Product_1stYearCommission : "",
+                //     Product_2ndYearCommission : "",
+                //     Product_OngoingFees : "",
+                //     Product_OngoingFeesFrequency : "",
+                //     Product_OngoingFeesFrequency1 : "0",    
+                //     TotalFees_n_Commissions : "",        
+                //     BenDesc_1 : "",
+                //     BenDesc_CoverAmount1 : "",
+                //     BenDesc_2 : "",
+                //     BenDesc_CoverAmount2 : "",
+                //     BenDesc_3 : "",
+                //     BenDesc_CoverAmount3 : "",
+                //     BenDesc_4 : "",
+                //     BenDesc_CoverAmount4 : "",
+                //     BenDesc_5 : "",
+                //     BenDesc_CoverAmount5 : "",
+                //     BenDesc_6 : "",
+                //     BenDesc_CoverAmount6 : "",
+                //     BenDesc_7 : "",
+                //     BenDesc_CoverAmount7 : "",        
+                //     ProductReasons : "",
+                //     ProductMaterialAspects : "",
+                //     ProductDetails : "",
+                //     ExecutorFee : "",
+                //     NominationOfBeneficiaries : "",
+                //     InformationExplained : ""
+                //   }])
+                // }
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
@@ -413,6 +372,13 @@ const Risk = ({user}) =>
       const productNominationOfBeneficiariesRef = useRef(null)
       useEffect(() => {
         createRPForm(FormData)
+        const interval = setInterval(() => {
+            const formSubmitButton = document.querySelector(".updateRiskFormBTN")
+            formSubmitButton.click()
+        }, 10000)
+        return () => {
+            clearInterval(interval);
+        }
       }, []);
       // console.log(JSON.stringify(FormData))
 
@@ -653,7 +619,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DiC_LumpSumExistingShortfallSurplus' value={FormData['RP_DiC_LumpSumExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DiC_LumpSumExistingShortfallSurplus' value={FormData['RP_DiC_LumpSumTotalNeed'] - FormData['RP_DiC_LumpSumExistingProvisions']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -685,7 +651,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DiC_PI_ExistingShortfallSurplus' value={FormData['RP_DiC_PI_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DiC_PI_ExistingShortfallSurplus' value={FormData['RP_DiC_PI_TotalNeed']-FormData['RP_DiC_PI_ExistingProvisions']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -717,7 +683,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DiC_TI_ExistingShortfallSurplus' value={FormData['RP_DiC_TI_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DiC_TI_ExistingShortfallSurplus' value={FormData['RP_DiC_TI_TotalNeed']-FormData['RP_DiC_TI_ExistingProvisions']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -749,7 +715,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DiC_SiB_ExistingShortfallSurplus' value={FormData['RP_DiC_SiB_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DiC_SiB_ExistingShortfallSurplus' value={FormData['RP_DiC_SiB_TotalNeed']-FormData['RP_DiC_SiB_ExistingProvisions']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -785,7 +751,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DiC_OtherExistingShortfallSurplus1' value={FormData['RP_DiC_OtherExistingShortfallSurplus1']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DiC_OtherExistingShortfallSurplus1' value={FormData['RP_DiC_OtherTotalNeed1']-FormData['RP_DiC_OtherExistingProvisions1']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -821,7 +787,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DiC_OtherExistingShortfallSurplus2' value={FormData['RP_DiC_OtherExistingShortfallSurplus2']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DiC_OtherExistingShortfallSurplus2' value={FormData['RP_DiC_OtherTotalNeed2']-FormData['RP_DiC_OtherExistingProvisions2']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -898,7 +864,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DrC_LumpSumExistingShortfallSurplus' value={FormData['RP_DrC_LumpSumExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DrC_LumpSumExistingShortfallSurplus' value={FormData['RP_DrC_LumpSumTotalNeed']-FormData['RP_DrC_LumpSumExistingProvisions']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -930,7 +896,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DrC_IncomeExistingShortfallSurplus' value={FormData['RP_DrC_IncomeExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DrC_IncomeExistingShortfallSurplus' value={FormData['RP_DrC_IncomeTotalNeed']-FormData['RP_DrC_IncomeExistingProvisions']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -966,7 +932,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DrC_OtherExistingShortfallSurplus1' value={FormData['RP_DrC_OtherExistingShortfallSurplus1']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DrC_OtherExistingShortfallSurplus1' value={FormData['RP_DrC_OtherTotalNeed1']-FormData['RP_DrC_OtherExistingProvisions1']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -1001,7 +967,7 @@ const Risk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" name='RP_DrC_OtherExistingShortfallSurplus2' value={FormData['RP_DrC_OtherExistingShortfallSurplus2']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
+          <input type="number" className="form-control" name='RP_DrC_OtherExistingShortfallSurplus2' value={FormData['RP_DrC_OtherTotalNeed2']-FormData['RP_DrC_OtherExistingProvisions2']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
 
@@ -1334,6 +1300,14 @@ const Risk = ({user}) =>
     />
     <h5 className="text-start " ><b>SECTION E:</b></h5> 
     {
+      ProductTaken.length === 0 ?
+        <div className="col-6">
+            <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+        </div>
+      :<></>
+    }
+    {
+      ProductTaken.length > 0 ?
       ProductTaken.map((key,i) => {
         // console.log(i+1)
           return (
@@ -1347,13 +1321,9 @@ const Risk = ({user}) =>
                     <div className="col-6">
                         <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
                     </div>
-                    {
-                        ProductTaken.length > 1 ?
-                        <div className="col-6">
-                            <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
-                        </div>
-                        : <></>
-                      }
+                    <div className="col-6">
+                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                    </div>
                   </div>
                   <hr/>
             <div className="container mt-3">          
@@ -2257,7 +2227,7 @@ const Risk = ({user}) =>
             </>
           ) 
         }
-      )
+      ) : <></>
     }
 
                             <div className="container1">
@@ -2265,7 +2235,7 @@ const Risk = ({user}) =>
                                     <div className="tooltip1">
                                         Update
                                     </div>
-                                    <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+                                    <span><button type="submit" className='updateRiskFormBTN' style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
                                 </div>
                             </div>
         

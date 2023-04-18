@@ -897,6 +897,13 @@ const Short_term_Personal = ({user}) => {
       // console.log(FormData)
       useEffect(() => {
         createSTIPForm(FormData)
+        const interval = setInterval(() => {
+          const STIPFormSubmitButton = document.querySelector(".updateSTIPFormBTN")
+          STIPFormSubmitButton.click()
+        }, 10000)
+        return () => {
+            clearInterval(interval);
+        }
       }, []);
       // setTimeout(() => {
       //   setSuccessMessageVisibility("none")
@@ -6555,7 +6562,7 @@ const Short_term_Personal = ({user}) => {
               <div className="tooltip1">
                   Update
               </div>
-              <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+              <span><button type="submit" className='updateSTIPFormBTN' style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
           </div>
       </div>
         </form>

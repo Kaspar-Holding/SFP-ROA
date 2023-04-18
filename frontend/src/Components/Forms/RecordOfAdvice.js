@@ -150,28 +150,56 @@ const RecordOfAdvice = ({user}) => {
             }, 5000)
         }
     }
+    const recursiveUpdateRecordOfAdviceForm= async() => {
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`
+            }
+        }
+        const Body = JSON.stringify(FormData)
+        console.log(Body)
+        // try {
+        //     const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/updateformdata/`, Body ,config)
+        //     // console.log(response.data['code'])
+        //     setFormData(response.data['Data'])
+        //     // setSubmissionMessageVisibility("block")
+        // } catch (error) {
+        //     console.log(error)
+        //     setErrorData({
+        //         status: error.response.status,
+        //         message: error.response.statusText,
+        //         errors: error.response.errors
+        //     })
+        //     setSubmissionErrorVisibilty("block")
+        //     setTimeout(() => {
+        //         setSubmissionErrorVisibilty("none")
+        //     }, 5000)
+        // }
+    }
     const onSubmit = e => {
         e.preventDefault()
-        setSuccessMessageVisibility("none")
-        setSubmissionErrorVisibilty("none")
-        var emailValid = emailValidation()
-        if(emailValid === false){
-            setSuccessMessage("Invalid Email")
-            setSuccessMessageVisibility("block")
-            setTimeout(() => {
-                setSuccessMessageVisibility("none")
-            }, 5000)
-        }
-        if (FormData['clientPhoneNumber'].length < 10){
-            setSuccessMessage("Invalid Phone Number, Please input valid phone number with 10 digits")
-            setSuccessMessageVisibility("block")
-            setTimeout(() => {
-            setSuccessMessageVisibility("none")
-            }, 5000)
+        // setSuccessMessageVisibility("none")
+        // setSubmissionErrorVisibilty("none")
+        // var emailValid = emailValidation()
+        // if(emailValid === false){
+        //     setSuccessMessage("Invalid Email")
+        //     setSuccessMessageVisibility("block")
+        //     setTimeout(() => {
+        //         setSuccessMessageVisibility("none")
+        //     }, 5000)
+        // }
+        // if (FormData['clientPhoneNumber'].length < 10){
+        //     setSuccessMessage("Invalid Phone Number, Please input valid phone number with 10 digits")
+        //     setSuccessMessageVisibility("block")
+        //     setTimeout(() => {
+        //     setSuccessMessageVisibility("none")
+        //     }, 5000)
 
-        }else{
-            updateRecordOfAdviceForm(FormData)
-        }
+        // }else{
+        // }
+        updateRecordOfAdviceForm(FormData)
         // window.location.reload();
     }
         // window.location.reload();
@@ -182,6 +210,15 @@ const RecordOfAdvice = ({user}) => {
     const FICAEditorRef = useRef(null);
     useEffect(() => {
         createRecordOfAdviceForm(FormData)
+        const interval = setInterval(() => {
+            const formSubmitButton = document.querySelector(".updateFormBTN")
+            formSubmitButton.click()
+        }, 10000)
+        return () => {
+            clearInterval(interval);
+        }
+
+        
     }, []);
     return (
       
@@ -265,7 +302,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="advisor" className="col-form-label"><b>Financial Advisor:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true" value={user['name']} disabled name="advisor" className="form-control" placeholder="Financial Advisor"  aria-describedby="" />
+                                        <input required spellCheck="true" value={user["first_name"] + " " + user["last_name"]} disabled name="advisor" className="form-control" placeholder="Financial Advisor"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -623,7 +660,7 @@ const RecordOfAdvice = ({user}) => {
                             <div className="tooltip1">
                                 Update
                             </div>
-                            <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+                            <span><button type="submit" className="updateFormBTN" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
                         </div>
                     </div>
                 </form>

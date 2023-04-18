@@ -206,8 +206,8 @@
     <body>
         <img  src="{% get_media_prefix %}logo.png" class='iconDetails'/>
         <div>
-            <p>Good Day <b>{{ user.name }}!</b></p>
-            <p>One of following advisor ({{advisor.name}}) just filed a Dynamic Risk Assessment with <b>High</b> Risk Level.</p>
+            <p>Good Day <b>{{ user.first_name }} {{ user.last_name }}!</b></p>
+            <p>One of following advisor ({{advisor.first_name}} {{ advisor.last_name }}) just filed a Dynamic Risk Assessment with <b>High</b> Risk Level.</p>
             <p>Filled form in attached in the PDF form, please have a look on it. Then please approve or deny it.</p>
         </div>
         <p>Click on following link to change the form status</p>

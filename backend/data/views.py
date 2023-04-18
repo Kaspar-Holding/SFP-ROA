@@ -74,7 +74,7 @@ def sample(request):
     df = pd.DataFrame(data=data)
     print(df)
     filename =  "Export Data - %s.csv" %(uuid.uuid4())
-    df.to_csv("data/static/csv/%s" %(filename))
+    df.to_csv("static/csv/%s" %(filename))
     return Response({"file":"static/csv/%s" %(filename)})
 
 @api_view(['POST'])
@@ -223,7 +223,7 @@ def importCSV(request):
                     }
     result_df = pd.DataFrame(columns=[['Risk Weight','Count']], data=importResult)
     filename =  "Import Result - %s.csv" %(uuid.uuid4())
-    result_df.to_csv("data/static/csv/%s" %(filename))
+    result_df.to_csv("static/csv/%s" %(filename))
     # serializer = importCSVSerializer(data=csvData,many=True, partial=True)
     # if serializer.is_valid():
     #     serializer.update()
@@ -327,7 +327,7 @@ def insertData(request):
 def insertFormData(request):
     serializer = FormSerializers(data=request.data, many=False)
     if serializer.is_valid():
-        old_form = Form.objects.filter(advisorId = request.data['advisorId'],clientIdNumber = request.data['clientIdNumber']).first()
+        old_form = Form.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
         serializer1 = FormSerializers(old_form, many=False)
         # return Response({"data":serializer1.data, "length": len(serializer1.data['client_id'])})
         if len(serializer1.data['clientIdNumber']) == 0:
@@ -352,7 +352,7 @@ def viewFormData(request):
         advisorName = UserAccount.objects.get(id=formSerializer.data['advisorId'])
         advisorNameSerializer = UserAccountsSerializers(advisorName, many=False)
 
-        formData['advisorName'] = advisorNameSerializer.data['name']
+        formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
         message = {"message": "Found","code":200,"formData": formData}
         code = 200
     except:
@@ -510,7 +510,8 @@ def adminformStats(request):
     p = Paginator(forms_data, 10)
     data = p.page(request.data['page_number']).object_list
     for row in data:
-        row['advisorName'] = UserAccount.objects.filter(id=row['advisorId']).values('name').first()['name']
+        advisorData = UserAccount.objects.filter(id=row['advisorId']).values('first_name', 'last_name').first()
+        row['advisorName'] = advisorData['first_name'] + " " + advisorData['last_name']
         if row['status'] == 2:
             userId = urlsafe_base64_encode(str(request.data['advisorId']).encode('utf-8'))
             formIdEncoded = urlsafe_base64_encode(str(row['id']).encode('utf-8'))
@@ -588,7 +589,7 @@ def viewFiduciaryData(request):
     advisorName = UserAccount.objects.get(id=formData.data['advisorId'])
     advisorNameSerializer = FormSerializers(advisorName, many=False)
 
-    formData['advisorName'] = advisorNameSerializer.data['name']
+    formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
     # if serializer.is_valid():
     return Response({"message": "Found","code":200,"formData": formData},200)
     # else:
@@ -644,7 +645,7 @@ def viewInvestmentPlanningData(request):
     advisorName = UserAccount.objects.get(id=formData.data['advisorId'])
     advisorNameSerializer = FormSerializers(advisorName, many=False)
 
-    formData['advisorName'] = advisorNameSerializer.data['name']
+    formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
     
     ProductsTaken = IP_ProductTaken.objects.filter(formId=request.data['formId']).values()
     if len(ProductsTaken) == 1:
@@ -701,7 +702,7 @@ def viewRiskPlanningData(request):
     advisorName = RiskPlanning.objects.get(id=formData.data['advisorId'])
     advisorNameSerializer = RiskPlanningSerializers(advisorName, many=False)
 
-    formData['advisorName'] = advisorNameSerializer.data['name']
+    formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
 
     ProductsTaken = RP_ProductTaken.objects.filter(formId=request.data['formId']).values()
     if len(ProductsTaken) == 1:
@@ -758,7 +759,7 @@ def viewAssuranceInvestmentData(request):
     advisorName = AssuranceInvestment.objects.get(id=formData.data['advisorId'])
     advisorNameSerializer = AssuranceInvestmentSerializers(advisorName, many=False)
 
-    formData['advisorName'] = advisorNameSerializer.data['name']
+    formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
     # if serializer.is_valid():
     return Response({"message": "Found","code":200,"Data": formData},200)
     # else:
@@ -811,7 +812,7 @@ def viewAssuranceRiskData(request):
     advisorName = AssuranceRisk.objects.get(id=formData.data['advisorId'])
     advisorNameSerializer = AssuranceRiskSerializers(advisorName, many=False)
 
-    formData['advisorName'] = advisorNameSerializer.data['name']
+    formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
     # if serializer.is_valid():
     return Response({"message": "Found","code":200,"Data": formData},200)
     # else:
@@ -866,7 +867,7 @@ def viewEmployeeBenefitsData(request):
     # advisorName = EmployeeBenefits.objects.get(id=formData.data['advisorId'])
     # advisorNameSerializer = EmployeeBenefitsSerializers(advisorName, many=False)
 
-    # formData['advisorName'] = advisorNameSerializer.data['name']
+    # formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
     CoverData = EB_Cover.objects.filter(formId=request.data['formId']).values()
 
     return Response({'message': "Form Already Exists","code": "200", "formData" : formData, "CoverData" : CoverData},200)
@@ -922,7 +923,7 @@ def viewGapCoverData(request):
     advisorName = GapCover.objects.get(id=formData.data['advisorId'])
     advisorNameSerializer = GapCoverSerializers(advisorName, many=False)
 
-    formData['advisorName'] = advisorNameSerializer.data['name']
+    formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
     # if serializer.is_valid():
     return Response({"message": "Found","code":200,"Data": formData},200)
     # else:
@@ -974,7 +975,7 @@ def viewShortTermInsurancePersonalData(request):
     advisorName = ShortTermInsurancePersonal.objects.get(id=formData.data['advisorId'])
     advisorNameSerializer = ShortTermInsurancePersonalSerializers(advisorName, many=False)
 
-    formData['advisorName'] = advisorNameSerializer.data['name']
+    formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
     # if serializer.is_valid():
     return Response({"message": "Found","code":200,"Data": formData},200)
     # else:
@@ -1026,7 +1027,7 @@ def viewMedicalData(request):
     advisorName = Medical.objects.get(id=formData.data['advisorId'])
     advisorNameSerializer = MedicalSerializers(advisorName, many=False)
 
-    formData['advisorName'] = advisorNameSerializer.data['name']
+    formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
     # if serializer.is_valid():
     return Response({"message": "Found","code":200,"Data": formData},200)
     # else:
@@ -1079,7 +1080,7 @@ def viewShortTermInsuranceCommericalData(request):
     advisorName = ShortTermInsuranceCommerical.objects.get(id=formData.data['advisorId'])
     advisorNameSerializer = ShortTermInsuranceCommericalSerializers(advisorName, many=False)
 
-    formData['advisorName'] = advisorNameSerializer.data['name']
+    formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
     # if serializer.is_valid():
     return Response({"message": "Found","code":200,"Data": formData},200)
     # else:
@@ -1171,7 +1172,7 @@ def viewRiskFactorsData(request):
     # advisorName = RiskFactors.objects.get(id=formData.data['advisorId'])
     # advisorNameSerializer = RiskFactorsSerializers(advisorName, many=False)
 
-    # formData['advisorName'] = advisorNameSerializer.data['name']
+    # formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
     # if serializer.is_valid():
     return Response({"message": "Found","code":200,"formData": formData, 'LP_Data': lp_data},200)
     # else:
@@ -1194,7 +1195,7 @@ def viewHighRiskFactorsData(request):
                 # advisorName = RiskFactors.objects.get(id=formData.data['advisorId'])
                 # advisorNameSerializer = RiskFactorsSerializers(advisorName, many=False)
 
-                # formData['advisorName'] = advisorNameSerializer.data['name']
+                # formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
                 # if serializer.is_valid():
                 return Response({"message": "Found","code":200,"formData": formData, 'LP_Data': lp_data},200)
             else:

@@ -5,7 +5,8 @@ import {Navigate, NavLink} from 'react-router-dom'
 import {LoginUser} from '../../Actions/Auth'
 import Loader from '../Loader/Loader'
 import axios from 'axios'
-
+import MicrosoftLogo from '../../Images/microsoft-icon.png'
+import GoogleLogo from '../../Images/google.png'
 
 
 const SignIn = ({LoginUser, isAuthenticated}) => {
@@ -89,7 +90,34 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
     // console.log(response)
     // window.location.reload();
   }
-  
+  const continueWithAzureAD = async(e) => {
+    try {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth/o/azuread-oauth2/?redirect_uri=http://localhost:8000`)
+        window.location.replace(response.data.authorization_url)
+    } catch (error) {
+        console.log(error.response.data)
+        
+    }
+
+}
+  const continueWithGoogleOAuth = async(e) => {
+      try {
+          const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth/o/google-oauth2/?redirect_uri=http://localhost:8000`)
+          window.location.replace(response.data.authorization_url)
+      } catch (error) {
+          console.log(error.response.data)
+          
+      }
+
+  }
+  const continueWithMicrosoft = (e) => {
+      localStorage.setItem('authType', 'microsoft')
+      continueWithAzureAD(e)
+  }
+  const continueWithGoogle = (e) => {
+      localStorage.setItem('authType', 'google')
+      continueWithGoogleOAuth(e)
+  }
   if (isAuthenticated === true){
     return <Navigate to='/' />
   }
@@ -124,10 +152,40 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
                 </div> */}
                 <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
                 <hr/>
-                <p className="mt-5 mb-3 text-center">Forgot your password? <NavLink to="/reset-password">Reset Password</NavLink></p>
-                
-                <p className="mt-5 mb-3 text-muted text-center">&copy; SFP by KCS 2022–2023</p>
+                <p className="text-center">Forgot your password? <NavLink to="/reset-password">Reset Password</NavLink></p>
+                <hr/>
             </form>
+            <div className="card" style={{}}>
+                <button style={{border: 'none', backgroundColor: 'transparent'}} onClick={(e)=>{continueWithMicrosoft(e)}}>
+                  <div className="card-body">
+                      <div className='row'>
+                        <div className='col-2'>
+                          <img src={MicrosoftLogo} style={{width: '100%'}}/>
+                        </div>
+                        <div className='col-10'>
+                          <p className="card-text">Login using Microsoft Account</p>
+                          {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
+                        </div>
+                      </div>
+                  </div>
+                </button>
+            </div>
+            <br/>
+            {/* <div className="card" style={{}}>
+                <button style={{border: 'none', backgroundColor: 'transparent'}} onClick={(e)=>{continueWithGoogle(e)}}>
+                  <div className="card-body">
+                      <div className='row'>
+                        <div className='col-2'>
+                          <img src={GoogleLogo} style={{width: '100%'}}/>
+                        </div>
+                        <div className='col-10'>
+                          <p className="card-text">Login using Google Account</p>
+                        </div>
+                      </div>
+                  </div>
+                </button>
+            </div> */}
+            <p className="mt-5 mb-3 text-muted text-center">&copy; SFP by KCS 2022–2023</p>
         </main>
     </div>
     </>

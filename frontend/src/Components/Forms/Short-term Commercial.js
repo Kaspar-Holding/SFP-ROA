@@ -1146,6 +1146,13 @@ const Short_term_Commercial= ({user}) => {
       // console.log(JSON.stringify(localStorage.getItem('access')))
       useEffect(() => {
         createSTICForm(FormData)
+        const interval = setInterval(() => {
+            const STICFormSubmitButton = document.querySelector(".updateSTICFormBTN")
+            STICFormSubmitButton.click()
+        }, 10000)
+        return () => {
+            clearInterval(interval);
+        }
       }, []);
       // setTimeout(() => {
       //   setSuccessMessageVisibility("none")
@@ -12546,7 +12553,7 @@ const Short_term_Commercial= ({user}) => {
               <div className="tooltip1">
                   Update
               </div>
-              <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+              <span><button type="submit" className='updateSTICFormBTN' style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
           </div>
       </div>
   </form>

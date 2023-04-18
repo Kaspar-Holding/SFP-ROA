@@ -396,80 +396,80 @@ const Invest = ({user}) =>
             } else {
                 setFormData(response.data['formData'])
             }
-            if (response.data['ProductTaken'].length > 0) {
-                setProductTaken(response.data['ProductTaken'])
-              } else {
-                setProductTaken([{
-                    advisorId : user['id'],  
-                    formId : state['formId'],  
+            setProductTaken(response.data['ProductTaken'])
+            // if (response.data['ProductTaken'].length > 0) {
+            //   } else {
+            //     setProductTaken([{
+            //         advisorId : user['id'],  
+            //         formId : state['formId'],  
                       
             
-                    ProductTaken : 0,    
-                    ProductProvider : "",    
-                    PolicyNumber : "",    
-                    ProductName : "",    
-                    ProductPremium : "",    
-                    ProductPremiumFrequency : 1,   
-                    ProductEscalation : "",    
-                    ProductEAC : "",    
-                    ProductContractingParty : "",    
-                    ProductLivesAssured : "",    
-                    ProductPremiumLayer : "",    
-                    ProductBeneficiary : "",    
-                    Product_IniC : "",    
-                    Product_IniC_Percentage : "",    
-                    Product_OnC : "",    
-                    Product_OnC_Percentage : "",    
+            //         ProductTaken : 0,    
+            //         ProductProvider : "",    
+            //         PolicyNumber : "",    
+            //         ProductName : "",    
+            //         ProductPremium : "",    
+            //         ProductPremiumFrequency : 1,   
+            //         ProductEscalation : "",    
+            //         ProductEAC : "",    
+            //         ProductContractingParty : "",    
+            //         ProductLivesAssured : "",    
+            //         ProductPremiumLayer : "",    
+            //         ProductBeneficiary : "",    
+            //         Product_IniC : "",    
+            //         Product_IniC_Percentage : "",    
+            //         Product_OnC : "",    
+            //         Product_OnC_Percentage : "",    
             
-                    SFPSolutionFunds : 2,
-                    SFPSolutionFundsDetails : "",
+            //         SFPSolutionFunds : 2,
+            //         SFPSolutionFundsDetails : "",
             
-                    ItP : "",
-                    ItP_Fund : "",
-                    ItP_FundPercentage : "",
-                    ItP_FundProvided : 0,
-                    ItP_FundDiscussed : 0,
+            //         ItP : "",
+            //         ItP_Fund : "",
+            //         ItP_FundPercentage : "",
+            //         ItP_FundProvided : 0,
+            //         ItP_FundDiscussed : 0,
                     
-                    ItP_Fund1 : "",
-                    ItP_FundPercentage1 : "",
-                    ItP_FundProvided1 : 0,
-                    ItP_FundDiscussed1 : 0,
+            //         ItP_Fund1 : "",
+            //         ItP_FundPercentage1 : "",
+            //         ItP_FundProvided1 : 0,
+            //         ItP_FundDiscussed1 : 0,
             
-                    ItP_Fund2 : "",
-                    ItP_FundPercentage2 : "",
-                    ItP_FundProvided2 : 0,
-                    ItP_FundDiscussed2 : 0,
+            //         ItP_Fund2 : "",
+            //         ItP_FundPercentage2 : "",
+            //         ItP_FundProvided2 : 0,
+            //         ItP_FundDiscussed2 : 0,
             
-                    ItP_Fund3 : "",
-                    ItP_FundPercentage3 : "",
-                    ItP_FundProvided3 : 0,
-                    ItP_FundDiscussed3 : 0,
+            //         ItP_Fund3 : "",
+            //         ItP_FundPercentage3 : "",
+            //         ItP_FundProvided3 : 0,
+            //         ItP_FundDiscussed3 : 0,
             
-                    ItP_Fund4 : "",
-                    ItP_FundPercentage4 : "",
-                    ItP_FundProvided4 : 0,
-                    ItP_FundDiscussed4 : 0,
+            //         ItP_Fund4 : "",
+            //         ItP_FundPercentage4 : "",
+            //         ItP_FundProvided4 : 0,
+            //         ItP_FundDiscussed4 : 0,
             
-                    ItP_Fund5 : "",
-                    ItP_FundPercentage5 : "",
-                    ItP_FundProvided5 : 0,
-                    ItP_FundDiscussed5 : 0,
+            //         ItP_Fund5 : "",
+            //         ItP_FundPercentage5 : "",
+            //         ItP_FundProvided5 : 0,
+            //         ItP_FundDiscussed5 : 0,
             
-                    ItP_Fund6 : "",
-                    ItP_FundPercentage6 : "",
-                    ItP_FundProvided6 : 0,
-                    ItP_FundDiscussed6 : 0,
+            //         ItP_Fund6 : "",
+            //         ItP_FundPercentage6 : "",
+            //         ItP_FundProvided6 : 0,
+            //         ItP_FundDiscussed6 : 0,
             
-                    ItP_Fund7 : "",
-                    ItP_FundPercentage7 : "",
-                    ItP_FundProvided7 : 0,
-                    ItP_FundDiscussed7 : 0,
+            //         ItP_Fund7 : "",
+            //         ItP_FundPercentage7 : "",
+            //         ItP_FundProvided7 : 0,
+            //         ItP_FundDiscussed7 : 0,
             
-                    ItP_FundsReasons : "",
+            //         ItP_FundsReasons : "",
             
-                    ItP_FundsMaterialAspects : ""
-                  }])
-              }
+            //         ItP_FundsMaterialAspects : ""
+            //       }])
+            //   }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
@@ -518,6 +518,13 @@ const Invest = ({user}) =>
     }
     useEffect(() => {
         createIPForm(FormData)
+        const interval = setInterval(() => {
+            const investFormSubmitButton = document.querySelector(".updateInvestFormBTN")
+            investFormSubmitButton.click()
+        }, 10000)
+        return () => {
+            clearInterval(interval);
+        }
         // setInterval(updateIPForm, 20000);
     }, []);
     // console.log(JSON.stringify(FormData))
@@ -1423,8 +1430,16 @@ const Invest = ({user}) =>
             <h6 className="text-start " style={{ color: "#14848A"}} ><b>Product Taken</b></h6>
 
             <p>Products accepted by you to meet your requirements.</p>
+            {
+                ProductTaken.length === 0 ? 
+                    <div className="col-6">
+                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+                    </div>
+                :<></>
+            }
 
             {
+                ProductTaken.length > 0 ? 
                 ProductTaken.map((key,i) => {
                     // console.log(i+1)
                       return (
@@ -1433,13 +1448,9 @@ const Invest = ({user}) =>
                 <div className="col-6">
                     <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
                 </div>
-                {
-                    ProductTaken.length > 1 ?
-                    <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
-                    </div>
-                    : <></>
-                }
+                <div className="col-6">
+                    <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                </div>
               </div>
 
             <div className="container mt-3">          
@@ -2307,7 +2318,7 @@ const Invest = ({user}) =>
     }
                         </>
                       )
-                })
+                }): <></>
             }
             
       
@@ -2316,7 +2327,7 @@ const Invest = ({user}) =>
                 <div className="tooltip1">
                     Update
                 </div>
-                <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+                <span><button type="submit" className="updateInvestFormBTN" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
             </div>
         </div>
 

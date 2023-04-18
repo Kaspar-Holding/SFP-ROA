@@ -518,7 +518,8 @@ def wkhtmltopdfapi(request):
             data['roa_status'] = False
         else:
             data['roa_status'] = True
-            data['RoA']['clientAdvisor'] = UserAccount.objects.filter(id=data['RoA']['advisorId']).values('name').first()['name']
+            advisor = UserAccount.objects.filter(id=data['RoA']['advisorId']).values('first_name','last_name').first()
+            data['RoA']['clientAdvisor'] = advisor['first_name'] + ' ' + advisor['last_name']
             data['RoA']['clientDateOfBirth'] = (data['RoA']['clientDateOfBirth']).strftime('%d %b %Y')
     else:
         data['roa_status'] = False
@@ -2878,7 +2879,7 @@ def wkhtmltopdfapi(request):
     else:
         data['STIP_status'] = False
     data['dra_status'] = request.data['dra_status']
-    data['advisor'] = UserAccount.objects.filter(id=request.data['advisorId']).values('name', 'email', 'is_superuser').first()
+    data['advisor'] = UserAccount.objects.filter(id=request.data['advisorId']).values('first_name', 'last_name', 'email', 'is_superuser').first()
     # print(data['STIP']['STIP_Applicant_Gender'])
     template = get_template('pdfForm.html')
     cmd_options = {
@@ -2907,10 +2908,10 @@ def wkhtmltopdfapi(request):
     response =  PDFTemplateResponse(request=request, template=template,context=data, cmd_options=cmd_options)
     if request.data['dra_status']:
         # fileName = "Sample.pdf"
-        fileName = "RoA for %s Filled by %s %s" %(data['RF_ClientName'], data['advisor']['name'] ,uuid.uuid4())
+        fileName = "RoA for %s Filled by %s %s" %(data['RF_ClientName'], data['advisor']['first_name'] + " " + data['advisor']['last_name'] ,uuid.uuid4())
     else:
         # fileName = "Sample.pdf"
-        fileName = "Client RoA for %s Filled by %s %s" %(data['RF_ClientName'], data['advisor']['name'] ,uuid.uuid4())
+        fileName = "Client RoA for %s Filled by %s %s" %(data['RF_ClientName'], data['advisor']['first_name'] + " " + data['advisor']['last_name'] ,uuid.uuid4())
     with open("static/pdf/%s.pdf"%(fileName), "wb") as f:
         f.write(response.rendered_content)
     return Response({"file":"static/pdf/%s.pdf"%(fileName)})

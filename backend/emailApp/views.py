@@ -480,7 +480,7 @@ def alertPDF(request, formId):
       'no-outline' : True,
     }
     response =  PDFTemplateResponse(request=request, template=template,context=context, cmd_options=cmd_options)
-    fileName = fileName = "RoA for %s Filled by %s %s.pdf" %(data['RF_ClientName'], data['advisor']['name'] ,uuid.uuid4())
+    fileName = "RoA for %s Filled by %s %s.pdf" %(data['RF_ClientName'], data['advisor']['first_name'] + " " + data['advisor']['last_name'] ,uuid.uuid4())
     with open(fileName, "wb") as f:
         f.write(response.rendered_content)
     return (fileName)

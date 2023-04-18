@@ -386,6 +386,13 @@ const Employee = ({user}) =>
       useEffect(() => {
         if(user){
             createEBForm(FormData)
+            const interval = setInterval(() => {
+                const EmpformSubmitButton = document.querySelector(".updateEmpFormBTN")
+                EmpformSubmitButton.click()
+            }, 10000)
+            return () => {
+                clearInterval(interval);
+            }
         }
           // setInterval(updateIPForm, 20000);
       }, []);
@@ -2928,7 +2935,7 @@ Record the client's instructions, deviations and implications thereof.
                             <div className="tooltip1">
                                 Update
                             </div>
-                            <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+                            <span><button type="submit" className="updateEmpFormBTN" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
                         </div>
                     </div>
                 

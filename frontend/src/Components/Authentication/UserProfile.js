@@ -85,7 +85,7 @@ const UserProfile = ({isAuthenticated, user}) => {
       <div className='container'>
         <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 className="h2">
-                {user['name']}'s Profile
+                {user["first_name"] + " " + user["last_name"]}'s Profile
             </h1>
         </div>
         <div className="notification_container">
@@ -102,7 +102,7 @@ const UserProfile = ({isAuthenticated, user}) => {
         </div>
         <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
-            <input type="text" className="form-control" value={user['name']} name='name' disabled />
+            <input type="text" className="form-control" value={user["first_name"] + " " + user["last_name"]} name='name' disabled />
         </div>
         <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>

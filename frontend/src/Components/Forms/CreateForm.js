@@ -350,7 +350,7 @@ const CreateForm = ({user}) => {
         RF_Date : CurrentData,
         RF_ClientName : "",
         RF_ClientId : "",
-        RF_CompleteByName : user['name'],
+        RF_CompleteByName : user["first_name"] + " " + user["last_name"],
         RF_EventID : "",
         RF_CompleteByRole : "",
 
@@ -452,7 +452,7 @@ const CreateForm = ({user}) => {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/add_risk_factors_data/`, Body ,config)
             // console.log(response.data['formData'])
             if (response.status === 201) {
-                navigate("/completeform", {state : {formId: response.data['formId']}})
+                navigate("/completeform", {state : {formId: response.data['formId'], clientName : data['RF_ClientName'], clientId: data['RF_ClientId']}})
             }
             if (response.status === 200) {
                 setErrorData({
@@ -579,7 +579,7 @@ const CreateForm = ({user}) => {
                                 <label htmlFor="address" className="col-form-label"><b>Client Name</b></label>
                             </div>
                             <div className="col-6">
-                                <input spellCheck="true"  id="RF_ClientName" name="RF_ClientName" value={FormData['RF_ClientName']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Name"  aria-describedby="" />
+                                <input spellCheck="true" required id="RF_ClientName" name="RF_ClientName" value={FormData['RF_ClientName']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Name"  aria-describedby="" />
                             </div>
                         </div>
                     </div>
@@ -589,7 +589,7 @@ const CreateForm = ({user}) => {
                                 <label htmlFor="address" className="col-form-label"><b>Client ID</b></label>
                             </div>
                             <div className="col-6">
-                                <input spellCheck="true"  id="RF_ClientId" name="RF_ClientId" value={FormData['RF_ClientId']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client ID"  aria-describedby="" />
+                                <input spellCheck="true" required id="RF_ClientId" name="RF_ClientId" value={FormData['RF_ClientId']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client ID"  aria-describedby="" />
                             </div>
                         </div>
                     </div>

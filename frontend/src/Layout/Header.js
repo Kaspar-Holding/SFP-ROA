@@ -12,7 +12,7 @@ const Header = ({isAuthenticated, user}) => {
   const [userName, setUserName] = useState("")
   useEffect(() => {
     if (user){
-      setUserName(user["name"])
+      setUserName(user["first_name"] + " " + user["last_name"])
     }
   },[userName, isAuthenticated, user]);
   const guestLinks = () => (

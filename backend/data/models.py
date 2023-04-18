@@ -1,18 +1,15 @@
-from email.policy import default
-from sre_constants import MAX_UNTIL
+
 from django.db import models
 
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-from pytz import timezone
-from uritemplate import partial
 
 class UserAccountManager(BaseUserManager):
-    def create_user(self, email, name, password=None,is_superuser=False, admin_id=None):
+    def create_user(self, email, password=None,is_superuser=False, admin_id=None, **extra_fields):
         if not email:
             raise ValueError("Please enter email")
 
         email = self.normalize_email(email)
-        user = self.model(email=email, name=name, admin_id=admin_id)
+        user = self.model(email=email, admin_id=admin_id, **extra_fields)
         user.set_password(password)
         user.save()
 
@@ -40,7 +37,8 @@ class UserAccountManager(BaseUserManager):
 
 class UserAccount(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255, default="", blank=True)
     # partial_password = models.BooleanField(default=True)
     # firstname = models.CharField(max_length=255)
     # lastname = models.CharField(max_length=255)

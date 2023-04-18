@@ -191,7 +191,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="advisor" className="col-form-label"><b>Financial Advisor:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input disabled required spellCheck="true" value={user['name']} name="advisor" className="form-control"   aria-describedby="" />
+                                        <input disabled required spellCheck="true" value={user["first_name"] + " " + user["last_name"]} name="advisor" className="form-control"   aria-describedby="" />
                                     </div>
                                 </div>
                             </div>

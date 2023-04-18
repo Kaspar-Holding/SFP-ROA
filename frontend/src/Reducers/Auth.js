@@ -10,6 +10,10 @@ import {
     PASSWORD_RESET_FAILED,
     PASSWORD_RESET_CONFIRM_SUCCESS,
     PASSWORD_RESET_CONFIRM_FAILED,
+    MICROSOFT_AUTHENTICATED_SUCCESS,
+    MICROSOFT_AUTHENTICATED_FAILED,
+    GOOGLE_AUTHENTICATED_SUCCESS,
+    GOOGLE_AUTHENTICATED_FAILED,
     LOGOUT,
     SERVER_UP
 } from '../Actions/Types'
@@ -46,6 +50,24 @@ export default function (state=initalState, action) {
                 ...state,
                 user: payload
             }
+        case MICROSOFT_AUTHENTICATED_SUCCESS:
+            localStorage.setItem('access', payload.access)
+            localStorage.setItem('refresh', payload.refresh)
+            return {
+                ...state,
+                access: payload.access,
+                refresh: payload.refresh,
+                isAuthenticated: true,
+            }     
+        case GOOGLE_AUTHENTICATED_SUCCESS:
+            localStorage.setItem('access', payload.access)
+            localStorage.setItem('refresh', payload.refresh)
+            return {
+                ...state,
+                access: payload.access,
+                refresh: payload.refresh,
+                isAuthenticated: true,
+            }     
         case AUTHENTICATED_FAILED:
             localStorage.removeItem('access')
             localStorage.removeItem('refresh')
@@ -56,6 +78,24 @@ export default function (state=initalState, action) {
                 isAuthenticated: false,
             }
         case LOGIN_FAILED:
+            localStorage.removeItem('access')
+            localStorage.removeItem('refresh')
+            return {
+                ...state,
+                access: null,
+                refresh: null,
+                isAuthenticated: false,
+            }
+        case MICROSOFT_AUTHENTICATED_FAILED:
+            localStorage.removeItem('access')
+            localStorage.removeItem('refresh')
+            return {
+                ...state,
+                access: null,
+                refresh: null,
+                isAuthenticated: false,
+            }
+        case GOOGLE_AUTHENTICATED_FAILED:
             localStorage.removeItem('access')
             localStorage.removeItem('refresh')
             return {

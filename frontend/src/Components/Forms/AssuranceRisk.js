@@ -475,40 +475,7 @@ const AssuranceRisk = ({user}) =>
 
       })
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
-      const [ProductTaken, setProductTaken] = useState([{
-        advisorId : user['id'],  
-        formId : state['formId'],  
-        
-        ProductTaken : 0, 
-        ProductProvider : "",   
-        PolicyNumber : "",   
-        ProductName : "",   
-        ProductPremium : "",   
-        ProductPremiumFrequency : 0,   
-        ProductPattern : "",   
-        ProductEscalation : "",   
-        ProductContractingParty : "",   
-        ProductLivesAssured : "",   
-        ProductPremiumPayer : "",   
-        Product1stYearCommission : "",   
-        Product2ndYearCommission : "",   
-        ProductOngoingFees : "",   
-        ProductOngoingFeesFrequency : "",   
-            
-        BenDesc_1 : "",
-        BenDesc_CoverAmount1 : "",
-        BenDesc_2 : "",
-        BenDesc_CoverAmount2 : "",
-        BenDesc_3 : "",
-        BenDesc_CoverAmount3 : "",
-            
-        ProductReasons : "",
-        ProductMaterialAspects : "",
-        ProductDetails : "",
-        ProductBriefSummary : "",
-        Cessionaries : "",
-        InformationExplained : "",
-      }])
+      const [ProductTaken, setProductTaken] = useState([])
       const AddNewProductTaken = (e) => {
         const current = [...ProductTaken]
         current.push({
@@ -579,43 +546,7 @@ const AssuranceRisk = ({user}) =>
             } else {
                 setFormData(response.data['formData'])
             }
-            if (response.data['ProductTaken'].length > 0) {
-              setProductTaken(response.data['ProductTaken'])
-            } else {
-              setProductTaken([{
-                advisorId : user['id'],  
-                formId : state['formId'],  
-                ProductTaken : 0, 
-                ProductProvider : "",   
-                PolicyNumber : "",   
-                ProductName : "",   
-                ProductPremium : "",   
-                ProductPremiumFrequency : 0,   
-                ProductPattern : "",   
-                ProductEscalation : "",   
-                ProductContractingParty : "",   
-                ProductLivesAssured : "",   
-                ProductPremiumPayer : "",   
-                Product1stYearCommission : "",   
-                Product2ndYearCommission : "",   
-                ProductOngoingFees : "",   
-                ProductOngoingFeesFrequency : "",   
-                    
-                BenDesc_1 : "",
-                BenDesc_CoverAmount1 : "",
-                BenDesc_2 : "",
-                BenDesc_CoverAmount2 : "",
-                BenDesc_3 : "",
-                BenDesc_CoverAmount3 : "",
-                    
-                ProductReasons : "",
-                ProductMaterialAspects : "",
-                ProductDetails : "",
-                ProductBriefSummary : "",
-                Cessionaries : "",
-                InformationExplained : "",
-              }])
-            }
+            setProductTaken(response.data['ProductTaken'])
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
@@ -642,7 +573,7 @@ const AssuranceRisk = ({user}) =>
               // console.log(response.data['formData'])
               setFormData(response.data['formData'])
               
-              setSuccessMessage("Assurance Risk data is successfully updated")
+              setSuccessMessage("BA Risk data is successfully updated")
               setSuccessMessageVisibility("block")
               setTimeout(() => {
                 setSuccessMessageVisibility("none")
@@ -678,6 +609,13 @@ const AssuranceRisk = ({user}) =>
       useEffect(() => {
           createARForm(FormData)
           setAdvisor(state["Advisor"])
+          const interval = setInterval(() => {
+              const baRiskformSubmitButton = document.querySelector(".updateBARiskFormBTN")
+              baRiskformSubmitButton.click()
+          }, 10000)
+          return () => {
+              clearInterval(interval);
+          }
           // setInterval(updateIPForm, 20000);
       }, [Advisor]);
       // console.log(JSON.stringify(FormData))
@@ -1503,7 +1441,7 @@ const AssuranceRisk = ({user}) =>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input type="number" className="form-control" placeholder='0.00' name='AR_BnS_DC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_ShortfallSurplus']} aria-label="" />
+            <input type="number" className="form-control" placeholder='0.00' name='AR_BnS_DC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_TotalNeed']-FormData['AR_BnS_DC_Provisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1541,7 +1479,7 @@ const AssuranceRisk = ({user}) =>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input type="number" className="form-control" placeholder='0.00' name='AR_BnS_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_ExistingShortfallSurplus']} aria-label="" />
+            <input type="number" className="form-control" placeholder='0.00' name='AR_BnS_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_TotalNeed']-FormData['AR_BnS_DiC_ExistingProvisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1575,7 +1513,7 @@ const AssuranceRisk = ({user}) =>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherExistingProvisions']} aria-label="" />
+            <input type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_Other']-FormData['AR_BnS_OtherTotalNeed']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1660,7 +1598,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DC_ExistingShortfallSurplus" name='AR_KeyP_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_ExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DC_ExistingShortfallSurplus" name='AR_KeyP_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_TotalNeed']-FormData['AR_KeyP_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -1692,7 +1630,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_ExistingShortfallSurplus" name='AR_KeyP_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_ExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_ExistingShortfallSurplus" name='AR_KeyP_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_TotalNeed']-FormData['AR_KeyP_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -1724,7 +1662,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverExistingShortfallSurplus" name='AR_KeyP_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverExistingShortfallSurplus" name='AR_KeyP_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverTotalNeed']-FormData['AR_KeyP_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -1756,7 +1694,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverExistingShortfallSurplus" name='AR_KeyP_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverExistingShortfallSurplus" name='AR_KeyP_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverTotalNeed']-FormData['AR_KeyP_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -1792,7 +1730,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_OtherExistingShortfallSurplus" name='AR_KeyP_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_OtherExistingShortfallSurplus" name='AR_KeyP_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherTotalNeed']-FormData['AR_KeyP_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -1867,7 +1805,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_ExistingShortfallSurplus" name='AR_SureNLia_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_ExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_ExistingShortfallSurplus" name='AR_SureNLia_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_TotalNeed']-FormData['AR_SureNLia_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -1899,7 +1837,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_ShortfallSurplus" name='AR_SureNLia_DiC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_ShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_ShortfallSurplus" name='AR_SureNLia_DiC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_TotalNeed']-FormData['AR_SureNLia_DiC_Provisions']} aria-label="" />
         </div>
       </td>
 
@@ -1935,7 +1873,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherShortfallSurplus" name='AR_SureNLia_OtherShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherShortfallSurplus" name='AR_SureNLia_OtherShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherTotalNeed']-FormData['AR_SureNLia_OtherProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -2011,7 +1949,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverExistingShortfallSurplus" name='AR_BusOvProt_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverExistingShortfallSurplus" name='AR_BusOvProt_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverTotalNeed']-FormData['AR_BusOvProt_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -2043,7 +1981,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverExistingShortfallSurplus" name='AR_BusOvProt_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverExistingShortfallSurplus" name='AR_BusOvProt_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverTotalNeed']-FormData['AR_BusOvProt_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -2079,7 +2017,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherExistingShortfallSurplus" name='AR_BusOvProt_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherExistingShortfallSurplus" name='AR_BusOvProt_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherTotalNeed']-FormData['AR_BusOvProt_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -2156,7 +2094,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_ExistingShortfallSurplus" name='AR_CLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_ExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_ExistingShortfallSurplus" name='AR_CLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_TotalNeed']-FormData['AR_CLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -2188,7 +2126,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_ExistingShortfallSurplus" name='AR_CLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_ExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_ExistingShortfallSurplus" name='AR_CLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_TotalNeed']-FormData['AR_CLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -2224,7 +2162,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherExistingShortfallSurplus" name='AR_CLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherExistingShortfallSurplus" name='AR_CLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherTotalNeed']-FormData['AR_CLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -2268,7 +2206,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_ExistingShortfallSurplus" name='AR_DLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_ExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_ExistingShortfallSurplus" name='AR_DLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_TotalNeed']-FormData['AR_DLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -2300,7 +2238,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_ExistingShortfallSurplus" name='AR_DLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_ExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_ExistingShortfallSurplus" name='AR_DLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_TotalNeed']-FormData['AR_DLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -2336,7 +2274,7 @@ const AssuranceRisk = ({user}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherExistingShortfallSurplus" name='AR_DLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherExistingShortfallSurplus']} aria-label="" />
+          <input type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherExistingShortfallSurplus" name='AR_DLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherTotalNeed']-FormData['AR_DLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
@@ -2612,593 +2550,608 @@ Record the client's instructions, deviations and implications thereof.
 <p>Products accepted by you to meet the business’s requirements.</p>
 <br/>
     {
-      ProductTaken.map((key,i) => {
-          // console.log(i+1)
-          return (
-              <>
-                  <div className="row">
-                    <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+      ProductTaken.length === 0 ?
+      <>
+        <div className="col-6">
+            <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+        </div>
+      </>
+      : <></>
+    }
+    {
+      ProductTaken.length > 0 ?
+       <>
+        {
+          ProductTaken.map((key,i) => {
+            // console.log(i+1)
+            return (
+                <>
+                    <div className="row">
+                      <div className="col-6">
+                          <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+                      </div>
+                      <div className="col-6">
+                          <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                      </div>
+                      {/* {
+                          ProductTaken.length > 1 ?
+                          : <></>
+                      } */}
                     </div>
-                    {
-                        ProductTaken.length > 1 ?
-                        <div className="col-6">
-                            <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
-                        </div>
-                        : <></>
-                    }
-                  </div>
-
-                  <hr/>
-                      <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-                          
-                          <div className="row">
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                <div className="row g-3 align-items-center">
-                                  <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                                    <b>Product:</b>
-                                  </div>
-                                  <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                    <div className=''>
-                                      <select className="text-start form-select" name='ProductTaken' value={parseInt(key.ProductTaken)} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
-                                          <option value="0" selected>Choose Product</option>
-                                          <option value="1">Endowment</option>
-                                          <option value="2">RA</option>
-                                          <option value="3">TFSA</option>
-                                          <option value="4">Unit Trust</option>
-                                          <option value="5">Life Annuity</option>
-                                          <option value="6">Living Annuity</option>
-                                          <option value="7">Other</option>
-                                      </select>
-
+  
+                    <hr/>
+                        <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+                            
+                            <div className="row">
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                    <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                      <b>Product:</b>
+                                    </div>
+                                    <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                      <div className=''>
+                                        <select className="text-start form-select" name='ProductTaken' value={parseInt(key.ProductTaken)} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                                            <option value="0" selected>Choose Product</option>
+                                            <option value="1">Endowment</option>
+                                            <option value="2">RA</option>
+                                            <option value="3">TFSA</option>
+                                            <option value="4">Unit Trust</option>
+                                            <option value="5">Life Annuity</option>
+                                            <option value="6">Living Annuity</option>
+                                            <option value="7">Other</option>
+                                        </select>
+  
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                              </div>
-                              <hr/>
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label className="col-form-label"><b>Product Provider</b></label>
-                                      </div>
-                                      <div className="col-6">
-                                          <input spellCheck="true"  id="ProductProvider" name='ProductProvider' value={key.ProductProvider} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label htmlFor="id_number" className="col-form-label"><b>Policy number</b></label>
-                                      </div>
-                                      <div className="col-6">
-                                          <input spellCheck="true"  id="PolicyNumber" required name='PolicyNumber' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.PolicyNumber} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                                      </div>
-                                  </div>
-                              </div>
-                              <hr/>
-
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label className="col-form-label"><b>Product Name</b></label>
-                                      </div>
-                                      <div className="col-6">
-                                          <input spellCheck="true"  id="ProductName" name='ProductName' value={key.ProductName} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label htmlFor="id_number" className="col-form-label"><b>Premium</b></label>
-                                      </div>
-                                      <div className="col-6">
-                                        <div className='row'>
-                                            <div className='col-6'>
-                                                <div className="form-group">
-                                                    <input type="text" className="form-control" id="ProductPremium" name='ProductPremium' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.ProductPremium} aria-describedby="emailHelp" placeholder="" />
-                                                </div>
-                                            </div>
-                                            <div className='col-6'>
-                                                <select className="text-start form-select"  id="ProductPremiumFrequency" name='ProductPremiumFrequency' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.ProductPremiumFrequency} aria-label="Default select example">
-                                                    <option value="0" selected>Frequeny</option>
-                                                    <option value="1">Monthly</option>
-                                                    <option value="2">Quarterly</option>
-                                                    <option value="3">Annually</option>
-                                                    <option value="4">Once Off</option>
-                                                </select>
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                </div>
+                                <hr/>
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label className="col-form-label"><b>Product Provider</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true"  id="ProductProvider" name='ProductProvider' value={key.ProductProvider} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+  
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label htmlFor="id_number" className="col-form-label"><b>Policy number</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true"  id="PolicyNumber" required name='PolicyNumber' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.PolicyNumber} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+  
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label className="col-form-label"><b>Product Name</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true"  id="ProductName" name='ProductName' value={key.ProductName} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+  
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label htmlFor="id_number" className="col-form-label"><b>Premium</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                          <div className='row'>
+                                              <div className='col-6'>
+                                                  <div className="form-group">
+                                                      <input type="text" className="form-control" id="ProductPremium" name='ProductPremium' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.ProductPremium} aria-describedby="emailHelp" placeholder="" />
+                                                  </div>
+                                              </div>
+                                              <div className='col-6'>
+                                                  <select className="text-start form-select"  id="ProductPremiumFrequency" name='ProductPremiumFrequency' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.ProductPremiumFrequency} aria-label="Default select example">
+                                                      <option value="0" selected>Frequeny</option>
+                                                      <option value="1">Monthly</option>
+                                                      <option value="2">Quarterly</option>
+                                                      <option value="3">Annually</option>
+                                                      <option value="4">Once Off</option>
+                                                  </select>
+                                              </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+  
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label className="col-form-label"><b>Premium Pattern</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true"  id="ProductPattern" name='ProductPattern' value={key.ProductPattern} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+  
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label htmlFor="id_number" className="col-form-label"><b>Escalation in cover / premium</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true"   id="ProductEscalation" name='ProductEscalation' onChange={(e)=>{on_ProductTaken_Change(e, i)}} value={key.ProductEscalation} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+  
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label className="col-form-label"><b>Contracting party</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true"  id="ProductContractingParty" name='ProductContractingParty' value={key.ProductContractingParty} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+  
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label htmlFor="id_number" className="col-form-label"><b>Life / Lives covered</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true" id="ProductLivesAssured" name='ProductLivesAssured' value={key.ProductLivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+  
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label className="col-form-label"><b>Premium Payer</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true"  id="ProductPremiumPayer" name='ProductPremiumPayer' value={key.ProductPremiumPayer} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+  
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label className="col-form-label"><b>1st year commission</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                          <div className="input-group">
+                                            <span className="input-group-text">R</span>
+                                            <input type="number" className="form-control" placeholder='0.00'  id="Product1stYearCommission" name='Product1stYearCommission' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.Product1stYearCommission} aria-label="" />
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+  
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label htmlFor="id_number" className="col-form-label"><b>2nd year commission</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input type="number" className="form-control" placeholder='0.00'  id="Product2ndYearCommission" name='Product2ndYearCommission' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.Product2ndYearCommission} aria-label="" />
                                             </div>
                                         </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <hr/>
-
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label className="col-form-label"><b>Premium Pattern</b></label>
-                                      </div>
-                                      <div className="col-6">
-                                          <input spellCheck="true"  id="ProductPattern" name='ProductPattern' value={key.ProductPattern} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label htmlFor="id_number" className="col-form-label"><b>Escalation in cover / premium</b></label>
-                                      </div>
-                                      <div className="col-6">
-                                          <input spellCheck="true"   id="ProductEscalation" name='ProductEscalation' onChange={(e)=>{on_ProductTaken_Change(e, i)}} value={key.ProductEscalation} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                                      </div>
-                                  </div>
-                              </div>
-                              <hr/>
-
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label className="col-form-label"><b>Contracting party</b></label>
-                                      </div>
-                                      <div className="col-6">
-                                          <input spellCheck="true"  id="ProductContractingParty" name='ProductContractingParty' value={key.ProductContractingParty} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label htmlFor="id_number" className="col-form-label"><b>Life / Lives covered</b></label>
-                                      </div>
-                                      <div className="col-6">
-                                          <input spellCheck="true" id="ProductLivesAssured" name='ProductLivesAssured' value={key.ProductLivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                                      </div>
-                                  </div>
-                              </div>
-                              <hr/>
-
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label className="col-form-label"><b>Premium Payer</b></label>
-                                      </div>
-                                      <div className="col-6">
-                                          <input spellCheck="true"  id="ProductPremiumPayer" name='ProductPremiumPayer' value={key.ProductPremiumPayer} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                                      </div>
-                                  </div>
-                              </div>
-                              <hr/>
-
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label className="col-form-label"><b>1st year commission</b></label>
-                                      </div>
-                                      <div className="col-6">
-                                        <div className="input-group">
-                                          <span className="input-group-text">R</span>
-                                          <input type="number" className="form-control" placeholder='0.00'  id="Product1stYearCommission" name='Product1stYearCommission' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.Product1stYearCommission} aria-label="" />
+                                    </div>
+                                </div>
+                                <hr/>
+  
+                                <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label className="col-form-label"><b>Benefit description: life cover, disability etc</b></label>
                                         </div>
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label htmlFor="id_number" className="col-form-label"><b>2nd year commission</b></label>
-                                      </div>
-                                      <div className="col-6">
-                                          <div className="input-group">
-                                            <span className="input-group-text">R</span>
-                                            <input type="number" className="form-control" placeholder='0.00'  id="Product2ndYearCommission" name='Product2ndYearCommission' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.Product2ndYearCommission} aria-label="" />
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <hr/>
-
-                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-4">
-                                          <label className="col-form-label"><b>Benefit description: life cover, disability etc</b></label>
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-6">
-                                          <label htmlFor="id_number" className="col-form-label"><b>Cover amount</b></label>
-                                      </div> 
-                                  </div>
-                              </div>
-                              <hr/>
-
-
-                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-6">
-                                          <input spellCheck="true"  id="BenDesc_1" name='BenDesc_1' value={key.BenDesc_1} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-9">
-                                          <div className="input-group">
-                                            <span className="input-group-text">R</span>
-                                            <input type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount1" name='BenDesc_CoverAmount1' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount1} aria-label="" />
-                                          </div>
-                                      </div> 
-                                  </div>
-                              </div>
-                              <hr/>
-
-                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-6">
-                                          <input spellCheck="true"  id="BenDesc_2" name='BenDesc_2' value={key.BenDesc_2} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-9">
-                                          <div className="input-group">
-                                            <span className="input-group-text">R</span>
-                                            <input type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount2" name='BenDesc_CoverAmount2' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount2} aria-label="" />
-                                          </div>
-                                      </div> 
-                                  </div>
-                              </div>
-                              <hr/>
-
-                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-6">
-                                          <input spellCheck="true"  id="BenDesc_3" name='BenDesc_3' value={key.BenDesc_3} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div className="col-4" style={{paddingBottom: "0.5%"}}>
-                                  <div className="row g-3 align-items-center">
-                                      <div className="col-9">
-                                          <div className="input-group">
-                                            <span className="input-group-text">R</span>
-                                            <input type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount3" name='BenDesc_CoverAmount3' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount3} aria-label="" />
-                                          </div>
-                                      </div> 
-                                  </div>
-                              </div>
-                              <hr/>
-                          </div> 
-                      </div>  
-
-                      <p>The following are reasons why the abovementioned product best suits the business’s needs and objectives:</p>
-
-                      {
-                          backgroundInfoVisibility8 ? 
-                          <>
-                          <div id="background_info_instructions8" className="hidden_class">
-                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                                  <ul>
-                                      <li>
-                                      Motivate why the chosen product was recommended to best suit your client's needs.<br />
-                                      </li>
+                                    </div>
+                                </div>
+  
+                                <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-6">
+                                            <label htmlFor="id_number" className="col-form-label"><b>Cover amount</b></label>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <hr/>
+  
+  
+                                <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-6">
+                                            <input spellCheck="true"  id="BenDesc_1" name='BenDesc_1' value={key.BenDesc_1} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+  
+                                <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-9">
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount1" name='BenDesc_CoverAmount1' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount1} aria-label="" />
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <hr/>
+  
+                                <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-6">
+                                            <input spellCheck="true"  id="BenDesc_2" name='BenDesc_2' value={key.BenDesc_2} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+  
+                                <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-9">
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount2" name='BenDesc_CoverAmount2' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount2} aria-label="" />
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <hr/>
+  
+                                <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-6">
+                                            <input spellCheck="true"  id="BenDesc_3" name='BenDesc_3' value={key.BenDesc_3} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+  
+                                <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-9">
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount3" name='BenDesc_CoverAmount3' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount3} aria-label="" />
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div> 
+                        </div>  
+  
+                        <p>The following are reasons why the abovementioned product best suits the business’s needs and objectives:</p>
+  
+                        {
+                            backgroundInfoVisibility8 ? 
+                            <>
+                            <div id="background_info_instructions8" className="hidden_class">
+                                {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                    <ul>
+                                        <li>
+                                        Motivate why the chosen product was recommended to best suit your client's needs.<br />
+                                        </li>
+                                      
+                                    </ul>
                                     
-                                  </ul>
-                                  
-                          </div>
-                          </>: 
-                          null
-                      }
-                      {/* <textarea maxLength={500} className="form-control"  style={{height: '60px'}} 
-                          id="ProductReasons" name='ProductReasons' value={key.ProductReasons} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
-                          onFocus={backgroundInfo_onFocus8}
-                          onBlur={backgroundInfo_onBlur8}
-                          placeholder={
-                  `Motivate why the chosen product was recommended to best suit your client's needs. `}  aria-describedby=""  ></textarea> */}
-                      <Editor
-                        value={key.ProductReasons}
-                        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductReasons", i, newText)}}
-                        onFocus={(e)=>{backgroundInfo_onFocus8()}}
-                        onBlur={(e)=>{backgroundInfo_onBlur8()}} 
-                        name="ProductReasons"                     
-                        init={{
-                            selector: "textarea",
-                            placeholder: "Motivate why the chosen product was recommended to best suit your client's needs.",
-                            height: 300,
-                            menu: true,
-                            plugins: [
-                                'advlist autolink link lists image charmap print preview anchor',
-                                'searchreplace visualblocks code fullscreen',
-                                'insertdatetime media table paste code help wordcount',
-                            ],
-                            toolbar: 'styles | undo redo | formatselect | ' +
-                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-                            'removeformat | wordcount ',
-                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-                        }}
-                      />
-                  <hr/>
-                  <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
-
-                  {
-                          backgroundInfoVisibility9 ? 
-                          <>
-                          <div id="background_info_instructions9" className="hidden_class">
-                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                                  <ul>
-                                      <li>
-                                      Explain any deviations from your recommendation and the implications thereof.
-
-                                      </li>
+                            </div>
+                            </>: 
+                            null
+                        }
+                        {/* <textarea maxLength={500} className="form-control"  style={{height: '60px'}} 
+                            id="ProductReasons" name='ProductReasons' value={key.ProductReasons} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                            onFocus={backgroundInfo_onFocus8}
+                            onBlur={backgroundInfo_onBlur8}
+                            placeholder={
+                    `Motivate why the chosen product was recommended to best suit your client's needs. `}  aria-describedby=""  ></textarea> */}
+                        <Editor
+                          value={key.ProductReasons}
+                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductReasons", i, newText)}}
+                          onFocus={(e)=>{backgroundInfo_onFocus8()}}
+                          onBlur={(e)=>{backgroundInfo_onBlur8()}} 
+                          name="ProductReasons"                     
+                          init={{
+                              selector: "textarea",
+                              placeholder: "Motivate why the chosen product was recommended to best suit your client's needs.",
+                              height: 300,
+                              menu: true,
+                              plugins: [
+                                  'advlist autolink link lists image charmap print preview anchor',
+                                  'searchreplace visualblocks code fullscreen',
+                                  'insertdatetime media table paste code help wordcount',
+                              ],
+                              toolbar: 'styles | undo redo | formatselect | ' +
+                              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                              'removeformat | wordcount ',
+                              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                          }}
+                        />
+                    <hr/>
+                    <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
+  
+                    {
+                            backgroundInfoVisibility9 ? 
+                            <>
+                            <div id="background_info_instructions9" className="hidden_class">
+                                {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                    <ul>
+                                        <li>
+                                        Explain any deviations from your recommendation and the implications thereof.
+  
+                                        </li>
+                                      
+                                    </ul>
                                     
-                                  </ul>
-                                  
-                          </div>
-                          </>: 
-                          null
-                      }
-                      {/* <textarea maxLength={500} className="form-control"  style={{height: '60px'}} 
-                          id="ProductMaterialAspects" name='ProductMaterialAspects' value={key.ProductMaterialAspects} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
-                          onFocus={backgroundInfo_onFocus9}
-                          onBlur={backgroundInfo_onBlur9}
-                          placeholder={
-                  `Explain any deviations from your recommendation and the implications thereof.`}  aria-describedby=""  ></textarea> */}
-                      <Editor
-                        value={key.ProductMaterialAspects}
-                        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, newText)}}
-                        onFocus={(e)=>{backgroundInfo_onFocus9()}}
-                        onBlur={(e)=>{backgroundInfo_onBlur9()}} 
-                        name="ProductMaterialAspects"                     
-                        init={{
-                            selector: "textarea",
-                            placeholder: "Explain any deviations from your recommendation and the implications thereof.",
-                            height: 300,
-                            menu: true,
-                            plugins: [
-                                'advlist autolink link lists image charmap print preview anchor',
-                                'searchreplace visualblocks code fullscreen',
-                                'insertdatetime media table paste code help wordcount',
-                            ],
-                            toolbar: 'styles | undo redo | formatselect | ' +
-                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-                            'removeformat | wordcount ',
-                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-                        }}
-                      />
-                  <hr/>
-                  {
-                          backgroundInfoVisibility10 ? 
-                          <>
-                          <div id="background_info_instructions9" className="hidden_class">
-                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                                  <ul>
-                                      <li>
-                                      Disclose and explain the following:<br/>
-                                      The tax implications for the company, e.g., income tax<br/>
-                                      The tax implications for the lives covered, e.g., estate duty, income tax, CGT<br/>
-                                      Executor’s fees?
-
-
-                                      </li>
+                            </div>
+                            </>: 
+                            null
+                        }
+                        {/* <textarea maxLength={500} className="form-control"  style={{height: '60px'}} 
+                            id="ProductMaterialAspects" name='ProductMaterialAspects' value={key.ProductMaterialAspects} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                            onFocus={backgroundInfo_onFocus9}
+                            onBlur={backgroundInfo_onBlur9}
+                            placeholder={
+                    `Explain any deviations from your recommendation and the implications thereof.`}  aria-describedby=""  ></textarea> */}
+                        <Editor
+                          value={key.ProductMaterialAspects}
+                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, newText)}}
+                          onFocus={(e)=>{backgroundInfo_onFocus9()}}
+                          onBlur={(e)=>{backgroundInfo_onBlur9()}} 
+                          name="ProductMaterialAspects"                     
+                          init={{
+                              selector: "textarea",
+                              placeholder: "Explain any deviations from your recommendation and the implications thereof.",
+                              height: 300,
+                              menu: true,
+                              plugins: [
+                                  'advlist autolink link lists image charmap print preview anchor',
+                                  'searchreplace visualblocks code fullscreen',
+                                  'insertdatetime media table paste code help wordcount',
+                              ],
+                              toolbar: 'styles | undo redo | formatselect | ' +
+                              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                              'removeformat | wordcount ',
+                              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                          }}
+                        />
+                    <hr/>
+                    {
+                            backgroundInfoVisibility10 ? 
+                            <>
+                            <div id="background_info_instructions9" className="hidden_class">
+                                {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                    <ul>
+                                        <li>
+                                        Disclose and explain the following:<br/>
+                                        The tax implications for the company, e.g., income tax<br/>
+                                        The tax implications for the lives covered, e.g., estate duty, income tax, CGT<br/>
+                                        Executor’s fees?
+  
+  
+                                        </li>
+                                      
+                                    </ul>
                                     
-                                  </ul>
-                                  
-                          </div>
-                          </>: 
-                          null
-                      }
-                      {/* <textarea maxLength={500} className="form-control"  style={{height: '140px'}} 
-                          id="ProductDetails" name='ProductDetails' value={key.ProductDetails} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
-                          onFocus={backgroundInfo_onFocus10}
-                          onBlur={backgroundInfo_onBlur10}
-                          placeholder={
-                  `Disclose and explain the following:
-                  The tax implications for the company, e.g., income tax
-                  The tax implications for the lives covered, e.g., estate duty, income tax, CGT
-                  Executor’s fees?`}  aria-describedby=""  ></textarea> */}
-                      <Editor
-                        value={key.ProductDetails}
-                        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductDetails", i, newText)}}
-                        onFocus={(e)=>{backgroundInfo_onFocus10()}}
-                        onBlur={(e)=>{backgroundInfo_onBlur10()}} 
-                        name="ProductDetails"                     
-                        init={{
-                            selector: "textarea",
-                            placeholder: "Disclose and explain the following: The tax implications for the company, e.g., income tax The tax implications for the lives covered, e.g., estate duty, income tax, CGT Executor’s fees?",
-                            height: 300,
-                            menu: true,
-                            plugins: [
-                                'advlist autolink link lists image charmap print preview anchor',
-                                'searchreplace visualblocks code fullscreen',
-                                'insertdatetime media table paste code help wordcount',
-                            ],
-                            toolbar: 'styles | undo redo | formatselect | ' +
-                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-                            'removeformat | wordcount ',
-                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-                        }}
-                      />
-                  <hr/>
-
-                  {
-                          backgroundInfoVisibility11 ? 
-                          <>
-                          <div id="background_info_instructions11" className="hidden_class">
-                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                                  <ul>
-                                      <li>
-                                      Provide a brief summary of the contents of the quote with regard to the following:<br/>
-                                      Benefit terms (cease ages, cover periods etc.)<br/>
-                                      Details of premium and cover pattern structure, frequency etc.
-
-
-                                      </li>
+                            </div>
+                            </>: 
+                            null
+                        }
+                        {/* <textarea maxLength={500} className="form-control"  style={{height: '140px'}} 
+                            id="ProductDetails" name='ProductDetails' value={key.ProductDetails} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                            onFocus={backgroundInfo_onFocus10}
+                            onBlur={backgroundInfo_onBlur10}
+                            placeholder={
+                    `Disclose and explain the following:
+                    The tax implications for the company, e.g., income tax
+                    The tax implications for the lives covered, e.g., estate duty, income tax, CGT
+                    Executor’s fees?`}  aria-describedby=""  ></textarea> */}
+                        <Editor
+                          value={key.ProductDetails}
+                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductDetails", i, newText)}}
+                          onFocus={(e)=>{backgroundInfo_onFocus10()}}
+                          onBlur={(e)=>{backgroundInfo_onBlur10()}} 
+                          name="ProductDetails"                     
+                          init={{
+                              selector: "textarea",
+                              placeholder: "Disclose and explain the following: The tax implications for the company, e.g., income tax The tax implications for the lives covered, e.g., estate duty, income tax, CGT Executor’s fees?",
+                              height: 300,
+                              menu: true,
+                              plugins: [
+                                  'advlist autolink link lists image charmap print preview anchor',
+                                  'searchreplace visualblocks code fullscreen',
+                                  'insertdatetime media table paste code help wordcount',
+                              ],
+                              toolbar: 'styles | undo redo | formatselect | ' +
+                              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                              'removeformat | wordcount ',
+                              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                          }}
+                        />
+                    <hr/>
+  
+                    {
+                            backgroundInfoVisibility11 ? 
+                            <>
+                            <div id="background_info_instructions11" className="hidden_class">
+                                {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                    <ul>
+                                        <li>
+                                        Provide a brief summary of the contents of the quote with regard to the following:<br/>
+                                        Benefit terms (cease ages, cover periods etc.)<br/>
+                                        Details of premium and cover pattern structure, frequency etc.
+  
+  
+                                        </li>
+                                      
+                                    </ul>
                                     
-                                  </ul>
-                                  
-                          </div>
-                          </>: 
-                          null
-                      }
-                      {/* <textarea maxLength={500} className="form-control"  style={{height: '120px'}} 
-                          id="ProductBriefSummary" name='ProductBriefSummary' value={key.ProductBriefSummary} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
-                          onFocus={backgroundInfo_onFocus11}
-                          onBlur={backgroundInfo_onBlur11}
-                          placeholder={
-                  `Provide a brief summary of the contents of the quote with regard to the following:
-                  Benefit terms (cease ages, cover periods etc.)
-                  Details of premium and cover pattern structure, frequency etc.`}  aria-describedby=""  ></textarea> */}
-                      <Editor
-                        value={key.ProductBriefSummary}
-                        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductBriefSummary", i, newText)}}
-                        onFocus={(e)=>{backgroundInfo_onFocus11()}}
-                        onBlur={(e)=>{backgroundInfo_onBlur11()}} 
-                        name="ProductBriefSummary"                     
-                        init={{
-                            selector: "textarea",
-                            placeholder: "Provide a brief summary of the contents of the quote with regard to the following: Benefit terms (cease ages, cover periods etc.) Details of premium and cover pattern structure, frequency etc.",
-                            height: 300,
-                            menu: true,
-                            plugins: [
-                                'advlist autolink link lists image charmap print preview anchor',
-                                'searchreplace visualblocks code fullscreen',
-                                'insertdatetime media table paste code help wordcount',
-                            ],
-                            toolbar: 'styles | undo redo | formatselect | ' +
-                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-                            'removeformat | wordcount ',
-                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-                        }}
-                      />
-                  <hr/>
-
-                  {
-                          backgroundInfoVisibility12 ? 
-                          <>
-                          <div id="background_info_instructions12" className="hidden_class">
-                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                                  <ul>
-                                      <li>
-                                      Record discussion with regard to cessionaries, if applicable.
-
-                                      </li>
+                            </div>
+                            </>: 
+                            null
+                        }
+                        {/* <textarea maxLength={500} className="form-control"  style={{height: '120px'}} 
+                            id="ProductBriefSummary" name='ProductBriefSummary' value={key.ProductBriefSummary} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                            onFocus={backgroundInfo_onFocus11}
+                            onBlur={backgroundInfo_onBlur11}
+                            placeholder={
+                    `Provide a brief summary of the contents of the quote with regard to the following:
+                    Benefit terms (cease ages, cover periods etc.)
+                    Details of premium and cover pattern structure, frequency etc.`}  aria-describedby=""  ></textarea> */}
+                        <Editor
+                          value={key.ProductBriefSummary}
+                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductBriefSummary", i, newText)}}
+                          onFocus={(e)=>{backgroundInfo_onFocus11()}}
+                          onBlur={(e)=>{backgroundInfo_onBlur11()}} 
+                          name="ProductBriefSummary"                     
+                          init={{
+                              selector: "textarea",
+                              placeholder: "Provide a brief summary of the contents of the quote with regard to the following: Benefit terms (cease ages, cover periods etc.) Details of premium and cover pattern structure, frequency etc.",
+                              height: 300,
+                              menu: true,
+                              plugins: [
+                                  'advlist autolink link lists image charmap print preview anchor',
+                                  'searchreplace visualblocks code fullscreen',
+                                  'insertdatetime media table paste code help wordcount',
+                              ],
+                              toolbar: 'styles | undo redo | formatselect | ' +
+                              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                              'removeformat | wordcount ',
+                              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                          }}
+                        />
+                    <hr/>
+  
+                    {
+                            backgroundInfoVisibility12 ? 
+                            <>
+                            <div id="background_info_instructions12" className="hidden_class">
+                                {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                    <ul>
+                                        <li>
+                                        Record discussion with regard to cessionaries, if applicable.
+  
+                                        </li>
+                                      
+                                    </ul>
                                     
-                                  </ul>
-                                  
-                          </div>
-                          </>: 
-                          null
-                      }
-                      {/* <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
-                          id="Cessionaries" name='Cessionaries' value={key.Cessionaries} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
-                          onFocus={backgroundInfo_onFocus12}
-                          onBlur={backgroundInfo_onBlur12}
-                          placeholder={
-                  `Record discussion with regard to cessionaries, if applicable.`}  aria-describedby=""  ></textarea> */}
-                      <Editor
-                        value={key.Cessionaries}
-                        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("Cessionaries", i, newText)}}
-                        onFocus={(e)=>{backgroundInfo_onFocus12()}}
-                        onBlur={(e)=>{backgroundInfo_onBlur12()}} 
-                        name="Cessionaries"                     
-                        init={{
-                            selector: "textarea",
-                            placeholder: "Record discussion with regard to cessionaries, if applicable.",
-                            height: 300,
-                            menu: true,
-                            plugins: [
-                                'advlist autolink link lists image charmap print preview anchor',
-                                'searchreplace visualblocks code fullscreen',
-                                'insertdatetime media table paste code help wordcount',
-                            ],
-                            toolbar: 'styles | undo redo | formatselect | ' +
-                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-                            'removeformat | wordcount ',
-                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-                        }}
-                      />
-                  <hr/>
-
-                  {
-                          backgroundInfoVisibility13 ? 
-                          <>
-                          <div id="background_info_instructions13" className="hidden_class">
-                              {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                                  <ul>
-                                      <li>Discuss the following information which has been explained to client:<br/>
-                                          General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.)<br/>
-                                          Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)<br/>
-                                          Waiting periods<br/>
-                                          Cooling off period<br/>
-                                          Other relevant information<br/>
-                                          Record discussion with regard to cessionaries, if applicable.<br/>
-
-                                      </li>
+                            </div>
+                            </>: 
+                            null
+                        }
+                        {/* <textarea maxLength={500} className="form-control"  style={{height: '80px'}} 
+                            id="Cessionaries" name='Cessionaries' value={key.Cessionaries} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                            onFocus={backgroundInfo_onFocus12}
+                            onBlur={backgroundInfo_onBlur12}
+                            placeholder={
+                    `Record discussion with regard to cessionaries, if applicable.`}  aria-describedby=""  ></textarea> */}
+                        <Editor
+                          value={key.Cessionaries}
+                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("Cessionaries", i, newText)}}
+                          onFocus={(e)=>{backgroundInfo_onFocus12()}}
+                          onBlur={(e)=>{backgroundInfo_onBlur12()}} 
+                          name="Cessionaries"                     
+                          init={{
+                              selector: "textarea",
+                              placeholder: "Record discussion with regard to cessionaries, if applicable.",
+                              height: 300,
+                              menu: true,
+                              plugins: [
+                                  'advlist autolink link lists image charmap print preview anchor',
+                                  'searchreplace visualblocks code fullscreen',
+                                  'insertdatetime media table paste code help wordcount',
+                              ],
+                              toolbar: 'styles | undo redo | formatselect | ' +
+                              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                              'removeformat | wordcount ',
+                              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                          }}
+                        />
+                    <hr/>
+  
+                    {
+                            backgroundInfoVisibility13 ? 
+                            <>
+                            <div id="background_info_instructions13" className="hidden_class">
+                                {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                                    <ul>
+                                        <li>Discuss the following information which has been explained to client:<br/>
+                                            General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.)<br/>
+                                            Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)<br/>
+                                            Waiting periods<br/>
+                                            Cooling off period<br/>
+                                            Other relevant information<br/>
+                                            Record discussion with regard to cessionaries, if applicable.<br/>
+  
+                                        </li>
+                                      
+                                    </ul>
                                     
-                                  </ul>
-                                  
-                          </div>
-                          </>: 
-                          null
-                      }
-                      <textarea maxLength={500} className="form-control"  style={{height: '200px'}} 
-                          id="InformationExplained" name='InformationExplained' value={key.InformationExplained} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
-                          onFocus={backgroundInfo_onFocus13}
-                          onBlur={backgroundInfo_onBlur13}
-                          placeholder={
-                  `Discuss the following information which has been explained to client:
-                  General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.)
-                  Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
-                  Waiting periods
-                  Cooling off period
-                  Other relevant information.`}  aria-describedby=""  ></textarea>
-                      <Editor
-                        value={key.InformationExplained}
-                        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("InformationExplained", i, newText)}}
-                        onFocus={(e)=>{backgroundInfo_onFocus12()}}
-                        onBlur={(e)=>{backgroundInfo_onBlur12()}} 
-                        name="InformationExplained"                     
-                        init={{
-                            selector: "textarea",
-                            placeholder: "Discuss the following information which has been explained to client: General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.) Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings) Waiting periods Cooling off period Other relevant information.",
-                            height: 300,
-                            menu: true,
-                            plugins: [
-                                'advlist autolink link lists image charmap print preview anchor',
-                                'searchreplace visualblocks code fullscreen',
-                                'insertdatetime media table paste code help wordcount',
-                            ],
-                            toolbar: 'styles | undo redo | formatselect | ' +
-                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-                            'removeformat | wordcount ',
-                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-                        }}
-                      />
-              </>
-          )
+                            </div>
+                            </>: 
+                            null
+                        }
+                        <textarea maxLength={500} className="form-control"  style={{height: '200px'}} 
+                            id="InformationExplained" name='InformationExplained' value={key.InformationExplained} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
+                            onFocus={backgroundInfo_onFocus13}
+                            onBlur={backgroundInfo_onBlur13}
+                            placeholder={
+                    `Discuss the following information which has been explained to client:
+                    General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.)
+                    Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
+                    Waiting periods
+                    Cooling off period
+                    Other relevant information.`}  aria-describedby=""  ></textarea>
+                        <Editor
+                          value={key.InformationExplained}
+                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("InformationExplained", i, newText)}}
+                          onFocus={(e)=>{backgroundInfo_onFocus12()}}
+                          onBlur={(e)=>{backgroundInfo_onBlur12()}} 
+                          name="InformationExplained"                     
+                          init={{
+                              selector: "textarea",
+                              placeholder: "Discuss the following information which has been explained to client: General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.) Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings) Waiting periods Cooling off period Other relevant information.",
+                              height: 300,
+                              menu: true,
+                              plugins: [
+                                  'advlist autolink link lists image charmap print preview anchor',
+                                  'searchreplace visualblocks code fullscreen',
+                                  'insertdatetime media table paste code help wordcount',
+                              ],
+                              toolbar: 'styles | undo redo | formatselect | ' +
+                              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                              'removeformat | wordcount ',
+                              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                          }}
+                        />
+                </>
+            )
+          }
+        )
         }
-      )
+       </> 
+       : <></>
     }
 <hr/>
                             <div className="container1">
@@ -3206,7 +3159,7 @@ Record the client's instructions, deviations and implications thereof.
                                     <div className="tooltip1">
                                         Update
                                     </div>
-                                    <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+                                    <span><button type="submit" className='updateBARiskFormBTN' style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
                                 </div>
                             </div>
           

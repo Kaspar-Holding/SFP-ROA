@@ -219,6 +219,13 @@ const Medical = ({user}) => {
       // console.log(FormData)
       useEffect(() => {
         createMedicalForm(FormData)
+        const interval = setInterval(() => {
+            const MedicalFormSubmitButton = document.querySelector(".updateMedicalFormBTN")
+            MedicalFormSubmitButton.click()
+        }, 10000)
+        return () => {
+            clearInterval(interval);
+        }
       }, []);
       // setTimeout(() => {
       //   setSuccessMessageVisibility("none")
@@ -1344,7 +1351,7 @@ const Medical = ({user}) => {
               <div className="tooltip1">
                   Update
               </div>
-              <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+              <span><button type="submit" className="updateMedicalFormBTN" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
           </div>
       </div>
         </form>

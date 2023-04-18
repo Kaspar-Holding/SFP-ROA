@@ -77,6 +77,13 @@ const Fiduciary = ({user}) => {
   // console.log(FormData)
   useEffect(() => {
     createFiduciaryForm(FormData)
+    const interval = setInterval(() => {
+        const FiduicaryformSubmitButton = document.querySelector(".updateFiduicaryFormBTN")
+        FiduicaryformSubmitButton.click()
+    }, 10000)
+    return () => {
+        clearInterval(interval);
+    }
   }, [])
   setTimeout(() => {
     setSuccessMessageVisibility("none")
@@ -168,7 +175,7 @@ const Fiduciary = ({user}) => {
                                     <div className="tooltip1">
                                         Update
                                     </div>
-                                    <span><button type="submit" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+                                    <span><button type="submit" className="updateFiduicaryFormBTN" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
                                 </div>
                             </div>
 

@@ -1,14 +1,14 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Navigate, useSearchParams } from 'react-router-dom'
 import Loader from '../Loader/Loader';
 import Pagination from '../Pagination/Pagination';
 import UserDashboard from './UserDashboard';
 import AdminDashboard from './AdminDashboard';
 
 const Dashboard = ({user}) => {
-
+    const [searchParams, setSearchParams] = useSearchParams()
     const [formStats, setFormStats] = useState([])
     const [SearchQuery, setSearchQuery] = useState("")
     const [formList, setFormList] = useState([])
@@ -101,9 +101,14 @@ const Dashboard = ({user}) => {
     useEffect(() => {
         loadFormsStats(1,OrderBy, SearchQuery)
         if (user){
-            setAdvisor(user["name"])
+            setAdvisor(user["first_name"] + " " + user["last_name"])
         }
     }, [Advisor,user])
+    const state = searchParams.get("state") ? searchParams.get("state") : null
+    const code = searchParams.get("code") ? searchParams.get("code") : null
+    if (state && code) {
+      return <Navigate to="/" />
+    }
     // console.log(localStorage.getItem('access'))
   return (
     <>

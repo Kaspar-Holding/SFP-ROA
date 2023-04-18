@@ -25,6 +25,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('auth/', include('djoser.urls.authtoken')),
+    path('auth/', include('djoser.social.urls')),
     path('api/', include('data.urls')),
     path('api/printing/', include('printingApp.urls')),
     path('api/email/', include('emailApp.urls')),

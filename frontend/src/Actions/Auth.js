@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router-dom'
 import {
     LOGIN_SUCCESS,
     LOGIN_FAILED,
@@ -9,6 +10,10 @@ import {
     PASSWORD_RESET_FAILED,
     PASSWORD_RESET_CONFIRM_SUCCESS,
     PASSWORD_RESET_CONFIRM_FAILED,
+    MICROSOFT_AUTHENTICATED_SUCCESS,
+    MICROSOFT_AUTHENTICATED_FAILED,
+    GOOGLE_AUTHENTICATED_SUCCESS,
+    GOOGLE_AUTHENTICATED_FAILED,
     LOGOUT
 } from './Types'
 
@@ -93,6 +98,87 @@ export const checkAuthenticated = () => async dispatch => {
             type: AUTHENTICATED_FAILED
         })
     }
+}
+
+export const checkMicrosoftAuthenticated = (state, code) => async dispatch => {
+    let status
+    const config = {
+        headers : {
+            'Content-Type' : 'application/x-www-form-urlencoded'
+        }
+    }
+    const details = {
+        'state' : state,
+        'code' : code
+    }
+    const data = Object.keys(details).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(details[key])).join('&')
+    try {
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/o/azuread-oauth2/?${data}`, config)
+        // console.log(response.data)
+        dispatch({
+            type: MICROSOFT_AUTHENTICATED_SUCCESS,
+            payload: response.data
+        })
+        dispatch(LoadUser())
+        status = true
+        // return (<Navigate to='/' />)
+    } catch (error) {
+        console.log(error)
+        dispatch({
+            type: MICROSOFT_AUTHENTICATED_FAILED
+        })
+        status = false
+    }
+    // if (state && code && !localStorage.getItem('access')){
+    // }else {
+    //     // console.log("HI")
+    //     dispatch({
+    //         type: MICROSOFT_AUTHENTICATED_FAILED
+    //     })
+    // }
+    return {
+        "loginStatus" : status
+    }
+}
+
+export const checkGoogleAuthenticated = (state, code) => async dispatch => {
+    let status
+    const config = {
+        headers : {
+            'Content-Type' : 'application/x-www-form-urlencoded'
+        }
+    }
+    const details = {
+        'state' : state,
+        'code' : code
+    }
+    const data = Object.keys(details).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(details[key])).join('&')
+    try {
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/o/google-oauth2/?${data}`, config)
+        dispatch({
+            type: GOOGLE_AUTHENTICATED_SUCCESS,
+            payload: response.data
+        })
+        dispatch(LoadUser())
+        status = true
+        // return (<Navigate to='/' />)
+    } catch (error) {
+        console.log(error)
+        dispatch({
+            type: GOOGLE_AUTHENTICATED_FAILED
+        })
+        status = false
+    }
+    return {
+        "loginStatus" : status
+    }
+    // if (state && code && !localStorage.getItem('access')){
+    // }else {
+    //     // console.log("HI")
+    //     dispatch({
+    //         type: GOOGLE_AUTHENTICATED_FAILED
+    //     })
+    // }
 }
 
 export const resetPassword = (FormData) => async dispatch => {

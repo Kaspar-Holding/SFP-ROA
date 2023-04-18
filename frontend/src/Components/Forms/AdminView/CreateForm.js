@@ -350,7 +350,7 @@ const CreateForm = ({user}) => {
         RF_Date : CurrentData,
         RF_ClientName : "",
         RF_ClientId : "",
-        RF_CompleteByName : user['name'],
+        RF_CompleteByName : user["first_name"] + " " + user["last_name"],
         RF_EventID : "",
         RF_CompleteByRole : "",
 

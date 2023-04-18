@@ -71,7 +71,7 @@ const Dashboard = ({user}) => {
             setFormList(response.data['results'])
             setTotalForms(response.data['total_records'])
             setPageLimit(response.data['pagelimit'])
-            console.log(response.data)
+            // console.log(response.data)
         //   console.log('Users', JSON.stringify(response.data))
         } catch (error) {
           console.log('first', error.response.statusText)
@@ -100,7 +100,7 @@ const Dashboard = ({user}) => {
     useEffect(() => {
         loadFormsStats(1,OrderBy, SearchQuery)
         if (user){
-            setAdvisor(user["name"])
+            setAdvisor(user["first_name"] + " " + user["last_name"])
         }
     }, [Advisor,user])
     // console.log(localStorage.getItem('access'))
@@ -121,7 +121,7 @@ const Dashboard = ({user}) => {
                                 <h5 className="card-header">Completed Forms</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['completed_forms']}</h5>
-                                    <p className="card-text">Forms completed by {user['name']}.</p>
+                                    <p className="card-text">Forms completed by {user["first_name"] + " " + user["last_name"]}.</p>
                                     {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                 </div>
                             </div>
@@ -131,7 +131,7 @@ const Dashboard = ({user}) => {
                                 <h5 className="card-header">Incompleted Forms</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['incompleted_forms']}</h5>
-                                    <p className="card-text">Incompleted forms filled by {user['name']}.</p>
+                                    <p className="card-text">Incompleted forms filled by {user["first_name"] + " " + user["last_name"]}.</p>
                                     {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                 </div>
                             </div>
