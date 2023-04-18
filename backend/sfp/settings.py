@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'social_django',
+    'frontend',
 ]
 
 MIDDLEWARE = [
@@ -138,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# WKHTMLTOPDF_CMD = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
+WKHTMLTOPDF_CMD = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
 WKHTMLTOPDF_CMD_OPTIONS = {
     'quiet': True, 'enable-local-file-access': True, 'disable-javascript' : True
 }
@@ -154,11 +155,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_ROOT = ''
+STATIC_ROOT = BASE_DIR
 
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = ('static',)
+STATICFILES_DIRS = ('static',)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'build/static'),
     os.path.join(BASE_DIR, 'static'),
