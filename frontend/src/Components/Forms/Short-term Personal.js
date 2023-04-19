@@ -73,7 +73,7 @@ const Short_term_Personal = ({user}) => {
     const { state } = location;
 
     const [FormData, setFormData] = useState({
-        advisorId : user['id'],
+        advisorId : state['advisor']['id'],
         formId : state['formId'],
         
         STIP_Underwritten_By: "",
@@ -912,16 +912,51 @@ const Short_term_Personal = ({user}) => {
     return(
         <>
          <br/>
-        <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SHORT-TERM INSURANCE: PERSONAL LINES</b></div>
+        <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SHORT-TERM INSURANCE: PERSONAL LINES</b></div>
        <hr/>
        <div className="notification_container">
-          <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+          <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
           {SuccessMessage}
           {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
           </div>
         </div>
        <form onSubmit={e => onSubmit(e)}>
-       <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence and storage of your personal information relating to your financial matters. Ts&Cs on  <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  </p>
+       <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span>Succession Financial Planning (SFP) </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals (FS4P) </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span>Succession Financial Planning (AFP) </span>
+                                        : <span>Succession Financial Planning (SFP) </span>
+                                        : 
+                                        <>
+                                            <span>Succession Financial Planning (SFP) </span>
+                                        </>
+                                    } 
+                                    processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
+                                        : <span> SFP </span>
+                                        : 
+                                        <>
+                                            <span> SFP </span>
+                                        </>
+                                    } 
+                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  
+                                </p>
        <hr/>
        <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
             <div className="row">
@@ -1037,7 +1072,12 @@ const Short_term_Personal = ({user}) => {
         </div>
         <hr/>
 
-        <div className="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>DETAILS OF APPLICANT</b></div>
+        <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>DETAILS OF APPLICANT</b></div>
         <hr/>
         <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
         <div className="row">
@@ -1154,7 +1194,12 @@ const Short_term_Personal = ({user}) => {
         </div>
     </div>
 
-    <div className="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>GENERAL</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>GENERAL</b></div>
     <hr/>
 
     <div className="row g-3 align-items-center">
@@ -6556,15 +6601,38 @@ const Short_term_Personal = ({user}) => {
       </div>
 
   <br/>
-  
-    <div className="container1">
-          <div className="icon1 update">
-              <div className="tooltip1">
-                  Update
+  <div  
+              className={
+                  state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                  : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
+                  : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
+                  : "container-sfp"
+              }
+          >
+              <div 
+                  className={"icon1 update"}
+              >
+                  <div 
+                      className={
+                          state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                          : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
+                          : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
+                          : "tooltip-sfp"
+                      }
+                  >
+                      Update
+                  </div>
+                  <span>
+                      <button 
+                          type="submit"  
+                          className="updateSTIPFormBTN"
+                          style={{border: "none", backgroundColor: "transparent"}}
+                      >
+                          <i className="fa-solid fa-check" />
+                      </button>
+                  </span>
               </div>
-              <span><button type="submit" className='updateSTIPFormBTN' style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
           </div>
-      </div>
         </form>
       
 

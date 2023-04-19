@@ -237,15 +237,14 @@ def getData(request):
     orderBy = request.data['order_by']
     searchQuery = request.data['search_query']
     if searchQuery != "":
-        users = UserAccount.objects.filter(Q(name__icontains=searchQuery) | Q(email__icontains=searchQuery)).order_by('id').values('id','email','name','is_superuser','is_active')
+        users = UserAccount.objects.filter(Q(name__icontains=searchQuery) | Q(email__icontains=searchQuery)).order_by('id').values('id','email','first_name', 'last_name','is_superuser','is_active')
     else:
-        users = UserAccount.objects.values('id','email','name','is_superuser','is_active').order_by('id')
+        users = UserAccount.objects.values('id','email','first_name', 'last_name','is_superuser','is_active').order_by('id')
 
     if orderBy[0] == "-":
         users = sorted(users, key=lambda d: d[orderBy[1:]], reverse=True) 
     else:
         users = sorted(users, key=lambda d: d[orderBy]) 
-        
     p = Paginator(users, limit)
     # print(p.num_pages)
     if request.data['page_number'] <= p.num_pages:

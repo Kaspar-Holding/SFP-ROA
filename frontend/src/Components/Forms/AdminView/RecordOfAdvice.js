@@ -184,12 +184,6 @@ const RecordOfAdvice = ({user}) => {
     return (
       
         <main className="container">
-            <div className="notification_container">
-                <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
-                {SuccessMessage}
-                {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
-                </div>
-            </div>
             {/* <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h2 className="fw-bold h2_1">SECTION A: LONG-TERM INSURANCE </h2>
             </div> */}

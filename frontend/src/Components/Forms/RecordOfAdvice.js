@@ -14,7 +14,7 @@ const RecordOfAdvice = ({user}) => {
     const Date_Var = new Date()
     const CurrentData = Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + (Date_Var.getDate())).slice(-2)
     const [FormData, setFormData] = useState({
-        advisorId : user['id'],
+        advisorId : state['advisor']['id'],
         formId : state['formId'],
         clientName :  state['clientName'],
         clientIdNumber : state['clientId'],
@@ -224,7 +224,16 @@ const RecordOfAdvice = ({user}) => {
       
         <main className="container">
             <div className="notification_container">
-                <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+                <div 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+                        : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+                        : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+                        : "alert alert-sfp-success fade show"
+                    }
+                    style={{display: SuccessMessageVisibility}} 
+                    role="alert"
+                >
                 {SuccessMessage}
                 {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
                 </div>
@@ -233,7 +242,12 @@ const RecordOfAdvice = ({user}) => {
             <h2 className="fw-bold h2_1">SECTION A: LONG-TERM INSURANCE </h2>
             </div> */}
             <div className="bg-white p-1 rounded">
-                <h2 className="fw-bold h2_1">RECORD OF ADVICE</h2>
+                <h2 className={
+                    state['advisor']['email'].includes('sfp') ? "fw-bold sfp-text" 
+                    : state['advisor']['email'].includes('fs4p') ? "fw-bold fs4p-text" 
+                    : state['advisor']['email'].includes('sanlam') ? "fw-bold sanlam-text" 
+                    : "fw-bold"
+                }>RECORD OF ADVICE</h2>
                 <hr/>
                 <div className="alert alert-danger" style={{display: SubmissionErrorVisibilty}} role="alert">
                     {errorData.status} : {errorData.message}
@@ -302,7 +316,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="advisor" className="col-form-label"><b>Financial Advisor:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true" value={user["first_name"] + " " + user["last_name"]} disabled name="advisor" className="form-control" placeholder="Financial Advisor"  aria-describedby="" />
+                                        <input required spellCheck="true" value={state['advisor']["first_name"] + " " + state['advisor']["last_name"]} disabled name="advisor" className="form-control" placeholder="Financial Advisor"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -318,11 +332,43 @@ const RecordOfAdvice = ({user}) => {
                             </div>
                             <hr className="col-11" />
                             <div className="col-11 p_class">
-                                <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  </p>
+                                <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span>Succession Financial Planning (SFP) </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals (FS4P) </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span>Succession Financial Planning (AFP) </span>
+                                        : <span>Succession Financial Planning (SFP) </span>
+                                        : 
+                                        <>
+                                            <span>Succession Financial Planning (SFP) </span>
+                                        </>
+                                    } 
+                                    processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
+                                        : <span> SFP </span>
+                                        : 
+                                        <>
+                                            <span> SFP </span>
+                                        </>
+                                    } 
+                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  
+                                </p>
                             </div>
                             <h5 className="section_class"><b>SECTION A:</b></h5>
                             <ol style={{fontFamily: 'Arial Narrow',fontSize: 15}}>
-                                <li className="h6 fw-bold" style={{color: '#00788A'}}>Compulsory Disclosures</li>
+                                <li 
+                                    className={
+                                        state['advisor']['email'].includes('sfp') ? "tooltip1 sfp-text" 
+                                        : state['advisor']['email'].includes('fs4p') ? "tooltip1 fs4p-text" 
+                                        : state['advisor']['email'].includes('sanlam') ? "tooltip1 sanlam-text" 
+                                        : "tooltip1"
+                                    }
+                                >Compulsory Disclosures</li>
                                 <div className="row g-3 align-items-center">
                                     <div className="col-6">
                                     <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Client was provided with a copy of the Letter of Introduction.</label>
@@ -376,11 +422,11 @@ const RecordOfAdvice = ({user}) => {
                                                 plugins: [
                                                     'advlist autolink link lists image charmap print preview anchor',
                                                     'searchreplace visualblocks code fullscreen',
-                                                    'insertdatetime media table paste code help wordcount',
+                                                    'insertdatetime media table paste code help wordcount spellchecker',
                                                 ],
                                                 toolbar: 'styles | undo redo | formatselect | ' +
                                                 'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                                                'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
+                                                'bullist numlist | spellchecker | outdent indent | link | copy paste undo redo | ' +
                                                 'removeformat',
                                                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                                 init_instance_callback : function(editor) {
@@ -463,13 +509,26 @@ const RecordOfAdvice = ({user}) => {
                                                 plugins: [
                                                     'lists advlist autolink link image charmap print preview anchor',
                                                     'searchreplace visualblocks code fullscreen',
-                                                    'insertdatetime media table paste help wordcount',
+                                                    'insertdatetime media table paste help wordcount spellchecker',
                                                 ],
                                                 toolbar: 'styles | undo redo | formatselect | ' +
                                                 'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
                                                 'bullist numlist | outdent indent | link | copy paste undo redo | ' +
                                                 'code | removeformat ',
                                                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                                spellchecker_callback: function (method, text, success, failure) {
+                                                    var words = text.match(this.getWordCharPattern());
+                                                    if (method === "spellcheck") {
+                                                      var suggestions = {};
+                                                      for (var i = 0; i < words.length; i++) {
+                                                        suggestions[words[i]] = ["First", "Second"];
+                                                      }
+                                                      success({ words: suggestions, dictionary: [ ] });
+                                                    } else if (method === "addToDictionary") {
+                                                      // Add word to dictionary here
+                                                      success();
+                                                    }
+                                                  },
                                                 init_instance_callback : function(editor) {
                                                     var freeTiny = document.querySelector('.tox .tox-notification--in');
                                                    freeTiny.style.display = 'none';
@@ -498,7 +557,12 @@ const RecordOfAdvice = ({user}) => {
                                     } */}
                                 </div>
                                 <hr className="col-11" />
-                                <li className="h6 fw-bold" style={{color: '#00788A'}}>Financial Intelligence Centre Act (FICA)</li>
+                                <li className={
+                                        state['advisor']['email'].includes('sfp') ? "tooltip1 sfp-text" 
+                                        : state['advisor']['email'].includes('fs4p') ? "tooltip1 fs4p-text" 
+                                        : state['advisor']['email'].includes('sanlam') ? "tooltip1 sanlam-text" 
+                                        : "tooltip1 "
+                                    }>Financial Intelligence Centre Act (FICA)</li>
                                 <div className="row g-3 align-items-center">
                                     <div className="col-6">
                                     <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Client has provided a clear copy of his/her identity document.</label>
@@ -552,11 +616,11 @@ const RecordOfAdvice = ({user}) => {
                                                 plugins: [
                                                     'advlist autolink link lists image charmap print preview anchor',
                                                     'searchreplace visualblocks code fullscreen',
-                                                    'insertdatetime media table paste code help wordcount',
+                                                    'insertdatetime media table paste code help wordcount spellchecker',
                                                 ],
                                                 toolbar: 'styles | undo redo | formatselect | ' +
                                                 'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                                                'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
+                                                'bullist numlist | spellchecker | outdent indent | link | copy paste undo redo | ' +
                                                 'removeformat',
                                                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                                 init_instance_callback : function(editor) {
@@ -587,7 +651,14 @@ const RecordOfAdvice = ({user}) => {
                                 <hr className="col-11" />
                             </ol>
                             <h5 className="section_class"><b>SECTION B:</b></h5>
-                            <h5 className="h6 section_class1"><b>Background information</b></h5>
+                            <h5 
+                                className={
+                                    state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                    : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                    : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                    : "h6 fw-bold"
+                                }
+                            ><b>Background information</b></h5>
                             <p>Your personal circumstances that formed the basis for my recommendation</p>
                             {
                                 backgroundInfoVisibility ? 
@@ -640,11 +711,11 @@ const RecordOfAdvice = ({user}) => {
                                     plugins: [
                                         'advlist autolink link lists image charmap print preview anchor',
                                         'searchreplace visualblocks code fullscreen',
-                                        'insertdatetime media table paste code help wordcount',
+                                        'insertdatetime media table paste code help wordcount spellchecker',
                                     ],
                                     toolbar: 'styles | undo redo | formatselect | ' +
                                     'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                                    'bullist numlist | bullist numlist | outdent indent | link | copy paste undo redo | ' +
+                                    'bullist numlist | spellchecker | outdent indent | link | copy paste undo redo | ' +
                                     'removeformat',
                                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                     init_instance_callback : function(editor) {
@@ -655,12 +726,36 @@ const RecordOfAdvice = ({user}) => {
                             />
                         </div>
                     </div>
-                    <div className="container1">
-                        <div className="icon1 update">
-                            <div className="tooltip1">
+                    <div  
+                        className={
+                            state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                            : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
+                            : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
+                            : "container-sfp"
+                        }
+                    >
+                        <div 
+                            className={"icon1 update"}
+                        >
+                            <div 
+                                className={
+                                    state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                                    : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
+                                    : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
+                                    : "tooltip-sfp"
+                                }
+                            >
                                 Update
                             </div>
-                            <span><button type="submit" className="updateFormBTN" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+                            <span>
+                                <button 
+                                    type="submit"  
+                                    className="updateFormBTN"
+                                    style={{border: "none", backgroundColor: "transparent"}}
+                                >
+                                    <i className="fa-solid fa-check" />
+                                </button>
+                            </span>
                         </div>
                     </div>
                 </form>

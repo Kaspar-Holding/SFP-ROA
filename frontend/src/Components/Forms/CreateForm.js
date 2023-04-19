@@ -452,7 +452,7 @@ const CreateForm = ({user}) => {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/add_risk_factors_data/`, Body ,config)
             // console.log(response.data['formData'])
             if (response.status === 201) {
-                navigate("/completeform", {state : {formId: response.data['formId'], clientName : data['RF_ClientName'], clientId: data['RF_ClientId']}})
+                navigate("/completeform", {state : {advisor: user, formId: response.data['formId'], clientName : data['RF_ClientName'], clientId: data['RF_ClientId']}})
             }
             if (response.status === 200) {
                 setErrorData({
@@ -527,12 +527,27 @@ const CreateForm = ({user}) => {
             <br/>
         
             <div className="notification_container">
-                <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+                <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
                 {SuccessMessage}
                 {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
                 </div>
             </div>
-            <div class="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Dynamic Risk Assessment</b></div>
+            <div 
+                className={
+                    user['email'].includes('sfp') ? "sfp-text" 
+                    : user['email'].includes('fs4p') ? "fs4p-text" 
+                    : user['email'].includes('sanlam') ? "sanlam-text" 
+                    : "sfp-text"
+                }
+                style={{fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} 
+            >
+                <b>Dynamic Risk Assessment</b>
+            </div>
             <hr/>
 
             <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
@@ -6773,7 +6788,19 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <label className="col-form-label">Succession Finance Planning</label>
+                        <label className="col-form-label">
+                            {
+                                user ?
+                                user['email'].includes('sfp') ? <span>Succession Financial Planning</span>
+                                : user['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals</span>
+                                : user['email'].includes('sanlam') ? <span>Succession Financial Planning</span>
+                                : <span>Succession Financial Planning</span>
+                                : 
+                                <>
+                                    <span>Succession Financial Planning</span>
+                                </>
+                            }
+                        </label>
                         {/* <select className="text-start form-select" name='RF_Delivery_Channel' id='RF_Delivery_Channel' value={parseInt(FormData['RF_Transaction_Geography'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Intermediaries (Brokers, consultants)</option>

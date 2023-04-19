@@ -118,41 +118,33 @@ const Dashboard = ({user}) => {
                     <div className='row'>
                         <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
                             <div className="card">
-                                <h5 className="card-header">Completed Forms</h5>
+                                <h5 className="card-header">Completed</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['completed_forms']}</h5>
-                                    <p className="card-text">Forms completed by {user["first_name"] + " " + user["last_name"]}.</p>
-                                    {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                 </div>
                             </div>
                         </div>
                         <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
                             <div className="card">
-                                <h5 className="card-header">Incompleted Forms</h5>
+                                <h5 className="card-header">Incompleted</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['incompleted_forms']}</h5>
-                                    <p className="card-text">Incompleted forms filled by {user["first_name"] + " " + user["last_name"]}.</p>
-                                    {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                 </div>
                             </div>
                         </div>
                         <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
                             <div className="card">
-                                <h5 className="card-header">Awaiting Approval Forms</h5>
+                                <h5 className="card-header">Awaiting Approval</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['yet_to_approved_forms']}</h5>
-                                    <p className="card-text">Awaiting Approval forms from Admins.</p>
-                                    {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                 </div>
                             </div>
                         </div>
                         <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
                             <div className="card">
-                                <h5 className="card-header">Blocked Forms</h5>
+                                <h5 className="card-header">Blocked</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['blocked_forms']}</h5>
-                                    <p className="card-text">Blocked forms filled by Admins.</p>
-                                    {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                 </div>
                             </div>
                         </div>

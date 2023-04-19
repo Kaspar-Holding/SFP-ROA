@@ -532,7 +532,12 @@ import 'tippy.js/dist/tippy.css'; // optional
         <br/>
         
         <div className="notification_container">
-            <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+            <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
             {SuccessMessage}
             {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
             </div>

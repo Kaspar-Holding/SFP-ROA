@@ -4,14 +4,28 @@
     background: linear-gradient(315deg, #ffffff 0%, #14848A 74%);
 }
 
-.container1{
+.container-sfp{
     position: fixed;
-    
+    /* background-color: #00788b; */
+    right: 5vh;
+    top: 50vh;
+}
+.container-fs4p{
+    position: fixed;
+    /* background-color: #6AC7D2; */
+    right: 5vh;
+    top: 50vh;
+}
+.container-sanlam{
+    position: fixed;
+    /* background-color: #0074C9; */
     right: 5vh;
     top: 50vh;
 }
 
-.container1 .icon1{
+.container-sfp .icon1,
+.container-fs4p .icon1,
+.container-sanlam .icon1{
     margin:0 5px;
     text-align: center;
     cursor: pointer;
@@ -23,7 +37,9 @@
     border: none;
 }
 
-.container1 .icon1 span{ 
+.container-sfp .icon1 span,
+.container-fs4p .icon1 span,
+.container-sanlam .icon1 span{ 
     position: relative;
     display: block;
     height: 60px;
@@ -35,13 +51,47 @@
     box-shadow: 0px 10px 10px #ffffff;
 }
 
-.container1 .icon1 span i{
+.container-sfp .icon1 span i,
+.container-fs4p .icon1 span i,
+.container-sanlam .icon1 span i{
     line-height: 60px;
     font-size: 25px;
     color: #fff;
 }
 
-.container1 .icon1 .tooltip1{
+.container-sfp .icon1 .tooltip-sfp{
+    position: absolute;
+    background: transparent;
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 0px;
+    top:20px;
+    right: 80px;
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+    transition: 0.4s cubic-bezier(0.52, -0.50, 0.212, 1.45);
+}
+.container-fs4p .icon1 .tooltip-fs4p{
+    position: absolute;
+    background: transparent;
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 0px;
+    top:20px;
+    right: 80px;
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+    transition: 0.4s cubic-bezier(0.52, -0.50, 0.212, 1.45);
+}
+.container-sanlam .icon1 .tooltip-sanlam{
     position: absolute;
     background: transparent;
     color: #fff;
@@ -58,14 +108,14 @@
     transition: 0.4s cubic-bezier(0.52, -0.50, 0.212, 1.45);
 }
 
-.container1 .icon1:hover .tooltip1{
+.container-sfp .icon1:hover .tooltip-sfp{
     top: -0px;
     opacity: 1;
     margin-top: 10px;
     pointer-events: auto;
 }
 
-.icon1 .tooltip1:before{
+.icon1 .tooltip-sfp:before{
     position: absolute;
     content: "";
     height: 15px;
@@ -77,30 +127,61 @@
     transition: 0.4s cubic-bezier(0.52, -0.50, 0.212, 1.45);
 }
 
-.container1 .facebook span,
-.container1 .facebook .tooltip,
-.container1 .facebook .tooltip:before{
-    background: #3b5999;
+.container-fs4p .icon1:hover .tooltip-fs4p{
+    top: -0px;
+    opacity: 1;
+    margin-top: 10px;
+    pointer-events: auto;
+}
+
+.icon1 .tooltip-fs4p:before{
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: #fff;
+    right: 3px;
+    bottom: 15px;
+    transform: translate(50%) rotate(45deg);
+    transition: 0.4s cubic-bezier(0.52, -0.50, 0.212, 1.45);
+}
+
+.container-sanlam .icon1:hover .tooltip-sanlam{
+    top: -0px;
+    opacity: 1;
+    margin-top: 10px;
+    pointer-events: auto;
+}
+
+.icon1 .tooltip-sanlam:before{
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: #fff;
+    right: 3px;
+    bottom: 15px;
+    transform: translate(50%) rotate(45deg);
+    transition: 0.4s cubic-bezier(0.52, -0.50, 0.212, 1.45);
+}
+
+.container-sfp .update span,
+.container-sfp .update .tooltip-sfp,
+.container-sfp .update .tooltip-sfp:before{
+    background-color: #14848A;
     color: #fff;
 }
 
-.container1 .youtube span,
-.container1 .youtube .tooltip,
-.container1 .youtube .tooltip:before{
-    background: #de463b;
+.container-fs4p .update span,
+.container-fs4p .update .tooltip-fs4p,
+.container-fs4p .update .tooltip-fs4p:before{
+    background-color: #6AC7D2;
     color: #fff;
 }
 
-.container1 .update span,
-.container1 .update .tooltip1,
-.container1 .update .tooltip1:before{
-    background: #14848A;
-    color: #fff;
-}
-
-.container1 .instagram span,
-.container1 .instagram .tooltip,
-.container1 .instagram .tooltip:before{
-    background: #e1306c;
+.container-sanlam .update span,
+.container-sanlam .update .tooltip-sanlam,
+.container-sanlam .update .tooltip-sanlam:before{
+    background-color: #0074C9;
     color: #fff;
 }

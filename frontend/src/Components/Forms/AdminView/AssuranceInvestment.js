@@ -654,12 +654,6 @@ const AssuranceInvestment = ({user}) =>
           <>
           <hr/>
         
-      <div className="notification_container">
-        <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
-          {SuccessMessage}
-          {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
-        </div>
-      </div>
     <h4><b>PART II: INVESTMENT & SAVINGS</b></h4>
     <br/>
     <h5 className="section_class"><b>SECTION B:</b></h5>

@@ -4,7 +4,15 @@
     right: 10vh;
     top: 10vh;
 }
-.alert-success{
+.alert-sfp-success{
     background-color: #14848A;
+    color: #ffffff;
+}
+.alert-fs4p-success{
+    background-color: #6AC7D2;
+    color: #ffffff;
+}
+.alert-sanlam-success{
+    background-color: #0074C9;
     color: #ffffff;
 }

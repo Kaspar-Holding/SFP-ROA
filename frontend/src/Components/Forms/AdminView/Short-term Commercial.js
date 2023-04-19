@@ -1154,7 +1154,12 @@ const Short_term_Commercial= ({user}) => {
             <div class="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SHORT-TERM INSURANCE: COMMERCIAL</b></div>
             <hr/>
             <div className="notification_container">
-              <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+              <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
               {SuccessMessage}
               {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
               </div>

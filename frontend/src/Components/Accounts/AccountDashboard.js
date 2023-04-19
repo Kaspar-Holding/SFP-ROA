@@ -11,7 +11,7 @@ const AccountDashboard = ({isAuthenticated, user}) => {
     const [TotalUsers, setTotalUsers] = useState(0)
     const [PageLimit, setPageLimit] = useState(0)
     const [SearchQuery, setSearchQuery] = useState("")
-    const [OrderBy, setOrderBy] = useState("name")
+    const [OrderBy, setOrderBy] = useState("first_name")
     const [userStats, setUserStats] = useState([]);
     const [responseError, setResponseError] = useState("");
     const [LoaderVisibility, setLoaderVisibility] = useState("none")
@@ -239,7 +239,7 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                                 return(
                                 <tr>
                                     <th scope="row">{i+1}</th>
-                                    <td>{key['name']}</td>
+                                    <td>{key['first_name'] + " " + key['last_name']}</td>
                                     <td>{key['email']}</td>
                                     <td>{key['is_superuser'] === true ? "Admin" : "Agent"}</td>
                                     <td>{key['is_active'] === 1 ? "Active" : "Inactive"}</td>

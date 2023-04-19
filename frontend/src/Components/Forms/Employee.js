@@ -68,7 +68,7 @@ const Employee = ({user}) =>
       const [updateErrorVisibilty, setUpdateErrorVisibility] = useState("none")
       
       const [FormData, setFormData] = useState({
-        advisorId : user['id'],
+        advisorId : state['advisor']['id'],
         formId : state['formId'],       
             
         EB_ClientName : "",
@@ -263,7 +263,7 @@ const Employee = ({user}) =>
       })
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
       const [CoverData, setCoverData] = useState([{
-            advisorId : user['id'],  
+            advisorId : state['advisor']['id'],  
             formId : state['formId'],  
             
             BusB_CoverType : 0,
@@ -272,7 +272,7 @@ const Employee = ({user}) =>
         const AddNewCoverData = (e) => {
             const current = [...CoverData]
             current.push({
-                advisorId : user['id'],  
+                advisorId : state['advisor']['id'],  
                 formId : state['formId'],                
                 
                 BusB_CoverType : 0,
@@ -317,7 +317,7 @@ const Employee = ({user}) =>
                 setCoverData(response.data['CoverData'])
             } else {
                 setCoverData([{
-                    advisorId : user['id'],  
+                    advisorId : state['advisor']['id'],  
                     formId : state['formId'],                
                     
                     BusB_CoverType : 0,
@@ -406,12 +406,22 @@ const Employee = ({user}) =>
         <br/>
             
             <div className="notification_container">
-                <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+                <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
                 {SuccessMessage}
                 {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
                 </div>
             </div>
-             <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>EMPLOYEE BENEFITS</b></div>
+             <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>EMPLOYEE BENEFITS</b></div>
              <hr/>
              <form onSubmit={e => onSubmit(e)}>
                 
@@ -525,9 +535,39 @@ const Employee = ({user}) =>
 
                 <hr/>
                 <div className="col-11 p_class">
-                    <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence and storage of your personal information relating to your financial matters. Ts&Cs on  <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  </p>
+                    <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span>Succession Financial Planning (SFP) </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals (FS4P) </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span>Succession Financial Planning (AFP) </span>
+                                        : <span>Succession Financial Planning (SFP) </span>
+                                        : 
+                                        <>
+                                            <span>Succession Financial Planning (SFP) </span>
+                                        </>
+                                    } 
+                                    processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
+                                        : <span> SFP </span>
+                                        : 
+                                        <>
+                                            <span> SFP </span>
+                                        </>
+                                    } 
+                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  
+                                </p>
                 </div>
-                <h5 style={{color: '#00788A'}}><b>Section A:Employer Information</b></h5>
+                <h5 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } ><b>Section A:Employer Information</b></h5>
 
                 <hr/>
                 
@@ -687,7 +727,12 @@ const Employee = ({user}) =>
                 
 
                 <hr/>
-                <h5 style={{color: '#00788A'}}><b>Section B:Take-over of existing fund</b></h5>
+                <h5 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } ><b>Section B:Take-over of existing fund</b></h5>
                 <hr/>
                 <div style={{fontFamily: 'Arial Narrow',fontSize: '12'}}>
             <div className="row">
@@ -765,7 +810,12 @@ const Employee = ({user}) =>
                     </div>
 
                 <hr/>
-                <h5 style={{color: '#00788A'}}><b>Section C:Clients Needs and Requirements</b></h5>
+                <h5 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } ><b>Section C:Clients Needs and Requirements</b></h5>
                 
                 {
                     CoverData.map((key,i) => {
@@ -891,7 +941,12 @@ const Employee = ({user}) =>
                                         }
                                     }}
                                 />
-    <h5 style={{color: '#00788A'}}><b>Section D:Investment Indicator</b></h5>
+    <h5 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } ><b>Section D:Investment Indicator</b></h5>
     <hr/>
 
                 <div className="row g-3 align-items-center">
@@ -1132,7 +1187,12 @@ const Employee = ({user}) =>
                     </div>
 
                 <hr/>
-                <h5 style={{color: '#00788A'}}><b>Section E:Risk Benefits</b></h5>
+                <h5 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } ><b>Section E:Risk Benefits</b></h5>
                 <hr/>
 
     <table className="table">
@@ -2081,7 +2141,12 @@ Record the client's instructions, deviations and implications thereof.
 
         <hr/>
 
-        <h5 style={{color: '#00788A'}}><b>Section F:Recommendations</b></h5>
+        <h5 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } ><b>Section F:Recommendations</b></h5>
         <hr/>
         <p>Submit a copy of the accepted proposal with all details of new fund/scheme and benefits with this document. </p>
         <hr/>
@@ -2225,7 +2290,12 @@ Record the client's instructions, deviations and implications thereof.
                     </div>
                
                <br/>
-                <h5 style={{color: '#00788A'}}><b>Section G: Fund Replacement</b></h5>
+                <h5 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } ><b>Section G: Fund Replacement</b></h5>
                 <hr/>
 
                 <div style={{fontSize:'14px'}} align="left">
@@ -2930,17 +3000,46 @@ Record the client's instructions, deviations and implications thereof.
                         <hr/>
                         </div>
                     </div>
-                    <div className="container1">
-                        <div className="icon1 update">
-                            <div className="tooltip1">
+                    <div  
+                        className={
+                            state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                            : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
+                            : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
+                            : "container-sfp"
+                        }
+                    >
+                        <div 
+                            className={"icon1 update"}
+                        >
+                            <div 
+                                className={
+                                    state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                                    : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
+                                    : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
+                                    : "tooltip-sfp"
+                                }
+                            >
                                 Update
                             </div>
-                            <span><button type="submit" className="updateEmpFormBTN" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
+                            <span>
+                                <button 
+                                    type="submit"  
+                                    className="updateEmpFormBTN"
+                                    style={{border: "none", backgroundColor: "transparent"}}
+                                >
+                                    <i className="fa-solid fa-check" />
+                                </button>
+                            </span>
                         </div>
                     </div>
                 
                 <br/>
-                <h5 style={{color: '#00788A'}}><b>Section H: Clients Declarations</b></h5>
+                <h5 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } ><b>Section H: Clients Declarations</b></h5>
                 <p>(Please note that it is of utmost importance that you read this section carefully and understand it fully).</p>
                 <p>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -151,12 +151,6 @@ const GapCover = ({user}) => {
     return(
         <>
         <br/>
-        <div className="notification_container">
-            <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
-            {SuccessMessage}
-            {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
-            </div>
-        </div>
         <div class="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>GAP COVER</b></div>
         <hr/>
 

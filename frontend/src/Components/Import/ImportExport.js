@@ -100,7 +100,12 @@ const ImportExport = ({user}) => {
   return (
     <>
       <div className="notification_container">
-        <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+        <div className={
+              user['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : user['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : user['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
           {SuccessMessage}
           {/* <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
         </div>

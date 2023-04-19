@@ -155,7 +155,7 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
                 <p className="text-center">Forgot your password? <NavLink to="/reset-password">Reset Password</NavLink></p>
                 <hr/>
             </form>
-            <div className="card" style={{}}>
+            {/* <div className="card" style={{}}>
                 <button style={{border: 'none', backgroundColor: 'transparent'}} onClick={(e)=>{continueWithMicrosoft(e)}}>
                   <div className="card-body">
                       <div className='row'>
@@ -164,13 +164,12 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
                         </div>
                         <div className='col-10'>
                           <p className="card-text">Login using Microsoft Account</p>
-                          {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                         </div>
                       </div>
                   </div>
                 </button>
             </div>
-            <br/>
+            <br/> */}
             {/* <div className="card" style={{}}>
                 <button style={{border: 'none', backgroundColor: 'transparent'}} onClick={(e)=>{continueWithGoogle(e)}}>
                   <div className="card-body">

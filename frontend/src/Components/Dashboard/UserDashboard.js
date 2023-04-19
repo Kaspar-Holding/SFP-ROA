@@ -117,40 +117,40 @@ const Dashboard = ({user}) => {
                     <div className='row'>
                         <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
                             <div className="card">
-                                <h5 className="card-header">Completed Forms</h5>
+                                <h5 className="card-header">Completed</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['completed_forms']}</h5>
-                                    <p className="card-text">Forms completed by {user["first_name"] + " " + user["last_name"]}.</p>
+                                    <p className="card-text">Forms completed by you.</p>
                                     {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                 </div>
                             </div>
                         </div>
                         <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
                             <div className="card">
-                                <h5 className="card-header">Incompleted Forms</h5>
+                                <h5 className="card-header">Incompleted</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['incompleted_forms']}</h5>
-                                    <p className="card-text">Incompleted forms filled by {user["first_name"] + " " + user["last_name"]}.</p>
+                                    <p className="card-text">Incompleted forms filled by you.</p>
                                     {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                 </div>
                             </div>
                         </div>
                         <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
                             <div className="card">
-                                <h5 className="card-header">Awaiting Approval Forms</h5>
+                                <h5 className="card-header">Awaiting Approval</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['yet_to_approved_forms']}</h5>
-                                    <p className="card-text">Awaiting Approval forms from Admins.</p>
+                                    <p className="card-text">Awaiting Approval forms.</p>
                                     {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                 </div>
                             </div>
                         </div>
                         <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
                             <div className="card">
-                                <h5 className="card-header">Blocked Forms</h5>
+                                <h5 className="card-header">Blocked</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['blocked_forms']}</h5>
-                                    <p className="card-text">Blocked forms filled by Admins.</p>
+                                    <p className="card-text">Blocked forms filled.</p>
                                     {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                 </div>
                             </div>
@@ -263,9 +263,41 @@ const Dashboard = ({user}) => {
                                                     <td>
                                                         {
                                                             formList[i]['status'] != 2 && formList[i]['status'] != 3 ?
-                                                            <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
+                                                            <NavLink 
+                                                                type="button" 
+                                                                to={{pathname:"/completeform"}} 
+                                                                state={
+                                                                    {
+                                                                        advisor: user, 
+                                                                        formId : formList[i]['id'],
+                                                                        formStatus : formList[i]['status'], 
+                                                                        clientName : formList[i]['RF_ClientName'], 
+                                                                        clientId: formList[i]['RF_ClientId']
+                                                                    }
+                                                                } 
+                                                                 
+                                                                className={
+                                                                    user['email'].includes('sfp') ? "btn btn-sm btn-outline-primary sfp-text" 
+                                                                    : user['email'].includes('fs4p') ? "btn btn-sm btn-outline-primary fs4p-text" 
+                                                                    : user['email'].includes('sanlam') ? "btn btn-sm btn-outline-primary sanlam-text" 
+                                                                    : "btn btn-sm btn-outline-primary"
+                                                                }
+                                                            >
+                                                                Edit
+                                                            </NavLink>
                                                             : 
-                                                            <NavLink type="button" to={{pathname:formList[i]['url']}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn btn-sm btn-outline-warning">Approve/Deny</NavLink>
+                                                            <NavLink 
+                                                                type="button" 
+                                                                to={{pathname:formList[i]['url']}} 
+                                                                state={
+                                                                    {
+                                                                        formId : formList[i]['id'],
+                                                                        formStatus : formList[i]['status'], 
+                                                                        clientName : formList[i]['RF_ClientName'], 
+                                                                        clientId: formList[i]['RF_ClientId']
+                                                                    }
+                                                                } 
+                                                                className="btn btn-sm btn btn-sm btn-outline-warning">Approve/Deny</NavLink>
                                                             // <button className="btn btn-sm btn-outline-warning" type='button'>Approve/Deny</button>
                                                         }
                                                     </td>
@@ -275,7 +307,27 @@ const Dashboard = ({user}) => {
                                                     <td>
                                                         {
                                                             formList[i]['status'] != 2 && formList[i]['status'] != 3 ?
-                                                            <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
+                                                            <NavLink 
+                                                                type="button" 
+                                                                to={{pathname:"/completeform"}} 
+                                                                state={
+                                                                    {
+                                                                        advisor: user, 
+                                                                        formId : formList[i]['id'],
+                                                                        formStatus : formList[i]['status'], 
+                                                                        clientName : formList[i]['RF_ClientName'], 
+                                                                        clientId: formList[i]['RF_ClientId']
+                                                                    }
+                                                                } 
+                                                                className={
+                                                                    user['email'].includes('sfp') ? "btn btn-sm sfp-outline-primary" 
+                                                                    : user['email'].includes('fs4p') ? "btn btn-sm fs4p-outline-primary" 
+                                                                    : user['email'].includes('sanlam') ? "btn btn-sm sanlam-outline-primary" 
+                                                                    : "btn btn-sm btn-outline-primary"
+                                                                }
+                                                            >
+                                                                Edit
+                                                            </NavLink>
                                                             : 
                                                             <button className="btn btn-sm btn-outline-danger" type='button'>Can't Edit</button>
                                                         }

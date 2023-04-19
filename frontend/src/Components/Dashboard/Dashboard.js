@@ -140,8 +140,17 @@ const Dashboard = ({user}) => {
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">Create a new ROA Form</h5>
-                            <p className="card-text">Admins can create a new web based ROA Form from here</p>
-                            <NavLink to="/createform" className="btn btn-primary">Create</NavLink>
+                            <p className="card-text">You can create a new web based ROA Form from here</p>
+                            <NavLink 
+                                to="/createform" 
+                                className= { 
+                                    user['email'].includes('sfp') ? "btn btn-primary sfp" 
+                                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p" 
+                                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam" 
+                                    : "btn btn-primary "
+                                }
+                            >Create</NavLink>
+
                         </div>
                     </div>
                     <hr/>
@@ -151,12 +160,38 @@ const Dashboard = ({user}) => {
                             <div className="nav-align-top mb-4">
                                 <ul className="nav nav-pills mb-3 justify-content-center" role="tablist">
                                     <li className="nav-item">
-                                        <button type="button" className={"nav-link"} role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-dashboard-overall" aria-controls="navs-pills-top-overall" aria-selected="true">
+                                        <button 
+                                            type="button" 
+                                            className= { 
+                                                user['email'].includes('sfp') ? "nav-link sfp" 
+                                                : user['email'].includes('fs4p') ? "nav-link fs4p" 
+                                                : user['email'].includes('sanlam') ? "nav-link sanlam" 
+                                                : "nav-link "
+                                            }
+                                            role="tab" 
+                                            data-bs-toggle="tab" 
+                                            data-bs-target="#navs-pills-dashboard-overall" 
+                                            aria-controls="navs-pills-top-overall" 
+                                            aria-selected="true"
+                                        >
                                             Overall
                                         </button>
                                     </li>
                                     <li className="nav-item">
-                                        <button type="button" className={"nav-link active"} role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-dashboard-user" aria-controls="navs-pills-top-user" aria-selected="true">
+                                        <button 
+                                            type="button" 
+                                            className= { 
+                                                user['email'].includes('sfp') ? "nav-link sfp active" 
+                                                : user['email'].includes('fs4p') ? "nav-link fs4p active" 
+                                                : user['email'].includes('sanlam') ? "nav-link sanlam active" 
+                                                : "nav-link sfp active"
+                                            }
+                                            role="tab" 
+                                            data-bs-toggle="tab" 
+                                            data-bs-target="#navs-pills-dashboard-user" 
+                                            aria-controls="navs-pills-top-user" 
+                                            aria-selected="true"
+                                        >
                                             User
                                         </button>
                                     </li>

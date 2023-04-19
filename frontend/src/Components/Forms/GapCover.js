@@ -11,7 +11,7 @@ const GapCover = ({user}) => {
     const { state } = location;
 
     const [FormData, setFormData] = useState({
-        advisorId : user['id'],
+        advisorId : state['advisor']['id'],
         formId : state['formId'],
         GP_ClientName : "",
         GP_ClientIdNumber : "",
@@ -159,12 +159,22 @@ const GapCover = ({user}) => {
         <>
         <br/>
         <div className="notification_container">
-            <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+            <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
             {SuccessMessage}
             {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
             </div>
         </div>
-        <div class="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>GAP COVER</b></div>
+        <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>GAP COVER</b></div>
         <hr/>
 
        <form onSubmit={e => onSubmit(e)}>
@@ -279,15 +289,45 @@ const GapCover = ({user}) => {
 
         <hr className="col-11" />
         <div className="col-11 p_class">
-            <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  </p>
+        <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span>Succession Financial Planning (SFP) </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals (FS4P) </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span>Succession Financial Planning (AFP) </span>
+                                        : <span>Succession Financial Planning (SFP) </span>
+                                        : 
+                                        <>
+                                            <span>Succession Financial Planning (SFP) </span>
+                                        </>
+                                    } 
+                                    processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
+                                        : <span> SFP </span>
+                                        : 
+                                        <>
+                                            <span> SFP </span>
+                                        </>
+                                    } 
+                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  
+                                </p>    
         </div>
 
         {/* <br/> */}
         <div><b>SECTION A</b></div>
-        <h5 className="h6 section_class1"><b>NEED</b></h5>
+        <h5 className={
+            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
+            : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
+            : "h6 section_class2"
+        }><b>NEED</b></h5>
         <div><b> Gap cover benefits are only available as an add-on to the members belonging to a registered medical aid.</b></div>
         
-                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                <div className="col-12" style={{paddingBottom: "0.5%"}}>
                     <div className="row g-3 align-items-center">
                         <div className="col-12">
                             <label htmlFor="id_number" className="col-form-label"><b>Details:</b></label>
@@ -325,7 +365,12 @@ const GapCover = ({user}) => {
                 <hr/>
 
                 <div><b>SECTION B</b></div>
-                <h5 className="h6 section_class1"><b>DEPENDENTS COVERED</b></h5>
+                <h5 className={
+            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
+            : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
+            : "h6 section_class2"
+        }><b>DEPENDENTS COVERED</b></h5>
                 <div className="col-6" style={{paddingBottom: "0.5%"}}>
                     <div className="row g-3 align-items-center">
                         <div className="col-6">
@@ -404,7 +449,12 @@ const GapCover = ({user}) => {
                 </table>
 
                 <div><b>SECTION C</b></div>
-                <h5 className="h6 section_class1"><b>SOLUTION</b></h5>
+                <h5 className={
+            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
+            : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
+            : "h6 section_class2"
+        }><b>SOLUTION</b></h5>
 
                 <div className="col-6" style={{paddingBottom: "0.5%"}}>
                     <div className="row g-3 align-items-center">
@@ -479,7 +529,12 @@ const GapCover = ({user}) => {
                 <hr/>
 
                 <div><b>SECTION D</b></div>
-                <h5 className="h6 section_class1"><b>BENEFITS</b></h5>
+                <h5 className={
+            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
+            : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
+            : "h6 section_class2"
+        }><b>BENEFITS</b></h5>
                 <div><b>In the event of a replacement complete both current and new product</b></div>
 
                 <table class="table">
@@ -618,7 +673,12 @@ const GapCover = ({user}) => {
                         </tr>
 
                         <tr>
-                            <h5 className="h6 section_class1"><b>WAITING PERIODS</b></h5>
+                            <h5 className={
+            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
+            : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
+            : "h6 section_class2"
+        }><b>WAITING PERIODS</b></h5>
                            
                         </tr>
 
@@ -656,7 +716,12 @@ const GapCover = ({user}) => {
                 </table>
 
                 <div><b>SECTION F</b></div>
-                <h5 className="h6 section_class1"><b>EXCLUSIONS</b></h5>
+                <h5 className={
+            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
+            : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
+            : "h6 section_class2"
+        }><b>EXCLUSIONS</b></h5>
 
                     <div className="row g-3 align-items-center">
                         <div className="col-6">
@@ -785,7 +850,12 @@ const GapCover = ({user}) => {
                     <hr/>
 
                     <div><b>SECTION G</b></div>
-                    <h5 className="h6 section_class1"><b>FINANCIAL ADVISER'S DECLARATION</b></h5>
+                    <h5 className={
+            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
+            : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
+            : "h6 section_class2"
+        }><b>FINANCIAL ADVISER'S DECLARATION</b></h5>
 
                     <hr/>
                     <div className="row g-3 align-items-center">
@@ -865,14 +935,38 @@ const GapCover = ({user}) => {
                             <input type="date" id="GP_FinanAdvisor_Date" onChange={(e) => {onChange(e)}} value={FormData['GP_FinanAdvisor_Date']}  name="GP_FinanAdvisor_Date" className="form-control" placeholder="Click here to enter text"  aria-describedby=""  />
                         </div>
                     </div>
-                    <div className="container1">
-                        <div className="icon1 update">
-                            <div className="tooltip1">
-                                Update
-                            </div>
-                            <span><button type="submit" className="updateGapCoverFormBTN" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
-                        </div>
-                    </div>
+                    <div  
+              className={
+                  state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                  : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
+                  : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
+                  : "container-sfp"
+              }
+          >
+              <div 
+                  className={"icon1 update"}
+              >
+                  <div 
+                      className={
+                          state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                          : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
+                          : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
+                          : "tooltip-sfp"
+                      }
+                  >
+                      Update
+                  </div>
+                  <span>
+                      <button 
+                          type="submit"  
+                          className="updateGapCoverFormBTN"
+                          style={{border: "none", backgroundColor: "transparent"}}
+                      >
+                          <i className="fa-solid fa-check" />
+                      </button>
+                  </span>
+              </div>
+          </div>
        </form>
 
             

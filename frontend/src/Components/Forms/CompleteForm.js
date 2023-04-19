@@ -17,10 +17,11 @@ import RiskFactors from './RiskFactors';
 import Footer from '../Footer';
 import RecordOfAdvice from './RecordOfAdvice';
 import Medical from './Medical';
-const CompleteForm = () => {
+import { connect } from 'react-redux';
+const CompleteForm = ({user}) => {
     const location = useLocation();
     const { state } = location;
-    if (!state) {
+    if (!state || state['formId'] === undefined || state['formId'] === null) {
         return <Navigate to="/"/>
     }
     // alert(state)
@@ -31,7 +32,7 @@ const CompleteForm = () => {
         <div>
         <main className="container">
           <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <RiskFactors data={{formId: state['formId']}} />
+            <RiskFactors data={{formId: state['formId'], advisorDetails: state['advisor']}} />
           </div>
           {/* <div className='col-6'>
             <NavLink to={{pathname:"/printform"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-12'>Print</NavLink>
@@ -41,58 +42,135 @@ const CompleteForm = () => {
         <br/>
         <ul className="nav nav-tabs" id="myTab" role="tablist">
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="record-of-advice" data-bs-toggle="tab" data-bs-target="#recordOfAdvice" type="button" role="tab" aria-controls="risk" aria-selected="true">Record of Advice</button>
+                <button 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
+                        : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
+                        : "nav-link"
+                    } 
+                    id="record-of-advice" data-bs-toggle="tab" data-bs-target="#recordOfAdvice" type="button" role="tab" aria-controls="risk" aria-selected="true">Record of Advice</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="risk-tab" data-bs-toggle="tab" data-bs-target="#risk" type="button" role="tab" aria-controls="risk" aria-selected="true">Risk Planning</button>
+                <button 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
+                        : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
+                        : "nav-link"
+                    } 
+                    id="risk-tab" data-bs-toggle="tab" data-bs-target="#risk" type="button" role="tab" aria-controls="risk" aria-selected="true">Risk Planning</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="invest-tab" data-bs-toggle="tab" data-bs-target="#invest" type="button" role="tab" aria-controls="invest" aria-selected="false">Investment Planning</button>
+                <button 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
+                        : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
+                        : "nav-link"
+                    } 
+                    id="invest-tab" data-bs-toggle="tab" data-bs-target="#invest" type="button" role="tab" aria-controls="invest" aria-selected="false">Investment Planning</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="assurance1-tab" data-bs-toggle="tab" data-bs-target="#assurance1" type="button" role="tab" aria-controls="assurance1" aria-selected="false">BA Risk</button>
+                <button 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
+                        : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
+                        : "nav-link"
+                    } 
+                    id="assurance1-tab" data-bs-toggle="tab" data-bs-target="#assurance1" type="button" role="tab" aria-controls="assurance1" aria-selected="false">BA Risk</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="assurance2-tab" data-bs-toggle="tab" data-bs-target="#assurance2" type="button" role="tab" aria-controls="assurance2" aria-selected="false">BA Investment</button>
+                <button 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
+                        : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
+                        : "nav-link"
+                    } 
+                    id="assurance2-tab" data-bs-toggle="tab" data-bs-target="#assurance2" type="button" role="tab" aria-controls="assurance2" aria-selected="false">BA Investment</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="employee-tab" data-bs-toggle="tab" data-bs-target="#employee" type="button" role="tab" aria-controls="employee" aria-selected="false">Employee Benefits</button>
+                <button 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
+                        : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
+                        : "nav-link"
+                    } 
+                    id="employee-tab" data-bs-toggle="tab" data-bs-target="#employee" type="button" role="tab" aria-controls="employee" aria-selected="false">Employee Benefits</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="fiduciary-tab" data-bs-toggle="tab" data-bs-target="#fiduciary" type="button" role="tab" aria-controls="fiduciary" aria-selected="false">Fiduciary</button>
+                <button 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
+                        : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
+                        : "nav-link"
+                    } 
+                    id="fiduciary-tab" data-bs-toggle="tab" data-bs-target="#fiduciary" type="button" role="tab" aria-controls="fiduciary" aria-selected="false">Fiduciary</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="Short-term-Commercial-tab" data-bs-toggle="tab" data-bs-target="#Short-term-Commercial" type="button" role="tab" aria-controls="Short-term-Commercial" aria-selected="false">Short-term Commercial</button>
+                <button 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
+                        : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
+                        : "nav-link"
+                    } 
+                    id="Short-term-Commercial-tab" data-bs-toggle="tab" data-bs-target="#Short-term-Commercial" type="button" role="tab" aria-controls="Short-term-Commercial" aria-selected="false">Short-term Commercial</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="Short-term-Personal-tab" data-bs-toggle="tab" data-bs-target="#Short-term-Personal" type="button" role="tab" aria-controls="Short-term-Personal" aria-selected="false">Short-term Personal</button>
+                <button 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
+                        : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
+                        : "nav-link"
+                    } 
+                    id="Short-term-Personal-tab" data-bs-toggle="tab" data-bs-target="#Short-term-Personal" type="button" role="tab" aria-controls="Short-term-Personal" aria-selected="false">Short-term Personal</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="Medical-tab" data-bs-toggle="tab" data-bs-target="#Medical" type="button" role="tab" aria-controls="Medical" aria-selected="false">Medical</button>
+                <button 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
+                        : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
+                        : "nav-link"
+                    } 
+                    id="Medical-tab" data-bs-toggle="tab" data-bs-target="#Medical" type="button" role="tab" aria-controls="Medical" aria-selected="false">Medical</button>
             </li>
             <li className="nav-item" role="presentation">
-                <button className="nav-link" id="Gap-Cover-tab" data-bs-toggle="tab" data-bs-target="#Gap-Cover" type="button" role="tab" aria-controls="Gap-Cover" aria-selected="false">Gap Cover</button>
+                <button 
+                    className={
+                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
+                        : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
+                        : "nav-link"
+                    } 
+                    id="Gap-Cover-tab" data-bs-toggle="tab" data-bs-target="#Gap-Cover" type="button" role="tab" aria-controls="Gap-Cover" aria-selected="false">Gap Cover</button>
             </li>
             <br/>
             </ul>
             <div className="tab-content" id="myTabContent">
-                <div className="tab-pane fade" id="recordOfAdvice" role="tabpanel" aria-labelledby="risk-tab"><RecordOfAdvice data={{formId: state['formId'],clientName: state['clientName'], clientId: FormData['clientId']}}/></div>
-                <div className="tab-pane fade" id="risk" role="tabpanel" aria-labelledby="risk-tab"><Risk data={{formId: state['formId'],}}/></div>
-                <div className="tab-pane fade" id="invest" role="tabpanel" aria-labelledby="invest-tab"><Invest data={{formId: state['formId'],}}/></div>
-                <div className="tab-pane fade" id="assurance1" role="tabpanel" aria-labelledby="assurance1-tab"><AssuranceRisk data={{formId: state['formId'],}} /></div>
-                <div className="tab-pane fade" id="assurance2" role="tabpanel" aria-labelledby="assurance2-tab"><AssuranceInvestment  data={{formId: state['formId'],}}/></div>
-                <div className="tab-pane fade" id="employee" role="tabpanel" aria-labelledby="employee-tab"><Employee data={{formId: state['formId'],}} /></div>
+                <div className="tab-pane fade" id="recordOfAdvice" role="tabpanel" aria-labelledby="risk-tab"><RecordOfAdvice /></div>
+                <div className="tab-pane fade" id="risk" role="tabpanel" aria-labelledby="risk-tab"><Risk /></div>
+                <div className="tab-pane fade" id="invest" role="tabpanel" aria-labelledby="invest-tab"><Invest /></div>
+                <div className="tab-pane fade" id="assurance1" role="tabpanel" aria-labelledby="assurance1-tab"><AssuranceRisk  /></div>
+                <div className="tab-pane fade" id="assurance2" role="tabpanel" aria-labelledby="assurance2-tab"><AssuranceInvestment  /></div>
+                <div className="tab-pane fade" id="employee" role="tabpanel" aria-labelledby="employee-tab"><Employee  /></div>
                 {/* {
                     state['clientIdNumber']!== undefined ? 
                     <div className="tab-pane fade" id="fiduciary" role="tabpanel" aria-labelledby="fiduciary-tab"><Fiduciary data={{formId: state['formId'],advisorId: state['advisorId'], clientIdNumber: state['clientIdNumber']}}/></div>
                     : <></>
                 } */}
-                <div className="tab-pane fade" id="fiduciary" role="tabpanel" aria-labelledby="fiduciary-tab"><Fiduciary data={{formId: state['formId'],advisorId: state['advisorId']}} /></div>
+                <div className="tab-pane fade" id="fiduciary" role="tabpanel" aria-labelledby="fiduciary-tab"><Fiduciary /></div>
                 {/* <div className="tab-pane fade" id="fiduciary" role="tabpanel" aria-labelledby="fiduciary-tab"><Fiduciary FormData={FiduciaryFormData} setFormData={setFiduciaryFormData} /></div> */}
-                <div className="tab-pane fade" id="Short-term-Commercial" role="tabpanel" aria-labelledby="Short-term-Commercial-tab"><Short_term_Commercial data={{formId: state['formId']}}/></div>
+                <div className="tab-pane fade" id="Short-term-Commercial" role="tabpanel" aria-labelledby="Short-term-Commercial-tab"><Short_term_Commercial /></div>
                 <div className="tab-pane fade" id="Gap-Cover" role="tabpanel" aria-labelledby="Gap-Cover-tab"><GapCover /></div>
-                <div className="tab-pane fade" id="Short-term-Personal" role="tabpanel" aria-labelledby="Short-term-Personal-tab"><Short_term_Personal data={{formId: state['formId']}}/></div>
-                <div className="tab-pane fade" id="Medical" role="tabpanel" aria-labelledby="Medical-tab"><Medical data={{formId: state['formId']}}/></div>
+                <div className="tab-pane fade" id="Short-term-Personal" role="tabpanel" aria-labelledby="Short-term-Personal-tab"><Short_term_Personal /></div>
+                <div className="tab-pane fade" id="Medical" role="tabpanel" aria-labelledby="Medical-tab"><Medical /></div>
             </div>
       </main>
         <Footer />
@@ -101,4 +179,8 @@ const CompleteForm = () => {
     )
 }
 
-export default CompleteForm
+const mapStateToProps = state => ({
+    isAuthenticated: state.Auth.isAuthenticated,
+    user: state.Auth.user,
+  })
+export default connect(mapStateToProps)(CompleteForm)

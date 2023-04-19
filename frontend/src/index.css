@@ -11,3 +11,65 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.sfp {
+  background-color: #00788b;
+  border-color: #00788b;
+}
+
+.fs4p {
+  background-color: #6AC7D2;
+  border-color: #6AC7D2;
+}
+
+.sanlam {
+  background-color: #0074C9;
+  border-color: #0074C9;
+}
+
+.sfp-outline-primary {
+  color: #00788b;
+  border-color: #00788b;
+}
+.sfp-outline-primary:hover {
+  color: #ffffff;
+  border-color: #00788b;
+  background-color: #00788b;
+}
+
+.fs4p-outline-primary {
+  color: #6AC7D2;
+  border-color: #6AC7D2;
+}
+.fs4p-outline-primary:hover {
+  color: #ffffff;
+  border-color: #6AC7D2;
+  background-color: #6AC7D2;
+}
+
+.sanlam-outline-primary {
+  color: #0074C9;
+  border-color: #0074C9;
+}
+.sanlam-outline-primary:hover {
+  color: #ffffff;
+  border-color: #0074C9;
+  background-color: #0074C9;
+}
+
+.sfp-text {
+  color: #00788b;
+}
+
+.fs4p-text {
+  color: #6AC7D2;
+}
+
+.sanlam-text {
+  color: #0074C9;
+}
+
+.nav-link .fs4p-text .active {
+  background-color: #6AC7D2;
+  color: white;
+}

@@ -37,7 +37,19 @@ const Header = ({isAuthenticated, user}) => {
   )
   return (
     <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-      <NavLink className="navbar-brand col-md-3 col-lg-2 me-0 px-3" to="/">Succession Finance Planning</NavLink>
+      <NavLink className="navbar-brand col-md-3 col-lg-2 me-0 px-3" to="/">
+        {
+          user ?
+          user['email'].includes('sfp') ? <span>Succession Financial Planning</span>
+          : user['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals</span>
+          : user['email'].includes('sanlam') ? <span>Succession Financial Planning</span>
+          : <span>Succession Financial Planning</span>
+          : 
+          <>
+            <span>Web ROA</span>
+          </>
+        }
+      </NavLink>
       <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>

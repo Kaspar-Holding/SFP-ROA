@@ -15,7 +15,7 @@ const Invest = ({user}) =>
     const location = useLocation();
     const { state } = location;
     const [FormData, setFormData] = useState({
-        advisorId : user['id'],
+        advisorId : state['advisor']['id'],
         formId : state['formId'],
         // clientIdNumber : "",
 
@@ -47,7 +47,7 @@ const Invest = ({user}) =>
         
     })
     const [ProductTaken, setProductTaken] = useState([{
-        advisorId : user['id'],  
+        advisorId : state['advisor']['id'],  
         formId : state['formId'],  
           
 
@@ -119,7 +119,7 @@ const Invest = ({user}) =>
       const AddNewProductTaken = (e) => {
         const current = [...ProductTaken]
         current.push({
-            advisorId : user['id'],  
+            advisorId : state['advisor']['id'],  
             formId : state['formId'],  
             
 
@@ -400,7 +400,7 @@ const Invest = ({user}) =>
             // if (response.data['ProductTaken'].length > 0) {
             //   } else {
             //     setProductTaken([{
-            //         advisorId : user['id'],  
+            //         advisorId : state['advisor']['id'],  
             //         formId : state['formId'],  
                       
             
@@ -548,7 +548,12 @@ const Invest = ({user}) =>
         <>
         
       <div className="notification_container">
-        <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+        <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
           {SuccessMessage}
           {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
         </div>
@@ -556,9 +561,23 @@ const Invest = ({user}) =>
             <form onSubmit={e => onSubmit(e)}>
                 
                 <br/>
-                    <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>INVESTMENT AND SAVINGS</b></div>
+                    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      } style={{fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>INVESTMENT AND SAVINGS</b></div>
                     <hr/>
-                    <h6 className="text-start " style={{ color: "#14848A"}} > <b>Source of Funds</b></h6>  
+                    <h6 
+                        className={
+                            state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+                            : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+                            : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+                            : "fw-bold"
+                        }  
+                    > 
+                        <b>Source of Funds</b>
+                    </h6>  
                     <div className='row'>
                         <div className='col-6'>
                             <p className='text-start'>Identify the source of funds being invested</p>
@@ -627,7 +646,12 @@ const Invest = ({user}) =>
                 }}
             />
             <br/>
-            <h6 className="text-start " style={{ color: "#14848A"}} > <b>Analysis of Client's Circumstances</b></h6>
+            <h6 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      }  > <b>Analysis of Client's Circumstances</b></h6>
             <p className="text-start">The analysis of your personal circumstances as described above.</p> 
 
 
@@ -1216,7 +1240,12 @@ const Invest = ({user}) =>
 
 
             <h5 className="text-start " ><b>SECTION C:</b></h5> 
-            <h6 className="text-start " style={{ color: "#14848A"}} ><b>Financial Solutions:</b></h6>
+            <h6 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      }  ><b>Financial Solutions:</b></h6>
 
             <p>Summary of recommendations to address your identified needs</p>
             {
@@ -1275,7 +1304,12 @@ const Invest = ({user}) =>
                 }}
             />
             <h5 className="text-start " ><b>SECTION D:</b></h5> 
-            <h6 className="text-start " style={{ color: "#14848A"}} ><b>Alternative Solutions Considered</b></h6>
+            <h6 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      }  ><b>Alternative Solutions Considered</b></h6>
 
             <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
 
@@ -1427,7 +1461,12 @@ const Invest = ({user}) =>
 
             <br />
             <h5 className="text-start " ><b>SECTION E:</b></h5> 
-            <h6 className="text-start " style={{ color: "#14848A"}} ><b>Product Taken</b></h6>
+            <h6 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      }  ><b>Product Taken</b></h6>
 
             <p>Products accepted by you to meet your requirements.</p>
             {
@@ -2321,15 +2360,38 @@ const Invest = ({user}) =>
                 }): <></>
             }
             
-      
-      <div className="container1">
-            <div className="icon1 update">
-                <div className="tooltip1">
-                    Update
-                </div>
-                <span><button type="submit" className="updateInvestFormBTN" style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
-            </div>
-        </div>
+            <div  
+                        className={
+                            state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                            : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
+                            : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
+                            : "container-sfp"
+                        }
+                    >
+                        <div 
+                            className={"icon1 update"}
+                        >
+                            <div 
+                                className={
+                                    state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                                    : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
+                                    : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
+                                    : "tooltip-sfp"
+                                }
+                            >
+                                Update
+                            </div>
+                            <span>
+                                <button 
+                                    type="submit"  
+                                    className="updateInvestFormBTN"
+                                    style={{border: "none", backgroundColor: "transparent"}}
+                                >
+                                    <i className="fa-solid fa-check" />
+                                </button>
+                            </span>
+                        </div>
+                    </div>
 
             </form>
         </>

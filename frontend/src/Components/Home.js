@@ -12,7 +12,7 @@ const Home = () => {
             <section className="py-5 text-center container">
                 <div className="row py-lg-5">
                     <div className="col-lg-6 col-md-8 mx-auto">
-                    <h1 className="fw-light">Succession Finance Planning</h1>
+                    <h1 className="fw-light">Succession Financial Planning</h1>
                     <p className="lead text-muted">An online solution to handle the data and forms.</p>
                     <p>
                         <NavLink to="/signin" className="btn btn-primary my-2">Login</NavLink>

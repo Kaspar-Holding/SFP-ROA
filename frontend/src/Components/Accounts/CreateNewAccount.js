@@ -13,7 +13,8 @@ const CreateNewAccount = ({isAuthenticated, user}) => {
     const [SubmissionErrorVisibilty, setSubmissionErrorVisibilty] = useState("none")
     const [FormData, setFormData] = useState({
         email :  "",
-        name : "",
+        first_name : "",
+        last_name : "",
         password : "",
         re_password : "",
         is_superuser : true,
@@ -37,7 +38,8 @@ const CreateNewAccount = ({isAuthenticated, user}) => {
                 setSubmissionMessage("User Account Created Successfully")
                 setFormData({
                     email :  "",
-                    name : "",
+                    first_name : "",
+                    last_name : "",
                     password : "",
                     re_password : "",
                     is_superuser : true,
@@ -73,6 +75,7 @@ const CreateNewAccount = ({isAuthenticated, user}) => {
             }, 5000)
         }
     }
+    // console.log(JSON.stringify(FormData))
     const onSubmit = e => {
         e.preventDefault()
         createUser()
@@ -104,8 +107,12 @@ const CreateNewAccount = ({isAuthenticated, user}) => {
             </div>
             <form onSubmit={e => onSubmit(e)}>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
-                    <input type="text" className="form-control" onChange={e => onChange(e)} name='name' value={FormData['name']} required />
+                    <label htmlFor="exampleInputEmail1" className="form-label">First Name</label>
+                    <input type="text" className="form-control" onChange={e => onChange(e)} name='first_name' value={FormData['first_name']} required />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputEmail1" className="form-label">Last Name</label>
+                    <input type="text" className="form-control" onChange={e => onChange(e)} name='last_name' value={FormData['last_name']} required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>

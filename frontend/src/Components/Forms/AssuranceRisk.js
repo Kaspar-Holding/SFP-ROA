@@ -305,7 +305,7 @@ const AssuranceRisk = ({user}) =>
       
       const [FormData, setFormData] = useState({
         
-        advisorId: user['id'],
+        advisorId: state['advisor']['id'],
         formId : state['formId'],
         
                 
@@ -479,7 +479,7 @@ const AssuranceRisk = ({user}) =>
       const AddNewProductTaken = (e) => {
         const current = [...ProductTaken]
         current.push({
-            advisorId : user['id'],  
+            advisorId : state['advisor']['id'],  
             formId : state['formId'],  
             
             ProductTaken : 0, 
@@ -627,7 +627,12 @@ const AssuranceRisk = ({user}) =>
         <>
         
           <div className="notification_container">
-            <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+            <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
               {SuccessMessage}
               {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
             </div>
@@ -635,7 +640,12 @@ const AssuranceRisk = ({user}) =>
           <form onSubmit={e => onSubmit(e)}>
             
         <br/>
-            <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>BUSINESS ASSURANCE</b></div>
+            <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      } style={{fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>BUSINESS ASSURANCE</b></div>
             <hr/>
     
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
@@ -740,12 +750,42 @@ const AssuranceRisk = ({user}) =>
             <hr className="col-12" />
 
             <div className="col-12 p_class">
-                <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  </p>
+            <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span>Succession Financial Planning (SFP) </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals (FS4P) </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span>Succession Financial Planning (AFP) </span>
+                                        : <span>Succession Financial Planning (SFP) </span>
+                                        : 
+                                        <>
+                                            <span>Succession Financial Planning (SFP) </span>
+                                        </>
+                                    } 
+                                    processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
+                                        : <span> SFP </span>
+                                        : 
+                                        <>
+                                            <span> SFP </span>
+                                        </>
+                                    } 
+                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  
+                                </p>
             </div>
 
             <h5 className="section_class"><b>SECTION A:</b></h5>
             {/* <ol style={{fontFamily: 'Arial Narrow',fontSize: 15}}/> */}
-            <div className="h6 fw-bold" style={{color: '#00788A'}}>1. Compulsory Disclosures</div>
+            <div className={
+                                    state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                    : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                    : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                    : "h6 fw-bold"
+                                }>1. Compulsory Disclosures</div>
             
 
             <div className="row g-3 align-items-center">
@@ -883,7 +923,12 @@ const AssuranceRisk = ({user}) =>
                 </div>
             </div>
             <hr/>
-            <div className="h6 fw-bold" style={{color: '#00788A'}}>2. Financial Intelligence Centre Act (FICA)</div>
+            <div className={
+                                    state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                    : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                    : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                    : "h6 fw-bold"
+                                }>2. Financial Intelligence Centre Act (FICA)</div>
 
             <div className="row g-3 align-items-center">
                 <div className="col-6">
@@ -953,7 +998,12 @@ const AssuranceRisk = ({user}) =>
             </div>
             <hr/>
 
-            <div className="h6 fw-bold" style={{color: '#00788A'}}>3. Replacements</div>
+            <div className={
+                                    state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                    : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                    : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                    : "h6 fw-bold"
+                                }>3. Replacements</div>
 
             <div className="row g-3 align-items-center">
                 <div className="col-6">
@@ -1159,7 +1209,12 @@ const AssuranceRisk = ({user}) =>
             </div>
 
             <hr/>
-            {/* <div className="h6 fw-bold" style={{color: '#00788A'}}>4. Source of Funds</div>
+            {/* <div className={
+                                    state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                    : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                    : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                    : "h6 fw-bold"
+                                }>4. Source of Funds</div>
             <div className='row'>
                 <div className='col-6'>
                     <p className='text-start'>Identify the source of funds being invested</p>
@@ -1206,7 +1261,12 @@ const AssuranceRisk = ({user}) =>
 
             <hr />
             <h5 className="section_class"><b>SECTION B:</b></h5>
-            <div className="h6 fw-bold" style={{color: '#00788A'}}>Background Information</div>
+            <div className={
+                                    state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                    : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                    : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                    : "h6 fw-bold"
+                                }>Background Information</div>
             <p>Provide a brief description of the business</p>
 
         {
@@ -1257,7 +1317,12 @@ const AssuranceRisk = ({user}) =>
         <p><b>Business Needs Identified</b></p>
 
         <h4><b>PART I: RISK</b></h4>
-        <div className="h6 fw-bold" style={{color: '#00788A'}}>2. Financial Needs Analysis Summary: Business Assurance</div>
+        <div className={
+                                    state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                    : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                    : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                    : "h6 fw-bold"
+                                }>2. Financial Needs Analysis Summary: Business Assurance</div>
         <br/>
         <p><b>Business assurance needs identified</b></p>
 
@@ -1410,7 +1475,12 @@ const AssuranceRisk = ({user}) =>
   <tbody>
     <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
-      <td style={{color:"#14848a",fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Buy and sell </td>
+      <td className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Buy and sell </td>
       <td></td>
       <td></td>
       <td></td>
@@ -1513,7 +1583,7 @@ const AssuranceRisk = ({user}) =>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_Other']-FormData['AR_BnS_OtherTotalNeed']} aria-label="" />
+            <input type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherExistingProvisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1522,7 +1592,7 @@ const AssuranceRisk = ({user}) =>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherExistingShortfallSurplus']} aria-label="" />
+            <input type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherTotalNeed']-FormData['AR_BnS_OtherExistingProvisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1571,7 +1641,12 @@ const AssuranceRisk = ({user}) =>
    
     <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
-      <td style={{color:"#14848a",fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Key person </td>
+      <td className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Key person </td>
       <td></td>
       <td></td>
       <td></td>
@@ -1778,7 +1853,12 @@ const AssuranceRisk = ({user}) =>
 
     <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
-      <td style={{color:"#14848a",fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Suretyship and Liability </td>
+      <td className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Suretyship and Liability </td>
       <td></td>
       <td></td>
       <td></td>
@@ -1922,7 +2002,12 @@ const AssuranceRisk = ({user}) =>
 
      <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
-      <td style={{color:"#14848a",fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Business Overheads Protection </td>
+      <td className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Business Overheads Protection </td>
       <td></td>
       <td></td>
       <td></td>
@@ -2067,7 +2152,12 @@ const AssuranceRisk = ({user}) =>
 
      <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
-      <td style={{color:"#14848a",fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Credit Loan Account Redemption </td>
+      <td className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Credit Loan Account Redemption </td>
       <td></td>
       <td></td>
       <td></td>
@@ -2179,7 +2269,12 @@ const AssuranceRisk = ({user}) =>
     <br/>
      <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
-      <td style={{color:"#14848a",fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Debit Loan Redemption </td>
+      <td className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Debit Loan Redemption </td>
       <td></td>
       <td></td>
       <td></td>
@@ -2290,7 +2385,12 @@ const AssuranceRisk = ({user}) =>
 
 <br/>
   <h5 className="section_class"><b>SECTION B:</b></h5>
-    <div className="h6 fw-bold" style={{color: '#00788A'}}>Financial Solutions</div>
+    <div className={
+                                    state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                    : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                    : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                    : "h6 fw-bold"
+                                }>Financial Solutions</div>
     <p>Summary of recommendations to address the business's needs identified.</p>
     <p>Life Cover</p>
     <hr/>
@@ -2401,7 +2501,12 @@ Record the client's instructions, deviations and implications thereof.
 
 <br/>
 <h5 className="section_class"><b>SECTION C:</b></h5>
-    <div className="h6 fw-bold" style={{color: '#00788A'}}>Alternative Solutions Considered</div>    
+    <div className={
+                                    state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                    : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                    : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                    : "h6 fw-bold"
+                                }>Alternative Solutions Considered</div>    
     <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
 
   
@@ -2545,7 +2650,12 @@ Record the client's instructions, deviations and implications thereof.
         }}
     />
 <h5 className="section_class"><b>SECTION D:</b></h5>
-    <div className="h6 fw-bold" style={{color: '#00788A'}}>Product Taken (Each additional need must be accompanied by its own product annexure.)</div>
+    <div className={
+                                    state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                    : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                    : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                    : "h6 fw-bold"
+                                }>Product Taken (Each additional need must be accompanied by its own product annexure.)</div>
 
 <p>Products accepted by you to meet the business’s requirements.</p>
 <br/>
@@ -3154,14 +3264,38 @@ Record the client's instructions, deviations and implications thereof.
        : <></>
     }
 <hr/>
-                            <div className="container1">
-                                <div className="icon1 update">
-                                    <div className="tooltip1">
-                                        Update
-                                    </div>
-                                    <span><button type="submit" className='updateBARiskFormBTN' style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
-                                </div>
+                    <div  
+                        className={
+                            state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                            : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
+                            : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
+                            : "container-sfp"
+                        }
+                    >
+                        <div 
+                            className={"icon1 update"}
+                        >
+                            <div 
+                                className={
+                                    state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                                    : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
+                                    : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
+                                    : "tooltip-sfp"
+                                }
+                            >
+                                Update
                             </div>
+                            <span>
+                                <button 
+                                    type="submit"  
+                                    className="updateBARiskFormBTN"
+                                    style={{border: "none", backgroundColor: "transparent"}}
+                                >
+                                    <i className="fa-solid fa-check" />
+                                </button>
+                            </span>
+                        </div>
+                    </div>
           
           </form>
         </>

@@ -101,7 +101,7 @@ const Risk = ({user}) =>
       const { state } = location;
       const [FormData, setFormData] = useState({
         
-        advisorId : user['id'],
+        advisorId : state['advisor']['id'],
         formId : state['formId'],
 
         RP_DC_LumpSumTotalNeed : "",
@@ -179,7 +179,7 @@ const Risk = ({user}) =>
       const AddNewProductTaken = (e) => {
         const current = [...ProductTaken]
         current.push({
-          advisorId : user['id'],  
+          advisorId : state['advisor']['id'],  
           formId : state['formId'],  
           Product_Taken : "",  
           Product_Provider : "",
@@ -267,7 +267,7 @@ const Risk = ({user}) =>
                 // if (response.data['ProductTaken'].length > 0) {
                 // } else {
                 //   setProductTaken([{
-                //     advisorId : user['id'],  
+                //     advisorId : state['advisor']['id'],  
                 //     formId : state['formId'],  
                 //     Product_Taken : "",  
                 //     Product_Provider : "",
@@ -390,7 +390,13 @@ const Risk = ({user}) =>
       <header >
         
       <div className="notification_container">
-        <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+        <div 
+          className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
           {SuccessMessage}
           {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
         </div>
@@ -398,9 +404,23 @@ const Risk = ({user}) =>
         <form onSubmit={e => onSubmit(e)}>
           
    <br/>
-   <div className="text-start "style={{ color: "#14848A" ,fontSize:'36.66px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>RISK</b></div>
+   <div
+      className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      } 
+      style={{fontSize:'36.66px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>RISK</b></div>
    <hr/>
-        <h5 className="text-start " style={{ color: "#14848A"}} > <b>Financial Needs Analysis Summary</b></h5>  
+        <h5 
+          className={
+            state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+            : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+            : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+            : "fw-bold"
+          }
+        > <b>Financial Needs Analysis Summary</b></h5>  
 
         <table className="table">
   <thead>
@@ -418,7 +438,12 @@ const Risk = ({user}) =>
   <tbody>
     <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
-      <td style={{color:"#14848a",fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death Cover: </td>
+      <td className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death Cover: </td>
       <td></td>
       <td></td>
       <td></td>
@@ -592,7 +617,12 @@ const Risk = ({user}) =>
       <tbody>  
     <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
-      <td style={{color:"#14848a",fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability Cover: </td>
+      <td className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability Cover: </td>
       <td></td>
       <td></td>
       <td></td>
@@ -837,7 +867,12 @@ const Risk = ({user}) =>
 
     <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
-      <td style={{color:"#14848a",fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Dread Disease Cover: </td>
+      <td className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Dread Disease Cover: </td>
       <td></td>
       <td></td>
       <td></td>
@@ -1015,7 +1050,12 @@ const Risk = ({user}) =>
         
 
   <h5 className="text-start " ><b>SECTION C:</b></h5> 
-        <h6 className="text-start " style={{ color: "#14848A"}} ><b>Financial Solutions:</b></h6>
+        <h6 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      } ><b>Financial Solutions:</b></h6>
         
         <p className="text-start">Summary of recommendations to address your identified needs.</p>
         <p className="text-start"> No cash values are payable/accessible unless a specified event has occurred, i.e., the life event for which cover is taken; in which case the proceeds are payable tax-free. The premiums are not tax-deductible according to current legislation and loans against the policy are not permitted.</p>    
@@ -1164,7 +1204,12 @@ const Risk = ({user}) =>
 
 
 <h5 className="text-start " ><b>SECTION D:</b></h5> 
-        <h6 className="text-start " style={{ color: "#14848A"}} ><b>Alternative Solutions Considered</b></h6>
+        <h6 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      } ><b>Alternative Solutions Considered</b></h6>
 
         <p className="text-start">The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
 
@@ -1313,7 +1358,12 @@ const Risk = ({user}) =>
           return (
             <>
 
-                  <h6 className="text-start " style={{ color: "#14848A"}} ><b>Product Taken {i+1}</b></h6>
+                  <h6 className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : "fw-bold"
+      } ><b>Product Taken {i+1}</b></h6>
 
                   <p className="text-start ">Products accepted by you to meet your requirements. </p> 
                   <hr/>
@@ -2230,14 +2280,38 @@ const Risk = ({user}) =>
       ) : <></>
     }
 
-                            <div className="container1">
-                                <div className="icon1 update">
-                                    <div className="tooltip1">
-                                        Update
-                                    </div>
-                                    <span><button type="submit" className='updateRiskFormBTN' style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
-                                </div>
+                    <div  
+                        className={
+                            state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                            : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
+                            : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
+                            : "container-sfp"
+                        }
+                    >
+                        <div 
+                            className={"icon1 update"}
+                        >
+                            <div 
+                                className={
+                                    state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                                    : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
+                                    : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
+                                    : "tooltip-sfp"
+                                }
+                            >
+                                Update
                             </div>
+                            <span>
+                                <button 
+                                    type="submit"  
+                                    className="updateRiskFormBTN"
+                                    style={{border: "none", backgroundColor: "transparent"}}
+                                >
+                                    <i className="fa-solid fa-check" />
+                                </button>
+                            </span>
+                        </div>
+                    </div>
         
         
       

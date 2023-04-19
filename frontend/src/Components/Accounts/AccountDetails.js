@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react'
-import { useLocation } from "react-router-dom"
+import { Navigate, useLocation } from "react-router-dom"
 import Loader from '../Loader/Loader';
 
 const AccountDetails = (props) => {
@@ -90,6 +90,9 @@ const AccountDetails = (props) => {
         setLoaderVisibility("none")
         setDataVisibility("block")
     }, []);
+    if (!state) {
+        return <Navigate to="/"/>
+    }
   return (
     <>
         <div style={{display: LoaderVisibility}}>

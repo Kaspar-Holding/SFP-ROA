@@ -11,7 +11,7 @@ const Fiduciary = ({user}) => {
   const { state } = location;
   // const [propsData, setpropsData] = useState(props.data);
   const [FormData, setFormData] = useState({
-    advisorId : user['id'],
+    advisorId : state['advisor']['id'],
     formId : state['formId'],
     // clientIdNumber : propsData['clientIdNumber'],
     fiduciaryWillInPlace : 2,
@@ -94,12 +94,22 @@ const Fiduciary = ({user}) => {
       <>
       <br/>
       <div className="notification_container">
-        <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+        <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
           {SuccessMessage}
           {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
         </div>
       </div>
-      <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Fiduciary</b></div>
+      <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Fiduciary</b></div>
       <hr/>
           <form onSubmit={e => onSubmit(e)}>
                 <div style={{fontSize:'14px'}} align="left">

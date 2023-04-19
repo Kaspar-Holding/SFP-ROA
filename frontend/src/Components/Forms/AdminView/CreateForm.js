@@ -527,7 +527,12 @@ const CreateForm = ({user}) => {
             <br/>
         
             <div className="notification_container">
-                <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+                <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
                 {SuccessMessage}
                 {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
                 </div>
@@ -6773,7 +6778,7 @@ const CreateForm = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <label className="col-form-label">Succession Finance Planning</label>
+                        <label className="col-form-label">Succession Financial Planning</label>
                         {/* <select className="text-start form-select" name='RF_Delivery_Channel' id='RF_Delivery_Channel' value={parseInt(FormData['RF_Transaction_Geography'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Intermediaries (Brokers, consultants)</option>

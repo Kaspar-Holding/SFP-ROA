@@ -53,7 +53,7 @@ const Short_term_Commercial= ({user}) => {
       const { state } = location;
 
     const [FormData, setFormData] = useState({
-        advisorId : user['id'],
+        advisorId : state['advisor']['id'],
         formId : state['formId'],
         
         STIC_Quotation_Number : "",
@@ -1160,10 +1160,20 @@ const Short_term_Commercial= ({user}) => {
     return(
         <>
         <br/>
-            <div class="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SHORT-TERM INSURANCE: COMMERCIAL</b></div>
+            <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SHORT-TERM INSURANCE: COMMERCIAL</b></div>
             <hr/>
             <div className="notification_container">
-              <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+              <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
               {SuccessMessage}
               {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
               </div>
@@ -1317,9 +1327,39 @@ const Short_term_Commercial= ({user}) => {
                     </div>
         <hr/>
 
-        <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary of the information and material on which the advisory process you recently undertook with your advisor was based. Contact your advisor if you have any questions concerning the content. You are entitled to a copy of this document for your records. You have given consent to Succession Financial Planning (SFP) to process your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP to retain your personal information to recommend the best financial solutions for your financial needs and maintenance. You have given consent to be contacted from time to time for maintenance, news, correspondence and storage of your personal information relating to your financial matters.Terms and Conditions on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a> </p>
+        <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span>Succession Financial Planning (SFP) </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals (FS4P) </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span>Succession Financial Planning (AFP) </span>
+                                        : <span>Succession Financial Planning (SFP) </span>
+                                        : 
+                                        <>
+                                            <span>Succession Financial Planning (SFP) </span>
+                                        </>
+                                    } 
+                                    processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
+                                    {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
+                                        : <span> SFP </span>
+                                        : 
+                                        <>
+                                            <span> SFP </span>
+                                        </>
+                                    } 
+                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  
+                                </p>
         <hr/>
-        <div class="text-start "style={{ color: "#14848A" ,fontSize:'20px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>A. DETAILS OF CLIENT </b></div>
+        <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'20px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>A. DETAILS OF CLIENT </b></div>
         <hr/>
                     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
                       <div className="row">
@@ -1563,7 +1603,12 @@ const Short_term_Commercial= ({user}) => {
                     <br/>
                     <p style={{color:"grey"}}>It is important for the purpose of disclosure that the insurer is aware of the full business description which encompasses all the activities that the business is involved. This impacts the validity of the cover and potential future claims, and you are requested to inform us whenever there may be change in the business description.</p>
 
-                    <div class="text-start "style={{ color: "#14848A" ,fontSize:'15px'}} ><b>Client Preference:</b></div>
+                    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'15px'}} ><b>Client Preference:</b></div>
 
                     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
                       <div className="row">
@@ -1646,7 +1691,12 @@ const Short_term_Commercial= ({user}) => {
                     </div>
 
                     <br/>
-                    <div class="text-start "style={{ color: "#14848A" ,fontSize:'20px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>B. GENERAL</b></div>
+                    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'20px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>B. GENERAL</b></div>
                     <hr/>
 
                             <div className="row g-3 align-items-center">
@@ -1775,7 +1825,12 @@ const Short_term_Commercial= ({user}) => {
                             </div>
 
                             <br/>
-                            <div class="text-start "style={{ color: "#14848A" ,fontSize:'20px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>C. REPLACEMENT OF INSURANCE</b></div>
+                            <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'20px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>C. REPLACEMENT OF INSURANCE</b></div>
                             <hr/>
 
                             <div className="row g-3 align-items-center">
@@ -4321,15 +4376,30 @@ const Short_term_Commercial= ({user}) => {
                               </div>
                             </div>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Insurable interest:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Insurable interest:</b></div>
                               <p>The Insured must have an insurable interest in any item insured under this policy at the date of the event giving rise to a claim. If the Insured's insurable interest in an insured item is an interest other than as an owner or a good-faith possessor of the goods (in terms of a credit agreement or else) who bears the risk of loss, the Insured must advise the Company of the nature and extent of the insurable interest before the cover commences. The cover for any such item will start only when the Company has given written confirmation and agreed to insure the property. Should the nature or extent of the insurable interest in any item insured under this policy change, the Insured must notify the Company immediately in writing of such change. Failure to do so may entitle the Company to reject the claim if the Insured's insurable interest was not agreed to by the Company.</p>
                               {/* <br/> */}
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Average:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Average:</b></div>
                               <p>Policies of insurance covering material property are subject to average. This means that you could recover the full amount of an insured loss only if your sum insured represents the full value of the property covered. If the amounts insured are less than the full value at the time of the loss, you can recover only a proportionate amount of the loss. If there are several items of property insured, the average will be applied separately to each item. Consequently, sums insured should always be maintained at adequate level.</p>
                               {/* <br/> */}
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Reinstatement value conditions:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Reinstatement value conditions:</b></div>
                               <p>Where cover is subject to these conditions, the basis upon which the amount payable is calculated should be the cost of replacement or reinstatement by similar property or repair to a condition substantially the same, but not better or more extensive than its condition when NEW.  </p>
                               <p>It is therefore essential that in all instances where these conditions apply, the sum insured must be representative of the actual NEW INSTALLED REPLACEMENT VALUE at the time of reinstatement, and must cater for: </p>
                               <ul>
@@ -4342,10 +4412,20 @@ const Short_term_Commercial= ({user}) => {
                                 <li>Value-added tax</li>
                               </ul>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Value-added tax:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Value-added tax:</b></div>
                               <p>All sums insured/limits of indemnity must be inclusive of VAT and in some instances, e.g. personal accident/stated benefits cover, where indemnity payments received by 'vendor insured's' are vatable, the sums insured/limits of indemnity would need to be increased by a further 15% so as not to reduce the net payment when a claim occurs.</p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Premium payment:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Premium payment:</b></div>
                               <p>The premium is due and payable on or before the inception date or renewal date but must be paid immediately upon receipt of the invoice, but no later than within 30 (thirty) days of inception/renewal of the policy. The Company shall not be obliged to accept premium tendered to it more than 30 (thirty) days after the inception or renewal date but may do so upon application at such terms as it, at its sole discretion, may determine.</p>
                               <ul>
                                 <li>Where the premium is paid monthly</li>
@@ -4361,28 +4441,58 @@ const Short_term_Commercial= ({user}) => {
 
                               <p>If all premiums have not been paid, any claims made will not be settled under this policy.</p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Adjustment Premium:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Adjustment Premium:</b></div>
                               <p>If the premium for any section of this policy has been calculated on any estimated figures, the Insured shall, after the expiry of each period of insurance, furnish the Company with such particulars and information as the Company may require for the purpose of recalculation of the premium for such period. Any differences shall be paid by or to the Insured as the case may be.</p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Duty of disclosure of material facts:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Duty of disclosure of material facts:</b></div>
                               <p>Because you have a far better knowledge of your risk than your insurers, please advise us prior to inception of cover or renewal or when changes are made to your risk during the year, of information which may affect the insurer's appreciation of the risk. Examples could be particularly hazardous aspects of your business (such as processes undertaken, new products, signing of leases or contracts which may impose additional liabilities on you, situation of premises, threats from other parties, warehousing of customers' properties, hiring of plant and equipment).</p>
                               <p>You do not have to disclose things which diminish the risk of insurers or are common knowledge or knowledge of which is waived by the insurer. Where, however, you are in any doubt, it is better to inform insurers as many claims have been repudiated on grounds of non-disclosure.</p>
                               <p>When a policy is placed with an Insurer you need to disclose all material facts, which could affect your Insurer's appreciation of the risk of loss, damage or liability, for which they will be providing you with insurance cover. </p>
                               <p>Once cover has been placed, the need to continue disclosing material facts not previously disclosed to your current insurers continues. This applies to all your insurance covers not just those insuring your assets, and disclosure should be made via your broker as soon as the facts come to your attention. </p>
                               <p>In addition, you need to immediately advise your broker of any changes or planned changes in your assets or business activities.</p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Standard construction:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Standard construction:</b></div>
                               <p>The building and outbuildings are constructed with brick walls, stone or concrete and are roofed with slate, tiles, concrete, asbestos, or metal. We must be advised if any structure on your premises is not constructed in accordance with these requirements.</p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Unoccupied buildings/premises:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Unoccupied buildings/premises:</b></div>
                               <p>If any building and/or premise shall become unoccupied for 30 (thirty) consecutive days, the insurance cover is suspended as regards the property affected unless the Insured, before the occurrence of any damage, obtains the written agreement of the insurer to continue with the cover.</p>
                               <p>During the period of the initial unoccupancy of 30 (thirty) consecutive days, the Insured shall become a co-insurer with the insurer and shall bear a proportion of any damage equal to 20% (twenty per cent) of the claim before deduction of any first amount payable.</p>
                               <p>Theft (or any attempt thereat) of contents, electronic and all other equipment, plant, machinery, landlord's fixtures, and fittings, etc. not accompanied by forcible and violent entry into or exit from such building, is excluded unless specifically insured. An alarm warranty is also applicable for all sections which provide theft cover to the premises and requires that a linked alarm be activated and in working order whenever the premises is unoccupied. The alarm must be linked to a 24-hour manned control room and armed reaction and be activated whenever the premises is unoccupied. If either of these conditions are not met, there will be no cover. We further recommend that you test the alarm at the intervals recommended by the service provider to ensure that the alarm is operational and in working order.</p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Power surge:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Power surge:</b></div>
                               <p>Power surge cover is generally limited in terms of the policy, and we encourage you to check each section of the policy to determine the adequacy of the limit of cover selected. Insurers further require that there is SABS-approved power surge arrestors installed at the premises for the cover to be valid, or else ensuring that the cover is not limited, or additional excesses being applied. We recommend that such surge arrestors be installed on the mains of the premises by a professional service provider, to ensure that all equipment is adequate protected.</p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Retaining and boundary walls:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Retaining and boundary walls:</b></div>
                               <p>Simplistically, a boundary wall serves as a dividing structure between two pieces of land and a retaining wall serves to split levels of ground to prevent the higher level from subsiding onto the lower level. </p>
                               <p>In consequence, a retaining wall carries a much higher risk than a boundary wall.</p>
                               <p>The policy excludes damage to retaining walls caused by storm, wind, water, hail, or snow, unless you can provide insurers with written proof confirming the retaining walls were designed and constructed in accordance with a professional structural engineer design specification. </p>
@@ -4390,16 +4500,36 @@ const Short_term_Commercial= ({user}) => {
                               <p>It is imperative that property owners be aware of all retaining and boundary walls on their property and monitor, on an ongoing basis, the changes to and around all retaining and boundary walls, especially where the other side of the wall is outside of their property. </p>
                               <p>Pleading ignorance when your boundary wall becomes a retaining wall by the action or inaction of a third party and then collapses is unfortunately of no help in an insurance claim. When in doubt, always ask your broker for assistance.</p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Claim Notification:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Claim Notification:</b></div>
                               <p>On the happening of an event that may result in a claim under this policy, notify us as soon as possible and provide in writing details of the event including all substantiating documentation that your insurers may require. The police must be notified immediately after the event. Insurers require that all claims be reported no later than 30 days after the insured event or there may be no cover.</p>
                               
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Prevention of loss:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Prevention of loss:</b></div>
                               <p>You are required to take all reasonable steps and precautions to prevent accidents or losses, including, but not limited to, compliance and adherence to laws and regulations which are material to the risk. It is warranted that all laws, regulations, by-laws, and rules which apply to the business or any other matter for which cover is provided in terms of the policy shall be always adhered to. </p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Remote jamming/theft of items from a vehicle without forcible and violent entry or exit:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Remote jamming/theft of items from a vehicle without forcible and violent entry or exit:</b></div>
                               <p>If the Insured can demonstrate through video surveillance footage (or any other conclusive proof) that an attempt was made to lock the vehicle using the vehicle remote but that the locking mechanism was blocked by thieves using an electronic device, such evidence shall be deemed to satisfy the forcible and violent entry or exit requirement for any loss out of the cab or boot of the vehicle</p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Burglar alarm warranty (where applicable):</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Burglar alarm warranty (where applicable):</b></div>
                               <p>It is a condition precedent to the liability of the Company that a burglar alarm system will be installed in all premises stated in the schedule and warranted that: </p>
                               <ul>
                                 <li>The burglar alarm installed in the premises shall be fully activated whenever the premises is not open for normal business unless any principal, partner, director or employee is in the premises </li>
@@ -4412,14 +4542,29 @@ const Short_term_Commercial= ({user}) => {
                                 <li>Such alarm will be maintained in proper working order, but the Insured shall be deemed to have discharged their liability if they have maintained their obligations under a maintenance contract with the installation/service company of the alarm system </li>
                               </ul>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Excess/first amount payable/deductible:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Excess/first amount payable/deductible:</b></div>
                               <p>Your policy is subject to several different excesses/first amounts payable for each section of the policy where cover has been selected – these are detailed per section of the policy or are listed under the Excess section. Refer to the various sections for applicable excesses/first amounts payable in the event of a claim.</p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Tracking device requirements:</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Tracking device requirements:</b></div>
                               <p>Your policy may contain specific requirements regarding the compulsory fitment, maintenance and testing of tracking devices, as well as the type of tracking device specified for the type/category of vehicle (i.e. constant monitoring/early warning). We strongly encourage you to familiarise yourself with these requirements as theft/hijacking cover is often subject to such tracking devices being installed, maintained, and tested. </p>
                               <p>Where tracking devices are not a requirement, and you have elected to fit such a device of your own accord, inform us as you may be entitled to a reduction in premium and/or your theft excess may be waived (subject to policy terms and conditions).</p>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 1:FIRE</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 1:FIRE</b></div>
                               <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -4842,7 +4987,12 @@ const Short_term_Commercial= ({user}) => {
                                 </div>
                               </div>
 
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 2:BUILDINGS COMBINED</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 2:BUILDINGS COMBINED</b></div>
                               <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -5148,7 +5298,12 @@ const Short_term_Commercial= ({user}) => {
                               </div>
 
                               <br/>
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 3:OFFICE CONTENTS</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 3:OFFICE CONTENTS</b></div>
                               <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -5387,7 +5542,12 @@ const Short_term_Commercial= ({user}) => {
                               </div>
 
                               <br/>
-                              <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 4:BUSINESS INTERRUPTION</b></div>
+                              <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 4:BUSINESS INTERRUPTION</b></div>
                               <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -6770,7 +6930,12 @@ const Short_term_Commercial= ({user}) => {
     <input spellCheck="true" id="STIC_BusInt2_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_BusInt2_Comments']}  name="STIC_BusInt2_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 5:ACCOUNTS RECEIVABLE</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 5:ACCOUNTS RECEIVABLE</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -7028,7 +7193,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec5_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec5_Comments']}  name="STIC_Sec5_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 6:THEFT</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 6:THEFT</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -7158,7 +7328,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec6_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec6_Comments']}  name="STIC_Sec6_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 7:MONEY</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 7:MONEY</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -7492,7 +7667,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec7_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec7_Comments']}  name="STIC_Sec7_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 8:GLASS</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 8:GLASS</b></div>
     <div className='row' style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -7670,7 +7850,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec8_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec8_Comments']}  name="STIC_Sec8_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 9:FIDELITY GURANTEE</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 9:FIDELITY GURANTEE</b></div>
     <div className='row' style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -8012,7 +8197,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec9_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec9_Comments']}  name="STIC_Sec9_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 10:GOODS IN TRANSIT</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 10:GOODS IN TRANSIT</b></div>
     <div className='row' style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -8303,7 +8493,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec10_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec10_Comments']}  name="STIC_Sec10_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 11:BUSINESS ALL RISKS</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 11:BUSINESS ALL RISKS</b></div>
     <div className='row' style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -8493,7 +8688,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec11_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec11_Comments']}  name="STIC_Sec11_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 12:ACCIDENTAL DAMAGE</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 12:ACCIDENTAL DAMAGE</b></div>
     <div className='row' style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -8776,7 +8976,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec12_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec12_Comments']}  name="STIC_Sec12_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 13:PUBLIC LIABILITY</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 13:PUBLIC LIABILITY</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -9345,7 +9550,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec13_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec13_Comments']}  name="STIC_Sec13_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 14:SPECIALIST PRODUCTS</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 14:SPECIALIST PRODUCTS</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -9605,7 +9815,12 @@ const Short_term_Commercial= ({user}) => {
     </tbody>
   </table>
 
-  <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 15:EMPLOYER'S LIABILITY</b></div>
+  <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 15:EMPLOYER'S LIABILITY</b></div>
   <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -9750,7 +9965,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec15_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec15_Comments']}  name="STIC_Sec15_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 16:STATED BENEFITS</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 16:STATED BENEFITS</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -10212,7 +10432,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec16_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec16_Comments']}  name="STIC_Sec16_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 17:GROUP PERSONAL ACCIDENT</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 17:GROUP PERSONAL ACCIDENT</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -10714,7 +10939,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec17_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec17_Comments']}  name="STIC_Sec17_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 18:MOTOR</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 18:MOTOR</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -11260,7 +11490,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec18_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec18_Comments']}  name="STIC_Sec18_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 19:ELECTRONIC EQUIPMENT</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 19:ELECTRONIC EQUIPMENT</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -11728,7 +11963,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec19_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec19_Comments']}  name="STIC_Sec19_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 20:HOUSE OWNERS</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 20:HOUSE OWNERS</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -11976,7 +12216,12 @@ const Short_term_Commercial= ({user}) => {
       <input spellCheck="true" id="STIC_Sec20_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec20_Comments']}  name="STIC_Sec20_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 21:HOUSE HOLDERS</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 21:HOUSE HOLDERS</b></div>
 
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
       <div className="row">
@@ -12228,7 +12473,12 @@ const Short_term_Commercial= ({user}) => {
 
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>D. DEBIT ORDER DETAILS</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>D. DEBIT ORDER DETAILS</b></div>
 
     <p>
       I, the undersigned hereby request and authorise to arrange with my bank to collect the payment due on the policy (as amended from time to time) by debit order from the bank account identified below.  
@@ -12412,7 +12662,12 @@ const Short_term_Commercial= ({user}) => {
 
       <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>E. Record of Advice</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>E. Record of Advice</b></div>
 
     <p>Products considered appropriate to address the needs of the client</p>
     {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_1" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_1']}  name="STIC_SecE_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
@@ -12491,7 +12746,12 @@ const Short_term_Commercial= ({user}) => {
 
     <br/>
 
-    <div class="text-start "style={{ color: "#14848A" ,fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>G. DECLARATION BY INTERMEDIARY</b></div>
+    <div className={
+        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+        : ""
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>G. DECLARATION BY INTERMEDIARY</b></div>
 
     <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
       <div className="row">
@@ -12548,14 +12808,38 @@ const Short_term_Commercial= ({user}) => {
 
       </div>
   </div>
-  <div className="container1">
-          <div className="icon1 update">
-              <div className="tooltip1">
-                  Update
+  <div  
+              className={
+                  state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                  : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
+                  : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
+                  : "container-sfp"
+              }
+          >
+              <div 
+                  className={"icon1 update"}
+              >
+                  <div 
+                      className={
+                          state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                          : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
+                          : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
+                          : "tooltip-sfp"
+                      }
+                  >
+                      Update
+                  </div>
+                  <span>
+                      <button 
+                          type="submit"  
+                          className="updateSTICFormBTN"
+                          style={{border: "none", backgroundColor: "transparent"}}
+                      >
+                          <i className="fa-solid fa-check" />
+                      </button>
+                  </span>
               </div>
-              <span><button type="submit" className='updateSTICFormBTN' style={{border: "none", backgroundColor: "transparent"}}><i className="fa-solid fa-check" /></button></span>
           </div>
-      </div>
   </form>
 <br/>
   <p><b>Very Important:</b></p>

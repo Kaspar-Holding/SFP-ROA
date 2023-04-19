@@ -332,7 +332,7 @@ const RiskFactors = ({user}) => {
 
         const location = useLocation();
         const { state } = location;
-
+        const advisorDetails = state['advisor']
 
         const [errorData, setErrorData] = useState({
             status: "",
@@ -347,11 +347,10 @@ const RiskFactors = ({user}) => {
 
         const [updateErrorVisibilty, setUpdateErrorVisibility] = useState("none")
 
-
         const [FormData, setFormData] = useState({
         
-            advisorId : user['id'],
-            advisorName:user['is_superuser'] ,            
+            advisorId : advisorDetails['id'],
+            advisorName:advisorDetails['is_superuser'] ,            
             RF_Overall_Risk: "Undetermined",
             RF_BU_Risk : "2",
             RF_Date : "",
@@ -401,7 +400,7 @@ const RiskFactors = ({user}) => {
     
         })    
         const [LP_Data, setLP_Data] = useState([{
-            advisorId : user['id'],  
+            advisorId : advisorDetails['id'],  
             RF_LP_Adjust_Risk : 0,
             RF_LP_Name : "",
             RF_LP_Client_ID : "",
@@ -416,7 +415,7 @@ const RiskFactors = ({user}) => {
         const AddNewLP_Data = (e) => {
             const current = [...LP_Data]
             current.push({
-                advisorId : user['id'],  
+                advisorId : advisorDetails['id'],  
                 formId : state['formId'], 
                 RF_LP_Adjust_Risk : 0,
                 RF_LP_Name : "",
@@ -466,7 +465,7 @@ const RiskFactors = ({user}) => {
                         setLP_Data(response.data['LP_Data'])
                     } else {
                         setLP_Data([{
-                            advisorId : user['id'],  
+                            advisorId : advisorDetails['id'],  
                             RF_LP_Adjust_Risk : 0,
                             RF_LP_Name : "",
                             RF_LP_Client_ID : "",
@@ -596,7 +595,7 @@ const RiskFactors = ({user}) => {
             const Body = JSON.stringify({
                 "formId" : state['formId'],
                 "dra_status" : dra_status,
-                "advisorId" : user['id']
+                "advisorId" : advisorDetails['id']
             })
             try {
                 const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/printing/downloadPDF/`, Body,config)
@@ -617,7 +616,7 @@ const RiskFactors = ({user}) => {
         
         useEffect(() => {
             if (user){
-                LoadRFForm(user['id'],state['formId'])
+                LoadRFForm(advisorDetails['id'],state['formId'])
             }
             // setInterval(updateIPForm, 20000);
         }, []);
@@ -638,7 +637,17 @@ const RiskFactors = ({user}) => {
                         FormData['status'] === 1 ?
                         <>
                             <div className='col-7'>
-                                <b>Dynamic Risk Assessment</b>
+                                <div 
+                                    className={
+                                        state['advisor']['email'].includes('sfp') ? "sfp-text" 
+                                        : state['advisor']['email'].includes('fs4p') ? "fs4p-text" 
+                                        : state['advisor']['email'].includes('sanlam') ? "sanlam-text" 
+                                        : "sfp-text"
+                                    }
+                                    style={{fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} 
+                                >
+                                    <b>Dynamic Risk Assessment</b>
+                                </div>
                             </div>
                             <div className='col-5'>
                                 <div className='row'>
@@ -678,7 +687,12 @@ const RiskFactors = ({user}) => {
             <br/>
         
             <div className="notification_container">
-                <div className="alert alert-success fade show" style={{display: SuccessMessageVisibility}} role="alert">
+                <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
                 {SuccessMessage}
                 {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
                 </div>
@@ -689,7 +703,7 @@ const RiskFactors = ({user}) => {
             <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
                 <div className="row">
                     {
-                        user['is_superuser'] ?
+                        advisorDetails['is_superuser'] ?
                         <>
                             <div className="col-6" style={{paddingBottom: "0.5%"}}>
                                 <div className="row g-3 align-items-center">
@@ -936,7 +950,7 @@ const RiskFactors = ({user}) => {
             
                
             {(() => {
-                if(user['is_superuser'])
+                if(advisorDetails['is_superuser'])
                 {
                     return (<>
                     
@@ -967,7 +981,7 @@ const RiskFactors = ({user}) => {
                 <label className="col-form-label"><b>A. Client Risk</b></label>
             </div>
             {(() => {
-                if(user['is_superuser'])
+                if(advisorDetails['is_superuser'])
                 {
                     return (<>
                         <div className="col-2">
@@ -1001,7 +1015,7 @@ const RiskFactors = ({user}) => {
             
             <div className="col-2">
             {(() => {
-                if(user['is_superuser'])
+                if(advisorDetails['is_superuser'])
                 {
                     return (<>
                          {(() => { 
@@ -1478,7 +1492,7 @@ const RiskFactors = ({user}) => {
                     
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                      {(() => { 
@@ -1512,7 +1526,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                     {(() => { 
@@ -1536,7 +1550,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-2">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                  {(() => { 
@@ -1842,7 +1856,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                     {(() => { 
@@ -1917,7 +1931,7 @@ const RiskFactors = ({user}) => {
                     <div className="col-1">
                         
                         {(() => {
-                            if(user['is_superuser'])
+                            if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                      <label className="col-form-label">3</label>
@@ -1928,7 +1942,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                  {(() => { 
@@ -2277,7 +2291,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                     {(() => { 
@@ -2353,7 +2367,7 @@ const RiskFactors = ({user}) => {
                     <div className="col-1">
                         
                         {(() => {
-                            if(user['is_superuser'])
+                            if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                      <label className="col-form-label">3</label>
@@ -2364,7 +2378,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                 {(() => { 
@@ -2714,7 +2728,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                 {(() => { 
@@ -2790,7 +2804,7 @@ const RiskFactors = ({user}) => {
                     <div className="col-1">
                         
                         {(() => {
-                            if(user['is_superuser'])
+                            if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                      <label className="col-form-label">3</label>
@@ -2801,7 +2815,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                     {(() => { 
@@ -3176,7 +3190,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                    {(() => { 
@@ -3252,7 +3266,7 @@ const RiskFactors = ({user}) => {
                     <div className="col-1">
                         
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                  <label className="col-form-label">3</label>
@@ -3263,7 +3277,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                  {(() => { 
@@ -3405,7 +3419,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -3466,7 +3480,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -3478,7 +3492,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -3595,7 +3609,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                                 {
                                     return (<>
                                             {(() => { 
@@ -3648,7 +3662,7 @@ const RiskFactors = ({user}) => {
                     <div className="col-1">
                         
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                  <label className="col-form-label">1</label>
@@ -3659,7 +3673,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -3750,7 +3764,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                          {(() => { 
@@ -3789,7 +3803,7 @@ const RiskFactors = ({user}) => {
                     <div className="col-1">
                         
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                  <label className="col-form-label">1</label>
@@ -3800,7 +3814,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -4127,7 +4141,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -4202,7 +4216,7 @@ const RiskFactors = ({user}) => {
                     <div className="col-1">
                         
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                  <label className="col-form-label">3</label>
@@ -4213,7 +4227,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -4560,7 +4574,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                     {(() => { 
@@ -4636,7 +4650,7 @@ const RiskFactors = ({user}) => {
                     <div className="col-1">
                         
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                  <label className="col-form-label">3</label>
@@ -4647,7 +4661,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                  {(() => { 
@@ -4771,7 +4785,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -4815,7 +4829,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -4827,7 +4841,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5441,7 +5455,7 @@ const RiskFactors = ({user}) => {
 
             <div className="col-1">
             {(() => {
-                if(user['is_superuser'])
+                if(advisorDetails['is_superuser'])
                     {
                         return (<>
                             {(() => { 
@@ -5484,7 +5498,7 @@ const RiskFactors = ({user}) => {
 
                 <div className="col-1">
                 {(() => {
-                    if(user['is_superuser'])
+                    if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                 <label className="col-form-label">2</label>
@@ -5496,7 +5510,7 @@ const RiskFactors = ({user}) => {
 
                 <div className="col-2">
                 {(() => {
-                    if(user['is_superuser'])
+                    if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                   {(() => { 
@@ -5779,7 +5793,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5820,7 +5834,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                      <label className="col-form-label">2</label>
@@ -5832,7 +5846,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5908,7 +5922,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -5940,7 +5954,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>   
@@ -5952,7 +5966,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6001,7 +6015,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6033,7 +6047,7 @@ const RiskFactors = ({user}) => {
                         
                     <div className="col-1">   
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">2</label>
@@ -6045,7 +6059,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6101,7 +6115,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -6133,7 +6147,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">  
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -6145,7 +6159,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6233,7 +6247,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6265,7 +6279,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -6277,7 +6291,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6309,7 +6323,7 @@ const RiskFactors = ({user}) => {
 
                     <hr/>
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -6740,16 +6754,23 @@ const RiskFactors = ({user}) => {
                        
                     
                     <div className="col-2">
-                        <label className="col-form-label">Delivery channel</label>
+                        <label className="col-form-label">
+                            Delivery Channel
+                        </label>
                     </div>
 
                     <div className="col-2">
-                        <select className="text-start form-select" name='RF_Delivery_Channel' id='RF_Delivery_Channel' value={parseInt(FormData['RF_Delivery_Channel'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
-                            <option value="0" selected>Select Option</option>
-                            <option value="1">Intermediaries (Brokers)</option>
-                            <option value="2">Intermediaries (Consultants)</option>
-                                
-                        </select>    
+                        {
+                            advisorDetails ?
+                            advisorDetails['email'].includes('sfp') ? <span>Succession Financial Planning</span>
+                            : advisorDetails['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals</span>
+                            : advisorDetails['email'].includes('sanlam') ? <span>Succession Financial Planning</span>
+                            : <span>Succession Financial Planning</span>
+                            : 
+                            <>
+                                <span>Succession Financial Planning</span>
+                            </>
+                        }   
                     </div>
 
                     <div className="col-2">
@@ -6762,7 +6783,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6803,7 +6824,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -6815,7 +6836,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -6878,7 +6899,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -6910,7 +6931,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     <label className="col-form-label">1</label>
@@ -6922,7 +6943,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                      {(() => { 
@@ -6976,7 +6997,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -7008,7 +7029,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                      <label className="col-form-label">1</label>
@@ -7020,7 +7041,7 @@ const RiskFactors = ({user}) => {
 
                     <div className="col-1">
                     {(() => {
-                        if(user['is_superuser'])
+                        if(advisorDetails['is_superuser'])
                             {
                                 return (<>
                                     {(() => { 
@@ -7072,7 +7093,7 @@ const RiskFactors = ({user}) => {
 
                 <div className="col-2">
                 {(() => {
-                    if(user['is_superuser'])
+                    if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                  {(() => { 
@@ -7149,7 +7170,7 @@ const RiskFactors = ({user}) => {
 
                 <div className="col-2">
                 {(() => {
-                    if(user['is_superuser'])
+                    if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                 {(() => { 
@@ -7248,7 +7269,7 @@ const RiskFactors = ({user}) => {
 
                 <div className="col-1">
                 {(() => {
-                    if(user['is_superuser'])
+                    if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                 {(() => { 
@@ -7298,7 +7319,7 @@ const RiskFactors = ({user}) => {
 
                 <div className="col-1">
                 {(() => {
-                    if(user['is_superuser'])
+                    if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                 {(() => { 
@@ -7320,7 +7341,7 @@ const RiskFactors = ({user}) => {
 
                 <div className="col-2">
                 {(() => {
-                    if(user['is_superuser'])
+                    if(advisorDetails['is_superuser'])
                         {
                             return (<>
                                  {(() => { 
@@ -7694,7 +7715,7 @@ const RiskFactors = ({user}) => {
 
                             <div className="col-1">
                             {(() => {
-                                if(user['is_superuser'])
+                                if(advisorDetails['is_superuser'])
                                     {
                                         return (<>
                                             <label className="col-form-label">1</label>
@@ -7706,7 +7727,7 @@ const RiskFactors = ({user}) => {
 
                             <div className="col-1">
                             {(() => {
-                                if(user['is_superuser'])
+                                if(advisorDetails['is_superuser'])
                                     {
                                         return (<>
                                             {(() => { 
@@ -8007,7 +8028,7 @@ const RiskFactors = ({user}) => {
 
                             <div className="col-1">
                             {(() => {
-                                if(user['is_superuser'])
+                                if(advisorDetails['is_superuser'])
                                     {
                                         return (<>
                                              {(() => { 
@@ -8082,7 +8103,7 @@ const RiskFactors = ({user}) => {
 
                             <div className="col-1">
                             {(() => {
-                                if(user['is_superuser'])
+                                if(advisorDetails['is_superuser'])
                                     {
                                         return (<>
                                             <label className="col-form-label">3</label>
@@ -8096,7 +8117,7 @@ const RiskFactors = ({user}) => {
 
                             <div className="col-1">
                             {(() => {
-                                if(user['is_superuser'])
+                                if(advisorDetails['is_superuser'])
                                     {
                                         return (<>
                                           {(() => { 
@@ -8442,7 +8463,7 @@ const RiskFactors = ({user}) => {
 
                             <div className="col-1">
                             {(() => {
-                                if(user['is_superuser'])
+                                if(advisorDetails['is_superuser'])
                                     {
                                         return (<>
                                             {(() => { 
@@ -8517,7 +8538,7 @@ const RiskFactors = ({user}) => {
 
                             <div className="col-1">
                             {(() => {
-                                if(user['is_superuser'])
+                                if(advisorDetails['is_superuser'])
                                     {
                                         return (<>
                                             <label className="col-form-label">3</label>
@@ -8530,7 +8551,7 @@ const RiskFactors = ({user}) => {
 
                             <div className="col-1">
                             {(() => {
-                                if(user['is_superuser'])
+                                if(advisorDetails['is_superuser'])
                                     {
                                         return (<>
                                             {(() => { 
@@ -8878,7 +8899,7 @@ const RiskFactors = ({user}) => {
 
                             <div className="col-1">
                             {(() => {
-                                if(user['is_superuser'])
+                                if(advisorDetails['is_superuser'])
                                     {
                                         return (<>
                                             {(() => { 
@@ -8953,7 +8974,7 @@ const RiskFactors = ({user}) => {
 
                         <div className="col-1">
                         {(() => {
-                            if(user['is_superuser'])
+                            if(advisorDetails['is_superuser'])
                                 {
                                     return (<>
                                         <label className="col-form-label">3</label>
@@ -8966,7 +8987,7 @@ const RiskFactors = ({user}) => {
 
                         <div className="col-1">
                         {(() => {
-                            if(user['is_superuser'])
+                            if(advisorDetails['is_superuser'])
                                 {
                                     return (<>
                                         {(() => { 

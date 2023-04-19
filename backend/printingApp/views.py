@@ -2740,63 +2740,63 @@ def wkhtmltopdfapi(request):
             data["STIP"]['STIP_Vehicle_Owner'] == "" and
             data["STIP"]['STIP_Vehicle_RegOwner'] == "" and
             data["STIP"]['STIP_Vehicle_Usage'] == "" and
-            data["STIP"]['STIP_Vehicle_ONParkingOptions'] == 0 and
+            int(data["STIP"]['STIP_Vehicle_ONParkingOptions']) == 0 and
             data["STIP"]['STIP_Vehicle_ONParking'] == "" and
             data["STIP"]['STIP_Vehicle_ONOtherParking'] == "" and
-            data["STIP"]['STIP_Vehicle_CoverType'] == 0 and
-            data["STIP"]['STIP_Vehicle_SM1'] == 2 and
-            data["STIP"]['STIP_Vehicle_SM2'] == 2 and
-            data["STIP"]['STIP_Vehicle_SM3'] == 2 and
-            data["STIP"]['STIP_Vehicle_SM4'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_CoverType']) == 0 and
+            int(data["STIP"]['STIP_Vehicle_SM1']) == 2 and
+            int(data["STIP"]['STIP_Vehicle_SM2']) == 2 and
+            int(data["STIP"]['STIP_Vehicle_SM3']) == 2 and
+            int(data["STIP"]['STIP_Vehicle_SM4']) == 2 and
             data["STIP"]['STIP_Vehicle_Driver'] == "" and
             data["STIP"]['STIP_Vehicle_DriverLicIssDate'] == "" and
             data["STIP"]['STIP_Vehicle_LicCode'] == "" and
             data["STIP"]['STIP_Vehicle_SumInsured'] == "" and
             data["STIP"]['STIP_Vehicle_ClaimBonus'] == "" and
-            data["STIP"]['STIP_Vehicle_VoluntaryExcess'] == 2 and
-            data["STIP"]['STIP_Vehicle_Extras1'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_VoluntaryExcess']) == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras1']) == 2 and
             data["STIP"]['STIP_Vehicle_ExtrasAmount1'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras2'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras2'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount2'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras3'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras3'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount3'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras4'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras4'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount4'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras5'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras5'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount5'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras6'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras6'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount6'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras7'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras7'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount7'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras8'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras8'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount8'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras9'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras9'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount9'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras10'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras10'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount10'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras11'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras11'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount11'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras12'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras12'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount12'] == "" and
-            data["STIP"]['STIP_Vehicle_Extras13'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_Extras13'] == 2) and
             data["STIP"]['STIP_Vehicle_ExtrasAmount13'] == "" and
             data["STIP"]['STIP_Vehicle_Extras14'] == "" and
             data["STIP"]['STIP_Vehicle_ExtrasAmount14'] == "" and
-            data["STIP"]['STIP_Vehicle_AC1'] == 2 and
-            data["STIP"]['STIP_Vehicle_AC2'] == 2 and
-            data["STIP"]['STIP_Vehicle_AC3'] == 2 and
-            data["STIP"]['STIP_Vehicle_AC4'] == 2 and
-            data["STIP"]['STIP_Vehicle_AC5'] == 2 and
+            int(data["STIP"]['STIP_Vehicle_AC1']) == 2 and
+            int(data["STIP"]['STIP_Vehicle_AC2']) == 2 and
+            int(data["STIP"]['STIP_Vehicle_AC3']) == 2 and
+            int(data["STIP"]['STIP_Vehicle_AC4']) == 2 and
+            int(data["STIP"]['STIP_Vehicle_AC5']) == 2 and
             data["STIP"]['STIP_Vehicle_Fees'] == "" and
             data["STIP"]['STIP_Vehicle_Commission'] == "" and
             data["STIP"]['STIP_Vehicle_TotalPremium'] == "" and
             data["STIP"]['STIP_Vehicle_Comments'] == "" and        
             data["STIP"]['STIP_MotorC_RegOwner'] == "" and
             data["STIP"]['STIP_MotorC_Usage'] == "" and
-            data["STIP"]['STIP_MotorC_ONParkingOptions'] == 0 and
+            int(data["STIP"]['STIP_MotorC_ONParkingOptions']) == 0 and
             data["STIP"]['STIP_MotorC_ONParking'] == "" and
             data["STIP"]['STIP_MotorC_ONOtherParking'] == "" and
-            data["STIP"]['STIP_MotorC_CoverType'] == 0 and
+            int(data["STIP"]['STIP_MotorC_CoverType']) == 0 and
             int(data["STIP"]['STIP_MotorC_Driver']) == 0 and
             data["STIP"]['STIP_MotorC_Driver1'] == "" and
             data["STIP"]['STIP_MotorC_DriverLicIssDate'] == "" and
@@ -2859,6 +2859,7 @@ def wkhtmltopdfapi(request):
             stip_status4 = True
         else:
             stip_status4 = False
+        print('stip_status1' + str(stip_status1) + str(stip_status2) + " " + str(stip_status3) + " " + str(stip_status4))
         if stip_status1 == True and stip_status2 == True and stip_status3 == True and stip_status4 == True:
             data['STIP_status'] = False
         else:
@@ -2880,6 +2881,13 @@ def wkhtmltopdfapi(request):
         data['STIP_status'] = False
     data['dra_status'] = request.data['dra_status']
     data['advisor'] = UserAccount.objects.filter(id=request.data['advisorId']).values('first_name', 'last_name', 'email', 'is_superuser').first()
+    data['company'] = ""
+    if 'sfp' in data['advisor']['email']:
+        data['company'] = "SFP"
+    if 'fs4p' in data['advisor']['email']:
+        data['company'] = "FS4P"
+    if 'sanlam' in data['advisor']['email']:
+        data['company'] = "AFP"
     # print(data['STIP']['STIP_Applicant_Gender'])
     template = get_template('pdfForm.html')
     cmd_options = {

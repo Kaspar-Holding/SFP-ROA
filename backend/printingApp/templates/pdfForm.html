@@ -4891,15 +4891,39 @@
                 width: 40%;
                 padding-left: 3%;
             }
-            .header {
-                color: #14848A;
-                font-size: 30px;
-                font-family: "Arial Narrow", Arial, sans-serif;
-                fontWeight:'bold';
-            }
-            ol li {
-                color: #00788A
-            }
+            {% if company == "SFP" %}
+                .header {
+                    color: #14848A;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    fontWeight:'bold';
+                }
+                ol li {
+                    color: #00788A;
+                }
+            {% endif %}
+            {% if company == "FS4P" %}
+                .header {
+                    color: #6AC7D2;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    fontWeight:'bold';
+                }
+                ol li {
+                    color: #6AC7D2;
+                }
+            {% endif %}
+            {% if company == "AFP" %}
+                .header {
+                    color: #0074C9;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    fontWeight:'bold';
+                }
+                ol li {
+                    color: #0074C9;
+                }
+            {% endif %}
             .background {
                 color: #00788A
             }
@@ -4919,7 +4943,19 @@
         </style>
     </head>
     <body>
-        <img  src="{% get_media_prefix %}logo.png" class='iconDetails'/>
+        {% if company == 'SFP' %}
+            <img  src="{% get_media_prefix %}logo.png" class='iconDetails'/>
+        {% endif %}
+        {% if company == 'FS4P' %}
+            <div style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+                <img  src="{% get_media_prefix %}fs4p_logo.jpg" class='iconDetails'/>
+            </div>
+        {% endif %}
+        {% if company == 'AFP' %}
+            <img  src="{% get_media_prefix %}afp_logo.jpg" class='iconDetails'/>
+        {% endif %}
+        <br/>
+        <br/>
         {% if dra_status %}
             <div>
                 <b class="header">DYNAMIC RISK ASSESSMENT</b>
@@ -6907,13 +6943,13 @@
                             <span>
                                 
                                 {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}
-                                Accept with standard controls
+                                Accept with company=company standard controls
                                 {% endif %}
                                 {% if RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8  or RF_Client_Match_id == 11 %}
                                 Conduct Enhanced Due Diligence
                                 {% endif %}
                                 {% if RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}
-                                Accept with simplified or standard Due Diligence
+                                Accept with company=company simplified or standard Due Diligence
                                 {% endif %}
                                 {% if RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}
                                 DO NOT ACCEPT.Follow business rules for Sanctioned Entity.
@@ -6931,49 +6967,50 @@
             <div>
         {% endif %}
         {% if roa_status %}
-            {% include 'roa.html' with RoA=RoA %}
+            {% include 'roa.html' with company=company RoA=RoA %}
             <hr/>
         {% endif %}
         {% if rp_status %}
-            {% include 'riskplanning.html' with RP=RP %}
+            {% include 'riskplanning.html' with company=company RP=RP %}
             <hr/>
         {% endif %}
         {% if ip_status %}
-            {% include 'investmentplanning.html' with IP=IP %}    
+            {% include 'investmentplanning.html' with company=company IP=IP %}    
             <hr/>
         {% endif %}
         {% if BA_Risk_status %}
-            {% include 'businessRisk.html' with BA_Risk=BA_Risk %}
+            {% include 'businessRisk.html' with company=company BA_Risk=BA_Risk %}
             <hr/>
         {% endif %}
         {% if BA_Investment_status %}
-            {% include 'businessAssurance.html' with BA_Investment=BA_Investment %}
+            {% include 'businessAssurance.html' with company=company BA_Investment=BA_Investment %}
             <hr/>
         {% endif %}
         {% if EB_status %}
-            {% include 'employee.html' with EB=EB %}
+            {% include 'employee.html' with company=company EB=EB %}
             <hr/>
         {% endif %}
         {% if STIC_status %}
-            {% include 'short-term-commercial.html' with STIC=STIC %}
+            {% include 'short-term-commercial.html' with company=company STIC=STIC %}
             <hr/>
         {% endif %}
         {% if STIP_status %}
-            {% include 'short-term-personal.html' with STIP=STIP %}
+            {% include 'short-term-personal.html' with company=company STIP=STIP %}
             <hr/>
         {% endif %}
         {% if Fiduciary_status %}
-            {% include 'fiduciary.html' with Fiduciary=Fiduciary %}
+            {% include 'fiduciary.html' with company=company Fiduciary=Fiduciary %}
         {% endif %}
         {% if MD_status %}
-            {% include 'medical.html' with MD=MD %}
+            {% include 'medical.html' with company=company MD=MD %}
             <hr/>
         {% endif %}
         {% if GP_status %}
-            {% include 'gapCover.html' with GP=GP %}
+            {% include 'gapCover.html' with company=company GP=GP %}
             <hr/> 
         {% endif %}
         <hr/>
+        {% if company == "SFP" %}
         <p class="column12" style="font-family:  'Arial Narrow', 'Arial', 'sans-serif';">
             Succession Financial Planning Advisory Services (Pty) Ltd. |
             Registration Number: 2001/018056/07<br />
@@ -6981,6 +7018,27 @@
             | www.sfpadvice.co.za<br />
             Succession Financial Planning is a Licensed Financial Services
             Provider FSP 41158, NCRCP13569
-          </p>
+            </p>
+        {% endif %}
+        {% if company == "FS4P" %}
+        <p class="column12" style="font-family:  'Arial Narrow', 'Arial', 'sans-serif';">
+            Financial Solutions 4 Professionals Advisory Services (Pty) Ltd. |
+            Reg No 2011/009695/07, operating as a Jurastic Representative of <br />
+            Succession Financial Planning (SFP) License Number 41158.<br />
+            Directors: Mr N J Battersby (Chairman), Mr L du Plessis, Mr W Mouton, Mr M Mtshali, Mr I J Smit, Mr M Spies<br />
+            Company Secretary: Mr V E Barnard
+        </p>
+        {% endif %}
+        {% if company == "AFP" %}
+        <p class="column12" style="font-family:  'Arial Narrow', 'Arial', 'sans-serif';">
+            Succession Financial Planning Advisory Services (Pty) Ltd. |
+            Registration Number: 2001/018056/07<br />
+            PO Box 207, Menlyn 0063 | T 012 471 4900 | E admin@succession.co.za
+            | www.sfpadvice.co.za<br />
+            Succession Financial Planning is a Licensed Financial Services
+            Provider FSP 41158, NCRCP13569
+            </p>
+            
+        {% endif %}
     </body>
 </html>
