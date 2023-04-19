@@ -8,6 +8,19 @@ This project is built on the following Stack
 
 ## Updates
 
+### 18 April 2023:
+- Auto saving
+- Bugs Resolutions
+
+### 14 April 2023:
+- Bugs Resolutions
+
+### 13 April 2023:
+- Email Bugs fixing
+
+### 13 April 2023:
+- Deployment
+
 ### 11 April 2023:
 - Working on Alert Email was completed
 
