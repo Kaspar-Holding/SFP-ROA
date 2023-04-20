@@ -434,7 +434,7 @@ const CreateForm = ({user}) => {
     var val1;
     const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
     const navigate = useNavigate()
-
+    
     const createRFForm = async(data, lp_data) => {
         setSuccessMessageVisibility("none")
         const config = {
@@ -452,7 +452,10 @@ const CreateForm = ({user}) => {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/add_risk_factors_data/`, Body ,config)
             // console.log(response.data['formData'])
             if (response.status === 201) {
-                navigate("/completeform", {state : {advisor: user, formId: response.data['formId'], clientName : data['RF_ClientName'], clientId: data['RF_ClientId']}})
+                setFormCreatedId(response.data['formId'])
+                setFormCreatedStatus(true)
+                setFormCreatedData(response.data['data'])
+                // navigate("/completeform", {state : {advisor: user, formId: response.data['formId'], clientName : data['RF_ClientName'], clientId: data['RF_ClientId']}})
             }
             if (response.status === 200) {
                 setErrorData({
@@ -482,6 +485,9 @@ const CreateForm = ({user}) => {
     }
     // console.log(localStorage.getItem('access'))
 
+    const [FormCreatedStatus, setFormCreatedStatus] = useState(false)
+    const [FormCreatedData, setFormCreatedData] = useState([])
+    const [FormCreatedId, setFormCreatedId] = useState(0)
     const [SuccessMessage, setSuccessMessage] = useState("")
     const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
     const updateRFForm = async() => {
@@ -521,7 +527,23 @@ const CreateForm = ({user}) => {
             
         // window.location.reload();
     }
-    
+    if (FormCreatedStatus) {
+        return (
+            <Navigate 
+                type="button" 
+                to={{pathname:"/completeform"}} 
+                state={
+                    {
+                        advisor: user, 
+                        formId : FormCreatedId,
+                        formStatus : FormCreatedData['status'], 
+                        clientName : FormCreatedData['RF_ClientName'], 
+                        clientId: FormCreatedData['RF_ClientId']
+                    }
+                } 
+            />
+        )
+    }
     return (
         <form onSubmit={e => onSubmit(e)}>
             <br/>

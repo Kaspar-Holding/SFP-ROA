@@ -1124,7 +1124,7 @@ def insertRiskFactorsData(request):
             if not advisor_admin and status == 2:
                 sendAlertEmail(request=request, formId=formId, advisorId=request.data['RF_Data']['advisorId'])
                 return Response({"message": "Data is inserted","formId":formId,"code":200,},200)
-            return Response({"message": "Data is inserted","formId":formId,"code":201,},201)
+            return Response({"message": "Data is inserted","formId":formId,"data":request.data,"code":201,},201)
         else :
             return Response({'message': "Form Already Exists","code": "200", "formId" : serializer1.data['id']},200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
