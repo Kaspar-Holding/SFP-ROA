@@ -8,6 +8,14 @@ This project is built on the following Stack
 
 ## Updates
 
+### 20 April 2023:
+- Working on Rebranding completed
+- Replaced auto save with OnBlur Save
+- Deployed new version
+
+### 19 April 2023:
+- Working on Rebranding started
+
 ### 18 April 2023:
 - Auto saving
 - Bugs Resolutions

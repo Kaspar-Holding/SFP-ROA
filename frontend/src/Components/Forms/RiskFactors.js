@@ -736,7 +736,7 @@ const RiskFactors = ({user}) => {
                                         <label className="col-form-label"><b>Business Unit Risk</b></label>
                                     </div>
                                     <div className="col-6">
-                                    <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="RF_BU_Risk" name='RF_BU_Risk' value={FormData['RF_BU_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                                    <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="RF_BU_Risk" name='RF_BU_Risk' value={FormData['RF_BU_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                                         <option value="0">Select Option</option>
                                         <option value="1">Low</option>
                                         <option value="2">Medium</option>
@@ -753,7 +753,7 @@ const RiskFactors = ({user}) => {
                                         <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -766,7 +766,7 @@ const RiskFactors = ({user}) => {
                                         <label htmlFor="id_number" className="col-form-label"><b>Date</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="date" id="RF_Date" name="RF_Date" value={FormData['RF_Date']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Date"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -780,7 +780,7 @@ const RiskFactors = ({user}) => {
                                 <label htmlFor="address" className="col-form-label"><b>Client Name</b></label>
                             </div>
                             <div className="col-6">
-                                <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="RF_ClientName" name="RF_ClientName" value={FormData['RF_ClientName']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Name"  aria-describedby="" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="RF_ClientName" name="RF_ClientName" value={FormData['RF_ClientName']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Name"  aria-describedby="" />
                             </div>
                         </div>
                     </div>
@@ -790,7 +790,7 @@ const RiskFactors = ({user}) => {
                                 <label htmlFor="address" className="col-form-label"><b>Client ID</b></label>
                             </div>
                             <div className="col-6">
-                                <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="RF_ClientId" name="RF_ClientId" value={FormData['RF_ClientId']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client ID"  aria-describedby="" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="RF_ClientId" name="RF_ClientId" value={FormData['RF_ClientId']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client ID"  aria-describedby="" />
                             </div>
                         </div>
                     </div>
@@ -803,7 +803,7 @@ const RiskFactors = ({user}) => {
                                 <label htmlFor="email" className="col-form-label"><b>Completed By:</b></label>
                             </div>
                             <div className="col-6">
-                                <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" disabled id="RF_CompleteByName" name="RF_CompleteByName" value={FormData['RF_CompleteByName']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Name"  aria-describedby="" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" disabled id="RF_CompleteByName" name="RF_CompleteByName" value={FormData['RF_CompleteByName']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Name"  aria-describedby="" />
                             </div>
                         </div>
                     </div>
@@ -814,7 +814,7 @@ const RiskFactors = ({user}) => {
                                 <label htmlFor="address" className="col-form-label"><b>Screening Event ID</b></label>
                             </div>
                             <div className="col-6">
-                                <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="RF_EventID" name="RF_EventID" value={FormData['RF_EventID']}  className="form-control" onChange={(e) => {onChange(e)}} placeholder="Event ID"  aria-describedby="" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="RF_EventID" name="RF_EventID" value={FormData['RF_EventID']}  className="form-control" onChange={(e) => {onChange(e)}} placeholder="Event ID"  aria-describedby="" />
                             </div>
                         </div>
                     </div> */}
@@ -825,7 +825,7 @@ const RiskFactors = ({user}) => {
                                 <label htmlFor="email" className="col-form-label"><b>Completed By: Role/Designation</b></label>
                             </div>
                             <div className="col-6">
-                                <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="RF_CompleteByRole" name="RF_CompleteByRole" value={FormData['RF_CompleteByRole']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Role/Designation"  aria-describedby="" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="RF_CompleteByRole" name="RF_CompleteByRole" value={FormData['RF_CompleteByRole']} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Role/Designation"  aria-describedby="" />
                             </div>
                         </div>
                     </div>
@@ -914,7 +914,7 @@ const RiskFactors = ({user}) => {
                     </div> */}
 
                     {/* <div className="col-2">
-                    <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_AdjustedRisk' id='RF_AdjustedRisk' value={FormData['RF_AdjustedRisk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                    <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_AdjustedRisk' id='RF_AdjustedRisk' value={FormData['RF_AdjustedRisk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                         <option value="0" selected>Select Option</option>
                         <option value="1">Low</option>
                         <option value="2">Medium</option>
@@ -927,7 +927,7 @@ const RiskFactors = ({user}) => {
                         <label className="col-form-label"><b>Approvals?</b></label>
                     </div>
                     <div className="col-2"> 
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Approvals' id='RF_Approvals' value={FormData['RF_Approvals']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Approvals' id='RF_Approvals' value={FormData['RF_Approvals']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Yes</option>
                             <option value="2">No</option>
@@ -1021,7 +1021,7 @@ const RiskFactors = ({user}) => {
                 <label className="col-form-label">Adjust Risk on GCO Approval</label>
             </div>
             <div className="col-2">
-                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_GCO_Risk' id='RF_GCO_Risk' value={FormData['RF_GCO_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_GCO_Risk' id='RF_GCO_Risk' value={FormData['RF_GCO_Risk']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                     <option value3="0" selected></option>
                     <option value3="1">Low</option>
                     <option value3="2">Medium</option>
@@ -1467,7 +1467,7 @@ const RiskFactors = ({user}) => {
             </div>
 
             <div className="col-2">
-                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_ClientType' id='RF_ClientType' value={FormData['RF_ClientType']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_ClientType' id='RF_ClientType' value={FormData['RF_ClientType']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                     <option value="0" selected>Select Option</option>
                     <option value="1">Individual</option>
                     <option value="2">Legal</option>
@@ -1496,7 +1496,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Occupation' id='RF_Occupation' value={FormData['RF_Occupation']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Occupation' id='RF_Occupation' value={FormData['RF_Occupation']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Minor/Scholar</option>
                             <option value="2">Retired</option>
@@ -1615,7 +1615,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_CountryOfBirth' id='RF_CountryOfBirth' value={FormData['RF_CountryOfBirth']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_CountryOfBirth' id='RF_CountryOfBirth' value={FormData['RF_CountryOfBirth']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Afghanistan</option>
                             <option value="2">Albania</option>
@@ -2051,7 +2051,7 @@ const RiskFactors = ({user}) => {
                         
                     </div>
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_CountryOfResidence' id='RF_CountryOfResidence' value={parseInt(FormData['RF_CountryOfResidence'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_CountryOfResidence' id='RF_CountryOfResidence' value={parseInt(FormData['RF_CountryOfResidence'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Afghanistan</option>
                             <option value="2">Albania</option>
@@ -2488,7 +2488,7 @@ const RiskFactors = ({user}) => {
                         
                     </div>
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Nationality' id='RF_Nationality' value={parseInt(FormData['RF_Nationality'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Nationality' id='RF_Nationality' value={parseInt(FormData['RF_Nationality'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Afghanistan</option>
                             <option value="2">Albania</option>
@@ -2924,7 +2924,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Different_Nationality' id='RF_Different_Nationality' value={FormData['RF_Different_Nationality']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Different_Nationality' id='RF_Different_Nationality' value={FormData['RF_Different_Nationality']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Yes</option>
                             <option value="2">No</option>
@@ -2950,7 +2950,7 @@ const RiskFactors = ({user}) => {
                                 </div>
 
                                 <div className="col-2">
-                                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_CountryOfTax' id='RF_CountryOfTax' value={parseInt(FormData['RF_CountryOfTax'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_CountryOfTax' id='RF_CountryOfTax' value={parseInt(FormData['RF_CountryOfTax'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                 <option value="0" selected>Select Option</option>
                                 <option value="1">Afghanistan</option>
                                 <option value="2">Albania</option>
@@ -3395,7 +3395,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Industry' id='RF_Industry' value={parseInt(FormData['RF_Industry'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Industry' id='RF_Industry' value={parseInt(FormData['RF_Industry'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Administrative and support services</option>
                             <option value="2">Adult Entertainment</option>
@@ -3586,7 +3586,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_SourceOfFunds'  id='RF_SourceOfFunds' value={parseInt(FormData['RF_SourceOfFunds'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_SourceOfFunds'  id='RF_SourceOfFunds' value={parseInt(FormData['RF_SourceOfFunds'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Allowance</option>
                             <option value="2">Bonus</option>
@@ -3757,7 +3757,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_RelationshipToClient' id='RF_RelationshipToClient' value={parseInt(FormData['RF_RelationshipToClient'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_RelationshipToClient' id='RF_RelationshipToClient' value={parseInt(FormData['RF_RelationshipToClient'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Annuitant</option>
                             <option value="2">Applicant</option>
@@ -3899,7 +3899,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_CountryOfRegistration' id='RF_CountryOfRegistration' value={parseInt(FormData['RF_CountryOfRegistration'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_CountryOfRegistration' id='RF_CountryOfRegistration' value={parseInt(FormData['RF_CountryOfRegistration'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Afghanistan</option>
                             <option value="2">Albania</option>
@@ -4334,7 +4334,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_CountryOfOperation' id='RF_CountryOfOperation' value={FormData['RF_CountryOfOperation']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_CountryOfOperation' id='RF_CountryOfOperation' value={FormData['RF_CountryOfOperation']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Afghanistan</option>
                             <option value="2">Albania</option>
@@ -4769,7 +4769,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Type_Legal_Entity' id='RF_Type_Legal_Entity' value={FormData['RF_Type_Legal_Entity']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Type_Legal_Entity' id='RF_Type_Legal_Entity' value={FormData['RF_Type_Legal_Entity']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Body corporate</option>
                             <option value="2">Charitable organization</option>
@@ -4915,7 +4915,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Industry' id='RF_Industry' value={parseInt(FormData['RF_Industry'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Industry' id='RF_Industry' value={parseInt(FormData['RF_Industry'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Administrative and support services</option>
                             <option value="2">Adult Entertainment</option>
@@ -5081,7 +5081,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_SourceOfFunds' id='RF_SourceOfFunds' value={parseInt(FormData['RF_SourceOfFunds'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_SourceOfFunds' id='RF_SourceOfFunds' value={parseInt(FormData['RF_SourceOfFunds'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Allowance</option>
                             <option value="2">Bonus</option>
@@ -5227,7 +5227,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Client_Relationship' id='RF_Client_Relationship' value={parseInt(FormData['RF_RelationshipToClient'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Client_Relationship' id='RF_Client_Relationship' value={parseInt(FormData['RF_RelationshipToClient'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Annuitant</option>
                             <option value="2">Applicant</option>
@@ -5434,7 +5434,7 @@ const RiskFactors = ({user}) => {
             </div>
 
             <div className="col-2">
-                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Product_Name' id='RF_Product_Name' value={FormData['RF_Product_Name']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Product_Name' id='RF_Product_Name' value={FormData['RF_Product_Name']} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                 <option value="0" selected>Select Option</option>
                     {/* <option value="1">Access to funds or benefits restricted to specific contractual events (specified termination, uncertain insured event)</option>
                     <option value="2">Access to primary benefits only at claim stage</option>
@@ -5585,7 +5585,7 @@ const RiskFactors = ({user}) => {
 
             <div className="col-2">
                 <label className="col-form-label">Advisory services: non financial</label>
-                {/* <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="RF_Product_Category" name='RF_Product_Category' value={FormData['RF_Product_Category']} className="form-control" onChange={(e)=>{onChange(e)}} placeholder=""  aria-describedby="" /> */}
+                {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="RF_Product_Category" name='RF_Product_Category' value={FormData['RF_Product_Category']} className="form-control" onChange={(e)=>{onChange(e)}} placeholder=""  aria-describedby="" /> */}
             </div>
 
 
@@ -5762,7 +5762,7 @@ const RiskFactors = ({user}) => {
             </div>
 
             <div className="col-2">
-                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Transaction_Flow' id='RF_Transaction_Flow'  value={parseInt(FormData['RF_Transaction_Flow'])} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Transaction_Flow' id='RF_Transaction_Flow'  value={parseInt(FormData['RF_Transaction_Flow'])} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                     <option value="0" selected>Select Option</option>
                     <option value="1">Inflow</option>
                     <option value="2">Outflow</option>
@@ -5791,7 +5791,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Transaction_Method' id='RF_Transaction_Method' value={(FormData['RF_Transaction_Method'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Transaction_Method' id='RF_Transaction_Method' value={(FormData['RF_Transaction_Method'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Bank Transfer</option>
                             <option value="2">Cash</option>
@@ -5918,7 +5918,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Transaction_Reason' id='RF_Transaction_Reason' value={FormData['RF_Transaction_Reason']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Transaction_Reason' id='RF_Transaction_Reason' value={FormData['RF_Transaction_Reason']} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Additional Premium</option>
                             <option value="2">Cession</option>
@@ -6027,7 +6027,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_High_Transaction_Reason' id='RF_High_Transaction_Reason' value={parseInt(FormData['RF_High_Transaction_Reason'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_High_Transaction_Reason' id='RF_High_Transaction_Reason' value={parseInt(FormData['RF_High_Transaction_Reason'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Yes</option>
                             <option value="2">No</option>     
@@ -6120,7 +6120,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Transaction_Frequency' id='RF_Transaction_Frequency' value={parseInt(FormData['RF_Transaction_Frequency'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Transaction_Frequency' id='RF_Transaction_Frequency' value={parseInt(FormData['RF_Transaction_Frequency'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Ad hoc</option>
                             <option value="2">Lump sum and recurring combination</option>  
@@ -6220,7 +6220,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="RF_Transaction_Value" name='RF_Transaction_Value' value={FormData['RF_Transaction_Value']} onChange={(e)=>{onChange(e)}} className="form-control" aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="RF_Transaction_Value" name='RF_Transaction_Value' value={FormData['RF_Transaction_Value']} onChange={(e)=>{onChange(e)}} className="form-control" aria-describedby="" />
                     </div>
 
                     <div className="col-1">       
@@ -6228,7 +6228,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="RF_Currency_Value" name='RF_Currency_Value' value={FormData['RF_Currency_Value']} onChange={(e)=>{onChange(e)}} className="form-control" aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="RF_Currency_Value" name='RF_Currency_Value' value={FormData['RF_Currency_Value']} onChange={(e)=>{onChange(e)}} className="form-control" aria-describedby="" />
                     </div>
 
                     <div className="col-1">       
@@ -6254,7 +6254,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Transaction_Geography' id='RF_Transaction_Geography' value={parseInt(FormData['RF_Transaction_Geography'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Transaction_Geography' id='RF_Transaction_Geography' value={parseInt(FormData['RF_Transaction_Geography'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Cross Border</option>
                             <option value="2">In-country</option>  
@@ -6361,7 +6361,7 @@ const RiskFactors = ({user}) => {
                                 </div>
 
                             <div className="col-2">
-                                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Funds_Jurisdiction' value={parseInt(FormData['RF_Funds_Jurisdiction'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Funds_Jurisdiction' value={parseInt(FormData['RF_Funds_Jurisdiction'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                                     <option value="0" selected>Select Option</option>
                                     <option value="1">Afghanistan</option>
                                     <option value="2">Albania</option>
@@ -6906,7 +6906,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Linked_Party_Acting' id='RF_Linked_Party_Acting' value={parseInt(FormData['RF_Linked_Party_Acting'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Linked_Party_Acting' id='RF_Linked_Party_Acting' value={parseInt(FormData['RF_Linked_Party_Acting'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Not applicable</option>
                             <option value="2">No</option>  
@@ -7004,7 +7004,7 @@ const RiskFactors = ({user}) => {
                     </div>
 
                     <div className="col-2">
-                        <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Linked_Party_Paying' id='RF_Linked_Party_Paying' value={parseInt(FormData['RF_Linked_Party_Paying'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Linked_Party_Paying' id='RF_Linked_Party_Paying' value={parseInt(FormData['RF_Linked_Party_Paying'])} onChange={(e)=>{onChange(e)}}  aria-label="Default select example">
                             <option value="0" selected>Select Option</option>
                             <option value="1">Not applicable</option>
                             <option value="2">Paying funds</option>  
@@ -7267,7 +7267,7 @@ const RiskFactors = ({user}) => {
                 </div>
 
                 <div className="col-2">
-                    <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Client_Match' id='RF_Client_Match'  value={parseInt(FormData['RF_Client_Match'])} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                    <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Client_Match' id='RF_Client_Match'  value={parseInt(FormData['RF_Client_Match'])} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                         <option value="0" selected>Select Option</option>
                         <option value="1">Adverse Media</option>
                         <option value="2">Enforcement,SIP,SIE</option>
@@ -7430,7 +7430,7 @@ const RiskFactors = ({user}) => {
                 </div>
 
                 <div className="col-2">
-                    <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Client_Beneficiaries' id='RF_Client_Beneficiaries' value={parseInt(FormData['RF_Client_Beneficiaries'])} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                    <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_Client_Beneficiaries' id='RF_Client_Beneficiaries' value={parseInt(FormData['RF_Client_Beneficiaries'])} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                         <option value="0" selected>Select Option</option>
                         <option value="1">Yes</option>
                         <option value="2">No</option>
@@ -7505,7 +7505,7 @@ const RiskFactors = ({user}) => {
                             </div>
 
                             <div className="col-2">
-                                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Adjust_Risk' id='RF_LP_Adjust_Risk' value={key.RF_LP_Adjust_Risk} onChange={(e)=>{on_LP_Change(e,i)}} aria-label="Default select example">
+                                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Adjust_Risk' id='RF_LP_Adjust_Risk' value={key.RF_LP_Adjust_Risk} onChange={(e)=>{on_LP_Change(e,i)}} aria-label="Default select example">
                                     <option value="0">Select Adjust Risk</option>
                                     <option value="1">Low</option>
                                     <option value="2">Medium</option>
@@ -7532,7 +7532,7 @@ const RiskFactors = ({user}) => {
                             </div>
 
                             <div className="col-2">
-                            <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="RF_LP_Name" name='RF_LP_Name' className="form-control" required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} value={key.RF_LP_Name}  onChange={(e) => {on_LP_Change(e,i)}} placeholder=""  aria-describedby="" />
+                            <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="RF_LP_Name" name='RF_LP_Name' className="form-control" required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} value={key.RF_LP_Name}  onChange={(e) => {on_LP_Change(e,i)}} placeholder=""  aria-describedby="" />
                             </div>
 
                             <hr/>
@@ -7541,7 +7541,7 @@ const RiskFactors = ({user}) => {
                             </div>
 
                             <div className="col-2">
-                                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Client_Relationship' required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} id='RF_LP_Client_Relationship' value={key.RF_LP_Client_Relationship} onChange={(e) => {on_LP_Change(e,i)}} aria-label="Default select example">
+                                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Client_Relationship' required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} id='RF_LP_Client_Relationship' value={key.RF_LP_Client_Relationship} onChange={(e) => {on_LP_Change(e,i)}} aria-label="Default select example">
                                     <option value="0" selected>Select Option</option>
                                     <option value="1">Beneficial owner</option>
                                     <option value="2">Beneficiary</option>
@@ -7577,7 +7577,7 @@ const RiskFactors = ({user}) => {
                             </div>
 
                             <div className="col-2">
-                                <input disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="RF_LP_ID" name='RF_LP_ID' required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} className="form-control" value={key.RF_LP_ID} onChange={(e) => {on_LP_Change(e,i)}} placeholder=""  aria-describedby="" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="RF_LP_ID" name='RF_LP_ID' required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} className="form-control" value={key.RF_LP_ID} onChange={(e) => {on_LP_Change(e,i)}} placeholder=""  aria-describedby="" />
                             </div>
                             
                             <hr/>
@@ -7586,7 +7586,7 @@ const RiskFactors = ({user}) => {
                             </div>
 
                             <div className="col-2">
-                                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Linked_Party' id='RF_LP_Linked_Party' required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} value={parseInt(key.RF_LP_Linked_Party)} onChange={(e)=>{on_LP_Change(e,i)}} aria-label="Default select example">
+                                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Linked_Party' id='RF_LP_Linked_Party' required={parseInt(FormData['RF_Client_Beneficiaries'])===1? true : false} value={parseInt(key.RF_LP_Linked_Party)} onChange={(e)=>{on_LP_Change(e,i)}} aria-label="Default select example">
                                     <option value="0" selected>Select Option</option>
                                     <option value="1">Adverse Media</option>
                                     <option value="2">Enforcement,SIP,SIE</option>
@@ -7715,7 +7715,7 @@ const RiskFactors = ({user}) => {
                             </div>
 
                             <div className="col-2">
-                                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_RCA' id='RF_LP_RCA' value={parseInt(key.RF_LP_RCA)} onChange={(e)=>{on_LP_Change(e,i)}} aria-label="Default select example">
+                                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_RCA' id='RF_LP_RCA' value={parseInt(key.RF_LP_RCA)} onChange={(e)=>{on_LP_Change(e,i)}} aria-label="Default select example">
                                     <option value="0" selected>Select Option</option>
                                     <option value="1">Yes</option>
                                     <option value="2">No</option>
@@ -7796,7 +7796,7 @@ const RiskFactors = ({user}) => {
                             </div>
 
                             <div className="col-2">
-                                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Birth_Country' id='RF_LP_Birth_Country' value={parseInt(key.RF_LP_Birth_Country)} onChange={(e)=>{on_LP_Change(e,i)}}  aria-label="Default select example">
+                                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Birth_Country' id='RF_LP_Birth_Country' value={parseInt(key.RF_LP_Birth_Country)} onChange={(e)=>{on_LP_Change(e,i)}}  aria-label="Default select example">
                                     <option value="0" selected>Select Option</option>
                                     <option value="1">Afghanistan</option>
                                     <option value="2">Albania</option>
@@ -8231,7 +8231,7 @@ const RiskFactors = ({user}) => {
                             </div>
 
                             <div className="col-2">
-                                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Residence_Country' id='RF_LP_Residence_Country' value={key.RF_LP_Residence_Country} onChange={(e)=>{on_LP_Change(e,i)}}  aria-label="Default select example">
+                                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Residence_Country' id='RF_LP_Residence_Country' value={key.RF_LP_Residence_Country} onChange={(e)=>{on_LP_Change(e,i)}}  aria-label="Default select example">
                                     <option value="0" selected>Select Option</option>
                                     <option value="1">Afghanistan</option>
                                     <option value="2">Albania</option>
@@ -8667,7 +8667,7 @@ const RiskFactors = ({user}) => {
                             </div>
 
                             <div className="col-2">
-                                <select disabled={FormData['status'] === 1 ? true : false}  onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Nationality' id='RF_LP_Nationality' value={key.RF_LP_Nationality} onChange={(e)=>{on_LP_Change(e,i)}}  aria-label="Default select example">
+                                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='RF_LP_Nationality' id='RF_LP_Nationality' value={key.RF_LP_Nationality} onChange={(e)=>{on_LP_Change(e,i)}}  aria-label="Default select example">
                                     <option value="0" selected>Select Option</option>
                                     <option value="1">Afghanistan</option>
                                     <option value="2">Albania</option>
