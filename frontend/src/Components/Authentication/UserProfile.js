@@ -90,7 +90,7 @@ const UserProfile = ({isAuthenticated, user}) => {
         </div>
         <div className="notification_container">
             <div className={
-              user['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              user['email'].includes('sfp') || user['email'].includes('succession')? "alert alert-sfp-success fade show" 
               : user['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
               : user['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
               : "alert alert-sfp-success fade show"

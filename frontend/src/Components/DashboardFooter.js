@@ -13,7 +13,7 @@ const DashboardFooter = ({user}) => {
         >
           {
               user ?
-              user['email'].includes('sfp') ? 
+              user['email'].includes('sfp') || user['email'].includes('succession')? 
               <>
                 <p class=" mb-0 text-muted">
                     Succession Financial Planning Advisory Services (Pty) Ltd. |

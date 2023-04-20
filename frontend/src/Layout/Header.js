@@ -40,7 +40,7 @@ const Header = ({isAuthenticated, user}) => {
       <NavLink className="navbar-brand col-md-3 col-lg-2 me-0 px-3" to="/">
         {
           user ?
-          user['email'].includes('sfp') ? <span>Succession Financial Planning</span>
+          user['email'].includes('sfp') || user['email'].includes('succession')? <span>Succession Financial Planning</span>
           : user['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals</span>
           : user['email'].includes('sanlam') ? <span>Aligned Financial Planning</span>
           : <span>Succession Financial Planning</span>

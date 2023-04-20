@@ -529,7 +529,7 @@ const CreateForm = ({user}) => {
             <div className="notification_container">
                 <div 
                 className={
-                    user['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "alert alert-sfp-success fade show" 
                     : user['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
                     : user['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
                     : "alert alert-sfp-success fade show"
@@ -540,7 +540,7 @@ const CreateForm = ({user}) => {
             </div>
             <div 
                 className={
-                    user['email'].includes('sfp') ? "sfp-text" 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "sfp-text" 
                     : user['email'].includes('fs4p') ? "fs4p-text" 
                     : user['email'].includes('sanlam') ? "sanlam-text" 
                     : "sfp-text"
@@ -6792,7 +6792,7 @@ const CreateForm = ({user}) => {
                         <label className="col-form-label">
                             {
                                 user ?
-                                user['email'].includes('sfp') ? <span>Succession Financial Planning</span>
+                                user['email'].includes('sfp') || user['email'].includes('succession')? <span>Succession Financial Planning</span>
                                 : user['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals</span>
                                 : user['email'].includes('sanlam') ? <span>Succession Financial Planning</span>
                                 : <span>Succession Financial Planning</span>
@@ -9179,7 +9179,7 @@ const CreateForm = ({user}) => {
             <div className="row">
                 <button 
                     className={
-                        user['email'].includes('sfp') ? "btn btn-sfp" 
+                        user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-sfp" 
                         : user['email'].includes('fs4p') ? "btn btn-fs4p" 
                         : user['email'].includes('sanlam') ? "btn btn-sanlam" 
                         : "btn btn-success"

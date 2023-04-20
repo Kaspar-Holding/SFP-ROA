@@ -649,7 +649,7 @@ const RiskFactors = ({user}) => {
                                             <button 
                                                 type='submit' 
                                                 className= { 
-                                                    user['email'].includes('sfp') ? "btn btn-primary sfp col-11" 
+                                                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp col-11" 
                                                     : user['email'].includes('fs4p') ? "btn btn-primary fs4p col-11" 
                                                     : user['email'].includes('sanlam') ? "btn btn-primary sanlam col-11" 
                                                     : "btn btn-primary  col-11"
@@ -664,7 +664,7 @@ const RiskFactors = ({user}) => {
                                         <button 
                                             type='submit' onClick={(e)=>{DownloadDRAPDF(e, true)}} 
                                             className= { 
-                                                user['email'].includes('sfp') ? "btn btn-primary sfp col-11" 
+                                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp col-11" 
                                                 : user['email'].includes('fs4p') ? "btn btn-primary fs4p col-11" 
                                                 : user['email'].includes('sanlam') ? "btn btn-primary sanlam col-11" 
                                                 : "btn btn-primary  col-11"
@@ -680,7 +680,7 @@ const RiskFactors = ({user}) => {
                                         <button 
                                             type='submit' onClick={(e)=>{DownloadDRAPDF(e, false)}} 
                                             className= { 
-                                                user['email'].includes('sfp') ? "btn btn-primary sfp col-11" 
+                                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp col-11" 
                                                 : user['email'].includes('fs4p') ? "btn btn-primary fs4p col-11" 
                                                 : user['email'].includes('sanlam') ? "btn btn-primary sanlam col-11" 
                                                 : "btn btn-primary  col-11"
@@ -9185,7 +9185,7 @@ const RiskFactors = ({user}) => {
             <div className="row">
                     <button 
                         className={
-                            user['email'].includes('sfp') ? "btn btn-sfp" 
+                            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-sfp" 
                             : user['email'].includes('fs4p') ? "btn btn-fs4p" 
                             : user['email'].includes('sanlam') ? "btn btn-sanlam" 
                             : "btn btn-success"

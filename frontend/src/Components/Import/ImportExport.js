@@ -101,7 +101,7 @@ const ImportExport = ({user}) => {
     <>
       <div className="notification_container">
         <div className={
-              user['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              user['email'].includes('sfp') || user['email'].includes('succession')? "alert alert-sfp-success fade show" 
               : user['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
               : user['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
               : "alert alert-sfp-success fade show"
@@ -115,7 +115,7 @@ const ImportExport = ({user}) => {
       </div>
       <button 
         className= { 
-            user['email'].includes('sfp') ? "btn btn-primary sfp" 
+            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp" 
             : user['email'].includes('fs4p') ? "btn btn-primary fs4p" 
             : user['email'].includes('sanlam') ? "btn btn-primary sanlam" 
             : "btn btn-primary "
@@ -123,7 +123,7 @@ const ImportExport = ({user}) => {
         style={{marginRight:50}} onClick={(e)=>{onDowloadCSV(e)}}>Please download the All Data CSV file from here</button>
       <button 
         className= { 
-            user['email'].includes('sfp') ? "btn btn-primary sfp" 
+            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp" 
             : user['email'].includes('fs4p') ? "btn btn-primary fs4p" 
             : user['email'].includes('sanlam') ? "btn btn-primary sanlam" 
             : "btn btn-primary "
@@ -143,7 +143,7 @@ const ImportExport = ({user}) => {
                       <button 
                         type='submit' 
                         className= { 
-                            user['email'].includes('sfp') ? "btn btn-primary sfp col-12" 
+                            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp col-12" 
                             : user['email'].includes('fs4p') ? "btn btn-primary fs4p col-12" 
                             : user['email'].includes('sanlam') ? "btn btn-primary sanlam col-12" 
                             : "btn btn-primary  col-12"

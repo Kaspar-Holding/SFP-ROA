@@ -2894,7 +2894,7 @@ def wkhtmltopdfapi(request):
             data['STIP_status'] = False
     data['advisor'] = UserAccount.objects.filter(id=request.data['advisorId']).values('first_name', 'last_name', 'email', 'is_superuser').first()
     data['company'] = ""
-    if 'sfp' in data['advisor']['email']:
+    if 'sfp' in data['advisor']['email'] or 'succession' in data['advisor']['email']:
         data['company'] = "SFP"
     if 'fs4p' in data['advisor']['email']:
         data['company'] = "FS4P"

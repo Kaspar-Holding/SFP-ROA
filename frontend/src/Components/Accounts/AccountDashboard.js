@@ -159,7 +159,7 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                     <NavLink 
                         to="/newuser" 
                         className= { 
-                            user['email'].includes('sfp') ? "btn btn-primary sfp" 
+                            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp" 
                             : user['email'].includes('fs4p') ? "btn btn-primary fs4p" 
                             : user['email'].includes('sanlam') ? "btn btn-primary sanlam" 
                             : "btn btn-primary "
@@ -265,7 +265,7 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                                                             to={{pathname:"/userdetails"}} 
                                                             state={{userID : key['id']}} 
                                                             className={
-                                                                user['email'].includes('sfp') ? "btn btn-sm sfp-outline-primary" 
+                                                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-sm sfp-outline-primary" 
                                                                 : user['email'].includes('fs4p') ? "btn btn-sm fs4p-outline-primary" 
                                                                 : user['email'].includes('sanlam') ? "btn btn-sm sanlam-outline-primary" 
                                                                 : "btn btn-sm btn-outline-primary"

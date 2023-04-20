@@ -126,13 +126,13 @@ const Dashboard = ({user}) => {
                         <img 
                             src=
                             {
-                                user['email'].includes('sfp') ? `${process.env.REACT_APP_BACKEND_URL}/media/logo.png` 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? `${process.env.REACT_APP_BACKEND_URL}/media/logo.png` 
                                 : user['email'].includes('fs4p') ? `${process.env.REACT_APP_BACKEND_URL}/media/fs4p_logo.jpg` 
                                 : user['email'].includes('sanlam') ? `${process.env.REACT_APP_BACKEND_URL}/media/afp_logo.png` 
                                 : <></>
                             }
                             className={
-                                user['email'].includes('sfp') ? "sfp-logo"
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "sfp-logo"
                                 : user['email'].includes('fs4p') ? "fs4p-logo"
                                 : user['email'].includes('sanlam') ? "sanlam-logo"
                                 : <></>
@@ -163,7 +163,7 @@ const Dashboard = ({user}) => {
                             <NavLink 
                                 to="/createform" 
                                 className= { 
-                                    user['email'].includes('sfp') ? "btn btn-primary sfp" 
+                                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp" 
                                     : user['email'].includes('fs4p') ? "btn btn-primary fs4p" 
                                     : user['email'].includes('sanlam') ? "btn btn-primary sanlam" 
                                     : "btn btn-primary "
@@ -182,7 +182,7 @@ const Dashboard = ({user}) => {
                                         <button 
                                             type="button" 
                                             className= { 
-                                                user['email'].includes('sfp') ? "nav-link sfp-nav-pill-btn" 
+                                                user['email'].includes('sfp') || user['email'].includes('succession')? "nav-link sfp-nav-pill-btn" 
                                                 : user['email'].includes('fs4p') ? "nav-link fs4p-nav-pill-btn" 
                                                 : user['email'].includes('sanlam') ? "nav-link sanlam-nav-pill-btn" 
                                                 : "nav-link "
@@ -200,7 +200,7 @@ const Dashboard = ({user}) => {
                                         <button 
                                             type="button" 
                                             className= { 
-                                                user['email'].includes('sfp') ? "nav-link sfp-nav-pill-btn active" 
+                                                user['email'].includes('sfp') || user['email'].includes('succession')? "nav-link sfp-nav-pill-btn active" 
                                                 : user['email'].includes('fs4p') ? "nav-link fs4p-nav-pill-btn active" 
                                                 : user['email'].includes('sanlam') ? "nav-link sanlam-nav-pill-btn active" 
                                                 : "nav-link sfp-link active"

@@ -26,7 +26,7 @@ const Sidebar = ({LogOut, isAuthenticated, user}) => {
             <li className="nav-item">
                 <NavLink 
                     className={
-                        user ? user['email'].includes('sfp') ? "nav-link sfp-nav-link" 
+                        user ? user['email'].includes('sfp') || user['email'].includes('succession')? "nav-link sfp-nav-link" 
                         : user['email'].includes('fs4p') ? "nav-link fs4p-nav-link" 
                         : user['email'].includes('sanlam') ? "nav-link sanlam-nav-link" 
                         : "nav-link ": "nav-link "
@@ -41,7 +41,7 @@ const Sidebar = ({LogOut, isAuthenticated, user}) => {
             <li className="nav-item">
                 <NavLink 
                     className={
-                        user ? user['email'].includes('sfp') ? "nav-link sfp-nav-link" 
+                        user ? user['email'].includes('sfp') || user['email'].includes('succession')? "nav-link sfp-nav-link" 
                         : user['email'].includes('fs4p') ? "nav-link fs4p-nav-link" 
                         : user['email'].includes('sanlam') ? "nav-link sanlam-nav-link" 
                         : "nav-link ": "nav-link "
@@ -54,7 +54,7 @@ const Sidebar = ({LogOut, isAuthenticated, user}) => {
             <li className="nav-item">
                 <NavLink 
                     className={
-                        user ? user['email'].includes('sfp') ? "nav-link sfp-nav-link" 
+                        user ? user['email'].includes('sfp') || user['email'].includes('succession')? "nav-link sfp-nav-link" 
                         : user['email'].includes('fs4p') ? "nav-link fs4p-nav-link" 
                         : user['email'].includes('sanlam') ? "nav-link sanlam-nav-link" 
                         : "nav-link ": "nav-link "
@@ -76,7 +76,7 @@ const Sidebar = ({LogOut, isAuthenticated, user}) => {
                     <li className="nav-item">
                         <NavLink 
                             className={
-                                user ? user['email'].includes('sfp') ? "nav-link sfp-nav-link" 
+                                user ? user['email'].includes('sfp') || user['email'].includes('succession')? "nav-link sfp-nav-link" 
                                 : user['email'].includes('fs4p') ? "nav-link fs4p-nav-link" 
                                 : user['email'].includes('sanlam') ? "nav-link sanlam-nav-link" 
                                 : "nav-link ": "nav-link "
