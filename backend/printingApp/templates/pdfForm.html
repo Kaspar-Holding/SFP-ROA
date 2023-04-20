@@ -4952,7 +4952,7 @@
             </div>
         {% endif %}
         {% if company == 'AFP' %}
-            <img  src="{% get_media_prefix %}afp_logo.jpg" class='iconDetails'/>
+            <img  src="{% get_media_prefix %}afp_logo.png" class='iconDetails'/>
         {% endif %}
         <br/>
         <br/>
@@ -6965,49 +6965,50 @@
             </div>
             <br/>
             <div>
-        {% endif %}
-        {% if roa_status %}
-            {% include 'roa.html' with company=company RoA=RoA %}
-            <hr/>
-        {% endif %}
-        {% if rp_status %}
-            {% include 'riskplanning.html' with company=company RP=RP %}
-            <hr/>
-        {% endif %}
-        {% if ip_status %}
-            {% include 'investmentplanning.html' with company=company IP=IP %}    
-            <hr/>
-        {% endif %}
-        {% if BA_Risk_status %}
-            {% include 'businessRisk.html' with company=company BA_Risk=BA_Risk %}
-            <hr/>
-        {% endif %}
-        {% if BA_Investment_status %}
-            {% include 'businessAssurance.html' with company=company BA_Investment=BA_Investment %}
-            <hr/>
-        {% endif %}
-        {% if EB_status %}
-            {% include 'employee.html' with company=company EB=EB %}
-            <hr/>
-        {% endif %}
-        {% if STIC_status %}
-            {% include 'short-term-commercial.html' with company=company STIC=STIC %}
-            <hr/>
-        {% endif %}
-        {% if STIP_status %}
-            {% include 'short-term-personal.html' with company=company STIP=STIP %}
-            <hr/>
-        {% endif %}
-        {% if Fiduciary_status %}
-            {% include 'fiduciary.html' with company=company Fiduciary=Fiduciary %}
-        {% endif %}
-        {% if MD_status %}
-            {% include 'medical.html' with company=company MD=MD %}
-            <hr/>
-        {% endif %}
-        {% if GP_status %}
-            {% include 'gapCover.html' with company=company GP=GP %}
-            <hr/> 
+        {% else %}        
+            {% if roa_status %}
+                {% include 'roa.html' with company=company RoA=RoA %}
+                <hr/>
+            {% endif %}
+            {% if rp_status %}
+                {% include 'riskplanning.html' with company=company RP=RP %}
+                <hr/>
+            {% endif %}
+            {% if ip_status %}
+                {% include 'investmentplanning.html' with company=company IP=IP %}    
+                <hr/>
+            {% endif %}
+            {% if BA_Risk_status %}
+                {% include 'businessRisk.html' with company=company BA_Risk=BA_Risk %}
+                <hr/>
+            {% endif %}
+            {% if BA_Investment_status %}
+                {% include 'businessAssurance.html' with company=company BA_Investment=BA_Investment %}
+                <hr/>
+            {% endif %}
+            {% if EB_status %}
+                {% include 'employee.html' with company=company EB=EB %}
+                <hr/>
+            {% endif %}
+            {% if STIC_status %}
+                {% include 'short-term-commercial.html' with company=company STIC=STIC %}
+                <hr/>
+            {% endif %}
+            {% if STIP_status %}
+                {% include 'short-term-personal.html' with company=company STIP=STIP %}
+                <hr/>
+            {% endif %}
+            {% if Fiduciary_status %}
+                {% include 'fiduciary.html' with company=company Fiduciary=Fiduciary %}
+            {% endif %}
+            {% if MD_status %}
+                {% include 'medical.html' with company=company MD=MD %}
+                <hr/>
+            {% endif %}
+            {% if GP_status %}
+                {% include 'gapCover.html' with company=company GP=GP %}
+                <hr/> 
+            {% endif %}
         {% endif %}
         <hr/>
         {% if company == "SFP" %}
@@ -7030,13 +7031,10 @@
         </p>
         {% endif %}
         {% if company == "AFP" %}
-        <p class="column12" style="font-family:  'Arial Narrow', 'Arial', 'sans-serif';">
-            Succession Financial Planning Advisory Services (Pty) Ltd. |
-            Registration Number: 2001/018056/07<br />
-            PO Box 207, Menlyn 0063 | T 012 471 4900 | E admin@succession.co.za
-            | www.sfpadvice.co.za<br />
-            Succession Financial Planning is a Licensed Financial Services
-            Provider FSP 41158, NCRCP13569
+        <p class="column12" style="font-family:  'Arial Narrow', 'Arial', 'sans-serif';">            
+                Sanlam Life Insurance Limited Reg no 1998/021121/06<br />
+                Licensed Financial Services and Registered Credit Provider (NCRCP43)<br />
+                Refer to the Sanlam website for directors and company secretary details. www.sanlam.co.za
             </p>
             
         {% endif %}

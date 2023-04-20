@@ -30,6 +30,25 @@ const CompleteForm = ({user}) => {
     return (
       <>
         <div>
+        <br/>
+        
+        <div style={{textAlign: 'center'}}>
+            <img 
+                src=
+                {
+                    user['email'].includes('sfp') ? `${process.env.REACT_APP_BACKEND_URL}/media/logo.png` 
+                    : user['email'].includes('fs4p') ? `${process.env.REACT_APP_BACKEND_URL}/media/fs4p_logo.jpg` 
+                    : user['email'].includes('sanlam') ? `${process.env.REACT_APP_BACKEND_URL}/media/afp_logo.png` 
+                    : <></>
+                }
+                className={
+                    user['email'].includes('sfp') ? "sfp-logo"
+                    : user['email'].includes('fs4p') ? "fs4p-logo"
+                    : user['email'].includes('sanlam') ? "sanlam-logo"
+                    : <></>
+                }
+            />
+        </div>
         <main className="container">
           <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <RiskFactors data={{formId: state['formId'], advisorDetails: state['advisor']}} />

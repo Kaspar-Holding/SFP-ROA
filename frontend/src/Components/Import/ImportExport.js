@@ -113,8 +113,22 @@ const ImportExport = ({user}) => {
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 className="h2">Import Export Wizard</h1>
       </div>
-      <button className='btn btn-md btn-primary' style={{marginRight:50}} onClick={(e)=>{onDowloadCSV(e)}}>Please download the All Data CSV file from here</button>
-      <button className='btn btn-md btn-primary' style={{}} onClick={(e)=>{onDowloadCSVSample(e)}}>Please download the sample CSV file from here</button>
+      <button 
+        className= { 
+            user['email'].includes('sfp') ? "btn btn-primary sfp" 
+            : user['email'].includes('fs4p') ? "btn btn-primary fs4p" 
+            : user['email'].includes('sanlam') ? "btn btn-primary sanlam" 
+            : "btn btn-primary "
+        } 
+        style={{marginRight:50}} onClick={(e)=>{onDowloadCSV(e)}}>Please download the All Data CSV file from here</button>
+      <button 
+        className= { 
+            user['email'].includes('sfp') ? "btn btn-primary sfp" 
+            : user['email'].includes('fs4p') ? "btn btn-primary fs4p" 
+            : user['email'].includes('sanlam') ? "btn btn-primary sanlam" 
+            : "btn btn-primary "
+        } 
+        style={{}} onClick={(e)=>{onDowloadCSVSample(e)}}>Please download the sample CSV file from here</button>
       <div className="alert alert-success text-center" style={{display: SuccessMessageVisibility}} role="alert">
           <p><b>{SuccessMessage} </b></p>
       </div>
@@ -126,7 +140,17 @@ const ImportExport = ({user}) => {
                           <label htmlFor="importCsv" className="form-label">Import Data</label>
                           <input type="file" required id="importCsv" accept='.csv' className="form-control" name="exportCSV" multiple={false} onChange={(e)=>(convertToBase64(e))} placeholder="Cost .csv file" />
                       </div>
-                      <button type='submit' className="btn btn-md btn-primary col-12">Upload</button>
+                      <button 
+                        type='submit' 
+                        className= { 
+                            user['email'].includes('sfp') ? "btn btn-primary sfp col-12" 
+                            : user['email'].includes('fs4p') ? "btn btn-primary fs4p col-12" 
+                            : user['email'].includes('sanlam') ? "btn btn-primary sanlam col-12" 
+                            : "btn btn-primary  col-12"
+                        }
+                      >
+                        Upload
+                      </button>
 
                   </form>
               </div>

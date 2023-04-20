@@ -269,7 +269,19 @@ const Dashboard = ({user}) => {
                                                     <td>
                                                         {
                                                             formList[i]['status'] != 2 && formList[i]['status'] != 3 ?
-                                                            <NavLink type="button" to={{pathname:"/completeform"}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn-outline-primary">View</NavLink>
+                                                            <NavLink 
+                                                                type="button" 
+                                                                to={{pathname:"/completeform"}} 
+                                                                state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} 
+                                                                className={
+                                                                    user['email'].includes('sfp') ? "btn btn-sm sfp-outline-primary" 
+                                                                    : user['email'].includes('fs4p') ? "btn btn-sm fs4p-outline-primary" 
+                                                                    : user['email'].includes('sanlam') ? "btn btn-sm sanlam-outline-primary" 
+                                                                    : "btn btn-sm btn-outline-primary"
+                                                                }
+                                                            >
+                                                                View
+                                                            </NavLink>
                                                             : 
                                                             <button className="btn btn-sm btn-outline-danger" type='button'>Can't Edit</button>
                                                         }

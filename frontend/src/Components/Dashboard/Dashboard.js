@@ -6,6 +6,7 @@ import Loader from '../Loader/Loader';
 import Pagination from '../Pagination/Pagination';
 import UserDashboard from './UserDashboard';
 import AdminDashboard from './AdminDashboard';
+import DashboardFooter from '../DashboardFooter';
 
 const Dashboard = ({user}) => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -120,6 +121,24 @@ const Dashboard = ({user}) => {
             </div>
             <div style={{display: dashboardVisibility}}>
                 <div className='container'>
+                    <br/>
+                    <div style={{textAlign: 'center'}}>
+                        <img 
+                            src=
+                            {
+                                user['email'].includes('sfp') ? `${process.env.REACT_APP_BACKEND_URL}/media/logo.png` 
+                                : user['email'].includes('fs4p') ? `${process.env.REACT_APP_BACKEND_URL}/media/fs4p_logo.jpg` 
+                                : user['email'].includes('sanlam') ? `${process.env.REACT_APP_BACKEND_URL}/media/afp_logo.png` 
+                                : <></>
+                            }
+                            className={
+                                user['email'].includes('sfp') ? "sfp-logo"
+                                : user['email'].includes('fs4p') ? "fs4p-logo"
+                                : user['email'].includes('sanlam') ? "sanlam-logo"
+                                : <></>
+                            }
+                        />
+                    </div>
                     <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 className="h2">Dashboard</h1>
                         {/* <div className="btn-toolbar mb-2 mb-md-0">
@@ -163,9 +182,9 @@ const Dashboard = ({user}) => {
                                         <button 
                                             type="button" 
                                             className= { 
-                                                user['email'].includes('sfp') ? "nav-link sfp" 
-                                                : user['email'].includes('fs4p') ? "nav-link fs4p" 
-                                                : user['email'].includes('sanlam') ? "nav-link sanlam" 
+                                                user['email'].includes('sfp') ? "nav-link sfp-nav-pill-btn" 
+                                                : user['email'].includes('fs4p') ? "nav-link fs4p-nav-pill-btn" 
+                                                : user['email'].includes('sanlam') ? "nav-link sanlam-nav-pill-btn" 
                                                 : "nav-link "
                                             }
                                             role="tab" 
@@ -181,10 +200,10 @@ const Dashboard = ({user}) => {
                                         <button 
                                             type="button" 
                                             className= { 
-                                                user['email'].includes('sfp') ? "nav-link sfp active" 
-                                                : user['email'].includes('fs4p') ? "nav-link fs4p active" 
-                                                : user['email'].includes('sanlam') ? "nav-link sanlam active" 
-                                                : "nav-link sfp active"
+                                                user['email'].includes('sfp') ? "nav-link sfp-nav-pill-btn active" 
+                                                : user['email'].includes('fs4p') ? "nav-link fs4p-nav-pill-btn active" 
+                                                : user['email'].includes('sanlam') ? "nav-link sanlam-nav-pill-btn active" 
+                                                : "nav-link sfp-link active"
                                             }
                                             role="tab" 
                                             data-bs-toggle="tab" 
@@ -215,6 +234,7 @@ const Dashboard = ({user}) => {
                     }
                     
                 </div>
+                <DashboardFooter />
             </div>
         </>
         :

@@ -42,7 +42,7 @@ const Header = ({isAuthenticated, user}) => {
           user ?
           user['email'].includes('sfp') ? <span>Succession Financial Planning</span>
           : user['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals</span>
-          : user['email'].includes('sanlam') ? <span>Succession Financial Planning</span>
+          : user['email'].includes('sanlam') ? <span>Aligned Financial Planning</span>
           : <span>Succession Financial Planning</span>
           : 
           <>

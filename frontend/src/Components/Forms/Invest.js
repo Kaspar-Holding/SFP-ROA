@@ -516,15 +516,19 @@ const Invest = ({user}) =>
         updateIPForm()
         // window.location.reload();
     }
+    const onFieldBlur = (e) => {
+        updateIPForm()
+        // window.location.reload();
+    }
     useEffect(() => {
         createIPForm(FormData)
-        const interval = setInterval(() => {
-            const investFormSubmitButton = document.querySelector(".updateInvestFormBTN")
-            investFormSubmitButton.click()
-        }, 10000)
-        return () => {
-            clearInterval(interval);
-        }
+        // const interval = setInterval(() => {
+        //     const investFormSubmitButton = document.querySelector(".updateInvestFormBTN")
+        //     investFormSubmitButton.click()
+        // }, 10000)
+        // return () => {
+        //     clearInterval(interval);
+        // }
         // setInterval(updateIPForm, 20000);
     }, []);
     // console.log(JSON.stringify(FormData))
@@ -584,7 +588,7 @@ const Invest = ({user}) =>
                         </div>
                         <div className='col-6'>
                             <div className='col-6'>
-                                <select className="text-start form-select" name='IP_SourceOfIncome' value={FormData['IP_SourceOfIncome']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='IP_SourceOfIncome' value={FormData['IP_SourceOfIncome']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                                     <option value="0" selected>Choose Source of funds</option>
                                     <option value="1">Salary</option>
                                     <option value="2">Savings</option>
@@ -626,7 +630,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_OtherSourceOfIncome']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_OtherSourceOfIncome']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus10()}}
-                onBlur={(e)=>{backgroundInfo_onBlur10()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}}                      
                 name="IP_OtherSourceOfIncome"
                 init={{
                     selector: "textarea",
@@ -668,7 +672,7 @@ const Invest = ({user}) =>
                     <label htmlFor="client_name" className="col-form-label" title="If no, motivate">2.1 Investment term</label>
                 </div>
                 <div className="col-3">
-                    <input spellCheck="true" type="number" id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Investment Term"  aria-describedby="" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="number" id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Investment Term"  aria-describedby="" />
                 </div>
                 <div className="col-3">
                 <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Years</label>
@@ -705,7 +709,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_InvestmentTermDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_InvestmentTermDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus11()}}
-                onBlur={(e)=>{backgroundInfo_onBlur11()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}}                      
                 name="IP_InvestmentTermDetails"
                 init={{
                     selector: "textarea",
@@ -734,7 +738,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Liquidity'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Liquidity" name="IP_Liquidity" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['IP_Liquidity'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Liquidity" name="IP_Liquidity" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -745,7 +749,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Liquidity'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Liquidity" name="IP_Liquidity" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['IP_Liquidity'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Liquidity" name="IP_Liquidity" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn" >
@@ -784,7 +788,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_LiquidityDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_LiquidityDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus12()}}
-                onBlur={(e)=>{backgroundInfo_onBlur12()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}}                      
                 name="IP_LiquidityDetails"
                 init={{
                     selector: "textarea",
@@ -812,7 +816,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Type'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Type" name="IP_Type" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['IP_Type'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_Type" name="IP_Type" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -823,7 +827,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_Type'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Type" name="IP_Type" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['IP_Type'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_Type" name="IP_Type" />
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="authority_access_radio_btn" >
@@ -862,7 +866,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_TypeDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_TypeDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus13()}}
-                onBlur={(e)=>{backgroundInfo_onBlur13()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur13();onFieldBlur(e)}}                      
                 name="IP_TypeDetails"
                 init={{
                     selector: "textarea",
@@ -891,7 +895,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_PremiumType'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_PremiumType" name="IP_PremiumType"/>
+                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['IP_PremiumType'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_PremiumType" name="IP_PremiumType"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -902,7 +906,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_PremiumType'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_PremiumType" name="IP_PremiumType"/>
+                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['IP_PremiumType'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_PremiumType" name="IP_PremiumType"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -941,7 +945,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_PremiumTypeDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_PremiumTypeDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus14()}}
-                onBlur={(e)=>{backgroundInfo_onBlur14()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur14();onFieldBlur(e)}}                      
                 name="IP_PremiumTypeDetails"
                 init={{
                     selector: "textarea",
@@ -969,7 +973,7 @@ const Invest = ({user}) =>
                     <div className="row">
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
+                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['IP_IncomeRequired'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
                             </div>
                                 <div className="col-8">
                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -980,7 +984,7 @@ const Invest = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-3 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['IP_IncomeRequired'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
+                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['IP_IncomeRequired'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="IP_IncomeRequired" name="IP_IncomeRequired"/>
                             </div>
                             <div className="col-8">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn1" >
@@ -1018,7 +1022,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_IncomeRequiredDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_IncomeRequiredDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus15()}}
-                onBlur={(e)=>{backgroundInfo_onBlur15()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur15();onFieldBlur(e)}}                      
                 name="IP_IncomeRequiredDetails"
                 init={{
                     selector: "textarea",
@@ -1045,9 +1049,9 @@ const Invest = ({user}) =>
                 
                 <div className='col-6'>
                     <div className='col-6'>
-                        <select className="text-start form-select" name='IP_InvestmentStrategy' value={FormData['IP_InvestmentStrategy']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='IP_InvestmentStrategy' value={FormData['IP_InvestmentStrategy']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                             <option value="0" selected>Choose an Item</option>
-                            <option value="1">Capital Reservation</option>
+                            <option value="1">Capital Preservation</option>
                             <option value="2">Income</option>
                             <option value="3">Goal Specification Investment</option>
                         </select>
@@ -1083,7 +1087,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_InvestmentStrategyDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_InvestmentStrategyDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus1()}}
-                onBlur={(e)=>{backgroundInfo_onBlur1()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur1();onFieldBlur(e)}}                      
                 name="IP_InvestmentStrategyDetails"
                 init={{
                     selector: "textarea",
@@ -1110,7 +1114,7 @@ const Invest = ({user}) =>
                 </div>
                 <div className='col-6'>
                     <div className='col-6'>
-                        <select className="text-start form-select" name='IP_ReturnRequired' value={FormData['IP_ReturnRequired']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='IP_ReturnRequired' value={FormData['IP_ReturnRequired']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                             <option value="0" selected>Choose an Item</option>
                             <option value="1">Market Linked Return</option>
                             <option value="2">Targeted Return</option>
@@ -1145,10 +1149,10 @@ const Invest = ({user}) =>
                 placeholder={
             `Notes on discussion with client concerning return expectations.`}  aria-describedby=""  ></textarea> */}
             <Editor
-                value={FormData['IP_RiskProfileDetails']}
+                value={FormData['IP_ReturnRequiredDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_ReturnRequiredDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus2()}}
-                onBlur={(e)=>{backgroundInfo_onBlur2()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}                      
                 name="IP_ReturnRequiredDetails"
                 init={{
                     selector: "textarea",
@@ -1176,7 +1180,7 @@ const Invest = ({user}) =>
                 </div>
                 <div className='col-6'>
                     <div className='col-6'>
-                        <select className="text-start form-select" name='IP_RiskProfile' value={FormData['IP_RiskProfile']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='IP_RiskProfile' value={FormData['IP_RiskProfile']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
                             <option value="0" selected>Choose an Item</option>
                             <option value="1">Conservative</option>
                             <option value="2">Cautious</option>
@@ -1215,7 +1219,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_RiskProfileDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_RiskProfileDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus3()}}
-                onBlur={(e)=>{backgroundInfo_onBlur3()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur3();onFieldBlur(e)}}                      
                 name="IP_RiskProfileDetails"
                 init={{
                     selector: "textarea",
@@ -1284,7 +1288,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_RecommendationSummary']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_RecommendationSummary']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus()}}
-                onBlur={(e)=>{backgroundInfo_onBlur()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur();onFieldBlur(e)}}                      
                 name="IP_RecommendationSummary"
                 init={{
                     selector: "textarea",
@@ -1340,7 +1344,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_AltS_1']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_1']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus4()}}
-                onBlur={(e)=>{backgroundInfo_onBlur4()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur4();onFieldBlur(e)}}                      
                 name="IP_AltS_1"
                 init={{
                     selector: "textarea",
@@ -1388,7 +1392,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_AltS_2']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_2']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus5()}}
-                onBlur={(e)=>{backgroundInfo_onBlur5()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur5();onFieldBlur(e)}}                      
                 name="IP_AltS_2"
                 init={{
                     selector: "textarea",
@@ -1436,7 +1440,7 @@ const Invest = ({user}) =>
                 value={FormData['IP_AltS_3']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_3']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus6()}}
-                onBlur={(e)=>{backgroundInfo_onBlur6()}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur6();onFieldBlur(e)}}                      
                 name="IP_AltS_3"
                 init={{
                     selector: "textarea",
@@ -1500,7 +1504,7 @@ const Invest = ({user}) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product:</td>
                     <td>  
                     <div className=''>
-                        <select className="text-start form-select" name='ProductTaken' value={parseInt(key.ProductTaken)} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='ProductTaken' value={parseInt(key.ProductTaken)} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
                             <option value="0" selected>Choose Product</option>
                             <option value="1">Endowment</option>
                             <option value="2">RA</option>
@@ -1526,7 +1530,7 @@ const Invest = ({user}) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Provider:</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='ProductProvider' value={key.ProductProvider}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ProductProvider' value={key.ProductProvider}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -1534,7 +1538,7 @@ const Invest = ({user}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Policy No:</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='PolicyNumber' required value={key.PolicyNumber} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='PolicyNumber' required value={key.PolicyNumber} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td> 
 
@@ -1547,7 +1551,7 @@ const Invest = ({user}) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product Name:</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='ProductName' value={key.ProductName} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ProductName' value={key.ProductName} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -1557,11 +1561,11 @@ const Invest = ({user}) =>
                     <div className='row'>
                         <div className='col-6'>
                             <div className="form-group">
-                                <input type="text" className="form-control" name='ProductPremium' value={key.ProductPremium} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ProductPremium' value={key.ProductPremium} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                             </div>
                         </div>
                         <div className='col-6'>
-                            <select className="text-start form-select" name='ProductPremiumFrequency' value={key.ProductPremiumFrequency} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                            <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='ProductPremiumFrequency' value={key.ProductPremiumFrequency} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-label="Default select example">
                                 <option value="0" selected>Frequeny</option>
                                 <option value="1">Monthly</option>
                                 <option value="2">Quarterly</option>
@@ -1581,7 +1585,7 @@ const Invest = ({user}) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Escalation:</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='ProductEscalation' value={key.ProductEscalation} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ProductEscalation' value={key.ProductEscalation} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -1589,7 +1593,7 @@ const Invest = ({user}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Total estimated annual <br/>cost (EAC)</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='ProductEAC' value={key.ProductEAC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ProductEAC' value={key.ProductEAC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 
@@ -1600,7 +1604,7 @@ const Invest = ({user}) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Contracting Party</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='ProductContractingParty' value={key.ProductContractingParty} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ProductContractingParty' value={key.ProductContractingParty} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
@@ -1608,7 +1612,7 @@ const Invest = ({user}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Life/Lives assured</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='ProductLivesAssured' value={key.ProductLivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ProductLivesAssured' value={key.ProductLivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 
@@ -1619,14 +1623,14 @@ const Invest = ({user}) =>
                     <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Premium Layer</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='ProductPremiumLayer' value={key.ProductPremiumLayer} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ProductPremiumLayer' value={key.ProductPremiumLayer} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
                 <td></td>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Beneficiary / nominee</td>
                 <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='ProductBeneficiary' value={key.ProductBeneficiary} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ProductBeneficiary' value={key.ProductBeneficiary} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 
@@ -1637,24 +1641,24 @@ const Invest = ({user}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Initial Commission</td>
                     <td>  
                     <div className="form-group">
-                        <input type="text" className="form-control" name='Product_IniC' value={key.Product_IniC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='Product_IniC' value={key.Product_IniC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
-                <td><input type="text" className="form-control" name='Product_IniC_Percentage' value={key.Product_IniC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+                <td><input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='Product_IniC_Percentage' value={key.Product_IniC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%</td>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Ongoing Commission</td>
                 <td>  
                         <div className="form-group">
-                            <input type="text" className="form-control" name='Product_OnC' value={key.Product_OnC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='Product_OnC' value={key.Product_OnC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                 </td> 
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='Product_OnC_Percentage' value={key.Product_OnC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='Product_OnC_Percentage' value={key.Product_OnC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%
                         </div>
                     </td> 
                     {/* <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='SFPSolutionFunds' value={key.SFPSolutionFunds} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="Total" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='SFPSolutionFunds' value={key.SFPSolutionFunds} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="Total" style={{width: '120px'}}/>
                         </div>
                     </td>       */}
 
@@ -1681,7 +1685,7 @@ const Invest = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={key.SFPSolutionFunds == 1 ? true : false} onChange={(e) => {on_ProductTaken_Change(e, i)}} type="radio" value="1" id="SFPSolutionFunds" name="SFPSolutionFunds"/>
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.SFPSolutionFunds == 1 ? true : false} onChange={(e) => {on_ProductTaken_Change(e, i)}} type="radio" value="1" id="SFPSolutionFunds" name="SFPSolutionFunds"/>
                                 </div>
                                     <div className="col-2">
                                         <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -1692,7 +1696,7 @@ const Invest = ({user}) =>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input className="form-check-input" checked={FormData["SFPSolutionFunds"] == 0 ? true : false} onChange={(e) => {on_ProductTaken_Change(e, i)}} type="radio" value="0" id="SFPSolutionFunds" name="SFPSolutionFunds"/>
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SFPSolutionFunds"] == 0 ? true : false} onChange={(e) => {on_ProductTaken_Change(e, i)}} type="radio" value="0" id="SFPSolutionFunds" name="SFPSolutionFunds"/>
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
@@ -1717,7 +1721,7 @@ const Invest = ({user}) =>
                         value={key.SFPSolutionFundsDetails}
                         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("SFPSolutionFundsDetails", i, newText)}}
                         onFocus={(e)=>{sica_onFocus()}}
-                        onBlur={(e)=>{sica_onBlur()}} 
+                        onBlur={(e)=>{sica_onBlur();onFieldBlur(e)}} 
                         name="SFPSolutionFundsDetails"                     
                         init={{
                             selector: "textarea",
@@ -1789,7 +1793,7 @@ const Invest = ({user}) =>
                 value={key.ItP}
                 onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP", i, newText)}}
                 onFocus={(e)=>{backgroundInfo_onFocus7()}}
-                onBlur={(e)=>{backgroundInfo_onBlur7()}} 
+                onBlur={(e)=>{backgroundInfo_onBlur7();onFieldBlur(e)}} 
                 name="ItP"                     
                 init={{
                     selector: "textarea",
@@ -1857,7 +1861,7 @@ const Invest = ({user}) =>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_Fund' value={key.ItP_Fund} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund' value={key.ItP_Fund} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1865,25 +1869,25 @@ const Invest = ({user}) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_FundPercentage' value={key.ItP_FundPercentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage' value={key.ItP_FundPercentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" checked={key.ItP_FundProvided === 1 ? true : false} name="ItP_FundProvided" onChange={(e)=>{key.ItP_FundProvided === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.ItP_FundProvided === 1 ? true : false} name="ItP_FundProvided" onChange={(e)=>{key.ItP_FundProvided === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" checked={key.ItP_FundDiscussed === 1 ? true : false} name="ItP_FundDiscussed" onChange={(e)=>{key.ItP_FundDiscussed === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.ItP_FundDiscussed === 1 ? true : false} name="ItP_FundDiscussed" onChange={(e)=>{key.ItP_FundDiscussed === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_Fund1' value={key.ItP_Fund1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund1' value={key.ItP_Fund1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1891,25 +1895,25 @@ const Invest = ({user}) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_FundPercentage1' value={key.ItP_FundPercentage1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage1' value={key.ItP_FundPercentage1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided1 === 1 ? true : false} name="ItP_FundProvided1" onChange={(e)=>{key.ItP_FundProvided1 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundProvided1 === 1 ? true : false} name="ItP_FundProvided1" onChange={(e)=>{key.ItP_FundProvided1 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed1 === 1 ? true : false} name="ItP_FundDiscussed1" onChange={(e)=>{key.ItP_FundDiscussed1 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed1 === 1 ? true : false} name="ItP_FundDiscussed1" onChange={(e)=>{key.ItP_FundDiscussed1 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_Fund2' value={key.ItP_Fund2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund2' value={key.ItP_Fund2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1917,25 +1921,25 @@ const Invest = ({user}) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_FundPercentage2' value={key.ItP_FundPercentage2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage2' value={key.ItP_FundPercentage2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided2 === 1 ? true : false} name="ItP_FundProvided2" onChange={(e)=>{key.ItP_FundProvided2 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundProvided2 === 1 ? true : false} name="ItP_FundProvided2" onChange={(e)=>{key.ItP_FundProvided2 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed2 === 1 ? true : false} name="ItP_FundDiscussed2" onChange={(e)=>{key.ItP_FundDiscussed2 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed2 === 1 ? true : false} name="ItP_FundDiscussed2" onChange={(e)=>{key.ItP_FundDiscussed2 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_Fund3' value={key.ItP_Fund3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund3' value={key.ItP_Fund3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1943,25 +1947,25 @@ const Invest = ({user}) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_FundPercentage3' value={key.ItP_FundPercentage3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage3' value={key.ItP_FundPercentage3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided3 === 1 ? true : false} name="ItP_FundProvided3" onChange={(e)=>{key.ItP_FundProvided3 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundProvided3 === 1 ? true : false} name="ItP_FundProvided3" onChange={(e)=>{key.ItP_FundProvided3 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed3 === 1 ? true : false} name="ItP_FundDiscussed3" onChange={(e)=>{key.ItP_FundDiscussed3 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed3 === 1 ? true : false} name="ItP_FundDiscussed3" onChange={(e)=>{key.ItP_FundDiscussed3 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_Fund4' value={key.ItP_Fund4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund4' value={key.ItP_Fund4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1969,25 +1973,25 @@ const Invest = ({user}) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_FundPercentage4' value={key.ItP_FundPercentage4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage4' value={key.ItP_FundPercentage4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided4 === 1 ? true : false} name="ItP_FundProvided4" onChange={(e)=>{key.ItP_FundProvided4 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundProvided4 === 1 ? true : false} name="ItP_FundProvided4" onChange={(e)=>{key.ItP_FundProvided4 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed4 === 1 ? true : false} name="ItP_FundDiscussed4" onChange={(e)=>{key.ItP_FundDiscussed4 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed4 === 1 ? true : false} name="ItP_FundDiscussed4" onChange={(e)=>{key.ItP_FundDiscussed4 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_Fund5' value={key.ItP_Fund5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund5' value={key.ItP_Fund5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1995,25 +1999,25 @@ const Invest = ({user}) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_FundPercentage5' value={key.ItP_FundPercentage5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage5' value={key.ItP_FundPercentage5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided5 === 1 ? true : false} name="ItP_FundProvided5" onChange={(e)=>{key.ItP_FundProvided5 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundProvided5 === 1 ? true : false} name="ItP_FundProvided5" onChange={(e)=>{key.ItP_FundProvided5 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed5 === 1 ? true : false} name="ItP_FundDiscussed5" onChange={(e)=>{key.ItP_FundDiscussed5 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed5 === 1 ? true : false} name="ItP_FundDiscussed5" onChange={(e)=>{key.ItP_FundDiscussed5 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td> 
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_Fund6' value={key.ItP_Fund6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund6' value={key.ItP_Fund6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -2021,25 +2025,25 @@ const Invest = ({user}) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_FundPercentage6' value={key.ItP_FundPercentage6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage6' value={key.ItP_FundPercentage6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided6 === 1 ? true : false} name="ItP_FundProvided6" onChange={(e)=>{key.ItP_FundProvided6 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundProvided6 === 1 ? true : false} name="ItP_FundProvided6" onChange={(e)=>{key.ItP_FundProvided6 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed6 === 1 ? true : false} name="ItP_FundDiscussed6" onChange={(e)=>{key.ItP_FundDiscussed6 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed6 === 1 ? true : false} name="ItP_FundDiscussed6" onChange={(e)=>{key.ItP_FundDiscussed6 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>      
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_Fund7' value={key.ItP_Fund7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund7' value={key.ItP_Fund7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -2047,18 +2051,18 @@ const Invest = ({user}) =>
                     
                     <td align="center">
                         <div className="form-group">
-                            <input type="text" className="form-control" name='ItP_FundPercentage7' value={key.ItP_FundPercentage7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage7' value={key.ItP_FundPercentage7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundProvided7 === 1 ? true : false} name="ItP_FundProvided7" onChange={(e)=>{key.ItP_FundProvided7 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundProvided7 === 1 ? true : false} name="ItP_FundProvided7" onChange={(e)=>{key.ItP_FundProvided7 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed7 === 1 ? true : false} name="ItP_FundDiscussed7" onChange={(e)=>{key.ItP_FundDiscussed7 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={key.ItP_FundDiscussed7 === 1 ? true : false} name="ItP_FundDiscussed7" onChange={(e)=>{key.ItP_FundDiscussed7 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
             </tr>
@@ -2097,7 +2101,7 @@ const Invest = ({user}) =>
             value={key.ItP_FundsReasons}
             onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP_FundsReasons", i, newText)}}
             onFocus={(e)=>{backgroundInfo_onFocus8()}}
-            onBlur={(e)=>{backgroundInfo_onBlur8()}} 
+            onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}} 
             name="ItP_FundsReasons"                     
             init={{
                 selector: "textarea",
@@ -2404,3 +2408,12 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(Invest)
+
+const HeaderStyle = {
+    // width: "100%",
+    // height: "100vh",
+   // background: `url(${BackgroundImage})`,
+   // backgroundPosition: "center",
+   // backgroundRepeat: "no-repeat",
+   // backgroundSize: "cover"
+ }

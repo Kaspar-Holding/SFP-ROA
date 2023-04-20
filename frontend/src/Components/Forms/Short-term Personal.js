@@ -894,16 +894,20 @@ const Short_term_Personal = ({user}) => {
         updateForm()
         // window.location.reload();
       }
+      
+      const onFieldBlur = e => {
+        updateForm()
+      }
       // console.log(FormData)
       useEffect(() => {
         createSTIPForm(FormData)
-        const interval = setInterval(() => {
-          const STIPFormSubmitButton = document.querySelector(".updateSTIPFormBTN")
-          STIPFormSubmitButton.click()
-        }, 10000)
-        return () => {
-            clearInterval(interval);
-        }
+        // const interval = setInterval(() => {
+        //   const STIPFormSubmitButton = document.querySelector(".updateSTIPFormBTN")
+        //   STIPFormSubmitButton.click()
+        // }, 10000)
+        // return () => {
+        //     clearInterval(interval);
+        // }
       }, []);
       // setTimeout(() => {
       //   setSuccessMessageVisibility("none")
@@ -934,13 +938,13 @@ const Short_term_Personal = ({user}) => {
        <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
                                     {
                                         state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span>Succession Financial Planning (SFP) </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals (FS4P) </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span>Succession Financial Planning (AFP) </span>
-                                        : <span>Succession Financial Planning (SFP) </span>
+                                        state['advisor']['email'].includes('sfp') ? <span> Succession Financial Planning (SFP) </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span> Financial Solutions 4 Professionals (FS4P) </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span> Aligned Financial Planning (AFP) </span>
+                                        : <span> Succession Financial Planning (SFP) </span>
                                         : 
                                         <>
-                                            <span>Succession Financial Planning (SFP) </span>
+                                            <span> Succession Financial Planning (SFP) </span>
                                         </>
                                     } 
                                     processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
@@ -955,7 +959,33 @@ const Short_term_Personal = ({user}) => {
                                             <span> SFP </span>
                                         </>
                                     } 
-                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  
+                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
+                                    <a href=
+                                        {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? "https://www.sfpadvice.co.za"
+                                        : state['advisor']['email'].includes('fs4p') ? "https://www.fs4p.co.za"
+                                        : state['advisor']['email'].includes('sanlam') ? "https://www.sanlam.co.za"
+                                        : <span> SFP </span>
+                                        : 
+                                        <>
+                                            <span> SFP </span>
+                                        </>
+                                    }
+                                        
+                                    >
+                                        {
+                                            state['advisor'] ?
+                                            state['advisor']['email'].includes('sfp') ? <span> https://www.sfpadvice.co.za </span>
+                                            : state['advisor']['email'].includes('fs4p') ? <span> https://www.fs4p.co.za </span>
+                                            : state['advisor']['email'].includes('sanlam') ? <span> https://www.sanlam.co.za </span>
+                                            : <span> SFP </span>
+                                            : 
+                                            <>
+                                                <span> SFP </span>
+                                            </>
+                                        }
+                                    </a>  
                                 </p>
        <hr/>
        <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
@@ -984,7 +1014,7 @@ const Short_term_Personal = ({user}) => {
                         <label className="col-form-label"><b>Underwritten By:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_Underwritten_By" name='STIP_Underwritten_By' value={FormData['STIP_Underwritten_By']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Underwritten_By" name='STIP_Underwritten_By' value={FormData['STIP_Underwritten_By']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -995,7 +1025,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label"><b>Branch name:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_Branch_Name" name='STIP_Branch_Name' value={FormData['STIP_Branch_Name']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Branch_Name" name='STIP_Branch_Name' value={FormData['STIP_Branch_Name']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1007,7 +1037,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label"><b>Branch number:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_Branch_Number" name='STIP_Branch_Number' value={FormData['STIP_Branch_Number']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Branch_Number" name='STIP_Branch_Number' value={FormData['STIP_Branch_Number']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1018,7 +1048,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label"><b>Quotation number:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_Quotation_Number" name='STIP_Quotation_Number' value={FormData['STIP_Quotation_Number']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Quotation_Number" name='STIP_Quotation_Number' value={FormData['STIP_Quotation_Number']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1030,7 +1060,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label"><b>Policy Number</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_Policy_Number" name='STIP_Policy_Number' value={FormData['STIP_Policy_Number']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Policy_Number" name='STIP_Policy_Number' value={FormData['STIP_Policy_Number']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1041,7 +1071,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label"><b>Inception date:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" type="date" id="STIP_Inception_Date" name='STIP_Inception_Date' value={FormData['STIP_Inception_Date']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="date" id="STIP_Inception_Date" name='STIP_Inception_Date' value={FormData['STIP_Inception_Date']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1088,7 +1118,7 @@ const Short_term_Personal = ({user}) => {
                         <label className="col-form-label"><b>Surname:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_Applicant_Surname" name='STIP_Applicant_Surname' value={FormData['STIP_Applicant_Surname']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Applicant_Surname" name='STIP_Applicant_Surname' value={FormData['STIP_Applicant_Surname']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1101,7 +1131,7 @@ const Short_term_Personal = ({user}) => {
                     <div className="col-6">
                       <div className="row col-6 align-items-center">
                         <div className="col-3">
-                            <input className="form-check-input" checked={FormData["STIP_Applicant_Gender"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Applicant_Gender" name="STIP_Applicant_Gender" />
+                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Applicant_Gender"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Applicant_Gender" name="STIP_Applicant_Gender" />
                         </div>
                         <div className="col-3">
                             <label className="form-check-label"  >
@@ -1109,7 +1139,7 @@ const Short_term_Personal = ({user}) => {
                             </label>
                         </div>
                         <div className="col-3">
-                            <input className="form-check-input" checked={FormData["STIP_Applicant_Gender"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Applicant_Gender" name="STIP_Applicant_Gender" />
+                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Applicant_Gender"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Applicant_Gender" name="STIP_Applicant_Gender" />
                         </div>
                         <div className="col-3">
                             <label className="form-check-label"  >
@@ -1128,7 +1158,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label"><b>Initials:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_Applicant_Initials" name='STIP_Applicant_Initials' value={FormData['STIP_Applicant_Initials']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Applicant_Initials" name='STIP_Applicant_Initials' value={FormData['STIP_Applicant_Initials']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1139,7 +1169,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label"><b>Title:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_Applicant_Title" name='STIP_Applicant_Title' value={FormData['STIP_Applicant_Title']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Applicant_Title" name='STIP_Applicant_Title' value={FormData['STIP_Applicant_Title']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1151,7 +1181,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label"><b>Date of birth</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" type="date" id="STIP_Applicant_DateofBirth" name='STIP_Applicant_DateofBirth' value={FormData['STIP_Applicant_DateofBirth']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="date" id="STIP_Applicant_DateofBirth" name='STIP_Applicant_DateofBirth' value={FormData['STIP_Applicant_DateofBirth']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1162,7 +1192,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label"><b>Identity Number:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_Applicant_IdNumber" name='STIP_Applicant_IdNumber' value={FormData['STIP_Applicant_IdNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Applicant_IdNumber" name='STIP_Applicant_IdNumber' value={FormData['STIP_Applicant_IdNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1174,7 +1204,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label"><b>Email Address:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_Applicant_Email" name='STIP_Applicant_Email' value={FormData['STIP_Applicant_Email']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Applicant_Email" name='STIP_Applicant_Email' value={FormData['STIP_Applicant_Email']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1185,7 +1215,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label"><b>Contact Number:</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_Applicant_ContactNumber" name='STIP_Applicant_ContactNumber' value={FormData['STIP_Applicant_ContactNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Applicant_ContactNumber" name='STIP_Applicant_ContactNumber' value={FormData['STIP_Applicant_ContactNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1209,7 +1239,7 @@ const Short_term_Personal = ({user}) => {
         <div className="col-6">
           <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_General_Refused"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_General_Refused" name="STIP_General_Refused" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_General_Refused"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_General_Refused" name="STIP_General_Refused" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -1217,7 +1247,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_General_Refused"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_General_Refused" name="STIP_General_Refused" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_General_Refused"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_General_Refused" name="STIP_General_Refused" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -1241,7 +1271,7 @@ const Short_term_Personal = ({user}) => {
               value={FormData['STIP_General_RefusedDetails']}
               onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_General_RefusedDetails']: newText }) }}
               onFocus={(e)=>{letter_of_introduction_onFocus()}}
-              onBlur={(e)=>{letter_of_introduction_onBlur()}}                      
+              onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}                      
               name="STIP_General_RefusedDetails"
               init={{
                   selector: "textarea",
@@ -1271,7 +1301,7 @@ const Short_term_Personal = ({user}) => {
                 <div className="col-6">
                 <div className="row col-6 align-items-center">
                     <div className="col-3">
-                        <input className="form-check-input" checked={FormData["STIP_General_Risks"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_General_Risks" name="STIP_General_Risks" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_General_Risks"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_General_Risks" name="STIP_General_Risks" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -1279,7 +1309,7 @@ const Short_term_Personal = ({user}) => {
                         </label>
                     </div>
                     <div className="col-3">
-                        <input className="form-check-input" checked={FormData["STIP_General_Risks"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_General_Risks" name="STIP_General_Risks" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_General_Risks"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_General_Risks" name="STIP_General_Risks" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -1303,7 +1333,7 @@ const Short_term_Personal = ({user}) => {
                   value={FormData['STIP_General_RisksDetails']}
                   onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_General_RisksDetails']: newText }) }}
                   onFocus={(e)=>{fica_onFocus()}}
-                  onBlur={(e)=>{fica_onBlur()}}                      
+                  onBlur={(e)=>{fica_onBlur();onFieldBlur(e)}}                      
                   name="STIP_General_RisksDetails"
                   init={{
                       selector: "textarea",
@@ -1340,7 +1370,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label">Last date of insurance: </label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" type="date" id="STIP_General_LastDate" name='STIP_General_LastDate' value={FormData['STIP_General_LastDate']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click or tap to enter date."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="date" id="STIP_General_LastDate" name='STIP_General_LastDate' value={FormData['STIP_General_LastDate']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click or tap to enter date."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1351,7 +1381,7 @@ const Short_term_Personal = ({user}) => {
                         <label htmlFor="id_number" className="col-form-label">Name of insurer: </label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_General_InsurerName" name='STIP_General_InsurerName' value={FormData['STIP_General_InsurerName']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click or tap to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_General_InsurerName" name='STIP_General_InsurerName' value={FormData['STIP_General_InsurerName']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click or tap to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1400,11 +1430,11 @@ const Short_term_Personal = ({user}) => {
         <div className="col-6" style={{paddingBottom: "0.5%"}}>
             <div className="row g-3 align-items-center">
                 <div className="col-6">
-                    <input spellCheck="true"  id="STIP_General_TypeOfLoss" name='STIP_General_TypeOfLoss' value={FormData['STIP_General_TypeOfLoss']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Type of loss"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_General_TypeOfLoss" name='STIP_General_TypeOfLoss' value={FormData['STIP_General_TypeOfLoss']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Type of loss"  aria-describedby="" style={{width:"150px"}} />
                 </div>
                 
                 <div className="col-6">
-                    <input spellCheck="true"  id="STIP_General_LossYear" name='STIP_General_LossYear' value={FormData['STIP_General_LossYear']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Year"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_General_LossYear" name='STIP_General_LossYear' value={FormData['STIP_General_LossYear']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Year"  aria-describedby="" style={{width:"150px"}} />
                 </div>
             </div>
         </div>
@@ -1412,11 +1442,11 @@ const Short_term_Personal = ({user}) => {
         <div className="col-6" style={{paddingBottom: "0.5%"}}>
             <div className="row g-3 align-items-center">
                 <div className="col-6">
-                    <input spellCheck="true"  id="STIP_General_LossAmount" name='STIP_General_LossAmount' value={FormData['STIP_General_LossAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_General_LossAmount" name='STIP_General_LossAmount' value={FormData['STIP_General_LossAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"150px"}} />
                 </div>
                 
                 <div className="col-6">
-                    <input spellCheck="true"  id="STIP_General_LossInsurer" name='STIP_General_LossInsurer' value={FormData['STIP_General_LossInsurer']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Insurer"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_General_LossInsurer" name='STIP_General_LossInsurer' value={FormData['STIP_General_LossInsurer']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Insurer"  aria-describedby="" style={{width:"150px"}} />
                 </div>
             </div>
         </div>
@@ -1451,11 +1481,11 @@ const Short_term_Personal = ({user}) => {
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
                 <b>Existing Product</b>
-                <input spellCheck="true"  id="STIP_CnRI_Existing_Company" name='STIP_CnRI_Existing_Company' value={FormData['STIP_CnRI_Existing_Company']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Existing_Company" name='STIP_CnRI_Existing_Company' value={FormData['STIP_CnRI_Existing_Company']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
                 <b>Replacement Product</b>
-                <input spellCheck="true"  id="STIP_CnRI_Replacement_Company" name='STIP_CnRI_Replacement_Company' value={FormData['STIP_CnRI_Replacement_Company']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Replacement_Company" name='STIP_CnRI_Replacement_Company' value={FormData['STIP_CnRI_Replacement_Company']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1463,10 +1493,10 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_Existing_Provider" name='STIP_CnRI_Existing_Provider' value={FormData['STIP_CnRI_Existing_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Existing_Provider" name='STIP_CnRI_Existing_Provider' value={FormData['STIP_CnRI_Existing_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_Replacement_Provider" name='STIP_CnRI_Replacement_Provider' value={FormData['STIP_CnRI_Replacement_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Replacement_Provider" name='STIP_CnRI_Replacement_Provider' value={FormData['STIP_CnRI_Replacement_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1474,10 +1504,10 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_Existing_Product" name='STIP_CnRI_Existing_Product' value={FormData['STIP_CnRI_Existing_Product']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Existing_Product" name='STIP_CnRI_Existing_Product' value={FormData['STIP_CnRI_Existing_Product']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_Replacement_Product" name='STIP_CnRI_Replacement_Product' value={FormData['STIP_CnRI_Replacement_Product']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Replacement_Product" name='STIP_CnRI_Replacement_Product' value={FormData['STIP_CnRI_Replacement_Product']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1499,31 +1529,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>
                 House content</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_1_Recomm"] == 1 ? true : false} name="STIP_CnRI_1_Recomm" onChange={(e)=>{FormData["STIP_CnRI_1_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_1_Recomm"] == 1 ? true : false} name="STIP_CnRI_1_Recomm" onChange={(e)=>{FormData["STIP_CnRI_1_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_1_Accepted"] == 1 ? true : false} name="STIP_CnRI_1_Accepted" onChange={(e)=>{FormData["STIP_CnRI_1_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_1_Accepted"] == 1 ? true : false} name="STIP_CnRI_1_Accepted" onChange={(e)=>{FormData["STIP_CnRI_1_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_1_CoverAmount" name='STIP_CnRI_1_CoverAmount' value={FormData['STIP_CnRI_1_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_1_CoverAmount" name='STIP_CnRI_1_CoverAmount' value={FormData['STIP_CnRI_1_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_1_Premium1" name='STIP_CnRen_1_Premium1' value={FormData['STIP_CnRen_1_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_1_Premium1" name='STIP_CnRen_1_Premium1' value={FormData['STIP_CnRen_1_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_1_Excess1" name='STIP_CnRen_1_Excess1' value={FormData['STIP_CnRen_1_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_1_Excess1" name='STIP_CnRen_1_Excess1' value={FormData['STIP_CnRen_1_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_1_Premium2" name='STIP_CnRen_1_Premium2' value={FormData['STIP_CnRen_1_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_1_Premium2" name='STIP_CnRen_1_Premium2' value={FormData['STIP_CnRen_1_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_1_Excess2" name='STIP_CnRen_1_Excess2' value={FormData['STIP_CnRen_1_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_1_Excess2" name='STIP_CnRen_1_Excess2' value={FormData['STIP_CnRen_1_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1534,31 +1564,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>
                 Buildings</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_2_Recomm"] == 1 ? true : false} name="STIP_CnRI_2_Recomm" onChange={(e)=>{FormData["STIP_CnRI_2_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_2_Recomm"] == 1 ? true : false} name="STIP_CnRI_2_Recomm" onChange={(e)=>{FormData["STIP_CnRI_2_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_2_Accepted"] == 1 ? true : false} name="STIP_CnRI_2_Accepted" onChange={(e)=>{FormData["STIP_CnRI_2_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_2_Accepted"] == 1 ? true : false} name="STIP_CnRI_2_Accepted" onChange={(e)=>{FormData["STIP_CnRI_2_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_2_CoverAmount" name='STIP_CnRI_2_CoverAmount' value={FormData['STIP_CnRI_2_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_2_CoverAmount" name='STIP_CnRI_2_CoverAmount' value={FormData['STIP_CnRI_2_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_2_Premium1" name='STIP_CnRen_2_Premium1' value={FormData['STIP_CnRen_2_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_2_Premium1" name='STIP_CnRen_2_Premium1' value={FormData['STIP_CnRen_2_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_2_Excess1" name='STIP_CnRen_2_Excess1' value={FormData['STIP_CnRen_2_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_2_Excess1" name='STIP_CnRen_2_Excess1' value={FormData['STIP_CnRen_2_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_2_Premium2" name='STIP_CnRen_2_Premium2' value={FormData['STIP_CnRen_2_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_2_Premium2" name='STIP_CnRen_2_Premium2' value={FormData['STIP_CnRen_2_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_2_Excess2" name='STIP_CnRen_2_Excess2' value={FormData['STIP_CnRen_2_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_2_Excess2" name='STIP_CnRen_2_Excess2' value={FormData['STIP_CnRen_2_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1568,31 +1598,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;
               Subsidence and landslip</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_3_Recomm"] == 1 ? true : false} name="STIP_CnRI_3_Recomm" onChange={(e)=>{FormData["STIP_CnRI_3_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_3_Recomm"] == 1 ? true : false} name="STIP_CnRI_3_Recomm" onChange={(e)=>{FormData["STIP_CnRI_3_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_3_Accepted"] == 1 ? true : false} name="STIP_CnRI_3_Accepted" onChange={(e)=>{FormData["STIP_CnRI_3_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_3_Accepted"] == 1 ? true : false} name="STIP_CnRI_3_Accepted" onChange={(e)=>{FormData["STIP_CnRI_3_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_3_CoverAmount" name='STIP_CnRI_3_CoverAmount' value={FormData['STIP_CnRI_3_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_3_CoverAmount" name='STIP_CnRI_3_CoverAmount' value={FormData['STIP_CnRI_3_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_3_Premium1" name='STIP_CnRen_3_Premium1' value={FormData['STIP_CnRen_3_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_3_Premium1" name='STIP_CnRen_3_Premium1' value={FormData['STIP_CnRen_3_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_3_Excess1" name='STIP_CnRen_3_Excess1' value={FormData['STIP_CnRen_3_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_3_Excess1" name='STIP_CnRen_3_Excess1' value={FormData['STIP_CnRen_3_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_3_Premium2" name='STIP_CnRen_3_Premium2' value={FormData['STIP_CnRen_3_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_3_Premium2" name='STIP_CnRen_3_Premium2' value={FormData['STIP_CnRen_3_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_3_Excess2" name='STIP_CnRen_3_Excess2' value={FormData['STIP_CnRen_3_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_3_Excess2" name='STIP_CnRen_3_Excess2' value={FormData['STIP_CnRen_3_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1602,31 +1632,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Accidental damage</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_4_Recomm"] == 1 ? true : false} name="STIP_CnRI_4_Recomm" onChange={(e)=>{FormData["STIP_CnRI_4_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_4_Recomm"] == 1 ? true : false} name="STIP_CnRI_4_Recomm" onChange={(e)=>{FormData["STIP_CnRI_4_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_4_Accepted"] == 1 ? true : false} name="STIP_CnRI_4_Accepted" onChange={(e)=>{FormData["STIP_CnRI_4_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_4_Accepted"] == 1 ? true : false} name="STIP_CnRI_4_Accepted" onChange={(e)=>{FormData["STIP_CnRI_4_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_4_CoverAmount" name='STIP_CnRI_4_CoverAmount' value={FormData['STIP_CnRI_4_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_4_CoverAmount" name='STIP_CnRI_4_CoverAmount' value={FormData['STIP_CnRI_4_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_4_Premium1" name='STIP_CnRen_4_Premium1' value={FormData['STIP_CnRen_4_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_4_Premium1" name='STIP_CnRen_4_Premium1' value={FormData['STIP_CnRen_4_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_4_Excess1" name='STIP_CnRen_4_Excess1' value={FormData['STIP_CnRen_4_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_4_Excess1" name='STIP_CnRen_4_Excess1' value={FormData['STIP_CnRen_4_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_4_Premium2" name='STIP_CnRen_4_Premium2' value={FormData['STIP_CnRen_4_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_4_Premium2" name='STIP_CnRen_4_Premium2' value={FormData['STIP_CnRen_4_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_4_Excess2" name='STIP_CnRen_4_Excess2' value={FormData['STIP_CnRen_4_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_4_Excess2" name='STIP_CnRen_4_Excess2' value={FormData['STIP_CnRen_4_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1637,31 +1667,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>
                 All Risk(General)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_5_Recomm"] == 1 ? true : false} name="STIP_CnRI_5_Recomm" onChange={(e)=>{FormData["STIP_CnRI_5_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_5_Recomm"] == 1 ? true : false} name="STIP_CnRI_5_Recomm" onChange={(e)=>{FormData["STIP_CnRI_5_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_5_Accepted"] == 1 ? true : false} name="STIP_CnRI_5_Accepted" onChange={(e)=>{FormData["STIP_CnRI_5_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_5_Accepted"] == 1 ? true : false} name="STIP_CnRI_5_Accepted" onChange={(e)=>{FormData["STIP_CnRI_5_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_5_CoverAmount" name='STIP_CnRI_5_CoverAmount' value={FormData['STIP_CnRI_5_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_5_CoverAmount" name='STIP_CnRI_5_CoverAmount' value={FormData['STIP_CnRI_5_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_5_Premium1" name='STIP_CnRen_5_Premium1' value={FormData['STIP_CnRen_5_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_5_Premium1" name='STIP_CnRen_5_Premium1' value={FormData['STIP_CnRen_5_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_5_Excess1" name='STIP_CnRen_5_Excess1' value={FormData['STIP_CnRen_5_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_5_Excess1" name='STIP_CnRen_5_Excess1' value={FormData['STIP_CnRen_5_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_5_Premium2" name='STIP_CnRen_5_Premium2' value={FormData['STIP_CnRen_5_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_5_Premium2" name='STIP_CnRen_5_Premium2' value={FormData['STIP_CnRen_5_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_5_Excess2" name='STIP_CnRen_5_Excess2' value={FormData['STIP_CnRen_5_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_5_Excess2" name='STIP_CnRen_5_Excess2' value={FormData['STIP_CnRen_5_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1671,31 +1701,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Clothing and personal</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_6_Recomm"] == 1 ? true : false} name="STIP_CnRI_6_Recomm" onChange={(e)=>{FormData["STIP_CnRI_6_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_6_Recomm"] == 1 ? true : false} name="STIP_CnRI_6_Recomm" onChange={(e)=>{FormData["STIP_CnRI_6_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_6_Accepted"] == 1 ? true : false} name="STIP_CnRI_6_Accepted" onChange={(e)=>{FormData["STIP_CnRI_6_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_6_Accepted"] == 1 ? true : false} name="STIP_CnRI_6_Accepted" onChange={(e)=>{FormData["STIP_CnRI_6_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_6_CoverAmount" name='STIP_CnRI_6_CoverAmount' value={FormData['STIP_CnRI_6_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_6_CoverAmount" name='STIP_CnRI_6_CoverAmount' value={FormData['STIP_CnRI_6_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_6_Premium1" name='STIP_CnRen_6_Premium1' value={FormData['STIP_CnRen_6_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_6_Premium1" name='STIP_CnRen_6_Premium1' value={FormData['STIP_CnRen_6_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_6_Excess1" name='STIP_CnRen_6_Excess1' value={FormData['STIP_CnRen_6_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_6_Excess1" name='STIP_CnRen_6_Excess1' value={FormData['STIP_CnRen_6_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_6_Premium2" name='STIP_CnRen_6_Premium2' value={FormData['STIP_CnRen_6_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_6_Premium2" name='STIP_CnRen_6_Premium2' value={FormData['STIP_CnRen_6_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_6_Excess2" name='STIP_CnRen_6_Excess2' value={FormData['STIP_CnRen_6_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_6_Excess2" name='STIP_CnRen_6_Excess2' value={FormData['STIP_CnRen_6_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1705,31 +1735,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;
               Keys and locks</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_7_Recomm"] == 1 ? true : false} name="STIP_CnRI_7_Recomm" onChange={(e)=>{FormData["STIP_CnRI_7_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_7_Recomm"] == 1 ? true : false} name="STIP_CnRI_7_Recomm" onChange={(e)=>{FormData["STIP_CnRI_7_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_7_Accepted"] == 1 ? true : false} name="STIP_CnRI_7_Accepted" onChange={(e)=>{FormData["STIP_CnRI_7_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_7_Accepted"] == 1 ? true : false} name="STIP_CnRI_7_Accepted" onChange={(e)=>{FormData["STIP_CnRI_7_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_7_CoverAmount" name='STIP_CnRI_7_CoverAmount' value={FormData['STIP_CnRI_7_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_7_CoverAmount" name='STIP_CnRI_7_CoverAmount' value={FormData['STIP_CnRI_7_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_7_Premium1" name='STIP_CnRen_7_Premium1' value={FormData['STIP_CnRen_7_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_7_Premium1" name='STIP_CnRen_7_Premium1' value={FormData['STIP_CnRen_7_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_7_Excess1" name='STIP_CnRen_7_Excess1' value={FormData['STIP_CnRen_7_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_7_Excess1" name='STIP_CnRen_7_Excess1' value={FormData['STIP_CnRen_7_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_7_Premium2" name='STIP_CnRen_7_Premium2' value={FormData['STIP_CnRen_7_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_7_Premium2" name='STIP_CnRen_7_Premium2' value={FormData['STIP_CnRen_7_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_7_Excess2" name='STIP_CnRen_7_Excess2' value={FormData['STIP_CnRen_7_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_7_Excess2" name='STIP_CnRen_7_Excess2' value={FormData['STIP_CnRen_7_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1739,31 +1769,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Wheelchairs</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_8_Recomm"] == 1 ? true : false} name="STIP_CnRI_8_Recomm" onChange={(e)=>{FormData["STIP_CnRI_8_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_8_Recomm"] == 1 ? true : false} name="STIP_CnRI_8_Recomm" onChange={(e)=>{FormData["STIP_CnRI_8_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_8_Accepted"] == 1 ? true : false} name="STIP_CnRI_8_Accepted" onChange={(e)=>{FormData["STIP_CnRI_8_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_8_Accepted"] == 1 ? true : false} name="STIP_CnRI_8_Accepted" onChange={(e)=>{FormData["STIP_CnRI_8_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_8_CoverAmount" name='STIP_CnRI_8_CoverAmount' value={FormData['STIP_CnRI_8_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_8_CoverAmount" name='STIP_CnRI_8_CoverAmount' value={FormData['STIP_CnRI_8_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_8_Premium1" name='STIP_CnRen_8_Premium1' value={FormData['STIP_CnRen_8_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_8_Premium1" name='STIP_CnRen_8_Premium1' value={FormData['STIP_CnRen_8_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_8_Excess1" name='STIP_CnRen_8_Excess1' value={FormData['STIP_CnRen_8_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_8_Excess1" name='STIP_CnRen_8_Excess1' value={FormData['STIP_CnRen_8_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_8_Premium2" name='STIP_CnRen_8_Premium2' value={FormData['STIP_CnRen_8_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_8_Premium2" name='STIP_CnRen_8_Premium2' value={FormData['STIP_CnRen_8_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_8_Excess2" name='STIP_CnRen_8_Excess2' value={FormData['STIP_CnRen_8_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_8_Excess2" name='STIP_CnRen_8_Excess2' value={FormData['STIP_CnRen_8_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1773,31 +1803,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Bicycles</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_9_Recomm"] == 1 ? true : false} name="STIP_CnRI_9_Recomm" onChange={(e)=>{FormData["STIP_CnRI_9_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_9_Recomm"] == 1 ? true : false} name="STIP_CnRI_9_Recomm" onChange={(e)=>{FormData["STIP_CnRI_9_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_9_Accepted"] == 1 ? true : false} name="STIP_CnRI_9_Accepted" onChange={(e)=>{FormData["STIP_CnRI_9_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_9_Accepted"] == 1 ? true : false} name="STIP_CnRI_9_Accepted" onChange={(e)=>{FormData["STIP_CnRI_9_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_9_CoverAmount" name='STIP_CnRI_9_CoverAmount' value={FormData['STIP_CnRI_9_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_9_CoverAmount" name='STIP_CnRI_9_CoverAmount' value={FormData['STIP_CnRI_9_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_9_Premium1" name='STIP_CnRen_9_Premium1' value={FormData['STIP_CnRen_9_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_9_Premium1" name='STIP_CnRen_9_Premium1' value={FormData['STIP_CnRen_9_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_9_Excess1" name='STIP_CnRen_9_Excess1' value={FormData['STIP_CnRen_9_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_9_Excess1" name='STIP_CnRen_9_Excess1' value={FormData['STIP_CnRen_9_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_9_Premium2" name='STIP_CnRen_9_Premium2' value={FormData['STIP_CnRen_9_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_9_Premium2" name='STIP_CnRen_9_Premium2' value={FormData['STIP_CnRen_9_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_9_Excess2" name='STIP_CnRen_9_Excess2' value={FormData['STIP_CnRen_9_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_9_Excess2" name='STIP_CnRen_9_Excess2' value={FormData['STIP_CnRen_9_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1807,31 +1837,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Cellular telephones</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_10_Recomm"] == 1 ? true : false} name="STIP_CnRI_10_Recomm" onChange={(e)=>{FormData["STIP_CnRI_10_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_10_Recomm"] == 1 ? true : false} name="STIP_CnRI_10_Recomm" onChange={(e)=>{FormData["STIP_CnRI_10_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_10_Accepted"] == 1 ? true : false} name="STIP_CnRI_10_Accepted" onChange={(e)=>{FormData["STIP_CnRI_10_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_10_Accepted"] == 1 ? true : false} name="STIP_CnRI_10_Accepted" onChange={(e)=>{FormData["STIP_CnRI_10_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_10_CoverAmount" name='STIP_CnRI_10_CoverAmount' value={FormData['STIP_CnRI_10_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_10_CoverAmount" name='STIP_CnRI_10_CoverAmount' value={FormData['STIP_CnRI_10_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_10_Premium1" name='STIP_CnRen_10_Premium1' value={FormData['STIP_CnRen_10_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_10_Premium1" name='STIP_CnRen_10_Premium1' value={FormData['STIP_CnRen_10_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_10_Excess1" name='STIP_CnRen_10_Excess1' value={FormData['STIP_CnRen_10_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_10_Excess1" name='STIP_CnRen_10_Excess1' value={FormData['STIP_CnRen_10_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_10_Premium2" name='STIP_CnRen_10_Premium2' value={FormData['STIP_CnRen_10_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_10_Premium2" name='STIP_CnRen_10_Premium2' value={FormData['STIP_CnRen_10_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_10_Excess2" name='STIP_CnRen_10_Excess2' value={FormData['STIP_CnRen_10_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_10_Excess2" name='STIP_CnRen_10_Excess2' value={FormData['STIP_CnRen_10_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1841,31 +1871,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               TV,VCR,Decoders</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_11_Recomm"] == 1 ? true : false} name="STIP_CnRI_11_Recomm" onChange={(e)=>{FormData["STIP_CnRI_11_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_11_Recomm"] == 1 ? true : false} name="STIP_CnRI_11_Recomm" onChange={(e)=>{FormData["STIP_CnRI_11_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_11_Accepted"] == 1 ? true : false} name="STIP_CnRI_11_Accepted" onChange={(e)=>{FormData["STIP_CnRI_11_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_11_Accepted"] == 1 ? true : false} name="STIP_CnRI_11_Accepted" onChange={(e)=>{FormData["STIP_CnRI_11_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_11_CoverAmount" name='STIP_CnRI_11_CoverAmount' value={FormData['STIP_CnRI_11_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_11_CoverAmount" name='STIP_CnRI_11_CoverAmount' value={FormData['STIP_CnRI_11_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_11_Premium1" name='STIP_CnRen_11_Premium1' value={FormData['STIP_CnRen_11_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_11_Premium1" name='STIP_CnRen_11_Premium1' value={FormData['STIP_CnRen_11_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_11_Excess1" name='STIP_CnRen_11_Excess1' value={FormData['STIP_CnRen_11_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_11_Excess1" name='STIP_CnRen_11_Excess1' value={FormData['STIP_CnRen_11_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_11_Premium2" name='STIP_CnRen_11_Premium2' value={FormData['STIP_CnRen_11_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_11_Premium2" name='STIP_CnRen_11_Premium2' value={FormData['STIP_CnRen_11_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_11_Excess2" name='STIP_CnRen_11_Excess2' value={FormData['STIP_CnRen_11_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_11_Excess2" name='STIP_CnRen_11_Excess2' value={FormData['STIP_CnRen_11_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1876,31 +1906,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>
                 All Risk Specified</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_12_Recomm"] == 1 ? true : false} name="STIP_CnRI_12_Recomm" onChange={(e)=>{FormData["STIP_CnRI_12_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_12_Recomm"] == 1 ? true : false} name="STIP_CnRI_12_Recomm" onChange={(e)=>{FormData["STIP_CnRI_12_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_12_Accepted"] == 1 ? true : false} name="STIP_CnRI_12_Accepted" onChange={(e)=>{FormData["STIP_CnRI_12_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_12_Accepted"] == 1 ? true : false} name="STIP_CnRI_12_Accepted" onChange={(e)=>{FormData["STIP_CnRI_12_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_12_CoverAmount" name='STIP_CnRI_12_CoverAmount' value={FormData['STIP_CnRI_12_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_12_CoverAmount" name='STIP_CnRI_12_CoverAmount' value={FormData['STIP_CnRI_12_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_12_Premium1" name='STIP_CnRen_12_Premium1' value={FormData['STIP_CnRen_12_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_12_Premium1" name='STIP_CnRen_12_Premium1' value={FormData['STIP_CnRen_12_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_12_Excess1" name='STIP_CnRen_12_Excess1' value={FormData['STIP_CnRen_12_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_12_Excess1" name='STIP_CnRen_12_Excess1' value={FormData['STIP_CnRen_12_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_12_Premium2" name='STIP_CnRen_12_Premium2' value={FormData['STIP_CnRen_12_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_12_Premium2" name='STIP_CnRen_12_Premium2' value={FormData['STIP_CnRen_12_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_12_Excess2" name='STIP_CnRen_12_Excess2' value={FormData['STIP_CnRen_12_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_12_Excess2" name='STIP_CnRen_12_Excess2' value={FormData['STIP_CnRen_12_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1910,31 +1940,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Computer equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_13_Recomm"] == 1 ? true : false} name="STIP_CnRI_13_Recomm" onChange={(e)=>{FormData["STIP_CnRI_13_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_13_Recomm"] == 1 ? true : false} name="STIP_CnRI_13_Recomm" onChange={(e)=>{FormData["STIP_CnRI_13_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_13_Accepted"] == 1 ? true : false} name="STIP_CnRI_13_Accepted" onChange={(e)=>{FormData["STIP_CnRI_13_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_13_Accepted"] == 1 ? true : false} name="STIP_CnRI_13_Accepted" onChange={(e)=>{FormData["STIP_CnRI_13_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_13_CoverAmount" name='STIP_CnRI_13_CoverAmount' value={FormData['STIP_CnRI_13_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_13_CoverAmount" name='STIP_CnRI_13_CoverAmount' value={FormData['STIP_CnRI_13_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_13_Premium1" name='STIP_CnRen_13_Premium1' value={FormData['STIP_CnRen_13_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_13_Premium1" name='STIP_CnRen_13_Premium1' value={FormData['STIP_CnRen_13_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_13_Excess1" name='STIP_CnRen_13_Excess1' value={FormData['STIP_CnRen_13_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_13_Excess1" name='STIP_CnRen_13_Excess1' value={FormData['STIP_CnRen_13_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_13_Premium2" name='STIP_CnRen_13_Premium2' value={FormData['STIP_CnRen_13_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_13_Premium2" name='STIP_CnRen_13_Premium2' value={FormData['STIP_CnRen_13_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_13_Excess2" name='STIP_CnRen_13_Excess2' value={FormData['STIP_CnRen_13_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_13_Excess2" name='STIP_CnRen_13_Excess2' value={FormData['STIP_CnRen_13_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1944,31 +1974,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Items in bank vault</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_14_Recomm"] == 1 ? true : false} name="STIP_CnRI_14_Recomm" onChange={(e)=>{FormData["STIP_CnRI_14_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_14_Recomm"] == 1 ? true : false} name="STIP_CnRI_14_Recomm" onChange={(e)=>{FormData["STIP_CnRI_14_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_14_Accepted"] == 1 ? true : false} name="STIP_CnRI_14_Accepted" onChange={(e)=>{FormData["STIP_CnRI_14_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_14_Accepted"] == 1 ? true : false} name="STIP_CnRI_14_Accepted" onChange={(e)=>{FormData["STIP_CnRI_14_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_14_CoverAmount" name='STIP_CnRI_14_CoverAmount' value={FormData['STIP_CnRI_14_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_14_CoverAmount" name='STIP_CnRI_14_CoverAmount' value={FormData['STIP_CnRI_14_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_14_Premium1" name='STIP_CnRen_14_Premium1' value={FormData['STIP_CnRen_14_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_14_Premium1" name='STIP_CnRen_14_Premium1' value={FormData['STIP_CnRen_14_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_14_Excess1" name='STIP_CnRen_14_Excess1' value={FormData['STIP_CnRen_14_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_14_Excess1" name='STIP_CnRen_14_Excess1' value={FormData['STIP_CnRen_14_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_14_Premium2" name='STIP_CnRen_14_Premium2' value={FormData['STIP_CnRen_14_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_14_Premium2" name='STIP_CnRen_14_Premium2' value={FormData['STIP_CnRen_14_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_14_Excess2" name='STIP_CnRen_14_Excess2' value={FormData['STIP_CnRen_14_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_14_Excess2" name='STIP_CnRen_14_Excess2' value={FormData['STIP_CnRen_14_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -1978,31 +2008,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Jewellery(All jewellery)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_15_Recomm"] == 1 ? true : false} name="STIP_CnRI_15_Recomm" onChange={(e)=>{FormData["STIP_CnRI_15_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_15_Recomm"] == 1 ? true : false} name="STIP_CnRI_15_Recomm" onChange={(e)=>{FormData["STIP_CnRI_15_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_15_Accepted"] == 1 ? true : false} name="STIP_CnRI_15_Accepted" onChange={(e)=>{FormData["STIP_CnRI_15_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_15_Accepted"] == 1 ? true : false} name="STIP_CnRI_15_Accepted" onChange={(e)=>{FormData["STIP_CnRI_15_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_15_CoverAmount" name='STIP_CnRI_15_CoverAmount' value={FormData['STIP_CnRI_15_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_15_CoverAmount" name='STIP_CnRI_15_CoverAmount' value={FormData['STIP_CnRI_15_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_15_Premium1" name='STIP_CnRen_15_Premium1' value={FormData['STIP_CnRen_15_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_15_Premium1" name='STIP_CnRen_15_Premium1' value={FormData['STIP_CnRen_15_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_15_Excess1" name='STIP_CnRen_15_Excess1' value={FormData['STIP_CnRen_15_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_15_Excess1" name='STIP_CnRen_15_Excess1' value={FormData['STIP_CnRen_15_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_15_Premium2" name='STIP_CnRen_15_Premium2' value={FormData['STIP_CnRen_15_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_15_Premium2" name='STIP_CnRen_15_Premium2' value={FormData['STIP_CnRen_15_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_15_Excess2" name='STIP_CnRen_15_Excess2' value={FormData['STIP_CnRen_15_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_15_Excess2" name='STIP_CnRen_15_Excess2' value={FormData['STIP_CnRen_15_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2012,31 +2042,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Photographic equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_16_Recomm"] == 1 ? true : false} name="STIP_CnRI_16_Recomm" onChange={(e)=>{FormData["STIP_CnRI_16_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_16_Recomm"] == 1 ? true : false} name="STIP_CnRI_16_Recomm" onChange={(e)=>{FormData["STIP_CnRI_16_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_16_Accepted"] == 1 ? true : false} name="STIP_CnRI_16_Accepted" onChange={(e)=>{FormData["STIP_CnRI_16_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_16_Accepted"] == 1 ? true : false} name="STIP_CnRI_16_Accepted" onChange={(e)=>{FormData["STIP_CnRI_16_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_16_CoverAmount" name='STIP_CnRI_16_CoverAmount' value={FormData['STIP_CnRI_16_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_16_CoverAmount" name='STIP_CnRI_16_CoverAmount' value={FormData['STIP_CnRI_16_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_16_Premium1" name='STIP_CnRen_16_Premium1' value={FormData['STIP_CnRen_16_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_16_Premium1" name='STIP_CnRen_16_Premium1' value={FormData['STIP_CnRen_16_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_16_Excess1" name='STIP_CnRen_16_Excess1' value={FormData['STIP_CnRen_16_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_16_Excess1" name='STIP_CnRen_16_Excess1' value={FormData['STIP_CnRen_16_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_16_Premium2" name='STIP_CnRen_16_Premium2' value={FormData['STIP_CnRen_16_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_16_Premium2" name='STIP_CnRen_16_Premium2' value={FormData['STIP_CnRen_16_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_16_Excess2" name='STIP_CnRen_16_Excess2' value={FormData['STIP_CnRen_16_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_16_Excess2" name='STIP_CnRen_16_Excess2' value={FormData['STIP_CnRen_16_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2046,31 +2076,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Sound Equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_17_Recomm"] == 1 ? true : false} name="STIP_CnRI_17_Recomm" onChange={(e)=>{FormData["STIP_CnRI_17_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_17_Recomm"] == 1 ? true : false} name="STIP_CnRI_17_Recomm" onChange={(e)=>{FormData["STIP_CnRI_17_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_17_Accepted"] == 1 ? true : false} name="STIP_CnRI_17_Accepted" onChange={(e)=>{FormData["STIP_CnRI_17_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_17_Accepted"] == 1 ? true : false} name="STIP_CnRI_17_Accepted" onChange={(e)=>{FormData["STIP_CnRI_17_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_17_CoverAmount" name='STIP_CnRI_17_CoverAmount' value={FormData['STIP_CnRI_17_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_17_CoverAmount" name='STIP_CnRI_17_CoverAmount' value={FormData['STIP_CnRI_17_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_17_Premium1" name='STIP_CnRen_17_Premium1' value={FormData['STIP_CnRen_17_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_17_Premium1" name='STIP_CnRen_17_Premium1' value={FormData['STIP_CnRen_17_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_17_Excess1" name='STIP_CnRen_17_Excess1' value={FormData['STIP_CnRen_17_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_17_Excess1" name='STIP_CnRen_17_Excess1' value={FormData['STIP_CnRen_17_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_17_Premium2" name='STIP_CnRen_17_Premium2' value={FormData['STIP_CnRen_17_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_17_Premium2" name='STIP_CnRen_17_Premium2' value={FormData['STIP_CnRen_17_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_17_Excess2" name='STIP_CnRen_17_Excess2' value={FormData['STIP_CnRen_17_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_17_Excess2" name='STIP_CnRen_17_Excess2' value={FormData['STIP_CnRen_17_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2080,31 +2110,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Other specify</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_18_Recomm"] == 1 ? true : false} name="STIP_CnRI_18_Recomm" onChange={(e)=>{FormData["STIP_CnRI_18_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_18_Recomm"] == 1 ? true : false} name="STIP_CnRI_18_Recomm" onChange={(e)=>{FormData["STIP_CnRI_18_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_18_Accepted"] == 1 ? true : false} name="STIP_CnRI_18_Accepted" onChange={(e)=>{FormData["STIP_CnRI_18_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_18_Accepted"] == 1 ? true : false} name="STIP_CnRI_18_Accepted" onChange={(e)=>{FormData["STIP_CnRI_18_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_18_CoverAmount" name='STIP_CnRI_18_CoverAmount' value={FormData['STIP_CnRI_18_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_18_CoverAmount" name='STIP_CnRI_18_CoverAmount' value={FormData['STIP_CnRI_18_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_18_Premium1" name='STIP_CnRen_18_Premium1' value={FormData['STIP_CnRen_18_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_18_Premium1" name='STIP_CnRen_18_Premium1' value={FormData['STIP_CnRen_18_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_18_Excess1" name='STIP_CnRen_18_Excess1' value={FormData['STIP_CnRen_18_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_18_Excess1" name='STIP_CnRen_18_Excess1' value={FormData['STIP_CnRen_18_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_18_Premium2" name='STIP_CnRen_18_Premium2' value={FormData['STIP_CnRen_18_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_18_Premium2" name='STIP_CnRen_18_Premium2' value={FormData['STIP_CnRen_18_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_18_Excess2" name='STIP_CnRen_18_Excess2' value={FormData['STIP_CnRen_18_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_18_Excess2" name='STIP_CnRen_18_Excess2' value={FormData['STIP_CnRen_18_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2114,31 +2144,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>
                 Personal legal liability</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_19_Recomm"] == 1 ? true : false} name="STIP_CnRI_19_Recomm" onChange={(e)=>{FormData["STIP_CnRI_19_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_19_Recomm"] == 1 ? true : false} name="STIP_CnRI_19_Recomm" onChange={(e)=>{FormData["STIP_CnRI_19_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_19_Accepted"] == 1 ? true : false} name="STIP_CnRI_19_Accepted" onChange={(e)=>{FormData["STIP_CnRI_19_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_19_Accepted"] == 1 ? true : false} name="STIP_CnRI_19_Accepted" onChange={(e)=>{FormData["STIP_CnRI_19_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_19_CoverAmount" name='STIP_CnRI_19_CoverAmount' value={FormData['STIP_CnRI_19_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_19_CoverAmount" name='STIP_CnRI_19_CoverAmount' value={FormData['STIP_CnRI_19_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_19_Premium1" name='STIP_CnRen_19_Premium1' value={FormData['STIP_CnRen_19_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_19_Premium1" name='STIP_CnRen_19_Premium1' value={FormData['STIP_CnRen_19_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_19_Excess1" name='STIP_CnRen_19_Excess1' value={FormData['STIP_CnRen_19_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_19_Excess1" name='STIP_CnRen_19_Excess1' value={FormData['STIP_CnRen_19_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_19_Premium2" name='STIP_CnRen_19_Premium2' value={FormData['STIP_CnRen_19_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_19_Premium2" name='STIP_CnRen_19_Premium2' value={FormData['STIP_CnRen_19_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_19_Excess2" name='STIP_CnRen_19_Excess2' value={FormData['STIP_CnRen_19_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_19_Excess2" name='STIP_CnRen_19_Excess2' value={FormData['STIP_CnRen_19_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2148,31 +2178,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>
                 (PLIP)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_20_Recomm"] == 1 ? true : false} name="STIP_CnRI_20_Recomm" onChange={(e)=>{FormData["STIP_CnRI_20_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_20_Recomm"] == 1 ? true : false} name="STIP_CnRI_20_Recomm" onChange={(e)=>{FormData["STIP_CnRI_20_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_20_Accepted"] == 1 ? true : false} name="STIP_CnRI_20_Accepted" onChange={(e)=>{FormData["STIP_CnRI_20_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_20_Accepted"] == 1 ? true : false} name="STIP_CnRI_20_Accepted" onChange={(e)=>{FormData["STIP_CnRI_20_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_20_CoverAmount" name='STIP_CnRI_20_CoverAmount' value={FormData['STIP_CnRI_20_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_20_CoverAmount" name='STIP_CnRI_20_CoverAmount' value={FormData['STIP_CnRI_20_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_20_Premium1" name='STIP_CnRen_20_Premium1' value={FormData['STIP_CnRen_20_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_20_Premium1" name='STIP_CnRen_20_Premium1' value={FormData['STIP_CnRen_20_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_20_Excess1" name='STIP_CnRen_20_Excess1' value={FormData['STIP_CnRen_20_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_20_Excess1" name='STIP_CnRen_20_Excess1' value={FormData['STIP_CnRen_20_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_20_Premium2" name='STIP_CnRen_20_Premium2' value={FormData['STIP_CnRen_20_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_20_Premium2" name='STIP_CnRen_20_Premium2' value={FormData['STIP_CnRen_20_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_20_Excess2" name='STIP_CnRen_20_Excess2' value={FormData['STIP_CnRen_20_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_20_Excess2" name='STIP_CnRen_20_Excess2' value={FormData['STIP_CnRen_20_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2182,31 +2212,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>
                 Vehicles(Refer to quote/policy)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_21_Recomm"] == 1 ? true : false} name="STIP_CnRI_21_Recomm" onChange={(e)=>{FormData["STIP_CnRI_21_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_21_Recomm"] == 1 ? true : false} name="STIP_CnRI_21_Recomm" onChange={(e)=>{FormData["STIP_CnRI_21_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_21_Accepted"] == 1 ? true : false} name="STIP_CnRI_21_Accepted" onChange={(e)=>{FormData["STIP_CnRI_21_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_21_Accepted"] == 1 ? true : false} name="STIP_CnRI_21_Accepted" onChange={(e)=>{FormData["STIP_CnRI_21_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_21_CoverAmount" name='STIP_CnRI_21_CoverAmount' value={FormData['STIP_CnRI_21_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_21_CoverAmount" name='STIP_CnRI_21_CoverAmount' value={FormData['STIP_CnRI_21_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_21_Premium1" name='STIP_CnRen_21_Premium1' value={FormData['STIP_CnRen_21_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_21_Premium1" name='STIP_CnRen_21_Premium1' value={FormData['STIP_CnRen_21_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_21_Excess1" name='STIP_CnRen_21_Excess1' value={FormData['STIP_CnRen_21_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_21_Excess1" name='STIP_CnRen_21_Excess1' value={FormData['STIP_CnRen_21_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_21_Premium2" name='STIP_CnRen_21_Premium2' value={FormData['STIP_CnRen_21_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_21_Premium2" name='STIP_CnRen_21_Premium2' value={FormData['STIP_CnRen_21_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_21_Excess2" name='STIP_CnRen_21_Excess2' value={FormData['STIP_CnRen_21_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_21_Excess2" name='STIP_CnRen_21_Excess2' value={FormData['STIP_CnRen_21_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2217,31 +2247,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Car hire</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_22_Recomm"] == 1 ? true : false} name="STIP_CnRI_22_Recomm" onChange={(e)=>{FormData["STIP_CnRI_22_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_22_Recomm"] == 1 ? true : false} name="STIP_CnRI_22_Recomm" onChange={(e)=>{FormData["STIP_CnRI_22_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_22_Accepted"] == 1 ? true : false} name="STIP_CnRI_22_Accepted" onChange={(e)=>{FormData["STIP_CnRI_22_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_22_Accepted"] == 1 ? true : false} name="STIP_CnRI_22_Accepted" onChange={(e)=>{FormData["STIP_CnRI_22_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_22_CoverAmount" name='STIP_CnRI_22_CoverAmount' value={FormData['STIP_CnRI_22_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_22_CoverAmount" name='STIP_CnRI_22_CoverAmount' value={FormData['STIP_CnRI_22_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_22_Premium1" name='STIP_CnRen_22_Premium1' value={FormData['STIP_CnRen_22_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_22_Premium1" name='STIP_CnRen_22_Premium1' value={FormData['STIP_CnRen_22_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_22_Excess1" name='STIP_CnRen_22_Excess1' value={FormData['STIP_CnRen_22_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_22_Excess1" name='STIP_CnRen_22_Excess1' value={FormData['STIP_CnRen_22_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_22_Premium2" name='STIP_CnRen_22_Premium2' value={FormData['STIP_CnRen_22_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_22_Premium2" name='STIP_CnRen_22_Premium2' value={FormData['STIP_CnRen_22_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_22_Excess2" name='STIP_CnRen_22_Excess2' value={FormData['STIP_CnRen_22_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_22_Excess2" name='STIP_CnRen_22_Excess2' value={FormData['STIP_CnRen_22_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2252,31 +2282,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Excess waiver</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_23_Recomm"] == 1 ? true : false} name="STIP_CnRI_23_Recomm" onChange={(e)=>{FormData["STIP_CnRI_23_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_23_Recomm"] == 1 ? true : false} name="STIP_CnRI_23_Recomm" onChange={(e)=>{FormData["STIP_CnRI_23_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_23_Accepted"] == 1 ? true : false} name="STIP_CnRI_23_Accepted" onChange={(e)=>{FormData["STIP_CnRI_23_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_23_Accepted"] == 1 ? true : false} name="STIP_CnRI_23_Accepted" onChange={(e)=>{FormData["STIP_CnRI_23_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_23_CoverAmount" name='STIP_CnRI_23_CoverAmount' value={FormData['STIP_CnRI_23_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_23_CoverAmount" name='STIP_CnRI_23_CoverAmount' value={FormData['STIP_CnRI_23_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_23_Premium1" name='STIP_CnRen_23_Premium1' value={FormData['STIP_CnRen_23_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_23_Premium1" name='STIP_CnRen_23_Premium1' value={FormData['STIP_CnRen_23_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_23_Excess1" name='STIP_CnRen_23_Excess1' value={FormData['STIP_CnRen_23_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_23_Excess1" name='STIP_CnRen_23_Excess1' value={FormData['STIP_CnRen_23_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_23_Premium2" name='STIP_CnRen_23_Premium2' value={FormData['STIP_CnRen_23_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_23_Premium2" name='STIP_CnRen_23_Premium2' value={FormData['STIP_CnRen_23_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_23_Excess2" name='STIP_CnRen_23_Excess2' value={FormData['STIP_CnRen_23_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_23_Excess2" name='STIP_CnRen_23_Excess2' value={FormData['STIP_CnRen_23_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2286,31 +2316,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               Credit shortfall</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_24_Recomm"] == 1 ? true : false} name="STIP_CnRI_24_Recomm" onChange={(e)=>{FormData["STIP_CnRI_24_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_24_Recomm"] == 1 ? true : false} name="STIP_CnRI_24_Recomm" onChange={(e)=>{FormData["STIP_CnRI_24_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_24_Accepted"] == 1 ? true : false} name="STIP_CnRI_24_Accepted" onChange={(e)=>{FormData["STIP_CnRI_24_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_24_Accepted"] == 1 ? true : false} name="STIP_CnRI_24_Accepted" onChange={(e)=>{FormData["STIP_CnRI_24_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_24_CoverAmount" name='STIP_CnRI_24_CoverAmount' value={FormData['STIP_CnRI_24_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_24_CoverAmount" name='STIP_CnRI_24_CoverAmount' value={FormData['STIP_CnRI_24_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_24_Premium1" name='STIP_CnRen_24_Premium1' value={FormData['STIP_CnRen_24_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_24_Premium1" name='STIP_CnRen_24_Premium1' value={FormData['STIP_CnRen_24_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_24_Excess1" name='STIP_CnRen_24_Excess1' value={FormData['STIP_CnRen_24_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_24_Excess1" name='STIP_CnRen_24_Excess1' value={FormData['STIP_CnRen_24_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_24_Premium2" name='STIP_CnRen_24_Premium2' value={FormData['STIP_CnRen_24_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_24_Premium2" name='STIP_CnRen_24_Premium2' value={FormData['STIP_CnRen_24_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_24_Excess2" name='STIP_CnRen_24_Excess2' value={FormData['STIP_CnRen_24_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_24_Excess2" name='STIP_CnRen_24_Excess2' value={FormData['STIP_CnRen_24_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2322,31 +2352,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>
                 Watercraft</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_25_Recomm"] == 1 ? true : false} name="STIP_CnRI_25_Recomm" onChange={(e)=>{FormData["STIP_CnRI_25_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_25_Recomm"] == 1 ? true : false} name="STIP_CnRI_25_Recomm" onChange={(e)=>{FormData["STIP_CnRI_25_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_25_Accepted"] == 1 ? true : false} name="STIP_CnRI_25_Accepted" onChange={(e)=>{FormData["STIP_CnRI_25_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_25_Accepted"] == 1 ? true : false} name="STIP_CnRI_25_Accepted" onChange={(e)=>{FormData["STIP_CnRI_25_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_25_CoverAmount" name='STIP_CnRI_25_CoverAmount' value={FormData['STIP_CnRI_25_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_25_CoverAmount" name='STIP_CnRI_25_CoverAmount' value={FormData['STIP_CnRI_25_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_25_Premium1" name='STIP_CnRen_25_Premium1' value={FormData['STIP_CnRen_25_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_25_Premium1" name='STIP_CnRen_25_Premium1' value={FormData['STIP_CnRen_25_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_25_Excess1" name='STIP_CnRen_25_Excess1' value={FormData['STIP_CnRen_25_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_25_Excess1" name='STIP_CnRen_25_Excess1' value={FormData['STIP_CnRen_25_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_25_Premium2" name='STIP_CnRen_25_Premium2' value={FormData['STIP_CnRen_25_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_25_Premium2" name='STIP_CnRen_25_Premium2' value={FormData['STIP_CnRen_25_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_25_Excess2" name='STIP_CnRen_25_Excess2' value={FormData['STIP_CnRen_25_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_25_Excess2" name='STIP_CnRen_25_Excess2' value={FormData['STIP_CnRen_25_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2357,31 +2387,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>
                 Sasria</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_26_Recomm"] == 1 ? true : false} name="STIP_CnRI_26_Recomm" onChange={(e)=>{FormData["STIP_CnRI_26_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_26_Recomm"] == 1 ? true : false} name="STIP_CnRI_26_Recomm" onChange={(e)=>{FormData["STIP_CnRI_26_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_26_Accepted"] == 1 ? true : false} name="STIP_CnRI_26_Accepted" onChange={(e)=>{FormData["STIP_CnRI_26_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_26_Accepted"] == 1 ? true : false} name="STIP_CnRI_26_Accepted" onChange={(e)=>{FormData["STIP_CnRI_26_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_26_CoverAmount" name='STIP_CnRI_26_CoverAmount' value={FormData['STIP_CnRI_26_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_26_CoverAmount" name='STIP_CnRI_26_CoverAmount' value={FormData['STIP_CnRI_26_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_26_Premium1" name='STIP_CnRen_26_Premium1' value={FormData['STIP_CnRen_26_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_26_Premium1" name='STIP_CnRen_26_Premium1' value={FormData['STIP_CnRen_26_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_26_Excess1" name='STIP_CnRen_26_Excess1' value={FormData['STIP_CnRen_26_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_26_Excess1" name='STIP_CnRen_26_Excess1' value={FormData['STIP_CnRen_26_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_26_Premium2" name='STIP_CnRen_26_Premium2' value={FormData['STIP_CnRen_26_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_26_Premium2" name='STIP_CnRen_26_Premium2' value={FormData['STIP_CnRen_26_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_26_Excess2" name='STIP_CnRen_26_Excess2' value={FormData['STIP_CnRen_26_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_26_Excess2" name='STIP_CnRen_26_Excess2' value={FormData['STIP_CnRen_26_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2392,31 +2422,31 @@ const Short_term_Personal = ({user}) => {
               <td className="col-2" style={{width:"200px"}}>
                 Legal access</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRI_27_Recomm"] == 1 ? true : false} name="STIP_CnRI_27_Recomm" onChange={(e)=>{FormData["STIP_CnRI_27_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_27_Recomm"] == 1 ? true : false} name="STIP_CnRI_27_Recomm" onChange={(e)=>{FormData["STIP_CnRI_27_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRI_27_Accepted"] == 1 ? true : false} name="STIP_CnRI_27_Accepted" onChange={(e)=>{FormData["STIP_CnRI_27_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRI_27_Accepted"] == 1 ? true : false} name="STIP_CnRI_27_Accepted" onChange={(e)=>{FormData["STIP_CnRI_27_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_27_CoverAmount" name='STIP_CnRI_27_CoverAmount' value={FormData['STIP_CnRI_27_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_27_CoverAmount" name='STIP_CnRI_27_CoverAmount' value={FormData['STIP_CnRI_27_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_27_Premium1" name='STIP_CnRen_27_Premium1' value={FormData['STIP_CnRen_27_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_27_Premium1" name='STIP_CnRen_27_Premium1' value={FormData['STIP_CnRen_27_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_27_Excess1" name='STIP_CnRen_27_Excess1' value={FormData['STIP_CnRen_27_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_27_Excess1" name='STIP_CnRen_27_Excess1' value={FormData['STIP_CnRen_27_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_27_Premium2" name='STIP_CnRen_27_Premium2' value={FormData['STIP_CnRen_27_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_27_Premium2" name='STIP_CnRen_27_Premium2' value={FormData['STIP_CnRen_27_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_27_Excess2" name='STIP_CnRen_27_Excess2' value={FormData['STIP_CnRen_27_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_27_Excess2" name='STIP_CnRen_27_Excess2' value={FormData['STIP_CnRen_27_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2424,7 +2454,7 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Fees and charges</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_FeeCharges" name='STIP_CnRI_FeeCharges' value={FormData['STIP_CnRI_FeeCharges']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_FeeCharges" name='STIP_CnRI_FeeCharges' value={FormData['STIP_CnRI_FeeCharges']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2432,7 +2462,7 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Commissions</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_Commission" name='STIP_CnRI_Commission' value={FormData['STIP_CnRI_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Commission" name='STIP_CnRI_Commission' value={FormData['STIP_CnRI_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2440,7 +2470,7 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Total premium</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true"  id="STIP_CnRI_TotalPremium" name='STIP_CnRI_TotalPremium' value={FormData['STIP_CnRI_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_TotalPremium" name='STIP_CnRI_TotalPremium' value={FormData['STIP_CnRI_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2480,11 +2510,11 @@ const Short_term_Personal = ({user}) => {
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
                 <b>Existing Product</b>
-                <input spellCheck="true"  id="STIP_CnRen_Existing_Company" name='STIP_CnRen_Existing_Company' value={FormData['STIP_CnRen_Existing_Company']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Existing_Company" name='STIP_CnRen_Existing_Company' value={FormData['STIP_CnRen_Existing_Company']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
                 <b>Replacement Product</b>
-                <input spellCheck="true"  id="STIP_CnRen_Replacement_Company" name='STIP_CnRen_Replacement_Company' value={FormData['STIP_CnRen_Replacement_Company']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Replacement_Company" name='STIP_CnRen_Replacement_Company' value={FormData['STIP_CnRen_Replacement_Company']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Company"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2492,10 +2522,10 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_Existing_Provider" name='STIP_CnRen_Existing_Provider' value={FormData['STIP_CnRen_Existing_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Existing_Provider" name='STIP_CnRen_Existing_Provider' value={FormData['STIP_CnRen_Existing_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_Replacement_Provider" name='STIP_CnRen_Replacement_Provider' value={FormData['STIP_CnRen_Replacement_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Replacement_Provider" name='STIP_CnRen_Replacement_Provider' value={FormData['STIP_CnRen_Replacement_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Provider"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2503,10 +2533,10 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-8" style={{width:"590px"}}></td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_Existing_Product" name='STIP_CnRen_Existing_Product' value={FormData['STIP_CnRen_Existing_Product']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Existing_Product" name='STIP_CnRen_Existing_Product' value={FormData['STIP_CnRen_Existing_Product']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_Replacement_Product" name='STIP_CnRen_Replacement_Product' value={FormData['STIP_CnRen_Replacement_Product']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Replacement_Product" name='STIP_CnRen_Replacement_Product' value={FormData['STIP_CnRen_Replacement_Product']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Product"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2527,31 +2557,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>House content</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_1_Recomm"] == 1 ? true : false} name="STIP_CnRen_1_Recomm" onChange={(e)=>{FormData["STIP_CnRen_1_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_1_Recomm"] == 1 ? true : false} name="STIP_CnRen_1_Recomm" onChange={(e)=>{FormData["STIP_CnRen_1_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_1_Accepted"] == 1 ? true : false} name="STIP_CnRen_1_Accepted" onChange={(e)=>{FormData["STIP_CnRen_1_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_1_Accepted"] == 1 ? true : false} name="STIP_CnRen_1_Accepted" onChange={(e)=>{FormData["STIP_CnRen_1_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_1_CoverAmount" name='STIP_CnRen_1_CoverAmount' value={FormData['STIP_CnRen_1_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_1_CoverAmount" name='STIP_CnRen_1_CoverAmount' value={FormData['STIP_CnRen_1_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_1_Premium1" name='STIP_CnRen_1_Premium1' value={FormData['STIP_CnRen_1_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_1_Premium1" name='STIP_CnRen_1_Premium1' value={FormData['STIP_CnRen_1_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_1_Excess1" name='STIP_CnRen_1_Excess1' value={FormData['STIP_CnRen_1_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_1_Excess1" name='STIP_CnRen_1_Excess1' value={FormData['STIP_CnRen_1_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_1_Premium2" name='STIP_CnRen_1_Premium2' value={FormData['STIP_CnRen_1_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_1_Premium2" name='STIP_CnRen_1_Premium2' value={FormData['STIP_CnRen_1_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_1_Excess2" name='STIP_CnRen_1_Excess2' value={FormData['STIP_CnRen_1_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_1_Excess2" name='STIP_CnRen_1_Excess2' value={FormData['STIP_CnRen_1_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2561,31 +2591,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Buildings</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_2_Recomm"] == 1 ? true : false} name="STIP_CnRen_2_Recomm" onChange={(e)=>{FormData["STIP_CnRen_2_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_2_Recomm"] == 1 ? true : false} name="STIP_CnRen_2_Recomm" onChange={(e)=>{FormData["STIP_CnRen_2_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_2_Accepted"] == 1 ? true : false} name="STIP_CnRen_2_Accepted" onChange={(e)=>{FormData["STIP_CnRen_2_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_2_Accepted"] == 1 ? true : false} name="STIP_CnRen_2_Accepted" onChange={(e)=>{FormData["STIP_CnRen_2_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_2_CoverAmount" name='STIP_CnRen_2_CoverAmount' value={FormData['STIP_CnRen_2_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_2_CoverAmount" name='STIP_CnRen_2_CoverAmount' value={FormData['STIP_CnRen_2_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_2_Premium1" name='STIP_CnRen_2_Premium1' value={FormData['STIP_CnRen_2_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_2_Premium1" name='STIP_CnRen_2_Premium1' value={FormData['STIP_CnRen_2_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_2_Excess1" name='STIP_CnRen_2_Excess1' value={FormData['STIP_CnRen_2_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_2_Excess1" name='STIP_CnRen_2_Excess1' value={FormData['STIP_CnRen_2_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_2_Premium2" name='STIP_CnRen_2_Premium2' value={FormData['STIP_CnRen_2_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_2_Premium2" name='STIP_CnRen_2_Premium2' value={FormData['STIP_CnRen_2_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_2_Excess2" name='STIP_CnRen_2_Excess2' value={FormData['STIP_CnRen_2_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_2_Excess2" name='STIP_CnRen_2_Excess2' value={FormData['STIP_CnRen_2_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2594,31 +2624,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Subsidence and landslip</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_3_Recomm"] == 1 ? true : false} name="STIP_CnRen_3_Recomm" onChange={(e)=>{FormData["STIP_CnRen_3_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_3_Recomm"] == 1 ? true : false} name="STIP_CnRen_3_Recomm" onChange={(e)=>{FormData["STIP_CnRen_3_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_3_Accepted"] == 1 ? true : false} name="STIP_CnRen_3_Accepted" onChange={(e)=>{FormData["STIP_CnRen_3_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_3_Accepted"] == 1 ? true : false} name="STIP_CnRen_3_Accepted" onChange={(e)=>{FormData["STIP_CnRen_3_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_3_CoverAmount" name='STIP_CnRen_3_CoverAmount' value={FormData['STIP_CnRen_3_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_3_CoverAmount" name='STIP_CnRen_3_CoverAmount' value={FormData['STIP_CnRen_3_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_3_Premium1" name='STIP_CnRen_3_Premium1' value={FormData['STIP_CnRen_3_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_3_Premium1" name='STIP_CnRen_3_Premium1' value={FormData['STIP_CnRen_3_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_3_Excess1" name='STIP_CnRen_3_Excess1' value={FormData['STIP_CnRen_3_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_3_Excess1" name='STIP_CnRen_3_Excess1' value={FormData['STIP_CnRen_3_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_3_Premium2" name='STIP_CnRen_3_Premium2' value={FormData['STIP_CnRen_3_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_3_Premium2" name='STIP_CnRen_3_Premium2' value={FormData['STIP_CnRen_3_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_3_Excess2" name='STIP_CnRen_3_Excess2' value={FormData['STIP_CnRen_3_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_3_Excess2" name='STIP_CnRen_3_Excess2' value={FormData['STIP_CnRen_3_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2627,31 +2657,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Accidental damage</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_4_Recomm"] == 1 ? true : false} name="STIP_CnRen_4_Recomm" onChange={(e)=>{FormData["STIP_CnRen_4_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_4_Recomm"] == 1 ? true : false} name="STIP_CnRen_4_Recomm" onChange={(e)=>{FormData["STIP_CnRen_4_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_4_Accepted"] == 1 ? true : false} name="STIP_CnRen_4_Accepted" onChange={(e)=>{FormData["STIP_CnRen_4_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_4_Accepted"] == 1 ? true : false} name="STIP_CnRen_4_Accepted" onChange={(e)=>{FormData["STIP_CnRen_4_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_4_CoverAmount" name='STIP_CnRen_4_CoverAmount' value={FormData['STIP_CnRen_4_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_4_CoverAmount" name='STIP_CnRen_4_CoverAmount' value={FormData['STIP_CnRen_4_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_4_Premium1" name='STIP_CnRen_4_Premium1' value={FormData['STIP_CnRen_4_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_4_Premium1" name='STIP_CnRen_4_Premium1' value={FormData['STIP_CnRen_4_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_4_Excess1" name='STIP_CnRen_4_Excess1' value={FormData['STIP_CnRen_4_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_4_Excess1" name='STIP_CnRen_4_Excess1' value={FormData['STIP_CnRen_4_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_4_Premium2" name='STIP_CnRen_4_Premium2' value={FormData['STIP_CnRen_4_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_4_Premium2" name='STIP_CnRen_4_Premium2' value={FormData['STIP_CnRen_4_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_4_Excess2" name='STIP_CnRen_4_Excess2' value={FormData['STIP_CnRen_4_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_4_Excess2" name='STIP_CnRen_4_Excess2' value={FormData['STIP_CnRen_4_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2661,31 +2691,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>All Risk(General)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_5_Recomm"] == 1 ? true : false} name="STIP_CnRen_5_Recomm" onChange={(e)=>{FormData["STIP_CnRen_5_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_5_Recomm"] == 1 ? true : false} name="STIP_CnRen_5_Recomm" onChange={(e)=>{FormData["STIP_CnRen_5_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_5_Accepted"] == 1 ? true : false} name="STIP_CnRen_5_Accepted" onChange={(e)=>{FormData["STIP_CnRen_5_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_5_Accepted"] == 1 ? true : false} name="STIP_CnRen_5_Accepted" onChange={(e)=>{FormData["STIP_CnRen_5_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_5_CoverAmount" name='STIP_CnRen_5_CoverAmount' value={FormData['STIP_CnRen_5_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_5_CoverAmount" name='STIP_CnRen_5_CoverAmount' value={FormData['STIP_CnRen_5_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_5_Premium1" name='STIP_CnRen_5_Premium1' value={FormData['STIP_CnRen_5_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_5_Premium1" name='STIP_CnRen_5_Premium1' value={FormData['STIP_CnRen_5_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_5_Excess1" name='STIP_CnRen_5_Excess1' value={FormData['STIP_CnRen_5_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_5_Excess1" name='STIP_CnRen_5_Excess1' value={FormData['STIP_CnRen_5_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_5_Premium2" name='STIP_CnRen_5_Premium2' value={FormData['STIP_CnRen_5_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_5_Premium2" name='STIP_CnRen_5_Premium2' value={FormData['STIP_CnRen_5_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_5_Excess2" name='STIP_CnRen_5_Excess2' value={FormData['STIP_CnRen_5_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_5_Excess2" name='STIP_CnRen_5_Excess2' value={FormData['STIP_CnRen_5_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2694,31 +2724,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Clothing and personal</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_6_Recomm"] == 1 ? true : false} name="STIP_CnRen_6_Recomm" onChange={(e)=>{FormData["STIP_CnRen_6_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_6_Recomm"] == 1 ? true : false} name="STIP_CnRen_6_Recomm" onChange={(e)=>{FormData["STIP_CnRen_6_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_6_Accepted"] == 1 ? true : false} name="STIP_CnRen_6_Accepted" onChange={(e)=>{FormData["STIP_CnRen_6_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_6_Accepted"] == 1 ? true : false} name="STIP_CnRen_6_Accepted" onChange={(e)=>{FormData["STIP_CnRen_6_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_6_CoverAmount" name='STIP_CnRen_6_CoverAmount' value={FormData['STIP_CnRen_6_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_6_CoverAmount" name='STIP_CnRen_6_CoverAmount' value={FormData['STIP_CnRen_6_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_6_Premium1" name='STIP_CnRen_6_Premium1' value={FormData['STIP_CnRen_6_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_6_Premium1" name='STIP_CnRen_6_Premium1' value={FormData['STIP_CnRen_6_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_6_Excess1" name='STIP_CnRen_6_Excess1' value={FormData['STIP_CnRen_6_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_6_Excess1" name='STIP_CnRen_6_Excess1' value={FormData['STIP_CnRen_6_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_6_Premium2" name='STIP_CnRen_6_Premium2' value={FormData['STIP_CnRen_6_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_6_Premium2" name='STIP_CnRen_6_Premium2' value={FormData['STIP_CnRen_6_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_6_Excess2" name='STIP_CnRen_6_Excess2' value={FormData['STIP_CnRen_6_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_6_Excess2" name='STIP_CnRen_6_Excess2' value={FormData['STIP_CnRen_6_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2727,31 +2757,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Keys and locks</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_7_Recomm"] == 1 ? true : false} name="STIP_CnRen_7_Recomm" onChange={(e)=>{FormData["STIP_CnRen_7_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_7_Recomm"] == 1 ? true : false} name="STIP_CnRen_7_Recomm" onChange={(e)=>{FormData["STIP_CnRen_7_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_7_Accepted"] == 1 ? true : false} name="STIP_CnRen_7_Accepted" onChange={(e)=>{FormData["STIP_CnRen_7_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_7_Accepted"] == 1 ? true : false} name="STIP_CnRen_7_Accepted" onChange={(e)=>{FormData["STIP_CnRen_7_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_7_CoverAmount" name='STIP_CnRen_7_CoverAmount' value={FormData['STIP_CnRen_7_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_7_CoverAmount" name='STIP_CnRen_7_CoverAmount' value={FormData['STIP_CnRen_7_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_7_Premium1" name='STIP_CnRen_7_Premium1' value={FormData['STIP_CnRen_7_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_7_Premium1" name='STIP_CnRen_7_Premium1' value={FormData['STIP_CnRen_7_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_7_Excess1" name='STIP_CnRen_7_Excess1' value={FormData['STIP_CnRen_7_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_7_Excess1" name='STIP_CnRen_7_Excess1' value={FormData['STIP_CnRen_7_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_7_Premium2" name='STIP_CnRen_7_Premium2' value={FormData['STIP_CnRen_7_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_7_Premium2" name='STIP_CnRen_7_Premium2' value={FormData['STIP_CnRen_7_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_7_Excess2" name='STIP_CnRen_7_Excess2' value={FormData['STIP_CnRen_7_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_7_Excess2" name='STIP_CnRen_7_Excess2' value={FormData['STIP_CnRen_7_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2760,31 +2790,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Wheelchairs</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_8_Recomm"] == 1 ? true : false} name="STIP_CnRen_8_Recomm" onChange={(e)=>{FormData["STIP_CnRen_8_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_8_Recomm"] == 1 ? true : false} name="STIP_CnRen_8_Recomm" onChange={(e)=>{FormData["STIP_CnRen_8_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_8_Accepted"] == 1 ? true : false} name="STIP_CnRen_8_Accepted" onChange={(e)=>{FormData["STIP_CnRen_8_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_8_Accepted"] == 1 ? true : false} name="STIP_CnRen_8_Accepted" onChange={(e)=>{FormData["STIP_CnRen_8_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_8_CoverAmount" name='STIP_CnRen_8_CoverAmount' value={FormData['STIP_CnRen_8_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_8_CoverAmount" name='STIP_CnRen_8_CoverAmount' value={FormData['STIP_CnRen_8_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_8_Premium1" name='STIP_CnRen_8_Premium1' value={FormData['STIP_CnRen_8_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_8_Premium1" name='STIP_CnRen_8_Premium1' value={FormData['STIP_CnRen_8_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_8_Excess1" name='STIP_CnRen_8_Excess1' value={FormData['STIP_CnRen_8_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_8_Excess1" name='STIP_CnRen_8_Excess1' value={FormData['STIP_CnRen_8_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_8_Premium2" name='STIP_CnRen_8_Premium2' value={FormData['STIP_CnRen_8_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_8_Premium2" name='STIP_CnRen_8_Premium2' value={FormData['STIP_CnRen_8_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_8_Excess2" name='STIP_CnRen_8_Excess2' value={FormData['STIP_CnRen_8_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_8_Excess2" name='STIP_CnRen_8_Excess2' value={FormData['STIP_CnRen_8_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2793,31 +2823,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Bicycles</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_9_Recomm"] == 1 ? true : false} name="STIP_CnRen_9_Recomm" onChange={(e)=>{FormData["STIP_CnRen_9_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_9_Recomm"] == 1 ? true : false} name="STIP_CnRen_9_Recomm" onChange={(e)=>{FormData["STIP_CnRen_9_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_9_Accepted"] == 1 ? true : false} name="STIP_CnRen_9_Accepted" onChange={(e)=>{FormData["STIP_CnRen_9_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_9_Accepted"] == 1 ? true : false} name="STIP_CnRen_9_Accepted" onChange={(e)=>{FormData["STIP_CnRen_9_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_9_CoverAmount" name='STIP_CnRen_9_CoverAmount' value={FormData['STIP_CnRen_9_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_9_CoverAmount" name='STIP_CnRen_9_CoverAmount' value={FormData['STIP_CnRen_9_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_9_Premium1" name='STIP_CnRen_9_Premium1' value={FormData['STIP_CnRen_9_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_9_Premium1" name='STIP_CnRen_9_Premium1' value={FormData['STIP_CnRen_9_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_9_Excess1" name='STIP_CnRen_9_Excess1' value={FormData['STIP_CnRen_9_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_9_Excess1" name='STIP_CnRen_9_Excess1' value={FormData['STIP_CnRen_9_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_9_Premium2" name='STIP_CnRen_9_Premium2' value={FormData['STIP_CnRen_9_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_9_Premium2" name='STIP_CnRen_9_Premium2' value={FormData['STIP_CnRen_9_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_9_Excess2" name='STIP_CnRen_9_Excess2' value={FormData['STIP_CnRen_9_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_9_Excess2" name='STIP_CnRen_9_Excess2' value={FormData['STIP_CnRen_9_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2826,31 +2856,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Cellular telephones</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_10_Recomm"] == 1 ? true : false} name="STIP_CnRen_10_Recomm" onChange={(e)=>{FormData["STIP_CnRen_10_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_10_Recomm"] == 1 ? true : false} name="STIP_CnRen_10_Recomm" onChange={(e)=>{FormData["STIP_CnRen_10_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_10_Accepted"] == 1 ? true : false} name="STIP_CnRen_10_Accepted" onChange={(e)=>{FormData["STIP_CnRen_10_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_10_Accepted"] == 1 ? true : false} name="STIP_CnRen_10_Accepted" onChange={(e)=>{FormData["STIP_CnRen_10_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_10_CoverAmount" name='STIP_CnRen_10_CoverAmount' value={FormData['STIP_CnRen_10_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_10_CoverAmount" name='STIP_CnRen_10_CoverAmount' value={FormData['STIP_CnRen_10_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_10_Premium1" name='STIP_CnRen_10_Premium1' value={FormData['STIP_CnRen_10_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_10_Premium1" name='STIP_CnRen_10_Premium1' value={FormData['STIP_CnRen_10_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_10_Excess1" name='STIP_CnRen_10_Excess1' value={FormData['STIP_CnRen_10_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_10_Excess1" name='STIP_CnRen_10_Excess1' value={FormData['STIP_CnRen_10_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_10_Premium2" name='STIP_CnRen_10_Premium2' value={FormData['STIP_CnRen_10_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_10_Premium2" name='STIP_CnRen_10_Premium2' value={FormData['STIP_CnRen_10_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_10_Excess2" name='STIP_CnRen_10_Excess2' value={FormData['STIP_CnRen_10_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_10_Excess2" name='STIP_CnRen_10_Excess2' value={FormData['STIP_CnRen_10_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2859,31 +2889,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; TV,VCR,Decoders</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_11_Recomm"] == 1 ? true : false} name="STIP_CnRen_11_Recomm" onChange={(e)=>{FormData["STIP_CnRen_11_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_11_Recomm"] == 1 ? true : false} name="STIP_CnRen_11_Recomm" onChange={(e)=>{FormData["STIP_CnRen_11_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_11_Accepted"] == 1 ? true : false} name="STIP_CnRen_11_Accepted" onChange={(e)=>{FormData["STIP_CnRen_11_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_11_Accepted"] == 1 ? true : false} name="STIP_CnRen_11_Accepted" onChange={(e)=>{FormData["STIP_CnRen_11_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_11_CoverAmount" name='STIP_CnRen_11_CoverAmount' value={FormData['STIP_CnRen_11_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_11_CoverAmount" name='STIP_CnRen_11_CoverAmount' value={FormData['STIP_CnRen_11_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_11_Premium1" name='STIP_CnRen_11_Premium1' value={FormData['STIP_CnRen_11_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_11_Premium1" name='STIP_CnRen_11_Premium1' value={FormData['STIP_CnRen_11_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_11_Excess1" name='STIP_CnRen_11_Excess1' value={FormData['STIP_CnRen_11_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_11_Excess1" name='STIP_CnRen_11_Excess1' value={FormData['STIP_CnRen_11_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_11_Premium2" name='STIP_CnRen_11_Premium2' value={FormData['STIP_CnRen_11_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_11_Premium2" name='STIP_CnRen_11_Premium2' value={FormData['STIP_CnRen_11_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_11_Excess2" name='STIP_CnRen_11_Excess2' value={FormData['STIP_CnRen_11_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_11_Excess2" name='STIP_CnRen_11_Excess2' value={FormData['STIP_CnRen_11_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2893,31 +2923,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>All Risk Specified</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_12_Recomm"] == 1 ? true : false} name="STIP_CnRen_12_Recomm" onChange={(e)=>{FormData["STIP_CnRen_12_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_12_Recomm"] == 1 ? true : false} name="STIP_CnRen_12_Recomm" onChange={(e)=>{FormData["STIP_CnRen_12_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_12_Accepted"] == 1 ? true : false} name="STIP_CnRen_12_Accepted" onChange={(e)=>{FormData["STIP_CnRen_12_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_12_Accepted"] == 1 ? true : false} name="STIP_CnRen_12_Accepted" onChange={(e)=>{FormData["STIP_CnRen_12_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_12_CoverAmount" name='STIP_CnRen_12_CoverAmount' value={FormData['STIP_CnRen_12_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_12_CoverAmount" name='STIP_CnRen_12_CoverAmount' value={FormData['STIP_CnRen_12_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_12_Premium1" name='STIP_CnRen_12_Premium1' value={FormData['STIP_CnRen_12_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_12_Premium1" name='STIP_CnRen_12_Premium1' value={FormData['STIP_CnRen_12_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_12_Excess1" name='STIP_CnRen_12_Excess1' value={FormData['STIP_CnRen_12_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_12_Excess1" name='STIP_CnRen_12_Excess1' value={FormData['STIP_CnRen_12_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_12_Premium2" name='STIP_CnRen_12_Premium2' value={FormData['STIP_CnRen_12_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_12_Premium2" name='STIP_CnRen_12_Premium2' value={FormData['STIP_CnRen_12_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_12_Excess2" name='STIP_CnRen_12_Excess2' value={FormData['STIP_CnRen_12_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_12_Excess2" name='STIP_CnRen_12_Excess2' value={FormData['STIP_CnRen_12_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2926,31 +2956,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Computer equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_13_Recomm"] == 1 ? true : false} name="STIP_CnRen_13_Recomm" onChange={(e)=>{FormData["STIP_CnRen_13_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_13_Recomm"] == 1 ? true : false} name="STIP_CnRen_13_Recomm" onChange={(e)=>{FormData["STIP_CnRen_13_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_13_Accepted"] == 1 ? true : false} name="STIP_CnRen_13_Accepted" onChange={(e)=>{FormData["STIP_CnRen_13_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_13_Accepted"] == 1 ? true : false} name="STIP_CnRen_13_Accepted" onChange={(e)=>{FormData["STIP_CnRen_13_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_13_CoverAmount" name='STIP_CnRen_13_CoverAmount' value={FormData['STIP_CnRen_13_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_13_CoverAmount" name='STIP_CnRen_13_CoverAmount' value={FormData['STIP_CnRen_13_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_13_Premium1" name='STIP_CnRen_13_Premium1' value={FormData['STIP_CnRen_13_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_13_Premium1" name='STIP_CnRen_13_Premium1' value={FormData['STIP_CnRen_13_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_13_Excess1" name='STIP_CnRen_13_Excess1' value={FormData['STIP_CnRen_13_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_13_Excess1" name='STIP_CnRen_13_Excess1' value={FormData['STIP_CnRen_13_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_13_Premium2" name='STIP_CnRen_13_Premium2' value={FormData['STIP_CnRen_13_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_13_Premium2" name='STIP_CnRen_13_Premium2' value={FormData['STIP_CnRen_13_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_13_Excess2" name='STIP_CnRen_13_Excess2' value={FormData['STIP_CnRen_13_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_13_Excess2" name='STIP_CnRen_13_Excess2' value={FormData['STIP_CnRen_13_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2959,31 +2989,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Items in bank vault</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_14_Recomm"] == 1 ? true : false} name="STIP_CnRen_14_Recomm" onChange={(e)=>{FormData["STIP_CnRen_14_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_14_Recomm"] == 1 ? true : false} name="STIP_CnRen_14_Recomm" onChange={(e)=>{FormData["STIP_CnRen_14_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_14_Accepted"] == 1 ? true : false} name="STIP_CnRen_14_Accepted" onChange={(e)=>{FormData["STIP_CnRen_14_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_14_Accepted"] == 1 ? true : false} name="STIP_CnRen_14_Accepted" onChange={(e)=>{FormData["STIP_CnRen_14_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_14_CoverAmount" name='STIP_CnRen_14_CoverAmount' value={FormData['STIP_CnRen_14_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_14_CoverAmount" name='STIP_CnRen_14_CoverAmount' value={FormData['STIP_CnRen_14_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_14_Premium1" name='STIP_CnRen_14_Premium1' value={FormData['STIP_CnRen_14_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_14_Premium1" name='STIP_CnRen_14_Premium1' value={FormData['STIP_CnRen_14_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_14_Excess1" name='STIP_CnRen_14_Excess1' value={FormData['STIP_CnRen_14_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_14_Excess1" name='STIP_CnRen_14_Excess1' value={FormData['STIP_CnRen_14_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_14_Premium2" name='STIP_CnRen_14_Premium2' value={FormData['STIP_CnRen_14_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_14_Premium2" name='STIP_CnRen_14_Premium2' value={FormData['STIP_CnRen_14_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_14_Excess2" name='STIP_CnRen_14_Excess2' value={FormData['STIP_CnRen_14_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_14_Excess2" name='STIP_CnRen_14_Excess2' value={FormData['STIP_CnRen_14_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -2992,31 +3022,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Jewellery(All jewellery)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_15_Recomm"] == 1 ? true : false} name="STIP_CnRen_15_Recomm" onChange={(e)=>{FormData["STIP_CnRen_15_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_15_Recomm"] == 1 ? true : false} name="STIP_CnRen_15_Recomm" onChange={(e)=>{FormData["STIP_CnRen_15_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_15_Accepted"] == 1 ? true : false} name="STIP_CnRen_15_Accepted" onChange={(e)=>{FormData["STIP_CnRen_15_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_15_Accepted"] == 1 ? true : false} name="STIP_CnRen_15_Accepted" onChange={(e)=>{FormData["STIP_CnRen_15_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_15_CoverAmount" name='STIP_CnRen_15_CoverAmount' value={FormData['STIP_CnRen_15_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_15_CoverAmount" name='STIP_CnRen_15_CoverAmount' value={FormData['STIP_CnRen_15_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_15_Premium1" name='STIP_CnRen_15_Premium1' value={FormData['STIP_CnRen_15_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_15_Premium1" name='STIP_CnRen_15_Premium1' value={FormData['STIP_CnRen_15_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_15_Excess1" name='STIP_CnRen_15_Excess1' value={FormData['STIP_CnRen_15_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_15_Excess1" name='STIP_CnRen_15_Excess1' value={FormData['STIP_CnRen_15_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_15_Premium2" name='STIP_CnRen_15_Premium2' value={FormData['STIP_CnRen_15_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_15_Premium2" name='STIP_CnRen_15_Premium2' value={FormData['STIP_CnRen_15_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_15_Excess2" name='STIP_CnRen_15_Excess2' value={FormData['STIP_CnRen_15_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_15_Excess2" name='STIP_CnRen_15_Excess2' value={FormData['STIP_CnRen_15_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3025,31 +3055,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Photographic equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_16_Recomm"] == 1 ? true : false} name="STIP_CnRen_16_Recomm" onChange={(e)=>{FormData["STIP_CnRen_16_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_16_Recomm"] == 1 ? true : false} name="STIP_CnRen_16_Recomm" onChange={(e)=>{FormData["STIP_CnRen_16_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_16_Accepted"] == 1 ? true : false} name="STIP_CnRen_16_Accepted" onChange={(e)=>{FormData["STIP_CnRen_16_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_16_Accepted"] == 1 ? true : false} name="STIP_CnRen_16_Accepted" onChange={(e)=>{FormData["STIP_CnRen_16_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_16_CoverAmount" name='STIP_CnRen_16_CoverAmount' value={FormData['STIP_CnRen_16_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_16_CoverAmount" name='STIP_CnRen_16_CoverAmount' value={FormData['STIP_CnRen_16_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_16_Premium1" name='STIP_CnRen_16_Premium1' value={FormData['STIP_CnRen_16_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_16_Premium1" name='STIP_CnRen_16_Premium1' value={FormData['STIP_CnRen_16_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_16_Excess1" name='STIP_CnRen_16_Excess1' value={FormData['STIP_CnRen_16_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_16_Excess1" name='STIP_CnRen_16_Excess1' value={FormData['STIP_CnRen_16_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_16_Premium2" name='STIP_CnRen_16_Premium2' value={FormData['STIP_CnRen_16_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_16_Premium2" name='STIP_CnRen_16_Premium2' value={FormData['STIP_CnRen_16_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_16_Excess2" name='STIP_CnRen_16_Excess2' value={FormData['STIP_CnRen_16_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_16_Excess2" name='STIP_CnRen_16_Excess2' value={FormData['STIP_CnRen_16_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3058,31 +3088,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Sound Equipment</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_17_Recomm"] == 1 ? true : false} name="STIP_CnRen_17_Recomm" onChange={(e)=>{FormData["STIP_CnRen_17_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_17_Recomm"] == 1 ? true : false} name="STIP_CnRen_17_Recomm" onChange={(e)=>{FormData["STIP_CnRen_17_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_17_Accepted"] == 1 ? true : false} name="STIP_CnRen_17_Accepted" onChange={(e)=>{FormData["STIP_CnRen_17_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_17_Accepted"] == 1 ? true : false} name="STIP_CnRen_17_Accepted" onChange={(e)=>{FormData["STIP_CnRen_17_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_17_CoverAmount" name='STIP_CnRen_17_CoverAmount' value={FormData['STIP_CnRen_17_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_17_CoverAmount" name='STIP_CnRen_17_CoverAmount' value={FormData['STIP_CnRen_17_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_17_Premium1" name='STIP_CnRen_17_Premium1' value={FormData['STIP_CnRen_17_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_17_Premium1" name='STIP_CnRen_17_Premium1' value={FormData['STIP_CnRen_17_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_17_Excess1" name='STIP_CnRen_17_Excess1' value={FormData['STIP_CnRen_17_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_17_Excess1" name='STIP_CnRen_17_Excess1' value={FormData['STIP_CnRen_17_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_17_Premium2" name='STIP_CnRen_17_Premium2' value={FormData['STIP_CnRen_17_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_17_Premium2" name='STIP_CnRen_17_Premium2' value={FormData['STIP_CnRen_17_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_17_Excess2" name='STIP_CnRen_17_Excess2' value={FormData['STIP_CnRen_17_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_17_Excess2" name='STIP_CnRen_17_Excess2' value={FormData['STIP_CnRen_17_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3091,31 +3121,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Other specify</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_18_Recomm"] == 1 ? true : false} name="STIP_CnRen_18_Recomm" onChange={(e)=>{FormData["STIP_CnRen_18_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_18_Recomm"] == 1 ? true : false} name="STIP_CnRen_18_Recomm" onChange={(e)=>{FormData["STIP_CnRen_18_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_18_Accepted"] == 1 ? true : false} name="STIP_CnRen_18_Accepted" onChange={(e)=>{FormData["STIP_CnRen_18_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_18_Accepted"] == 1 ? true : false} name="STIP_CnRen_18_Accepted" onChange={(e)=>{FormData["STIP_CnRen_18_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_18_CoverAmount" name='STIP_CnRen_18_CoverAmount' value={FormData['STIP_CnRen_18_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_18_CoverAmount" name='STIP_CnRen_18_CoverAmount' value={FormData['STIP_CnRen_18_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_18_Premium1" name='STIP_CnRen_18_Premium1' value={FormData['STIP_CnRen_18_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_18_Premium1" name='STIP_CnRen_18_Premium1' value={FormData['STIP_CnRen_18_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_18_Excess1" name='STIP_CnRen_18_Excess1' value={FormData['STIP_CnRen_18_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_18_Excess1" name='STIP_CnRen_18_Excess1' value={FormData['STIP_CnRen_18_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_18_Premium2" name='STIP_CnRen_18_Premium2' value={FormData['STIP_CnRen_18_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_18_Premium2" name='STIP_CnRen_18_Premium2' value={FormData['STIP_CnRen_18_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_18_Excess2" name='STIP_CnRen_18_Excess2' value={FormData['STIP_CnRen_18_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_18_Excess2" name='STIP_CnRen_18_Excess2' value={FormData['STIP_CnRen_18_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3124,31 +3154,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Personal legal liability</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_19_Recomm"] == 1 ? true : false} name="STIP_CnRen_19_Recomm" onChange={(e)=>{FormData["STIP_CnRen_19_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_19_Recomm"] == 1 ? true : false} name="STIP_CnRen_19_Recomm" onChange={(e)=>{FormData["STIP_CnRen_19_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_19_Accepted"] == 1 ? true : false} name="STIP_CnRen_19_Accepted" onChange={(e)=>{FormData["STIP_CnRen_19_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_19_Accepted"] == 1 ? true : false} name="STIP_CnRen_19_Accepted" onChange={(e)=>{FormData["STIP_CnRen_19_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_19_CoverAmount" name='STIP_CnRen_19_CoverAmount' value={FormData['STIP_CnRen_19_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_19_CoverAmount" name='STIP_CnRen_19_CoverAmount' value={FormData['STIP_CnRen_19_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_19_Premium1" name='STIP_CnRen_19_Premium1' value={FormData['STIP_CnRen_19_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_19_Premium1" name='STIP_CnRen_19_Premium1' value={FormData['STIP_CnRen_19_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_19_Excess1" name='STIP_CnRen_19_Excess1' value={FormData['STIP_CnRen_19_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_19_Excess1" name='STIP_CnRen_19_Excess1' value={FormData['STIP_CnRen_19_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_19_Premium2" name='STIP_CnRen_19_Premium2' value={FormData['STIP_CnRen_19_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_19_Premium2" name='STIP_CnRen_19_Premium2' value={FormData['STIP_CnRen_19_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_19_Excess2" name='STIP_CnRen_19_Excess2' value={FormData['STIP_CnRen_19_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_19_Excess2" name='STIP_CnRen_19_Excess2' value={FormData['STIP_CnRen_19_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3157,31 +3187,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>(PLIP)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_20_Recomm"] == 1 ? true : false} name="STIP_CnRen_20_Recomm" onChange={(e)=>{FormData["STIP_CnRen_20_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_20_Recomm"] == 1 ? true : false} name="STIP_CnRen_20_Recomm" onChange={(e)=>{FormData["STIP_CnRen_20_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_20_Accepted"] == 1 ? true : false} name="STIP_CnRen_20_Accepted" onChange={(e)=>{FormData["STIP_CnRen_20_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_20_Accepted"] == 1 ? true : false} name="STIP_CnRen_20_Accepted" onChange={(e)=>{FormData["STIP_CnRen_20_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_20_CoverAmount" name='STIP_CnRen_20_CoverAmount' value={FormData['STIP_CnRen_20_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_20_CoverAmount" name='STIP_CnRen_20_CoverAmount' value={FormData['STIP_CnRen_20_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_20_Premium1" name='STIP_CnRen_20_Premium1' value={FormData['STIP_CnRen_20_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_20_Premium1" name='STIP_CnRen_20_Premium1' value={FormData['STIP_CnRen_20_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_20_Excess1" name='STIP_CnRen_20_Excess1' value={FormData['STIP_CnRen_20_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_20_Excess1" name='STIP_CnRen_20_Excess1' value={FormData['STIP_CnRen_20_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_20_Premium2" name='STIP_CnRen_20_Premium2' value={FormData['STIP_CnRen_20_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_20_Premium2" name='STIP_CnRen_20_Premium2' value={FormData['STIP_CnRen_20_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_20_Excess2" name='STIP_CnRen_20_Excess2' value={FormData['STIP_CnRen_20_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_20_Excess2" name='STIP_CnRen_20_Excess2' value={FormData['STIP_CnRen_20_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3190,31 +3220,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Vehicles(Refer to quote/policy)</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_21_Recomm"] == 1 ? true : false} name="STIP_CnRen_21_Recomm" onChange={(e)=>{FormData["STIP_CnRen_21_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_21_Recomm"] == 1 ? true : false} name="STIP_CnRen_21_Recomm" onChange={(e)=>{FormData["STIP_CnRen_21_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_21_Accepted"] == 1 ? true : false} name="STIP_CnRen_21_Accepted" onChange={(e)=>{FormData["STIP_CnRen_21_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_21_Accepted"] == 1 ? true : false} name="STIP_CnRen_21_Accepted" onChange={(e)=>{FormData["STIP_CnRen_21_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_21_CoverAmount" name='STIP_CnRen_21_CoverAmount' value={FormData['STIP_CnRen_21_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_21_CoverAmount" name='STIP_CnRen_21_CoverAmount' value={FormData['STIP_CnRen_21_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_21_Premium1" name='STIP_CnRen_21_Premium1' value={FormData['STIP_CnRen_21_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_21_Premium1" name='STIP_CnRen_21_Premium1' value={FormData['STIP_CnRen_21_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_21_Excess1" name='STIP_CnRen_21_Excess1' value={FormData['STIP_CnRen_21_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_21_Excess1" name='STIP_CnRen_21_Excess1' value={FormData['STIP_CnRen_21_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_21_Premium2" name='STIP_CnRen_21_Premium2' value={FormData['STIP_CnRen_21_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_21_Premium2" name='STIP_CnRen_21_Premium2' value={FormData['STIP_CnRen_21_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_21_Excess2" name='STIP_CnRen_21_Excess2' value={FormData['STIP_CnRen_21_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_21_Excess2" name='STIP_CnRen_21_Excess2' value={FormData['STIP_CnRen_21_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3224,31 +3254,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Car hire</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_22_Recomm"] == 1 ? true : false} name="STIP_CnRen_22_Recomm" onChange={(e)=>{FormData["STIP_CnRen_22_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_22_Recomm"] == 1 ? true : false} name="STIP_CnRen_22_Recomm" onChange={(e)=>{FormData["STIP_CnRen_22_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_22_Accepted"] == 1 ? true : false} name="STIP_CnRen_22_Accepted" onChange={(e)=>{FormData["STIP_CnRen_22_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_22_Accepted"] == 1 ? true : false} name="STIP_CnRen_22_Accepted" onChange={(e)=>{FormData["STIP_CnRen_22_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_22_CoverAmount" name='STIP_CnRen_22_CoverAmount' value={FormData['STIP_CnRen_22_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_22_CoverAmount" name='STIP_CnRen_22_CoverAmount' value={FormData['STIP_CnRen_22_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_22_Premium1" name='STIP_CnRen_22_Premium1' value={FormData['STIP_CnRen_22_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_22_Premium1" name='STIP_CnRen_22_Premium1' value={FormData['STIP_CnRen_22_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_22_Excess1" name='STIP_CnRen_22_Excess1' value={FormData['STIP_CnRen_22_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_22_Excess1" name='STIP_CnRen_22_Excess1' value={FormData['STIP_CnRen_22_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_22_Premium2" name='STIP_CnRen_22_Premium2' value={FormData['STIP_CnRen_22_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_22_Premium2" name='STIP_CnRen_22_Premium2' value={FormData['STIP_CnRen_22_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_22_Excess2" name='STIP_CnRen_22_Excess2' value={FormData['STIP_CnRen_22_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_22_Excess2" name='STIP_CnRen_22_Excess2' value={FormData['STIP_CnRen_22_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3258,31 +3288,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Excess waiver</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_23_Recomm"] == 1 ? true : false} name="STIP_CnRen_23_Recomm" onChange={(e)=>{FormData["STIP_CnRen_23_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_23_Recomm"] == 1 ? true : false} name="STIP_CnRen_23_Recomm" onChange={(e)=>{FormData["STIP_CnRen_23_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_23_Accepted"] == 1 ? true : false} name="STIP_CnRen_23_Accepted" onChange={(e)=>{FormData["STIP_CnRen_23_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_23_Accepted"] == 1 ? true : false} name="STIP_CnRen_23_Accepted" onChange={(e)=>{FormData["STIP_CnRen_23_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_23_CoverAmount" name='STIP_CnRen_23_CoverAmount' value={FormData['STIP_CnRen_23_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_23_CoverAmount" name='STIP_CnRen_23_CoverAmount' value={FormData['STIP_CnRen_23_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_23_Premium1" name='STIP_CnRen_23_Premium1' value={FormData['STIP_CnRen_23_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_23_Premium1" name='STIP_CnRen_23_Premium1' value={FormData['STIP_CnRen_23_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_23_Excess1" name='STIP_CnRen_23_Excess1' value={FormData['STIP_CnRen_23_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_23_Excess1" name='STIP_CnRen_23_Excess1' value={FormData['STIP_CnRen_23_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_23_Premium2" name='STIP_CnRen_23_Premium2' value={FormData['STIP_CnRen_23_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_23_Premium2" name='STIP_CnRen_23_Premium2' value={FormData['STIP_CnRen_23_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_23_Excess2" name='STIP_CnRen_23_Excess2' value={FormData['STIP_CnRen_23_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_23_Excess2" name='STIP_CnRen_23_Excess2' value={FormData['STIP_CnRen_23_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3291,31 +3321,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Credit shortfall</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_24_Recomm"] == 1 ? true : false} name="STIP_CnRen_24_Recomm" onChange={(e)=>{FormData["STIP_CnRen_24_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_24_Recomm"] == 1 ? true : false} name="STIP_CnRen_24_Recomm" onChange={(e)=>{FormData["STIP_CnRen_24_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_24_Accepted"] == 1 ? true : false} name="STIP_CnRen_24_Accepted" onChange={(e)=>{FormData["STIP_CnRen_24_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_24_Accepted"] == 1 ? true : false} name="STIP_CnRen_24_Accepted" onChange={(e)=>{FormData["STIP_CnRen_24_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_24_CoverAmount" name='STIP_CnRen_24_CoverAmount' value={FormData['STIP_CnRen_24_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_24_CoverAmount" name='STIP_CnRen_24_CoverAmount' value={FormData['STIP_CnRen_24_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_24_Premium1" name='STIP_CnRen_24_Premium1' value={FormData['STIP_CnRen_24_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_24_Premium1" name='STIP_CnRen_24_Premium1' value={FormData['STIP_CnRen_24_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_24_Excess1" name='STIP_CnRen_24_Excess1' value={FormData['STIP_CnRen_24_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_24_Excess1" name='STIP_CnRen_24_Excess1' value={FormData['STIP_CnRen_24_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_24_Premium2" name='STIP_CnRen_24_Premium2' value={FormData['STIP_CnRen_24_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_24_Premium2" name='STIP_CnRen_24_Premium2' value={FormData['STIP_CnRen_24_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_24_Excess2" name='STIP_CnRen_24_Excess2' value={FormData['STIP_CnRen_24_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_24_Excess2" name='STIP_CnRen_24_Excess2' value={FormData['STIP_CnRen_24_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3326,31 +3356,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Watercraft</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_25_Recomm"] == 1 ? true : false} name="STIP_CnRen_25_Recomm" onChange={(e)=>{FormData["STIP_CnRen_25_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_25_Recomm"] == 1 ? true : false} name="STIP_CnRen_25_Recomm" onChange={(e)=>{FormData["STIP_CnRen_25_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_25_Accepted"] == 1 ? true : false} name="STIP_CnRen_25_Accepted" onChange={(e)=>{FormData["STIP_CnRen_25_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_25_Accepted"] == 1 ? true : false} name="STIP_CnRen_25_Accepted" onChange={(e)=>{FormData["STIP_CnRen_25_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_25_CoverAmount" name='STIP_CnRen_25_CoverAmount' value={FormData['STIP_CnRen_25_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_25_CoverAmount" name='STIP_CnRen_25_CoverAmount' value={FormData['STIP_CnRen_25_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_25_Premium1" name='STIP_CnRen_25_Premium1' value={FormData['STIP_CnRen_25_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_25_Premium1" name='STIP_CnRen_25_Premium1' value={FormData['STIP_CnRen_25_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_25_Excess1" name='STIP_CnRen_25_Excess1' value={FormData['STIP_CnRen_25_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_25_Excess1" name='STIP_CnRen_25_Excess1' value={FormData['STIP_CnRen_25_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_25_Premium2" name='STIP_CnRen_25_Premium2' value={FormData['STIP_CnRen_25_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_25_Premium2" name='STIP_CnRen_25_Premium2' value={FormData['STIP_CnRen_25_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_25_Excess2" name='STIP_CnRen_25_Excess2' value={FormData['STIP_CnRen_25_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_25_Excess2" name='STIP_CnRen_25_Excess2' value={FormData['STIP_CnRen_25_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3360,31 +3390,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Sasria</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_26_Recomm"] == 1 ? true : false} name="STIP_CnRen_26_Recomm" onChange={(e)=>{FormData["STIP_CnRen_26_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_26_Recomm"] == 1 ? true : false} name="STIP_CnRen_26_Recomm" onChange={(e)=>{FormData["STIP_CnRen_26_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_26_Accepted"] == 1 ? true : false} name="STIP_CnRen_26_Accepted" onChange={(e)=>{FormData["STIP_CnRen_26_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_26_Accepted"] == 1 ? true : false} name="STIP_CnRen_26_Accepted" onChange={(e)=>{FormData["STIP_CnRen_26_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_26_CoverAmount" name='STIP_CnRen_26_CoverAmount' value={FormData['STIP_CnRen_26_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_26_CoverAmount" name='STIP_CnRen_26_CoverAmount' value={FormData['STIP_CnRen_26_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_26_Premium1" name='STIP_CnRen_26_Premium1' value={FormData['STIP_CnRen_26_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_26_Premium1" name='STIP_CnRen_26_Premium1' value={FormData['STIP_CnRen_26_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_26_Excess1" name='STIP_CnRen_26_Excess1' value={FormData['STIP_CnRen_26_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_26_Excess1" name='STIP_CnRen_26_Excess1' value={FormData['STIP_CnRen_26_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_26_Premium2" name='STIP_CnRen_26_Premium2' value={FormData['STIP_CnRen_26_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_26_Premium2" name='STIP_CnRen_26_Premium2' value={FormData['STIP_CnRen_26_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_26_Excess2" name='STIP_CnRen_26_Excess2' value={FormData['STIP_CnRen_26_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_26_Excess2" name='STIP_CnRen_26_Excess2' value={FormData['STIP_CnRen_26_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3394,31 +3424,31 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Legal access</td>
               <td className="col-2" style={{width:"130px"}}>
-                  <input type="checkbox" checked={FormData["STIP_CnRen_27_Recomm"] == 1 ? true : false} name="STIP_CnRen_27_Recomm" onChange={(e)=>{FormData["STIP_CnRen_27_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_27_Recomm"] == 1 ? true : false} name="STIP_CnRen_27_Recomm" onChange={(e)=>{FormData["STIP_CnRen_27_Recomm"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input type="checkbox" checked={FormData["STIP_CnRen_27_Accepted"] == 1 ? true : false} name="STIP_CnRen_27_Accepted" onChange={(e)=>{FormData["STIP_CnRen_27_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_CnRen_27_Accepted"] == 1 ? true : false} name="STIP_CnRen_27_Accepted" onChange={(e)=>{FormData["STIP_CnRen_27_Accepted"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_27_CoverAmount" name='STIP_CnRen_27_CoverAmount' value={FormData['STIP_CnRen_27_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_27_CoverAmount" name='STIP_CnRen_27_CoverAmount' value={FormData['STIP_CnRen_27_CoverAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_27_Premium1" name='STIP_CnRen_27_Premium1' value={FormData['STIP_CnRen_27_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_27_Premium1" name='STIP_CnRen_27_Premium1' value={FormData['STIP_CnRen_27_Premium1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_27_Excess1" name='STIP_CnRen_27_Excess1' value={FormData['STIP_CnRen_27_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_27_Excess1" name='STIP_CnRen_27_Excess1' value={FormData['STIP_CnRen_27_Excess1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_27_Premium2" name='STIP_CnRen_27_Premium2' value={FormData['STIP_CnRen_27_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_27_Premium2" name='STIP_CnRen_27_Premium2' value={FormData['STIP_CnRen_27_Premium2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
 
               <td className="col-2" style={{width:"130px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_27_Excess2" name='STIP_CnRen_27_Excess2' value={FormData['STIP_CnRen_27_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_27_Excess2" name='STIP_CnRen_27_Excess2' value={FormData['STIP_CnRen_27_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3426,7 +3456,7 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Fees and charges</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_FeeCharges" name='STIP_CnRen_FeeCharges' value={FormData['STIP_CnRen_FeeCharges']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_FeeCharges" name='STIP_CnRen_FeeCharges' value={FormData['STIP_CnRen_FeeCharges']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3434,7 +3464,7 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Commissions</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_Commission" name='STIP_CnRen_Commission' value={FormData['STIP_CnRen_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Commission" name='STIP_CnRen_Commission' value={FormData['STIP_CnRen_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3442,7 +3472,7 @@ const Short_term_Personal = ({user}) => {
               
               <td className="col-2" style={{width:"200px"}}>Total premium</td>
               <td className="col-2" style={{width:"910px"}}>
-                <input spellCheck="true"  id="STIP_CnRen_TotalPremium" name='STIP_CnRen_TotalPremium' value={FormData['STIP_CnRen_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_TotalPremium" name='STIP_CnRen_TotalPremium' value={FormData['STIP_CnRen_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
           </tr>
@@ -3462,7 +3492,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input className="form-check-input" checked={FormData['STIP_CnRI_AdviseGiven'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_CnRI_AdviseGiven" name="STIP_CnRI_AdviseGiven"/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIP_CnRI_AdviseGiven'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_CnRI_AdviseGiven" name="STIP_CnRI_AdviseGiven"/>
                   </div>
                   <div className="col-2">
                       <label className="form-check-label" htmlFor="STIP_CnRI_AdviseGiven" >
@@ -3472,7 +3502,7 @@ const Short_term_Personal = ({user}) => {
               </div>
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input className="form-check-input" checked={FormData['STIP_CnRI_AdviseGiven'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_CnRI_AdviseGiven" name="STIP_CnRI_AdviseGiven"/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIP_CnRI_AdviseGiven'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_CnRI_AdviseGiven" name="STIP_CnRI_AdviseGiven"/>
                   </div>
                   <div className="col-2">
                       <label className="form-check-label" htmlFor="STIP_CnRI_AdviseGiven" >
@@ -3498,7 +3528,7 @@ const Short_term_Personal = ({user}) => {
         <p>If yes,answer the following:</p>
         <p>What is the purpose of this replacement?</p>
         {/* <textarea name='STIP_CnRI_ReplacePurpose' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplacePurpose']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-        <Editor
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_CnRI_ReplacePurpose']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplacePurpose']: newText }) }}
           name="STIP_CnRI_ReplacePurpose"
@@ -3521,7 +3551,7 @@ const Short_term_Personal = ({user}) => {
         <hr/>
         <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
         {/* <textarea name='STIP_CnRI_ReplaceReason' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceReason']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-        <Editor
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_CnRI_ReplaceReason']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceReason']: newText }) }}                     
           name="STIP_CnRI_ReplaceReason"
@@ -3544,7 +3574,7 @@ const Short_term_Personal = ({user}) => {
         <hr/>
         <p>Suppliers of the product(s) to be replaced:</p>
         {/* <textarea name='STIP_CnRI_ReplaceSupplier' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceSupplier']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-        <Editor
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_CnRI_ReplaceSupplier']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceSupplier']: newText }) }}
           name="STIP_CnRI_ReplaceSupplier"
@@ -3583,7 +3613,7 @@ const Short_term_Personal = ({user}) => {
                   <label className="col-form-label">Residential area</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true"  id="STIP_HC_ResidentialArea" name='STIP_HC_ResidentialArea' value={FormData['STIP_HC_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_ResidentialArea" name='STIP_HC_ResidentialArea' value={FormData['STIP_HC_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
               </div>
           </div>
       </div>
@@ -3596,7 +3626,7 @@ const Short_term_Personal = ({user}) => {
               </div>
               <div className="col-8">
                   {/* <textarea maxLength={500} spellCheck="true"  id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                  <Editor
+                  <Editor onBlur={(e)=>{onFieldBlur(e)}}
                     value={FormData['STIP_HC_StreetNumber']}
                     onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_HC_StreetNumber']: newText }) }}
                     name="STIP_HC_StreetNumber"
@@ -3627,7 +3657,7 @@ const Short_term_Personal = ({user}) => {
                   <label className="col-form-label">Postal code</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true"  id="STIP_HC_PostalCode" name='STIP_HC_PostalCode' value={FormData['STIP_HC_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_PostalCode" name='STIP_HC_PostalCode' value={FormData['STIP_HC_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
               </div>
           </div>
       </div>
@@ -3639,7 +3669,7 @@ const Short_term_Personal = ({user}) => {
                   <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true"  id="STIP_HC_ResidenceType" name='STIP_HC_ResidenceType' value={FormData['STIP_HC_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_ResidenceType" name='STIP_HC_ResidenceType' value={FormData['STIP_HC_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
               </div>
           </div>
       </div>
@@ -3658,7 +3688,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3666,7 +3696,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3688,7 +3718,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3696,7 +3726,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3719,7 +3749,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3727,7 +3757,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3750,7 +3780,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
           <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
+                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -3758,7 +3788,7 @@ const Short_term_Personal = ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
+                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -3780,7 +3810,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
           <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
+                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -3788,7 +3818,7 @@ const Short_term_Personal = ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
+                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -3810,7 +3840,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3818,7 +3848,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3839,7 +3869,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3847,7 +3877,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3870,7 +3900,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true"  id="STIP_HC_NoClaimBonus" name='STIP_HC_NoClaimBonus' value={FormData['STIP_HC_NoClaimBonus']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_NoClaimBonus" name='STIP_HC_NoClaimBonus' value={FormData['STIP_HC_NoClaimBonus']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -3886,7 +3916,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true"  id="STIP_HC_SumInsured" name='STIP_HC_SumInsured' value={FormData['STIP_HC_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_SumInsured" name='STIP_HC_SumInsured' value={FormData['STIP_HC_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -3906,7 +3936,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true"  id="STIP_HCEx_BusinessType" name='STIP_HCEx_BusinessType' value={FormData['STIP_HCEx_BusinessType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HCEx_BusinessType" name='STIP_HCEx_BusinessType' value={FormData['STIP_HCEx_BusinessType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -3923,7 +3953,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true"  id="STIP_HCEx_InsuredAmount" name='STIP_HCEx_InsuredAmount' value={FormData['STIP_HCEx_InsuredAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HCEx_InsuredAmount" name='STIP_HCEx_InsuredAmount' value={FormData['STIP_HCEx_InsuredAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -3941,7 +3971,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3949,7 +3979,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3970,7 +4000,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -3978,7 +4008,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -4000,7 +4030,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4008,7 +4038,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4030,7 +4060,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4038,7 +4068,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4060,7 +4090,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4068,7 +4098,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4090,7 +4120,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
           <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4098,7 +4128,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4120,7 +4150,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
           <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4128,7 +4158,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4150,7 +4180,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true"  id="STIP_HC_Fee" name='STIP_HC_Fee' value={FormData['STIP_HC_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_Fee" name='STIP_HC_Fee' value={FormData['STIP_HC_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -4167,7 +4197,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true"  id="STIP_HC_Commission" name='STIP_HC_Commission' value={FormData['STIP_HC_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_Commission" name='STIP_HC_Commission' value={FormData['STIP_HC_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -4183,7 +4213,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true"  id="STIP_HC_TotalPremium" name='STIP_HC_TotalPremium' value={FormData['STIP_HC_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_TotalPremium" name='STIP_HC_TotalPremium' value={FormData['STIP_HC_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
                   </div>
               </div>
             </div>
@@ -4207,7 +4237,7 @@ const Short_term_Personal = ({user}) => {
                   <label className="col-form-label">Residential area</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true"  id="STIP_Build_ResidentialArea" name='STIP_Build_ResidentialArea' value={FormData['STIP_Build_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_ResidentialArea" name='STIP_Build_ResidentialArea' value={FormData['STIP_Build_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
               </div>
           </div>
       </div>
@@ -4220,7 +4250,7 @@ const Short_term_Personal = ({user}) => {
               </div>
               <div className="col-8">
                   {/* <textarea maxLength={500} spellCheck="true"  id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                  <Editor
+                  <Editor onBlur={(e)=>{onFieldBlur(e)}}
                     value={FormData['STIP_Build_StreetNumber']}
                     onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Build_StreetNumber']: newText }) }}
                     name="STIP_Build_StreetNumber"
@@ -4251,7 +4281,7 @@ const Short_term_Personal = ({user}) => {
                   <label className="col-form-label">Postal code</label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true"  id="STIP_Build_PostalCode" name='STIP_Build_PostalCode' value={FormData['STIP_Build_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_PostalCode" name='STIP_Build_PostalCode' value={FormData['STIP_Build_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
               </div>
           </div>
       </div>
@@ -4263,7 +4293,7 @@ const Short_term_Personal = ({user}) => {
                   <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
               </div>
               <div className="col-6">
-                  <input spellCheck="true"  id="STIP_Build_ResidenceType" name='STIP_Build_ResidenceType' value={FormData['STIP_Build_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_ResidenceType" name='STIP_Build_ResidenceType' value={FormData['STIP_Build_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
               </div>
           </div>
       </div>
@@ -4280,7 +4310,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_Build_Type" name='STIP_Build_Type' value={FormData['STIP_Build_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:'200px'}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_Type" name='STIP_Build_Type' value={FormData['STIP_Build_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:'200px'}}/>
                   </div>
               </div>
 
@@ -4298,7 +4328,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_Build_Voluntary"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_Voluntary"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -4306,7 +4336,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_Build_Voluntary"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_Voluntary"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -4329,7 +4359,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_Build_SnL"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_SnL" name="STIP_Build_SnL" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_SnL"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_SnL" name="STIP_Build_SnL" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -4337,7 +4367,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_Build_SnL"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_SnL" name="STIP_Build_SnL" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_SnL"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_SnL" name="STIP_Build_SnL" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -4358,7 +4388,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_Build_ADI"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_ADI" name="STIP_Build_ADI" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_ADI"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_ADI" name="STIP_Build_ADI" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4366,7 +4396,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_Build_ADI"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_ADI" name="STIP_Build_ADI" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_ADI"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_ADI" name="STIP_Build_ADI" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4388,7 +4418,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
           <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
+                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -4396,7 +4426,7 @@ const Short_term_Personal = ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
+                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -4417,7 +4447,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
           <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
+                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -4425,7 +4455,7 @@ const Short_term_Personal = ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
+                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -4447,7 +4477,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_Build_Fee" name='STIP_Build_Fee' value={FormData['STIP_Build_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_Fee" name='STIP_Build_Fee' value={FormData['STIP_Build_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
                   </div>
               </div>
             </div>
@@ -4463,7 +4493,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_Build_Commission" name='STIP_Build_Commission' value={FormData['STIP_Build_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_Commission" name='STIP_Build_Commission' value={FormData['STIP_Build_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
                   </div>
               </div>
             </div>
@@ -4479,7 +4509,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_Build_TotalPremium" name='STIP_Build_TotalPremium' value={FormData['STIP_Build_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_TotalPremium" name='STIP_Build_TotalPremium' value={FormData['STIP_Build_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
                   </div>
               </div>
             </div>
@@ -4489,7 +4519,7 @@ const Short_term_Personal = ({user}) => {
       <br/>
     <div>Additional notes on buildings that may affect cover/advice to the client: </div>
     <div className="col-2">
-        <input spellCheck="true"  id="STIP_Build_AdditionalAdvise" name='STIP_Build_AdditionalAdvise' value={FormData['STIP_Build_AdditionalAdvise']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" style={{width:'1000px'}}/>
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_AdditionalAdvise" name='STIP_Build_AdditionalAdvise' value={FormData['STIP_Build_AdditionalAdvise']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" style={{width:'1000px'}}/>
     </div>
 
       <hr/>
@@ -4505,7 +4535,7 @@ const Short_term_Personal = ({user}) => {
                         <label className="col-form-label">Residential area</label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_AddProp_ResidentialArea" name='STIP_AddProp_ResidentialArea' value={FormData['STIP_AddProp_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_ResidentialArea" name='STIP_AddProp_ResidentialArea' value={FormData['STIP_AddProp_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -4518,7 +4548,7 @@ const Short_term_Personal = ({user}) => {
                     </div>
                     <div className="col-8">
                         {/* <textarea maxLength={500} spellCheck="true"  id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                        <Editor
+                        <Editor onBlur={(e)=>{onFieldBlur(e)}}
                           value={FormData['STIP_AddProp_StreetNumber']}
                           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_AddProp_StreetNumber']: newText }) }}
                           name="STIP_AddProp_StreetNumber"
@@ -4549,7 +4579,7 @@ const Short_term_Personal = ({user}) => {
                         <label className="col-form-label">Postal code</label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_AddProp_PostalCode" name='STIP_AddProp_PostalCode' value={FormData['STIP_AddProp_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_PostalCode" name='STIP_AddProp_PostalCode' value={FormData['STIP_AddProp_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
                     </div>
                 </div>
             </div>
@@ -4561,7 +4591,7 @@ const Short_term_Personal = ({user}) => {
                         <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_AddProp_ResidenceType" name='STIP_AddProp_ResidenceType' value={FormData['STIP_AddProp_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_ResidenceType" name='STIP_AddProp_ResidenceType' value={FormData['STIP_AddProp_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -4573,7 +4603,7 @@ const Short_term_Personal = ({user}) => {
                         <label className="col-form-label"><b>Type of building</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true"  id="STIP_AddProp_Type" name='STIP_AddProp_Type' value={FormData['STIP_AddProp_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_Type" name='STIP_AddProp_Type' value={FormData['STIP_AddProp_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -4596,7 +4626,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4604,7 +4634,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4627,7 +4657,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_AddProp_SnL"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_SnL"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4635,7 +4665,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_AddProp_SnL"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_SnL"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4657,7 +4687,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
            <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_AddProp_ADI"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_ADI"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4665,7 +4695,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_AddProp_ADI"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_ADI"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4688,7 +4718,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
           <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4696,7 +4726,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4719,7 +4749,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
           <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4727,7 +4757,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -4750,7 +4780,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true"  id="STIP_AddProp_Fee" name='STIP_AddProp_Fee' value={FormData['STIP_AddProp_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_Fee" name='STIP_AddProp_Fee' value={FormData['STIP_AddProp_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
                   </div>    
               </div>
             </div>
@@ -4766,7 +4796,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true"  id="STIP_AddProp_Commission" name='STIP_AddProp_Commission' value={FormData['STIP_AddProp_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_Commission" name='STIP_AddProp_Commission' value={FormData['STIP_AddProp_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
                   </div>    
               </div>
             </div>
@@ -4782,7 +4812,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                      <input spellCheck="true"  id="STIP_AddProp_TotalPremium" name='STIP_AddProp_TotalPremium' value={FormData['STIP_AddProp_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_TotalPremium" name='STIP_AddProp_TotalPremium' value={FormData['STIP_AddProp_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
                   </div>    
               </div>
             </div>
@@ -4792,7 +4822,7 @@ const Short_term_Personal = ({user}) => {
 
       <br/>
         <div>Additional notes on buildings that may affect cover/advice to the client: </div>
-        <input spellCheck="true"  id="STIP_AddProp_AdditionalAdvise" name='STIP_AddProp_AdditionalAdvise' value={FormData['STIP_AddProp_AdditionalAdvise']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_AdditionalAdvise" name='STIP_AddProp_AdditionalAdvise' value={FormData['STIP_AddProp_AdditionalAdvise']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{width:"1000px"}} />
         <hr/>
 
         <br/>
@@ -4808,7 +4838,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Vehicle in the name of:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true"  id="STIP_Vehicle_Owner" name='STIP_Vehicle_Owner' value={FormData['STIP_Vehicle_Owner']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_Owner" name='STIP_Vehicle_Owner' value={FormData['STIP_Vehicle_Owner']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4819,7 +4849,7 @@ const Short_term_Personal = ({user}) => {
                       <label htmlFor="id_number" className="col-form-label"><b>Registered owner:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true"  id="STIP_Vehicle_RegOwner" name='STIP_Vehicle_RegOwner' value={FormData['STIP_Vehicle_RegOwner']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_RegOwner" name='STIP_Vehicle_RegOwner' value={FormData['STIP_Vehicle_RegOwner']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4831,7 +4861,7 @@ const Short_term_Personal = ({user}) => {
                       <label htmlFor="id_number" className="col-form-label"><b>Usage:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true"  id="STIP_Vehicle_Usage" name='STIP_Vehicle_Usage' value={FormData['STIP_Vehicle_Usage']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_Usage" name='STIP_Vehicle_Usage' value={FormData['STIP_Vehicle_Usage']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4854,7 +4884,7 @@ const Short_term_Personal = ({user}) => {
                       <label htmlFor="id_number" className="col-form-label"><b>Overnight parking</b></label>
                   </div>
                   <div className="col-6">
-                    <select className="text-start form-select"  name='STIP_Vehicle_ONParkingOptions' value={FormData['STIP_Vehicle_ONParkingOptions']} onChange={(e) => {onChange(e)}}
+                    <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select"  name='STIP_Vehicle_ONParkingOptions' value={FormData['STIP_Vehicle_ONParkingOptions']} onChange={(e) => {onChange(e)}}
                     aria-label="Default select example">
                         <option value="0" selected>Select the type of Overnight Parking</option>
                         <option value="1">Overnight Parking</option>
@@ -4864,7 +4894,7 @@ const Short_term_Personal = ({user}) => {
                         <option value="5">Behind Gates</option>
                         <option value="6">Others</option>
                     </select>
-                    <input spellCheck="true"  id="STIP_Vehicle_ONParking" name='STIP_Vehicle_ONParking' value={FormData['STIP_Vehicle_ONParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_ONParking" name='STIP_Vehicle_ONParking' value={FormData['STIP_Vehicle_ONParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4875,7 +4905,7 @@ const Short_term_Personal = ({user}) => {
                       <label htmlFor="id_number" className="col-form-label"><b>R:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true"  id="STIP_Vehicle_ONOtherParking" name='STIP_Vehicle_ONOtherParking' value={FormData['STIP_Vehicle_ONOtherParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_ONOtherParking" name='STIP_Vehicle_ONOtherParking' value={FormData['STIP_Vehicle_ONOtherParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -4887,7 +4917,7 @@ const Short_term_Personal = ({user}) => {
                       <label htmlFor="id_number" className="col-form-label"><b>Type of cover required</b></label>
                   </div>
                   <div className="col-6">
-                    <select className="text-start form-select"  name='STIP_Vehicle_CoverType' value={FormData['STIP_Vehicle_CoverType']} onChange={(e) => {onChange(e)}}
+                    <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select"  name='STIP_Vehicle_CoverType' value={FormData['STIP_Vehicle_CoverType']} onChange={(e) => {onChange(e)}}
                       // value={} onChange={(e) => {onChange(e)}}
                       aria-label="Default select example">
                         <option value="0" selected>Select the type of cover</option>
@@ -4896,7 +4926,7 @@ const Short_term_Personal = ({user}) => {
                         <option value="3">Third Party (cover for claims of 3rd parties)</option>
                         <option value="4">Third Party - Theft excluded (cover for loss or damage except by theft)</option>
                     </select>
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Select the type of overnight parking."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Select the type of overnight parking."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -4922,7 +4952,7 @@ const Short_term_Personal = ({user}) => {
                   <div className="col-8">
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      <input className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM1"] == 1 ? true : false} name="STIP_Vehicle_SM1" onChange={(e)=>{FormData["STIP_Vehicle_SM1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM1"] == 1 ? true : false} name="STIP_Vehicle_SM1" onChange={(e)=>{FormData["STIP_Vehicle_SM1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label className="form-check-label" for="flexCheckDefault">
                         Immobilizer  
                         </label>
@@ -4931,7 +4961,7 @@ const Short_term_Personal = ({user}) => {
                     
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      <input className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label className="form-check-label" for="flexCheckDefault">
                           Gear lock
                         </label>
@@ -4949,7 +4979,7 @@ const Short_term_Personal = ({user}) => {
                   <div className="col-8">
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      {/* <input className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/> */}
                         <label className="form-check-label" for="flexCheckDefault">
                         {/* Tracking device   */}
                         </label>
@@ -4958,7 +4988,7 @@ const Short_term_Personal = ({user}) => {
                     
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      {/* <input className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/> */}
                         <label className="form-check-label" for="flexCheckDefault">
                           {/* Data dot */}
                         </label>
@@ -4976,7 +5006,7 @@ const Short_term_Personal = ({user}) => {
                   <div className="col-8">
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      <input className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM3"] == 1 ? true : false} name="STIP_Vehicle_SM3" onChange={(e)=>{FormData["STIP_Vehicle_SM3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM3"] == 1 ? true : false} name="STIP_Vehicle_SM3" onChange={(e)=>{FormData["STIP_Vehicle_SM3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label className="form-check-label" for="flexCheckDefault">
                         Tracking device  
                         </label>
@@ -4985,7 +5015,7 @@ const Short_term_Personal = ({user}) => {
                     
                   <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
                     <div className="form-check">
-                      <input className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM4"] == 1 ? true : false} name="STIP_Vehicle_SM4" onChange={(e)=>{FormData["STIP_Vehicle_SM4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM4"] == 1 ? true : false} name="STIP_Vehicle_SM4" onChange={(e)=>{FormData["STIP_Vehicle_SM4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                         <label className="form-check-label" for="flexCheckDefault">
                           Data dot
                         </label>
@@ -5008,7 +5038,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Regular driver:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true"  id="STIP_Vehicle_Driver" name='STIP_Vehicle_Driver' value={FormData['STIP_Vehicle_Driver']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_Driver" name='STIP_Vehicle_Driver' value={FormData['STIP_Vehicle_Driver']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5019,7 +5049,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-6">
-                      {/* <input spellCheck="true"  id="STIP_Vehicle_DriverLicIssDate" name='STIP_Vehicle_DriverLicIssDate' value={FormData['STIP_Vehicle_DriverLicIssDate']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_DriverLicIssDate" name='STIP_Vehicle_DriverLicIssDate' value={FormData['STIP_Vehicle_DriverLicIssDate']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5030,7 +5060,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Driver's license issue date:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true" type="date" id="STIP_Vehicle_DriverLicIssDate" name='STIP_Vehicle_DriverLicIssDate' value={FormData['STIP_Vehicle_DriverLicIssDate']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter date."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="date" id="STIP_Vehicle_DriverLicIssDate" name='STIP_Vehicle_DriverLicIssDate' value={FormData['STIP_Vehicle_DriverLicIssDate']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter date."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5041,7 +5071,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>License code:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true"  id="STIP_Vehicle_LicCode" name='STIP_Vehicle_LicCode' value={FormData['STIP_Vehicle_LicCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_LicCode" name='STIP_Vehicle_LicCode' value={FormData['STIP_Vehicle_LicCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5054,7 +5084,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Sum insured:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true"  id="STIP_Vehicle_SumInsured" name='STIP_Vehicle_SumInsured' value={FormData['STIP_Vehicle_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_SumInsured" name='STIP_Vehicle_SumInsured' value={FormData['STIP_Vehicle_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5068,7 +5098,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>No claims bonus:</b></label>
                   </div>
                   <div className="col-6">
-                      <input spellCheck="true"  id="STIP_Vehicle_ClaimBonus" name='STIP_Vehicle_ClaimBonus' value={FormData['STIP_Vehicle_ClaimBonus']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_ClaimBonus" name='STIP_Vehicle_ClaimBonus' value={FormData['STIP_Vehicle_ClaimBonus']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5079,7 +5109,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-6">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5096,7 +5126,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_Vehicle_VoluntaryExcess"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_VoluntaryExcess" name="STIP_Vehicle_VoluntaryExcess" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_VoluntaryExcess"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_VoluntaryExcess" name="STIP_Vehicle_VoluntaryExcess" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -5104,7 +5134,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_Vehicle_VoluntaryExcess"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_VoluntaryExcess" name="STIP_Vehicle_VoluntaryExcess" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_VoluntaryExcess"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_VoluntaryExcess" name="STIP_Vehicle_VoluntaryExcess" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -5128,7 +5158,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras1"] == 1 ? true : false} name="STIP_Vehicle_Extras1" onChange={(e)=>{FormData["STIP_Vehicle_Extras1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras1"] == 1 ? true : false} name="STIP_Vehicle_Extras1" onChange={(e)=>{FormData["STIP_Vehicle_Extras1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5136,12 +5166,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount1' value={FormData['STIP_Vehicle_ExtrasAmount1']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount1' value={FormData['STIP_Vehicle_ExtrasAmount1']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras2"] == 1 ? true : false} name="STIP_Vehicle_Extras2" onChange={(e)=>{FormData["STIP_Vehicle_Extras2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras2"] == 1 ? true : false} name="STIP_Vehicle_Extras2" onChange={(e)=>{FormData["STIP_Vehicle_Extras2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5149,12 +5179,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount2' value={FormData['STIP_Vehicle_ExtrasAmount2']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount2' value={FormData['STIP_Vehicle_ExtrasAmount2']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras3"] == 1 ? true : false} name="STIP_Vehicle_Extras3" onChange={(e)=>{FormData["STIP_Vehicle_Extras3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras3"] == 1 ? true : false} name="STIP_Vehicle_Extras3" onChange={(e)=>{FormData["STIP_Vehicle_Extras3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5162,12 +5192,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount3' value={FormData['STIP_Vehicle_ExtrasAmount3']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount3' value={FormData['STIP_Vehicle_ExtrasAmount3']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras4"] == 1 ? true : false} name="STIP_Vehicle_Extras4" onChange={(e)=>{FormData["STIP_Vehicle_Extras4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras4"] == 1 ? true : false} name="STIP_Vehicle_Extras4" onChange={(e)=>{FormData["STIP_Vehicle_Extras4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5175,12 +5205,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount4' value={FormData['STIP_Vehicle_ExtrasAmount4']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount4' value={FormData['STIP_Vehicle_ExtrasAmount4']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras5"] == 1 ? true : false} name="STIP_Vehicle_Extras5" onChange={(e)=>{FormData["STIP_Vehicle_Extras5"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras5"] == 1 ? true : false} name="STIP_Vehicle_Extras5" onChange={(e)=>{FormData["STIP_Vehicle_Extras5"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5188,12 +5218,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount5' value={FormData['STIP_Vehicle_ExtrasAmount5']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount5' value={FormData['STIP_Vehicle_ExtrasAmount5']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras6"] == 1 ? true : false} name="STIP_Vehicle_Extras6" onChange={(e)=>{FormData["STIP_Vehicle_Extras6"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras6"] == 1 ? true : false} name="STIP_Vehicle_Extras6" onChange={(e)=>{FormData["STIP_Vehicle_Extras6"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5201,12 +5231,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount6' value={FormData['STIP_Vehicle_ExtrasAmount6']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount6' value={FormData['STIP_Vehicle_ExtrasAmount6']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras7"] == 1 ? true : false} name="STIP_Vehicle_Extras7" onChange={(e)=>{FormData["STIP_Vehicle_Extras7"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras7"] == 1 ? true : false} name="STIP_Vehicle_Extras7" onChange={(e)=>{FormData["STIP_Vehicle_Extras7"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5214,12 +5244,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount7' value={FormData['STIP_Vehicle_ExtrasAmount7']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount7' value={FormData['STIP_Vehicle_ExtrasAmount7']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras8"] == 1 ? true : false} name="STIP_Vehicle_Extras8" onChange={(e)=>{FormData["STIP_Vehicle_Extras8"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras8"] == 1 ? true : false} name="STIP_Vehicle_Extras8" onChange={(e)=>{FormData["STIP_Vehicle_Extras8"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5227,12 +5257,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount8' value={FormData['STIP_Vehicle_ExtrasAmount8']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount8' value={FormData['STIP_Vehicle_ExtrasAmount8']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras9"] == 1 ? true : false} name="STIP_Vehicle_Extras9" onChange={(e)=>{FormData["STIP_Vehicle_Extras9"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras9"] == 1 ? true : false} name="STIP_Vehicle_Extras9" onChange={(e)=>{FormData["STIP_Vehicle_Extras9"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5240,12 +5270,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount9' value={FormData['STIP_Vehicle_ExtrasAmount9']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount9' value={FormData['STIP_Vehicle_ExtrasAmount9']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras10"] == 1 ? true : false} name="STIP_Vehicle_Extras10" onChange={(e)=>{FormData["STIP_Vehicle_Extras10"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras10"] == 1 ? true : false} name="STIP_Vehicle_Extras10" onChange={(e)=>{FormData["STIP_Vehicle_Extras10"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5253,12 +5283,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount10' value={FormData['STIP_Vehicle_ExtrasAmount10']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount10' value={FormData['STIP_Vehicle_ExtrasAmount10']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras11"] == 1 ? true : false} name="STIP_Vehicle_Extras11" onChange={(e)=>{FormData["STIP_Vehicle_Extras11"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras11"] == 1 ? true : false} name="STIP_Vehicle_Extras11" onChange={(e)=>{FormData["STIP_Vehicle_Extras11"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5266,12 +5296,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount11' value={FormData['STIP_Vehicle_ExtrasAmount11']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount11' value={FormData['STIP_Vehicle_ExtrasAmount11']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras12"] == 1 ? true : false} name="STIP_Vehicle_Extras12" onChange={(e)=>{FormData["STIP_Vehicle_Extras12"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras12"] == 1 ? true : false} name="STIP_Vehicle_Extras12" onChange={(e)=>{FormData["STIP_Vehicle_Extras12"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5279,12 +5309,12 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount12' value={FormData['STIP_Vehicle_ExtrasAmount12']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount12' value={FormData['STIP_Vehicle_ExtrasAmount12']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
                   <div className="col-2">
-                    <input type="checkbox" checked={FormData["STIP_Vehicle_Extras13"] == 1 ? true : false} name="STIP_Vehicle_Extras13" onChange={(e)=>{FormData["STIP_Vehicle_Extras13"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIP_Vehicle_Extras13"] == 1 ? true : false} name="STIP_Vehicle_Extras13" onChange={(e)=>{FormData["STIP_Vehicle_Extras13"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                   </div>
                   <div className="col-4">
                       <label className="form-check-label"  >
@@ -5292,7 +5322,7 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount13' value={FormData['STIP_Vehicle_ExtrasAmount13']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount13' value={FormData['STIP_Vehicle_ExtrasAmount13']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
               <div className="row col-6 align-items-center">
@@ -5302,10 +5332,10 @@ const Short_term_Personal = ({user}) => {
                       </label>
                   </div>
                   <div className="col-4">
-                    <input className="form-control" type="text" placeholder="Enter text" name='STIP_Vehicle_Extras14' value={FormData['STIP_Vehicle_Extras14']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="text" placeholder="Enter text" name='STIP_Vehicle_Extras14' value={FormData['STIP_Vehicle_Extras14']} onChange={(e) => {onChange(e)}}   />
                   </div>
                   <div className="col-6">
-                    <input className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount14' value={FormData['STIP_Vehicle_ExtrasAmount14']} onChange={(e) => {onChange(e)}}   />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-control" type="number" placeholder="R 0.0" name='STIP_Vehicle_ExtrasAmount14' value={FormData['STIP_Vehicle_ExtrasAmount14']} onChange={(e) => {onChange(e)}}   />
                   </div>
               </div>
             </div>
@@ -5325,7 +5355,7 @@ const Short_term_Personal = ({user}) => {
                     <div className="row">
                       <div className="row col-6 align-items-center">
                           <div className="col-3">
-                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC1" name="STIP_Vehicle_AC1" />
+                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_AC1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC1" name="STIP_Vehicle_AC1" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5333,7 +5363,7 @@ const Short_term_Personal = ({user}) => {
                               </label>
                           </div>
                           <div className="col-3">
-                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_AC1" name="STIP_Vehicle_AC1" />
+                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_AC1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_AC1" name="STIP_Vehicle_AC1" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5359,7 +5389,7 @@ const Short_term_Personal = ({user}) => {
                     <div className="row">
                     <div className="row col-6 align-items-center">
                           <div className="col-3">
-                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC2" name="STIP_Vehicle_AC2" />
+                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_AC2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC2" name="STIP_Vehicle_AC2" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5367,7 +5397,7 @@ const Short_term_Personal = ({user}) => {
                               </label>
                           </div>
                           <div className="col-3">
-                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_AC2" name="STIP_Vehicle_AC2" />
+                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_AC2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_AC2" name="STIP_Vehicle_AC2" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5393,7 +5423,7 @@ const Short_term_Personal = ({user}) => {
                     <div className="row">
                     <div className="row col-6 align-items-center">
                           <div className="col-3">
-                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC3" name="STIP_Vehicle_AC3" />
+                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_AC3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC3" name="STIP_Vehicle_AC3" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5401,7 +5431,7 @@ const Short_term_Personal = ({user}) => {
                               </label>
                           </div>
                           <div className="col-3">
-                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_AC3" name="STIP_Vehicle_AC3" />
+                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_AC3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_AC3" name="STIP_Vehicle_AC3" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5427,7 +5457,7 @@ const Short_term_Personal = ({user}) => {
                     <div className="row">
                     <div className="row col-6 align-items-center">
                           <div className="col-3">
-                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC4" name="STIP_Vehicle_AC4" />
+                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_AC4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC4" name="STIP_Vehicle_AC4" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5435,7 +5465,7 @@ const Short_term_Personal = ({user}) => {
                               </label>
                           </div>
                           <div className="col-3">
-                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_AC4" name="STIP_Vehicle_AC4" />
+                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_AC4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_AC4" name="STIP_Vehicle_AC4" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5461,7 +5491,7 @@ const Short_term_Personal = ({user}) => {
                     <div className="row">
                     <div className="row col-6 align-items-center">
                           <div className="col-3">
-                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC5" name="STIP_Vehicle_AC5" />
+                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_AC5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Vehicle_AC5" name="STIP_Vehicle_AC5" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5469,7 +5499,7 @@ const Short_term_Personal = ({user}) => {
                               </label>
                           </div>
                           <div className="col-3">
-                              <input className="form-check-input" checked={FormData["STIP_Vehicle_AC5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_AC5" name="STIP_Vehicle_AC5" />
+                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Vehicle_AC5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Vehicle_AC5" name="STIP_Vehicle_AC5" />
                           </div>
                           <div className="col-3">
                               <label className="form-check-label"  >
@@ -5490,7 +5520,7 @@ const Short_term_Personal = ({user}) => {
                         <label className="col-form-label"><b>Fees:</b></label>
                     </div>
                     <div className="col-8">
-                        <input spellCheck="true"  id="STIP_Vehicle_Fees" name='STIP_Vehicle_Fees' value={FormData['STIP_Vehicle_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_Fees" name='STIP_Vehicle_Fees' value={FormData['STIP_Vehicle_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                     </div>
                 </div>
               </div>
@@ -5500,7 +5530,7 @@ const Short_term_Personal = ({user}) => {
                         <label className="col-form-label"><b>Commission:</b></label>
                     </div>
                     <div className="col-8">
-                        <input spellCheck="true"  id="STIP_Vehicle_Commission" name='STIP_Vehicle_Commission' value={FormData['STIP_Vehicle_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_Commission" name='STIP_Vehicle_Commission' value={FormData['STIP_Vehicle_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                     </div>
                 </div>
               </div>
@@ -5510,13 +5540,13 @@ const Short_term_Personal = ({user}) => {
                         <label className="col-form-label"><b>Total Premium:</b></label>
                     </div>
                     <div className="col-8">
-                        <input spellCheck="true"  id="STIP_Vehicle_TotalPremium" name='STIP_Vehicle_TotalPremium' value={FormData['STIP_Vehicle_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_TotalPremium" name='STIP_Vehicle_TotalPremium' value={FormData['STIP_Vehicle_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                     </div>
                 </div>
                 
               </div>
               <div>Additional notes on Mororcycle that may affect cover/advice to the client:</div>
-                <input spellCheck="true"  id="STIP_Vehicle_Comments" name='STIP_Vehicle_Comments' value={FormData['STIP_Vehicle_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_Comments" name='STIP_Vehicle_Comments' value={FormData['STIP_Vehicle_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
               <br/>
               
             </div>
@@ -5544,7 +5574,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Registered owner:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_MotorC_RegOwner" name='STIP_MotorC_RegOwner' value={FormData['STIP_MotorC_RegOwner']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_RegOwner" name='STIP_MotorC_RegOwner' value={FormData['STIP_MotorC_RegOwner']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5555,7 +5585,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5566,7 +5596,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Usage:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_MotorC_Usage" name='STIP_MotorC_Usage' value={FormData['STIP_MotorC_Usage']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Select the class of use."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_Usage" name='STIP_MotorC_Usage' value={FormData['STIP_MotorC_Usage']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Select the class of use."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5577,7 +5607,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5588,7 +5618,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Overnight parking:</b></label>
                   </div>
                   <div className="col-8">
-                    <select className="text-start form-select" id="STIP_MotorC_ONParkingOptions" name='STIP_MotorC_ONParkingOptions' value={FormData['STIP_MotorC_ONParkingOptions']} onChange={(e) => {onChange(e)}}
+                    <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="STIP_MotorC_ONParkingOptions" name='STIP_MotorC_ONParkingOptions' value={FormData['STIP_MotorC_ONParkingOptions']} onChange={(e) => {onChange(e)}}
                     aria-label="Default select example">
                         <option value="0" selected>Select the type of Overnight Parking</option>
                         <option value="1">Overnight Parking</option>
@@ -5598,7 +5628,7 @@ const Short_term_Personal = ({user}) => {
                         <option value="5">Behind Gates</option>
                         <option value="6">Others</option>
                     </select>
-                    <input spellCheck="true"  id="STIP_MotorC_ONParking" name='STIP_MotorC_ONParking' value={FormData['STIP_MotorC_ONParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_ONParking" name='STIP_MotorC_ONParking' value={FormData['STIP_MotorC_ONParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
                   
                   </div>
               </div>
@@ -5610,7 +5640,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5621,7 +5651,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_MotorC_ONOtherParking" name='STIP_MotorC_ONOtherParking' value={FormData['STIP_MotorC_ONOtherParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_ONOtherParking" name='STIP_MotorC_ONOtherParking' value={FormData['STIP_MotorC_ONOtherParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5632,7 +5662,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5643,7 +5673,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Type of cover required:</b></label>
                   </div>
                   <div className="col-8">
-                      <select className="text-start form-select" id="STIP_MotorC_CoverType" name='STIP_MotorC_CoverType' value={FormData["STIP_MotorC_CoverType"]} onChange={(e) => {onChange(e)}}
+                      <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="STIP_MotorC_CoverType" name='STIP_MotorC_CoverType' value={FormData["STIP_MotorC_CoverType"]} onChange={(e) => {onChange(e)}}
                         aria-label="Default select example">
                           <option value="0" selected>Select the type of cover</option>
                           <option value="1">Comprehensive (cover for comprehensive risks)</option>
@@ -5651,7 +5681,7 @@ const Short_term_Personal = ({user}) => {
                           <option value="3">Third Party (cover for claims of 3rd parties)</option>
                           <option value="4">Third Party - Theft excluded (cover for loss or damage except by theft)</option>
                       </select>
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Select the type of cover."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Select the type of cover."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5662,7 +5692,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5673,7 +5703,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Regular driver:</b></label>
                   </div>
                   <div className="col-8">
-                    <select className="text-start form-select" id="STIP_MotorC_Driver" name='STIP_MotorC_Driver' value={FormData['STIP_MotorC_Driver']} onChange={(e) => {onChange(e)}}
+                    <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="STIP_MotorC_Driver" name='STIP_MotorC_Driver' value={FormData['STIP_MotorC_Driver']} onChange={(e) => {onChange(e)}}
                         aria-label="Default select example">
                           <option value="0" selected>Select the relevant regular driver description</option>
                           <option value="1">Financial dependant child</option>
@@ -5681,9 +5711,9 @@ const Short_term_Personal = ({user}) => {
                           <option value="3">Spouse</option>
                           <option value="4">Third Party - Theft excluded (cover for loss or damage except by theft)</option>
                       </select>
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
 
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Select the relevant regular driver description ."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Select the relevant regular driver description ."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5694,7 +5724,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5705,7 +5735,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_MotorC_Driver1" name='STIP_MotorC_Driver1' value={FormData['STIP_MotorC_Driver1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other regular driver."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_Driver1" name='STIP_MotorC_Driver1' value={FormData['STIP_MotorC_Driver1']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other regular driver."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5716,7 +5746,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5727,7 +5757,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Driver license issue date:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_MotorC_DriverLicIssDate" name='STIP_MotorC_DriverLicIssDate' value={FormData['STIP_MotorC_DriverLicIssDate']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click or tap to enter date."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_DriverLicIssDate" name='STIP_MotorC_DriverLicIssDate' value={FormData['STIP_MotorC_DriverLicIssDate']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click or tap to enter date."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5738,7 +5768,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>License code:</b></label>
                   </div>
                   <div className="col-8">
-                        <input spellCheck="true"  id="STIP_MotorC_LicCode" name='STIP_MotorC_LicCode' value={FormData['STIP_MotorC_LicCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> 
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_LicCode" name='STIP_MotorC_LicCode' value={FormData['STIP_MotorC_LicCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" /> 
                   </div>
               </div>
           </div>
@@ -5749,7 +5779,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>No claims bonus:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_MotorC_ClaimBonus" name='STIP_MotorC_ClaimBonus' value={FormData['STIP_MotorC_ClaimBonus']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_ClaimBonus" name='STIP_MotorC_ClaimBonus' value={FormData['STIP_MotorC_ClaimBonus']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5760,7 +5790,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Sum insured:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_MotorC_SumInsured" name='STIP_MotorC_SumInsured' value={FormData['STIP_MotorC_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_SumInsured" name='STIP_MotorC_SumInsured' value={FormData['STIP_MotorC_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5771,7 +5801,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Fees:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_MotorC_Fees" name='STIP_MotorC_Fees' value={FormData['STIP_MotorC_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_Fees" name='STIP_MotorC_Fees' value={FormData['STIP_MotorC_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5782,7 +5812,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5793,7 +5823,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Commission:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_MotorC_Commission" name='STIP_MotorC_Commission' value={FormData['STIP_MotorC_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_Commission" name='STIP_MotorC_Commission' value={FormData['STIP_MotorC_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5804,7 +5834,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5815,7 +5845,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Total premium:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_MotorC_TotalPremium" name='STIP_MotorC_TotalPremium' value={FormData['STIP_MotorC_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_TotalPremium" name='STIP_MotorC_TotalPremium' value={FormData['STIP_MotorC_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5825,7 +5855,7 @@ const Short_term_Personal = ({user}) => {
       </div>
       
       <div>Additional notes on Mororcycle that may affect cover/advice to the client:</div>
-        <input spellCheck="true"  id="STIP_MotorC_Comments" name='STIP_MotorC_Comments' value={FormData['STIP_MotorC_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_Comments" name='STIP_MotorC_Comments' value={FormData['STIP_MotorC_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
       <br/>
       <h6 align="left" style={{ color: "#14848A"}}><b>TRAILER/CARAVAN</b></h6>
       <div>Please see the attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number etc.</div>
@@ -5839,7 +5869,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Registered owner:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_Trailer_RegOwner" name='STIP_Trailer_RegOwner' value={FormData['STIP_Trailer_RegOwner']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_RegOwner" name='STIP_Trailer_RegOwner' value={FormData['STIP_Trailer_RegOwner']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5850,7 +5880,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Type:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_Trailer_Type" name='STIP_Trailer_Type' value={FormData['STIP_Trailer_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_Type" name='STIP_Trailer_Type' value={FormData['STIP_Trailer_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5861,7 +5891,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Overnight parking:</b></label>
                   </div>
                   <div className="col-8">
-                      <select className="text-start form-select" id="STIP_Trailer_ONParkingOptions" name='STIP_Trailer_ONParkingOptions' value={FormData["STIP_Trailer_ONParkingOptions"]} onChange={(e) => {onChange(e)}}
+                      <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="STIP_Trailer_ONParkingOptions" name='STIP_Trailer_ONParkingOptions' value={FormData["STIP_Trailer_ONParkingOptions"]} onChange={(e) => {onChange(e)}}
                     aria-label="Default select example">
                         <option value="0" selected>Select the type of Overnight Parking</option>
                         <option value="1">Overnight Parking</option>
@@ -5871,7 +5901,7 @@ const Short_term_Personal = ({user}) => {
                         <option value="5">Behind Gates</option>
                         <option value="6">Others</option>
                     </select>
-                    {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
+                    {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5882,7 +5912,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5893,7 +5923,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_Trailer_ONOtherParking" name='STIP_Trailer_ONOtherParking' value={FormData['STIP_Trailer_ONOtherParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_ONOtherParking" name='STIP_Trailer_ONOtherParking' value={FormData['STIP_Trailer_ONOtherParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5904,7 +5934,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5915,7 +5945,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>No claims bonus:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_Trailer_ClaimBonus" name='STIP_Trailer_ClaimBonus' value={FormData['STIP_Trailer_ClaimBonus']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_ClaimBonus" name='STIP_Trailer_ClaimBonus' value={FormData['STIP_Trailer_ClaimBonus']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5926,7 +5956,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Sum insured:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_Trailer_SumInsured" name='STIP_Trailer_SumInsured' value={FormData['STIP_Trailer_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_SumInsured" name='STIP_Trailer_SumInsured' value={FormData['STIP_Trailer_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5938,7 +5968,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Fees:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_Trailer_Fees" name='STIP_Trailer_Fees' value={FormData['STIP_Trailer_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_Fees" name='STIP_Trailer_Fees' value={FormData['STIP_Trailer_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5949,7 +5979,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5960,7 +5990,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Commission:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_Trailer_Commission" name='STIP_Trailer_Commission' value={FormData['STIP_Trailer_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_Commission" name='STIP_Trailer_Commission' value={FormData['STIP_Trailer_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5971,7 +6001,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -5982,7 +6012,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Total premium:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_Trailer_TotalPremium" name='STIP_Trailer_TotalPremium' value={FormData['STIP_Trailer_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_TotalPremium" name='STIP_Trailer_TotalPremium' value={FormData['STIP_Trailer_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -5992,7 +6022,7 @@ const Short_term_Personal = ({user}) => {
         
         <br/>
         <div>Additional notes on trailer that may affect cover/advice to the client:</div>
-        <input spellCheck="true"  id="STIP_Trailer_Comments" name='STIP_Trailer_Comments' value={FormData['STIP_Trailer_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_Comments" name='STIP_Trailer_Comments' value={FormData['STIP_Trailer_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
 
         <br/>
       <h6 align="left" style={{ color: "#14848A"}}><b>WATER CRAFT</b></h6>
@@ -6007,7 +6037,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Registered owner:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_WaterC_RegOwner" name='STIP_WaterC_RegOwner' value={FormData['STIP_WaterC_RegOwner']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_RegOwner" name='STIP_WaterC_RegOwner' value={FormData['STIP_WaterC_RegOwner']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6018,7 +6048,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Type:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_WaterC_Type" name='STIP_WaterC_Type' value={FormData['STIP_WaterC_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_Type" name='STIP_WaterC_Type' value={FormData['STIP_WaterC_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6029,7 +6059,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Length of hull:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_WaterC_Hull" name='STIP_WaterC_Hull' value={FormData['STIP_WaterC_Hull']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_Hull" name='STIP_WaterC_Hull' value={FormData['STIP_WaterC_Hull']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6040,7 +6070,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Craft sum insured</b></label>
                   </div>
                   <div className="col-8">
-                        <input spellCheck="true"  id="STIP_WaterC_SumInsured" name='STIP_WaterC_SumInsured' value={FormData['STIP_WaterC_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="     R 0.00"  aria-describedby="" /> 
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_SumInsured" name='STIP_WaterC_SumInsured' value={FormData['STIP_WaterC_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="     R 0.00"  aria-describedby="" /> 
                   </div>
               </div>
           </div>
@@ -6051,7 +6081,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>VIN Number:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_WaterC_VIN" name='STIP_WaterC_VIN' value={FormData['STIP_WaterC_VIN']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_VIN" name='STIP_WaterC_VIN' value={FormData['STIP_WaterC_VIN']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6063,7 +6093,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Engine number:</b></label>
                   </div>
                   <div className="col-8">
-                        <input spellCheck="true"  id="STIP_WaterC_EngineNumber" name='STIP_WaterC_EngineNumber' value={FormData['STIP_WaterC_EngineNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />  
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_EngineNumber" name='STIP_WaterC_EngineNumber' value={FormData['STIP_WaterC_EngineNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />  
                   </div>
               </div>
           </div>
@@ -6074,7 +6104,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Optical cover required by client:</b></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -6085,7 +6115,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -6096,7 +6126,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Glitter finish:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_WaterC_OC_Glitter" name='STIP_WaterC_OC_Glitter' value={FormData['STIP_WaterC_OC_Glitter']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_OC_Glitter" name='STIP_WaterC_OC_Glitter' value={FormData['STIP_WaterC_OC_Glitter']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6107,7 +6137,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Specified accessories:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_WaterC_OC_SpecifiedAccessories" name='STIP_WaterC_OC_SpecifiedAccessories' value={FormData['STIP_WaterC_OC_SpecifiedAccessories']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_OC_SpecifiedAccessories" name='STIP_WaterC_OC_SpecifiedAccessories' value={FormData['STIP_WaterC_OC_SpecifiedAccessories']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>      
@@ -6118,7 +6148,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Outboard motor type:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_WaterC_OC_MotorType" name='STIP_WaterC_OC_MotorType' value={FormData['STIP_WaterC_OC_MotorType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_OC_MotorType" name='STIP_WaterC_OC_MotorType' value={FormData['STIP_WaterC_OC_MotorType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6129,7 +6159,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Output:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_WaterC_OC_Output" name='STIP_WaterC_OC_Output' value={FormData['STIP_WaterC_OC_Output']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_OC_Output" name='STIP_WaterC_OC_Output' value={FormData['STIP_WaterC_OC_Output']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6141,7 +6171,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Fees:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_WaterC_Fees" name='STIP_WaterC_Fees' value={FormData['STIP_WaterC_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_Fees" name='STIP_WaterC_Fees' value={FormData['STIP_WaterC_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6152,7 +6182,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -6163,7 +6193,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Commission:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_WaterC_Commission" name='STIP_WaterC_Commission' value={FormData['STIP_WaterC_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_Commission" name='STIP_WaterC_Commission' value={FormData['STIP_WaterC_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6174,7 +6204,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"></label>
                   </div>
                   <div className="col-8">
-                      {/* <input spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -6185,7 +6215,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Total premium:</b></label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_WaterC_TotalPremium" name='STIP_WaterC_TotalPremium' value={FormData['STIP_WaterC_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_TotalPremium" name='STIP_WaterC_TotalPremium' value={FormData['STIP_WaterC_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" />
 
                   </div>
               </div>
@@ -6196,7 +6226,7 @@ const Short_term_Personal = ({user}) => {
 
 <br/>
       <div>Additional notes on motorcycle that may affect cover/advice to the client:</div>
-        <input spellCheck="true"  id="STIP_WaterC_Comments" name='STIP_WaterC_Comments' value={FormData['STIP_WaterC_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_Comments" name='STIP_WaterC_Comments' value={FormData['STIP_WaterC_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
 
         <br/>
         <h6 align="left" style={{ color: "#14848A"}}><b>PERSONAL LEGAL LIABILITY</b></h6>
@@ -6212,7 +6242,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-6 align-items-center">
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_PersonalLL_IndemnityLimit"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_PersonalLL_IndemnityLimit" name="STIP_PersonalLL_IndemnityLimit" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_PersonalLL_IndemnityLimit"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_PersonalLL_IndemnityLimit" name="STIP_PersonalLL_IndemnityLimit" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -6220,7 +6250,7 @@ const Short_term_Personal = ({user}) => {
                     </label>
                 </div>
                 <div className="col-3">
-                    <input className="form-check-input" checked={FormData["STIP_PersonalLL_IndemnityLimit"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_PersonalLL_IndemnityLimit" name="STIP_PersonalLL_IndemnityLimit" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_PersonalLL_IndemnityLimit"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_PersonalLL_IndemnityLimit" name="STIP_PersonalLL_IndemnityLimit" />
                 </div>
                 <div className="col-3">
                     <label className="form-check-label"  >
@@ -6242,7 +6272,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_PersonalLL_IndemnityLimitDetail" name='STIP_PersonalLL_IndemnityLimitDetail' value={FormData['STIP_PersonalLL_IndemnityLimitDetail']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_PersonalLL_IndemnityLimitDetail" name='STIP_PersonalLL_IndemnityLimitDetail' value={FormData['STIP_PersonalLL_IndemnityLimitDetail']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6260,7 +6290,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_PersonalLL_Fees" name='STIP_PersonalLL_Fees' value={FormData['STIP_PersonalLL_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_PersonalLL_Fees" name='STIP_PersonalLL_Fees' value={FormData['STIP_PersonalLL_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6278,7 +6308,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_PersonalLL_Commission" name='STIP_PersonalLL_Commission' value={FormData['STIP_PersonalLL_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_PersonalLL_Commission" name='STIP_PersonalLL_Commission' value={FormData['STIP_PersonalLL_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6296,7 +6326,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_PersonalLL_TotalPremium" name='STIP_PersonalLL_TotalPremium' value={FormData['STIP_PersonalLL_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_PersonalLL_TotalPremium" name='STIP_PersonalLL_TotalPremium' value={FormData['STIP_PersonalLL_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6309,7 +6339,7 @@ const Short_term_Personal = ({user}) => {
       <br/>
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
         {/* <textare maxLength={500} spellCheck="true"  id="STIP_PersonalLL_Comments" name='STIP_PersonalLL_Comments' value={FormData['STIP_PersonalLL_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        <Editor
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_PersonalLL_Comments']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_PersonalLL_Comments']: newText }) }}
           name="STIP_PersonalLL_Comments"
@@ -6342,7 +6372,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
             <div className="row col-6 align-items-center">
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_LegalA_IndemnityLimit"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_LegalA_IndemnityLimit" name="STIP_LegalA_IndemnityLimit" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_LegalA_IndemnityLimit"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_LegalA_IndemnityLimit" name="STIP_LegalA_IndemnityLimit" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -6350,7 +6380,7 @@ const Short_term_Personal = ({user}) => {
                   </label>
               </div>
               <div className="col-3">
-                  <input className="form-check-input" checked={FormData["STIP_LegalA_IndemnityLimit"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_LegalA_IndemnityLimit" name="STIP_LegalA_IndemnityLimit" />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_LegalA_IndemnityLimit"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_LegalA_IndemnityLimit" name="STIP_LegalA_IndemnityLimit" />
               </div>
               <div className="col-3">
                   <label className="form-check-label"  >
@@ -6372,7 +6402,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_LegalA_IndemnityLimitDetail" name='STIP_LegalA_IndemnityLimitDetail' value={FormData['STIP_LegalA_IndemnityLimitDetail']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_LegalA_IndemnityLimitDetail" name='STIP_LegalA_IndemnityLimitDetail' value={FormData['STIP_LegalA_IndemnityLimitDetail']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6390,7 +6420,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_LegalA_Fees" name='STIP_LegalA_Fees' value={FormData['STIP_LegalA_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_LegalA_Fees" name='STIP_LegalA_Fees' value={FormData['STIP_LegalA_Fees']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6408,7 +6438,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_LegalA_Commission" name='STIP_LegalA_Commission' value={FormData['STIP_LegalA_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_LegalA_Commission" name='STIP_LegalA_Commission' value={FormData['STIP_LegalA_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6426,7 +6456,7 @@ const Short_term_Personal = ({user}) => {
           <div className="row">
               <div className="row col-2 align-items-center">
                   <div className="col-2">
-                    <input spellCheck="true"  id="STIP_LegalA_TotalPremium" name='STIP_LegalA_TotalPremium' value={FormData['STIP_LegalA_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_LegalA_TotalPremium" name='STIP_LegalA_TotalPremium' value={FormData['STIP_LegalA_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"150px"}} />
                   </div>
                   
               </div>
@@ -6438,7 +6468,7 @@ const Short_term_Personal = ({user}) => {
 
       <br/>
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
-        <input spellCheck="true"  id="STIP_LegalA_Comments" name='STIP_LegalA_Comments' value={FormData['STIP_LegalA_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} />
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_LegalA_Comments" name='STIP_LegalA_Comments' value={FormData['STIP_LegalA_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} />
 
         <br/>
         <div><b>IMPORTANT:</b></div>
@@ -6465,8 +6495,8 @@ const Short_term_Personal = ({user}) => {
         <br/>
         <h6 align="left" style={{ color: "#14848A"}}><b>RECORD OF ADVICE</b></h6>
         <div>Products considered appropriate to address the needs of the client:</div>
-        {/* <input spellCheck="true"  id="STIP_ProductConsidered" name='STIP_ProductConsidered' value={FormData['STIP_ProductConsidered']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        <Editor
+        {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductConsidered" name='STIP_ProductConsidered' value={FormData['STIP_ProductConsidered']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_ProductConsidered']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductConsidered']: newText }) }}
           name="STIP_ProductConsidered"
@@ -6488,8 +6518,8 @@ const Short_term_Personal = ({user}) => {
         />
         <hr/>
         <div>Recommended product:</div>
-        {/* <input spellCheck="true"  id="STIP_ProductRecommended" name='STIP_ProductRecommended' value={FormData['STIP_ProductRecommended']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        <Editor
+        {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductRecommended" name='STIP_ProductRecommended' value={FormData['STIP_ProductRecommended']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_ProductRecommended']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductRecommended']: newText }) }}
           name="STIP_ProductRecommended"
@@ -6511,8 +6541,8 @@ const Short_term_Personal = ({user}) => {
         />
         <hr/>
         <div>Reasons why the recommended product is considered the most suitable for the needs of the client:</div>
-        {/* <input spellCheck="true"  id="STIP_ProductReasons" name='STIP_ProductReasons' value={FormData['STIP_ProductReasons']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        <Editor
+        {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductReasons" name='STIP_ProductReasons' value={FormData['STIP_ProductReasons']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_ProductReasons']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductReasons']: newText }) }}
           name="STIP_ProductReasons"
@@ -6546,7 +6576,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label">Name of intermediary:</label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_DbyI_IName" name='STIP_DbyI_IName' value={FormData['STIP_DbyI_IName']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_DbyI_IName" name='STIP_DbyI_IName' value={FormData['STIP_DbyI_IName']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6557,7 +6587,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label">Code:</label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true"  id="STIP_DbyI_Code" name='STIP_DbyI_Code' value={FormData['STIP_DbyI_Code']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_DbyI_Code" name='STIP_DbyI_Code' value={FormData['STIP_DbyI_Code']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>
@@ -6582,7 +6612,7 @@ const Short_term_Personal = ({user}) => {
                   </div>
                   <div className="col-8">
                       <label className="col-form-label" style={{color: 'white'}}>Signature of intermediary</label>
-                      {/* <input spellCheck="true"  id="STIP_DbyI_Signature" name='IP_InvestmentTerm' value={FormData['STIP_DbyI_Signature']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Sign here"  aria-describedby="" /> */}
+                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_DbyI_Signature" name='IP_InvestmentTerm' value={FormData['STIP_DbyI_Signature']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Sign here"  aria-describedby="" /> */}
                   </div>
               </div>
           </div>
@@ -6593,7 +6623,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label">Date(dd/mm/yyyy)</label>
                   </div>
                   <div className="col-8">
-                      <input spellCheck="true" type="date"  id="STIP_DbyI_Date" name='STIP_DbyI_Date' value={FormData['STIP_DbyI_Date']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="date"  id="STIP_DbyI_Date" name='STIP_DbyI_Date' value={FormData['STIP_DbyI_Date']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
           </div>

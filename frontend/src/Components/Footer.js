@@ -45,12 +45,9 @@ const Footer = () => {
               </>              : 
               <>
                 <p class=" mb-0 text-muted">
-                    Succession Financial Planning Advisory Services (Pty) Ltd. |
-                    Registration Number: 2001/018056/07<br />
-                    PO Box 207, Menlyn 0063 | T 012 471 4900 | E admin@succession.co.za
-                    | www.sfpadvice.co.za<br />
-                    Succession Financial Planning is a Licensed Financial Services
-                    Provider FSP 41158, NCRCP13569
+                    Sanlam Life Insurance Limited Reg no 1998/021121/06<br />
+                    Licensed Financial Services and Registered Credit Provider (NCRCP43)<br />
+                    Refer to the Sanlam website for directors and company secretary details. www.sanlam.co.za
                   </p>
               </>
               : 

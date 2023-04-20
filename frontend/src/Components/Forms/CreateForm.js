@@ -527,12 +527,13 @@ const CreateForm = ({user}) => {
             <br/>
         
             <div className="notification_container">
-                <div className={
-              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
-              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
-              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
-              : "alert alert-sfp-success fade show"
-          } style={{display: SuccessMessageVisibility}} role="alert">
+                <div 
+                className={
+                    user['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+                    : user['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+                    : user['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+                    : "alert alert-sfp-success fade show"
+                } style={{display: SuccessMessageVisibility}} role="alert">
                 {SuccessMessage}
                 {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
                 </div>
@@ -9176,7 +9177,16 @@ const CreateForm = ({user}) => {
             </div>
             <hr/>
             <div className="row">
-                <button className='btn btn-success'>Create Form</button>
+                <button 
+                    className={
+                        user['email'].includes('sfp') ? "btn btn-sfp" 
+                        : user['email'].includes('fs4p') ? "btn btn-fs4p" 
+                        : user['email'].includes('sanlam') ? "btn btn-sanlam" 
+                        : "btn btn-success"
+                    }
+                >
+                    Create Form
+                </button>
             </div>
             <br/><br/>
             </div>

@@ -1444,7 +1444,7 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_Vehicle_SM2 = validated_data.get("STIP_Vehicle_SM2", instance.STIP_Vehicle_SM2)
         instance.STIP_Vehicle_SM3 = validated_data.get("STIP_Vehicle_SM3", instance.STIP_Vehicle_SM3)
         instance.STIP_Vehicle_SM4 = validated_data.get("STIP_Vehicle_SM4", instance.STIP_Vehicle_SM4)
-        instance.STIP_Vehicle_Driver = validated_data.get("STIP_Vehicle_SM1", instance.STIP_Vehicle_SM1)
+        instance.STIP_Vehicle_Driver = validated_data.get("STIP_Vehicle_Driver", instance.STIP_Vehicle_Driver)
         instance.STIP_Vehicle_DriverLicIssDate = validated_data.get("STIP_Vehicle_DriverLicIssDate", instance.STIP_Vehicle_DriverLicIssDate)
         instance.STIP_Vehicle_LicCode = validated_data.get("STIP_Vehicle_LicCode", instance.STIP_Vehicle_LicCode)
         instance.STIP_Vehicle_SumInsured = validated_data.get("STIP_Vehicle_SumInsured", instance.STIP_Vehicle_SumInsured)

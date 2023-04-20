@@ -130,7 +130,7 @@ const RecordOfAdvice = ({user}) => {
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/updateformdata/`, Body ,config)
             // console.log(response.data['code'])
-            setFormData(response.data['Data'])
+            // setFormData(response.data['Data'])
             setSuccessMessage("Record of Advice is successfully updated")
             setSuccessMessageVisibility("block")
             setTimeout(() => {
@@ -202,6 +202,9 @@ const RecordOfAdvice = ({user}) => {
         updateRecordOfAdviceForm(FormData)
         // window.location.reload();
     }
+    const onFieldBlur = (e) => {
+        updateRecordOfAdviceForm(FormData)
+    }
         // window.location.reload();
         // console.log(JSON.stringify(FormData))
     const backgroundEditorRef = useRef(null);
@@ -210,13 +213,13 @@ const RecordOfAdvice = ({user}) => {
     const FICAEditorRef = useRef(null);
     useEffect(() => {
         createRecordOfAdviceForm(FormData)
-        const interval = setInterval(() => {
-            const formSubmitButton = document.querySelector(".updateFormBTN")
-            formSubmitButton.click()
-        }, 10000)
-        return () => {
-            clearInterval(interval);
-        }
+        // const interval = setInterval(() => {
+        //     const formSubmitButton = document.querySelector(".updateFormBTN")
+        //     formSubmitButton.click()
+        // }, 10000)
+        // return () => {
+        //     clearInterval(interval);
+        // }
 
         
     }, []);
@@ -262,7 +265,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label className="col-form-label"><b>Client Name:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required minlength="3" and maxlength="45" id="clientName" value={FormData['clientName']} onChange={e => onChange(e)} name="clientName" className="form-control" placeholder="Client Name"  aria-describedby="" type="text" />
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} required minlength="3" and maxlength="45" id="clientName" value={FormData['clientName']} onChange={e => onChange(e)} name="clientName" className="form-control" placeholder="Client Name"  aria-describedby="" type="text" />
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +275,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="id_number" className="col-form-label"><b>ID number:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required type="number" id="clientIdNumber" value={FormData['clientIdNumber']}  onChange={e => onChange(e)} name="clientIdNumber" className="form-control" placeholder="ID number"  aria-describedby="" />
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} required type="number" id="clientIdNumber" value={FormData['clientIdNumber']}  onChange={e => onChange(e)} name="clientIdNumber" className="form-control" placeholder="ID number"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -283,7 +286,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="address" className="col-form-label"><b>Address:</b></label>
                                     </div>
                                     <div className="col-9">
-                                        <input required spellCheck="true"  id="clientAddress" value={FormData['clientAddress']} onChange={(e) => {onChange(e)}}  name="clientAddress" className="form-control" placeholder="Address"  aria-describedby="" />
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} required spellCheck="true"  id="clientAddress" value={FormData['clientAddress']} onChange={(e) => {onChange(e)}}  name="clientAddress" className="form-control" placeholder="Address"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -294,7 +297,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="email" className="col-form-label"><b>Email:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input type="email" required spellCheck="true" size="30"  id="email" onChange={(e) => {onChange(e)}} value={FormData['clientEmail']} name="clientEmail" className="form-control" placeholder="user@succession.co.za"  aria-describedby="" />
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} type="email" required spellCheck="true" size="30"  id="email" onChange={(e) => {onChange(e)}} value={FormData['clientEmail']} name="clientEmail" className="form-control" placeholder="user@succession.co.za"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -304,7 +307,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="phoneNumber" className="col-form-label"><b>Phone:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true" minLength="10" type="number" id="clientPhoneNumber" value={FormData['clientPhoneNumber']} onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} required spellCheck="true" minLength="10" type="number" id="clientPhoneNumber" value={FormData['clientPhoneNumber']} onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -326,7 +329,7 @@ const RecordOfAdvice = ({user}) => {
                                         <label htmlFor="clientDateOfBirth" className="col-form-label"><b>Date:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input required spellCheck="true"  type="date"  id="clientDateOfBirth" value={FormData['clientDateOfBirth']} onChange={e => onChange(e)} name="clientDateOfBirth" className="form-control" placeholder="date_of_birth"  aria-describedby="" />
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} required spellCheck="true"  type="date"  id="clientDateOfBirth" value={FormData['clientDateOfBirth']} onChange={e => onChange(e)} name="clientDateOfBirth" className="form-control" placeholder="date_of_birth"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>
@@ -335,13 +338,13 @@ const RecordOfAdvice = ({user}) => {
                                 <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
                                     {
                                         state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span>Succession Financial Planning (SFP) </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span>Financial Solutions 4 Professionals (FS4P) </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span>Succession Financial Planning (AFP) </span>
-                                        : <span>Succession Financial Planning (SFP) </span>
+                                        state['advisor']['email'].includes('sfp') ? <span> Succession Financial Planning (SFP) </span>
+                                        : state['advisor']['email'].includes('fs4p') ? <span> Financial Solutions 4 Professionals (FS4P) </span>
+                                        : state['advisor']['email'].includes('sanlam') ? <span> Aligned Financial Planning (AFP) </span>
+                                        : <span> Succession Financial Planning (SFP) </span>
                                         : 
                                         <>
-                                            <span>Succession Financial Planning (SFP) </span>
+                                            <span> Succession Financial Planning (SFP) </span>
                                         </>
                                     } 
                                     processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
@@ -356,17 +359,43 @@ const RecordOfAdvice = ({user}) => {
                                             <span> SFP </span>
                                         </>
                                     } 
-                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  
+                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
+                                    <a href=
+                                        {
+                                        state['advisor'] ?
+                                        state['advisor']['email'].includes('sfp') ? "https://www.sfpadvice.co.za"
+                                        : state['advisor']['email'].includes('fs4p') ? "https://www.fs4p.co.za"
+                                        : state['advisor']['email'].includes('sanlam') ? "https://www.sanlam.co.za"
+                                        : <span> SFP </span>
+                                        : 
+                                        <>
+                                            <span> SFP </span>
+                                        </>
+                                    }
+                                        
+                                    >
+                                        {
+                                            state['advisor'] ?
+                                            state['advisor']['email'].includes('sfp') ? <span> https://www.sfpadvice.co.za </span>
+                                            : state['advisor']['email'].includes('fs4p') ? <span> https://www.fs4p.co.za </span>
+                                            : state['advisor']['email'].includes('sanlam') ? <span> https://www.sanlam.co.za </span>
+                                            : <span> SFP </span>
+                                            : 
+                                            <>
+                                                <span> SFP </span>
+                                            </>
+                                        }
+                                    </a>  
                                 </p>
                             </div>
                             <h5 className="section_class"><b>SECTION A:</b></h5>
                             <ol style={{fontFamily: 'Arial Narrow',fontSize: 15}}>
                                 <li 
                                     className={
-                                        state['advisor']['email'].includes('sfp') ? "tooltip1 sfp-text" 
-                                        : state['advisor']['email'].includes('fs4p') ? "tooltip1 fs4p-text" 
-                                        : state['advisor']['email'].includes('sanlam') ? "tooltip1 sanlam-text" 
-                                        : "tooltip1"
+                                        state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                        : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                        : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                        : "h6 fw-bold"
                                     }
                                 >Compulsory Disclosures</li>
                                 <div className="row g-3 align-items-center">
@@ -377,7 +406,7 @@ const RecordOfAdvice = ({user}) => {
                                         <div className="row">
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input className="form-check-input" checked={FormData['clientLetterOfIntroduction'] == 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
+                                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['clientLetterOfIntroduction'] == 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -387,7 +416,7 @@ const RecordOfAdvice = ({user}) => {
                                             </div>
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input className="form-check-input" checked={FormData['clientLetterOfIntroduction'] == 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
+                                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['clientLetterOfIntroduction'] == 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -412,8 +441,8 @@ const RecordOfAdvice = ({user}) => {
                                             onInit={(evt, editor) => compulsoryAEditorRef.current = editor}
                                             value={FormData['clientLetterOfIntroductionReason']}
                                             onEditorChange={(e)=>{ setFormData({...FormData, ['clientLetterOfIntroductionReason']: compulsoryAEditorRef.current.getContent() }) }}
-                                            onFocus={(e)=>{letter_of_introduction_onFocus()}}
-                                            onBlur={(e)=>{letter_of_introduction_onBlur()}}
+                                            onFocus={(e)=>{letter_of_introduction_onFocus();onFieldBlur(e)}}
+                                            onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}
                                             name="clientBackgroundInfo"
                                             init={{
                                                 selector: "textarea",
@@ -464,7 +493,7 @@ const RecordOfAdvice = ({user}) => {
                                         <div className="row">
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] == 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
+                                                    <input onBlur={(e)=>{onFieldBlur(e)}} required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] == 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -474,7 +503,7 @@ const RecordOfAdvice = ({user}) => {
                                             </div>
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] == 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
+                                                    <input onBlur={(e)=>{onFieldBlur(e)}} required className="form-check-input" checked={FormData['clientLetterOfIntroductionAccess'] == 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -499,8 +528,8 @@ const RecordOfAdvice = ({user}) => {
                                             onInit={(evt, editor) => compulsoryBEditorRef.current = editor}
                                             value={FormData['clientLetterOfIntroductionAccessReason']}
                                             onEditorChange={(e)=>{ setFormData({...FormData, ['clientLetterOfIntroductionAccessReason']: compulsoryBEditorRef.current.getContent() }) }}
-                                            onFocus={(e)=>{setletterOfIntroductionAccessVisibility(true)}}
-                                            onBlur={(e)=>{setletterOfIntroductionAccessVisibility(false)}}
+                                            onFocus={(e)=>{setletterOfIntroductionAccessVisibility(true);onFieldBlur(e)}}
+                                            onBlur={(e)=>{setletterOfIntroductionAccessVisibility(false);onFieldBlur(e)}}
                                             name="clientBackgroundInfo"
                                             init={{
                                                 selector: "textarea",
@@ -558,10 +587,10 @@ const RecordOfAdvice = ({user}) => {
                                 </div>
                                 <hr className="col-11" />
                                 <li className={
-                                        state['advisor']['email'].includes('sfp') ? "tooltip1 sfp-text" 
-                                        : state['advisor']['email'].includes('fs4p') ? "tooltip1 fs4p-text" 
-                                        : state['advisor']['email'].includes('sanlam') ? "tooltip1 sanlam-text" 
-                                        : "tooltip1 "
+                                        state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                        : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                        : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                        : "h6 fw-bold "
                                     }>Financial Intelligence Centre Act (FICA)</li>
                                 <div className="row g-3 align-items-center">
                                     <div className="col-6">
@@ -571,7 +600,7 @@ const RecordOfAdvice = ({user}) => {
                                         <div className="row">
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input required className="form-check-input" checked={FormData['clientFica'] == 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientFica"/>
+                                                    <input onBlur={(e)=>{onFieldBlur(e)}} required className="form-check-input" checked={FormData['clientFica'] == 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientFica"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -581,7 +610,7 @@ const RecordOfAdvice = ({user}) => {
                                             </div>
                                             <div className="row col-2 align-items-center">
                                                 <div className="col-2">
-                                                    <input required className="form-check-input" checked={FormData['clientFica'] == 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientFica"/>
+                                                    <input onBlur={(e)=>{onFieldBlur(e)}} required className="form-check-input" checked={FormData['clientFica'] == 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientFica"/>
                                                 </div>
                                                 <div className="col-2">
                                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -606,8 +635,8 @@ const RecordOfAdvice = ({user}) => {
                                             onInit={(evt, editor) => FICAEditorRef.current = editor}
                                             value={FormData['clientFicaReason']}
                                             onEditorChange={(e)=>{ setFormData({...FormData, ['clientFicaReason']: FICAEditorRef.current.getContent() }) }}
-                                            onFocus={(e)=>{fica_onFocus()}}
-                                            onBlur={(e)=>{fica_onBlur()}}
+                                            onFocus={(e)=>{fica_onFocus(); onFieldBlur(e)}}
+                                            onBlur={(e)=>{fica_onBlur(); onFieldBlur(e)}}
                                             name="clientBackgroundInfo"
                                             init={{
                                                 selector: "textarea",
@@ -658,7 +687,7 @@ const RecordOfAdvice = ({user}) => {
                                     : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
                                     : "h6 fw-bold"
                                 }
-                            ><b>Background information</b></h5>
+                            >Background information</h5>
                             <p>Your personal circumstances that formed the basis for my recommendation</p>
                             {
                                 backgroundInfoVisibility ? 
@@ -701,8 +730,8 @@ const RecordOfAdvice = ({user}) => {
                                 onInit={(evt, editor) => backgroundEditorRef.current = editor}
                                 value={FormData['clientBackgroundInfo']}
                                 onEditorChange={(e)=>{ setFormData({...FormData, ['clientBackgroundInfo']: backgroundEditorRef.current.getContent() }) }}
-                                onFocus={(e)=>{backgroundInfo_onFocus()}}
-                                onBlur={(e)=>{backgroundInfo_onBlur()}}
+                                onFocus={(e)=>{backgroundInfo_onFocus();onFieldBlur(e)}}
+                                onBlur={(e)=>{backgroundInfo_onBlur();onFieldBlur(e)}}
                                 name="clientBackgroundInfo"
                                 init={{
                                     selector: "textarea",

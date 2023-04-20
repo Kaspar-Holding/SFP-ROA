@@ -24,23 +24,47 @@ const Sidebar = ({LogOut, isAuthenticated, user}) => {
         <div className="position-sticky pt-3">
             <ul className="nav flex-column">
             <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/">
-                <span data-feather="home"></span>
-                Dashboard
+                <NavLink 
+                    className={
+                        user ? user['email'].includes('sfp') ? "nav-link sfp-nav-link" 
+                        : user['email'].includes('fs4p') ? "nav-link fs4p-nav-link" 
+                        : user['email'].includes('sanlam') ? "nav-link sanlam-nav-link" 
+                        : "nav-link ": "nav-link "
+                    }   
+                    aria-current="page" 
+                    exact
+                    to="/"
+                >
+                    Dashboard
                 </NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/createform">
+                <NavLink 
+                    className={
+                        user ? user['email'].includes('sfp') ? "nav-link sfp-nav-link" 
+                        : user['email'].includes('fs4p') ? "nav-link fs4p-nav-link" 
+                        : user['email'].includes('sanlam') ? "nav-link sanlam-nav-link" 
+                        : "nav-link ": "nav-link "
+                    }  
+                    to="/createform"
+                >
+                    Create Form
+                </NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink 
+                    className={
+                        user ? user['email'].includes('sfp') ? "nav-link sfp-nav-link" 
+                        : user['email'].includes('fs4p') ? "nav-link fs4p-nav-link" 
+                        : user['email'].includes('sanlam') ? "nav-link sanlam-nav-link" 
+                        : "nav-link ": "nav-link "
+                    } 
+                    to="/importexport"
+                >
                 <span data-feather="file"></span>
-                Create Form
+                    Import/Export
                 </NavLink>
             </li>
-            <li className="nav-item">
-                        <NavLink className="nav-link" to="/importexport">
-                        <span data-feather="file"></span>
-                        Import/Export
-                        </NavLink>
-                    </li>
             {/* <li className="nav-item">
                 <NavLink className="nav-link" to="/print">
                 <span data-feather="file"></span>
@@ -50,9 +74,17 @@ const Sidebar = ({LogOut, isAuthenticated, user}) => {
             {
                 isSuperuser == true ?
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/users">
+                        <NavLink 
+                            className={
+                                user ? user['email'].includes('sfp') ? "nav-link sfp-nav-link" 
+                                : user['email'].includes('fs4p') ? "nav-link fs4p-nav-link" 
+                                : user['email'].includes('sanlam') ? "nav-link sanlam-nav-link" 
+                                : "nav-link ": "nav-link "
+                            } 
+                            to="/users"
+                        >
                         <span data-feather="file"></span>
-                        User Management
+                            User Management
                         </NavLink>
                     </li>
                     

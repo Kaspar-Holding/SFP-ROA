@@ -72,7 +72,7 @@ const AccountDetails = (props) => {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_user/`, FormData ,config)
             if (response.status === 200){
                 loadUser()
-                setUpdateMessage(data['name'] + "'s account updated successfully")
+                setUpdateMessage(data['first_name'] + " " + data['last_name'] + "'s account updated successfully")
             }
             setUpdateMessageVisibility("block")
         } catch (error) {
@@ -82,6 +82,9 @@ const AccountDetails = (props) => {
             })
             setUpdateErrorVisibility("block")
         }
+        setTimeout(() => {
+            setUpdateMessageVisibility("none")
+        }, 5000)
     }
     useEffect(() => {
         setLoaderVisibility("blokc")
@@ -103,7 +106,7 @@ const AccountDetails = (props) => {
                 <h1 className="h2">
                     {
                         errorData.message === "" ?
-                            data['name'] + "'s Details"
+                            data['first_name'] + " " + data['last_name'] + "'s Details"
                         :
                             "Error"
                     }
@@ -126,7 +129,7 @@ const AccountDetails = (props) => {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
-                        <input type="text" className="form-control" value={data['name']} name='name' disabled />
+                        <input type="text" className="form-control" value={data['first_name'] + " " + data['last_name']} name='name' disabled />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>

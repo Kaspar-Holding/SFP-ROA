@@ -74,16 +74,21 @@ const Fiduciary = ({user}) => {
     updateForm()
     // window.location.reload();
   }
+  const onFieldBlur = e => {
+    e.preventDefault()
+    updateForm()
+    // window.location.reload();
+  }
   // console.log(FormData)
   useEffect(() => {
     createFiduciaryForm(FormData)
-    const interval = setInterval(() => {
-        const FiduicaryformSubmitButton = document.querySelector(".updateFiduicaryFormBTN")
-        FiduicaryformSubmitButton.click()
-    }, 10000)
-    return () => {
-        clearInterval(interval);
-    }
+    // const interval = setInterval(() => {
+    //     const FiduicaryformSubmitButton = document.querySelector(".updateFiduicaryFormBTN")
+    //     FiduicaryformSubmitButton.click()
+    // }, 10000)
+    // return () => {
+    //     clearInterval(interval);
+    // }
   }, [])
   setTimeout(() => {
     setSuccessMessageVisibility("none")
@@ -121,12 +126,12 @@ const Fiduciary = ({user}) => {
                                 </div>
                                 <div className="col-1">
                                   <label className="radio-inline">
-                                      <input type="radio" className="form-check-input"  name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == 1 ? true : false} onChange={e => onChange(e)} value="1"/>Yes
+                                      <input onBlur={(e)=>{onFieldBlur(e)}} type="radio" className="form-check-input"  name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == 1 ? true : false} onChange={e => onChange(e)} value="1"/>Yes
                                   </label>
                                 </div>
                                 <div className="col-1">
                                   <label className="radio-inline">
-                                      <input type="radio" className="form-check-input"  name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == 0 ? true : false} onChange={e => onChange(e)} value="0"/>No
+                                      <input onBlur={(e)=>{onFieldBlur(e)}} type="radio" className="form-check-input"  name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == 0 ? true : false} onChange={e => onChange(e)} value="0"/>No
                                   </label>
                                 </div>
                             </div>
@@ -137,7 +142,7 @@ const Fiduciary = ({user}) => {
                                   <label htmlFor="fiduciaryWillUpdationDate" className="col-form-label">Date last updated? </label>
                                 </div>
                                 <div className="col-6">
-                                  <input spellCheck="true"  type="date" id="fiduciaryWillUpdationDate" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryWillUpdationDate']}  name="fiduciaryWillUpdationDate" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
+                                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  type="date" id="fiduciaryWillUpdationDate" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryWillUpdationDate']}  name="fiduciaryWillUpdationDate" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
                                 </div>
                             </div>
 
@@ -147,7 +152,7 @@ const Fiduciary = ({user}) => {
                                   <label htmlFor="fiduciaryWillKeepingPlace" className="col-form-label">Where is the will kept? </label>
                                 </div>
                                 <div className="col-6">
-                                  <input spellCheck="true" id="fiduciaryWillKeepingPlace" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryWillKeepingPlace']} name="fiduciaryWillKeepingPlace" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
+                                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="fiduciaryWillKeepingPlace" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryWillKeepingPlace']} name="fiduciaryWillKeepingPlace" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
                                 </div>
                             </div>
 
@@ -157,7 +162,7 @@ const Fiduciary = ({user}) => {
                                   <label htmlFor="fiduciaryExecutorDetails" className="col-form-label">Details of Executor?</label>
                                 </div>
                                 <div className="col-6">
-                                  <input spellCheck="true" id="fiduciaryExecutorDetails" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryExecutorDetails']} name="fiduciaryExecutorDetails" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
+                                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="fiduciaryExecutorDetails" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryExecutorDetails']} name="fiduciaryExecutorDetails" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
                                 </div>
                             </div>
 
@@ -167,7 +172,7 @@ const Fiduciary = ({user}) => {
                                   <label htmlFor="fiduciaryClientInstructions" className="col-form-label">Client instruction in terms of drafting a Will? </label>
                                 </div>
                                 <div className="col-6">
-                                  <input spellCheck="true"  id="fiduciaryClientInstructions" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryClientInstructions']} name="fiduciaryClientInstructions" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
+                                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="fiduciaryClientInstructions" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryClientInstructions']} name="fiduciaryClientInstructions" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
                                 </div>
                             </div>
 
@@ -177,7 +182,7 @@ const Fiduciary = ({user}) => {
                                   <label htmlFor="fiduciaryConsequencesExplained" className="col-form-label">Has the consequences of not having a will being explained and discussed? </label>
                                 </div>
                                 <div className="col-6">
-                                  <input spellCheck="true" id="fiduciaryConsequencesExplained" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryConsequencesExplained']}  name="fiduciaryConsequencesExplained" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
+                                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="fiduciaryConsequencesExplained" onChange={(e) => {onChange(e)}} value={FormData['fiduciaryConsequencesExplained']}  name="fiduciaryConsequencesExplained" className="form-control" placeholder="Click to enter text"  aria-describedby="" />
                                 </div>
                             </div>
                             <div className="container1">

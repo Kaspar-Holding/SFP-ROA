@@ -156,7 +156,17 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                 <div className="card-body">
                     <h5 className="card-title">Create new User Account</h5>
                     <p className="card-text">Admins can create a new web based ROA Form from here</p>
-                    <NavLink to="/newuser" className="btn btn-primary">Create</NavLink>
+                    <NavLink 
+                        to="/newuser" 
+                        className= { 
+                            user['email'].includes('sfp') ? "btn btn-primary sfp" 
+                            : user['email'].includes('fs4p') ? "btn btn-primary fs4p" 
+                            : user['email'].includes('sanlam') ? "btn btn-primary sanlam" 
+                            : "btn btn-primary "
+                        }
+                    >
+                        Create
+                    </NavLink>
                 </div>
             </div>
             <hr/>
@@ -250,7 +260,19 @@ const AccountDashboard = ({isAuthenticated, user}) => {
                                                     {
                                                         user['id'] === key['id'] ? 
                                                         <button type="button" className="btn btn-sm btn-outline-primary">Can't edit</button> : 
-                                                        <NavLink type="button" to={{pathname:"/userdetails"}} state={{userID : key['id']}} className="btn btn-sm btn-outline-primary">Edit</NavLink>
+                                                        <NavLink 
+                                                            type="button" 
+                                                            to={{pathname:"/userdetails"}} 
+                                                            state={{userID : key['id']}} 
+                                                            className={
+                                                                user['email'].includes('sfp') ? "btn btn-sm sfp-outline-primary" 
+                                                                : user['email'].includes('fs4p') ? "btn btn-sm fs4p-outline-primary" 
+                                                                : user['email'].includes('sanlam') ? "btn btn-sm sanlam-outline-primary" 
+                                                                : "btn btn-sm btn-outline-primary"
+                                                            }
+                                                        >
+                                                            Edit
+                                                        </NavLink>
                                                     }
                                                 </div>
                                                 <div className='col-6'>

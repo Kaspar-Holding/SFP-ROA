@@ -579,15 +579,19 @@ const AssuranceInvestment = ({user}) =>
           updateAIForm()
           // window.location.reload();
       }
+      const onFieldBlur = e => {
+          updateAIForm()
+          // window.location.reload();
+      }
       useEffect(() => {
         createAIForm(FormData)
-        const interval = setInterval(() => {
-            const baInvestformSubmitButton = document.querySelector(".updateBAInvestFormBTN")
-            baInvestformSubmitButton.click()
-        }, 10000)
-        return () => {
-            clearInterval(interval);
-        }
+        // const interval = setInterval(() => {
+        //     const baInvestformSubmitButton = document.querySelector(".updateBAInvestFormBTN")
+        //     baInvestformSubmitButton.click()
+        // }, 10000)
+        // return () => {
+        //     clearInterval(interval);
+        // }
           // setInterval(updateIPForm, 20000);
       }, []);
       // console.log(JSON.stringify(FormData))
@@ -654,7 +658,7 @@ const AssuranceInvestment = ({user}) =>
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-4">
-                        <input spellCheck="true" id="AI_Term" name='AI_Term' value={FormData['AI_Term']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="years"  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="AI_Term" name='AI_Term' value={FormData['AI_Term']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="years"  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -686,7 +690,7 @@ const AssuranceInvestment = ({user}) =>
         value={FormData['AI_TermDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_TermDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus14()}}
-        onBlur={(e)=>{backgroundInfo_onBlur14()}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur14();onFieldBlur(e)}}                      
         name="AI_TermDetails"
         init={{
             selector: "textarea",
@@ -716,7 +720,7 @@ const AssuranceInvestment = ({user}) =>
                     <div className="row">
                         <div className="row col-4 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AI_PremiumType'] == 1 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="1" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['AI_PremiumType'] == 1 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="1" />
                             </div>
                             <div className="col-4">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn3" >
@@ -727,7 +731,7 @@ const AssuranceInvestment = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-4 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData['AI_PremiumType'] == 0 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="0" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['AI_PremiumType'] == 0 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="0" />
                             </div>
                             <div className="col-4">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn3" >
@@ -785,7 +789,7 @@ const AssuranceInvestment = ({user}) =>
         value={FormData['AI_PremiumTypeDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_PremiumTypeDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus15()}}
-        onBlur={(e)=>{backgroundInfo_onBlur15()}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur15();onFieldBlur(e)}}                      
         name="AI_PremiumTypeDetails"
         init={{
             selector: "textarea",
@@ -811,7 +815,7 @@ const AssuranceInvestment = ({user}) =>
         <p>Investment Strategy</p>
       </div>
       <div className='col-6'>
-          <select className="text-start form-select" id="AI_Strategy" name='AI_Strategy' value={FormData['AI_Strategy']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+          <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="AI_Strategy" name='AI_Strategy' value={FormData['AI_Strategy']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
               <option value="0" selected>Select</option>
               <option value="1">Capital Growth</option>
               <option value="2">Capital Preservtion</option>
@@ -846,7 +850,7 @@ const AssuranceInvestment = ({user}) =>
         value={FormData['AI_StrategyDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_StrategyDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus16()}}
-        onBlur={(e)=>{backgroundInfo_onBlur16()}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur16();onFieldBlur(e)}}                      
         name="AI_StrategyDetails"
         init={{
             selector: "textarea",
@@ -872,7 +876,7 @@ const AssuranceInvestment = ({user}) =>
         <p>Return Required</p>
       </div>
       <div className='col-6'>
-          <select className="text-start form-select" id="AI_ReturnRequired" name='AI_ReturnRequired' value={FormData['AI_ReturnRequired']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+          <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="AI_ReturnRequired" name='AI_ReturnRequired' value={FormData['AI_ReturnRequired']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
               <option value="0" selected>Select</option>
               <option value="1">Guaranteed Return</option>
               <option value="2">Marketed Linked Return</option>
@@ -907,7 +911,7 @@ const AssuranceInvestment = ({user}) =>
         value={FormData['AI_ReturnRequiredDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_ReturnRequiredDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus17()}}
-        onBlur={(e)=>{backgroundInfo_onBlur17()}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur17();onFieldBlur(e)}}                      
         name="AI_ReturnRequiredDetails"
         init={{
             selector: "textarea",
@@ -934,7 +938,7 @@ const AssuranceInvestment = ({user}) =>
         <p>Risk Profile</p>
       </div>
       <div className='col-6'>
-          <select className="text-start form-select" id="AI_RiskProfile" name='AI_RiskProfile' value={FormData['AI_RiskProfile']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
+          <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="AI_RiskProfile" name='AI_RiskProfile' value={FormData['AI_RiskProfile']} onChange={(e) => {onChange(e)}} aria-label="Default select example">
               <option value="0" selected>Select</option>
               <option value="1">Ultra Conservative</option>
               <option value="2">Conservative</option>
@@ -969,7 +973,7 @@ const AssuranceInvestment = ({user}) =>
         value={FormData['AI_RiskProfileDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_RiskProfileDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus18()}}
-        onBlur={(e)=>{backgroundInfo_onBlur18()}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur18();onFieldBlur(e)}}                      
         name="AI_RiskProfileDetails"
         init={{
             selector: "textarea",
@@ -1015,25 +1019,25 @@ const AssuranceInvestment = ({user}) =>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Payment of trade restraint agreements</td>
       <td>
         <div >
-            <input type="number" className="form-control" id="AI_TRP_TotalNeed" name='AI_TRP_TotalNeed' value={FormData['AI_TRP_TotalNeed']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_TRP_TotalNeed" name='AI_TRP_TotalNeed' value={FormData['AI_TRP_TotalNeed']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_TRP_ExistingProvisions" name='AI_TRP_ExistingProvisions' value={FormData['AI_TRP_ExistingProvisions']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_TRP_ExistingProvisions" name='AI_TRP_ExistingProvisions' value={FormData['AI_TRP_ExistingProvisions']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_TRP_ExistingShortfallSurplus" name='AI_TRP_ExistingShortfallSurplus' value={FormData['AI_TRP_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_TRP_ExistingShortfallSurplus" name='AI_TRP_ExistingShortfallSurplus' value={FormData['AI_TRP_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_TRP_ExistingInvestments" name='AI_TRP_ExistingInvestments' value={FormData['AI_TRP_ExistingInvestments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_TRP_ExistingInvestments" name='AI_TRP_ExistingInvestments' value={FormData['AI_TRP_ExistingInvestments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
     </tr>
@@ -1042,25 +1046,25 @@ const AssuranceInvestment = ({user}) =>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Replacement of assets</td>
       <td>
         <div >
-            <input type="number" className="form-control" id="AI_RA_TotalNeed" name='AI_RA_TotalNeed' value={FormData['AI_RA_TotalNeed']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_RA_TotalNeed" name='AI_RA_TotalNeed' value={FormData['AI_RA_TotalNeed']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_RA_ExistingProvisions" name='AI_RA_ExistingProvisions' value={FormData['AI_RA_ExistingProvisions']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_RA_ExistingProvisions" name='AI_RA_ExistingProvisions' value={FormData['AI_RA_ExistingProvisions']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_RA_ExistingShortfallSurplus" name='AI_RA_ExistingShortfallSurplus' value={FormData['AI_RA_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_RA_ExistingShortfallSurplus" name='AI_RA_ExistingShortfallSurplus' value={FormData['AI_RA_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_RA_ExistingInvestments" name='AI_RA_ExistingInvestments' value={FormData['AI_RA_ExistingInvestments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_RA_ExistingInvestments" name='AI_RA_ExistingInvestments' value={FormData['AI_RA_ExistingInvestments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
     </tr>
@@ -1069,25 +1073,25 @@ const AssuranceInvestment = ({user}) =>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Compulsory refurbishing of franchises</td>
       <td>
         <div >
-            <input type="number" className="form-control" id="AI_CR_TotalNeed" name='AI_CR_TotalNeed' value={FormData['AI_CR_TotalNeed']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_CR_TotalNeed" name='AI_CR_TotalNeed' value={FormData['AI_CR_TotalNeed']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_CR_ExistingProvisions" name='AI_CR_ExistingProvisions' value={FormData['AI_CR_ExistingProvisions']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_CR_ExistingProvisions" name='AI_CR_ExistingProvisions' value={FormData['AI_CR_ExistingProvisions']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_CR_ExistingShortfallSurplus" name='AI_CR_ExistingShortfallSurplus' value={FormData['AI_CR_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_CR_ExistingShortfallSurplus" name='AI_CR_ExistingShortfallSurplus' value={FormData['AI_CR_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_CR_ExistingInvestments" name='AI_CR_ExistingInvestments' value={FormData['AI_CR_ExistingInvestments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_CR_ExistingInvestments" name='AI_CR_ExistingInvestments' value={FormData['AI_CR_ExistingInvestments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
     </tr>
@@ -1095,30 +1099,30 @@ const AssuranceInvestment = ({user}) =>
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
         <div className="form-group">
-              <input type="text"  name='AI_Other' value={FormData['AI_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='AI_Other' value={FormData['AI_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
           </div>
       </td>
       <td>
         <div >
-            <input type="number" className="form-control" id="AI_Other_TotalNeed" name='AI_Other_TotalNeed' value={FormData['AI_Other_TotalNeed']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_Other_TotalNeed" name='AI_Other_TotalNeed' value={FormData['AI_Other_TotalNeed']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_Other_ExistingProvisions" name='AI_Other_ExistingProvisions' value={FormData['AI_Other_ExistingProvisions']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_Other_ExistingProvisions" name='AI_Other_ExistingProvisions' value={FormData['AI_Other_ExistingProvisions']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_Other_ExistingShortfallSurplus" name='AI_Other_ExistingShortfallSurplus' value={FormData['AI_Other_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_Other_ExistingShortfallSurplus" name='AI_Other_ExistingShortfallSurplus' value={FormData['AI_Other_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
       <td>
         <div className="form-group">
-            <input type="number" className="form-control" id="AI_Other_ExistingInvestments" name='AI_Other_ExistingInvestments' value={FormData['AI_Other_ExistingInvestments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="AI_Other_ExistingInvestments" name='AI_Other_ExistingInvestments' value={FormData['AI_Other_ExistingInvestments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
     </tr>
@@ -1167,7 +1171,7 @@ How it will meet the business need
         value={FormData['AI_FinancialSolutions']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_FinancialSolutions']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus19()}}
-        onBlur={(e)=>{backgroundInfo_onBlur19()}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur19();onFieldBlur(e)}}                      
         name="AI_FinancialSolutions"
         init={{
             selector: "textarea",
@@ -1226,7 +1230,7 @@ How it will meet the business need
         value={FormData['AI_AltS_1']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_1']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus20()}}
-        onBlur={(e)=>{backgroundInfo_onBlur20()}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur20();onFieldBlur(e)}}                      
         name="AI_AltS_1"
         init={{
             selector: "textarea",
@@ -1268,7 +1272,7 @@ How it will meet the business need
         value={FormData['AI_AltS_2']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_2']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus21()}}
-        onBlur={(e)=>{backgroundInfo_onBlur21()}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur21();onFieldBlur(e)}}                      
         name="AI_AltS_2"
         init={{
             selector: "textarea",
@@ -1310,7 +1314,7 @@ How it will meet the business need
         value={FormData['AI_AltS_3']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_3']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus22()}}
-        onBlur={(e)=>{backgroundInfo_onBlur22()}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur22();onFieldBlur(e)}}                      
         name="AI_AltS_3"
         init={{
             selector: "textarea",
@@ -1376,7 +1380,7 @@ How it will meet the business need
                       <label className="col-form-label"><b>Product Taken</b></label>
                   </div>
                   <div className="col-6">
-                      <select className="text-start form-select" name='Pr_Taken' value={key.Pr_Taken} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                      <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='Pr_Taken' value={key.Pr_Taken} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
                           <option value="0" selected>Choose Product</option>
                           <option value="1">Endowment</option>
                           <option value="2">RA</option>
@@ -1398,7 +1402,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Product Provider</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="Pr_Provider" name='Pr_Provider' value={key.Pr_Provider} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_Provider" name='Pr_Provider' value={key.Pr_Provider} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1409,7 +1413,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Policy number</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="Pr_PolicyNumber" name='Pr_PolicyNumber' value={key.Pr_PolicyNumber} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_PolicyNumber" name='Pr_PolicyNumber' value={key.Pr_PolicyNumber} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1421,7 +1425,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Product Name</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="Pr_Name" name='Pr_Name' value={key.Pr_Name} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_Name" name='Pr_Name' value={key.Pr_Name} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1435,11 +1439,11 @@ How it will meet the business need
                         <div className='row'>
                           <div className='col-6'>
                               <div className="form-group">
-                                <input type="text" className="form-control" id="Pr_Premium" name='Pr_Premium' value={key.Pr_Premium} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
+                                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="Pr_Premium" name='Pr_Premium' value={key.Pr_Premium} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                               </div>
                           </div>
                           <div className='col-6'>
-                              <select className="text-start form-select" id="Pr_PremiumFrequency" name='Pr_PremiumFrequency' value={key.Pr_PremiumFrequency} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                              <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="Pr_PremiumFrequency" name='Pr_PremiumFrequency' value={key.Pr_PremiumFrequency} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-label="Default select example">
                                   <option value="0" selected>Frequeny</option>
                                   <option value="1">Monthly</option>
                                   <option value="2">Quarterly</option>
@@ -1459,7 +1463,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Escalation</b></label>
                     </div>
                     <div className="col-6"> 
-                        <input spellCheck="true" id="Pr_Escalation" name='Pr_Escalation' value={key.Pr_Escalation} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_Escalation" name='Pr_Escalation' value={key.Pr_Escalation} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1470,7 +1474,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Effective annual cost (EAC)</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="Pr_EAC" name='Pr_EAC' value={key.Pr_EAC} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_EAC" name='Pr_EAC' value={key.Pr_EAC} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1482,7 +1486,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Contracting party</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="Pr_ContractingParty" name='Pr_ContractingParty' value={key.Pr_ContractingParty} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_ContractingParty" name='Pr_ContractingParty' value={key.Pr_ContractingParty} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1493,7 +1497,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Life / Lives covered</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="Pr_LivesAssured" name='Pr_LivesAssured' value={key.Pr_LivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_LivesAssured" name='Pr_LivesAssured' value={key.Pr_LivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1505,7 +1509,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Premium Payer</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="Pr_PremiumPayer" name='Pr_PremiumPayer' value={key.Pr_PremiumPayer} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_PremiumPayer" name='Pr_PremiumPayer' value={key.Pr_PremiumPayer} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1515,7 +1519,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Beneficiary/cessionary</b></label>
                     </div>
                     <div className="col-6">
-                        <input spellCheck="true" id="Pr_Beneficiary" name='Pr_Beneficiary' value={key.Pr_Beneficiary} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_Beneficiary" name='Pr_Beneficiary' value={key.Pr_Beneficiary} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1527,10 +1531,10 @@ How it will meet the business need
                         <label className="col-form-label"><b>Initial commission</b></label>
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="Pr_IniC" name='Pr_IniC' value={key.Pr_IniC} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_IniC" name='Pr_IniC' value={key.Pr_IniC} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="Pr_IniC_Percentage" name='Pr_IniC_Percentage' value={key.Pr_IniC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_IniC_Percentage" name='Pr_IniC_Percentage' value={key.Pr_IniC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1541,10 +1545,10 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Ongoing commission</b></label>
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="Pr_OnC" name='Pr_OnC' value={key.Pr_OnC} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_OnC" name='Pr_OnC' value={key.Pr_OnC} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
                     </div>
                     <div className="col-4">
-                        <input spellCheck="true" id="Pr_OnC_Percentage" name='Pr_OnC_Percentage' value={key.Pr_OnC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_OnC_Percentage" name='Pr_OnC_Percentage' value={key.Pr_OnC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="            00 %"  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1606,7 +1610,7 @@ o	meeting the investment objectives of the clients
         value={key.Portfolio}
         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("Portfolio", i, newText)}}
         onFocus={(e)=>{backgroundInfo_onFocus23()}}
-        onBlur={(e)=>{backgroundInfo_onBlur23()}} 
+        onBlur={(e)=>{backgroundInfo_onBlur23();onFieldBlur(e)}} 
         name="Portfolio"                     
         init={{
             selector: "textarea",
@@ -1658,7 +1662,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td>
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_1" name='PF_1' value={key.PF_1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_1" name='PF_1' value={key.PF_1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1666,18 +1670,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_Percentage1" name='PF_Percentage1' value={key.PF_Percentage1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_Percentage1" name='PF_Percentage1' value={key.PF_Percentage1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={key.PF_Provided1} name="PF_Provided1" onChange={(e)=>{key.PF_Provided1 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided1} name="PF_Provided1" onChange={(e)=>{key.PF_Provided1 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={key.PF_Discussed1} name="PF_Discussed1" onChange={(e)=>{key.PF_Discussed1 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed1} name="PF_Discussed1" onChange={(e)=>{key.PF_Discussed1 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>  
       </tr>
@@ -1685,7 +1689,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td>
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_2" name='PF_2' value={key.PF_2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_2" name='PF_2' value={key.PF_2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1693,18 +1697,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_Percentage2" name='PF_Percentage2' value={key.PF_Percentage2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_Percentage2" name='PF_Percentage2' value={key.PF_Percentage2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={key.PF_Provided2} name="PF_Provided2" onChange={(e)=>{key.PF_Provided2 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided2} name="PF_Provided2" onChange={(e)=>{key.PF_Provided2 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={key.PF_Discussed2} name="PF_Discussed2" onChange={(e)=>{key.PF_Discussed2 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed2} name="PF_Discussed2" onChange={(e)=>{key.PF_Discussed2 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>   
       </tr>
@@ -1712,7 +1716,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td>
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_3" name='PF_3' value={key.PF_3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_3" name='PF_3' value={key.PF_3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1720,18 +1724,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_Percentage3" name='PF_Percentage3' value={key.PF_Percentage3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_Percentage3" name='PF_Percentage3' value={key.PF_Percentage3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={key.PF_Provided3} name="PF_Provided3" onChange={(e)=>{key.PF_Provided3 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided3} name="PF_Provided3" onChange={(e)=>{key.PF_Provided3 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={key.PF_Discussed3} name="PF_Discussed3" onChange={(e)=>{key.PF_Discussed3 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed3} name="PF_Discussed3" onChange={(e)=>{key.PF_Discussed3 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>       
       </tr>
@@ -1739,7 +1743,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td>
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_4" name='PF_4' value={key.PF_4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_4" name='PF_4' value={key.PF_4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1747,18 +1751,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_Percentage4" name='PF_Percentage4' value={key.PF_Percentage4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_Percentage4" name='PF_Percentage4' value={key.PF_Percentage4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={key.PF_Provided4} name="PF_Provided4" onChange={(e)=>{key.PF_Provided4 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided4} name="PF_Provided4" onChange={(e)=>{key.PF_Provided4 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={key.PF_Discussed4} name="PF_Discussed4" onChange={(e)=>{key.PF_Discussed4 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed4} name="PF_Discussed4" onChange={(e)=>{key.PF_Discussed4 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>      
       </tr>
@@ -1766,7 +1770,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td >
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_5" name='PF_5' value={key.PF_5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_5" name='PF_5' value={key.PF_5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1774,18 +1778,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_Percentage5" name='PF_Percentage5' value={key.PF_Percentage5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_Percentage5" name='PF_Percentage5' value={key.PF_Percentage5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={key.PF_Provided5} name="PF_Provided5" onChange={(e)=>{key.PF_Provided5 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided5} name="PF_Provided5" onChange={(e)=>{key.PF_Provided5 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={key.PF_Discussed5} name="PF_Discussed5" onChange={(e)=>{key.PF_Discussed5 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed5} name="PF_Discussed5" onChange={(e)=>{key.PF_Discussed5 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>        
       </tr>
@@ -1794,7 +1798,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td >
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_6" name='PF_6' value={key.PF_6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_6" name='PF_6' value={key.PF_6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1802,18 +1806,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_Percentage6" name='PF_Percentage6' value={key.PF_Percentage6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_Percentage6" name='PF_Percentage6' value={key.PF_Percentage6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={key.PF_Provided6} name="PF_Provided6" onChange={(e)=>{key.PF_Provided6 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided6} name="PF_Provided6" onChange={(e)=>{key.PF_Provided6 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={key.PF_Discussed6} name="PF_Discussed6" onChange={(e)=>{key.PF_Discussed6 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed6} name="PF_Discussed6" onChange={(e)=>{key.PF_Discussed6 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>   
       </tr>
@@ -1822,7 +1826,7 @@ o	meeting the investment objectives of the clients
       <tr>
         <td >
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_7" name='PF_7' value={key.PF_7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_7" name='PF_7' value={key.PF_7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
             {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
@@ -1830,18 +1834,18 @@ o	meeting the investment objectives of the clients
         
         <td align="center">
             <div className="form-group">
-                <input type="text" className="form-control" id="PF_Percentage7" name='PF_Percentage7' value={key.PF_Percentage7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="PF_Percentage7" name='PF_Percentage7' value={key.PF_Percentage7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
             </div>
         </td>
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input type="checkbox" checked={key.PF_Provided7} name="PF_Provided7" onChange={(e)=>{key.PF_Provided7 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided7} name="PF_Provided7" onChange={(e)=>{key.PF_Provided7 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input type="checkbox" checked={key.PF_Discussed7} name="PF_Discussed7" onChange={(e)=>{key.PF_Discussed7 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed7} name="PF_Discussed7" onChange={(e)=>{key.PF_Discussed7 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>   
       </tr>
@@ -1867,7 +1871,7 @@ o	meeting the investment objectives of the clients
                 </div>
                 <div className='col-6'>
                     <div className='col-6'>
-                        <select className="text-start form-select" name='SourceOfFunds' value={key.SourceOfFunds} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='SourceOfFunds' value={key.SourceOfFunds} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-label="Default select example">
                             <option value="0" selected>Choose Source of funds</option>
                             <option value="1">Salary</option>
                             <option value="2">Savings</option>
@@ -1908,7 +1912,7 @@ o	meeting the investment objectives of the clients
                 value={key.SourceOfFundsDetail}
                 onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("SourceOfFundsDetail", i, newText)}}
                 onFocus={(e)=>{backgroundInfo_onFocus10_1()}}
-                onBlur={(e)=>{backgroundInfo_onBlur10_1()}} 
+                onBlur={(e)=>{backgroundInfo_onBlur10_1();onFieldBlur(e)}} 
                 name="SourceOfFundsDetail"                     
                 init={{
                     selector: "textarea",
@@ -1958,7 +1962,7 @@ o	meeting the investment objectives of the clients
         value={key.PF_Reasons}
         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_Reasons", i, newText)}}
         onFocus={(e)=>{backgroundInfo_onFocus24()}}
-        onBlur={(e)=>{backgroundInfo_onBlur24()}} 
+        onBlur={(e)=>{backgroundInfo_onBlur24();onFieldBlur(e)}} 
         name="PF_Reasons"                     
         init={{
             selector: "textarea",
@@ -2249,7 +2253,7 @@ The tax implications, i.e. estate duty, income tax (e.g. interest received), CGT
         value={key.PF_MaterialAspects}
         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_MaterialAspects", i, newText)}}
         onFocus={(e)=>{backgroundInfo_onFocus25()}}
-        onBlur={(e)=>{backgroundInfo_onBlur25()}} 
+        onBlur={(e)=>{backgroundInfo_onBlur25();onFieldBlur(e)}} 
         name="PF_MaterialAspects"                     
         init={{
             selector: "textarea",
@@ -2315,7 +2319,7 @@ Other relevant information
         value={key.PF_Pr_Details}
         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_Pr_Details", i, newText)}}
         onFocus={(e)=>{backgroundInfo_onFocus26()}}
-        onBlur={(e)=>{backgroundInfo_onBlur26()}} 
+        onBlur={(e)=>{backgroundInfo_onBlur26();onFieldBlur(e)}} 
         name="PF_Pr_Details"                     
         init={{
             selector: "textarea",
@@ -2366,7 +2370,7 @@ Other relevant information
         value={key.PF_NominationOfBeneficiaries}
         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_NominationOfBeneficiaries", i, newText)}}
         onFocus={(e)=>{backgroundInfo_onFocus27()}}
-        onBlur={(e)=>{backgroundInfo_onBlur27()}} 
+        onBlur={(e)=>{backgroundInfo_onBlur27();onFieldBlur(e)}} 
         name="PF_NominationOfBeneficiaries"                     
         init={{
             selector: "textarea",
