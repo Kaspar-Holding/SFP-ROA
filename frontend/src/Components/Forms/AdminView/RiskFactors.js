@@ -455,31 +455,13 @@ const RiskFactors = ({user}) => {
                 }
             }
             const Body = JSON.stringify({
-                "formId" : formId,
-                "advisorId" : advisorId
+              "formId" : state['formId'],
+              "adminId": user['id']
             })
             try {
-                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/view_risk_factors_data/`, Body ,config)
-                if (response.status === 200) {
-                    setFormData(response.data['formData'])
-                    if (response.data['LP_Data'].length > 0) {
-                        setLP_Data(response.data['LP_Data'])
-                    } else {
-                        setLP_Data([{
-                            advisorId : user['id'],  
-                            RF_LP_Adjust_Risk : 0,
-                            RF_LP_Name : "",
-                            RF_LP_Client_ID : "",
-                            RF_LP_Client_Relationship : 0,
-                            RF_LP_ID : "",
-                            RF_LP_Linked_Party : 0,
-                            RF_LP_RCA : 0,
-                            RF_LP_Birth_Country : 206,
-                            RF_LP_Residence_Country : 206,
-                            RF_LP_Nationality : 206,
-                        }])
-                    }
-                } 
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminRFForm/`, Body ,config)
+                setFormData(response.data['formData'])
+                setLP_Data(response.data['LP_Data'])
                 // setSubmissionMessageVisibility("block")
             } catch (error) {
                 console.log(error)

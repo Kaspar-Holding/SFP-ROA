@@ -389,90 +389,14 @@ const Invest = ({user}) =>
         }
         
         const Body = JSON.stringify({
-          "formId" : state['formId']
+            "formId" : state['formId'],
+            "adminId": user['id']
         })
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/view_investment_planning_data/`, Body ,config)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminIPForm/`, Body ,config)
             // console.log(response.data['formData'])
             setFormData(response.data['formData'])
-            if (response.status === 201) {
-                setFormData(response.data['formData'])
-            } else {
-            }
-            if (response.data['ProductTaken'].length > 0) {
-                setProductTaken(response.data['ProductTaken'])
-              } else {
-                setProductTaken([{
-                    advisorId : user['id'],  
-                    formId : state['formId'],  
-                      
-            
-                    ProductTaken : 0,    
-                    ProductProvider : "",    
-                    PolicyNumber : "",    
-                    ProductName : "",    
-                    ProductPremium : "",    
-                    ProductPremiumFrequency : 1,   
-                    ProductEscalation : "",    
-                    ProductEAC : "",    
-                    ProductContractingParty : "",    
-                    ProductLivesAssured : "",    
-                    ProductPremiumLayer : "",    
-                    ProductBeneficiary : "",    
-                    Product_IniC : "",    
-                    Product_IniC_Percentage : "",    
-                    Product_OnC : "",    
-                    Product_OnC_Percentage : "",    
-            
-                    SFPSolutionFunds : 2,
-                    SFPSolutionFundsDetails : "",
-            
-                    ItP : "",
-                    ItP_Fund : "",
-                    ItP_FundPercentage : "",
-                    ItP_FundProvided : 0,
-                    ItP_FundDiscussed : 0,
-                    
-                    ItP_Fund1 : "",
-                    ItP_FundPercentage1 : "",
-                    ItP_FundProvided1 : 0,
-                    ItP_FundDiscussed1 : 0,
-            
-                    ItP_Fund2 : "",
-                    ItP_FundPercentage2 : "",
-                    ItP_FundProvided2 : 0,
-                    ItP_FundDiscussed2 : 0,
-            
-                    ItP_Fund3 : "",
-                    ItP_FundPercentage3 : "",
-                    ItP_FundProvided3 : 0,
-                    ItP_FundDiscussed3 : 0,
-            
-                    ItP_Fund4 : "",
-                    ItP_FundPercentage4 : "",
-                    ItP_FundProvided4 : 0,
-                    ItP_FundDiscussed4 : 0,
-            
-                    ItP_Fund5 : "",
-                    ItP_FundPercentage5 : "",
-                    ItP_FundProvided5 : 0,
-                    ItP_FundDiscussed5 : 0,
-            
-                    ItP_Fund6 : "",
-                    ItP_FundPercentage6 : "",
-                    ItP_FundProvided6 : 0,
-                    ItP_FundDiscussed6 : 0,
-            
-                    ItP_Fund7 : "",
-                    ItP_FundPercentage7 : "",
-                    ItP_FundProvided7 : 0,
-                    ItP_FundDiscussed7 : 0,
-            
-                    ItP_FundsReasons : "",
-            
-                    ItP_FundsMaterialAspects : ""
-                  }])
-              }
+            setProductTaken(response.data['ProductTaken'])
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)

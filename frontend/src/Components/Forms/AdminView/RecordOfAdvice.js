@@ -95,10 +95,11 @@ const RecordOfAdvice = ({user}) => {
             }
         }
         const Body = JSON.stringify({
-          "formId" : state['formId']
+          "formId" : state['formId'],
+          "adminId": user['id']
         })
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewformdata/`, Body ,config)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminROAForm/`, Body ,config)
             setFormData(response.data['formData'])
             // setSubmissionMessageVisibility("block")
         } catch (error) {

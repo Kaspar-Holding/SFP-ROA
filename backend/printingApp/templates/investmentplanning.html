@@ -262,7 +262,9 @@
                 </div>
                 <div class="column5">                        
                     <div class='row div'>
-                        {{IP.IP_RiskProfile}}
+                        {% autoescape off %}
+                            {{IP.IP_RiskProfile}}
+                        {% endautoescape %}
                     </div>
                 </div>  
             </div>

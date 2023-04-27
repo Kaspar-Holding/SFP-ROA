@@ -31,16 +31,13 @@ const Fiduciary = ({user}) => {
         }
     }
     const Body = JSON.stringify({
-      "formId" : state['formId']
+      "formId" : state['formId'],
+      "adminId": user['id']
     })
     try {
-        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewfiduciarydata/`, Body ,config)
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminRPForm/`, Body ,config)
         // console.log(response.data['formData'])
-        if (response.status === 201) {
-            setFormData(response.data['formData'])
-        } else {
-            setFormData(response.data['formData'])
-        }
+        setFormData(response.data['formData'])
         // setSubmissionMessageVisibility("block")
     } catch (error) {
         console.log(error)
@@ -56,9 +53,12 @@ const Fiduciary = ({user}) => {
             'Authorization' : `JWT ${localStorage.getItem('access')}`
         }
     }
-    const Body = JSON.stringify(FormData)
+    const Body = JSON.stringify({
+      "formId" : state['formId'],
+      "adminId": user['id']
+    })
     try {
-        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/updatefiduciarydata/`, Body ,config)
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminRPForm/`, Body ,config)
         // console.log(response.data['formData'])
         setFormData(response.data['formData'])
         setSuccessMessage("Fiduciary data is successfully updated")

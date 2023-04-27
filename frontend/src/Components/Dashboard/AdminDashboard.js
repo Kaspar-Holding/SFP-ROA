@@ -67,6 +67,7 @@ const Dashboard = ({user}) => {
         )
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/admin_forms_stats/`, Body,config)
+            // console.log(response.data)
             setFormStats(response.data)
             setFormList(response.data['results'])
             setTotalForms(response.data['total_records'])
@@ -194,6 +195,8 @@ const Dashboard = ({user}) => {
                                 {
                                     TotalForms > 0 ?
                                     Object.keys(formList).map((keyName, i) => (
+                                        // console.log(formList[i]['advisorData'])
+                                        
                                         <tr>
                                             <th scope="row">{i+1}</th>
                                             <td>{formList[i]['RF_ClientName']}</td>
@@ -257,7 +260,7 @@ const Dashboard = ({user}) => {
                                                     <td>
                                                         {
                                                             formList[i]['status'] != 2 && formList[i]['status'] != 3 ?
-                                                            <NavLink type="button" to={{pathname:"/viewForm"}} state={{formId : formList[i]['id'],advisorId: formList[i]['advisorId']}} className="btn btn-sm btn-outline-primary">View</NavLink>
+                                                            <NavLink type="button" to={{pathname:"/viewForm"}} state={{formId : formList[i]['id'], advisor: formList[i]['advisorData'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn-outline-primary">View</NavLink>
                                                             : 
                                                             <NavLink type="button" to={{pathname:formList[i]['url']}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn btn-sm btn-outline-warning">Approve/Deny</NavLink>
                                                             // <button className="btn btn-sm btn-outline-warning" type='button'>Approve/Deny</button>
@@ -271,8 +274,8 @@ const Dashboard = ({user}) => {
                                                             formList[i]['status'] != 2 && formList[i]['status'] != 3 ?
                                                             <NavLink 
                                                                 type="button" 
-                                                                to={{pathname:"/completeform"}} 
-                                                                state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} 
+                                                                to={{pathname:"/viewForm"}} 
+                                                                state={{formId : formList[i]['id'], advisor: formList[i]['advisorData'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} 
                                                                 className={
                                                                     user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-sm sfp-outline-primary" 
                                                                     : user['email'].includes('fs4p') ? "btn btn-sm fs4p-outline-primary" 

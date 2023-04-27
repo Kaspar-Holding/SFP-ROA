@@ -78,4 +78,17 @@ urlpatterns = [
     path('update_eb_coverData/' , views.update_eb_cover_Data, name="Employee Benefits cover data details"),
     # PDF Form
     path('pdf/' , printFormViews.pdfForm, name="PDF Form"),
+    # Admin View
+    path('viewAdminRFForm/' , views.viewAdminRFData, name="Admin View Form"),
+    path('viewAdminROAForm/' , views.viewAdminROAData, name="Admin View Form"),
+    path('viewAdminRPForm/' , views.viewAdminRPData, name="Admin View Form"),
+    path('viewAdminIPForm/' , views.viewAdminIPData, name="Admin View Form"),
+    path('viewAdminBARiskForm/' , views.viewAdminBARiskData, name="Admin View Form"),
+    path('viewAdminEmpForm/' , views.viewAdminEmpData, name="Admin View Form"),
+    path('viewAdminBAInvestmentForm/' , views.viewAdminBAInvestmentData, name="Admin View Form"),
+    path('viewAdminFiduciaryForm/' , views.viewAdminFiduciaryData, name="Admin View Form"),
+    path('viewAdminSTICForm/' , views.viewAdminSTICData, name="Admin View Form"),
+    path('viewAdminSTIPForm/' , views.viewAdminSTIPData, name="Admin View Form"),
+    path('viewAdminMedicalForm/' , views.viewAdminMedicalData, name="Admin View Form"),
+    path('viewAdminGPForm/' , views.viewAdminGPData, name="Admin View Form"),
 ]

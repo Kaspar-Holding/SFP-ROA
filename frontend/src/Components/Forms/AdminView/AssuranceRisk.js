@@ -569,56 +569,16 @@ const AssuranceRisk = ({user}) =>
                 'Accept' : 'application/json',
                 'Authorization' : `JWT ${localStorage.getItem('access')}`
             }
-        }
-        
+        }        
         const Body = JSON.stringify({
-          "formId" : state['formId']
+          "formId" : state['formId'],
+          "adminId": user['id']
         })
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/view_assurance_risk_data/`, Body ,config)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminBARiskForm/`, Body ,config)
             // console.log(response.data['formData'])
-            if (response.status === 201) {
-                setFormData(response.data['formData'])
-            } else {
-                setFormData(response.data['formData'])
-            }
-            if (response.data['ProductTaken'].length > 0) {
-              setProductTaken(response.data['ProductTaken'])
-            } else {
-              setProductTaken([{
-                advisorId : user['id'],  
-                formId : state['formId'],  
-                ProductTaken : 0, 
-                ProductProvider : "",   
-                PolicyNumber : "",   
-                ProductName : "",   
-                ProductPremium : "",   
-                ProductPremiumFrequency : 0,   
-                ProductPattern : "",   
-                ProductEscalation : "",   
-                ProductContractingParty : "",   
-                ProductLivesAssured : "",   
-                ProductPremiumPayer : "",   
-                Product1stYearCommission : "",   
-                Product2ndYearCommission : "",   
-                ProductOngoingFees : "",   
-                ProductOngoingFeesFrequency : "",   
-                    
-                BenDesc_1 : "",
-                BenDesc_CoverAmount1 : "",
-                BenDesc_2 : "",
-                BenDesc_CoverAmount2 : "",
-                BenDesc_3 : "",
-                BenDesc_CoverAmount3 : "",
-                    
-                ProductReasons : "",
-                ProductMaterialAspects : "",
-                ProductDetails : "",
-                ProductBriefSummary : "",
-                Cessionaries : "",
-                InformationExplained : "",
-              }])
-            }
+            setFormData(response.data['formData'])
+            setProductTaken(response.data['ProductTaken'])
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)

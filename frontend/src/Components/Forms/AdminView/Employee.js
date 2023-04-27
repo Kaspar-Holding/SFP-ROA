@@ -305,27 +305,14 @@ const Employee = ({user}) =>
             }
         }
         const Body = JSON.stringify({
-          "formId" : state['formId']
+          "formId" : state['formId'],
+          "adminId": user['id']
         })
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/view_employee_benefits_data/`, Body ,config)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminEmpForm/`, Body ,config)
             // console.log(response.data['formData'])
-            if (response.status === 201) {
-                setFormData(response.data['formData'])
-            } else {
-                setFormData(response.data['formData'])
-            }
-            if (response.data['CoverData'].length > 0) {
-                setCoverData(response.data['CoverData'])
-            } else {
-                setCoverData([{
-                    advisorId : user['id'],  
-                    formId : state['formId'],                
-                    
-                    BusB_CoverType : 0,
-                    BusB_Cover : 3
-                }])
-            }
+            setFormData(response.data['formData'])
+            setCoverData(response.data['CoverData'])
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error.response.data)
@@ -755,7 +742,14 @@ const Employee = ({user}) =>
 
                 <hr/>
                 <h5 style={{color: '#00788A'}}><b>Section C:Clients Needs and Requirements</b></h5>
-                
+                {
+                   CoverData.length === 0 ?
+                    <div className="col-6">
+                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewCoverData(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Cover</button>
+                    </div>
+                    :
+                    <></>
+                }
                 {
                     CoverData.map((key,i) => {
                         return (
@@ -764,13 +758,9 @@ const Employee = ({user}) =>
                                         <div className="col-6">
                                             <button className="btn btn-md" type='button' onClick={(e)=>{AddNewCoverData(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Cover</button>
                                         </div>
-                                        {
-                                            CoverData.length > 1 ?
-                                            <div className="col-6">
-                                                <button className="btn btn-md" type='button' onClick={(e)=>{RemoveCoverData(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Cover</button>
-                                            </div>
-                                            : <></>
-                                        }
+                                        <div className="col-6">
+                                            <button className="btn btn-md" type='button' onClick={(e)=>{RemoveCoverData(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Cover</button>
+                                        </div>
                                     </div>
                                     
                                     

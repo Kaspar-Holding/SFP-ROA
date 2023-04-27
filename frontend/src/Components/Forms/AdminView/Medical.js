@@ -197,11 +197,12 @@ const Medical = ({user}) => {
             }
         }
         
-        const Body = JSON.stringify({
-          "formId" : state['formId']
-        })
-        try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/view_medical_data/`, Body ,config)
+      const Body = JSON.stringify({
+        "formId" : state['formId'],
+        "adminId": user['id']
+      })
+      try {
+          const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminMedicalForm/`, Body ,config)
             // console.log(response.data['formData'])
             setFormData(response.data['formData'])
             setSuccessMessage("Medical data is successfully updated")

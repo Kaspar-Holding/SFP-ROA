@@ -6,7 +6,54 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import  './Styles/CustomNotification.css'
 import  './Styles/CustomButton.css'
-import { Editor } from '@tinymce/tinymce-react';
+import { Editor } from '@tinymce/tinymce-react'
+import Quill from "react-quill"
+import QuillEditor from "quill"
+import "react-quill/dist/quill.snow.css"
+
+const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, false] }],
+      ["bold", "italic", "underline", "blockquote"],
+      [{ color: [] }],
+      [{ align: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      ["link", "image"]
+    ]
+  }
+  
+  const formats = [
+    "header",
+    "bold",
+    "color",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "align",
+    "indent",
+    "link",
+    "image"
+  ]
+
+export const ContentEditor = ({ content, onChange }) => {
+    const ref = React.useRef(null);
+  
+  
+    return (
+      <Quill
+        ref={ref}
+        theme="snow"
+        value={content}
+        onChange={onChange}
+        modules={modules}
+        formats={formats}
+      />
+    );
+  }
 
 const RecordOfAdvice = ({user}) => {
     const location = useLocation();
@@ -116,6 +163,7 @@ const RecordOfAdvice = ({user}) => {
             }, 5000)
         }
     }
+
     const [SuccessMessage, setSuccessMessage] = useState("")
     const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
     const updateRecordOfAdviceForm= async(data) => {
@@ -437,6 +485,7 @@ const RecordOfAdvice = ({user}) => {
                                             null
                                         }
                                         {/* <textarea id="letter_of_introduction" required={FormData['clientLetterOfIntroduction'] === 0 ? true : false} value={FormData['clientLetterOfIntroductionReason']} maxLength={256} name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
+                                        <ContentEditor content={FormData['clientLetterOfIntroductionReason']} />
                                         <Editor
                                             onInit={(evt, editor) => compulsoryAEditorRef.current = editor}
                                             value={FormData['clientLetterOfIntroductionReason']}
@@ -447,15 +496,17 @@ const RecordOfAdvice = ({user}) => {
                                             init={{
                                                 selector: "textarea",
                                                 height: 300,
+                                                browser_spellcheck : true,
+                                                contextmenu: false,
                                                 menubar: true,
                                                 plugins: [
                                                     'advlist autolink link lists image charmap print preview anchor',
                                                     'searchreplace visualblocks code fullscreen',
-                                                    'insertdatetime media table paste code help wordcount spellchecker',
+                                                    'insertdatetime media table paste code help wordcount',
                                                 ],
                                                 toolbar: 'styles | undo redo | formatselect | ' +
                                                 'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                                                'bullist numlist | spellchecker | outdent indent | link | copy paste undo redo | ' +
+                                                'bullist numlist | outdent indent | link | copy paste undo redo | ' +
                                                 'removeformat',
                                                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                                 init_instance_callback : function(editor) {

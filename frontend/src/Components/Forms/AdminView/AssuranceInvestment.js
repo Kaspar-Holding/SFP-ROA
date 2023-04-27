@@ -511,83 +511,14 @@ const AssuranceInvestment = ({user}) =>
         }
         
         const Body = JSON.stringify({
-            "formId" : state['formId']
-          })
-        try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/view_assurance_investment_data/`, Body ,config)
+            "formId" : state['formId'],
+            "adminId": user['id']
+        })
+          try {
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminBAInvestmentForm/`, Body ,config)
             // console.log(response.data['formData'])
             setFormData(response.data['formData'])
-            if (response.data['ProductTaken'].length > 0) {
-                setProductTaken(response.data['ProductTaken'])
-            } else {
-                setProductTaken([{
-                        advisorId : user['id'],  
-                        formId : state['formId'],  
-                        
-                        Pr_Taken : 0,    
-                        Pr_Provider : "",    
-                        Pr_PolicyNumber : "",    
-                        Pr_Name : "",    
-                        Pr_Premium : "",    
-                        Pr_PremiumFrequency : 0,   
-                        Pr_Escalation : "",    
-                        Pr_EAC : "",    
-                        Pr_ContractingParty : "",    
-                        Pr_LivesAssured : "",    
-                        Pr_PremiumPayer : "",    
-                        Pr_Beneficiary : "",    
-                        Pr_IniC : "",    
-                        Pr_IniC_Percentage : "",    
-                        Pr_OnC : "",    
-                        Pr_OnC_Percentage : "",
-
-                        Portfolio : "",
-                        
-                        SourceOfFunds : 0,
-                        SourceOfFundsDetail : "",
-                        
-                        PF_1 : "",
-                        PF_Percentage1 : "",
-                        PF_Provided1 : false,
-                        PF_Discussed1 : false,
-
-                        PF_2 : "",
-                        PF_Percentage2 : "",
-                        PF_Provided2 : false,
-                        PF_Discussed2 : false,
-
-                        PF_3 : "",
-                        PF_Percentage3 : "",
-                        PF_Provided3 : false,
-                        PF_Discussed3 : false,
-
-                        PF_4 : "",
-                        PF_Percentage4 : "",
-                        PF_Provided4 : false,
-                        PF_Discussed4 : false,
-
-                        PF_5 : "",
-                        PF_Percentage5 : "",
-                        PF_Provided5 : false,
-                        PF_Discussed5 : false,
-
-                        PF_6 : "",
-                        PF_Percentage6 : "",
-                        PF_Provided6 : false,
-                        PF_Discussed6 : false,
-
-                        PF_7 : "",
-                        PF_Reasons : "",
-                        PF_Provided7 : false,
-                        PF_Discussed7 : false,
-
-                        PF_Reasons : "",
-                        PF_MaterialAspects : "",
-                        PF_Pr_Details : "",
-                        PF_NominationOfBeneficiaries : ""
-                      }]
-                )
-            }
+            setProductTaken(response.data['ProductTaken'])
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)

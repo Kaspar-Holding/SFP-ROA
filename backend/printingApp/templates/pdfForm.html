@@ -4924,9 +4924,21 @@
                     color: #0074C9;
                 }
             {% endif %}
-            .background {
-                color: #00788A
-            }
+            {% if company == "SFP" %}
+                .background {
+                    color: #00788A
+                }
+            {% endif %}
+            {% if company == "FS4P" %}
+                .background {
+                    color: #6AC7D2
+                }
+            {% endif %}
+            {% if company == "AFP" %}
+                .background {
+                    color: #0074C9
+                }
+            {% endif %}
             ol > li:marker {
                 font-weight: bold;
             }

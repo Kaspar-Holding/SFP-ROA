@@ -509,7 +509,8 @@ def adminformStats(request):
     p = Paginator(forms_data, 10)
     data = p.page(request.data['page_number']).object_list
     for row in data:
-        advisorData = UserAccount.objects.filter(id=row['advisorId']).values('first_name', 'last_name').first()
+        advisorData = UserAccount.objects.filter(id=row['advisorId']).values('first_name', 'last_name', 'email').first()
+        row['advisorData'] = advisorData
         row['advisorName'] = advisorData['first_name'] + " " + advisorData['last_name']
         if row['status'] == 2:
             userId = urlsafe_base64_encode(str(request.data['advisorId']).encode('utf-8'))
@@ -1359,3 +1360,164 @@ def update_eb_cover_Data(request):
     #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
 
 
+@api_view(['POST'])
+def viewAdminRFData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : RiskFactors.objects.filter(id=request.data['formId']).values().first(),
+            "LP_Data" : RF_LinkedParty.objects.filter(formId=request.data['formId']).values()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)
+
+@api_view(['POST'])
+def viewAdminROAData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : Form.objects.filter(formId=request.data['formId']).values().first()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)
+
+@api_view(['POST'])
+def viewAdminRPData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : RiskPlanning.objects.filter(formId=request.data['formId']).values().first(),
+            "ProductTaken" : RP_ProductTaken.objects.filter(formId=request.data['formId']).values()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)
+
+@api_view(['POST'])
+def viewAdminIPData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : InvestmentPlanning.objects.filter(formId=request.data['formId']).values().first(),
+            "ProductTaken" : IP_ProductTaken.objects.filter(formId=request.data['formId']).values()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)
+
+@api_view(['POST'])
+def viewAdminBARiskData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : AssuranceRisk.objects.filter(formId=request.data['formId']).values().first(),
+            "ProductTaken" : AR_ProductTaken.objects.filter(formId=request.data['formId']).values()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)
+
+@api_view(['POST'])
+def viewAdminEmpData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : EmployeeBenefits.objects.filter(formId=request.data['formId']).values().first(),
+            "CoverData" : EB_Cover.objects.filter(formId=request.data['formId']).values()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)
+
+@api_view(['POST'])
+def viewAdminBAInvestmentData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : AssuranceInvestment.objects.filter(formId=request.data['formId']).values().first(),
+            "ProductTaken" : AI_ProductTaken.objects.filter(formId=request.data['formId']).values()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)
+
+@api_view(['POST'])
+def viewAdminFiduciaryData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : Fiduciary.objects.filter(formId=request.data['formId']).values().first()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)
+
+@api_view(['POST'])
+def viewAdminSTICData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : ShortTermInsuranceCommerical.objects.filter(formId=request.data['formId']).values().first()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)
+
+@api_view(['POST'])
+def viewAdminSTIPData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : ShortTermInsurancePersonal.objects.filter(formId=request.data['formId']).values().first()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)
+
+@api_view(['POST'])
+def viewAdminMedicalData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : Medical.objects.filter(formId=request.data['formId']).values().first()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)
+
+@api_view(['POST'])
+def viewAdminGPData(request):
+    advisorAccessLevel = UserAccount.objects.filter(id=request.data['adminId']).values('is_superuser').first()['is_superuser']
+    if advisorAccessLevel:
+        return Response({
+            "message" : "Found",
+            "formData" : GapCover.objects.filter(formId=request.data['formId']).values().first()
+        },200)
+    else:
+        return Response({
+            "message" : "You do not have access to view this",
+        }, 404)

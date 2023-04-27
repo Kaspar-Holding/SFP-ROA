@@ -297,62 +297,14 @@ const Risk = ({user}) =>
             }
         }
         const Body = JSON.stringify({
-          "formId" : state['formId']
+          "formId" : state['formId'],
+          "adminId": user['id']
         })
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/view_risk_planning_data/`, Body ,config)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminRPForm/`, Body ,config)
             // console.log(response.data['formData'])
-            if (response.status === 201) {
-                setFormData(response.data['formData'])
-            } else {
-                setFormData(response.data['formData'])
-                if (response.data['ProductTaken'].length > 0) {
-                  setProductTaken(response.data['ProductTaken'])
-                } else {
-                  setProductTaken([{
-                    advisorId : user['id'],  
-                    formId : state['formId'],  
-                    Product_Taken : "",  
-                    Product_Provider : "",
-                    Policy_Number : "",
-                    Product_Name : "",
-                    Product_Premium : "",
-                    Product_PremiumFrequency : "0", 
-                    Product_Pattern : "",
-                    Product_Escalation : "",
-                    Product_ContractingParty : "",
-                    Product_LivesAssured : "",
-                    Product_Beneficiary : "",
-                    Product_PremiumPayer : "",
-                    Product_1stYearCommission : "",
-                    Product_2ndYearCommission : "",
-                    Product_OngoingFees : "",
-                    Product_OngoingFeesFrequency : "",
-                    Product_OngoingFeesFrequency1 : "0",    
-                    TotalFees_n_Commissions : "",        
-                    BenDesc_1 : "",
-                    BenDesc_CoverAmount1 : "",
-                    BenDesc_2 : "",
-                    BenDesc_CoverAmount2 : "",
-                    BenDesc_3 : "",
-                    BenDesc_CoverAmount3 : "",
-                    BenDesc_4 : "",
-                    BenDesc_CoverAmount4 : "",
-                    BenDesc_5 : "",
-                    BenDesc_CoverAmount5 : "",
-                    BenDesc_6 : "",
-                    BenDesc_CoverAmount6 : "",
-                    BenDesc_7 : "",
-                    BenDesc_CoverAmount7 : "",        
-                    ProductReasons : "",
-                    ProductMaterialAspects : "",
-                    ProductDetails : "",
-                    ExecutorFee : "",
-                    NominationOfBeneficiaries : "",
-                    InformationExplained : ""
-                  }])
-                }
-            }
+            setFormData(response.data['formData'])
+            setProductTaken(response.data['ProductTaken'])
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)

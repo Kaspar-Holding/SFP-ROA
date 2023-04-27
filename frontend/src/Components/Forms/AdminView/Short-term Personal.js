@@ -851,10 +851,11 @@ const Short_term_Personal = ({user}) => {
             }
         }
         const Body = JSON.stringify({
-          "formId" : state['formId']
+          "formId" : state['formId'],
+          "adminId": user['id']
         })
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/view_short_term_personal_data/`, Body ,config)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminSTIPForm/`, Body ,config)
             // console.log(response.data['formData'])
             if (response.status === 201) {
                 setFormData(response.data['formData'])

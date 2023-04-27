@@ -1099,10 +1099,11 @@ const Short_term_Commercial= ({user}) => {
             }
         }
         const Body = JSON.stringify({
-          "formId" : state['formId']
+          "formId" : state['formId'],
+          "adminId": user['id']
         })
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/view_short_term_commerical_data/`, Body ,config)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminSTICForm/`, Body ,config)
             // console.log(response.data['formData'])
             setFormData(response.data['formData'])
             // setSubmissionMessageVisibility("block")

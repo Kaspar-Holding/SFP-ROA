@@ -121,9 +121,12 @@ const GapCover = ({user}) => {
                 'Authorization' : `JWT ${localStorage.getItem('access')}`
             }
         }
-        const Body = JSON.stringify(FormData)
+        const Body = JSON.stringify({
+          "formId" : state['formId'],
+          "adminId": user['id']
+        })
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_gap_cover_data/`, Body ,config)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/viewAdminGPForm/`, Body ,config)
             // console.log(response.data['formData'])
             setFormData(response.data['formData'])
             setSuccessMessage("Gap Cover data is successfully updated")
