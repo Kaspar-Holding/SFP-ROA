@@ -634,6 +634,7 @@ const Invest = ({user}) =>
                 name="IP_OtherSourceOfIncome"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: 'Define Other Source of Funds.',
                     height: 300,
                     menu: true,
@@ -713,6 +714,7 @@ const Invest = ({user}) =>
                 name="IP_InvestmentTermDetails"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: 'Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.',
                     height: 300,
                     menu: true,
@@ -792,6 +794,7 @@ const Invest = ({user}) =>
                 name="IP_LiquidityDetails"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: 'Does the client require access to the investment during the term?',
                     height: 300,
                     menu: true,
@@ -870,6 +873,7 @@ const Invest = ({user}) =>
                 name="IP_TypeDetails"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: 'Explain?',
                     height: 300,
                     menu: true,
@@ -949,6 +953,7 @@ const Invest = ({user}) =>
                 name="IP_PremiumTypeDetails"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: 'Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.',
                     height: 300,
                     menu: true,
@@ -1026,6 +1031,7 @@ const Invest = ({user}) =>
                 name="IP_IncomeRequiredDetails"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: 'Details of Income Required.',
                     height: 300,
                     menu: true,
@@ -1091,6 +1097,7 @@ const Invest = ({user}) =>
                 name="IP_InvestmentStrategyDetails"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: 'Notes on discussion with client concerning the investment strategy.',
                     height: 300,
                     menu: true,
@@ -1156,6 +1163,7 @@ const Invest = ({user}) =>
                 name="IP_ReturnRequiredDetails"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: 'Notes on discussion with client concerning return expectations.',
                     height: 300,
                     menu: true,
@@ -1223,6 +1231,7 @@ const Invest = ({user}) =>
                 name="IP_RiskProfileDetails"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: 'Notes on the client risk profile.',
                     height: 300,
                     menu: true,
@@ -1292,6 +1301,7 @@ const Invest = ({user}) =>
                 name="IP_RecommendationSummary"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: "Discuss the outcome of the FNA Qualification of need explaining the reasons why this type of investment vehicle was recommended How it will meet the client's needs",
                     height: 300,
                     menu: true,
@@ -1348,6 +1358,7 @@ const Invest = ({user}) =>
                 name="IP_AltS_1"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: "1. Identify the type of product or product provider which was considered but not selected and motivate.",
                     height: 300,
                     menu: true,
@@ -1396,6 +1407,7 @@ const Invest = ({user}) =>
                 name="IP_AltS_2"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: "2. Identify the type of product or product provider which was considered but not selected and motivate.",
                     height: 300,
                     menu: true,
@@ -1444,6 +1456,7 @@ const Invest = ({user}) =>
                 name="IP_AltS_3"
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: "3. Identify the type of product or product provider which was considered but not selected and motivate.",
                     height: 300,
                     menu: true,
@@ -1725,6 +1738,7 @@ const Invest = ({user}) =>
                         name="SFPSolutionFundsDetails"                     
                         init={{
                             selector: "textarea",
+                            browser_spellcheck : true,
                             placeholder: 'State the motivation',
                             height: 300,
                             menu: true,
@@ -1797,6 +1811,7 @@ const Invest = ({user}) =>
                 name="ItP"                     
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: `
                     When a wrap fund or a selection of wrap funds is used, motivate, and explain.
     
@@ -2105,6 +2120,7 @@ const Invest = ({user}) =>
             name="ItP_FundsReasons"                     
             init={{
                 selector: "textarea",
+                browser_spellcheck : true,
                 placeholder: `Motivate why the chosen product was recommended to best suit your client's needs.  `,
                 height: 300,
                 menu: true,

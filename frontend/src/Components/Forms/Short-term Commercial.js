@@ -1332,57 +1332,10 @@ const Short_term_Commercial= ({user}) => {
                     </div>
         <hr/>
 
-        <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> Succession Financial Planning (SFP) </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> Financial Solutions 4 Professionals (FS4P) </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> Aligned Financial Planning (AFP) </span>
-                                        : <span> Succession Financial Planning (SFP) </span>
-                                        : 
-                                        <>
-                                            <span> Succession Financial Planning (SFP) </span>
-                                        </>
-                                    } 
+        <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) 
                                     processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    } 
-                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
-                                    <a href=
-                                        {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? "https://www.sfpadvice.co.za"
-                                        : state['advisor']['email'].includes('fs4p') ? "https://www.fs4p.co.za"
-                                        : state['advisor']['email'].includes('sanlam') ? "https://www.sanlam.co.za"
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    }
-                                        
-                                    >
-                                        {
-                                            state['advisor'] ?
-                                            state['advisor']['email'].includes('sfp') ? <span> https://www.sfpadvice.co.za </span>
-                                            : state['advisor']['email'].includes('fs4p') ? <span> https://www.fs4p.co.za </span>
-                                            : state['advisor']['email'].includes('sanlam') ? <span> https://www.sanlam.co.za </span>
-                                            : <span> SFP </span>
-                                            : 
-                                            <>
-                                                <span> SFP </span>
-                                            </>
-                                        }
-                                    </a>  
+                                    SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
+                                    <a href="https://www.sfpadvice.co.za"> https://www.sfpadvice.co.za</a>
                                 </p>
         <hr/>
         <div className={
@@ -1699,6 +1652,7 @@ const Short_term_Commercial= ({user}) => {
                                     name="STIC_Applicable_Option"
                                     init={{
                                         selector: "textarea",
+                                        browser_spellcheck : true,
                                         height: '300px',
                                         width: '600px',
                                         menu: true,
@@ -1777,6 +1731,7 @@ const Short_term_Commercial= ({user}) => {
                                         name="STIC_General_Cancelled_Detail"
                                         init={{
                                             selector: "textarea",
+                                            browser_spellcheck : true,
                                             placeholder: "If 'Yes', provide details:",
                                             height: 300,
                                             menu: true,
@@ -1915,6 +1870,7 @@ const Short_term_Commercial= ({user}) => {
                                         name="STIC_Replacement_Purpose"
                                         init={{
                                             selector: "textarea",
+                                            browser_spellcheck : true,
                                             placeholder: "What is the purpose of this replacement",
                                             height: 300,
                                             menu: true,
@@ -1952,6 +1908,7 @@ const Short_term_Commercial= ({user}) => {
                                         name="STIC_Replacement_Reason"
                                         init={{
                                             selector: "textarea",
+                                            browser_spellcheck : true,
                                             placeholder: "Reasons why replacement is considered more suitable than retaining or modifying the terminated product?",
                                             height: 300,
                                             menu: true,
@@ -1989,6 +1946,7 @@ const Short_term_Commercial= ({user}) => {
                                         name="STIC_Replacement_Suppliers"
                                         init={{
                                             selector: "textarea",
+                                            browser_spellcheck : true,
                                             placeholder: "Suppliers of the product(s) to be replaced?",
                                             height: 300,
                                             menu: true,
@@ -12708,6 +12666,7 @@ const Short_term_Commercial= ({user}) => {
       name="STIC_SecE_1"
       init={{
           selector: "textarea",
+          browser_spellcheck : true,
           placeholder: "Click here to enter text",
           height: 300,
           menu: true,
@@ -12733,6 +12692,7 @@ const Short_term_Commercial= ({user}) => {
       name="STIC_SecE_2"
       init={{
           selector: "textarea",
+          browser_spellcheck : true,
           placeholder: "Click here to enter text",
           height: 300,
           menu: true,
@@ -12758,6 +12718,7 @@ const Short_term_Commercial= ({user}) => {
       name="STIC_SecE_3"
       init={{
           selector: "textarea",
+          browser_spellcheck : true,
           placeholder: "Click here to enter text",
           height: 300,
           menu: true,

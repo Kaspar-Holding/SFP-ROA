@@ -694,6 +694,7 @@ const AssuranceInvestment = ({user}) =>
         name="AI_TermDetails"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: 'Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.',
             height: 300,
             menu: true,
@@ -793,6 +794,7 @@ const AssuranceInvestment = ({user}) =>
         name="AI_PremiumTypeDetails"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: 'Notes.',
             height: 300,
             menu: true,
@@ -854,6 +856,7 @@ const AssuranceInvestment = ({user}) =>
         name="AI_StrategyDetails"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: 'Notes on discussion with client concerning the investment strategy.',
             height: 300,
             menu: true,
@@ -915,6 +918,7 @@ const AssuranceInvestment = ({user}) =>
         name="AI_ReturnRequiredDetails"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: 'Notes on discussion with client concerning return expectations.',
             height: 300,
             menu: true,
@@ -977,6 +981,7 @@ const AssuranceInvestment = ({user}) =>
         name="AI_RiskProfileDetails"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: 'Notes on the client risk profile.',
             height: 300,
             menu: true,
@@ -1175,6 +1180,7 @@ How it will meet the business need
         name="AI_FinancialSolutions"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: 'Discuss the outcome of the FNA: Quantification of need explaining the reasons why this type of investment vehicle was recommended  How it will meet the business need',
             height: 300,
             menu: true,
@@ -1234,6 +1240,7 @@ How it will meet the business need
         name="AI_AltS_1"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: '1. Identify the type of product or product provider which was considered but not selected and motivate.',
             height: 300,
             menu: true,
@@ -1276,6 +1283,7 @@ How it will meet the business need
         name="AI_AltS_2"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: '2. Identify the type of product or product provider which was considered but not selected and motivate.',
             height: 300,
             menu: true,
@@ -1318,6 +1326,7 @@ How it will meet the business need
         name="AI_AltS_3"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: '3. Identify the type of product or product provider which was considered but not selected and motivate.',
             height: 300,
             menu: true,
@@ -1614,6 +1623,7 @@ o	meeting the investment objectives of the clients
         name="Portfolio"                     
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: 'When a wrap fund or a selection of wrap funds is used, motivate and explain. \n Where you have constructed your own portfolio from a selection of funds contained in the SFP Approved Fund List, an analysis (ICE analysis or similar) must be provided: \n illustrating the alignment of the risk profile of the constructed portfolio and that of the investor,\n motivating the constructed portfolio with reference to the following aspects:\n o	correlation;\n o	drawdown;\n o	portfolio return;\n o	meeting the investment objectives of the clients',
             height: 300,
             menu: true,
@@ -1916,6 +1926,7 @@ o	meeting the investment objectives of the clients
                 name="SourceOfFundsDetail"                     
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: 'Define Other Source of Funds.',
                     height: 300,
                     menu: true,
@@ -1966,6 +1977,7 @@ o	meeting the investment objectives of the clients
         name="PF_Reasons"                     
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: "Motivate why the chosen product was recommended to best suit your client's needs.",
             height: 300,
             menu: true,
@@ -2257,6 +2269,7 @@ The tax implications, i.e. estate duty, income tax (e.g. interest received), CGT
         name="PF_MaterialAspects"                     
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: "Disclose and explain the following: \n The tax implications, i.e. estate duty, income tax (e.g. interest received), CGT",
             height: 300,
             menu: true,
@@ -2323,6 +2336,7 @@ Other relevant information
         name="PF_Pr_Details"                     
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: "Discuss the product details:  \n Liquidity \n Termination penalties \n Guarantees, if any \n Implications of fees & costs \n Legislative restrictions  \n Special terms and conditions  \n Other relevant information",
             height: 300,
             menu: true,
@@ -2374,6 +2388,7 @@ Other relevant information
         name="PF_NominationOfBeneficiaries"                     
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: "Record discussion with regard to nomination of beneficiaries or cessionaries.",
             height: 300,
             menu: true,

@@ -598,6 +598,7 @@ const Risk = ({user}) =>
           name="RP_DC_Comments"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -847,6 +848,7 @@ const Risk = ({user}) =>
           name="RP_DiC_Comments"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -1032,6 +1034,7 @@ const Risk = ({user}) =>
           name="RP_DrC_Comments"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -1097,6 +1100,7 @@ const Risk = ({user}) =>
           name="RP_LC_FinancialSolutions"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               placeholder: "Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.",
               height: 300,
               menu: true,
@@ -1143,6 +1147,7 @@ const Risk = ({user}) =>
           name="RP_DiC_FinancialSolutions"
           init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: "Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.",
             height: 300,
               menu: true,
@@ -1190,6 +1195,7 @@ const Risk = ({user}) =>
       name="RP_DrC_FinancialSolutions"
       init={{
           selector: "textarea",
+          browser_spellcheck : true,
           placeholder: "Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.",
           height: 300,
           menu: true,
@@ -1243,6 +1249,7 @@ const Risk = ({user}) =>
       name="RP_AltS_1"
       init={{
           selector: "textarea",
+          browser_spellcheck : true,
           placeholder: '1. Identify the type of product or product provider which was considered but not selected and motivate.',
           height: 300,
           menu: true,
@@ -1288,6 +1295,7 @@ const Risk = ({user}) =>
       name="RP_AltS_2"
       init={{
           selector: "textarea",
+          browser_spellcheck : true,
           placeholder: '2. Identify the type of product or product provider which was considered but not selected and motivate.',
           height: 300,
           menu: true,
@@ -1332,6 +1340,7 @@ const Risk = ({user}) =>
       name="RP_AltS_3"
       init={{
           selector: "textarea",
+          browser_spellcheck : true,
           placeholder: '3. Identify the type of product or product provider which was considered but not selected and motivate.',
           height: 300,
           menu: true,
@@ -1805,6 +1814,7 @@ const Risk = ({user}) =>
                   name="ProductReasons"                     
                   init={{
                       selector: "textarea",
+                      browser_spellcheck : true,
                       placeholder: 'Motivate why the chosen product was recommended to best suit your client’s needs.',
                       height: 300,
                       menu: true,
@@ -1847,6 +1857,7 @@ const Risk = ({user}) =>
                   onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}}                      
                   init={{
                       selector: "textarea",
+                      browser_spellcheck : true,
                       placeholder : 'Explain any deviations from your recommendation and the implications thereof.',
                       height: 300,
                       menu: true,
@@ -1887,6 +1898,7 @@ const Risk = ({user}) =>
                 onBlur={(e)=>{backgroundInfo_onBlur9();onFieldBlur(e)}}                      
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     placeholder: 'The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?',
                     height: 300,
                     menu: true,
@@ -1934,6 +1946,7 @@ const Risk = ({user}) =>
                 onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}}        
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     height: 300,
                     placeholder:'Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n',               
                     menu: true,
@@ -1976,6 +1989,7 @@ const Risk = ({user}) =>
                 onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}}        
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     height: 300,
                     placeholder:'Record discussion with regard to nomination of beneficiaries or cessionaries.',               
                     menu: true,
@@ -2022,6 +2036,7 @@ const Risk = ({user}) =>
                 onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}}        
                 init={{
                     selector: "textarea",
+                    browser_spellcheck : true,
                     height: 300,
                     placeholder:`Discuss the following information which has been explained to client.
                     General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)

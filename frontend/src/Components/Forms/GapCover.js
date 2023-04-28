@@ -294,58 +294,12 @@ const GapCover = ({user}) => {
 
         <hr className="col-11" />
         <div className="col-11 p_class">
-        <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> Succession Financial Planning (SFP) </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> Financial Solutions 4 Professionals (FS4P) </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> Aligned Financial Planning (AFP) </span>
-                                        : <span> Succession Financial Planning (SFP) </span>
-                                        : 
-                                        <>
-                                            <span> Succession Financial Planning (SFP) </span>
-                                        </>
-                                    } 
-                                    processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    } 
-                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
-                                    <a href=
-                                        {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? "https://www.sfpadvice.co.za"
-                                        : state['advisor']['email'].includes('fs4p') ? "https://www.fs4p.co.za"
-                                        : state['advisor']['email'].includes('sanlam') ? "https://www.sanlam.co.za"
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    }
-                                        
-                                    >
-                                        {
-                                            state['advisor'] ?
-                                            state['advisor']['email'].includes('sfp') ? <span> https://www.sfpadvice.co.za </span>
-                                            : state['advisor']['email'].includes('fs4p') ? <span> https://www.fs4p.co.za </span>
-                                            : state['advisor']['email'].includes('sanlam') ? <span> https://www.sanlam.co.za </span>
-                                            : <span> SFP </span>
-                                            : 
-                                            <>
-                                                <span> SFP </span>
-                                            </>
-                                        }
-                                    </a>  
-                                </p>    
+        
+        <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) 
+            processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
+            SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
+            <a href="https://www.sfpadvice.co.za"> https://www.sfpadvice.co.za</a>
+        </p> 
         </div>
 
         {/* <br/> */}
@@ -371,6 +325,7 @@ const GapCover = ({user}) => {
                                 onEditorChange={(e)=>{ setFormData({...FormData, ["GP_Benefits"]: e}) }}
                                 init={{
                                     selector: "textarea",
+                                    browser_spellcheck : true,
                                     height: 300,
                                     placeholder: "Details",
                                     menu: true,
@@ -802,6 +757,7 @@ const GapCover = ({user}) => {
                                 onEditorChange={(e)=>{ setFormData({...FormData, ["GP_Other_Exclusions"]: e}) }}
                                 init={{
                                     selector: "textarea",
+                                    browser_spellcheck : true,
                                     height: 300,
                                     placeholder: "Discuss other exclusions",
                                     menu: true,
@@ -837,6 +793,7 @@ const GapCover = ({user}) => {
                                 onEditorChange={(e)=>{ setFormData({...FormData, ["GP_GeneralComments"]: e}) }}
                                 init={{
                                     selector: "textarea",
+                                    browser_spellcheck : true,
                                     height: 300,
                                     placeholder: "Discuss other exclusions",
                                     menu: true,

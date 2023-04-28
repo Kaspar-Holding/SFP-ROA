@@ -39,16 +39,19 @@ const modules = {
     "image"
   ]
 
-export const ContentEditor = ({ content, onChange }) => {
+export const ContentEditor = ({ content, onBlur }) => {
     const ref = React.useRef(null);
-  
+    useEffect(() => {
+        ref.current.editor.root.setAttribute("spellcheck", "true");
+        ref.current.focus();
+      }, []);
   
     return (
       <Quill
         ref={ref}
         theme="snow"
         value={content}
-        onChange={onChange}
+        onBlur={(e)=>{onBlur(e)}}
         modules={modules}
         formats={formats}
       />
@@ -383,57 +386,10 @@ const RecordOfAdvice = ({user}) => {
                             </div>
                             <hr className="col-11" />
                             <div className="col-11 p_class">
-                                <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> Succession Financial Planning (SFP) </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> Financial Solutions 4 Professionals (FS4P) </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> Aligned Financial Planning (AFP) </span>
-                                        : <span> Succession Financial Planning (SFP) </span>
-                                        : 
-                                        <>
-                                            <span> Succession Financial Planning (SFP) </span>
-                                        </>
-                                    } 
+                                <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) 
                                     processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    } 
-                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
-                                    <a href=
-                                        {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? "https://www.sfpadvice.co.za"
-                                        : state['advisor']['email'].includes('fs4p') ? "https://www.fs4p.co.za"
-                                        : state['advisor']['email'].includes('sanlam') ? "https://www.sanlam.co.za"
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    }
-                                        
-                                    >
-                                        {
-                                            state['advisor'] ?
-                                            state['advisor']['email'].includes('sfp') ? <span> https://www.sfpadvice.co.za </span>
-                                            : state['advisor']['email'].includes('fs4p') ? <span> https://www.fs4p.co.za </span>
-                                            : state['advisor']['email'].includes('sanlam') ? <span> https://www.sanlam.co.za </span>
-                                            : <span> SFP </span>
-                                            : 
-                                            <>
-                                                <span> SFP </span>
-                                            </>
-                                        }
-                                    </a>  
+                                    SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
+                                    <a href="https://www.sfpadvice.co.za"> https://www.sfpadvice.co.za</a>
                                 </p>
                             </div>
                             <h5 className="section_class"><b>SECTION A:</b></h5>
@@ -485,7 +441,6 @@ const RecordOfAdvice = ({user}) => {
                                             null
                                         }
                                         {/* <textarea id="letter_of_introduction" required={FormData['clientLetterOfIntroduction'] === 0 ? true : false} value={FormData['clientLetterOfIntroductionReason']} maxLength={256} name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                                        <ContentEditor content={FormData['clientLetterOfIntroductionReason']} />
                                         <Editor
                                             onInit={(evt, editor) => compulsoryAEditorRef.current = editor}
                                             value={FormData['clientLetterOfIntroductionReason']}
@@ -494,9 +449,9 @@ const RecordOfAdvice = ({user}) => {
                                             onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}
                                             name="clientBackgroundInfo"
                                             init={{
+                                                browser_spellcheck : true,
                                                 selector: "textarea",
                                                 height: 300,
-                                                browser_spellcheck : true,
                                                 contextmenu: false,
                                                 menubar: true,
                                                 plugins: [
@@ -584,6 +539,7 @@ const RecordOfAdvice = ({user}) => {
                                             name="clientBackgroundInfo"
                                             init={{
                                                 selector: "textarea",
+                                                browser_spellcheck : true,
                                                 height: 300,
                                                 menu: true,
                                                 plugins: [
@@ -691,6 +647,7 @@ const RecordOfAdvice = ({user}) => {
                                             name="clientBackgroundInfo"
                                             init={{
                                                 selector: "textarea",
+                                                browser_spellcheck : true,
                                                 height: 300,
                                                 menu: true,
                                                 plugins: [
@@ -786,6 +743,7 @@ const RecordOfAdvice = ({user}) => {
                                 name="clientBackgroundInfo"
                                 init={{
                                     selector: "textarea",
+                                    browser_spellcheck : true,
                                     height: 300,
                                     menu: true,
                                     plugins: [

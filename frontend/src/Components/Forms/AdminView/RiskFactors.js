@@ -624,11 +624,11 @@ const RiskFactors = ({user}) => {
                             </div>
                             <div className='col-5'>
                                 <div className='row'>
-                                    <div className='col-4'>
+                                    {/* <div className='col-4'>
                                         <form>
                                             <button type='submit' className='btn btn-primary col-12'>Edit</button>
                                         </form>
-                                    </div>                        
+                                    </div>                         */}
                                     <div className='col-4'>
                                         {/* <NavLink to={{pathname:"/printform"}} state={{formId : FormData['id'], advisorId : FormData['advisorId'], clientIdNumber: FormData['clientIdNumber']}} className='btn btn-success col-11'>Print</NavLink> */}
                                         <button type='submit' onClick={(e)=>{DownloadDRAPDF(e, true)}} className="btn btn-success col-11">Print</button><br/>

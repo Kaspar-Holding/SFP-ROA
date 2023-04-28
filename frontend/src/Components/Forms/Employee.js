@@ -539,58 +539,12 @@ const Employee = ({user}) =>
 
                 <hr/>
                 <div className="col-11 p_class">
-                    <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> Succession Financial Planning (SFP) </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> Financial Solutions 4 Professionals (FS4P) </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> Aligned Financial Planning (AFP) </span>
-                                        : <span> Succession Financial Planning (SFP) </span>
-                                        : 
-                                        <>
-                                            <span> Succession Financial Planning (SFP) </span>
-                                        </>
-                                    } 
-                                    processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    } 
-                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
-                                    <a href=
-                                        {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? "https://www.sfpadvice.co.za"
-                                        : state['advisor']['email'].includes('fs4p') ? "https://www.fs4p.co.za"
-                                        : state['advisor']['email'].includes('sanlam') ? "https://www.sanlam.co.za"
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    }
-                                        
-                                    >
-                                        {
-                                            state['advisor'] ?
-                                            state['advisor']['email'].includes('sfp') ? <span> https://www.sfpadvice.co.za </span>
-                                            : state['advisor']['email'].includes('fs4p') ? <span> https://www.fs4p.co.za </span>
-                                            : state['advisor']['email'].includes('sanlam') ? <span> https://www.sanlam.co.za </span>
-                                            : <span> SFP </span>
-                                            : 
-                                            <>
-                                                <span> SFP </span>
-                                            </>
-                                        }
-                                    </a>  
-                                </p>
+                    
+                    <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) 
+                        processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
+                        SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
+                        <a href="https://www.sfpadvice.co.za"> https://www.sfpadvice.co.za</a>
+                    </p>
                 </div>
                 <h5 className={
         state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
@@ -953,6 +907,7 @@ const Employee = ({user}) =>
                                     onBlur={(e)=>{backgroundInfo_onBlur1();onFieldBlur(e)}}
                                     init={{
                                         selector: "textarea",
+                                        browser_spellcheck : true,
                                         height: 300,
                                         menu: true,
                                         plugins: [
@@ -1988,6 +1943,7 @@ Record the client's instructions, deviations and implications thereof.
         name="EB_BusRB_AccidentBenefitReason"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: "Explain the reasons why life cover benefits were recommended to satisfy this need. \nRecord the client's instructions, deviations and implications thereof.",
             height: 300,
             menu: true,
@@ -2043,6 +1999,7 @@ Record the client's instructions, deviations and implications thereof.
         name="EB_BusRB_DiC_Reason"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: `
                 Explain the reasons why disability benefits were recommended to satisfy this need. 
                 Record the client's instructions, deviations and implications thereof.` ,
@@ -2102,6 +2059,7 @@ Record the client's instructions, deviations and implications thereof.
         name="EB_BusRB_DrC_Reason"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: `Explain the reasons why dread disease cover was recommended to satisfy this need. 
             Record the client's instructions, deviations and implications thereof.` ,
             height: 300,
@@ -2153,6 +2111,7 @@ Record the client's instructions, deviations and implications thereof.
         name="EB_BusRB_DrC_Summary"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: `Summary of recommendations to address your identified needs.` ,
             height: 300,
             menu: true,

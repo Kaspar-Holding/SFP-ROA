@@ -935,58 +935,12 @@ const Short_term_Personal = ({user}) => {
           </div>
         </div>
        <form onSubmit={e => onSubmit(e)}>
-       <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> Succession Financial Planning (SFP) </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> Financial Solutions 4 Professionals (FS4P) </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> Aligned Financial Planning (AFP) </span>
-                                        : <span> Succession Financial Planning (SFP) </span>
-                                        : 
-                                        <>
-                                            <span> Succession Financial Planning (SFP) </span>
-                                        </>
-                                    } 
-                                    processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    } 
-                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
-                                    <a href=
-                                        {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? "https://www.sfpadvice.co.za"
-                                        : state['advisor']['email'].includes('fs4p') ? "https://www.fs4p.co.za"
-                                        : state['advisor']['email'].includes('sanlam') ? "https://www.sanlam.co.za"
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    }
-                                        
-                                    >
-                                        {
-                                            state['advisor'] ?
-                                            state['advisor']['email'].includes('sfp') ? <span> https://www.sfpadvice.co.za </span>
-                                            : state['advisor']['email'].includes('fs4p') ? <span> https://www.fs4p.co.za </span>
-                                            : state['advisor']['email'].includes('sanlam') ? <span> https://www.sanlam.co.za </span>
-                                            : <span> SFP </span>
-                                            : 
-                                            <>
-                                                <span> SFP </span>
-                                            </>
-                                        }
-                                    </a>  
-                                </p>
+       
+       <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) 
+            processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
+            SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
+            <a href="https://www.sfpadvice.co.za"> https://www.sfpadvice.co.za</a>
+        </p>
        <hr/>
        <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
             <div className="row">
@@ -1275,6 +1229,7 @@ const Short_term_Personal = ({user}) => {
               name="STIP_General_RefusedDetails"
               init={{
                   selector: "textarea",
+                  browser_spellcheck : true,
                   placeholder: "If yes, provide details",
                   height: 300,
                   menu: true,
@@ -1337,6 +1292,7 @@ const Short_term_Personal = ({user}) => {
                   name="STIP_General_RisksDetails"
                   init={{
                       selector: "textarea",
+                      browser_spellcheck : true,
                       placeholder: "If yes,provide name of the issuer",
                       height: 300,
                       menu: true,
@@ -3534,6 +3490,7 @@ const Short_term_Personal = ({user}) => {
           name="STIP_CnRI_ReplacePurpose"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -3557,6 +3514,7 @@ const Short_term_Personal = ({user}) => {
           name="STIP_CnRI_ReplaceReason"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -3580,6 +3538,7 @@ const Short_term_Personal = ({user}) => {
           name="STIP_CnRI_ReplaceSupplier"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -3632,6 +3591,7 @@ const Short_term_Personal = ({user}) => {
                     name="STIP_HC_StreetNumber"
                     init={{
                         selector: "textarea",
+                        browser_spellcheck : true,
                         height: 300,
                         menu: true,
                         plugins: [
@@ -4256,6 +4216,7 @@ const Short_term_Personal = ({user}) => {
                     name="STIP_Build_StreetNumber"
                     init={{
                         selector: "textarea",
+                        browser_spellcheck : true,
                         height: 300,
                         menu: true,
                         plugins: [
@@ -4554,6 +4515,7 @@ const Short_term_Personal = ({user}) => {
                           name="STIP_AddProp_StreetNumber"
                           init={{
                               selector: "textarea",
+                              browser_spellcheck : true,
                               height: 300,
                               menu: true,
                               plugins: [
@@ -6345,6 +6307,7 @@ const Short_term_Personal = ({user}) => {
           name="STIP_PersonalLL_Comments"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -6502,6 +6465,7 @@ const Short_term_Personal = ({user}) => {
           name="STIP_ProductConsidered"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -6525,6 +6489,7 @@ const Short_term_Personal = ({user}) => {
           name="STIP_ProductRecommended"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -6548,6 +6513,7 @@ const Short_term_Personal = ({user}) => {
           name="STIP_ProductReasons"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [

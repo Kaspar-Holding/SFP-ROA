@@ -755,58 +755,12 @@ const AssuranceRisk = ({user}) =>
             <hr className="col-12" />
 
             <div className="col-12 p_class">
-            <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> Succession Financial Planning (SFP) </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> Financial Solutions 4 Professionals (FS4P) </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> Aligned Financial Planning (AFP) </span>
-                                        : <span> Succession Financial Planning (SFP) </span>
-                                        : 
-                                        <>
-                                            <span> Succession Financial Planning (SFP) </span>
-                                        </>
-                                    } 
-                                    processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
-                                    {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? <span> SFP </span>
-                                        : state['advisor']['email'].includes('fs4p') ? <span> FS4P </span>
-                                        : state['advisor']['email'].includes('sanlam') ? <span> AFP </span>
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    } 
-                                    retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
-                                    <a href=
-                                        {
-                                        state['advisor'] ?
-                                        state['advisor']['email'].includes('sfp') ? "https://www.sfpadvice.co.za"
-                                        : state['advisor']['email'].includes('fs4p') ? "https://www.fs4p.co.za"
-                                        : state['advisor']['email'].includes('sanlam') ? "https://www.sanlam.co.za"
-                                        : <span> SFP </span>
-                                        : 
-                                        <>
-                                            <span> SFP </span>
-                                        </>
-                                    }
-                                        
-                                    >
-                                        {
-                                            state['advisor'] ?
-                                            state['advisor']['email'].includes('sfp') ? <span> https://www.sfpadvice.co.za </span>
-                                            : state['advisor']['email'].includes('fs4p') ? <span> https://www.fs4p.co.za </span>
-                                            : state['advisor']['email'].includes('sanlam') ? <span> https://www.sanlam.co.za </span>
-                                            : <span> SFP </span>
-                                            : 
-                                            <>
-                                                <span> SFP </span>
-                                            </>
-                                        }
-                                    </a>  
-                                </p>
+            
+              <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) 
+                  processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to 
+                  SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on 
+                  <a href="https://www.sfpadvice.co.za"> https://www.sfpadvice.co.za</a>
+              </p>
             </div>
 
             <h5 className="section_class"><b>SECTION A:</b></h5>
@@ -866,6 +820,7 @@ const AssuranceRisk = ({user}) =>
                       name="AR_ComDisc_AuthorizedPersonDetail"
                       init={{
                           selector: "textarea",
+                          browser_spellcheck : true,
                           placeholder: 'If no, motivate',
                           height: 300,
                           menu: true,
@@ -936,6 +891,7 @@ const AssuranceRisk = ({user}) =>
                       name="AR_ComDisc_AuthorityDetail"
                       init={{
                           selector: "textarea",
+                          browser_spellcheck : true,
                           placeholder: 'If no, motivate',
                           height: 300,
                           menu: true,
@@ -1010,6 +966,7 @@ const AssuranceRisk = ({user}) =>
                     name="AR_FICADetail"
                     init={{
                         selector: "textarea",
+                        browser_spellcheck : true,
                         placeholder: 'If no, motivate',
                         height: 300,
                         menu: true,
@@ -1085,6 +1042,7 @@ const AssuranceRisk = ({user}) =>
                     name="AR_RepPrs_TakenDetail"
                     init={{
                         selector: "textarea",
+                        browser_spellcheck : true,
                         placeholder: 'If no, motivate',
                         height: 300,
                         menu: true,
@@ -1153,6 +1111,7 @@ const AssuranceRisk = ({user}) =>
                     name="AR_RepPrs_ExplainedDetail"
                     init={{
                         selector: "textarea",
+                        browser_spellcheck : true,
                         placeholder: 'If no, motivate',
                         height: 300,
                         menu: true,
@@ -1221,6 +1180,7 @@ const AssuranceRisk = ({user}) =>
                     name="AR_RepPrs_CancelledDetail"
                     init={{
                         selector: "textarea",
+                        browser_spellcheck : true,
                         placeholder: 'If no, motivate',
                         height: 300,
                         menu: true,
@@ -1329,6 +1289,7 @@ const AssuranceRisk = ({user}) =>
             name="AR_ReplacementBackInfo"
             init={{
                 selector: "textarea",
+                browser_spellcheck : true,
                 placeholder: 'Brief description of the business.',
                 height: 300,
                 menu: true,
@@ -1470,6 +1431,7 @@ const AssuranceRisk = ({user}) =>
       name="AR_BusA_Details"
       init={{
           selector: "textarea",
+          browser_spellcheck : true,
           placeholder: 'Provide description and motivation of the description of the needs identified.',
           height: 300,
           menu: true,
@@ -1649,6 +1611,7 @@ const AssuranceRisk = ({user}) =>
           name="AR_BnS_Comments"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -1861,6 +1824,7 @@ const AssuranceRisk = ({user}) =>
           name="AR_KeyP_Comments"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -2010,6 +1974,7 @@ const AssuranceRisk = ({user}) =>
           name="AR_SureNLia_Comments"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -2160,6 +2125,7 @@ const AssuranceRisk = ({user}) =>
           name="AR_BusOvProt_Comments"
           init={{
               selector: "textarea",
+              browser_spellcheck : true,
               height: 300,
               menu: true,
               plugins: [
@@ -2460,6 +2426,7 @@ Record the client's instructions, deviations and implications thereof..`}  aria-
         name="AR_LifeCoverFinancialSolutions"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: "Explain the reasons why Life cover benefits were recommended to satisfy this need. Record the client's instructions, deviations and implications thereof..",
             height: 300,
             menu: true,
@@ -2514,6 +2481,7 @@ Record the client's instructions, deviations and implications thereof.
         name="AR_DiC_FinancialSolutions"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: "Explain the reasons why Disability cover benefits were recommended to satisfy this need. Record the client's instructions, deviations and implications thereof.",
             height: 300,
             menu: true,
@@ -2572,6 +2540,7 @@ Record the client's instructions, deviations and implications thereof.
         name="AR_AltS_1"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: "1. Identify the type of product or product provider which was considered but not selected and motivate..",
             height: 300,
             menu: true,
@@ -2619,6 +2588,7 @@ Record the client's instructions, deviations and implications thereof.
         name="AR_AltS_2"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: "2. Identify the type of product or product provider which was considered but not selected and motivate..",
             height: 300,
             menu: true,
@@ -2666,6 +2636,7 @@ Record the client's instructions, deviations and implications thereof.
         name="AR_AltS_3"
         init={{
             selector: "textarea",
+            browser_spellcheck : true,
             placeholder: "3. Identify the type of product or product provider which was considered but not selected and motivate..",
             height: 300,
             menu: true,
@@ -3010,6 +2981,7 @@ Record the client's instructions, deviations and implications thereof.
                           name="ProductReasons"                     
                           init={{
                               selector: "textarea",
+                              browser_spellcheck : true,
                               placeholder: "Motivate why the chosen product was recommended to best suit your client's needs.",
                               height: 300,
                               menu: true,
@@ -3059,6 +3031,7 @@ Record the client's instructions, deviations and implications thereof.
                           name="ProductMaterialAspects"                     
                           init={{
                               selector: "textarea",
+                              browser_spellcheck : true,
                               placeholder: "Explain any deviations from your recommendation and the implications thereof.",
                               height: 300,
                               menu: true,
@@ -3113,6 +3086,7 @@ Record the client's instructions, deviations and implications thereof.
                           name="ProductDetails"                     
                           init={{
                               selector: "textarea",
+                              browser_spellcheck : true,
                               placeholder: "Disclose and explain the following: The tax implications for the company, e.g., income tax The tax implications for the lives covered, e.g., estate duty, income tax, CGT Executor’s fees?",
                               height: 300,
                               menu: true,
@@ -3166,6 +3140,7 @@ Record the client's instructions, deviations and implications thereof.
                           name="ProductBriefSummary"                     
                           init={{
                               selector: "textarea",
+                              browser_spellcheck : true,
                               placeholder: "Provide a brief summary of the contents of the quote with regard to the following: Benefit terms (cease ages, cover periods etc.) Details of premium and cover pattern structure, frequency etc.",
                               height: 300,
                               menu: true,
@@ -3214,6 +3189,7 @@ Record the client's instructions, deviations and implications thereof.
                           name="Cessionaries"                     
                           init={{
                               selector: "textarea",
+                              browser_spellcheck : true,
                               placeholder: "Record discussion with regard to cessionaries, if applicable.",
                               height: 300,
                               menu: true,
@@ -3272,6 +3248,7 @@ Record the client's instructions, deviations and implications thereof.
                           name="InformationExplained"                     
                           init={{
                               selector: "textarea",
+                              browser_spellcheck : true,
                               placeholder: "Discuss the following information which has been explained to client: General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.) Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings) Waiting periods Cooling off period Other relevant information.",
                               height: 300,
                               menu: true,
