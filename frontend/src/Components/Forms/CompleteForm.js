@@ -63,7 +63,7 @@ const CompleteForm = ({user}) => {
             <li className="nav-item" role="presentation">
                 <button 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                         : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                         : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
                         : "nav-link"
@@ -73,7 +73,7 @@ const CompleteForm = ({user}) => {
             <li className="nav-item" role="presentation">
                 <button 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                         : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                         : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
                         : "nav-link"
@@ -83,7 +83,7 @@ const CompleteForm = ({user}) => {
             <li className="nav-item" role="presentation">
                 <button 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                         : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                         : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
                         : "nav-link"
@@ -93,7 +93,7 @@ const CompleteForm = ({user}) => {
             <li className="nav-item" role="presentation">
                 <button 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                         : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                         : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
                         : "nav-link"
@@ -103,7 +103,7 @@ const CompleteForm = ({user}) => {
             <li className="nav-item" role="presentation">
                 <button 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                         : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                         : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
                         : "nav-link"
@@ -113,7 +113,7 @@ const CompleteForm = ({user}) => {
             <li className="nav-item" role="presentation">
                 <button 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                         : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                         : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
                         : "nav-link"
@@ -123,7 +123,7 @@ const CompleteForm = ({user}) => {
             <li className="nav-item" role="presentation">
                 <button 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                         : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                         : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
                         : "nav-link"
@@ -133,7 +133,7 @@ const CompleteForm = ({user}) => {
             <li className="nav-item" role="presentation">
                 <button 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                         : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                         : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
                         : "nav-link"
@@ -143,7 +143,7 @@ const CompleteForm = ({user}) => {
             <li className="nav-item" role="presentation">
                 <button 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                         : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                         : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
                         : "nav-link"
@@ -153,7 +153,7 @@ const CompleteForm = ({user}) => {
             <li className="nav-item" role="presentation">
                 <button 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                         : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                         : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
                         : "nav-link"
@@ -163,7 +163,7 @@ const CompleteForm = ({user}) => {
             <li className="nav-item" role="presentation">
                 <button 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "nav-link sfp-text" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                         : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                         : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
                         : "nav-link"
