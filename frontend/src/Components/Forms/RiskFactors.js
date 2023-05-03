@@ -632,7 +632,7 @@ const RiskFactors = ({user}) => {
                             <div className='col-7'>
                                 <div 
                                     className={
-                                        state['advisor']['email'].includes('sfp') ? "sfp-text" 
+                                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "sfp-text" 
                                         : state['advisor']['email'].includes('fs4p') ? "fs4p-text" 
                                         : state['advisor']['email'].includes('sanlam') ? "sanlam-text" 
                                         : "sfp-text"
@@ -713,7 +713,7 @@ const RiskFactors = ({user}) => {
         
             <div className="notification_container">
                 <div className={
-              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "alert alert-sfp-success fade show" 
               : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
               : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
               : "alert alert-sfp-success fade show"

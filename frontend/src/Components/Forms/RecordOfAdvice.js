@@ -147,11 +147,7 @@ const RecordOfAdvice = ({user}) => {
         const Body = JSON.stringify(formData)
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/addformdata/`, Body ,config)
-            if (response.status === 201) {
-                setFormData(response.data['formData'])
-            } else {
-                setFormData(response.data['formData'])
-            }
+            setFormData(response.data['formData'])
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
@@ -280,7 +276,7 @@ const RecordOfAdvice = ({user}) => {
             <div className="notification_container">
                 <div 
                     className={
-                        state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "alert alert-sfp-success fade show" 
                         : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
                         : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
                         : "alert alert-sfp-success fade show"
@@ -297,7 +293,7 @@ const RecordOfAdvice = ({user}) => {
             </div> */}
             <div className="bg-white p-1 rounded">
                 <h2 className={
-                    state['advisor']['email'].includes('sfp') ? "fw-bold sfp-text" 
+                    state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "fw-bold sfp-text" 
                     : state['advisor']['email'].includes('fs4p') ? "fw-bold fs4p-text" 
                     : state['advisor']['email'].includes('sanlam') ? "fw-bold sanlam-text" 
                     : "fw-bold"
@@ -396,7 +392,7 @@ const RecordOfAdvice = ({user}) => {
                             <ol style={{fontFamily: 'Arial Narrow',fontSize: 15}}>
                                 <li 
                                     className={
-                                        state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
                                         : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
                                         : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
                                         : "h6 fw-bold"
@@ -594,7 +590,7 @@ const RecordOfAdvice = ({user}) => {
                                 </div>
                                 <hr className="col-11" />
                                 <li className={
-                                        state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
                                         : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
                                         : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
                                         : "h6 fw-bold "
@@ -690,7 +686,7 @@ const RecordOfAdvice = ({user}) => {
                             <h5 className="section_class"><b>SECTION B:</b></h5>
                             <h5 
                                 className={
-                                    state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+                                    state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
                                     : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
                                     : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
                                     : "h6 fw-bold"
@@ -766,7 +762,7 @@ const RecordOfAdvice = ({user}) => {
                     </div>
                     <div  
                         className={
-                            state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "container-sfp" 
                             : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
                             : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
                             : "container-sfp"
@@ -777,7 +773,7 @@ const RecordOfAdvice = ({user}) => {
                         >
                             <div 
                                 className={
-                                    state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                                    state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "tooltip-sfp" 
                                     : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
                                     : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
                                     : "tooltip-sfp"

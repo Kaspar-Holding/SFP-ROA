@@ -328,14 +328,18 @@ def insertFormData(request):
     if serializer.is_valid():
         old_form = Form.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
         serializer1 = FormSerializers(old_form, many=False)
-        # return Response({"data":serializer1.data, "length": len(serializer1.data['client_id'])})
-        if len(serializer1.data['clientIdNumber']) == 0:
+        data = serializer1.data
+        # return Response({"data":serializer1.data, "length": str(serializer1.data['advisorId'])})
+        if str(serializer1.data['advisorId']) == "None":
             serializer.create(serializer.validated_data)
             latest = Form.objects.latest('id')
             serializer2 = FormSerializers(latest, many=False)
-            return Response({"message": "Data is inserted","formId":serializer2.data['id'],"formData":serializer2.data,"code":201,},201)
+            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
         else :
-            return Response({'message': "Form Already Exists","code": "200", "formData" : serializer1.data},200)
+            del data['status']
+            del data['created_at']
+            del data['updated_at']
+            return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 

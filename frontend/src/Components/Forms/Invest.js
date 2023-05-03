@@ -553,7 +553,7 @@ const Invest = ({user}) =>
         
       <div className="notification_container">
         <div className={
-              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "alert alert-sfp-success fade show" 
               : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
               : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
               : "alert alert-sfp-success fade show"
@@ -566,7 +566,7 @@ const Invest = ({user}) =>
                 
                 <br/>
                     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -574,7 +574,7 @@ const Invest = ({user}) =>
                     <hr/>
                     <h6 
                         className={
-                            state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+                            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
                             : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
                             : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
                             : "fw-bold"
@@ -652,7 +652,7 @@ const Invest = ({user}) =>
             />
             <br/>
             <h6 className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -1254,7 +1254,7 @@ const Invest = ({user}) =>
 
             <h5 className="text-start " ><b>SECTION C:</b></h5> 
             <h6 className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -1319,7 +1319,7 @@ const Invest = ({user}) =>
             />
             <h5 className="text-start " ><b>SECTION D:</b></h5> 
             <h6 className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -1479,7 +1479,7 @@ const Invest = ({user}) =>
             <br />
             <h5 className="text-start " ><b>SECTION E:</b></h5> 
             <h6 className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -2382,7 +2382,7 @@ const Invest = ({user}) =>
             
             <div  
                         className={
-                            state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "container-sfp" 
                             : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
                             : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
                             : "container-sfp"
@@ -2393,7 +2393,7 @@ const Invest = ({user}) =>
                         >
                             <div 
                                 className={
-                                    state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                                    state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "tooltip-sfp" 
                                     : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
                                     : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
                                     : "tooltip-sfp"

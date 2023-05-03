@@ -1166,7 +1166,7 @@ const Short_term_Commercial= ({user}) => {
         <>
         <br/>
             <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -1174,7 +1174,7 @@ const Short_term_Commercial= ({user}) => {
             <hr/>
             <div className="notification_container">
               <div className={
-              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "alert alert-sfp-success fade show" 
               : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
               : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
               : "alert alert-sfp-success fade show"
@@ -1339,7 +1339,7 @@ const Short_term_Commercial= ({user}) => {
                                 </p>
         <hr/>
         <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -1588,7 +1588,7 @@ const Short_term_Commercial= ({user}) => {
                     <p style={{color:"grey"}}>It is important for the purpose of disclosure that the insurer is aware of the full business description which encompasses all the activities that the business is involved. This impacts the validity of the cover and potential future claims, and you are requested to inform us whenever there may be change in the business description.</p>
 
                     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -1677,7 +1677,7 @@ const Short_term_Commercial= ({user}) => {
 
                     <br/>
                     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -1812,7 +1812,7 @@ const Short_term_Commercial= ({user}) => {
 
                             <br/>
                             <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4366,7 +4366,7 @@ const Short_term_Commercial= ({user}) => {
                             </div>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4375,7 +4375,7 @@ const Short_term_Commercial= ({user}) => {
                               {/* <br/> */}
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4384,7 +4384,7 @@ const Short_term_Commercial= ({user}) => {
                               {/* <br/> */}
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4402,7 +4402,7 @@ const Short_term_Commercial= ({user}) => {
                               </ul>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4410,7 +4410,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>All sums insured/limits of indemnity must be inclusive of VAT and in some instances, e.g. personal accident/stated benefits cover, where indemnity payments received by 'vendor insured's' are vatable, the sums insured/limits of indemnity would need to be increased by a further 15% so as not to reduce the net payment when a claim occurs.</p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4431,7 +4431,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>If all premiums have not been paid, any claims made will not be settled under this policy.</p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4439,7 +4439,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>If the premium for any section of this policy has been calculated on any estimated figures, the Insured shall, after the expiry of each period of insurance, furnish the Company with such particulars and information as the Company may require for the purpose of recalculation of the premium for such period. Any differences shall be paid by or to the Insured as the case may be.</p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4451,7 +4451,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>In addition, you need to immediately advise your broker of any changes or planned changes in your assets or business activities.</p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4459,7 +4459,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>The building and outbuildings are constructed with brick walls, stone or concrete and are roofed with slate, tiles, concrete, asbestos, or metal. We must be advised if any structure on your premises is not constructed in accordance with these requirements.</p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4469,7 +4469,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>Theft (or any attempt thereat) of contents, electronic and all other equipment, plant, machinery, landlord's fixtures, and fittings, etc. not accompanied by forcible and violent entry into or exit from such building, is excluded unless specifically insured. An alarm warranty is also applicable for all sections which provide theft cover to the premises and requires that a linked alarm be activated and in working order whenever the premises is unoccupied. The alarm must be linked to a 24-hour manned control room and armed reaction and be activated whenever the premises is unoccupied. If either of these conditions are not met, there will be no cover. We further recommend that you test the alarm at the intervals recommended by the service provider to ensure that the alarm is operational and in working order.</p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4477,7 +4477,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>Power surge cover is generally limited in terms of the policy, and we encourage you to check each section of the policy to determine the adequacy of the limit of cover selected. Insurers further require that there is SABS-approved power surge arrestors installed at the premises for the cover to be valid, or else ensuring that the cover is not limited, or additional excesses being applied. We recommend that such surge arrestors be installed on the mains of the premises by a professional service provider, to ensure that all equipment is adequate protected.</p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4490,7 +4490,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>Pleading ignorance when your boundary wall becomes a retaining wall by the action or inaction of a third party and then collapses is unfortunately of no help in an insurance claim. When in doubt, always ask your broker for assistance.</p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4498,7 +4498,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>On the happening of an event that may result in a claim under this policy, notify us as soon as possible and provide in writing details of the event including all substantiating documentation that your insurers may require. The police must be notified immediately after the event. Insurers require that all claims be reported no later than 30 days after the insured event or there may be no cover.</p>
                               
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4506,7 +4506,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>You are required to take all reasonable steps and precautions to prevent accidents or losses, including, but not limited to, compliance and adherence to laws and regulations which are material to the risk. It is warranted that all laws, regulations, by-laws, and rules which apply to the business or any other matter for which cover is provided in terms of the policy shall be always adhered to. </p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4514,7 +4514,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>If the Insured can demonstrate through video surveillance footage (or any other conclusive proof) that an attempt was made to lock the vehicle using the vehicle remote but that the locking mechanism was blocked by thieves using an electronic device, such evidence shall be deemed to satisfy the forcible and violent entry or exit requirement for any loss out of the cab or boot of the vehicle</p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4532,7 +4532,7 @@ const Short_term_Commercial= ({user}) => {
                               </ul>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4540,7 +4540,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>Your policy is subject to several different excesses/first amounts payable for each section of the policy where cover has been selected – these are detailed per section of the policy or are listed under the Excess section. Refer to the various sections for applicable excesses/first amounts payable in the event of a claim.</p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4549,7 +4549,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>Where tracking devices are not a requirement, and you have elected to fit such a device of your own accord, inform us as you may be entitled to a reduction in premium and/or your theft excess may be waived (subject to policy terms and conditions).</p>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -4977,7 +4977,7 @@ const Short_term_Commercial= ({user}) => {
                               </div>
 
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -5288,7 +5288,7 @@ const Short_term_Commercial= ({user}) => {
 
                               <br/>
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -5532,7 +5532,7 @@ const Short_term_Commercial= ({user}) => {
 
                               <br/>
                               <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -6920,7 +6920,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -7183,7 +7183,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -7318,7 +7318,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -7657,7 +7657,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -7840,7 +7840,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -8187,7 +8187,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -8483,7 +8483,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -8678,7 +8678,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -8966,7 +8966,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -9540,7 +9540,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -9805,7 +9805,7 @@ const Short_term_Commercial= ({user}) => {
   </table>
 
   <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -9955,7 +9955,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -10422,7 +10422,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -10929,7 +10929,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -11480,7 +11480,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -11953,7 +11953,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -12206,7 +12206,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -12463,7 +12463,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -12652,7 +12652,7 @@ const Short_term_Commercial= ({user}) => {
       <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -12739,7 +12739,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -12802,7 +12802,7 @@ const Short_term_Commercial= ({user}) => {
   </div>
   <div  
               className={
-                  state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                  state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "container-sfp" 
                   : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
                   : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
                   : "container-sfp"
@@ -12813,7 +12813,7 @@ const Short_term_Commercial= ({user}) => {
               >
                   <div 
                       className={
-                          state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                          state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "tooltip-sfp" 
                           : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
                           : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
                           : "tooltip-sfp"

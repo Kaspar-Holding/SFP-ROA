@@ -396,7 +396,7 @@ const Risk = ({user}) =>
       <div className="notification_container">
         <div 
           className={
-              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "alert alert-sfp-success fade show" 
               : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
               : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
               : "alert alert-sfp-success fade show"
@@ -410,7 +410,7 @@ const Risk = ({user}) =>
    <br/>
    <div
       className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -419,7 +419,7 @@ const Risk = ({user}) =>
    <hr/>
         <h5 
           className={
-            state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
             : "fw-bold"
@@ -443,7 +443,7 @@ const Risk = ({user}) =>
     <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
       <td className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -623,7 +623,7 @@ const Risk = ({user}) =>
     <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
       <td className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -874,7 +874,7 @@ const Risk = ({user}) =>
     <tr>
        {/* <th scope="row" style={{color:"#14848a"}}>1</th>  */}
       <td className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -1058,7 +1058,7 @@ const Risk = ({user}) =>
 
   <h5 className="text-start " ><b>SECTION C:</b></h5> 
         <h6 className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -1215,7 +1215,7 @@ const Risk = ({user}) =>
 
 <h5 className="text-start " ><b>SECTION D:</b></h5> 
         <h6 className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -1372,7 +1372,7 @@ const Risk = ({user}) =>
             <>
 
                   <h6 className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : "fw-bold"
@@ -1397,8 +1397,8 @@ const Risk = ({user}) =>
                   <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product:</td>
                   <td>  
                   <div className="form-group">
-                      {/* <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="Product_Taken" name='Product_Taken' value={key.Product_Taken} onChange={(e) => {on_ProductTaken_Change(e, i)}}  aria-describedby="emailHelp" placeholder=""/> */}
-                      <select onBlur={(e)=>{onFieldBlur(e)}}className="text-start form-select" name='Product_Taken' value={key.Product_Taken} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="Product_Taken" name='Product_Taken' value={key.Product_Taken} onChange={(e) => {on_ProductTaken_Change(e, i)}}  aria-describedby="emailHelp" placeholder=""/>
+                      {/* <select onBlur={(e)=>{onFieldBlur(e)}}className="text-start form-select" name='Product_Taken' value={key.Product_Taken} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
                             <option value="0" selected>Choose Product</option>
                             <option value="1">Endowment</option>
                             <option value="2">RA</option>
@@ -1407,7 +1407,7 @@ const Risk = ({user}) =>
                             <option value="5">Life Annuity</option>
                             <option value="6">Living Annuity</option>
                             <option value="7">Other</option>
-                        </select>
+                        </select> */}
                   </div>
                 </td>  
                 <td></td>
@@ -2066,7 +2066,7 @@ const Risk = ({user}) =>
 
                     <div  
                         className={
-                            state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "container-sfp" 
                             : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
                             : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
                             : "container-sfp"
@@ -2077,7 +2077,7 @@ const Risk = ({user}) =>
                         >
                             <div 
                                 className={
-                                    state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                                    state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "tooltip-sfp" 
                                     : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
                                     : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
                                     : "tooltip-sfp"

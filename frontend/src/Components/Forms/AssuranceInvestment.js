@@ -603,7 +603,7 @@ const AssuranceInvestment = ({user}) =>
         
       <div className="notification_container">
         <div className={
-              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "alert alert-sfp-success fade show" 
               : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
               : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
               : "alert alert-sfp-success fade show"
@@ -616,7 +616,7 @@ const AssuranceInvestment = ({user}) =>
     <br/>
     <h5 className="section_class"><b>SECTION B:</b></h5>
         <div className={
-            state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
             : "h6 fw-bold"
@@ -1000,7 +1000,7 @@ const AssuranceInvestment = ({user}) =>
 
 <br/>
 <div className={
-            state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
             : "h6 fw-bold"
@@ -1137,7 +1137,7 @@ const AssuranceInvestment = ({user}) =>
 <br/>
 <h5 className="section_class"><b>SECTION C:</b></h5>
     <div className={
-            state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
             : "h6 fw-bold"
@@ -1200,7 +1200,7 @@ How it will meet the business need
 <br/>
 <h5 className="section_class"><b>SECTION D:</b></h5>
     <div className={
-            state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
             : "h6 fw-bold"
@@ -1346,7 +1346,7 @@ How it will meet the business need
 <br/>
 <h5 className="section_class"><b>SECTION E:</b></h5>
     <div className={
-            state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
             : "h6 fw-bold"
@@ -1568,7 +1568,7 @@ How it will meet the business need
 
     <br/>
     <div className={
-            state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
             : "h6 fw-bold"
@@ -1870,7 +1870,7 @@ o	meeting the investment objectives of the clients
 
 <br/>
       <div className={
-            state['advisor']['email'].includes('sfp') ? "h6 fw-bold sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
             : "h6 fw-bold"
@@ -2411,7 +2411,7 @@ Other relevant information
 }
                     <div  
                         className={
-                            state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "container-sfp" 
                             : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
                             : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
                             : "container-sfp"
@@ -2422,7 +2422,7 @@ Other relevant information
                         >
                             <div 
                                 className={
-                                    state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                                    state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "tooltip-sfp" 
                                     : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
                                     : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
                                     : "tooltip-sfp"

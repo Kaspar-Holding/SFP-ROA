@@ -8,6 +8,10 @@ This project is built on the following Stack
 
 ## Updates
 
+### 03 May 2023:
+- 1965: Record of Advice Bug resolved
+- 1966: Risk Planning Bug resolved
+
 ### 20 April 2023:
 - Working on Rebranding completed
 - Replaced auto save with OnBlur Save

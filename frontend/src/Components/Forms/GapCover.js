@@ -165,7 +165,7 @@ const GapCover = ({user}) => {
         <br/>
         <div className="notification_container">
             <div className={
-              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "alert alert-sfp-success fade show" 
               : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
               : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
               : "alert alert-sfp-success fade show"
@@ -175,7 +175,7 @@ const GapCover = ({user}) => {
             </div>
         </div>
         <div className={
-        state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
+        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
@@ -305,7 +305,7 @@ const GapCover = ({user}) => {
         {/* <br/> */}
         <div><b>SECTION A</b></div>
         <h5 className={
-            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 section_class2 sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
             : "h6 section_class2"
@@ -352,7 +352,7 @@ const GapCover = ({user}) => {
 
                 <div><b>SECTION B</b></div>
                 <h5 className={
-            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 section_class2 sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
             : "h6 section_class2"
@@ -436,7 +436,7 @@ const GapCover = ({user}) => {
 
                 <div><b>SECTION C</b></div>
                 <h5 className={
-            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 section_class2 sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
             : "h6 section_class2"
@@ -516,7 +516,7 @@ const GapCover = ({user}) => {
 
                 <div><b>SECTION D</b></div>
                 <h5 className={
-            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 section_class2 sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
             : "h6 section_class2"
@@ -660,7 +660,7 @@ const GapCover = ({user}) => {
 
                         <tr>
                             <h5 className={
-            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 section_class2 sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
             : "h6 section_class2"
@@ -703,7 +703,7 @@ const GapCover = ({user}) => {
 
                 <div><b>SECTION F</b></div>
                 <h5 className={
-            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 section_class2 sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
             : "h6 section_class2"
@@ -839,7 +839,7 @@ const GapCover = ({user}) => {
 
                     <div><b>SECTION G</b></div>
                     <h5 className={
-            state['advisor']['email'].includes('sfp') ? "h6 section_class2 sfp-text" 
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 section_class2 sfp-text" 
             : state['advisor']['email'].includes('fs4p') ? "h6 section_class2 fs4p-text" 
             : state['advisor']['email'].includes('sanlam') ? "h6 section_class2 sanlam-text" 
             : "h6 section_class2"
@@ -925,7 +925,7 @@ const GapCover = ({user}) => {
                     </div>
                     <div  
               className={
-                  state['advisor']['email'].includes('sfp') ? "container-sfp" 
+                  state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "container-sfp" 
                   : state['advisor']['email'].includes('fs4p') ? "container-fs4p" 
                   : state['advisor']['email'].includes('sanlam') ? "container-sanlam" 
                   : "container-sfp"
@@ -936,7 +936,7 @@ const GapCover = ({user}) => {
               >
                   <div 
                       className={
-                          state['advisor']['email'].includes('sfp') ? "tooltip-sfp" 
+                          state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "tooltip-sfp" 
                           : state['advisor']['email'].includes('fs4p') ? "tooltip-fs4p" 
                           : state['advisor']['email'].includes('sanlam') ? "tooltip-sanlam" 
                           : "tooltip-sfp"
