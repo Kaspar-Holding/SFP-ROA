@@ -11,6 +11,7 @@ This project is built on the following Stack
 ### 03 May 2023:
 - 1965: Record of Advice Bug resolved
 - 1966: Risk Planning Bug resolved
+- 1967: Bug resolved
 
 ### 20 April 2023:
 - Working on Rebranding completed
