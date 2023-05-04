@@ -8,6 +8,9 @@ This project is built on the following Stack
 
 ## Updates
 
+### 04 May 2023:
+- 1974: Search User Functionality Bug Resolved
+
 ### 03 May 2023:
 - 1965: Record of Advice Bug resolved
 - 1966: Risk Planning Bug resolved
