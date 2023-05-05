@@ -3560,6 +3560,12 @@ const Short_term_Personal = ({user}) => {
 
   <br/>
   <hr/>
+  {
+      FormData['STIP_CnRI_1_Recomm'] === 1 || 
+      FormData['STIP_CnRI_1_Accepted'] === 1 || 
+      FormData['STIP_CnRen_1_Recomm'] === 1 || 
+      FormData['STIP_CnRen_1_Accepted'] === 1 ?
+            <>
 <h6 align="left" style={{ color: "#14848A"}}><b>HOUSE CONTENT</b></h6>
 <div><b>Primary Property</b></div>
 
@@ -4184,6 +4190,15 @@ const Short_term_Personal = ({user}) => {
         <div>It is in your own interest to check the adequacy of the sum insured (replacement value – new for old) by using the House Content Inventory and informing us about your requirements. Similar attention should be given to your All Risk policy.</div>
 
         <br/>
+        </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIP_CnRI_2_Recomm'] === 1 || FormData['STIP_CnRI_2_Accepted'] === 1 || 
+        FormData['STIP_CnRen_2_Recomm'] === 1 || FormData['STIP_CnRen_2_Accepted'] === 1 ?
+              <>
         <hr/>
           <h6 align="left" style={{ color: "#14848A"}}><b>BUILDINGS</b></h6>
           <div><b>Primary Property</b></div>
@@ -4788,6 +4803,17 @@ const Short_term_Personal = ({user}) => {
         <hr/>
 
         <br/>
+        </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIP_CnRI_21_Recomm'] === 1 || 
+        FormData['STIP_CnRI_21_Accepted'] === 1 || 
+        FormData['STIP_CnRen_21_Recomm'] === 1 || 
+        FormData['STIP_CnRen_21_Accepted'] === 1 ?
+              <>
         <h6 align="left" style={{ color: "#14848A"}}><b>VEHICLE</b></h6>
         <div>Please see attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number and engine number etc.</div>
 
@@ -5987,7 +6013,14 @@ const Short_term_Personal = ({user}) => {
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_Comments" name='STIP_Trailer_Comments' value={FormData['STIP_Trailer_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
 
         <br/>
-      <h6 align="left" style={{ color: "#14848A"}}><b>WATER CRAFT</b></h6>
+</> :<></>}
+    {
+        FormData['STIP_CnRI_25_Recomm'] === 1 || 
+        FormData['STIP_CnRI_25_Accepted'] === 1 || 
+        FormData['STIP_CnRen_25_Recomm'] === 1 || 
+        FormData['STIP_CnRen_25_Accepted'] === 1 ?
+              <>
+               <h6 align="left" style={{ color: "#14848A"}}><b>WATER CRAFT</b></h6>
       <div>Please see the attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number etc.</div>
 
       <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
@@ -6189,7 +6222,11 @@ const Short_term_Personal = ({user}) => {
 <br/>
       <div>Additional notes on motorcycle that may affect cover/advice to the client:</div>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_Comments" name='STIP_WaterC_Comments' value={FormData['STIP_WaterC_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
-
+        </>
+        :
+              <>
+              </>
+    }
         <br/>
         <h6 align="left" style={{ color: "#14848A"}}><b>PERSONAL LEGAL LIABILITY</b></h6>
       <div>R5 000 000: (this cover is COMPULSORY if household content or building cover is taken)</div>

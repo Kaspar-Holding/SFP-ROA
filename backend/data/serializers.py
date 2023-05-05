@@ -3999,6 +3999,11 @@ class IP_ProductTakenSerializer(serializers.ModelSerializer):
         instance.ItP_FundsReasons = validated_data.get('ItP_FundsReasons', instance.ItP_FundsReasons)
 
         instance.ItP_FundsMaterialAspects = validated_data.get('ItP_FundsMaterialAspects', instance.ItP_FundsMaterialAspects)
+        instance.ItP_ProductDetails = validated_data.get('ItP_ProductDetails', instance.ItP_ProductDetails)
+        instance.ItP_ExecutorFee = validated_data.get('ItP_ExecutorFee', instance.ItP_ExecutorFee)
+        instance.ItP_NominationOfBeneficiaries = validated_data.get('ItP_NominationOfBeneficiaries', instance.ItP_NominationOfBeneficiaries)
+        instance.ItP_InformationExplained = validated_data.get('ItP_InformationExplained', instance.ItP_InformationExplained)
+        instance.ItP_FundsAdditionComments = validated_data.get('ItP_FundsAdditionComments', instance.ItP_FundsAdditionComments)
         
         instance.updated_at = datetime.now(timezone.utc)
         instance.save()
@@ -4046,6 +4051,7 @@ class AR_ProductTakenSerializer(serializers.ModelSerializer):
         
         instance.ProductReasons = validated_data.get('ProductReasons', instance.ProductReasons)    
         instance.ProductMaterialAspects = validated_data.get('ProductMaterialAspects', instance.ProductMaterialAspects)    
+        instance.ProductAdditionComments = validated_data.get('ProductAdditionComments', instance.ProductAdditionComments)    
         instance.ProductDetails = validated_data.get('ProductDetails', instance.ProductDetails)    
         instance.ProductBriefSummary = validated_data.get('ProductBriefSummary', instance.ProductBriefSummary)    
         instance.Cessionaries = validated_data.get('Cessionaries', instance.Cessionaries)    
@@ -4122,6 +4128,9 @@ class AI_ProductTakenSerializer(serializers.ModelSerializer):
 
         instance.PF_Reasons = validated_data.get('PF_Reasons', instance.PF_Reasons)
         instance.PF_MaterialAspects = validated_data.get('PF_MaterialAspects', instance.PF_MaterialAspects)
+        instance.PF_AdditionalComments = validated_data.get('PF_AdditionalComments', instance.PF_AdditionalComments)
+        instance.PF_ExecutorFee = validated_data.get('PF_ExecutorFee', instance.PF_ExecutorFee)
+        instance.PF_InformationExplained = validated_data.get('PF_InformationExplained', instance.PF_InformationExplained)
         instance.PF_Pr_Details = validated_data.get('PF_Pr_Details', instance.PF_Pr_Details)
         instance.PF_NominationOfBeneficiaries = validated_data.get('PF_NominationOfBeneficiaries', instance.PF_NominationOfBeneficiaries)
 

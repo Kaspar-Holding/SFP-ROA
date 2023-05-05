@@ -46,76 +46,7 @@ const Invest = ({user}) =>
 
         
     })
-    const [ProductTaken, setProductTaken] = useState([{
-        advisorId : state['advisor']['id'],  
-        formId : state['formId'],  
-          
-
-        ProductTaken : 0,    
-        ProductProvider : "",    
-        PolicyNumber : "",    
-        ProductName : "",    
-        ProductPremium : "",    
-        ProductPremiumFrequency : 1,   
-        ProductEscalation : "",    
-        ProductEAC : "",    
-        ProductContractingParty : "",    
-        ProductLivesAssured : "",    
-        ProductPremiumLayer : "",    
-        ProductBeneficiary : "",    
-        Product_IniC : "",    
-        Product_IniC_Percentage : "",    
-        Product_OnC : "",    
-        Product_OnC_Percentage : "",    
-
-        SFPSolutionFunds : 2,
-        SFPSolutionFundsDetails : "",
-
-        ItP : "",
-        ItP_Fund : "",
-        ItP_FundPercentage : "",
-        ItP_FundProvided : 0,
-        ItP_FundDiscussed : 0,
-        
-        ItP_Fund1 : "",
-        ItP_FundPercentage1 : "",
-        ItP_FundProvided1 : 0,
-        ItP_FundDiscussed1 : 0,
-
-        ItP_Fund2 : "",
-        ItP_FundPercentage2 : "",
-        ItP_FundProvided2 : 0,
-        ItP_FundDiscussed2 : 0,
-
-        ItP_Fund3 : "",
-        ItP_FundPercentage3 : "",
-        ItP_FundProvided3 : 0,
-        ItP_FundDiscussed3 : 0,
-
-        ItP_Fund4 : "",
-        ItP_FundPercentage4 : "",
-        ItP_FundProvided4 : 0,
-        ItP_FundDiscussed4 : 0,
-
-        ItP_Fund5 : "",
-        ItP_FundPercentage5 : "",
-        ItP_FundProvided5 : 0,
-        ItP_FundDiscussed5 : 0,
-
-        ItP_Fund6 : "",
-        ItP_FundPercentage6 : "",
-        ItP_FundProvided6 : 0,
-        ItP_FundDiscussed6 : 0,
-
-        ItP_Fund7 : "",
-        ItP_FundPercentage7 : "",
-        ItP_FundProvided7 : 0,
-        ItP_FundDiscussed7 : 0,
-
-        ItP_FundsReasons : "",
-
-        ItP_FundsMaterialAspects : ""
-      }])
+    const [ProductTaken, setProductTaken] = useState([])
       const AddNewProductTaken = (e) => {
         const current = [...ProductTaken]
         current.push({
@@ -186,7 +117,12 @@ const Invest = ({user}) =>
 
             ItP_FundsReasons : "",
 
-            ItP_FundsMaterialAspects : ""
+            ItP_FundsMaterialAspects : "",
+            ItP_ProductDetails : "",
+            ItP_FundsExecutorFee : "",
+            ItP_FundsNominationOfBeneficiaries : "",
+            ItP_FundsInformationExplained : "",
+            ItP_FundsAdditionComments : "",
         })
         setProductTaken(current)
     }
@@ -2373,9 +2309,264 @@ const Invest = ({user}) =>
                     In the event of death the investment will pay-out directly to your nominated beneficiary and will not form part of your estate or attract any estate taxes. The beneficiary will be presented with the option to transfer the funds into a new annuity in their name or alternatively take the funds in cash which will attract taxes.The beneficiary also has an option the select the alternatives as a combination.  
                 </p>
 
-           </> : <></>
+           </> : 
+           <>
+                  
+              {
+                  backgroundInfoVisibility8 ? 
+                  <>
+                  <div id="background_info_instructions8" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              Explain any deviations from your recommendation and the implications thereof.
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                  null
+              }              
+              <Editor 
+                  value={key.ItP_FundsMaterialAspects}
+                  onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP_FundsMaterialAspects", i, newText)}}
+                  onFocus={(e)=>{backgroundInfo_onFocus8()}}
+                  onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}}                      
+                  init={{
+                      selector: "textarea",
+                      browser_spellcheck : true,
+                      placeholder : 'Explain any deviations from your recommendation and the implications thereof.',
+                      height: 300,
+                      menu: true,
+                      plugins: [
+                          'advlist autolink link lists image charmap print preview anchor',
+                          'searchreplace visualblocks code fullscreen',
+                          'insertdatetime media table paste code help wordcount',
+                      ],
+                      toolbar: 'styles | undo redo | formatselect | ' +
+                      'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                      'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                      'removeformat | wordcount ',
+                      content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                  }}
+                />
+            <br/>
+              {
+                  backgroundInfoVisibility9 ? 
+                  <>
+                  <div id="background_info_instructions9" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                  null
+              }                          
+              <Editor 
+                value={key.ItP_ProductDetails}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_ProductDetails", i, e)}}
+                onFocus={(e)=>{backgroundInfo_onFocus9()}}
+                onBlur={(e)=>{backgroundInfo_onBlur9();onFieldBlur(e)}}                      
+                init={{
+                    selector: "textarea",
+                    browser_spellcheck : true,
+                    placeholder: 'The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                  }}
+                />
+
+              <br/>
+              {
+                  backgroundInfoVisibility10 ? 
+                  <>
+                  <div id="background_info_instructions10" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              Executor’s fees?<br/>
+                              Does the policy offer any liquidity?<br/>
+                              Provide a summary of the contents of the quote with regard to the following:<br/>
+                              Benefit terms (cease ages, cover periods etc.)<br/>
+                              Details of premium and cover pattern structure, frequency etc.
+
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                  null
+              }
+                          
+              <Editor
+                value={key.ItP_ExecutorFee}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_ExecutorFee", i, e)}}
+                onFocus={(e)=>{backgroundInfo_onFocus10()}}
+                onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}}        
+                init={{
+                    selector: "textarea",
+                    browser_spellcheck : true,
+                    height: 300,
+                    placeholder:'Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n',               
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+              />
+
+            <br/>
+              {
+                  backgroundInfoVisibility11 ? 
+                  <>
+                  <div id="background_info_instructions11" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              Record discussion with regard to nomination of beneficiaries or cessionaries.
+
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                  null
+              }
+              <Editor 
+                value={key.ItP_NominationOfBeneficiaries}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_NominationOfBeneficiaries", i, e)}}
+                onFocus={(e)=>{backgroundInfo_onFocus11()}}
+                onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}}        
+                init={{
+                    selector: "textarea",
+                    browser_spellcheck : true,
+                    height: 300,
+                    placeholder:'Record discussion with regard to nomination of beneficiaries or cessionaries.',               
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+              />
+
+            <br/>
+              {
+                  backgroundInfoVisibility12 ? 
+                  <>
+                  <div id="background_info_instructions12" className="hidden_class">
+                      {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                          <ul>
+                              <li>
+                              Discuss the following information which has been explained to client.<br/>
+                              General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)<br/>
+                              Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)<br/>
+                              Waiting periods<br/>
+                              Cooling off period
+
+                              </li>
+                            
+                          </ul>
+                          
+                  </div>
+                  </>: 
+                  null
+              }
+             <Editor 
+                value={key.ItP_InformationExplained}
+                onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_InformationExplained", i, e)}}
+                onFocus={(e)=>{backgroundInfo_onFocus12()}}
+                onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}}        
+                init={{
+                    selector: "textarea",
+                    browser_spellcheck : true,
+                    height: 300,
+                    placeholder:`Discuss the following information which has been explained to client.
+                    General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)
+                    Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
+                    Waiting periods
+                    Cooling off period`,               
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+              />
+                  <hr/>
+           </>
     }
+            {
+                parseInt(key.ProductTaken)!=7 ?
+                <>
+                    <strong>Additional Comments</strong>
+                    <Editor
+                        value={key.ItP_FundsAdditionComments}
+                        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP_FundsAdditionComments", i, newText)}}
+                        name="ItP_FundsAdditionComments"     
+                        onBlur={(e)=>{onFieldBlur(e)}}                 
+                        init={{
+                            selector: "textarea",
+                            browser_spellcheck : true,
+                            placeholder: `Additional Comments`,
+                            height: 300,
+                            menu: true,
+                            plugins: [
+                                'advlist autolink link lists image charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount',
+                            ],
+                            toolbar: 'styles | undo redo | formatselect | ' +
+                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                            'removeformat | wordcount ',
+                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                        }}
+                    />
+                    <hr/>
+                </>
+                :<></>
+            }
                         </>
+
+                        
                       )
                 }): <></>
             }

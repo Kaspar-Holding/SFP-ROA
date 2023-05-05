@@ -482,7 +482,7 @@ const AssuranceRisk = ({user}) =>
             advisorId : state['advisor']['id'],  
             formId : state['formId'],  
             
-            ProductTaken : 0, 
+            ProductTaken : "", 
             ProductProvider : "",   
             PolicyNumber : "",   
             ProductName : "",   
@@ -2703,7 +2703,9 @@ Record the client's instructions, deviations and implications thereof.
                                     </div>
                                     <div className="col-6" style={{paddingBottom: "0.5%"}}>
                                       <div className=''>
-                                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='ProductTaken' value={parseInt(key.ProductTaken)} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
+                                        <input type="text" className="form-control" id="ProductTaken" name='ProductTaken' value={key.ProductTaken} onChange={(e) => {on_ProductTaken_Change(e, i)}}  aria-describedby="emailHelp" placeholder=""/>
+
+                                        {/* <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='ProductTaken' value={parseInt(key.ProductTaken)} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
                                             <option value="0" selected>Choose Product</option>
                                             <option value="1">Endowment</option>
                                             <option value="2">RA</option>
@@ -2712,7 +2714,7 @@ Record the client's instructions, deviations and implications thereof.
                                             <option value="5">Life Annuity</option>
                                             <option value="6">Living Annuity</option>
                                             <option value="7">Other</option>
-                                        </select>
+                                        </select> */}
   
                                       </div>
                                     </div>

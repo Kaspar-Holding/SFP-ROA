@@ -1312,8 +1312,8 @@ const Risk = ({user}) =>
                   <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Product:</td>
                   <td>  
                   <div className="form-group">
-                      {/* <input type="text" className="form-control" id="Product_Taken" name='Product_Taken' value={key.Product_Taken} onChange={(e) => {on_ProductTaken_Change(e, i)}}  aria-describedby="emailHelp" placeholder=""/> */}
-                      <select className="text-start form-select" name='Product_Taken' value={key.Product_Taken} aria-label="Default select example">
+                      <input type="text" className="form-control" id="Product_Taken" name='Product_Taken' value={key.Product_Taken} onChange={(e) => {on_ProductTaken_Change(e, i)}}  aria-describedby="emailHelp" placeholder=""/>
+                      {/* <select className="text-start form-select" name='Product_Taken' value={key.Product_Taken} aria-label="Default select example">
                             <option value="0" selected>Choose Product</option>
                             <option value="1">Endowment</option>
                             <option value="2">RA</option>
@@ -1322,7 +1322,7 @@ const Risk = ({user}) =>
                             <option value="5">Life Annuity</option>
                             <option value="6">Living Annuity</option>
                             <option value="7">Other</option>
-                        </select>
+                        </select> */}
                   </div>
                 </td>  
                 <td></td>

@@ -4547,752 +4547,770 @@ const Short_term_Commercial= ({user}) => {
       } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>Tracking device requirements:</b></div>
                               <p>Your policy may contain specific requirements regarding the compulsory fitment, maintenance and testing of tracking devices, as well as the type of tracking device specified for the type/category of vehicle (i.e. constant monitoring/early warning). We strongly encourage you to familiarise yourself with these requirements as theft/hijacking cover is often subject to such tracking devices being installed, maintained, and tested. </p>
                               <p>Where tracking devices are not a requirement, and you have elected to fit such a device of your own accord, inform us as you may be entitled to a reduction in premium and/or your theft excess may be waived (subject to policy terms and conditions).</p>
+      {
+        FormData['STIC_ProdComp_Recommended1'] === 1 || FormData['STIC_ProdComp_Accepted1'] === 1 ?
+        <>
+          <div className={
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
+            : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+            : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+            : ""
+          } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > 
+          <b>SECTION 1:FIRE</b></div>
+          <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
+            <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                    <div className="col-4">
+                        <label className="col-form-label">Additional claims Preparation cost:</label>
+                    </div>
 
-                              <div className={
+                </div>
+            </div>
+
+            <hr/>
+            <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                    <div className="col-2">
+                        <label className="col-form-label">Limit:</label>
+                    </div>
+
+                    <div className="col-4">
+                      <div className="input-group">
+                        <span className="input-group-text">R</span>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Fire_Limit" onChange={(e) => {onChange(e)}} value={FormData['STIC_Fire_Limit']}  name="STIC_Fire_Limit"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                      </div>
+                    </div>
+
+                    <div className="col-2">
+                        <label className="col-form-label">Premium:</label>
+                    </div>
+
+                    <div className="col-4">
+                      <div className="input-group">
+                        <span className="input-group-text">R</span>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Fire_ItemNumber" onChange={(e) => {onChange(e)}} value={FormData['STIC_Fire_ItemNumber']}  name="STIC_Fire_ItemNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr/>
+            <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                    <div className="col-2">
+                        <label className="col-form-label">Item Number:</label>
+                    </div>
+
+                    <div className="col-4">
+                      <div className="input-group">
+                        <span className="input-group-text">R</span>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Fire_Premium" onChange={(e) => {onChange(e)}} value={FormData['STIC_Fire_Premium']}  name="STIC_Fire_Premium"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                      </div>
+                    </div>
+
+                    <div className="col-2">
+                        <label className="col-form-label">Premises Number:</label>
+                    </div>
+
+                    <div className="col-4">
+                    <div className="input-group">
+                        <span className="input-group-text">R</span>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Fire_PremNumber" onChange={(e) => {onChange(e)}} value={FormData['STIC_Fire_PremNumber']}  name="STIC_Fire_PremNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div><b>Important notes:</b></div>
+          <p>The onus is on the client to provide the correct sums insured.</p>
+          <div><b>Building:</b></div>
+          <p>Sum insured is the replacement costs (not market value).</p>
+          <div><b>Plant and machinery:</b></div>
+          <p>When calculating the sum insured, plant/machinery must be insured at new replacement costs/value.</p>
+          <div><b>Stock in trade:</b></div>
+          <p>When calculating the sum insured, stock in trade must be insured at cost price.</p>
+          <div><b>Insured property: </b></div>
+          <hr/>
+          <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+            <div className="row">
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Sum insured: Buildings (excluding surrounding walls and paving)</label>
+                  </div>
+                  <div className="col-3">
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Buildings_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Buildings_Insured']}  name="STIC_Buildings_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+                <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Sum insured: Rental</label>
+                  </div>
+                  <div className="col-3">
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Rental_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Rental_Insured']}  name="STIC_Rental_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Sum insured: Plant, machinery, fixtures, and fittings</label>
+                  </div>
+                  <div className="col-3">
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Others_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Others_Insured']}  name="STIC_Others_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Sum insured: Stock and materials in trade</label>
+                  </div>
+                  <div className="col-3">
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Stocks_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Stocks_Insured']}  name="STIC_Stocks_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Sum insured: Miscellaneous</label>
+                  </div>
+                  <div className="col-3">
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Miscellaneous1_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Miscellaneous1_Insured']}  name="STIC_Miscellaneous1_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Sum insured: Miscellaneous</label>
+                  </div>
+                  <div className="col-3">
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Miscellaneous2_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Miscellaneous2_Insured']}  name="STIC_Miscellaneous2_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+            </div>
+          </div>
+
+          <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+            <div className="row">
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <div><b>Additional Perils</b></div>
+                  </div>
+                  <div className="col-3">
+                    <div><b>Included</b></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <div></div>
+                  </div>
+                  <div className="col-4">
+                    <div><b>Yes/No</b></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Earthquake</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Earthquake_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Earthquake_Insured" name="STIC_Earthquake_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Earthquake_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Earthquake_Insured" name="STIC_Earthquake_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Malicious damage</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Malicious_Damage_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Malicious_Damage_Insured" name="STIC_Malicious_Damage_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Malicious_Damage_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Malicious_Damage_Insured" name="STIC_Malicious_Damage_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Special Perils</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Special_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Special_Insured" name="STIC_Special_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Special_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Special_Insured" name="STIC_Special_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Leakage-full value</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFull_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_LeakFull_Insured" name="STIC_LeakFull_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFull_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_LeakFull_Insured" name="STIC_LeakFull_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Leakage-first loss limit</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFirst_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_LeakFirst_Insured" name="STIC_LeakFirst_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFirst_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_LeakFirst_Insured" name="STIC_LeakFirst_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Subsidence and landslip(limited)</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLLimited_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SnLLimited_Insured" name="STIC_SnLLimited_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLLimited_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SnLLimited_Insured" name="STIC_SnLLimited_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Subsidence and landslip(comprehensive)</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLComprehensive_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SnLComprehensive_Insured" name="STIC_SnLComprehensive_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLComprehensive_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SnLComprehensive_Insured" name="STIC_SnLComprehensive_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Riot and strike(except RSA)</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_RnS_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_RnS_Insured" name="STIC_RnS_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_RnS_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_RnS_Insured" name="STIC_RnS_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Stock declaration conditions</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SDC_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SDC_Insured" name="STIC_SDC_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Monthly
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SDC_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SDC_Insured" name="STIC_SDC_Insured" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Quarterly
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+            </div>
+          </div>
+        </>
+        : <></>
+      }
+      {
+        FormData['STIC_ProdComp_Recommended2'] === 1 || FormData['STIC_ProdComp_Accepted2'] === 1 ?
+        <>
+          <div className={
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
+            : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+            : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+            : ""
+          } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} 
+          > 
+            <b>SECTION 2:BUILDINGS COMBINED</b></div>
+            <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
+              <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                    <div className="col-4">
+                        <label className="col-form-label">Additional claims Preparation cost:</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr/>
+            <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                    <div className="col-2">
+                        <label className="col-form-label">Limit:</label>
+                    </div>
+
+                    <div className="col-4">
+                      <div className="input-group">
+                        <span className="input-group-text">R</span>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_Limit" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_Limit']}  name="STIC_BuildCombined_Limit"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                      </div>
+                    </div>
+
+                    <div className="col-2">
+                        <label className="col-form-label">Premium:</label>
+                    </div>
+
+                    <div className="col-4">
+                      <div className="input-group">
+                        <span className="input-group-text">R</span>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_Premium" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_Premium']}  name="STIC_BuildCombined_Premium"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr/>
+            <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                    <div className="col-2">
+                        <label className="col-form-label">Item Number:</label>
+                    </div>
+
+                    <div className="col-4">
+                      <div className="input-group">
+                        <span className="input-group-text">R</span>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_ItemNumber" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_ItemNumber']}  name="STIC_BuildCombined_ItemNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                      </div>
+                    </div>
+
+                    <div className="col-2">
+                        <label className="col-form-label">Premises Number:</label>
+                    </div>
+
+                    <div className="col-4">
+                      <div className="input-group">
+                        <span className="input-group-text">R</span>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_PremNumber" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_PremNumber']}  name="STIC_BuildCombined_PremNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div><b>Importance notes:</b></div>
+          <p>The onus is on the client to provide the correct sums insured. </p>
+          <ul>
+            <li>Building: The sum insured is the replacement costs (not market value).</li>
+            <li>All fixtures and fittings added to the building, e.g., carpets, air conditioning units</li>
+            <li>In the event of insuring contents; the sum insured should be the new replacement value of contents</li>
+            <li>Loss of rental is included in the policy up to a maximum of 25% of the sum insured of the insured property. </li>
+          </ul>
+          <hr/>
+          <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+            <div className="row">
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Column refernce:</label>
+                  </div>
+                  <div className="col-3">
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_ColumnRef" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_ColumnRef']}  name="STIC_BuildCombined_ColumnRef"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Sum insured (to include perimeter walls or fencing and paving, etc.):  </label>
+                  </div>
+                  <div className="col-3">
+                    <div className="input-group">
+                      <span className="input-group-text">R</span>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_Sum" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_Sum']}  name="STIC_BuildCombined_Sum"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Construction standard: </label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BuildCombined_Construct'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BuildCombined_Construct" name="STIC_BuildCombined_Construct" />
+                        
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BuildCombined_Construct'] == 0 ? true: false } onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BuildCombined_Construct" name="STIC_BuildCombined_Construct" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Description</label>
+                  </div>
+                  <div className="col-3">
+                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_Desc" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_Desc']}  name="STIC_BuildCombined_Desc"  className="form-control" placeholder="Click here to enter the text"  aria-describedby="" style={{width:"200px"}} />
+                  </div>
+                </div>
+              </div>
+                <hr/>
+
+                <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <div><b>Extensions</b></div>
+                  </div>
+                  <div className="col-3">
+                    <div><b>Included</b></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <div></div>
+                  </div>
+                  <div className="col-4">
+                    <div><b>Yes/No</b></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Riot and strike (except RSA)</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_RnS'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_RnS" name="STIC_Extensions_RnS" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_RnS'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_RnS" name="STIC_Extensions_RnS" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Sum ensured geysers</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_Geysers'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_Geysers" name="STIC_Extensions_Geysers" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_Geysers'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_Geysers" name="STIC_Extensions_Geysers" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Subsidence and landslip(comprehensive)</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_SnL'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_SnL" name="STIC_Extensions_SnL" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_SnL'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_SnL" name="STIC_Extensions_SnL" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Prevention of access</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_PoA'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_PoA" name="STIC_Extensions_PoA" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_PoA'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_PoA" name="STIC_Extensions_PoA" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                  <div className="col-8">
+                    <label className="col-form-label">Inflation/Escalation clause</label>
+                  </div>
+                  <div className="row col-4 align-items-center">
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_IorE'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_IorE" name="STIC_Extensions_IorE" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              Yes
+                          </label>
+                      </div>
+                      <div className="col-3">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_IorE'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_IorE" name="STIC_Extensions_IorE" />
+                      </div>
+                      <div className="col-3">
+                          <label className="form-check-label"  >
+                              No
+                          </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+            </div>
+          </div>
+
+          <br/>
+            
+        </>
+        :<></>
+      }
+      {
+        FormData['STIC_ProdComp_Recommended3'] === 1 || FormData['STIC_ProdComp_Accepted3'] === 1 ?
+          <>
+      <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
-      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 1:FIRE</b></div>
-                              <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
-      <div className="col-12" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-4">
-                  <label className="col-form-label">Additional claims Preparation cost:</label>
-              </div>
-
-          </div>
-      </div>
-
-      <hr/>
-      <div className="col-12" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-2">
-                  <label className="col-form-label">Limit:</label>
-              </div>
-
-              <div className="col-4">
-                <div className="input-group">
-                  <span className="input-group-text">R</span>
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Fire_Limit" onChange={(e) => {onChange(e)}} value={FormData['STIC_Fire_Limit']}  name="STIC_Fire_Limit"  className="form-control" placeholder="0.00"  aria-describedby=""/>
-                </div>
-              </div>
-
-              <div className="col-2">
-                  <label className="col-form-label">Premium:</label>
-              </div>
-
-              <div className="col-4">
-                <div className="input-group">
-                  <span className="input-group-text">R</span>
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Fire_ItemNumber" onChange={(e) => {onChange(e)}} value={FormData['STIC_Fire_ItemNumber']}  name="STIC_Fire_ItemNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
-                </div>
-              </div>
-          </div>
-      </div>
-
-      <hr/>
-      <div className="col-12" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-2">
-                  <label className="col-form-label">Item Number:</label>
-              </div>
-
-              <div className="col-4">
-                <div className="input-group">
-                  <span className="input-group-text">R</span>
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Fire_Premium" onChange={(e) => {onChange(e)}} value={FormData['STIC_Fire_Premium']}  name="STIC_Fire_Premium"  className="form-control" placeholder="0.00"  aria-describedby=""/>
-                </div>
-              </div>
-
-              <div className="col-2">
-                  <label className="col-form-label">Premises Number:</label>
-              </div>
-
-              <div className="col-4">
-               <div className="input-group">
-                  <span className="input-group-text">R</span>
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Fire_PremNumber" onChange={(e) => {onChange(e)}} value={FormData['STIC_Fire_PremNumber']}  name="STIC_Fire_PremNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
-                </div>
-              </div>
-          </div>
-      </div>
-    </div>
-                              <div><b>Important notes:</b></div>
-                              <p>The onus is on the client to provide the correct sums insured.</p>
-                              <div><b>Building:</b></div>
-                              <p>Sum insured is the replacement costs (not market value).</p>
-                              <div><b>Plant and machinery:</b></div>
-                              <p>When calculating the sum insured, plant/machinery must be insured at new replacement costs/value.</p>
-                              <div><b>Stock in trade:</b></div>
-                              <p>When calculating the sum insured, stock in trade must be insured at cost price.</p>
-                              <div><b>Insured property: </b></div>
-                              <hr/>
-                              <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-                                <div className="row">
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Sum insured: Buildings (excluding surrounding walls and paving)</label>
-                                      </div>
-                                      <div className="col-3">
-                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Buildings_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Buildings_Insured']}  name="STIC_Buildings_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                   <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Sum insured: Rental</label>
-                                      </div>
-                                      <div className="col-3">
-                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Rental_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Rental_Insured']}  name="STIC_Rental_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Sum insured: Plant, machinery, fixtures, and fittings</label>
-                                      </div>
-                                      <div className="col-3">
-                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Others_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Others_Insured']}  name="STIC_Others_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Sum insured: Stock and materials in trade</label>
-                                      </div>
-                                      <div className="col-3">
-                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Stocks_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Stocks_Insured']}  name="STIC_Stocks_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Sum insured: Miscellaneous</label>
-                                      </div>
-                                      <div className="col-3">
-                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Miscellaneous1_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Miscellaneous1_Insured']}  name="STIC_Miscellaneous1_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Sum insured: Miscellaneous</label>
-                                      </div>
-                                      <div className="col-3">
-                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Miscellaneous2_Insured" onChange={(e) => {onChange(e)}} value={FormData['STIC_Miscellaneous2_Insured']}  name="STIC_Miscellaneous2_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                </div>
-                              </div>
-
-                              <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-                                <div className="row">
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <div><b>Additional Perils</b></div>
-                                      </div>
-                                      <div className="col-3">
-                                        <div><b>Included</b></div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <div></div>
-                                      </div>
-                                      <div className="col-4">
-                                        <div><b>Yes/No</b></div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Earthquake</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Earthquake_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Earthquake_Insured" name="STIC_Earthquake_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Earthquake_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Earthquake_Insured" name="STIC_Earthquake_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Malicious damage</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Malicious_Damage_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Malicious_Damage_Insured" name="STIC_Malicious_Damage_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Malicious_Damage_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Malicious_Damage_Insured" name="STIC_Malicious_Damage_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Special Perils</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Special_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Special_Insured" name="STIC_Special_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Special_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Special_Insured" name="STIC_Special_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Leakage-full value</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFull_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_LeakFull_Insured" name="STIC_LeakFull_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFull_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_LeakFull_Insured" name="STIC_LeakFull_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Leakage-first loss limit</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFirst_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_LeakFirst_Insured" name="STIC_LeakFirst_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFirst_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_LeakFirst_Insured" name="STIC_LeakFirst_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Subsidence and landslip(limited)</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLLimited_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SnLLimited_Insured" name="STIC_SnLLimited_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLLimited_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SnLLimited_Insured" name="STIC_SnLLimited_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Subsidence and landslip(comprehensive)</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLComprehensive_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SnLComprehensive_Insured" name="STIC_SnLComprehensive_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLComprehensive_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SnLComprehensive_Insured" name="STIC_SnLComprehensive_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Riot and strike(except RSA)</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_RnS_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_RnS_Insured" name="STIC_RnS_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_RnS_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_RnS_Insured" name="STIC_RnS_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Stock declaration conditions</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SDC_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SDC_Insured" name="STIC_SDC_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Monthly
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SDC_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SDC_Insured" name="STIC_SDC_Insured" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Quarterly
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                </div>
-                              </div>
-
-                              <div className={
-        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
-        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
-        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
-        : ""
-      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 2:BUILDINGS COMBINED</b></div>
-                              <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
-      <div className="col-12" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-4">
-                  <label className="col-form-label">Additional claims Preparation cost:</label>
-              </div>
-
-          </div>
-      </div>
-
-      <hr/>
-      <div className="col-12" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-2">
-                  <label className="col-form-label">Limit:</label>
-              </div>
-
-              <div className="col-4">
-                <div className="input-group">
-                  <span className="input-group-text">R</span>
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_Limit" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_Limit']}  name="STIC_BuildCombined_Limit"  className="form-control" placeholder="0.00"  aria-describedby=""/>
-                </div>
-              </div>
-
-              <div className="col-2">
-                  <label className="col-form-label">Premium:</label>
-              </div>
-
-              <div className="col-4">
-                <div className="input-group">
-                  <span className="input-group-text">R</span>
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_Premium" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_Premium']}  name="STIC_BuildCombined_Premium"  className="form-control" placeholder="0.00"  aria-describedby=""/>
-                </div>
-              </div>
-          </div>
-      </div>
-
-      <hr/>
-      <div className="col-12" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-2">
-                  <label className="col-form-label">Item Number:</label>
-              </div>
-
-              <div className="col-4">
-                <div className="input-group">
-                  <span className="input-group-text">R</span>
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_ItemNumber" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_ItemNumber']}  name="STIC_BuildCombined_ItemNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
-                </div>
-              </div>
-
-              <div className="col-2">
-                  <label className="col-form-label">Premises Number:</label>
-              </div>
-
-              <div className="col-4">
-                <div className="input-group">
-                  <span className="input-group-text">R</span>
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_PremNumber" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_PremNumber']}  name="STIC_BuildCombined_PremNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
-                </div>
-              </div>
-          </div>
-      </div>
-    </div>
-                              <div><b>Importance notes:</b></div>
-                              <p>The onus is on the client to provide the correct sums insured. </p>
-                              <ul>
-                                <li>Building: The sum insured is the replacement costs (not market value).</li>
-                                <li>All fixtures and fittings added to the building, e.g., carpets, air conditioning units</li>
-                                <li>In the event of insuring contents; the sum insured should be the new replacement value of contents</li>
-                                <li>Loss of rental is included in the policy up to a maximum of 25% of the sum insured of the insured property. </li>
-                              </ul>
-                              <hr/>
-                              <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-                                <div className="row">
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Column refernce:</label>
-                                      </div>
-                                      <div className="col-3">
-                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_ColumnRef" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_ColumnRef']}  name="STIC_BuildCombined_ColumnRef"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Sum insured (to include perimeter walls or fencing and paving, etc.):  </label>
-                                      </div>
-                                      <div className="col-3">
-                                        <div className="input-group">
-                                          <span className="input-group-text">R</span>
-                                          <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_Sum" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_Sum']}  name="STIC_BuildCombined_Sum"  className="form-control" placeholder="0.00"  aria-describedby=""  />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                    <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Construction standard: </label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BuildCombined_Construct'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BuildCombined_Construct" name="STIC_BuildCombined_Construct" />
-                                            
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BuildCombined_Construct'] == 0 ? true: false } onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BuildCombined_Construct" name="STIC_BuildCombined_Construct" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-                                  
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Description</label>
-                                      </div>
-                                      <div className="col-3">
-                                          <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BuildCombined_Desc" onChange={(e) => {onChange(e)}} value={FormData['STIC_BuildCombined_Desc']}  name="STIC_BuildCombined_Desc"  className="form-control" placeholder="Click here to enter the text"  aria-describedby="" style={{width:"200px"}} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                    <hr/>
-
-                                    <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <div><b>Extensions</b></div>
-                                      </div>
-                                      <div className="col-3">
-                                        <div><b>Included</b></div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <div></div>
-                                      </div>
-                                      <div className="col-4">
-                                        <div><b>Yes/No</b></div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Riot and strike (except RSA)</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_RnS'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_RnS" name="STIC_Extensions_RnS" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_RnS'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_RnS" name="STIC_Extensions_RnS" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Sum ensured geysers</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_Geysers'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_Geysers" name="STIC_Extensions_Geysers" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_Geysers'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_Geysers" name="STIC_Extensions_Geysers" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Subsidence and landslip(comprehensive)</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_SnL'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_SnL" name="STIC_Extensions_SnL" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_SnL'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_SnL" name="STIC_Extensions_SnL" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Prevention of access</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_PoA'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_PoA" name="STIC_Extensions_PoA" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_PoA'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_PoA" name="STIC_Extensions_PoA" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                  <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                                    <div className="row g-3 align-items-center">
-                                      <div className="col-8">
-                                        <label className="col-form-label">Inflation/Escalation clause</label>
-                                      </div>
-                                      <div className="row col-4 align-items-center">
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_IorE'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_IorE" name="STIC_Extensions_IorE" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  Yes
-                                              </label>
-                                          </div>
-                                          <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_IorE'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_IorE" name="STIC_Extensions_IorE" />
-                                          </div>
-                                          <div className="col-3">
-                                              <label className="form-check-label"  >
-                                                  No
-                                              </label>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr/>
-
-                                </div>
-                              </div>
-
-                              <br/>
-                              <div className={
-        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
-        : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
-        : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
-        : ""
-      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 3:OFFICE CONTENTS</b></div>
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > 
+      <b>SECTION 3:OFFICE CONTENTS</b></div>
                               <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -5531,7 +5549,14 @@ const Short_term_Commercial= ({user}) => {
                               </div>
 
                               <br/>
-                              <div className={
+          </>
+        :
+        <></>
+      }
+      {
+        FormData['STIC_ProdComp_Recommended4'] === 1 || FormData['STIC_ProdComp_Accepted4'] === 1 ?
+          <>
+      <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
@@ -6919,6 +6944,12 @@ const Short_term_Commercial= ({user}) => {
     <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BusInt2_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_BusInt2_Comments']}  name="STIC_BusInt2_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
+          </>
+        : <></>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended5'] === 1 || FormData['STIC_ProdComp_Accepted5'] === 1 ?
+          <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -7181,7 +7212,13 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec5_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec5_Comments']}  name="STIC_Sec5_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+          </>
+        :
+        <></>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended6'] === 1 || FormData['STIC_ProdComp_Accepted6'] === 1 ?
+                <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -7317,12 +7354,21 @@ const Short_term_Commercial= ({user}) => {
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec6_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec6_Comments']}  name="STIC_Sec6_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
+                </>
+        :
+                <>
+                </>
+}
+    {
+            FormData['STIC_ProdComp_Recommended7'] === 1 || FormData['STIC_ProdComp_Accepted7'] === 1 ?
+                    <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
-      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 7:MONEY</b></div>
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > 
+      <b>SECTION 7:MONEY</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -7656,12 +7702,21 @@ const Short_term_Commercial= ({user}) => {
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec7_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec7_Comments']}  name="STIC_Sec7_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
+                    </>
+            :
+                    <>
+                    </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended8'] === 1 || FormData['STIC_ProdComp_Accepted8'] === 1 ?
+                <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
-      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 8:GLASS</b></div>
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > 
+    <b>SECTION 8:GLASS</b></div>
     <div className='row' style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -7839,6 +7894,14 @@ const Short_term_Commercial= ({user}) => {
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec8_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec8_Comments']}  name="STIC_Sec8_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
 
+                </>
+        :
+                <>
+                </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended9'] === 1 || FormData['STIC_ProdComp_Accepted9'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -8185,7 +8248,15 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec9_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec9_Comments']}  name="STIC_Sec9_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+              </>
+        :
+              <>
+              </>
+    }
+    
+    {
+        FormData['STIC_ProdComp_Recommended10'] === 1 || FormData['STIC_ProdComp_Accepted10'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -8481,7 +8552,14 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec10_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec10_Comments']}  name="STIC_Sec10_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended11'] === 1 || FormData['STIC_ProdComp_Accepted11'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -8676,7 +8754,14 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec11_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec11_Comments']}  name="STIC_Sec11_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+</>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended12'] === 1 || FormData['STIC_ProdComp_Accepted12'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -8964,7 +9049,14 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec12_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec12_Comments']}  name="STIC_Sec12_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended13'] === 1 || FormData['STIC_ProdComp_Accepted13'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -9538,7 +9630,14 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec13_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec13_Comments']}  name="STIC_Sec13_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended14'] === 1 || FormData['STIC_ProdComp_Accepted14'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -9803,7 +9902,14 @@ const Short_term_Commercial= ({user}) => {
 
     </tbody>
   </table>
-
+  </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended15'] === 1 || FormData['STIC_ProdComp_Accepted15'] === 1 ?
+              <>
   <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -9953,7 +10059,14 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec15_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec15_Comments']}  name="STIC_Sec15_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended16'] === 1 || FormData['STIC_ProdComp_Accepted16'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -10420,7 +10533,14 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec16_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec16_Comments']}  name="STIC_Sec16_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended17'] === 1 || FormData['STIC_ProdComp_Accepted17'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -10927,7 +11047,14 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec17_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec17_Comments']}  name="STIC_Sec17_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended18'] === 1 || FormData['STIC_ProdComp_Accepted18'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -11478,7 +11605,14 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec18_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec18_Comments']}  name="STIC_Sec18_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended19'] === 1 || FormData['STIC_ProdComp_Accepted19'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -11951,7 +12085,14 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec19_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec19_Comments']}  name="STIC_Sec19_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended20'] === 1 || FormData['STIC_ProdComp_Accepted20'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -12204,7 +12345,14 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec20_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec20_Comments']}  name="STIC_Sec20_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    </>
+        :
+              <>
+              </>
+    }
+    {
+        FormData['STIC_ProdComp_Recommended21'] === 1 || FormData['STIC_ProdComp_Accepted21'] === 1 ?
+              <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -12461,7 +12609,11 @@ const Short_term_Commercial= ({user}) => {
     <br/>
 
     <br/>
-
+    </>
+        :
+              <>
+              </>
+    }
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 

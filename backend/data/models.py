@@ -2857,6 +2857,11 @@ class IP_ProductTaken(models.Model):
     ItP_FundsReasons = models.CharField(max_length=20000, default="", blank=True)
 
     ItP_FundsMaterialAspects = models.CharField(max_length=20000, default="", blank=True)
+    ItP_ProductDetails = models.CharField(max_length=20000, default="", blank=True)
+    ItP_ExecutorFee = models.CharField(max_length=20000, default="", blank=True)
+    ItP_NominationOfBeneficiaries = models.CharField(max_length=20000, default="", blank=True)
+    ItP_InformationExplained = models.CharField(max_length=20000, default="", blank=True)
+    ItP_FundsAdditionComments = models.CharField(max_length=20000, default="", blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
@@ -2965,8 +2970,11 @@ class AI_ProductTaken(models.Model):
 
     PF_Reasons = models.CharField(max_length=20000, default="", blank=True)
     PF_MaterialAspects = models.CharField(max_length=20000, default="", blank=True)
-    PF_Pr_Details = models.CharField(max_length=20000, default="", blank=True)
+    PF_AdditionComments = models.CharField(max_length=20000, default="", blank=True)
+    PF_ExecutorFee = models.CharField(max_length=20000, default="", blank=True)
     PF_NominationOfBeneficiaries = models.CharField(max_length=20000, default="", blank=True)
+    PF_InformationExplained = models.CharField(max_length=20000, default="", blank=True)
+    PF_Pr_Details = models.CharField(max_length=20000, default="", blank=True)
 
     SourceOfFunds = models.CharField(max_length=20000, default="", blank=True)
     SourceOfFundsDetail = models.CharField(max_length=20000, default="", blank=True)

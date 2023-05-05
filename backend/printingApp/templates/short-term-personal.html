@@ -3828,6 +3828,13 @@
         <span>{{STIP.STIP_CnRI_ReplaceSupplier}}</span>
     </div>
     <br/>
+    
+    {% if 
+        STIP.STIP_CnRI_1_Recomm|to_int == 1 or
+        STIP.STIP_CnRI_1_Accepted|to_int == 1 or
+        STIP.STIP_CnRen_1_Recomm|to_int == 1 or
+        STIP.STIP_CnRen_1_Accepted|to_int == 1  
+    %}
     <div>
         <p style="color: #14848A"><b>HOUSE CONTENT</b></p>
         <p><b>Residential area</b></p>
@@ -4438,6 +4445,14 @@
     <hr/>
     <div>It is in your own interest to check the adequacy of the sum insured (replacement value – new for old) by using the House Content Inventory and informing us about your requirements. Similar attention should be given to your All Risk policy.</div>
     <hr/>
+    {% endif %}
+    
+    {% if 
+        STIP.STIP_CnRI_2_Recomm|to_int == 1 or
+        STIP.STIP_CnRI_2_Accepted|to_int == 1 or
+        STIP.STIP_CnRen_2_Recomm|to_int == 1 or
+        STIP.STIP_CnRen_2_Accepted|to_int == 1  
+    %}
     <div>
         <p style="color: #14848A"><b>BUILDINGS</b></p>
         <p><b>Primary Property</b></p>
@@ -4955,7 +4970,15 @@
             {% endautoescape %}
         </div>
     </div>
-    <hr/>    
+    <hr/>   
+    {% endif %}
+    
+    {% if 
+        STIP.STIP_CnRI_21_Recomm|to_int == 1 or
+        STIP.STIP_CnRI_21_Accepted|to_int == 1 or
+        STIP.STIP_CnRen_21_Recomm|to_int == 1 or
+        STIP.STIP_CnRen_21_Accepted|to_int == 1  
+    %} 
     <div>
         <p style="color: #14848A"><b>VEHICLE</b></p>
         <div>Please see attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number and engine number etc.</div>
@@ -5759,6 +5782,14 @@
         </div>
     </div>
     <hr/>   
+    {% endif %}
+    
+    {% if 
+        STIP.STIP_CnRI_25_Recomm|to_int == 1 or
+        STIP.STIP_CnRI_25_Accepted|to_int == 1 or
+        STIP.STIP_CnRen_25_Recomm|to_int == 1 or
+        STIP.STIP_CnRen_25_Accepted|to_int == 1  
+    %}
     <div>
         <p style="color: #14848A"><b>WATER CRAFT</b></p>
         <div>Please see attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number and engine number etc.</div>
@@ -5883,7 +5914,8 @@
             {% endautoescape %}
         </div>
     </div>
-    <hr/>   
+    <hr/>
+    {% endif %}   
     <div>
         <p style="color: #14848A"><b>PERSONAL LEGAL LIABILITY</b></p>
         <div>R5 000 000: (this cover is COMPULSORY if household content or building cover is taken)</div>

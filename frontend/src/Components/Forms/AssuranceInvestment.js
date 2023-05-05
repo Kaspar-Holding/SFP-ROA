@@ -410,6 +410,9 @@ const AssuranceInvestment = ({user}) =>
 
             PF_Reasons : "",
             PF_MaterialAspects : "",
+            PF_ExecutorFee : "",
+            PF_InformationExplained : "",
+            PF_AdditionComments : "",
             PF_Pr_Details : "",
             PF_NominationOfBeneficiaries : ""
         })
@@ -1995,7 +1998,7 @@ o	meeting the investment objectives of the clients
     />
 <br/>
 <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
-{
+        {
           
           parseInt(key.Pr_Taken) ===1 ? <>
             <p>
@@ -2189,7 +2192,7 @@ o	meeting the investment objectives of the clients
                 <p>
                     Please not if death is to occur after the guarantee period no income will be paid to your nominated beneficiary.
                 </p>
-        </> : parseInt(key.Pr_Taken) ===6 ?<>
+            </> : parseInt(key.Pr_Taken) ===6 ?<>
       
                 <p>
                     <b>Tax Implications:</b><br/>
@@ -2230,180 +2233,261 @@ o	meeting the investment objectives of the clients
                     In the event of death the investment will pay-out directly to your nominated beneficiary and will not form part of your estate or attract any estate taxes. The beneficiary will be presented with the option to transfer the funds into a new annuity in their name or alternatively take the funds in cash which will attract taxes.The beneficiary also has an option the select the alternatives as a combination.  
                 </p>
       
-           </> : <></>
-      }
-{
-        backgroundInfoVisibility25 ? 
-        <>
-        <div id="background_info_instructions25" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Disclose and explain the following:<br/>
-                    The tax implications, i.e. estate duty, income tax (e.g. interest received), CGT
+           </> : 
+            <>
+                    
+            {
+                backgroundInfoVisibility8 ? 
+                <>
+                <div id="background_info_instructions8" className="hidden_class">
+                    {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                        <ul>
+                            <li>
+                            Explain any deviations from your recommendation and the implications thereof.
+                            </li>
+                        
+                        </ul>
+                        
+                </div>
+                </>: 
+                null
+            }              
+            <Editor 
+                value={key.PF_MaterialAspects}
+                onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_MaterialAspects", i, newText)}}
+                onFocus={(e)=>{backgroundInfo_onFocus8()}}
+                onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}}                      
+                init={{
+                    selector: "textarea",
+                    browser_spellcheck : true,
+                    placeholder : 'Explain any deviations from your recommendation and the implications thereof.',
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
+        <br/>
+            {
+                backgroundInfoVisibility9 ? 
+                <>
+                <div id="background_info_instructions9" className="hidden_class">
+                    {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                        <ul>
+                            <li>
+                            The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
+                            </li>
+                        
+                        </ul>
+                        
+                </div>
+                </>: 
+                null
+            }                          
+            <Editor 
+            value={key.PF_Pr_Details}
+            onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_Pr_Details", i, e)}}
+            onFocus={(e)=>{backgroundInfo_onFocus9()}}
+            onBlur={(e)=>{backgroundInfo_onBlur9();onFieldBlur(e)}}                      
+            init={{
+                selector: "textarea",
+                browser_spellcheck : true,
+                placeholder: 'The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?',
+                height: 300,
+                menu: true,
+                plugins: [
+                    'advlist autolink link lists image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount',
+                ],
+                toolbar: 'styles | undo redo | formatselect | ' +
+                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                'removeformat | wordcount ',
+                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+            />
 
+            <br/>
+            {
+                backgroundInfoVisibility10 ? 
+                <>
+                <div id="background_info_instructions10" className="hidden_class">
+                    {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                        <ul>
+                            <li>
+                            Executor’s fees?<br/>
+                            Does the policy offer any liquidity?<br/>
+                            Provide a summary of the contents of the quote with regard to the following:<br/>
+                            Benefit terms (cease ages, cover periods etc.)<br/>
+                            Details of premium and cover pattern structure, frequency etc.
 
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
-    {/* <textarea maxLength={500} className="form-control"  style={{height: '150px'}} 
-        id="PF_MaterialAspects" name='PF_MaterialAspects' value={key.PF_MaterialAspects} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
-        onFocus={backgroundInfo_onFocus25}
-        onBlur={backgroundInfo_onBlur25}
-        placeholder={
-`Disclose and explain the following:
-The tax implications, i.e. estate duty, income tax (e.g. interest received), CGT
-    
+                            </li>
+                        
+                        </ul>
+                        
+                </div>
+                </>: 
+                null
+            }
+                        
+            <Editor
+            value={key.PF_ExecutorFee}
+            onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_ExecutorFee", i, e)}}
+            onFocus={(e)=>{backgroundInfo_onFocus10()}}
+            onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}}        
+            init={{
+                selector: "textarea",
+                browser_spellcheck : true,
+                height: 300,
+                placeholder:'Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n',               
+                menu: true,
+                plugins: [
+                    'advlist autolink link lists image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount',
+                ],
+                toolbar: 'styles | undo redo | formatselect | ' +
+                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                'removeformat | wordcount ',
+                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+            }}
+            />
 
-`}  aria-describedby=""  ></textarea> */}
-    <Editor
-        value={key.PF_MaterialAspects}
-        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_MaterialAspects", i, newText)}}
-        onFocus={(e)=>{backgroundInfo_onFocus25()}}
-        onBlur={(e)=>{backgroundInfo_onBlur25();onFieldBlur(e)}} 
-        name="PF_MaterialAspects"                     
-        init={{
-            selector: "textarea",
-            browser_spellcheck : true,
-            placeholder: "Disclose and explain the following: \n The tax implications, i.e. estate duty, income tax (e.g. interest received), CGT",
-            height: 300,
-            menu: true,
-            plugins: [
-                'advlist autolink link lists image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount',
-            ],
-            toolbar: 'styles | undo redo | formatselect | ' +
-            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-            'removeformat | wordcount ',
-            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-        }}
-    />
-<br/>
-{
-        backgroundInfoVisibility26 ? 
-        <>
-        <div id="background_info_instructions26" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Discuss the product details: <br/>
-                    Liquidity<br/>
-                    Termination penalties<br/>
-                    Guarantees, if any<br/>
-                    Implications of fees & costs<br/>
-                    Legislative restrictions <br/>
-                    Special terms and conditions <br/>
-                    Other relevant information<br/>
+        <br/>
+            {
+                backgroundInfoVisibility11 ? 
+                <>
+                <div id="background_info_instructions11" className="hidden_class">
+                    {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                        <ul>
+                            <li>
+                            Record discussion with regard to nomination of beneficiaries or cessionaries.
 
+                            </li>
+                        
+                        </ul>
+                        
+                </div>
+                </>: 
+                null
+            }
+            <Editor 
+            value={key.PF_NominationOfBeneficiaries}
+            onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_NominationOfBeneficiaries", i, e)}}
+            onFocus={(e)=>{backgroundInfo_onFocus11()}}
+            onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}}        
+            init={{
+                selector: "textarea",
+                browser_spellcheck : true,
+                height: 300,
+                placeholder:'Record discussion with regard to nomination of beneficiaries or cessionaries.',               
+                menu: true,
+                plugins: [
+                    'advlist autolink link lists image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount',
+                ],
+                toolbar: 'styles | undo redo | formatselect | ' +
+                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                'removeformat | wordcount ',
+                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+            }}
+            />
 
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
-    {/* <textarea maxLength={500} className="form-control"  style={{height: '300px'}} 
-        id="PF_Pr_Details" name='PF_Pr_Details' value={key.PF_Pr_Details} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
-        onFocus={backgroundInfo_onFocus26}
-        onBlur={backgroundInfo_onBlur26}
-        placeholder={
-`Discuss the product details: 
-Liquidity
-Termination penalties
-Guarantees, if any
-Implications of fees & costs
-Legislative restrictions 
-Special terms and conditions 
-Other relevant information
+        <br/>
+            {
+                backgroundInfoVisibility12 ? 
+                <>
+                <div id="background_info_instructions12" className="hidden_class">
+                    {/* <p>Discuss the outcome of the FNA</p><br /> */}
+                        <ul>
+                            <li>
+                            Discuss the following information which has been explained to client.<br/>
+                            General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)<br/>
+                            Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)<br/>
+                            Waiting periods<br/>
+                            Cooling off period
 
-
-
-`}  aria-describedby=""  ></textarea> */}
-    <Editor
-        value={key.PF_Pr_Details}
-        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_Pr_Details", i, newText)}}
-        onFocus={(e)=>{backgroundInfo_onFocus26()}}
-        onBlur={(e)=>{backgroundInfo_onBlur26();onFieldBlur(e)}} 
-        name="PF_Pr_Details"                     
-        init={{
-            selector: "textarea",
-            browser_spellcheck : true,
-            placeholder: "Discuss the product details:  \n Liquidity \n Termination penalties \n Guarantees, if any \n Implications of fees & costs \n Legislative restrictions  \n Special terms and conditions  \n Other relevant information",
-            height: 300,
-            menu: true,
-            plugins: [
-                'advlist autolink link lists image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount',
-            ],
-            toolbar: 'styles | undo redo | formatselect | ' +
-            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-            'removeformat | wordcount ',
-            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-        }}
-    />
-<br/>
-{
-        backgroundInfoVisibility27 ? 
-        <>
-        <div id="background_info_instructions27" className="hidden_class">
-            {/* <p>Discuss the outcome of the FNA</p><br /> */}
-                <ul>
-                    <li>
-                    Record discussion with regard to nomination of beneficiaries or cessionaries.
-
-                    </li>
-                   
-                </ul>
-                
-        </div>
-        </>: 
-         null
-    }
-    {/* <textarea maxLength={500} className="form-control"  style={{height: '150px'}} 
-        id="PF_NominationOfBeneficiaries" name='PF_NominationOfBeneficiaries' value={key.PF_NominationOfBeneficiaries} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
-        onFocus={backgroundInfo_onFocus27}
-        onBlur={backgroundInfo_onBlur27}
-        placeholder={
-`Record discussion with regard to nomination of beneficiaries or cessionaries.
-
-
-
-`}  aria-describedby=""  ></textarea> */}
-    <Editor
-        value={key.PF_NominationOfBeneficiaries}
-        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_NominationOfBeneficiaries", i, newText)}}
-        onFocus={(e)=>{backgroundInfo_onFocus27()}}
-        onBlur={(e)=>{backgroundInfo_onBlur27();onFieldBlur(e)}} 
-        name="PF_NominationOfBeneficiaries"                     
-        init={{
-            selector: "textarea",
-            browser_spellcheck : true,
-            placeholder: "Record discussion with regard to nomination of beneficiaries or cessionaries.",
-            height: 300,
-            menu: true,
-            plugins: [
-                'advlist autolink link lists image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount',
-            ],
-            toolbar: 'styles | undo redo | formatselect | ' +
-            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-            'removeformat | wordcount ',
-            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-        }}
-    />
+                            </li>
+                        
+                        </ul>
+                        
+                </div>
+                </>: 
+                null
+            }
+        <Editor 
+            value={key.PF_InformationExplained}
+            onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_InformationExplained", i, e)}}
+            onFocus={(e)=>{backgroundInfo_onFocus12()}}
+            onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}}        
+            init={{
+                selector: "textarea",
+                browser_spellcheck : true,
+                height: 300,
+                placeholder:`Discuss the following information which has been explained to client.
+                General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)
+                Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
+                Waiting periods
+                Cooling off period`,               
+                menu: true,
+                plugins: [
+                    'advlist autolink link lists image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount',
+                ],
+                toolbar: 'styles | undo redo | formatselect | ' +
+                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                'removeformat | wordcount ',
+                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+            }}
+            />
+                <hr/>
+            </>
+        }
+        {
+                parseInt(key.Pr_Taken)!=7 ?
+                <>
+                    <strong>Additional Comments</strong>
+                    <Editor                        
+                        value={key.PF_AdditionComments}
+                        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_AdditionComments", i, newText)}}
+                        name="PF_AdditionComments"      
+                        onBlur={(e)=>{onFieldBlur(e)}}                      
+                        init={{
+                            selector: "textarea",
+                            browser_spellcheck : true,
+                            placeholder: `Additional Comments`,
+                            height: 300,
+                            menu: true,
+                            plugins: [
+                                'advlist autolink link lists image charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount',
+                            ],
+                            toolbar: 'styles | undo redo | formatselect | ' +
+                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                            'removeformat | wordcount ',
+                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                        }}
+                    />
+                    <hr/>
+                </>
+                :<></>
+            }
             </>
         )
     })

@@ -672,6 +672,7 @@ def wkhtmltopdfapi(request):
                         row['ProductPremiumFrequency'] = PremiumFrequency[int(row['ProductPremiumFrequency'])]
         else:
             data['ip_status'] = False
+        print(data['ip_status'])
         if AssuranceRisk.objects.filter(formId=data['id']).exists():
             data['BA_Risk'] = AssuranceRisk.objects.filter(formId=data['id']).values().first()
             if (

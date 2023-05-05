@@ -8,6 +8,16 @@ This project is built on the following Stack
 
 ## Updates
 
+### 05 May 2023:
+- 1969: Risk Section E (Task) completed
+- 1971: Investment Planning Section E (Task) completed
+- 1972: BA Risk Section D (Task) completed
+- 1973: BA Investment Section E (Task) completed
+- 1983: Investment Tab PDF (Bug) resolved
+- 1984: Risk Planning PDF  (Bug) resolved
+- 1987: Short Term Commerical (Task) completed
+- Deployed
+
 ### 04 May 2023:
 - 1974: Search User Functionality Bug Resolved
 

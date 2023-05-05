@@ -270,7 +270,9 @@
             </div>
             <div class='row div'>
                 <div class="column12">
-                    <p>{{IP.IP_RiskProfileDetails}} </p>
+                    {% autoescape off %}
+                        <p>{{IP.IP_RiskProfileDetails}} </p>
+                    {% endautoescape %}
                 </div>
             </div>
             <hr/>
@@ -1203,6 +1205,73 @@
                             <b>At Death</b><br/>
                             In the event of death the investment will pay-out directly to your nominated beneficiary and will not form part of your estate or attract any estate taxes. The beneficiary will be presented with the option to transfer the funds into a new annuity in their name or alternatively take the funds in cash which will attract taxes.The beneficiary also has an option the select the alternatives as a combination.  
                         </p>
+                    {% endif %}
+                    {% if productTaken.ProductTaken_id|to_int == 7 %}
+                        {% if productTaken.ItP_FundsMaterialAspects %}
+                            <hr/>
+                            <div class='row div'>          
+                                <div class="column12">
+                                    {% autoescape off %}
+                                        <p>{{productTaken.ItP_FundsMaterialAspects}}</p>                    
+                                    {% endautoescape %}
+                                </div>                                
+                            </div>
+                        {% endif %}             
+                        {% if productTaken.ItP_ProductDetails %}
+                            <hr/>
+                            <div class='row div'>          
+                                <div class="column12">
+                                    
+                                    {% autoescape off %}
+                                        <p>{{productTaken.ItP_ProductDetails}}</p>                    
+                                    {% endautoescape %}
+                                </div>                                
+                            </div>
+                        {% endif %}    
+                        {% if productTaken.ItP_ExecutorFee %}
+                            <hr/>
+                            <div class='row div'>          
+                                <div class="column12">
+                                    
+                                    {% autoescape off %}
+                                        <p>{{productTaken.ItP_ExecutorFee}}</p>                    
+                                    {% endautoescape %}
+                                </div>                                
+                            </div>
+                        {% endif %}    
+                        {% if productTaken.ItP_NominationOfBeneficiaries %}
+                            <hr/>
+                            <div class='row div'>          
+                                <div class="column12">
+                                    
+                                    {% autoescape off %}
+                                        <p>{{productTaken.ItP_NominationOfBeneficiaries}}</p>                    
+                                    {% endautoescape %}
+                                </div>                                
+                            </div>    
+                        {% endif %}    
+                        {% if productTaken.ItP_InformationExplained %}
+                            <hr/>
+                            <div class='row div'>          
+                                <div class="column12">
+                                    
+                                    {% autoescape off %}
+                                        <p>{{productTaken.ItP_InformationExplained}}</p>                    
+                                    {% endautoescape %}
+                                </div>                                
+                            </div>    
+                        {% endif %}
+                    {% endif %}
+                    {% if productTaken.ProductTaken_id|to_int != 7 %}
+                        <hr/>
+                        <b>Addtional Comments</b>
+                        <div class='row div'>          
+                            <div class="column12">
+                                {% autoescape off %}
+                                    <p>{{productTaken.ItP_FundsAdditionComments}}</p>                    
+                                {% endautoescape %}
+                            </div>                                
+                        </div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
