@@ -625,8 +625,8 @@ def wkhtmltopdfapi(request):
                 if RP_ProductTaken.objects.filter(formId = data['id']).exists():
                     data['RP']['RP_ProductTaken_Data'] = RP_ProductTaken.objects.filter(formId = data['id']).values()
                     for row in data['RP']['RP_ProductTaken_Data']:
-                        Product_Taken_id = int(row['Product_Taken'])
-                        row['Product_Taken'] = Product_Taken[Product_Taken_id]
+                        # Product_Taken_id = int(row['Product_Taken'])
+                        row['Product_Taken'] = row['Product_Taken']
                         row['Product_PremiumFrequency'] = PremiumFrequency[int(row['Product_PremiumFrequency'])]
                         row['Product_OngoingFeesFrequency1'] = PremiumFrequency[int(row['Product_OngoingFeesFrequency1'])]
         else:
@@ -810,8 +810,8 @@ def wkhtmltopdfapi(request):
                 if AR_ProductTaken.objects.filter(formId = data['id']).exists():
                     data['BA_Risk']['AR_ProductTaken_Data'] = AR_ProductTaken.objects.filter(formId = data['id']).values()
                     for row in data['BA_Risk']['AR_ProductTaken_Data']:
-                        row['ProductTaken_id'] = row['ProductTaken']
-                        row['ProductTaken'] = Product_Taken[int(row['ProductTaken'])]
+                        # row['ProductTaken_id'] = row['ProductTaken']
+                        row['ProductTaken'] = row['ProductTaken']
                         row['ProductPremiumFrequency'] = PremiumFrequency[int(row['ProductPremiumFrequency'])]
             data['BA_Risk']['AR_BusinessDate'] = datetimeparser.parse(data['BA_Risk']['AR_BusinessDate']).strftime('%d %b %Y') if data['BA_Risk']['AR_BusinessDate'] != "" else "N.A."
             # data['BA_Risk']['AR_ProductPremiumFrequency'] = PremiumFrequency[int(data['BA_Risk']['AR_ProductPremiumFrequency'])]
