@@ -2888,7 +2888,7 @@ def wkhtmltopdfapi(request):
                 data['STIP']['STIP_Vehicle_DriverLicIssDate'] = datetimeparser.parse(data['STIP']['STIP_Vehicle_DriverLicIssDate']).strftime('%d %b %Y') if data['STIP']['STIP_Vehicle_DriverLicIssDate'] != "" else "N.A."
                 data['STIP']['STIP_MotorC_ONParkingOptions'] = parkOptions[int(data['STIP']['STIP_MotorC_ONParkingOptions'])]
                 data['STIP']['STIP_MotorC_CoverType'] = coverTypes[int(data['STIP']['STIP_MotorC_CoverType'])]
-                data['STIP']['STIP_MotorC_DriverLicIssDate'] = datetimeparser.parse(data['STIP']['STIP_MotorC_DriverLicIssDate']).strftime('%d %b %Y') if data['STIP']['STIP_MotorC_DriverLicIssDate'] != "" or data['STIP']['STIP_MotorC_DriverLicIssDate'] != "n/a" else "N.A."
+                data['STIP']['STIP_MotorC_DriverLicIssDate'] = datetimeparser.parse(data['STIP']['STIP_MotorC_DriverLicIssDate']).strftime('%d %b %Y') if data['STIP']['STIP_MotorC_DriverLicIssDate'] != "" else "N.A."
                 data['STIP']['STIP_Trailer_ONParkingOptions'] = parkOptions[int(data['STIP']['STIP_Trailer_ONParkingOptions'])]
                 data['STIP']['STIP_DbyI_Date'] = datetimeparser.parse(data['STIP']['STIP_DbyI_Date']).strftime('%d/%m/%Y') if data['STIP']['STIP_DbyI_Date'] != "" else "N.A."
         else:
