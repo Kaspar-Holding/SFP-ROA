@@ -8,6 +8,10 @@ This project is built on the following Stack
 
 ## Updates
 
+### 09 May 2023:
+- 2004: Prining Bug resolved
+- Deployed
+
 ### 05 May 2023:
 - 1969: Risk Section E (Task) completed
 - 1971: Investment Planning Section E (Task) completed
