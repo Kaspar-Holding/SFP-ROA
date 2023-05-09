@@ -3819,13 +3819,25 @@
     <div>
         <p>If yes,answer the following:</p>
         <p>What is the purpose of this replacement?</p>
-        <span>{{STIP.STIP_CnRI_ReplacePurpose}}</span>
+        <span>
+            {% autoescape off %}
+                {{STIP.STIP_CnRI_ReplacePurpose}}
+            {% endautoescape %}
+        </span>
         <hr/>
         <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
-        <span>{{STIP.STIP_CnRI_ReplaceReason}}</span>
+        <span>
+            {% autoescape off %}
+                {{STIP.STIP_CnRI_ReplaceReason}}
+            {% endautoescape %}
+        </span>
         <hr/>
         <p>Suppliers of the product(s) to be replaced:</p>
-        <span>{{STIP.STIP_CnRI_ReplaceSupplier}}</span>
+        <span>
+            {% autoescape off %}
+                {{STIP.STIP_CnRI_ReplaceSupplier}}
+            {% endautoescape %}
+        </span>
     </div>
     <br/>
     
