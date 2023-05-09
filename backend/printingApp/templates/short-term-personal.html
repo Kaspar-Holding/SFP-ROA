@@ -6108,13 +6108,25 @@
     <div class="row div">
         <div style="padding: 0 10px;">
             <div>Products considered appropriate to address the needs of the client:</div>
-            <div>{{STIP.STIP_ProductConsidered}}</div>
+            <div>
+                {% autoescape off %}
+                    {{STIP.STIP_ProductConsidered}}
+                {% endautoescape %}
+            </div>
             <hr/>
             <div>Recommended product:</div>
-            <div>{{STIP.STIP_ProductRecommended}}</div>
+            <div>
+                {% autoescape off %}
+                    {{STIP.STIP_ProductRecommended}}
+                {% endautoescape %}
+            </div>
             <hr/>
             <div>Reasons why the recommended product is considered the most suitable for the needs of the client::</div>
-            <div>{{STIP.STIP_ProductReasons}}</div>
+            <div>
+                {% autoescape off %}
+                    {{STIP.STIP_ProductReasons}}
+                {% endautoescape %}
+            </div>
             <hr/>
             <div><b>Note: The intermediary whose name appears in section below, will be regarded as the person responsible for advice to the client. </b></div>
         </div>
