@@ -9,7 +9,7 @@ This project is built on the following Stack
 ## Updates
 
 ### 09 May 2023:
-- 2004: Prining Bug resolved
+- 2004: Printing Bugs resolved
 - Deployed
 
 ### 05 May 2023:

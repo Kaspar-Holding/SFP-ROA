@@ -5745,7 +5745,7 @@ const Short_term_Personal = ({user}) => {
                       <label className="col-form-label"><b>Driver license issue date:</b></label>
                   </div>
                   <div className="col-8">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_DriverLicIssDate" name='STIP_MotorC_DriverLicIssDate' value={FormData['STIP_MotorC_DriverLicIssDate']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click or tap to enter date."  aria-describedby="" />
+                      <input type="date" onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_DriverLicIssDate" name='STIP_MotorC_DriverLicIssDate' value={FormData['STIP_MotorC_DriverLicIssDate']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click or tap to enter date."  aria-describedby="" />
                   </div>
               </div>
           </div>
