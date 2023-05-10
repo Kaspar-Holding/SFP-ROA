@@ -647,12 +647,12 @@ const Employee = ({user}) =>
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input onBlur={(e)=>{onFieldBlur(e)}} type="radio" className="form-check-input"  id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === "1" ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
+                                        <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input"  id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === "1" ? true : false} name='EB_BusinessUnion' value="1" onChange={(e) => {onChange(e)}} />Yes
                                     </label>
                                   </div>
                                   <div className="col-1">
                                     <label className="radio-inline">
-                                        <input onBlur={(e)=>{onFieldBlur(e)}} type="radio" className="form-check-input"  id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === "0" ? true : false} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
+                                        <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input"  id="EB_BusinessUnion" checked={FormData["EB_BusinessUnion"] === "0" ? true : false} name='EB_BusinessUnion' value="0" onChange={(e) => {onChange(e)}} />No
                                     </label>
                                   </div>
                               </div>
@@ -942,7 +942,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Retire_In5Years" >
@@ -953,7 +953,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusEmp_Retire_In5Years" name='EB_BusEmp_Retire_In5Years' checked={FormData['EB_BusEmp_Retire_In5Years'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Retire_In5Years" >
@@ -979,7 +979,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Illiterate" >
@@ -990,7 +990,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusEmp_Fin_Illiterate" name='EB_BusEmp_Fin_Illiterate' checked={FormData['EB_BusEmp_Fin_Illiterate'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Illiterate" >
@@ -1016,7 +1016,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Sophisticated" >
@@ -1027,7 +1027,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusEmp_Fin_Sophisticated" name='EB_BusEmp_Fin_Sophisticated' checked={FormData['EB_BusEmp_Fin_Sophisticated'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusEmp_Fin_Sophisticated" >
@@ -1053,7 +1053,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusHS_TurnOver" >
@@ -1064,7 +1064,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusHS_TurnOver" name='EB_BusHS_TurnOver' checked={FormData['EB_BusHS_TurnOver'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusHS_TurnOver" >
@@ -1090,7 +1090,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusI_Choice" >
@@ -1101,7 +1101,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusI_Choice" name='EB_BusI_Choice' checked={FormData['EB_BusI_Choice'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusI_Choice" >
@@ -1127,7 +1127,7 @@ const Employee = ({user}) =>
                         <div className="row">
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusinessItP" >
@@ -1138,7 +1138,7 @@ const Employee = ({user}) =>
 
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusinessItP" name='EB_BusinessItP' checked={FormData['EB_BusinessItP'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="EB_BusinessItP" >
@@ -1332,7 +1332,7 @@ const Employee = ({user}) =>
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_Approved" >
@@ -1343,7 +1343,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusRB_Approved" name='EB_BusRB_Approved' checked={FormData['EB_BusRB_Approved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_Approved" >
@@ -1389,7 +1389,7 @@ const Employee = ({user}) =>
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_UnApproved" >
@@ -1400,7 +1400,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusRB_UnApproved" name='EB_BusRB_UnApproved' checked={FormData['EB_BusRB_UnApproved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_UnApproved" >
@@ -1449,7 +1449,7 @@ const Employee = ({user}) =>
         <div className="row">
             <div className="row col-2 align-items-center">
                 <div className="col-2">
-                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                 </div>
                 <div className="col-2">
                     <label className="form-check-label" htmlFor="EB_BusinessRiskFundTakeOver" >
@@ -1460,7 +1460,7 @@ const Employee = ({user}) =>
 
             <div className="row col-2 align-items-center">
                 <div className="col-2">
-                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                    <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusinessRiskFundTakeOver" name='EB_BusinessRiskFundTakeOver' checked={FormData['EB_BusinessRiskFundTakeOver'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                 </div>
                 <div className="col-2">
                     <label className="form-check-label" htmlFor="EB_BusinessRiskFundTakeOver" >
@@ -1627,7 +1627,7 @@ const Employee = ({user}) =>
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_Approved" >
@@ -1638,7 +1638,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusRB_CapDisBen_Approved" name='EB_BusRB_CapDisBen_Approved' checked={FormData['EB_BusRB_CapDisBen_Approved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_Approved" >
@@ -1684,7 +1684,7 @@ const Employee = ({user}) =>
                 <div className="row">
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 1 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_UnApproved" >
@@ -1695,7 +1695,7 @@ const Employee = ({user}) =>
 
                     <div className="row col-6 align-items-center">
                         <div className="col-6">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
+                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusRB_CapDisBen_UnApproved" name='EB_BusRB_CapDisBen_UnApproved' checked={FormData['EB_BusRB_CapDisBen_UnApproved'] == 0 ? true : false } onChange={(e) => {onChange(e)}} />
                         </div>
                         <div className="col-6">
                             <label className="form-check-label" htmlFor="EB_BusRB_CapDisBen_UnApproved" >
@@ -2198,7 +2198,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2209,7 +2209,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 0 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusRecom_Portfolio" name='EB_BusRecom_Portfolio' checked={FormData['EB_BusRecom_Portfolio'] == 0 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2235,7 +2235,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2246,7 +2246,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 0 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusRecom_ClientAccepted" name='EB_BusRecom_ClientAccepted' checked={FormData['EB_BusRecom_ClientAccepted'] == 0 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2335,7 +2335,7 @@ Record the client's instructions, deviations and implications thereof.
                                 <div className="row">
                                     <div className="row col-2 align-items-center">
                                         <div className="col-2">
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="1" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 1 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-2">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >
@@ -2346,7 +2346,7 @@ Record the client's instructions, deviations and implications thereof.
 
                                     <div className="row col-2 align-items-center">
                                         <div className="col-4">
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 0 ? true : false} onChange={(e) => {onChange(e)}}  />
+                                            <input type="radio" onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" value="0" id="EB_BusFReplace_Detail" name='EB_BusFReplace_Detail' checked={FormData['EB_BusFReplace_Detail'] == 0 ? true : false} onChange={(e) => {onChange(e)}}  />
                                         </div>
                                         <div className="col-4">
                                             <label className="form-check-label" htmlFor="letter_of_introduction_radio_btn6" >

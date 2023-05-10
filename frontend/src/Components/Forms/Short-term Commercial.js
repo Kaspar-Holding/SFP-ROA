@@ -1285,7 +1285,7 @@ const Short_term_Commercial= ({user}) => {
                                     <label className="col-form-label">Payment method: Annual</label>
                                   </div>
                                  <div className="col-6">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Payment_Method_Annual"] === 1 ? true : false} name="STIC_Payment_Method_Annual" onChange={(e)=>{FormData["STIC_Payment_Method_Annual"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                                    <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Payment_Method_Annual"] === 1 ? true : false} name="STIC_Payment_Method_Annual" onChange={(e)=>{FormData["STIC_Payment_Method_Annual"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                                         <label for="vehicle1">Yes</label><br/>
                                   </div> 
                               </div>
@@ -1297,7 +1297,7 @@ const Short_term_Commercial= ({user}) => {
                                     <label className="col-form-label">Payment method: Monthly</label>
                                   </div>
                                  <div className="col-6">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Payment_Method_Monthly"] === 1 ? true : false} name="STIC_Payment_Method_Monthly" onChange={(e)=>{FormData["STIC_Payment_Method_Monthly"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                                    <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Payment_Method_Monthly"] === 1 ? true : false} name="STIC_Payment_Method_Monthly" onChange={(e)=>{FormData["STIC_Payment_Method_Monthly"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                                         <label for="vehicle1">Yes</label><br/>
                                   </div> 
                               </div>
@@ -1309,7 +1309,7 @@ const Short_term_Commercial= ({user}) => {
                                     <label className="col-form-label">*Sasria: Annual</label>
                                   </div>
                                  <div className="col-6">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sasria_Annual"] === 1 ? true : false} name="STIC_Sasria_Annual" onChange={(e)=>{FormData["STIC_Sasria_Annual"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                                    <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sasria_Annual"] === 1 ? true : false} name="STIC_Sasria_Annual" onChange={(e)=>{FormData["STIC_Sasria_Annual"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                                         <label for="vehicle2">Yes</label><br/>
                                   </div> 
                               </div>
@@ -1321,7 +1321,7 @@ const Short_term_Commercial= ({user}) => {
                                     <label className="col-form-label">*Sasria: Monthly</label>
                                   </div>
                                  <div className="col-6">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sasria_Monthly"] === 1 ? true : false} name="STIC_Sasria_Monthly" onChange={(e)=>{FormData["STIC_Sasria_Monthly"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                                    <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sasria_Monthly"] === 1 ? true : false} name="STIC_Sasria_Monthly" onChange={(e)=>{FormData["STIC_Sasria_Monthly"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                                         <label for="vehicle3">Yes</label><br/>
                                   </div> 
                               </div>
@@ -1603,7 +1603,7 @@ const Short_term_Commercial= ({user}) => {
                                     <label className="col-form-label"></label>
                                   </div>
                                  <div className="col-6">
-                                    {/* <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["IP_ItP_FundProvided"] === 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                                    {/* <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["IP_ItP_FundProvided"] === 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                                         <label for="vehicle3">Yes</label><br/> */}
                                   </div> 
                               </div>
@@ -1615,7 +1615,7 @@ const Short_term_Commercial= ({user}) => {
                                     <label className="col-form-label"><i>(Mark the applicable option. Client must initial in the space provided.)</i></label>
                                   </div>
                                   {/* <div className="col-4">
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["IP_ItP_FundProvided"] === 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                                    <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["IP_ItP_FundProvided"] === 1 ? true : false} name="IP_ItP_FundProvided" onChange={(e)=>{FormData["IP_ItP_FundProvided"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                                         <label for="vehicle3">Yes</label><br/>
                                   </div>   */}
                               </div>
@@ -1629,7 +1629,7 @@ const Short_term_Commercial= ({user}) => {
                                             <label className="col-form-label">Lower premium (Possible lower cover/reduced benefits)</label>
                                         </div>
                                         <div className="col-4">
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Lower_Premium"] === 1 ? true : false} name="STIC_Lower_Premium" onChange={(e)=>{FormData["STIC_Lower_Premium"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Lower_Premium"] === 1 ? true : false} name="STIC_Lower_Premium" onChange={(e)=>{FormData["STIC_Lower_Premium"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                                                 <label for="vehicle3">Yes</label><br/>
                                         </div> 
                                     </div>
@@ -1639,7 +1639,7 @@ const Short_term_Commercial= ({user}) => {
                                             <label className="col-form-label">Most comprehensive cover (Possible higher premium)</label>
                                         </div>
                                         <div className="col-4">
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Higher_Premium"] === 1 ? true : false} name="STIC_Higher_Premium" onChange={(e)=>{FormData["STIC_Higher_Premium"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Higher_Premium"] === 1 ? true : false} name="STIC_Higher_Premium" onChange={(e)=>{FormData["STIC_Higher_Premium"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
                                                 <label for="vehicle3">Yes</label><br/>
                                         </div> 
                                     </div>
@@ -1692,7 +1692,7 @@ const Short_term_Commercial= ({user}) => {
                                       <div className="row">
                                           <div className="row col-2 align-items-center">
                                               <div className="col-2">
-                                                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_General_Cancelled'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_General_Cancelled" name="STIC_General_Cancelled" />
+                                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_General_Cancelled'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_General_Cancelled" name="STIC_General_Cancelled" />
                                               </div>
                                               <div className="col-2">
                                                   <label className="form-check-label" htmlFor="STIC_General_Cancelled" >
@@ -1702,7 +1702,7 @@ const Short_term_Commercial= ({user}) => {
                                           </div>
                                           <div className="row col-2 align-items-center">
                                               <div className="col-2">
-                                                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_General_Cancelled'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_General_Cancelled" name="STIC_General_Cancelled" />
+                                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_General_Cancelled'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_General_Cancelled" name="STIC_General_Cancelled" />
                                               </div>
                                               <div className="col-2">
                                                   <label className="form-check-label" htmlFor="STIC_General_Cancelled" >
@@ -1827,7 +1827,7 @@ const Short_term_Commercial= ({user}) => {
                                       <div className="row">
                                           <div className="row col-2 align-items-center">
                                               <div className="col-2">
-                                                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" checked={FormData['STIC_Replacement_Advise'] == 1 ? true : false} id="STIC_Replacement_Advise" name="STIC_Replacement_Advise" onChange={(e) => {onChange(e)}}/>
+                                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="1" checked={FormData['STIC_Replacement_Advise'] == 1 ? true : false} id="STIC_Replacement_Advise" name="STIC_Replacement_Advise" onChange={(e) => {onChange(e)}}/>
                                               </div>
                                               <div className="col-2">
                                                   <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -1837,7 +1837,7 @@ const Short_term_Commercial= ({user}) => {
                                           </div>
                                           <div className="row col-2 align-items-center">
                                               <div className="col-2">
-                                                  <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" checked={FormData['STIC_Replacement_Advise'] == 0 ? true : false} id="STIC_Replacement_Advise" name="STIC_Replacement_Advise" onChange={(e) => {onChange(e)}}/>
+                                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="radio" value="0" checked={FormData['STIC_Replacement_Advise'] == 0 ? true : false} id="STIC_Replacement_Advise" name="STIC_Replacement_Advise" onChange={(e) => {onChange(e)}}/>
                                               </div>
                                               <div className="col-2">
                                                   <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
@@ -2096,7 +2096,7 @@ const Short_term_Commercial= ({user}) => {
 
                               <br/>
                               <hr/>
-                            <h6 align="center" style={{ color: "#14848A"}}>PRODUCT COMPARISON AND REPLACEMENT</h6>
+                            <h6 align="center" style={{ color: "#14848A"}}>PRODUCT COMPARISON</h6>
                             <hr/>
 
                             <div className='table-responsive'>
@@ -2170,11 +2170,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Fire</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended1"] === 1 ? true : false} name="STIC_ProdComp_Recommended1" onChange={(e)=>{FormData["STIC_ProdComp_Recommended1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended1"] === 1 ? true : false} name="STIC_ProdComp_Recommended1" onChange={(e)=>{FormData["STIC_ProdComp_Recommended1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted1"] === 1 ? true : false} name="STIC_ProdComp_Accepted1" onChange={(e)=>{FormData["STIC_ProdComp_Accepted1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted1"] === 1 ? true : false} name="STIC_ProdComp_Accepted1" onChange={(e)=>{FormData["STIC_ProdComp_Accepted1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2219,11 +2219,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Buildings combined</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended2"] === 1 ? true : false} name="STIC_ProdComp_Recommended2" onChange={(e)=>{FormData["STIC_ProdComp_Recommended2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended2"] === 1 ? true : false} name="STIC_ProdComp_Recommended2" onChange={(e)=>{FormData["STIC_ProdComp_Recommended2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted2"] === 1 ? true : false} name="STIC_ProdComp_Accepted2" onChange={(e)=>{FormData["STIC_ProdComp_Accepted2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted2"] === 1 ? true : false} name="STIC_ProdComp_Accepted2" onChange={(e)=>{FormData["STIC_ProdComp_Accepted2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2268,11 +2268,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Office contents</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended3"] === 1 ? true : false} name="STIC_ProdComp_Recommended3" onChange={(e)=>{FormData["STIC_ProdComp_Recommended3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended3"] === 1 ? true : false} name="STIC_ProdComp_Recommended3" onChange={(e)=>{FormData["STIC_ProdComp_Recommended3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted3"] === 1 ? true : false} name="STIC_ProdComp_Accepted3" onChange={(e)=>{FormData["STIC_ProdComp_Accepted3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted3"] === 1 ? true : false} name="STIC_ProdComp_Accepted3" onChange={(e)=>{FormData["STIC_ProdComp_Accepted3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2317,11 +2317,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Business Interruption</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended4"] === 1 ? true : false} name="STIC_ProdComp_Recommended4" onChange={(e)=>{FormData["STIC_ProdComp_Recommended4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended4"] === 1 ? true : false} name="STIC_ProdComp_Recommended4" onChange={(e)=>{FormData["STIC_ProdComp_Recommended4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted4"] === 1 ? true : false} name="STIC_ProdComp_Accepted4" onChange={(e)=>{FormData["STIC_ProdComp_Accepted4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted4"] === 1 ? true : false} name="STIC_ProdComp_Accepted4" onChange={(e)=>{FormData["STIC_ProdComp_Accepted4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2366,11 +2366,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Machinery Breakdown</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended5"] === 1 ? true : false} name="STIC_ProdComp_Recommended5" onChange={(e)=>{FormData["STIC_ProdComp_Recommended5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended5"] === 1 ? true : false} name="STIC_ProdComp_Recommended5" onChange={(e)=>{FormData["STIC_ProdComp_Recommended5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted5"] === 1 ? true : false} name="STIC_ProdComp_Accepted5" onChange={(e)=>{FormData["STIC_ProdComp_Accepted5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted5"] === 1 ? true : false} name="STIC_ProdComp_Accepted5" onChange={(e)=>{FormData["STIC_ProdComp_Accepted5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2415,11 +2415,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Machinery breakdown:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loss of profits</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended6"] === 1 ? true : false} name="STIC_ProdComp_Recommended6" onChange={(e)=>{FormData["STIC_ProdComp_Recommended6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended6"] === 1 ? true : false} name="STIC_ProdComp_Recommended6" onChange={(e)=>{FormData["STIC_ProdComp_Recommended6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted6"] === 1 ? true : false} name="STIC_ProdComp_Accepted6" onChange={(e)=>{FormData["STIC_ProdComp_Accepted6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted6"] === 1 ? true : false} name="STIC_ProdComp_Accepted6" onChange={(e)=>{FormData["STIC_ProdComp_Accepted6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2464,11 +2464,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Deterioration of stock</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended7"] === 1 ? true : false} name="STIC_ProdComp_Recommended7" onChange={(e)=>{FormData["STIC_ProdComp_Recommended7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended7"] === 1 ? true : false} name="STIC_ProdComp_Recommended7" onChange={(e)=>{FormData["STIC_ProdComp_Recommended7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted7"] === 1 ? true : false} name="STIC_ProdComp_Accepted7" onChange={(e)=>{FormData["STIC_ProdComp_Accepted7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted7"] === 1 ? true : false} name="STIC_ProdComp_Accepted7" onChange={(e)=>{FormData["STIC_ProdComp_Accepted7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2513,11 +2513,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Accounts receiveable</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended8"] === 1 ? true : false} name="STIC_ProdComp_Recommended8" onChange={(e)=>{FormData["STIC_ProdComp_Recommended8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended8"] === 1 ? true : false} name="STIC_ProdComp_Recommended8" onChange={(e)=>{FormData["STIC_ProdComp_Recommended8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted8"] === 1 ? true : false} name="STIC_ProdComp_Accepted8" onChange={(e)=>{FormData["STIC_ProdComp_Accepted8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted8"] === 1 ? true : false} name="STIC_ProdComp_Accepted8" onChange={(e)=>{FormData["STIC_ProdComp_Accepted8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2562,11 +2562,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Theft</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended9"] === 1 ? true : false} name="STIC_ProdComp_Recommended9" onChange={(e)=>{FormData["STIC_ProdComp_Recommended9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended9"] === 1 ? true : false} name="STIC_ProdComp_Recommended9" onChange={(e)=>{FormData["STIC_ProdComp_Recommended9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted9"] === 1 ? true : false} name="STIC_ProdComp_Accepted9" onChange={(e)=>{FormData["STIC_ProdComp_Accepted9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted9"] === 1 ? true : false} name="STIC_ProdComp_Accepted9" onChange={(e)=>{FormData["STIC_ProdComp_Accepted9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2611,11 +2611,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Money</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended10"] === 1 ? true : false} name="STIC_ProdComp_Recommended10" onChange={(e)=>{FormData["STIC_ProdComp_Recommended10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended10"] === 1 ? true : false} name="STIC_ProdComp_Recommended10" onChange={(e)=>{FormData["STIC_ProdComp_Recommended10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted10"] === 1 ? true : false} name="STIC_ProdComp_Accepted10" onChange={(e)=>{FormData["STIC_ProdComp_Accepted10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted10"] === 1 ? true : false} name="STIC_ProdComp_Accepted10" onChange={(e)=>{FormData["STIC_ProdComp_Accepted10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2660,11 +2660,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Glass</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended11"] === 1 ? true : false} name="STIC_ProdComp_Recommended11" onChange={(e)=>{FormData["STIC_ProdComp_Recommended11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended11"] === 1 ? true : false} name="STIC_ProdComp_Recommended11" onChange={(e)=>{FormData["STIC_ProdComp_Recommended11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted11"] === 1 ? true : false} name="STIC_ProdComp_Accepted11" onChange={(e)=>{FormData["STIC_ProdComp_Accepted11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted11"] === 1 ? true : false} name="STIC_ProdComp_Accepted11" onChange={(e)=>{FormData["STIC_ProdComp_Accepted11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2709,11 +2709,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Fidelity gurantee</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended12"] === 1 ? true : false} name="STIC_ProdComp_Recommended12" onChange={(e)=>{FormData["STIC_ProdComp_Recommended12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended12"] === 1 ? true : false} name="STIC_ProdComp_Recommended12" onChange={(e)=>{FormData["STIC_ProdComp_Recommended12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted12"] === 1 ? true : false} name="STIC_ProdComp_Accepted12" onChange={(e)=>{FormData["STIC_ProdComp_Accepted12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted12"] === 1 ? true : false} name="STIC_ProdComp_Accepted12" onChange={(e)=>{FormData["STIC_ProdComp_Accepted12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2758,11 +2758,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Goods in transit</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended13"] === 1 ? true : false} name="STIC_ProdComp_Recommended13" onChange={(e)=>{FormData["STIC_ProdComp_Recommended13"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended13"] === 1 ? true : false} name="STIC_ProdComp_Recommended13" onChange={(e)=>{FormData["STIC_ProdComp_Recommended13"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted13"] === 1 ? true : false} name="STIC_ProdComp_Accepted13" onChange={(e)=>{FormData["STIC_ProdComp_Accepted13"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted13"] === 1 ? true : false} name="STIC_ProdComp_Accepted13" onChange={(e)=>{FormData["STIC_ProdComp_Accepted13"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2807,11 +2807,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Business all risks</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended14"] === 1 ? true : false} name="STIC_ProdComp_Recommended14" onChange={(e)=>{FormData["STIC_ProdComp_Recommended14"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended14"] === 1 ? true : false} name="STIC_ProdComp_Recommended14" onChange={(e)=>{FormData["STIC_ProdComp_Recommended14"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted14"] === 1 ? true : false} name="STIC_ProdComp_Accepted14" onChange={(e)=>{FormData["STIC_ProdComp_Accepted14"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted14"] === 1 ? true : false} name="STIC_ProdComp_Accepted14" onChange={(e)=>{FormData["STIC_ProdComp_Accepted14"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2856,11 +2856,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Accidental damage</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended15"] === 1 ? true : false} name="STIC_ProdComp_Recommended15" onChange={(e)=>{FormData["STIC_ProdComp_Recommended15"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended15"] === 1 ? true : false} name="STIC_ProdComp_Recommended15" onChange={(e)=>{FormData["STIC_ProdComp_Recommended15"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted15"] === 1 ? true : false} name="STIC_ProdComp_Accepted15" onChange={(e)=>{FormData["STIC_ProdComp_Accepted15"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted15"] === 1 ? true : false} name="STIC_ProdComp_Accepted15" onChange={(e)=>{FormData["STIC_ProdComp_Accepted15"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2905,11 +2905,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Public liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended16"] === 1 ? true : false} name="STIC_ProdComp_Recommended16" onChange={(e)=>{FormData["STIC_ProdComp_Recommended16"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended16"] === 1 ? true : false} name="STIC_ProdComp_Recommended16" onChange={(e)=>{FormData["STIC_ProdComp_Recommended16"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted16"] === 1 ? true : false} name="STIC_ProdComp_Accepted16" onChange={(e)=>{FormData["STIC_ProdComp_Accepted16"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted16"] === 1 ? true : false} name="STIC_ProdComp_Accepted16" onChange={(e)=>{FormData["STIC_ProdComp_Accepted16"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -2954,11 +2954,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Top up personal Liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended17"] === 1 ? true : false} name="STIC_ProdComp_Recommended17" onChange={(e)=>{FormData["STIC_ProdComp_Recommended17"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended17"] === 1 ? true : false} name="STIC_ProdComp_Recommended17" onChange={(e)=>{FormData["STIC_ProdComp_Recommended17"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted17"] === 1 ? true : false} name="STIC_ProdComp_Accepted17" onChange={(e)=>{FormData["STIC_ProdComp_Accepted17"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted17"] === 1 ? true : false} name="STIC_ProdComp_Accepted17" onChange={(e)=>{FormData["STIC_ProdComp_Accepted17"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3003,11 +3003,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Commercial umberella &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended18"] === 1 ? true : false} name="STIC_ProdComp_Recommended18" onChange={(e)=>{FormData["STIC_ProdComp_Recommended18"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended18"] === 1 ? true : false} name="STIC_ProdComp_Recommended18" onChange={(e)=>{FormData["STIC_ProdComp_Recommended18"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted18"] === 1 ? true : false} name="STIC_ProdComp_Accepted18" onChange={(e)=>{FormData["STIC_ProdComp_Accepted18"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted18"] === 1 ? true : false} name="STIC_ProdComp_Accepted18" onChange={(e)=>{FormData["STIC_ProdComp_Accepted18"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3052,11 +3052,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Products gurantee</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended19"] === 1 ? true : false} name="STIC_ProdComp_Recommended19" onChange={(e)=>{FormData["STIC_ProdComp_Recommended19"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended19"] === 1 ? true : false} name="STIC_ProdComp_Recommended19" onChange={(e)=>{FormData["STIC_ProdComp_Recommended19"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted19"] === 1 ? true : false} name="STIC_ProdComp_Accepted19" onChange={(e)=>{FormData["STIC_ProdComp_Accepted19"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted19"] === 1 ? true : false} name="STIC_ProdComp_Accepted19" onChange={(e)=>{FormData["STIC_ProdComp_Accepted19"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3101,11 +3101,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Cyber Risks</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended20"] === 1 ? true : false} name="STIC_ProdComp_Recommended20" onChange={(e)=>{FormData["STIC_ProdComp_Recommended20"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended20"] === 1 ? true : false} name="STIC_ProdComp_Recommended20" onChange={(e)=>{FormData["STIC_ProdComp_Recommended20"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted20"] === 1 ? true : false} name="STIC_ProdComp_Accepted20" onChange={(e)=>{FormData["STIC_ProdComp_Accepted20"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted20"] === 1 ? true : false} name="STIC_ProdComp_Accepted20" onChange={(e)=>{FormData["STIC_ProdComp_Accepted20"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3150,11 +3150,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Director and officer's &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended21"] === 1 ? true : false} name="STIC_ProdComp_Recommended21" onChange={(e)=>{FormData["STIC_ProdComp_Recommended21"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended21"] === 1 ? true : false} name="STIC_ProdComp_Recommended21" onChange={(e)=>{FormData["STIC_ProdComp_Recommended21"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted21"] === 1 ? true : false} name="STIC_ProdComp_Accepted21" onChange={(e)=>{FormData["STIC_ProdComp_Accepted21"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted21"] === 1 ? true : false} name="STIC_ProdComp_Accepted21" onChange={(e)=>{FormData["STIC_ProdComp_Accepted21"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3199,11 +3199,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Employer practices &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended22"] === 1 ? true : false} name="STIC_ProdComp_Recommended22" onChange={(e)=>{FormData["STIC_ProdComp_Recommended22"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended22"] === 1 ? true : false} name="STIC_ProdComp_Recommended22" onChange={(e)=>{FormData["STIC_ProdComp_Recommended22"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted22"] === 1 ? true : false} name="STIC_ProdComp_Accepted22" onChange={(e)=>{FormData["STIC_ProdComp_Accepted22"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted22"] === 1 ? true : false} name="STIC_ProdComp_Accepted22" onChange={(e)=>{FormData["STIC_ProdComp_Accepted22"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3248,11 +3248,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Product inefficacy</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended23"] === 1 ? true : false} name="STIC_ProdComp_Recommended23" onChange={(e)=>{FormData["STIC_ProdComp_Recommended23"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended23"] === 1 ? true : false} name="STIC_ProdComp_Recommended23" onChange={(e)=>{FormData["STIC_ProdComp_Recommended23"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted23"] === 1 ? true : false} name="STIC_ProdComp_Accepted23" onChange={(e)=>{FormData["STIC_ProdComp_Accepted23"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted23"] === 1 ? true : false} name="STIC_ProdComp_Accepted23" onChange={(e)=>{FormData["STIC_ProdComp_Accepted23"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3297,11 +3297,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Product guarantee</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended24"] === 1 ? true : false} name="STIC_ProdComp_Recommended24" onChange={(e)=>{FormData["STIC_ProdComp_Recommended24"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended24"] === 1 ? true : false} name="STIC_ProdComp_Recommended24" onChange={(e)=>{FormData["STIC_ProdComp_Recommended24"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted24"] === 1 ? true : false} name="STIC_ProdComp_Accepted24" onChange={(e)=>{FormData["STIC_ProdComp_Accepted24"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted24"] === 1 ? true : false} name="STIC_ProdComp_Accepted24" onChange={(e)=>{FormData["STIC_ProdComp_Accepted24"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3349,11 +3349,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Warehousemen's &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended25"] === 1 ? true : false} name="STIC_ProdComp_Recommended25" onChange={(e)=>{FormData["STIC_ProdComp_Recommended25"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended25"] === 1 ? true : false} name="STIC_ProdComp_Recommended25" onChange={(e)=>{FormData["STIC_ProdComp_Recommended25"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted25"] === 1 ? true : false} name="STIC_ProdComp_Accepted25" onChange={(e)=>{FormData["STIC_ProdComp_Accepted25"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted25"] === 1 ? true : false} name="STIC_ProdComp_Accepted25" onChange={(e)=>{FormData["STIC_ProdComp_Accepted25"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3398,11 +3398,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Employer liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended26"] === 1 ? true : false} name="STIC_ProdComp_Recommended26" onChange={(e)=>{FormData["STIC_ProdComp_Recommended26"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended26"] === 1 ? true : false} name="STIC_ProdComp_Recommended26" onChange={(e)=>{FormData["STIC_ProdComp_Recommended26"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted26"] === 1 ? true : false} name="STIC_ProdComp_Accepted26" onChange={(e)=>{FormData["STIC_ProdComp_Accepted26"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted26"] === 1 ? true : false} name="STIC_ProdComp_Accepted26" onChange={(e)=>{FormData["STIC_ProdComp_Accepted26"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3447,11 +3447,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Stated benefits</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended27"] === 1 ? true : false} name="STIC_ProdComp_Recommended27" onChange={(e)=>{FormData["STIC_ProdComp_Recommended27"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended27"] === 1 ? true : false} name="STIC_ProdComp_Recommended27" onChange={(e)=>{FormData["STIC_ProdComp_Recommended27"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted27"] === 1 ? true : false} name="STIC_ProdComp_Accepted27" onChange={(e)=>{FormData["STIC_ProdComp_Accepted27"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted27"] === 1 ? true : false} name="STIC_ProdComp_Accepted27" onChange={(e)=>{FormData["STIC_ProdComp_Accepted27"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3496,11 +3496,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Personal and group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; accident</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended28"] === 1 ? true : false} name="STIC_ProdComp_Recommended28" onChange={(e)=>{FormData["STIC_ProdComp_Recommended28"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended28"] === 1 ? true : false} name="STIC_ProdComp_Recommended28" onChange={(e)=>{FormData["STIC_ProdComp_Recommended28"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted28"] === 1 ? true : false} name="STIC_ProdComp_Accepted28" onChange={(e)=>{FormData["STIC_ProdComp_Accepted28"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted28"] === 1 ? true : false} name="STIC_ProdComp_Accepted28" onChange={(e)=>{FormData["STIC_ProdComp_Accepted28"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3545,11 +3545,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Group personal accident</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended29"] === 1 ? true : false} name="STIC_ProdComp_Recommended29" onChange={(e)=>{FormData["STIC_ProdComp_Recommended29"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended29"] === 1 ? true : false} name="STIC_ProdComp_Recommended29" onChange={(e)=>{FormData["STIC_ProdComp_Recommended29"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted29"] === 1 ? true : false} name="STIC_ProdComp_Accepted29" onChange={(e)=>{FormData["STIC_ProdComp_Accepted29"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted29"] === 1 ? true : false} name="STIC_ProdComp_Accepted29" onChange={(e)=>{FormData["STIC_ProdComp_Accepted29"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3594,11 +3594,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Motor</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended30"] === 1 ? true : false} name="STIC_ProdComp_Recommended30" onChange={(e)=>{FormData["STIC_ProdComp_Recommended30"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended30"] === 1 ? true : false} name="STIC_ProdComp_Recommended30" onChange={(e)=>{FormData["STIC_ProdComp_Recommended30"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted30"] === 1 ? true : false} name="STIC_ProdComp_Accepted30" onChange={(e)=>{FormData["STIC_ProdComp_Accepted30"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted30"] === 1 ? true : false} name="STIC_ProdComp_Accepted30" onChange={(e)=>{FormData["STIC_ProdComp_Accepted30"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3643,11 +3643,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor car hire extension</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended31"] === 1 ? true : false} name="STIC_ProdComp_Recommended31" onChange={(e)=>{FormData["STIC_ProdComp_Recommended31"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended31"] === 1 ? true : false} name="STIC_ProdComp_Recommended31" onChange={(e)=>{FormData["STIC_ProdComp_Recommended31"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted31"] === 1 ? true : false} name="STIC_ProdComp_Accepted31" onChange={(e)=>{FormData["STIC_ProdComp_Accepted31"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted31"] === 1 ? true : false} name="STIC_ProdComp_Accepted31" onChange={(e)=>{FormData["STIC_ProdComp_Accepted31"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3692,11 +3692,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: internal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;risk</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended32"] === 1 ? true : false} name="STIC_ProdComp_Recommended32" onChange={(e)=>{FormData["STIC_ProdComp_Recommended32"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended32"] === 1 ? true : false} name="STIC_ProdComp_Recommended32" onChange={(e)=>{FormData["STIC_ProdComp_Recommended32"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted32"] === 1 ? true : false} name="STIC_ProdComp_Accepted32" onChange={(e)=>{FormData["STIC_ProdComp_Accepted32"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted32"] === 1 ? true : false} name="STIC_ProdComp_Accepted32" onChange={(e)=>{FormData["STIC_ProdComp_Accepted32"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3741,11 +3741,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: internal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;risk</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended33"] === 1 ? true : false} name="STIC_ProdComp_Recommended33" onChange={(e)=>{FormData["STIC_ProdComp_Recommended33"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended33"] === 1 ? true : false} name="STIC_ProdComp_Recommended33" onChange={(e)=>{FormData["STIC_ProdComp_Recommended33"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted33"] === 1 ? true : false} name="STIC_ProdComp_Accepted33" onChange={(e)=>{FormData["STIC_ProdComp_Accepted33"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted33"] === 1 ? true : false} name="STIC_ProdComp_Accepted33" onChange={(e)=>{FormData["STIC_ProdComp_Accepted33"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3790,11 +3790,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Electronic equipment</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended34"] === 1 ? true : false} name="STIC_ProdComp_Recommended34\" onChange={(e)=>{FormData["STIC_ProdComp_Recommended34"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended34"] === 1 ? true : false} name="STIC_ProdComp_Recommended34" onChange={(e)=>{FormData["STIC_ProdComp_Recommended34"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted34"] === 1 ? true : false} name="STIC_ProdComp_Accepted34" onChange={(e)=>{FormData["STIC_ProdComp_Accepted34"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted34"] === 1 ? true : false} name="STIC_ProdComp_Accepted34" onChange={(e)=>{FormData["STIC_ProdComp_Accepted34"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3839,11 +3839,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>House owner</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended35"] === 1 ? true : false} name="STIC_ProdComp_Recommended35" onChange={(e)=>{FormData["STIC_ProdComp_Recommended35"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended35"] === 1 ? true : false} name="STIC_ProdComp_Recommended35" onChange={(e)=>{FormData["STIC_ProdComp_Recommended35"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted35"] === 1 ? true : false} name="STIC_ProdComp_Accepted35" onChange={(e)=>{FormData["STIC_ProdComp_Accepted35"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted35"] === 1 ? true : false} name="STIC_ProdComp_Accepted35" onChange={(e)=>{FormData["STIC_ProdComp_Accepted35"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3888,11 +3888,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>House holders</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended44"] === 1 ? true : false} name="STIC_ProdComp_Recommended44" onChange={(e)=>{FormData["STIC_ProdComp_Recommended44"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended44"] === 1 ? true : false} name="STIC_ProdComp_Recommended44" onChange={(e)=>{FormData["STIC_ProdComp_Recommended44"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted44"] === 1 ? true : false} name="STIC_ProdComp_Accepted44" onChange={(e)=>{FormData["STIC_ProdComp_Accepted44"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted44"] === 1 ? true : false} name="STIC_ProdComp_Accepted44" onChange={(e)=>{FormData["STIC_ProdComp_Accepted44"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3937,11 +3937,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Professional indenmity</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended36"] === 1 ? true : false} name="STIC_ProdComp_Recommended36" onChange={(e)=>{FormData["STIC_ProdComp_Recommended36"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended36"] === 1 ? true : false} name="STIC_ProdComp_Recommended36" onChange={(e)=>{FormData["STIC_ProdComp_Recommended36"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted36"] === 1 ? true : false} name="STIC_ProdComp_Accepted36" onChange={(e)=>{FormData["STIC_ProdComp_Accepted36"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted36"] === 1 ? true : false} name="STIC_ProdComp_Accepted36" onChange={(e)=>{FormData["STIC_ProdComp_Accepted36"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -3986,11 +3986,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Marine/hull</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended37"] === 1 ? true : false} name="STIC_ProdComp_Recommended37" onChange={(e)=>{FormData["STIC_ProdComp_Recommended37"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended37"] === 1 ? true : false} name="STIC_ProdComp_Recommended37" onChange={(e)=>{FormData["STIC_ProdComp_Recommended37"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted37"] === 1 ? true : false} name="STIC_ProdComp_Accepted37" onChange={(e)=>{FormData["STIC_ProdComp_Accepted37"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted37"] === 1 ? true : false} name="STIC_ProdComp_Accepted37" onChange={(e)=>{FormData["STIC_ProdComp_Accepted37"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -4035,11 +4035,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>contractors all risks:construction and engineering</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended38"] === 1 ? true : false} name="STIC_ProdComp_Recommended38" onChange={(e)=>{FormData["STIC_ProdComp_Recommended38"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended38"] === 1 ? true : false} name="STIC_ProdComp_Recommended38" onChange={(e)=>{FormData["STIC_ProdComp_Recommended38"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted38"] === 1 ? true : false} name="STIC_ProdComp_Accepted38" onChange={(e)=>{FormData["STIC_ProdComp_Accepted38"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted38"] === 1 ? true : false} name="STIC_ProdComp_Accepted38" onChange={(e)=>{FormData["STIC_ProdComp_Accepted38"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -4084,11 +4084,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Body corporate</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended39"] === 1 ? true : false} name="STIC_ProdComp_Recommended39" onChange={(e)=>{FormData["STIC_ProdComp_Recommended39"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended39"] === 1 ? true : false} name="STIC_ProdComp_Recommended39" onChange={(e)=>{FormData["STIC_ProdComp_Recommended39"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted39"] === 1 ? true : false} name="STIC_ProdComp_Accepted39" onChange={(e)=>{FormData["STIC_ProdComp_Accepted39"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted39"] === 1 ? true : false} name="STIC_ProdComp_Accepted39" onChange={(e)=>{FormData["STIC_ProdComp_Accepted39"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -4133,11 +4133,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Aviation</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended40"] === 1 ? true : false} name="STIC_ProdComp_Recommended40" onChange={(e)=>{FormData["STIC_ProdComp_Recommended40"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended40"] === 1 ? true : false} name="STIC_ProdComp_Recommended40" onChange={(e)=>{FormData["STIC_ProdComp_Recommended40"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted40"] === 1 ? true : false} name="STIC_ProdComp_Accepted40" onChange={(e)=>{FormData["STIC_ProdComp_Accepted40"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted40"] === 1 ? true : false} name="STIC_ProdComp_Accepted40" onChange={(e)=>{FormData["STIC_ProdComp_Accepted40"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -4182,11 +4182,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Travel insurance</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended41"] === 1 ? true : false} name="STIC_ProdComp_Recommended41" onChange={(e)=>{FormData["STIC_ProdComp_Recommended41"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended41"] === 1 ? true : false} name="STIC_ProdComp_Recommended41" onChange={(e)=>{FormData["STIC_ProdComp_Recommended41"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted41"] === 1 ? true : false} name="STIC_ProdComp_Accepted41" onChange={(e)=>{FormData["STIC_ProdComp_Accepted41"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted41"] === 1 ? true : false} name="STIC_ProdComp_Accepted41" onChange={(e)=>{FormData["STIC_ProdComp_Accepted41"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -4231,11 +4231,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Sasria</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended42"] === 1 ? true : false} name="STIC_ProdComp_Recommended42" onChange={(e)=>{FormData["STIC_ProdComp_Recommended42"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended42"] === 1 ? true : false} name="STIC_ProdComp_Recommended42" onChange={(e)=>{FormData["STIC_ProdComp_Recommended42"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted42"] === 1 ? true : false} name="STIC_ProdComp_Accepted42" onChange={(e)=>{FormData["STIC_ProdComp_Accepted42"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted42"] === 1 ? true : false} name="STIC_ProdComp_Accepted42" onChange={(e)=>{FormData["STIC_ProdComp_Accepted42"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -4280,11 +4280,11 @@ const Short_term_Commercial= ({user}) => {
                                           
                                           <td class="col-2" style={{width:"200px"}}>Legal fees</td>
                                           <td class="col-2" style={{width:"130px"}}>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Recommended43"] === 1 ? true : false} name="STIC_ProdComp_Recommended43" onChange={(e)=>{FormData["STIC_ProdComp_Recommended43"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                              <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended43"] === 1 ? true : false} name="STIC_ProdComp_Recommended43" onChange={(e)=>{FormData["STIC_ProdComp_Recommended43"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_ProdComp_Accepted43"] === 1 ? true : false} name="STIC_ProdComp_Accepted43" onChange={(e)=>{FormData["STIC_ProdComp_Accepted43"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
+                                            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted43"] === 1 ? true : false} name="STIC_ProdComp_Accepted43" onChange={(e)=>{FormData["STIC_ProdComp_Accepted43"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
@@ -4740,7 +4740,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Earthquake_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Earthquake_Insured" name="STIC_Earthquake_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Earthquake_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Earthquake_Insured" name="STIC_Earthquake_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4748,7 +4748,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Earthquake_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Earthquake_Insured" name="STIC_Earthquake_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Earthquake_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Earthquake_Insured" name="STIC_Earthquake_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4767,7 +4767,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Malicious_Damage_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Malicious_Damage_Insured" name="STIC_Malicious_Damage_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Malicious_Damage_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Malicious_Damage_Insured" name="STIC_Malicious_Damage_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4775,7 +4775,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Malicious_Damage_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Malicious_Damage_Insured" name="STIC_Malicious_Damage_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Malicious_Damage_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Malicious_Damage_Insured" name="STIC_Malicious_Damage_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4794,7 +4794,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Special_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Special_Insured" name="STIC_Special_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Special_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Special_Insured" name="STIC_Special_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4802,7 +4802,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Special_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Special_Insured" name="STIC_Special_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Special_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Special_Insured" name="STIC_Special_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4821,7 +4821,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFull_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_LeakFull_Insured" name="STIC_LeakFull_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFull_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_LeakFull_Insured" name="STIC_LeakFull_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4829,7 +4829,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFull_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_LeakFull_Insured" name="STIC_LeakFull_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFull_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_LeakFull_Insured" name="STIC_LeakFull_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4848,7 +4848,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFirst_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_LeakFirst_Insured" name="STIC_LeakFirst_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFirst_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_LeakFirst_Insured" name="STIC_LeakFirst_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4856,7 +4856,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFirst_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_LeakFirst_Insured" name="STIC_LeakFirst_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_LeakFirst_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_LeakFirst_Insured" name="STIC_LeakFirst_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4875,7 +4875,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLLimited_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SnLLimited_Insured" name="STIC_SnLLimited_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLLimited_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SnLLimited_Insured" name="STIC_SnLLimited_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4883,7 +4883,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLLimited_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SnLLimited_Insured" name="STIC_SnLLimited_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLLimited_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SnLLimited_Insured" name="STIC_SnLLimited_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4902,7 +4902,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLComprehensive_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SnLComprehensive_Insured" name="STIC_SnLComprehensive_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLComprehensive_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SnLComprehensive_Insured" name="STIC_SnLComprehensive_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4910,7 +4910,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLComprehensive_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SnLComprehensive_Insured" name="STIC_SnLComprehensive_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SnLComprehensive_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SnLComprehensive_Insured" name="STIC_SnLComprehensive_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4929,7 +4929,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_RnS_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_RnS_Insured" name="STIC_RnS_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_RnS_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_RnS_Insured" name="STIC_RnS_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4937,7 +4937,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_RnS_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_RnS_Insured" name="STIC_RnS_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_RnS_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_RnS_Insured" name="STIC_RnS_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4956,7 +4956,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SDC_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SDC_Insured" name="STIC_SDC_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SDC_Insured'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SDC_Insured" name="STIC_SDC_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -4964,7 +4964,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SDC_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SDC_Insured" name="STIC_SDC_Insured" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_SDC_Insured'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SDC_Insured" name="STIC_SDC_Insured" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5102,7 +5102,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BuildCombined_Construct'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BuildCombined_Construct" name="STIC_BuildCombined_Construct" />
+                        <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BuildCombined_Construct'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BuildCombined_Construct" name="STIC_BuildCombined_Construct" />
                         
                       </div>
                       <div className="col-3">
@@ -5111,7 +5111,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BuildCombined_Construct'] == 0 ? true: false } onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BuildCombined_Construct" name="STIC_BuildCombined_Construct" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BuildCombined_Construct'] == 0 ? true: false } onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BuildCombined_Construct" name="STIC_BuildCombined_Construct" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5164,7 +5164,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_RnS'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_RnS" name="STIC_Extensions_RnS" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_RnS'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_RnS" name="STIC_Extensions_RnS" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5172,7 +5172,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_RnS'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_RnS" name="STIC_Extensions_RnS" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_RnS'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_RnS" name="STIC_Extensions_RnS" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5191,7 +5191,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_Geysers'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_Geysers" name="STIC_Extensions_Geysers" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_Geysers'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_Geysers" name="STIC_Extensions_Geysers" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5199,7 +5199,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_Geysers'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_Geysers" name="STIC_Extensions_Geysers" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_Geysers'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_Geysers" name="STIC_Extensions_Geysers" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5218,7 +5218,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_SnL'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_SnL" name="STIC_Extensions_SnL" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_SnL'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_SnL" name="STIC_Extensions_SnL" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5226,7 +5226,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_SnL'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_SnL" name="STIC_Extensions_SnL" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_SnL'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_SnL" name="STIC_Extensions_SnL" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5246,7 +5246,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_PoA'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_PoA" name="STIC_Extensions_PoA" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_PoA'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_PoA" name="STIC_Extensions_PoA" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5254,7 +5254,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_PoA'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_PoA" name="STIC_Extensions_PoA" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_PoA'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_PoA" name="STIC_Extensions_PoA" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5273,7 +5273,7 @@ const Short_term_Commercial= ({user}) => {
                   </div>
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_IorE'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_IorE" name="STIC_Extensions_IorE" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_IorE'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Extensions_IorE" name="STIC_Extensions_IorE" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5281,7 +5281,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_IorE'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_IorE" name="STIC_Extensions_IorE" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_Extensions_IorE'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Extensions_IorE" name="STIC_Extensions_IorE" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -5397,7 +5397,7 @@ const Short_term_Commercial= ({user}) => {
                                       </div>
                                       <div className="row col-4 align-items-center">
                                           <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_OC_Construct'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_OC_Construct" name="STIC_OC_Construct" />
+                                              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_OC_Construct'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_OC_Construct" name="STIC_OC_Construct" />
                                           </div>
                                           <div className="col-3">
                                               <label className="form-check-label"  >
@@ -5405,7 +5405,7 @@ const Short_term_Commercial= ({user}) => {
                                               </label>
                                           </div>
                                           <div className="col-3">
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_OC_Construct'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_OC_Construct" name="STIC_OC_Construct" />
+                                              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_OC_Construct'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_OC_Construct" name="STIC_OC_Construct" />
                                           </div>
                                           <div className="col-3">
                                               <label className="form-check-label"  >
@@ -5674,7 +5674,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type1'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type1" name="STIC_BusInt_Type1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type1'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type1" name="STIC_BusInt_Type1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5682,7 +5682,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type1'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type1" name="STIC_BusInt_Type1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type1'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type1" name="STIC_BusInt_Type1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5701,7 +5701,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2" name="STIC_BusInt_Type2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2" name="STIC_BusInt_Type2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5709,7 +5709,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2" name="STIC_BusInt_Type2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2" name="STIC_BusInt_Type2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5728,7 +5728,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type3" name="STIC_BusInt_Type3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type3" name="STIC_BusInt_Type3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5736,7 +5736,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type3" name="STIC_BusInt_Type3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type3" name="STIC_BusInt_Type3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5755,7 +5755,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type4" name="STIC_BusInt_Type4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type4" name="STIC_BusInt_Type4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5763,7 +5763,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type4" name="STIC_BusInt_Type4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type4" name="STIC_BusInt_Type4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5782,7 +5782,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type5" name="STIC_BusInt_Type5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type5" name="STIC_BusInt_Type5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5790,7 +5790,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type5" name="STIC_BusInt_Type5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type5" name="STIC_BusInt_Type5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5809,7 +5809,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type6" name="STIC_BusInt_Type6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type6" name="STIC_BusInt_Type6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5817,7 +5817,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type6" name="STIC_BusInt_Type6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type6" name="STIC_BusInt_Type6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5836,7 +5836,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type7" name="STIC_BusInt_Type7" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type7" name="STIC_BusInt_Type7" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5844,7 +5844,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type7" name="STIC_BusInt_Type7" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type7" name="STIC_BusInt_Type7" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5863,7 +5863,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type8"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type8" name="STIC_BusInt_Type8" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type8"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type8" name="STIC_BusInt_Type8" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5871,7 +5871,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type8"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type8" name="STIC_BusInt_Type8" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type8"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type8" name="STIC_BusInt_Type8" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5916,7 +5916,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type11"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type11" name="STIC_BusInt_Type11" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type11"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type11" name="STIC_BusInt_Type11" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5924,7 +5924,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type11"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type11" name="STIC_BusInt_Type11" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type11"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type11" name="STIC_BusInt_Type11" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5980,7 +5980,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type14"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type14" name="STIC_BusInt_Type14" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type14"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type14" name="STIC_BusInt_Type14" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -5988,7 +5988,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type14"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type14" name="STIC_BusInt_Type14" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type14"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type14" name="STIC_BusInt_Type14" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6009,7 +6009,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type15"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type15" name="STIC_BusInt_Type15" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type15"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type15" name="STIC_BusInt_Type15" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6017,7 +6017,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type15"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type15" name="STIC_BusInt_Type15" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type15"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type15" name="STIC_BusInt_Type15" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6038,7 +6038,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type16"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type16" name="STIC_BusInt_Type16" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type16"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type16" name="STIC_BusInt_Type16" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6046,7 +6046,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type16"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type16" name="STIC_BusInt_Type16" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type16"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type16" name="STIC_BusInt_Type16" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6103,7 +6103,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type19"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type19" name="STIC_BusInt_Type19" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type19"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type19" name="STIC_BusInt_Type19" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6111,7 +6111,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type19"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type19" name="STIC_BusInt_Type19" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type19"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type19" name="STIC_BusInt_Type19" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6132,7 +6132,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type20"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type20" name="STIC_BusInt_Type20" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type20"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type20" name="STIC_BusInt_Type20" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6140,7 +6140,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type20"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type20" name="STIC_BusInt_Type20" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type20"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type20" name="STIC_BusInt_Type20" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6173,7 +6173,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type21"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type21" name="STIC_BusInt_Type21" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type21"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type21" name="STIC_BusInt_Type21" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6181,7 +6181,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type21"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type21" name="STIC_BusInt_Type21" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type21"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type21" name="STIC_BusInt_Type21" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6202,7 +6202,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type22"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type22" name="STIC_BusInt_Type22" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type22"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type22" name="STIC_BusInt_Type22" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6210,7 +6210,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type22"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type22" name="STIC_BusInt_Type22" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type22"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type22" name="STIC_BusInt_Type22" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6231,7 +6231,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type23"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type23" name="STIC_BusInt_Type23" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type23"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type23" name="STIC_BusInt_Type23" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6239,7 +6239,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type23"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type23" name="STIC_BusInt_Type23" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type23"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type23" name="STIC_BusInt_Type23" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6343,7 +6343,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2_1'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_1" name="STIC_BusInt_Type2_1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2_1'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_1" name="STIC_BusInt_Type2_1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6351,7 +6351,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2_1'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_1" name="STIC_BusInt_Type2_1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2_1'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_1" name="STIC_BusInt_Type2_1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6370,7 +6370,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2_2'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_2" name="STIC_BusInt_Type2_2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2_2'] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_2" name="STIC_BusInt_Type2_2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6378,7 +6378,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2_2'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_2" name="STIC_BusInt_Type2_2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['STIC_BusInt_Type2_2'] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_2" name="STIC_BusInt_Type2_2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6397,7 +6397,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_3" name="STIC_BusInt_Type2_3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_3" name="STIC_BusInt_Type2_3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6405,7 +6405,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_3" name="STIC_BusInt_Type2_3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_3" name="STIC_BusInt_Type2_3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6424,7 +6424,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_4" name="STIC_BusInt_Type2_4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_4" name="STIC_BusInt_Type2_4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6432,7 +6432,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_4" name="STIC_BusInt_Type2_4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_4" name="STIC_BusInt_Type2_4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6451,7 +6451,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_5" name="STIC_BusInt_Type2_5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_5" name="STIC_BusInt_Type2_5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6459,7 +6459,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_5" name="STIC_BusInt_Type2_5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_5" name="STIC_BusInt_Type2_5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6478,7 +6478,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_6" name="STIC_BusInt_Type2_6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_6" name="STIC_BusInt_Type2_6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6486,7 +6486,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_6" name="STIC_BusInt_Type2_6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_6" name="STIC_BusInt_Type2_6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6505,7 +6505,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_7" name="STIC_BusInt_Type2_7" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_7" name="STIC_BusInt_Type2_7" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6513,7 +6513,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_7" name="STIC_BusInt_Type2_7" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_7" name="STIC_BusInt_Type2_7" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6532,7 +6532,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_8"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_8" name="STIC_BusInt_Type2_8" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_8"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_8" name="STIC_BusInt_Type2_8" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6540,7 +6540,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_8"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_8" name="STIC_BusInt_Type2_8" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_8"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_8" name="STIC_BusInt_Type2_8" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6585,7 +6585,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_11"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_11" name="STIC_BusInt_Type2_11" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_11"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_11" name="STIC_BusInt_Type2_11" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6593,7 +6593,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_11"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_11" name="STIC_BusInt_Type2_11" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_11"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_11" name="STIC_BusInt_Type2_11" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6649,7 +6649,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_14"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_14" name="STIC_BusInt_Type2_14" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_14"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_14" name="STIC_BusInt_Type2_14" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6657,7 +6657,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_14"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_14" name="STIC_BusInt_Type2_14" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_14"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_14" name="STIC_BusInt_Type2_14" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6678,7 +6678,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_15"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_15" name="STIC_BusInt_Type2_15" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_15"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_15" name="STIC_BusInt_Type2_15" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6686,7 +6686,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_15"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_15" name="STIC_BusInt_Type2_15" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_15"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_15" name="STIC_BusInt_Type2_15" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6707,7 +6707,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_16"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_16" name="STIC_BusInt_Type2_16" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_16"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_16" name="STIC_BusInt_Type2_16" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6715,7 +6715,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_16"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_16" name="STIC_BusInt_Type2_16" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_16"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_16" name="STIC_BusInt_Type2_16" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6772,7 +6772,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_19"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_19" name="STIC_BusInt_Type2_19" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_19"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_19" name="STIC_BusInt_Type2_19" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6780,7 +6780,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_19"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_19" name="STIC_BusInt_Type2_19" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_19"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_19" name="STIC_BusInt_Type2_19" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6801,7 +6801,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_20"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_20" name="STIC_BusInt_Type2_20" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_20"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_20" name="STIC_BusInt_Type2_20" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6809,7 +6809,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_20"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_20" name="STIC_BusInt_Type2_20" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_20"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_20" name="STIC_BusInt_Type2_20" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6842,7 +6842,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_21"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_21" name="STIC_BusInt_Type2_21" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_21"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_21" name="STIC_BusInt_Type2_21" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6850,7 +6850,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_21"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_21" name="STIC_BusInt_Type2_21" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_21"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_21" name="STIC_BusInt_Type2_21" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6871,7 +6871,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_22"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_22" name="STIC_BusInt_Type2_22" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_22"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_22" name="STIC_BusInt_Type2_22" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6879,7 +6879,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_22"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_22" name="STIC_BusInt_Type2_22" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_22"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_22" name="STIC_BusInt_Type2_22" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6900,7 +6900,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_23"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_23" name="STIC_BusInt_Type2_23" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_23"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_BusInt_Type2_23" name="STIC_BusInt_Type2_23" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -6908,7 +6908,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_23"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_23" name="STIC_BusInt_Type2_23" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_BusInt_Type2_23"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_BusInt_Type2_23" name="STIC_BusInt_Type2_23" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7059,7 +7059,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec5_Extension_1" name="STIC_Sec5_Extension_1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec5_Extension_1" name="STIC_Sec5_Extension_1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7067,7 +7067,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec5_Extension_1" name="STIC_Sec5_Extension_1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec5_Extension_1" name="STIC_Sec5_Extension_1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7086,7 +7086,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec5_Extension_2" name="STIC_Sec5_Extension_2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec5_Extension_2" name="STIC_Sec5_Extension_2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7094,7 +7094,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec5_Extension_2" name="STIC_Sec5_Extension_2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec5_Extension_2" name="STIC_Sec5_Extension_2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7113,7 +7113,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec5_Extension_3" name="STIC_Sec5_Extension_3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec5_Extension_3" name="STIC_Sec5_Extension_3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7121,7 +7121,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec5_Extension_3" name="STIC_Sec5_Extension_3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec5_Extension_3" name="STIC_Sec5_Extension_3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7140,7 +7140,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec5_Extension_4" name="STIC_Sec5_Extension_4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec5_Extension_4" name="STIC_Sec5_Extension_4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7148,7 +7148,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec5_Extension_4" name="STIC_Sec5_Extension_4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec5_Extension_4" name="STIC_Sec5_Extension_4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7169,7 +7169,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec5_Extension_5" name="STIC_Sec5_Extension_5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec5_Extension_5" name="STIC_Sec5_Extension_5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7177,7 +7177,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec5_Extension_5" name="STIC_Sec5_Extension_5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec5_Extension_5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec5_Extension_5" name="STIC_Sec5_Extension_5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7462,7 +7462,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec7_3" name="STIC_Sec7_3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec7_3" name="STIC_Sec7_3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7470,7 +7470,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec7_3" name="STIC_Sec7_3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec7_3" name="STIC_Sec7_3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7491,7 +7491,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec7_4" name="STIC_Sec7_4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec7_4" name="STIC_Sec7_4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7499,7 +7499,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec7_4" name="STIC_Sec7_4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec7_4" name="STIC_Sec7_4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7583,7 +7583,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec7_Extension_Included1" name="STIC_Sec7_Extension_Included1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec7_Extension_Included1" name="STIC_Sec7_Extension_Included1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7591,7 +7591,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec7_Extension_Included1" name="STIC_Sec7_Extension_Included1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec7_Extension_Included1" name="STIC_Sec7_Extension_Included1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7616,7 +7616,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec7_Extension_Included2" name="STIC_Sec7_Extension_Included2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec7_Extension_Included2" name="STIC_Sec7_Extension_Included2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7624,7 +7624,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec7_Extension_Included2" name="STIC_Sec7_Extension_Included2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec7_Extension_Included2" name="STIC_Sec7_Extension_Included2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7649,7 +7649,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec7_Extension_Included3" name="STIC_Sec7_Extension_Included3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec7_Extension_Included3" name="STIC_Sec7_Extension_Included3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7657,7 +7657,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec7_Extension_Included3" name="STIC_Sec7_Extension_Included3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec7_Extension_Included3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec7_Extension_Included3" name="STIC_Sec7_Extension_Included3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -7820,7 +7820,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
           <div className="col-3">
-              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec8_Extension_Included1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec8_Extension_Included1" name="STIC_Sec8_Extension_Included1" />
+              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec8_Extension_Included1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec8_Extension_Included1" name="STIC_Sec8_Extension_Included1" />
           </div>
           <div className="col-3">
               <label className="form-check-label"  >
@@ -7828,7 +7828,7 @@ const Short_term_Commercial= ({user}) => {
               </label>
           </div>
           <div className="col-3">
-              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec8_Extension_Included1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec8_Extension_Included1" name="STIC_Sec8_Extension_Included1" />
+              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec8_Extension_Included1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec8_Extension_Included1" name="STIC_Sec8_Extension_Included1" />
           </div>
           <div className="col-3">
               <label className="form-check-label"  >
@@ -7848,7 +7848,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
           <div className="col-3">
-              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec8_Extension_Included2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec8_Extension_Included2" name="STIC_Sec8_Extension_Included2" />
+              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec8_Extension_Included2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec8_Extension_Included2" name="STIC_Sec8_Extension_Included2" />
           </div>
           <div className="col-3">
               <label className="form-check-label"  >
@@ -7856,7 +7856,7 @@ const Short_term_Commercial= ({user}) => {
               </label>
           </div>
           <div className="col-3">
-              <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec8_Extension_Included2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec8_Extension_Included2" name="STIC_Sec8_Extension_Included2" />
+              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec8_Extension_Included2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec8_Extension_Included2" name="STIC_Sec8_Extension_Included2" />
           </div>
           <div className="col-3">
               <label className="form-check-label"  >
@@ -8039,7 +8039,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included1" name="STIC_Sec9_Extension_Included1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included1" name="STIC_Sec9_Extension_Included1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8047,7 +8047,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included1" name="STIC_Sec9_Extension_Included1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included1" name="STIC_Sec9_Extension_Included1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8071,7 +8071,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included2" name="STIC_Sec9_Extension_Included2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included2" name="STIC_Sec9_Extension_Included2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8079,7 +8079,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included2" name="STIC_Sec9_Extension_Included2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included2" name="STIC_Sec9_Extension_Included2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8103,7 +8103,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included3" name="STIC_Sec9_Extension_Included3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included3" name="STIC_Sec9_Extension_Included3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8111,7 +8111,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included3" name="STIC_Sec9_Extension_Included3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included3" name="STIC_Sec9_Extension_Included3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8135,7 +8135,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included4" name="STIC_Sec9_Extension_Included4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included4" name="STIC_Sec9_Extension_Included4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8143,7 +8143,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included4" name="STIC_Sec9_Extension_Included4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included4" name="STIC_Sec9_Extension_Included4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8167,7 +8167,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included5" name="STIC_Sec9_Extension_Included5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included5" name="STIC_Sec9_Extension_Included5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8175,7 +8175,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included5" name="STIC_Sec9_Extension_Included5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included5" name="STIC_Sec9_Extension_Included5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8199,7 +8199,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included6" name="STIC_Sec9_Extension_Included6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec9_Extension_Included6" name="STIC_Sec9_Extension_Included6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8207,7 +8207,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included6" name="STIC_Sec9_Extension_Included6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec9_Extension_Included6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec9_Extension_Included6" name="STIC_Sec9_Extension_Included6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8411,7 +8411,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec10_Extension_Included1" name="STIC_Sec10_Extension_Included1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec10_Extension_Included1" name="STIC_Sec10_Extension_Included1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8419,7 +8419,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec10_Extension_Included1" name="STIC_Sec10_Extension_Included1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec10_Extension_Included1" name="STIC_Sec10_Extension_Included1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8443,7 +8443,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec10_Extension_Included2" name="STIC_Sec10_Extension_Included2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec10_Extension_Included2" name="STIC_Sec10_Extension_Included2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8451,7 +8451,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec10_Extension_Included2" name="STIC_Sec10_Extension_Included2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec10_Extension_Included2" name="STIC_Sec10_Extension_Included2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8475,7 +8475,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec10_Extension_Included3" name="STIC_Sec10_Extension_Included3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec10_Extension_Included3" name="STIC_Sec10_Extension_Included3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8483,7 +8483,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec10_Extension_Included3" name="STIC_Sec10_Extension_Included3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec10_Extension_Included3" name="STIC_Sec10_Extension_Included3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8507,7 +8507,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec10_Extension_Included4" name="STIC_Sec10_Extension_Included4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec10_Extension_Included4" name="STIC_Sec10_Extension_Included4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8515,7 +8515,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec10_Extension_Included4" name="STIC_Sec10_Extension_Included4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec10_Extension_Included4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec10_Extension_Included4" name="STIC_Sec10_Extension_Included4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8638,7 +8638,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec11_1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec11_1" name="STIC_Sec11_1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec11_1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec11_1" name="STIC_Sec11_1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8646,7 +8646,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec11_1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec11_1" name="STIC_Sec11_1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec11_1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec11_1" name="STIC_Sec11_1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8898,7 +8898,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec12_Extension_Included1" name="STIC_Sec12_Extension_Included1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec12_Extension_Included1" name="STIC_Sec12_Extension_Included1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8906,7 +8906,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec12_Extension_Included1" name="STIC_Sec12_Extension_Included1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec12_Extension_Included1" name="STIC_Sec12_Extension_Included1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8926,7 +8926,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec12_Extension_Included2" name="STIC_Sec12_Extension_Included2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec12_Extension_Included2" name="STIC_Sec12_Extension_Included2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8934,7 +8934,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec12_Extension_Included2" name="STIC_Sec12_Extension_Included2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec12_Extension_Included2" name="STIC_Sec12_Extension_Included2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8953,7 +8953,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec12_Extension_Included3" name="STIC_Sec12_Extension_Included3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec12_Extension_Included3" name="STIC_Sec12_Extension_Included3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8961,7 +8961,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec12_Extension_Included3" name="STIC_Sec12_Extension_Included3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec12_Extension_Included3" name="STIC_Sec12_Extension_Included3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8981,7 +8981,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec12_Extension_Included4" name="STIC_Sec12_Extension_Included4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec12_Extension_Included4" name="STIC_Sec12_Extension_Included4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -8989,7 +8989,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec12_Extension_Included4" name="STIC_Sec12_Extension_Included4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec12_Extension_Included4" name="STIC_Sec12_Extension_Included4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9009,7 +9009,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec12_Extension_Included5" name="STIC_Sec12_Extension_Included5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec12_Extension_Included5" name="STIC_Sec12_Extension_Included5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9017,7 +9017,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec12_Extension_Included5" name="STIC_Sec12_Extension_Included5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec12_Extension_Included5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec12_Extension_Included5" name="STIC_Sec12_Extension_Included5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9200,7 +9200,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_7" name="STIC_Sec13_7" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_7" name="STIC_Sec13_7" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9208,7 +9208,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_7" name="STIC_Sec13_7" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_7" name="STIC_Sec13_7" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9269,7 +9269,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_12"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_12" name="STIC_Sec13_12" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_12"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_12" name="STIC_Sec13_12" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9277,7 +9277,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_12"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_12" name="STIC_Sec13_12" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_12"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_12" name="STIC_Sec13_12" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9327,7 +9327,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_16"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_16" name="STIC_Sec13_16" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_16"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_16" name="STIC_Sec13_16" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9335,7 +9335,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_16"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_16" name="STIC_Sec13_16" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_16"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_16" name="STIC_Sec13_16" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9384,7 +9384,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_20"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_20" name="STIC_Sec13_20" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_20"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_20" name="STIC_Sec13_20" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9392,7 +9392,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_20"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_20" name="STIC_Sec13_20" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_20"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_20" name="STIC_Sec13_20" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9441,7 +9441,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_24"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_24" name="STIC_Sec13_24" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_24"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_24" name="STIC_Sec13_24" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9449,7 +9449,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_24"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_24" name="STIC_Sec13_24" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_24"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_24" name="STIC_Sec13_24" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9498,7 +9498,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_28"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_28" name="STIC_Sec13_28" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_28"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_28" name="STIC_Sec13_28" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9506,7 +9506,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_28"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_28" name="STIC_Sec13_28" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_28"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_28" name="STIC_Sec13_28" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9535,7 +9535,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_30"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_30" name="STIC_Sec13_30" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_30"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_30" name="STIC_Sec13_30" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9543,7 +9543,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_30"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_30" name="STIC_Sec13_30" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_30"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_30" name="STIC_Sec13_30" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9562,7 +9562,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_31"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_31" name="STIC_Sec13_31" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_31"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_31" name="STIC_Sec13_31" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9570,7 +9570,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_31"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_31" name="STIC_Sec13_31" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_31"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_31" name="STIC_Sec13_31" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9589,7 +9589,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_32"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_32" name="STIC_Sec13_32" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_32"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec13_32" name="STIC_Sec13_32" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9597,7 +9597,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_32"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_32" name="STIC_Sec13_32" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec13_32"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec13_32" name="STIC_Sec13_32" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -9714,10 +9714,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Top up personal liability</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommended1"] === 1 ? true : false} name="STIC_Sec14_Recommended1" onChange={(e)=>{FormData["STIC_Sec14_Recommended1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommended1"] === 1 ? true : false} name="STIC_Sec14_Recommended1" onChange={(e)=>{FormData["STIC_Sec14_Recommended1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted1"] === 1 ? true : false} name="STIC_Sec14_Accepted1" onChange={(e)=>{FormData["STIC_Sec14_Accepted1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted1"] === 1 ? true : false} name="STIC_Sec14_Accepted1" onChange={(e)=>{FormData["STIC_Sec14_Accepted1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount1" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount1']}  name="STIC_Sec14_CoverAmount1" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -9728,10 +9728,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Commercial umbrella liability</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommended2"] === 1 ? true : false} name="STIC_Sec14_Recommended2" onChange={(e)=>{FormData["STIC_Sec14_Recommended2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommended2"] === 1 ? true : false} name="STIC_Sec14_Recommended2" onChange={(e)=>{FormData["STIC_Sec14_Recommended2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted2"] === 1 ? true : false} name="STIC_Sec14_Accepted2" onChange={(e)=>{FormData["STIC_Sec14_Accepted2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted2"] === 1 ? true : false} name="STIC_Sec14_Accepted2" onChange={(e)=>{FormData["STIC_Sec14_Accepted2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount2" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount2']}  name="STIC_Sec14_CoverAmount2" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -9743,10 +9743,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Products guarantee</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommended3"] === 1 ? true : false} name="STIC_Sec14_Recommended3" onChange={(e)=>{FormData["STIC_Sec14_Recommended3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommended3"] === 1 ? true : false} name="STIC_Sec14_Recommended3" onChange={(e)=>{FormData["STIC_Sec14_Recommended3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted3"] === 1 ? true : false} name="STIC_Sec14_Accepted3" onChange={(e)=>{FormData["STIC_Sec14_Accepted3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted3"] === 1 ? true : false} name="STIC_Sec14_Accepted3" onChange={(e)=>{FormData["STIC_Sec14_Accepted3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount3" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount3']}  name="STIC_Sec14_CoverAmount3" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -9758,10 +9758,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Cyber risks</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommended4"] === 1 ? true : false} name="STIC_Sec14_Recommended4" onChange={(e)=>{FormData["STIC_Sec14_Recommended4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommended4"] === 1 ? true : false} name="STIC_Sec14_Recommended4" onChange={(e)=>{FormData["STIC_Sec14_Recommended4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted4"] === 1 ? true : false} name="STIC_Sec14_Accepted4" onChange={(e)=>{FormData["STIC_Sec14_Accepted4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted4"] === 1 ? true : false} name="STIC_Sec14_Accepted4" onChange={(e)=>{FormData["STIC_Sec14_Accepted4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount4" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount4']}  name="STIC_Sec14_CoverAmount4" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -9773,10 +9773,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Directors and officers liability</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommendedh5"] === 1 ? true : false} name="STIC_Sec14_Recommended5" onChange={(e)=>{FormData["STIC_Sec14_Recommended5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommendedh5"] === 1 ? true : false} name="STIC_Sec14_Recommended5" onChange={(e)=>{FormData["STIC_Sec14_Recommended5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted5"] === 1 ? true : false} name="STIC_Sec14_Accepted5" onChange={(e)=>{FormData["STIC_Sec14_Accepted5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted5"] === 1 ? true : false} name="STIC_Sec14_Accepted5" onChange={(e)=>{FormData["STIC_Sec14_Accepted5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount5" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount5']}  name="STIC_Sec14_CoverAmount5" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -9788,10 +9788,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Employment practices liability</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommended6"] === 1 ? true : false} name="STIC_Sec14_Recommended6" onChange={(e)=>{FormData["STIC_Sec14_Recommended6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommended6"] === 1 ? true : false} name="STIC_Sec14_Recommended6" onChange={(e)=>{FormData["STIC_Sec14_Recommended6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted6"] === 1 ? true : false} name="STIC_Sec14_Accepted6" onChange={(e)=>{FormData["STIC_Sec14_Accepted6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted6"] === 1 ? true : false} name="STIC_Sec14_Accepted6" onChange={(e)=>{FormData["STIC_Sec14_Accepted6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount6" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount6']}  name="STIC_Sec14_CoverAmount6" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -9803,10 +9803,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Product inefficacy</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommended7"] === 1 ? true : false} name="STIC_Sec14_Recommended7" onChange={(e)=>{FormData["STIC_Sec14_Recommended7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommended7"] === 1 ? true : false} name="STIC_Sec14_Recommended7" onChange={(e)=>{FormData["STIC_Sec14_Recommended7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted7"] === 1 ? true : false} name="STIC_Sec14_Accepted7" onChange={(e)=>{FormData["STIC_Sec14_Accepted7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted7"] === 1 ? true : false} name="STIC_Sec14_Accepted7" onChange={(e)=>{FormData["STIC_Sec14_Accepted7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount7" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount7']}  name="STIC_Sec14_CoverAmount7" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -9818,10 +9818,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Product guarantee</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommended8"] === 1 ? true : false} name="STIC_Sec14_Recommended8" onChange={(e)=>{FormData["STIC_Sec14_Recommended8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommended8"] === 1 ? true : false} name="STIC_Sec14_Recommended8" onChange={(e)=>{FormData["STIC_Sec14_Recommended8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted8"] === 1 ? true : false} name="STIC_Sec14_Accepted8" onChange={(e)=>{FormData["STIC_Sec14_Accepted8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted8"] === 1 ? true : false} name="STIC_Sec14_Accepted8" onChange={(e)=>{FormData["STIC_Sec14_Accepted8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount8" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount8']}  name="STIC_Sec14_CoverAmount8" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -9842,10 +9842,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Warehousemen's liability</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommended9"] === 1 ? true : false} name="STIC_Sec14_Recommended9" onChange={(e)=>{FormData["STIC_Sec14_Recommended9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommended9"] === 1 ? true : false} name="STIC_Sec14_Recommended9" onChange={(e)=>{FormData["STIC_Sec14_Recommended9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted9"] === 1 ? true : false} name="STIC_Sec14_Accepted9" onChange={(e)=>{FormData["STIC_Sec14_Accepted9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted9"] === 1 ? true : false} name="STIC_Sec14_Accepted9" onChange={(e)=>{FormData["STIC_Sec14_Accepted9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount9" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount9']}  name="STIC_Sec14_CoverAmount9" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -9857,10 +9857,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Professional indemnity</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommended10"] === 1 ? true : false} name="STIC_Sec14_Recommended10" onChange={(e)=>{FormData["STIC_Sec14_Recommended10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommended10"] === 1 ? true : false} name="STIC_Sec14_Recommended10" onChange={(e)=>{FormData["STIC_Sec14_Recommended10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted10"] === 1 ? true : false} name="STIC_Sec14_Accepted10" onChange={(e)=>{FormData["STIC_Sec14_Accepted10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted10"] === 1 ? true : false} name="STIC_Sec14_Accepted10" onChange={(e)=>{FormData["STIC_Sec14_Accepted10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount10" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount10']}  name="STIC_Sec14_CoverAmount10" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -9872,10 +9872,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Contractor's All Risk</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommended11"] === 1 ? true : false} name="STIC_Sec14_Recommended11" onChange={(e)=>{FormData["STIC_Sec14_Recommended11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommended11"] === 1 ? true : false} name="STIC_Sec14_Recommended11" onChange={(e)=>{FormData["STIC_Sec14_Recommended11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted11"] === 1 ? true : false} name="STIC_Sec14_Accepted11" onChange={(e)=>{FormData["STIC_Sec14_Accepted11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted11"] === 1 ? true : false} name="STIC_Sec14_Accepted11" onChange={(e)=>{FormData["STIC_Sec14_Accepted11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount11" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount11']}  name="STIC_Sec14_CoverAmount11" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -9887,10 +9887,10 @@ const Short_term_Commercial= ({user}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Other</td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Recommended12"] === 1 ? true : false} name="STIC_Sec14_Recommended12" onChange={(e)=>{FormData["STIC_Sec14_Recommended12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Recommended12"] === 1 ? true : false} name="STIC_Sec14_Recommended12" onChange={(e)=>{FormData["STIC_Sec14_Recommended12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={FormData["STIC_Sec14_Accepted12"] === 1 ? true : false} name="STIC_Sec14_Accepted12" onChange={(e)=>{FormData["STIC_Sec14_Accepted12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_Sec14_Accepted12"] === 1 ? true : false} name="STIC_Sec14_Accepted12" onChange={(e)=>{FormData["STIC_Sec14_Accepted12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td>
         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec14_CoverAmount12" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec14_CoverAmount12']}  name="STIC_Sec14_CoverAmount12" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
@@ -10242,7 +10242,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_10"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_10" name="STIC_Sec16_10" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_10"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_10" name="STIC_Sec16_10" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10250,7 +10250,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_10"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_10" name="STIC_Sec16_10" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_10"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_10" name="STIC_Sec16_10" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10278,7 +10278,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension1" name="STIC_Sec16_Extension1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension1" name="STIC_Sec16_Extension1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10286,7 +10286,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension1" name="STIC_Sec16_Extension1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension1" name="STIC_Sec16_Extension1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10305,7 +10305,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension2" name="STIC_Sec16_Extension2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension2" name="STIC_Sec16_Extension2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10313,7 +10313,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension2" name="STIC_Sec16_Extension2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension2" name="STIC_Sec16_Extension2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10332,7 +10332,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension3" name="STIC_Sec16_Extension3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension3" name="STIC_Sec16_Extension3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10340,7 +10340,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension3" name="STIC_Sec16_Extension3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension3" name="STIC_Sec16_Extension3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10359,7 +10359,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension4" name="STIC_Sec16_Extension4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension4" name="STIC_Sec16_Extension4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10367,7 +10367,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension4" name="STIC_Sec16_Extension4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension4" name="STIC_Sec16_Extension4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10386,7 +10386,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension5" name="STIC_Sec16_Extension5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension5" name="STIC_Sec16_Extension5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10394,7 +10394,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension5" name="STIC_Sec16_Extension5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension5" name="STIC_Sec16_Extension5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10413,7 +10413,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension6" name="STIC_Sec16_Extension6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension6" name="STIC_Sec16_Extension6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10421,7 +10421,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension6" name="STIC_Sec16_Extension6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension6" name="STIC_Sec16_Extension6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10440,7 +10440,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension7" name="STIC_Sec16_Extension7" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension7" name="STIC_Sec16_Extension7" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10448,7 +10448,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension7" name="STIC_Sec16_Extension7" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension7" name="STIC_Sec16_Extension7" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10467,7 +10467,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension8"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension8" name="STIC_Sec16_Extension8" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension8"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension8" name="STIC_Sec16_Extension8" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10475,7 +10475,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension8"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension8" name="STIC_Sec16_Extension8" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension8"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension8" name="STIC_Sec16_Extension8" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10494,7 +10494,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension9"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension9" name="STIC_Sec16_Extension9" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension9"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec16_Extension9" name="STIC_Sec16_Extension9" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10502,7 +10502,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension9"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension9" name="STIC_Sec16_Extension9" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec16_Extension9"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec16_Extension9" name="STIC_Sec16_Extension9" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10663,7 +10663,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_6" name="STIC_Sec17_6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_6" name="STIC_Sec17_6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10671,7 +10671,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_6" name="STIC_Sec17_6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_6" name="STIC_Sec17_6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10721,7 +10721,7 @@ const Short_term_Commercial= ({user}) => {
           {/* <label for="cssss">No</label> */}
           <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_10"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_10" name="STIC_Sec17_10" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_10"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_10" name="STIC_Sec17_10" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10729,7 +10729,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_10"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_10" name="STIC_Sec17_10" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_10"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_10" name="STIC_Sec17_10" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10756,7 +10756,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
         <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension1" name="STIC_Sec17_Extension1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension1" name="STIC_Sec17_Extension1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10764,7 +10764,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension1" name="STIC_Sec17_Extension1" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension1" name="STIC_Sec17_Extension1" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10787,7 +10787,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension2" name="STIC_Sec17_Extension2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension2" name="STIC_Sec17_Extension2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10795,7 +10795,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension2" name="STIC_Sec17_Extension2" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension2" name="STIC_Sec17_Extension2" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10818,7 +10818,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension3" name="STIC_Sec17_Extension3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension3" name="STIC_Sec17_Extension3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10826,7 +10826,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension3" name="STIC_Sec17_Extension3" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension3" name="STIC_Sec17_Extension3" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10849,7 +10849,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension4" name="STIC_Sec17_Extension4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension4" name="STIC_Sec17_Extension4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10857,7 +10857,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension4" name="STIC_Sec17_Extension4" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension4" name="STIC_Sec17_Extension4" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10880,7 +10880,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension5" name="STIC_Sec17_Extension5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension5" name="STIC_Sec17_Extension5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10888,7 +10888,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension5" name="STIC_Sec17_Extension5" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension5" name="STIC_Sec17_Extension5" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10911,7 +10911,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension6" name="STIC_Sec17_Extension6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension6" name="STIC_Sec17_Extension6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10919,7 +10919,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension6" name="STIC_Sec17_Extension6" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension6" name="STIC_Sec17_Extension6" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10942,7 +10942,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension7" name="STIC_Sec17_Extension7" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension7" name="STIC_Sec17_Extension7" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10950,7 +10950,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension7" name="STIC_Sec17_Extension7" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension7" name="STIC_Sec17_Extension7" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10973,7 +10973,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension8"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension8" name="STIC_Sec17_Extension8" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension8"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension8" name="STIC_Sec17_Extension8" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -10981,7 +10981,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension8"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension8" name="STIC_Sec17_Extension8" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension8"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension8" name="STIC_Sec17_Extension8" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -11004,7 +11004,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension9"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension9" name="STIC_Sec17_Extension9" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension9"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec17_Extension9" name="STIC_Sec17_Extension9" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -11012,7 +11012,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension9"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension9" name="STIC_Sec17_Extension9" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec17_Extension9"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec17_Extension9" name="STIC_Sec17_Extension9" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -11316,7 +11316,7 @@ const Short_term_Commercial= ({user}) => {
       <td>
       <div className="row col-6 align-items-center">
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec18_20"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec18_20" name="STIC_Sec18_20" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec18_20"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec18_20" name="STIC_Sec18_20" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -11324,7 +11324,7 @@ const Short_term_Commercial= ({user}) => {
                 </label>
             </div>
             <div className="col-3">
-                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec18_20"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec18_20" name="STIC_Sec18_20" />
+                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec18_20"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec18_20" name="STIC_Sec18_20" />
             </div>
             <div className="col-3">
                 <label className="form-check-label"  >
@@ -11421,7 +11421,7 @@ const Short_term_Commercial= ({user}) => {
 
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_FaP1"] === 1 ? true : false} name="STIC_Sec18_FaP1" onChange={(e)=>{FormData["STIC_Sec18_FaP1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_FaP1"] === 1 ? true : false} name="STIC_Sec18_FaP1" onChange={(e)=>{FormData["STIC_Sec18_FaP1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Basic:</td>
       <td>
@@ -11436,7 +11436,7 @@ const Short_term_Commercial= ({user}) => {
   <br/>
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_FaP2"] === 1 ? true : false} name="STIC_Sec18_FaP2" onChange={(e)=>{FormData["STIC_Sec18_FaP2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_FaP2"] === 1 ? true : false} name="STIC_Sec18_FaP2" onChange={(e)=>{FormData["STIC_Sec18_FaP2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Theft and/or hijacking</td>
       <td>
@@ -11451,7 +11451,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_FaP3"] === 1 ? true : false} name="STIC_Sec18_FaP3" onChange={(e)=>{FormData["STIC_Sec18_FaP3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_FaP3"] === 1 ? true : false} name="STIC_Sec18_FaP3" onChange={(e)=>{FormData["STIC_Sec18_FaP3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Motor vehicle glass</td>
       <td>
@@ -11466,7 +11466,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_FaP4"] === 1 ? true : false} name="STIC_Sec18_FaP4" onChange={(e)=>{FormData["STIC_Sec18_FaP4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_FaP4"] === 1 ? true : false} name="STIC_Sec18_FaP4" onChange={(e)=>{FormData["STIC_Sec18_FaP4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Additional voluntary excess</td>
       <td></td>
@@ -11479,7 +11479,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_FaP5"] === 1 ? true : false} name="STIC_Sec18_FaP5" onChange={(e)=>{FormData["STIC_Sec18_FaP5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_FaP5"] === 1 ? true : false} name="STIC_Sec18_FaP5" onChange={(e)=>{FormData["STIC_Sec18_FaP5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Third party liability</td>
       <td>
@@ -11494,7 +11494,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_FaP6"] === 1 ? true : false} name="STIC_Sec18_FaP6" onChange={(e)=>{FormData["STIC_Sec18_FaP6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_FaP6"] === 1 ? true : false} name="STIC_Sec18_FaP6" onChange={(e)=>{FormData["STIC_Sec18_FaP6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Loss of keys:</td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>Limit:</td>
@@ -11513,7 +11513,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_Extension1"] === 1 ? true : false} name="STIC_Sec18_Extension1" onChange={(e)=>{FormData["STIC_Sec18_Extension1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_Extension1"] === 1 ? true : false} name="STIC_Sec18_Extension1" onChange={(e)=>{FormData["STIC_Sec18_Extension1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Credit shortfall:(only applicable if 'Hire Purchase' Yes): </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>Limit:</td>
@@ -11529,7 +11529,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_Extension2"] === 1 ? true : false} name="STIC_Sec18_Extension2" onChange={(e)=>{FormData["STIC_Sec18_Extension2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_Extension2"] === 1 ? true : false} name="STIC_Sec18_Extension2" onChange={(e)=>{FormData["STIC_Sec18_Extension2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Road assistance: </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>Premium:</td>
@@ -11543,7 +11543,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_Extension3"] === 1 ? true : false} name="STIC_Sec18_Extension3" onChange={(e)=>{FormData["STIC_Sec18_Extension3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_Extension3"] === 1 ? true : false} name="STIC_Sec18_Extension3" onChange={(e)=>{FormData["STIC_Sec18_Extension3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Rental: </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>Premium:</td>
@@ -11557,7 +11557,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_Extension4"] === 1 ? true : false} name="STIC_Sec18_Extension4" onChange={(e)=>{FormData["STIC_Sec18_Extension4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_Extension4"] === 1 ? true : false} name="STIC_Sec18_Extension4" onChange={(e)=>{FormData["STIC_Sec18_Extension4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Locks and keys: </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>Premium:</td>
@@ -11571,7 +11571,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_Extension5"] === 1 ? true : false} name="STIC_Sec18_Extension5" onChange={(e)=>{FormData["STIC_Sec18_Extension5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_Extension5"] === 1 ? true : false} name="STIC_Sec18_Extension5" onChange={(e)=>{FormData["STIC_Sec18_Extension5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Trauma: </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>Premium:</td>
@@ -11585,7 +11585,7 @@ const Short_term_Commercial= ({user}) => {
     <br/>
     <tr>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" id="vehicle1" checked={FormData["STIC_Sec18_Extension6"] === 1 ? true : false} name="STIC_Sec18_Extension6" onChange={(e)=>{FormData["STIC_Sec18_Extension6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={FormData["STIC_Sec18_Extension6"] === 1 ? true : false} name="STIC_Sec18_Extension6" onChange={(e)=>{FormData["STIC_Sec18_Extension6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
       </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Towing: </td>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>Premium:</td>
@@ -11920,7 +11920,7 @@ const Short_term_Commercial= ({user}) => {
 
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec19_Extension1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec19_Extension1" name="STIC_Sec19_Extension1" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec19_Extension1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec19_Extension1" name="STIC_Sec19_Extension1" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -11928,7 +11928,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec19_Extension1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec19_Extension1" name="STIC_Sec19_Extension1" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec19_Extension1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec19_Extension1" name="STIC_Sec19_Extension1" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -11954,7 +11954,7 @@ const Short_term_Commercial= ({user}) => {
 
                   <div className="row col-4 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec19_Extension2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec19_Extension2" name="STIC_Sec19_Extension2" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec19_Extension2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec19_Extension2" name="STIC_Sec19_Extension2" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -11962,7 +11962,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec19_Extension2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec19_Extension2" name="STIC_Sec19_Extension2" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec19_Extension2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec19_Extension2" name="STIC_Sec19_Extension2" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -12260,7 +12260,7 @@ const Short_term_Commercial= ({user}) => {
 
                   <div className="row col-4 align-items-center">
                     <div className="col-3">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec20_Extension1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec20_Extension1" name="STIC_Sec20_Extension1" />
+                        <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec20_Extension1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec20_Extension1" name="STIC_Sec20_Extension1" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -12268,7 +12268,7 @@ const Short_term_Commercial= ({user}) => {
                         </label>
                     </div>
                     <div className="col-3">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec20_Extension1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec20_Extension1" name="STIC_Sec20_Extension1" />
+                        <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec20_Extension1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec20_Extension1" name="STIC_Sec20_Extension1" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -12294,7 +12294,7 @@ const Short_term_Commercial= ({user}) => {
 
                   <div className="row col-4 align-items-center">
                     <div className="col-3">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec20_Extension2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec20_Extension2" name="STIC_Sec20_Extension2" />
+                        <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec20_Extension2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec20_Extension2" name="STIC_Sec20_Extension2" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -12302,7 +12302,7 @@ const Short_term_Commercial= ({user}) => {
                         </label>
                     </div>
                     <div className="col-3">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec20_Extension2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec20_Extension2" name="STIC_Sec20_Extension2" />
+                        <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec20_Extension2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec20_Extension2" name="STIC_Sec20_Extension2" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -12520,7 +12520,7 @@ const Short_term_Commercial= ({user}) => {
 
                   <div className="row col-4 align-items-center">
                     <div className="col-3">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec21_Extension1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec21_Extension1" name="STIC_Sec21_Extension1" />
+                        <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec21_Extension1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec21_Extension1" name="STIC_Sec21_Extension1" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -12528,7 +12528,7 @@ const Short_term_Commercial= ({user}) => {
                         </label>
                     </div>
                     <div className="col-3">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec21_Extension1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec21_Extension1" name="STIC_Sec21_Extension1" />
+                        <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec21_Extension1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec21_Extension1" name="STIC_Sec21_Extension1" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -12554,7 +12554,7 @@ const Short_term_Commercial= ({user}) => {
 
                   <div className="row col-4 align-items-center">
                     <div className="col-3">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec21_Extension2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec21_Extension2" name="STIC_Sec21_Extension2" />
+                        <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec21_Extension2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_Sec21_Extension2" name="STIC_Sec21_Extension2" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -12562,7 +12562,7 @@ const Short_term_Commercial= ({user}) => {
                         </label>
                     </div>
                     <div className="col-3">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec21_Extension2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec21_Extension2" name="STIC_Sec21_Extension2" />
+                        <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_Sec21_Extension2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_Sec21_Extension2" name="STIC_Sec21_Extension2" />
                     </div>
                     <div className="col-3">
                         <label className="form-check-label"  >
@@ -12672,7 +12672,7 @@ const Short_term_Commercial= ({user}) => {
                   <div className="col-4">
                     <div className="row col-6 align-items-center">
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_SecD_4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SecD_4" name="STIC_SecD_4" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_SecD_4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIC_SecD_4" name="STIC_SecD_4" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >
@@ -12680,7 +12680,7 @@ const Short_term_Commercial= ({user}) => {
                           </label>
                       </div>
                       <div className="col-3">
-                          <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_SecD_4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SecD_4" name="STIC_SecD_4" />
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIC_SecD_4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIC_SecD_4" name="STIC_SecD_4" />
                       </div>
                       <div className="col-3">
                           <label className="form-check-label"  >

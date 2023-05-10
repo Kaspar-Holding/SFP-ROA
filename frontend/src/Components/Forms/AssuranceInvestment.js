@@ -724,7 +724,7 @@ const AssuranceInvestment = ({user}) =>
                     <div className="row">
                         <div className="row col-4 align-items-center">
                             <div className="col-2">
-                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['AI_PremiumType'] == 1 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="1" />
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['AI_PremiumType'] == 1 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="1" />
                             </div>
                             <div className="col-4">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn3" >
@@ -735,7 +735,7 @@ const AssuranceInvestment = ({user}) =>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div className="row col-4 align-items-center">
                             <div className="col-2">
-                                <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['AI_PremiumType'] == 0 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="0" />
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData['AI_PremiumType'] == 0 ? true : false} name="AI_PremiumType" onChange={(e) => {onChange(e)}} type="radio" value="0" />
                             </div>
                             <div className="col-4">
                                 <label className="form-check-label" htmlFor="provided_identity_radio_btn3" >
@@ -1689,12 +1689,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided1} name="PF_Provided1" onChange={(e)=>{key.PF_Provided1 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Provided1} name="PF_Provided1" onChange={(e)=>{key.PF_Provided1 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed1} name="PF_Discussed1" onChange={(e)=>{key.PF_Discussed1 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Discussed1} name="PF_Discussed1" onChange={(e)=>{key.PF_Discussed1 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>  
       </tr>
@@ -1716,12 +1716,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided2} name="PF_Provided2" onChange={(e)=>{key.PF_Provided2 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Provided2} name="PF_Provided2" onChange={(e)=>{key.PF_Provided2 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed2} name="PF_Discussed2" onChange={(e)=>{key.PF_Discussed2 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Discussed2} name="PF_Discussed2" onChange={(e)=>{key.PF_Discussed2 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>   
       </tr>
@@ -1743,12 +1743,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided3} name="PF_Provided3" onChange={(e)=>{key.PF_Provided3 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Provided3} name="PF_Provided3" onChange={(e)=>{key.PF_Provided3 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed3} name="PF_Discussed3" onChange={(e)=>{key.PF_Discussed3 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Discussed3} name="PF_Discussed3" onChange={(e)=>{key.PF_Discussed3 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>       
       </tr>
@@ -1770,12 +1770,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided4} name="PF_Provided4" onChange={(e)=>{key.PF_Provided4 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Provided4} name="PF_Provided4" onChange={(e)=>{key.PF_Provided4 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed4} name="PF_Discussed4" onChange={(e)=>{key.PF_Discussed4 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Discussed4} name="PF_Discussed4" onChange={(e)=>{key.PF_Discussed4 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>      
       </tr>
@@ -1797,12 +1797,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided5} name="PF_Provided5" onChange={(e)=>{key.PF_Provided5 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Provided5} name="PF_Provided5" onChange={(e)=>{key.PF_Provided5 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed5} name="PF_Discussed5" onChange={(e)=>{key.PF_Discussed5 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Discussed5} name="PF_Discussed5" onChange={(e)=>{key.PF_Discussed5 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>        
       </tr>
@@ -1825,12 +1825,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided6} name="PF_Provided6" onChange={(e)=>{key.PF_Provided6 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Provided6} name="PF_Provided6" onChange={(e)=>{key.PF_Provided6 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed6} name="PF_Discussed6" onChange={(e)=>{key.PF_Discussed6 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Discussed6} name="PF_Discussed6" onChange={(e)=>{key.PF_Discussed6 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>   
       </tr>
@@ -1853,12 +1853,12 @@ o	meeting the investment objectives of the clients
        
         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
         <td> 
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Provided7} name="PF_Provided7" onChange={(e)=>{key.PF_Provided7 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Provided7} name="PF_Provided7" onChange={(e)=>{key.PF_Provided7 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>
 
         <td>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="checkbox" checked={key.PF_Discussed7} name="PF_Discussed7" onChange={(e)=>{key.PF_Discussed7 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
+            <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.PF_Discussed7} name="PF_Discussed7" onChange={(e)=>{key.PF_Discussed7 === true ? on_ProductTaken_CheckBox_Change(e, i, false) : on_ProductTaken_CheckBox_Change(e, i, true)}} />
             <label> Yes</label>
         </td>   
       </tr>

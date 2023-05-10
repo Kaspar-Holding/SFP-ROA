@@ -126,12 +126,12 @@ const Fiduciary = ({user}) => {
                                 </div>
                                 <div className="col-1">
                                   <label className="radio-inline">
-                                      <input onBlur={(e)=>{onFieldBlur(e)}} type="radio" className="form-check-input"  name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == 1 ? true : false} onChange={e => onChange(e)} value="1"/>Yes
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} type="radio" className="form-check-input"  name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == 1 ? true : false} onChange={e => onChange(e)} value="1"/>Yes
                                   </label>
                                 </div>
                                 <div className="col-1">
                                   <label className="radio-inline">
-                                      <input onBlur={(e)=>{onFieldBlur(e)}} type="radio" className="form-check-input"  name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == 0 ? true : false} onChange={e => onChange(e)} value="0"/>No
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} type="radio" className="form-check-input"  name="fiduciaryWillInPlace" checked={FormData['fiduciaryWillInPlace'] == 0 ? true : false} onChange={e => onChange(e)} value="0"/>No
                                   </label>
                                 </div>
                             </div>

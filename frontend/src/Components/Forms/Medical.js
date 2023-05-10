@@ -672,7 +672,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs1" name="SNA_Needs1" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs1" name="SNA_Needs1" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -680,7 +680,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs1" name="SNA_Needs1" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs1" name="SNA_Needs1" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -704,7 +704,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs2" name="SNA_Needs2" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs2" name="SNA_Needs2" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -712,7 +712,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs2" name="SNA_Needs2" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs2" name="SNA_Needs2" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -736,7 +736,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs3" name="SNA_Needs3" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs3" name="SNA_Needs3" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -744,7 +744,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs3" name="SNA_Needs3" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs3" name="SNA_Needs3" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -768,7 +768,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs4" name="SNA_Needs4" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs4"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs4" name="SNA_Needs4" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -776,7 +776,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs4" name="SNA_Needs4" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs4"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs4" name="SNA_Needs4" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -800,7 +800,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs5" name="SNA_Needs5" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs5"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs5" name="SNA_Needs5" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -808,7 +808,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs5" name="SNA_Needs5" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs5"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs5" name="SNA_Needs5" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -832,7 +832,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs6" name="SNA_Needs6" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs6"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs6" name="SNA_Needs6" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -840,7 +840,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs6" name="SNA_Needs6" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs6"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs6" name="SNA_Needs6" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -864,7 +864,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs7" name="SNA_Needs7" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs7"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs7" name="SNA_Needs7" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -872,7 +872,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs7" name="SNA_Needs7" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs7"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs7" name="SNA_Needs7" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -896,7 +896,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs8"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs8" name="SNA_Needs8" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs8"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs8" name="SNA_Needs8" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -904,7 +904,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs8"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs8" name="SNA_Needs8" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs8"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs8" name="SNA_Needs8" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -928,7 +928,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs9"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs9" name="SNA_Needs9" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs9"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs9" name="SNA_Needs9" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -936,7 +936,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs9"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs9" name="SNA_Needs9" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs9"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs9" name="SNA_Needs9" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -960,7 +960,7 @@ const Medical = ({user}) => {
               <div className="col-4">
                 <div className="row col-12 align-items-center">
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs10"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs10" name="SNA_Needs10" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs10"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SNA_Needs10" name="SNA_Needs10" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -968,7 +968,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs10"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs10" name="SNA_Needs10" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SNA_Needs10"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SNA_Needs10" name="SNA_Needs10" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -1334,7 +1334,7 @@ const Medical = ({user}) => {
               <div className="col-6">
                 <div className="row col-6 align-items-center">
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SectionF_Consequences"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SectionF_Consequences" name="SectionF_Consequences" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SectionF_Consequences"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="SectionF_Consequences" name="SectionF_Consequences" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
@@ -1342,7 +1342,7 @@ const Medical = ({user}) => {
                       </label>
                   </div>
                   <div className="col-3">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SectionF_Consequences"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SectionF_Consequences" name="SectionF_Consequences" />
+                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SectionF_Consequences"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="SectionF_Consequences" name="SectionF_Consequences" />
                   </div>
                   <div className="col-3">
                       <label className="form-check-label"  >
