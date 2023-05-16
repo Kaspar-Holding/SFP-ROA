@@ -2870,7 +2870,7 @@ class AR_ProductTaken(models.Model):
     advisorId = models.IntegerField(default=0)
     formId = models.IntegerField(default=0)
     
-    ProductTaken = models.IntegerField(default=0)
+    ProductTaken = models.CharField(max_length=20000, default="", blank=True)  
     ProductProvider = models.CharField(max_length=20000, default="", blank=True)    
     PolicyNumber = models.CharField(max_length=20000, default="", blank=True)    
     ProductName = models.CharField(max_length=20000, default="", blank=True)    

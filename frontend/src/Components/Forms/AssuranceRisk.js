@@ -2703,7 +2703,7 @@ Record the client's instructions, deviations and implications thereof.
                                     </div>
                                     <div className="col-6" style={{paddingBottom: "0.5%"}}>
                                       <div className=''>
-                                        <input type="text" className="form-control" id="ProductTaken" name='ProductTaken' value={key.ProductTaken} onChange={(e) => {on_ProductTaken_Change(e, i)}}  aria-describedby="emailHelp" placeholder=""/>
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="ProductTaken" name='ProductTaken' value={key.ProductTaken} onChange={(e) => {on_ProductTaken_Change(e, i)}}  aria-describedby="emailHelp" placeholder=""/>
 
                                         {/* <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='ProductTaken' value={parseInt(key.ProductTaken)} onChange={(e)=>{on_ProductTaken_Change(e, i)}} aria-label="Default select example">
                                             <option value="0" selected>Choose Product</option>

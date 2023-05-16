@@ -1311,6 +1311,8 @@ def update_ar_ProductTaken_Data(request):
     AR_product_taken_serializer = AR_ProductTakenSerializer(data=product_taken_data, many=True)
     if AR_product_taken_serializer.is_valid():
         AR_product_taken_serializer.create(AR_product_taken_serializer.validated_data)
+    else:
+        print(AR_product_taken_serializer.errors)
     # for row in product_taken_data:
     #     if AR_ProductTaken.objects.filter(formId=row['formId'], PolicyNumber=row['PolicyNumber']).exists():
     #         # print(row)
