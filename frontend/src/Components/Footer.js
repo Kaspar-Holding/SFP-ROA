@@ -27,7 +27,7 @@ const Footer = () => {
               <>
                 <p class=" mb-0 text-muted">
                     Financial Solutions 4 Professionals Advisory Services (Pty) Ltd. |
-                    Reg No 2011/009695/07, operating as a Jurastic Representative of <br />
+                    Reg No 2011/009695/07, operating as a Jurastic Representative of 
                     Succession Financial Planning (SFP) License Number 41158.<br />
                     Directors: Mr N J Battersby (Chairman), Mr L du Plessis, Mr W Mouton, Mr M Mtshali, Mr I J Smit, Mr M Spies<br />
                     Company Secretary: Mr V E Barnard

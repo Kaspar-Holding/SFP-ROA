@@ -14,6 +14,8 @@ Deployed using Nginx and Gunicorn
 
 ### 16 May 2023:
 - 2037: Bugs reported in 09 May 2023 Meeting Resolved
+- F4SP Footer updated
+- Color selection in PDF updated
 - Deployed
 
 ### 10 May 2023:
