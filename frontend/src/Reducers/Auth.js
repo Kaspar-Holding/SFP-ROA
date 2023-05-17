@@ -76,6 +76,7 @@ export default function (state=initalState, action) {
                 access: null,
                 refresh: null,
                 isAuthenticated: false,
+                user: null
             }
         case LOGIN_FAILED:
             localStorage.removeItem('access')
