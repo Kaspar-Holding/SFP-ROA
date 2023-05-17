@@ -88,6 +88,11 @@ export const checkAuthenticated = () => async dispatch => {
             })
         } catch (error) {
             console.log(error)
+            if (error.response.status === 401){
+                dispatch({
+                    type: AUTHENTICATED_FAILED
+                })
+            }
             dispatch({
                 type: AUTHENTICATED_FAILED
             })
