@@ -465,8 +465,8 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_FeeNCharges : "",
         STIC_ProdComp_Commission : "",
         STIC_ProdComp_TotalPremium : "",
-
         
+        STIC_Fire_AddComments : "",
         STIC_Fire_Limit : "",
         STIC_Fire_ItemNumber : "",
         STIC_Fire_Premium : "",
@@ -488,7 +488,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_RnS_Insured : 2,
         STIC_SDC_Insured : 2,
 
-        STIC_BuildCombined_Limit : "",
+        STIC_BuildCombined_AddComments : "",
         STIC_BuildCombined_ItemNumber : "",
         STIC_BuildCombined_Premium : "",
         STIC_BuildCombined_PremNumber : "",
@@ -503,7 +503,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Extensions_PoA : 2,
         STIC_Extensions_IorE : 2,
 
-        STIC_OC_Limit : "",
+        STIC_OC_AddComments : "", 
         STIC_OC_ItemNumber : "",
         STIC_OC_Premium : "",
         STIC_OC_PremNumber : "",
@@ -524,7 +524,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_OC_Theft_Premium : "",
         STIC_OC_Total_Premium : "",
 
-        STIC_BusInt_Limit : "",
+        STIC_BusInt_AddComments : "", 
         STIC_BusInt_Premium : "",
         STIC_BusInt_ItemNumber : "",
         STIC_BusInt_PremNumber : "",
@@ -610,6 +610,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_BusInt2_TotalPremium : "",
         STIC_BusInt2_Comments : "",
         
+        STIC_Sec5_AddComments : "", 
         STIC_Sec5_Limit : "",
         STIC_Sec5_Premium : "",
         STIC_Sec5_ItemNumber : "",
@@ -624,7 +625,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec5_AnnualPremium : "",
         STIC_Sec5_Comments : "",
 
-
+        STIC_Sec6_AddComments : "", 
         STIC_Sec6_Limit : "",
         STIC_Sec6_Premium : "",
         STIC_Sec6_ItemNumber : "",
@@ -637,6 +638,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec6_6 : "",
         STIC_Sec6_Comments : "",
 
+        STIC_Sec7_AddComments : "", 
         STIC_Sec7_Limit : "",
         STIC_Sec7_Premium : "",
         STIC_Sec7_ItemNumber : "",
@@ -662,6 +664,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec7_AnnualPremium : "",
         STIC_Sec7_Comments : "",
 
+        STIC_Sec8_AddComments : "", 
         STIC_Sec8_Limit : "",
         STIC_Sec8_Premium : "",
         STIC_Sec8_ItemNumber : "",
@@ -673,6 +676,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec8_AnnualPremium : "",
         STIC_Sec8_Comments : "",
 
+        STIC_Sec9_AddComments : "", 
         STIC_Sec9_Limit : "",
         STIC_Sec9_Premium : "",
         STIC_Sec9_ItemNumber : "",
@@ -704,6 +708,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec9_AnnualPremium : "",
         STIC_Sec9_Comments : "",
 
+        STIC_Sec10_AddComments : "", 
         STIC_Sec10_Limit : "",
         STIC_Sec10_Premium : "",
         STIC_Sec10_ItemNumber : "",
@@ -730,6 +735,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec10_AnnualPremium : "",
         STIC_Sec10_Comments : "",
 
+        STIC_Sec11_AddComments : "", 
         STIC_Sec11_Limit : "",
         STIC_Sec11_Premium : "",
         STIC_Sec11_ItemNumber : "",
@@ -747,6 +753,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec11_AnnualPremium : "",
         STIC_Sec11_Comments : "",
 
+        STIC_Sec12_AddComments : "", 
         STIC_Sec12_Limit : "",
         STIC_Sec12_Premium : "",
         STIC_Sec12_ItemNumber : "",
@@ -765,6 +772,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec12_AnnualPremium : "",
         STIC_Sec12_Comments : "",
 
+        STIC_Sec13_AddComments : "", 
         STIC_Sec13_Limit : "",
         STIC_Sec13_Premium : "",
         STIC_Sec13_ItemNumber : "",
@@ -804,6 +812,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec13_AnnualPremium : "",
         STIC_Sec13_Comments : "",
 
+        STIC_Sec14_AddComments : "", 
         STIC_Sec14_Limit : "",
         STIC_Sec14_Premium : "",
         STIC_Sec14_ItemNumber : "",
@@ -851,6 +860,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec14_Accepted12 : 0,
         STIC_Sec14_CoverAmount12 : "",
 
+        STIC_Sec15_AddComments : "", 
         STIC_Sec15_Limit : "",
         STIC_Sec15_Premium : "",
         STIC_Sec15_ItemNumber : "",
@@ -864,6 +874,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec15_AnnualPremium : "",
         STIC_Sec15_Comments : "",
 
+        STIC_Sec16_AddComments : "", 
         STIC_Sec16_Limit : "",
         STIC_Sec16_Premium : "",
         STIC_Sec16_ItemNumber : "",
@@ -890,6 +901,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec16_AnnualPremium : "",
         STIC_Sec16_Comments : "",
 
+        STIC_Sec17_AddComments : "", 
         STIC_Sec17_Limit : "",
         STIC_Sec17_Premium : "",
         STIC_Sec17_ItemNumber : "",
@@ -934,6 +946,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec17_AnnualPremium : "",
         STIC_Sec17_Comments : "",
 
+        STIC_Sec18_AddComments : "", 
         STIC_Sec18_Limit : "",
         STIC_Sec18_Premium : "",
         STIC_Sec18_ItemNumber : "",
@@ -999,6 +1012,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec18_Extension6_1 : "",
         STIC_Sec18_Comments : "",
 
+        STIC_Sec19_AddComments : "", 
         STIC_Sec19_Limit : "",
         STIC_Sec19_Premium : "",
         STIC_Sec19_ItemNumber : "",
@@ -1029,6 +1043,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec19_AnnualPremium : "",
         STIC_Sec19_Comments : "",
 
+        STIC_Sec20_AddComments : "", 
         STIC_Sec20_Limit : "",
         STIC_Sec20_Premium : "",
         STIC_Sec20_ItemNumber : "",
@@ -1046,6 +1061,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec20_AnnualPremium : "",
         STIC_Sec20_Comments : "",
 
+        STIC_Sec21_AddComments : "", 
         STIC_Sec21_Limit : "",
         STIC_Sec21_Premium : "",
         STIC_Sec21_ItemNumber : "",
@@ -1063,6 +1079,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_Sec21_AnnualPremium : "",
         STIC_Sec21_Comments : "",
         
+        STIC_SecD_AddComments : "", 
         STIC_SecD_1 : "",
         STIC_SecD_2 : "",
         STIC_SecD_3 : "",
@@ -1077,10 +1094,12 @@ const Short_term_Commercial= ({user}) => {
         STIC_SecD_12 : "",
         STIC_SecD_13 : "",
 
+        STIC_SecE_AddComments : "", 
         STIC_SecE_1 : "",
         STIC_SecE_2 : "",
         STIC_SecE_3 : "",
 
+        STIC_SecG_AddComments : "", 
         STIC_SecG_1 : "",
         STIC_SecG_2 : "",
         STIC_SecG_3 : "",
@@ -1126,7 +1145,7 @@ const Short_term_Commercial= ({user}) => {
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_short_term_commerical_data/`, Body ,config)
             // console.log(response.data['formData'])
-            setFormData(response.data['formData'])
+            // setFormData(response.data['formData'])
             setSuccessMessage("Short Term Insurance Commerical data is successfully updated")
             setSuccessMessageVisibility("block")
             setTimeout(() => {
@@ -1202,7 +1221,7 @@ const Short_term_Commercial= ({user}) => {
                           <div className="col-6" style={{paddingBottom: "0.5%"}}>
                               <div className="row g-3 align-items-center">
                                   <div className="col-4">
-                                  <label htmlFor="id_number" className="col-form-label">Underwritten by:</label>
+                                  <label htmlFor="id_number" className="col-form-label">Company:</label>
                                   </div>
                                   <div className="col-6">
                                   <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Underwritten_By" onChange={(e) => {onChange(e)}} value={FormData['STIC_Underwritten_By']}  name="STIC_Underwritten_By" className="form-control" placeholder="Click or tap here to enter text."  aria-describedby="" />
@@ -4548,7 +4567,7 @@ const Short_term_Commercial= ({user}) => {
                               <p>Your policy may contain specific requirements regarding the compulsory fitment, maintenance and testing of tracking devices, as well as the type of tracking device specified for the type/category of vehicle (i.e. constant monitoring/early warning). We strongly encourage you to familiarise yourself with these requirements as theft/hijacking cover is often subject to such tracking devices being installed, maintained, and tested. </p>
                               <p>Where tracking devices are not a requirement, and you have elected to fit such a device of your own accord, inform us as you may be entitled to a reduction in premium and/or your theft excess may be waived (subject to policy terms and conditions).</p>
       {
-        FormData['STIC_ProdComp_Recommended1'] === 1 || FormData['STIC_ProdComp_Accepted1'] === 1 ?
+        FormData['STIC_ProdComp_Accepted1'] === 1 ?
         <>
           <div className={
             state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -4975,6 +4994,31 @@ const Short_term_Commercial= ({user}) => {
                 </div>
               </div>
               <hr/>
+              <b className="col-form-label">Additional Comments</b>
+              <br/>
+              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                value={FormData['STIC_Fire_AddComments']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Fire_AddComments']: newText }) }}                  
+                name="STIC_Fire_AddComments"
+                init={{
+                    selector: "textarea",
+                    browser_spellcheck : true,
+                    placeholder: "Click here to enter text",
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+              />
+              <hr/>
 
             </div>
           </div>
@@ -4982,7 +5026,7 @@ const Short_term_Commercial= ({user}) => {
         : <></>
       }
       {
-        FormData['STIC_ProdComp_Recommended2'] === 1 || FormData['STIC_ProdComp_Accepted2'] === 1 ?
+       FormData['STIC_ProdComp_Accepted2'] === 1 ?
         <>
           <div className={
             state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -5295,14 +5339,38 @@ const Short_term_Commercial= ({user}) => {
 
             </div>
           </div>
-
+          <b className="col-form-label">Additional Comments</b>
+          <br/>
+          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+            value={FormData['STIC_BuildCombined_AddComments']}
+            onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_BuildCombined_AddComments']: newText }) }}                  
+            name="STIC_BuildCombined_AddComments"
+            init={{
+                selector: "textarea",
+                browser_spellcheck : true,
+                placeholder: "Click here to enter text",
+                height: 300,
+                menu: true,
+                plugins: [
+                    'advlist autolink link lists image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount',
+                ],
+                toolbar: 'styles | undo redo | formatselect | ' +
+                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                'removeformat | wordcount ',
+                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+            }}
+          />
+          <hr/>
           <br/>
             
         </>
         :<></>
       }
       {
-        FormData['STIC_ProdComp_Recommended3'] === 1 || FormData['STIC_ProdComp_Accepted3'] === 1 ?
+        FormData['STIC_ProdComp_Accepted3'] === 1 ?
           <>
       <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -5547,21 +5615,44 @@ const Short_term_Commercial= ({user}) => {
 
                                 </div>
                               </div>
-
+                              <b className="col-form-label">Additional Comments</b>
                               <br/>
+                              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                value={FormData['STIC_OC_AddComments']}
+                                onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_OC_AddComments']: newText }) }}                  
+                                name="STIC_OC_AddComments"
+                                init={{
+                                    selector: "textarea",
+                                    browser_spellcheck : true,
+                                    placeholder: "Click here to enter text",
+                                    height: 300,
+                                    menu: true,
+                                    plugins: [
+                                        'advlist autolink link lists image charmap print preview anchor',
+                                        'searchreplace visualblocks code fullscreen',
+                                        'insertdatetime media table paste code help wordcount',
+                                    ],
+                                    toolbar: 'styles | undo redo | formatselect | ' +
+                                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                                    'removeformat | wordcount ',
+                                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                }}
+                              />
+                              <hr/>
           </>
         :
         <></>
       }
       {
-        FormData['STIC_ProdComp_Recommended4'] === 1 || FormData['STIC_ProdComp_Accepted4'] === 1 ?
+        FormData['STIC_ProdComp_Accepted4'] === 1 ?
           <>
       <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
-      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 4:BUSINESS INTERRUPTION</b></div>
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 4 :BUSINESS INTERRUPTION</b></div>
                               <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -6943,19 +7034,44 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
     <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BusInt2_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_BusInt2_Comments']}  name="STIC_BusInt2_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_BusInt_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_BusInt_AddComments']: newText }) }}                  
+      name="STIC_BusInt_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
 
           </>
         : <></>
     }
     {
-        FormData['STIC_ProdComp_Recommended5'] === 1 || FormData['STIC_ProdComp_Accepted5'] === 1 ?
+        FormData['STIC_ProdComp_Accepted5'] === 1 ?
           <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
-      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 5:ACCOUNTS RECEIVABLE</b></div>
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 5: ACCOUNTS RECEIVABLE</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -7212,12 +7328,37 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec5_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec5_Comments']}  name="STIC_Sec5_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec5_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec5_AddComments']: newText }) }}                  
+      name="STIC_Sec5_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
           </>
         :
         <></>
     }
     {
-        FormData['STIC_ProdComp_Recommended6'] === 1 || FormData['STIC_ProdComp_Accepted6'] === 1 ?
+        FormData['STIC_ProdComp_Accepted6'] === 1 ?
                 <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -7353,6 +7494,32 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec6_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec6_Comments']}  name="STIC_Sec6_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec6_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec6_AddComments']: newText }) }}                  
+      name="STIC_Sec6_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
 
                 </>
         :
@@ -7360,7 +7527,7 @@ const Short_term_Commercial= ({user}) => {
                 </>
 }
     {
-            FormData['STIC_ProdComp_Recommended7'] === 1 || FormData['STIC_ProdComp_Accepted7'] === 1 ?
+            FormData['STIC_ProdComp_Accepted7'] === 1 ?
                     <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -7701,14 +7868,39 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec7_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec7_Comments']}  name="STIC_Sec7_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec7_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec7_AddComments']: newText }) }}                  
+      name="STIC_Sec7_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
                     </>
             :
                     <>
                     </>
     }
     {
-        FormData['STIC_ProdComp_Recommended8'] === 1 || FormData['STIC_ProdComp_Accepted8'] === 1 ?
+        FormData['STIC_ProdComp_Accepted8'] === 1 ?
                 <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -7893,14 +8085,39 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec8_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec8_Comments']}  name="STIC_Sec8_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec8_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec8_AddComments']: newText }) }}                  
+      name="STIC_Sec8_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
                 </>
         :
                 <>
                 </>
     }
     {
-        FormData['STIC_ProdComp_Recommended9'] === 1 || FormData['STIC_ProdComp_Accepted9'] === 1 ?
+        FormData['STIC_ProdComp_Accepted9'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -8248,6 +8465,32 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec9_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec9_Comments']}  name="STIC_Sec9_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec9_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec9_AddComments']: newText }) }}                  
+      name="STIC_Sec9_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
               </>
         :
               <>
@@ -8255,7 +8498,7 @@ const Short_term_Commercial= ({user}) => {
     }
     
     {
-        FormData['STIC_ProdComp_Recommended10'] === 1 || FormData['STIC_ProdComp_Accepted10'] === 1 ?
+        FormData['STIC_ProdComp_Accepted10'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -8552,13 +8795,39 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec10_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec10_Comments']}  name="STIC_Sec10_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec10_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec10_AddComments']: newText }) }}                  
+      name="STIC_Sec10_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
     </>
         :
               <>
               </>
     }
     {
-        FormData['STIC_ProdComp_Recommended11'] === 1 || FormData['STIC_ProdComp_Accepted11'] === 1 ?
+        FormData['STIC_ProdComp_Accepted11'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -8754,13 +9023,39 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec11_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec11_Comments']}  name="STIC_Sec11_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec11_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec11_AddComments']: newText }) }}                  
+      name="STIC_Sec11_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
 </>
         :
               <>
               </>
     }
     {
-        FormData['STIC_ProdComp_Recommended12'] === 1 || FormData['STIC_ProdComp_Accepted12'] === 1 ?
+        FormData['STIC_ProdComp_Accepted12'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -9049,13 +9344,39 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec12_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec12_Comments']}  name="STIC_Sec12_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec12_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec12_AddComments']: newText }) }}                  
+      name="STIC_Sec12_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
     </>
         :
               <>
               </>
     }
     {
-        FormData['STIC_ProdComp_Recommended13'] === 1 || FormData['STIC_ProdComp_Accepted13'] === 1 ?
+        FormData['STIC_ProdComp_Accepted13'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -9630,13 +9951,39 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec13_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec13_Comments']}  name="STIC_Sec13_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec13_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec13_AddComments']: newText }) }}                  
+      name="STIC_Sec13_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
     </>
         :
               <>
               </>
     }
     {
-        FormData['STIC_ProdComp_Recommended14'] === 1 || FormData['STIC_ProdComp_Accepted14'] === 1 ?
+        FormData['STIC_ProdComp_Accepted14'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -9902,13 +10249,40 @@ const Short_term_Commercial= ({user}) => {
 
     </tbody>
   </table>
+  <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec14_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec14_AddComments']: newText }) }}                  
+      name="STIC_Sec14_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
   </>
         :
               <>
               </>
     }
     {
-        FormData['STIC_ProdComp_Recommended15'] === 1 || FormData['STIC_ProdComp_Accepted15'] === 1 ?
+        FormData['STIC_ProdComp_Accepted15'] === 1 ?
               <>
   <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -10059,13 +10433,39 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec15_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec15_Comments']}  name="STIC_Sec15_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec15_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec15_AddComments']: newText }) }}                  
+      name="STIC_Sec15_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
     </>
         :
               <>
               </>
     }
     {
-        FormData['STIC_ProdComp_Recommended16'] === 1 || FormData['STIC_ProdComp_Accepted16'] === 1 ?
+        FormData['STIC_ProdComp_Accepted16'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -10533,13 +10933,39 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec16_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec16_Comments']}  name="STIC_Sec16_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec16_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec16_AddComments']: newText }) }}                  
+      name="STIC_Sec16_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
     </>
         :
               <>
               </>
     }
     {
-        FormData['STIC_ProdComp_Recommended17'] === 1 || FormData['STIC_ProdComp_Accepted17'] === 1 ?
+        FormData['STIC_ProdComp_Accepted17'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -11047,20 +11473,46 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec17_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec17_Comments']}  name="STIC_Sec17_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec17_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec17_AddComments']: newText }) }}                  
+      name="STIC_Sec17_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
     </>
         :
               <>
               </>
     }
     {
-        FormData['STIC_ProdComp_Recommended18'] === 1 || FormData['STIC_ProdComp_Accepted18'] === 1 ?
+        FormData['STIC_ProdComp_Accepted30'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
-      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 18:MOTOR</b></div>
+      } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 18: MOTOR</b></div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -11605,13 +12057,39 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec18_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec18_Comments']}  name="STIC_Sec18_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec18_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec18_AddComments']: newText }) }}                  
+      name="STIC_Sec18_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
     </>
         :
               <>
               </>
     }
     {
-        FormData['STIC_ProdComp_Recommended19'] === 1 || FormData['STIC_ProdComp_Accepted19'] === 1 ?
+        FormData['STIC_ProdComp_Accepted19'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -12085,13 +12563,39 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec19_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec19_Comments']}  name="STIC_Sec19_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec19_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec19_AddComments']: newText }) }}                  
+      name="STIC_Sec19_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
     </>
         :
               <>
               </>
     }
     {
-        FormData['STIC_ProdComp_Recommended20'] === 1 || FormData['STIC_ProdComp_Accepted20'] === 1 ?
+      FormData['STIC_ProdComp_Accepted20'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -12345,13 +12849,37 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec20_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec20_Comments']}  name="STIC_Sec20_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
+    <b className="col-form-label">Additional Comments</b>
+    <br/>
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec20_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec20_AddComments']: newText }) }}                  
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
     </>
         :
               <>
               </>
     }
     {
-        FormData['STIC_ProdComp_Recommended21'] === 1 || FormData['STIC_ProdComp_Accepted21'] === 1 ?
+      FormData['STIC_ProdComp_Accepted21'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -12607,8 +13135,31 @@ const Short_term_Commercial= ({user}) => {
     <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec21_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec21_Comments']}  name="STIC_Sec21_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-
+    <b className="col-form-label">Additional Comments</b>
     <br/>
+    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      value={FormData['STIC_Sec21_AddComments']}
+      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec21_AddComments']: newText }) }}                  
+      name="STIC_Sec21_AddComments"
+      init={{
+          selector: "textarea",
+          browser_spellcheck : true,
+          placeholder: "Click here to enter text",
+          height: 300,
+          menu: true,
+          plugins: [
+              'advlist autolink link lists image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount',
+          ],
+          toolbar: 'styles | undo redo | formatselect | ' +
+          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+          'removeformat | wordcount ',
+          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+      }}
+    />
+    <hr/>
     </>
         :
               <>
@@ -12796,6 +13347,31 @@ const Short_term_Commercial= ({user}) => {
 
               </div>
           </div>
+          <b className="col-form-label">Additional Comments</b>
+          <br/>
+          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+            value={FormData['STIC_SecD_AddComments']}
+            onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecD_AddComments']: newText }) }}                  
+            name="STIC_SecD_AddComments"
+            init={{
+                selector: "textarea",
+                browser_spellcheck : true,
+                placeholder: "Click here to enter text",
+                height: 300,
+                menu: true,
+                plugins: [
+                    'advlist autolink link lists image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount',
+                ],
+                toolbar: 'styles | undo redo | formatselect | ' +
+                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                'removeformat | wordcount ',
+                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+            }}
+          />
+          <hr/>
 
 
         </div>
@@ -12887,7 +13463,31 @@ const Short_term_Commercial= ({user}) => {
       }}
     />
     <hr/>
-
+    <b className="col-form-label">Additional Comments</b>
+          <br/>
+          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+            value={FormData['STIC_SecE_AddComments']}
+            onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_AddComments']: newText }) }}                  
+            name="STIC_SecE_AddComments"
+            init={{
+                selector: "textarea",
+                browser_spellcheck : true,
+                placeholder: "Click here to enter text",
+                height: 300,
+                menu: true,
+                plugins: [
+                    'advlist autolink link lists image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount',
+                ],
+                toolbar: 'styles | undo redo | formatselect | ' +
+                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                'removeformat | wordcount ',
+                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+            }}
+          />
+          <hr/>
     <br/>
 
     <div className={
@@ -12921,6 +13521,31 @@ const Short_term_Commercial= ({user}) => {
           </div>
 
       </div>
+      <b className="col-form-label">Additional Comments</b>
+          <br/>
+          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+            value={FormData['STIC_SecG_AddComments']}
+            onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecG_AddComments']: newText }) }}                  
+            name="STIC_SecG_AddComments"
+            init={{
+                selector: "textarea",
+                browser_spellcheck : true,
+                placeholder: "Click here to enter text",
+                height: 300,
+                menu: true,
+                plugins: [
+                    'advlist autolink link lists image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount',
+                ],
+                toolbar: 'styles | undo redo | formatselect | ' +
+                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                'removeformat | wordcount ',
+                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+            }}
+          />
+          <hr/>
     </div>
 
     <p>I hereby declare that, if applicable, I have explained the meaning and possible detrimental consequences of replacement of a financial product to the applicant.</p>

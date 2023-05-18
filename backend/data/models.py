@@ -1092,6 +1092,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_ProdComp_TotalPremium = models.CharField(max_length=50, default="", blank=True)
 
     # Remaining:
+    STIC_Fire_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Fire_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Fire_ItemNumber = models.CharField(max_length=50, default="", blank=True)
     STIC_Fire_Premium = models.CharField(max_length=50, default="", blank=True)
@@ -1113,6 +1114,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_RnS_Insured = models.IntegerField(default="0")
     STIC_SDC_Insured = models.IntegerField(default="0")
 
+    STIC_BuildCombined_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_BuildCombined_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_BuildCombined_ItemNumber = models.CharField(max_length=50, default="", blank=True)
     STIC_BuildCombined_Premium = models.CharField(max_length=50, default="", blank=True)
@@ -1128,6 +1130,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Extensions_PoA = models.CharField(max_length=50, default="", blank=True)
     STIC_Extensions_IorE = models.CharField(max_length=50, default="", blank=True)
 
+    STIC_OC_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_OC_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_OC_ItemNumber = models.CharField(max_length=50, default="", blank=True)
     STIC_OC_Premium = models.CharField(max_length=50, default="", blank=True)
@@ -1149,6 +1152,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_OC_Theft_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_OC_Total_Premium = models.CharField(max_length=50, default="", blank=True)
 
+    STIC_BusInt_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_BusInt_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_BusInt_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_BusInt_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1237,6 +1241,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_BusInt2_TotalPremium = models.CharField(max_length=50, default="", blank=True)
     STIC_BusInt2_Comments = models.CharField(max_length=20000, default="", blank=True)
     
+    STIC_Sec5_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec5_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec5_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec5_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1251,6 +1256,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec5_AnnualPremium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec5_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec6_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec6_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec6_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec6_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1263,6 +1269,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec6_6 = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec6_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec7_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec7_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec7_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec7_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1288,6 +1295,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec7_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec7_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec8_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec8_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec8_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec8_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1300,6 +1308,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec8_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec8_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec9_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec9_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec9_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec9_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1331,6 +1340,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec9_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec9_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec10_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec10_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec10_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec10_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1357,6 +1367,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec10_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec10_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec11_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec11_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec11_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec11_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1374,6 +1385,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec11_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec11_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec12_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec12_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec12_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec12_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1392,6 +1404,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec12_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec12_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec13_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec13_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec13_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec13_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1432,6 +1445,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec13_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec13_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec14_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec14_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec14_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec14_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1479,6 +1493,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec14_Accepted12 = models.IntegerField(default=1)
     STIC_Sec14_CoverAmount12 = models.CharField(max_length=50, default="", blank=True)
 
+    STIC_Sec15_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec15_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec15_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec15_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1492,6 +1507,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec15_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec15_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec16_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec16_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec16_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec16_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1518,6 +1534,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec16_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec16_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec17_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec17_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec17_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec17_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1562,6 +1579,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec17_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec17_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec18_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec18_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec18_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec18_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1627,6 +1645,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec18_Extension6_1 = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec18_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec19_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec19_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec19_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec19_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1657,6 +1676,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec19_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec19_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec20_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec20_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec20_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec20_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1674,6 +1694,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec20_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec20_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIC_Sec21_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec21_Limit = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec21_Premium = models.CharField(max_length=50, default="", blank=True)
     STIC_Sec21_ItemNumber = models.CharField(max_length=50, default="", blank=True)
@@ -1691,6 +1712,7 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_Sec21_AnnualPremium = models.CharField(max_length=20000, default="", blank=True)
     STIC_Sec21_Comments = models.CharField(max_length=20000, default="", blank=True)
     
+    STIC_SecD_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_SecD_1 = models.CharField(max_length=50, default="", blank=True)
     STIC_SecD_2 = models.CharField(max_length=50, default="", blank=True)
     STIC_SecD_3 = models.CharField(max_length=50, default="", blank=True)
@@ -1705,10 +1727,12 @@ class ShortTermInsuranceCommerical(models.Model):
     STIC_SecD_12 = models.CharField(max_length=50, default="", blank=True)
     STIC_SecD_13 = models.CharField(max_length=50, default="", blank=True)
 
+    STIC_SecE_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_SecE_1 = models.CharField(max_length=50, default="", blank=True)
     STIC_SecE_2 = models.CharField(max_length=50, default="", blank=True)
     STIC_SecE_3 = models.CharField(max_length=50, default="", blank=True)
 
+    STIC_SecG_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIC_SecG_1 = models.CharField(max_length=50, default="", blank=True)
     STIC_SecG_2 = models.CharField(max_length=50, default="", blank=True)
     STIC_SecG_3 = models.CharField(max_length=50, default="", blank=True)
@@ -1745,11 +1769,6 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_General_RisksDetails = models.CharField(max_length=20000, default="", blank=True)
     STIP_General_LastDate = models.CharField(max_length=20000, default="", blank=True)
     STIP_General_InsurerName = models.CharField(max_length=20000, default="", blank=True)
-
-    STIP_General_TypeOfLoss = models.CharField(max_length=20000, default="", blank=True)
-    STIP_General_LossYear = models.CharField(max_length=20000, default="", blank=True)
-    STIP_General_LossAmount = models.CharField(max_length=20000, default="", blank=True)
-    STIP_General_LossInsurer = models.CharField(max_length=20000, default="", blank=True)
     
     STIP_CnRI_Existing_Company = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_Replacement_Company = models.CharField(max_length=20000, default="", blank=True)
@@ -2992,6 +3011,45 @@ class EB_Cover(models.Model):
     BusB_CoverType = models.IntegerField(default=0)
     BusB_Cover = models.IntegerField(default=0)
     BusB_CoverDetails = models.CharField(max_length=20000, default="", blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+class STIP_Loss(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+
+    General_TypeOfLoss = models.CharField(max_length=2000, default="", blank=True)
+    General_LossYear = models.CharField(max_length=2000, default="", blank=True)
+    General_LossAmount = models.CharField(max_length=2000, default="", blank=True)
+    General_LossInsurer = models.CharField(max_length=2000, default="", blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+class STIC_Sec_Fire(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+
+    Fire_Limit = models.CharField(max_length=50, default="", blank=True)
+    Fire_ItemNumber = models.CharField(max_length=50, default="", blank=True)
+    Fire_Premium = models.CharField(max_length=50, default="", blank=True)
+    Fire_PremNumber = models.CharField(max_length=50, default="", blank=True)
+    Buildings_Insured = models.CharField(max_length=50, default="", blank=True)
+    Rental_Insured = models.CharField(max_length=50, default="", blank=True)
+    Others_Insured = models.CharField(max_length=50, default="", blank=True)
+    Stocks_Insured = models.CharField(max_length=50, default="", blank=True)
+    Miscellaneous1_Insured = models.CharField(max_length=50, default="", blank=True)
+    Miscellaneous2_Insured = models.CharField(max_length=50, default="", blank=True)
+    Earthquake_Insured = models.IntegerField(default="0")
+    Malicious_Damage_Insured = models.IntegerField(default="0")
+    Special_Insured = models.IntegerField(default="0")
+    LeakFull_Insured = models.IntegerField(default="0")
+    LeakFirst_Insured = models.IntegerField(default="0")
+    SnLLimited_Insured = models.IntegerField(default="0")
+    SnLComprehensive_Insured = models.IntegerField(default="0")
+    RnS_Insured = models.IntegerField(default="0")
+    SDC_Insured = models.IntegerField(default="0")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)

@@ -34,7 +34,7 @@
     <p>This document serves to record advice and the basis on which it was given. Kindly safeguard this record for future reference.</p>
     <div class='row div'>
         <div class="column2">
-            <b>Underwritten by:</b>
+            <b>Company:</b>
         </div>
         <div class="column2">
             {% if STIP.STIP_Underwritten_By %}
@@ -44,6 +44,16 @@
             {% endif %}
         </div>
         <div class="column2">
+            <b>Quotation Number:</b>
+        </div>
+        <div class="column2">
+            {% if STIP.STIP_Quotation_Number %}
+                <span>{{ STIP.STIP_Quotation_Number }}</span>
+            {% else %}
+                N.A.
+            {% endif %}
+        </div>
+        {% comment %} <div class="column2">
             <b>Branch Name:</b>
         </div>
         <div class="column2">
@@ -52,9 +62,9 @@
             {% else %}
                 N.A.
             {% endif %}
-        </div>
+        </div> {% endcomment %}
     </div>
-    <hr/>
+    {% comment %} <hr/>
     <div class='row div'>
         <div class="column2">
             <b>Branch Number:</b>
@@ -76,7 +86,7 @@
                 N.A.
             {% endif %}
         </div>
-    </div>
+    </div> {% endcomment %}
     <hr/>
     <div class='row div'>
         <div class="column2">
@@ -100,6 +110,7 @@
             {% endif %}
         </div>
     </div>
+    <br/>
     <b>INFORMATION ON ITEMS AND RISKS TO BE INSURED</b>
     <hr/>
     <div class='row div'>
@@ -318,7 +329,7 @@
         </div>
     </div>
     <hr/>
-    {% if STIP.STIP_General_TypeOfLoss or STIP.STIP_General_LossYear or STIP.STIP_General_LossAmount or STIP.STIP_General_LossInsurer %}
+    {% if STIP.Loss_Data %}
         <div class='row div'>
             <div class="column2">
                 <b>TYPE OF LOSS</b>
@@ -333,20 +344,23 @@
                 <b>INSURER</b>
             </div>
         </div>
-        <div class='row div'>
-            <div class="column2">
-                <span>{{ STIP.STIP_General_TypeOfLoss }}</span>
+        {% for loss in STIP.Loss_Data %}
+            <div class='row div'>
+                <div class="column2">
+                    <span>{{ loss.General_TypeOfLoss }}</span>
+                </div>
+                <div class="column2">
+                    <span>{{ loss.General_LossYear }}</span>
+                </div>
+                <div class="column2">
+                    <span>R {{ loss.General_LossAmount }}</span>
+                </div>
+                <div class="column2">
+                    <span>{{ loss.General_LossInsurer }}</span>
+                </div>
             </div>
-            <div class="column2">
-                <span>{{ STIP.STIP_General_LossYear }}</span>
-            </div>
-            <div class="column2">
-                <span>R {{ STIP.STIP_General_LossAmount }}</span>
-            </div>
-            <div class="column2">
-                <span>{{ STIP.STIP_General_LossInsurer }}</span>
-            </div>
-        </div>
+            <hr/>
+        {% endfor %}
     {% endif %}
     <hr/>
     <p><b>COVER OF INSURANCE</b></p>
@@ -1037,65 +1051,67 @@
         </div>
     </div>
     <hr/>
-    <div class="row div">
-        <div class="column2">
-            <div class="row div">
-                <div class="column5">
-                    <span>TV,VCR,Decoders</span>
+    {% comment %}     
+        <div class="row div">
+            <div class="column2">
+                <div class="row div">
+                    <div class="column5">
+                        <span>TV,VCR,Decoders</span>
+                    </div>
+                    <div class="column5">
+                        {% if STIP.STIP_CnRI_11_Recomm == 1 %}
+                            <div class="column4" style="margin-left: 5%;">
+                                <input type="checkbox" type="checkbox" />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="margin-left: 5%;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="column5">
-                    {% if STIP.STIP_CnRI_11_Recomm == 1 %}
-                        <div class="column4" style="margin-left: 5%;">
-                            <input type="checkbox" type="checkbox" />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="margin-left: 5%;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
+            </div>
+            <div class="column2">
+                <div class="row div">
+                    <div class="column5">
+                        {% if STIP.STIP_CnRI_11_Accepted == 1 %}
+                            <div class="column4" style="margin-left: 5%;">
+                                <input type="checkbox" type="checkbox" />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="margin-left: 5%;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <span>R {{STIP.STIP_CnRI_11_CoverAmount}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="column2">
+                <div class="row div">
+                    <div class="column5">
+                        <span>R {{STIP.STIP_CnRI_11_Premium1}}</span>
+                    </div>
+                    <div class="column5">
+                        <span>R {{STIP.STIP_CnRI_11_Excess1}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="column2">
+                <div class="row div">
+                    <div class="column5">
+                        <span>R {{STIP.STIP_CnRI_11_Premium2}}</span>
+                    </div>
+                    <div class="column5">
+                        <span>R {{STIP.STIP_CnRI_11_Excess2}}</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="column2">
-            <div class="row div">
-                <div class="column5">
-                    {% if STIP.STIP_CnRI_11_Accepted == 1 %}
-                        <div class="column4" style="margin-left: 5%;">
-                            <input type="checkbox" type="checkbox" />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="margin-left: 5%;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="column5">
-                    <span>R {{STIP.STIP_CnRI_11_CoverAmount}}</span>
-                </div>
-            </div>
-        </div>
-        <div class="column2">
-            <div class="row div">
-                <div class="column5">
-                    <span>R {{STIP.STIP_CnRI_11_Premium1}}</span>
-                </div>
-                <div class="column5">
-                    <span>R {{STIP.STIP_CnRI_11_Excess1}}</span>
-                </div>
-            </div>
-        </div>
-        <div class="column2">
-            <div class="row div">
-                <div class="column5">
-                    <span>R {{STIP.STIP_CnRI_11_Premium2}}</span>
-                </div>
-                <div class="column5">
-                    <span>R {{STIP.STIP_CnRI_11_Excess2}}</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr/>
+        <hr/>
+    {% endcomment %}
     <div class="row div">
         <div class="column2">
             <div class="row div">
@@ -3841,7 +3857,7 @@
     </div>
     <br/>
     
-    {% if STIP.STIP_CnRI_1_Recomm|to_int == 1 or STIP.STIP_CnRI_1_Accepted|to_int == 1 or STIP.STIP_CnRen_1_Recomm|to_int == 1 or STIP.STIP_CnRen_1_Accepted|to_int == 1 %}
+    {% if STIP.STIP_CnRI_1_Accepted|to_int == 1 %}
     <div>
         <p class="colorheader"><b>HOUSE CONTENT</b></p>
         <p><b>Residential area</b></p>
@@ -4454,7 +4470,7 @@
     <hr/>
     {% endif %}
     
-    {% if STIP.STIP_CnRI_2_Recomm|to_int == 1 or STIP.STIP_CnRI_2_Accepted|to_int == 1 or STIP.STIP_CnRen_2_Recomm|to_int == 1 or STIP.STIP_CnRen_2_Accepted|to_int == 1 %}
+    {% if STIP.STIP_CnRI_2_Accepted|to_int == 1 %}
     <div>
         <p class="colorheader"><b>BUILDINGS</b></p>
         <p><b>Primary Property</b></p>
@@ -4975,7 +4991,7 @@
     <hr/>   
     {% endif %}
     
-    {% if STIP.STIP_CnRI_21_Recomm|to_int == 1 or STIP.STIP_CnRI_21_Accepted|to_int == 1 or STIP.STIP_CnRen_21_Recomm|to_int == 1 or STIP.STIP_CnRen_21_Accepted|to_int == 1 %} 
+    {% if STIP.STIP_CnRI_21_Accepted|to_int == 1 %} 
     <div>
         <p class="colorheader"><b>VEHICLE</b></p>
         <div>Please see attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number and engine number etc.</div>
@@ -5012,12 +5028,12 @@
         <div class="column2">
             <p>{{STIP.STIP_Vehicle_ONParkingOptions}}</p>
         </div>
-        <div class="column2">
+        {% comment %} <div class="column2">
             <p><b>R:</b></p>
         </div>
         <div class="column2">
             <p>{{STIP.STIP_Vehicle_ONOtherParking}}</p>
-        </div>        
+        </div>         {% endcomment %}
     </div>
     <hr/>
     <div class="row div">
@@ -5781,7 +5797,7 @@
     <hr/>   
     {% endif %}
     
-    {% if  STIP.STIP_CnRI_25_Recomm|to_int == 1 or STIP.STIP_CnRI_25_Accepted|to_int == 1 or STIP.STIP_CnRen_25_Recomm|to_int == 1 or STIP.STIP_CnRen_25_Accepted|to_int == 1 %}
+    {% if STIP.STIP_CnRI_25_Accepted|to_int == 1 %}
     <div>
         <p class="colorheader"><b>WATER CRAFT</b></p>
         <div>Please see attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number and engine number etc.</div>

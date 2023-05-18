@@ -76,6 +76,8 @@ urlpatterns = [
     path('update_ar_ProductTaken_Data/' , views.update_ar_ProductTaken_Data, name="Assurance Risk Product Taken data details"),
     path('update_ai_ProductTaken_Data/' , views.update_ai_ProductTaken_Data, name="Assurance Investment Product Taken data details"),
     path('update_eb_coverData/' , views.update_eb_cover_Data, name="Employee Benefits cover data details"),
+    path('update_stip_loss_Data/' , views.update_stip_loss_Data, name="STIP Loss Data"),
+    path('update_stic_sec_fire_Data/' , views.update_stic_sec_fire_Data, name="STIP Loss Data"),
     # PDF Form
     path('pdf/' , printFormViews.pdfForm, name="PDF Form"),
     # Admin View

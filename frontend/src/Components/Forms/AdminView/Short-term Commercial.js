@@ -1125,7 +1125,7 @@ const Short_term_Commercial= ({user}) => {
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_short_term_commerical_data/`, Body ,config)
             // console.log(response.data['formData'])
-            setFormData(response.data['formData'])
+            // setFormData(response.data['formData'])
             setSuccessMessage("Short Term Insurance Commerical data is successfully updated")
             setSuccessMessageVisibility("block")
             setTimeout(() => {
@@ -1193,7 +1193,7 @@ const Short_term_Commercial= ({user}) => {
                           </div>
 
                         <hr/>
-                          <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                          {/* <div className="col-6" style={{paddingBottom: "0.5%"}}>
                               <div className="row g-3 align-items-center">
                                   <div className="col-4">
                                     <label className="col-form-label">Branch Name:</label>
@@ -1215,7 +1215,7 @@ const Short_term_Commercial= ({user}) => {
                               </div>
                           </div>
 
-                          <hr/>
+                          <hr/> */}
                           <div className="col-6" style={{paddingBottom: "0.5%"}}>
                               <div className="row g-3 align-items-center">
                                   <div className="col-4">

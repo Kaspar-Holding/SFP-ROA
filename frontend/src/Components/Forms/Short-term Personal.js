@@ -4,7 +4,9 @@ import React, {useEffect, useState} from 'react';
 // import './Invest.css';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { Editor } from '@tinymce/tinymce-react'
 
 const Short_term_Personal = ({user}) => {
@@ -858,6 +860,7 @@ const Short_term_Personal = ({user}) => {
                 setFormData(response.data['formData'])
             } else {
                 setFormData(response.data['formData'])
+                setLossType(response.data['Loss_Data'])
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
@@ -878,7 +881,7 @@ const Short_term_Personal = ({user}) => {
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_short_term_personal_data/`, Body ,config)
             // console.log(response.data['formData'])
-            setFormData(response.data['formData'])
+            // setFormData(response.data['formData'])
             setSuccessMessage("Short Term Insurance Personal data is successfully updated")
             setSuccessMessageVisibility("block")
             setTimeout(() => {
@@ -887,6 +890,16 @@ const Short_term_Personal = ({user}) => {
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
+        }
+        
+        const Loss_Data_Body = JSON.stringify({
+          "formId" : state['formId'],
+          "loss_data" : LossType
+        })
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_stip_loss_Data/`, Loss_Data_Body ,config) 
+        } catch (error) {
+            
         }
       }
       const onSubmit = e => {
@@ -898,6 +911,46 @@ const Short_term_Personal = ({user}) => {
       const onFieldBlur = e => {
         updateForm()
       }
+
+      // Loss Type
+      const [LossType, setLossType] = useState([])
+      const AddNewLossType = (e) => {
+        const current = [...LossType]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          General_TypeOfLoss : "",  
+          General_LossYear : "",
+          General_LossAmount : "",
+          General_LossInsurer : "",
+        })
+        setLossType(current)
+      }
+      const RemoveNewLossType = (e) => {
+          const current = [...LossType]
+          current.pop()
+          setLossType(current)
+      }
+      const on_LossType_Change = (e, i) => {
+          let newLossType = [...LossType]
+          newLossType[i][e.target.name] = e.target.value
+          setLossType(newLossType)
+      }
+      // const on_LossType_Value_Change = (i, name, value) => {
+      //     let newLossType = [...LossType]
+      //     newLossType[i][name] = value
+      //     setLossType(newLossType)
+      // }
+      
+      const on_LossType_Value_Change = (name, i, val) => {
+        let newLossType = [...LossType]
+        newLossType[i][""+name+""] = val
+        setLossType(newLossType)
+      }
+      // End Loss Type
+
+
+
       // console.log(FormData)
       useEffect(() => {
         createSTIPForm(FormData)
@@ -965,15 +1018,26 @@ const Short_term_Personal = ({user}) => {
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-4">
-                        <label className="col-form-label"><b>Underwritten By:</b></label>
+                        <label className="col-form-label"><b>Company:</b></label>
                     </div>
                     <div className="col-6">
                         <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Underwritten_By" name='STIP_Underwritten_By' value={FormData['STIP_Underwritten_By']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
-
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                <div className="row g-3 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="id_number" className="col-form-label"><b>Quotation number:</b></label>
+                    </div>
+                    <div className="col-6">
+                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Quotation_Number" name='STIP_Quotation_Number' value={FormData['STIP_Quotation_Number']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                    </div>
+                </div>
+            </div>
+            <hr/>
+
+            {/* <div className="col-6" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
                     <div className="col-4">
                         <label htmlFor="id_number" className="col-form-label"><b>Branch name:</b></label>
@@ -983,7 +1047,6 @@ const Short_term_Personal = ({user}) => {
                     </div>
                 </div>
             </div>
-            <hr/>
 
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
@@ -996,17 +1059,7 @@ const Short_term_Personal = ({user}) => {
                 </div>
             </div>
 
-            <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label htmlFor="id_number" className="col-form-label"><b>Quotation number:</b></label>
-                    </div>
-                    <div className="col-6">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Quotation_Number" name='STIP_Quotation_Number' value={FormData['STIP_Quotation_Number']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-            <hr/>
+            <hr/> */}
 
             <div className="col-6" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
@@ -1355,7 +1408,7 @@ const Short_term_Personal = ({user}) => {
 <br/>
 <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
     <div className="row">
-        <div className="col-6" style={{paddingBottom: "0.5%"}}>
+        <div className="col-4" style={{paddingBottom: "0.5%"}}>
             <div className="row g-3 align-items-center">
                 <div className="col-6">
                     <label className="col-form-label"><b>TYPE OF LOSS</b></label>
@@ -1367,7 +1420,7 @@ const Short_term_Personal = ({user}) => {
             </div>
         </div>
 
-        <div className="col-6" style={{paddingBottom: "0.5%"}}>
+        <div className="col-4" style={{paddingBottom: "0.5%"}}>
             <div className="row g-3 align-items-center">
                 <div className="col-6">
                     <label className="col-form-label"><b>AMOUNT (R) </b></label>
@@ -1380,35 +1433,67 @@ const Short_term_Personal = ({user}) => {
 
     </div>
 </div>
+{
+    LossType.length === 0 ?
+      <div className="col-6">
+          <button className="btn btn-md" type='button' onClick={(e)=>{AddNewLossType(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Loss Type</button>
+      </div>
+    :<></>
+}
+{
+    LossType.length > 0 ?
+    LossType.map((key,i) => {
+      // console.log(i+1)
+        return (
+          <>
+            <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+                <div className="row">
+                    <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                        <div className="row g-3 align-items-center">
+                            <div className="col-6">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="General_TypeOfLoss" name='General_TypeOfLoss' value={key.General_TypeOfLoss} onChange={(e) => {on_LossType_Change(e, i)}} className="form-control" placeholder="Type of loss"  aria-describedby="" style={{width:"150px"}} />
+                            </div>
+                            
+                            <div className="col-6">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="General_LossYear" name='General_LossYear' value={key.General_LossYear} onChange={(e) => {on_LossType_Change(e, i)}} className="form-control" placeholder="Year"  aria-describedby="" style={{width:"150px"}} />
+                            </div>
+                        </div>
+                    </div>
 
-<div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-    <div className="row">
-        <div className="col-6" style={{paddingBottom: "0.5%"}}>
-            <div className="row g-3 align-items-center">
-                <div className="col-6">
-                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_General_TypeOfLoss" name='STIP_General_TypeOfLoss' value={FormData['STIP_General_TypeOfLoss']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Type of loss"  aria-describedby="" style={{width:"150px"}} />
-                </div>
-                
-                <div className="col-6">
-                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_General_LossYear" name='STIP_General_LossYear' value={FormData['STIP_General_LossYear']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Year"  aria-describedby="" style={{width:"150px"}} />
+                    <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                        <div className="row g-3 align-items-center">
+                            <div className="col-6">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="General_LossAmount" name='General_LossAmount' value={key.General_LossAmount} onChange={(e) => {on_LossType_Change(e, i)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                            </div>
+                            
+                            <div className="col-6">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="General_LossInsurer" name='General_LossInsurer' value={key.General_LossInsurer} onChange={(e) => {on_LossType_Change(e, i)}} className="form-control" placeholder="Insurer"  aria-describedby="" style={{width:"150px"}} />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-4">
+                      <div className='row'>
+                        {
+                          i+1 == LossType.length ?
+                          <div className="col-6">
+                              <button className="btn btn-md" type='button' onClick={(e)=>{AddNewLossType(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Loss Type</button>
+                          </div>
+                          : <></>
+                        }
+                        <div className="col-6">
+                            <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewLossType(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Loss Type</button>
+                        </div>
+                      </div>
+                    </div>
+                    <hr/>
                 </div>
             </div>
-        </div>
-
-        <div className="col-6" style={{paddingBottom: "0.5%"}}>
-            <div className="row g-3 align-items-center">
-                <div className="col-6">
-                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_General_LossAmount" name='STIP_General_LossAmount' value={FormData['STIP_General_LossAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"150px"}} />
-                </div>
-                
-                <div className="col-6">
-                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_General_LossInsurer" name='STIP_General_LossInsurer' value={FormData['STIP_General_LossInsurer']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Insurer"  aria-describedby="" style={{width:"150px"}} />
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
+            
+          </>
+        )
+    }): <></>
+}
 
 <br/>
   <hr/>
@@ -1822,7 +1907,7 @@ const Short_term_Personal = ({user}) => {
             
           </tr>
 
-          <tr className="d-flex">
+          {/* <tr className="d-flex">
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; 
               TV,VCR,Decoders</td>
@@ -1854,7 +1939,7 @@ const Short_term_Personal = ({user}) => {
                 <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_11_Excess2" name='STIP_CnRen_11_Excess2' value={FormData['STIP_CnRen_11_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
-          </tr>
+          </tr> */}
 
 
           <tr className="d-flex">
@@ -3561,10 +3646,7 @@ const Short_term_Personal = ({user}) => {
   <br/>
   <hr/>
   {
-      FormData['STIP_CnRI_1_Recomm'] === 1 || 
-      FormData['STIP_CnRI_1_Accepted'] === 1 || 
-      FormData['STIP_CnRen_1_Recomm'] === 1 || 
-      FormData['STIP_CnRen_1_Accepted'] === 1 ?
+      FormData['STIP_CnRI_1_Accepted'] === 1 ?
             <>
 <h6 align="left" style={{ color: "#14848A"}}><b>HOUSE CONTENT</b></h6>
 <div><b>Primary Property</b></div>
@@ -4196,8 +4278,7 @@ const Short_term_Personal = ({user}) => {
               </>
     }
     {
-        FormData['STIP_CnRI_2_Recomm'] === 1 || FormData['STIP_CnRI_2_Accepted'] === 1 || 
-        FormData['STIP_CnRen_2_Recomm'] === 1 || FormData['STIP_CnRen_2_Accepted'] === 1 ?
+        FormData['STIP_CnRI_2_Accepted'] === 1  ?
               <>
         <hr/>
           <h6 align="left" style={{ color: "#14848A"}}><b>BUILDINGS</b></h6>
@@ -4809,10 +4890,7 @@ const Short_term_Personal = ({user}) => {
               </>
     }
     {
-        FormData['STIP_CnRI_21_Recomm'] === 1 || 
-        FormData['STIP_CnRI_21_Accepted'] === 1 || 
-        FormData['STIP_CnRen_21_Recomm'] === 1 || 
-        FormData['STIP_CnRen_21_Accepted'] === 1 ?
+        FormData['STIP_CnRI_21_Accepted'] === 1 ?
               <>
         <h6 align="left" style={{ color: "#14848A"}}><b>VEHICLE</b></h6>
         <div>Please see attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number and engine number etc.</div>
@@ -4887,7 +4965,7 @@ const Short_term_Personal = ({user}) => {
               </div>
           </div>
 
-          <div className="col-6" style={{paddingBottom: "0.5%"}}>
+          {/* <div className="col-6" style={{paddingBottom: "0.5%"}}>
               <div className="row g-3 align-items-center">
                   <div className="col-4">
                       <label htmlFor="id_number" className="col-form-label"><b>R:</b></label>
@@ -4896,7 +4974,7 @@ const Short_term_Personal = ({user}) => {
                       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_ONOtherParking" name='STIP_Vehicle_ONOtherParking' value={FormData['STIP_Vehicle_ONOtherParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                   </div>
               </div>
-          </div>
+          </div> */}
           <hr/>
 
           <div className="col-6" style={{paddingBottom: "0.5%"}}>
@@ -4938,23 +5016,25 @@ const Short_term_Personal = ({user}) => {
                       <label htmlFor="id_number" className="col-form-label"><b>Safety measures</b></label>
                   </div>
                   <div className="col-8">
-                  <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
-                    <div className="form-check">
-                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM1"] == 1 ? true : false} name="STIP_Vehicle_SM1" onChange={(e)=>{FormData["STIP_Vehicle_SM1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
-                        <label className="form-check-label" for="flexCheckDefault">
-                        Immobilizer  
-                        </label>
+                    <div className='row'>
+                      <div className="col-6" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
+                        <div className="form-check">
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM1"] == 1 ? true : false} name="STIP_Vehicle_SM1" onChange={(e)=>{FormData["STIP_Vehicle_SM1"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                            <label className="form-check-label" for="flexCheckDefault">
+                            Immobilizer  
+                            </label>
+                        </div>
+                      </div> 
+                        
+                      <div className="col-6" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
+                        <div className="form-check">
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                            <label className="form-check-label" for="flexCheckDefault">
+                              Gear lock
+                            </label>
+                        </div>
+                      </div> 
                     </div>
-                  </td> 
-                    
-                  <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
-                    <div className="form-check">
-                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
-                        <label className="form-check-label" for="flexCheckDefault">
-                          Gear lock
-                        </label>
-                    </div>
-                  </td> 
                   </div>
               </div>
           </div>
@@ -4992,23 +5072,25 @@ const Short_term_Personal = ({user}) => {
                       <label htmlFor="id_number" className="col-form-label"><b></b></label>
                   </div>
                   <div className="col-8">
-                  <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
-                    <div className="form-check">
-                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM3"] == 1 ? true : false} name="STIP_Vehicle_SM3" onChange={(e)=>{FormData["STIP_Vehicle_SM3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
-                        <label className="form-check-label" for="flexCheckDefault">
-                        Tracking device  
-                        </label>
+                    <div className='row'>
+                      <div className="col-6" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
+                        <div className="form-check">
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM3"] == 1 ? true : false} name="STIP_Vehicle_SM3" onChange={(e)=>{FormData["STIP_Vehicle_SM3"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                            <label className="form-check-label" for="flexCheckDefault">
+                            Tracking device  
+                            </label>
+                        </div>
+                      </div> 
+                        
+                      <div className="col-6" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
+                        <div className="form-check">
+                          <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM4"] == 1 ? true : false} name="STIP_Vehicle_SM4" onChange={(e)=>{FormData["STIP_Vehicle_SM4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
+                            <label className="form-check-label" for="flexCheckDefault">
+                              Data dot
+                            </label>
+                        </div>
+                      </div> 
                     </div>
-                  </td> 
-                    
-                  <td scope="col" style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="left"> 
-                    <div className="form-check">
-                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM4"] == 1 ? true : false} name="STIP_Vehicle_SM4" onChange={(e)=>{FormData["STIP_Vehicle_SM4"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/>
-                        <label className="form-check-label" for="flexCheckDefault">
-                          Data dot
-                        </label>
-                    </div>
-                  </td> 
                   </div>
               </div>
           </div>
@@ -6015,10 +6097,7 @@ const Short_term_Personal = ({user}) => {
         <br/>
 </> :<></>}
     {
-        FormData['STIP_CnRI_25_Recomm'] === 1 || 
-        FormData['STIP_CnRI_25_Accepted'] === 1 || 
-        FormData['STIP_CnRen_25_Recomm'] === 1 || 
-        FormData['STIP_CnRen_25_Accepted'] === 1 ?
+        FormData['STIP_CnRI_25_Accepted'] === 1 ?
               <>
                <h6 align="left" style={{ color: "#14848A"}}><b>WATER CRAFT</b></h6>
       <div>Please see the attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number etc.</div>

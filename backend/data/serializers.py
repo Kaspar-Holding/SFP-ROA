@@ -1,7 +1,7 @@
 
 from datetime import datetime, timezone
 from rest_framework import serializers
-from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, RiskFactors, RiskPlanning, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
+from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
 from .models import Medical
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
@@ -909,10 +909,10 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_General_LastDate = validated_data.get("STIP_General_LastDate", instance.STIP_General_LastDate)
         instance.STIP_General_InsurerName = validated_data.get("STIP_General_InsurerName", instance.STIP_General_InsurerName)
 
-        instance.STIP_General_TypeOfLoss = validated_data.get("STIP_General_TypeOfLoss", instance.STIP_General_TypeOfLoss)
-        instance.STIP_General_LossYear = validated_data.get("STIP_General_LossYear", instance.STIP_General_LossYear)
-        instance.STIP_General_LossAmount = validated_data.get("STIP_General_LossAmount", instance.STIP_General_LossAmount)
-        instance.STIP_General_LossInsurer = validated_data.get("STIP_General_LossInsurer", instance.STIP_General_LossInsurer)
+        # instance.STIP_General_TypeOfLoss = validated_data.get("STIP_General_TypeOfLoss", instance.STIP_General_TypeOfLoss)
+        # instance.STIP_General_LossYear = validated_data.get("STIP_General_LossYear", instance.STIP_General_LossYear)
+        # instance.STIP_General_LossAmount = validated_data.get("STIP_General_LossAmount", instance.STIP_General_LossAmount)
+        # instance.STIP_General_LossInsurer = validated_data.get("STIP_General_LossInsurer", instance.STIP_General_LossInsurer)
             
         instance.STIP_CnRI_Existing_Company = validated_data.get("STIP_CnRI_Existing_Company", instance.STIP_CnRI_Existing_Company)
         instance.STIP_CnRI_Replacement_Company = validated_data.get("STIP_CnRI_Replacement_Company", instance.STIP_CnRI_Replacement_Company)
@@ -2144,6 +2144,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_ProdComp_FeeNCharges = validated_data.get("STIC_ProdComp_FeeNCharges",instance.STIC_ProdComp_FeeNCharges)
         instance.STIC_ProdComp_Commission = validated_data.get("STIC_ProdComp_Commission",instance.STIC_ProdComp_Commission)
         instance.STIC_ProdComp_TotalPremium = validated_data.get("STIC_ProdComp_TotalPremium",instance.STIC_ProdComp_TotalPremium)
+        
+        instance.STIC_Fire_AddComments = validated_data.get("STIC_Fire_AddComments",instance.STIC_Fire_AddComments)
         instance.STIC_Fire_Limit = validated_data.get("STIC_Fire_Limit",instance.STIC_Fire_Limit)
         instance.STIC_Fire_ItemNumber = validated_data.get("STIC_Fire_ItemNumber",instance.STIC_Fire_ItemNumber)
         instance.STIC_Fire_Premium = validated_data.get("STIC_Fire_Premium",instance.STIC_Fire_Premium)
@@ -2164,6 +2166,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_SnLComprehensive_Insured = validated_data.get("STIC_SnLComprehensive_Insured",instance.STIC_SnLComprehensive_Insured) 
         instance.STIC_RnS_Insured = validated_data.get("STIC_RnS_Insured",instance.STIC_RnS_Insured) 
         instance.STIC_SDC_Insured = validated_data.get("STIC_SDC_Insured",instance.STIC_SDC_Insured) 
+        
+        instance.STIC_BuildCombined_AddComments = validated_data.get("STIC_BuildCombined_AddComments",instance.STIC_BuildCombined_AddComments)
         instance.STIC_BuildCombined_Limit = validated_data.get("STIC_BuildCombined_Limit",instance.STIC_BuildCombined_Limit)
         instance.STIC_BuildCombined_ItemNumber = validated_data.get("STIC_BuildCombined_ItemNumber",instance.STIC_BuildCombined_ItemNumber)
         instance.STIC_BuildCombined_Premium = validated_data.get("STIC_BuildCombined_Premium",instance.STIC_BuildCombined_Premium)
@@ -2177,6 +2181,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Extensions_SnL = validated_data.get("STIC_Extensions_SnL",instance.STIC_Extensions_SnL)
         instance.STIC_Extensions_PoA = validated_data.get("STIC_Extensions_PoA",instance.STIC_Extensions_PoA)
         instance.STIC_Extensions_IorE = validated_data.get("STIC_Extensions_IorE",instance.STIC_Extensions_IorE)
+        
+        instance.STIC_OC_AddComments = validated_data.get("STIC_OC_AddComments",instance.STIC_OC_AddComments)
         instance.STIC_OC_Limit = validated_data.get("STIC_OC_Limit",instance.STIC_OC_Limit)
         instance.STIC_OC_ItemNumber = validated_data.get("STIC_OC_ItemNumber",instance.STIC_OC_ItemNumber)
         instance.STIC_OC_Premium = validated_data.get("STIC_OC_Premium",instance.STIC_OC_Premium)
@@ -2196,6 +2202,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_OC_Theft_Sum = validated_data.get("STIC_OC_Theft_Sum",instance.STIC_OC_Theft_Sum)
         instance.STIC_OC_Theft_Premium = validated_data.get("STIC_OC_Theft_Premium",instance.STIC_OC_Theft_Premium)
         instance.STIC_OC_Total_Premium = validated_data.get("STIC_OC_Total_Premium",instance.STIC_OC_Total_Premium)
+        
+        instance.STIC_BusInt_AddComments = validated_data.get("STIC_BusInt_AddComments",instance.STIC_BusInt_AddComments)
         instance.STIC_BusInt_Limit = validated_data.get("STIC_BusInt_Limit",instance.STIC_BusInt_Limit)
         instance.STIC_BusInt_Premium = validated_data.get("STIC_BusInt_Premium",instance.STIC_BusInt_Premium)
         instance.STIC_BusInt_ItemNumber = validated_data.get("STIC_BusInt_ItemNumber",instance.STIC_BusInt_ItemNumber)
@@ -2277,6 +2285,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_BusInt_Type2_23_1 = validated_data.get("STIC_BusInt_Type2_23_1",instance.STIC_BusInt_Type2_23_1)
         instance.STIC_BusInt2_TotalPremium = validated_data.get("STIC_BusInt2_TotalPremium",instance.STIC_BusInt2_TotalPremium)
         instance.STIC_BusInt2_Comments = validated_data.get("STIC_BusInt2_Comments",instance.STIC_BusInt2_Comments) 
+        
+        instance.STIC_Sec5_AddComments = validated_data.get("STIC_Sec5_AddComments",instance.STIC_Sec5_AddComments)
         instance.STIC_Sec5_Limit = validated_data.get("STIC_Sec5_Limit",instance.STIC_Sec5_Limit)
         instance.STIC_Sec5_Premium = validated_data.get("STIC_Sec5_Premium",instance.STIC_Sec5_Premium)
         instance.STIC_Sec5_ItemNumber = validated_data.get("STIC_Sec5_ItemNumber",instance.STIC_Sec5_ItemNumber)
@@ -2290,6 +2300,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec5_Extension_5 = validated_data.get("STIC_Sec5_Extension_5",instance.STIC_Sec5_Extension_5) 
         instance.STIC_Sec5_AnnualPremium = validated_data.get("STIC_Sec5_AnnualPremium",instance.STIC_Sec5_AnnualPremium)
         instance.STIC_Sec5_Comments = validated_data.get("STIC_Sec5_Comments",instance.STIC_Sec5_Comments) 
+        
+        instance.STIC_Sec6_AddComments = validated_data.get("STIC_Sec6_AddComments",instance.STIC_Sec6_AddComments)
         instance.STIC_Sec6_Limit = validated_data.get("STIC_Sec6_Limit",instance.STIC_Sec6_Limit)
         instance.STIC_Sec6_Premium = validated_data.get("STIC_Sec6_Premium",instance.STIC_Sec6_Premium)
         instance.STIC_Sec6_ItemNumber = validated_data.get("STIC_Sec6_ItemNumber",instance.STIC_Sec6_ItemNumber)
@@ -2301,6 +2313,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec6_5 = validated_data.get("STIC_Sec6_5",instance.STIC_Sec6_5)
         instance.STIC_Sec6_6 = validated_data.get("STIC_Sec6_6",instance.STIC_Sec6_6)
         instance.STIC_Sec6_Comments = validated_data.get("STIC_Sec6_Comments",instance.STIC_Sec6_Comments) 
+        
+        instance.STIC_Sec7_AddComments = validated_data.get("STIC_Sec7_AddComments",instance.STIC_Sec7_AddComments)
         instance.STIC_Sec7_Limit = validated_data.get("STIC_Sec7_Limit",instance.STIC_Sec7_Limit)
         instance.STIC_Sec7_Premium = validated_data.get("STIC_Sec7_Premium",instance.STIC_Sec7_Premium)
         instance.STIC_Sec7_ItemNumber = validated_data.get("STIC_Sec7_ItemNumber",instance.STIC_Sec7_ItemNumber)
@@ -2325,6 +2339,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec7_Extension_Premium3 = validated_data.get("STIC_Sec7_Extension_Premium3",instance.STIC_Sec7_Extension_Premium3)
         instance.STIC_Sec7_AnnualPremium = validated_data.get("STIC_Sec7_AnnualPremium",instance.STIC_Sec7_AnnualPremium) 
         instance.STIC_Sec7_Comments = validated_data.get("STIC_Sec7_Comments",instance.STIC_Sec7_Comments) 
+        
+        instance.STIC_Sec8_AddComments = validated_data.get("STIC_Sec8_AddComments",instance.STIC_Sec8_AddComments)
         instance.STIC_Sec8_Limit = validated_data.get("STIC_Sec8_Limit",instance.STIC_Sec8_Limit)
         instance.STIC_Sec8_Premium = validated_data.get("STIC_Sec8_Premium",instance.STIC_Sec8_Premium)
         instance.STIC_Sec8_ItemNumber = validated_data.get("STIC_Sec8_ItemNumber",instance.STIC_Sec8_ItemNumber)
@@ -2336,6 +2352,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         # instance.STIC_Sec8_Extension_Included3 = validated_data.get("STIC_Sec8_Extension_Included3",instance.STIC_Sec8_Extension_Included3) 
         instance.STIC_Sec8_AnnualPremium = validated_data.get("STIC_Sec8_AnnualPremium",instance.STIC_Sec8_AnnualPremium) 
         instance.STIC_Sec8_Comments = validated_data.get("STIC_Sec8_Comments",instance.STIC_Sec8_Comments) 
+        
+        instance.STIC_Sec9_AddComments = validated_data.get("STIC_Sec9_AddComments",instance.STIC_Sec9_AddComments)
         instance.STIC_Sec9_Limit = validated_data.get("STIC_Sec9_Limit",instance.STIC_Sec9_Limit)
         instance.STIC_Sec9_Premium = validated_data.get("STIC_Sec9_Premium",instance.STIC_Sec9_Premium)
         instance.STIC_Sec9_ItemNumber = validated_data.get("STIC_Sec9_ItemNumber",instance.STIC_Sec9_ItemNumber)
@@ -2366,6 +2384,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec9_Extension_Premium6 = validated_data.get("STIC_Sec9_Extension_Premium6",instance.STIC_Sec9_Extension_Premium6)
         instance.STIC_Sec9_AnnualPremium = validated_data.get("STIC_Sec9_AnnualPremium",instance.STIC_Sec9_AnnualPremium) 
         instance.STIC_Sec9_Comments = validated_data.get("STIC_Sec9_Comments",instance.STIC_Sec9_Comments) 
+        
+        instance.STIC_Sec10_AddComments = validated_data.get("STIC_Sec10_AddComments",instance.STIC_Sec10_AddComments)
         instance.STIC_Sec10_Limit = validated_data.get("STIC_Sec10_Limit",instance.STIC_Sec10_Limit)
         instance.STIC_Sec10_Premium = validated_data.get("STIC_Sec10_Premium",instance.STIC_Sec10_Premium)
         instance.STIC_Sec10_ItemNumber = validated_data.get("STIC_Sec10_ItemNumber",instance.STIC_Sec10_ItemNumber)
@@ -2391,6 +2411,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec10_Extension_Premium4 = validated_data.get("STIC_Sec10_Extension_Premium4",instance.STIC_Sec10_Extension_Premium4)
         instance.STIC_Sec10_AnnualPremium = validated_data.get("STIC_Sec10_AnnualPremium",instance.STIC_Sec10_AnnualPremium) 
         instance.STIC_Sec10_Comments = validated_data.get("STIC_Sec10_Comments",instance.STIC_Sec10_Comments) 
+        
+        instance.STIC_Sec11_AddComments = validated_data.get("STIC_Sec11_AddComments",instance.STIC_Sec11_AddComments)
         instance.STIC_Sec11_Limit = validated_data.get("STIC_Sec11_Limit",instance.STIC_Sec11_Limit)
         instance.STIC_Sec11_Premium = validated_data.get("STIC_Sec11_Premium",instance.STIC_Sec11_Premium)
         instance.STIC_Sec11_ItemNumber = validated_data.get("STIC_Sec11_ItemNumber",instance.STIC_Sec11_ItemNumber)
@@ -2407,6 +2429,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec11_10 = validated_data.get("STIC_Sec11_10",instance.STIC_Sec11_10)
         instance.STIC_Sec11_AnnualPremium = validated_data.get("STIC_Sec11_AnnualPremium",instance.STIC_Sec11_AnnualPremium) 
         instance.STIC_Sec11_Comments = validated_data.get("STIC_Sec11_Comments",instance.STIC_Sec11_Comments) 
+        
+        instance.STIC_Sec12_AddComments = validated_data.get("STIC_Sec12_AddComments",instance.STIC_Sec12_AddComments)
         instance.STIC_Sec12_Limit = validated_data.get("STIC_Sec12_Limit",instance.STIC_Sec12_Limit)
         instance.STIC_Sec12_Premium = validated_data.get("STIC_Sec12_Premium",instance.STIC_Sec12_Premium)
         instance.STIC_Sec12_ItemNumber = validated_data.get("STIC_Sec12_ItemNumber",instance.STIC_Sec12_ItemNumber)
@@ -2424,6 +2448,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec12_Extension_Included5 = validated_data.get("STIC_Sec12_Extension_Included5",instance.STIC_Sec12_Extension_Included5) 
         instance.STIC_Sec12_AnnualPremium = validated_data.get("STIC_Sec12_AnnualPremium",instance.STIC_Sec12_AnnualPremium) 
         instance.STIC_Sec12_Comments = validated_data.get("STIC_Sec12_Comments",instance.STIC_Sec12_Comments) 
+        
+        instance.STIC_Sec13_AddComments = validated_data.get("STIC_Sec13_AddComments",instance.STIC_Sec13_AddComments)
         instance.STIC_Sec13_Limit = validated_data.get("STIC_Sec13_Limit",instance.STIC_Sec13_Limit)
         instance.STIC_Sec13_Premium = validated_data.get("STIC_Sec13_Premium",instance.STIC_Sec13_Premium)
         instance.STIC_Sec13_ItemNumber = validated_data.get("STIC_Sec13_ItemNumber",instance.STIC_Sec13_ItemNumber)
@@ -2463,6 +2489,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         # instance.STIC_Sec13_33 = validated_data.get("STIC_Sec13_33",instance.STIC_Sec13_33) 
         instance.STIC_Sec13_AnnualPremium = validated_data.get("STIC_Sec13_AnnualPremium",instance.STIC_Sec13_AnnualPremium) 
         instance.STIC_Sec13_Comments = validated_data.get("STIC_Sec13_Comments",instance.STIC_Sec13_Comments) 
+        
+        instance.STIC_Sec14_AddComments = validated_data.get("STIC_Sec14_AddComments",instance.STIC_Sec14_AddComments)
         instance.STIC_Sec14_Limit = validated_data.get("STIC_Sec14_Limit",instance.STIC_Sec14_Limit)
         instance.STIC_Sec14_Premium = validated_data.get("STIC_Sec14_Premium",instance.STIC_Sec14_Premium)
         instance.STIC_Sec14_ItemNumber = validated_data.get("STIC_Sec14_ItemNumber",instance.STIC_Sec14_ItemNumber)
@@ -2509,6 +2537,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec14_Recommended12 = validated_data.get("STIC_Sec14_Recommended12",instance.STIC_Sec14_Recommended12) 
         instance.STIC_Sec14_Accepted12 = validated_data.get("STIC_Sec14_Accepted12",instance.STIC_Sec14_Accepted12) 
         instance.STIC_Sec14_CoverAmount12 = validated_data.get("STIC_Sec14_CoverAmount12",instance.STIC_Sec14_CoverAmount12)
+        
+        instance.STIC_Sec15_AddComments = validated_data.get("STIC_Sec15_AddComments",instance.STIC_Sec15_AddComments)
         instance.STIC_Sec15_Limit = validated_data.get("STIC_Sec15_Limit",instance.STIC_Sec15_Limit)
         instance.STIC_Sec15_Premium = validated_data.get("STIC_Sec15_Premium",instance.STIC_Sec15_Premium)
         instance.STIC_Sec15_ItemNumber = validated_data.get("STIC_Sec15_ItemNumber",instance.STIC_Sec15_ItemNumber)
@@ -2521,6 +2551,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec15_3_1 = validated_data.get("STIC_Sec15_3_1",instance.STIC_Sec15_3_1)
         instance.STIC_Sec15_AnnualPremium = validated_data.get("STIC_Sec15_AnnualPremium",instance.STIC_Sec15_AnnualPremium) 
         instance.STIC_Sec15_Comments = validated_data.get("STIC_Sec15_Comments",instance.STIC_Sec15_Comments) 
+        
+        instance.STIC_Sec16_AddComments = validated_data.get("STIC_Sec16_AddComments",instance.STIC_Sec16_AddComments)
         instance.STIC_Sec16_Limit = validated_data.get("STIC_Sec16_Limit",instance.STIC_Sec16_Limit)
         instance.STIC_Sec16_Premium = validated_data.get("STIC_Sec16_Premium",instance.STIC_Sec16_Premium)
         instance.STIC_Sec16_ItemNumber = validated_data.get("STIC_Sec16_ItemNumber",instance.STIC_Sec16_ItemNumber)
@@ -2546,6 +2578,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec16_Extension9 = validated_data.get("STIC_Sec16_Extension9",instance.STIC_Sec16_Extension9) 
         instance.STIC_Sec16_AnnualPremium = validated_data.get("STIC_Sec16_AnnualPremium",instance.STIC_Sec16_AnnualPremium) 
         instance.STIC_Sec16_Comments = validated_data.get("STIC_Sec16_Comments",instance.STIC_Sec16_Comments) 
+        
+        instance.STIC_Sec17_AddComments = validated_data.get("STIC_Sec17_AddComments",instance.STIC_Sec17_AddComments)
         instance.STIC_Sec17_Limit = validated_data.get("STIC_Sec17_Limit",instance.STIC_Sec17_Limit)
         instance.STIC_Sec17_Premium = validated_data.get("STIC_Sec17_Premium",instance.STIC_Sec17_Premium)
         instance.STIC_Sec17_ItemNumber = validated_data.get("STIC_Sec17_ItemNumber",instance.STIC_Sec17_ItemNumber)
@@ -2589,6 +2623,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec17_ExtensionPremium9 = validated_data.get("STIC_Sec17_ExtensionPremium9",instance.STIC_Sec17_ExtensionPremium9) 
         instance.STIC_Sec17_AnnualPremium = validated_data.get("STIC_Sec17_AnnualPremium",instance.STIC_Sec17_AnnualPremium) 
         instance.STIC_Sec17_Comments = validated_data.get("STIC_Sec17_Comments",instance.STIC_Sec17_Comments) 
+        
+        instance.STIC_Sec18_AddComments = validated_data.get("STIC_Sec18_AddComments",instance.STIC_Sec18_AddComments)
         instance.STIC_Sec18_Limit = validated_data.get("STIC_Sec18_Limit",instance.STIC_Sec18_Limit)
         instance.STIC_Sec18_Premium = validated_data.get("STIC_Sec18_Premium",instance.STIC_Sec18_Premium)
         instance.STIC_Sec18_ItemNumber = validated_data.get("STIC_Sec18_ItemNumber",instance.STIC_Sec18_ItemNumber)
@@ -2653,6 +2689,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec18_Extension6 = validated_data.get("STIC_Sec18_Extension6", instance.STIC_Sec18_Extension6) 
         instance.STIC_Sec18_Extension6_1 = validated_data.get("STIC_Sec18_Extension6_1", instance.STIC_Sec18_Extension6_1)
         instance.STIC_Sec18_Comments = validated_data.get("STIC_Sec18_Comments", instance.STIC_Sec18_Comments) 
+        
+        instance.STIC_Sec19_AddComments = validated_data.get("STIC_Sec19_AddComments",instance.STIC_Sec19_AddComments)
         instance.STIC_Sec19_Limit = validated_data.get("STIC_Sec19_Limit", instance.STIC_Sec19_Limit)
         instance.STIC_Sec19_Premium = validated_data.get("STIC_Sec19_Premium", instance.STIC_Sec19_Premium)
         instance.STIC_Sec19_ItemNumber = validated_data.get("STIC_Sec19_ItemNumber", instance.STIC_Sec19_ItemNumber)
@@ -2682,6 +2720,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec19_RoD_5 = validated_data.get("STIC_Sec19_RoD_5", instance.STIC_Sec19_RoD_5)
         instance.STIC_Sec19_AnnualPremium = validated_data.get("STIC_Sec19_AnnualPremium", instance.STIC_Sec19_AnnualPremium) 
         instance.STIC_Sec19_Comments = validated_data.get("STIC_Sec19_Comments", instance.STIC_Sec19_Comments) 
+        
+        instance.STIC_Sec20_AddComments = validated_data.get("STIC_Sec20_AddComments",instance.STIC_Sec20_AddComments)
         instance.STIC_Sec20_Limit = validated_data.get("STIC_Sec20_Limit", instance.STIC_Sec20_Limit)
         instance.STIC_Sec20_Premium = validated_data.get("STIC_Sec20_Premium", instance.STIC_Sec20_Premium)
         instance.STIC_Sec20_ItemNumber = validated_data.get("STIC_Sec20_ItemNumber", instance.STIC_Sec20_ItemNumber)
@@ -2698,6 +2738,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec20_Extension_Premium2 = validated_data.get("STIC_Sec20_Extension_Premium2", instance.STIC_Sec20_Extension_Premium2)
         instance.STIC_Sec20_AnnualPremium = validated_data.get("STIC_Sec20_AnnualPremium", instance.STIC_Sec20_AnnualPremium) 
         instance.STIC_Sec20_Comments = validated_data.get("STIC_Sec20_Comments", instance.STIC_Sec20_Comments) 
+        
+        instance.STIC_Sec21_AddComments = validated_data.get("STIC_Sec21_AddComments",instance.STIC_Sec21_AddComments)
         instance.STIC_Sec21_Limit = validated_data.get("STIC_Sec21_Limit", instance.STIC_Sec21_Limit)
         instance.STIC_Sec21_Premium = validated_data.get("STIC_Sec21_Premium", instance.STIC_Sec21_Premium)
         instance.STIC_Sec21_ItemNumber = validated_data.get("STIC_Sec21_ItemNumber", instance.STIC_Sec21_ItemNumber)
@@ -2714,6 +2756,8 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_Sec21_Extension_Premium2 = validated_data.get("STIC_Sec21_Extension_Premium2", instance.STIC_Sec21_Extension_Premium2)
         instance.STIC_Sec21_AnnualPremium = validated_data.get("STIC_Sec21_AnnualPremium", instance.STIC_Sec21_AnnualPremium) 
         instance.STIC_Sec21_Comments = validated_data.get("STIC_Sec21_Comments", instance.STIC_Sec21_Comments) 
+        
+        instance.STIC_SecD_AddComments = validated_data.get("STIC_SecD_AddComments",instance.STIC_SecD_AddComments)
         instance.STIC_SecD_1 = validated_data.get("STIC_SecD_1", instance.STIC_SecD_1)
         instance.STIC_SecD_2 = validated_data.get("STIC_SecD_2", instance.STIC_SecD_2)
         instance.STIC_SecD_3 = validated_data.get("STIC_SecD_3", instance.STIC_SecD_3)
@@ -2727,9 +2771,13 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_SecD_11 = validated_data.get("STIC_SecD_11", instance.STIC_SecD_11)
         instance.STIC_SecD_12 = validated_data.get("STIC_SecD_12", instance.STIC_SecD_12)
         instance.STIC_SecD_13 = validated_data.get("STIC_SecD_13", instance.STIC_SecD_13)
+        
+        instance.STIC_SecE_AddComments = validated_data.get("STIC_SecE_AddComments",instance.STIC_SecE_AddComments)
         instance.STIC_SecE_1 = validated_data.get("STIC_SecE_1", instance.STIC_SecE_1)
         instance.STIC_SecE_2 = validated_data.get("STIC_SecE_2", instance.STIC_SecE_2)
         instance.STIC_SecE_3 = validated_data.get("STIC_SecE_3", instance.STIC_SecE_3)
+        
+        instance.STIC_SecG_AddComments = validated_data.get("STIC_SecG_AddComments",instance.STIC_SecG_AddComments)
         instance.STIC_SecG_1 = validated_data.get("STIC_SecG_1", instance.STIC_SecG_1)
         instance.STIC_SecG_2 = validated_data.get("STIC_SecG_2", instance.STIC_SecG_2)
         instance.STIC_SecG_3 = validated_data.get("STIC_SecG_3", instance.STIC_SecG_3)
@@ -4156,6 +4204,63 @@ class EB_CoverSerializer(serializers.ModelSerializer):
         instance.BusB_CoverType = validated_data.get('BusB_CoverType', instance.BusB_CoverType)  
         instance.BusB_Cover = validated_data.get('BusB_Cover', instance.BusB_Cover)    
         instance.BusB_CoverDetails = validated_data.get('BusB_CoverDetails', instance.BusB_CoverDetails)    
+         
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIP_Loss_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIP_Loss
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIP_Loss.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.General_TypeOfLoss = validated_data.get('General_TypeOfLoss', instance.General_TypeOfLoss)  
+        instance.General_LossYear = validated_data.get('General_LossYear', instance.General_LossYear)  
+        instance.General_LossAmount = validated_data.get('General_LossAmount', instance.General_LossAmount)    
+        instance.General_LossInsurer = validated_data.get('General_LossInsurer', instance.General_LossInsurer)    
+         
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_Fire_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_Fire
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_Fire.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Fire_Limit = validated_data.get('Fire_Limit', instance.Fire_Limit)  
+        instance.Fire_ItemNumber = validated_data.get('Fire_ItemNumber', instance.Fire_ItemNumber)  
+        instance.Fire_Premium = validated_data.get('Fire_Premium', instance.Fire_Premium)    
+        instance.Fire_PremNumber = validated_data.get('Fire_PremNumber', instance.Fire_PremNumber)    
+        instance.Buildings_Insured = validated_data.get('Buildings_Insured', instance.Buildings_Insured)  
+        instance.Rental_Insured = validated_data.get('Rental_Insured', instance.Rental_Insured)  
+        instance.Others_Insured = validated_data.get('Others_Insured', instance.Others_Insured)    
+        instance.Stocks_Insured = validated_data.get('Stocks_Insured', instance.Stocks_Insured)    
+        instance.Miscellaneous1_Insured = validated_data.get('Miscellaneous1_Insured', instance.Miscellaneous1_Insured)  
+        instance.Miscellaneous2_Insured = validated_data.get('Miscellaneous2_Insured', instance.Miscellaneous2_Insured)  
+        instance.Earthquake_Insured = validated_data.get('Earthquake_Insured', instance.Earthquake_Insured)    
+        instance.Malicious_Damage_Insured = validated_data.get('Malicious_Damage_Insured', instance.Malicious_Damage_Insured)    
+        instance.Special_Insured = validated_data.get('Special_Insured', instance.Special_Insured)  
+        instance.LeakFull_Insured = validated_data.get('LeakFull_Insured', instance.LeakFull_Insured)  
+        instance.LeakFirst_Insured = validated_data.get('LeakFirst_Insured', instance.LeakFirst_Insured)    
+        instance.SnLLimited_Insured = validated_data.get('SnLLimited_Insured', instance.SnLLimited_Insured)    
+        instance.SnLComprehensive_Insured = validated_data.get('SnLComprehensive_Insured', instance.SnLComprehensive_Insured)    
+        instance.RnS_Insured = validated_data.get('RnS_Insured', instance.RnS_Insured)    
+        instance.SDC_Insured = validated_data.get('SDC_Insured', instance.SDC_Insured)    
          
         
         instance.updated_at = datetime.now(timezone.utc)

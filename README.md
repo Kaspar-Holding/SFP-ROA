@@ -12,6 +12,10 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 18 May 2023:
+- 2036: Almost everything is done except for one point
+- Duplication for Loss Type in Short Term Insurance Personal
+
 ### 16 May 2023:
 - 2037: Bugs reported in 09 May 2023 Meeting Resolved
 - F4SP Footer updated

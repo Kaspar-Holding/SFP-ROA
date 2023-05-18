@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from django_pdfkit import PDFView
 from django.core.files.base import ContentFile
 import uuid
-from data.models import EB_Cover, IP_ProductTaken, AR_ProductTaken, AI_ProductTaken, RP_ProductTaken, RF_LinkedParty, RiskFactors, Form, UserAccount, AssuranceRisk, RiskPlanning, GapCover, Medical, Fiduciary, InvestmentPlanning, EmployeeBenefits, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, AssuranceInvestment
+from data.models import STIP_Loss, EB_Cover, IP_ProductTaken, AR_ProductTaken, AI_ProductTaken, RP_ProductTaken, RF_LinkedParty, RiskFactors, Form, UserAccount, AssuranceRisk, RiskPlanning, GapCover, Medical, Fiduciary, InvestmentPlanning, EmployeeBenefits, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, AssuranceInvestment
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -807,7 +807,6 @@ def wkhtmltopdfapi(request):
                 data['BA_Risk_status'] = False
             else:
                 data['BA_Risk_status'] = True
-                print(data['id'])
                 if AR_ProductTaken.objects.filter(formId = data['id']).exists():
                     print('it exists')
                     data['BA_Risk']['AR_ProductTaken_Data'] = AR_ProductTaken.objects.filter(formId = data['id']).values()
@@ -2893,6 +2892,9 @@ def wkhtmltopdfapi(request):
                 data['STIP']['STIP_MotorC_DriverLicIssDate'] = datetimeparser.parse(data['STIP']['STIP_MotorC_DriverLicIssDate']).strftime('%d %b %Y') if data['STIP']['STIP_MotorC_DriverLicIssDate'] != "" else "N.A."
                 data['STIP']['STIP_Trailer_ONParkingOptions'] = parkOptions[int(data['STIP']['STIP_Trailer_ONParkingOptions'])]
                 data['STIP']['STIP_DbyI_Date'] = datetimeparser.parse(data['STIP']['STIP_DbyI_Date']).strftime('%d/%m/%Y') if data['STIP']['STIP_DbyI_Date'] != "" else "N.A."
+                if STIP_Loss.objects.filter(formId = data['id']).exists():
+                    print('it exists')
+                    data['STIP']['Loss_Data'] = STIP_Loss.objects.filter(formId = data['id']).values()
         else:
             data['STIP_status'] = False
     data['advisor'] = UserAccount.objects.filter(id=request.data['advisorId']).values('first_name', 'last_name', 'email', 'is_superuser').first()
