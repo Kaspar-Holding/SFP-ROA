@@ -78,6 +78,8 @@ const RecordOfAdvice = ({user}) => {
         clientLetterOfIntroductionAccessReason : "",
         clientFica : 2,
         clientFicaReason : "",
+        clientReplacement : 2,
+        clientReplacementReason : "",
         clientBackgroundInfo : ""
     })
     // console.log(FormData)
@@ -638,6 +640,99 @@ const RecordOfAdvice = ({user}) => {
                                             onInit={(evt, editor) => FICAEditorRef.current = editor}
                                             value={FormData['clientFicaReason']}
                                             onEditorChange={(e)=>{ setFormData({...FormData, ['clientFicaReason']: FICAEditorRef.current.getContent() }) }}
+                                            onFocus={(e)=>{fica_onFocus(); onFieldBlur(e)}}
+                                            onBlur={(e)=>{fica_onBlur(); onFieldBlur(e)}}
+                                            name="clientBackgroundInfo"
+                                            init={{
+                                                selector: "textarea",
+                                                browser_spellcheck : true,
+                                                height: 300,
+                                                menu: true,
+                                                plugins: [
+                                                    'advlist autolink link lists image charmap print preview anchor',
+                                                    'searchreplace visualblocks code fullscreen',
+                                                    'insertdatetime media table paste code help wordcount spellchecker',
+                                                ],
+                                                toolbar: 'styles | undo redo | formatselect | ' +
+                                                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                                'bullist numlist | spellchecker | outdent indent | link | copy paste undo redo | ' +
+                                                'removeformat',
+                                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                                init_instance_callback : function(editor) {
+                                                    var freeTiny = document.querySelector('.tox .tox-notification--in');
+                                                   freeTiny.style.display = 'none';
+                                                }
+                                            }}
+                                        />
+                                    </div>
+                                    {/* {
+                                        FormData['fica'] === "1" ? null : 
+                                        <>
+                                            <div className="col-11" id="provided_identity_2" >
+                                                {
+                                                    FicaVisibility ?
+                                                    <>
+                                                        <div id="provided_identity_instructions" className="hidden_class">
+                                                            <p>If no, motivate</p>
+                                                        </div>
+                                                    </> : 
+                                                    null
+                                                }
+                                                <textarea  id="provided_identity" name="ficaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea>
+                                            </div>
+                                        </>
+                                    } */}
+                                </div>
+                                <hr className="col-11" />
+                                <li className={
+                                        state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
+                                        : state['advisor']['email'].includes('fs4p') ? "h6 fw-bold fs4p-text" 
+                                        : state['advisor']['email'].includes('sanlam') ? "h6 fw-bold sanlam-text" 
+                                        : "h6 fw-bold "
+                                    }>Replacements</li>
+                                <div className="row g-3 align-items-center">
+                                    <div className="col-6">
+                                    <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Does/Do the product(s) taken replace an existing product(s)?</label>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="row">
+                                            <div className="row col-2 align-items-center">
+                                                <div className="col-2">
+                                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} required className="form-check-input" checked={FormData['clientReplacement'] == 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" name="clientReplacement"/>
+                                                </div>
+                                                <div className="col-2">
+                                                    <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div className="row col-2 align-items-center">
+                                                <div className="col-2">
+                                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} required className="form-check-input" checked={FormData['clientReplacement'] == 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientReplacement"/>
+                                                </div>
+                                                <div className="col-2">
+                                                    <label className="form-check-label" htmlFor="provided_identity_radio_btn" >
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-11" id="provided_identity_2" >
+                                        {
+                                            FicaVisibility ?
+                                            <>
+                                                <div id="provided_identity_instructions" className="hidden_class">
+                                                    <p>If no, motivate</p>
+                                                </div>
+                                            </> : 
+                                            null
+                                        }
+                                        {/* <textarea  id="provided_identity" required={FormData['clientReplacement'] === 0 ? true : false} value={FormData['clientReplacementReason']}  maxLength={256} name="clientReplacementReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
+                                        <Editor
+                                            onInit={(evt, editor) => FICAEditorRef.current = editor}
+                                            value={FormData['clientReplacementReason']}
+                                            onEditorChange={(e)=>{ setFormData({...FormData, ['clientReplacementReason']: FICAEditorRef.current.getContent() }) }}
                                             onFocus={(e)=>{fica_onFocus(); onFieldBlur(e)}}
                                             onBlur={(e)=>{fica_onBlur(); onFieldBlur(e)}}
                                             name="clientBackgroundInfo"

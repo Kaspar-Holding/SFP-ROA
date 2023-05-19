@@ -401,42 +401,51 @@
             </div>
             <span>{{ STIC.STIC_General_Cancelled_Detail }}</span>
             <hr/>
-            <li style="color: black">
-                History of previous losses/claims. Provide details regarding any losses you might have sustained during the past five years, including all claims that were paid out or not paid out
-            </li>
+            <div class="row div">
+                <div class="column12">
+                    <li style="color: black">
+                        History of previous losses/claims. Provide details regarding any losses you might have sustained during the past five years, including all claims that were paid out or not paid out
+                    </li>
+                </div>
+            </div>
             <br/>
-            {% if STIC.STIC_General_LossType or STIC.STIC_General_Year or STIC.STIC_General_Amount or STIC.STIC_General_Insurer %}
+                    
+        </ol>   
+        <br/>             
+        {% if STIC.Loss_Data %}
+            <div class='row div'>
+                <div class="column2">
+                    <b>TYPE OF LOSS</b>
+                </div>
+                <div class="column2">
+                    <b>YEAR</b>
+                </div>
+                <div class="column2">
+                    <b>AMOUNT (R)</b>
+                </div>
+                <div class="column2">
+                    <b>INSURER</b>
+                </div>
+            </div>
+            <br/>             
+            {% for loss in STIC.Loss_Data %}
                 <div class='row div'>
                     <div class="column2">
-                        <b>TYPE OF LOSS</b>
+                        <span>{{ loss.General_TypeOfLoss }}</span>
                     </div>
                     <div class="column2">
-                        <b>YEAR</b>
+                        <span>{{ loss.General_LossYear }}</span>
                     </div>
                     <div class="column2">
-                        <b>AMOUNT (R)</b>
+                        <span>R {{ loss.General_LossAmount }}</span>
                     </div>
                     <div class="column2">
-                        <b>INSURER</b>
+                        <span>{{ loss.General_LossInsurer }}</span>
                     </div>
                 </div>
-                <div class='row div'>
-                    <div class="column2">
-                        <span>{{ STIC.STIC_General_LossType }}</span>
-                    </div>
-                    <div class="column2">
-                        <span>{{ STIC.STIC_General_Year }}</span>
-                    </div>
-                    <div class="column2">
-                        <span>R {{ STIC.STIC_General_Amount }}</span>
-                    </div>
-                    <div class="column2">
-                        <span>{{ STIC.STIC_General_Insurer }}</span>
-                    </div>
-                </div>
-            {% endif %}
-            <hr/>
-        </ol>                
+                <hr/>
+            {% endfor %}
+        {% endif %}
         <b style='font-size: 18px; ' class="colorheader">C. REPLACEMENT OF INSURANCE</b>
         <hr/>  
         <div class='row div'>
@@ -2720,7 +2729,7 @@
         <div class="column2">
             <div class="row div">
                 <div class="column5">
-                    <span>- Motor traders: internal risk</span>
+                    <span>- Motor traders: external risk</span>
                 </div>
                 <div class="column5">
                     {% if STIC.STIC_ProdComp_Recommended33 == 1 %}
@@ -6102,10 +6111,10 @@
             </div>
         </div>
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_BusInt2_Comments}}</p>
-        <hr/>   
+        <hr/>    {% endcomment %}
         
         {% if STIC.STIC_BusInt_AddComments %}
             <div class="row div">
@@ -6366,10 +6375,10 @@
             </div>
         </div>
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec5_Comments}}</p>
-        <hr/>   
+        <hr/>    {% endcomment %}
         
         {% if STIC.STIC_Sec5_AddComments %}
             <div class="row div">
@@ -6473,10 +6482,10 @@
             </div>
         </div>
         <hr/>               
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec6_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec6_AddComments %}
             <div class="row div">
@@ -6803,10 +6812,10 @@
             </div>
         </div>
         <hr/> 
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec7_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec7_AddComments %}
             <div class="row div">
@@ -6952,10 +6961,10 @@
             </div>
         </div>
         <hr/> 
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec8_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec8_AddComments %}
             <div class="row div">
@@ -7324,10 +7333,10 @@
             </div>
         </div>
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec9_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec9_AddComments %}
             <div class="row div">
@@ -7624,10 +7633,10 @@
             </div>
         </div>
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec10_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec10_AddComments %}
             <div class="row div">
@@ -7793,10 +7802,10 @@
             </div>
         </div>
         <hr/> 
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec11_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec11_AddComments %}
             <div class="row div">
@@ -8082,10 +8091,10 @@
             </div>
         </div>
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec12_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec12_AddComments %}
             <div class="row div">
@@ -8662,10 +8671,10 @@
             </div>
         </div>
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec13_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec13_AddComments %}
             <div class="row div">
@@ -9257,10 +9266,10 @@
             </div>
         </div>
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec15_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec15_AddComments %}
             <div class="row div">
@@ -9758,10 +9767,10 @@
             </div>
         </div>
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec16_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec16_AddComments %}
             <div class="row div">
@@ -10340,10 +10349,10 @@
             </div>
         </div>
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec17_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec17_AddComments %}
             <div class="row div">
@@ -11063,10 +11072,10 @@
             </div>
         </div>
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec18_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec18_AddComments %}
             <div class="row div">
@@ -11376,10 +11385,10 @@
             </div>
         </div>            
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec19_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec19_AddComments %}
             <div class="row div">
@@ -11583,10 +11592,10 @@
             </div>
         </div>            
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec20_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec20_AddComments %}
             <div class="row div">
@@ -11790,10 +11799,10 @@
             </div>
         </div>            
         <hr/>
-        <b>Comments</b>  
+        {% comment %} <b>Comments</b>  
         <br/>
         <p>{{STIC.STIC_Sec21_Comments}}</p>
-        <hr/>
+        <hr/> {% endcomment %}
         
         {% if STIC.STIC_Sec21_AddComments %}
             <div class="row div">

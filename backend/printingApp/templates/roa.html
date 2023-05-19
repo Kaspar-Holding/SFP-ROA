@@ -269,6 +269,56 @@
             </div>
         {% endif %}
         <hr/>
+        <li>
+            <b style="">
+                Replacements
+            </b>
+        </li>                            
+        <div class='row div'>
+            <div class="column6">
+                <span>Does/Do the product(s) taken replace an existing product(s)?</span>
+            </div>
+            <div class="column5">                        
+                <div class='row div'>
+                    <div class="column4">
+                        {% if RoA.clientReplacement == 1 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label >
+                            Yes
+                        </label>
+                    </div>
+                    <div class="column4">
+                        {% if RoA.clientReplacement == 0 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label>
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>                                        
+        </div>
+        {% if RoA.clientReplacementReason %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {% autoescape off %}
+                            {{RoA.clientReplacementReason}}
+                        {% endautoescape %}
+                    </span>
+                </div>                                               
+            </div>
+        {% endif %}
+        <hr/>
     </ol>   
     <div class='row div'>
         <div class="">

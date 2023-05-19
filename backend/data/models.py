@@ -76,6 +76,8 @@ class Form(models.Model):
     clientLetterOfIntroductionAccessReason = models.CharField(max_length=20000, default="", blank=True)
     clientFica = models.IntegerField(default=0)
     clientFicaReason = models.CharField(max_length=20000, default="", blank=True)
+    clientReplacement = models.IntegerField(default=0)
+    clientReplacementReason = models.CharField(max_length=20000, default="", blank=True)
     clientBackgroundInfo = models.CharField(max_length=20000, default="", blank=True, null=True)
     
 
@@ -2229,6 +2231,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_ReplaceReason = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_ReplaceSupplier = models.CharField(max_length=20000, default="", blank=True)
 
+    STIP_HC_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIP_HC_ResidentialArea = models.CharField(max_length=20000, default="", blank=True)
     STIP_HC_StreetNumber = models.CharField(max_length=20000, default="", blank=True)
     STIP_HC_PostalCode = models.CharField(max_length=20000, default="", blank=True)
@@ -2255,6 +2258,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_HC_Commission = models.CharField(max_length=20000, default="", blank=True)
     STIP_HC_TotalPremium = models.CharField(max_length=20000, default="", blank=True)
 
+    STIP_Build_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIP_Build_ResidentialArea = models.CharField(max_length=20000, default="", blank=True)
     STIP_Build_StreetNumber = models.CharField(max_length=20000, default="", blank=True)
     STIP_Build_PostalCode = models.CharField(max_length=20000, default="", blank=True)
@@ -2271,6 +2275,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_Build_TotalPremium = models.CharField(max_length=20000, default="", blank=True)
     STIP_Build_AdditionalAdvise = models.CharField(max_length=20000, default="", blank=True)
 
+    STIP_AddProp_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIP_AddProp_ResidentialArea = models.CharField(max_length=20000, default="", blank=True)
     STIP_AddProp_StreetNumber = models.CharField(max_length=20000, default="", blank=True)
     STIP_AddProp_PostalCode = models.CharField(max_length=20000, default="", blank=True)
@@ -2287,6 +2292,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_AddProp_TotalPremium = models.CharField(max_length=20000, default="", blank=True)
     STIP_AddProp_AdditionalAdvise = models.CharField(max_length=20000, default="", blank=True)
 
+    STIP_Vehicle_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIP_Vehicle_Owner = models.CharField(max_length=20000, default="", blank=True)
     STIP_Vehicle_RegOwner = models.CharField(max_length=20000, default="", blank=True)
     STIP_Vehicle_Usage = models.CharField(max_length=20000, default="", blank=True)
@@ -2342,6 +2348,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_Vehicle_TotalPremium = models.CharField(max_length=20000, default="", blank=True)
     STIP_Vehicle_Comments = models.CharField(max_length=20000, default="", blank=True)
     
+    STIP_MotorC_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIP_MotorC_RegOwner = models.CharField(max_length=20000, default="", blank=True)
     STIP_MotorC_Usage = models.CharField(max_length=20000, default="", blank=True)
     STIP_MotorC_ONParkingOptions = models.IntegerField(default="1")
@@ -2359,6 +2366,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_MotorC_TotalPremium = models.CharField(max_length=20000, default="", blank=True)
     STIP_MotorC_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIP_Trailer_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIP_Trailer_RegOwner = models.CharField(max_length=20000, default="", blank=True)
     STIP_Trailer_Type = models.CharField(max_length=20000, default="", blank=True)
     STIP_Trailer_ONParkingOptions = models.IntegerField(default="1")
@@ -2370,6 +2378,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_Trailer_TotalPremium = models.CharField(max_length=20000, default="", blank=True)
     STIP_Trailer_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIP_WaterC_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIP_WaterC_RegOwner = models.CharField(max_length=20000, default="", blank=True)
     STIP_WaterC_Type = models.CharField(max_length=20000, default="", blank=True)
     STIP_WaterC_Hull = models.CharField(max_length=20000, default="", blank=True)
@@ -2385,6 +2394,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_WaterC_TotalPremium = models.CharField(max_length=20000, default="", blank=True)
     STIP_WaterC_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIP_PersonalLL_AddComments = models.IntegerField(default="1")
     STIP_PersonalLL_IndemnityLimit = models.IntegerField(default="1")
     STIP_PersonalLL_IndemnityLimitDetail = models.CharField(max_length=20000, default="", blank=True)
     STIP_PersonalLL_Fees = models.CharField(max_length=20000, default="", blank=True)
@@ -2392,6 +2402,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_PersonalLL_TotalPremium = models.CharField(max_length=20000, default="", blank=True)
     STIP_PersonalLL_Comments = models.CharField(max_length=20000, default="", blank=True)
 
+    STIP_LegalA_AddComments = models.IntegerField(default="1")
     STIP_LegalA_IndemnityLimit = models.IntegerField(default="1")
     STIP_LegalA_IndemnityLimitDetail = models.CharField(max_length=20000, default="", blank=True)
     STIP_LegalA_Fees = models.CharField(max_length=20000, default="", blank=True)
@@ -2403,6 +2414,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_ProductRecommended = models.CharField(max_length=20000, default="", blank=True)
     STIP_ProductReasons = models.CharField(max_length=20000, default="", blank=True)
 
+    STIP_DbyI_AddComments = models.CharField(max_length=20000, default="", blank=True)
     STIP_DbyI_IName = models.CharField(max_length=20000, default="", blank=True)
     STIP_DbyI_Code = models.CharField(max_length=20000, default="", blank=True)
     STIP_DbyI_Signature = models.CharField(max_length=20000, default="", blank=True)
@@ -3015,6 +3027,18 @@ class EB_Cover(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
+class STIC_Loss(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+
+    General_TypeOfLoss = models.CharField(max_length=2000, default="", blank=True)
+    General_LossYear = models.CharField(max_length=2000, default="", blank=True)
+    General_LossAmount = models.CharField(max_length=2000, default="", blank=True)
+    General_LossInsurer = models.CharField(max_length=2000, default="", blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
 class STIP_Loss(models.Model):
     advisorId = models.IntegerField(default=0)
     formId = models.IntegerField(default=0)
@@ -3050,6 +3074,7 @@ class STIC_Sec_Fire(models.Model):
     SnLComprehensive_Insured = models.IntegerField(default="0")
     RnS_Insured = models.IntegerField(default="0")
     SDC_Insured = models.IntegerField(default="0")
+    Fire_AddComments = models.CharField(max_length=20000, default="", blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)

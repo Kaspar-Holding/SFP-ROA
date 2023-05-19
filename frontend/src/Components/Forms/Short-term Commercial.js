@@ -4,6 +4,8 @@ import React, {useEffect, useState} from 'react';
 // import './Invest.css';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import { Editor } from '@tinymce/tinymce-react'
 
@@ -1125,6 +1127,8 @@ const Short_term_Commercial= ({user}) => {
                 setFormData(response.data['formData'])
             } else {
                 setFormData(response.data['formData'])
+                console.log(response.data)
+                setLossType(response.data['Loss_Data'])
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
@@ -1155,6 +1159,16 @@ const Short_term_Commercial= ({user}) => {
         } catch (error) {
             console.log(error)
         }
+        
+        const Loss_Data_Body = JSON.stringify({
+          "formId" : state['formId'],
+          "loss_data" : LossType
+        })
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_stic_loss_Data/`, Loss_Data_Body ,config) 
+        } catch (error) {
+            
+        }
       }
       const onSubmit = e => {
         e.preventDefault()
@@ -1166,6 +1180,98 @@ const Short_term_Commercial= ({user}) => {
         updateForm()
         // window.location.reload();
       }
+
+      // Loss Type
+      const [LossType, setLossType] = useState([])
+      const AddNewLossType = (e) => {
+        const current = [...LossType]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          General_TypeOfLoss : "",  
+          General_LossYear : "",
+          General_LossAmount : "",
+          General_LossInsurer : "",
+        })
+        setLossType(current)
+      }
+      const RemoveNewLossType = (e) => {
+          const current = [...LossType]
+          current.pop()
+          setLossType(current)
+      }
+      const on_LossType_Change = (e, i) => {
+          let newLossType = [...LossType]
+          newLossType[i][e.target.name] = e.target.value
+          setLossType(newLossType)
+      }
+      // const on_LossType_Value_Change = (i, name, value) => {
+      //     let newLossType = [...LossType]
+      //     newLossType[i][name] = value
+      //     setLossType(newLossType)
+      // }
+      
+      const on_LossType_Value_Change = (name, i, val) => {
+        let newLossType = [...LossType]
+        newLossType[i][""+name+""] = val
+        setLossType(newLossType)
+      }
+      // End Loss Type
+
+      // Section 1 Fire
+      const [Section_1, setSection_1] = useState([])
+      const AddNewSection_1 = (e) => {
+        const current = [...Section_1]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          Fire_Limit : "",  
+          Fire_ItemNumber : "",
+          Fire_Premium : "",
+          Fire_PremNumber : "",
+          Buildings_Insured : "",  
+          Rental_Insured : "",
+          Others_Insured : "",
+          Stocks_Insured : "",
+          Miscellaneous1_Insured : "",  
+          Miscellaneous2_Insured : "",
+          Earthquake_Insured : "",
+          Malicious_Damage_Insured : "",
+          Special_Insured : "",  
+          LeakFull_Insured : "",
+          LeakFirst_Insured : "",
+          SnLLimited_Insured : "",
+          SnLComprehensive_Insured : "",  
+          RnS_Insured : "",
+          SDC_Insured : "",
+          Fire_AddComments : "",
+        })
+        setSection_1(current)
+      }
+      const RemoveNewSection_1 = (e) => {
+          const current = [...Section_1]
+          current.pop()
+          setSection_1(current)
+      }
+      const on_Section_1_Change = (e, i) => {
+          let newSection_1 = [...Section_1]
+          newSection_1[i][e.target.name] = e.target.value
+          setSection_1(newSection_1)
+      }
+      // const on_Section_1_Value_Change = (i, name, value) => {
+      //     let newSection_1 = [...Section_1]
+      //     newSection_1[i][name] = value
+      //     setSection_1(newSection_1)
+      // }
+      
+      const on_Section_1_Value_Change = (name, i, val) => {
+        let newSection_1 = [...Section_1]
+        newSection_1[i][""+name+""] = val
+        setSection_1(newSection_1)
+      }
+      // End Section 1 Fire
+
       // console.log(JSON.stringify(FormData))
       // console.log(JSON.stringify(localStorage.getItem('access')))
       useEffect(() => {
@@ -1774,7 +1880,7 @@ const Short_term_Commercial= ({user}) => {
 
                               <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
                                 <div className="row">
-                                    <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="col-4" style={{paddingBottom: "0.5%"}}>
                                         <div className="row g-3 align-items-center">
                                             <div className="col-6">
                                                 <label className="col-form-label"><b>TYPE OF LOSS</b></label>
@@ -1786,7 +1892,7 @@ const Short_term_Commercial= ({user}) => {
                                         </div>
                                     </div>
 
-                                    <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="col-4" style={{paddingBottom: "0.5%"}}>
                                         <div className="row g-3 align-items-center">
                                             <div className="col-6">
                                                 <label className="col-form-label"><b>AMOUNT (R) </b></label>
@@ -1799,35 +1905,68 @@ const Short_term_Commercial= ({user}) => {
 
                                 </div>
                             </div>
+                            {
+                                LossType.length === 0 ?
+                                  <div className="col-6">
+                                      <button className="btn btn-md" type='button' onClick={(e)=>{AddNewLossType(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Loss Type</button>
+                                  </div>
+                                :<></>
+                            }
+                            {
+                                LossType.length > 0 ?
+                                LossType.map((key,i) => {
+                                  // console.log(i+1)
+                                    return (
+                                      <>
+                                        <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+                                            <div className="row">
+                                                <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                                    <div className="row g-3 align-items-center">
+                                                        <div className="col-6">
+                                                            <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="General_TypeOfLoss" name='General_TypeOfLoss' value={key.General_TypeOfLoss} onChange={(e) => {on_LossType_Change(e, i)}} className="form-control" placeholder="Type of loss"  aria-describedby="" style={{width:"150px"}} />
+                                                        </div>
+                                                        
+                                                        <div className="col-6">
+                                                            <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="General_LossYear" name='General_LossYear' value={key.General_LossYear} onChange={(e) => {on_LossType_Change(e, i)}} className="form-control" placeholder="Year"  aria-describedby="" style={{width:"150px"}} />
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                            <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-                                <div className="row">
-                                    <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                        <div className="row g-3 align-items-center">
-                                            <div className="col-6">
-                                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_General_LossType" onChange={(e) => {onChange(e)}} value={FormData['STIC_General_LossType']}  name="STIC_General_LossType"  className="form-control" placeholder="Type of loss"  aria-describedby="" style={{width:"150px"}} />
-                                            </div>
-                                            
-                                            <div className="col-6">
-                                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_General_Year" onChange={(e) => {onChange(e)}} value={FormData['STIC_General_Year']}  name="STIC_General_Year"  className="form-control" placeholder="Year"  aria-describedby="" style={{width:"150px"}} />
+                                                <div className="col-4" style={{paddingBottom: "0.5%"}}>
+                                                    <div className="row g-3 align-items-center">
+                                                        <div className="col-6">
+                                                            <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="General_LossAmount" name='General_LossAmount' value={key.General_LossAmount} onChange={(e) => {on_LossType_Change(e, i)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"150px"}} />
+                                                        </div>
+                                                        
+                                                        <div className="col-6">
+                                                            <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="General_LossInsurer" name='General_LossInsurer' value={key.General_LossInsurer} onChange={(e) => {on_LossType_Change(e, i)}} className="form-control" placeholder="Insurer"  aria-describedby="" style={{width:"150px"}} />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="col-4">
+                                                  <div className='row'>
+                                                    {
+                                                      i+1 == LossType.length ?
+                                                      <div className="col-6">
+                                                          <button className="btn btn-md" type='button' onClick={(e)=>{AddNewLossType(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Loss Type</button>
+                                                      </div>
+                                                      : <></>
+                                                    }
+                                                    <div className="col-6">
+                                                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewLossType(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Loss Type</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <hr/>
                                             </div>
                                         </div>
-                                    </div>
+                                        
+                                      </>
+                                    )
+                                }): <></>
+                            }
 
-                                    <div className="col-6" style={{paddingBottom: "0.5%"}}>
-                                        <div className="row g-3 align-items-center">
-                                            <div className="col-6">
-                                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_General_Amount" onChange={(e) => {onChange(e)}} value={FormData['STIC_General_Amount']}  name="STIC_General_Amount"  className="form-control" placeholder="0.00"  aria-describedby="" style={{width:"150px"}} />
-                                            </div>
-                                            
-                                            <div className="col-6">
-                                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_General_Insurer" onChange={(e) => {onChange(e)}} value={FormData['STIC_General_Insurer']}  name="STIC_General_Insurer"  className="form-control" placeholder="Insurer"  aria-describedby="" style={{width:"150px"}} />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
 
                             <br/>
                             <div className={
@@ -2115,7 +2254,7 @@ const Short_term_Commercial= ({user}) => {
 
                               <br/>
                               <hr/>
-                            <h6 align="center" style={{ color: "#14848A"}}>PRODUCT COMPARISON</h6>
+                            <h6 align="center" style={{ color: "#14848A"}}><b>PRODUCT COMPARISON</b></h6>
                             <hr/>
 
                             <div className='table-responsive'>
@@ -2132,7 +2271,7 @@ const Short_term_Commercial= ({user}) => {
                                       <tr className="d-flex">
               
                                           <td className="col-6" style={{width:"590px"}}></td>
-                                          <td className="col-2" align="center" style={{width:"260px"}}>
+                                          <td className="col-3" align="center" style={{width:"260px"}}>
                                             <b>Existing Product</b>
                                             <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_ProdComp_Existing_Company" onChange={(e) => {onChange(e)}} value={FormData['STIC_ProdComp_Existing_Company']}  name="STIC_ProdComp_Existing_Company"  className="form-control" placeholder="Company"  aria-describedby="" />
                                             
@@ -2432,7 +2571,7 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Machinery breakdown:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loss of profits</td>
+                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Machinery breakdown:<br/>loss of profits</td>
                                           <td class="col-2" style={{width:"130px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended6"] === 1 ? true : false} name="STIC_ProdComp_Recommended6" onChange={(e)=>{FormData["STIC_ProdComp_Recommended6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
@@ -3020,7 +3159,7 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Commercial umberella &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liability</td>
+                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Commercial umberella liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended18"] === 1 ? true : false} name="STIC_ProdComp_Recommended18" onChange={(e)=>{FormData["STIC_ProdComp_Recommended18"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
@@ -3167,7 +3306,7 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Director and officer's &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Liability</td>
+                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Director and officer's Liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended21"] === 1 ? true : false} name="STIC_ProdComp_Recommended21" onChange={(e)=>{FormData["STIC_ProdComp_Recommended21"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
@@ -3216,7 +3355,7 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Employer practices &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Liability</td>
+                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Employer practices  Liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended22"] === 1 ? true : false} name="STIC_ProdComp_Recommended22" onChange={(e)=>{FormData["STIC_ProdComp_Recommended22"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
@@ -3366,7 +3505,7 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Warehousemen's &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liability</td>
+                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Warehousemen's liability</td>
                                           <td class="col-2" style={{width:"130px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended25"] === 1 ? true : false} name="STIC_ProdComp_Recommended25" onChange={(e)=>{FormData["STIC_ProdComp_Recommended25"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
@@ -3513,7 +3652,7 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Personal and group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; accident</td>
+                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Personal and group accident</td>
                                           <td class="col-2" style={{width:"130px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended28"] === 1 ? true : false} name="STIC_ProdComp_Recommended28" onChange={(e)=>{FormData["STIC_ProdComp_Recommended28"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
@@ -3709,7 +3848,7 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: internal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;risk</td>
+                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: internal risk</td>
                                           <td class="col-2" style={{width:"130px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended32"] === 1 ? true : false} name="STIC_ProdComp_Recommended32" onChange={(e)=>{FormData["STIC_ProdComp_Recommended32"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
@@ -3758,7 +3897,7 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: internal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;risk</td>
+                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: external risk</td>
                                           <td class="col-2" style={{width:"130px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended33"] === 1 ? true : false} name="STIC_ProdComp_Recommended33" onChange={(e)=>{FormData["STIC_ProdComp_Recommended33"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
@@ -4346,10 +4485,10 @@ const Short_term_Commercial= ({user}) => {
                                       <tr class="d-flex">
                                           
                                           <td class="col-2" style={{width:"200px"}}>Fees and charges</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col">
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_FeeNCharges" onChange={(e) => {onChange(e)}} value={FormData['STIC_ProdComp_FeeNCharges']}  name="STIC_ProdComp_FeeNCharges"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_FeeNCharges" onChange={(e) => {onChange(e)}} value={FormData['STIC_ProdComp_FeeNCharges']}  name="STIC_ProdComp_FeeNCharges"  className="col-6 form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
@@ -4358,10 +4497,10 @@ const Short_term_Commercial= ({user}) => {
                                       <tr class="d-flex">
                                           
                                           <td class="col-2" style={{width:"200px"}}>Commissions</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col">
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_Commission" onChange={(e) => {onChange(e)}} value={FormData['STIC_ProdComp_Commission']}  name="STIC_ProdComp_Commission"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_Commission" onChange={(e) => {onChange(e)}} value={FormData['STIC_ProdComp_Commission']}  name="STIC_ProdComp_Commission"  className="col-6 form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
@@ -4370,10 +4509,10 @@ const Short_term_Commercial= ({user}) => {
                                       <tr class="d-flex">
                                           
                                           <td class="col-2" style={{width:"200px"}}>Total premium</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col">
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_TotalPremium" onChange={(e) => {onChange(e)}} value={FormData['STIC_ProdComp_TotalPremium']}  name="STIC_ProdComp_TotalPremium"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_TotalPremium" onChange={(e) => {onChange(e)}} value={FormData['STIC_ProdComp_TotalPremium']}  name="STIC_ProdComp_TotalPremium"  className="col-6 form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
@@ -7031,9 +7170,9 @@ const Short_term_Commercial= ({user}) => {
   </table>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
     <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_BusInt2_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_BusInt2_Comments']}  name="STIC_BusInt2_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -7325,9 +7464,9 @@ const Short_term_Commercial= ({user}) => {
   </table>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec5_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec5_Comments']}  name="STIC_Sec5_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -7491,9 +7630,9 @@ const Short_term_Commercial= ({user}) => {
       </div>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec6_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec6_Comments']}  name="STIC_Sec6_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -7865,9 +8004,9 @@ const Short_term_Commercial= ({user}) => {
   </table>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec7_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec7_Comments']}  name="STIC_Sec7_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -8082,9 +8221,9 @@ const Short_term_Commercial= ({user}) => {
   </table>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec8_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec8_Comments']}  name="STIC_Sec8_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -8462,9 +8601,9 @@ const Short_term_Commercial= ({user}) => {
   </table>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec9_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec9_Comments']}  name="STIC_Sec9_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -8792,9 +8931,9 @@ const Short_term_Commercial= ({user}) => {
   </table>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec10_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec10_Comments']}  name="STIC_Sec10_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -9020,9 +9159,9 @@ const Short_term_Commercial= ({user}) => {
   </table>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec11_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec11_Comments']}  name="STIC_Sec11_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -9341,9 +9480,9 @@ const Short_term_Commercial= ({user}) => {
   </table>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec12_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec12_Comments']}  name="STIC_Sec12_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -9948,9 +10087,9 @@ const Short_term_Commercial= ({user}) => {
   </table>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec13_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec13_Comments']}  name="STIC_Sec13_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -10430,9 +10569,9 @@ const Short_term_Commercial= ({user}) => {
     </table>
 
     <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec15_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec15_Comments']}  name="STIC_Sec15_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -10930,9 +11069,9 @@ const Short_term_Commercial= ({user}) => {
     </table>
 
     <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec16_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec16_Comments']}  name="STIC_Sec16_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -11470,9 +11609,9 @@ const Short_term_Commercial= ({user}) => {
   </table>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec17_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec17_Comments']}  name="STIC_Sec17_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -12054,9 +12193,9 @@ const Short_term_Commercial= ({user}) => {
     </table>
 
     <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec18_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec18_Comments']}  name="STIC_Sec18_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
@@ -12560,10 +12699,10 @@ const Short_term_Commercial= ({user}) => {
   </div>
 
   <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec19_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec19_Comments']}  name="STIC_Sec19_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
     <br/>
-    
+     */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -12846,8 +12985,8 @@ const Short_term_Commercial= ({user}) => {
       </div>
 
       <br/>
-    <div><b>Comments</b></div>
-      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec20_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec20_Comments']}  name="STIC_Sec20_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+    {/* <div><b>Comments</b></div>
+      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec20_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec20_Comments']}  name="STIC_Sec20_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} /> */}
     <br/>
     <b className="col-form-label">Additional Comments</b>
     <br/>
@@ -13132,9 +13271,9 @@ const Short_term_Commercial= ({user}) => {
       </div>
 
       <br/>
-    <div><b>Comments</b></div>
+    {/* <div><b>Comments</b></div>
       <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Sec21_Comments" onChange={(e) => {onChange(e)}} value={FormData['STIC_Sec21_Comments']}  name="STIC_Sec21_Comments"  className="form-control" placeholder="Click or tap here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-    <br/>
+    <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
     <Editor onBlur={(e)=>{onFieldBlur(e)}}

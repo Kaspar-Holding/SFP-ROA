@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from django_pdfkit import PDFView
 from django.core.files.base import ContentFile
 import uuid
-from data.models import STIP_Loss, EB_Cover, IP_ProductTaken, AR_ProductTaken, AI_ProductTaken, RP_ProductTaken, RF_LinkedParty, RiskFactors, Form, UserAccount, AssuranceRisk, RiskPlanning, GapCover, Medical, Fiduciary, InvestmentPlanning, EmployeeBenefits, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, AssuranceInvestment
+from data.models import STIP_Loss, STIC_Loss, EB_Cover, IP_ProductTaken, AR_ProductTaken, AI_ProductTaken, RP_ProductTaken, RF_LinkedParty, RiskFactors, Form, UserAccount, AssuranceRisk, RiskPlanning, GapCover, Medical, Fiduciary, InvestmentPlanning, EmployeeBenefits, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, AssuranceInvestment
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -2245,6 +2245,9 @@ def wkhtmltopdfapi(request):
                 data['STIC']['STIC_SecD_11'] = datetimeparser.parse(data['STIC']['STIC_SecD_11']).strftime('%d %b %Y') if data['STIC']['STIC_SecD_11'] != "" else "N.A."
                 data['STIC']['STIC_SecD_13'] = datetimeparser.parse(data['STIC']['STIC_SecD_13']).strftime('%d/%m/%Y') if data['STIC']['STIC_SecD_13'] != "" else "N.A."
                 data['STIC']['STIC_Sec15_2_1'] = datetimeparser.parse(data['STIC']['STIC_Sec15_2_1']).strftime('%d/%m/%Y') if data['STIC']['STIC_Sec15_2_1'] != "" else "N.A."
+                if STIC_Loss.objects.filter(formId = data['id']).exists():
+                    print('it exists')
+                    data['STIC']['Loss_Data'] = STIC_Loss.objects.filter(formId = data['id']).values()
         else:
             data['STIC_status'] = False
         if ShortTermInsurancePersonal.objects.filter(formId=data['id']).exists():

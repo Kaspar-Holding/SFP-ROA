@@ -12,6 +12,22 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 19 May 2023:
+- Following were done in Task Number 2036:
+- expand on accepted 
+- additional comments in STIP, STIC
+- duplication of type of loss in stip 
+- increase space between policy number 
+- remove branch name, tv, vcr, branch number 
+- add cover between existing and replacement
+- risk, motor and theft are not expanding
+- commission in product comparison is adding up 
+- remove R and text box from overnight parking in Vehicle in STIP and commission is acting up 
+- risk section e is not showing up in Risk 
+- change company to unwritten by in product comparison  
+- Duplication for Loss Type in Short Term Insurance Commercial
+- Deployed
+
 ### 18 May 2023:
 - 2036: Almost everything is done except for one point
 - Duplication for Loss Type in Short Term Insurance Personal

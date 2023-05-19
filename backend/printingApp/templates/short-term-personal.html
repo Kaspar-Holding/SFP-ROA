@@ -344,6 +344,7 @@
                 <b>INSURER</b>
             </div>
         </div>
+        <br/>
         {% for loss in STIP.Loss_Data %}
             <div class='row div'>
                 <div class="column2">
@@ -362,7 +363,6 @@
             <hr/>
         {% endfor %}
     {% endif %}
-    <hr/>
     <p><b>COVER OF INSURANCE</b></p>
     <hr/>
     <div style="text-align: center">
@@ -815,64 +815,66 @@
         </div>
     </div>
     <hr/>
-    <div class="row div">
-        <div class="column2">
-            <div class="row div">
-                <div class="column5">
-                    <span>Keys and locks</span>
+    {% comment %}
+        <div class="row div">
+            <div class="column2">
+                <div class="row div">
+                    <div class="column5">
+                        <span>Keys and locks</span>
+                    </div>
+                    <div class="column5">
+                        {% if STIP.STIP_CnRI_7_Recomm == 1 %}
+                            <div class="column4" style="margin-left: 5%;">
+                                <input type="checkbox" type="checkbox" />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="margin-left: 5%;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="column5">
-                    {% if STIP.STIP_CnRI_7_Recomm == 1 %}
-                        <div class="column4" style="margin-left: 5%;">
-                            <input type="checkbox" type="checkbox" />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="margin-left: 5%;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
+            </div>
+            <div class="column2">
+                <div class="row div">
+                    <div class="column5">
+                        {% if STIP.STIP_CnRI_7_Accepted == 1 %}
+                            <div class="column4" style="margin-left: 5%;">
+                                <input type="checkbox" type="checkbox" />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="margin-left: 5%;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <span>R {{STIP.STIP_CnRI_7_CoverAmount}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="column2">
+                <div class="row div">
+                    <div class="column5">
+                        <span>R {{STIP.STIP_CnRI_7_Premium1}}</span>
+                    </div>
+                    <div class="column5">
+                        <span>R {{STIP.STIP_CnRI_7_Excess1}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="column2">
+                <div class="row div">
+                    <div class="column5">
+                        <span>R {{STIP.STIP_CnRI_7_Premium2}}</span>
+                    </div>
+                    <div class="column5">
+                        <span>R {{STIP.STIP_CnRI_7_Excess2}}</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="column2">
-            <div class="row div">
-                <div class="column5">
-                    {% if STIP.STIP_CnRI_7_Accepted == 1 %}
-                        <div class="column4" style="margin-left: 5%;">
-                            <input type="checkbox" type="checkbox" />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="margin-left: 5%;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="column5">
-                    <span>R {{STIP.STIP_CnRI_7_CoverAmount}}</span>
-                </div>
-            </div>
-        </div>
-        <div class="column2">
-            <div class="row div">
-                <div class="column5">
-                    <span>R {{STIP.STIP_CnRI_7_Premium1}}</span>
-                </div>
-                <div class="column5">
-                    <span>R {{STIP.STIP_CnRI_7_Excess1}}</span>
-                </div>
-            </div>
-        </div>
-        <div class="column2">
-            <div class="row div">
-                <div class="column5">
-                    <span>R {{STIP.STIP_CnRI_7_Premium2}}</span>
-                </div>
-                <div class="column5">
-                    <span>R {{STIP.STIP_CnRI_7_Excess2}}</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% endcomment %}
     <hr/>
     <div class="row div">
         <div class="column2">
@@ -4468,6 +4470,17 @@
     <hr/>
     <div>It is in your own interest to check the adequacy of the sum insured (replacement value – new for old) by using the House Content Inventory and informing us about your requirements. Similar attention should be given to your All Risk policy.</div>
     <hr/>
+        {% if STIP.STIP_HC_AddComments %}
+            <div class="row div">
+                <b>Additional Comments</b>  
+                <br/>
+                {% autoescape off %}
+                    <p>{{STIC.STIP_HC_AddComments}}</p>
+                {% endautoescape %}
+                <hr/>
+            </div>
+            <hr/>
+        {% endif %}  
     {% endif %}
     
     {% if STIP.STIP_CnRI_2_Accepted|to_int == 1 %}
@@ -4723,15 +4736,19 @@
         </div>
     </div>
     <hr/>
-    <div>Additional notes on buildings that may affect cover/advice to the client:</div>
+    {% if STIP.STIP_Build_AddComments %}
     <div class="row div">
-        <div class="column12">
+            <b>Additional Comments</b>  
+            <br/>
+            <div>Additional notes on buildings that may affect cover/advice to the client:</div>
+            <br/>
             {% autoescape off %}
-                <span>{{STIP.STIP_Build_AdditionalAdvise}}</span>
+                <p>{{STIC.STIP_Build_AddComments}}</p>
             {% endautoescape %}
-            
+            <hr/>
         </div>
-    </div>
+        <hr/>
+    {% endif %}
     <hr/>
     <div class="row div">
         <div class="column6">
@@ -4980,14 +4997,20 @@
         </div>
     </div>
     <hr/>
-    <div>Additional notes on buildings that may affect cover/advice to the client:</div>
+    
+    {% if STIP.STIP_AddProp_AddComments %}
     <div class="row div">
-        <div class="column12">
+            <b>Additional Comments</b>  
+            <br/>
+            <div>Additional notes on additional properties that may affect cover/advice to the client:</div>
+            <br/>
             {% autoescape off %}
-            <span>{{STIP.STIP_Build_AdditionalAdvise}}</span>
+                <p>{{STIC.STIP_AddProp_AddComments}}</p>
             {% endautoescape %}
+            <hr/>
         </div>
-    </div>
+        <hr/>
+    {% endif %}
     <hr/>   
     {% endif %}
     
@@ -5530,15 +5553,20 @@
         </div>
     </div>
     <hr/>
-    <div>Additional notes on buildings that may affect cover/advice to the client:</div>
+    
+    {% if STIP.STIP_Vehicle_AddComments %}
     <div class="row div">
-        <div class="column12">
+            <b>Additional Comments</b>  
+            <br/>
+            <div>Additional notes on vehicles that may affect cover/advice to the client:</div>
+            <br/>
             {% autoescape off %}
-            <span>{{STIP.STIP_Vehicle_Comments}}</span>
+                <p>{{STIC.STIP_Vehicle_AddComments}}</p>
             {% endautoescape %}
+            <hr/>
         </div>
-    </div>
-    <hr/>   
+        <hr/>
+    {% endif %}  
     <div>
         <p class="colorheader"><b>MOTORCYCLES</b></p>
         <div>Please see attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number and engine number etc.</div>
@@ -5676,15 +5704,20 @@
         </div>
     </div>
     <hr/>
-    <div>Additional notes on buildings that may affect cover/advice to the client:</div>
+    
+    {% if STIP.STIP_MotorC_AddComments %}
     <div class="row div">
-        <div class="column12">
+            <b>Additional Comments</b>  
+            <br/>
+            <div>Additional notes on motorcyles that may affect cover/advice to the client:</div>
+            <br/>
             {% autoescape off %}
-            <span>{{STIP.STIP_MotorC_Comments}}</span>
+                <p>{{STIC.STIP_MotorC_AddComments}}</p>
             {% endautoescape %}
+            <hr/>
         </div>
-    </div>
-    <hr/>   
+        <hr/>
+    {% endif %}
     <div>
         <p class="colorheader"><b>TRAILER/CARAVAN</b></p>
         <div>Please see attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number and engine number etc.</div>
@@ -5786,15 +5819,20 @@
         </div>
     </div>
     <hr/>
-    <div>Additional notes on buildings that may affect cover/advice to the client:</div>
+    
+    {% if STIP.STIP_MotorC_AddComments %}
     <div class="row div">
-        <div class="column12">
+            <b>Additional Comments</b>  
+            <br/>
+            <div>Additional notes on trailer that may affect cover/advice to the client:</div>
+            <br/>
             {% autoescape off %}
-            <span>{{STIP.STIP_Trailer_Comments}}</span>
+                <p>{{STIC.STIP_MotorC_AddComments}}</p>
             {% endautoescape %}
+            <hr/>
         </div>
-    </div>
-    <hr/>   
+        <hr/>
+    {% endif %}
     {% endif %}
     
     {% if STIP.STIP_CnRI_25_Accepted|to_int == 1 %}
@@ -5914,15 +5952,20 @@
         </div>
     </div>
     <hr/>
-    <div>Additional notes on buildings that may affect cover/advice to the client:</div>
+    
+    {% if STIP.STIP_WaterC_AddComments %}
     <div class="row div">
-        <div class="column12">
+            <b>Additional Comments</b>  
+            <br/>
+            <div>Additional notes on watercraft that may affect cover/advice to the client:</div>
+            <br/>
             {% autoescape off %}
-            <span>{{STIP.STIP_WaterC_Comments}}</span>
+                <p>{{STIC.STIP_WaterC_AddComments}}</p>
             {% endautoescape %}
+            <hr/>
         </div>
-    </div>
-    <hr/>
+        <hr/>
+    {% endif %}
     {% endif %}   
     <div>
         <p class="colorheader"><b>PERSONAL LEGAL LIABILITY</b></p>
@@ -5990,15 +6033,21 @@
         </div>
     </div>
     <hr/>
-    <div>Additional notes on buildings that may affect cover/advice to the client:</div>
+    <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
+    
+    {% if STIP.STIP_PersonalLL_AddComments %}
     <div class="row div">
-        <div class="column12">
+            <b>Additional Comments</b>  
+            <br/>
+            <div>Additional notes on trailer that may affect cover/advice to the client:</div>
+            <br/>
             {% autoescape off %}
-            <span>{{STIP.STIP_PersonalLL_Comments}}</span>
+                <p>{{STIC.STIP_PersonalLL_AddComments}}</p>
             {% endautoescape %}
+            <hr/>
         </div>
-    </div>
-    <hr/>   
+        <hr/>
+    {% endif %}   
     <div>
         <p class="colorheader"><b>LEGAL ACCESS</b></p>
     </div>
@@ -6063,15 +6112,19 @@
         </div>
     </div>
     <hr/>
-    <div>Additional notes on buildings that may affect cover/advice to the client:</div>
+    {% if STIP.STIP_LegalA_AddComments %}
     <div class="row div">
-        <div class="column12">
+            <b>Additional Comments</b>  
+            <br/>
+            <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
+            <br/>
             {% autoescape off %}
-            <span>{{STIP.STIP_LegalA_Comments}}</span>
+                <p>{{STIC.STIP_LegalA_AddComments}}</p>
             {% endautoescape %}
+            <hr/>
         </div>
-    </div>
-    <hr/>   
+        <hr/>
+    {% endif %}    
     <div class="row div">
         <div style="padding: 0 10px;">
             <div><b>IMPORTANT:</b></div>

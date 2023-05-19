@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.core.files.base import ContentFile
-from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, AssuranceInvestmentSerializers, AssuranceRiskSerializers, EB_CoverSerializer, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, STIC_Sec_Fire_Serializer, STIP_Loss_Serializer, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
-from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
+from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, AssuranceInvestmentSerializers, AssuranceRiskSerializers, EB_CoverSerializer, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, STIC_Loss_Serializer, STIC_Sec_Fire_Serializer, STIP_Loss_Serializer, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
+from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RiskFactors, RiskPlanning, STIC_Loss, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -1070,7 +1070,9 @@ def insertShortTermInsuranceCommericalData(request):
             del data['status']
             del data['created_at']
             del data['updated_at']
-            return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
+            Loss_Data = STIC_Loss.objects.filter(formId=request.data['formId']).values()
+
+            return Response({'message': "Form Already Exists","code": "200", "formData" : data, "Loss_Data" : Loss_Data},200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
@@ -1530,6 +1532,16 @@ def viewAdminGPData(request):
             "message" : "You do not have access to view this",
         }, 404)
 
+
+@api_view(['POST'])
+def update_stic_loss_Data(request):
+    loss_data = request.data['loss_data']
+    # print(loss_data)
+    STIC_Loss.objects.filter(formId=request.data['formId']).delete()
+    loss_serializer = STIC_Loss_Serializer(data=loss_data, many=True)
+    if loss_serializer.is_valid():
+        loss_serializer.create(loss_serializer.validated_data)
+    return Response({"message": "Updated","code":200,"formData": loss_data},200)
 
 @api_view(['POST'])
 def update_stip_loss_Data(request):

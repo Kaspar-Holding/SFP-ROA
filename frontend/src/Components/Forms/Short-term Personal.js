@@ -579,6 +579,7 @@ const Short_term_Personal = ({user}) => {
         STIP_CnRI_ReplaceReason: "",
         STIP_CnRI_ReplaceSupplier: "",
 
+        STIP_HC_AddComments: "",
         STIP_HC_ResidentialArea: "",
         STIP_HC_StreetNumber: "",
         STIP_HC_PostalCode: "",
@@ -605,6 +606,7 @@ const Short_term_Personal = ({user}) => {
         STIP_HC_Commission: "",
         STIP_HC_TotalPremium: "",
 
+        STIP_Build_AddComments: "",
         STIP_Build_ResidentialArea: "",
         STIP_Build_StreetNumber: "",
         STIP_Build_PostalCode: "",
@@ -621,6 +623,7 @@ const Short_term_Personal = ({user}) => {
         STIP_Build_TotalPremium: "",
         STIP_Build_AdditionalAdvise: "",
 
+        STIP_AddProp_AddComments: "",
         STIP_AddProp_ResidentialArea: "",
         STIP_AddProp_StreetNumber: "",
         STIP_AddProp_PostalCode: "",
@@ -637,6 +640,7 @@ const Short_term_Personal = ({user}) => {
         STIP_AddProp_TotalPremium: "",
         STIP_AddProp_AdditionalAdvise: "",
 
+        STIP_Vehicle_AddComments: "",
         STIP_Vehicle_Owner: "",
         STIP_Vehicle_RegOwner: "",
         STIP_Vehicle_Usage: "",
@@ -692,6 +696,7 @@ const Short_term_Personal = ({user}) => {
         STIP_Vehicle_TotalPremium: "",
         STIP_Vehicle_Comments: "",
         
+        STIP_MotorC_AddComments: "",
         STIP_MotorC_RegOwner: "",
         STIP_MotorC_Usage: "",
         STIP_MotorC_ONParkingOptions : 0,
@@ -709,6 +714,7 @@ const Short_term_Personal = ({user}) => {
         STIP_MotorC_TotalPremium: "",
         STIP_MotorC_Comments: "",
 
+        STIP_Trailer_AddComments: "",
         STIP_Trailer_RegOwner: "",
         STIP_Trailer_Type: "",
         STIP_Trailer_ONParkingOptions : 0,
@@ -720,6 +726,7 @@ const Short_term_Personal = ({user}) => {
         STIP_Trailer_TotalPremium: "",
         STIP_Trailer_Comments: "",
 
+        STIP_WaterC_AddComments: "",
         STIP_WaterC_RegOwner: "",
         STIP_WaterC_Type: "",
         STIP_WaterC_Hull: "",
@@ -735,6 +742,7 @@ const Short_term_Personal = ({user}) => {
         STIP_WaterC_TotalPremium: "",
         STIP_WaterC_Comments: "",
 
+        STIP_PersonalLL_AddComments : 2,
         STIP_PersonalLL_IndemnityLimit : 2,
         STIP_PersonalLL_IndemnityLimitDetail : "",
         STIP_PersonalLL_Fees: "",
@@ -742,6 +750,7 @@ const Short_term_Personal = ({user}) => {
         STIP_PersonalLL_TotalPremium: "",
         STIP_PersonalLL_Comments: "",
 
+        STIP_LegalA_AddComments : 2,
         STIP_LegalA_IndemnityLimit : 2,
         STIP_LegalA_IndemnityLimitDetail : "",
         STIP_LegalA_Fees: "",
@@ -753,6 +762,7 @@ const Short_term_Personal = ({user}) => {
         STIP_ProductRecommended: "",
         STIP_ProductReasons: "",
 
+        STIP_DbyI_AddComments: "",
         STIP_DbyI_IName: "",
         STIP_DbyI_Code: "",
         STIP_DbyI_Signature: "",
@@ -1771,7 +1781,7 @@ const Short_term_Personal = ({user}) => {
             
           </tr>
 
-          <tr className="d-flex">
+          {/* <tr className="d-flex">
               
               <td className="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;
               Keys and locks</td>
@@ -1803,7 +1813,7 @@ const Short_term_Personal = ({user}) => {
                 <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_7_Excess2" name='STIP_CnRen_7_Excess2' value={FormData['STIP_CnRen_7_Excess2']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
               </td>
             
-          </tr>
+          </tr> */}
 
           <tr className="d-flex">
               
@@ -3648,631 +3658,658 @@ const Short_term_Personal = ({user}) => {
   {
       FormData['STIP_CnRI_1_Accepted'] === 1 ?
             <>
-<h6 align="left" style={{ color: "#14848A"}}><b>HOUSE CONTENT</b></h6>
-<div><b>Primary Property</b></div>
+              <h6 align="left" style={{ color: "#14848A"}}><b>HOUSE CONTENT</b></h6>
+              <div><b>Primary Property</b></div>
 
-<div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-  <div className="row">
+              <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+                <div className="row">
 
-      <div className="col-8" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-4">
-                  <label className="col-form-label">Residential area</label>
-              </div>
-              <div className="col-6">
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_ResidentialArea" name='STIP_HC_ResidentialArea' value={FormData['STIP_HC_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-              </div>
-          </div>
-      </div>
-      <hr/>
+                    <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                        <div className="row g-3 align-items-center">
+                            <div className="col-4">
+                                <label className="col-form-label">Residential area</label>
+                            </div>
+                            <div className="col-6">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_ResidentialArea" name='STIP_HC_ResidentialArea' value={FormData['STIP_HC_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
 
-      <div className="col-8" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-4">
-                  <label className="col-form-label">Street name,number and suburb</label>
-              </div>
-              <div className="col-8">
-                  {/* <textarea maxLength={500} spellCheck="true"  id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                  <Editor onBlur={(e)=>{onFieldBlur(e)}}
-                    value={FormData['STIP_HC_StreetNumber']}
-                    onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_HC_StreetNumber']: newText }) }}
-                    name="STIP_HC_StreetNumber"
-                    init={{
-                        selector: "textarea",
-                        browser_spellcheck : true,
-                        height: 300,
-                        menu: true,
-                        plugins: [
-                            'advlist autolink link lists image charmap print preview anchor',
-                            'searchreplace visualblocks code fullscreen',
-                            'insertdatetime media table paste code help wordcount',
-                        ],
-                        toolbar: 'styles | undo redo | formatselect | ' +
-                        'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                        'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-                        'removeformat | wordcount ',
-                        content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-                    }}
-                  />
-              </div>
-          </div>
-      </div>
-      <hr/>
+                    <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                        <div className="row g-3 align-items-center">
+                            <div className="col-4">
+                                <label className="col-form-label">Street name,number and suburb</label>
+                            </div>
+                            <div className="col-8">
+                                {/* <textarea maxLength={500} spellCheck="true"  id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
+                                <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                  value={FormData['STIP_HC_StreetNumber']}
+                                  onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_HC_StreetNumber']: newText }) }}
+                                  name="STIP_HC_StreetNumber"
+                                  init={{
+                                      selector: "textarea",
+                                      browser_spellcheck : true,
+                                      height: 300,
+                                      menu: true,
+                                      plugins: [
+                                          'advlist autolink link lists image charmap print preview anchor',
+                                          'searchreplace visualblocks code fullscreen',
+                                          'insertdatetime media table paste code help wordcount',
+                                      ],
+                                      toolbar: 'styles | undo redo | formatselect | ' +
+                                      'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                      'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                                      'removeformat | wordcount ',
+                                      content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                  }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
 
-      <div className="col-8" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-4">
-                  <label className="col-form-label">Postal code</label>
-              </div>
-              <div className="col-6">
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_PostalCode" name='STIP_HC_PostalCode' value={FormData['STIP_HC_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
-              </div>
-          </div>
-      </div>
-      <hr/>
+                    <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                        <div className="row g-3 align-items-center">
+                            <div className="col-4">
+                                <label className="col-form-label">Postal code</label>
+                            </div>
+                            <div className="col-6">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_PostalCode" name='STIP_HC_PostalCode' value={FormData['STIP_HC_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
 
-      <div className="col-8" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-4">
-                  <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
-              </div>
-              <div className="col-6">
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_ResidenceType" name='STIP_HC_ResidenceType' value={FormData['STIP_HC_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
-              </div>
-          </div>
-      </div>
-      <hr/>
+                    <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                        <div className="row g-3 align-items-center">
+                            <div className="col-4">
+                                <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
+                            </div>
+                            <div className="col-6">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_ResidenceType" name='STIP_HC_ResidenceType' value={FormData['STIP_HC_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
 
-  </div>
-</div>
-
-<div><i>(Mark the applicable option with an 'X')</i></div> 
-<div><b>Note that the cover amount must be at replacement value and NOT at municipal valuation.</b></div>
-    <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>If flat, is it above ground level? </b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      Yes
-                  </label>
-              </div>
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      No
-                  </label>
-              </div>
-          </div>
-
-            </div>
-          </div>
-        </div>
-        <hr/>
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Wall construction:  </b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      Standard
-                  </label>
-              </div>
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      Non Standard
-                  </label>
-              </div>
-            </div>
-              
-
-            </div>
-          </div>
-        </div>
-        <hr/>
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Roof construction:  </b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      Standard
-                  </label>
-              </div>
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      Non Standard
-                  </label>
-              </div>
-            </div>
-
-            </div>
-          </div>
-        </div>
-        <hr/>
-        <div><b>Safety measures:</b></div>
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Burglar bars on all windows that open</label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-          <div className="row col-6 align-items-center">
-            <div className="col-3">
-                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
-            </div>
-            <div className="col-3">
-                <label className="form-check-label"  >
-                    Yes
-                </label>
-            </div>
-            <div className="col-3">
-                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
-            </div>
-            <div className="col-3">
-                <label className="form-check-label"  >
-                    No
-                </label>
-            </div>
-        </div>
-
-            </div>
-          </div>
-        </div>
-
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Security gates at all doors that open (including sliding doors) </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-          <div className="row col-6 align-items-center">
-            <div className="col-3">
-                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
-            </div>
-            <div className="col-3">
-                <label className="form-check-label"  >
-                    Yes
-                </label>
-            </div>
-            <div className="col-3">
-                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
-            </div>
-            <div className="col-3">
-                <label className="form-check-label"  >
-                    No
-                </label>
-            </div>
-         </div>
-
-            </div>
-          </div>
-        </div>
-
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. 24 hours monitored linked alarm system  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      Yes
-                  </label>
-              </div>
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      No
-                  </label>
-              </div>
-           </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Security area (fencing/wall with electric wiring + 24-hour guards and access control)  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      Yes
-                  </label>
-              </div>
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      No
-                  </label>
-              </div>
-            </div>
-
-            </div>
-          </div>
-        </div>
-        <hr/>
-
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>No claims bonus (number of years claimed): </b>  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_NoClaimBonus" name='STIP_HC_NoClaimBonus' value={FormData['STIP_HC_NoClaimBonus']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr/>
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>House content sum insured:</b>  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_SumInsured" name='STIP_HC_SumInsured' value={FormData['STIP_HC_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div><i>(if client cannot provide a value, client must complete and indicate a value in accordance therewith)</i></div>
-        <hr/>
-
-        <div><b>Extensions: </b></div>
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Home business: Type of business  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HCEx_BusinessType" name='STIP_HCEx_BusinessType' value={FormData['STIP_HCEx_BusinessType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-      <br/>
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Insured amount: (include stock-in-trade) </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HCEx_InsuredAmount" name='STIP_HCEx_InsuredAmount' value={FormData['STIP_HCEx_InsuredAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr/>
-
-        <div><b>Accidental damage items:</b></div>
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. General: (including mechanical/electrical and electronical):  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      Yes
-                  </label>
-              </div>
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      No
-                  </label>
-              </div>
-          </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. General: (excluding mechanical/electrical or electronical):  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      Yes
-                  </label>
-              </div>
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      No
-                  </label>
-              </div>
-          </div>
-
-            </div>
-          </div>
-        </div>
-
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Mechanical/electrical breakdown:  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
                 </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Yes
-                    </label>
-                </div>
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        No
-                    </label>
-                </div>
-            </div>
-
-            </div>
-          </div>
-        </div>
-
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Electronical breakdown:  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Yes
-                    </label>
-                </div>
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        No
-                    </label>
-                </div>
-            </div>
-
-            </div>
-          </div>
-        </div>
-
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Power surge cover:  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Yes
-                    </label>
-                </div>
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        No
-                    </label>
-                </div>
-            </div>
-
-            </div>
-          </div>
-        </div>
-
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Power surge cover(excluding air conditioner(s)):  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-          <div className="row col-6 align-items-center">
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Yes
-                    </label>
-                </div>
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        No
-                    </label>
-                </div>
-            </div>
-
-            </div>
-          </div>
-        </div>
-
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Power surge cover(including geyser):  </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-          <div className="row col-6 align-items-center">
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Yes
-                    </label>
-                </div>
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        No
-                    </label>
-                </div>
-            </div>
-
-            </div>
-          </div>
-        </div>
-      <hr/>
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Fees</b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_Fee" name='STIP_HC_Fee' value={FormData['STIP_HC_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <hr/>
+
+              <div><i>(Mark the applicable option with an 'X')</i></div> 
+              <div><b>Note that the cover amount must be at replacement value and NOT at municipal valuation.</b></div>
+                  <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>If flat, is it above ground level? </b></label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                          <div className="row col-6 align-items-center">
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    Yes
+                                </label>
+                            </div>
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_Flat_GroundLevel"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_Flat_GroundLevel" name="STIP_HC_Flat_GroundLevel" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <hr/>
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Wall construction:  </b></label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                          <div className="row col-6 align-items-center">
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    Standard
+                                </label>
+                            </div>
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_WallConstruction" name="STIP_HC_WallConstruction" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    Non Standard
+                                </label>
+                            </div>
+                          </div>
+                            
+
+                          </div>
+                        </div>
+                      </div>
+                      <hr/>
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Roof construction:  </b></label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                          <div className="row col-6 align-items-center">
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    Standard
+                                </label>
+                            </div>
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_RoofConstruction" name="STIP_HC_RoofConstruction" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    Non Standard
+                                </label>
+                            </div>
+                          </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <hr/>
+                      <div><b>Safety measures:</b></div>
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Burglar bars on all windows that open</label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                        <div className="row col-6 align-items-center">
+                          <div className="col-3">
+                              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
+                          </div>
+                          <div className="col-3">
+                              <label className="form-check-label"  >
+                                  Yes
+                              </label>
+                          </div>
+                          <div className="col-3">
+                              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_BurglarBar"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_BurglarBar" name="STIP_HC_SM_BurglarBar" />
+                          </div>
+                          <div className="col-3">
+                              <label className="form-check-label"  >
+                                  No
+                              </label>
+                          </div>
+                      </div>
+
+                          </div>
+                        </div>
+                      </div>
 
 
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Commission</b> </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_Commission" name='STIP_HC_Commission' value={FormData['STIP_HC_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr/>
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Security gates at all doors that open (including sliding doors) </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                        <div className="row col-6 align-items-center">
+                          <div className="col-3">
+                              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
+                          </div>
+                          <div className="col-3">
+                              <label className="form-check-label"  >
+                                  Yes
+                              </label>
+                          </div>
+                          <div className="col-3">
+                              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityGate"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_SecurityGate" name="STIP_HC_SM_SecurityGate" />
+                          </div>
+                          <div className="col-3">
+                              <label className="form-check-label"  >
+                                  No
+                              </label>
+                          </div>
+                      </div>
 
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Total Premium</b> </label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_TotalPremium" name='STIP_HC_TotalPremium' value={FormData['STIP_HC_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr/>
+                          </div>
+                        </div>
+                      </div>
 
-        <div>It is in your own interest to check the adequacy of the sum insured (replacement value – new for old) by using the House Content Inventory and informing us about your requirements. Similar attention should be given to your All Risk policy.</div>
 
-        <br/>
-        </>
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. 24 hours monitored linked alarm system  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                          <div className="row col-6 align-items-center">
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    Yes
+                                </label>
+                            </div>
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_AlarmSystem"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_AlarmSystem" name="STIP_HC_SM_AlarmSystem" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Security area (fencing/wall with electric wiring + 24-hour guards and access control)  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                          <div className="row col-6 align-items-center">
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    Yes
+                                </label>
+                            </div>
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_SM_SecurityArea"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_SM_SecurityArea" name="STIP_HC_SM_SecurityArea" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    No
+                                </label>
+                            </div>
+                          </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <hr/>
+
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>No claims bonus (number of years claimed): </b>  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                            <div className="row col-2 align-items-center">
+                                <div className="col-2">
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_NoClaimBonus" name='STIP_HC_NoClaimBonus' value={FormData['STIP_HC_NoClaimBonus']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr/>
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>House content sum insured:</b>  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                            <div className="row col-2 align-items-center">
+                                <div className="col-2">
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_SumInsured" name='STIP_HC_SumInsured' value={FormData['STIP_HC_SumInsured']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div><i>(if client cannot provide a value, client must complete and indicate a value in accordance therewith)</i></div>
+                      <hr/>
+
+                      <div><b>Extensions: </b></div>
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Home business: Type of business  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                            <div className="row col-2 align-items-center">
+                                <div className="col-2">
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HCEx_BusinessType" name='STIP_HCEx_BusinessType' value={FormData['STIP_HCEx_BusinessType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    <br/>
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Insured amount: (include stock-in-trade) </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                            <div className="row col-2 align-items-center">
+                                <div className="col-2">
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HCEx_InsuredAmount" name='STIP_HCEx_InsuredAmount' value={FormData['STIP_HCEx_InsuredAmount']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr/>
+
+                      <div><b>Accidental damage items:</b></div>
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. General: (including mechanical/electrical and electronical):  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                          <div className="row col-6 align-items-center">
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    Yes
+                                </label>
+                            </div>
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_General1" name="STIP_HC_ADI_General1" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. General: (excluding mechanical/electrical or electronical):  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                          <div className="row col-6 align-items-center">
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    Yes
+                                </label>
+                            </div>
+                            <div className="col-3">
+                                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_General2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_General2" name="STIP_HC_ADI_General2" />
+                            </div>
+                            <div className="col-3">
+                                <label className="form-check-label"  >
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Mechanical/electrical breakdown:  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                          <div className="row col-6 align-items-center">
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      Yes
+                                  </label>
+                              </div>
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_MechElecBreakdown"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_MechElecBreakdown" name="STIP_HC_ADI_MechElecBreakdown" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      No
+                                  </label>
+                              </div>
+                          </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Electronical breakdown:  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                          <div className="row col-6 align-items-center">
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      Yes
+                                  </label>
+                              </div>
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_ElectronicalBreakdown"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_ElectronicalBreakdown" name="STIP_HC_ADI_ElectronicalBreakdown" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      No
+                                  </label>
+                              </div>
+                          </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Power surge cover:  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                          <div className="row col-6 align-items-center">
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      Yes
+                                  </label>
+                              </div>
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover1"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover1" name="STIP_HC_ADI_PowerSurgeCover1" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      No
+                                  </label>
+                              </div>
+                          </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Power surge cover(excluding air conditioner(s)):  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                        <div className="row col-6 align-items-center">
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      Yes
+                                  </label>
+                              </div>
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover2"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover2" name="STIP_HC_ADI_PowerSurgeCover2" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      No
+                                  </label>
+                              </div>
+                          </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Power surge cover(including geyser):  </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                        <div className="row col-6 align-items-center">
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      Yes
+                                  </label>
+                              </div>
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_HC_ADI_PowerSurgeCover3"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_HC_ADI_PowerSurgeCover3" name="STIP_HC_ADI_PowerSurgeCover3" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      No
+                                  </label>
+                              </div>
+                          </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    <hr/>
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Fees</b></label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                            <div className="row col-2 align-items-center">
+                                <div className="col-2">
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_Fee" name='STIP_HC_Fee' value={FormData['STIP_HC_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr/>
+
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Commission</b> </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                            <div className="row col-2 align-items-center">
+                                <div className="col-2">
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_Commission" name='STIP_HC_Commission' value={FormData['STIP_HC_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr/>
+
+                      <div className="row g-4 align-items-center">
+                    <div className="col-4">
+                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Total Premium</b> </label>
+                    </div>
+                      <div className="col-8">
+                        <div className="row">
+                            <div className="row col-2 align-items-center">
+                                <div className="col-2">
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_HC_TotalPremium" name='STIP_HC_TotalPremium' value={FormData['STIP_HC_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr/>
+
+                      <div>It is in your own interest to check the adequacy of the sum insured (replacement value – new for old) by using the House Content Inventory and informing us about your requirements. Similar attention should be given to your All Risk policy.</div>
+
+                      <br/>
+                      
+                      <b className="col-form-label">Additional Comments</b>
+                      <br/>
+                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                        value={FormData['STIP_HC_AddComments']}
+                        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_HC_AddComments']: newText }) }}                  
+                        name="STIP_HC_AddComments"
+                        init={{
+                            selector: "textarea",
+                            browser_spellcheck : true,
+                            placeholder: "Click here to enter text",
+                            height: 300,
+                            menu: true,
+                            plugins: [
+                                'advlist autolink link lists image charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount',
+                            ],
+                            toolbar: 'styles | undo redo | formatselect | ' +
+                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                            'removeformat | wordcount ',
+                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                        }}
+                      />
+                      <hr/>
+                      
+                      </>
         :
               <>
               </>
@@ -4280,611 +4317,661 @@ const Short_term_Personal = ({user}) => {
     {
         FormData['STIP_CnRI_2_Accepted'] === 1  ?
               <>
-        <hr/>
-          <h6 align="left" style={{ color: "#14848A"}}><b>BUILDINGS</b></h6>
-          <div><b>Primary Property</b></div>
+              <hr/>
+                <h6 align="left" style={{ color: "#14848A"}}><b>BUILDINGS</b></h6>
+                <div><b>Primary Property</b></div>
 
-<div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-  <div className="row">
+                  <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+                    <div className="row">
 
-      <div className="col-8" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-4">
-                  <label className="col-form-label">Residential area</label>
-              </div>
-              <div className="col-6">
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_ResidentialArea" name='STIP_Build_ResidentialArea' value={FormData['STIP_Build_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-              </div>
-          </div>
-      </div>
-      <hr/>
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                                <div className="col-4">
+                                    <label className="col-form-label">Residential area</label>
+                                </div>
+                                <div className="col-6">
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_ResidentialArea" name='STIP_Build_ResidentialArea' value={FormData['STIP_Build_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
 
-      <div className="col-8" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-4">
-                  <label className="col-form-label">Street name,number and suburb</label>
-              </div>
-              <div className="col-8">
-                  {/* <textarea maxLength={500} spellCheck="true"  id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                  <Editor onBlur={(e)=>{onFieldBlur(e)}}
-                    value={FormData['STIP_Build_StreetNumber']}
-                    onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Build_StreetNumber']: newText }) }}
-                    name="STIP_Build_StreetNumber"
-                    init={{
-                        selector: "textarea",
-                        browser_spellcheck : true,
-                        height: 300,
-                        menu: true,
-                        plugins: [
-                            'advlist autolink link lists image charmap print preview anchor',
-                            'searchreplace visualblocks code fullscreen',
-                            'insertdatetime media table paste code help wordcount',
-                        ],
-                        toolbar: 'styles | undo redo | formatselect | ' +
-                        'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                        'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-                        'removeformat | wordcount ',
-                        content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-                    }}
-                  />
-              </div>
-          </div>
-      </div>
-      <hr/>
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                                <div className="col-4">
+                                    <label className="col-form-label">Street name,number and suburb</label>
+                                </div>
+                                <div className="col-8">
+                                    {/* <textarea maxLength={500} spellCheck="true"  id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
+                                    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                      value={FormData['STIP_Build_StreetNumber']}
+                                      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Build_StreetNumber']: newText }) }}
+                                      name="STIP_Build_StreetNumber"
+                                      init={{
+                                          selector: "textarea",
+                                          browser_spellcheck : true,
+                                          height: 300,
+                                          menu: true,
+                                          plugins: [
+                                              'advlist autolink link lists image charmap print preview anchor',
+                                              'searchreplace visualblocks code fullscreen',
+                                              'insertdatetime media table paste code help wordcount',
+                                          ],
+                                          toolbar: 'styles | undo redo | formatselect | ' +
+                                          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                                          'removeformat | wordcount ',
+                                          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                      }}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
 
-      <div className="col-8" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-4">
-                  <label className="col-form-label">Postal code</label>
-              </div>
-              <div className="col-6">
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_PostalCode" name='STIP_Build_PostalCode' value={FormData['STIP_Build_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
-              </div>
-          </div>
-      </div>
-      <hr/>
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                                <div className="col-4">
+                                    <label className="col-form-label">Postal code</label>
+                                </div>
+                                <div className="col-6">
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_PostalCode" name='STIP_Build_PostalCode' value={FormData['STIP_Build_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
 
-      <div className="col-8" style={{paddingBottom: "0.5%"}}>
-          <div className="row g-3 align-items-center">
-              <div className="col-4">
-                  <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
-              </div>
-              <div className="col-6">
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_ResidenceType" name='STIP_Build_ResidenceType' value={FormData['STIP_Build_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
-              </div>
-          </div>
-      </div>
-      <hr/>
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                                <div className="col-4">
+                                    <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
+                                </div>
+                                <div className="col-6">
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_ResidenceType" name='STIP_Build_ResidenceType' value={FormData['STIP_Build_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
 
-  </div>
-</div>
-
-  <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Type of building:</b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_Type" name='STIP_Build_Type' value={FormData['STIP_Build_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:'200px'}}/>
+                    </div>
                   </div>
-              </div>
 
-              
-            </div>
-          </div>
-        </div>
-        <hr/>
+                    <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Type of building:</b></label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                                <div className="row col-2 align-items-center">
+                                    <div className="col-2">
+                                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_Type" name='STIP_Build_Type' value={FormData['STIP_Build_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:'200px'}}/>
+                                    </div>
+                                </div>
 
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Voluntary excess </b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_Voluntary"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      Yes
-                  </label>
-              </div>
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_Voluntary"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      No
-                  </label>
-              </div>
-          </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
 
-            </div>
-          </div>
-        </div>
+                          <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Voluntary excess </b></label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                              <div className="row col-6 align-items-center">
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_Voluntary"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        Yes
+                                    </label>
+                                </div>
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_Voluntary"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_Voluntary" name="STIP_Build_Voluntary" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        No
+                                    </label>
+                                </div>
+                            </div>
 
-      <hr/>
-      <div><b>Optional cover</b></div>
-      <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Subsidence and landslide</label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_SnL"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_SnL" name="STIP_Build_SnL" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      Yes
-                  </label>
-              </div>
-              <div className="col-3">
-                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_SnL"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_SnL" name="STIP_Build_SnL" />
-              </div>
-              <div className="col-3">
-                  <label className="form-check-label"  >
-                      No
-                  </label>
-              </div>
-            </div>
+                              </div>
+                            </div>
+                          </div>
 
-            </div>
-          </div>
-        </div>
+                        <hr/>
+                        <div><b>Optional cover</b></div>
+                        <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Subsidence and landslide</label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                              <div className="row col-6 align-items-center">
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_SnL"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_SnL" name="STIP_Build_SnL" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        Yes
+                                    </label>
+                                </div>
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_SnL"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_SnL" name="STIP_Build_SnL" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        No
+                                    </label>
+                                </div>
+                              </div>
 
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Accidental damage items</label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_ADI"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_ADI" name="STIP_Build_ADI" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Yes
-                    </label>
-                </div>
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_ADI"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_ADI" name="STIP_Build_ADI" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        No
-                    </label>
-                </div>
-            </div>
+                              </div>
+                            </div>
+                          </div>
 
-            </div>
-          </div>
-        </div>
+                          <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Accidental damage items</label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                              <div className="row col-6 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_ADI"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_ADI" name="STIP_Build_ADI" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_ADI"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_ADI" name="STIP_Build_ADI" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
 
-      <hr/>
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Wall construction </b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-          <div className="row col-6 align-items-center">
-            <div className="col-3">
-                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
-            </div>
-            <div className="col-3">
-                <label className="form-check-label"  >
-                    Standard
-                </label>
-            </div>
-            <div className="col-3">
-                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
-            </div>
-            <div className="col-3">
-                <label className="form-check-label"  >
-                    Non Standard
-                </label>
-            </div>
-        </div>
-            </div>
-          </div>
-        </div>
-        <hr/>
+                              </div>
+                            </div>
+                          </div>
 
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Roof construction </b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-          <div className="row col-6 align-items-center">
-            <div className="col-3">
-                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
-            </div>
-            <div className="col-3">
-                <label className="form-check-label"  >
-                    Standard
-                </label>
-            </div>
-            <div className="col-3">
-                <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
-            </div>
-            <div className="col-3">
-                <label className="form-check-label"  >
-                    Non Standard
-                </label>
-            </div>
-        </div>
+                        <hr/>
+                          <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Wall construction </b></label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                            <div className="row col-6 align-items-center">
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      Standard
+                                  </label>
+                              </div>
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_WallConstruction" name="STIP_Build_WallConstruction" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      Non Standard
+                                  </label>
+                              </div>
+                          </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
 
-            </div>
-          </div>
-        </div>
+                          <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Roof construction </b></label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                            <div className="row col-6 align-items-center">
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      Standard
+                                  </label>
+                              </div>
+                              <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_Build_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_Build_RoofConstruction" name="STIP_Build_RoofConstruction" />
+                              </div>
+                              <div className="col-3">
+                                  <label className="form-check-label"  >
+                                      Non Standard
+                                  </label>
+                              </div>
+                          </div>
 
-        <hr/>
-    <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Fees </b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_Fee" name='STIP_Build_Fee' value={FormData['STIP_Build_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
-                  </div>
-              </div>
-            </div>
-          </div>
-    </div>
+                              </div>
+                            </div>
+                          </div>
 
-    <hr/>
-    <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Commission </b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_Commission" name='STIP_Build_Commission' value={FormData['STIP_Build_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
-                  </div>
-              </div>
-            </div>
-          </div>
-    </div>
+                          <hr/>
+                      <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Fees </b></label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                                <div className="row col-2 align-items-center">
+                                    <div className="col-2">
+                                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_Fee" name='STIP_Build_Fee' value={FormData['STIP_Build_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
 
-    <hr/>
-    <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Total premium</b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_TotalPremium" name='STIP_Build_TotalPremium' value={FormData['STIP_Build_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
-                  </div>
-              </div>
-            </div>
-          </div>
-    </div>
+                      <hr/>
+                      <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Commission </b></label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                                <div className="row col-2 align-items-center">
+                                    <div className="col-2">
+                                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_Commission" name='STIP_Build_Commission' value={FormData['STIP_Build_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
 
-      <br/>
-    <div>Additional notes on buildings that may affect cover/advice to the client: </div>
-    <div className="col-2">
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_AdditionalAdvise" name='STIP_Build_AdditionalAdvise' value={FormData['STIP_Build_AdditionalAdvise']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" style={{width:'1000px'}}/>
-    </div>
+                      <hr/>
+                      <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Total premium</b></label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                                <div className="row col-2 align-items-center">
+                                    <div className="col-2">
+                                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_TotalPremium" name='STIP_Build_TotalPremium' value={FormData['STIP_Build_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:'200px'}}/>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
 
-      <hr/>
-      <br/>
-    <div><b>Additional Property</b></div>
+                        <br/>
+                      {/* <div className="col-2">
+                          <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Build_AdditionalAdvise" name='STIP_Build_AdditionalAdvise' value={FormData['STIP_Build_AdditionalAdvise']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" style={{width:'1000px'}}/>
+                      </div> */}
+                      <b className="col-form-label">Additional Comments</b>
+                      <div>Additional notes on buildings that may affect cover/advice to the client: </div>
+                      <br/>
+                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                        value={FormData['STIP_Build_AddComments']}
+                        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Build_AddComments']: newText }) }}                  
+                        name="STIP_Build_AddComments"
+                        init={{
+                            selector: "textarea",
+                            browser_spellcheck : true,
+                            placeholder: "Click here to enter text",
+                            height: 300,
+                            menu: true,
+                            plugins: [
+                                'advlist autolink link lists image charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount',
+                            ],
+                            toolbar: 'styles | undo redo | formatselect | ' +
+                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                            'removeformat | wordcount ',
+                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                        }}
+                      />
+                      <hr/>
 
-      <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
-        <div className="row">
+                        <hr/>
+                        <br/>
+                      <div><b>Additional Property</b></div>
 
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label">Residential area</label>
-                    </div>
-                    <div className="col-6">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_ResidentialArea" name='STIP_AddProp_ResidentialArea' value={FormData['STIP_AddProp_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-            <hr/>
+                        <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+                          <div className="row">
 
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label">Street name,number and suburb</label>
-                    </div>
-                    <div className="col-8">
-                        {/* <textarea maxLength={500} spellCheck="true"  id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                        <Editor onBlur={(e)=>{onFieldBlur(e)}}
-                          value={FormData['STIP_AddProp_StreetNumber']}
-                          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_AddProp_StreetNumber']: newText }) }}
-                          name="STIP_AddProp_StreetNumber"
-                          init={{
-                              selector: "textarea",
-                              browser_spellcheck : true,
-                              height: 300,
-                              menu: true,
-                              plugins: [
-                                  'advlist autolink link lists image charmap print preview anchor',
-                                  'searchreplace visualblocks code fullscreen',
-                                  'insertdatetime media table paste code help wordcount',
-                              ],
-                              toolbar: 'styles | undo redo | formatselect | ' +
-                              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
-                              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
-                              'removeformat | wordcount ',
-                              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
-                          }}
-                        />
-                    </div>
-                </div>
-            </div>
-            <hr/>
+                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label">Residential area</label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_ResidentialArea" name='STIP_AddProp_ResidentialArea' value={FormData['STIP_AddProp_ResidentialArea']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+                              <hr/>
 
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label">Postal code</label>
-                    </div>
-                    <div className="col-6">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_PostalCode" name='STIP_AddProp_PostalCode' value={FormData['STIP_AddProp_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
-                    </div>
-                </div>
-            </div>
-            <hr/>
+                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label">Street name,number and suburb</label>
+                                      </div>
+                                      <div className="col-8">
+                                          {/* <textarea maxLength={500} spellCheck="true"  id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
+                                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                            value={FormData['STIP_AddProp_StreetNumber']}
+                                            onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_AddProp_StreetNumber']: newText }) }}
+                                            name="STIP_AddProp_StreetNumber"
+                                            init={{
+                                                selector: "textarea",
+                                                browser_spellcheck : true,
+                                                height: 300,
+                                                menu: true,
+                                                plugins: [
+                                                    'advlist autolink link lists image charmap print preview anchor',
+                                                    'searchreplace visualblocks code fullscreen',
+                                                    'insertdatetime media table paste code help wordcount',
+                                                ],
+                                                toolbar: 'styles | undo redo | formatselect | ' +
+                                                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                                                'removeformat | wordcount ',
+                                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                                            }}
+                                          />
+                                      </div>
+                                  </div>
+                              </div>
+                              <hr/>
 
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
-                    </div>
-                    <div className="col-6">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_ResidenceType" name='STIP_AddProp_ResidenceType' value={FormData['STIP_AddProp_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
-            <hr/>
+                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label">Postal code</label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_PostalCode" name='STIP_AddProp_PostalCode' value={FormData['STIP_AddProp_PostalCode']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby=""/>
+                                      </div>
+                                  </div>
+                              </div>
+                              <hr/>
 
-            <div className="col-8" style={{paddingBottom: "0.5%"}}>
-                <div className="row g-3 align-items-center">
-                    <div className="col-4">
-                        <label className="col-form-label"><b>Type of building</b></label>
-                    </div>
-                    <div className="col-6">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_Type" name='STIP_AddProp_Type' value={FormData['STIP_AddProp_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
-                    </div>
-                </div>
-            </div>
+                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label">Type of residence: (e.g., small holding, farm, residential, flat, other) </label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_ResidenceType" name='STIP_AddProp_ResidenceType' value={FormData['STIP_AddProp_ResidenceType']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
+                              <hr/>
 
-          </div>
-        </div>
+                              <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                                  <div className="row g-3 align-items-center">
+                                      <div className="col-4">
+                                          <label className="col-form-label"><b>Type of building</b></label>
+                                      </div>
+                                      <div className="col-6">
+                                          <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_Type" name='STIP_AddProp_Type' value={FormData['STIP_AddProp_Type']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Click here to enter text"  aria-describedby="" />
+                                      </div>
+                                  </div>
+                              </div>
 
-
-
-
-
-
-
-        <hr/>
-    <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Voluntary excess </b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Yes
-                    </label>
-                </div>
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        No
-                    </label>
-                </div>
-            </div>
-
-            </div>
-          </div>
-        </div>
-        <hr/>
-        <div><b>Optional cover</b></div>
-
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Subsidence and landslide</label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="row col-6 align-items-center">
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_SnL"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Yes
-                    </label>
-                </div>
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_SnL"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        No
-                    </label>
-                </div>
-            </div>
-
-            </div>
-          </div>
-        </div>
+                            </div>
+                          </div>
 
 
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Accidental damage items</label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-           <div className="row col-6 align-items-center">
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_ADI"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Yes
-                    </label>
-                </div>
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_ADI"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        No
-                    </label>
-                </div>
-            </div>
-
-            </div>
-          </div>
-        </div>
-        <hr/>
 
 
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Wall construction</b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-          <div className="row col-6 align-items-center">
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Standard
-                    </label>
-                </div>
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Non Standard
-                    </label>
-                </div>
-            </div>
-
-            </div>
-          </div>
-        </div>
-        <hr/>
 
 
-        <div className="row g-4 align-items-center">
-      <div className="col-4">
-          <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Roof construction</b></label>
-      </div>
-        <div className="col-8">
-          <div className="row">
-          <div className="row col-6 align-items-center">
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Standard
-                    </label>
-                </div>
-                <div className="col-3">
-                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
-                </div>
-                <div className="col-3">
-                    <label className="form-check-label"  >
-                        Non Standard
-                    </label>
-                </div>
-            </div>
 
-            </div>
-          </div>
-        </div>
-        <hr/>
+                          <hr/>
+                      <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Voluntary excess </b></label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                              <div className="row col-6 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_Voluntary"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_Voluntary" name="STIP_AddProp_Voluntary" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
+
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+                          <div><b>Optional cover</b></div>
+
+                          <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Subsidence and landslide</label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                              <div className="row col-6 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_SnL"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_SnL"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_SnL" name="STIP_AddProp_SnL" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
+
+                              </div>
+                            </div>
+                          </div>
 
 
-        <div className="row g-4 align-items-center">
-          <div className="col-4">
-            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Fees</b></label>
-        </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_Fee" name='STIP_AddProp_Fee' value={FormData['STIP_AddProp_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>    
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr/>
+                          <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">. Accidental damage items</label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                            <div className="row col-6 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_ADI"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_ADI"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_ADI" name="STIP_AddProp_ADI" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
 
-        <div className="row g-4 align-items-center">
-          <div className="col-4">
-            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Commission</b></label>
-        </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_Commission" name='STIP_AddProp_Commission' value={FormData['STIP_AddProp_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>    
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr/>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
 
-        <div className="row g-4 align-items-center">
-          <div className="col-4">
-            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Total premium</b></label>
-        </div>
-        <div className="col-8">
-          <div className="row">
-              <div className="row col-2 align-items-center">
-                  <div className="col-2">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_TotalPremium" name='STIP_AddProp_TotalPremium' value={FormData['STIP_AddProp_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
-                  </div>    
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr/>
 
-      <br/>
-        <div>Additional notes on buildings that may affect cover/advice to the client: </div>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_AdditionalAdvise" name='STIP_AddProp_AdditionalAdvise' value={FormData['STIP_AddProp_AdditionalAdvise']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{width:"1000px"}} />
-        <hr/>
+                          <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Wall construction</b></label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                            <div className="row col-6 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Standard
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_WallConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_WallConstruction" name="STIP_AddProp_WallConstruction" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Non Standard
+                                      </label>
+                                  </div>
+                              </div>
 
-        <br/>
-        </>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+
+                          <div className="row g-4 align-items-center">
+                        <div className="col-4">
+                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Roof construction</b></label>
+                        </div>
+                          <div className="col-8">
+                            <div className="row">
+                            <div className="row col-6 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] == 1 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="1" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Standard
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["STIP_AddProp_RoofConstruction"] == 0 ? true : false} onChange={(e) => {onChange(e)}} type="radio" value="0" id="STIP_AddProp_RoofConstruction" name="STIP_AddProp_RoofConstruction" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Non Standard
+                                      </label>
+                                  </div>
+                              </div>
+
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+
+                          <div className="row g-4 align-items-center">
+                            <div className="col-4">
+                              <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Fees</b></label>
+                          </div>
+                          <div className="col-8">
+                            <div className="row">
+                                <div className="row col-2 align-items-center">
+                                    <div className="col-2">
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_Fee" name='STIP_AddProp_Fee' value={FormData['STIP_AddProp_Fee']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                                    </div>    
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="row g-4 align-items-center">
+                            <div className="col-4">
+                              <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Commission</b></label>
+                          </div>
+                          <div className="col-8">
+                            <div className="row">
+                                <div className="row col-2 align-items-center">
+                                    <div className="col-2">
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_Commission" name='STIP_AddProp_Commission' value={FormData['STIP_AddProp_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                                    </div>    
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="row g-4 align-items-center">
+                            <div className="col-4">
+                              <label htmlFor="client_name" className="col-form-label" title="If no, motivate"><b>Total premium</b></label>
+                          </div>
+                          <div className="col-8">
+                            <div className="row">
+                                <div className="row col-2 align-items-center">
+                                    <div className="col-2">
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_TotalPremium" name='STIP_AddProp_TotalPremium' value={FormData['STIP_AddProp_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                                    </div>    
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                        <br/>
+                          {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_AddProp_AdditionalAdvise" name='STIP_AddProp_AdditionalAdvise' value={FormData['STIP_AddProp_AdditionalAdvise']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{width:"1000px"}} />
+                          <hr/> */}
+
+                          <br/>
+                      <b className="col-form-label">Additional Comments</b>
+                      <div>Additional notes on additional properties that may affect cover/advice to the client: </div>
+                      <br/>
+                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                        value={FormData['STIP_AddProp_AddComments']}
+                        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_AddProp_AddComments']: newText }) }}                  
+                        name="STIP_AddProp_AddComments"
+                        init={{
+                            selector: "textarea",
+                            browser_spellcheck : true,
+                            placeholder: "Click here to enter text",
+                            height: 300,
+                            menu: true,
+                            plugins: [
+                                'advlist autolink link lists image charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount',
+                            ],
+                            toolbar: 'styles | undo redo | formatselect | ' +
+                            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                            'removeformat | wordcount ',
+                            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                        }}
+                      />
+                      <hr/>
+                          </>
         :
               <>
               </>
@@ -5615,9 +5702,33 @@ const Short_term_Personal = ({user}) => {
                 </div>
                 
               </div>
-              <div>Additional notes on Mororcycle that may affect cover/advice to the client:</div>
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_Comments" name='STIP_Vehicle_Comments' value={FormData['STIP_Vehicle_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
+                {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_Comments" name='STIP_Vehicle_Comments' value={FormData['STIP_Vehicle_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
+              <br/> */}
+              <b className="col-form-label">Additional Comments</b>
+              <div>Additional notes on vehicles that may affect cover/advice to the client:</div>
               <br/>
+              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                value={FormData['STIP_Vehicle_AddComments']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Vehicle_AddComments']: newText }) }}                  
+                init={{
+                    selector: "textarea",
+                    browser_spellcheck : true,
+                    placeholder: "Click here to enter text",
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+              />
+              <hr/>
               
             </div>
           </div>
@@ -5924,9 +6035,33 @@ const Short_term_Personal = ({user}) => {
         </div>
       </div>
       
-      <div>Additional notes on Mororcycle that may affect cover/advice to the client:</div>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_Comments" name='STIP_MotorC_Comments' value={FormData['STIP_MotorC_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
+        {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_MotorC_Comments" name='STIP_MotorC_Comments' value={FormData['STIP_MotorC_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
+      <br/> */}
+      <b className="col-form-label">Additional Comments</b>
+      <div>Additional notes on motorcycles that may affect cover/advice to the client:</div>
       <br/>
+      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        value={FormData['STIP_MotorC_AddComments']}
+        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_MotorC_AddComments']: newText }) }}                  
+        init={{
+            selector: "textarea",
+            browser_spellcheck : true,
+            placeholder: "Click here to enter text",
+            height: 300,
+            menu: true,
+            plugins: [
+                'advlist autolink link lists image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount',
+            ],
+            toolbar: 'styles | undo redo | formatselect | ' +
+            'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+            'removeformat | wordcount ',
+            content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+        }}
+      />
+      <hr/>
       <h6 align="left" style={{ color: "#14848A"}}><b>TRAILER/CARAVAN</b></h6>
       <div>Please see the attached certificate of registration and motor vehicle license for the make, model, vehicle year, VIN number etc.</div>
 
@@ -6091,11 +6226,36 @@ const Short_term_Personal = ({user}) => {
       </div>
         
         <br/>
-        <div>Additional notes on trailer that may affect cover/advice to the client:</div>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_Comments" name='STIP_Trailer_Comments' value={FormData['STIP_Trailer_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
+        {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Trailer_Comments" name='STIP_Trailer_Comments' value={FormData['STIP_Trailer_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
 
-        <br/>
-</> :<></>}
+        <br/> */}
+        <b className="col-form-label">Additional Comments</b>
+          <div>Additional notes on trailer that may affect cover/advice to the client:</div>
+          <br/>
+          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+            value={FormData['STIP_Trailer_AddComments']}
+            onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Trailer_AddComments']: newText }) }}                  
+            name="STIP_Trailer_AddComments"
+            init={{
+                selector: "textarea",
+                browser_spellcheck : true,
+                placeholder: "Click here to enter text",
+                height: 300,
+                menu: true,
+                plugins: [
+                    'advlist autolink link lists image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount',
+                ],
+                toolbar: 'styles | undo redo | formatselect | ' +
+                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                'removeformat | wordcount ',
+                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+            }}
+          />
+          <hr/>
+              </> :<></>}
     {
         FormData['STIP_CnRI_25_Accepted'] === 1 ?
               <>
@@ -6299,9 +6459,34 @@ const Short_term_Personal = ({user}) => {
       </div>
 
 <br/>
-      <div>Additional notes on motorcycle that may affect cover/advice to the client:</div>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_Comments" name='STIP_WaterC_Comments' value={FormData['STIP_WaterC_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" />
+        {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_WaterC_Comments" name='STIP_WaterC_Comments' value={FormData['STIP_WaterC_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder=" Click here to enter text"  aria-describedby="" /> */}
+        <b className="col-form-label">Additional Comments</b>
+      <div>Additional notes on watercraft that may affect cover/advice to the client:</div>
+        <br/>
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          value={FormData['STIP_WaterC_AddComments']}
+          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_WaterC_AddComments']: newText }) }}                  
+          init={{
+              selector: "textarea",
+              browser_spellcheck : true,
+              placeholder: "Click here to enter text",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat | wordcount ',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
+        <hr/>
         </>
+        
         :
               <>
               </>
@@ -6415,9 +6600,9 @@ const Short_term_Personal = ({user}) => {
         <hr/>
 
       <br/>
-        <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
+        
         {/* <textare maxLength={500} spellCheck="true"  id="STIP_PersonalLL_Comments" name='STIP_PersonalLL_Comments' value={FormData['STIP_PersonalLL_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_PersonalLL_Comments']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_PersonalLL_Comments']: newText }) }}
           name="STIP_PersonalLL_Comments"
@@ -6437,9 +6622,34 @@ const Short_term_Personal = ({user}) => {
               'removeformat | wordcount ',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
 
         <br/>
+        <b className="col-form-label">Additional Comments</b>
+        <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
+              <br/>
+              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                value={FormData['STIP_PersonalLL_AddComments']}
+                onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_PersonalLL_AddComments']: newText }) }}                  
+                init={{
+                    selector: "textarea",
+                    browser_spellcheck : true,
+                    placeholder: "Click here to enter text",
+                    height: 300,
+                    menu: true,
+                    plugins: [
+                        'advlist autolink link lists image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar: 'styles | undo redo | formatselect | ' +
+                    'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                    'removeformat | wordcount ',
+                    content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                }}
+              />
+              <hr/>
         <h6 align="left" style={{ color: "#14848A"}}><b>LEGAL ACCESS</b></h6>
       
       
@@ -6546,10 +6756,34 @@ const Short_term_Personal = ({user}) => {
         <hr/>
 
       <br/>
-        <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_LegalA_Comments" name='STIP_LegalA_Comments' value={FormData['STIP_LegalA_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} />
+        {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_LegalA_Comments" name='STIP_LegalA_Comments' value={FormData['STIP_LegalA_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
 
         <br/>
+        <b className="col-form-label">Additional Comments</b>
+        <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
+        <br/>
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          value={FormData['STIP_LegalA_AddComments']}
+          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_LegalA_AddComments']: newText }) }}                  
+          init={{
+              selector: "textarea",
+              browser_spellcheck : true,
+              placeholder: "Click here to enter text",
+              height: 300,
+              menu: true,
+              plugins: [
+                  'advlist autolink link lists image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+              ],
+              toolbar: 'styles | undo redo | formatselect | ' +
+              'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+              'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+              'removeformat | wordcount ',
+              content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+          }}
+        />
+        <hr/>
         <div><b>IMPORTANT:</b></div>
 
         <ul>

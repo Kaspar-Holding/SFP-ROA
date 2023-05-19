@@ -1,7 +1,7 @@
 
 from datetime import datetime, timezone
 from rest_framework import serializers
-from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
+from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, STIC_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
 from .models import Medical
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
@@ -28,25 +28,27 @@ class FormSerializers(serializers.ModelSerializer):
     def create(self, validated_data):
         return Form.objects.create(**validated_data)
 
-    # def update(self, instance, validated_data):
-    #     instance.advisor_id = validated_data.get('advisor_id', instance.advisor_id)
-    #     # instance.form_type = validated_data.get('form_type', instance.form_type)
-    #     instance.client_name = validated_data.get('client_name', instance.client_name)
-    #     instance.client_id = validated_data.get('client_id', instance.client_id)
-    #     instance.client_address = validated_data.get('client_address', instance.client_address)
-    #     instance.client_email = validated_data.get('client_email', instance.client_email)
-    #     # client_financial_advisor = advisor_id
-    #     instance.client_date_of_birth = validated_data.get('client_date_of_birth', instance.client_date_of_birth)
-    #     instance.client_letter_of_introduction = validated_data.get('client_letter_of_introduction', instance.client_letter_of_introduction)
-    #     instance.client_letter_of_introduction_reason = validated_data.get('client_letter_of_introduction_reason', instance.client_letter_of_introduction_reason)
-    #     instance.client_fica = validated_data.get('client_fica', instance.client_fica)
-    #     instance.client_fica_reason = validated_data.get('client_fica_reason', instance.client_fica_reason)
-    #     instance.client_background_info = validated_data.get('client_background_info', instance.client_background_info)
+    def update(self, instance, validated_data):
+        instance.clientName = validated_data.get('clientName', instance.clientName)
+        instance.clientIdNumber = validated_data.get('clientIdNumber', instance.clientIdNumber)
+        instance.clientAddress = validated_data.get('clientAddress', instance.clientAddress)
+        instance.clientPhoneNumber = validated_data.get('clientPhoneNumber', instance.clientPhoneNumber)
+        instance.clientEmail = validated_data.get('clientEmail', instance.clientEmail)
+        instance.clientDateOfBirth = validated_data.get('clientDateOfBirth', instance.clientDateOfBirth)
+        instance.clientLetterOfIntroduction = validated_data.get('clientLetterOfIntroduction', instance.clientLetterOfIntroduction)
+        instance.clientLetterOfIntroductionReason = validated_data.get('clientLetterOfIntroductionReason', instance.clientLetterOfIntroductionReason)
+        instance.clientLetterOfIntroductionAccess = validated_data.get('clientLetterOfIntroductionAccess', instance.clientLetterOfIntroductionAccess)
+        instance.clientLetterOfIntroductionAccessReason = validated_data.get('clientLetterOfIntroductionAccessReason', instance.clientLetterOfIntroductionAccessReason)
+        instance.clientFica = validated_data.get('clientFica', instance.clientFica)
+        instance.clientFicaReason = validated_data.get('clientFicaReason', instance.clientFicaReason)
+        instance.clientReplacement = validated_data.get('clientReplacement', instance.clientReplacement)
+        instance.clientReplacementReason = validated_data.get('clientReplacementReason', instance.clientReplacementReason)
+        instance.clientBackgroundInfo = validated_data.get('clientBackgroundInfo', instance.clientBackgroundInfo)
         
 
-    #     instance.status = validated_data.get('status', instance.status)
-    #     instance.save()
-    #     return instance
+        instance.status = validated_data.get('status', instance.status)
+        instance.save()
+        return instance
 
 class FiduciarySerializers(serializers.ModelSerializer):
     class Meta():
@@ -1401,6 +1403,7 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_HC_Commission = validated_data.get("STIP_HC_Commission", instance.STIP_HC_Commission)
         instance.STIP_HC_TotalPremium = validated_data.get("STIP_HC_TotalPremium", instance.STIP_HC_TotalPremium)
 
+        instance.STIP_Build_AddComments = validated_data.get("STIP_Build_AddComments", instance.STIP_Build_AddComments)
         instance.STIP_Build_ResidentialArea = validated_data.get("STIP_Build_ResidentialArea", instance.STIP_Build_ResidentialArea)
         instance.STIP_Build_StreetNumber = validated_data.get("STIP_Build_StreetNumber", instance.STIP_Build_StreetNumber)
         instance.STIP_Build_PostalCode = validated_data.get("STIP_Build_PostalCode", instance.STIP_Build_PostalCode)
@@ -1417,6 +1420,7 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_Build_TotalPremium = validated_data.get("STIP_Build_TotalPremium", instance.STIP_Build_TotalPremium)
         instance.STIP_Build_AdditionalAdvise = validated_data.get("STIP_Build_AdditionalAdvise", instance.STIP_Build_AdditionalAdvise)
 
+        instance.STIP_AddProp_AddComments = validated_data.get("STIP_AddProp_AddComments", instance.STIP_AddProp_AddComments)
         instance.STIP_AddProp_ResidentialArea = validated_data.get("STIP_AddProp_ResidentialArea", instance.STIP_AddProp_ResidentialArea)
         instance.STIP_AddProp_StreetNumber = validated_data.get("STIP_AddProp_StreetNumber", instance.STIP_AddProp_StreetNumber)
         instance.STIP_AddProp_PostalCode = validated_data.get("STIP_AddProp_PostalCode", instance.STIP_AddProp_PostalCode)
@@ -1433,6 +1437,7 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_AddProp_TotalPremium = validated_data.get("STIP_AddProp_TotalPremium", instance.STIP_AddProp_TotalPremium)
         instance.STIP_AddProp_AdditionalAdvise = validated_data.get("STIP_AddProp_AdditionalAdvise", instance.STIP_AddProp_AdditionalAdvise)
 
+        instance.STIP_Vehicle_AddComments = validated_data.get("STIP_Vehicle_AddComments", instance.STIP_Vehicle_AddComments)
         instance.STIP_Vehicle_Owner = validated_data.get("STIP_Vehicle_Owner", instance.STIP_Vehicle_Owner)
         instance.STIP_Vehicle_RegOwner = validated_data.get("STIP_Vehicle_RegOwner", instance.STIP_Vehicle_RegOwner)
         instance.STIP_Vehicle_Usage = validated_data.get("STIP_Vehicle_Usage", instance.STIP_Vehicle_Usage)
@@ -1487,6 +1492,7 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_Vehicle_TotalPremium = validated_data.get("STIP_Vehicle_Commission", instance.STIP_Vehicle_Commission)
         instance.STIP_Vehicle_Comments = validated_data.get("STIP_Vehicle_Comments", instance.STIP_Vehicle_Comments)
             
+        instance.STIP_MotorC_AddComments = validated_data.get("STIP_MotorC_AddComments", instance.STIP_MotorC_AddComments)
         instance.STIP_MotorC_RegOwner = validated_data.get("STIP_MotorC_RegOwner", instance.STIP_MotorC_RegOwner)
         instance.STIP_MotorC_Usage = validated_data.get("STIP_MotorC_Usage", instance.STIP_MotorC_Usage)
         instance.STIP_MotorC_ONParkingOptions = validated_data.get("STIP_MotorC_ONParkingOptions", instance.STIP_MotorC_ONParkingOptions)
@@ -1504,6 +1510,7 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_MotorC_TotalPremium = validated_data.get("STIP_MotorC_TotalPremium", instance.STIP_MotorC_TotalPremium)
         instance.STIP_MotorC_Comments = validated_data.get("STIP_MotorC_Comments", instance.STIP_MotorC_Comments)
 
+        instance.STIP_Trailer_AddComments = validated_data.get("STIP_Trailer_AddComments", instance.STIP_Trailer_AddComments)
         instance.STIP_Trailer_RegOwner = validated_data.get("STIP_Trailer_RegOwner", instance.STIP_Trailer_RegOwner)
         instance.STIP_Trailer_Type = validated_data.get("STIP_Trailer_Type", instance.STIP_Trailer_Type)
         instance.STIP_Trailer_ONParkingOptions = validated_data.get("STIP_Trailer_ONParkingOptions", instance.STIP_Trailer_ONParkingOptions)
@@ -1515,6 +1522,7 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_Trailer_TotalPremium = validated_data.get("STIP_Trailer_TotalPremium", instance.STIP_Trailer_TotalPremium)
         instance.STIP_Trailer_Comments = validated_data.get("STIP_Trailer_Comments", instance.STIP_Trailer_Comments)
 
+        instance.STIP_WaterC_AddComments = validated_data.get("STIP_WaterC_AddComments", instance.STIP_WaterC_AddComments)
         instance.STIP_WaterC_RegOwner = validated_data.get("STIP_WaterC_RegOwner", instance.STIP_WaterC_RegOwner)
         instance.STIP_WaterC_Type = validated_data.get("STIP_WaterC_Type", instance.STIP_WaterC_Type)
         instance.STIP_WaterC_Hull = validated_data.get("STIP_WaterC_Hull", instance.STIP_WaterC_Hull)
@@ -1530,6 +1538,7 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_WaterC_TotalPremium = validated_data.get("STIP_WaterC_TotalPremium", instance.STIP_WaterC_TotalPremium)
         instance.STIP_WaterC_Comments = validated_data.get("STIP_WaterC_Comments", instance.STIP_WaterC_Comments)
 
+        instance.STIP_PersonalLL_AddComments = validated_data.get("STIP_PersonalLL_AddComments", instance.STIP_PersonalLL_AddComments)
         instance.STIP_PersonalLL_IndemnityLimit = validated_data.get("STIP_PersonalLL_IndemnityLimit", instance.STIP_PersonalLL_IndemnityLimit)
         instance.STIP_PersonalLL_IndemnityLimitDetail = validated_data.get("STIP_PersonalLL_IndemnityLimitDetail", instance.STIP_PersonalLL_IndemnityLimitDetail)
         instance.STIP_PersonalLL_Fees = validated_data.get("STIP_PersonalLL_Fees", instance.STIP_PersonalLL_Fees)
@@ -1537,6 +1546,7 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_PersonalLL_TotalPremium = validated_data.get("STIP_PersonalLL_TotalPremium", instance.STIP_PersonalLL_TotalPremium)
         instance.STIP_PersonalLL_Comments = validated_data.get("STIP_PersonalLL_Comments", instance.STIP_PersonalLL_Comments)
 
+        instance.STIP_LegalA_AddComments = validated_data.get("STIP_LegalA_AddComments", instance.STIP_LegalA_AddComments)
         instance.STIP_LegalA_IndemnityLimit = validated_data.get("STIP_LegalA_IndemnityLimit", instance.STIP_LegalA_IndemnityLimit)
         instance.STIP_LegalA_IndemnityLimitDetail = validated_data.get("STIP_LegalA_IndemnityLimitDetail", instance.STIP_LegalA_IndemnityLimitDetail)
         instance.STIP_LegalA_Fees = validated_data.get("STIP_LegalA_Fees", instance.STIP_LegalA_Fees)
@@ -1548,6 +1558,7 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_ProductRecommended = validated_data.get("STIP_ProductRecommended", instance.STIP_ProductRecommended)
         instance.STIP_ProductReasons = validated_data.get("STIP_ProductReasons", instance.STIP_ProductReasons)
 
+        instance.STIP_DbyI_AddComments = validated_data.get("STIP_DbyI_AddComments", instance.STIP_DbyI_AddComments)
         instance.STIP_DbyI_IName = validated_data.get("STIP_DbyI_IName", instance.STIP_DbyI_IName)
         instance.STIP_DbyI_Code = validated_data.get("STIP_DbyI_Code", instance.STIP_DbyI_Code)
         instance.STIP_DbyI_Signature = validated_data.get("STIP_DbyI_Signature", instance.STIP_DbyI_Signature)
@@ -4230,6 +4241,27 @@ class STIP_Loss_Serializer(serializers.ModelSerializer):
         instance.updated_at = datetime.now(timezone.utc)
         instance.save()
         return instance
+    
+class STIC_Loss_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Loss
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Loss.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.General_TypeOfLoss = validated_data.get('General_TypeOfLoss', instance.General_TypeOfLoss)  
+        instance.General_LossYear = validated_data.get('General_LossYear', instance.General_LossYear)  
+        instance.General_LossAmount = validated_data.get('General_LossAmount', instance.General_LossAmount)    
+        instance.General_LossInsurer = validated_data.get('General_LossInsurer', instance.General_LossInsurer)    
+         
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
 
 class STIC_Sec_Fire_Serializer(serializers.ModelSerializer):
     class Meta():
@@ -4242,6 +4274,7 @@ class STIC_Sec_Fire_Serializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         
+        instance.Fire_AddComments = validated_data.get('Fire_AddComments', instance.Fire_AddComments)  
         instance.Fire_Limit = validated_data.get('Fire_Limit', instance.Fire_Limit)  
         instance.Fire_ItemNumber = validated_data.get('Fire_ItemNumber', instance.Fire_ItemNumber)  
         instance.Fire_Premium = validated_data.get('Fire_Premium', instance.Fire_Premium)    
