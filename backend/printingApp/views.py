@@ -1284,11 +1284,11 @@ def wkhtmltopdfapi(request):
                 data['STIC']['STIC_Applicable_Option'] == "" and
                 data['STIC']['STIC_General_Cancelled'] == 2 and
                 data['STIC']['STIC_General_Cancelled_Detail'] == "" and
-                data['STIC']['STIC_General_LossType'] == "" and
-                data['STIC']['STIC_General_Year'] == "" and
-                data['STIC']['STIC_General_Amount'] == "" and
-                data['STIC']['STIC_General_History'] == "" and
-                data['STIC']['STIC_General_Insurer'] == "" and
+                # data['STIC']['STIC_General_LossType'] == "" and
+                # data['STIC']['STIC_General_Year'] == "" and
+                # data['STIC']['STIC_General_Amount'] == "" and
+                # data['STIC']['STIC_General_History'] == "" and
+                # data['STIC']['STIC_General_Insurer'] == "" and
                 data['STIC']['STIC_Replacement_Advise'] == 2 and
                 data['STIC']['STIC_Replacement_Purpose'] == "" and
                 data['STIC']['STIC_Replacement_Reason'] == "" and
@@ -2275,10 +2275,10 @@ def wkhtmltopdfapi(request):
                 data["STIP"]['STIP_General_Risks'] == 2 and
                 data["STIP"]['STIP_General_LastDate'] == "" and
                 data["STIP"]['STIP_General_InsurerName'] == "" and
-                data["STIP"]['STIP_General_TypeOfLoss'] == "" and
-                data["STIP"]['STIP_General_LossYear'] == "" and
-                data["STIP"]['STIP_General_LossAmount'] == "" and
-                data["STIP"]['STIP_General_LossInsurer'] == "" and        
+                # data["STIP"]['STIP_General_TypeOfLoss'] == "" and
+                # data["STIP"]['STIP_General_LossYear'] == "" and
+                # data["STIP"]['STIP_General_LossAmount'] == "" and
+                # data["STIP"]['STIP_General_LossInsurer'] == "" and        
                 data["STIP"]['STIP_CnRI_Existing_Company'] == "" and
                 data["STIP"]['STIP_CnRI_Replacement_Company'] == "" and
                 data["STIP"]['STIP_CnRI_Existing_Provider'] == "" and
