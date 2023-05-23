@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && rm -r /home/Kaspar/nginx/SFP-ROA-build && mv build /home/Kaspar/nginx/SFP-ROA-build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
