@@ -1850,22 +1850,22 @@ const RiskFactors = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
                                 
 
                         </select>    
@@ -2286,22 +2286,22 @@ const RiskFactors = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
 
                         </select>    
                     </div>
@@ -2723,22 +2723,22 @@ const RiskFactors = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
 
                         </select>    
                     </div>
@@ -3185,22 +3185,22 @@ const RiskFactors = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
 
                             </select> 
                         </div>
@@ -4134,22 +4134,22 @@ const RiskFactors = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
                                 
 
                         </select>    
@@ -4569,22 +4569,22 @@ const RiskFactors = ({user}) => {
                                 <option value="231">Uganda</option>
                                 <option value="232">Ukraine</option>
                                 <option value="233">United Arab Emirates</option>
-                                <option value="224">United Kingdom</option>
-                                <option value="225">United States Minor</option>
-                                <option value="226">United States of America</option>
-                                <option value="227">Uruguay</option>
-                                <option value="228">Uzbekistan</option>
-                                <option value="229">Vanuatu</option>
-                                <option value="230">Venezuela</option>
-                                <option value="231">Vietnam</option>
-                                <option value="232">Virgin Islands(British)</option>
-                                <option value="233">Virgin Islands(US)</option>
-                                <option value="234">Wallis and Fatuna</option>
-                                <option value="235">West Bank</option>
-                                <option value="236">Western Sahara</option>
-                                <option value="237">Yemen</option>
-                                <option value="238">Zambia</option>
-                                <option value="239">Zimbabwe</option>
+                                <option value="234">United Kingdom</option>
+                                <option value="235">United States Minor</option>
+                                <option value="236">United States of America</option>
+                                <option value="237">Uruguay</option>
+                                <option value="238">Uzbekistan</option>
+                                <option value="239">Vanuatu</option>
+                                <option value="240">Venezuela</option>
+                                <option value="241">Vietnam</option>
+                                <option value="242">Virgin Islands(British)</option>
+                                <option value="243">Virgin Islands(US)</option>
+                                <option value="244">Wallis and Fatuna</option>
+                                <option value="245">West Bank</option>
+                                <option value="246">Western Sahara</option>
+                                <option value="247">Yemen</option>
+                                <option value="248">Zambia</option>
+                                <option value="249">Zimbabwe</option>
 
                         </select>    
                     </div>
@@ -6596,22 +6596,22 @@ const RiskFactors = ({user}) => {
                                     <option value="231">Uganda</option>
                                     <option value="232">Ukraine</option>
                                     <option value="233">United Arab Emirates</option>
-                                    <option value="224">United Kingdom</option>
-                                    <option value="225">United States Minor</option>
-                                    <option value="226">United States of America</option>
-                                    <option value="227">Uruguay</option>
-                                    <option value="228">Uzbekistan</option>
-                                    <option value="229">Vanuatu</option>
-                                    <option value="230">Venezuela</option>
-                                    <option value="231">Vietnam</option>
-                                    <option value="232">Virgin Islands(British)</option>
-                                    <option value="233">Virgin Islands(US)</option>
-                                    <option value="234">Wallis and Fatuna</option>
-                                    <option value="235">West Bank</option>
-                                    <option value="236">Western Sahara</option>
-                                    <option value="237">Yemen</option>
-                                    <option value="238">Zambia</option>
-                                    <option value="239">Zimbabwe</option>
+                                    <option value="234">United Kingdom</option>
+                                    <option value="235">United States Minor</option>
+                                    <option value="236">United States of America</option>
+                                    <option value="237">Uruguay</option>
+                                    <option value="238">Uzbekistan</option>
+                                    <option value="239">Vanuatu</option>
+                                    <option value="240">Venezuela</option>
+                                    <option value="241">Vietnam</option>
+                                    <option value="242">Virgin Islands(British)</option>
+                                    <option value="243">Virgin Islands(US)</option>
+                                    <option value="244">Wallis and Fatuna</option>
+                                    <option value="245">West Bank</option>
+                                    <option value="246">Western Sahara</option>
+                                    <option value="247">Yemen</option>
+                                    <option value="248">Zambia</option>
+                                    <option value="249">Zimbabwe</option>
 
                                 </select> 
                             </div>
