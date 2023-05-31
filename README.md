@@ -12,6 +12,9 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 31 May 2023:
+- Section 1 Bug is resolved
+
 ### 19 May 2023:
 - Following were done in Task Number 2036:
 - expand on accepted 
