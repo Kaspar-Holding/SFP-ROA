@@ -5,8 +5,9 @@ import { useLocation } from 'react-router-dom';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
 import { connect } from 'react-redux';
+import {LogOut} from '../../Actions/Auth'
 
-const Fiduciary = ({user}) => {
+const Fiduciary = ({user, LogOut}) => {
   const location = useLocation();
   const { state } = location;
   // const [propsData, setpropsData] = useState(props.data);
@@ -42,6 +43,14 @@ const Fiduciary = ({user}) => {
         // setSubmissionMessageVisibility("block")
     } catch (error) {
         console.log(error)
+        if (error.response.status === 401){
+          setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+          setSuccessMessageVisibility("block")
+          setTimeout(() => {
+            setSuccessMessageVisibility("none")
+            LogOut()
+          }, 5000)
+        }
     }
   }
   const [SuccessMessage, setSuccessMessage] = useState("")
@@ -58,7 +67,7 @@ const Fiduciary = ({user}) => {
     try {
         const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/updatefiduciarydata/`, Body ,config)
         // console.log(response.data['formData'])
-        setFormData(response.data['formData'])
+        // setFormData(response.data['formData'])
         setSuccessMessage("Fiduciary data is successfully updated")
         setSuccessMessageVisibility("block")
         // setSubmissionMessageVisibility("block")
@@ -67,6 +76,14 @@ const Fiduciary = ({user}) => {
         }, 5000)
     } catch (error) {
         console.log(error)
+        if (error.response.status === 401){
+          setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+          setSuccessMessageVisibility("block")
+          setTimeout(() => {
+            setSuccessMessageVisibility("none")
+            LogOut()
+          }, 5000)
+        }
     }
   }
   const onSubmit = e => {
@@ -81,7 +98,10 @@ const Fiduciary = ({user}) => {
   }
   // console.log(FormData)
   useEffect(() => {
-    createFiduciaryForm(FormData)
+    if (state['formId']){
+      createFiduciaryForm(FormData)
+    }
+      
     // const interval = setInterval(() => {
     //     const FiduicaryformSubmitButton = document.querySelector(".updateFiduicaryFormBTN")
     //     FiduicaryformSubmitButton.click()
@@ -200,11 +220,11 @@ const Fiduciary = ({user}) => {
           </form>
       </>
   )
- }
+}
 
 const mapStateToProps = state => ({
   isAuthenticated: state.Auth.isAuthenticated,
   user: state.Auth.user,
 })
 
-export default connect(mapStateToProps)(Fiduciary)
+export default connect(mapStateToProps, {LogOut})(Fiduciary)

@@ -9,8 +9,8 @@ import 'tippy.js/dist/tippy.css'; // optional
 import Loader from '../Loader/Loader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-
-const RiskFactors = ({user}) => {
+import {LogOut} from '../../Actions/Auth'
+const RiskFactors = ({user, LogOut}) => {
     const [LoaderVisibility, setLoaderVisibility] = useState("none")
     const [dataVisibility, setDataVisibility] = useState("none")
     const getInitialState = () => {
@@ -469,7 +469,14 @@ const RiskFactors = ({user}) => {
                 } 
                 // setSubmissionMessageVisibility("block")
             } catch (error) {
-                console.log(error)
+                if (error.response.status === 401){
+                    setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                    setSuccessMessageVisibility("block")
+                    setTimeout(() => {
+                      setSuccessMessageVisibility("none")
+                      LogOut()
+                    }, 5000)
+                }
                 setErrorData({
                 status: error.response.status,
                 message: error.response.statusText
@@ -503,8 +510,14 @@ const RiskFactors = ({user}) => {
                 }, 5000)
                 // setSubmissionMessageVisibility("block")
             } catch (error) {
-                console.log(error.response)
-                
+                if (error.response.status === 401){
+                    setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                    setSuccessMessageVisibility("block")
+                    setTimeout(() => {
+                      setSuccessMessageVisibility("none")
+                      LogOut()
+                    }, 5000)
+                  }                
                 setUpdateErrorData({
                     status: error.response.status,
                     message: error.response.statusText
@@ -519,7 +532,14 @@ const RiskFactors = ({user}) => {
                 const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_linked_party_data/`, LP_Body ,config) 
                 setLP_Data(response.data['LP_Data'])
             } catch (error) {
-                
+                if (error.response.status === 401){
+                    setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                    setSuccessMessageVisibility("block")
+                    setTimeout(() => {
+                      setSuccessMessageVisibility("none")
+                      LogOut()
+                    }, 5000)
+                  }
             }
         }
         // console.log(FormData)
@@ -558,7 +578,14 @@ const RiskFactors = ({user}) => {
                 }
                 // setSubmissionMessageVisibility("block")
             } catch (error) {
-                console.log(error)
+                if (error.response.status === 401){
+                    setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                    setSuccessMessageVisibility("block")
+                    setTimeout(() => {
+                      setSuccessMessageVisibility("none")
+                      LogOut()
+                    }, 5000)
+                  }
                 setErrorData({
                     status: error.response.status,
                     message: error.response.statusText,
@@ -595,7 +622,14 @@ const RiskFactors = ({user}) => {
                 const url = `${process.env.REACT_APP_BACKEND_URL}/${response.data['file']}`
                 window.open(url, '_blank').focus()
             } catch (error) {
-                console.log(error.response.data)
+                if (error.response.status === 401){
+                    setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                    setSuccessMessageVisibility("block")
+                    setTimeout(() => {
+                      setSuccessMessageVisibility("none")
+                      LogOut()
+                    }, 5000)
+                  }
                 if (error.response.data['status'] === 404) {
                     setSuccessMessage(error.response.data['message'])
                     setSuccessMessageVisibility("block")
@@ -608,8 +642,11 @@ const RiskFactors = ({user}) => {
         }
         
         useEffect(() => {
-            if (user){
-                LoadRFForm(advisorDetails['id'],state['formId'])
+            if (user){  
+                if (state['formId']){
+                    LoadRFForm(advisorDetails['id'],state['formId'])
+                }
+
             }
             // setInterval(updateIPForm, 20000);
         }, []);
@@ -9207,7 +9244,7 @@ const mapStateToProps = state => ({
     isAuthenticated: state.Auth.isAuthenticated,
     user: state.Auth.user,
   })
-export default connect(mapStateToProps)(RiskFactors)
+export default connect(mapStateToProps, {LogOut})(RiskFactors)
 
 
         

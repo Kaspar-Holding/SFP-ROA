@@ -9,7 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 // import './Header.css';
 import { Editor, tinyMCE } from '@tinymce/tinymce-react'
-const Risk = ({user}) =>
+import {LogOut} from '../../Actions/Auth'
+const Risk = ({user, LogOut}) =>
 {
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
     const [backgroundInfoVisibility2, setbackgroundInfoVisibility2] = useState(false)
@@ -312,7 +313,14 @@ const Risk = ({user}) =>
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
         }
       }
       const updateRPForm = async() => {
@@ -327,7 +335,7 @@ const Risk = ({user}) =>
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_risk_planning_data/`, Body ,config)
             // console.log(response.data['formData'])
-            setFormData(response.data['formData'])
+            setFormData(response.data['Data'])
             
             setSuccessMessage("Risk Planning data is successfully updated")
             setSuccessMessageVisibility("block")
@@ -336,7 +344,14 @@ const Risk = ({user}) =>
             }, 5000)
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
         }
         
         const ProductTaken_Body = JSON.stringify({
@@ -346,7 +361,14 @@ const Risk = ({user}) =>
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_rp_ProductTaken_Data/`, ProductTaken_Body ,config) 
         } catch (error) {
-            
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
         }
       }
       const onSubmit = e => {
@@ -375,7 +397,9 @@ const Risk = ({user}) =>
       const productInformationExplainedRef = useRef(null)
       const productNominationOfBeneficiariesRef = useRef(null)
       useEffect(() => {
-        createRPForm(FormData)
+        if (state['formId']){
+          createRPForm(FormData)
+        }
         // const interval = setInterval(() => {
         //     const formSubmitButton = document.querySelector(".updateRiskFormBTN")
         //     formSubmitButton.click()
@@ -1482,7 +1506,7 @@ const Risk = ({user}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Escalation in<br/>cover/premium</td>
                 <td>  
                   <div className="form-group">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="Product_Escalation" name='Product_Escalation' value={key.Product_Escalation}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="Product_Escalation" name='Product_Escalation' value={key.Product_Escalation}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                   </div>
                 </td> 
                   <td></td> 
@@ -1502,7 +1526,7 @@ const Risk = ({user}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Life/Lives<br/>covered</td>
                 <td>  
                   <div className="form-group">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="Product_LivesAssured" name='Product_LivesAssured' value={key.Product_LivesAssured}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="Product_LivesAssured" name='Product_LivesAssured' value={key.Product_LivesAssured}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                   </div>
                 </td> 
                   <td></td> 
@@ -1532,14 +1556,14 @@ const Risk = ({user}) =>
                   <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">1st year<br/>commission</td>
                   <td>  
                   <div className="form-group">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="Product_1stYearCommission" name='Product_1stYearCommission' value={key.Product_1stYearCommission}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="Product_1stYearCommission" name='Product_1stYearCommission' value={key.Product_1stYearCommission}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                   </div>
                 </td>  
                 <td></td>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">2nd year<br/>commission</td>
                 <td>  
                   <div className="form-group">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="Product_2ndYearCommission" name='Product_2ndYearCommission' value={key.Product_2ndYearCommission}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="Product_2ndYearCommission" name='Product_2ndYearCommission' value={key.Product_2ndYearCommission}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                   </div>
                 </td> 
                   <td></td> 
@@ -1550,7 +1574,7 @@ const Risk = ({user}) =>
                   <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Ongoing fees</td>
                   <td>  
                   <div className="form-group">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="Product_OngoingFees" name='Product_OngoingFees' value={key.Product_OngoingFees}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="Product_OngoingFees" name='Product_OngoingFees' value={key.Product_OngoingFees}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                   </div>
                 </td>  
                 <td></td>
@@ -1587,7 +1611,7 @@ const Risk = ({user}) =>
                 {/* <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Frequency</td> */}
                 <td>  
                   <div className="form-group">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="TotalFees_n_Commissions" name='TotalFees_n_Commissions' value={key.TotalFees_n_Commissions}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" id="TotalFees_n_Commissions" name='TotalFees_n_Commissions' value={key.TotalFees_n_Commissions}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                       
                   </div>
                 </td>
@@ -2110,7 +2134,7 @@ const mapStateToProps = state => ({
   user: state.Auth.user,
 })
 
-export default connect(mapStateToProps)(Risk)
+export default connect(mapStateToProps, {LogOut})(Risk)
 
 const HeaderStyle = {
    width: "100%",

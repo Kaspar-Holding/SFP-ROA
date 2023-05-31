@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { Editor } from '@tinymce/tinymce-react'
-const Employee = ({user}) =>
+import {LogOut} from '../../Actions/Auth'
+const Employee = ({user, LogOut}) =>
 {
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
     const [backgroundInfoVisibility2, setbackgroundInfoVisibility2] = useState(false)
@@ -326,7 +327,15 @@ const Employee = ({user}) =>
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error.response.data)
+            console.log(error)
+            if (error.response.status === 401){
+                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                setSuccessMessageVisibility("block")
+                setTimeout(() => {
+                  setSuccessMessageVisibility("none")
+                  LogOut()
+                }, 5000)
+              }
             setErrorData({
               status: error.response.status,
               message: error.response.statusText
@@ -349,7 +358,7 @@ const Employee = ({user}) =>
           try {
                 const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_employee_benefits_data/`, Body ,config)
                 // console.log(response.data['formData'])
-                setFormData(response.data['formData'])
+                // setFormData(response.data['formData'])
                     
                 setSuccessMessage("Employee Benefits data is successfully updated")
                 setSuccessMessageVisibility("block")
@@ -358,13 +367,19 @@ const Employee = ({user}) =>
                 }, 5000)
               // setSubmissionMessageVisibility("block")
           } catch (error) {
-              console.log(error)
-              
-              setUpdateErrorData({
-                status: error.response.status,
-                message: error.response.statusText
-              })
-              setUpdateErrorVisibility("block")
+                if (error.response.status === 401){
+                    setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                    setSuccessMessageVisibility("block")
+                    setTimeout(() => {
+                        setSuccessMessageVisibility("none")
+                        LogOut()
+                    }, 5000)
+                }
+                setUpdateErrorData({
+                    status: error.response.status,
+                    message: error.response.statusText
+                })
+                setUpdateErrorVisibility("block")
           }
             const CoverData_Body = JSON.stringify({
                 "eb_data" : CoverData,
@@ -374,7 +389,14 @@ const Employee = ({user}) =>
               const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_eb_coverData/`, CoverData_Body ,config) 
               setCoverData(response.data['formData'])
           } catch (error) {
-              
+            if (error.response.status === 401){
+                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                setSuccessMessageVisibility("block")
+                setTimeout(() => {
+                  setSuccessMessageVisibility("none")
+                  LogOut()
+                }, 5000)
+            }  
           }
       }
       const onSubmit = e => {
@@ -389,7 +411,9 @@ const Employee = ({user}) =>
       const CoverEditor = useRef(null)
       useEffect(() => {
         if(user){
-            createEBForm(FormData)
+            if (state['formId']){
+                createEBForm(FormData)
+            }
             // const interval = setInterval(() => {
             //     const EmpformSubmitButton = document.querySelector(".updateEmpFormBTN")
             //     EmpformSubmitButton.click()
@@ -3068,11 +3092,11 @@ Record the client's instructions, deviations and implications thereof.
 
         </>
     )
- }
+}
 
 const mapStateToProps = state => ({
     isAuthenticated: state.Auth.isAuthenticated,
     user: state.Auth.user,
 })
 
-export default connect(mapStateToProps)(Employee)
+export default connect(mapStateToProps, {LogOut})(Employee)

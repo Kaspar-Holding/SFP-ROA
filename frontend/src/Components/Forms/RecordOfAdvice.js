@@ -10,7 +10,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import Quill from "react-quill"
 import QuillEditor from "quill"
 import "react-quill/dist/quill.snow.css"
-
+import {LogOut} from '../../Actions/Auth'
 const modules = {
     toolbar: [
       [{ header: [1, 2, 3, 4, false] }],
@@ -58,7 +58,7 @@ export const ContentEditor = ({ content, onBlur }) => {
     );
   }
 
-const RecordOfAdvice = ({user}) => {
+const RecordOfAdvice = ({user, LogOut}) => {
     const location = useLocation();
     const { state } = location;    
     const Date_Var = new Date()
@@ -152,7 +152,14 @@ const RecordOfAdvice = ({user}) => {
             setFormData(response.data['formData'])
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+            if (error.response.status === 401){
+                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                setSuccessMessageVisibility("block")
+                setTimeout(() => {
+                  setSuccessMessageVisibility("none")
+                  LogOut()
+                }, 5000)
+              }
             setErrorData({
                 status: error.response.status,
                 message: error.response.statusText,
@@ -187,7 +194,14 @@ const RecordOfAdvice = ({user}) => {
             }, 5000)
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+            if (error.response.status === 401){
+                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                setSuccessMessageVisibility("block")
+                setTimeout(() => {
+                  setSuccessMessageVisibility("none")
+                  LogOut()
+                }, 5000)
+            }
             setErrorData({
                 status: error.response.status,
                 message: error.response.statusText,
@@ -261,7 +275,9 @@ const RecordOfAdvice = ({user}) => {
     const compulsoryBEditorRef = useRef(null);
     const FICAEditorRef = useRef(null);
     useEffect(() => {
-        createRecordOfAdviceForm(FormData)
+        if (state['formId']){
+            createRecordOfAdviceForm(FormData)
+        }
         // const interval = setInterval(() => {
         //     const formSubmitButton = document.querySelector(".updateFormBTN")
         //     formSubmitButton.click()
@@ -901,4 +917,4 @@ const mapStateToProps = state => ({
     user: state.Auth.user,
 })
 
-export default connect(mapStateToProps)(RecordOfAdvice)
+export default connect(mapStateToProps, {LogOut})(RecordOfAdvice)

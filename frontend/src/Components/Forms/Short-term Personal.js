@@ -8,8 +8,9 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { Editor } from '@tinymce/tinymce-react'
+import { LogOut } from '../../Actions/Auth'
+const Short_term_Personal = ({user, LogOut}) => {
 
-const Short_term_Personal = ({user}) => {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionReason, setletterOfIntroductionReason] = useState("")
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -899,7 +900,14 @@ const Short_term_Personal = ({user}) => {
             }, 5000)
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
         }
         
         const Loss_Data_Body = JSON.stringify({
@@ -909,7 +917,14 @@ const Short_term_Personal = ({user}) => {
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_stip_loss_Data/`, Loss_Data_Body ,config) 
         } catch (error) {
-            
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
         }
       }
       const onSubmit = e => {
@@ -963,7 +978,9 @@ const Short_term_Personal = ({user}) => {
 
       // console.log(FormData)
       useEffect(() => {
-        createSTIPForm(FormData)
+        if (state['formId']){
+          createSTIPForm(FormData)
+        }
         // const interval = setInterval(() => {
         //   const STIPFormSubmitButton = document.querySelector(".updateSTIPFormBTN")
         //   STIPFormSubmitButton.click()
@@ -6992,4 +7009,4 @@ const mapStateToProps = state => ({
   user: state.Auth.user,
 })
 
-export default connect(mapStateToProps)(Short_term_Personal)
+export default connect(mapStateToProps,{LogOut})(Short_term_Personal)

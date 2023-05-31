@@ -6,8 +6,8 @@ import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
 import { connect } from 'react-redux';
 import { Editor, tinyMCE } from '@tinymce/tinymce-react'
-
-const Medical = ({user}) => {
+import {LogOut} from '../../Actions/Auth'
+const Medical = ({user, LogOut}) => {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionReason, setletterOfIntroductionReason] = useState("")
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -183,7 +183,14 @@ const Medical = ({user}) => {
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
         }
       }
       const [SuccessMessage, setSuccessMessage] = useState("")
@@ -200,7 +207,7 @@ const Medical = ({user}) => {
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_medical_data/`, Body ,config)
             // console.log(response.data['formData'])
-            setFormData(response.data['formData'])
+            // setFormData(response.data['formData'])
             setSuccessMessage("Medical data is successfully updated")
             setSuccessMessageVisibility("block")
             setTimeout(() => {
@@ -208,7 +215,14 @@ const Medical = ({user}) => {
             }, 5000)
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
         }
       }
       const onSubmit = e => {
@@ -222,7 +236,11 @@ const Medical = ({user}) => {
       }
       // console.log(FormData)
       useEffect(() => {
-        createMedicalForm(FormData)
+        if (state['formId']){
+
+          createMedicalForm(FormData)
+        }
+
         // const interval = setInterval(() => {
         //     const MedicalFormSubmitButton = document.querySelector(".updateMedicalFormBTN")
         //     MedicalFormSubmitButton.click()
@@ -1450,4 +1468,4 @@ const mapStateToProps = state => ({
   user: state.Auth.user,
 })
 
-export default connect(mapStateToProps)(Medical)
+export default connect(mapStateToProps, {LogOut})(Medical)

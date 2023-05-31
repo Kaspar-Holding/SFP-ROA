@@ -7,8 +7,8 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { Editor, tinyMCE } from '@tinymce/tinymce-react'
-
-const AssuranceInvestment = ({user}) =>
+import {LogOut} from '../../Actions/Auth'
+const AssuranceInvestment = ({user, LogOut}) =>
 {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -530,6 +530,14 @@ const AssuranceInvestment = ({user}) =>
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
+            if (error.response.status === 401){
+                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                setSuccessMessageVisibility("block")
+                setTimeout(() => {
+                  setSuccessMessageVisibility("none")
+                  LogOut()
+                }, 5000)
+              }
             setErrorData({
               status: error.response.status,
               message: error.response.statusText
@@ -551,7 +559,7 @@ const AssuranceInvestment = ({user}) =>
           try {
               const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_assurance_investment_data/`, Body ,config)
               // console.log(response.data['formData'])
-              setFormData(response.data['formData'])
+            //   setFormData(response.data['formData'])
               setSuccessMessage("BA Investment data is successfully updated")
               setSuccessMessageVisibility("block")
               setTimeout(() => {
@@ -560,7 +568,14 @@ const AssuranceInvestment = ({user}) =>
               // setSubmissionMessageVisibility("block")
           } catch (error) {
               console.log(error)
-              
+              if (error.response.status === 401){
+                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                setSuccessMessageVisibility("block")
+                setTimeout(() => {
+                  setSuccessMessageVisibility("none")
+                  LogOut()
+                }, 5000)
+              }
               setUpdateErrorData({
                 status: error.response.status,
                 message: error.response.statusText
@@ -574,7 +589,14 @@ const AssuranceInvestment = ({user}) =>
           try {
               const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_ai_ProductTaken_Data/`, ProductTaken_Body ,config) 
           } catch (error) {
-              
+            if (error.response.status === 401){
+                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                setSuccessMessageVisibility("block")
+                setTimeout(() => {
+                  setSuccessMessageVisibility("none")
+                  LogOut()
+                }, 5000)
+              }
           }
       }
       const onSubmit = e => {
@@ -587,7 +609,9 @@ const AssuranceInvestment = ({user}) =>
           // window.location.reload();
       }
       useEffect(() => {
-        createAIForm(FormData)
+        if (state['formId']){
+            createAIForm(FormData)
+        }
         // const interval = setInterval(() => {
         //     const baInvestformSubmitButton = document.querySelector(".updateBAInvestFormBTN")
         //     baInvestformSubmitButton.click()
@@ -2536,4 +2560,4 @@ const mapStateToProps = state => ({
   user: state.Auth.user,
 })
 
-export default connect(mapStateToProps)(AssuranceInvestment)
+export default connect(mapStateToProps, {LogOut})(AssuranceInvestment)

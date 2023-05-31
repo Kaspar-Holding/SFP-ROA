@@ -8,8 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import { Editor } from '@tinymce/tinymce-react'
+import {LogOut} from '../../Actions/Auth'
 
-const Short_term_Commercial= ({user}) => {
+const Short_term_Commercial= ({user, LogOut}) => {
  {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -124,6 +125,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount1 : "",
         STIC_ProdComp_ExistP_Premium1 : "",
         STIC_ProdComp_ExistP_Excess1 : "",
+        STIC_ProdComp_ExistP_Cover1 : "",
         STIC_ProdComp_RecommP_Premium1 : "",
         STIC_ProdComp_RecommP_Excess1 : "",
 
@@ -132,6 +134,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount2 : "",
         STIC_ProdComp_ExistP_Premium2 : "",
         STIC_ProdComp_ExistP_Excess2 : "",
+        STIC_ProdComp_ExistP_Cover2 : "",
         STIC_ProdComp_RecommP_Premium2 : "",
         STIC_ProdComp_RecommP_Excess2 : "",
 
@@ -140,14 +143,25 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount3 : "",
         STIC_ProdComp_ExistP_Premium3 : "",
         STIC_ProdComp_ExistP_Excess3 : "",
+        STIC_ProdComp_ExistP_Cover3 : "",
         STIC_ProdComp_RecommP_Premium3 : "",
         STIC_ProdComp_RecommP_Excess3 : "",
+
+        STIC_ProdComp_Recommended4 : 0,
+        STIC_ProdComp_Accepted4 : 0,
+        STIC_ProdComp_CoverAmount4 : "",
+        STIC_ProdComp_ExistP_Premium4 : "",
+        STIC_ProdComp_ExistP_Excess4 : "",
+        STIC_ProdComp_ExistP_Cover4 : "",
+        STIC_ProdComp_RecommP_Premium4 : "",
+        STIC_ProdComp_RecommP_Excess4 : "",
 
         STIC_ProdComp_Recommended5 : 0,
         STIC_ProdComp_Accepted5 : 0,
         STIC_ProdComp_CoverAmount5 : "",
         STIC_ProdComp_ExistP_Premium5 : "",
         STIC_ProdComp_ExistP_Excess5 : "",
+        STIC_ProdComp_ExistP_Cover5 : "",
         STIC_ProdComp_RecommP_Premium5 : "",
         STIC_ProdComp_RecommP_Excess5 : "",
 
@@ -156,6 +170,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount6 : "",
         STIC_ProdComp_ExistP_Premium6 : "",
         STIC_ProdComp_ExistP_Excess6 : "",
+        STIC_ProdComp_ExistP_Cover6 : "",
         STIC_ProdComp_RecommP_Premium6 : "",
         STIC_ProdComp_RecommP_Excess6 : "",
 
@@ -164,6 +179,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount7 : "",
         STIC_ProdComp_ExistP_Premium7 : "",
         STIC_ProdComp_ExistP_Excess7 : "",
+        STIC_ProdComp_ExistP_Cover7 : "",
         STIC_ProdComp_RecommP_Premium7 : "",
         STIC_ProdComp_RecommP_Excess7 : "",
 
@@ -172,6 +188,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount8 : "",
         STIC_ProdComp_ExistP_Premium8 : "",
         STIC_ProdComp_ExistP_Excess8 : "",
+        STIC_ProdComp_ExistP_Cover8 : "",
         STIC_ProdComp_RecommP_Premium8 : "",
         STIC_ProdComp_RecommP_Excess8 : "",
 
@@ -180,6 +197,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount9 : "",
         STIC_ProdComp_ExistP_Premium9 : "",
         STIC_ProdComp_ExistP_Excess9 : "",
+        STIC_ProdComp_ExistP_Cover9 : "",
         STIC_ProdComp_RecommP_Premium9 : "",
         STIC_ProdComp_RecommP_Excess9 : "",
 
@@ -188,6 +206,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount10 : "",
         STIC_ProdComp_ExistP_Premium10 : "",
         STIC_ProdComp_ExistP_Excess10 : "",
+        STIC_ProdComp_ExistP_Cover10 : "",
         STIC_ProdComp_RecommP_Premium10 : "",
         STIC_ProdComp_RecommP_Excess10 : "",
 
@@ -196,6 +215,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount11 : "",
         STIC_ProdComp_ExistP_Premium11 : "",
         STIC_ProdComp_ExistP_Excess11 : "",
+        STIC_ProdComp_ExistP_Cover11 : "",
         STIC_ProdComp_RecommP_Premium11 : "",
         STIC_ProdComp_RecommP_Excess11 : "",
 
@@ -204,6 +224,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount12 : "",
         STIC_ProdComp_ExistP_Premium12 : "",
         STIC_ProdComp_ExistP_Excess12 : "",
+        STIC_ProdComp_ExistP_Cover12 : "",
         STIC_ProdComp_RecommP_Premium12 : "",
         STIC_ProdComp_RecommP_Excess12 : "",
 
@@ -212,6 +233,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount13 : "",
         STIC_ProdComp_ExistP_Premium13 : "",
         STIC_ProdComp_ExistP_Excess13 : "",
+        STIC_ProdComp_ExistP_Cover13 : "",
         STIC_ProdComp_RecommP_Premium13 : "",
         STIC_ProdComp_RecommP_Excess13 : "",
 
@@ -220,6 +242,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount14 : "",
         STIC_ProdComp_ExistP_Premium14 : "",
         STIC_ProdComp_ExistP_Excess14 : "",
+        STIC_ProdComp_ExistP_Cover14 : "",
         STIC_ProdComp_RecommP_Premium14 : "",
         STIC_ProdComp_RecommP_Excess14 : "",
 
@@ -228,6 +251,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount15 : "",
         STIC_ProdComp_ExistP_Premium15 : "",
         STIC_ProdComp_ExistP_Excess15 : "",
+        STIC_ProdComp_ExistP_Cover15 : "",
         STIC_ProdComp_RecommP_Premium15 : "",
         STIC_ProdComp_RecommP_Excess15 : "",
 
@@ -236,6 +260,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount16 : "",
         STIC_ProdComp_ExistP_Premium16 : "",
         STIC_ProdComp_ExistP_Excess16 : "",
+        STIC_ProdComp_ExistP_Cover16 : "",
         STIC_ProdComp_RecommP_Premium16 : "",
         STIC_ProdComp_RecommP_Excess16 : "",
 
@@ -244,6 +269,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount17 : "",
         STIC_ProdComp_ExistP_Premium17 : "",
         STIC_ProdComp_ExistP_Excess17 : "",
+        STIC_ProdComp_ExistP_Cover17 : "",
         STIC_ProdComp_RecommP_Premium17 : "",
         STIC_ProdComp_RecommP_Excess17 : "",
 
@@ -252,6 +278,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount18 : "",
         STIC_ProdComp_ExistP_Premium18 : "",
         STIC_ProdComp_ExistP_Excess18 : "",
+        STIC_ProdComp_ExistP_Cover18 : "",
         STIC_ProdComp_RecommP_Premium18 : "",
         STIC_ProdComp_RecommP_Excess18 : "",
 
@@ -260,6 +287,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount19 : "",
         STIC_ProdComp_ExistP_Premium19 : "",
         STIC_ProdComp_ExistP_Excess19 : "",
+        STIC_ProdComp_ExistP_Cover19 : "",
         STIC_ProdComp_RecommP_Premium19 : "",
         STIC_ProdComp_RecommP_Excess19 : "",
 
@@ -268,6 +296,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount20 : "",
         STIC_ProdComp_ExistP_Premium20 : "",
         STIC_ProdComp_ExistP_Excess20 : "",
+        STIC_ProdComp_ExistP_Cover20 : "",
         STIC_ProdComp_RecommP_Premium20 : "",
         STIC_ProdComp_RecommP_Excess20 : "",
 
@@ -276,6 +305,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount21 : "",
         STIC_ProdComp_ExistP_Premium21 : "",
         STIC_ProdComp_ExistP_Excess21 : "",
+        STIC_ProdComp_ExistP_Cover21 : "",
         STIC_ProdComp_RecommP_Premium21 : "",
         STIC_ProdComp_RecommP_Excess21 : "",
 
@@ -284,6 +314,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount22 : "",
         STIC_ProdComp_ExistP_Premium22 : "",
         STIC_ProdComp_ExistP_Excess22 : "",
+        STIC_ProdComp_ExistP_Cover22 : "",
         STIC_ProdComp_RecommP_Premium22 : "",
         STIC_ProdComp_RecommP_Excess22 : "",
 
@@ -292,6 +323,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount23 : "",
         STIC_ProdComp_ExistP_Premium23 : "",
         STIC_ProdComp_ExistP_Excess23 : "",
+        STIC_ProdComp_ExistP_Cover23 : "",
         STIC_ProdComp_RecommP_Premium23 : "",
         STIC_ProdComp_RecommP_Excess23 : "",
 
@@ -300,6 +332,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount24 : "",
         STIC_ProdComp_ExistP_Premium24 : "",
         STIC_ProdComp_ExistP_Excess24 : "",
+        STIC_ProdComp_ExistP_Cover24 : "",
         STIC_ProdComp_RecommP_Premium24 : "",
         STIC_ProdComp_RecommP_Excess24 : "",
 
@@ -308,6 +341,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount25 : "",
         STIC_ProdComp_ExistP_Premium25 : "",
         STIC_ProdComp_ExistP_Excess25 : "",
+        STIC_ProdComp_ExistP_Cover25 : "",
         STIC_ProdComp_RecommP_Premium25 : "",
         STIC_ProdComp_RecommP_Excess25 : "",
 
@@ -316,6 +350,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount26 : "",
         STIC_ProdComp_ExistP_Premium26 : "",
         STIC_ProdComp_ExistP_Excess26 : "",
+        STIC_ProdComp_ExistP_Cover26 : "",
         STIC_ProdComp_RecommP_Premium26 : "",
         STIC_ProdComp_RecommP_Excess26 : "",
 
@@ -324,6 +359,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount27 : "",
         STIC_ProdComp_ExistP_Premium27 : "",
         STIC_ProdComp_ExistP_Excess27 : "",
+        STIC_ProdComp_ExistP_Cover27 : "",
         STIC_ProdComp_RecommP_Premium27 : "",
         STIC_ProdComp_RecommP_Excess27 : "",
 
@@ -332,6 +368,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount28 : "",
         STIC_ProdComp_ExistP_Premium28 : "",
         STIC_ProdComp_ExistP_Excess28 : "",
+        STIC_ProdComp_ExistP_Cover28 : "",
         STIC_ProdComp_RecommP_Premium28 : "",
         STIC_ProdComp_RecommP_Excess28 : "",
 
@@ -340,6 +377,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount29 : "",
         STIC_ProdComp_ExistP_Premium29 : "",
         STIC_ProdComp_ExistP_Excess29 : "",
+        STIC_ProdComp_ExistP_Cover29 : "",
         STIC_ProdComp_RecommP_Premium29 : "",
         STIC_ProdComp_RecommP_Excess29 : "",
 
@@ -348,6 +386,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount30 : "",
         STIC_ProdComp_ExistP_Premium30 : "",
         STIC_ProdComp_ExistP_Excess30 : "",
+        STIC_ProdComp_ExistP_Cover30 : "",
         STIC_ProdComp_RecommP_Premium30 : "",
         STIC_ProdComp_RecommP_Excess30 : "",
 
@@ -356,6 +395,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount31 : "",
         STIC_ProdComp_ExistP_Premium31 : "",
         STIC_ProdComp_ExistP_Excess31 : "",
+        STIC_ProdComp_ExistP_Cover31 : "",
         STIC_ProdComp_RecommP_Premium31 : "",
         STIC_ProdComp_RecommP_Excess31 : "",
 
@@ -364,6 +404,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount32 : "",
         STIC_ProdComp_ExistP_Premium32 : "",
         STIC_ProdComp_ExistP_Excess32 : "",
+        STIC_ProdComp_ExistP_Cover32 : "",
         STIC_ProdComp_RecommP_Premium32 : "",
         STIC_ProdComp_RecommP_Excess32 : "",
 
@@ -372,6 +413,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount33 : "",
         STIC_ProdComp_ExistP_Premium33 : "",
         STIC_ProdComp_ExistP_Excess33 : "",
+        STIC_ProdComp_ExistP_Cover33 : "",
         STIC_ProdComp_RecommP_Premium33 : "",
         STIC_ProdComp_RecommP_Excess33 : "",
 
@@ -380,6 +422,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount34 : "",
         STIC_ProdComp_ExistP_Premium34 : "",
         STIC_ProdComp_ExistP_Excess34 : "",
+        STIC_ProdComp_ExistP_Cover34 : "",
         STIC_ProdComp_RecommP_Premium34 : "",
         STIC_ProdComp_RecommP_Excess34 : "",
 
@@ -388,6 +431,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount35 : "",
         STIC_ProdComp_ExistP_Premium35 : "",
         STIC_ProdComp_ExistP_Excess35 : "",
+        STIC_ProdComp_ExistP_Cover35 : "",
         STIC_ProdComp_RecommP_Premium35 : "",
         STIC_ProdComp_RecommP_Excess35 : "",
 
@@ -396,6 +440,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount36 : "",
         STIC_ProdComp_ExistP_Premium36 : "",
         STIC_ProdComp_ExistP_Excess36 : "",
+        STIC_ProdComp_ExistP_Cover36 : "",
         STIC_ProdComp_RecommP_Premium36 : "",
         STIC_ProdComp_RecommP_Excess36 : "",
 
@@ -404,6 +449,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount37 : "",
         STIC_ProdComp_ExistP_Premium37 : "",
         STIC_ProdComp_ExistP_Excess37 : "",
+        STIC_ProdComp_ExistP_Cover37 : "",
         STIC_ProdComp_RecommP_Premium37 : "",
         STIC_ProdComp_RecommP_Excess37 : "",
 
@@ -412,6 +458,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount38 : "",
         STIC_ProdComp_ExistP_Premium38 : "",
         STIC_ProdComp_ExistP_Excess38 : "",
+        STIC_ProdComp_ExistP_Cover38 : "",
         STIC_ProdComp_RecommP_Premium38 : "",
         STIC_ProdComp_RecommP_Excess38 : "",
 
@@ -420,6 +467,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount39 : "",
         STIC_ProdComp_ExistP_Premium39 : "",
         STIC_ProdComp_ExistP_Excess39 : "",
+        STIC_ProdComp_ExistP_Cover39 : "",
         STIC_ProdComp_RecommP_Premium39 : "",
         STIC_ProdComp_RecommP_Excess39 : "",
 
@@ -428,6 +476,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount40 : "",
         STIC_ProdComp_ExistP_Premium40 : "",
         STIC_ProdComp_ExistP_Excess40 : "",
+        STIC_ProdComp_ExistP_Cover40 : "",
         STIC_ProdComp_RecommP_Premium40 : "",
         STIC_ProdComp_RecommP_Excess40 : "",
 
@@ -436,6 +485,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount41 : "",
         STIC_ProdComp_ExistP_Premium41 : "",
         STIC_ProdComp_ExistP_Excess41 : "",
+        STIC_ProdComp_ExistP_Cover41 : "",
         STIC_ProdComp_RecommP_Premium41 : "",
         STIC_ProdComp_RecommP_Excess41 : "",
 
@@ -444,6 +494,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount42 : "",
         STIC_ProdComp_ExistP_Premium42 : "",
         STIC_ProdComp_ExistP_Excess42 : "",
+        STIC_ProdComp_ExistP_Cover42 : "",
         STIC_ProdComp_RecommP_Premium42 : "",
         STIC_ProdComp_RecommP_Excess42 : "",
 
@@ -452,6 +503,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount43 : "",
         STIC_ProdComp_ExistP_Premium43 : "",
         STIC_ProdComp_ExistP_Excess43 : "",
+        STIC_ProdComp_ExistP_Cover43 : "",
         STIC_ProdComp_RecommP_Premium43 : "",
         STIC_ProdComp_RecommP_Excess43 : "",
 
@@ -461,6 +513,7 @@ const Short_term_Commercial= ({user}) => {
         STIC_ProdComp_CoverAmount44 : "",
         STIC_ProdComp_ExistP_Premium44 : "",
         STIC_ProdComp_ExistP_Excess44 : "",
+        STIC_ProdComp_ExistP_Cover44 : "",
         STIC_ProdComp_RecommP_Premium44 : "",
         STIC_ProdComp_RecommP_Excess44 : "",
 
@@ -1127,12 +1180,20 @@ const Short_term_Commercial= ({user}) => {
                 setFormData(response.data['formData'])
             } else {
                 setFormData(response.data['formData'])
-                console.log(response.data)
                 setLossType(response.data['Loss_Data'])
+                setSection_1(response.data['Sec_1_Data'])
+                setSection_2(response.data['Sec_2_Data'])
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
         }
       }
       const [SuccessMessage, setSuccessMessage] = useState("")
@@ -1157,7 +1218,14 @@ const Short_term_Commercial= ({user}) => {
             }, 5000)
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
         }
         
         const Loss_Data_Body = JSON.stringify({
@@ -1165,9 +1233,32 @@ const Short_term_Commercial= ({user}) => {
           "loss_data" : LossType
         })
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_stic_loss_Data/`, Loss_Data_Body ,config) 
+          await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_stic_loss_Data/`, Loss_Data_Body ,config) 
         } catch (error) {
-            
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
+        }
+        const Sec_1_Body = JSON.stringify({
+          "formId" : state['formId'],
+          "sec_1_data" : Section_1
+        })
+        try {
+          await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_stic_sec_1_Data/`, Sec_1_Body ,config) 
+        } catch (error) {
+        }
+        const Sec_2_Body = JSON.stringify({
+          "formId" : state['formId'],
+          "sec_2_data" : Section_2
+        })
+        try {
+          await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_stic_sec_2_Data/`, Sec_2_Body ,config) 
+        } catch (error) {
         }
       }
       const onSubmit = e => {
@@ -1236,15 +1327,15 @@ const Short_term_Commercial= ({user}) => {
           Stocks_Insured : "",
           Miscellaneous1_Insured : "",  
           Miscellaneous2_Insured : "",
-          Earthquake_Insured : "",
-          Malicious_Damage_Insured : "",
-          Special_Insured : "",  
-          LeakFull_Insured : "",
-          LeakFirst_Insured : "",
-          SnLLimited_Insured : "",
-          SnLComprehensive_Insured : "",  
-          RnS_Insured : "",
-          SDC_Insured : "",
+          Earthquake_Insured : 2,
+          Malicious_Damage_Insured : 2,
+          Special_Insured : 2,  
+          LeakFull_Insured : 2,
+          LeakFirst_Insured : 2,
+          SnLLimited_Insured : 2,
+          SnLComprehensive_Insured : 2,  
+          RnS_Insured : 2,
+          SDC_Insured : 2,
           Fire_AddComments : "",
         })
         setSection_1(current)
@@ -1258,13 +1349,7 @@ const Short_term_Commercial= ({user}) => {
           let newSection_1 = [...Section_1]
           newSection_1[i][e.target.name] = e.target.value
           setSection_1(newSection_1)
-      }
-      // const on_Section_1_Value_Change = (i, name, value) => {
-      //     let newSection_1 = [...Section_1]
-      //     newSection_1[i][name] = value
-      //     setSection_1(newSection_1)
-      // }
-      
+      }      
       const on_Section_1_Value_Change = (name, i, val) => {
         let newSection_1 = [...Section_1]
         newSection_1[i][""+name+""] = val
@@ -1272,10 +1357,101 @@ const Short_term_Commercial= ({user}) => {
       }
       // End Section 1 Fire
 
+      // Section 2
+      const [Section_2, setSection_2] = useState([])
+      const AddNewSection_2 = (e) => {
+        const current = [...Section_2]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          BuildCombined_AddComments : "",
+          BuildCombined_ItemNumber : "",
+          BuildCombined_Premium : "",
+          BuildCombined_PremNumber : "",
+          BuildCombined_ColumnRef : "",
+          BuildCombined_Sum : "",
+          BuildCombined_Construct : 2,
+          BuildCombined_Desc : "",
+          Extensions_RnS : 2,
+          Extensions_Geysers : 2,
+          Extensions_SnL : 2,
+          Extensions_PoA : 2,
+          Extensions_IorE : 2,
+        })
+        setSection_2(current)
+      }
+      const RemoveNewSection_2 = (e) => {
+          const current = [...Section_2]
+          current.pop()
+          setSection_2(current)
+      }
+      const on_Section_2_Change = (e, i) => {
+          let newSection_2 = [...Section_2]
+          newSection_2[i][e.target.name] = e.target.value
+          setSection_2(newSection_2)
+      }      
+      const on_Section_2_Value_Change = (name, i, val) => {
+        let newSection_2 = [...Section_2]
+        newSection_2[i][""+name+""] = val
+        setSection_2(newSection_2)
+      }
+      // End Section 2
+
+      // Section 3
+      const [Section_3, setSection_3] = useState([])
+      const AddNewSection_3 = (e) => {
+        const current = [...Section_3]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          OC_AddComments : "", 
+          OC_ItemNumber : "",
+          OC_Premium : "",
+          OC_PremNumber : "",
+          OC_PremisesNum : "",
+          OC_Sum : "",
+          OC_Construct : 2,
+          OC_Desc : "",
+          OC_Doc_Sum : "",
+          OC_Doc_Premium : "",
+          OC_LLDoc_Sum : "",
+          OC_LLDoc_Premium : "",
+          OC_RnS_Sum : "",
+          OC_RnS_Premium : "",
+          OC_TheftF_Sum : "",
+          OC_TheftF_Premium : "",
+          OC_Theft_Sum : "",
+          OC_Theft_Premium : "",
+          OC_Total_Premium : "",
+
+        })
+        setSection_3(current)
+      }
+      const RemoveNewSection_3 = (e) => {
+          const current = [...Section_3]
+          current.pop()
+          setSection_3(current)
+      }
+      const on_Section_3_Change = (e, i) => {
+          let newSection_3 = [...Section_3]
+          newSection_3[i][e.target.name] = e.target.value
+          setSection_3(newSection_3)
+      }      
+      const on_Section_3_Value_Change = (name, i, val) => {
+        let newSection_3 = [...Section_3]
+        newSection_3[i][""+name+""] = val
+        setSection_3(newSection_3)
+      }
+      // End Section 3
+
       // console.log(JSON.stringify(FormData))
       // console.log(JSON.stringify(localStorage.getItem('access')))
       useEffect(() => {
-        createSTICForm(FormData)
+        if (state['formId']){
+          createSTICForm(FormData)
+        }
         // const interval = setInterval(() => {
         //     const STICFormSubmitButton = document.querySelector(".updateSTICFormBTN")
         //     STICFormSubmitButton.click()
@@ -2270,8 +2446,8 @@ const Short_term_Commercial= ({user}) => {
                                       </tr> */}
                                       <tr className="d-flex">
               
-                                          <td className="col-6" style={{width:"590px"}}></td>
-                                          <td className="col-3" align="center" style={{width:"260px"}}>
+                                          <td className="col-6" style={{width:"490px"}}></td>
+                                          <td className="col-3" align="center" style={{width:"390px"}}>
                                             <b>Existing Product</b>
                                             <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_ProdComp_Existing_Company" onChange={(e) => {onChange(e)}} value={FormData['STIC_ProdComp_Existing_Company']}  name="STIC_ProdComp_Existing_Company"  className="form-control" placeholder="Company"  aria-describedby="" />
                                             
@@ -2285,8 +2461,8 @@ const Short_term_Commercial= ({user}) => {
                                       </tr>
                                       <tr className="d-flex">
                                           
-                                          <td className="col-6" style={{width:"590px"}}></td>
-                                          <td className="col-2" align="center" style={{width:"260px"}}>
+                                          <td className="col-6" style={{width:"490px"}}></td>
+                                          <td className="col-2" align="center" style={{width:"390px"}}>
                                             <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_ProdComp_Existing_Provider" onChange={(e) => {onChange(e)}} value={FormData['STIC_ProdComp_Existing_Provider']}  name="STIC_ProdComp_Existing_Provider"  className="form-control" placeholder="Provider"  aria-describedby="" />
                                             
                                           </td>
@@ -2298,8 +2474,8 @@ const Short_term_Commercial= ({user}) => {
                                       </tr>
                                       <tr className="d-flex">
                                           
-                                          <td className="col-6" style={{width:"590px"}}></td>
-                                          <td className="col-2" align="center" style={{width:"260px"}}>
+                                          <td className="col-6" style={{width:"490px"}}></td>
+                                          <td className="col-2" align="center" style={{width:"390px"}}>
                                             <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIC_ProdComp_Existing_Product" onChange={(e) => {onChange(e)}} value={FormData['STIC_ProdComp_Existing_Product']}  name="STIC_ProdComp_Existing_Product"  className="form-control" placeholder="Product"  aria-describedby="" />
                                             
                                           </td>
@@ -2313,12 +2489,13 @@ const Short_term_Commercial= ({user}) => {
                                   
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}><b>Cover</b></td>
-                                          <td class="col-2" style={{width:"130px"}}><b>Recommended</b></td>
-                                          <td class="col-2" style={{width:"130px"}}><b>Accepted</b></td>
-                                          <td class="col-2" style={{width:"130px"}}><b>Cover amount</b></td>
+                                          <td class="col-2" style={{width:"170px"}}><b>Cover</b></td>
+                                          <td class="col-2" style={{width:"100px"}}><b>Recommended</b></td>
+                                          <td class="col-2" style={{width:"90px"}}><b>Accepted</b></td>
+                                          <td class="col-2" style={{width:"130px"}}><b>Cover</b></td>
                                           <td class="col-2" style={{width:"130px"}}><b>Premium</b></td>
                                           <td class="col-2" style={{width:"130px"}}><b>Excess</b></td>
+                                          <td class="col-2" style={{width:"130px"}}><b>Cover</b></td>
                                           <td class="col-2" style={{width:"130px"}}><b>Premium</b></td>
                                           <td class="col-2" style={{width:"130px"}}><b>Excess</b></td>
                                         
@@ -2326,12 +2503,12 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Fire</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Fire</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended1"] === 1 ? true : false} name="STIC_ProdComp_Recommended1" onChange={(e)=>{FormData["STIC_ProdComp_Recommended1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted1"] === 1 ? true : false} name="STIC_ProdComp_Accepted1" onChange={(e)=>{FormData["STIC_ProdComp_Accepted1"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
@@ -2359,10 +2536,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium1" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium1"]}  name="STIC_ProdComp_RecommP_Premium1"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover1" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover1"]}  name="STIC_ProdComp_ExistP_Cover1"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium1" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium1"]}  name="STIC_ProdComp_RecommP_Premium1"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2375,19 +2558,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Buildings combined</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Buildings combined</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended2"] === 1 ? true : false} name="STIC_ProdComp_Recommended2" onChange={(e)=>{FormData["STIC_ProdComp_Recommended2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted2"] === 1 ? true : false} name="STIC_ProdComp_Accepted2" onChange={(e)=>{FormData["STIC_ProdComp_Accepted2"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount2" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount2"]}  name="STIC_ProdComp_CoverAmount2"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount2" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount2"]}  name="STIC_ProdComp_CoverAmount2"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2408,10 +2591,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium2" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium2"]}  name="STIC_ProdComp_RecommP_Premium2"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover2" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover2"]}  name="STIC_ProdComp_ExistP_Cover2"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium2" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium2"]}  name="STIC_ProdComp_RecommP_Premium2"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2424,19 +2613,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Office contents</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Office contents</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended3"] === 1 ? true : false} name="STIC_ProdComp_Recommended3" onChange={(e)=>{FormData["STIC_ProdComp_Recommended3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted3"] === 1 ? true : false} name="STIC_ProdComp_Accepted3" onChange={(e)=>{FormData["STIC_ProdComp_Accepted3"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount3" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount3"]}  name="STIC_ProdComp_CoverAmount3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount3" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount3"]}  name="STIC_ProdComp_CoverAmount3"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2457,10 +2646,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium3" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium3"]}  name="STIC_ProdComp_RecommP_Premium3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover3" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover3"]}  name="STIC_ProdComp_ExistP_Cover3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium3" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium3"]}  name="STIC_ProdComp_RecommP_Premium3"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2473,19 +2668,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Business Interruption</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Business Interruption</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended4"] === 1 ? true : false} name="STIC_ProdComp_Recommended4" onChange={(e)=>{FormData["STIC_ProdComp_Recommended4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted4"] === 1 ? true : false} name="STIC_ProdComp_Accepted4" onChange={(e)=>{FormData["STIC_ProdComp_Accepted4"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount4" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount4"]}  name="STIC_ProdComp_CoverAmount4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount4" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount4"]}  name="STIC_ProdComp_CoverAmount4"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2506,10 +2701,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium4" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium4"]}  name="STIC_ProdComp_RecommP_Premium4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover4" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover4"]}  name="STIC_ProdComp_ExistP_Cover4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium4" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium4"]}  name="STIC_ProdComp_RecommP_Premium4"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2522,19 +2723,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Machinery Breakdown</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Machinery Breakdown</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended5"] === 1 ? true : false} name="STIC_ProdComp_Recommended5" onChange={(e)=>{FormData["STIC_ProdComp_Recommended5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted5"] === 1 ? true : false} name="STIC_ProdComp_Accepted5" onChange={(e)=>{FormData["STIC_ProdComp_Accepted5"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount5" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount5"]}  name="STIC_ProdComp_CoverAmount5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount5" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount5"]}  name="STIC_ProdComp_CoverAmount5"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2555,10 +2756,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium5" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium5"]}  name="STIC_ProdComp_RecommP_Premium5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover5" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover5"]}  name="STIC_ProdComp_ExistP_Cover5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium5" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium5"]}  name="STIC_ProdComp_RecommP_Premium5"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2571,19 +2778,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Machinery breakdown:<br/>loss of profits</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Machinery breakdown:<br/>loss of profits</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended6"] === 1 ? true : false} name="STIC_ProdComp_Recommended6" onChange={(e)=>{FormData["STIC_ProdComp_Recommended6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted6"] === 1 ? true : false} name="STIC_ProdComp_Accepted6" onChange={(e)=>{FormData["STIC_ProdComp_Accepted6"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount6" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount6"]}  name="STIC_ProdComp_CoverAmount6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount6" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount6"]}  name="STIC_ProdComp_CoverAmount6"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2604,10 +2811,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium6" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium6"]}  name="STIC_ProdComp_RecommP_Premium6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover6" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover6"]}  name="STIC_ProdComp_ExistP_Cover6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium6" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium6"]}  name="STIC_ProdComp_RecommP_Premium6"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2620,19 +2833,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Deterioration of stock</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp; Deterioration of stock</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended7"] === 1 ? true : false} name="STIC_ProdComp_Recommended7" onChange={(e)=>{FormData["STIC_ProdComp_Recommended7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted7"] === 1 ? true : false} name="STIC_ProdComp_Accepted7" onChange={(e)=>{FormData["STIC_ProdComp_Accepted7"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount7" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount7"]}  name="STIC_ProdComp_CoverAmount7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount7" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount7"]}  name="STIC_ProdComp_CoverAmount7"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2653,10 +2866,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium7" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium7"]}  name="STIC_ProdComp_RecommP_Premium7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover7" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover7"]}  name="STIC_ProdComp_ExistP_Cover7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium7" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium7"]}  name="STIC_ProdComp_RecommP_Premium7"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2669,19 +2888,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Accounts receiveable</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Accounts receiveable</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended8"] === 1 ? true : false} name="STIC_ProdComp_Recommended8" onChange={(e)=>{FormData["STIC_ProdComp_Recommended8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted8"] === 1 ? true : false} name="STIC_ProdComp_Accepted8" onChange={(e)=>{FormData["STIC_ProdComp_Accepted8"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount8" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount8"]}  name="STIC_ProdComp_CoverAmount8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount8" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount8"]}  name="STIC_ProdComp_CoverAmount8"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2702,10 +2921,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium8" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium8"]}  name="STIC_ProdComp_RecommP_Premium8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover8" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover8"]}  name="STIC_ProdComp_ExistP_Cover8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium8" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium8"]}  name="STIC_ProdComp_RecommP_Premium8"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2718,19 +2943,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Theft</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Theft</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended9"] === 1 ? true : false} name="STIC_ProdComp_Recommended9" onChange={(e)=>{FormData["STIC_ProdComp_Recommended9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted9"] === 1 ? true : false} name="STIC_ProdComp_Accepted9" onChange={(e)=>{FormData["STIC_ProdComp_Accepted9"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount9" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount9"]}  name="STIC_ProdComp_CoverAmount9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount9" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount9"]}  name="STIC_ProdComp_CoverAmount9"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2751,10 +2976,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium9" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium9"]}  name="STIC_ProdComp_RecommP_Premium9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover9" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover9"]}  name="STIC_ProdComp_ExistP_Cover9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium9" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium9"]}  name="STIC_ProdComp_RecommP_Premium9"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2767,19 +2998,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Money</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Money</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended10"] === 1 ? true : false} name="STIC_ProdComp_Recommended10" onChange={(e)=>{FormData["STIC_ProdComp_Recommended10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted10"] === 1 ? true : false} name="STIC_ProdComp_Accepted10" onChange={(e)=>{FormData["STIC_ProdComp_Accepted10"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount10" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount10"]}  name="STIC_ProdComp_CoverAmount10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount10" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount10"]}  name="STIC_ProdComp_CoverAmount10"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2800,10 +3031,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium10" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium10"]}  name="STIC_ProdComp_RecommP_Premium10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover10" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover10"]}  name="STIC_ProdComp_ExistP_Cover10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium10" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium10"]}  name="STIC_ProdComp_RecommP_Premium10"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2816,19 +3053,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Glass</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Glass</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended11"] === 1 ? true : false} name="STIC_ProdComp_Recommended11" onChange={(e)=>{FormData["STIC_ProdComp_Recommended11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted11"] === 1 ? true : false} name="STIC_ProdComp_Accepted11" onChange={(e)=>{FormData["STIC_ProdComp_Accepted11"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount11" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount11"]}  name="STIC_ProdComp_CoverAmount11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount11" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount11"]}  name="STIC_ProdComp_CoverAmount11"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2849,10 +3086,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium11" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium11"]}  name="STIC_ProdComp_RecommP_Premium11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover11" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover11"]}  name="STIC_ProdComp_ExistP_Cover11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium11" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium11"]}  name="STIC_ProdComp_RecommP_Premium11"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2865,19 +3108,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Fidelity gurantee</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Fidelity gurantee</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended12"] === 1 ? true : false} name="STIC_ProdComp_Recommended12" onChange={(e)=>{FormData["STIC_ProdComp_Recommended12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted12"] === 1 ? true : false} name="STIC_ProdComp_Accepted12" onChange={(e)=>{FormData["STIC_ProdComp_Accepted12"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount12" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount12"]}  name="STIC_ProdComp_CoverAmount12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount12" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount12"]}  name="STIC_ProdComp_CoverAmount12"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2898,10 +3141,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium12" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium12"]}  name="STIC_ProdComp_RecommP_Premium12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover12" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover12"]}  name="STIC_ProdComp_ExistP_Cover12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium12" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium12"]}  name="STIC_ProdComp_RecommP_Premium12"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2914,19 +3163,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Goods in transit</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Goods in transit</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended13"] === 1 ? true : false} name="STIC_ProdComp_Recommended13" onChange={(e)=>{FormData["STIC_ProdComp_Recommended13"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted13"] === 1 ? true : false} name="STIC_ProdComp_Accepted13" onChange={(e)=>{FormData["STIC_ProdComp_Accepted13"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount13" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount13"]}  name="STIC_ProdComp_CoverAmount13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount13" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount13"]}  name="STIC_ProdComp_CoverAmount13"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2947,10 +3196,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium13" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium13"]}  name="STIC_ProdComp_RecommP_Premium13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover13" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover13"]}  name="STIC_ProdComp_ExistP_Cover13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium13" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium13"]}  name="STIC_ProdComp_RecommP_Premium13"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -2963,19 +3218,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Business all risks</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Business all risks</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended14"] === 1 ? true : false} name="STIC_ProdComp_Recommended14" onChange={(e)=>{FormData["STIC_ProdComp_Recommended14"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted14"] === 1 ? true : false} name="STIC_ProdComp_Accepted14" onChange={(e)=>{FormData["STIC_ProdComp_Accepted14"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount14" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount14"]}  name="STIC_ProdComp_CoverAmount14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount14" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount14"]}  name="STIC_ProdComp_CoverAmount14"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -2996,10 +3251,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium14" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium14"]}  name="STIC_ProdComp_RecommP_Premium14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover14" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover14"]}  name="STIC_ProdComp_ExistP_Cover14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium14" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium14"]}  name="STIC_ProdComp_RecommP_Premium14"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3012,19 +3273,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Accidental damage</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Accidental damage</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended15"] === 1 ? true : false} name="STIC_ProdComp_Recommended15" onChange={(e)=>{FormData["STIC_ProdComp_Recommended15"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted15"] === 1 ? true : false} name="STIC_ProdComp_Accepted15" onChange={(e)=>{FormData["STIC_ProdComp_Accepted15"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount15" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount15"]}  name="STIC_ProdComp_CoverAmount15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount15" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount15"]}  name="STIC_ProdComp_CoverAmount15"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3045,10 +3306,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium15" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium15"]}  name="STIC_ProdComp_RecommP_Premium15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover15" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover15"]}  name="STIC_ProdComp_ExistP_Cover15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium15" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium15"]}  name="STIC_ProdComp_RecommP_Premium15"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3061,19 +3328,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Public liability</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Public liability</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended16"] === 1 ? true : false} name="STIC_ProdComp_Recommended16" onChange={(e)=>{FormData["STIC_ProdComp_Recommended16"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted16"] === 1 ? true : false} name="STIC_ProdComp_Accepted16" onChange={(e)=>{FormData["STIC_ProdComp_Accepted16"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount16" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount16"]}  name="STIC_ProdComp_CoverAmount16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount16" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount16"]}  name="STIC_ProdComp_CoverAmount16"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3094,10 +3361,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium16" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium16"]}  name="STIC_ProdComp_RecommP_Premium16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover16" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover16"]}  name="STIC_ProdComp_ExistP_Cover16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium16" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium16"]}  name="STIC_ProdComp_RecommP_Premium16"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3110,19 +3383,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Top up personal Liability</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Top up personal Liability</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended17"] === 1 ? true : false} name="STIC_ProdComp_Recommended17" onChange={(e)=>{FormData["STIC_ProdComp_Recommended17"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted17"] === 1 ? true : false} name="STIC_ProdComp_Accepted17" onChange={(e)=>{FormData["STIC_ProdComp_Accepted17"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount17" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount17"]}  name="STIC_ProdComp_CoverAmount17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount17" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount17"]}  name="STIC_ProdComp_CoverAmount17"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3143,10 +3416,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium17" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium17"]}  name="STIC_ProdComp_RecommP_Premium17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover17" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover17"]}  name="STIC_ProdComp_ExistP_Cover17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium17" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium17"]}  name="STIC_ProdComp_RecommP_Premium17"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3159,19 +3438,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Commercial umberella liability</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Commercial umberella liability</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended18"] === 1 ? true : false} name="STIC_ProdComp_Recommended18" onChange={(e)=>{FormData["STIC_ProdComp_Recommended18"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted18"] === 1 ? true : false} name="STIC_ProdComp_Accepted18" onChange={(e)=>{FormData["STIC_ProdComp_Accepted18"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount18" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount18"]}  name="STIC_ProdComp_CoverAmount18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount18" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount18"]}  name="STIC_ProdComp_CoverAmount18"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3192,10 +3471,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium18" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium18"]}  name="STIC_ProdComp_RecommP_Premium18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover18" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover18"]}  name="STIC_ProdComp_ExistP_Cover18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium18" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium18"]}  name="STIC_ProdComp_RecommP_Premium18"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3208,19 +3493,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Products gurantee</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Products gurantee</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended19"] === 1 ? true : false} name="STIC_ProdComp_Recommended19" onChange={(e)=>{FormData["STIC_ProdComp_Recommended19"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted19"] === 1 ? true : false} name="STIC_ProdComp_Accepted19" onChange={(e)=>{FormData["STIC_ProdComp_Accepted19"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount19" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount19"]}  name="STIC_ProdComp_CoverAmount19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount19" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount19"]}  name="STIC_ProdComp_CoverAmount19"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3241,10 +3526,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium19" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium19"]}  name="STIC_ProdComp_RecommP_Premium19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover19" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover19"]}  name="STIC_ProdComp_ExistP_Cover19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium19" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium19"]}  name="STIC_ProdComp_RecommP_Premium19"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3257,19 +3548,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Cyber Risks</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Cyber Risks</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended20"] === 1 ? true : false} name="STIC_ProdComp_Recommended20" onChange={(e)=>{FormData["STIC_ProdComp_Recommended20"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted20"] === 1 ? true : false} name="STIC_ProdComp_Accepted20" onChange={(e)=>{FormData["STIC_ProdComp_Accepted20"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount20" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount20"]}  name="STIC_ProdComp_CoverAmount20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount20" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount20"]}  name="STIC_ProdComp_CoverAmount20"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3290,10 +3581,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium20" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium20"]}  name="STIC_ProdComp_RecommP_Premium20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover20" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover20"]}  name="STIC_ProdComp_ExistP_Cover20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium20" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium20"]}  name="STIC_ProdComp_RecommP_Premium20"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3306,19 +3603,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Director and officer's Liability</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Director and officer's Liability</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended21"] === 1 ? true : false} name="STIC_ProdComp_Recommended21" onChange={(e)=>{FormData["STIC_ProdComp_Recommended21"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted21"] === 1 ? true : false} name="STIC_ProdComp_Accepted21" onChange={(e)=>{FormData["STIC_ProdComp_Accepted21"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount21" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount21"]}  name="STIC_ProdComp_CoverAmount21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount21" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount21"]}  name="STIC_ProdComp_CoverAmount21"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3339,10 +3636,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium21" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium21"]}  name="STIC_ProdComp_RecommP_Premium21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover21" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover21"]}  name="STIC_ProdComp_ExistP_Cover21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium21" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium21"]}  name="STIC_ProdComp_RecommP_Premium21"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3355,19 +3658,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Employer practices  Liability</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Employer practices  Liability</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended22"] === 1 ? true : false} name="STIC_ProdComp_Recommended22" onChange={(e)=>{FormData["STIC_ProdComp_Recommended22"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted22"] === 1 ? true : false} name="STIC_ProdComp_Accepted22" onChange={(e)=>{FormData["STIC_ProdComp_Accepted22"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount22" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount22"]}  name="STIC_ProdComp_CoverAmount22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount22" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount22"]}  name="STIC_ProdComp_CoverAmount22"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3388,10 +3691,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium22" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium22"]}  name="STIC_ProdComp_RecommP_Premium22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover22" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover22"]}  name="STIC_ProdComp_ExistP_Cover22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium22" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium22"]}  name="STIC_ProdComp_RecommP_Premium22"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3404,19 +3713,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Product inefficacy</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Product inefficacy</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended23"] === 1 ? true : false} name="STIC_ProdComp_Recommended23" onChange={(e)=>{FormData["STIC_ProdComp_Recommended23"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted23"] === 1 ? true : false} name="STIC_ProdComp_Accepted23" onChange={(e)=>{FormData["STIC_ProdComp_Accepted23"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount23" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount23"]}  name="STIC_ProdComp_CoverAmount23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount23" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount23"]}  name="STIC_ProdComp_CoverAmount23"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3437,10 +3746,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium23" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium23"]}  name="STIC_ProdComp_RecommP_Premium23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover23" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover23"]}  name="STIC_ProdComp_ExistP_Cover23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium23" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium23"]}  name="STIC_ProdComp_RecommP_Premium23"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3453,19 +3768,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Product guarantee</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Product guarantee</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended24"] === 1 ? true : false} name="STIC_ProdComp_Recommended24" onChange={(e)=>{FormData["STIC_ProdComp_Recommended24"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted24"] === 1 ? true : false} name="STIC_ProdComp_Accepted24" onChange={(e)=>{FormData["STIC_ProdComp_Accepted24"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount24" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount24"]}  name="STIC_ProdComp_CoverAmount24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount24" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount24"]}  name="STIC_ProdComp_CoverAmount24"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3486,10 +3801,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium24" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium24"]}  name="STIC_ProdComp_RecommP_Premium24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover24" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover24"]}  name="STIC_ProdComp_ExistP_Cover24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium24" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium24"]}  name="STIC_ProdComp_RecommP_Premium24"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3505,19 +3826,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Warehousemen's liability</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Warehousemen's liability</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended25"] === 1 ? true : false} name="STIC_ProdComp_Recommended25" onChange={(e)=>{FormData["STIC_ProdComp_Recommended25"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted25"] === 1 ? true : false} name="STIC_ProdComp_Accepted25" onChange={(e)=>{FormData["STIC_ProdComp_Accepted25"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount25" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount25"]}  name="STIC_ProdComp_CoverAmount25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount25" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount25"]}  name="STIC_ProdComp_CoverAmount25"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3538,10 +3859,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium25" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium25"]}  name="STIC_ProdComp_RecommP_Premium25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover25" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover25"]}  name="STIC_ProdComp_ExistP_Cover25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium25" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium25"]}  name="STIC_ProdComp_RecommP_Premium25"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3554,19 +3881,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Employer liability</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Employer liability</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended26"] === 1 ? true : false} name="STIC_ProdComp_Recommended26" onChange={(e)=>{FormData["STIC_ProdComp_Recommended26"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted26"] === 1 ? true : false} name="STIC_ProdComp_Accepted26" onChange={(e)=>{FormData["STIC_ProdComp_Accepted26"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount26" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount26"]}  name="STIC_ProdComp_CoverAmount26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount26" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount26"]}  name="STIC_ProdComp_CoverAmount26"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3587,10 +3914,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium26" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium26"]}  name="STIC_ProdComp_RecommP_Premium26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover26" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover26"]}  name="STIC_ProdComp_ExistP_Cover26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium26" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium26"]}  name="STIC_ProdComp_RecommP_Premium26"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3603,19 +3936,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Stated benefits</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Stated benefits</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended27"] === 1 ? true : false} name="STIC_ProdComp_Recommended27" onChange={(e)=>{FormData["STIC_ProdComp_Recommended27"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted27"] === 1 ? true : false} name="STIC_ProdComp_Accepted27" onChange={(e)=>{FormData["STIC_ProdComp_Accepted27"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount27" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount27"]}  name="STIC_ProdComp_CoverAmount27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount27" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount27"]}  name="STIC_ProdComp_CoverAmount27"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3636,10 +3969,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium27" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium27"]}  name="STIC_ProdComp_RecommP_Premium27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover27" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover27"]}  name="STIC_ProdComp_ExistP_Cover27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium27" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium27"]}  name="STIC_ProdComp_RecommP_Premium27"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3652,19 +3991,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Personal and group accident</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Personal and group accident</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended28"] === 1 ? true : false} name="STIC_ProdComp_Recommended28" onChange={(e)=>{FormData["STIC_ProdComp_Recommended28"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted28"] === 1 ? true : false} name="STIC_ProdComp_Accepted28" onChange={(e)=>{FormData["STIC_ProdComp_Accepted28"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount28" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount28"]}  name="STIC_ProdComp_CoverAmount28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount28" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount28"]}  name="STIC_ProdComp_CoverAmount28"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3685,10 +4024,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium28" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium28"]}  name="STIC_ProdComp_RecommP_Premium28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover28" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover28"]}  name="STIC_ProdComp_ExistP_Cover28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium28" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium28"]}  name="STIC_ProdComp_RecommP_Premium28"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3701,19 +4046,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Group personal accident</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Group personal accident</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended29"] === 1 ? true : false} name="STIC_ProdComp_Recommended29" onChange={(e)=>{FormData["STIC_ProdComp_Recommended29"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted29"] === 1 ? true : false} name="STIC_ProdComp_Accepted29" onChange={(e)=>{FormData["STIC_ProdComp_Accepted29"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount29" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount29"]}  name="STIC_ProdComp_CoverAmount29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount29" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount29"]}  name="STIC_ProdComp_CoverAmount29"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3734,10 +4079,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium29" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium29"]}  name="STIC_ProdComp_RecommP_Premium29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover29" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover29"]}  name="STIC_ProdComp_ExistP_Cover29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium29" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium29"]}  name="STIC_ProdComp_RecommP_Premium29"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3750,19 +4101,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Motor</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Motor</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended30"] === 1 ? true : false} name="STIC_ProdComp_Recommended30" onChange={(e)=>{FormData["STIC_ProdComp_Recommended30"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted30"] === 1 ? true : false} name="STIC_ProdComp_Accepted30" onChange={(e)=>{FormData["STIC_ProdComp_Accepted30"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount30" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount30"]}  name="STIC_ProdComp_CoverAmount30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount30" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount30"]}  name="STIC_ProdComp_CoverAmount30"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3783,10 +4134,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium30" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium30"]}  name="STIC_ProdComp_RecommP_Premium30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover30" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover30"]}  name="STIC_ProdComp_ExistP_Cover30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium30" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium30"]}  name="STIC_ProdComp_RecommP_Premium30"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3799,19 +4156,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor car hire extension</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor car hire extension</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended31"] === 1 ? true : false} name="STIC_ProdComp_Recommended31" onChange={(e)=>{FormData["STIC_ProdComp_Recommended31"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted31"] === 1 ? true : false} name="STIC_ProdComp_Accepted31" onChange={(e)=>{FormData["STIC_ProdComp_Accepted31"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount31" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount31"]}  name="STIC_ProdComp_CoverAmount31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount31" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount31"]}  name="STIC_ProdComp_CoverAmount31"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3832,10 +4189,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium31" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium31"]}  name="STIC_ProdComp_RecommP_Premium31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover31" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover31"]}  name="STIC_ProdComp_ExistP_Cover31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium31" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium31"]}  name="STIC_ProdComp_RecommP_Premium31"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3848,19 +4211,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: internal risk</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: internal risk</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended32"] === 1 ? true : false} name="STIC_ProdComp_Recommended32" onChange={(e)=>{FormData["STIC_ProdComp_Recommended32"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted32"] === 1 ? true : false} name="STIC_ProdComp_Accepted32" onChange={(e)=>{FormData["STIC_ProdComp_Accepted32"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount32" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount32"]}  name="STIC_ProdComp_CoverAmount32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount32" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount32"]}  name="STIC_ProdComp_CoverAmount32"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3881,10 +4244,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium32" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium32"]}  name="STIC_ProdComp_RecommP_Premium32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover32" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover32"]}  name="STIC_ProdComp_ExistP_Cover32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium32" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium32"]}  name="STIC_ProdComp_RecommP_Premium32"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3897,19 +4266,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: external risk</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Motor traders: external risk</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended33"] === 1 ? true : false} name="STIC_ProdComp_Recommended33" onChange={(e)=>{FormData["STIC_ProdComp_Recommended33"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted33"] === 1 ? true : false} name="STIC_ProdComp_Accepted33" onChange={(e)=>{FormData["STIC_ProdComp_Accepted33"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount33" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount33"]}  name="STIC_ProdComp_CoverAmount33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount33" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount33"]}  name="STIC_ProdComp_CoverAmount33"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3930,10 +4299,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium33" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium33"]}  name="STIC_ProdComp_RecommP_Premium33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover33" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover33"]}  name="STIC_ProdComp_ExistP_Cover33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium33" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium33"]}  name="STIC_ProdComp_RecommP_Premium33"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3946,19 +4321,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Electronic equipment</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Electronic equipment</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended34"] === 1 ? true : false} name="STIC_ProdComp_Recommended34" onChange={(e)=>{FormData["STIC_ProdComp_Recommended34"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted34"] === 1 ? true : false} name="STIC_ProdComp_Accepted34" onChange={(e)=>{FormData["STIC_ProdComp_Accepted34"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount34" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount34"]}  name="STIC_ProdComp_CoverAmount34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount34" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount34"]}  name="STIC_ProdComp_CoverAmount34"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -3979,10 +4354,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium34" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium34"]}  name="STIC_ProdComp_RecommP_Premium34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover34" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover34"]}  name="STIC_ProdComp_ExistP_Cover34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium34" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium34"]}  name="STIC_ProdComp_RecommP_Premium34"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -3995,19 +4376,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>House owner</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>House owner</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended35"] === 1 ? true : false} name="STIC_ProdComp_Recommended35" onChange={(e)=>{FormData["STIC_ProdComp_Recommended35"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted35"] === 1 ? true : false} name="STIC_ProdComp_Accepted35" onChange={(e)=>{FormData["STIC_ProdComp_Accepted35"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount35" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount35"]}  name="STIC_ProdComp_CoverAmount35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount35" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount35"]}  name="STIC_ProdComp_CoverAmount35"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -4028,10 +4409,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium35" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium35"]}  name="STIC_ProdComp_RecommP_Premium35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover35" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover35"]}  name="STIC_ProdComp_ExistP_Cover35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium35" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium35"]}  name="STIC_ProdComp_RecommP_Premium35"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4044,19 +4431,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>House holders</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>House holders</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended44"] === 1 ? true : false} name="STIC_ProdComp_Recommended44" onChange={(e)=>{FormData["STIC_ProdComp_Recommended44"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted44"] === 1 ? true : false} name="STIC_ProdComp_Accepted44" onChange={(e)=>{FormData["STIC_ProdComp_Accepted44"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount44" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount44"]}  name="STIC_ProdComp_CoverAmount44"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount44" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount44"]}  name="STIC_ProdComp_CoverAmount44"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -4077,10 +4464,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium44" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium44"]}  name="STIC_ProdComp_RecommP_Premium44"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover44" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover44"]}  name="STIC_ProdComp_ExistP_Cover44"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium44" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium44"]}  name="STIC_ProdComp_RecommP_Premium44"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4093,19 +4486,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Professional indenmity</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Professional indenmity</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended36"] === 1 ? true : false} name="STIC_ProdComp_Recommended36" onChange={(e)=>{FormData["STIC_ProdComp_Recommended36"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted36"] === 1 ? true : false} name="STIC_ProdComp_Accepted36" onChange={(e)=>{FormData["STIC_ProdComp_Accepted36"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount36" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount36"]}  name="STIC_ProdComp_CoverAmount36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount36" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount36"]}  name="STIC_ProdComp_CoverAmount36"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -4126,10 +4519,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium36" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium36"]}  name="STIC_ProdComp_RecommP_Premium36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover36" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover36"]}  name="STIC_ProdComp_ExistP_Cover36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium36" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium36"]}  name="STIC_ProdComp_RecommP_Premium36"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4142,19 +4541,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Marine/hull</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Marine/hull</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended37"] === 1 ? true : false} name="STIC_ProdComp_Recommended37" onChange={(e)=>{FormData["STIC_ProdComp_Recommended37"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted37"] === 1 ? true : false} name="STIC_ProdComp_Accepted37" onChange={(e)=>{FormData["STIC_ProdComp_Accepted37"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount37" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount37"]}  name="STIC_ProdComp_CoverAmount37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount37" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount37"]}  name="STIC_ProdComp_CoverAmount37"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -4175,10 +4574,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium37" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium37"]}  name="STIC_ProdComp_RecommP_Premium37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover37" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover37"]}  name="STIC_ProdComp_ExistP_Cover37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium37" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium37"]}  name="STIC_ProdComp_RecommP_Premium37"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4191,19 +4596,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>contractors all risks:construction and engineering</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>contractors all risks:construction and engineering</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended38"] === 1 ? true : false} name="STIC_ProdComp_Recommended38" onChange={(e)=>{FormData["STIC_ProdComp_Recommended38"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted38"] === 1 ? true : false} name="STIC_ProdComp_Accepted38" onChange={(e)=>{FormData["STIC_ProdComp_Accepted38"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount38" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount38"]}  name="STIC_ProdComp_CoverAmount38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount38" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount38"]}  name="STIC_ProdComp_CoverAmount38"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -4224,10 +4629,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium38" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium38"]}  name="STIC_ProdComp_RecommP_Premium38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover38" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover38"]}  name="STIC_ProdComp_ExistP_Cover38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium38" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium38"]}  name="STIC_ProdComp_RecommP_Premium38"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4240,19 +4651,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Body corporate</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Body corporate</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended39"] === 1 ? true : false} name="STIC_ProdComp_Recommended39" onChange={(e)=>{FormData["STIC_ProdComp_Recommended39"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted39"] === 1 ? true : false} name="STIC_ProdComp_Accepted39" onChange={(e)=>{FormData["STIC_ProdComp_Accepted39"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount39" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount39"]}  name="STIC_ProdComp_CoverAmount39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount39" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount39"]}  name="STIC_ProdComp_CoverAmount39"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -4273,10 +4684,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium39" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium39"]}  name="STIC_ProdComp_RecommP_Premium39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover39" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover39"]}  name="STIC_ProdComp_ExistP_Cover39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium39" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium39"]}  name="STIC_ProdComp_RecommP_Premium39"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4289,19 +4706,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Aviation</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Aviation</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended40"] === 1 ? true : false} name="STIC_ProdComp_Recommended40" onChange={(e)=>{FormData["STIC_ProdComp_Recommended40"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted40"] === 1 ? true : false} name="STIC_ProdComp_Accepted40" onChange={(e)=>{FormData["STIC_ProdComp_Accepted40"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount40" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount40"]}  name="STIC_ProdComp_CoverAmount40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount40" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount40"]}  name="STIC_ProdComp_CoverAmount40"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -4322,10 +4739,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium40" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium40"]}  name="STIC_ProdComp_RecommP_Premium40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover40" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover40"]}  name="STIC_ProdComp_ExistP_Cover40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium40" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium40"]}  name="STIC_ProdComp_RecommP_Premium40"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4338,19 +4761,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Travel insurance</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Travel insurance</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended41"] === 1 ? true : false} name="STIC_ProdComp_Recommended41" onChange={(e)=>{FormData["STIC_ProdComp_Recommended41"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted41"] === 1 ? true : false} name="STIC_ProdComp_Accepted41" onChange={(e)=>{FormData["STIC_ProdComp_Accepted41"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount41" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount41"]}  name="STIC_ProdComp_CoverAmount41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount41" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount41"]}  name="STIC_ProdComp_CoverAmount41"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -4371,10 +4794,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium41" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium41"]}  name="STIC_ProdComp_RecommP_Premium41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover41" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover41"]}  name="STIC_ProdComp_ExistP_Cover41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium41" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium41"]}  name="STIC_ProdComp_RecommP_Premium41"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4387,19 +4816,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Sasria</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Sasria</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended42"] === 1 ? true : false} name="STIC_ProdComp_Recommended42" onChange={(e)=>{FormData["STIC_ProdComp_Recommended42"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted42"] === 1 ? true : false} name="STIC_ProdComp_Accepted42" onChange={(e)=>{FormData["STIC_ProdComp_Accepted42"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount42" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount42"]}  name="STIC_ProdComp_CoverAmount42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount42" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount42"]}  name="STIC_ProdComp_CoverAmount42"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -4420,10 +4849,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium42" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium42"]}  name="STIC_ProdComp_RecommP_Premium42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover42" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover42"]}  name="STIC_ProdComp_ExistP_Cover42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium42" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium42"]}  name="STIC_ProdComp_RecommP_Premium42"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4436,19 +4871,19 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Legal fees</td>
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"170px"}}>Legal fees</td>
+                                          <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended43"] === 1 ? true : false} name="STIC_ProdComp_Recommended43" onChange={(e)=>{FormData["STIC_ProdComp_Recommended43"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
-                                          <td class="col-2" style={{width:"130px"}}>
+                                          <td class="col-2" style={{width:"90px"}}>
                                             <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Accepted43"] === 1 ? true : false} name="STIC_ProdComp_Accepted43" onChange={(e)=>{FormData["STIC_ProdComp_Accepted43"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="centre"/>
                                           </td>
 
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount43" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount43"]}  name="STIC_ProdComp_CoverAmount43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_CoverAmount43" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_CoverAmount43"]}  name="STIC_ProdComp_CoverAmount43"  className="form-control" placeholder="0.00"  aria-describedby="" />
                                             </div>
                                           </td>
 
@@ -4469,10 +4904,16 @@ const Short_term_Commercial= ({user}) => {
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium43" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium43"]}  name="STIC_ProdComp_RecommP_Premium43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_ExistP_Cover43" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_ExistP_Cover43"]}  name="STIC_ProdComp_ExistP_Cover43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
                                             </div>
                                           </td>
 
+                                          <td class="col-2" style={{width:"130px"}}>
+                                            <div className="input-group">
+                                              <span className="input-group-text">R</span>
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" spellCheck="true" id="STIC_ProdComp_RecommP_Premium43" onChange={(e) => {onChange(e)}} value={FormData["STIC_ProdComp_RecommP_Premium43"]}  name="STIC_ProdComp_RecommP_Premium43"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                                            </div>
+                                          </td>
                                           <td class="col-2" style={{width:"130px"}}>
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4484,7 +4925,7 @@ const Short_term_Commercial= ({user}) => {
                                         
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Fees and charges</td>
+                                          <td class="col-2" style={{width:"170px"}}>Fees and charges</td>
                                           <td class="col">
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4496,7 +4937,7 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Commissions</td>
+                                          <td class="col-2" style={{width:"170px"}}>Commissions</td>
                                           <td class="col">
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4508,7 +4949,7 @@ const Short_term_Commercial= ({user}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"200px"}}>Total premium</td>
+                                          <td class="col-2" style={{width:"170px"}}>Total premium</td>
                                           <td class="col">
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
@@ -4708,13 +5149,25 @@ const Short_term_Commercial= ({user}) => {
       {
         FormData['STIC_ProdComp_Accepted1'] === 1 ?
         <>
-          <div className={
-            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
-            : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
-            : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
-            : ""
-          } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > 
-          <b>SECTION 1:FIRE</b></div>
+        <div className="row">
+          <div className='col-lg-6 col-md-6 col-sm-12'>
+            <div className={
+              state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
+              : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+              : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+              : ""
+            } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > 
+              <b>SECTION 1:FIRE</b>
+            </div>
+          </div>
+          <div className='col-lg-6 col-md-6 col-sm-12'>
+            {/* {
+              Section_1.length === 0 ?
+                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_1(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 1: Fire</button>
+              : <></>
+            } */}
+          </div>
+        </div>
           <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
             <div className="col-12" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
@@ -5161,20 +5614,517 @@ const Short_term_Commercial= ({user}) => {
 
             </div>
           </div>
+          {
+            Section_1.length > 0 ?
+              Section_1.map((key, i) => {
+                return (
+                  <>
+                                          
+                      <div className="row">
+                      <div className='col-lg-6 col-md-6 col-sm-12'>
+                        <div className={
+                          state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
+                          : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+                          : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+                          : ""
+                        } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > 
+                          <b>SECTION 1:FIRE (# {i+2})</b>
+                        </div>
+                      </div>
+                      <div className='col-lg-6 col-md-6 col-sm-12'>
+                        <div className='row'>
+                          {
+                          i+1 == Section_1.length ?
+                          <div className="col-6">
+                              <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_1(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 1: Fire</button>
+                          </div>
+                          : <></>
+                        }
+                        <div className="col-6">
+                            <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_1(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 1: Fire</button>
+                        </div>
+                      </div>
+
+                      </div>
+                      </div>
+                      <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
+                        <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                                <div className="col-4">
+                                    <label className="col-form-label">Additional claims Preparation cost:</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <hr/>
+                        <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                                <div className="col-2">
+                                    <label className="col-form-label">Limit:</label>
+                                </div>
+
+                                <div className="col-4">
+                                  <div className="input-group">
+                                    <span className="input-group-text">R</span>
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Fire_Limit" onChange={(e) => {on_Section_1_Change(e, i)}} value={key.Fire_Limit}  name="Fire_Limit"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                                  </div>
+                                </div>
+
+                                <div className="col-2">
+                                    <label className="col-form-label">Premium:</label>
+                                </div>
+
+                                <div className="col-4">
+                                  <div className="input-group">
+                                    <span className="input-group-text">R</span>
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Fire_ItemNumber" onChange={(e) => {on_Section_1_Change(e, i)}} value={key.Fire_ItemNumber}  name="Fire_ItemNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr/>
+                        <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                                <div className="col-2">
+                                    <label className="col-form-label">Item Number:</label>
+                                </div>
+
+                                <div className="col-4">
+                                  <div className="input-group">
+                                    <span className="input-group-text">R</span>
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Fire_Premium" onChange={(e) => {on_Section_1_Change(e, i)}} value={key.Fire_Premium}  name="Fire_Premium"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                                  </div>
+                                </div>
+
+                                <div className="col-2">
+                                    <label className="col-form-label">Premises Number:</label>
+                                </div>
+
+                                <div className="col-4">
+                                <div className="input-group">
+                                    <span className="input-group-text">R</span>
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Fire_PremNumber" onChange={(e) => {on_Section_1_Change(e, i)}} value={key.Fire_PremNumber}  name="Fire_PremNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div><b>Important notes:</b></div>
+                      <p>The onus is on the client to provide the correct sums insured.</p>
+                      <div><b>Building:</b></div>
+                      <p>Sum insured is the replacement costs (not market value).</p>
+                      <div><b>Plant and machinery:</b></div>
+                      <p>When calculating the sum insured, plant/machinery must be insured at new replacement costs/value.</p>
+                      <div><b>Stock in trade:</b></div>
+                      <p>When calculating the sum insured, stock in trade must be insured at cost price.</p>
+                      <div><b>Insured property: </b></div>
+                      <hr/>
+                      <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+                        <div className="row">
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Sum insured: Buildings (excluding surrounding walls and paving)</label>
+                              </div>
+                              <div className="col-3">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Buildings_Insured" onChange={(e) => {on_Section_1_Change(e, i)}} value={key.Buildings_Insured}  name="Buildings_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                            <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Sum insured: Rental</label>
+                              </div>
+                              <div className="col-3">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Rental_Insured" onChange={(e) => {on_Section_1_Change(e, i)}} value={key.Rental_Insured}  name="Rental_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Sum insured: Plant, machinery, fixtures, and fittings</label>
+                              </div>
+                              <div className="col-3">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Others_Insured" onChange={(e) => {on_Section_1_Change(e, i)}} value={key.Others_Insured}  name="Others_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Sum insured: Stock and materials in trade</label>
+                              </div>
+                              <div className="col-3">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Stocks_Insured" onChange={(e) => {on_Section_1_Change(e, i)}} value={key.Stocks_Insured}  name="Stocks_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Sum insured: Miscellaneous</label>
+                              </div>
+                              <div className="col-3">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Miscellaneous1_Insured" onChange={(e) => {on_Section_1_Change(e, i)}} value={key.Miscellaneous1_Insured}  name="Miscellaneous1_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Sum insured: Miscellaneous</label>
+                              </div>
+                              <div className="col-3">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Miscellaneous2_Insured" onChange={(e) => {on_Section_1_Change(e, i)}} value={key.Miscellaneous2_Insured}  name="Miscellaneous2_Insured"  className="form-control" placeholder="                    R .00"  aria-describedby="" style={{width:"200px"}} />
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                        </div>
+                      </div>
+
+                      <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+                        <div className="row">
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <div><b>Additional Perils</b></div>
+                              </div>
+                              <div className="col-3">
+                                <div><b>Included</b></div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <div></div>
+                              </div>
+                              <div className="col-4">
+                                <div><b>Yes/No</b></div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Earthquake</label>
+                              </div>
+                              <div className="row col-4 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.Earthquake_Insured == 1 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="1" id="Earthquake_Insured" name="Earthquake_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.Earthquake_Insured == 0 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="0" id="Earthquake_Insured" name="Earthquake_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Malicious damage</label>
+                              </div>
+                              <div className="row col-4 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.Malicious_Damage_Insured == 1 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="1" id="Malicious_Damage_Insured" name="Malicious_Damage_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.Malicious_Damage_Insured == 0 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="0" id="Malicious_Damage_Insured" name="Malicious_Damage_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Special Perils</label>
+                              </div>
+                              <div className="row col-4 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.Special_Insured == 1 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="1" id="Special_Insured" name="Special_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.Special_Insured == 0 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="0" id="Special_Insured" name="Special_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Leakage-full value</label>
+                              </div>
+                              <div className="row col-4 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.LeakFull_Insured == 1 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="1" id="LeakFull_Insured" name="LeakFull_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.LeakFull_Insured == 0 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="0" id="LeakFull_Insured" name="LeakFull_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Leakage-first loss limit</label>
+                              </div>
+                              <div className="row col-4 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.LeakFirst_Insured == 1 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="1" id="LeakFirst_Insured" name="LeakFirst_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.LeakFirst_Insured == 0 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="0" id="LeakFirst_Insured" name="LeakFirst_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Subsidence and landslip(limited)</label>
+                              </div>
+                              <div className="row col-4 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.SnLLimited_Insured == 1 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="1" id="SnLLimited_Insured" name="SnLLimited_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.SnLLimited_Insured == 0 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="0" id="SnLLimited_Insured" name="SnLLimited_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Subsidence and landslip(comprehensive)</label>
+                              </div>
+                              <div className="row col-4 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.SnLComprehensive_Insured == 1 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="1" id="SnLComprehensive_Insured" name="SnLComprehensive_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.SnLComprehensive_Insured == 0 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="0" id="SnLComprehensive_Insured" name="SnLComprehensive_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Riot and strike(except RSA)</label>
+                              </div>
+                              <div className="row col-4 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.RnS_Insured == 1 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="1" id="RnS_Insured" name="RnS_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Yes
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.RnS_Insured == 0 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="0" id="RnS_Insured" name="RnS_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          No
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                            <div className="row g-3 align-items-center">
+                              <div className="col-8">
+                                <label className="col-form-label">Stock declaration conditions</label>
+                              </div>
+                              <div className="row col-4 align-items-center">
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.SDC_Insured == 1 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="1" id="SDC_Insured" name="SDC_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Monthly
+                                      </label>
+                                  </div>
+                                  <div className="col-3">
+                                      <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.SDC_Insured == 0 ? true : false} onChange={(e) => {on_Section_1_Change(e, i)}} type="radio" value="0" id="SDC_Insured" name="SDC_Insured" />
+                                  </div>
+                                  <div className="col-3">
+                                      <label className="form-check-label"  >
+                                          Quarterly
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr/>
+                          <b className="col-form-label">Additional Comments</b>
+                          <br/>
+                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                            value={key.Fire_AddComments}
+                            onEditorChange={(newText)=>{ on_Section_1_Value_Change("Fire_AddComments", i, newText) }}                  
+                            name="Fire_AddComments"
+                            init={{
+                                selector: "textarea",
+                                browser_spellcheck : true,
+                                placeholder: "Click here to enter text",
+                                height: 300,
+                                menu: true,
+                                plugins: [
+                                    'advlist autolink link lists image charmap print preview anchor',
+                                    'searchreplace visualblocks code fullscreen',
+                                    'insertdatetime media table paste code help wordcount',
+                                ],
+                                toolbar: 'styles | undo redo | formatselect | ' +
+                                'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                                'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                                'removeformat | wordcount ',
+                                content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                            }}
+                          />
+                          <br/>
+                          <hr/>
+
+                        </div>
+                      </div>
+
+                  </>
+                )
+              })
+            : <></>
+          }
         </>
         : <></>
       }
       {
        FormData['STIC_ProdComp_Accepted2'] === 1 ?
         <>
-          <div className={
-            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
-            : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
-            : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
-            : ""
-          } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} 
-          > 
-            <b>SECTION 2:BUILDINGS COMBINED</b></div>
+            <div className="row">
+              <div className='col-lg-6 col-md-6 col-sm-12'>
+                <div className={
+                  state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
+                  : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+                  : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+                  : ""
+                } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > 
+                  <b>SECTION 2:BUILDINGS COMBINED</b>
+                </div>
+              </div>
+              <div className='col-lg-6 col-md-6 col-sm-12'>
+                {
+                  Section_2.length === 0 ?
+                    <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_2(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 2</button>
+                  : <></>
+                }
+              </div>
+            </div>
             <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
               <div className="col-12" style={{paddingBottom: "0.5%"}}>
                 <div className="row g-3 align-items-center">
@@ -5504,7 +6454,378 @@ const Short_term_Commercial= ({user}) => {
           />
           <hr/>
           <br/>
-            
+          {
+            Section_2.length > 0 ?
+              Section_2.map((key, i) => {
+                return (
+                  <>
+                    <div className="row">
+                      <div className='col-lg-6 col-md-6 col-sm-12'>
+                        <div 
+                          className={
+                            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
+                            : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+                            : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+                            : ""
+                          } 
+                          style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} 
+                        > 
+                          <b>SECTION 2:BUILDINGS COMBINED ({i+2})</b>
+                        </div>
+                      </div>
+                      
+                      <div className='col-lg-6 col-md-6 col-sm-12'>
+                        <div className='row'>
+                          {
+                            i+1 == Section_1.length ?
+                            <div className="col-6">
+                                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_2(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 2</button>
+                            </div>
+                            : <></>
+                          }
+                          <div className="col-6">
+                              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_2(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 2</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
+                      <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                        <div className="row g-3 align-items-center">
+                            <div className="col-4">
+                                <label className="col-form-label">Additional claims Preparation cost:</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <hr/>
+                    <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                        <div className="row g-3 align-items-center">
+                            <div className="col-2">
+                                <label className="col-form-label">Limit:</label>
+                            </div>
+
+                            <div className="col-4">
+                              <div className="input-group">
+                                <span className="input-group-text">R</span>
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="BuildCombined_Limit" onChange={(e) => {on_Section_2_Change(e, i )}} value={key['BuildCombined_Limit']}  name="BuildCombined_Limit"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                              </div>
+                            </div>
+
+                            <div className="col-2">
+                                <label className="col-form-label">Premium:</label>
+                            </div>
+
+                            <div className="col-4">
+                              <div className="input-group">
+                                <span className="input-group-text">R</span>
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="BuildCombined_Premium" onChange={(e) => {on_Section_2_Change(e, i )}} value={key['BuildCombined_Premium']}  name="BuildCombined_Premium"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+                    <div className="col-12" style={{paddingBottom: "0.5%"}}>
+                        <div className="row g-3 align-items-center">
+                            <div className="col-2">
+                                <label className="col-form-label">Item Number:</label>
+                            </div>
+
+                            <div className="col-4">
+                              <div className="input-group">
+                                <span className="input-group-text">R</span>
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="BuildCombined_ItemNumber" onChange={(e) => {on_Section_2_Change(e, i )}} value={key['BuildCombined_ItemNumber']}  name="BuildCombined_ItemNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                              </div>
+                            </div>
+
+                            <div className="col-2">
+                                <label className="col-form-label">Premises Number:</label>
+                            </div>
+
+                            <div className="col-4">
+                              <div className="input-group">
+                                <span className="input-group-text">R</span>
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="BuildCombined_PremNumber" onChange={(e) => {on_Section_2_Change(e, i )}} value={key['BuildCombined_PremNumber']}  name="BuildCombined_PremNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div><b>Importance notes:</b></div>
+                    <p>The onus is on the client to provide the correct sums insured. </p>
+                    <ul>
+                      <li>Building: The sum insured is the replacement costs (not market value).</li>
+                      <li>All fixtures and fittings added to the building, e.g., carpets, air conditioning units</li>
+                      <li>In the event of insuring contents; the sum insured should be the new replacement value of contents</li>
+                      <li>Loss of rental is included in the policy up to a maximum of 25% of the sum insured of the insured property. </li>
+                    </ul>
+                    <hr/>
+                    <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
+                      <div className="row">
+
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                            <div className="col-8">
+                              <label className="col-form-label">Column refernce:</label>
+                            </div>
+                            <div className="col-3">
+                              <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="BuildCombined_ColumnRef" onChange={(e) => {on_Section_2_Change(e, i )}} value={key['BuildCombined_ColumnRef']}  name="BuildCombined_ColumnRef"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"200px"}} />
+                            </div>
+                          </div>
+                        </div>
+                        <hr/>
+
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                            <div className="col-8">
+                              <label className="col-form-label">Sum insured (to include perimeter walls or fencing and paving, etc.):  </label>
+                            </div>
+                            <div className="col-3">
+                              <div className="input-group">
+                                <span className="input-group-text">R</span>
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="BuildCombined_Sum" onChange={(e) => {on_Section_2_Change(e, i )}} value={key['BuildCombined_Sum']}  name="BuildCombined_Sum"  className="form-control" placeholder="0.00"  aria-describedby=""  />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                          <hr/>
+
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                            <div className="col-8">
+                              <label className="col-form-label">Construction standard: </label>
+                            </div>
+                            <div className="row col-4 align-items-center">
+                                <div className="col-3">
+                                  <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['BuildCombined_Construct'] == 1 ? true : false} onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="1" id="BuildCombined_Construct" name="BuildCombined_Construct" />
+                                  
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        Yes
+                                    </label>
+                                </div>
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['BuildCombined_Construct'] == 0 ? true: false } onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="0" id="BuildCombined_Construct" name="BuildCombined_Construct" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr/>
+                        
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                            <div className="col-8">
+                              <label className="col-form-label">Description</label>
+                            </div>
+                            <div className="col-3">
+                                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="BuildCombined_Desc" onChange={(e) => {on_Section_2_Change(e, i )}} value={key['BuildCombined_Desc']}  name="BuildCombined_Desc"  className="form-control" placeholder="Click here to enter the text"  aria-describedby="" style={{width:"200px"}} />
+                            </div>
+                          </div>
+                        </div>
+                          <hr/>
+
+                          <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                            <div className="col-8">
+                              <div><b>Extensions</b></div>
+                            </div>
+                            <div className="col-3">
+                              <div><b>Included</b></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                            <div className="col-8">
+                              <div></div>
+                            </div>
+                            <div className="col-4">
+                              <div><b>Yes/No</b></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                            <div className="col-8">
+                              <label className="col-form-label">Riot and strike (except RSA)</label>
+                            </div>
+                            <div className="row col-4 align-items-center">
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['Extensions_RnS'] == 1 ? true : false} onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="1" id="Extensions_RnS" name="Extensions_RnS" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        Yes
+                                    </label>
+                                </div>
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['Extensions_RnS'] == 0 ? true : false} onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="0" id="Extensions_RnS" name="Extensions_RnS" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr/>
+
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                            <div className="col-8">
+                              <label className="col-form-label">Sum ensured geysers</label>
+                            </div>
+                            <div className="row col-4 align-items-center">
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['Extensions_Geysers'] == 1 ? true : false} onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="1" id="Extensions_Geysers" name="Extensions_Geysers" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        Yes
+                                    </label>
+                                </div>
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['Extensions_Geysers'] == 0 ? true : false} onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="0" id="Extensions_Geysers" name="Extensions_Geysers" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr/>
+
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                            <div className="col-8">
+                              <label className="col-form-label">Subsidence and landslip(comprehensive)</label>
+                            </div>
+                            <div className="row col-4 align-items-center">
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['Extensions_SnL'] == 1 ? true : false} onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="1" id="Extensions_SnL" name="Extensions_SnL" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        Yes
+                                    </label>
+                                </div>
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['Extensions_SnL'] == 0 ? true : false} onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="0" id="Extensions_SnL" name="Extensions_SnL" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr/>
+
+
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                            <div className="col-8">
+                              <label className="col-form-label">Prevention of access</label>
+                            </div>
+                            <div className="row col-4 align-items-center">
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['Extensions_PoA'] == 1 ? true : false} onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="1" id="Extensions_PoA" name="Extensions_PoA" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        Yes
+                                    </label>
+                                </div>
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['Extensions_PoA'] == 0 ? true : false} onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="0" id="Extensions_PoA" name="Extensions_PoA" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr/>
+
+                        <div className="col-8" style={{paddingBottom: "0.5%"}}>
+                          <div className="row g-3 align-items-center">
+                            <div className="col-8">
+                              <label className="col-form-label">Inflation/Escalation clause</label>
+                            </div>
+                            <div className="row col-4 align-items-center">
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['Extensions_IorE'] == 1 ? true : false} onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="1" id="Extensions_IorE" name="Extensions_IorE" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        Yes
+                                    </label>
+                                </div>
+                                <div className="col-3">
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key['Extensions_IorE'] == 0 ? true : false} onChange={(e) => {on_Section_2_Change(e, i )}} type="radio" value="0" id="Extensions_IorE" name="Extensions_IorE" />
+                                </div>
+                                <div className="col-3">
+                                    <label className="form-check-label"  >
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr/>
+
+                      </div>
+                    </div>
+                    <b className="col-form-label">Additional Comments</b>
+                    <br/>
+                    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                      value={key.BuildCombined_AddComments}
+                      onEditorChange={(newText)=>{ on_Section_2_Value_Change("BuildCombined_AddComments", i, newText)  }}                  
+                      init={{
+                          selector: "textarea",
+                          browser_spellcheck : true,
+                          placeholder: "Click here to enter text",
+                          height: 300,
+                          menu: true,
+                          plugins: [
+                              'advlist autolink link lists image charmap print preview anchor',
+                              'searchreplace visualblocks code fullscreen',
+                              'insertdatetime media table paste code help wordcount',
+                          ],
+                          toolbar: 'styles | undo redo | formatselect | ' +
+                          'bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | ' +
+                          'bullist numlist  | outdent indent | link | copy paste undo redo | ' +
+                          'removeformat | wordcount ',
+                          content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
+                      }}
+                    />
+                    <hr/>
+                    <br/>
+                    
+                    
+                </>
+                )
+              })
+              : 
+              <></>
+          }
+                    
         </>
         :<></>
       }
@@ -13018,7 +14339,7 @@ const Short_term_Commercial= ({user}) => {
               </>
     }
     {
-      FormData['STIC_ProdComp_Accepted21'] === 1 ?
+      FormData['STIC_ProdComp_Accepted44'] === 1 ?
               <>
     <div className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -13770,4 +15091,4 @@ const mapStateToProps = state => ({
   user: state.Auth.user,
 })
 
-export default connect(mapStateToProps)(Short_term_Commercial)
+export default connect(mapStateToProps, {LogOut})(Short_term_Commercial)

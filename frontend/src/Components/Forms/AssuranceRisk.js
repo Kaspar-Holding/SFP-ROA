@@ -7,7 +7,8 @@ import './Styles/CustomNotification.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Editor, tinyMCE } from '@tinymce/tinymce-react'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-const AssuranceRisk = ({user}) =>
+import {LogOut} from '../../Actions/Auth'
+const AssuranceRisk = ({user, LogOut}) =>
 {
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -550,6 +551,14 @@ const AssuranceRisk = ({user}) =>
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
+            if (error.response.status === 401){
+              setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+              setSuccessMessageVisibility("block")
+              setTimeout(() => {
+                setSuccessMessageVisibility("none")
+                LogOut()
+              }, 5000)
+            }
             setErrorData({
               status: error.response.status,
               message: error.response.statusText
@@ -571,7 +580,7 @@ const AssuranceRisk = ({user}) =>
           try {
               const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_assurance_risk_data/`, Body ,config)
               // console.log(response.data['formData'])
-              setFormData(response.data['formData'])
+              // setFormData(response.data['formData'])
               
               setSuccessMessage("BA Risk data is successfully updated")
               setSuccessMessageVisibility("block")
@@ -581,7 +590,14 @@ const AssuranceRisk = ({user}) =>
               // setSubmissionMessageVisibility("block")
           } catch (error) {
               console.log(error)
-              
+              if (error.response.status === 401){
+                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                setSuccessMessageVisibility("block")
+                setTimeout(() => {
+                  setSuccessMessageVisibility("none")
+                  LogOut()
+                }, 5000)
+              }
               setUpdateErrorData({
                 status: error.response.status,
                 message: error.response.statusText
@@ -597,7 +613,14 @@ const AssuranceRisk = ({user}) =>
           try {
               const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_ar_ProductTaken_Data/`, ProductTaken_Body ,config) 
           } catch (error) {
-              
+            if (error.response.status === 401){
+              setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+              setSuccessMessageVisibility("block")
+              setTimeout(() => {
+                setSuccessMessageVisibility("none")
+                LogOut()
+              }, 5000)
+            }
           }
       }
       const [Advisor, setAdvisor] = useState("")
@@ -612,7 +635,9 @@ const AssuranceRisk = ({user}) =>
           // window.location.reload();
       }
       useEffect(() => {
-          createARForm(FormData)
+          if (state['formId']){
+            createARForm(FormData)
+          }
           // setAdvisor(state["Advisor"])
           // const interval = setInterval(() => {
           //     const baRiskformSubmitButton = document.querySelector(".updateBARiskFormBTN")
@@ -3318,5 +3343,5 @@ const mapStateToProps = state => ({
   user: state.Auth.user,
 })
 
-export default connect(mapStateToProps)(AssuranceRisk)
+export default connect(mapStateToProps, {LogOut})(AssuranceRisk)
 

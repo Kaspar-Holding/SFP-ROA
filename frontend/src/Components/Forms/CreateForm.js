@@ -534,11 +534,8 @@ const CreateForm = ({user}) => {
                 to={{pathname:"/completeform"}} 
                 state={
                     {
-                        advisor: user, 
                         formId : FormCreatedId,
-                        formStatus : FormCreatedData['status'], 
-                        clientName : FormCreatedData['RF_ClientName'], 
-                        clientId: FormCreatedData['RF_ClientId']
+                        advisor: user
                     }
                 } 
             />

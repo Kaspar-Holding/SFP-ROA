@@ -1,8 +1,8 @@
 
 from datetime import datetime, timezone
 from rest_framework import serializers
-from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, STIC_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
-from .models import Medical
+from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, Risk_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, STIC_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
+from .models import Medical, STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
 
@@ -1831,6 +1831,49 @@ class ShortTermInsuranceCommericalSerializers(serializers.ModelSerializer):
         instance.STIC_ProdComp_CoverAmount1 = validated_data.get("STIC_ProdComp_CoverAmount1",instance.STIC_ProdComp_CoverAmount1)
         instance.STIC_ProdComp_ExistP_Premium1 = validated_data.get("STIC_ProdComp_ExistP_Premium1",instance.STIC_ProdComp_ExistP_Premium1)
         instance.STIC_ProdComp_ExistP_Excess1 = validated_data.get("STIC_ProdComp_ExistP_Excess1",instance.STIC_ProdComp_ExistP_Excess1)
+        instance.STIC_ProdComp_ExistP_Cover1 = validated_data.get("STIC_ProdComp_ExistP_Cover1",instance.STIC_ProdComp_ExistP_Cover1)
+        instance.STIC_ProdComp_ExistP_Cover2 = validated_data.get("STIC_ProdComp_ExistP_Cover2",instance.STIC_ProdComp_ExistP_Cover2)
+        instance.STIC_ProdComp_ExistP_Cover3 = validated_data.get("STIC_ProdComp_ExistP_Cover3",instance.STIC_ProdComp_ExistP_Cover3)
+        instance.STIC_ProdComp_ExistP_Cover4 = validated_data.get("STIC_ProdComp_ExistP_Cover4",instance.STIC_ProdComp_ExistP_Cover4)
+        instance.STIC_ProdComp_ExistP_Cover5 = validated_data.get("STIC_ProdComp_ExistP_Cover5",instance.STIC_ProdComp_ExistP_Cover5)
+        instance.STIC_ProdComp_ExistP_Cover6 = validated_data.get("STIC_ProdComp_ExistP_Cover6",instance.STIC_ProdComp_ExistP_Cover6)
+        instance.STIC_ProdComp_ExistP_Cover7 = validated_data.get("STIC_ProdComp_ExistP_Cover7",instance.STIC_ProdComp_ExistP_Cover7)
+        instance.STIC_ProdComp_ExistP_Cover8 = validated_data.get("STIC_ProdComp_ExistP_Cover8",instance.STIC_ProdComp_ExistP_Cover8)
+        instance.STIC_ProdComp_ExistP_Cover9 = validated_data.get("STIC_ProdComp_ExistP_Cover9",instance.STIC_ProdComp_ExistP_Cover9)
+        instance.STIC_ProdComp_ExistP_Cover10 = validated_data.get("STIC_ProdComp_ExistP_Cover10",instance.STIC_ProdComp_ExistP_Cover10)
+        instance.STIC_ProdComp_ExistP_Cover11 = validated_data.get("STIC_ProdComp_ExistP_Cover11",instance.STIC_ProdComp_ExistP_Cover11)
+        instance.STIC_ProdComp_ExistP_Cover12 = validated_data.get("STIC_ProdComp_ExistP_Cover12",instance.STIC_ProdComp_ExistP_Cover12)
+        instance.STIC_ProdComp_ExistP_Cover13 = validated_data.get("STIC_ProdComp_ExistP_Cover13",instance.STIC_ProdComp_ExistP_Cover13)
+        instance.STIC_ProdComp_ExistP_Cover14 = validated_data.get("STIC_ProdComp_ExistP_Cover14",instance.STIC_ProdComp_ExistP_Cover14)
+        instance.STIC_ProdComp_ExistP_Cover15 = validated_data.get("STIC_ProdComp_ExistP_Cover15",instance.STIC_ProdComp_ExistP_Cover15)
+        instance.STIC_ProdComp_ExistP_Cover16 = validated_data.get("STIC_ProdComp_ExistP_Cover16",instance.STIC_ProdComp_ExistP_Cover16)
+        instance.STIC_ProdComp_ExistP_Cover17 = validated_data.get("STIC_ProdComp_ExistP_Cover17",instance.STIC_ProdComp_ExistP_Cover17)
+        instance.STIC_ProdComp_ExistP_Cover18 = validated_data.get("STIC_ProdComp_ExistP_Cover18",instance.STIC_ProdComp_ExistP_Cover18)
+        instance.STIC_ProdComp_ExistP_Cover19 = validated_data.get("STIC_ProdComp_ExistP_Cover19",instance.STIC_ProdComp_ExistP_Cover19)
+        instance.STIC_ProdComp_ExistP_Cover21 = validated_data.get("STIC_ProdComp_ExistP_Cover21",instance.STIC_ProdComp_ExistP_Cover21)
+        instance.STIC_ProdComp_ExistP_Cover22 = validated_data.get("STIC_ProdComp_ExistP_Cover22",instance.STIC_ProdComp_ExistP_Cover22)
+        instance.STIC_ProdComp_ExistP_Cover23 = validated_data.get("STIC_ProdComp_ExistP_Cover23",instance.STIC_ProdComp_ExistP_Cover23)
+        instance.STIC_ProdComp_ExistP_Cover24 = validated_data.get("STIC_ProdComp_ExistP_Cover24",instance.STIC_ProdComp_ExistP_Cover24)
+        instance.STIC_ProdComp_ExistP_Cover25 = validated_data.get("STIC_ProdComp_ExistP_Cover25",instance.STIC_ProdComp_ExistP_Cover25)
+        instance.STIC_ProdComp_ExistP_Cover26 = validated_data.get("STIC_ProdComp_ExistP_Cover26",instance.STIC_ProdComp_ExistP_Cover26)
+        instance.STIC_ProdComp_ExistP_Cover27 = validated_data.get("STIC_ProdComp_ExistP_Cover27",instance.STIC_ProdComp_ExistP_Cover27)
+        instance.STIC_ProdComp_ExistP_Cover28 = validated_data.get("STIC_ProdComp_ExistP_Cover28",instance.STIC_ProdComp_ExistP_Cover28)
+        instance.STIC_ProdComp_ExistP_Cover29 = validated_data.get("STIC_ProdComp_ExistP_Cover29",instance.STIC_ProdComp_ExistP_Cover29)
+        instance.STIC_ProdComp_ExistP_Cover30 = validated_data.get("STIC_ProdComp_ExistP_Cover30",instance.STIC_ProdComp_ExistP_Cover30)
+        instance.STIC_ProdComp_ExistP_Cover31 = validated_data.get("STIC_ProdComp_ExistP_Cover31",instance.STIC_ProdComp_ExistP_Cover31)
+        instance.STIC_ProdComp_ExistP_Cover32 = validated_data.get("STIC_ProdComp_ExistP_Cover32",instance.STIC_ProdComp_ExistP_Cover32)
+        instance.STIC_ProdComp_ExistP_Cover33 = validated_data.get("STIC_ProdComp_ExistP_Cover33",instance.STIC_ProdComp_ExistP_Cover33)
+        instance.STIC_ProdComp_ExistP_Cover34 = validated_data.get("STIC_ProdComp_ExistP_Cover34",instance.STIC_ProdComp_ExistP_Cover34)
+        instance.STIC_ProdComp_ExistP_Cover35 = validated_data.get("STIC_ProdComp_ExistP_Cover35",instance.STIC_ProdComp_ExistP_Cover35)
+        instance.STIC_ProdComp_ExistP_Cover36 = validated_data.get("STIC_ProdComp_ExistP_Cover36",instance.STIC_ProdComp_ExistP_Cover36)
+        instance.STIC_ProdComp_ExistP_Cover37 = validated_data.get("STIC_ProdComp_ExistP_Cover37",instance.STIC_ProdComp_ExistP_Cover37)
+        instance.STIC_ProdComp_ExistP_Cover38 = validated_data.get("STIC_ProdComp_ExistP_Cover38",instance.STIC_ProdComp_ExistP_Cover38)
+        instance.STIC_ProdComp_ExistP_Cover39 = validated_data.get("STIC_ProdComp_ExistP_Cover39",instance.STIC_ProdComp_ExistP_Cover39)
+        instance.STIC_ProdComp_ExistP_Cover40 = validated_data.get("STIC_ProdComp_ExistP_Cover40",instance.STIC_ProdComp_ExistP_Cover40)
+        instance.STIC_ProdComp_ExistP_Cover41 = validated_data.get("STIC_ProdComp_ExistP_Cover41",instance.STIC_ProdComp_ExistP_Cover41)
+        instance.STIC_ProdComp_ExistP_Cover42 = validated_data.get("STIC_ProdComp_ExistP_Cover42",instance.STIC_ProdComp_ExistP_Cover42)
+        instance.STIC_ProdComp_ExistP_Cover43 = validated_data.get("STIC_ProdComp_ExistP_Cover43",instance.STIC_ProdComp_ExistP_Cover43)
+        instance.STIC_ProdComp_ExistP_Cover44 = validated_data.get("STIC_ProdComp_ExistP_Cover44",instance.STIC_ProdComp_ExistP_Cover44)
         instance.STIC_ProdComp_RecommP_Premium1 = validated_data.get("STIC_ProdComp_RecommP_Premium1",instance.STIC_ProdComp_RecommP_Premium1)
         instance.STIC_ProdComp_RecommP_Excess1 = validated_data.get("STIC_ProdComp_RecommP_Excess1",instance.STIC_ProdComp_RecommP_Excess1)
         instance.STIC_ProdComp_Recommended2 = validated_data.get("STIC_ProdComp_Recommended2",instance.STIC_ProdComp_Recommended2) 
@@ -4220,6 +4263,24 @@ class EB_CoverSerializer(serializers.ModelSerializer):
         instance.updated_at = datetime.now(timezone.utc)
         instance.save()
         return instance
+    
+class Risk_BenDescSerializer(serializers.ModelSerializer):
+    class Meta():
+        model = Risk_BenDesc
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return Risk_BenDesc.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.BenDesc = validated_data.get('BenDesc', instance.BenDesc)  
+        instance.BenDesc_CoverAmount = validated_data.get('BenDesc_CoverAmount', instance.BenDesc_CoverAmount)         
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
 
 class STIP_Loss_Serializer(serializers.ModelSerializer):
     class Meta():
@@ -4295,6 +4356,893 @@ class STIC_Sec_Fire_Serializer(serializers.ModelSerializer):
         instance.RnS_Insured = validated_data.get('RnS_Insured', instance.RnS_Insured)    
         instance.SDC_Insured = validated_data.get('SDC_Insured', instance.SDC_Insured)    
          
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_2_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_2
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_2.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.BuildCombined_AddComments = validated_data.get('BuildCombined_AddComments', instance.BuildCombined_AddComments)  
+        instance.BuildCombined_Limit = validated_data.get('BuildCombined_Limit', instance.BuildCombined_Limit)  
+        instance.BuildCombined_ItemNumber = validated_data.get('BuildCombined_ItemNumber', instance.BuildCombined_ItemNumber)  
+        instance.BuildCombined_Premium = validated_data.get('BuildCombined_Premium', instance.BuildCombined_Premium)    
+        instance.BuildCombined_PremNumber = validated_data.get('BuildCombined_PremNumber', instance.BuildCombined_PremNumber)    
+        instance.BuildCombined_ColumnRef = validated_data.get('BuildCombined_ColumnRef', instance.BuildCombined_ColumnRef)  
+        instance.BuildCombined_Sum = validated_data.get('BuildCombined_Sum', instance.BuildCombined_Sum)  
+        instance.BuildCombined_Construct = validated_data.get('BuildCombined_Construct', instance.BuildCombined_Construct)    
+        instance.BuildCombined_Desc = validated_data.get('BuildCombined_Desc', instance.BuildCombined_Desc)    
+        instance.Extensions_RnS = validated_data.get('Extensions_RnS', instance.Extensions_RnS)  
+        instance.Extensions_Geysers = validated_data.get('Extensions_Geysers', instance.Extensions_Geysers)  
+        instance.Extensions_SnL = validated_data.get('Extensions_SnL', instance.Extensions_SnL)    
+        instance.Extensions_PoA = validated_data.get('Extensions_PoA', instance.Extensions_PoA)    
+        instance.Extensions_IorE = validated_data.get('Extensions_IorE', instance.Extensions_IorE) 
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_3_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_3
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_3.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.OC_AddComments = validated_data.get('OC_AddComments', instance.OC_AddComments)  
+        instance.OC_Limit = validated_data.get('OC_Limit', instance.OC_Limit)  
+        instance.OC_ItemNumber = validated_data.get('OC_ItemNumber', instance.OC_ItemNumber)  
+        instance.OC_Premium = validated_data.get('OC_Premium', instance.OC_Premium)    
+        instance.OC_PremNumber = validated_data.get('OC_PremNumber', instance.OC_PremNumber)    
+        instance.OC_PremisesNum = validated_data.get('OC_PremisesNum', instance.OC_PremisesNum)  
+        instance.OC_Sum = validated_data.get('OC_Sum', instance.OC_Sum)  
+        instance.OC_Construct = validated_data.get('OC_Construct', instance.OC_Construct)    
+        instance.OC_Desc = validated_data.get('OC_Desc', instance.OC_Desc)    
+        instance.OC_Doc_Sum = validated_data.get('OC_Doc_Sum', instance.OC_Doc_Sum)  
+        instance.OC_Doc_Premium = validated_data.get('OC_Doc_Premium', instance.OC_Doc_Premium)  
+        instance.OC_LLDoc_Sum = validated_data.get('OC_LLDoc_Sum', instance.OC_LLDoc_Sum)    
+        instance.OC_LLDoc_Premium = validated_data.get('OC_LLDoc_Premium', instance.OC_LLDoc_Premium)    
+        instance.OC_RnS_Sum = validated_data.get('OC_RnS_Sum', instance.OC_RnS_Sum) 
+        instance.OC_RnS_Premium = validated_data.get('OC_RnS_Premium', instance.OC_RnS_Premium) 
+        instance.OC_TheftF_Sum = validated_data.get('OC_TheftF_Sum', instance.OC_TheftF_Sum) 
+        instance.OC_TheftF_Premium = validated_data.get('OC_TheftF_Premium', instance.OC_TheftF_Premium) 
+        instance.OC_Theft_Sum = validated_data.get('OC_Theft_Sum', instance.OC_Theft_Sum) 
+        instance.OC_Theft_Premium = validated_data.get('OC_Theft_Premium', instance.OC_Theft_Premium) 
+        instance.OC_Total_Premium = validated_data.get('OC_Total_Premium', instance.OC_Total_Premium) 
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_4_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_4
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_4.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.BusInt_AddComments = validated_data.get('BusInt_AddComments', instance.BusInt_AddComments)  
+        instance.BusInt_Limit = validated_data.get('BusInt_Limit', instance.BusInt_Limit)  
+        instance.BusInt_Premium = validated_data.get('BusInt_Premium', instance.BusInt_Premium)  
+        instance.BusInt_ItemNumber = validated_data.get('BusInt_ItemNumber', instance.BusInt_ItemNumber)  
+        instance.BusInt_PremNumber = validated_data.get('BusInt_PremNumber', instance.BusInt_PremNumber)    
+        instance.BusInt_Basis = validated_data.get('BusInt_Basis', instance.BusInt_Basis)    
+        instance.BusInt_Indemnity = validated_data.get('BusInt_Indemnity', instance.BusInt_Indemnity)  
+        instance.BusInt_Type1 = validated_data.get('BusInt_Type1', instance.BusInt_Type1)  
+        instance.BusInt_Type2 = validated_data.get('BusInt_Type2', instance.BusInt_Type2)    
+        instance.BusInt_Type3 = validated_data.get('BusInt_Type3', instance.BusInt_Type3)    
+        instance.BusInt_Type4 = validated_data.get('BusInt_Type4', instance.BusInt_Type4)  
+        instance.BusInt_Type5 = validated_data.get('BusInt_Type5', instance.BusInt_Type5)  
+        instance.BusInt_Type6 = validated_data.get('BusInt_Type6', instance.BusInt_Type6)    
+        instance.BusInt_Type7 = validated_data.get('BusInt_Type7', instance.BusInt_Type7)    
+        instance.BusInt_Type8 = validated_data.get('BusInt_Type8', instance.BusInt_Type8) 
+        instance.BusInt_Type9 = validated_data.get('BusInt_Type9', instance.BusInt_Type9) 
+        instance.BusInt_Type9_1 = validated_data.get('BusInt_Type9_1', instance.BusInt_Type9_1) 
+        instance.BusInt_Type10 = validated_data.get('BusInt_Type10', instance.BusInt_Type10) 
+        instance.BusInt_Type11 = validated_data.get('BusInt_Type11', instance.BusInt_Type11) 
+        instance.BusInt_Type11_1 = validated_data.get('BusInt_Type11_1', instance.BusInt_Type11_1) 
+        instance.BusInt_Type12 = validated_data.get('BusInt_Type12', instance.BusInt_Type12) 
+        instance.BusInt_Type13 = validated_data.get('BusInt_Type13', instance.BusInt_Type13)  
+        instance.BusInt_Type14 = validated_data.get('BusInt_Type14', instance.BusInt_Type14)  
+        instance.BusInt_Type14_1 = validated_data.get('BusInt_Type14_1', instance.BusInt_Type14_1)  
+        instance.BusInt_Type15 = validated_data.get('BusInt_Type15', instance.BusInt_Type15)    
+        instance.BusInt_Type15_1 = validated_data.get('BusInt_Type15_1', instance.BusInt_Type15_1)    
+        instance.BusInt_Type16 = validated_data.get('BusInt_Type16', instance.BusInt_Type16)  
+        instance.BusInt_Type16_1 = validated_data.get('BusInt_Type16_1', instance.BusInt_Type16_1)  
+        instance.BusInt_Type17 = validated_data.get('BusInt_Type17', instance.BusInt_Type17)    
+        instance.BusInt_Type18 = validated_data.get('BusInt_Type18', instance.BusInt_Type18)    
+        instance.BusInt_Type19 = validated_data.get('BusInt_Type19', instance.BusInt_Type19)  
+        instance.BusInt_Type19_1 = validated_data.get('BusInt_Type19_1', instance.BusInt_Type19_1)  
+        instance.BusInt_Type20 = validated_data.get('BusInt_Type20', instance.BusInt_Type20)    
+        instance.BusInt_Type20_1 = validated_data.get('BusInt_Type20_1', instance.BusInt_Type20_1)    
+        instance.BusInt_Type21 = validated_data.get('BusInt_Type21', instance.BusInt_Type21) 
+        instance.BusInt_Type21_1 = validated_data.get('BusInt_Type21_1', instance.BusInt_Type21_1) 
+        instance.BusInt_Type22 = validated_data.get('BusInt_Type22', instance.BusInt_Type22) 
+        instance.BusInt_Type22_1 = validated_data.get('BusInt_Type22_1', instance.BusInt_Type22_1) 
+        instance.BusInt_Type23 = validated_data.get('BusInt_Type23', instance.BusInt_Type23) 
+        instance.BusInt_Type23_1 = validated_data.get('BusInt_Type23_1', instance.BusInt_Type23_1) 
+        instance.BusInt_TotalPremium = validated_data.get('BusInt_TotalPremium', instance.BusInt_TotalPremium) 
+        instance.BusInt_Comments = validated_data.get('BusInt_Comments', instance.BusInt_Comments)  
+        instance.BusInt_PremisesNumber = validated_data.get('BusInt_PremisesNumber', instance.BusInt_PremisesNumber)  
+        instance.BusInt_Basis = validated_data.get('BusInt_Basis', instance.BusInt_Basis)  
+        instance.BusInt_IndemPer = validated_data.get('BusInt_IndemPer', instance.BusInt_IndemPer)    
+        instance.BusInt_Suppliers = validated_data.get('BusInt_Suppliers', instance.BusInt_Suppliers)    
+        instance.BusInt_Type2_1 = validated_data.get('BusInt_Type2_1', instance.BusInt_Type2_1)  
+        instance.BusInt_Type2_2 = validated_data.get('BusInt_Type2_2', instance.BusInt_Type2_2)  
+        instance.BusInt_Type2_3 = validated_data.get('BusInt_Type2_3', instance.BusInt_Type2_3)    
+        instance.BusInt_Type2_4 = validated_data.get('BusInt_Type2_4', instance.BusInt_Type2_4)    
+        instance.BusInt_Type2_5 = validated_data.get('BusInt_Type2_5', instance.BusInt_Type2_5)  
+        instance.BusInt_Type2_6 = validated_data.get('BusInt_Type2_6', instance.BusInt_Type2_6)  
+        instance.BusInt_Type2_7 = validated_data.get('BusInt_Type2_7', instance.BusInt_Type2_7)    
+        instance.BusInt_Type2_8 = validated_data.get('BusInt_Type2_8', instance.BusInt_Type2_8)    
+        instance.BusInt_Type2_9 = validated_data.get('BusInt_Type2_9', instance.BusInt_Type2_9) 
+        instance.BusInt_Type2_9_1 = validated_data.get('BusInt_Type2_9_1', instance.BusInt_Type2_9_1) 
+        instance.BusInt_Type2_10 = validated_data.get('BusInt_Type2_10', instance.BusInt_Type2_10) 
+        instance.BusInt_Type2_11 = validated_data.get('BusInt_Type2_11', instance.BusInt_Type2_11) 
+        instance.BusInt_Type2_11_1 = validated_data.get('BusInt_Type2_11_1', instance.BusInt_Type2_11_1) 
+        instance.BusInt_Type2_12 = validated_data.get('BusInt_Type2_12', instance.BusInt_Type2_12) 
+        instance.BusInt_Type2_13 = validated_data.get('BusInt_Type2_13', instance.BusInt_Type2_13) 
+        instance.BusInt_Type2_14 = validated_data.get('BusInt_Type2_14', instance.BusInt_Type2_14)  
+        instance.BusInt_Type2_14_1 = validated_data.get('BusInt_Type2_14_1', instance.BusInt_Type2_14_1)  
+        instance.BusInt_Type2_15 = validated_data.get('BusInt_Type2_15', instance.BusInt_Type2_15)  
+        instance.BusInt_Type2_15_1 = validated_data.get('BusInt_Type2_15_1', instance.BusInt_Type2_15_1)    
+        instance.BusInt_Type2_16 = validated_data.get('BusInt_Type2_16', instance.BusInt_Type2_16)    
+        instance.BusInt_Type2_16_1 = validated_data.get('BusInt_Type2_16_1', instance.BusInt_Type2_16_1)  
+        instance.BusInt_Type2_17 = validated_data.get('BusInt_Type2_17', instance.BusInt_Type2_17)  
+        instance.BusInt_Type2_18 = validated_data.get('BusInt_Type2_18', instance.BusInt_Type2_18)    
+        instance.BusInt_Type2_19 = validated_data.get('BusInt_Type2_19', instance.BusInt_Type2_19)    
+        instance.BusInt_Type2_19_1 = validated_data.get('BusInt_Type2_19_1', instance.BusInt_Type2_19_1)  
+        instance.BusInt_Type2_20 = validated_data.get('BusInt_Type2_20', instance.BusInt_Type2_20)  
+        instance.BusInt_Type2_20_1 = validated_data.get('BusInt_Type2_20_1', instance.BusInt_Type2_20_1)    
+        instance.BusInt_Type2_21 = validated_data.get('BusInt_Type2_21', instance.BusInt_Type2_21)    
+        instance.BusInt_Type2_21_1 = validated_data.get('BusInt_Type2_21_1', instance.BusInt_Type2_21_1) 
+        instance.BusInt_Type2_22 = validated_data.get('BusInt_Type2_22', instance.BusInt_Type2_22) 
+        instance.BusInt_Type2_22_1 = validated_data.get('BusInt_Type2_22_1', instance.BusInt_Type2_22_1) 
+        instance.BusInt_Type2_23 = validated_data.get('BusInt_Type2_23', instance.BusInt_Type2_23) 
+        instance.BusInt_Type2_23_1 = validated_data.get('BusInt_Type2_23_1', instance.BusInt_Type2_23_1) 
+        instance.BusInt2_TotalPremium = validated_data.get('BusInt2_TotalPremium', instance.BusInt2_TotalPremium) 
+        instance.BusInt2_Comments = validated_data.get('BusInt2_Comments', instance.BusInt2_Comments) 
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_5_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_5
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_5.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec5_AddComments = validated_data.get('Sec5_AddComments', instance.Sec5_AddComments)  
+        instance.Sec5_Limit = validated_data.get('Sec5_Limit', instance.Sec5_Limit)  
+        instance.Sec5_Premium = validated_data.get('Sec5_Premium', instance.Sec5_Premium)  
+        instance.Sec5_ItemNumber = validated_data.get('Sec5_ItemNumber', instance.Sec5_ItemNumber)  
+        instance.Sec5_PremNumber = validated_data.get('Sec5_PremNumber', instance.Sec5_PremNumber)    
+        instance.Sec5_1 = validated_data.get('Sec5_1', instance.Sec5_1)    
+        instance.Sec5_2 = validated_data.get('Sec5_2', instance.Sec5_2)  
+        instance.Sec5_Extension_1 = validated_data.get('Sec5_Extension_1', instance.Sec5_Extension_1)  
+        instance.Sec5_Extension_2 = validated_data.get('Sec5_Extension_2', instance.Sec5_Extension_2)    
+        instance.Sec5_Extension_3 = validated_data.get('Sec5_Extension_3', instance.Sec5_Extension_3)    
+        instance.Sec5_Extension_4 = validated_data.get('Sec5_Extension_4', instance.Sec5_Extension_4)  
+        instance.Sec5_Extension_5 = validated_data.get('Sec5_Extension_5', instance.Sec5_Extension_5)  
+        instance.Sec5_AnnualPremium = validated_data.get('Sec5_AnnualPremium', instance.Sec5_AnnualPremium)    
+        instance.Sec5_Comments = validated_data.get('Sec5_Comments', instance.Sec5_Comments)   
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_6_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_6
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_6.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec6_AddComments = validated_data.get('Sec6_AddComments', instance.Sec6_AddComments)  
+        instance.Sec6_Limit = validated_data.get('Sec6_Limit', instance.Sec6_Limit)  
+        instance.Sec6_Premium = validated_data.get('Sec6_Premium', instance.Sec6_Premium)  
+        instance.Sec6_ItemNumber = validated_data.get('Sec6_ItemNumber', instance.Sec6_ItemNumber)  
+        instance.Sec6_PremNumber = validated_data.get('Sec6_PremNumber', instance.Sec6_PremNumber)    
+        instance.Sec6_1 = validated_data.get('Sec6_1', instance.Sec6_1)    
+        instance.Sec6_2 = validated_data.get('Sec6_2', instance.Sec6_2)  
+        instance.Sec6_3 = validated_data.get('Sec6_3', instance.Sec6_3)  
+        instance.Sec6_4 = validated_data.get('Sec6_4', instance.Sec6_4)    
+        instance.Sec6_5 = validated_data.get('Sec6_5', instance.Sec6_5)    
+        instance.Sec6_6 = validated_data.get('Sec6_6', instance.Sec6_6)  
+        instance.Sec6_Comments = validated_data.get('Sec6_Comments', instance.Sec6_Comments)    
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_7_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_7
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_7.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec7_AddComments = validated_data.get('Sec7_AddComments', instance.Sec7_AddComments)  
+        instance.Sec7_Limit = validated_data.get('Sec7_Limit', instance.Sec7_Limit)  
+        instance.Sec7_Premium = validated_data.get('Sec7_Premium', instance.Sec7_Premium)  
+        instance.Sec7_ItemNumber = validated_data.get('Sec7_ItemNumber', instance.Sec7_ItemNumber)  
+        instance.Sec7_PremNumber = validated_data.get('Sec7_PremNumber', instance.Sec7_PremNumber)    
+        instance.Sec7_1 = validated_data.get('Sec7_1', instance.Sec7_1)    
+        instance.Sec7_2 = validated_data.get('Sec7_2', instance.Sec7_2)  
+        instance.Sec7_3 = validated_data.get('Sec7_3', instance.Sec7_3)  
+        instance.Sec7_4 = validated_data.get('Sec7_4', instance.Sec7_4)    
+        instance.Sec7_5 = validated_data.get('Sec7_5', instance.Sec7_5)    
+        instance.Sec7_6 = validated_data.get('Sec7_6', instance.Sec7_6)  
+        instance.Sec7_7 = validated_data.get('Sec7_7', instance.Sec7_7)    
+        instance.Sec7_8 = validated_data.get('Sec7_8', instance.Sec7_8)  
+        instance.Sec7_9 = validated_data.get('Sec7_9', instance.Sec7_9)  
+        instance.Sec7_Extension_Included1 = validated_data.get('Sec7_Extension_Included1', instance.Sec7_Extension_Included1)  
+        instance.Sec7_Extension_Limit1 = validated_data.get('Sec7_Extension_Limit1', instance.Sec7_Extension_Limit1)  
+        instance.Sec7_Extension_Premium1 = validated_data.get('Sec7_Extension_Premium1', instance.Sec7_Extension_Premium1)    
+        instance.Sec7_Extension_Included2 = validated_data.get('Sec7_Extension_Included2', instance.Sec7_Extension_Included2)    
+        instance.Sec7_Extension_Limit2 = validated_data.get('Sec7_Extension_Limit2', instance.Sec7_Extension_Limit2)  
+        instance.Sec7_Extension_Premium2 = validated_data.get('Sec7_Extension_Premium2', instance.Sec7_Extension_Premium2)  
+        instance.Sec7_Extension_Included3 = validated_data.get('Sec7_Extension_Included3', instance.Sec7_Extension_Included3)    
+        instance.Sec7_Extension_Limit3 = validated_data.get('Sec7_Extension_Limit3', instance.Sec7_Extension_Limit3)    
+        instance.Sec7_Extension_Premium3 = validated_data.get('Sec7_Extension_Premium3', instance.Sec7_Extension_Premium3)  
+        instance.Sec7_AnnualPremium = validated_data.get('Sec7_AnnualPremium', instance.Sec7_AnnualPremium)    
+        instance.Sec7_Comments = validated_data.get('Sec7_Comments', instance.Sec7_Comments)    
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_8_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_8
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_8.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec8_AddComments = validated_data.get('Sec8_AddComments', instance.Sec8_AddComments)  
+        instance.Sec8_Limit = validated_data.get('Sec8_Limit', instance.Sec8_Limit)  
+        instance.Sec8_Premium = validated_data.get('Sec8_Premium', instance.Sec8_Premium)  
+        instance.Sec8_ItemNumber = validated_data.get('Sec8_ItemNumber', instance.Sec8_ItemNumber)  
+        instance.Sec8_PremNumber = validated_data.get('Sec8_PremNumber', instance.Sec8_PremNumber)    
+        instance.Sec8_1 = validated_data.get('Sec8_1', instance.Sec8_1)    
+        instance.Sec8_2 = validated_data.get('Sec8_2', instance.Sec8_2)  
+        instance.Sec8_Extension_Included1 = validated_data.get('Sec8_Extension_Included1', instance.Sec8_Extension_Included1)  
+        instance.Sec8_Extension_Included2 = validated_data.get('Sec8_Extension_Included2', instance.Sec8_Extension_Included2)    
+        instance.Sec8_AnnualPremium = validated_data.get('Sec8_AnnualPremium', instance.Sec8_AnnualPremium)    
+        instance.Sec8_Comments = validated_data.get('Sec8_Comments', instance.Sec8_Comments)
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_9_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_9
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_9.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec9_AddComments = validated_data.get('Sec9_AddComments', instance.Sec9_AddComments)  
+        instance.Sec9_Limit = validated_data.get('Sec9_Limit', instance.Sec9_Limit)  
+        instance.Sec9_Premium = validated_data.get('Sec9_Premium', instance.Sec9_Premium)  
+        instance.Sec9_ItemNumber = validated_data.get('Sec9_ItemNumber', instance.Sec9_ItemNumber)  
+        instance.Sec9_PremNumber = validated_data.get('Sec9_PremNumber', instance.Sec9_PremNumber)  
+        instance.Sec9_1 = validated_data.get('Sec9_1', instance.Sec9_1)  
+        instance.Sec9_2 = validated_data.get('Sec9_2', instance.Sec9_2)  
+        instance.Sec9_3 = validated_data.get('Sec9_3', instance.Sec9_3)  
+        instance.Sec9_4 = validated_data.get('Sec9_4', instance.Sec9_4)  
+        instance.Sec9_5 = validated_data.get('Sec9_5', instance.Sec9_5)  
+        instance.Sec9_6 = validated_data.get('Sec9_6', instance.Sec9_6)  
+        instance.Sec9_Extension_Included1 = validated_data.get('Sec9_Extension_Included1', instance.Sec9_Extension_Included1)  
+        instance.Sec9_Extension_Limit1 = validated_data.get('Sec9_Extension_Limit1', instance.Sec9_Extension_Limit1)    
+        instance.Sec9_Extension_Premium1 = validated_data.get('Sec9_Extension_Premium1', instance.Sec9_Extension_Premium1)    
+        instance.Sec9_Extension_Included2 = validated_data.get('Sec9_Extension_Included2', instance.Sec9_Extension_Included2)    
+        instance.Sec9_Extension_Limit2 = validated_data.get('Sec9_Extension_Limit2', instance.Sec9_Extension_Limit2)    
+        instance.Sec9_Extension_Premium2 = validated_data.get('Sec9_Extension_Premium2', instance.Sec9_Extension_Premium2)    
+        instance.Sec9_Extension_Included3 = validated_data.get('Sec9_Extension_Included3', instance.Sec9_Extension_Included3)    
+        instance.Sec9_Extension_Limit3 = validated_data.get('Sec9_Extension_Limit3', instance.Sec9_Extension_Limit3)  
+        instance.Sec9_Extension_Premium3 = validated_data.get('Sec9_Extension_Premium3', instance.Sec9_Extension_Premium3)  
+        instance.Sec9_Extension_Included4 = validated_data.get('Sec9_Extension_Included4', instance.Sec9_Extension_Included4)  
+        instance.Sec9_Extension_Limit4 = validated_data.get('Sec9_Extension_Limit4', instance.Sec9_Extension_Limit4)  
+        instance.Sec9_Extension_Premium4 = validated_data.get('Sec9_Extension_Premium4', instance.Sec9_Extension_Premium4)  
+        instance.Sec9_Extension_Included5 = validated_data.get('Sec9_Extension_Included5', instance.Sec9_Extension_Included5)  
+        instance.Sec9_Extension_Limit5 = validated_data.get('Sec9_Extension_Limit5', instance.Sec9_Extension_Limit5)    
+        instance.Sec9_Extension_Premium5 = validated_data.get('Sec9_Extension_Premium5', instance.Sec9_Extension_Premium5)    
+        instance.Sec9_Extension_Included6 = validated_data.get('Sec9_Extension_Included6', instance.Sec9_Extension_Included6)    
+        instance.Sec9_Extension_Limit6 = validated_data.get('Sec9_Extension_Limit6', instance.Sec9_Extension_Limit6)    
+        instance.Sec9_Extension_Premium6 = validated_data.get('Sec9_Extension_Premium6', instance.Sec9_Extension_Premium6)    
+        instance.Sec9_AnnualPremium = validated_data.get('Sec9_AnnualPremium', instance.Sec9_AnnualPremium)    
+        instance.Sec9_Comments = validated_data.get('Sec9_Comments', instance.Sec9_Comments)
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_10_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_10
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_10.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec10_AddComments = validated_data.get('Sec10_AddComments', instance.Sec10_AddComments)  
+        instance.Sec10_Limit = validated_data.get('Sec10_Limit', instance.Sec10_Limit)  
+        instance.Sec10_Premium = validated_data.get('Sec10_Premium', instance.Sec10_Premium)  
+        instance.Sec10_ItemNumber = validated_data.get('Sec10_ItemNumber', instance.Sec10_ItemNumber)  
+        instance.Sec10_PremNumber = validated_data.get('Sec10_PremNumber', instance.Sec10_PremNumber)  
+        instance.Sec10_1 = validated_data.get('Sec10_1', instance.Sec10_1)  
+        instance.Sec10_2 = validated_data.get('Sec10_2', instance.Sec10_2)  
+        instance.Sec10_3 = validated_data.get('Sec10_3', instance.Sec10_3)  
+        instance.Sec10_4 = validated_data.get('Sec10_4', instance.Sec10_4)  
+        instance.Sec10_5 = validated_data.get('Sec10_5', instance.Sec10_5)  
+        instance.Sec10_6 = validated_data.get('Sec10_6', instance.Sec10_6)  
+        instance.Sec10_7 = validated_data.get('Sec10_7', instance.Sec10_7)  
+        instance.Sec10_Extension_Included1 = validated_data.get('Sec10_Extension_Included1', instance.Sec10_Extension_Included1)    
+        instance.Sec10_Extension_Limit1 = validated_data.get('Sec10_Extension_Limit1', instance.Sec10_Extension_Limit1)    
+        instance.Sec10_Extension_Premium1 = validated_data.get('Sec10_Extension_Premium1', instance.Sec10_Extension_Premium1)    
+        instance.Sec10_Extension_Included2 = validated_data.get('Sec10_Extension_Included2', instance.Sec10_Extension_Included2)    
+        instance.Sec10_Extension_Limit2 = validated_data.get('Sec10_Extension_Limit2', instance.Sec10_Extension_Limit2)    
+        instance.Sec10_Extension_Premium2 = validated_data.get('Sec10_Extension_Premium2', instance.Sec10_Extension_Premium2)    
+        instance.Sec10_Extension_Included3 = validated_data.get('Sec10_Extension_Included3', instance.Sec10_Extension_Included3)  
+        instance.Sec10_Extension_Limit3 = validated_data.get('Sec10_Extension_Limit3', instance.Sec10_Extension_Limit3)  
+        instance.Sec10_Extension_Premium3 = validated_data.get('Sec10_Extension_Premium3', instance.Sec10_Extension_Premium3)  
+        instance.Sec10_Extension_Included4 = validated_data.get('Sec10_Extension_Included4', instance.Sec10_Extension_Included4)  
+        instance.Sec10_Extension_Limit4 = validated_data.get('Sec10_Extension_Limit4', instance.Sec10_Extension_Limit4)  
+        instance.Sec10_Extension_Premium4 = validated_data.get('Sec10_Extension_Premium4', instance.Sec10_Extension_Premium4)  
+        instance.Sec10_AnnualPremium = validated_data.get('Sec10_AnnualPremium', instance.Sec10_AnnualPremium)    
+        instance.Sec10_Comments = validated_data.get('Sec10_Comments', instance.Sec10_Comments)    
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_11_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_11
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_11.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec11_AddComments = validated_data.get('Sec11_AddComments', instance.Sec11_AddComments)  
+        instance.Sec11_Limit = validated_data.get('Sec11_Limit', instance.Sec11_Limit)  
+        instance.Sec11_Premium = validated_data.get('Sec11_Premium', instance.Sec11_Premium)  
+        instance.Sec11_ItemNumber = validated_data.get('Sec11_ItemNumber', instance.Sec11_ItemNumber)  
+        instance.Sec11_PremNumber = validated_data.get('Sec11_PremNumber', instance.Sec11_PremNumber)  
+        instance.Sec11_1 = validated_data.get('Sec11_1', instance.Sec11_1)  
+        instance.Sec11_2 = validated_data.get('Sec11_2', instance.Sec11_2)  
+        instance.Sec11_3 = validated_data.get('Sec11_3', instance.Sec11_3)  
+        instance.Sec11_4 = validated_data.get('Sec11_4', instance.Sec11_4)  
+        instance.Sec11_5 = validated_data.get('Sec11_5', instance.Sec11_5)  
+        instance.Sec11_6 = validated_data.get('Sec11_6', instance.Sec11_6)  
+        instance.Sec11_7 = validated_data.get('Sec11_7', instance.Sec11_7)  
+        instance.Sec11_8 = validated_data.get('Sec11_8', instance.Sec11_8)    
+        instance.Sec11_9 = validated_data.get('Sec11_9', instance.Sec11_9)    
+        instance.Sec11_10 = validated_data.get('Sec11_10', instance.Sec11_10)    
+        instance.Sec11_AnnualPremium = validated_data.get('Sec11_AnnualPremium', instance.Sec11_AnnualPremium)    
+        instance.Sec11_Comments = validated_data.get('Sec11_Comments', instance.Sec11_Comments)
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_12_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_12
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_12.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec12_AddComments = validated_data.get('Sec12_AddComments', instance.Sec12_AddComments)  
+        instance.Sec12_Limit = validated_data.get('Sec12_Limit', instance.Sec12_Limit)  
+        instance.Sec12_Premium = validated_data.get('Sec12_Premium', instance.Sec12_Premium)  
+        instance.Sec12_ItemNumber = validated_data.get('Sec12_ItemNumber', instance.Sec12_ItemNumber)  
+        instance.Sec12_PremNumber = validated_data.get('Sec12_PremNumber', instance.Sec12_PremNumber)  
+        instance.Sec12_1 = validated_data.get('Sec12_1', instance.Sec12_1)  
+        instance.Sec12_2 = validated_data.get('Sec12_2', instance.Sec12_2)  
+        instance.Sec12_3 = validated_data.get('Sec12_3', instance.Sec12_3)  
+        instance.Sec12_4 = validated_data.get('Sec12_4', instance.Sec12_4)  
+        instance.Sec12_5 = validated_data.get('Sec12_5', instance.Sec12_5)  
+        instance.Sec12_6 = validated_data.get('Sec12_6', instance.Sec12_6)  
+        instance.Sec12_Extension_Included1 = validated_data.get('Sec12_Extension_Included1', instance.Sec12_Extension_Included1)  
+        instance.Sec12_Extension_Included2 = validated_data.get('Sec12_Extension_Included2', instance.Sec12_Extension_Included2)  
+        instance.Sec12_Extension_Included3 = validated_data.get('Sec12_Extension_Included3', instance.Sec12_Extension_Included3)    
+        instance.Sec12_Extension_Included4 = validated_data.get('Sec12_Extension_Included4', instance.Sec12_Extension_Included4)    
+        instance.Sec12_Extension_Included5 = validated_data.get('Sec12_Extension_Included5', instance.Sec12_Extension_Included5)    
+        instance.Sec12_AnnualPremium = validated_data.get('Sec12_AnnualPremium', instance.Sec12_AnnualPremium)    
+        instance.Sec12_Comments = validated_data.get('Sec12_Comments', instance.Sec12_Comments)
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_13_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_13
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_13.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec13_AddComments = validated_data.get('Sec13_AddComments', instance.Sec13_AddComments)  
+        instance.Sec13_Limit = validated_data.get('Sec13_Limit', instance.Sec13_Limit)  
+        instance.Sec13_Premium = validated_data.get('Sec13_Premium', instance.Sec13_Premium)  
+        instance.Sec13_ItemNumber = validated_data.get('Sec13_ItemNumber', instance.Sec13_ItemNumber)  
+        instance.Sec13_PremNumber = validated_data.get('Sec13_PremNumber', instance.Sec13_PremNumber)  
+        instance.Sec13_1 = validated_data.get('Sec13_1', instance.Sec13_1)  
+        instance.Sec13_2 = validated_data.get('Sec13_2', instance.Sec13_2)  
+        instance.Sec13_3 = validated_data.get('Sec13_3', instance.Sec13_3)  
+        instance.Sec13_4 = validated_data.get('Sec13_4', instance.Sec13_4)  
+        instance.Sec13_5 = validated_data.get('Sec13_5', instance.Sec13_5)  
+        instance.Sec13_6 = validated_data.get('Sec13_6', instance.Sec13_6)  
+        instance.Sec13_7 = validated_data.get('Sec13_7', instance.Sec13_7)  
+        instance.Sec13_8 = validated_data.get('Sec13_8', instance.Sec13_8)  
+        instance.Sec13_9 = validated_data.get('Sec13_9', instance.Sec13_9)  
+        instance.Sec13_10 = validated_data.get('Sec13_10', instance.Sec13_10)  
+        instance.Sec13_11 = validated_data.get('Sec13_11', instance.Sec13_11)  
+        instance.Sec13_12 = validated_data.get('Sec13_12', instance.Sec13_12)  
+        instance.Sec13_13 = validated_data.get('Sec13_13', instance.Sec13_13)  
+        instance.Sec13_14 = validated_data.get('Sec13_14', instance.Sec13_14)  
+        instance.Sec13_15 = validated_data.get('Sec13_15', instance.Sec13_15)  
+        instance.Sec13_16 = validated_data.get('Sec13_16', instance.Sec13_16)  
+        instance.Sec13_17 = validated_data.get('Sec13_17', instance.Sec13_17)  
+        instance.Sec13_18 = validated_data.get('Sec13_18', instance.Sec13_18)  
+        instance.Sec13_19 = validated_data.get('Sec13_19', instance.Sec13_19)  
+        instance.Sec13_20 = validated_data.get('Sec13_20', instance.Sec13_20)  
+        instance.Sec13_21 = validated_data.get('Sec13_21', instance.Sec13_21)  
+        instance.Sec13_22 = validated_data.get('Sec13_22', instance.Sec13_22)  
+        instance.Sec13_23 = validated_data.get('Sec13_23', instance.Sec13_23)  
+        instance.Sec13_24 = validated_data.get('Sec13_24', instance.Sec13_24)  
+        instance.Sec13_25 = validated_data.get('Sec13_25', instance.Sec13_25)  
+        instance.Sec13_26 = validated_data.get('Sec13_26', instance.Sec13_26)  
+        instance.Sec13_27 = validated_data.get('Sec13_27', instance.Sec13_27)  
+        instance.Sec13_28 = validated_data.get('Sec13_28', instance.Sec13_28)  
+        instance.Sec13_29 = validated_data.get('Sec13_29', instance.Sec13_29)  
+        instance.Sec13_30 = validated_data.get('Sec13_30', instance.Sec13_30)  
+        instance.Sec13_31 = validated_data.get('Sec13_31', instance.Sec13_31)  
+        instance.Sec13_32 = validated_data.get('Sec13_32', instance.Sec13_32)  
+        instance.Sec13_AnnualPremium = validated_data.get('Sec13_AnnualPremium', instance.Sec13_AnnualPremium)  
+        instance.Sec13_Comments = validated_data.get('Sec13_Comments', instance.Sec13_Comments)  
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_14_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_14
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_14.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec14_AddComments = validated_data.get('Sec14_AddComments', instance.Sec14_AddComments)  
+        instance.Sec14_Limit = validated_data.get('Sec14_Limit', instance.Sec14_Limit)  
+        instance.Sec14_Premium = validated_data.get('Sec14_Premium', instance.Sec14_Premium)  
+        instance.Sec14_ItemNumber = validated_data.get('Sec14_ItemNumber', instance.Sec14_ItemNumber)  
+        instance.Sec14_PremNumber = validated_data.get('Sec14_PremNumber', instance.Sec14_PremNumber)  
+        instance.Sec14_1 = validated_data.get('Sec14_1', instance.Sec14_1)  
+        instance.Sec14_2 = validated_data.get('Sec14_2', instance.Sec14_2)  
+        instance.Sec14_3 = validated_data.get('Sec14_3', instance.Sec14_3)  
+        instance.Sec14_4 = validated_data.get('Sec14_4', instance.Sec14_4)  
+        instance.Sec14_5 = validated_data.get('Sec14_5', instance.Sec14_5)  
+        instance.Sec14_6 = validated_data.get('Sec14_6', instance.Sec14_6)  
+        instance.Sec14_Recommended1 = validated_data.get('Sec14_Recommended1', instance.Sec14_Recommended1)  
+        instance.Sec14_Accepted1 = validated_data.get('Sec14_Accepted1', instance.Sec14_Accepted1)  
+        instance.Sec14_CoverAmount1 = validated_data.get('Sec14_CoverAmount1', instance.Sec14_CoverAmount1)  
+        instance.Sec14_Recommended2 = validated_data.get('Sec14_Recommended2', instance.Sec14_Recommended2)  
+        instance.Sec14_Accepted2 = validated_data.get('Sec14_Accepted2', instance.Sec14_Accepted2)  
+        instance.Sec14_CoverAmount2 = validated_data.get('Sec14_CoverAmount2', instance.Sec14_CoverAmount2)  
+        instance.Sec14_Recommended3 = validated_data.get('Sec14_Recommended3', instance.Sec14_Recommended3)  
+        instance.Sec14_Accepted3 = validated_data.get('Sec14_Accepted3', instance.Sec14_Accepted3)  
+        instance.Sec14_CoverAmount3 = validated_data.get('Sec14_CoverAmount3', instance.Sec14_CoverAmount3)  
+        instance.Sec14_Recommended4 = validated_data.get('Sec14_Recommended4', instance.Sec14_Recommended4)  
+        instance.Sec14_Accepted4 = validated_data.get('Sec14_Accepted4', instance.Sec14_Accepted4)  
+        instance.Sec14_CoverAmount4 = validated_data.get('Sec14_CoverAmount4', instance.Sec14_CoverAmount4)  
+        instance.Sec14_Recommended5 = validated_data.get('Sec14_Recommended5', instance.Sec14_Recommended5)  
+        instance.Sec14_Accepted5 = validated_data.get('Sec14_Accepted5', instance.Sec14_Accepted5)  
+        instance.Sec14_CoverAmount5 = validated_data.get('Sec14_CoverAmount5', instance.Sec14_CoverAmount5)  
+        instance.Sec14_Recommended6 = validated_data.get('Sec14_Recommended6', instance.Sec14_Recommended6)  
+        instance.Sec14_Accepted6 = validated_data.get('Sec14_Accepted6', instance.Sec14_Accepted6)  
+        instance.Sec14_CoverAmount6 = validated_data.get('Sec14_CoverAmount6', instance.Sec14_CoverAmount6)  
+        instance.Sec14_Recommended7 = validated_data.get('Sec14_Recommended7', instance.Sec14_Recommended7)  
+        instance.Sec14_Accepted7 = validated_data.get('Sec14_Accepted7', instance.Sec14_Accepted7)  
+        instance.Sec14_CoverAmount7 = validated_data.get('Sec14_CoverAmount7', instance.Sec14_CoverAmount7)  
+        instance.Sec14_Recommended8 = validated_data.get('Sec14_Recommended8', instance.Sec14_Recommended8)  
+        instance.Sec14_Accepted8 = validated_data.get('Sec14_Accepted8', instance.Sec14_Accepted8)  
+        instance.Sec14_CoverAmount8 = validated_data.get('Sec14_CoverAmount8', instance.Sec14_CoverAmount8)  
+        instance.Sec14_Recommended9 = validated_data.get('Sec14_Recommended9', instance.Sec14_Recommended9)  
+        instance.Sec14_Accepted9 = validated_data.get('Sec14_Accepted9', instance.Sec14_Accepted9)  
+        instance.Sec14_CoverAmount9 = validated_data.get('Sec14_CoverAmount9', instance.Sec14_CoverAmount9)  
+        instance.Sec14_Recommended10 = validated_data.get('Sec14_Recommended10', instance.Sec14_Recommended10)  
+        instance.Sec14_Accepted10 = validated_data.get('Sec14_Accepted10', instance.Sec14_Accepted10)  
+        instance.Sec14_CoverAmount10 = validated_data.get('Sec14_CoverAmount10', instance.Sec14_CoverAmount10)  
+        instance.Sec14_Recommended11 = validated_data.get('Sec14_Recommended11', instance.Sec14_Recommended11)  
+        instance.Sec14_Accepted11 = validated_data.get('Sec14_Accepted11', instance.Sec14_Accepted11)  
+        instance.Sec14_CoverAmount11 = validated_data.get('Sec14_CoverAmount11', instance.Sec14_CoverAmount11)  
+        instance.Sec14_Recommended12 = validated_data.get('Sec14_Recommended12', instance.Sec14_Recommended12)  
+        instance.Sec14_Accepted12 = validated_data.get('Sec14_Accepted12', instance.Sec14_Accepted12)  
+        instance.Sec14_CoverAmount12 = validated_data.get('Sec14_CoverAmount12', instance.Sec14_CoverAmount12)  
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_15_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_15
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_15.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec15_AddComments = validated_data.get('Sec15_AddComments', instance.Sec15_AddComments)  
+        instance.Sec15_Limit = validated_data.get('Sec15_Limit', instance.Sec15_Limit)  
+        instance.Sec15_Premium = validated_data.get('Sec15_Premium', instance.Sec15_Premium)  
+        instance.Sec15_ItemNumber = validated_data.get('Sec15_ItemNumber', instance.Sec15_ItemNumber)  
+        instance.Sec15_PremNumber = validated_data.get('Sec15_PremNumber', instance.Sec15_PremNumber)  
+        instance.Sec15_1 = validated_data.get('Sec15_1', instance.Sec15_1)  
+        instance.Sec15_1_1 = validated_data.get('Sec15_1_1', instance.Sec15_1_1)  
+        instance.Sec15_2 = validated_data.get('Sec15_2', instance.Sec15_2)  
+        instance.Sec15_2_1 = validated_data.get('Sec15_2_1', instance.Sec15_2_1)  
+        instance.Sec15_3 = validated_data.get('Sec15_3', instance.Sec15_3)  
+        instance.Sec15_3_1 = validated_data.get('Sec15_3_1', instance.Sec15_3_1)  
+        instance.Sec15_AnnualPremium = validated_data.get('Sec15_AnnualPremium', instance.Sec15_AnnualPremium)  
+        instance.Sec15_Comments = validated_data.get('Sec15_Comments', instance.Sec15_Comments)  
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_16_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_16
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_16.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec16_AddComments = validated_data.get('Sec16_AddComments', instance.Sec16_AddComments)  
+        instance.Sec16_Limit = validated_data.get('Sec16_Limit', instance.Sec16_Limit)  
+        instance.Sec16_Premium = validated_data.get('Sec16_Premium', instance.Sec16_Premium)  
+        instance.Sec16_ItemNumber = validated_data.get('Sec16_ItemNumber', instance.Sec16_ItemNumber)  
+        instance.Sec16_PremNumber = validated_data.get('Sec16_PremNumber', instance.Sec16_PremNumber)  
+        instance.Sec16_1 = validated_data.get('Sec16_1', instance.Sec16_1)  
+        instance.Sec16_2 = validated_data.get('Sec16_2', instance.Sec16_2)  
+        instance.Sec16_3 = validated_data.get('Sec16_3', instance.Sec16_3)  
+        instance.Sec16_4 = validated_data.get('Sec16_4', instance.Sec16_4)  
+        instance.Sec16_5 = validated_data.get('Sec16_5', instance.Sec16_5)  
+        instance.Sec16_6 = validated_data.get('Sec16_6', instance.Sec16_6)  
+        instance.Sec16_7 = validated_data.get('Sec16_7', instance.Sec16_7)  
+        instance.Sec16_8 = validated_data.get('Sec16_8', instance.Sec16_8)  
+        instance.Sec16_9 = validated_data.get('Sec16_9', instance.Sec16_9)  
+        instance.Sec16_10 = validated_data.get('Sec16_10', instance.Sec16_10)  
+        instance.Sec16_Extension1 = validated_data.get('Sec16_Extension1', instance.Sec16_Extension1)  
+        instance.Sec16_Extension2 = validated_data.get('Sec16_Extension2', instance.Sec16_Extension2)  
+        instance.Sec16_Extension3 = validated_data.get('Sec16_Extension3', instance.Sec16_Extension3)  
+        instance.Sec16_Extension4 = validated_data.get('Sec16_Extension4', instance.Sec16_Extension4)  
+        instance.Sec16_Extension5 = validated_data.get('Sec16_Extension5', instance.Sec16_Extension5)  
+        instance.Sec16_Extension6 = validated_data.get('Sec16_Extension6', instance.Sec16_Extension6)  
+        instance.Sec16_Extension7 = validated_data.get('Sec16_Extension7', instance.Sec16_Extension7)  
+        instance.Sec16_Extension8 = validated_data.get('Sec16_Extension8', instance.Sec16_Extension8)  
+        instance.Sec16_Extension9 = validated_data.get('Sec16_Extension9', instance.Sec16_Extension9)  
+        instance.Sec16_AnnualPremium = validated_data.get('Sec16_AnnualPremium', instance.Sec16_AnnualPremium)  
+        instance.Sec16_Comments = validated_data.get('Sec16_Comments', instance.Sec16_Comments)  
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_17_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_17
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_17.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec17_AddComments = validated_data.get('Sec17_AddComments', instance.Sec17_AddComments)  
+        instance.Sec17_Limit = validated_data.get('Sec17_Limit', instance.Sec17_Limit)  
+        instance.Sec17_Premium = validated_data.get('Sec17_Premium', instance.Sec17_Premium)  
+        instance.Sec17_ItemNumber = validated_data.get('Sec17_ItemNumber', instance.Sec17_ItemNumber)  
+        instance.Sec17_PremNumber = validated_data.get('Sec17_PremNumber', instance.Sec17_PremNumber)  
+        instance.Sec17_1 = validated_data.get('Sec17_1', instance.Sec17_1)  
+        instance.Sec17_2 = validated_data.get('Sec17_2', instance.Sec17_2)  
+        instance.Sec17_3 = validated_data.get('Sec17_3', instance.Sec17_3)  
+        instance.Sec17_4 = validated_data.get('Sec17_4', instance.Sec17_4)  
+        instance.Sec17_5 = validated_data.get('Sec17_5', instance.Sec17_5)  
+        instance.Sec17_6 = validated_data.get('Sec17_6', instance.Sec17_6)  
+        instance.Sec17_7 = validated_data.get('Sec17_7', instance.Sec17_7)  
+        instance.Sec17_8 = validated_data.get('Sec17_8', instance.Sec17_8)  
+        instance.Sec17_9 = validated_data.get('Sec17_9', instance.Sec17_9)  
+        instance.Sec17_10 = validated_data.get('Sec17_10', instance.Sec17_10)  
+        instance.Sec17_Extension1 = validated_data.get('Sec17_Extension1', instance.Sec17_Extension1)  
+        instance.Sec17_ExtensionLimit1 = validated_data.get('Sec17_ExtensionLimit1', instance.Sec17_ExtensionLimit1)  
+        instance.Sec17_ExtensionPremium1 = validated_data.get('Sec17_ExtensionPremium1', instance.Sec17_ExtensionPremium1)  
+        instance.Sec17_Extension2 = validated_data.get('Sec17_Extension2', instance.Sec17_Extension2)  
+        instance.Sec17_ExtensionLimit2 = validated_data.get('Sec17_ExtensionLimit2', instance.Sec17_ExtensionLimit2)  
+        instance.Sec17_ExtensionPremium2 = validated_data.get('Sec17_ExtensionPremium2', instance.Sec17_ExtensionPremium2)  
+        instance.Sec17_Extension3 = validated_data.get('Sec17_Extension3', instance.Sec17_Extension3)  
+        instance.Sec17_ExtensionLimit3 = validated_data.get('Sec17_ExtensionLimit3', instance.Sec17_ExtensionLimit3)  
+        instance.Sec17_ExtensionPremium3 = validated_data.get('Sec17_ExtensionPremium3', instance.Sec17_ExtensionPremium3)  
+        instance.Sec17_Extension4 = validated_data.get('Sec17_Extension4', instance.Sec17_Extension4)  
+        instance.Sec17_ExtensionLimit4 = validated_data.get('Sec17_ExtensionLimit4', instance.Sec17_ExtensionLimit4)  
+        instance.Sec17_ExtensionPremium4 = validated_data.get('Sec17_ExtensionPremium4', instance.Sec17_ExtensionPremium4)  
+        instance.Sec17_Extension5 = validated_data.get('Sec17_Extension5', instance.Sec17_Extension5)  
+        instance.Sec17_ExtensionLimit5 = validated_data.get('Sec17_ExtensionLimit5', instance.Sec17_ExtensionLimit5)  
+        instance.Sec17_ExtensionPremium5 = validated_data.get('Sec17_ExtensionPremium5', instance.Sec17_ExtensionPremium5)  
+        instance.Sec17_Extension6 = validated_data.get('Sec17_Extension6', instance.Sec17_Extension6)  
+        instance.Sec17_ExtensionLimit6 = validated_data.get('Sec17_ExtensionLimit6', instance.Sec17_ExtensionLimit6)  
+        instance.Sec17_ExtensionPremium6 = validated_data.get('Sec17_ExtensionPremium6', instance.Sec17_ExtensionPremium6)  
+        instance.Sec17_Extension7 = validated_data.get('Sec17_Extension7', instance.Sec17_Extension7)  
+        instance.Sec17_ExtensionLimit7 = validated_data.get('Sec17_ExtensionLimit7', instance.Sec17_ExtensionLimit7)  
+        instance.Sec17_ExtensionPremium7 = validated_data.get('Sec17_ExtensionPremium7', instance.Sec17_ExtensionPremium7)  
+        instance.Sec17_Extension8 = validated_data.get('Sec17_Extension8', instance.Sec17_Extension8)  
+        instance.Sec17_ExtensionLimit8 = validated_data.get('Sec17_ExtensionLimit8', instance.Sec17_ExtensionLimit8)  
+        instance.Sec17_ExtensionPremium8 = validated_data.get('Sec17_ExtensionPremium8', instance.Sec17_ExtensionPremium8)  
+        instance.Sec17_Extension9 = validated_data.get('Sec17_Extension9', instance.Sec17_Extension9)  
+        instance.Sec17_ExtensionLimit9 = validated_data.get('Sec17_ExtensionLimit9', instance.Sec17_ExtensionLimit9)  
+        instance.Sec17_ExtensionPremium9 = validated_data.get('Sec17_ExtensionPremium9', instance.Sec17_ExtensionPremium9)  
+        instance.Sec17_AnnualPremium = validated_data.get('Sec17_AnnualPremium', instance.Sec17_AnnualPremium)  
+        instance.Sec17_Comments = validated_data.get('Sec17_Comments', instance.Sec17_Comments)  
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_18_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_18
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_18.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec18_AddComments = validated_data.get('Sec18_AddComments', instance.Sec18_AddComments)  
+        instance.Sec18_Limit = validated_data.get('Sec18_Limit', instance.Sec18_Limit)  
+        instance.Sec18_Premium = validated_data.get('Sec18_Premium', instance.Sec18_Premium)  
+        instance.Sec18_ItemNumber = validated_data.get('Sec18_ItemNumber', instance.Sec18_ItemNumber)  
+        instance.Sec18_PremNumber = validated_data.get('Sec18_PremNumber', instance.Sec18_PremNumber)  
+        instance.Sec18_1 = validated_data.get('Sec18_1', instance.Sec18_1)  
+        instance.Sec18_2 = validated_data.get('Sec18_2', instance.Sec18_2)  
+        instance.Sec18_3 = validated_data.get('Sec18_3', instance.Sec18_3)  
+        instance.Sec18_4 = validated_data.get('Sec18_4', instance.Sec18_4)  
+        instance.Sec18_5 = validated_data.get('Sec18_5', instance.Sec18_5)  
+        instance.Sec18_6 = validated_data.get('Sec18_6', instance.Sec18_6)  
+        instance.Sec18_7 = validated_data.get('Sec18_7', instance.Sec18_7)  
+        instance.Sec18_8 = validated_data.get('Sec18_8', instance.Sec18_8)  
+        instance.Sec18_9 = validated_data.get('Sec18_9', instance.Sec18_9)  
+        instance.Sec18_10 = validated_data.get('Sec18_10', instance.Sec18_10)  
+        instance.Sec18_11 = validated_data.get('Sec18_11', instance.Sec18_11)  
+        instance.Sec18_12 = validated_data.get('Sec18_12', instance.Sec18_12)  
+        instance.Sec18_13 = validated_data.get('Sec18_13', instance.Sec18_13)  
+        instance.Sec18_14 = validated_data.get('Sec18_14', instance.Sec18_14)  
+        instance.Sec18_15 = validated_data.get('Sec18_15', instance.Sec18_15)  
+        instance.Sec18_16 = validated_data.get('Sec18_16', instance.Sec18_16)  
+        instance.Sec18_17 = validated_data.get('Sec18_17', instance.Sec18_17)  
+        instance.Sec18_18 = validated_data.get('Sec18_18', instance.Sec18_18)  
+        instance.Sec18_19 = validated_data.get('Sec18_19', instance.Sec18_19)  
+        instance.Sec18_20 = validated_data.get('Sec18_20', instance.Sec18_20)  
+        instance.Sec18_21 = validated_data.get('Sec18_21', instance.Sec18_21)  
+        instance.Sec18_22 = validated_data.get('Sec18_22', instance.Sec18_22)  
+        instance.Sec18_23 = validated_data.get('Sec18_23', instance.Sec18_23)  
+        instance.Sec18_24 = validated_data.get('Sec18_24', instance.Sec18_24)  
+        instance.Sec18_25 = validated_data.get('Sec18_25', instance.Sec18_25)  
+        instance.Sec18_26 = validated_data.get('Sec18_26', instance.Sec18_26)  
+        instance.Sec18_27 = validated_data.get('Sec18_27', instance.Sec18_27)  
+        instance.Sec18_27 = validated_data.get('Sec18_27', instance.Sec18_27)  
+        instance.Sec18_FaP1 = validated_data.get('Sec18_FaP1', instance.Sec18_FaP1)  
+        instance.Sec18_FaP1_1 = validated_data.get('Sec18_FaP1_1', instance.Sec18_FaP1_1)  
+        instance.Sec18_FaP1_2 = validated_data.get('Sec18_FaP1_2', instance.Sec18_FaP1_2)  
+        instance.Sec18_FaP2 = validated_data.get('Sec18_FaP2', instance.Sec18_FaP2)  
+        instance.Sec18_FaP2_1 = validated_data.get('Sec18_FaP2_1', instance.Sec18_FaP2_1)  
+        instance.Sec18_FaP2_2 = validated_data.get('Sec18_FaP2_2', instance.Sec18_FaP2_2)  
+        instance.Sec18_FaP3 = validated_data.get('Sec18_FaP3', instance.Sec18_FaP3)  
+        instance.Sec18_FaP3_1 = validated_data.get('Sec18_FaP3_1', instance.Sec18_FaP3_1)  
+        instance.Sec18_FaP3_2 = validated_data.get('Sec18_FaP3_2', instance.Sec18_FaP3_2)  
+        instance.Sec18_FaP4 = validated_data.get('Sec18_FaP4', instance.Sec18_FaP4)  
+        instance.Sec18_FaP4_1 = validated_data.get('Sec18_FaP4_1', instance.Sec18_FaP4_1)  
+        instance.Sec18_FaP4_2 = validated_data.get('Sec18_FaP4_2', instance.Sec18_FaP4_2)  
+        instance.Sec18_FaP5 = validated_data.get('Sec18_FaP5', instance.Sec18_FaP5)  
+        instance.Sec18_FaP5_1 = validated_data.get('Sec18_FaP5_1', instance.Sec18_FaP5_1)  
+        instance.Sec18_FaP5_2 = validated_data.get('Sec18_FaP5_2', instance.Sec18_FaP5_2)  
+        instance.Sec18_FaP6 = validated_data.get('Sec18_FaP6', instance.Sec18_FaP6)  
+        instance.Sec18_FaP6_1 = validated_data.get('Sec18_FaP6_1', instance.Sec18_FaP6_1)  
+        instance.Sec18_FaP6_2 = validated_data.get('Sec18_FaP6_2', instance.Sec18_FaP6_2)  
+        instance.Sec18_Extension1 = validated_data.get('Sec18_Extension1', instance.Sec18_Extension1)  
+        instance.Sec18_Extension1_1 = validated_data.get('Sec18_Extension1_1', instance.Sec18_Extension1_1)  
+        instance.Sec18_Extension1_2 = validated_data.get('Sec18_Extension1_2', instance.Sec18_Extension1_2)  
+        instance.Sec18_Extension2 = validated_data.get('Sec18_Extension2', instance.Sec18_Extension2)  
+        instance.Sec18_Extension2_1 = validated_data.get('Sec18_Extension2_1', instance.Sec18_Extension2_1)  
+        instance.Sec18_Extension3 = validated_data.get('Sec18_Extension3', instance.Sec18_Extension3)  
+        instance.Sec18_Extension3_1 = validated_data.get('Sec18_Extension3_1', instance.Sec18_Extension3_1)  
+        instance.Sec18_Extension4 = validated_data.get('Sec18_Extension4', instance.Sec18_Extension4)  
+        instance.Sec18_Extension4_1 = validated_data.get('Sec18_Extension4_1', instance.Sec18_Extension4_1)  
+        instance.Sec18_Extension5 = validated_data.get('Sec18_Extension5', instance.Sec18_Extension5)  
+        instance.Sec18_Extension5_1 = validated_data.get('Sec18_Extension5_1', instance.Sec18_Extension5_1)  
+        instance.Sec18_Extension6 = validated_data.get('Sec18_Extension6', instance.Sec18_Extension6)  
+        instance.Sec18_Extension6_1 = validated_data.get('Sec18_Extension6_1', instance.Sec18_Extension6_1)  
+        instance.Sec18_Comments = validated_data.get('Sec18_Comments', instance.Sec18_Comments)  
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_19_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_19
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_19.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec19_AddComments = validated_data.get('Sec19_AddComments', instance.Sec19_AddComments)  
+        instance.Sec19_Limit = validated_data.get('Sec19_Limit', instance.Sec19_Limit)  
+        instance.Sec19_Premium = validated_data.get('Sec19_Premium', instance.Sec19_Premium)  
+        instance.Sec19_ItemNumber = validated_data.get('Sec19_ItemNumber', instance.Sec19_ItemNumber)  
+        instance.Sec19_PremNumber = validated_data.get('Sec19_PremNumber', instance.Sec19_PremNumber)  
+        instance.Sec19_Part1_1 = validated_data.get('Sec19_Part1_1', instance.Sec19_Part1_1)  
+        instance.Sec19_Part1_2 = validated_data.get('Sec19_Part1_2', instance.Sec19_Part1_2)  
+        instance.Sec19_Part1_3 = validated_data.get('Sec19_Part1_3', instance.Sec19_Part1_3)  
+        instance.Sec19_Part1_4 = validated_data.get('Sec19_Part1_4', instance.Sec19_Part1_4)  
+        instance.Sec19_Part1_5 = validated_data.get('Sec19_Part1_5', instance.Sec19_Part1_5)  
+        instance.Sec19_Part1_6 = validated_data.get('Sec19_Part1_6', instance.Sec19_Part1_6)  
+        instance.Sec19_Part1_7 = validated_data.get('Sec19_Part1_7', instance.Sec19_Part1_7)  
+        instance.Sec19_Part1_8 = validated_data.get('Sec19_Part1_8', instance.Sec19_Part1_8)  
+        instance.Sec19_Part1_9 = validated_data.get('Sec19_Part1_9', instance.Sec19_Part1_9)  
+        instance.Sec19_Part2_1 = validated_data.get('Sec19_Part2_1', instance.Sec19_Part2_1)  
+        instance.Sec19_Part2_2 = validated_data.get('Sec19_Part2_2', instance.Sec19_Part2_2)  
+        instance.Sec19_Part2_3 = validated_data.get('Sec19_Part2_3', instance.Sec19_Part2_3)  
+        instance.Sec19_Part2_4 = validated_data.get('Sec19_Part2_4', instance.Sec19_Part2_4)  
+        instance.Sec19_Part2_5 = validated_data.get('Sec19_Part2_5', instance.Sec19_Part2_5)  
+        instance.Sec19_Extension1 = validated_data.get('Sec19_Extension1', instance.Sec19_Extension1)  
+        instance.Sec19_Extension_Premium1 = validated_data.get('Sec19_Extension_Premium1', instance.Sec19_Extension_Premium1)  
+        instance.Sec19_Extension2 = validated_data.get('Sec19_Extension2', instance.Sec19_Extension2)  
+        instance.Sec19_Extension_Premium2 = validated_data.get('Sec19_Extension_Premium2', instance.Sec19_Extension_Premium2)  
+        instance.Sec19_RoD_1 = validated_data.get('Sec19_RoD_1', instance.Sec19_RoD_1)  
+        instance.Sec19_RoD_2 = validated_data.get('Sec19_RoD_2', instance.Sec19_RoD_2)  
+        instance.Sec19_RoD_3 = validated_data.get('Sec19_RoD_3', instance.Sec19_RoD_3)  
+        instance.Sec19_RoD_4 = validated_data.get('Sec19_RoD_4', instance.Sec19_RoD_4)  
+        instance.Sec19_RoD_5 = validated_data.get('Sec19_RoD_5', instance.Sec19_RoD_5)  
+        instance.Sec19_AnnualPremium = validated_data.get('Sec19_AnnualPremium', instance.Sec19_AnnualPremium)  
+        instance.Sec19_Comments = validated_data.get('Sec19_Comments', instance.Sec19_Comments)  
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_20_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_20
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_20.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec20_AddComments = validated_data.get('Sec20_AddComments', instance.Sec20_AddComments)  
+        instance.Sec20_Limit = validated_data.get('Sec20_Limit', instance.Sec20_Limit)  
+        instance.Sec20_Premium = validated_data.get('Sec20_Premium', instance.Sec20_Premium)  
+        instance.Sec20_ItemNumber = validated_data.get('Sec20_ItemNumber', instance.Sec20_ItemNumber)  
+        instance.Sec20_PremNumber = validated_data.get('Sec20_PremNumber', instance.Sec20_PremNumber)  
+        instance.Sec20_1 = validated_data.get('Sec20_1', instance.Sec20_1)  
+        instance.Sec20_2 = validated_data.get('Sec20_2', instance.Sec20_2)  
+        instance.Sec20_3 = validated_data.get('Sec20_3', instance.Sec20_3)  
+        instance.Sec20_4 = validated_data.get('Sec20_4', instance.Sec20_4)  
+        instance.Sec20_5 = validated_data.get('Sec20_5', instance.Sec20_5)  
+        instance.Sec20_6 = validated_data.get('Sec20_6', instance.Sec20_6)  
+        instance.Sec20_Extension1 = validated_data.get('Sec20_Extension1', instance.Sec20_Extension1)  
+        instance.Sec20_Extension_Premium1 = validated_data.get('Sec20_Extension_Premium1', instance.Sec20_Extension_Premium1)  
+        instance.Sec20_Extension2 = validated_data.get('Sec20_Extension2', instance.Sec20_Extension2)  
+        instance.Sec20_Extension_Premium2 = validated_data.get('Sec20_Extension_Premium2', instance.Sec20_Extension_Premium2)  
+        instance.Sec20_AnnualPremium = validated_data.get('Sec20_AnnualPremium', instance.Sec20_AnnualPremium)  
+        instance.Sec20_Comments = validated_data.get('Sec20_Comments', instance.Sec20_Comments)  
+        
+        instance.updated_at = datetime.now(timezone.utc)
+        instance.save()
+        return instance
+
+class STIC_Sec_21_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIC_Sec_21
+        fields = '__all__'
+    
+
+    def create(self, validated_data):
+        return STIC_Sec_21.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        
+        instance.Sec21_AddComments = validated_data.get('Sec21_AddComments', instance.Sec21_AddComments)  
+        instance.Sec21_Limit = validated_data.get('Sec21_Limit', instance.Sec21_Limit)  
+        instance.Sec21_Premium = validated_data.get('Sec21_Premium', instance.Sec21_Premium)  
+        instance.Sec21_ItemNumber = validated_data.get('Sec21_ItemNumber', instance.Sec21_ItemNumber)  
+        instance.Sec21_PremNumber = validated_data.get('Sec21_PremNumber', instance.Sec21_PremNumber)  
+        instance.Sec21_1 = validated_data.get('Sec21_1', instance.Sec21_1)  
+        instance.Sec21_2 = validated_data.get('Sec21_2', instance.Sec21_2)  
+        instance.Sec21_3 = validated_data.get('Sec21_3', instance.Sec21_3)  
+        instance.Sec21_4 = validated_data.get('Sec21_4', instance.Sec21_4)  
+        instance.Sec21_5 = validated_data.get('Sec21_5', instance.Sec21_5)  
+        instance.Sec21_6 = validated_data.get('Sec21_6', instance.Sec21_6)  
+        instance.Sec21_Extension1 = validated_data.get('Sec21_Extension1', instance.Sec21_Extension1)  
+        instance.Sec21_Extension_Premium1 = validated_data.get('Sec21_Extension_Premium1', instance.Sec21_Extension_Premium1)  
+        instance.Sec21_Extension2 = validated_data.get('Sec21_Extension2', instance.Sec21_Extension2)  
+        instance.Sec21_Extension_Premium2 = validated_data.get('Sec21_Extension_Premium2', instance.Sec21_Extension_Premium2)  
+        instance.Sec21_AnnualPremium = validated_data.get('Sec21_AnnualPremium', instance.Sec21_AnnualPremium)  
+        instance.Sec21_Comments = validated_data.get('Sec21_Comments', instance.Sec21_Comments)  
         
         instance.updated_at = datetime.now(timezone.utc)
         instance.save()

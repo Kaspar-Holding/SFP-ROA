@@ -1447,14 +1447,14 @@ const Risk = ({user}) =>
                   <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">1st year<br/>commission</td>
                   <td>  
                   <div className="form-group">
-                      <input type="text" className="form-control" id="Product_1stYearCommission" name='Product_1stYearCommission' value={key.Product_1stYearCommission}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input type="number" className="form-control" id="Product_1stYearCommission" name='Product_1stYearCommission' value={key.Product_1stYearCommission}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                   </div>
                 </td>  
                 <td></td>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">2nd year<br/>commission</td>
                 <td>  
                   <div className="form-group">
-                      <input type="text" className="form-control" id="Product_2ndYearCommission" name='Product_2ndYearCommission' value={key.Product_2ndYearCommission}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input type="number" className="form-control" id="Product_2ndYearCommission" name='Product_2ndYearCommission' value={key.Product_2ndYearCommission}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                   </div>
                 </td> 
                   <td></td> 

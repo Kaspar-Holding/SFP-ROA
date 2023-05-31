@@ -7,10 +7,10 @@ import './Styles/CustomButton.css';
 import './Invest.css';
 import { connect } from 'react-redux';
 import { Editor, tinyMCE } from '@tinymce/tinymce-react'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-const Invest = ({user}) => 
+import {LogOut} from '../../Actions/Auth'
+const Invest = ({user, LogOut}) => 
 {
     const location = useLocation();
     const { state } = location;
@@ -408,7 +408,9 @@ const Invest = ({user}) =>
             //   }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+            if (error.response.status === 401){
+                LogOut()
+            }
         }
     }
     const [SuccessMessage, setSuccessMessage] = useState("")
@@ -425,7 +427,7 @@ const Invest = ({user}) =>
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_investment_planning_data/`, Body ,config)
             // console.log(response.data['formData'])
-            setFormData(response.data['formData'])
+            // setFormData(response.data['Data'])
             
             setSuccessMessage("Investment Planning data is successfully updated")
             setSuccessMessageVisibility("block")
@@ -434,7 +436,14 @@ const Invest = ({user}) =>
             }, 5000)
             // setSubmissionMessageVisibility("block")
         } catch (error) {
-            console.log(error)
+            if (error.response.status === 401){
+                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                setSuccessMessageVisibility("block")
+                setTimeout(() => {
+                  setSuccessMessageVisibility("none")
+                  LogOut()
+                }, 5000)
+              }
         }
         
         const ProductTaken_Body = JSON.stringify({
@@ -444,7 +453,14 @@ const Invest = ({user}) =>
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_ip_ProductTaken_Data/`, ProductTaken_Body ,config) 
         } catch (error) {
-            
+            if (error.response.status === 401){
+                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                setSuccessMessageVisibility("block")
+                setTimeout(() => {
+                  setSuccessMessageVisibility("none")
+                  LogOut()
+                }, 5000)
+              }
         }
     }
     const onSubmit = e => {
@@ -457,7 +473,9 @@ const Invest = ({user}) =>
         // window.location.reload();
     }
     useEffect(() => {
-        createIPForm(FormData)
+        if (state['formId']){
+            createIPForm(FormData)
+        }
         // const interval = setInterval(() => {
         //     const investFormSubmitButton = document.querySelector(".updateInvestFormBTN")
         //     investFormSubmitButton.click()
@@ -2607,14 +2625,14 @@ const Invest = ({user}) =>
             </form>
         </>
      )
- }
+}
 
 const mapStateToProps = state => ({
     isAuthenticated: state.Auth.isAuthenticated,
     user: state.Auth.user,
 })
 
-export default connect(mapStateToProps)(Invest)
+export default connect(mapStateToProps, {LogOut})(Invest)
 
 const HeaderStyle = {
     // width: "100%",

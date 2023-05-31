@@ -3,6 +3,8 @@ from rest_framework.decorators import api_view
 from django.core.files.base import ContentFile
 from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, AssuranceInvestmentSerializers, AssuranceRiskSerializers, EB_CoverSerializer, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, STIC_Loss_Serializer, STIC_Sec_Fire_Serializer, STIP_Loss_Serializer, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
 from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RiskFactors, RiskPlanning, STIC_Loss, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
+from .models import STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
+from .serializers import STIC_Sec_2_Serializer, STIC_Sec_3_Serializer, STIC_Sec_4_Serializer, STIC_Sec_5_Serializer, STIC_Sec_6_Serializer, STIC_Sec_7_Serializer, STIC_Sec_8_Serializer, STIC_Sec_9_Serializer, STIC_Sec_10_Serializer, STIC_Sec_11_Serializer, STIC_Sec_12_Serializer, STIC_Sec_13_Serializer, STIC_Sec_14_Serializer, STIC_Sec_15_Serializer, STIC_Sec_16_Serializer, STIC_Sec_17_Serializer, STIC_Sec_18_Serializer, STIC_Sec_19_Serializer, STIC_Sec_20_Serializer, STIC_Sec_21_Serializer
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -323,7 +325,23 @@ def insertData(request):
     return Response(request.data)
 
 @api_view(['POST'])
-def insertFormData(request):
+def insertFormData(request):    
+    # if Form.objects.filter(formId=request.data['formId']).exists():
+    #     data = Form.objects.filter(formId=request.data['formId']).values().first()
+    #     del data['status']
+    #     del data['created_at']
+    #     del data['updated_at']
+    #     return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
+    # else:
+    #     serializer = FormSerializers(data=request.data, many=False)
+    #     if serializer.is_valid():
+    #         serializer.create(serializer.validated_data)
+    #         latest = Form.objects.latest('id')
+    #         serializer2 = FormSerializers(latest, many=False)
+    #         return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+    #     else:
+    #         return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
+    # return Response({"message": "Found","code":200,"Data": serializer.data},200)
     serializer = FormSerializers(data=request.data, many=False)
     if serializer.is_valid():
         old_form = Form.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
@@ -341,6 +359,7 @@ def insertFormData(request):
             del data['updated_at']
             return Response({'message': "Form Already Exists","code": "200", "formData" : data},200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
+        
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
 @api_view(['POST'])
@@ -366,13 +385,18 @@ def viewFormData(request):
 
 @api_view(['POST'])
 def updateFormData(request):
-    form = Form.objects.get(id=request.data['id'])
-    serializer = FormSerializers(instance=form, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Found","code":200,"Data": serializer.data},200)
+    if Form.objects.filter(formId=request.data['formId']).exists():
+        form = Form.objects.get(formId=request.data['formId'])
+        serializer = FormSerializers(instance=form, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        serializer = FormSerializers(data=request.data, many=False)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+    return Response({"message": "Found","code":200,"Data": serializer.data},200)
+    # else:
+    #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
 
 @api_view(['POST'])
 def changeFormStatus(request):
@@ -601,13 +625,16 @@ def viewFiduciaryData(request):
 
 @api_view(['POST'])
 def updateFiduciaryData(request):
-    form = Fiduciary.objects.get(id=request.data['id'])
-    serializer = FiduciarySerializers(instance=form, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    if Fiduciary.objects.filter(formId=request.data['formId']).exists():
+        form = Fiduciary.objects.get(formId=request.data['formId'])
+        serializer = FiduciarySerializers(instance=form, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        serializer = FiduciarySerializers(data=request.data, many=False)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+    return Response({"message": "Found","code":200,"Data": serializer.data},200)
 
 
 # Create your views here.
@@ -661,13 +688,16 @@ def viewInvestmentPlanningData(request):
 
 @api_view(['POST'])
 def updateInvestmentPlanningData(request):
-    form = InvestmentPlanning.objects.get(id=request.data['id'])
-    serializer = InvestmentPlanningSerializers(instance=form, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    if InvestmentPlanning.objects.filter(formId=request.data['formId']).exists():
+        form = InvestmentPlanning.objects.get(formId=request.data['formId'])
+        serializer = InvestmentPlanningSerializers(instance=form, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        serializer = InvestmentPlanningSerializers(data=request.data, many=False)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+    return Response({"message": "Found","code":200,"Data": serializer.data},200)
 
 # Risk Planning
 @api_view(['POST'])
@@ -683,7 +713,7 @@ def insertRiskPlanningData(request):
             serializer.create(serializer.validated_data)
             latest = RiskPlanning.objects.latest('id')
             serializer2 = RiskPlanningSerializers(latest, many=False)
-            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer.data,"code":201,},201)
         else :
             del data['status']
             del data['created_at']
@@ -718,13 +748,16 @@ def viewRiskPlanningData(request):
 
 @api_view(['POST'])
 def updateRiskPlanningData(request):
-    form = RiskPlanning.objects.get(id=request.data['id'])
-    serializer = RiskPlanningSerializers(instance=form, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    if RiskPlanning.objects.filter(formId=request.data['formId']).exists():
+        form = RiskPlanning.objects.get(formId=request.data['formId'])
+        serializer = RiskPlanningSerializers(instance=form, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        serializer = RiskPlanningSerializers(data=request.data, many=False)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+    return Response({"message": "Found","code":200,"Data": serializer.data},200)
 
 # Assurance Investment
 @api_view(['POST'])
@@ -771,13 +804,16 @@ def viewAssuranceInvestmentData(request):
 
 @api_view(['POST'])
 def updateAssuranceInvestmentData(request):
-    form = AssuranceInvestment.objects.get(id=request.data['id'])
-    serializer = AssuranceInvestmentSerializers(instance=form, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    if AssuranceInvestment.objects.filter(formId=request.data['formId']).exists():
+        form = AssuranceInvestment.objects.get(formId=request.data['formId'])
+        serializer = AssuranceInvestmentSerializers(instance=form, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        serializer = AssuranceInvestmentSerializers(data=request.data, many=False)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+    return Response({"message": "Found","code":200,"Data": serializer.data},200)
 
 # Assurance Risk
 @api_view(['POST'])
@@ -824,13 +860,16 @@ def viewAssuranceRiskData(request):
 
 @api_view(['POST'])
 def updateAssuranceRiskData(request):
-    form = AssuranceRisk.objects.get(id=request.data['id'])
-    serializer = AssuranceRiskSerializers(instance=form, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    if AssuranceRisk.objects.filter(formId=request.data['formId']).exists():
+        form = AssuranceRisk.objects.get(formId=request.data['formId'])
+        serializer = AssuranceRiskSerializers(instance=form, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        serializer = AssuranceRiskSerializers(data=request.data, many=False)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+    return Response({"message": "Found","code":200,"Data": serializer.data},200)
 
 
 
@@ -882,13 +921,16 @@ def viewEmployeeBenefitsData(request):
 
 @api_view(['POST'])
 def updateEmployeeBenefitsData(request):
-    form = EmployeeBenefits.objects.get(id=request.data['id'])
-    serializer = EmployeeBenefitsSerializers(instance=form, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    if EmployeeBenefits.objects.filter(formId=request.data['formId']).exists():
+        form = EmployeeBenefits.objects.get(formId=request.data['formId'])
+        serializer = EmployeeBenefitsSerializers(instance=form, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        serializer = EmployeeBenefitsSerializers(data=request.data, many=False)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+    return Response({"message": "Found","code":200,"Data": serializer.data},200)
 
 
 
@@ -935,13 +977,16 @@ def viewGapCoverData(request):
 
 @api_view(['POST'])
 def updateGapCoverData(request):
-    form = GapCover.objects.get(id=request.data['id'])
-    serializer = GapCoverSerializers(instance=form, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    if GapCover.objects.filter(formId=request.data['formId']).exists():
+        form = GapCover.objects.get(formId=request.data['formId'])
+        serializer = GapCoverSerializers(instance=form, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        serializer = GapCoverSerializers(data=request.data, many=False)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+    return Response({"message": "Found","code":200,"Data": serializer.data},200)
 
 
 # Short Term Insurance Personal
@@ -989,13 +1034,16 @@ def viewShortTermInsurancePersonalData(request):
 
 @api_view(['POST'])
 def updateShortTermInsurancePersonalData(request):
-    form = ShortTermInsurancePersonal.objects.get(id=request.data['id'])
-    serializer = ShortTermInsurancePersonalSerializers(instance=form, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    if ShortTermInsurancePersonal.objects.filter(formId=request.data['formId']).exists():
+        form = ShortTermInsurancePersonal.objects.get(formId=request.data['formId'])
+        serializer = ShortTermInsurancePersonalSerializers(instance=form, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        serializer = ShortTermInsurancePersonalSerializers(data=request.data, many=False)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+    return Response({"message": "Found","code":200,"Data": serializer.data},200)
 
 
 # Short Term Insurance Personal
@@ -1041,13 +1089,16 @@ def viewMedicalData(request):
 
 @api_view(['POST'])
 def updateMedicalData(request):
-    form = Medical.objects.get(id=request.data['id'])
-    serializer = MedicalSerializers(instance=form, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    if Medical.objects.filter(formId=request.data['formId']).exists():
+        form = Medical.objects.get(formId=request.data['formId'])
+        serializer = MedicalSerializers(instance=form, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        serializer = MedicalSerializers(data=request.data, many=False)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+    return Response({"message": "Found","code":200,"Data": serializer.data},200)
 
 
 
@@ -1071,8 +1122,54 @@ def insertShortTermInsuranceCommericalData(request):
             del data['created_at']
             del data['updated_at']
             Loss_Data = STIC_Loss.objects.filter(formId=request.data['formId']).values()
-
-            return Response({'message': "Form Already Exists","code": "200", "formData" : data, "Loss_Data" : Loss_Data},200)
+            Sec_1_Data = STIC_Sec_Fire.objects.filter(formId=request.data['formId']).values()
+            Sec_2_Data = STIC_Sec_2.objects.filter(formId=request.data['formId']).values()
+            Sec_3_Data = STIC_Sec_3.objects.filter(formId=request.data['formId']).values()
+            Sec_4_Data = STIC_Sec_4.objects.filter(formId=request.data['formId']).values()
+            Sec_5_Data = STIC_Sec_5.objects.filter(formId=request.data['formId']).values()
+            Sec_6_Data = STIC_Sec_6.objects.filter(formId=request.data['formId']).values()
+            Sec_7_Data = STIC_Sec_7.objects.filter(formId=request.data['formId']).values()
+            Sec_8_Data = STIC_Sec_8.objects.filter(formId=request.data['formId']).values()
+            Sec_9_Data = STIC_Sec_9.objects.filter(formId=request.data['formId']).values()
+            Sec_10_Data = STIC_Sec_10.objects.filter(formId=request.data['formId']).values()
+            Sec_11_Data = STIC_Sec_11.objects.filter(formId=request.data['formId']).values()
+            Sec_12_Data = STIC_Sec_12.objects.filter(formId=request.data['formId']).values()
+            Sec_13_Data = STIC_Sec_13.objects.filter(formId=request.data['formId']).values()
+            Sec_14_Data = STIC_Sec_14.objects.filter(formId=request.data['formId']).values()
+            Sec_15_Data = STIC_Sec_15.objects.filter(formId=request.data['formId']).values()
+            Sec_16_Data = STIC_Sec_16.objects.filter(formId=request.data['formId']).values()
+            Sec_17_Data = STIC_Sec_17.objects.filter(formId=request.data['formId']).values()
+            Sec_18_Data = STIC_Sec_18.objects.filter(formId=request.data['formId']).values()
+            Sec_19_Data = STIC_Sec_19.objects.filter(formId=request.data['formId']).values()
+            Sec_20_Data = STIC_Sec_20.objects.filter(formId=request.data['formId']).values()
+            Sec_21_Data = STIC_Sec_21.objects.filter(formId=request.data['formId']).values()
+            return Response({
+                'message': "Form Already Exists",
+                "code": "200", 
+                "formData" : data, 
+                "Loss_Data" : Loss_Data,
+                "Sec_1_Data" : Sec_1_Data,
+                "Sec_2_Data" : Sec_2_Data,
+                "Sec_3_Data" : Sec_3_Data,
+                "Sec_4_Data" : Sec_4_Data,
+                "Sec_5_Data" : Sec_5_Data,
+                "Sec_6_Data" : Sec_6_Data,
+                "Sec_7_Data" : Sec_7_Data,
+                "Sec_8_Data" : Sec_8_Data,
+                "Sec_9_Data" : Sec_9_Data,
+                "Sec_10_Data" : Sec_10_Data,
+                "Sec_11_Data" : Sec_11_Data,
+                "Sec_12_Data" : Sec_12_Data,
+                "Sec_13_Data" : Sec_13_Data,
+                "Sec_14_Data" : Sec_14_Data,
+                "Sec_15_Data" : Sec_15_Data,
+                "Sec_16_Data" : Sec_16_Data,
+                "Sec_17_Data" : Sec_17_Data,
+                "Sec_18_Data" : Sec_18_Data,
+                "Sec_19_Data" : Sec_19_Data,
+                "Sec_20_Data" : Sec_20_Data,
+                "Sec_21_Data" : Sec_21_Data,
+                },200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
@@ -1096,13 +1193,16 @@ def viewShortTermInsuranceCommericalData(request):
 
 @api_view(['POST'])
 def updateShortTermInsuranceCommericalData(request):
-    form = ShortTermInsuranceCommerical.objects.get(id=request.data['id'])
-    serializer = ShortTermInsuranceCommericalSerializers(instance=form, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    if ShortTermInsuranceCommerical.objects.filter(formId=request.data['formId']).exists():
+        form = ShortTermInsuranceCommerical.objects.get(formId=request.data['formId'])
+        serializer = ShortTermInsuranceCommericalSerializers(instance=form, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        serializer = ShortTermInsuranceCommericalSerializers(data=request.data, many=False)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+    return Response({"message": "Found","code":200,"Data": serializer.data},200)
 
 
 
@@ -1554,11 +1654,252 @@ def update_stip_loss_Data(request):
     return Response({"message": "Updated","code":200,"formData": loss_data},200)
 
 @api_view(['POST'])
-def update_stic_sec_fire_Data(request):
-    sec_fire_data = request.data['sec_fire_data']
+def update_stic_sec_1_Data(request):
+    sec_1_data = request.data['sec_1_data']
     # print(loss_data)
     STIC_Sec_Fire.objects.filter(formId=request.data['formId']).delete()
-    loss_serializer = STIC_Sec_Fire_Serializer(data=sec_fire_data, many=True)
-    if loss_serializer.is_valid():
-        loss_serializer.create(loss_serializer.validated_data)
-    return Response({"message": "Updated","code":200,"formData": sec_fire_data},200)
+    sec_1_serializer = STIC_Sec_Fire_Serializer(data=sec_1_data, many=True)
+    if sec_1_serializer.is_valid():
+        sec_1_serializer.create(sec_1_serializer.validated_data)
+    else:
+        print(sec_1_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_1_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_2_Data(request):
+    sec_2_data = request.data['sec_2_data']
+    STIC_Sec_2.objects.filter(formId=request.data['formId']).delete()
+    sec_2_serializer = STIC_Sec_2_Serializer(data=sec_2_data, many=True)
+    if sec_2_serializer.is_valid():
+        sec_2_serializer.create(sec_2_serializer.validated_data)
+    else:
+        print(sec_2_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_2_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_3_Data(request):
+    sec_3_data = request.data['sec_3_data']
+    # print(loss_data)
+    STIC_Sec_3.objects.filter(formId=request.data['formId']).delete()
+    sec_3_serializer = STIC_Sec_3_Serializer(data=sec_3_data, many=True)
+    if sec_3_serializer.is_valid():
+        sec_3_serializer.create(sec_3_serializer.validated_data)
+    else:
+        print(sec_3_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_3_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_4_Data(request):
+    sec_4_data = request.data['sec_4_data']
+    # print(loss_data)
+    STIC_Sec_4.objects.filter(formId=request.data['formId']).delete()
+    sec_4_serializer = STIC_Sec_4_Serializer(data=sec_4_data, many=True)
+    if sec_4_serializer.is_valid():
+        sec_4_serializer.create(sec_4_serializer.validated_data)
+    else:
+        print(sec_4_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_4_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_5_Data(request):
+    sec_5_data = request.data['sec_5_data']
+    # print(loss_data)
+    STIC_Sec_5.objects.filter(formId=request.data['formId']).delete()
+    sec_5_serializer = STIC_Sec_5_Serializer(data=sec_5_data, many=True)
+    if sec_5_serializer.is_valid():
+        sec_5_serializer.create(sec_5_serializer.validated_data)
+    else:
+        print(sec_5_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_5_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_6_Data(request):
+    sec_6_data = request.data['sec_6_data']
+    # print(loss_data)
+    STIC_Sec_6.objects.filter(formId=request.data['formId']).delete()
+    sec_6_serializer = STIC_Sec_6_Serializer(data=sec_6_data, many=True)
+    if sec_6_serializer.is_valid():
+        sec_6_serializer.create(sec_6_serializer.validated_data)
+    else:
+        print(sec_6_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_6_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_7_Data(request):
+    sec_7_data = request.data['sec_7_data']
+    # print(loss_data)
+    STIC_Sec_7.objects.filter(formId=request.data['formId']).delete()
+    sec_7_serializer = STIC_Sec_7_Serializer(data=sec_7_data, many=True)
+    if sec_7_serializer.is_valid():
+        sec_7_serializer.create(sec_7_serializer.validated_data)
+    else:
+        print(sec_7_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_7_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_8_Data(request):
+    sec_8_data = request.data['sec_8_data']
+    # print(loss_data)
+    STIC_Sec_8.objects.filter(formId=request.data['formId']).delete()
+    sec_8_serializer = STIC_Sec_8_Serializer(data=sec_8_data, many=True)
+    if sec_8_serializer.is_valid():
+        sec_8_serializer.create(sec_8_serializer.validated_data)
+    else:
+        print(sec_8_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_8_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_9_Data(request):
+    sec_9_data = request.data['sec_9_data']
+    # print(loss_data)
+    STIC_Sec_9.objects.filter(formId=request.data['formId']).delete()
+    sec_9_serializer = STIC_Sec_9_Serializer(data=sec_9_data, many=True)
+    if sec_9_serializer.is_valid():
+        sec_9_serializer.create(sec_9_serializer.validated_data)
+    else:
+        print(sec_9_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_9_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_10_Data(request):
+    sec_10_data = request.data['sec_10_data']
+    # print(loss_data)
+    STIC_Sec_10.objects.filter(formId=request.data['formId']).delete()
+    sec_10_serializer = STIC_Sec_10_Serializer(data=sec_10_data, many=True)
+    if sec_10_serializer.is_valid():
+        sec_10_serializer.create(sec_10_serializer.validated_data)
+    else:
+        print(sec_10_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_10_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_11_Data(request):
+    sec_11_data = request.data['sec_11_data']
+    # print(loss_data)
+    STIC_Sec_11.objects.filter(formId=request.data['formId']).delete()
+    sec_11_serializer = STIC_Sec_11_Serializer(data=sec_11_data, many=True)
+    if sec_11_serializer.is_valid():
+        sec_11_serializer.create(sec_11_serializer.validated_data)
+    else:
+        print(sec_11_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_11_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_12_Data(request):
+    sec_12_data = request.data['sec_12_data']
+    # print(loss_data)
+    STIC_Sec_12.objects.filter(formId=request.data['formId']).delete()
+    sec_12_serializer = STIC_Sec_12_Serializer(data=sec_12_data, many=True)
+    if sec_12_serializer.is_valid():
+        sec_12_serializer.create(sec_12_serializer.validated_data)
+    else:
+        print(sec_12_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_12_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_13_Data(request):
+    sec_13_data = request.data['sec_13_data']
+    # print(loss_data)
+    STIC_Sec_13.objects.filter(formId=request.data['formId']).delete()
+    sec_13_serializer = STIC_Sec_13_Serializer(data=sec_13_data, many=True)
+    if sec_13_serializer.is_valid():
+        sec_13_serializer.create(sec_13_serializer.validated_data)
+    else:
+        print(sec_13_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_13_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_14_Data(request):
+    sec_14_data = request.data['sec_14_data']
+    # print(loss_data)
+    STIC_Sec_14.objects.filter(formId=request.data['formId']).delete()
+    sec_14_serializer = STIC_Sec_14_Serializer(data=sec_14_data, many=True)
+    if sec_14_serializer.is_valid():
+        sec_14_serializer.create(sec_14_serializer.validated_data)
+    else:
+        print(sec_14_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_14_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_15_Data(request):
+    sec_15_data = request.data['sec_15_data']
+    # print(loss_data)
+    STIC_Sec_15.objects.filter(formId=request.data['formId']).delete()
+    sec_15_serializer = STIC_Sec_15_Serializer(data=sec_15_data, many=True)
+    if sec_15_serializer.is_valid():
+        sec_15_serializer.create(sec_15_serializer.validated_data)
+    else:
+        print(sec_15_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_15_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_16_Data(request):
+    sec_16_data = request.data['sec_16_data']
+    # print(loss_data)
+    STIC_Sec_16.objects.filter(formId=request.data['formId']).delete()
+    sec_16_serializer = STIC_Sec_16_Serializer(data=sec_16_data, many=True)
+    if sec_16_serializer.is_valid():
+        sec_16_serializer.create(sec_16_serializer.validated_data)
+    else:
+        print(sec_16_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_16_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_17_Data(request):
+    sec_17_data = request.data['sec_17_data']
+    # print(loss_data)
+    STIC_Sec_17.objects.filter(formId=request.data['formId']).delete()
+    sec_17_serializer = STIC_Sec_17_Serializer(data=sec_17_data, many=True)
+    if sec_17_serializer.is_valid():
+        sec_17_serializer.create(sec_17_serializer.validated_data)
+    else:
+        print(sec_17_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_17_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_18_Data(request):
+    sec_18_data = request.data['sec_18_data']
+    # print(loss_data)
+    STIC_Sec_18.objects.filter(formId=request.data['formId']).delete()
+    sec_18_serializer = STIC_Sec_18_Serializer(data=sec_18_data, many=True)
+    if sec_18_serializer.is_valid():
+        sec_18_serializer.create(sec_18_serializer.validated_data)
+    else:
+        print(sec_18_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_18_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_19_Data(request):
+    sec_19_data = request.data['sec_19_data']
+    # print(loss_data)
+    STIC_Sec_19.objects.filter(formId=request.data['formId']).delete()
+    sec_19_serializer = STIC_Sec_19_Serializer(data=sec_19_data, many=True)
+    if sec_19_serializer.is_valid():
+        sec_19_serializer.create(sec_19_serializer.validated_data)
+    else:
+        print(sec_19_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_19_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_20_Data(request):
+    sec_20_data = request.data['sec_20_data']
+    # print(loss_data)
+    STIC_Sec_20.objects.filter(formId=request.data['formId']).delete()
+    sec_20_serializer = STIC_Sec_20_Serializer(data=sec_20_data, many=True)
+    if sec_20_serializer.is_valid():
+        sec_20_serializer.create(sec_20_serializer.validated_data)
+    else:
+        print(sec_20_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_20_data},200)
+
+@api_view(['POST'])
+def update_stic_sec_21_Data(request):
+    sec_21_data = request.data['sec_21_data']
+    # print(loss_data)
+    STIC_Sec_21.objects.filter(formId=request.data['formId']).delete()
+    sec_21_serializer = STIC_Sec_21_Serializer(data=sec_21_data, many=True)
+    if sec_21_serializer.is_valid():
+        sec_21_serializer.create(sec_21_serializer.validated_data)
+    else:
+        print(sec_21_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_21_data},200)

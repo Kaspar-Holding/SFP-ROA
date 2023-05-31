@@ -19,7 +19,6 @@ Deployed using Nginx and Gunicorn
 - duplication of type of loss in stip 
 - increase space between policy number 
 - remove branch name, tv, vcr, branch number 
-- add cover between existing and replacement
 - risk, motor and theft are not expanding
 - commission in product comparison is adding up 
 - remove R and text box from overnight parking in Vehicle in STIP and commission is acting up 

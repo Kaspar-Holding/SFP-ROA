@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import Loader from '../Loader/Loader';
 import Pagination from '../Pagination/Pagination';
-
-const Dashboard = ({user}) => {
+import {LogOut} from '../../Actions/Auth'
+const Dashboard = ({user, LogOut}) => {
 
     const [formStats, setFormStats] = useState([])
     const [SearchQuery, setSearchQuery] = useState("")
@@ -44,6 +44,9 @@ const Dashboard = ({user}) => {
           //   console.log('Users', JSON.stringify(response.data.Data))
         } catch (error) {
           console.log('first', error.response.statusText)
+          if (error.response.status === 401){
+			LogOut()
+		}
           //   setResponseError(error.response.statusText)
         }
         setLoader("none")
@@ -76,6 +79,9 @@ const Dashboard = ({user}) => {
         //   console.log('Users', JSON.stringify(response.data))
         } catch (error) {
           console.log('first', error.response.statusText)
+          if (error.response.status === 401){
+			LogOut()
+		    }
         //   setResponseError(error.response.statusText)
         }
     }
@@ -329,4 +335,4 @@ const mapStateToProps = state => ({
     user: state.Auth.user,
 })
   
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps, {LogOut})(Dashboard)
