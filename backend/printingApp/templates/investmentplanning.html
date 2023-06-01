@@ -497,12 +497,14 @@
                     </div>
                     <hr/> 
                     <div class='row div'>
-                        <div class="column12" width="100%">
+                        <div class="column12" style="width: 100%;">
                             <b>Investment portfolio</b>
-                            <div class="column12">
-                                {% autoescape off %}
-                                    {{productTaken.ItP}}
-                                {% endautoescape %}
+                            <div class='row div'>
+                                <div class="column10">
+                                    {% autoescape off %}
+                                        {{productTaken.ItP}}
+                                    {% endautoescape %}
+                                </div>
                             </div>
                         </div>                                 
                     </div>
