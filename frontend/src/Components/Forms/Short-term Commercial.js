@@ -1512,7 +1512,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           </div>
 
                         <hr/>
-                          <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                          {/* <div className="col-6" style={{paddingBottom: "0.5%"}}>
                               <div className="row g-3 align-items-center">
                                   <div className="col-4">
                                     <label className="col-form-label">Branch Name:</label>
@@ -1534,7 +1534,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                               </div>
                           </div>
 
-                          <hr/>
+                          <hr/> */}
                           <div className="col-6" style={{paddingBottom: "0.5%"}}>
                               <div className="row g-3 align-items-center">
                                   <div className="col-4">
