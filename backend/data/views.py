@@ -1195,8 +1195,9 @@ def viewShortTermInsuranceCommericalData(request):
 def updateShortTermInsuranceCommericalData(request):
     if ShortTermInsuranceCommerical.objects.filter(formId=request.data['formId']).exists():
         form = ShortTermInsuranceCommerical.objects.get(formId=request.data['formId'])
-        serializer = ShortTermInsuranceCommericalSerializers(instance=form, data=request.data, partial=True)
+        serializer = ShortTermInsuranceCommericalSerializers(instance=form, data=request.data, many=False)
         if serializer.is_valid():
+            newData = serializer.validated_data
             serializer.save()
     else:
         serializer = ShortTermInsuranceCommericalSerializers(data=request.data, many=False)

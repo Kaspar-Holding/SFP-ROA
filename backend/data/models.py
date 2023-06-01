@@ -1851,6 +1851,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_1_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_1_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_1_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_1_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_2_Recomm = models.IntegerField(default="1")
     STIP_CnRI_2_Accepted = models.IntegerField(default="1")
@@ -1859,6 +1860,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_2_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_2_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_2_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_2_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_3_Recomm = models.IntegerField(default="1")
     STIP_CnRI_3_Accepted = models.IntegerField(default="1")
@@ -1867,6 +1869,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_3_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_3_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_3_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_3_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_4_Recomm = models.IntegerField(default="1")
     STIP_CnRI_4_Accepted = models.IntegerField(default="1")
@@ -1875,6 +1878,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_4_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_4_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_4_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_4_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_5_Recomm = models.IntegerField(default="1")
     STIP_CnRI_5_Accepted = models.IntegerField(default="1")
@@ -1883,6 +1887,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_5_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_5_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_5_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_5_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_6_Recomm = models.IntegerField(default="1")
     STIP_CnRI_6_Accepted = models.IntegerField(default="1")
@@ -1891,6 +1896,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_6_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_6_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_6_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_6_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_7_Recomm = models.IntegerField(default="1")
     STIP_CnRI_7_Accepted = models.IntegerField(default="1")
@@ -1899,6 +1905,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_7_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_7_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_7_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_7_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_8_Recomm = models.IntegerField(default="1")
     STIP_CnRI_8_Accepted = models.IntegerField(default="1")
@@ -1907,6 +1914,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_8_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_8_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_8_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_8_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_9_Recomm = models.IntegerField(default="1")
     STIP_CnRI_9_Accepted = models.IntegerField(default="1")
@@ -1915,6 +1923,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_9_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_9_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_9_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_9_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_10_Recomm = models.IntegerField(default="1")
     STIP_CnRI_10_Accepted = models.IntegerField(default="1")
@@ -1923,6 +1932,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_10_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_10_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_10_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_10_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_11_Recomm = models.IntegerField(default="1")
     STIP_CnRI_11_Accepted = models.IntegerField(default="1")
@@ -1931,6 +1941,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_11_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_11_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_11_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_11_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_12_Recomm = models.IntegerField(default="1")
     STIP_CnRI_12_Accepted = models.IntegerField(default="1")
@@ -1939,6 +1950,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_12_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_12_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_12_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_12_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_13_Recomm = models.IntegerField(default="1")
     STIP_CnRI_13_Accepted = models.IntegerField(default="1")
@@ -1947,6 +1959,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_13_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_13_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_13_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_13_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_14_Recomm = models.IntegerField(default="1")
     STIP_CnRI_14_Accepted = models.IntegerField(default="1")
@@ -1955,6 +1968,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_14_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_14_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_14_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_14_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_15_Recomm = models.IntegerField(default="1")
     STIP_CnRI_15_Accepted = models.IntegerField(default="1")
@@ -1963,6 +1977,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_15_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_15_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_15_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_15_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_16_Recomm = models.IntegerField(default="1")
     STIP_CnRI_16_Accepted = models.IntegerField(default="1")
@@ -1971,6 +1986,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_16_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_16_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_16_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_16_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_17_Recomm = models.IntegerField(default="1")
     STIP_CnRI_17_Accepted = models.IntegerField(default="1")
@@ -1979,6 +1995,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_17_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_17_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_17_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_17_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_18_Recomm = models.IntegerField(default="1")
     STIP_CnRI_18_Accepted = models.IntegerField(default="1")
@@ -1987,6 +2004,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_18_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_18_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_18_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_18_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_19_Recomm = models.IntegerField(default="1")
     STIP_CnRI_19_Accepted = models.IntegerField(default="1")
@@ -1995,6 +2013,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_19_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_19_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_19_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_19_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_20_Recomm = models.IntegerField(default="1")
     STIP_CnRI_20_Accepted = models.IntegerField(default="1")
@@ -2003,6 +2022,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_20_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_20_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_20_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_20_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_21_Recomm = models.IntegerField(default="1")
     STIP_CnRI_21_Accepted = models.IntegerField(default="1")
@@ -2011,6 +2031,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_21_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_21_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_21_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_21_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_22_Recomm = models.IntegerField(default="1")
     STIP_CnRI_22_Accepted = models.IntegerField(default="1")
@@ -2019,6 +2040,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_22_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_22_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_22_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_22_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_23_Recomm = models.IntegerField(default="1")
     STIP_CnRI_23_Accepted = models.IntegerField(default="1")
@@ -2027,6 +2049,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_23_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_23_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_23_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_23_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_24_Recomm = models.IntegerField(default="1")
     STIP_CnRI_24_Accepted = models.IntegerField(default="1")
@@ -2035,6 +2058,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_24_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_24_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_24_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_24_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_25_Recomm = models.IntegerField(default="1")
     STIP_CnRI_25_Accepted = models.IntegerField(default="1")
@@ -2043,6 +2067,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_25_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_25_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_25_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_25_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_26_Recomm = models.IntegerField(default="1")
     STIP_CnRI_26_Accepted = models.IntegerField(default="1")
@@ -2051,6 +2076,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_26_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_26_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_26_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_26_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRI_27_Recomm = models.IntegerField(default="1")
     STIP_CnRI_27_Accepted = models.IntegerField(default="1")
@@ -2059,6 +2085,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRI_27_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_27_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_27_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRI_27_Cover = models.CharField(max_length=100, default="", blank=True)
 
     STIP_CnRI_FeeCharges = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRI_Commission = models.CharField(max_length=20000, default="", blank=True)
@@ -2078,6 +2105,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_1_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_1_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_1_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_1_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_2_Recomm = models.IntegerField(default="1")
     STIP_CnRen_2_Accepted = models.IntegerField(default="1")
@@ -2086,6 +2114,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_2_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_2_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_2_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_2_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_3_Recomm = models.IntegerField(default="1")
     STIP_CnRen_3_Accepted = models.IntegerField(default="1")
@@ -2094,6 +2123,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_3_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_3_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_3_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_3_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_4_Recomm = models.IntegerField(default="1")
     STIP_CnRen_4_Accepted = models.IntegerField(default="1")
@@ -2102,6 +2132,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_4_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_4_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_4_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_4_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_5_Recomm = models.IntegerField(default="1")
     STIP_CnRen_5_Accepted = models.IntegerField(default="1")
@@ -2110,6 +2141,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_5_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_5_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_5_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_5_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_6_Recomm = models.IntegerField(default="1")
     STIP_CnRen_6_Accepted = models.IntegerField(default="1")
@@ -2118,6 +2150,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_6_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_6_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_6_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_6_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_7_Recomm = models.IntegerField(default="1")
     STIP_CnRen_7_Accepted = models.IntegerField(default="1")
@@ -2126,6 +2159,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_7_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_7_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_7_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_7_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_8_Recomm = models.IntegerField(default="1")
     STIP_CnRen_8_Accepted = models.IntegerField(default="1")
@@ -2134,6 +2168,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_8_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_8_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_8_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_8_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_9_Recomm = models.IntegerField(default="1")
     STIP_CnRen_9_Accepted = models.IntegerField(default="1")
@@ -2142,6 +2177,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_9_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_9_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_9_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_9_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_10_Recomm = models.IntegerField(default="1")
     STIP_CnRen_10_Accepted = models.IntegerField(default="1")
@@ -2150,6 +2186,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_10_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_10_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_10_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_10_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_11_Recomm = models.IntegerField(default="1")
     STIP_CnRen_11_Accepted = models.IntegerField(default="1")
@@ -2158,6 +2195,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_11_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_11_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_11_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_11_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_12_Recomm = models.IntegerField(default="1")
     STIP_CnRen_12_Accepted = models.IntegerField(default="1")
@@ -2166,6 +2204,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_12_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_12_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_12_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_12_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_13_Recomm = models.IntegerField(default="1")
     STIP_CnRen_13_Accepted = models.IntegerField(default="1")
@@ -2174,6 +2213,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_13_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_13_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_13_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_13_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_14_Recomm = models.IntegerField(default="1")
     STIP_CnRen_14_Accepted = models.IntegerField(default="1")
@@ -2182,6 +2222,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_14_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_14_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_14_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_14_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_15_Recomm = models.IntegerField(default="1")
     STIP_CnRen_15_Accepted = models.IntegerField(default="1")
@@ -2190,6 +2231,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_15_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_15_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_15_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_15_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_16_Recomm = models.IntegerField(default="1")
     STIP_CnRen_16_Accepted = models.IntegerField(default="1")
@@ -2198,6 +2240,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_16_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_16_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_16_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_16_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_17_Recomm = models.IntegerField(default="1")
     STIP_CnRen_17_Accepted = models.IntegerField(default="1")
@@ -2206,6 +2249,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_17_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_17_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_17_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_17_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_18_Recomm = models.IntegerField(default="1")
     STIP_CnRen_18_Accepted = models.IntegerField(default="1")
@@ -2214,6 +2258,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_18_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_18_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_18_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_18_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_19_Recomm = models.IntegerField(default="1")
     STIP_CnRen_19_Accepted = models.IntegerField(default="1")
@@ -2222,6 +2267,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_19_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_19_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_19_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_19_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_20_Recomm = models.IntegerField(default="1")
     STIP_CnRen_20_Accepted = models.IntegerField(default="1")
@@ -2230,6 +2276,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_20_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_20_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_20_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_20_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_21_Recomm = models.IntegerField(default="1")
     STIP_CnRen_21_Accepted = models.IntegerField(default="1")
@@ -2238,6 +2285,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_21_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_21_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_21_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_21_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_22_Recomm = models.IntegerField(default="1")
     STIP_CnRen_22_Accepted = models.IntegerField(default="1")
@@ -2246,6 +2294,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_22_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_22_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_22_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_22_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_23_Recomm = models.IntegerField(default="1")
     STIP_CnRen_23_Accepted = models.IntegerField(default="1")
@@ -2254,6 +2303,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_23_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_23_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_23_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_23_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_24_Recomm = models.IntegerField(default="1")
     STIP_CnRen_24_Accepted = models.IntegerField(default="1")
@@ -2262,6 +2312,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_24_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_24_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_24_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_24_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_25_Recomm = models.IntegerField(default="1")
     STIP_CnRen_25_Accepted = models.IntegerField(default="1")
@@ -2270,6 +2321,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_25_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_25_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_25_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_25_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_26_Recomm = models.IntegerField(default="1")
     STIP_CnRen_26_Accepted = models.IntegerField(default="1")
@@ -2278,6 +2330,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_26_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_26_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_26_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_26_Cover = models.CharField(max_length=100, default="", blank=True)
     
     STIP_CnRen_27_Recomm = models.IntegerField(default="1")
     STIP_CnRen_27_Accepted = models.IntegerField(default="1")
@@ -2286,6 +2339,7 @@ class ShortTermInsurancePersonal(models.Model):
     STIP_CnRen_27_Premium2 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_27_Excess1 = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_27_Excess2 = models.CharField(max_length=20000, default="", blank=True)
+    STIP_CnRen_27_Cover = models.CharField(max_length=100, default="", blank=True)
 
     STIP_CnRen_FeeCharges = models.CharField(max_length=20000, default="", blank=True)
     STIP_CnRen_Commission = models.CharField(max_length=20000, default="", blank=True)
