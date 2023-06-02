@@ -1526,7 +1526,9 @@ const Short_term_Personal = ({user, LogOut}) => {
   <hr/>
 <h6 align="left" style={{ color: "#14848A"}}><b>COVER OF INSURANCE</b></h6>
 <hr/>
-<div className="container-fluid">
+
+<h6 align="center" style={{ color: "#14848A"}}><b>PRODUCT COMPARISON</b></h6>
+<div className="">
   <div className='table-responsive'>
   <table id="productSizes" className="table table-bordered border dark">
   <tbody>
@@ -1539,15 +1541,15 @@ const Short_term_Personal = ({user, LogOut}) => {
           </tr> */}
       
       
-          <tr className="d-flex">
+          {/* <tr className="d-flex">
               
               <td><h6 align="center" style={{ color: "#14848A", width:"1110px"}}><b>PRODUCT COMPARISON</b></h6></td>
             
-          </tr>
+          </tr> */}
           <tr className="d-flex">
               
-              <td className="col-8" style={{width:"590px"}}></td>
-              <td className="col-2" align="center" style={{width:"260px"}}>
+              <td className="col-8" style={{width:"490px"}}></td>
+              <td className="col-2" align="center" style={{width:"390px"}}>
                 <b>Existing Product</b>
                 <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Existing_Company" name='STIP_CnRI_Existing_Company' value={FormData['STIP_CnRI_Existing_Company']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Company"  aria-describedby="" />
               </td>
@@ -1559,8 +1561,8 @@ const Short_term_Personal = ({user, LogOut}) => {
           </tr>
           <tr className="d-flex">
               
-              <td className="col-8" style={{width:"590px"}}></td>
-              <td className="col-2" align="center" style={{width:"260px"}}>
+              <td className="col-8" style={{width:"490px"}}></td>
+              <td className="col-2" align="center" style={{width:"390px"}}>
                 <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Existing_Provider" name='STIP_CnRI_Existing_Provider' value={FormData['STIP_CnRI_Existing_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Provider"  aria-describedby="" />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
@@ -1570,8 +1572,8 @@ const Short_term_Personal = ({user, LogOut}) => {
           </tr>
           <tr className="d-flex">
               
-              <td className="col-8" style={{width:"590px"}}></td>
-              <td className="col-2" align="center" style={{width:"260px"}}>
+              <td className="col-8" style={{width:"490px"}}></td>
+              <td className="col-2" align="center" style={{width:"390px"}}>
                 <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Existing_Product" name='STIP_CnRI_Existing_Product' value={FormData['STIP_CnRI_Existing_Product']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Product"  aria-describedby="" />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
@@ -2620,25 +2622,25 @@ const Short_term_Personal = ({user, LogOut}) => {
           </tr>
           <tr className="d-flex">
               
-              <td className="col-2" style={{width:"200px"}}>Fees and charges</td>
-              <td className="col-2" style={{width:"910px"}}>
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_FeeCharges" name='STIP_CnRI_FeeCharges' value={FormData['STIP_CnRI_FeeCharges']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              <td className="col-2" style={{width:"170px"}}>Fees and charges</td>
+              <td className="col-10">
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_FeeCharges" name='STIP_CnRI_FeeCharges' value={FormData['STIP_CnRI_FeeCharges']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
               </td>
             
           </tr>
           <tr className="d-flex">
               
-              <td className="col-2" style={{width:"200px"}}>Commissions</td>
-              <td className="col-2" style={{width:"910px"}}>
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Commission" name='STIP_CnRI_Commission' value={FormData['STIP_CnRI_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              <td className="col-2" style={{width:"170px"}}>Commissions</td>
+              <td className="col-10">
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_Commission" name='STIP_CnRI_Commission' value={FormData['STIP_CnRI_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
               </td>
             
           </tr>
           <tr className="d-flex">
               
-              <td className="col-2" style={{width:"200px"}}>Total premium</td>
-              <td className="col-2" style={{width:"910px"}}>
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_TotalPremium" name='STIP_CnRI_TotalPremium' value={FormData['STIP_CnRen_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              <td className="col-2" style={{width:"170px"}}>Total premium</td>
+              <td className="col-10">
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_TotalPremium" name='STIP_CnRI_TotalPremium' value={FormData['STIP_CnRen_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
               </td>
             
           </tr>
@@ -2655,7 +2657,7 @@ const Short_term_Personal = ({user, LogOut}) => {
   <hr/>
 <h6 align="left" style={{ color: "#14848A"}}><b>COVER AND RENEWAL OF INSURANCE</b></h6>
 <hr/>
-<div className="container-fluid">
+<div className="">
 <div className='table-responsive'>
 <table id="productSizes" className="table table-bordered border dark">
   <tbody>
@@ -2675,8 +2677,8 @@ const Short_term_Personal = ({user, LogOut}) => {
           </tr>
           <tr className="d-flex">
               
-              <td className="col-8" style={{width:"590px"}}></td>
-              <td className="col-2" align="center" style={{width:"260px"}}>
+              <td className="col-8" style={{width:"490px"}}></td>
+              <td className="col-2" align="center" style={{width:"390px"}}>
                 <b>Existing Product</b>
                 <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Existing_Company" name='STIP_CnRen_Existing_Company' value={FormData['STIP_CnRen_Existing_Company']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Company"  aria-describedby="" />
               </td>
@@ -2688,8 +2690,8 @@ const Short_term_Personal = ({user, LogOut}) => {
           </tr>
           <tr className="d-flex">
               
-              <td className="col-8" style={{width:"590px"}}></td>
-              <td className="col-2" align="center" style={{width:"260px"}}>
+              <td className="col-8" style={{width:"490px"}}></td>
+              <td className="col-2" align="center" style={{width:"390px"}}>
                 <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Existing_Provider" name='STIP_CnRen_Existing_Provider' value={FormData['STIP_CnRen_Existing_Provider']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Provider"  aria-describedby="" />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
@@ -2699,8 +2701,8 @@ const Short_term_Personal = ({user, LogOut}) => {
           </tr>
           <tr className="d-flex">
               
-              <td className="col-8" style={{width:"590px"}}></td>
-              <td className="col-2" align="center" style={{width:"260px"}}>
+              <td className="col-8" style={{width:"490px"}}></td>
+              <td className="col-2" align="center" style={{width:"390px"}}>
                 <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Existing_Product" name='STIP_CnRen_Existing_Product' value={FormData['STIP_CnRen_Existing_Product']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Product"  aria-describedby="" />
               </td>
               <td className="col-2" align="center" style={{width:"260px"}}>
@@ -3730,25 +3732,25 @@ const Short_term_Personal = ({user, LogOut}) => {
           </tr>
           <tr className="d-flex">
               
-              <td className="col-2" style={{width:"200px"}}>Fees and charges</td>
-              <td className="col-2" style={{width:"910px"}}>
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_FeeCharges" name='STIP_CnRen_FeeCharges' value={FormData['STIP_CnRen_FeeCharges']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              <td className="col-2" style={{width:"170px"}}>Fees and charges</td>
+              <td className="col-10">
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_FeeCharges" name='STIP_CnRen_FeeCharges' value={FormData['STIP_CnRen_FeeCharges']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
               </td>
             
           </tr>
           <tr className="d-flex">
               
-              <td className="col-2" style={{width:"200px"}}>Commissions</td>
-              <td className="col-2" style={{width:"910px"}}>
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Commission" name='STIP_CnRen_Commission' value={FormData['STIP_CnRen_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              <td className="col-2" style={{width:"170px"}}>Commissions</td>
+              <td className="col-10">
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_Commission" name='STIP_CnRen_Commission' value={FormData['STIP_CnRen_Commission']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
               </td>
             
           </tr>
           <tr className="d-flex">
               
-              <td className="col-2" style={{width:"200px"}}>Total premium</td>
-              <td className="col-2" style={{width:"910px"}}>
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_TotalPremium" name='STIP_CnRen_TotalPremium' value={FormData['STIP_CnRI_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"100px"}} />
+              <td className="col-2" style={{width:"170px"}}>Total premium</td>
+              <td className="col-10">
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_TotalPremium" name='STIP_CnRen_TotalPremium' value={FormData['STIP_CnRI_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
               </td>
             
           </tr>
