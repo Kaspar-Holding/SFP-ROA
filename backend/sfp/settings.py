@@ -33,7 +33,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS=['*']
 
@@ -139,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# WKHTMLTOPDF_CMD = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
+WKHTMLTOPDF_CMD = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
 WKHTMLTOPDF_CMD_OPTIONS = {
     'quiet': True, 'enable-local-file-access': True, 'disable-javascript' : True
 }
@@ -198,7 +198,7 @@ EMAIL_HOST_USER = 'sfpkcstesting@gmail.com'
 EMAIL_HOST_PASSWORD = 'qxgcuapwdoizdkzt'
 EMAIL_USE_TLS = True
 
-PASSWORD_RESET_TIMEOUT_DAYS=1
+ 
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.azuread.AzureADOAuth2',

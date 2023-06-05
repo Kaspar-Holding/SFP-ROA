@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from django_pdfkit import PDFView
 from django.core.files.base import ContentFile
 import uuid
+from data.models import STIC_Sec_Fire, STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21 
 from data.models import STIP_Loss, STIC_Loss, EB_Cover, IP_ProductTaken, AR_ProductTaken, AI_ProductTaken, RP_ProductTaken, RF_LinkedParty, RiskFactors, Form, UserAccount, AssuranceRisk, RiskPlanning, GapCover, Medical, Fiduciary, InvestmentPlanning, EmployeeBenefits, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, AssuranceInvestment
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
@@ -2246,8 +2247,49 @@ def wkhtmltopdfapi(request):
                 data['STIC']['STIC_SecD_13'] = datetimeparser.parse(data['STIC']['STIC_SecD_13']).strftime('%d/%m/%Y') if data['STIC']['STIC_SecD_13'] != "" else "N.A."
                 data['STIC']['STIC_Sec15_2_1'] = datetimeparser.parse(data['STIC']['STIC_Sec15_2_1']).strftime('%d/%m/%Y') if data['STIC']['STIC_Sec15_2_1'] != "" else "N.A."
                 if STIC_Loss.objects.filter(formId = data['id']).exists():
-                    print('it exists')
                     data['STIC']['Loss_Data'] = STIC_Loss.objects.filter(formId = data['id']).values()
+                if STIC_Sec_Fire.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_1_Data'] = STIC_Sec_Fire.objects.filter(formId=data['id']).values()
+                if STIC_Sec_2.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_2_Data'] = STIC_Sec_2.objects.filter(formId=data['id']).values()
+                if STIC_Sec_3.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_3_Data'] = STIC_Sec_3.objects.filter(formId=data['id']).values()
+                if STIC_Sec_4.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_4_Data'] = STIC_Sec_4.objects.filter(formId=data['id']).values()
+                if STIC_Sec_5.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_5_Data'] = STIC_Sec_5.objects.filter(formId=data['id']).values()
+                if STIC_Sec_6.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_6_Data'] = STIC_Sec_6.objects.filter(formId=data['id']).values()
+                if STIC_Sec_7.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_7_Data'] = STIC_Sec_7.objects.filter(formId=data['id']).values()
+                if STIC_Sec_8.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_8_Data'] = STIC_Sec_8.objects.filter(formId=data['id']).values()
+                if STIC_Sec_9.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_9_Data'] = STIC_Sec_9.objects.filter(formId=data['id']).values()
+                if STIC_Sec_10.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_10_Data'] = STIC_Sec_10.objects.filter(formId=data['id']).values()
+                if STIC_Sec_11.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_11_Data'] = STIC_Sec_11.objects.filter(formId=data['id']).values()
+                if STIC_Sec_12.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_12_Data'] = STIC_Sec_12.objects.filter(formId=data['id']).values()
+                if STIC_Sec_13.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_13_Data'] = STIC_Sec_13.objects.filter(formId=data['id']).values()
+                if STIC_Sec_14.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_14_Data'] = STIC_Sec_14.objects.filter(formId=data['id']).values()
+                if STIC_Sec_15.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_15_Data'] = STIC_Sec_15.objects.filter(formId=data['id']).values()
+                if STIC_Sec_16.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_16_Data'] = STIC_Sec_16.objects.filter(formId=data['id']).values()
+                if STIC_Sec_17.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_17_Data'] = STIC_Sec_17.objects.filter(formId=data['id']).values()
+                if STIC_Sec_18.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_18_Data'] = STIC_Sec_18.objects.filter(formId=data['id']).values()
+                if STIC_Sec_19.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_19_Data'] = STIC_Sec_19.objects.filter(formId=data['id']).values()
+                if STIC_Sec_20.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_20_Data'] = STIC_Sec_20.objects.filter(formId=data['id']).values()
+                if STIC_Sec_21.objects.filter(formId = data['id']).exists():
+                    data['STIC']['STIC_Sec_21_Data'] = STIC_Sec_21.objects.filter(formId=data['id']).values()
         else:
             data['STIC_status'] = False
         if ShortTermInsurancePersonal.objects.filter(formId=data['id']).exists():

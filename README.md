@@ -12,6 +12,9 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 05 June 2023:
+- Short Term Commercial Section Duplication is done
+
 ### 31 May 2023:
 - Section 1 Bug is resolved
 
