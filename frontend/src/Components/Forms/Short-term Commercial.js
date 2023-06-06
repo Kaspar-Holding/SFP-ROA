@@ -2255,7 +2255,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
         newSection_13[i][e.target.name] = value
         setSection_13(newSection_13)
       }
-      // End Section 13
+      // End Section 13      
 
       // Section 14
       const [Section_14, setSection_14] = useState([])
@@ -2264,6 +2264,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
         current.push({
           advisorId : state['advisor']['id'],  
           formId : state['formId'],  
+          
           
           Sec14_AddComments : "",
           Sec14_Limit : "",
@@ -2326,14 +2327,14 @@ const Short_term_Commercial= ({user, LogOut}) => {
           newSection_14[i][e.target.name] = e.target.value
           setSection_14(newSection_14)
       }      
-      
       const on_Section_14_Value_Change = (name, i, val) => {
         let newSection_14 = [...Section_14]
         newSection_14[i][""+name+""] = val
-        console.log(newSection_14)
         setSection_14(newSection_14)
       }
-      // End Section 14
+      // End Section 13
+
+      
 
       // Section 15
       const [Section_15, setSection_15] = useState([])
@@ -18094,41 +18095,32 @@ const Short_term_Commercial= ({user, LogOut}) => {
       }}
     />
     <hr/>
-    {
+    
+              {
                 Section_14.length > 0 ?
                 Section_14.map((key, i)=> {
                   return (
                     <>
-                    
-    
-<div className='row'>
+                      
+    <div className='row'>
       <div className='col-lg-6 col-md-6 col-sm-12'>
-
         <div className={
-          state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
-          : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
-          : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
-          : ""
-        } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 14:SPECIALIST PRODUCTS (# {i+2})</b>
+            state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
+            : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
+            : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
+            : ""
+          } style={{fontSize:'18px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SECTION 14:SPECIALIST PRODUCTS (# {i+2})</b>
         </div>
       </div>
-        
-      <div className='col-lg-6 col-md-6 col-sm-12'>
-        <div className='row'>
-          {
-            i+1 == Section_14.length ?
-            <div className="col-6">
-                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_14(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 14</button>
-            </div>
-            : <></>
-          }
-          <div className="col-6">
-              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_14(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 14</button>
+        <div className='col-lg-6 col-md-6 col-sm-12'>
+              {
+                Section_14.length === 0 ?
+                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_14(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 14</button>
+                : <></>
+              }
           </div>
-        </div>
-        </div>
 
-      </div>
+        </div>
     <div className="row" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}}>
       <div className="col-12" style={{paddingBottom: "0.5%"}}>
           <div className="row g-3 align-items-center">
@@ -18147,7 +18139,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </div>
 
               <div className="col-4">
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_Limit" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_Limit']}  name="Sec14_Limit"  className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_Limit" onChange={(e) => {onChange(e)}} value={key.Sec14_Limit}  name="Sec14_Limit"  className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
               </div>
 
               <div className="col-2">
@@ -18155,7 +18147,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </div>
 
               <div className="col-4">
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_Premium" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_Premium']}  name="Sec14_Premium"  className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_Premium" onChange={(e) => {onChange(e)}} value={key.Sec14_Premium}  name="Sec14_Premium"  className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} />
               </div>
           </div>
       </div>
@@ -18168,7 +18160,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </div>
 
               <div className="col-4">
-                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_ItemNumber" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_ItemNumber']}  name="Sec14_ItemNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_ItemNumber" onChange={(e) => {onChange(e)}} value={key.Sec14_ItemNumber}  name="Sec14_ItemNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
               </div>
 
               <div className="col-2">
@@ -18176,7 +18168,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </div>
 
               <div className="col-4">
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_PremNumber" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_PremNumber']}  name="Sec14_PremNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_PremNumber" onChange={(e) => {onChange(e)}} value={key.Sec14_PremNumber}  name="Sec14_PremNumber"  className="form-control" placeholder="0.00"  aria-describedby=""/>
               </div>
           </div>
       </div>
@@ -18199,13 +18191,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Top up personal liability</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommended1"] === 1 ? true : false} name="Sec14_Recommended1" onChange={(e)=>{key["Sec14_Recommended1"] === 1 ? setSection_14({...key, [e.target.name]: 0}) : setSection_14({...key, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended1 == 1 ? true : false} name="Sec14_Recommended1" onChange={(e)=>{key.Sec14_Recommended1 == 1 ? on_Section_14_Value_Change("Sec14_Recommended1", i, 0) : on_Section_14_Value_Change("Sec14_Recommended1", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted1"] === 1 ? true : false} name="Sec14_Accepted1" onChange={(e)=>{key["Sec14_Accepted1"] === 1 ? setSection_14({...key, [e.target.name]: 0}) : setSection_14({...key, [e.target.name]: 1})}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted1 == 1 ? true : false} name="Sec14_Accepted1" onChange={(e)=>{key.Sec14_Accepted1 == 1 ? on_Section_14_Value_Change("Sec14_Accepted1", i, 0) : on_Section_14_Value_Change("Sec14_Accepted1", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount1" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount1']}  name="Sec14_CoverAmount1" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount1" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount1}  name="Sec14_CoverAmount1" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>  
     </tr>
@@ -18213,13 +18205,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Commercial umbrella liability</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommended2"] === 1 ? true : false} name="Sec14_Recommended2" onChange={(e)=>{key["Sec14_Recommended2"] === 1 ? on_Section_14_Value_Change("Sec14_Recommended2", i, 0) : on_Section_14_Value_Change("Sec14_Recommended2", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended2 == 1 ? true : false} name="Sec14_Recommended2" onChange={(e)=>{key.Sec14_Recommended2 == 1 ? on_Section_14_Value_Change("Sec14_Recommended2", i, 0) : on_Section_14_Value_Change("Sec14_Recommended2", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted2"] === 1 ? true : false} name="Sec14_Accepted2" onChange={(e)=>{key["Sec14_Accepted2"] === 1 ? on_Section_14_Value_Change("Sec14_Accepted2", i, 0) : on_Section_14_Value_Change("Sec14_Accepted2", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted2 == 1 ? true : false} name="Sec14_Accepted2" onChange={(e)=>{key.Sec14_Accepted2 == 1 ? on_Section_14_Value_Change("Sec14_Accepted2", i, 0) : on_Section_14_Value_Change("Sec14_Accepted2", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount2" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount2']}  name="Sec14_CoverAmount2" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount2" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount2}  name="Sec14_CoverAmount2" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>  
       
@@ -18228,13 +18220,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Products guarantee</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommended3"] === 1 ? true : false} name="Sec14_Recommended3" onChange={(e)=>{key["Sec14_Recommended3"] === 1 ? on_Section_14_Value_Change("Sec14_Recommended3", i, 0) : on_Section_14_Value_Change("Sec14_Recommended3", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended3 == 1 ? true : false} name="Sec14_Recommended3" onChange={(e)=>{key.Sec14_Recommended3 == 1 ? on_Section_14_Value_Change("Sec14_Recommended3", i, 0) : on_Section_14_Value_Change("Sec14_Recommended3", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted3"] === 1 ? true : false} name="Sec14_Accepted3" onChange={(e)=>{key["Sec14_Accepted3"] === 1 ? on_Section_14_Value_Change("Sec14_Accepted3", i, 0) : on_Section_14_Value_Change("Sec14_Accepted3", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted3 == 1 ? true : false} name="Sec14_Accepted3" onChange={(e)=>{key.Sec14_Accepted3 == 1 ? on_Section_14_Value_Change("Sec14_Accepted3", i, 0) : on_Section_14_Value_Change("Sec14_Accepted3", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount3" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount3']}  name="Sec14_CoverAmount3" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount3" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount3}  name="Sec14_CoverAmount3" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -18243,13 +18235,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Cyber risks</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommended4"] === 1 ? true : false} name="Sec14_Recommended4" onChange={(e)=>{key["Sec14_Recommended4"] === 1 ? on_Section_14_Value_Change("Sec14_Recommended4", i, 0) : on_Section_14_Value_Change("Sec14_Recommended4", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended4 == 1 ? true : false} name="Sec14_Recommended4" onChange={(e)=>{key.Sec14_Recommended4 == 1 ? on_Section_14_Value_Change("Sec14_Recommended4", i, 0) : on_Section_14_Value_Change("Sec14_Recommended4", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted4"] === 1 ? true : false} name="Sec14_Accepted4" onChange={(e)=>{key["Sec14_Accepted4"] === 1 ? on_Section_14_Value_Change("Sec14_Accepted4", i, 0) : on_Section_14_Value_Change("Sec14_Accepted4", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted4 == 1 ? true : false} name="Sec14_Accepted4" onChange={(e)=>{key.Sec14_Accepted4 == 1 ? on_Section_14_Value_Change("Sec14_Accepted4", i, 0) : on_Section_14_Value_Change("Sec14_Accepted4", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount4" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount4']}  name="Sec14_CoverAmount4" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount4" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount4}  name="Sec14_CoverAmount4" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -18258,13 +18250,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Directors and officers liability</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommendedh5"] === 1 ? true : false} name="Sec14_Recommended5" onChange={(e)=>{key["Sec14_Recommended5"] === 1 ? on_Section_14_Value_Change("Sec14_Recommended5", i, 0) : on_Section_14_Value_Change("Sec14_Recommended5", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended5 == 1 ? true : false} name="Sec14_Recommended5" onChange={(e)=>{key.Sec14_Recommended5 == 1 ? on_Section_14_Value_Change("Sec14_Recommended5", i, 0) : on_Section_14_Value_Change("Sec14_Recommended5", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted5"] === 1 ? true : false} name="Sec14_Accepted5" onChange={(e)=>{key["Sec14_Accepted5"] === 1 ? on_Section_14_Value_Change("Sec14_Accepted5", i, 0) : on_Section_14_Value_Change("Sec14_Accepted5", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted5 == 1 ? true : false} name="Sec14_Accepted5" onChange={(e)=>{key.Sec14_Accepted5 == 1 ? on_Section_14_Value_Change("Sec14_Accepted5", i, 0) : on_Section_14_Value_Change("Sec14_Accepted5", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount5" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount5']}  name="Sec14_CoverAmount5" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount5" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount5}  name="Sec14_CoverAmount5" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -18273,13 +18265,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Employment practices liability</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommended6"] === 1 ? true : false} name="Sec14_Recommended6" onChange={(e)=>{key["Sec14_Recommended6"] === 1 ? on_Section_14_Value_Change("Sec14_Recommended6", i, 0) : on_Section_14_Value_Change("Sec14_Recommended6", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended6 == 1 ? true : false} name="Sec14_Recommended6" onChange={(e)=>{key.Sec14_Recommended6 == 1 ? on_Section_14_Value_Change("Sec14_Recommended6", i, 0) : on_Section_14_Value_Change("Sec14_Recommended6", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted6"] === 1 ? true : false} name="Sec14_Accepted6" onChange={(e)=>{key["Sec14_Accepted6"] === 1 ? on_Section_14_Value_Change("Sec14_Accepted6", i, 0) : on_Section_14_Value_Change("Sec14_Accepted6", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted6 == 1 ? true : false} name="Sec14_Accepted6" onChange={(e)=>{key.Sec14_Accepted6 == 1 ? on_Section_14_Value_Change("Sec14_Accepted6", i, 0) : on_Section_14_Value_Change("Sec14_Accepted6", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount6" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount6']}  name="Sec14_CoverAmount6" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount6" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount6}  name="Sec14_CoverAmount6" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -18288,13 +18280,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Product inefficacy</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommended7"] === 1 ? true : false} name="Sec14_Recommended7" onChange={(e)=>{key["Sec14_Recommended7"] === 1 ? on_Section_14_Value_Change("Sec14_Recommended7", i, 0) : on_Section_14_Value_Change("Sec14_Recommended7", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended7 == 1 ? true : false} name="Sec14_Recommended7" onChange={(e)=>{key.Sec14_Recommended7 == 1 ? on_Section_14_Value_Change("Sec14_Recommended7", i, 0) : on_Section_14_Value_Change("Sec14_Recommended7", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted7"] === 1 ? true : false} name="Sec14_Accepted7" onChange={(e)=>{key["Sec14_Accepted7"] === 1 ? on_Section_14_Value_Change("Sec14_Accepted7", i, 0) : on_Section_14_Value_Change("Sec14_Accepted7", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted7 == 1 ? true : false} name="Sec14_Accepted7" onChange={(e)=>{key.Sec14_Accepted7 == 1 ? on_Section_14_Value_Change("Sec14_Accepted7", i, 0) : on_Section_14_Value_Change("Sec14_Accepted7", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount7" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount7']}  name="Sec14_CoverAmount7" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount7" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount7}  name="Sec14_CoverAmount7" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -18303,13 +18295,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Product guarantee</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommended8"] === 1 ? true : false} name="Sec14_Recommended8" onChange={(e)=>{key["Sec14_Recommended8"] === 1 ? on_Section_14_Value_Change("Sec14_Recommended8", i, 0) : on_Section_14_Value_Change("Sec14_Recommended8", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended8 == 1 ? true : false} name="Sec14_Recommended8" onChange={(e)=>{key.Sec14_Recommended8 == 1 ? on_Section_14_Value_Change("Sec14_Recommended8", i, 0) : on_Section_14_Value_Change("Sec14_Recommended8", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted8"] === 1 ? true : false} name="Sec14_Accepted8" onChange={(e)=>{key["Sec14_Accepted8"] === 1 ? on_Section_14_Value_Change("Sec14_Accepted8", i, 0) : on_Section_14_Value_Change("Sec14_Accepted8", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted8 == 1 ? true : false} name="Sec14_Accepted8" onChange={(e)=>{key.Sec14_Accepted8 == 1 ? on_Section_14_Value_Change("Sec14_Accepted8", i, 0) : on_Section_14_Value_Change("Sec14_Accepted8", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount8" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount8']}  name="Sec14_CoverAmount8" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount8" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount8}  name="Sec14_CoverAmount8" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -18327,13 +18319,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Warehousemen's liability</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommended9"] === 1 ? true : false} name="Sec14_Recommended9" onChange={(e)=>{key["Sec14_Recommended9"] === 1 ? on_Section_14_Value_Change("Sec14_Recommended9", i, 0) : on_Section_14_Value_Change("Sec14_Recommended9", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended9 == 1 ? true : false} name="Sec14_Recommended9" onChange={(e)=>{key.Sec14_Recommended9 == 1 ? on_Section_14_Value_Change("Sec14_Recommended9", i, 0) : on_Section_14_Value_Change("Sec14_Recommended9", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted9"] === 1 ? true : false} name="Sec14_Accepted9" onChange={(e)=>{key["Sec14_Accepted9"] === 1 ? on_Section_14_Value_Change("Sec14_Accepted9", i, 0) : on_Section_14_Value_Change("Sec14_Accepted9", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted9 == 1 ? true : false} name="Sec14_Accepted9" onChange={(e)=>{key.Sec14_Accepted9 == 1 ? on_Section_14_Value_Change("Sec14_Accepted9", i, 0) : on_Section_14_Value_Change("Sec14_Accepted9", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount9" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount9']}  name="Sec14_CoverAmount9" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount9" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount9}  name="Sec14_CoverAmount9" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -18342,13 +18334,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Professional indemnity</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommended10"] === 1 ? true : false} name="Sec14_Recommended10" onChange={(e)=>{key["Sec14_Recommended10"] === 1 ? on_Section_14_Value_Change("Sec14_Recommended10", i, 0) : on_Section_14_Value_Change("Sec14_Recommended10", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended10 == 1 ? true : false} name="Sec14_Recommended10" onChange={(e)=>{key.Sec14_Recommended10 == 1 ? on_Section_14_Value_Change("Sec14_Recommended10", i, 0) : on_Section_14_Value_Change("Sec14_Recommended10", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted10"] === 1 ? true : false} name="Sec14_Accepted10" onChange={(e)=>{key["Sec14_Accepted10"] === 1 ? on_Section_14_Value_Change("Sec14_Accepted10", i, 0) : on_Section_14_Value_Change("Sec14_Accepted10", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted10 == 1 ? true : false} name="Sec14_Accepted10" onChange={(e)=>{key.Sec14_Accepted10 == 1 ? on_Section_14_Value_Change("Sec14_Accepted10", i, 0) : on_Section_14_Value_Change("Sec14_Accepted10", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount10" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount10']}  name="Sec14_CoverAmount10" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount10" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount10}  name="Sec14_CoverAmount10" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -18357,13 +18349,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Contractor's All Risk</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommended11"] === 1 ? true : false} name="Sec14_Recommended11" onChange={(e)=>{key["Sec14_Recommended11"] === 1 ? on_Section_14_Value_Change("Sec14_Recommended11", i, 0) : on_Section_14_Value_Change("Sec14_Recommended11", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended11 == 1 ? true : false} name="Sec14_Recommended11" onChange={(e)=>{key.Sec14_Recommended11 == 1 ? on_Section_14_Value_Change("Sec14_Recommended11", i, 0) : on_Section_14_Value_Change("Sec14_Recommended11", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted11"] === 1 ? true : false} name="Sec14_Accepted11" onChange={(e)=>{key["Sec14_Accepted11"] === 1 ? on_Section_14_Value_Change("Sec14_Accepted11", i, 0) : on_Section_14_Value_Change("Sec14_Accepted11", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted11 == 1 ? true : false} name="Sec14_Accepted11" onChange={(e)=>{key.Sec14_Accepted11 == 1 ? on_Section_14_Value_Change("Sec14_Accepted11", i, 0) : on_Section_14_Value_Change("Sec14_Accepted11", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount11" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount11']}  name="Sec14_CoverAmount11" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount11" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount11}  name="Sec14_CoverAmount11" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -18372,13 +18364,13 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold'}} align="left">Other</td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Recommended12"] === 1 ? true : false} name="Sec14_Recommended12" onChange={(e)=>{key["Sec14_Recommended12"] === 1 ? on_Section_14_Value_Change("Sec14_Recommended12", i, 0) : on_Section_14_Value_Change("Sec14_Recommended12", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Recommended12 == 1 ? true : false} name="Sec14_Recommended12" onChange={(e)=>{key.Sec14_Recommended12 == 1 ? on_Section_14_Value_Change("Sec14_Recommended12", i, 0) : on_Section_14_Value_Change("Sec14_Recommended12", i, 1)}}/>
       </td>
       <td>
-        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key["Sec14_Accepted12"] === 1 ? true : false} name="Sec14_Accepted12" onChange={(e)=>{key["Sec14_Accepted12"] === 1 ? on_Section_14_Value_Change("Sec14_Accepted12", i, 0) : on_Section_14_Value_Change("Sec14_Accepted12", i, 1)}}/>
+        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.Sec14_Accepted12 == 1 ? true : false} name="Sec14_Accepted12" onChange={(e)=>{key.Sec14_Accepted12 == 1 ? on_Section_14_Value_Change("Sec14_Accepted12", i, 0) : on_Section_14_Value_Change("Sec14_Accepted12", i, 1)}}/>
       </td>
       <td>
-        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount12" onChange={(e) => {on_Section_14_Change(e, i)}} value={key['Sec14_CoverAmount12']}  name="Sec14_CoverAmount12" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
+        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Sec14_CoverAmount12" onChange={(e) => {onChange(e)}} value={key.Sec14_CoverAmount12}  name="Sec14_CoverAmount12" className="form-control" placeholder="R 0.00"  aria-describedby="" style={{width:"200px"}} /> 
       </td>
       <td></td>
       
@@ -18392,7 +18384,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     <Editor onBlur={(e)=>{onFieldBlur(e)}}
-      value={key['Sec14_AddComments']}
+      value={key.Sec14_AddComments}
       onEditorChange={(newText)=>{ on_Section_14_Value_Change('Sec14_AddComments', i, newText) }}                  
       name="Sec14_AddComments"
       init={{
@@ -18414,11 +18406,11 @@ const Short_term_Commercial= ({user, LogOut}) => {
       }}
     />
     <hr/>
+    
               
                     </>
-                  ) 
-                })
-                : <></>
+                  )}):
+                  <></>
               }
               </>
         :
