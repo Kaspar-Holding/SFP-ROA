@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from rest_framework import serializers
 from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, Risk_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, STIC_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
 from .models import Medical, STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
+from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_PersonalLL, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
 
@@ -4269,3 +4270,75 @@ class STIC_Sec_21_Serializer(serializers.ModelSerializer):
         instance.updated_at = datetime.now(timezone.utc)
         instance.save()
         return instance
+
+class STIP_Sec_HC_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIP_Sec_HC
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return STIP_Sec_HC.objects.create(**validated_data)
+
+class STIP_Sec_Build_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIP_Sec_Build
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return STIP_Sec_Build.objects.create(**validated_data)
+
+class STIP_Sec_WaterC_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIP_Sec_WaterC
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return STIP_Sec_WaterC.objects.create(**validated_data)
+
+class STIP_Sec_Vehicle_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIP_Sec_Vehicle
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return STIP_Sec_Vehicle.objects.create(**validated_data)
+
+class STIP_Sec_PersonalLL_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIP_Sec_PersonalLL
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return STIP_Sec_PersonalLL.objects.create(**validated_data)
+
+class STIP_Sec_LegalA_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIP_Sec_LegalA
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return STIP_Sec_LegalA.objects.create(**validated_data)
+
+class STIP_Sec_Trailer_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIP_Sec_Trailer
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return STIP_Sec_Trailer.objects.create(**validated_data)
+
+class STIP_Sec_MotorC_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIP_Sec_MotorC
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return STIP_Sec_MotorC.objects.create(**validated_data)
+
+class STIP_Sec_AddProp_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = STIP_Sec_AddProp
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return STIP_Sec_AddProp.objects.create(**validated_data)

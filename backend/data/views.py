@@ -5,6 +5,8 @@ from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, A
 from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RiskFactors, RiskPlanning, STIC_Loss, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
 from .models import STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
 from .serializers import STIC_Sec_2_Serializer, STIC_Sec_3_Serializer, STIC_Sec_4_Serializer, STIC_Sec_5_Serializer, STIC_Sec_6_Serializer, STIC_Sec_7_Serializer, STIC_Sec_8_Serializer, STIC_Sec_9_Serializer, STIC_Sec_10_Serializer, STIC_Sec_11_Serializer, STIC_Sec_12_Serializer, STIC_Sec_13_Serializer, STIC_Sec_14_Serializer, STIC_Sec_15_Serializer, STIC_Sec_16_Serializer, STIC_Sec_17_Serializer, STIC_Sec_18_Serializer, STIC_Sec_19_Serializer, STIC_Sec_20_Serializer, STIC_Sec_21_Serializer
+from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_PersonalLL, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
+from .serializers import STIP_Sec_AddProp_Serializer, STIP_Sec_Build_Serializer, STIP_Sec_HC_Serializer, STIP_Sec_LegalA_Serializer, STIP_Sec_MotorC_Serializer, STIP_Sec_PersonalLL_Serializer, STIP_Sec_Trailer_Serializer, STIP_Sec_Vehicle_Serializer, STIP_Sec_WaterC_Serializer
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -1009,8 +1011,29 @@ def insertShortTermInsurancePersonalData(request):
             del data['created_at']
             del data['updated_at']
             Loss_Data = STIP_Loss.objects.filter(formId=request.data['formId']).values()
+            Sec_HC_Data = STIP_Sec_HC.objects.filter(formId=request.data['formId']).values()
+            Sec_Build_Data = STIP_Sec_Build.objects.filter(formId=request.data['formId']).values()
+            Sec_AddProp_Data = STIP_Sec_AddProp.objects.filter(formId=request.data['formId']).values()
+            Sec_MotorC_Data = STIP_Sec_MotorC.objects.filter(formId=request.data['formId']).values()
+            Sec_Vehicle_Data = STIP_Sec_Vehicle.objects.filter(formId=request.data['formId']).values()
+            Sec_WaterC_Data = STIP_Sec_WaterC.objects.filter(formId=request.data['formId']).values()
+            Sec_LegalA_Data = STIP_Sec_LegalA.objects.filter(formId=request.data['formId']).values()
+            Sec_PersonalLL_Data = STIP_Sec_PersonalLL.objects.filter(formId=request.data['formId']).values()
 
-            return Response({'message': "Form Already Exists","code": "200", "formData" : data, "Loss_Data" : Loss_Data},200)
+            return Response({
+                'message': "Form Already Exists",
+                "code": "200", 
+                "formData" : data, 
+                "Loss_Data" : Loss_Data, 
+                "Sec_HC_Data" : Sec_HC_Data,
+                "Sec_Build_Data" : Sec_Build_Data,
+                "Sec_AddProp_Data" : Sec_AddProp_Data,
+                "Sec_MotorC_Data" : Sec_MotorC_Data,
+                "Sec_Vehicle_Data" : Sec_Vehicle_Data,
+                "Sec_WaterC_Data" : Sec_WaterC_Data,
+                "Sec_LegalA_Data" : Sec_LegalA_Data,
+                "Sec_PersonalLL_Data" : Sec_PersonalLL_Data,
+            },200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
@@ -1904,3 +1927,111 @@ def update_stic_sec_21_Data(request):
     else:
         print(sec_21_serializer.errors)
     return Response({"message": "Updated","code":200,"formData": sec_21_data},200)
+
+@api_view(['POST'])
+def update_stip_sec_hc_Data(request):
+    sec_hc_data = request.data['sec_hc_data']
+    # print(loss_data)
+    STIP_Sec_HC.objects.filter(formId=request.data['formId']).delete()
+    sec_hc_serializer = STIP_Sec_HC_Serializer(data=sec_hc_data, many=True)
+    if sec_hc_serializer.is_valid():
+        sec_hc_serializer.create(sec_hc_serializer.validated_data)
+    else:
+        print(sec_hc_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_hc_data},200)
+
+@api_view(['POST'])
+def update_stip_sec_addprop_Data(request):
+    sec_addprop_data = request.data['sec_addprop_data']
+    # print(loss_data)
+    STIP_Sec_AddProp.objects.filter(formId=request.data['formId']).delete()
+    sec_addprop_serializer = STIP_Sec_AddProp_Serializer(data=sec_addprop_data, many=True)
+    if sec_addprop_serializer.is_valid():
+        sec_addprop_serializer.create(sec_addprop_serializer.validated_data)
+    else:
+        print(sec_addprop_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_addprop_data},200)
+
+@api_view(['POST'])
+def update_stip_sec_build_Data(request):
+    sec_build_data = request.data['sec_build_data']
+    # print(loss_data)
+    STIP_Sec_Build.objects.filter(formId=request.data['formId']).delete()
+    sec_build_serializer = STIP_Sec_Build_Serializer(data=sec_build_data, many=True)
+    if sec_build_serializer.is_valid():
+        sec_build_serializer.create(sec_build_serializer.validated_data)
+    else:
+        print(sec_build_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_build_data},200)
+
+@api_view(['POST'])
+def update_stip_sec_waterc_Data(request):
+    sec_waterc_data = request.data['sec_waterc_data']
+    # print(loss_data)
+    STIP_Sec_WaterC.objects.filter(formId=request.data['formId']).delete()
+    sec_waterc_serializer = STIP_Sec_WaterC_Serializer(data=sec_waterc_data, many=True)
+    if sec_waterc_serializer.is_valid():
+        sec_waterc_serializer.create(sec_waterc_serializer.validated_data)
+    else:
+        print(sec_waterc_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_waterc_data},200)
+
+@api_view(['POST'])
+def update_stip_sec_trailer_Data(request):
+    sec_trailer_data = request.data['sec_trailer_data']
+    # print(loss_data)
+    STIP_Sec_Trailer.objects.filter(formId=request.data['formId']).delete()
+    sec_trailer_serializer = STIP_Sec_Trailer_Serializer(data=sec_trailer_data, many=True)
+    if sec_trailer_serializer.is_valid():
+        sec_trailer_serializer.create(sec_trailer_serializer.validated_data)
+    else:
+        print(sec_trailer_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_trailer_data},200)
+
+@api_view(['POST'])
+def update_stip_sec_vehicle_Data(request):
+    sec_vehicle_data = request.data['sec_vehicle_data']
+    # print(loss_data)
+    STIP_Sec_Vehicle.objects.filter(formId=request.data['formId']).delete()
+    sec_vehicle_serializer = STIP_Sec_Vehicle_Serializer(data=sec_vehicle_data, many=True)
+    if sec_vehicle_serializer.is_valid():
+        sec_vehicle_serializer.create(sec_vehicle_serializer.validated_data)
+    else:
+        print(sec_vehicle_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_vehicle_data},200)
+
+@api_view(['POST'])
+def update_stip_sec_personal_Data(request):
+    sec_personal_data = request.data['sec_personalll_data']
+    # print(loss_data)
+    STIP_Sec_PersonalLL.objects.filter(formId=request.data['formId']).delete()
+    sec_personal_serializer = STIP_Sec_PersonalLL_Serializer(data=sec_personal_data, many=True)
+    if sec_personal_serializer.is_valid():
+        sec_personal_serializer.create(sec_personal_serializer.validated_data)
+    else:
+        print(sec_personal_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_personal_data},200)
+
+@api_view(['POST'])
+def update_stip_sec_legala_Data(request):
+    sec_legal_data = request.data['sec_legala_data']
+    # print(loss_data)
+    STIP_Sec_LegalA.objects.filter(formId=request.data['formId']).delete()
+    sec_legal_serializer = STIP_Sec_LegalA_Serializer(data=sec_legal_data, many=True)
+    if sec_legal_serializer.is_valid():
+        sec_legal_serializer.create(sec_legal_serializer.validated_data)
+    else:
+        print(sec_legal_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_legal_data},200)
+
+@api_view(['POST'])
+def update_stip_sec_motorc_Data(request):
+    sec_motorc_data = request.data['sec_motorc_data']
+    # print(loss_data)
+    STIP_Sec_MotorC.objects.filter(formId=request.data['formId']).delete()
+    sec_motorc_serializer = STIP_Sec_MotorC_Serializer(data=sec_motorc_data, many=True)
+    if sec_motorc_serializer.is_valid():
+        sec_motorc_serializer.create(sec_motorc_serializer.validated_data)
+    else:
+        print(sec_motorc_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": sec_motorc_data},200)
