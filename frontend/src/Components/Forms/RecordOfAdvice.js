@@ -340,7 +340,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                         <label htmlFor="id_number" className="col-form-label"><b>ID number:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input onBlur={(e)=>{onFieldBlur(e)}} required type="number" id="clientIdNumber" value={FormData['clientIdNumber']}  onChange={e => onChange(e)} name="clientIdNumber" className="form-control" placeholder="ID number"  aria-describedby="" />
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} required type="text" id="clientIdNumber" value={FormData['clientIdNumber']}  onChange={e => onChange(e)} name="clientIdNumber" className="form-control" placeholder="ID number"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>

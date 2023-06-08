@@ -1432,6 +1432,7 @@ class ShortTermInsurancePersonalSerializers(serializers.ModelSerializer):
         instance.STIP_CnRI_ReplaceReason = validated_data.get("STIP_CnRI_ReplaceReason", instance.STIP_CnRI_ReplaceReason)
         instance.STIP_CnRI_ReplaceSupplier = validated_data.get("STIP_CnRI_ReplaceSupplier", instance.STIP_CnRI_ReplaceSupplier)
 
+        instance.STIP_HC_AddComments = validated_data.get("STIP_HC_AddComments", instance.STIP_HC_AddComments)
         instance.STIP_HC_ResidentialArea = validated_data.get("STIP_HC_ResidentialArea", instance.STIP_HC_ResidentialArea)
         instance.STIP_HC_StreetNumber = validated_data.get("STIP_HC_StreetNumber", instance.STIP_HC_StreetNumber)
         instance.STIP_HC_PostalCode = validated_data.get("STIP_HC_PostalCode", instance.STIP_HC_PostalCode)

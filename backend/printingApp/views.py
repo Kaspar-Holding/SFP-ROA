@@ -5,6 +5,7 @@ from django.core.files.base import ContentFile
 import uuid
 from data.models import STIC_Sec_Fire, STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21 
 from data.models import STIP_Loss, STIC_Loss, EB_Cover, IP_ProductTaken, AR_ProductTaken, AI_ProductTaken, RP_ProductTaken, RF_LinkedParty, RiskFactors, Form, UserAccount, AssuranceRisk, RiskPlanning, GapCover, Medical, Fiduciary, InvestmentPlanning, EmployeeBenefits, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, AssuranceInvestment
+from data.models import STIP_Sec_HC, STIP_Sec_Build, STIP_Sec_AddProp, STIP_Sec_PersonalLL, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -877,8 +878,6 @@ def wkhtmltopdfapi(request):
         if EmployeeBenefits.objects.filter(formId=data['id']).exists():
             data['EB'] = EmployeeBenefits.objects.filter(formId=data['id']).values().first()
             if (
-                data['EB']['EB_ClientName'] == "" and
-                data['EB']['EB_ClientIdNumber'] == "" and
                 data['EB']['EB_ClientAddress'] == "" and
                 data['EB']['EB_ClientPhoneNumber'] == "" and
                 data['EB']['EB_ClientCellNumber'] == "" and
@@ -1080,8 +1079,6 @@ def wkhtmltopdfapi(request):
         if Medical.objects.filter(formId=data['id']).exists():
             data['MD'] = Medical.objects.filter(formId=data['id']).values().first()
             if (
-                data['MD']['MSA_ClientName'] == "" and
-                data['MD']['MSA_ClientIdNumber'] == "" and
                 data['MD']['MSA_ClientAddress'] == "" and
                 data['MD']['MSA_ClientEmail'] == "" and
                 data['MD']['MSA_ClientPhone'] == "" and
@@ -1170,8 +1167,6 @@ def wkhtmltopdfapi(request):
         if GapCover.objects.filter(formId=data['id']).exists():
             data['GP'] = GapCover.objects.filter(formId=data['id']).values().first()
             if (
-                data['GP']['GP_ClientName'] == "" and
-                data['GP']['GP_ClientIdNumber'] == "" and
                 data['GP']['GP_ClientAddress'] == "" and
                 data['GP']['GP_ClientEmail'] == "" and
                 data['GP']['GP_ClientPhoneNumber'] == "" and
@@ -1269,7 +1264,6 @@ def wkhtmltopdfapi(request):
                 data['STIC']['STIC_Sasria_Annual'] == 0 and
                 data['STIC']['STIC_Sasria_Monthly'] == 0 and
                 data['STIC']['STIC_Business_Owner'] == "" and
-                data['STIC']['STIC_Client_Id_Number'] == "" and
                 data['STIC']['STIC_Company_Reg_Number'] == "" and
                 data['STIC']['STIC_Company_VAT_Number'] == "" and
                 data['STIC']['STIC_Postal_Address'] == "" and
@@ -2310,7 +2304,6 @@ def wkhtmltopdfapi(request):
                 data["STIP"]['STIP_Applicant_Initials'] == "" and
                 data["STIP"]['STIP_Applicant_Title'] == "" and
                 data["STIP"]['STIP_Applicant_DateofBirth'] == "" and
-                data["STIP"]['STIP_Applicant_IdNumber'] == "" and
                 data["STIP"]['STIP_Applicant_Email'] == "" and
                 data["STIP"]['STIP_Applicant_ContactNumber'] == "" and
                 data["STIP"]['STIP_General_Refused'] == 2 and
@@ -2938,8 +2931,21 @@ def wkhtmltopdfapi(request):
                 data['STIP']['STIP_Trailer_ONParkingOptions'] = parkOptions[int(data['STIP']['STIP_Trailer_ONParkingOptions'])]
                 data['STIP']['STIP_DbyI_Date'] = datetimeparser.parse(data['STIP']['STIP_DbyI_Date']).strftime('%d/%m/%Y') if data['STIP']['STIP_DbyI_Date'] != "" else "N.A."
                 if STIP_Loss.objects.filter(formId = data['id']).exists():
-                    print('it exists')
                     data['STIP']['Loss_Data'] = STIP_Loss.objects.filter(formId = data['id']).values()
+                if STIP_Sec_HC.objects.filter(formId = data['id']).exists():
+                    data['STIP']['STIP_Sec_HC_Data'] = STIP_Sec_HC.objects.filter(formId=data['id']).values()
+                if STIP_Sec_Build.objects.filter(formId = data['id']).exists():
+                    data['STIP']['STIP_Sec_Build_Data'] = STIP_Sec_Build.objects.filter(formId=data['id']).values()
+                if STIP_Sec_AddProp.objects.filter(formId = data['id']).exists():
+                    data['STIP']['STIP_Sec_AddProp_Data'] = STIP_Sec_AddProp.objects.filter(formId=data['id']).values()
+                if STIP_Sec_Vehicle.objects.filter(formId = data['id']).exists():
+                    data['STIP']['STIP_Sec_Vehicle_Data'] = STIP_Sec_Vehicle.objects.filter(formId=data['id']).values()
+                if STIP_Sec_Trailer.objects.filter(formId = data['id']).exists():
+                    data['STIP']['STIP_Sec_Trailer_Data'] = STIP_Sec_Trailer.objects.filter(formId=data['id']).values()
+                if STIP_Sec_PersonalLL.objects.filter(formId = data['id']).exists():
+                    data['STIP']['STIP_Sec_PersonalLL_Data'] = STIP_Sec_PersonalLL.objects.filter(formId=data['id']).values()
+                if STIP_Sec_LegalA.objects.filter(formId = data['id']).exists():
+                    data['STIP']['STIP_Sec_LegalA_Data'] = STIP_Sec_LegalA.objects.filter(formId=data['id']).values()
         else:
             data['STIP_status'] = False
     data['advisor'] = UserAccount.objects.filter(id=request.data['advisorId']).values('first_name', 'last_name', 'email', 'is_superuser').first()

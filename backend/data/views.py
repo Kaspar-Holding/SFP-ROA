@@ -344,7 +344,11 @@ def insertFormData(request):
     #     else:
     #         return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
     # return Response({"message": "Found","code":200,"Data": serializer.data},200)
-    serializer = FormSerializers(data=request.data, many=False)
+    newData = request.data
+    rfData = RiskFactors.objects.filter(id=request.data['formId']).values().first()
+    newData['clientName'] = rfData['RF_ClientName']
+    newData['clientIdNumber'] = rfData['RF_ClientId']
+    serializer = FormSerializers(data=newData, many=False)
     if serializer.is_valid():
         old_form = Form.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
         serializer1 = FormSerializers(old_form, many=False)
@@ -878,7 +882,11 @@ def updateAssuranceRiskData(request):
 # Employee Benefits
 @api_view(['POST'])
 def insertEmployeeBenefitsData(request):
-    serializer = EmployeeBenefitsSerializers(data=request.data, many=False)
+    newData = request.data
+    rfData = RiskFactors.objects.filter(id=request.data['formId']).values().first()
+    newData['EB_ClientName'] = rfData['RF_ClientName']
+    newData['EB_ClientIdNumber'] = rfData['RF_ClientId']
+    serializer = EmployeeBenefitsSerializers(data=newData, many=False)
     if serializer.is_valid():
         old_form = EmployeeBenefits.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
         # old_form = RiskPlanning.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId'],clientIdNumber = request.data['clientIdNumber']).first()
@@ -939,7 +947,11 @@ def updateEmployeeBenefitsData(request):
 # Employee Benefits
 @api_view(['POST'])
 def insertGapCoverData(request):
-    serializer = GapCoverSerializers(data=request.data, many=False)
+    newData = request.data
+    rfData = RiskFactors.objects.filter(id=request.data['formId']).values().first()
+    newData['GP_ClientName'] = rfData['RF_ClientName']
+    newData['GP_ClientIdNumber'] = rfData['RF_ClientId']
+    serializer = GapCoverSerializers(data=newData, many=False)
     if serializer.is_valid():
         old_form = GapCover.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
         # old_form = RiskPlanning.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId'],clientIdNumber = request.data['clientIdNumber']).first()
@@ -994,7 +1006,10 @@ def updateGapCoverData(request):
 # Short Term Insurance Personal
 @api_view(['POST'])
 def insertShortTermInsurancePersonalData(request):
-    serializer = ShortTermInsurancePersonalSerializers(data=request.data, many=False)
+    newData = request.data
+    rfData = RiskFactors.objects.filter(id=request.data['formId']).values().first()
+    newData['STIP_Applicant_IdNumber'] = rfData['RF_ClientId']
+    serializer = ShortTermInsurancePersonalSerializers(data=newData, many=False)
     if serializer.is_valid():
         old_form = ShortTermInsurancePersonal.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
         # old_form = RiskPlanning.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId'],clientIdNumber = request.data['clientIdNumber']).first()
@@ -1072,7 +1087,10 @@ def updateShortTermInsurancePersonalData(request):
 # Short Term Insurance Personal
 @api_view(['POST'])
 def insertMedicalData(request):
-    serializer = MedicalSerializers(data=request.data, many=False)
+    newData = request.data
+    rfData = RiskFactors.objects.filter(id=request.data['formId']).values().first()
+    newData['MSA_ClientIdNumber'] = rfData['RF_ClientId']
+    serializer = MedicalSerializers(data=newData, many=False)
     if serializer.is_valid():
         old_form = Medical.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
         # old_form = RiskPlanning.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId'],clientIdNumber = request.data['clientIdNumber']).first()
@@ -1128,7 +1146,10 @@ def updateMedicalData(request):
 # Short Term Insurance Commerical
 @api_view(['POST'])
 def insertShortTermInsuranceCommericalData(request):
-    serializer = ShortTermInsuranceCommericalSerializers(data=request.data, many=False)
+    newData = request.data
+    rfData = RiskFactors.objects.filter(id=request.data['formId']).values().first()
+    newData['STIC_Client_Id_Number'] = rfData['RF_ClientId']
+    serializer = ShortTermInsuranceCommericalSerializers(data=newData, many=False)
     if serializer.is_valid():
         old_form = ShortTermInsuranceCommerical.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
         # old_form = RiskPlanning.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId'],clientIdNumber = request.data['clientIdNumber']).first()
