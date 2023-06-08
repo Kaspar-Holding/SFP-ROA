@@ -135,7 +135,7 @@ const Dashboard = ({user}) => {
                                 user['email'].includes('sfp') || user['email'].includes('succession')? "sfp-logo"
                                 : user['email'].includes('fs4p') ? "fs4p-logo"
                                 : user['email'].includes('sanlam') ? "sanlam-logo"
-                                : <></>
+                                : "sfp-logo"
                             }
                         />
                     </div>

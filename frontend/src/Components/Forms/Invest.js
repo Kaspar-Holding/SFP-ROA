@@ -627,7 +627,7 @@ const Invest = ({user, LogOut}) =>
                     <label htmlFor="client_name" className="col-form-label" title="If no, motivate">2.1 Investment term</label>
                 </div>
                 <div className="col-3">
-                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="number" id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Investment Term"  aria-describedby="" />
+                    <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() }  id="IP_InvestmentTerm" name='IP_InvestmentTerm' value={FormData['IP_InvestmentTerm']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Investment Term"  aria-describedby="" />
                 </div>
                 <div className="col-3">
                 <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Years</label>
@@ -1533,7 +1533,7 @@ const Invest = ({user, LogOut}) =>
                         </div>
                         <div className='col-6'>
                             <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" name='ProductPremiumFrequency' value={key.ProductPremiumFrequency} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-label="Default select example">
-                                <option value="0" selected>Frequeny</option>
+                                <option value="0" selected>Frequency</option>
                                 <option value="1">Monthly</option>
                                 <option value="2">Quarterly</option>
                                 <option value="3">Annually</option>
@@ -1560,7 +1560,7 @@ const Invest = ({user, LogOut}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Total estimated annual <br/>cost (EAC)</td>
                 <td>  
                     <div className="form-group">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ProductEAC' value={key.ProductEAC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ProductEAC' value={key.ProductEAC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 
@@ -1579,7 +1579,7 @@ const Invest = ({user, LogOut}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Life/Lives assured</td>
                 <td>  
                     <div className="form-group">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ProductLivesAssured' value={key.ProductLivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ProductLivesAssured' value={key.ProductLivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 
@@ -1608,19 +1608,26 @@ const Invest = ({user, LogOut}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Initial Commission</td>
                     <td>  
                     <div className="form-group">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='Product_IniC' value={key.Product_IniC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_IniC' value={key.Product_IniC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td>  
-                <td><input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='Product_IniC_Percentage' value={key.Product_IniC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+                <td>
+                    <div className="input-group">
+                        <span className="input-group-text">%</span>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_IniC_Percentage' value={key.Product_IniC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}} />
+                    </div>
+                </td>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Ongoing Commission</td>
                 <td>  
                         <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='Product_OnC' value={key.Product_OnC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_OnC' value={key.Product_OnC} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                 </td> 
                     <td>
-                        <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='Product_OnC_Percentage' value={key.Product_OnC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%
+                        
+                    <div className="input-group">
+                        <span className="input-group-text">%</span>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_OnC_Percentage' value={key.Product_OnC_Percentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                         </div>
                     </td> 
                     {/* <td>
@@ -1830,209 +1837,222 @@ const Invest = ({user, LogOut}) =>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund' value={key.ItP_Fund} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund' value={key.ItP_Fund} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
                         
                     
                     <td align="center">
-                        <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage' value={key.ItP_FundPercentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        
+                        <div className="input-group">
+                            <span className="input-group-text">%</span>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ItP_FundPercentage' value={key.ItP_FundPercentage} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.ItP_FundProvided === 1 ? true : false} name="ItP_FundProvided" onChange={(e)=>{key.ItP_FundProvided === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.ItP_FundProvided === 1 ? true : false} name="ItP_FundProvided" onChange={(e)=>{key.ItP_FundProvided === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.ItP_FundDiscussed === 1 ? true : false} name="ItP_FundDiscussed" onChange={(e)=>{key.ItP_FundDiscussed === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={key.ItP_FundDiscussed === 1 ? true : false} name="ItP_FundDiscussed" onChange={(e)=>{key.ItP_FundDiscussed === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund1' value={key.ItP_Fund1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund1' value={key.ItP_Fund1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
                         
                     
                     <td align="center">
-                        <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage1' value={key.ItP_FundPercentage1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <div className="input-group">
+                            <span className="input-group-text">%</span>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ItP_FundPercentage1' value={key.ItP_FundPercentage1} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided1 === 1 ? true : false} name="ItP_FundProvided1" onChange={(e)=>{key.ItP_FundProvided1 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided1 === 1 ? true : false} name="ItP_FundProvided1" onChange={(e)=>{key.ItP_FundProvided1 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed1 === 1 ? true : false} name="ItP_FundDiscussed1" onChange={(e)=>{key.ItP_FundDiscussed1 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed1 === 1 ? true : false} name="ItP_FundDiscussed1" onChange={(e)=>{key.ItP_FundDiscussed1 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund2' value={key.ItP_Fund2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund2' value={key.ItP_Fund2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
                         
                     
                     <td align="center">
-                        <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage2' value={key.ItP_FundPercentage2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <div className="input-group">
+                            <span className="input-group-text">%</span>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ItP_FundPercentage2' value={key.ItP_FundPercentage2} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided2 === 1 ? true : false} name="ItP_FundProvided2" onChange={(e)=>{key.ItP_FundProvided2 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided2 === 1 ? true : false} name="ItP_FundProvided2" onChange={(e)=>{key.ItP_FundProvided2 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed2 === 1 ? true : false} name="ItP_FundDiscussed2" onChange={(e)=>{key.ItP_FundDiscussed2 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed2 === 1 ? true : false} name="ItP_FundDiscussed2" onChange={(e)=>{key.ItP_FundDiscussed2 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund3' value={key.ItP_Fund3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund3' value={key.ItP_Fund3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
                         
                     
                     <td align="center">
-                        <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage3' value={key.ItP_FundPercentage3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <div className="input-group">
+                            <span className="input-group-text">%</span>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ItP_FundPercentage3' value={key.ItP_FundPercentage3} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided3 === 1 ? true : false} name="ItP_FundProvided3" onChange={(e)=>{key.ItP_FundProvided3 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided3 === 1 ? true : false} name="ItP_FundProvided3" onChange={(e)=>{key.ItP_FundProvided3 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed3 === 1 ? true : false} name="ItP_FundDiscussed3" onChange={(e)=>{key.ItP_FundDiscussed3 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed3 === 1 ? true : false} name="ItP_FundDiscussed3" onChange={(e)=>{key.ItP_FundDiscussed3 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>    
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund4' value={key.ItP_Fund4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund4' value={key.ItP_Fund4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
                         
                     
                     <td align="center">
-                        <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage4' value={key.ItP_FundPercentage4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <div className="input-group">
+                            <span className="input-group-text">%</span>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ItP_FundPercentage4' value={key.ItP_FundPercentage4} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided4 === 1 ? true : false} name="ItP_FundProvided4" onChange={(e)=>{key.ItP_FundProvided4 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided4 === 1 ? true : false} name="ItP_FundProvided4" onChange={(e)=>{key.ItP_FundProvided4 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed4 === 1 ? true : false} name="ItP_FundDiscussed4" onChange={(e)=>{key.ItP_FundDiscussed4 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed4 === 1 ? true : false} name="ItP_FundDiscussed4" onChange={(e)=>{key.ItP_FundDiscussed4 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>     
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund5' value={key.ItP_Fund5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund5' value={key.ItP_Fund5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
                         
                     
                     <td align="center">
-                        <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage5' value={key.ItP_FundPercentage5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <div className="input-group">
+                            <span className="input-group-text">%</span>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ItP_FundPercentage5' value={key.ItP_FundPercentage5} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided5 === 1 ? true : false} name="ItP_FundProvided5" onChange={(e)=>{key.ItP_FundProvided5 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided5 === 1 ? true : false} name="ItP_FundProvided5" onChange={(e)=>{key.ItP_FundProvided5 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed5 === 1 ? true : false} name="ItP_FundDiscussed5" onChange={(e)=>{key.ItP_FundDiscussed5 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed5 === 1 ? true : false} name="ItP_FundDiscussed5" onChange={(e)=>{key.ItP_FundDiscussed5 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td> 
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund6' value={key.ItP_Fund6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund6' value={key.ItP_Fund6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
                         
                     
                     <td align="center">
-                        <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage6' value={key.ItP_FundPercentage6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <div className="input-group">
+                            <span className="input-group-text">%</span>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ItP_FundPercentage6' value={key.ItP_FundPercentage6} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided6 === 1 ? true : false} name="ItP_FundProvided6" onChange={(e)=>{key.ItP_FundProvided6 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided6 === 1 ? true : false} name="ItP_FundProvided6" onChange={(e)=>{key.ItP_FundProvided6 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> Yes</label>
                     </td>
 
                     <td>
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed6 === 1 ? true : false} name="ItP_FundDiscussed6" onChange={(e)=>{key.ItP_FundDiscussed6 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                        <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed6 === 1 ? true : false} name="ItP_FundDiscussed6" onChange={(e)=>{key.ItP_FundDiscussed6 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
                         <label for="vehicle1"> No</label>
                     </td>      
                 </tr>
                 <tr>
                     <td>
                         <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund7' value={key.ItP_Fund7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_Fund7' value={key.ItP_Fund7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                         {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */}
                         
                     
                     <td align="center">
-                        <div className="form-group">
-                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" name='ItP_FundPercentage7' value={key.ItP_FundPercentage7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <div className="input-group">
+                            <span className="input-group-text">%</span>
+                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ItP_FundPercentage7' value={key.ItP_FundPercentage7} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" />
                         </div>
                     </td>
                 
                     {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
                     <td> 
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided7 === 1 ? true : false} name="ItP_FundProvided7" onChange={(e)=>{key.ItP_FundProvided7 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
-                        <label for="vehicle1"> Yes</label>
+                        <div className='type="checkbox"'>
+                            <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundProvided7 === 1 ? true : false} name="ItP_FundProvided7" onChange={(e)=>{key.ItP_FundProvided7 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                            <label className='form-check-label' for="vehicle1"> Yes</label>
+                        </div>
                     </td>
 
                     <td>
-                        <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed7 === 1 ? true : false} name="ItP_FundDiscussed7" onChange={(e)=>{key.ItP_FundDiscussed7 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
-                        <label for="vehicle1"> No</label>
+                        <div className='type="checkbox"'>
+                            <input type="checkbox" class="form-check-input" onMouseLeave={(e)=>{onFieldBlur(e)}} id="vehicle1" checked={key.ItP_FundDiscussed7 === 1 ? true : false} name="ItP_FundDiscussed7" onChange={(e)=>{key.ItP_FundDiscussed7 === 1 ? on_ProductTaken_CheckBox_Change(e, i, 0) : on_ProductTaken_CheckBox_Change(e, i, 1)}}/>
+                            <label className='form-check-label' for="vehicle1"> No</label>
+                        </div>
                     </td>     
             </tr>
 

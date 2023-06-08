@@ -41,13 +41,13 @@ const CompleteForm = ({user}) => {
                             user['email'].includes('sfp') || user['email'].includes('succession')? `${process.env.REACT_APP_BACKEND_URL}/media/logo.png` 
                             : user['email'].includes('fs4p') ? `${process.env.REACT_APP_BACKEND_URL}/media/fs4p_logo.jpg` 
                             : user['email'].includes('sanlam') ? `${process.env.REACT_APP_BACKEND_URL}/media/afp_logo.png` 
-                            : <></>
+                            : `${process.env.REACT_APP_BACKEND_URL}/media/logo.png` 
                         }
                         className={
                             user['email'].includes('sfp') || user['email'].includes('succession')? "sfp-logo"
                             : user['email'].includes('fs4p') ? "fs4p-logo"
                             : user['email'].includes('sanlam') ? "sanlam-logo"
-                            : <></>
+                            : "sfp-logo"
                         }
                     />
                 </div>

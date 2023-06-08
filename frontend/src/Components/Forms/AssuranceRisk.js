@@ -1511,7 +1511,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <div >
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_TotalNeed']} aria-label="" />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_TotalNeed']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1520,7 +1520,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_DC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_Provisions']} aria-label="" />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_DC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_Provisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1529,7 +1529,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_DC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_TotalNeed']-FormData['AR_BnS_DC_Provisions']} aria-label="" />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_DC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_TotalNeed']-FormData['AR_BnS_DC_Provisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1537,7 +1537,7 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_Investments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1549,7 +1549,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <div >
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_TotalNeed']} aria-label="" />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_TotalNeed']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1558,7 +1558,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_ExistingProvisions']} aria-label="" />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_ExistingProvisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1567,7 +1567,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_TotalNeed']-FormData['AR_BnS_DiC_ExistingProvisions']} aria-label="" />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_TotalNeed']-FormData['AR_BnS_DiC_ExistingProvisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1575,7 +1575,7 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_Investments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1592,7 +1592,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <div >
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherTotalNeed']} aria-label="" />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherTotalNeed']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1601,7 +1601,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherExistingProvisions']} aria-label="" />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherExistingProvisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1610,7 +1610,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherTotalNeed']-FormData['AR_BnS_OtherExistingProvisions']} aria-label="" />
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherTotalNeed']-FormData['AR_BnS_OtherExistingProvisions']} aria-label="" />
           </div>
         </div>
       </td>
@@ -1618,7 +1618,7 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00' name='AR_BnS_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherInvestments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1679,28 +1679,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DC_TotalNeed" name='AR_KeyP_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_TotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DC_TotalNeed" name='AR_KeyP_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DC_ExistingProvisions" name='AR_KeyP_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DC_ExistingProvisions" name='AR_KeyP_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DC_ExistingShortfallSurplus" name='AR_KeyP_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_TotalNeed']-FormData['AR_KeyP_DC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DC_ExistingShortfallSurplus" name='AR_KeyP_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_TotalNeed']-FormData['AR_KeyP_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DC_Investments" name='AR_KeyP_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_Investments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DC_Investments" name='AR_KeyP_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1711,28 +1711,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_TotalNeed" name='AR_KeyP_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_TotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_TotalNeed" name='AR_KeyP_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_ExistingProvisions" name='AR_KeyP_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_ExistingProvisions" name='AR_KeyP_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_ExistingShortfallSurplus" name='AR_KeyP_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_TotalNeed']-FormData['AR_KeyP_DiC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_ExistingShortfallSurplus" name='AR_KeyP_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_TotalNeed']-FormData['AR_KeyP_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_Investments" name='AR_KeyP_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_Investments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_Investments" name='AR_KeyP_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1743,28 +1743,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverTotalNeed" name='AR_KeyP_TI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverTotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverTotalNeed" name='AR_KeyP_TI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverExistingProvisions" name='AR_KeyP_TI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverExistingProvisions" name='AR_KeyP_TI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverExistingShortfallSurplus" name='AR_KeyP_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverTotalNeed']-FormData['AR_KeyP_TI_CoverExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverExistingShortfallSurplus" name='AR_KeyP_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverTotalNeed']-FormData['AR_KeyP_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverInvestments" name='AR_KeyP_TI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverInvestments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverInvestments" name='AR_KeyP_TI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1775,28 +1775,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverTotalNeed" name='AR_KeyP_PI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverTotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverTotalNeed" name='AR_KeyP_PI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverExistingProvisions" name='AR_KeyP_PI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverExistingProvisions" name='AR_KeyP_PI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverExistingShortfallSurplus" name='AR_KeyP_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverTotalNeed']-FormData['AR_KeyP_PI_CoverExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverExistingShortfallSurplus" name='AR_KeyP_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverTotalNeed']-FormData['AR_KeyP_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverInvestments" name='AR_KeyP_PI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverInvestments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverInvestments" name='AR_KeyP_PI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1811,28 +1811,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_OtherTotalNeed" name='AR_KeyP_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherTotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_OtherTotalNeed" name='AR_KeyP_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_OtherExistingProvisions" name='AR_KeyP_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_OtherExistingProvisions" name='AR_KeyP_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_OtherExistingShortfallSurplus" name='AR_KeyP_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherTotalNeed']-FormData['AR_KeyP_OtherExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_OtherExistingShortfallSurplus" name='AR_KeyP_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherTotalNeed']-FormData['AR_KeyP_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_KeyP_OtherInvestments" name='AR_KeyP_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherInvestments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_OtherInvestments" name='AR_KeyP_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1892,28 +1892,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_TotalNeed" name='AR_SureNLia_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_TotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_TotalNeed" name='AR_SureNLia_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_ExistingProvisions" name='AR_SureNLia_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_ExistingProvisions" name='AR_SureNLia_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_ExistingShortfallSurplus" name='AR_SureNLia_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_TotalNeed']-FormData['AR_SureNLia_DC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_ExistingShortfallSurplus" name='AR_SureNLia_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_TotalNeed']-FormData['AR_SureNLia_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_Investment" name='AR_SureNLia_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_Investments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_Investment" name='AR_SureNLia_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1924,28 +1924,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_TotalNeed" name='AR_SureNLia_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_TotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_TotalNeed" name='AR_SureNLia_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_Provisions" name='AR_SureNLia_DiC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_Provisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_Provisions" name='AR_SureNLia_DiC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_Provisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_ShortfallSurplus" name='AR_SureNLia_DiC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_TotalNeed']-FormData['AR_SureNLia_DiC_Provisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_ShortfallSurplus" name='AR_SureNLia_DiC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_TotalNeed']-FormData['AR_SureNLia_DiC_Provisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_Investment" name='AR_SureNLia_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_Investments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_Investment" name='AR_SureNLia_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -1960,28 +1960,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherTotalNeed" name='AR_SureNLia_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherTotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherTotalNeed" name='AR_SureNLia_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherProvisions" name='AR_SureNLia_OtherProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherProvisions" name='AR_SureNLia_OtherProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherShortfallSurplus" name='AR_SureNLia_OtherShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherTotalNeed']-FormData['AR_SureNLia_OtherProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherShortfallSurplus" name='AR_SureNLia_OtherShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherTotalNeed']-FormData['AR_SureNLia_OtherProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherInvestment" name='AR_SureNLia_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherInvestments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherInvestment" name='AR_SureNLia_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -2042,28 +2042,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverTotalNeed" name='AR_BusOvProt_TI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverTotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverTotalNeed" name='AR_BusOvProt_TI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverExistingProvisions" name='AR_BusOvProt_TI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverExistingProvisions" name='AR_BusOvProt_TI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverExistingShortfallSurplus" name='AR_BusOvProt_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverTotalNeed']-FormData['AR_BusOvProt_TI_CoverExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverExistingShortfallSurplus" name='AR_BusOvProt_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverTotalNeed']-FormData['AR_BusOvProt_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverInvestments" name='AR_BusOvProt_TI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverInvestments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverInvestments" name='AR_BusOvProt_TI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -2074,28 +2074,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverTotalNeed" name='AR_BusOvProt_PI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverTotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverTotalNeed" name='AR_BusOvProt_PI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverExistingProvisions" name='AR_BusOvProt_PI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverExistingProvisions" name='AR_BusOvProt_PI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverExistingShortfallSurplus" name='AR_BusOvProt_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverTotalNeed']-FormData['AR_BusOvProt_PI_CoverExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverExistingShortfallSurplus" name='AR_BusOvProt_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverTotalNeed']-FormData['AR_BusOvProt_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverInvestments" name='AR_BusOvProt_PI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverInvestments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverInvestments" name='AR_BusOvProt_PI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -2110,28 +2110,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherTotalNeed" name='AR_BusOvProt_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherTotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherTotalNeed" name='AR_BusOvProt_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherExistingProvisions" name='AR_BusOvProt_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherExistingProvisions" name='AR_BusOvProt_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherExistingShortfallSurplus" name='AR_BusOvProt_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherTotalNeed']-FormData['AR_BusOvProt_OtherExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherExistingShortfallSurplus" name='AR_BusOvProt_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherTotalNeed']-FormData['AR_BusOvProt_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherInvestments" name='AR_BusOvProt_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherInvestments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherInvestments" name='AR_BusOvProt_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -2193,28 +2193,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_TotalNeed" name='AR_CLARedm_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_TotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_TotalNeed" name='AR_CLARedm_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_ExistingProvisions" name='AR_CLARedm_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_ExistingProvisions" name='AR_CLARedm_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_ExistingShortfallSurplus" name='AR_CLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_TotalNeed']-FormData['AR_CLARedm_DC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_ExistingShortfallSurplus" name='AR_CLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_TotalNeed']-FormData['AR_CLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_Investments" name='AR_CLARedm_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_Investments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_Investments" name='AR_CLARedm_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -2225,28 +2225,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_TotalNeed" name='AR_CLARedm_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_TotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_TotalNeed" name='AR_CLARedm_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_ExistingProvisions" name='AR_CLARedm_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_ExistingProvisions" name='AR_CLARedm_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_ExistingShortfallSurplus" name='AR_CLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_TotalNeed']-FormData['AR_CLARedm_DiC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_ExistingShortfallSurplus" name='AR_CLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_TotalNeed']-FormData['AR_CLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_Investments" name='AR_CLARedm_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_Investments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_Investments" name='AR_CLARedm_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -2261,28 +2261,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherTotalNeed" name='AR_CLARedm_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherTotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherTotalNeed" name='AR_CLARedm_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherExistingProvisions" name='AR_CLARedm_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherExistingProvisions" name='AR_CLARedm_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherExistingShortfallSurplus" name='AR_CLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherTotalNeed']-FormData['AR_CLARedm_OtherExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherExistingShortfallSurplus" name='AR_CLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherTotalNeed']-FormData['AR_CLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherInvestments" name='AR_CLARedm_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherInvestments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherInvestments" name='AR_CLARedm_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -2310,28 +2310,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_TotalNeed" name='AR_DLARedm_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_TotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_TotalNeed" name='AR_DLARedm_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_ExistingProvisions" name='AR_DLARedm_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_ExistingProvisions" name='AR_DLARedm_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_ExistingShortfallSurplus" name='AR_DLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_TotalNeed']-FormData['AR_DLARedm_DC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_ExistingShortfallSurplus" name='AR_DLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_TotalNeed']-FormData['AR_DLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_Investments" name='AR_DLARedm_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_Investments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_Investments" name='AR_DLARedm_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -2342,28 +2342,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_TotalNeed" name='AR_DLARedm_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_TotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_TotalNeed" name='AR_DLARedm_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_ExistingProvisions" name='AR_DLARedm_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_ExistingProvisions" name='AR_DLARedm_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_ExistingShortfallSurplus" name='AR_DLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_TotalNeed']-FormData['AR_DLARedm_DiC_ExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_ExistingShortfallSurplus" name='AR_DLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_TotalNeed']-FormData['AR_DLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_Investments" name='AR_DLARedm_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_Investments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_Investments" name='AR_DLARedm_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_Investments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -2378,28 +2378,28 @@ const AssuranceRisk = ({user, LogOut}) =>
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherTotalNeed" name='AR_DLARedm_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherTotalNeed']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherTotalNeed" name='AR_DLARedm_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherExistingProvisions" name='AR_DLARedm_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherExistingProvisions" name='AR_DLARedm_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherExistingShortfallSurplus" name='AR_DLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherTotalNeed']-FormData['AR_DLARedm_OtherExistingProvisions']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherExistingShortfallSurplus" name='AR_DLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherTotalNeed']-FormData['AR_DLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
       <td>
         <div className="input-group">
           <span className="input-group-text">R</span>
-          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherInvestments" name='AR_DLARedm_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherInvestments']} aria-label="" />
+          <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherInvestments" name='AR_DLARedm_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherInvestments']} aria-label="" />
         </div>
       </td>
     </tr>
@@ -2875,7 +2875,7 @@ Record the client's instructions, deviations and implications thereof.
                                         <div className="col-6">
                                           <div className="input-group">
                                             <span className="input-group-text">R</span>
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="Product1stYearCommission" name='Product1stYearCommission' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.Product1stYearCommission} aria-label="" />
+                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="Product1stYearCommission" name='Product1stYearCommission' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.Product1stYearCommission} aria-label="" />
                                           </div>
                                         </div>
                                     </div>
@@ -2889,7 +2889,7 @@ Record the client's instructions, deviations and implications thereof.
                                         <div className="col-6">
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="Product2ndYearCommission" name='Product2ndYearCommission' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.Product2ndYearCommission} aria-label="" />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="Product2ndYearCommission" name='Product2ndYearCommission' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.Product2ndYearCommission} aria-label="" />
                                             </div>
                                         </div>
                                     </div>
@@ -2927,7 +2927,7 @@ Record the client's instructions, deviations and implications thereof.
                                         <div className="col-9">
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount1" name='BenDesc_CoverAmount1' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount1} aria-label="" />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount1" name='BenDesc_CoverAmount1' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount1} aria-label="" />
                                             </div>
                                         </div> 
                                     </div>
@@ -2947,7 +2947,7 @@ Record the client's instructions, deviations and implications thereof.
                                         <div className="col-9">
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount2" name='BenDesc_CoverAmount2' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount2} aria-label="" />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount2" name='BenDesc_CoverAmount2' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount2} aria-label="" />
                                             </div>
                                         </div> 
                                     </div>
@@ -2967,7 +2967,7 @@ Record the client's instructions, deviations and implications thereof.
                                         <div className="col-9">
                                             <div className="input-group">
                                               <span className="input-group-text">R</span>
-                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount3" name='BenDesc_CoverAmount3' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount3} aria-label="" />
+                                              <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="BenDesc_CoverAmount3" name='BenDesc_CoverAmount3' onChange={(e) => {on_ProductTaken_Change(e, i)}} value={key.BenDesc_CoverAmount3} aria-label="" />
                                             </div>
                                         </div> 
                                     </div>

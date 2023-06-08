@@ -311,19 +311,7 @@ const Employee = ({user, LogOut}) =>
             // console.log(response.data['formData'])
             if (response.status === 201) {
                 setFormData(response.data['formData'])
-            } else {
-                setFormData(response.data['formData'])
-            }
-            if (response.data['CoverData'].length > 0) {
                 setCoverData(response.data['CoverData'])
-            } else {
-                setCoverData([{
-                    advisorId : state['advisor']['id'],  
-                    formId : state['formId'],                
-                    
-                    BusB_CoverType : 0,
-                    BusB_Cover : 3
-                }])
             }
             // setSubmissionMessageVisibility("block")
         } catch (error) {
@@ -1240,28 +1228,28 @@ const Employee = ({user, LogOut}) =>
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_MemContrib_Category1" name='EB_BusRB_MemContrib_Category1' value={FormData['EB_BusRB_MemContrib_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_MemContrib_Category1" name='EB_BusRB_MemContrib_Category1' value={FormData['EB_BusRB_MemContrib_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_MemContrib_Category2" name='EB_BusRB_MemContrib_Category2' value={FormData['EB_BusRB_MemContrib_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_MemContrib_Category2" name='EB_BusRB_MemContrib_Category2' value={FormData['EB_BusRB_MemContrib_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_MemContrib_Category3" name='EB_BusRB_MemContrib_Category3' value={FormData['EB_BusRB_MemContrib_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_MemContrib_Category3" name='EB_BusRB_MemContrib_Category3' value={FormData['EB_BusRB_MemContrib_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_MemContrib_Category4" name='EB_BusRB_MemContrib_Category4' value={FormData['EB_BusRB_MemContrib_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_MemContrib_Category4" name='EB_BusRB_MemContrib_Category4' value={FormData['EB_BusRB_MemContrib_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
     </tr>
@@ -1272,28 +1260,28 @@ const Employee = ({user, LogOut}) =>
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_EmpContrib_Category1" name='EB_BusRB_EmpContrib_Category1' value={FormData['EB_BusRB_EmpContrib_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_EmpContrib_Category1" name='EB_BusRB_EmpContrib_Category1' value={FormData['EB_BusRB_EmpContrib_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_EmpContrib_Category2" name='EB_BusRB_EmpContrib_Category2' value={FormData['EB_BusRB_EmpContrib_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_EmpContrib_Category2" name='EB_BusRB_EmpContrib_Category2' value={FormData['EB_BusRB_EmpContrib_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_EmpContrib_Category3" name='EB_BusRB_EmpContrib_Category3' value={FormData['EB_BusRB_EmpContrib_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_EmpContrib_Category3" name='EB_BusRB_EmpContrib_Category3' value={FormData['EB_BusRB_EmpContrib_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             {/* <span className="input-group-text">R</span> */}
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_EmpContrib_Category4" name='EB_BusRB_EmpContrib_Category4' value={FormData['EB_BusRB_EmpContrib_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_EmpContrib_Category4" name='EB_BusRB_EmpContrib_Category4' value={FormData['EB_BusRB_EmpContrib_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
     </tr>
@@ -1504,28 +1492,28 @@ const Employee = ({user, LogOut}) =>
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_SpouseLC_Category1" name='EB_BusRB_SpouseLC_Category1' value={FormData['EB_BusRB_SpouseLC_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_SpouseLC_Category1" name='EB_BusRB_SpouseLC_Category1' value={FormData['EB_BusRB_SpouseLC_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_SpouseLC_Category2" name='EB_BusRB_SpouseLC_Category2' value={FormData['EB_BusRB_SpouseLC_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_SpouseLC_Category2" name='EB_BusRB_SpouseLC_Category2' value={FormData['EB_BusRB_SpouseLC_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_SpouseLC_Category3" name='EB_BusRB_SpouseLC_Category3' value={FormData['EB_BusRB_SpouseLC_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_SpouseLC_Category3" name='EB_BusRB_SpouseLC_Category3' value={FormData['EB_BusRB_SpouseLC_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_SpouseLC_Category4" name='EB_BusRB_SpouseLC_Category4' value={FormData['EB_BusRB_SpouseLC_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_SpouseLC_Category4" name='EB_BusRB_SpouseLC_Category4' value={FormData['EB_BusRB_SpouseLC_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
     </tr>
@@ -1563,28 +1551,28 @@ const Employee = ({user, LogOut}) =>
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_TrauBenSa_Category1" name='EB_BusRB_TrauBenSa_Category1' value={FormData['EB_BusRB_TrauBenSa_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_TrauBenSa_Category1" name='EB_BusRB_TrauBenSa_Category1' value={FormData['EB_BusRB_TrauBenSa_Category1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_TrauBenSa_Category2" name='EB_BusRB_TrauBenSa_Category2' value={FormData['EB_BusRB_TrauBenSa_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_TrauBenSa_Category2" name='EB_BusRB_TrauBenSa_Category2' value={FormData['EB_BusRB_TrauBenSa_Category2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_TrauBenSa_Category3" name='EB_BusRB_TrauBenSa_Category3' value={FormData['EB_BusRB_TrauBenSa_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_TrauBenSa_Category3" name='EB_BusRB_TrauBenSa_Category3' value={FormData['EB_BusRB_TrauBenSa_Category3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_TrauBenSa_Category4" name='EB_BusRB_TrauBenSa_Category4' value={FormData['EB_BusRB_TrauBenSa_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_TrauBenSa_Category4" name='EB_BusRB_TrauBenSa_Category4' value={FormData['EB_BusRB_TrauBenSa_Category4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
     </tr>
@@ -1607,28 +1595,28 @@ const Employee = ({user, LogOut}) =>
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_FB_CoverCategory1" name='EB_BusRB_FB_CoverCategory1' value={FormData['EB_BusRB_FB_CoverCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_FB_CoverCategory1" name='EB_BusRB_FB_CoverCategory1' value={FormData['EB_BusRB_FB_CoverCategory1']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_FB_CoverCategory2" name='EB_BusRB_FB_CoverCategory2' value={FormData['EB_BusRB_FB_CoverCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_FB_CoverCategory2" name='EB_BusRB_FB_CoverCategory2' value={FormData['EB_BusRB_FB_CoverCategory2']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_FB_CoverCategory3" name='EB_BusRB_FB_CoverCategory3' value={FormData['EB_BusRB_FB_CoverCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_FB_CoverCategory3" name='EB_BusRB_FB_CoverCategory3' value={FormData['EB_BusRB_FB_CoverCategory3']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
 
       <td>
         <div className="input-group">
             <span className="input-group-text">R</span>
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" id="EB_BusRB_FB_CoverCategory4" name='EB_BusRB_FB_CoverCategory4' value={FormData['EB_BusRB_FB_CoverCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="EB_BusRB_FB_CoverCategory4" name='EB_BusRB_FB_CoverCategory4' value={FormData['EB_BusRB_FB_CoverCategory4']} onChange={(e) => {onChange(e)}}  className="form-control" aria-describedby="emailHelp" placeholder="0.00"/>
         </div>
       </td>
     </tr>

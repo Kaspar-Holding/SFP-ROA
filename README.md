@@ -12,8 +12,27 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 08 June 2023:
+- 2179: is now completed 
+- Following bugs are now resolved and assigned back to Maryum:
+- 2162: (Risk Planning) Columns for Total need identified, Existing provisions, Shortfall/ Surplus and Cover taken up now are updated for Others without specifying Others
+- 2163: (Risk Planning) In Section E Field for 1st year commission saves alphabetic input as well
+- 2164: (Risk Planning) In Section E Field for On Going Fees saves alphabetic input as well
+- 2165: (Risk Planning) In Section E Field for 2nd year commission saves alphabetic input as well
+- 2166: (Risk Planning) In Section E Field for Life/Lives Covered saves alphabetic input as well
+- 2167: (Risk Planning) In Section E Field for Escalation in Cover/Premium saves alphabetic input as well
+- 2168: (Risk Planning) In Section E Field for Total fees and commission saves alphabetic input as well
+- 2169: (Risk Planning) (Risk Planning) In "Benefit description: life cover, disability etc" Cover amount is being saved without description
+- 2170: (Investment Planning) Field for Investment Term accepts the letter "e" as an input
+- 2172: (Investment Planning) In Section E Fields for Initial commission and initial commission % take alphabetic input
+- 2173: (Investment Planning) In Section E Fields for ongoing commission and ongoing commission % take alphabetic input
+- 2174: (Investment Planning) In Section E Field for Life/Lives assured takes alphabetic input
+- 2175: (Investment Planning) In Section E Field for Escalation takes alphabetic input
+- 2176: (Investment Planning) In Section E Spelling of Frequency are incorrect
+- 2177: (Investment Planning) In Funds Fact Sheet to client, % fields take alphabetic input
+
 ### 05 June 2023:
-- Short Term Commercial Section Duplication is done
+- 2180: Short Term Commercial Section Duplication is done
 
 ### 31 May 2023:
 - Section 1 Bug is resolved

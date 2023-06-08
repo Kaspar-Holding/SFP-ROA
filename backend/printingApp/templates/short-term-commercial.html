@@ -549,18 +549,20 @@
             </div>
         </div>
         <hr/>
-        <div class="row div">
-            <div class="col3">
-                <b>Financial Implications of Replacement</b>
+        {% if STIC.STIC_Fin_FnC_Existing or STIC.STIC_Fin_FnC_Replacement or STIC.STIC_Fin_STnC_Existing or STIC.STIC_Fin_STnC_Replacement or STIC.STIC_Fin_ImpOnPre_Existing or STIC.STIC_Fin_ImpOnPre_Replacement or STIC.STIC_Fin_Excesses_Existing or STIC.STIC_Fin_Excesses_Replacement or STIC.STIC_Fin_VABen_Existing or STIC.STIC_Fin_VABen_Replacement or STIC.STIC_Fin_AdvisorComm_Existing or STIC.STIC_Fin_AdvisorComm_Replacement %}
+            <div class="row div">
+                <div class="col3">
+                    <b>Financial Implications of Replacement</b>
+                </div>
+                <div class="col3">
+                    <b>Existing Products</b>
+                </div>
+                <div class="col3">
+                    <b>Replacement Product</b>
+                </div>
             </div>
-            <div class="col3">
-                <b>Existing Products</b>
-            </div>
-            <div class="col3">
-                <b>Replacement Product</b>
-            </div>
-        </div>
-        <hr/>
+            <hr/>
+        {% endif %}
         {% if STIC.STIC_Fin_FnC_Existing or STIC.STIC_Fin_FnC_Replacement %}
             <div class="row div">
                 <div class="col3">
@@ -683,7 +685,7 @@
         {% endif %}                
     </div>
     <div style="text-align: center">
-        <span class="colorheader">PRODUCT COMPARISON</span>
+        <span class="colorheader"><b>PRODUCT COMPARISON</b></span>
     </div>
     <hr/>
     <div class="row div">
@@ -695,12 +697,23 @@
         </div>
         <div class="column2_2">
             <span>Existing Product</span>
-            <br/>
-            <span>{{STIC.STIC_ProdComp_Existing_Company}}</span>
         </div>
         <div class="column2">
             <span>Replacement Product</span>
-            <br/>
+        </div>
+    </div>
+    <hr/>
+    <div class="row div">
+        <div class="column2">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2_1">
+            <span style="color: white">0</span>
+        </div>
+        <div class="column2_2">
+            <span>{{STIC.STIC_ProdComp_Existing_Company}}</span>
+        </div>
+        <div class="column2">
             <span>{{STIC.STIC_ProdComp_Replacement_Company}}</span>
         </div>
     </div>
@@ -1773,10 +1786,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Public liability</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended16 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -1791,7 +1804,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted16 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -1802,7 +1815,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount16}}</span>
                 </div>
             </div>
@@ -1835,10 +1848,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Top up personal Liability</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended17 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -1853,7 +1866,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted17 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -1864,7 +1877,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount17}}</span>
                 </div>
             </div>
@@ -1897,10 +1910,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Commercial umberella liability</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended18 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -1915,7 +1928,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted18 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -1926,7 +1939,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount18}}</span>
                 </div>
             </div>
@@ -1959,10 +1972,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Products gurantee</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended19 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -1977,7 +1990,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted19 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -1988,7 +2001,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount19}}</span>
                 </div>
             </div>
@@ -2021,10 +2034,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Cyber Risks</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended20 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2039,7 +2052,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted20 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2050,7 +2063,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount20}}</span>
                 </div>
             </div>
@@ -2083,10 +2096,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Director and officer's Liability</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended21 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2101,7 +2114,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted21 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2112,7 +2125,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount21}}</span>
                 </div>
             </div>
@@ -2145,10 +2158,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Employer practices Liability</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended22 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2163,7 +2176,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted22 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2174,7 +2187,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount22}}</span>
                 </div>
             </div>
@@ -2207,10 +2220,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Product inefficacy</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended23 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2225,7 +2238,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted23 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2236,7 +2249,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount23}}</span>
                 </div>
             </div>
@@ -2269,10 +2282,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Product guarantee</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended24 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2287,7 +2300,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted24 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2298,7 +2311,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount24}}</span>
                 </div>
             </div>
@@ -2331,10 +2344,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Warehousemen's guarantee</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended25 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2349,7 +2362,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted25 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2360,7 +2373,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount25}}</span>
                 </div>
             </div>
@@ -2393,10 +2406,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Employer liability</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended26 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2411,7 +2424,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted26 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2422,7 +2435,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount26}}</span>
                 </div>
             </div>
@@ -2455,10 +2468,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Stated benefits</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended27 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2473,7 +2486,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted27 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2484,7 +2497,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount27}}</span>
                 </div>
             </div>
@@ -2517,10 +2530,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Personal and group accident</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended28 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2535,7 +2548,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted28 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2546,7 +2559,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount28}}</span>
                 </div>
             </div>
@@ -2579,10 +2592,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Group personal accident</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended29 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2597,7 +2610,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted29 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2608,7 +2621,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount29}}</span>
                 </div>
             </div>
@@ -2641,10 +2654,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Motor</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended30 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2659,7 +2672,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted30 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2670,7 +2683,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount30}}</span>
                 </div>
             </div>
@@ -2703,10 +2716,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Motor car hire extension</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended31 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2721,7 +2734,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted31 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2732,7 +2745,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount31}}</span>
                 </div>
             </div>
@@ -2765,10 +2778,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Motor traders: internal risk</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended32 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2783,7 +2796,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted32 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2794,7 +2807,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount32}}</span>
                 </div>
             </div>
@@ -2827,10 +2840,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>- Motor traders: external risk</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended33 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2845,7 +2858,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted33 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2856,7 +2869,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount33}}</span>
                 </div>
             </div>
@@ -2889,10 +2902,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Electronic equipment</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended34 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2907,7 +2920,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted34 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2918,7 +2931,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount34}}</span>
                 </div>
             </div>
@@ -2951,10 +2964,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>House owner</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended35 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2969,7 +2982,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted35 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -2980,7 +2993,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount35}}</span>
                 </div>
             </div>
@@ -3013,10 +3026,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>House holders</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended44 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3031,7 +3044,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted44 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3042,7 +3055,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount44}}</span>
                 </div>
             </div>
@@ -3075,10 +3088,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Professional indenmity</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended36 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3093,7 +3106,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted36 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3104,7 +3117,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount36}}</span>
                 </div>
             </div>
@@ -3137,10 +3150,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Marine/hull</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended37 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3155,7 +3168,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted37 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3166,7 +3179,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount37}}</span>
                 </div>
             </div>
@@ -3199,10 +3212,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Contractors all risks:construction and engineering</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended38 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3217,7 +3230,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted38 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3228,7 +3241,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount38}}</span>
                 </div>
             </div>
@@ -3261,10 +3274,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Body corporate</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended39 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3279,7 +3292,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted39 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3290,7 +3303,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount39}}</span>
                 </div>
             </div>
@@ -3323,10 +3336,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Aviation</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended40 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3341,7 +3354,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted40 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3352,7 +3365,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount40}}</span>
                 </div>
             </div>
@@ -3385,10 +3398,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Travel insurance</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended41 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3403,7 +3416,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted41 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3414,7 +3427,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount41}}</span>
                 </div>
             </div>
@@ -3447,10 +3460,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Sasria</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended42 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3465,7 +3478,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted42 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3476,7 +3489,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount42}}</span>
                 </div>
             </div>
@@ -3509,10 +3522,10 @@
     <div class="row div">
         <div class="column2">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_1">
                     <span>Legal fees</span>
                 </div>
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Recommended43 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3527,7 +3540,7 @@
         </div>
         <div class="column2_1">
             <div class="row div">
-                <div class="column5">
+                <div class="column5_2">
                     {% if STIC.STIC_ProdComp_Accepted43 == 1 %}
                         <div class="column4">
                             <input checked type="checkbox" />
@@ -3538,7 +3551,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="column5">
+                <div class="column5_3">
                     <span>R {{STIC.STIC_ProdComp_CoverAmount43}}</span>
                 </div>
             </div>

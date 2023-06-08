@@ -372,7 +372,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                         <label htmlFor="phoneNumber" className="col-form-label"><b>Phone:</b></label>
                                     </div>
                                     <div className="col-6">
-                                        <input onBlur={(e)=>{onFieldBlur(e)}} required spellCheck="true" minLength="10" type="number" id="clientPhoneNumber" value={FormData['clientPhoneNumber']} onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
+                                        <input onBlur={(e)=>{onFieldBlur(e)}} required spellCheck="true" minLength="10" type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } id="clientPhoneNumber" value={FormData['clientPhoneNumber']} onChange={(e) => {onChange(e)}} name="clientPhoneNumber" className="form-control" placeholder="Phone"  aria-describedby="" />
                                     </div>
                                 </div>
                             </div>

@@ -659,7 +659,8 @@ def insertInvestmentPlanningData(request):
             serializer.create(serializer.validated_data)
             latest = InvestmentPlanning.objects.latest('id')
             serializer2 = InvestmentPlanningSerializers(latest, many=False)
-            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+            ProductsTaken = []
+            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201, "ProductTaken" : ProductsTaken},201)
         else :
             del data['status']
             del data['created_at']
@@ -719,7 +720,8 @@ def insertRiskPlanningData(request):
             serializer.create(serializer.validated_data)
             latest = RiskPlanning.objects.latest('id')
             serializer2 = RiskPlanningSerializers(latest, many=False)
-            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer.data,"code":201,},201)
+            ProductsTaken = []
+            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer.data,"code":201, "ProductTaken" : ProductsTaken},201)
         else :
             del data['status']
             del data['created_at']
@@ -779,7 +781,8 @@ def insertAssuranceInvestmentData(request):
             serializer.create(serializer.validated_data)
             latest = AssuranceInvestment.objects.latest('id')
             serializer2 = AssuranceInvestmentSerializers(latest, many=False)
-            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+            ProductsTaken = []
+            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,"ProductTaken" : ProductsTaken},201)
         else :
             del data['status']
             del data['created_at']
@@ -835,7 +838,8 @@ def insertAssuranceRiskData(request):
             serializer.create(serializer.validated_data)
             latest = AssuranceRisk.objects.latest('id')
             serializer2 = AssuranceRiskSerializers(latest, many=False)
-            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+            ProductsTaken = []
+            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201, "ProductTaken" : ProductsTaken},201)
         else :
             del data['status']
             del data['created_at']
@@ -897,7 +901,8 @@ def insertEmployeeBenefitsData(request):
             serializer.create(serializer.validated_data)
             latest = EmployeeBenefits.objects.latest('id')
             serializer2 = EmployeeBenefitsSerializers(latest, many=False)
-            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+            CoverData = []
+            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201, "CoverData" : CoverData},201)
         else :
             del data['status']
             del data['created_at']
@@ -1020,7 +1025,30 @@ def insertShortTermInsurancePersonalData(request):
             serializer.create(serializer.validated_data)
             latest = ShortTermInsurancePersonal.objects.latest('id')
             serializer2 = ShortTermInsurancePersonalSerializers(latest, many=False)
-            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+            Loss_Data = []
+            Sec_HC_Data = []
+            Sec_Build_Data = []
+            Sec_AddProp_Data = []
+            Sec_MotorC_Data = []
+            Sec_Vehicle_Data = []
+            Sec_WaterC_Data = []
+            Sec_LegalA_Data = []
+            Sec_PersonalLL_Data = []
+            return Response({
+                "message": "Data is inserted",
+                "id":serializer2.data['id'],
+                "formData" : serializer2.data,
+                "code":201,               
+                "Loss_Data" : Loss_Data, 
+                "Sec_HC_Data" : Sec_HC_Data,
+                "Sec_Build_Data" : Sec_Build_Data,
+                "Sec_AddProp_Data" : Sec_AddProp_Data,
+                "Sec_MotorC_Data" : Sec_MotorC_Data,
+                "Sec_Vehicle_Data" : Sec_Vehicle_Data,
+                "Sec_WaterC_Data" : Sec_WaterC_Data,
+                "Sec_LegalA_Data" : Sec_LegalA_Data,
+                "Sec_PersonalLL_Data" : Sec_PersonalLL_Data,
+            },201)
         else :
             del data['status']
             del data['created_at']
@@ -1160,7 +1188,56 @@ def insertShortTermInsuranceCommericalData(request):
             serializer.create(serializer.validated_data)
             latest = ShortTermInsuranceCommerical.objects.latest('id')
             serializer2 = ShortTermInsuranceCommericalSerializers(latest, many=False)
-            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,},201)
+            Loss_Data = []
+            Sec_1_Data = []
+            Sec_2_Data = []
+            Sec_3_Data = []
+            Sec_4_Data = []
+            Sec_5_Data = []
+            Sec_6_Data = []
+            Sec_7_Data = []
+            Sec_8_Data = []
+            Sec_9_Data = []
+            Sec_10_Data = []
+            Sec_11_Data = []
+            Sec_12_Data = []
+            Sec_13_Data = []
+            Sec_14_Data = []
+            Sec_15_Data = []
+            Sec_16_Data = []
+            Sec_17_Data = []
+            Sec_18_Data = []
+            Sec_19_Data = []
+            Sec_20_Data = []
+            Sec_21_Data = []
+            return Response({
+                "message": "Data is inserted",
+                "id":serializer2.data['id'],
+                "formData" : serializer2.data,
+                "code":201,
+                "Loss_Data" : Loss_Data,
+                "Sec_1_Data" : Sec_1_Data,
+                "Sec_2_Data" : Sec_2_Data,
+                "Sec_3_Data" : Sec_3_Data,
+                "Sec_4_Data" : Sec_4_Data,
+                "Sec_5_Data" : Sec_5_Data,
+                "Sec_6_Data" : Sec_6_Data,
+                "Sec_7_Data" : Sec_7_Data,
+                "Sec_8_Data" : Sec_8_Data,
+                "Sec_9_Data" : Sec_9_Data,
+                "Sec_10_Data" : Sec_10_Data,
+                "Sec_11_Data" : Sec_11_Data,
+                "Sec_12_Data" : Sec_12_Data,
+                "Sec_13_Data" : Sec_13_Data,
+                "Sec_14_Data" : Sec_14_Data,
+                "Sec_15_Data" : Sec_15_Data,
+                "Sec_16_Data" : Sec_16_Data,
+                "Sec_17_Data" : Sec_17_Data,
+                "Sec_18_Data" : Sec_18_Data,
+                "Sec_19_Data" : Sec_19_Data,
+                "Sec_20_Data" : Sec_20_Data,
+                "Sec_21_Data" : Sec_21_Data,
+            },201)
         else :
             del data['status']
             del data['created_at']
