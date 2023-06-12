@@ -169,8 +169,8 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
                   </div>
                 </button>
             </div>
-            <br/> */}
-            {/* <div className="card" style={{}}>
+            <br/>
+            <div className="card" style={{}}>
                 <button style={{border: 'none', backgroundColor: 'transparent'}} onClick={(e)=>{continueWithGoogle(e)}}>
                   <div className="card-body">
                       <div className='row'>

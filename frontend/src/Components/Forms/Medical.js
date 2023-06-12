@@ -353,7 +353,7 @@ const Medical = ({user, LogOut}) => {
                   <label className="col-form-label"><b>Financial advisor:</b></label>
               </div>
               <div className="col-6">
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" disabled value={""} className="form-control" placeholder="Primary intermediary's name"  aria-describedby=""/>
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" value={""} className="form-control" placeholder="Primary intermediary's name"  aria-describedby=""/>
               </div>
             </div>
         </div>
