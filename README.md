@@ -13,6 +13,9 @@ Deployed using Nginx and Gunicorn
 ## Updates
 
 ### 08 June 2023:
+- 2305: Bugs are now completed 
+
+### 08 June 2023:
 - 2179: is now completed 
 - Following bugs are now resolved and assigned back to Maryum:
 - 2162: (Risk Planning) Columns for Total need identified, Existing provisions, Shortfall/ Surplus and Cover taken up now are updated for Others without specifying Others

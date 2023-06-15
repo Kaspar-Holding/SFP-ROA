@@ -4,6 +4,7 @@ from rest_framework import serializers
 from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, Risk_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, STIC_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
 from .models import Medical, STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
 from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_PersonalLL, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
+from .models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
 
@@ -4343,3 +4344,75 @@ class STIP_Sec_AddProp_Serializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return STIP_Sec_AddProp.objects.create(**validated_data)
+
+class Risk_DC_Others_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = Risk_DC_Others
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return Risk_DC_Others.objects.create(**validated_data)
+
+class Risk_DiC_Others_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = Risk_DiC_Others
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return Risk_DiC_Others.objects.create(**validated_data)
+
+class Risk_DrC_Others_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = Risk_DrC_Others
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return Risk_DrC_Others.objects.create(**validated_data)
+
+class AR_BnS_Others_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = AR_BnS_Others
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return AR_BnS_Others.objects.create(**validated_data)
+
+class AR_KeyP_Others_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = AR_KeyP_Others
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return AR_KeyP_Others.objects.create(**validated_data)
+
+class AR_SureNLia_Others_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = AR_SureNLia_Others
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return AR_SureNLia_Others.objects.create(**validated_data)
+
+class AR_BusOvProt_Others_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = AR_BusOvProt_Others
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return AR_BusOvProt_Others.objects.create(**validated_data)
+
+class AR_CLARedm_Others_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = AR_CLARedm_Others
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return AR_CLARedm_Others.objects.create(**validated_data)
+
+class AR_DLARedm_Others_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = AR_DLARedm_Others
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return AR_DLARedm_Others.objects.create(**validated_data)

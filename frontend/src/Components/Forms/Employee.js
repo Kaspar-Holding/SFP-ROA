@@ -812,87 +812,114 @@ const Employee = ({user, LogOut}) =>
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
       } ><b>Section C:Clients Needs and Requirements</b></h5>
-                
+        <br/>
+        <p><b>Note:</b> Please click on Add New Cover button to add more sections.</p>
                 {
-                    CoverData.map((key,i) => {
-                        return (
-                            <>
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <button className="btn btn-md" type='button' onClick={(e)=>{AddNewCoverData(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Cover</button>
-                                        </div>
-                                        {
-                                            CoverData.length > 1 ?
-                                            <div className="col-6">
-                                                <button className="btn btn-md" type='button' onClick={(e)=>{RemoveCoverData(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Cover</button>
-                                            </div>
-                                            : <></>
-                                        }
-                                    </div>
-                                    
-                                    
-                                    <hr/>
-                                    <div className="row g-3 align-items-center" key={i}>
-                                        <div className="col-6">
-                                            <div className='col-6'>
-                                                <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="BusB_CoverType" name='BusB_CoverType' value={key.BusB_CoverType} onChange={(e) => {on_CoverData_Change(e, i)}} aria-label="Default select example">
-                                                    <option value="0" selected>Select the type of benefit cover.</option>
-                                                    <option value="1">Retirement Benefits</option>
-                                                    <option value="2">Type of fund/scheme</option>
-                                                    <option value="3">Truama Benefits</option>
-                                                    <option value="4">Funeral Benefits</option>
-                                                    <option value="5">Accidental Benefits</option>
-                                                    <option value="6">Group Life Cover</option>
-                                                    <option value="7">Lump Sum Disability Cover</option>
-                                                    <option value="8">Spouse Life Cover</option>
-                                                    <option value="9">Disability Income Cover</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="col-6">
-                                            <div className="row">
-                                                <div className="row col-2 align-items-center">
-                                                    <div className="col-2">
-                                                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" id={"BusB_Cover-"+i} name='BusB_Cover' checked={key.BusB_Cover == 1} value="1"  onChange={(e) => {on_CoverData_Change(e, i)}}  />
+                    CoverData.length === 0 ?
+                    <div className="col-12">
+                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewCoverData(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Cover</button>
+                    </div>
+                    : <></>
+                }
+                <br/>
+                {
+                    CoverData.length > 0 ?
+                        CoverData.map((key,i) => {
+                            return (
+                                <>
+                                        <div className="row g-3 align-items-center" key={i}>
+                                            <div className="col-8">
+                                                <div className='row'>
+                                                    <div className='col-6'>
+                                                        <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select" id="BusB_CoverType" name='BusB_CoverType' value={key.BusB_CoverType} onChange={(e) => {on_CoverData_Change(e, i)}} aria-label="Default select example">
+                                                            <option value="0" selected>Select the type of benefit cover.</option>
+                                                            <option value="1">Retirement Benefits</option>
+                                                            <option value="2">Type of fund/scheme</option>
+                                                            <option value="3">Truama Benefits</option>
+                                                            <option value="4">Funeral Benefits</option>
+                                                            <option value="5">Accidental Benefits</option>
+                                                            <option value="6">Group Life Cover</option>
+                                                            <option value="7">Lump Sum Disability Cover</option>
+                                                            <option value="8">Spouse Life Cover</option>
+                                                            <option value="9">Disability Income Cover</option>
+                                                        </select>
                                                     </div>
-                                                    <div className="col-2">
-                                                        <label className="form-check-label"  >
-                                                            Yes
-                                                        </label>
+                                                    <div className="col-6">
+                                                        <div className="row">
+                                                            <div className="row col-4 align-items-center">
+                                                                <div className="col-6">
+                                                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" id={"BusB_Cover-"+i} name='BusB_Cover' checked={key.BusB_Cover == 1} value="1"  onChange={(e) => {on_CoverData_Change(e, i)}}  />
+                                                                </div>
+                                                                <div className="col-6">
+                                                                    <label className="form-check-label"  >
+                                                                        Yes
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                
+                                                            <div className="row col-4 align-items-center">
+                                                                <div className="col-6">
+                                                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" id={"BusB_Cover-"+i} name='BusB_Cover' checked={key.BusB_Cover == 0} value="0"  onChange={(e) => {on_CoverData_Change(e, i)}}  />
+                                                                </div>
+                                                                <div className="col-6">
+                                                                    <label className="form-check-label"  >
+                                                                        No
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                
+                                                            <div className="row col-4 align-items-center">
+                                                                <div className="col-6">
+                                                                    <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" id={"BusB_Cover-"+i} name='BusB_Cover' checked={key.BusB_Cover == 2} value="2" onChange={(e) => {on_CoverData_Change(e, i)}}  />
+                                                                </div>
+                                                                <div className="col-6">
+                                                                    <label className="form-check-label"  >
+                                                                        Undecided
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                    
-                                                <div className="row col-2 align-items-center">
-                                                    <div className="col-2">
-                                                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" id={"BusB_Cover-"+i} name='BusB_Cover' checked={key.BusB_Cover == 0} value="0"  onChange={(e) => {on_CoverData_Change(e, i)}}  />
+                                            </div>
+                                            <div className='col-4'>
+                                                <div className="row">
+                                                {
+                                                    CoverData.length == i + 1 ?
+                                                    <div className="col-6">
+                                                        <button className= { 
+                                                            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                                            : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                                            : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                                            : "btn btn-primary sfp "
+                                                        } type='button' onClick={(e)=>{AddNewCoverData(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Cover</button>
                                                     </div>
-                                                    <div className="col-2">
-                                                        <label className="form-check-label"  >
-                                                            No
-                                                        </label>
-                                                    </div>
-                                                </div>
-                    
-                                                <div className="row col-2 align-items-center">
-                                                    <div className="col-2">
-                                                        <input onBlur={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" id={"BusB_Cover-"+i} name='BusB_Cover' checked={key.BusB_Cover == 2} value="2" onChange={(e) => {on_CoverData_Change(e, i)}}  />
-                                                    </div>
-                                                    <div className="col-2">
-                                                        <label className="form-check-label"  >
-                                                            Undecided
-                                                        </label>
-                                                    </div>
+                                                    : <></>
+                                                }
+                                                <div className="col-6">
+                                                    <button className= { 
+                                                        user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                                        : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                                        : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                                        : "btn btn-danger sfp "
+                                                    } type='button' onClick={(e)=>{RemoveCoverData(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Cover</button>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <hr/>
-                                                    
-                                    </div> 
-                                    
-                            
-                            </>
-                        )}
-                    )
+                                            </div>
+                                            <hr/>
+                                                        
+                                        </div> 
+                                        
+                                
+                                </>
+                            )}
+                        )
+                    : <></>
                 }
     {
                                     backgroundInfoVisibility1 ? 

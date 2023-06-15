@@ -7,6 +7,8 @@ from data.models import STIC_Sec_Fire, STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_
 from data.models import STIP_Loss, STIC_Loss, EB_Cover, IP_ProductTaken, AR_ProductTaken, AI_ProductTaken, RP_ProductTaken, RF_LinkedParty, RiskFactors, Form, UserAccount, AssuranceRisk, RiskPlanning, GapCover, Medical, Fiduciary, InvestmentPlanning, EmployeeBenefits, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, AssuranceInvestment
 from data.models import STIP_Sec_HC, STIP_Sec_Build, STIP_Sec_AddProp, STIP_Sec_PersonalLL, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
 from django.shortcuts import render, redirect, get_object_or_404
+from data.models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others
+
 from django.http import HttpResponse
 from django.template.loader import get_template
 import pdfkit
@@ -624,6 +626,12 @@ def wkhtmltopdfapi(request):
                 data['rp_status'] = False
             else:
                 data['rp_status'] = True
+                if Risk_DC_Others.objects.filter(formId = data['id']).exists():
+                    data['RP']['DC_Other_Data'] = Risk_DC_Others.objects.filter(formId = data['id']).values()
+                if Risk_DiC_Others.objects.filter(formId = data['id']).exists():
+                    data['RP']['DiC_Other_Data'] = Risk_DiC_Others.objects.filter(formId = data['id']).values()
+                if Risk_DrC_Others.objects.filter(formId = data['id']).exists():
+                    data['RP']['DrC_Other_Data'] = Risk_DrC_Others.objects.filter(formId = data['id']).values()
                 if RP_ProductTaken.objects.filter(formId = data['id']).exists():
                     data['RP']['RP_ProductTaken_Data'] = RP_ProductTaken.objects.filter(formId = data['id']).values()
                     for row in data['RP']['RP_ProductTaken_Data']:
@@ -809,6 +817,19 @@ def wkhtmltopdfapi(request):
                 data['BA_Risk_status'] = False
             else:
                 data['BA_Risk_status'] = True
+                if AR_BnS_Others.objects.filter(formId = data['id']).exists():
+                    data['BA_Risk']['BnS_Other_Data'] = AR_BnS_Others.objects.filter(formId = data['id']).values()
+                if AR_KeyP_Others.objects.filter(formId = data['id']).exists():
+                    data['BA_Risk']['KeyP_Other_Data'] = AR_KeyP_Others.objects.filter(formId = data['id']).values()
+                if AR_SureNLia_Others.objects.filter(formId = data['id']).exists():
+                    data['BA_Risk']['SureNLia_Other_Data'] = AR_SureNLia_Others.objects.filter(formId = data['id']).values()
+                if AR_BusOvProt_Others.objects.filter(formId = data['id']).exists():
+                    data['BA_Risk']['BusOvProt_Other_Data'] = AR_BusOvProt_Others.objects.filter(formId = data['id']).values()
+                if AR_CLARedm_Others.objects.filter(formId = data['id']).exists():
+                    data['BA_Risk']['CLARedm_Other_Data'] = AR_CLARedm_Others.objects.filter(formId = data['id']).values()
+                if AR_DLARedm_Others.objects.filter(formId = data['id']).exists():
+                    data['BA_Risk']['DLARedm_Other_Data'] = AR_DLARedm_Others.objects.filter(formId = data['id']).values()
+                
                 if AR_ProductTaken.objects.filter(formId = data['id']).exists():
                     print('it exists')
                     data['BA_Risk']['AR_ProductTaken_Data'] = AR_ProductTaken.objects.filter(formId = data['id']).values()
@@ -1973,7 +1994,7 @@ def wkhtmltopdfapi(request):
                 data['STIC']['STIC_Sec14_Recommended6'] == 0 and
                 data['STIC']['STIC_Sec14_Accepted6'] == 0 and
                 data['STIC']['STIC_Sec14_CoverAmount6'] == "" and
-                data['STIC']['STIC_Sec14_Recommended7'] ==1 and
+                data['STIC']['STIC_Sec14_Recommended7'] == 0 and
                 data['STIC']['STIC_Sec14_Accepted7'] == 0 and
                 data['STIC']['STIC_Sec14_CoverAmount7'] == "" and
                 data['STIC']['STIC_Sec14_Recommended8'] == 0 and

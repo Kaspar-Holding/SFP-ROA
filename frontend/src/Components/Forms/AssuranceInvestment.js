@@ -1384,7 +1384,12 @@ How it will meet the business need
     ProductTaken.length === 0 ?
     <>
         <div className="col-6">
-            <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+            <button className= { 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                    : "btn btn-primary sfp "
+                } type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
         </div>
     </>
     : <></>
@@ -1397,10 +1402,20 @@ How it will meet the business need
             <>
             <div className="row">
                 <div className="col-6">
-                    <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+                    <button className= { 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                    : "btn btn-primary sfp "
+                } type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
                 </div>
                 <div className="col-6">
-                    <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                    <button className= { 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                    : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                    : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                    : "btn btn-danger sfp "
+                } type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
                 </div>
                 {/* {
                     ProductTaken.length > 1 ?
@@ -1499,7 +1514,7 @@ How it will meet the business need
                         <label className="col-form-label"><b>Escalation</b></label>
                     </div>
                     <div className="col-6"> 
-                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_Escalation" name='Pr_Escalation' value={key.Pr_Escalation} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" spellCheck="true" id="Pr_Escalation" name='Pr_Escalation' value={key.Pr_Escalation} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>
@@ -1533,7 +1548,7 @@ How it will meet the business need
                         <label htmlFor="id_number" className="col-form-label"><b>Life / Lives covered</b></label>
                     </div>
                     <div className="col-6">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="Pr_LivesAssured" name='Pr_LivesAssured' value={key.Pr_LivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type='text' spellCheck="true" id="Pr_LivesAssured" name='Pr_LivesAssured' value={key.Pr_LivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                     </div>
                 </div>
             </div>

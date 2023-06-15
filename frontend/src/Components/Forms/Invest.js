@@ -1443,7 +1443,12 @@ const Invest = ({user, LogOut}) =>
             {
                 ProductTaken.length === 0 ? 
                     <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
                     </div>
                 :<></>
             }
@@ -1455,11 +1460,25 @@ const Invest = ({user, LogOut}) =>
                       return (
                         <>
             <div className="row">
+                {
+                    ProductTaken.length == i + 1?
+                    <div className="col-6">
+                        <button  className= { 
+                                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                    : "btn btn-primary sfp "
+                                }  type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+                    </div>
+                    : <></>
+                }
                 <div className="col-6">
-                    <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
-                </div>
-                <div className="col-6">
-                    <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                    <button  className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            }  type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
                 </div>
               </div>
 
@@ -1579,7 +1598,7 @@ const Invest = ({user, LogOut}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Life/Lives assured</td>
                 <td>  
                     <div className="form-group">
-                        <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ProductLivesAssured' value={key.ProductLivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
+                        <input onBlur={(e)=>{onFieldBlur(e)}} type="text" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ProductLivesAssured' value={key.ProductLivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder="" style={{width: '120px'}}/>
                     </div>
                 </td> 
                     <td></td> 

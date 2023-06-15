@@ -233,11 +233,92 @@ const Risk = ({user, LogOut}) =>
         newProductTaken[i][e.target.name] = e.target.value
         setProductTaken(newProductTaken)
     }
-    // const on_ProductTaken_Value_Change = (i, name, value) => {
-    //     let newProductTaken = [...ProductTaken]
-    //     newProductTaken[i][name] = value
-    //     setProductTaken(newProductTaken)
-    // }
+    // Add New DC Other
+    const [Risk_DC_Data, setRisk_DC_Data] = useState([])
+    const AddNewRisk_DC_Data = (e) => {
+        const current = [...Risk_DC_Data]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          DC_Other : "",
+          DC_OtherTotalNeed : "",
+          DC_OtherExistingProvisions : "",
+          DC_OtherExistingShortfallSurplus : "",
+          DC_OtherInvestments : "",        
+          
+        })
+        setRisk_DC_Data(current)
+    }
+    const RemoveNewRisk_DC_Data = (e) => {
+        const current = [...Risk_DC_Data]
+        current.pop()
+        setRisk_DC_Data(current)
+    }
+    const on_Risk_DC_Data_Change = (e, i) => {
+        let newRisk_DC_Data = [...Risk_DC_Data]
+        newRisk_DC_Data[i][e.target.name] = e.target.value
+        setRisk_DC_Data(newRisk_DC_Data)
+    }
+    // End New DC Other
+    
+    // Add New DiC Other
+    const [Risk_DiC_Data, setRisk_DiC_Data] = useState([])
+    const AddNewRisk_DiC_Data = (e) => {
+        const current = [...Risk_DiC_Data]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          DiC_Other : "",
+          DiC_OtherTotalNeed : "",
+          DiC_OtherExistingProvisions : "",
+          DiC_OtherExistingShortfallSurplus : "",
+          DiC_OtherInvestments : "",        
+          
+        })
+        setRisk_DiC_Data(current)
+    }
+    const RemoveNewRisk_DiC_Data = (e) => {
+        const current = [...Risk_DiC_Data]
+        current.pop()
+        setRisk_DiC_Data(current)
+    }
+    const on_Risk_DiC_Data_Change = (e, i) => {
+        let newRisk_DiC_Data = [...Risk_DiC_Data]
+        newRisk_DiC_Data[i][e.target.name] = e.target.value
+        setRisk_DiC_Data(newRisk_DiC_Data)
+    }
+    // End New DiC Other
+
+    // Add New DrC Other
+    const [Risk_DrC_Data, setRisk_DrC_Data] = useState([])
+    const AddNewRisk_DrC_Data = (e) => {
+        const current = [...Risk_DrC_Data]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          DrC_Other : "",
+          DrC_OtherTotalNeed : "",
+          DrC_OtherExistingProvisions : "",
+          DrC_OtherExistingShortfallSurplus : "",
+          DrC_OtherInvestments : "",        
+          
+        })
+        setRisk_DrC_Data(current)
+    }
+    const RemoveNewRisk_DrC_Data = (e) => {
+        const current = [...Risk_DrC_Data]
+        current.pop()
+        setRisk_DrC_Data(current)
+    }
+    const on_Risk_DrC_Data_Change = (e, i) => {
+        let newRisk_DrC_Data = [...Risk_DrC_Data]
+        newRisk_DrC_Data[i][e.target.name] = e.target.value
+        setRisk_DrC_Data(newRisk_DrC_Data)
+    }
+    // End New DrC Other
     
     const on_ProductTaken_Value_Change = (name, i, val) => {
       let newProductTaken = [...ProductTaken]
@@ -265,6 +346,9 @@ const Risk = ({user, LogOut}) =>
             } else {
                 setFormData(response.data['formData'])
                 setProductTaken(response.data['ProductTaken'])
+                setRisk_DC_Data(response.data['Risk_DC_Data'])
+                setRisk_DiC_Data(response.data['Risk_DiC_Data'])
+                setRisk_DrC_Data(response.data['Risk_DrC_Data'])
                 // if (response.data['ProductTaken'].length > 0) {
                 // } else {
                 //   setProductTaken([{
@@ -359,7 +443,56 @@ const Risk = ({user, LogOut}) =>
           "rp_data" : ProductTaken
         })
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_rp_ProductTaken_Data/`, ProductTaken_Body ,config) 
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_rp_ProductTaken_Data/`, ProductTaken_Body ,config) 
+        } catch (error) {
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
+        }
+        
+        const Risk_DC_Data_Body = JSON.stringify({
+          "formId" : state['formId'],
+          "Risk_DC_data" : Risk_DC_Data
+        })
+        try {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_Risk_DC_Others_Data/`, Risk_DC_Data_Body ,config) 
+        } catch (error) {
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
+        }
+        const Risk_DiC_Data_Body = JSON.stringify({
+          "formId" : state['formId'],
+          "Risk_DiC_data" : Risk_DiC_Data
+        })
+        try {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_Risk_DiC_Others_Data/`, Risk_DiC_Data_Body ,config) 
+        } catch (error) {
+          if (error.response.status === 401){
+            setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            setSuccessMessageVisibility("block")
+            setTimeout(() => {
+              setSuccessMessageVisibility("none")
+              LogOut()
+            }, 5000)
+          }
+        }
+        const Risk_DrC_Data_Body = JSON.stringify({
+          "formId" : state['formId'],
+          "Risk_DrC_data" : Risk_DrC_Data
+        })
+        try {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_Risk_DrC_Others_Data/`, Risk_DrC_Data_Body ,config) 
         } catch (error) {
           if (error.response.status === 401){
             setSuccessMessage("Login time out, You will be logged out in 5 seconds")
@@ -572,44 +705,94 @@ const Risk = ({user, LogOut}) =>
         </div>
       </td>
     </tr>
-
-
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
-        <div className="form-group">
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='RP_DC_Other' value={FormData['RP_DC_Other']} maxLength={500} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-        </div>
-      </td>
-      <td>
-        <div className="input-group">
-          <span className="input-group-text">R</span>
-          <input disabled={FormData['RP_DC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_OtherTotalNeed' value={FormData['RP_DC_OtherTotalNeed']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
-        </div>
-      </td>
-
-      <td>
-        <div className="input-group">
-          <span className="input-group-text">R</span>
-          <input disabled={FormData['RP_DC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_OtherExistingProvisions' value={FormData['RP_DC_OtherExistingProvisions']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
-        </div>
-      </td>
-
-      <td>
-        <div className="input-group">
-          <span className="input-group-text">R</span>
-          <input disabled={FormData['RP_DC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_OtherExistingShortfallSurplus' value={FormData['RP_DC_OtherTotalNeed'] - FormData['RP_DC_OtherExistingProvisions']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
-        </div>
-      </td>
-
-      <td>
-        <div className="input-group">
-          <span className="input-group-text">R</span>
-          <input disabled={FormData['RP_DC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_OtherInvestments' value={FormData['RP_DC_OtherInvestments']} onChange={(e) => {onChange(e)}}  placeholder='0.00' aria-label="" />
-        </div>
-      </td>
-    </tr>
     </tbody>
     </table>
+    {
+      Risk_DC_Data.length === 0 ?
+        <div className="col-6">
+          <button className= { 
+                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                : "btn btn-primary sfp "
+            } type='button' onClick={(e)=>{AddNewRisk_DC_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Other Death Cover</button>
+        </div>
+      :<></>
+    }
+    <p><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+    <table className="table">
+      <tbody>
+    {
+      Risk_DC_Data.length > 0 ?
+      Risk_DC_Data.map((key,i) => {
+        // console.log(i+1)
+          return (
+            <>
+              <tr>
+                <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+                  {
+                    Risk_DC_Data.length === i + 1?
+                    <button className= { 
+                        user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                        : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                        : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                        : "btn btn-primary sfp "
+                    } type='button' onClick={(e)=>{AddNewRisk_DC_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Other Death Cover</button>
+                    : <></>
+                  }
+                </td>
+                <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+                  <button className= { 
+                      user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                      : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                      : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                      : "btn btn-danger sfp "
+                  } type='button' onClick={(e)=>{RemoveNewRisk_DC_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Other Death Cover</button>
+
+                </td>
+              </tr>
+              <tr>
+                <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+                  <div className="form-group">
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='DC_Other' value={key['DC_Other']} maxLength={500} onChange={(e) => {on_Risk_DC_Data_Change(e, i)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                  </div>
+                </td>
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={key['DC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DC_OtherTotalNeed' value={key['DC_OtherTotalNeed']} onChange={(e) => {on_Risk_DC_Data_Change(e, i)}} placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={key['DC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DC_OtherExistingProvisions' value={key['DC_OtherExistingProvisions']} onChange={(e) => {on_Risk_DC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={key['DC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DC_OtherExistingShortfallSurplus' value={key['DC_OtherTotalNeed'] - key['DC_OtherExistingProvisions']} onChange={(e) => {on_Risk_DC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={FormData['DC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DC_OtherInvestments' value={key['DC_OtherInvestments']} onChange={(e) => {on_Risk_DC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+              </tr>
+            </>
+          )
+      })
+      :<></>
+    }
+      </tbody>
+    </table>
+    
     <div className='row'>
       <div className='col-12'>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
@@ -787,7 +970,7 @@ const Risk = ({user, LogOut}) =>
     </tr>
 
 
-    <tr>
+    {/* <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
       <div className="form-group">
             <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='RP_DiC_Other1' value={FormData['RP_DiC_Other1']} maxLength={500} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -856,9 +1039,95 @@ const Risk = ({user, LogOut}) =>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } disabled={FormData['RP_DiC_Other2'] === ""} className="form-control" name='RP_DiC_OtherInvestments2' value={FormData['RP_DiC_OtherInvestments2']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
-    </tr>
+    </tr> */}
 
     </tbody>
+    </table>
+    {
+      Risk_DiC_Data.length === 0 ?
+        <div className="col-6">
+          <button className= { 
+                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                : "btn btn-primary sfp "
+            } type='button' onClick={(e)=>{AddNewRisk_DiC_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Other Disability Cover</button>
+        </div>
+      :<></>
+    }
+    
+    <p><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+    <table className="table">
+      <tbody>
+    {
+      Risk_DiC_Data.length > 0 ?
+      Risk_DiC_Data.map((key,i) => {
+        // console.log(i+1)
+          return (
+            <>
+              <tr>
+                <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+                  {
+                    Risk_DiC_Data.length === i + 1?
+                    <button className= { 
+                        user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                        : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                        : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                        : "btn btn-primary sfp "
+                    } type='button' onClick={(e)=>{AddNewRisk_DiC_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Other Disability Cover</button>
+                    : <></>
+                  }
+                </td>
+                <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+                  <button className= { 
+                      user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                      : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                      : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                      : "btn btn-danger sfp "
+                  } type='button' onClick={(e)=>{RemoveNewRisk_DiC_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Other Disability Cover</button>
+
+                </td>
+              </tr>
+              <tr>
+                <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+                  <div className="form-group">
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='DiC_Other' value={key['DiC_Other']} maxLength={500} onChange={(e) => {on_Risk_DiC_Data_Change(e, i)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                  </div>
+                </td>
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={key['DiC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DiC_OtherTotalNeed' value={key['DiC_OtherTotalNeed']} onChange={(e) => {on_Risk_DiC_Data_Change(e, i)}} placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={key['DiC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DiC_OtherExistingProvisions' value={key['DiC_OtherExistingProvisions']} onChange={(e) => {on_Risk_DiC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={key['DiC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DiC_OtherExistingShortfallSurplus' value={key['DiC_OtherTotalNeed'] - key['DiC_OtherExistingProvisions']} onChange={(e) => {on_Risk_DiC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={FormData['DiC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DiC_OtherInvestments' value={key['DiC_OtherInvestments']} onChange={(e) => {on_Risk_DiC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+              </tr>
+            </>
+          )
+      })
+      :<></>
+    }
+      </tbody>
     </table>
     <div className='row'>
       <div className='col-12'>
@@ -974,7 +1243,7 @@ const Risk = ({user, LogOut}) =>
     </tr>
 
 
-    <tr>
+    {/* <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
       <div className="form-group">
             <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='RP_DrC_Other1' value={FormData['RP_DrC_Other1']} maxLength={500} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -1042,9 +1311,95 @@ const Risk = ({user, LogOut}) =>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } disabled={FormData['RP_DrC_Other2'] === ""} className="form-control" name='RP_DrC_OtherInvestments2' value={FormData['RP_DrC_OtherInvestments2']} onChange={(e) => {onChange(e)}} placeholder='0.00' aria-label="" />
         </div>
       </td>
-    </tr>
+    </tr> */}
 
     </tbody>
+    </table>
+    {
+      Risk_DrC_Data.length === 0 ?
+        <div className="col-6">
+          <button className= { 
+                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                : "btn btn-primary sfp "
+            } type='button' onClick={(e)=>{AddNewRisk_DrC_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Other Dread Disease Cover</button>
+        </div>
+      :<></>
+    }
+    
+    <p><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+    <table className="table">
+      <tbody>
+    {
+      Risk_DrC_Data.length > 0 ?
+      Risk_DrC_Data.map((key,i) => {
+        // console.log(i+1)
+          return (
+            <>
+              <tr>
+                <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+                  {
+                    Risk_DrC_Data.length === i + 1?
+                    <button className= { 
+                        user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                        : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                        : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                        : "btn btn-primary sfp "
+                    } type='button' onClick={(e)=>{AddNewRisk_DrC_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Other Dread Disease Cover</button>
+                    : <></>
+                  }
+                </td>
+                <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+                  <button className= { 
+                      user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                      : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                      : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                      : "btn btn-danger sfp "
+                  } type='button' onClick={(e)=>{RemoveNewRisk_DrC_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Other Dread Disease Cover</button>
+
+                </td>
+              </tr>
+              <tr>
+                <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+                  <div className="form-group">
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='DrC_Other' value={key['DrC_Other']} maxLength={500} onChange={(e) => {on_Risk_DrC_Data_Change(e, i)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                  </div>
+                </td>
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={key['DrC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DrC_OtherTotalNeed' value={key['DrC_OtherTotalNeed']} onChange={(e) => {on_Risk_DrC_Data_Change(e, i)}} placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={key['DrC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DrC_OtherExistingProvisions' value={key['DrC_OtherExistingProvisions']} onChange={(e) => {on_Risk_DrC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={key['DrC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DrC_OtherExistingShortfallSurplus' value={key['DrC_OtherTotalNeed'] - key['DrC_OtherExistingProvisions']} onChange={(e) => {on_Risk_DrC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+
+                <td>
+                  <div className="input-group">
+                    <span className="input-group-text">R</span>
+                    <input disabled={FormData['DrC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DrC_OtherInvestments' value={key['DrC_OtherInvestments']} onChange={(e) => {on_Risk_DrC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                  </div>
+                </td>
+              </tr>
+            </>
+          )
+      })
+      :<></>
+    }
+      </tbody>
     </table>
     <div className='row'>
       <div className='col-12'>
@@ -1384,7 +1739,12 @@ const Risk = ({user, LogOut}) =>
     {
       ProductTaken.length === 0 ?
         <div className="col-6">
-            <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+          <button className= { 
+                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                : "btn btn-primary sfp "
+            } type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
         </div>
       :<></>
     }
@@ -1406,10 +1766,24 @@ const Risk = ({user, LogOut}) =>
                   <hr/>
                   <div className="row">
                     <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+                      {
+                        ProductTaken.length === i + 1?
+                        <button className= { 
+                            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                            : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                            : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                            : "btn btn-primary sfp "
+                        } type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+                        : <></>
+                      }
                     </div>
                     <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                        <button className= { 
+                                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                                : "btn btn-danger sfp "
+                                            } type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
                     </div>
                   </div>
                   <hr/>
@@ -1506,7 +1880,7 @@ const Risk = ({user, LogOut}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Escalation in<br/>cover/premium</td>
                 <td>  
                   <div className="form-group">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_Escalation" name='Product_Escalation' value={key.Product_Escalation}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_Escalation" name='Product_Escalation' value={key.Product_Escalation}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                   </div>
                 </td> 
                   <td></td> 
@@ -1526,7 +1900,7 @@ const Risk = ({user, LogOut}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Life/Lives<br/>covered</td>
                 <td>  
                   <div className="form-group">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_LivesAssured" name='Product_LivesAssured' value={key.Product_LivesAssured}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_LivesAssured" name='Product_LivesAssured' value={key.Product_LivesAssured}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                   </div>
                 </td> 
                   <td></td> 

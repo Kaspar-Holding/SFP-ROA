@@ -124,4 +124,14 @@ urlpatterns = [
     path('viewAdminSTIPForm/' , views.viewAdminSTIPData, name="Admin View Form"),
     path('viewAdminMedicalForm/' , views.viewAdminMedicalData, name="Admin View Form"),
     path('viewAdminGPForm/' , views.viewAdminGPData, name="Admin View Form"),
+    # Other Values Duplication
+    path('update_Risk_DC_Others_Data/' , views.update_Risk_DC_Others_Data, name="Risk_DC_Others Data"),
+    path('update_Risk_DiC_Others_Data/' , views.update_Risk_DiC_Others_Data, name="Risk_DiC_Others Data"),
+    path('update_Risk_DrC_Others_Data/' , views.update_Risk_DrC_Others_Data, name="Risk_DrC_Others Data"),
+    path('update_AR_BnS_Others_Data/' , views.update_AR_BnS_Others_Data, name="AR_BnS_Others Data"),
+    path('update_AR_KeyP_Others_Data/' , views.update_AR_KeyP_Others_Data, name="AR_KeyP_Others Data"),
+    path('update_AR_SureNLia_Others_Data/' , views.update_AR_SureNLia_Others_Data, name="AR_SureNLia_Others Data"),
+    path('update_AR_BusOvProt_Others_Data/' , views.update_AR_BusOvProt_Others_Data, name="AR_BusOvProt_Others Data"),
+    path('update_AR_CLARedm_Others_Data/' , views.update_AR_CLARedm_Others_Data, name="AR_CLARedm_Others Data"),
+    path('update_AR_DLARedm_Others_Data/' , views.update_AR_DLARedm_Others_Data, name="AR_DLARedm_Others Data"),
 ]

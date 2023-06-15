@@ -4191,3 +4191,94 @@ class STIP_Sec_LegalA(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+
+class Risk_DC_Others(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+
+    DC_Other = models.CharField(max_length=20000, default="", blank=True)    
+    DC_OtherTotalNeed = models.CharField(max_length=20000, default="", blank=True)    
+    DC_OtherExistingProvisions = models.CharField(max_length=20000, default="", blank=True)    
+    DC_OtherExistingShortfallSurplus = models.CharField(max_length=20000, default="", blank=True)    
+    DC_OtherInvestments = models.CharField(max_length=20000, default="", blank=True)    
+
+class Risk_DiC_Others(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+
+    DiC_Other = models.CharField(max_length=20000, default="", blank=True)    
+    DiC_OtherTotalNeed = models.CharField(max_length=20000, default="", blank=True)    
+    DiC_OtherExistingProvisions = models.CharField(max_length=20000, default="", blank=True)    
+    DiC_OtherExistingShortfallSurplus = models.CharField(max_length=20000, default="", blank=True)    
+    DiC_OtherInvestments = models.CharField(max_length=20000, default="", blank=True)    
+
+class Risk_DrC_Others(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+
+    DrC_Other = models.CharField(max_length=20000, default="", blank=True)    
+    DrC_OtherTotalNeed = models.CharField(max_length=20000, default="", blank=True)    
+    DrC_OtherExistingProvisions = models.CharField(max_length=20000, default="", blank=True)    
+    DrC_OtherExistingShortfallSurplus = models.CharField(max_length=20000, default="", blank=True)    
+    DrC_OtherInvestments = models.CharField(max_length=20000, default="", blank=True)    
+
+class AR_BnS_Others(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+
+    BnS_Other = models.CharField(max_length=20000, default="", blank=True)    
+    BnS_OtherTotalNeed = models.CharField(max_length=20000, default="", blank=True)    
+    BnS_OtherExistingProvisions = models.CharField(max_length=20000, default="", blank=True)    
+    BnS_OtherExistingShortfallSurplus = models.CharField(max_length=20000, default="", blank=True)    
+    BnS_OtherInvestments = models.CharField(max_length=20000, default="", blank=True)  
+
+class AR_KeyP_Others(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+
+    KeyP_Other = models.CharField(max_length=20000, default="", blank=True)    
+    KeyP_OtherTotalNeed = models.CharField(max_length=20000, default="", blank=True)    
+    KeyP_OtherExistingProvisions = models.CharField(max_length=20000, default="", blank=True)    
+    KeyP_OtherExistingShortfallSurplus = models.CharField(max_length=20000, default="", blank=True)    
+    KeyP_OtherInvestments = models.CharField(max_length=20000, default="", blank=True)  
+
+class AR_SureNLia_Others(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+
+    SureNLia_Other = models.CharField(max_length=20000, default="", blank=True)    
+    SureNLia_OtherTotalNeed = models.CharField(max_length=20000, default="", blank=True)    
+    SureNLia_OtherProvisions = models.CharField(max_length=20000, default="", blank=True)    
+    SureNLia_OtherShortfallSurplus = models.CharField(max_length=20000, default="", blank=True)    
+    SureNLia_OtherInvestments = models.CharField(max_length=20000, default="", blank=True)    
+
+class AR_BusOvProt_Others(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+
+    BusOvProt_Other = models.CharField(max_length=20000, default="", blank=True)    
+    BusOvProt_OtherTotalNeed = models.CharField(max_length=20000, default="", blank=True)    
+    BusOvProt_OtherExistingProvisions = models.CharField(max_length=20000, default="", blank=True)    
+    BusOvProt_OtherExistingShortfallSurplus = models.CharField(max_length=20000, default="", blank=True)    
+    BusOvProt_OtherInvestments = models.CharField(max_length=20000, default="", blank=True)      
+
+class AR_CLARedm_Others(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+    
+    CLARedm_Other = models.CharField(max_length=20000, default="", blank=True)    
+    CLARedm_OtherTotalNeed = models.CharField(max_length=20000, default="", blank=True)    
+    CLARedm_OtherExistingProvisions = models.CharField(max_length=20000, default="", blank=True)    
+    CLARedm_OtherExistingShortfallSurplus = models.CharField(max_length=20000, default="", blank=True)    
+    CLARedm_OtherInvestments = models.CharField(max_length=20000, default="", blank=True)     
+
+class AR_DLARedm_Others(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+    
+    DLARedm_Other = models.CharField(max_length=20000, default="", blank=True)    
+    DLARedm_OtherTotalNeed = models.CharField(max_length=20000, default="", blank=True)    
+    DLARedm_OtherExistingProvisions = models.CharField(max_length=20000, default="", blank=True)    
+    DLARedm_OtherExistingShortfallSurplus = models.CharField(max_length=20000, default="", blank=True)    
+    DLARedm_OtherInvestments = models.CharField(max_length=20000, default="", blank=True) 
+

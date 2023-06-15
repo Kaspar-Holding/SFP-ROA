@@ -67,7 +67,7 @@ const CompleteForm = ({user}) => {
                                 state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                                 : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                                 : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
-                                : "nav-link"
+                                : "nav-link sfp-text"
                             } 
                             id="record-of-advice" data-bs-toggle="tab" data-bs-target="#recordOfAdvice" type="button" role="tab" aria-controls="risk" aria-selected="true">Record of Advice</button>
                     </li>
@@ -77,7 +77,7 @@ const CompleteForm = ({user}) => {
                                 state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                                 : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                                 : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
-                                : "nav-link"
+                                : "nav-link sfp-text"
                             } 
                             id="risk-tab" data-bs-toggle="tab" data-bs-target="#risk" type="button" role="tab" aria-controls="risk" aria-selected="true">Risk Planning</button>
                     </li>
@@ -87,7 +87,7 @@ const CompleteForm = ({user}) => {
                                 state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                                 : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                                 : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
-                                : "nav-link"
+                                : "nav-link sfp-text"
                             } 
                             id="invest-tab" data-bs-toggle="tab" data-bs-target="#invest" type="button" role="tab" aria-controls="invest" aria-selected="false">Investment Planning</button>
                     </li>
@@ -97,7 +97,7 @@ const CompleteForm = ({user}) => {
                                 state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                                 : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                                 : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
-                                : "nav-link"
+                                : "nav-link sfp-text"
                             } 
                             id="assurance1-tab" data-bs-toggle="tab" data-bs-target="#assurance1" type="button" role="tab" aria-controls="assurance1" aria-selected="false">BA Risk</button>
                     </li>
@@ -107,7 +107,7 @@ const CompleteForm = ({user}) => {
                                 state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                                 : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                                 : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
-                                : "nav-link"
+                                : "nav-link sfp-text"
                             } 
                             id="assurance2-tab" data-bs-toggle="tab" data-bs-target="#assurance2" type="button" role="tab" aria-controls="assurance2" aria-selected="false">BA Investment</button>
                     </li>
@@ -117,7 +117,7 @@ const CompleteForm = ({user}) => {
                                 state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                                 : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                                 : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
-                                : "nav-link"
+                                : "nav-link sfp-text"
                             } 
                             id="employee-tab" data-bs-toggle="tab" data-bs-target="#employee" type="button" role="tab" aria-controls="employee" aria-selected="false">Employee Benefits</button>
                     </li>
@@ -127,7 +127,7 @@ const CompleteForm = ({user}) => {
                                 state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                                 : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                                 : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
-                                : "nav-link"
+                                : "nav-link sfp-text"
                             } 
                             id="fiduciary-tab" data-bs-toggle="tab" data-bs-target="#fiduciary" type="button" role="tab" aria-controls="fiduciary" aria-selected="false">Fiduciary</button>
                     </li>
@@ -137,7 +137,7 @@ const CompleteForm = ({user}) => {
                                 state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                                 : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                                 : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
-                                : "nav-link"
+                                : "nav-link sfp-text"
                             } 
                             id="Short-term-Commercial-tab" data-bs-toggle="tab" data-bs-target="#Short-term-Commercial" type="button" role="tab" aria-controls="Short-term-Commercial" aria-selected="false">Short-term Commercial</button>
                     </li>
@@ -147,7 +147,7 @@ const CompleteForm = ({user}) => {
                                 state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                                 : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                                 : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
-                                : "nav-link"
+                                : "nav-link sfp-text"
                             } 
                             id="Short-term-Personal-tab" data-bs-toggle="tab" data-bs-target="#Short-term-Personal" type="button" role="tab" aria-controls="Short-term-Personal" aria-selected="false">Short-term Personal</button>
                     </li>
@@ -157,7 +157,7 @@ const CompleteForm = ({user}) => {
                                 state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                                 : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                                 : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
-                                : "nav-link"
+                                : "nav-link sfp-text"
                             } 
                             id="Medical-tab" data-bs-toggle="tab" data-bs-target="#Medical" type="button" role="tab" aria-controls="Medical" aria-selected="false">Medical</button>
                     </li>
@@ -167,7 +167,7 @@ const CompleteForm = ({user}) => {
                                 state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "nav-link sfp-text" 
                                 : state['advisor']['email'].includes('fs4p') ? "nav-link fs4p-text" 
                                 : state['advisor']['email'].includes('sanlam') ? "nav-link sanlam-text" 
-                                : "nav-link"
+                                : "nav-link sfp-text"
                             } 
                             id="Gap-Cover-tab" data-bs-toggle="tab" data-bs-target="#Gap-Cover" type="button" role="tab" aria-controls="Gap-Cover" aria-selected="false">Gap Cover</button>
                     </li>

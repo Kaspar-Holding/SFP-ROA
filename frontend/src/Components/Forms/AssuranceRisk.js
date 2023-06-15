@@ -476,6 +476,7 @@ const AssuranceRisk = ({user, LogOut}) =>
 
       })
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
+      // Add New Product
       const [ProductTaken, setProductTaken] = useState([])
       const AddNewProductTaken = (e) => {
         const current = [...ProductTaken]
@@ -530,6 +531,184 @@ const AssuranceRisk = ({user, LogOut}) =>
         newProductTaken[i][""+name+""] = val
         setProductTaken(newProductTaken)
     }
+    // End New Product
+
+    
+    // Add New BnS Other
+    const [AR_BnS_Data, setAR_BnS_Data] = useState([])
+    const AddNewAR_BnS_Data = (e) => {
+        const current = [...AR_BnS_Data]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          BnS_Other : "",
+          BnS_OtherTotalNeed : "",
+          BnS_OtherExistingProvisions : "",
+          BnS_OtherExistingShortfallSurplus : "",
+          BnS_OtherInvestments : "",        
+          
+        })
+        setAR_BnS_Data(current)
+    }
+    const RemoveNewAR_BnS_Data = (e) => {
+        const current = [...AR_BnS_Data]
+        current.pop()
+        setAR_BnS_Data(current)
+    }
+    const on_AR_BnS_Data_Change = (e, i) => {
+        let newAR_BnS_Data = [...AR_BnS_Data]
+        newAR_BnS_Data[i][e.target.name] = e.target.value
+        setAR_BnS_Data(newAR_BnS_Data)
+    }
+    // End New BnS Other
+
+    // Add New KeyP Other
+    const [AR_KeyP_Data, setAR_KeyP_Data] = useState([])
+    const AddNewAR_KeyP_Data = (e) => {
+        const current = [...AR_KeyP_Data]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          KeyP_Other : "",
+          KeyP_OtherTotalNeed : "",
+          KeyP_OtherExistingProvisions : "",
+          KeyP_OtherExistingShortfallSurplus : "",
+          KeyP_OtherInvestments : "",        
+          
+        })
+        setAR_KeyP_Data(current)
+    }
+    const RemoveNewAR_KeyP_Data = (e) => {
+        const current = [...AR_KeyP_Data]
+        current.pop()
+        setAR_KeyP_Data(current)
+    }
+    const on_AR_KeyP_Data_Change = (e, i) => {
+        let newAR_KeyP_Data = [...AR_KeyP_Data]
+        newAR_KeyP_Data[i][e.target.name] = e.target.value
+        setAR_KeyP_Data(newAR_KeyP_Data)
+    }
+    // End New KeyP Other
+
+    // Add New SureNLia Other
+    const [AR_SureNLia_Data, setAR_SureNLia_Data] = useState([])
+    const AddNewAR_SureNLia_Data = (e) => {
+        const current = [...AR_SureNLia_Data]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          SureNLia_Other : "",
+          SureNLia_OtherTotalNeed : "",
+          SureNLia_OtherExistingProvisions : "",
+          SureNLia_OtherExistingShortfallSurplus : "",
+          SureNLia_OtherInvestments : "",        
+          
+        })
+        setAR_SureNLia_Data(current)
+    }
+    const RemoveNewAR_SureNLia_Data = (e) => {
+        const current = [...AR_SureNLia_Data]
+        current.pop()
+        setAR_SureNLia_Data(current)
+    }
+    const on_AR_SureNLia_Data_Change = (e, i) => {
+        let newAR_SureNLia_Data = [...AR_SureNLia_Data]
+        newAR_SureNLia_Data[i][e.target.name] = e.target.value
+        setAR_SureNLia_Data(newAR_SureNLia_Data)
+    }
+    // End New SureNLia Other
+    
+    // Add New BisOvProt Other
+    const [AR_BusOvProt_Data, setAR_BusOvProt_Data] = useState([])
+    const AddNewAR_BusOvProt_Data = (e) => {
+        const current = [...AR_BusOvProt_Data]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          BusOvProt_Other : "",
+          BusOvProt_OtherTotalNeed : "",
+          BusOvProt_OtherExistingProvisions : "",
+          BusOvProt_OtherExistingShortfallSurplus : "",
+          BusOvProt_OtherInvestments : "",        
+          
+        })
+        setAR_BusOvProt_Data(current)
+    }
+    const RemoveNewAR_BusOvProt_Data = (e) => {
+        const current = [...AR_BusOvProt_Data]
+        current.pop()
+        setAR_BusOvProt_Data(current)
+    }
+    const on_AR_BusOvProt_Data_Change = (e, i) => {
+        let newAR_BusOvProt_Data = [...AR_BusOvProt_Data]
+        newAR_BusOvProt_Data[i][e.target.name] = e.target.value
+        setAR_BusOvProt_Data(newAR_BusOvProt_Data)
+    }
+    // End New BisOvProt Other
+    
+    // Add New AR_CLARedm Other
+    const [AR_CLARedm_Data, setAR_CLARedm_Data] = useState([])
+    const AddNewAR_CLARedm_Data = (e) => {
+        const current = [...AR_CLARedm_Data]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          CLARedm_Other : "",
+          CLARedm_OtherTotalNeed : "",
+          CLARedm_OtherExistingProvisions : "",
+          CLARedm_OtherExistingShortfallSurplus : "",
+          CLARedm_OtherInvestments : "",        
+          
+        })
+        setAR_CLARedm_Data(current)
+    }
+    const RemoveNewAR_CLARedm_Data = (e) => {
+        const current = [...AR_CLARedm_Data]
+        current.pop()
+        setAR_CLARedm_Data(current)
+    }
+    const on_AR_CLARedm_Data_Change = (e, i) => {
+        let newAR_CLARedm_Data = [...AR_CLARedm_Data]
+        newAR_CLARedm_Data[i][e.target.name] = e.target.value
+        setAR_CLARedm_Data(newAR_CLARedm_Data)
+    }
+    // End New AR_CLARedm Other
+
+    // Add New AR_DLARedm Other
+    const [AR_DLARedm_Data, setAR_DLARedm_Data] = useState([])
+    const AddNewAR_DLARedm_Data = (e) => {
+        const current = [...AR_DLARedm_Data]
+        current.push({
+          advisorId : state['advisor']['id'],  
+          formId : state['formId'],  
+          
+          DLARedm_Other : "",
+          DLARedm_OtherTotalNeed : "",
+          DLARedm_OtherExistingProvisions : "",
+          DLARedm_OtherExistingShortfallSurplus : "",
+          DLARedm_OtherInvestments : "",        
+          
+        })
+        setAR_DLARedm_Data(current)
+    }
+    const RemoveNewAR_DLARedm_Data = (e) => {
+        const current = [...AR_DLARedm_Data]
+        current.pop()
+        setAR_DLARedm_Data(current)
+    }
+    const on_AR_DLARedm_Data_Change = (e, i) => {
+        let newAR_DLARedm_Data = [...AR_DLARedm_Data]
+        newAR_DLARedm_Data[i][e.target.name] = e.target.value
+        setAR_DLARedm_Data(newAR_DLARedm_Data)
+    }
+    // End New AR_DLARedm Other
+
+
       const createARForm = async(data) => {
         const config = {
             headers: {
@@ -542,12 +721,18 @@ const AssuranceRisk = ({user, LogOut}) =>
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/add_assurance_risk_data/`, Body ,config)
             // console.log(response.data['formData'])
-            if (response.status === 201) {
-                setFormData(response.data['formData'])
-            } else {
-                setFormData(response.data['formData'])
-            }
+            // if (response.status === 201) {
+            //     setFormData(response.data['formData'])
+            // } else {
+            // }
+            setFormData(response.data['formData'])
             setProductTaken(response.data['ProductTaken'])
+            setAR_BnS_Data(response.data['AR_BnS_Data'])
+            setAR_KeyP_Data(response.data['AR_KeyP_Data'])
+            setAR_SureNLia_Data(response.data['AR_SureNLia_Data'])
+            setAR_BusOvProt_Data(response.data['AR_BusOvProt_Data'])
+            setAR_CLARedm_Data(response.data['AR_CLARedm_Data'])
+            setAR_DLARedm_Data(response.data['AR_DLARedm_Data'])
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             console.log(error)
@@ -612,6 +797,102 @@ const AssuranceRisk = ({user, LogOut}) =>
           })
           try {
               const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_ar_ProductTaken_Data/`, ProductTaken_Body ,config) 
+          } catch (error) {
+            if (error.response.status === 401){
+              setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+              setSuccessMessageVisibility("block")
+              setTimeout(() => {
+                setSuccessMessageVisibility("none")
+                LogOut()
+              }, 5000)
+            }
+          }
+          const AR_BnS_Body = JSON.stringify({
+            "formId" : state['formId'],
+            "AR_BnS_data" : AR_BnS_Data
+          })
+          try {
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_AR_BnS_Others_Data/`, AR_BnS_Body ,config) 
+          } catch (error) {
+            if (error.response.status === 401){
+              setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+              setSuccessMessageVisibility("block")
+              setTimeout(() => {
+                setSuccessMessageVisibility("none")
+                LogOut()
+              }, 5000)
+            }
+          }
+          const AR_KeyP_Body = JSON.stringify({
+            "formId" : state['formId'],
+            "AR_KeyP_data" : AR_KeyP_Data
+          })
+          try {
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_AR_KeyP_Others_Data/`, AR_KeyP_Body ,config) 
+          } catch (error) {
+            if (error.response.status === 401){
+              setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+              setSuccessMessageVisibility("block")
+              setTimeout(() => {
+                setSuccessMessageVisibility("none")
+                LogOut()
+              }, 5000)
+            }
+          }
+          const AR_SureNLia_Body = JSON.stringify({
+            "formId" : state['formId'],
+            "AR_SureNLia_data" : AR_SureNLia_Data
+          })
+          try {
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_AR_SureNLia_Others_Data/`, AR_SureNLia_Body ,config) 
+          } catch (error) {
+            if (error.response.status === 401){
+              setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+              setSuccessMessageVisibility("block")
+              setTimeout(() => {
+                setSuccessMessageVisibility("none")
+                LogOut()
+              }, 5000)
+            }
+          }
+          const AR_BusOvProt_Body = JSON.stringify({
+            "formId" : state['formId'],
+            "AR_BusOvProt_data" : AR_BusOvProt_Data
+          })
+          try {
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_AR_BusOvProt_Others_Data/`, AR_BusOvProt_Body, config) 
+          } catch (error) {
+            if (error.response.status === 401){
+              setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+              setSuccessMessageVisibility("block")
+              setTimeout(() => {
+                setSuccessMessageVisibility("none")
+                LogOut()
+              }, 5000)
+            }
+          }
+          const AR_CLARedm_Body = JSON.stringify({
+            "formId" : state['formId'],
+            "AR_CLARedm_data" : AR_CLARedm_Data
+          })
+          try {
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_AR_CLARedm_Others_Data/`, AR_CLARedm_Body ,config) 
+          } catch (error) {
+            if (error.response.status === 401){
+              setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+              setSuccessMessageVisibility("block")
+              setTimeout(() => {
+                setSuccessMessageVisibility("none")
+                LogOut()
+              }, 5000)
+            }
+          }
+          const AR_DLARedm_Body = JSON.stringify({
+            "formId" : state['formId'],
+            "AR_DLARedm_data" : AR_DLARedm_Data
+          })
+          try {
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_AR_DLARedm_Others_Data/`, AR_DLARedm_Body ,config) 
           } catch (error) {
             if (error.response.status === 401){
               setSuccessMessage("Login time out, You will be logged out in 5 seconds")
@@ -1499,15 +1780,15 @@ const AssuranceRisk = ({user, LogOut}) =>
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
       } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Buy and sell </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
     </tr>
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death</td>
+      <td className="col">
         <div >
           <div className="input-group">
             <span className="input-group-text">R</span>
@@ -1516,7 +1797,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
@@ -1525,7 +1806,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
@@ -1534,7 +1815,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DC_Investments']} aria-label="" />
@@ -1544,8 +1825,8 @@ const AssuranceRisk = ({user, LogOut}) =>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability</td>
+      <td className="col">
         <div >
           <div className="input-group">
             <span className="input-group-text">R</span>
@@ -1554,7 +1835,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
@@ -1563,7 +1844,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
@@ -1572,7 +1853,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_DiC_Investments']} aria-label="" />
@@ -1581,14 +1862,14 @@ const AssuranceRisk = ({user, LogOut}) =>
     </tr>
 
 
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+    {/* <tr>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
       <div className="form-group">
             <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='AR_BnS_Other' value={FormData['AR_BnS_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
       </td>
       
-      <td>
+      <td className="col">
         <div >
           <div className="input-group">
             <span className="input-group-text">R</span>
@@ -1597,7 +1878,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
@@ -1606,7 +1887,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-text">R</span>
@@ -1615,15 +1896,105 @@ const AssuranceRisk = ({user, LogOut}) =>
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00' name='AR_BnS_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BnS_OtherInvestments']} aria-label="" />
         </div>
       </td>
-    </tr>
+    </tr> */}
     </tbody>
     </table>
+    {
+  AR_BnS_Data.length === 0 ?
+    <div className="col-6">
+      <button className= { 
+            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+            : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+            : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+            : "btn btn-primary sfp "
+        } type='button' onClick={(e)=>{AddNewAR_BnS_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+    </div>
+  :<></>
+}
+    <p><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+<table className="table">
+  <tbody>
+{
+  AR_BnS_Data.length > 0 ?
+  AR_BnS_Data.map((key,i) => {
+    // console.log(i+1)
+      return (
+        <>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              {
+                AR_BnS_Data.length === i + 1?
+                <button className= { 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                    : "btn btn-primary sfp "
+                } type='button' onClick={(e)=>{AddNewAR_BnS_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+                : <></>
+              }
+            </td>
+            <td className="col"></td>
+
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <button className= { 
+                  user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                  : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                  : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                  : "btn btn-danger sfp "
+              } type='button' onClick={(e)=>{RemoveNewAR_BnS_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Other Cover</button>
+
+            </td>
+            <td className="col"></td>
+            <td className="col"></td>
+          </tr>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <div className="form-group">
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='BnS_Other' value={key['BnS_Other']} maxLength={500} onChange={(e) => {on_AR_BnS_Data_Change(e, i)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              </div>
+            </td>
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['BnS_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BnS_OtherTotalNeed' value={key['BnS_OtherTotalNeed']} onChange={(e) => {on_AR_BnS_Data_Change(e, i)}} placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['BnS_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BnS_OtherExistingProvisions' value={key['BnS_OtherExistingProvisions']} onChange={(e) => {on_AR_BnS_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['BnS_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BnS_OtherExistingShortfallSurplus' value={key['BnS_OtherTotalNeed'] - key['BnS_OtherExistingProvisions']} onChange={(e) => {on_AR_BnS_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={FormData['BnS_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BnS_OtherInvestments' value={key['BnS_OtherInvestments']} onChange={(e) => {on_AR_BnS_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+          </tr>
+        </>
+      )
+  })
+  :<></>
+}
+  </tbody>
+</table>
+
     <div className='row'>
       <div className='col-12'>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
@@ -1667,37 +2038,37 @@ const AssuranceRisk = ({user, LogOut}) =>
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
       } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Key person </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
     </tr>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DC_TotalNeed" name='AR_KeyP_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DC_ExistingProvisions" name='AR_KeyP_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DC_ExistingShortfallSurplus" name='AR_KeyP_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_TotalNeed']-FormData['AR_KeyP_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DC_Investments" name='AR_KeyP_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DC_Investments']} aria-label="" />
@@ -1707,29 +2078,29 @@ const AssuranceRisk = ({user, LogOut}) =>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_TotalNeed" name='AR_KeyP_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_ExistingProvisions" name='AR_KeyP_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_ExistingShortfallSurplus" name='AR_KeyP_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_TotalNeed']-FormData['AR_KeyP_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_DiC_Investments" name='AR_KeyP_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_DiC_Investments']} aria-label="" />
@@ -1739,29 +2110,29 @@ const AssuranceRisk = ({user, LogOut}) =>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Temporary Income (p.m.)</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Temporary Income (p.m.)</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverTotalNeed" name='AR_KeyP_TI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverExistingProvisions" name='AR_KeyP_TI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverExistingShortfallSurplus" name='AR_KeyP_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverTotalNeed']-FormData['AR_KeyP_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_TI_CoverInvestments" name='AR_KeyP_TI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_TI_CoverInvestments']} aria-label="" />
@@ -1771,29 +2142,29 @@ const AssuranceRisk = ({user, LogOut}) =>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Permanent Income(p.m)</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Permanent Income(p.m)</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverTotalNeed" name='AR_KeyP_PI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverExistingProvisions" name='AR_KeyP_PI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverExistingShortfallSurplus" name='AR_KeyP_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverTotalNeed']-FormData['AR_KeyP_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_PI_CoverInvestments" name='AR_KeyP_PI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_PI_CoverInvestments']} aria-label="" />
@@ -1802,42 +2173,130 @@ const AssuranceRisk = ({user, LogOut}) =>
     </tr>
 
 
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+    {/* <tr>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
       <div className="form-group">
             <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='AR_KeyP_Other' value={FormData['AR_KeyP_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
       </td>
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_OtherTotalNeed" name='AR_KeyP_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_OtherExistingProvisions" name='AR_KeyP_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_OtherExistingShortfallSurplus" name='AR_KeyP_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherTotalNeed']-FormData['AR_KeyP_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_KeyP_OtherInvestments" name='AR_KeyP_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_KeyP_OtherInvestments']} aria-label="" />
         </div>
       </td>
-    </tr>
+    </tr> */}
     </tbody>
     </table>
+    {
+  AR_KeyP_Data.length === 0 ?
+    <div className="col-6">
+      <button className= { 
+            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+            : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+            : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+            : "btn btn-primary sfp "
+        } type='button' onClick={(e)=>{AddNewAR_KeyP_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+    </div>
+  :<></>
+}
+    <p><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+<table className="table">
+  <tbody>
+{
+  AR_KeyP_Data.length > 0 ?
+  AR_KeyP_Data.map((key,i) => {
+    // console.log(i+1)
+      return (
+        <>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              {
+                AR_KeyP_Data.length === i + 1?
+                <button className= { 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                    : "btn btn-primary sfp "
+                } type='button' onClick={(e)=>{AddNewAR_KeyP_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+                : <></>
+              }
+            </td>
+            <td className="col"></td>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <button className= { 
+                  user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                  : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                  : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                  : "btn btn-danger sfp "
+              } type='button' onClick={(e)=>{RemoveNewAR_KeyP_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Other Cover</button>
+
+            </td>
+            <td className="col"></td>
+            <td className="col"></td>
+          </tr>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <div className="form-group">
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='KeyP_Other' value={key['KeyP_Other']} maxLength={500} onChange={(e) => {on_AR_KeyP_Data_Change(e, i)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              </div>
+            </td>
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['KeyP_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='KeyP_OtherTotalNeed' value={key['KeyP_OtherTotalNeed']} onChange={(e) => {on_AR_KeyP_Data_Change(e, i)}} placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['KeyP_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='KeyP_OtherExistingProvisions' value={key['KeyP_OtherExistingProvisions']} onChange={(e) => {on_AR_KeyP_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['KeyP_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='KeyP_OtherExistingShortfallSurplus' value={key['KeyP_OtherTotalNeed'] - key['KeyP_OtherExistingProvisions']} onChange={(e) => {on_AR_KeyP_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={FormData['KeyP_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='KeyP_OtherInvestments' value={key['KeyP_OtherInvestments']} onChange={(e) => {on_AR_KeyP_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+          </tr>
+        </>
+      )
+  })
+  :<></>
+}
+  </tbody>
+</table>
     <div className='row'>
       <div className='col-12'>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
@@ -1880,37 +2339,37 @@ const AssuranceRisk = ({user, LogOut}) =>
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
       } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Suretyship and Liability </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
     </tr>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_TotalNeed" name='AR_SureNLia_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_ExistingProvisions" name='AR_SureNLia_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_ExistingShortfallSurplus" name='AR_SureNLia_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_TotalNeed']-FormData['AR_SureNLia_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DC_Investment" name='AR_SureNLia_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DC_Investments']} aria-label="" />
@@ -1920,29 +2379,29 @@ const AssuranceRisk = ({user, LogOut}) =>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_TotalNeed" name='AR_SureNLia_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_Provisions" name='AR_SureNLia_DiC_Provisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_Provisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_ShortfallSurplus" name='AR_SureNLia_DiC_ShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_TotalNeed']-FormData['AR_SureNLia_DiC_Provisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_DiC_Investment" name='AR_SureNLia_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_DiC_Investments']} aria-label="" />
@@ -1950,44 +2409,132 @@ const AssuranceRisk = ({user, LogOut}) =>
       </td>
     </tr>
 
-
+{/* 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
       <div className="form-group">
             <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='AR_SureNLia_Other' value={FormData['AR_SureNLia_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
       </td>
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherTotalNeed" name='AR_SureNLia_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherProvisions" name='AR_SureNLia_OtherProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherShortfallSurplus" name='AR_SureNLia_OtherShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherTotalNeed']-FormData['AR_SureNLia_OtherProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_SureNLia_OtherInvestment" name='AR_SureNLia_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_SureNLia_OtherInvestments']} aria-label="" />
         </div>
       </td>
-    </tr>
+    </tr> */}
 
     </tbody>
     </table>
+    {
+  AR_SureNLia_Data.length === 0 ?
+    <div className="col-6">
+      <button className= { 
+            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+            : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+            : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+            : "btn btn-primary sfp "
+        } type='button' onClick={(e)=>{AddNewAR_SureNLia_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+    </div>
+  :<></>
+}
+    <p><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+<table className="table">
+  <tbody>
+{
+  AR_SureNLia_Data.length > 0 ?
+  AR_SureNLia_Data.map((key,i) => {
+    // console.log(i+1)
+      return (
+        <>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              {
+                AR_SureNLia_Data.length === i + 1?
+                <button className= { 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                    : "btn btn-primary sfp "
+                } type='button' onClick={(e)=>{AddNewAR_SureNLia_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+                : <></>
+              }
+            </td>
+            <td className="col"></td>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <button className= { 
+                  user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                  : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                  : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                  : "btn btn-danger sfp "
+              } type='button' onClick={(e)=>{RemoveNewAR_SureNLia_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Other Cover</button>
+
+            </td>
+            <td className="col"></td>
+            <td className="col"></td>
+          </tr>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <div className="form-group">
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='SureNLia_Other' value={key['SureNLia_Other']} maxLength={500} onChange={(e) => {on_AR_SureNLia_Data_Change(e, i)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              </div>
+            </td>
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['SureNLia_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='SureNLia_OtherTotalNeed' value={key['SureNLia_OtherTotalNeed']} onChange={(e) => {on_AR_SureNLia_Data_Change(e, i)}} placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['SureNLia_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='SureNLia_OtherExistingProvisions' value={key['SureNLia_OtherExistingProvisions']} onChange={(e) => {on_AR_SureNLia_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['SureNLia_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='SureNLia_OtherExistingShortfallSurplus' value={key['SureNLia_OtherTotalNeed'] - key['SureNLia_OtherExistingProvisions']} onChange={(e) => {on_AR_SureNLia_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={FormData['SureNLia_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='SureNLia_OtherInvestments' value={key['SureNLia_OtherInvestments']} onChange={(e) => {on_AR_SureNLia_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+          </tr>
+        </>
+      )
+  })
+  :<></>
+}
+  </tbody>
+</table>
     <div className='row'>
       <div className='col-12'>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
@@ -2030,37 +2577,37 @@ const AssuranceRisk = ({user, LogOut}) =>
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
       } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Business Overheads Protection </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
     </tr>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Temporary Income(p.m.)</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Temporary Income(p.m.)</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverTotalNeed" name='AR_BusOvProt_TI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverExistingProvisions" name='AR_BusOvProt_TI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverExistingShortfallSurplus" name='AR_BusOvProt_TI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverTotalNeed']-FormData['AR_BusOvProt_TI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_TI_CoverInvestments" name='AR_BusOvProt_TI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_TI_CoverInvestments']} aria-label="" />
@@ -2070,29 +2617,29 @@ const AssuranceRisk = ({user, LogOut}) =>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Permanant Income(p.m.)</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Permanant Income(p.m.)</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverTotalNeed" name='AR_BusOvProt_PI_CoverTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverTotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverExistingProvisions" name='AR_BusOvProt_PI_CoverExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverExistingShortfallSurplus" name='AR_BusOvProt_PI_CoverExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverTotalNeed']-FormData['AR_BusOvProt_PI_CoverExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_PI_CoverInvestments" name='AR_BusOvProt_PI_CoverInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_PI_CoverInvestments']} aria-label="" />
@@ -2100,45 +2647,134 @@ const AssuranceRisk = ({user, LogOut}) =>
       </td>
     </tr>
 
-
+{/* 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
         <div className="form-group">
             <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='AR_BusOvProt_Other' value={FormData['AR_BusOvProt_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
       </td>
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherTotalNeed" name='AR_BusOvProt_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherExistingProvisions" name='AR_BusOvProt_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherExistingShortfallSurplus" name='AR_BusOvProt_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherTotalNeed']-FormData['AR_BusOvProt_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_BusOvProt_OtherInvestments" name='AR_BusOvProt_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_BusOvProt_OtherInvestments']} aria-label="" />
         </div>
       </td>
-    </tr>
+    </tr> */}
 
 
     </tbody>
     </table>
+    <br/>
+    {
+  AR_BusOvProt_Data.length === 0 ?
+    <div className="col-6">
+      <button className= { 
+            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+            : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+            : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+            : "btn btn-primary sfp "
+        } type='button' onClick={(e)=>{AddNewAR_BusOvProt_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+    </div>
+  :<></>
+}
+    <p><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+<table className="table">
+  <tbody>
+{
+  AR_BusOvProt_Data.length > 0 ?
+  AR_BusOvProt_Data.map((key,i) => {
+    // console.log(i+1)
+      return (
+        <>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              {
+                AR_BusOvProt_Data.length === i + 1?
+                <button className= { 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                    : "btn btn-primary sfp "
+                } type='button' onClick={(e)=>{AddNewAR_BusOvProt_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+                : <></>
+              }
+            </td>
+            <td className="col"></td>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <button className= { 
+                  user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                  : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                  : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                  : "btn btn-danger sfp "
+              } type='button' onClick={(e)=>{RemoveNewAR_BusOvProt_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Other Cover</button>
+
+            </td>
+            <td className="col"></td>
+            <td className="col"></td>
+          </tr>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <div className="form-group">
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='BusOvProt_Other' value={key['BusOvProt_Other']} maxLength={500} onChange={(e) => {on_AR_BusOvProt_Data_Change(e, i)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              </div>
+            </td>
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['BusOvProt_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BusOvProt_OtherTotalNeed' value={key['BusOvProt_OtherTotalNeed']} onChange={(e) => {on_AR_BusOvProt_Data_Change(e, i)}} placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['BusOvProt_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BusOvProt_OtherExistingProvisions' value={key['BusOvProt_OtherExistingProvisions']} onChange={(e) => {on_AR_BusOvProt_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['BusOvProt_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BusOvProt_OtherExistingShortfallSurplus' value={key['BusOvProt_OtherTotalNeed'] - key['BusOvProt_OtherExistingProvisions']} onChange={(e) => {on_AR_BusOvProt_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={FormData['BusOvProt_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BusOvProt_OtherInvestments' value={key['BusOvProt_OtherInvestments']} onChange={(e) => {on_AR_BusOvProt_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+          </tr>
+        </>
+      )
+  })
+  :<></>
+}
+  </tbody>
+</table>
     <div className='row'>
       <div className='col-12'>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
@@ -2181,37 +2817,37 @@ const AssuranceRisk = ({user, LogOut}) =>
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
       } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Credit Loan Account Redemption </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
     </tr>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_TotalNeed" name='AR_CLARedm_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_ExistingProvisions" name='AR_CLARedm_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_ExistingShortfallSurplus" name='AR_CLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_TotalNeed']-FormData['AR_CLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DC_Investments" name='AR_CLARedm_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DC_Investments']} aria-label="" />
@@ -2221,29 +2857,29 @@ const AssuranceRisk = ({user, LogOut}) =>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_TotalNeed" name='AR_CLARedm_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_ExistingProvisions" name='AR_CLARedm_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_ExistingShortfallSurplus" name='AR_CLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_TotalNeed']-FormData['AR_CLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_DiC_Investments" name='AR_CLARedm_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_DiC_Investments']} aria-label="" />
@@ -2251,42 +2887,136 @@ const AssuranceRisk = ({user, LogOut}) =>
       </td>
     </tr>
 
-
+{/* 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
         <div className="form-group">
             <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='AR_CLARedm_Other' value={FormData['AR_CLARedm_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
       </td>
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherTotalNeed" name='AR_CLARedm_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherExistingProvisions" name='AR_CLARedm_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherExistingShortfallSurplus" name='AR_CLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherTotalNeed']-FormData['AR_CLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_CLARedm_OtherInvestments" name='AR_CLARedm_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_CLARedm_OtherInvestments']} aria-label="" />
         </div>
       </td>
-    </tr>
+    </tr> */}
+    </tbody>
+    </table>
+    <br/>
 
+    {
+  AR_CLARedm_Data.length === 0 ?
+    <div className="col-6">
+      <button className= { 
+            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+            : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+            : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+            : "btn btn-primary sfp "
+        } type='button' onClick={(e)=>{AddNewAR_CLARedm_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+    </div>
+  :<></>
+}
+    <p><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+<table className="table">
+  <tbody>
+{
+  AR_CLARedm_Data.length > 0 ?
+  AR_CLARedm_Data.map((key,i) => {
+    // console.log(i+1)
+      return (
+        <>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              {
+                AR_CLARedm_Data.length === i + 1?
+                <button className= { 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                    : "btn btn-primary sfp "
+                } type='button' onClick={(e)=>{AddNewAR_CLARedm_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+                : <></>
+              }
+            </td>
+            <td className="col"></td>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <button className= { 
+                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                : "btn btn-danger sfp "
+              } type='button' onClick={(e)=>{RemoveNewAR_CLARedm_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Other Cover</button>
+
+            </td>
+            <td className="col"></td>
+            <td className="col"></td>
+          </tr>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <div className="form-group">
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='CLARedm_Other' value={key['CLARedm_Other']} maxLength={500} onChange={(e) => {on_AR_CLARedm_Data_Change(e, i)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              </div>
+            </td>
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['CLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='CLARedm_OtherTotalNeed' value={key['CLARedm_OtherTotalNeed']} onChange={(e) => {on_AR_CLARedm_Data_Change(e, i)}} placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['CLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='CLARedm_OtherExistingProvisions' value={key['CLARedm_OtherExistingProvisions']} onChange={(e) => {on_AR_CLARedm_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['CLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='CLARedm_OtherExistingShortfallSurplus' value={key['CLARedm_OtherTotalNeed'] - key['CLARedm_OtherExistingProvisions']} onChange={(e) => {on_AR_CLARedm_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={FormData['CLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='CLARedm_OtherInvestments' value={key['CLARedm_OtherInvestments']} onChange={(e) => {on_AR_CLARedm_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+          </tr>
+        </>
+      )
+  })
+  :<></>
+}
+  </tbody>
+</table>
+    <table className="table">
+    <tbody>
+      
 
     <br/>
     <br/>
@@ -2298,37 +3028,37 @@ const AssuranceRisk = ({user, LogOut}) =>
         : state['advisor']['email'].includes('sanlam') ? "text-start sanlam-text" 
         : ""
       } style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Debit Loan Redemption </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
+      <td className="col"></td>
     </tr>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Death</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_TotalNeed" name='AR_DLARedm_DC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_ExistingProvisions" name='AR_DLARedm_DC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_ExistingShortfallSurplus" name='AR_DLARedm_DC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_TotalNeed']-FormData['AR_DLARedm_DC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DC_Investments" name='AR_DLARedm_DC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DC_Investments']} aria-label="" />
@@ -2338,29 +3068,29 @@ const AssuranceRisk = ({user, LogOut}) =>
 
 
     <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability</td>
-      <td>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold'}} align="left">Disability</td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_TotalNeed" name='AR_DLARedm_DiC_TotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_TotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_ExistingProvisions" name='AR_DLARedm_DiC_ExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_ExistingShortfallSurplus" name='AR_DLARedm_DiC_ExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_TotalNeed']-FormData['AR_DLARedm_DiC_ExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_DiC_Investments" name='AR_DLARedm_DiC_Investments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_DiC_Investments']} aria-label="" />
@@ -2369,43 +3099,128 @@ const AssuranceRisk = ({user, LogOut}) =>
     </tr>
 
 
-    <tr>
-      <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+    {/* <tr>
+      <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
       <div className="form-group">
             <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='AR_DLARedm_Other' value={FormData['AR_DLARedm_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
       </td>
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherTotalNeed" name='AR_DLARedm_OtherTotalNeed' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherTotalNeed']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherExistingProvisions" name='AR_DLARedm_OtherExistingProvisions' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherExistingShortfallSurplus" name='AR_DLARedm_OtherExistingShortfallSurplus' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherTotalNeed']-FormData['AR_DLARedm_OtherExistingProvisions']} aria-label="" />
         </div>
       </td>
 
-      <td>
+      <td className="col">
         <div className="input-group">
           <span className="input-group-text">R</span>
           <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" placeholder='0.00'  id="AR_DLARedm_OtherInvestments" name='AR_DLARedm_OtherInvestments' onChange={(e) => {onChange(e)}} value={FormData['AR_DLARedm_OtherInvestments']} aria-label="" />
         </div>
       </td>
-    </tr>
+    </tr> */}
     </tbody>
   </table>
+  <br/>
+  {
+  AR_DLARedm_Data.length === 0 ?
+    <div className="col-6">
+      <button className= { 
+            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+            : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+            : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+            : "btn btn-primary sfp "
+        } type='button' onClick={(e)=>{AddNewAR_DLARedm_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+    </div>
+  :<></>
+}
+    <p><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+<table className="table">
+  <tbody>
+{
+  AR_DLARedm_Data.length > 0 ?
+  AR_DLARedm_Data.map((key,i) => {
+    // console.log(i+1)
+      return (
+        <>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              {
+                AR_DLARedm_Data.length === i + 1?
+                <button className= { 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                    : "btn btn-primary sfp "
+                } type='button' onClick={(e)=>{AddNewAR_DLARedm_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+                : <></>
+              }
+            </td>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <button className= { 
+                  user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                  : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                  : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                  : "btn btn-danger sfp "
+              } type='button' onClick={(e)=>{RemoveNewAR_DLARedm_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Other Cover</button>
 
+            </td>
+          </tr>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <div className="form-group">
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='DLARedm_Other' value={key['DLARedm_Other']} maxLength={500} onChange={(e) => {on_AR_DLARedm_Data_Change(e, i)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              </div>
+            </td>
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['DLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DLARedm_OtherTotalNeed' value={key['DLARedm_OtherTotalNeed']} onChange={(e) => {on_AR_DLARedm_Data_Change(e, i)}} placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['DLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DLARedm_OtherExistingProvisions' value={key['DLARedm_OtherExistingProvisions']} onChange={(e) => {on_AR_DLARedm_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['DLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DLARedm_OtherExistingShortfallSurplus' value={key['DLARedm_OtherTotalNeed'] - key['DLARedm_OtherExistingProvisions']} onChange={(e) => {on_AR_DLARedm_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={FormData['DLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DLARedm_OtherInvestments' value={key['DLARedm_OtherInvestments']} onChange={(e) => {on_AR_DLARedm_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+          </tr>
+        </>
+      )
+  })
+  :<></>
+}
+  </tbody>
+</table>
 <br/>
   <h5 className="section_class"><b>SECTION B:</b></h5>
     <div className={
@@ -2691,7 +3506,12 @@ Record the client's instructions, deviations and implications thereof.
       ProductTaken.length === 0 ?
       <>
         <div className="col-6">
-            <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+            <button className= { 
+                  user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                  : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                  : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                  : "btn btn-primary sfp "
+              } type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
         </div>
       </>
       : <></>
@@ -2706,10 +3526,20 @@ Record the client's instructions, deviations and implications thereof.
                 <>
                     <div className="row">
                       <div className="col-6">
-                          <button className="btn btn-md" type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
+                          <button className= { 
+                  user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                  : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                  : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                  : "btn btn-primary sfp "
+              } type='button' onClick={(e)=>{AddNewProductTaken(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Product</button>
                       </div>
                       <div className="col-6">
-                          <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
+                          <button className= { 
+                  user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                  : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                  : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                  : "btn btn-danger sfp "
+              } type='button' onClick={(e)=>{RemoveNewProductTaken(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Product</button>
                       </div>
                       {/* {
                           ProductTaken.length > 1 ?
@@ -2826,7 +3656,7 @@ Record the client's instructions, deviations and implications thereof.
                                             <label htmlFor="id_number" className="col-form-label"><b>Escalation in cover / premium</b></label>
                                         </div>
                                         <div className="col-6">
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"   id="ProductEscalation" name='ProductEscalation' onChange={(e)=>{on_ProductTaken_Change(e, i)}} value={key.ProductEscalation} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" spellCheck="true"   id="ProductEscalation" name='ProductEscalation' onChange={(e)=>{on_ProductTaken_Change(e, i)}} value={key.ProductEscalation} className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                                         </div>
                                     </div>
                                 </div>
@@ -2849,7 +3679,7 @@ Record the client's instructions, deviations and implications thereof.
                                             <label htmlFor="id_number" className="col-form-label"><b>Life / Lives covered</b></label>
                                         </div>
                                         <div className="col-6">
-                                            <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="ProductLivesAssured" name='ProductLivesAssured' value={key.ProductLivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
+                                            <input onBlur={(e)=>{onFieldBlur(e)}} type="text" spellCheck="true" id="ProductLivesAssured" name='ProductLivesAssured' value={key.ProductLivesAssured} onChange={(e) => {on_ProductTaken_Change(e, i)}}  className="form-control" placeholder="Click here to enter text."  aria-describedby="" />
                                         </div>
                                     </div>
                                 </div>

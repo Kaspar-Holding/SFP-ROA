@@ -3430,7 +3430,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
                             {
                                 LossType.length === 0 ?
                                   <div className="col-6">
-                                      <button className="btn btn-md" type='button' onClick={(e)=>{AddNewLossType(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Loss Type</button>
+                                      <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewLossType(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Loss Type</button>
                                   </div>
                                 :<></>
                             }
@@ -3471,12 +3476,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                                     {
                                                       i+1 == LossType.length ?
                                                       <div className="col-6">
-                                                          <button className="btn btn-md" type='button' onClick={(e)=>{AddNewLossType(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Loss Type</button>
+                                                          <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewLossType(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Loss Type</button>
                                                       </div>
                                                       : <></>
                                                     }
                                                     <div className="col-6">
-                                                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewLossType(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Loss Type</button>
+                                                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewLossType(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Loss Type</button>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -6509,7 +6524,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
           <div className='col-lg-6 col-md-6 col-sm-12'>
             {
               Section_1.length === 0 ?
-                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_1(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 1: Fire</button>
+                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_1(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 1: Fire</button>
               : <></>
             }
           </div>
@@ -6982,12 +7002,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           {
                           i+1 == Section_1.length ?
                           <div className="col-6">
-                              <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_1(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 1: Fire</button>
+                              <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_1(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 1: Fire</button>
                           </div>
                           : <></>
                         }
                         <div className="col-6">
-                            <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_1(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 1: Fire</button>
+                            <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_1(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 1: Fire</button>
                         </div>
                       </div>
 
@@ -7466,7 +7496,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <div className='col-lg-6 col-md-6 col-sm-12'>
                 {
                   Section_2.length === 0 ?
-                    <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_2(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 2</button>
+                    <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_2(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 2</button>
                   : <></>
                 }
               </div>
@@ -7825,12 +7860,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           {
                             i+1 == Section_2.length ?
                             <div className="col-6">
-                                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_2(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 2</button>
+                                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_2(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 2</button>
                             </div>
                             : <></>
                           }
                           <div className="col-6">
-                              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_2(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 2</button>
+                              <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_2(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 2</button>
                           </div>
                         </div>
                       </div>
@@ -8192,7 +8237,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <div className='col-lg-6 col-md-6 col-sm-12'>
                   {
                     Section_3.length === 0 ?
-                      <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_3(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 3</button>
+                      <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_3(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 3</button>
                     : <></>
                   }
               </div>
@@ -8479,12 +8529,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                   {
                     i+1 == Section_3.length ?
                     <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_3(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 3</button>
+                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_3(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 3</button>
                     </div>
                     : <></>
                   }
                   <div className="col-6">
-                      <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_3(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 3</button>
+                      <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_3(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 3</button>
                   </div>
                 </div>
               </div>
@@ -8774,7 +8834,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
           <div className='col-lg-6 col-md-6 col-sm-12'>
               {
                 Section_4.length === 0 ?
-                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_4(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 4</button>
+                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_4(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 4</button>
                 : <></>
               }
           </div>
@@ -10207,12 +10272,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                   {
                     i+1 == Section_3.length ?
                     <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_4(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 4</button>
+                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_4(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 4</button>
                     </div>
                     : <></>
                   }
                   <div className="col-6">
-                      <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_4(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 4</button>
+                      <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_4(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 4</button>
                   </div>
               </div>
             </div>
@@ -11650,7 +11725,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <div className='col-lg-6 col-md-6 col-sm-12'>
                   {
                     Section_5.length === 0 ?
-                      <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_5(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 5</button>
+                      <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_5(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 5</button>
                     : <></>
                   }
               </div>
@@ -11959,12 +12039,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                   {
                     i+1 == Section_5.length ?
                     <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_5(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 5</button>
+                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_5(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 5</button>
                     </div>
                     : <></>
                   }
                   <div className="col-6">
-                      <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_5(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 5</button>
+                      <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_5(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 5</button>
                   </div>
                 </div>
               </div>
@@ -12274,7 +12364,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
                     <div className='col-lg-6 col-md-6 col-sm-12'>
                         {
                           Section_6.length === 0 ?
-                            <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_6(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 6</button>
+                            <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_6(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 6</button>
                           : <></>
                         }
                     </div>
@@ -12455,12 +12550,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                   {
                     i+1 == Section_6.length ?
                     <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_6(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 6</button>
+                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_6(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 6</button>
                     </div>
                     : <></>
                   }
                   <div className="col-6">
-                      <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_6(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 6</button>
+                      <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_6(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 6</button>
                   </div>
                 </div>
               </div>
@@ -12646,7 +12751,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           <div className='col-lg-6 col-md-6 col-sm-12'>
                               {
                                 Section_7.length === 0 ?
-                                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_7(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 7</button>
+                                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_7(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 7</button>
                                 : <></>
                               }
                           </div>
@@ -13029,12 +13139,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                   {
                                     i+1 == Section_7.length ?
                                     <div className="col-6">
-                                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_7(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 7</button>
+                                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_7(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 7</button>
                                     </div>
                                     : <></>
                                   }
                                   <div className="col-6">
-                                      <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_7(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 7</button>
+                                      <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_7(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 7</button>
                                   </div>
                                 </div>
                               </div>
@@ -13422,7 +13542,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           <div className='col-lg-6 col-md-6 col-sm-12'>
                               {
                                 Section_8.length === 0 ?
-                                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_8(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 8</button>
+                                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_8(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 8</button>
                                 : <></>
                               }
                           </div>
@@ -13650,12 +13775,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                               {
                                 i+1 == Section_8.length ?
                                 <div className="col-6">
-                                    <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_8(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 8</button>
+                                    <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_8(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 8</button>
                                 </div>
                                 : <></>
                               }
                               <div className="col-6">
-                                  <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_8(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 8</button>
+                                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_8(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 8</button>
                               </div>
                             </div>
                           </div>
@@ -13888,7 +14023,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
                     <div className='col-lg-6 col-md-6 col-sm-12'>
                         {
                           Section_9.length === 0 ?
-                            <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_9(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 9</button>
+                            <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_9(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 9</button>
                           : <></>
                         }
                     </div>
@@ -14280,12 +14420,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           {
                             i+1 == Section_9.length ?
                             <div className="col-6">
-                                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_9(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 9</button>
+                                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_9(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 9</button>
                             </div>
                             : <></>
                           }
                           <div className="col-6">
-                              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_9(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 9</button>
+                              <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_9(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 9</button>
                           </div>
                         </div>
                       </div>
@@ -14685,7 +14835,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                     {
                       Section_10.length === 0 ?
-                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_10(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 10</button>
+                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_10(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 10</button>
                       : <></>
                     }
                 </div>
@@ -15026,12 +15181,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                     {
                       i+1 == Section_10.length ?
                       <div className="col-6">
-                          <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_10(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 10</button>
+                          <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_10(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 10</button>
                       </div>
                       : <></>
                     }
                     <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_10(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 10</button>
+                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_10(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 10</button>
                     </div>
                   </div>
                 </div>
@@ -15379,7 +15544,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                     {
                       Section_11.length === 0 ?
-                        <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_11(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 11</button>
+                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_11(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 11</button>
                       : <></>
                     }
                 </div>
@@ -15619,12 +15789,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                     {
                       i+1 == Section_11.length ?
                       <div className="col-6">
-                          <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_11(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 11</button>
+                          <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_11(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 11</button>
                       </div>
                       : <></>
                     }
                     <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_11(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 11</button>
+                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_11(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 11</button>
                     </div>
                   </div>
                 </div>
@@ -15871,7 +16051,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <div className='col-lg-6 col-md-6 col-sm-12'>
                 {
                   Section_12.length === 0 ?
-                    <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_12(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 12</button>
+                    <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_12(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 12</button>
                   : <></>
                 }
             </div>
@@ -16205,12 +16390,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                     {
                       i+1 == Section_12.length ?
                       <div className="col-6">
-                          <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_12(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 12</button>
+                          <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_12(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 12</button>
                       </div>
                       : <></>
                     }
                     <div className="col-6">
-                        <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_12(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 12</button>
+                        <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_12(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 12</button>
                     </div>
                   </div>
                 </div>
@@ -16551,7 +16746,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
       <div className='col-lg-6 col-md-6 col-sm-12'>
             {
               Section_13.length === 0 ?
-                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_13(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 13</button>
+                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_13(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 13</button>
               : <></>
             }
         </div>
@@ -17173,12 +17373,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
           {
             i+1 == Section_13.length ?
             <div className="col-6">
-                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_13(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 13</button>
+                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_13(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 13</button>
             </div>
             : <></>
           }
           <div className="col-6">
-              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_13(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 13</button>
+              <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_13(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 13</button>
           </div>
         </div>
         </div>
@@ -17804,7 +18014,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
         <div className='col-lg-6 col-md-6 col-sm-12'>
               {
                 Section_14.length === 0 ?
-                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_14(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 14</button>
+                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_14(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 14</button>
                 : <></>
               }
           </div>
@@ -18115,7 +18330,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
         <div className='col-lg-6 col-md-6 col-sm-12'>
               {
                 Section_14.length === 0 ?
-                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_14(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 14</button>
+                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_14(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 14</button>
                 : <></>
               }
           </div>
@@ -18433,7 +18653,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
         <div className='col-lg-6 col-md-6 col-sm-12'>
               {
                 Section_15.length === 0 ?
-                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_15(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 15</button>
+                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_15(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 15</button>
                 : <></>
               }
           </div>
@@ -18632,12 +18857,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
           {
             i+1 == Section_15.length ?
             <div className="col-6">
-                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_15(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 15</button>
+                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_15(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 15</button>
             </div>
             : <></>
           }
           <div className="col-6">
-              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_15(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 15</button>
+              <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_15(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 15</button>
           </div>
         </div>
         </div>
@@ -18839,7 +19074,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
         <div className='col-lg-6 col-md-6 col-sm-12'>
               {
                 Section_16.length === 0 ?
-                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_16(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 16</button>
+                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_16(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 16</button>
                 : <></>
               }
           </div>
@@ -19355,12 +19595,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
           {
             i+1 == Section_16.length ?
             <div className="col-6">
-                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_16(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 16</button>
+                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_16(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 16</button>
             </div>
             : <></>
           }
           <div className="col-6">
-              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_16(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 16</button>
+              <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_16(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 16</button>
           </div>
         </div>
         </div>
@@ -19880,7 +20130,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
         <div className='col-lg-6 col-md-6 col-sm-12'>
               {
                 Section_17.length === 0 ?
-                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_17(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 17</button>
+                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_17(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 17</button>
                 : <></>
               }
           </div>
@@ -20435,12 +20690,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
           {
             i+1 == Section_17.length ?
             <div className="col-6">
-                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_17(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 17</button>
+                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_17(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 17</button>
             </div>
             : <></>
           }
           <div className="col-6">
-              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_17(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 17</button>
+              <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_17(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 17</button>
           </div>
         </div>
         </div>
@@ -20999,7 +21264,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
         <div className='col-lg-6 col-md-6 col-sm-12'>
               {
                 Section_18.length === 0 ?
-                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_18(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 18</button>
+                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_18(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 18</button>
                 : <></>
               }
           </div>
@@ -21598,12 +21868,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
           {
             i+1 == Section_18.length ?
             <div className="col-6">
-                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_18(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 18</button>
+                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_18(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 18</button>
             </div>
             : <></>
           }
           <div className="col-6">
-              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_18(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 18</button>
+              <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_18(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 18</button>
           </div>
         </div>
         </div>
@@ -22206,7 +22486,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
         <div className='col-lg-6 col-md-6 col-sm-12'>
               {
                 Section_19.length === 0 ?
-                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_19(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 19</button>
+                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_19(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 19</button>
                 : <></>
               }
           </div>
@@ -22726,12 +23011,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
           {
             i+1 == Section_19.length ?
             <div className="col-6">
-                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_19(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 19</button>
+                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_19(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 19</button>
             </div>
             : <></>
           }
           <div className="col-6">
-              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_19(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 19</button>
+              <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_19(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 19</button>
           </div>
         </div>
         </div>
@@ -23256,7 +23551,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
         <div className='col-lg-6 col-md-6 col-sm-12'>
               {
                 Section_20.length === 0 ?
-                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_20(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 20</button>
+                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_20(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 20</button>
                 : <></>
               }
           </div>
@@ -23554,12 +23854,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
           {
             i+1 == Section_20.length ?
             <div className="col-6">
-                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_20(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 20</button>
+                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_20(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 20</button>
             </div>
             : <></>
           }
           <div className="col-6">
-              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_20(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 20</button>
+              <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_20(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 20</button>
           </div>
         </div>
         </div>
@@ -23862,7 +24172,12 @@ const Short_term_Commercial= ({user, LogOut}) => {
         <div className='col-lg-6 col-md-6 col-sm-12'>
               {
                 Section_21.length === 0 ?
-                  <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_21(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 21</button>
+                  <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_21(e)}}><FontAwesomeIcon icon={faPlus} /> Add New SECTION 21</button>
                 : <></>
               }
           </div>
@@ -24165,12 +24480,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
           {
             i+1 == Section_21.length ?
             <div className="col-6">
-                <button className="btn btn-md" type='button' onClick={(e)=>{AddNewSection_21(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 21</button>
+                <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                                : "btn btn-primary sfp "
+                            } type='button' onClick={(e)=>{AddNewSection_21(e)}}><FontAwesomeIcon icon={faPlus} /> Add New Section 21</button>
             </div>
             : <></>
           }
           <div className="col-6">
-              <button className="btn btn-md" type='button' onClick={(e)=>{RemoveNewSection_21(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 21</button>
+              <button className= { 
+                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                                : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                                : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                                : "btn btn-danger sfp "
+                            } type='button' onClick={(e)=>{RemoveNewSection_21(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Section 21</button>
           </div>
         </div>
         </div>

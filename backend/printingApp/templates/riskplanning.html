@@ -83,25 +83,27 @@
                 </div>                                    
             </div>
             <hr/>
-            {% if RP.RP_DC_Other %}
-                <div class='row1 div'>
-                    <div class="column31">
-                        <b>Other: {{RP.RP_DC_Other}}</b>
+            {% if RP.DC_Other_Data %}
+                {% for DC_Other in RP.DC_Other_Data %}
+                    <div class='row1 div'>
+                        <div class="column31">
+                            <b>Other: {{DC_Other.DC_Other}}</b>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DC_Other.DC_OtherTotalNeed}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DC_Other.DC_OtherExistingProvisions}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DC_Other.DC_OtherExistingShortfallSurplus}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DC_Other.DC_OtherInvestments}}</span>
+                        </div>                                    
                     </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DC_OtherTotalNeed}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DC_OtherExistingProvisions}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DC_OtherExistingShortfallSurplus}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DC_OtherInvestments}}</span>
-                    </div>                                    
-                </div>
-                <hr/>            
+                    <hr/>            
+                {% endfor %}
             {% endif %}
             
             <div class='row div'>
@@ -196,45 +198,28 @@
                 </div>                                    
             </div>
             <hr/>
-            {% if RP.RP_DiC_Other1 %}
-                <div class='row1 div'>
-                    <div class="column31">
-                        <b>Other: {{RP.RP_DiC_Other1}}</b>
+            
+            {% if RP.DiC_Other_Data %}
+                {% for DiC_Other in RP.DiC_Other_Data %}
+                    <div class='row1 div'>
+                        <div class="column31">
+                            <b>Other: {{DiC_Other.DiC_Other}}</b>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DiC_Other.DiC_OtherTotalNeed}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DiC_Other.DiC_OtherExistingProvisions}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DiC_Other.DiC_OtherExistingShortfallSurplus}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DiC_Other.DiC_OtherInvestments}}</span>
+                        </div>                                    
                     </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DiC_OtherTotalNeed1}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DiC_OtherExistingProvisions1}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DiC_OtherExistingShortfallSurplus1}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DiC_OtherInvestments1}}</span>
-                    </div>                                    
-                </div>
-                <hr/>            
-            {% endif %}
-            {% if RP.RP_DiC_Other2 %}
-                <div class='row1 div'>
-                    <div class="column31">
-                        <b>Other: {{RP.RP_DiC_Other2}}</b>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DiC_OtherTotalNeed2}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DiC_OtherExistingProvisions2}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DiC_OtherExistingShortfallSurplus2}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DiC_OtherInvestments2}}</span>
-                    </div>                                    
-                </div>
-                <hr/>            
+                    <hr/>            
+                {% endfor %}
             {% endif %}
             
             <div class='row div'>
@@ -293,45 +278,28 @@
                 </div>                                    
             </div>
             <hr/>
-            {% if RP.RP_DrC_Other1 %}
-                <div class='row1 div'>
-                    <div class="column31">
-                        <b>Other: {{RP.RP_DrC_Other1}}</b>
+            
+            {% if RP.DrC_Other_Data %}
+                {% for DrC_Other in RP.DrC_Other_Data %}
+                    <div class='row1 div'>
+                        <div class="column31">
+                            <b>Other: {{DrC_Other.DrC_Other}}</b>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DrC_Other.DrC_OtherTotalNeed}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DrC_Other.DrC_OtherExistingProvisions}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DrC_Other.DrC_OtherExistingShortfallSurplus}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DrC_Other.DrC_OtherInvestments}}</span>
+                        </div>                                    
                     </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DrC_OtherTotalNeed1}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DrC_OtherExistingProvisions1}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DrC_OtherExistingShortfallSurplus1}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DrC_OtherInvestments1}}</span>
-                    </div>                                    
-                </div>
-                <hr/>            
-            {% endif %}
-            {% if RP.RP_DrC_Other2 %}
-                <div class='row1 div'>
-                    <div class="column31">
-                        <b>Other: {{RP.RP_DrC_Other2}}</b>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DrC_OtherTotalNeed2}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DrC_OtherExistingProvisions2}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DrC_OtherExistingShortfallSurplus2}}</span>
-                    </div>
-                    <div class="column32">
-                        <span>R {{RP.RP_DrC_OtherInvestments2}}</span>
-                    </div>                                    
-                </div>
-                <hr/>            
+                    <hr/>            
+                {% endfor %}
             {% endif %}
             
             <div class='row div'>

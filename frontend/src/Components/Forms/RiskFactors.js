@@ -689,7 +689,7 @@ const RiskFactors = ({user, LogOut}) => {
                                                     user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp col-11" 
                                                     : user['email'].includes('fs4p') ? "btn btn-primary fs4p col-11" 
                                                     : user['email'].includes('sanlam') ? "btn btn-primary sanlam col-11" 
-                                                    : "btn btn-primary  col-11"
+                                                    : "btn btn-primary sfp col-11"
                                                 }
                                             >
                                                 Edit
@@ -704,7 +704,7 @@ const RiskFactors = ({user, LogOut}) => {
                                                 user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp col-11" 
                                                 : user['email'].includes('fs4p') ? "btn btn-primary fs4p col-11" 
                                                 : user['email'].includes('sanlam') ? "btn btn-primary sanlam col-11" 
-                                                : "btn btn-primary  col-11"
+                                                : "btn btn-primary sfp col-11"
                                             }
                                         >
                                             Print
@@ -720,7 +720,7 @@ const RiskFactors = ({user, LogOut}) => {
                                                 user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp col-11" 
                                                 : user['email'].includes('fs4p') ? "btn btn-primary fs4p col-11" 
                                                 : user['email'].includes('sanlam') ? "btn btn-primary sanlam col-11" 
-                                                : "btn btn-primary  col-11"
+                                                : "btn btn-primary sfp col-11"
                                             }
                                         >
                                             Print For Client
@@ -736,7 +736,12 @@ const RiskFactors = ({user, LogOut}) => {
                             </div>
                             <div className='col-4'>
                                 <form onSubmit={e => onFormStatusUpdateSubmit(e,1)}>
-                                    <button type='submit' className='btn btn-primary col-8'>Mark Form Complete</button>
+                                    <button type='submit' className= { 
+                                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp col-11" 
+                                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p col-11" 
+                                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam col-11" 
+                                                : "btn btn-primary sfp col-8"
+                                            }>Mark Form Complete</button>
                                 </form>
                             </div>    
                         

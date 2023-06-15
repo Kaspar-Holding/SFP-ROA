@@ -612,25 +612,28 @@
             </div>                                    
         </div>
         <hr/>
-        {% if BA_Risk.AR_BnS_Other %}
-            <div class='row1 div'>
-                <div class="column31">
-                    <b>Other: {{BA_Risk.AR_BnS_Other}}</b>
+        
+        {% if BA_Risk.BnS_Other_Data %}
+            {% for BnS_Other in BA_Risk.BnS_Other_Data %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{BnS_Other.BnS_Other}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{BnS_Other.BnS_OtherTotalNeed}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{BnS_Other.BnS_OtherExistingProvisions}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{BnS_Other.BnS_OtherExistingShortfallSurplus}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{BnS_Other.BnS_OtherInvestments}}</span>
+                    </div>                                    
                 </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_BnS_OtherTotalNeed}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_BnS_OtherExistingProvisions}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_BnS_OtherExistingShortfallSurplus}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_BnS_OtherInvestments}}</span>
-                </div>                                                               
-            </div>
-            <hr/>            
+                <hr/>            
+            {% endfor %}
         {% endif %}
         
         <div class='row div'>
@@ -726,25 +729,28 @@
             </div>                                    
         </div>
         <hr/>
-        {% if BA_Risk.AR_KeyP_Other %}
-            <div class='row1 div'>
-                <div class="column31">
-                    <b>Other: {{BA_Risk.AR_KeyP_Other}}</b>
+        
+        {% if BA_Risk.KeyP_Other_Data %}
+            {% for KeyP_Other in BA_Risk.KeyP_Other_Data %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{KeyP_Other.KeyP_Other}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{KeyP_Other.KeyP_OtherTotalNeed}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{KeyP_Other.KeyP_OtherExistingProvisions}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{KeyP_Other.KeyP_OtherExistingShortfallSurplus}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{KeyP_Other.KeyP_OtherInvestments}}</span>
+                    </div>                                    
                 </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_KeyP_OtherTotalNeed}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_KeyP_OtherExistingProvisions}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_KeyP_OtherExistingShortfallSurplus}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_KeyP_OtherInvestments}}</span>
-                </div>                                                               
-            </div>
-            <hr/>            
+                <hr/>            
+            {% endfor %}
         {% endif %}
         
         <div class='row div'>
@@ -803,25 +809,28 @@
             </div>                                    
         </div>
         <hr/>
-        {% if BA_Risk.AR_SureNLia_Other %}
-            <div class='row1 div'>
-                <div class="column31">
-                    <b>Other: {{BA_Risk.AR_SureNLia_Other}}</b>
+        
+        {% if BA_Risk.SureNLia_Other_Data %}
+            {% for SureNLia_Other in BA_Risk.SureNLia_Other_Data %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{SureNLia_Other.SureNLia_Other}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{SureNLia_Other.SureNLia_OtherTotalNeed}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{SureNLia_Other.SureNLia_OtherExistingProvisions}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{SureNLia_Other.SureNLia_OtherExistingShortfallSurplus}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{SureNLia_Other.SureNLia_OtherInvestments}}</span>
+                    </div>                                    
                 </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_SureNLia_OtherTotalNeed}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_SureNLia_OtherProvisions}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_SureNLia_OtherShortfallSurplus}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_SureNLia_OtherInvestments}}</span>
-                </div>                                                               
-            </div>
-            <hr/>            
+                <hr/>            
+            {% endfor %}
         {% endif %}
         
         <div class='row div'>
@@ -880,25 +889,27 @@
             </div>                                    
         </div>
         <hr/>
-        {% if BA_Risk.AR_BusOvProt_Other %}
-            <div class='row1 div'>
-                <div class="column31">
-                    <b>Other: {{BA_Risk.AR_BusOvProt_Other}}</b>
+        {% if BA_Risk.BusOvProt_Other_Data %}
+            {% for BusOvProt_Other in BA_Risk.BusOvProt_Other_Data %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{BusOvProt_Other.BusOvProt_Other}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{BusOvProt_Other.BusOvProt_OtherTotalNeed}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{BusOvProt_Other.BusOvProt_OtherExistingProvisions}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{BusOvProt_Other.BusOvProt_OtherExistingShortfallSurplus}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{BusOvProt_Other.BusOvProt_OtherInvestments}}</span>
+                    </div>                                    
                 </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_BusOvProt_OtherTotalNeed}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_BusOvProt_OtherProvisions}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_BusOvProt_OtherShortfallSurplus}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_BusOvProt_OtherInvestments}}</span>
-                </div>                                                               
-            </div>
-            <hr/>            
+                <hr/>            
+            {% endfor %}
         {% endif %}
         
         <div class='row div'>
@@ -959,25 +970,28 @@
             </div>                                    
         </div>
         <hr/>
-        {% if BA_Risk.AR_CLARedm_Other %}
-            <div class='row1 div'>
-                <div class="column31">
-                    <b>Other: {{BA_Risk.AR_CLARedm_Other}}</b>
+        
+        {% if BA_Risk.CLARedm_Other_Data %}
+            {% for CLARedm_Other in BA_Risk.CLARedm_Other_Data %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{CLARedm_Other.CLARedm_Other}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{CLARedm_Other.CLARedm_OtherTotalNeed}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{CLARedm_Other.CLARedm_OtherExistingProvisions}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{CLARedm_Other.CLARedm_OtherExistingShortfallSurplus}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{CLARedm_Other.CLARedm_OtherInvestments}}</span>
+                    </div>                                    
                 </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_CLARedm_OtherTotalNeed}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_CLARedm_OtherExistingProvisions}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_CLARedm_OtherExistingShortfallSurplus}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_CLARedm_OtherInvestments}}</span>
-                </div>                                                               
-            </div>
-            <hr/>            
+                <hr/>            
+            {% endfor %}
         {% endif %}
         
 
@@ -1024,26 +1038,28 @@
             </div>                                    
         </div>
         <hr/>
-        {% if BA_Risk.AR_DLARedm_Other %}
-            <div class='row1 div'>
-                <div class="column31">
-                    <b>Other: {{BA_Risk.AR_DLARedm_Other}}</b>
+        {% if BA_Risk.DLARedm_Other_Data %}
+            {% for DLARedm_Other in BA_Risk.DLARedm_Other_Data %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{DLARedm_Other.DLARedm_Other}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{DLARedm_Other.DLARedm_OtherTotalNeed}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{DLARedm_Other.DLARedm_OtherExistingProvisions}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{DLARedm_Other.DLARedm_OtherExistingShortfallSurplus}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{DLARedm_Other.DLARedm_OtherInvestments}}</span>
+                    </div>                                    
                 </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_DLARedm_OtherTotalNeed}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_DLARedm_OtherExistingProvisions}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_DLARedm_OtherExistingShortfallSurplus}}</span>
-                </div>
-                <div class="column32">
-                    <span>R {{BA_Risk.AR_DLARedm_OtherInvestments}}</span>
-                </div>                                                               
-            </div>
-            <hr/>            
-        {% endif %} 
+                <hr/>            
+            {% endfor %}
+        {% endif %}
         <div class='row div'>
             <div class="">
                 <b style='font-size: 18px'>SECTION B:</b>

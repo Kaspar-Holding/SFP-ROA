@@ -4,6 +4,8 @@ from django.core.files.base import ContentFile
 from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, AssuranceInvestmentSerializers, AssuranceRiskSerializers, EB_CoverSerializer, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, STIC_Loss_Serializer, STIC_Sec_Fire_Serializer, STIP_Loss_Serializer, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
 from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RiskFactors, RiskPlanning, STIC_Loss, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
 from .models import STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
+from .models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others
+from .serializers import Risk_DC_Others_Serializer, Risk_DiC_Others_Serializer, Risk_DrC_Others_Serializer, AR_BnS_Others_Serializer, AR_KeyP_Others_Serializer, AR_SureNLia_Others_Serializer, AR_BusOvProt_Others_Serializer, AR_CLARedm_Others_Serializer, AR_DLARedm_Others_Serializer
 from .serializers import STIC_Sec_2_Serializer, STIC_Sec_3_Serializer, STIC_Sec_4_Serializer, STIC_Sec_5_Serializer, STIC_Sec_6_Serializer, STIC_Sec_7_Serializer, STIC_Sec_8_Serializer, STIC_Sec_9_Serializer, STIC_Sec_10_Serializer, STIC_Sec_11_Serializer, STIC_Sec_12_Serializer, STIC_Sec_13_Serializer, STIC_Sec_14_Serializer, STIC_Sec_15_Serializer, STIC_Sec_16_Serializer, STIC_Sec_17_Serializer, STIC_Sec_18_Serializer, STIC_Sec_19_Serializer, STIC_Sec_20_Serializer, STIC_Sec_21_Serializer
 from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_PersonalLL, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
 from .serializers import STIP_Sec_AddProp_Serializer, STIP_Sec_Build_Serializer, STIP_Sec_HC_Serializer, STIP_Sec_LegalA_Serializer, STIP_Sec_MotorC_Serializer, STIP_Sec_PersonalLL_Serializer, STIP_Sec_Trailer_Serializer, STIP_Sec_Vehicle_Serializer, STIP_Sec_WaterC_Serializer
@@ -721,14 +723,41 @@ def insertRiskPlanningData(request):
             latest = RiskPlanning.objects.latest('id')
             serializer2 = RiskPlanningSerializers(latest, many=False)
             ProductsTaken = []
-            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer.data,"code":201, "ProductTaken" : ProductsTaken},201)
+            Risk_DC_Data = []
+            Risk_DiC_Data = []
+            Risk_DrC_Data = []
+            return Response(
+                {
+                    "message": "Data is inserted",
+                    "id":serializer2.data['id'],
+                    "formData" : serializer.data,
+                    "code":201, 
+                    "ProductTaken" : ProductsTaken,
+                    "Risk_DC_Data" : Risk_DC_Data,
+                    "Risk_DiC_Data" : Risk_DiC_Data,
+                    "Risk_DrC_Data" : Risk_DrC_Data,
+                },
+            201)
         else :
             del data['status']
             del data['created_at']
             del data['updated_at']
             ProductsTaken = RP_ProductTaken.objects.filter(formId=request.data['formId']).values()
-
-            return Response({'message': "Form Already Exists","code": "200", "formData" : data, "ProductTaken" : ProductsTaken},200)
+            Risk_DC_Data = Risk_DC_Others.objects.filter(formId=request.data['formId']).values()
+            Risk_DiC_Data = Risk_DiC_Others.objects.filter(formId=request.data['formId']).values()
+            Risk_DrC_Data = Risk_DrC_Others.objects.filter(formId=request.data['formId']).values()
+            
+            return Response(
+                {
+                    'message': "Form Already Exists",
+                    "code": "200", 
+                    "formData" : data, 
+                    "ProductTaken" : ProductsTaken,
+                    "Risk_DC_Data" : Risk_DC_Data,
+                    "Risk_DiC_Data" : Risk_DiC_Data,
+                    "Risk_DrC_Data" : Risk_DrC_Data,
+                }
+            ,200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
@@ -782,14 +811,35 @@ def insertAssuranceInvestmentData(request):
             latest = AssuranceInvestment.objects.latest('id')
             serializer2 = AssuranceInvestmentSerializers(latest, many=False)
             ProductsTaken = []
-            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201,"ProductTaken" : ProductsTaken},201)
+
+            return Response(
+                {
+                    "message": "Data is inserted",
+                    "id":serializer2.data['id'],
+                    "formData" : serializer2.data,
+                    "code":200,
+                },
+            201)
         else :
             del data['status']
             del data['created_at']
             del data['updated_at']
+            
             ProductsTaken = AI_ProductTaken.objects.filter(formId=request.data['formId']).values()
+            AR_BnS_Data = AR_BnS_Others.objects.filter(formId=request.data['formId']).values()
+            AR_KeyP_Data = AR_KeyP_Others.objects.filter(formId=request.data['formId']).values()
+            AR_SureNLia_Data = AR_SureNLia_Others.objects.filter(formId=request.data['formId']).values()
+            AR_BusOvProt_Data = AR_BusOvProt_Others.objects.filter(formId=request.data['formId']).values()
+            AR_CLARedm_Data = AR_CLARedm_Others.objects.filter(formId=request.data['formId']).values()
+            AR_DLARedm_Data = AR_DLARedm_Others.objects.filter(formId=request.data['formId']).values()
 
-            return Response({'message': "Form Already Exists","code": "200", "formData" : data, "ProductTaken" : ProductsTaken},200)
+            return Response(
+                {
+                    'message': "Form Already Exists",
+                    "code": "200", 
+                    "formData" : data, 
+                    "ProductTaken" : ProductsTaken
+                },200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
@@ -836,17 +886,56 @@ def insertAssuranceRiskData(request):
         # return Response({"data":serializer1.data, "length": str(serializer1.data['advisorId'])})
         if str(serializer1.data['advisorId']) == "None":
             serializer.create(serializer.validated_data)
-            latest = AssuranceRisk.objects.latest('id')
-            serializer2 = AssuranceRiskSerializers(latest, many=False)
+            latest = AssuranceInvestment.objects.latest('id')
+            serializer2 = AssuranceInvestmentSerializers(latest, many=False)
             ProductsTaken = []
-            return Response({"message": "Data is inserted","id":serializer2.data['id'],"formData" : serializer2.data,"code":201, "ProductTaken" : ProductsTaken},201)
+            AR_BnS_Data = []
+            AR_KeyP_Data = []
+            AR_SureNLia_Data = []
+            AR_BusOvProt_Data = []
+            AR_CLARedm_Data = []
+            AR_DLARedm_Data = []
+
+            return Response(
+                {
+                    "message": "Data is inserted",
+                    "id":serializer2.data['id'],
+                    "formData" : serializer2.data,
+                    "code":200,
+                    "ProductTaken" : ProductsTaken,
+                    "AR_BnS_Data" : AR_BnS_Data,
+                    "AR_KeyP_Data" : AR_KeyP_Data,
+                    "AR_SureNLia_Data" : AR_SureNLia_Data,
+                    "AR_BusOvProt_Data" : AR_BusOvProt_Data,
+                    "AR_CLARedm_Data" : AR_CLARedm_Data,
+                    "AR_DLARedm_Data" : AR_DLARedm_Data,
+                },
+            201)
         else :
             del data['status']
             del data['created_at']
             del data['updated_at']
             ProductsTaken = AR_ProductTaken.objects.filter(formId=request.data['formId']).values()
-            
-            return Response({'message': "Form Already Exists","code": "200", "formData" : data, "ProductTaken" : ProductsTaken},200)
+            AR_BnS_Data = AR_BnS_Others.objects.filter(formId=request.data['formId']).values()
+            AR_KeyP_Data = AR_KeyP_Others.objects.filter(formId=request.data['formId']).values()
+            AR_SureNLia_Data = AR_SureNLia_Others.objects.filter(formId=request.data['formId']).values()
+            AR_BusOvProt_Data = AR_BusOvProt_Others.objects.filter(formId=request.data['formId']).values()
+            AR_CLARedm_Data = AR_CLARedm_Others.objects.filter(formId=request.data['formId']).values()
+            AR_DLARedm_Data = AR_DLARedm_Others.objects.filter(formId=request.data['formId']).values()
+
+            return Response(
+                {
+                    'message': "Form Already Exists",
+                    "code": "200", 
+                    "formData" : data, 
+                    "ProductTaken" : ProductsTaken,
+                    "AR_BnS_Data" : AR_BnS_Data,
+                    "AR_KeyP_Data" : AR_KeyP_Data,
+                    "AR_SureNLia_Data" : AR_SureNLia_Data,
+                    "AR_BusOvProt_Data" : AR_BusOvProt_Data,
+                    "AR_CLARedm_Data" : AR_CLARedm_Data,
+                    "AR_DLARedm_Data" : AR_DLARedm_Data,
+                },200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
@@ -2133,3 +2222,102 @@ def update_stip_sec_motorc_Data(request):
     else:
         print(sec_motorc_serializer.errors)
     return Response({"message": "Updated","code":200,"formData": sec_motorc_data},200)
+
+@api_view(['POST'])
+def update_Risk_DC_Others_Data(request):
+    Risk_DC_data = request.data['Risk_DC_data']
+    Risk_DC_Others.objects.filter(formId=request.data['formId']).delete()
+    Risk_DC_serializer = Risk_DC_Others_Serializer(data=Risk_DC_data, many=True)
+    if Risk_DC_serializer.is_valid():
+        Risk_DC_serializer.create(Risk_DC_serializer.validated_data)
+    else:
+        print(Risk_DC_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": Risk_DC_data},200)
+
+@api_view(['POST'])
+def update_Risk_DiC_Others_Data(request):
+    Risk_DiC_data = request.data['Risk_DiC_data']
+    Risk_DiC_Others.objects.filter(formId=request.data['formId']).delete()
+    Risk_DiC_serializer = Risk_DiC_Others_Serializer(data=Risk_DiC_data, many=True)
+    if Risk_DiC_serializer.is_valid():
+        Risk_DiC_serializer.create(Risk_DiC_serializer.validated_data)
+    else:
+        print(Risk_DiC_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": Risk_DiC_data},200)
+
+@api_view(['POST'])
+def update_Risk_DrC_Others_Data(request):
+    Risk_DrC_data = request.data['Risk_DrC_data']
+    Risk_DrC_Others.objects.filter(formId=request.data['formId']).delete()
+    Risk_DrC_serializer = Risk_DrC_Others_Serializer(data=Risk_DrC_data, many=True)
+    if Risk_DrC_serializer.is_valid():
+        Risk_DrC_serializer.create(Risk_DrC_serializer.validated_data)
+    else:
+        print(Risk_DrC_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": Risk_DrC_data},200)
+
+@api_view(['POST'])
+def update_AR_BnS_Others_Data(request):
+    AR_BnS_data = request.data['AR_BnS_data']
+    AR_BnS_Others.objects.filter(formId=request.data['formId']).delete()
+    AR_BnS_serializer = AR_BnS_Others_Serializer(data=AR_BnS_data, many=True)
+    if AR_BnS_serializer.is_valid():
+        AR_BnS_serializer.create(AR_BnS_serializer.validated_data)
+    else:
+        print(AR_BnS_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": AR_BnS_data},200)
+
+@api_view(['POST'])
+def update_AR_KeyP_Others_Data(request):
+    AR_KeyP_data = request.data['AR_KeyP_data']
+    AR_KeyP_Others.objects.filter(formId=request.data['formId']).delete()
+    AR_KeyP_serializer = AR_KeyP_Others_Serializer(data=AR_KeyP_data, many=True)
+    if AR_KeyP_serializer.is_valid():
+        AR_KeyP_serializer.create(AR_KeyP_serializer.validated_data)
+    else:
+        print(AR_KeyP_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": AR_KeyP_data},200)
+
+@api_view(['POST'])
+def update_AR_SureNLia_Others_Data(request):
+    AR_SureNLia_data = request.data['AR_SureNLia_data']
+    AR_SureNLia_Others.objects.filter(formId=request.data['formId']).delete()
+    AR_SureNLia_serializer = AR_SureNLia_Others_Serializer(data=AR_SureNLia_data, many=True)
+    if AR_SureNLia_serializer.is_valid():
+        AR_SureNLia_serializer.create(AR_SureNLia_serializer.validated_data)
+    else:
+        print(AR_SureNLia_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": AR_SureNLia_data},200)
+
+@api_view(['POST'])
+def update_AR_BusOvProt_Others_Data(request):
+    AR_BusOvProt_data = request.data['AR_BusOvProt_data']
+    AR_BusOvProt_Others.objects.filter(formId=request.data['formId']).delete()
+    AR_BusOvProt_serializer = AR_BusOvProt_Others_Serializer(data=AR_BusOvProt_data, many=True)
+    if AR_BusOvProt_serializer.is_valid():
+        AR_BusOvProt_serializer.create(AR_BusOvProt_serializer.validated_data)
+    else:
+        print(AR_BusOvProt_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": AR_BusOvProt_data},200)
+
+@api_view(['POST'])
+def update_AR_CLARedm_Others_Data(request):
+    AR_CLARedm_data = request.data['AR_CLARedm_data']
+    AR_CLARedm_Others.objects.filter(formId=request.data['formId']).delete()
+    AR_CLARedm_serializer = AR_CLARedm_Others_Serializer(data=AR_CLARedm_data, many=True)
+    if AR_CLARedm_serializer.is_valid():
+        AR_CLARedm_serializer.create(AR_CLARedm_serializer.validated_data)
+    else:
+        print(AR_CLARedm_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": AR_CLARedm_data},200)
+
+@api_view(['POST'])
+def update_AR_DLARedm_Others_Data(request):
+    AR_DLARedm_data = request.data['AR_DLARedm_data']
+    AR_DLARedm_Others.objects.filter(formId=request.data['formId']).delete()
+    AR_DLARedm_serializer = AR_DLARedm_Others_Serializer(data=AR_DLARedm_data, many=True)
+    if AR_DLARedm_serializer.is_valid():
+        AR_DLARedm_serializer.create(AR_DLARedm_serializer.validated_data)
+    else:
+        print(AR_DLARedm_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": AR_DLARedm_data},200)
