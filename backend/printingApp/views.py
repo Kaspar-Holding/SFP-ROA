@@ -2982,10 +2982,10 @@ def wkhtmltopdfapi(request):
     # print(data['STIP']['STIP_Applicant_Gender'])
     template = get_template('pdfForm.html')
     cmd_options = {
-      'page-size': 'A4',
+      'page-size': 'Letter',
       'viewport-size' : '1920x1080',
       'footer-center' : '[page]/[topage]',
-      'dpi' : '900'
+      'dpi' : '600'
     }
     if (
         not data['dra_status'] and 
