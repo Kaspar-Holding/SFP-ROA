@@ -2982,7 +2982,8 @@ def wkhtmltopdfapi(request):
     # print(data['STIP']['STIP_Applicant_Gender'])
     template = get_template('pdfForm.html')
     cmd_options = {
-      'page-size': 'Letter',
+      'page-size': 'A4',
+      'zoom': '0.78',
       'viewport-size' : '1920x1080',
       'footer-center' : '[page]/[topage]',
       'dpi' : '600'
