@@ -2985,7 +2985,7 @@ def wkhtmltopdfapi(request):
       'page-size': 'A4',
       'viewport-size' : '1920x1080',
       'footer-center' : '[page]/[topage]',
-      'dpi' : '600'
+      'dpi' : '300'
     }
     if (
         not data['dra_status'] and 
