@@ -87,7 +87,7 @@ const AccountDetails = (props) => {
         }, 5000)
     }
     useEffect(() => {
-        setLoaderVisibility("blokc")
+        setLoaderVisibility("block")
         setDataVisibility("none")
         loadUser()
         setLoaderVisibility("none")

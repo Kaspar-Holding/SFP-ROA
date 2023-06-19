@@ -781,7 +781,7 @@ const Risk = ({user, LogOut}) =>
                 <td>
                   <div className="input-group">
                     <span className="input-group-text">R</span>
-                    <input disabled={FormData['DC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DC_OtherInvestments' value={key['DC_OtherInvestments']} onChange={(e) => {on_Risk_DC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                    <input disabled={key['DC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DC_OtherInvestments' value={key['DC_OtherInvestments']} onChange={(e) => {on_Risk_DC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
                   </div>
                 </td>
               </tr>
@@ -1118,7 +1118,7 @@ const Risk = ({user, LogOut}) =>
                 <td>
                   <div className="input-group">
                     <span className="input-group-text">R</span>
-                    <input disabled={FormData['DiC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DiC_OtherInvestments' value={key['DiC_OtherInvestments']} onChange={(e) => {on_Risk_DiC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                    <input disabled={key['DiC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DiC_OtherInvestments' value={key['DiC_OtherInvestments']} onChange={(e) => {on_Risk_DiC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
                   </div>
                 </td>
               </tr>
@@ -1390,7 +1390,7 @@ const Risk = ({user, LogOut}) =>
                 <td>
                   <div className="input-group">
                     <span className="input-group-text">R</span>
-                    <input disabled={FormData['DrC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DrC_OtherInvestments' value={key['DrC_OtherInvestments']} onChange={(e) => {on_Risk_DrC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                    <input disabled={key['DrC_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DrC_OtherInvestments' value={key['DrC_OtherInvestments']} onChange={(e) => {on_Risk_DrC_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
                   </div>
                 </td>
               </tr>

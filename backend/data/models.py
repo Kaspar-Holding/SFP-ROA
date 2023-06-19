@@ -2636,6 +2636,7 @@ class Medical(models.Model):
     MSA_ClientAddress = models.CharField(max_length=20000, default="", blank=True)
     MSA_ClientEmail = models.CharField(max_length=20000, default="", blank=True)
     MSA_ClientPhone = models.CharField(max_length=20000, default="", blank=True)
+    MSA_Advisor = models.CharField(max_length=200, default="", blank=True)
     MSA_ClientDate = models.CharField(max_length=20000, default="", blank=True)
 
     MSA_Name = models.CharField(max_length=20000, default="", blank=True)
@@ -4281,4 +4282,15 @@ class AR_DLARedm_Others(models.Model):
     DLARedm_OtherExistingProvisions = models.CharField(max_length=20000, default="", blank=True)    
     DLARedm_OtherExistingShortfallSurplus = models.CharField(max_length=20000, default="", blank=True)    
     DLARedm_OtherInvestments = models.CharField(max_length=20000, default="", blank=True) 
+
+
+class AI_Others(models.Model):
+    advisorId = models.IntegerField(default=0)
+    formId = models.IntegerField(default=0)
+    
+    AI_Other = models.CharField(max_length=20000, default="", blank=True)    
+    AI_Other_TotalNeed = models.CharField(max_length=20000, default="", blank=True)    
+    AI_Other_ExistingProvisions = models.CharField(max_length=20000, default="", blank=True)    
+    AI_Other_ExistingShortfallSurplus = models.CharField(max_length=20000, default="", blank=True)    
+    AI_Other_ExistingInvestments = models.CharField(max_length=20000, default="", blank=True)   
 

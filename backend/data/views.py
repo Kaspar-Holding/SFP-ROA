@@ -4,8 +4,8 @@ from django.core.files.base import ContentFile
 from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, AssuranceInvestmentSerializers, AssuranceRiskSerializers, EB_CoverSerializer, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, STIC_Loss_Serializer, STIC_Sec_Fire_Serializer, STIP_Loss_Serializer, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
 from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RiskFactors, RiskPlanning, STIC_Loss, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
 from .models import STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
-from .models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others
-from .serializers import Risk_DC_Others_Serializer, Risk_DiC_Others_Serializer, Risk_DrC_Others_Serializer, AR_BnS_Others_Serializer, AR_KeyP_Others_Serializer, AR_SureNLia_Others_Serializer, AR_BusOvProt_Others_Serializer, AR_CLARedm_Others_Serializer, AR_DLARedm_Others_Serializer
+from .models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others, AI_Others
+from .serializers import Risk_DC_Others_Serializer, Risk_DiC_Others_Serializer, Risk_DrC_Others_Serializer, AR_BnS_Others_Serializer, AR_KeyP_Others_Serializer, AR_SureNLia_Others_Serializer, AR_BusOvProt_Others_Serializer, AR_CLARedm_Others_Serializer, AR_DLARedm_Others_Serializer, AI_Others_Serializer
 from .serializers import STIC_Sec_2_Serializer, STIC_Sec_3_Serializer, STIC_Sec_4_Serializer, STIC_Sec_5_Serializer, STIC_Sec_6_Serializer, STIC_Sec_7_Serializer, STIC_Sec_8_Serializer, STIC_Sec_9_Serializer, STIC_Sec_10_Serializer, STIC_Sec_11_Serializer, STIC_Sec_12_Serializer, STIC_Sec_13_Serializer, STIC_Sec_14_Serializer, STIC_Sec_15_Serializer, STIC_Sec_16_Serializer, STIC_Sec_17_Serializer, STIC_Sec_18_Serializer, STIC_Sec_19_Serializer, STIC_Sec_20_Serializer, STIC_Sec_21_Serializer
 from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_PersonalLL, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
 from .serializers import STIP_Sec_AddProp_Serializer, STIP_Sec_Build_Serializer, STIP_Sec_HC_Serializer, STIP_Sec_LegalA_Serializer, STIP_Sec_MotorC_Serializer, STIP_Sec_PersonalLL_Serializer, STIP_Sec_Trailer_Serializer, STIP_Sec_Vehicle_Serializer, STIP_Sec_WaterC_Serializer
@@ -811,12 +811,15 @@ def insertAssuranceInvestmentData(request):
             latest = AssuranceInvestment.objects.latest('id')
             serializer2 = AssuranceInvestmentSerializers(latest, many=False)
             ProductsTaken = []
+            AI_Others_Data = []
 
             return Response(
                 {
                     "message": "Data is inserted",
                     "id":serializer2.data['id'],
                     "formData" : serializer2.data,
+                    "ProductTaken" : ProductsTaken,
+                    "AI_Others_Data" : AI_Others_Data,
                     "code":200,
                 },
             201)
@@ -826,19 +829,15 @@ def insertAssuranceInvestmentData(request):
             del data['updated_at']
             
             ProductsTaken = AI_ProductTaken.objects.filter(formId=request.data['formId']).values()
-            AR_BnS_Data = AR_BnS_Others.objects.filter(formId=request.data['formId']).values()
-            AR_KeyP_Data = AR_KeyP_Others.objects.filter(formId=request.data['formId']).values()
-            AR_SureNLia_Data = AR_SureNLia_Others.objects.filter(formId=request.data['formId']).values()
-            AR_BusOvProt_Data = AR_BusOvProt_Others.objects.filter(formId=request.data['formId']).values()
-            AR_CLARedm_Data = AR_CLARedm_Others.objects.filter(formId=request.data['formId']).values()
-            AR_DLARedm_Data = AR_DLARedm_Others.objects.filter(formId=request.data['formId']).values()
+            AI_Others_Data = AI_Others.objects.filter(formId=request.data['formId']).values()
 
             return Response(
                 {
                     'message': "Form Already Exists",
                     "code": "200", 
                     "formData" : data, 
-                    "ProductTaken" : ProductsTaken
+                    "ProductTaken" : ProductsTaken,
+                    "AI_Others_Data" : AI_Others_Data,
                 },200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
     return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
@@ -877,7 +876,10 @@ def updateAssuranceInvestmentData(request):
 # Assurance Risk
 @api_view(['POST'])
 def insertAssuranceRiskData(request):
-    serializer = AssuranceRiskSerializers(data=request.data, many=False)
+    newData = request.data
+    rfData = RiskFactors.objects.filter(id=request.data['formId']).values().first()
+    newData['AR_BusinessFinancialAdvisor'] = rfData['RF_CompleteByName']
+    serializer = AssuranceRiskSerializers(data=newData, many=False)
     if serializer.is_valid():
         old_form = AssuranceRisk.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
         # old_form = RiskPlanning.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId'],clientIdNumber = request.data['clientIdNumber']).first()
@@ -937,7 +939,9 @@ def insertAssuranceRiskData(request):
                     "AR_DLARedm_Data" : AR_DLARedm_Data,
                 },200)
         #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
-    return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
+    else:
+        print(serializer.errors)
+        return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
 
     
 
@@ -979,6 +983,7 @@ def insertEmployeeBenefitsData(request):
     rfData = RiskFactors.objects.filter(id=request.data['formId']).values().first()
     newData['EB_ClientName'] = rfData['RF_ClientName']
     newData['EB_ClientIdNumber'] = rfData['RF_ClientId']
+    newData['EB_ClientFinancialAdvisor'] = rfData['RF_CompleteByName']
     serializer = EmployeeBenefitsSerializers(data=newData, many=False)
     if serializer.is_valid():
         old_form = EmployeeBenefits.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
@@ -1207,6 +1212,7 @@ def insertMedicalData(request):
     newData = request.data
     rfData = RiskFactors.objects.filter(id=request.data['formId']).values().first()
     newData['MSA_ClientIdNumber'] = rfData['RF_ClientId']
+    newData['MSA_Advisor'] = rfData['RF_CompleteByName']
     serializer = MedicalSerializers(data=newData, many=False)
     if serializer.is_valid():
         old_form = Medical.objects.filter(advisorId = request.data['advisorId'],formId = request.data['formId']).first()
@@ -2321,3 +2327,14 @@ def update_AR_DLARedm_Others_Data(request):
     else:
         print(AR_DLARedm_serializer.errors)
     return Response({"message": "Updated","code":200,"formData": AR_DLARedm_data},200)
+
+@api_view(['POST'])
+def update_AI_Others_Data(request):
+    AI_Others_data = request.data['AI_Others_data']
+    AI_Others.objects.filter(formId=request.data['formId']).delete()
+    AI_serializer = AI_Others_Serializer(data=AI_Others_data, many=True)
+    if AI_serializer.is_valid():
+        AI_serializer.create(AI_serializer.validated_data)
+    else:
+        print(AI_serializer.errors)
+    return Response({"message": "Updated","code":200,"formData": AI_Others_data},200)

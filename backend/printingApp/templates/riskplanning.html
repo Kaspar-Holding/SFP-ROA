@@ -1,3 +1,4 @@
+{% load intlib %}
 <b class="header">Risk</b>
         <br/>
         <div style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 14px;;  '>
@@ -40,7 +41,7 @@
                     <span>R {{RP.RP_DC_LumpSumExistingProvisions}}</span>
                 </div>
                 <div class="column32">
-                    <span>R {{RP.RP_DC_LumpSumExistingShortfallSurplus}}</span>
+                    <span>R {{RP.RP_DC_LumpSumTotalNeed|subtract:RP.RP_DC_LumpSumExistingProvisions}}</span>
                 </div>
                 <div class="column32">
                     <span>R {{RP.RP_DC_LumpSumInvestments}}</span>
@@ -58,7 +59,7 @@
                     <span>R {{RP.RP_DC_IncomeExistingProvisions}}</span>
                 </div>
                 <div class="column32">
-                    <span>R {{RP.RP_DC_IncomeExistingShortfallSurplus}}</span>
+                    <span>R {{RP.RP_DC_IncomeTotalNeed|subtract:RP.RP_DC_IncomeExistingProvisions}}</span>
                 </div>
                 <div class="column32">
                     <span>R {{RP.RP_DC_IncomeInvestments}}</span>
@@ -76,7 +77,7 @@
                     <span>R {{RP.RP_DC_FB_ExistingProvisions}}</span>
                 </div>
                 <div class="column32">
-                    <span>R {{RP.RP_DC_FB_ExistingShortfallSurplus}}</span>
+                    <span>R {{RP.RP_DC_FB_TotalNeed|subtract:RP.RP_DC_FB_ExistingProvisions}}</span>
                 </div>
                 <div class="column32">
                     <span>R {{RP.RP_DC_FB_Investments}}</span>
@@ -96,7 +97,7 @@
                             <span>R {{DC_Other.DC_OtherExistingProvisions}}</span>
                         </div>
                         <div class="column32">
-                            <span>R {{DC_Other.DC_OtherExistingShortfallSurplus}}</span>
+                            <span>R {{DC_Other.DC_OtherTotalNeed|subtract:DC_Other.DC_OtherExistingProvisions}}</span>
                         </div>
                         <div class="column32">
                             <span>R {{DC_Other.DC_OtherInvestments}}</span>
@@ -137,7 +138,7 @@
                     <span>R {{RP.RP_DiC_LumpSumExistingProvisions}}</span>
                 </div>
                 <div class="column32">
-                    <span>R {{RP.RP_DiC_LumpSumExistingShortfallSurplus}}</span>
+                    <span>R {{RP.RP_DiC_LumpSumTotalNeed|subtract:RP.RP_DiC_LumpSumExistingProvisions}}</span>
                 </div>
                 <div class="column32">
                     <span>R {{RP.RP_DiC_LumpSumInvestments}}</span>
@@ -155,7 +156,7 @@
                     <span>R {{RP.RP_DiC_PI_ExistingProvisions}}</span>
                 </div>
                 <div class="column32">
-                    <span>R {{RP.RP_DiC_PI_ExistingShortfallSurplus}}</span>
+                    <span>R {{RP.RP_DiC_PI_TotalNeed|subtract:RP.RP_DiC_PI_ExistingProvisions}}</span>
                 </div>
                 <div class="column32">
                     <span>R {{RP.RP_DiC_PI_Investments}}</span>
@@ -173,7 +174,7 @@
                     <span>R {{RP.RP_DiC_TI_ExistingProvisions}}</span>
                 </div>
                 <div class="column32">
-                    <span>R {{RP.RP_DiC_TI_ExistingShortfallSurplus}}</span>
+                    <span>R {{RP.RP_DiC_TI_TotalNeed|subtract:RP.RP_DiC_TI_ExistingProvisions}}</span>
                 </div>
                 <div class="column32">
                     <span>R {{RP.RP_DiC_TI_Investments}}</span>
@@ -191,7 +192,7 @@
                     <span>R {{RP.RP_DiC_SiB_ExistingProvisions}}</span>
                 </div>
                 <div class="column32">
-                    <span>R {{RP.RP_DiC_SiB_ExistingShortfallSurplus}}</span>
+                    <span>R {{RP.RP_DiC_SiB_TotalNeed|subtract:RP.RP_DiC_SiB_ExistingProvisions}}</span>
                 </div>
                 <div class="column32">
                     <span>R {{RP.RP_DiC_SiB_Investments}}</span>
@@ -212,7 +213,7 @@
                             <span>R {{DiC_Other.DiC_OtherExistingProvisions}}</span>
                         </div>
                         <div class="column32">
-                            <span>R {{DiC_Other.DiC_OtherExistingShortfallSurplus}}</span>
+                            <span>R {{DiC_Other.DiC_OtherTotalNeed|subtract:DiC_Other.DiC_OtherExistingProvisions}}</span>
                         </div>
                         <div class="column32">
                             <span>R {{DiC_Other.DiC_OtherInvestments}}</span>
@@ -253,7 +254,7 @@
                     <span>R {{RP.RP_DrC_LumpSumExistingProvisions}}</span>
                 </div>
                 <div class="column32">
-                    <span>R {{RP.RP_DrC_LumpSumExistingShortfallSurplus}}</span>
+                    <span>R {{RP.RP_DrC_LumpSumTotalNeed|subtract:RP.RP_DrC_LumpSumExistingProvisions}}</span>
                 </div>
                 <div class="column32">
                     <span>R {{RP.RP_DrC_LumpSumInvestments}}</span>
@@ -271,7 +272,7 @@
                     <span>R {{RP.RP_DrC_IncomeExistingProvisions}}</span>
                 </div>
                 <div class="column32">
-                    <span>R {{RP.RP_DrC_IncomeExistingShortfallSurplus}}</span>
+                    <span>R {{RP.RP_DrC_IncomeTotalNeed|subtract:RP.RP_DrC_IncomeExistingProvisions}}</span>
                 </div>
                 <div class="column32">
                     <span>R {{RP.RP_DrC_IncomeInvestments}}</span>
@@ -292,7 +293,7 @@
                             <span>R {{DrC_Other.DrC_OtherExistingProvisions}}</span>
                         </div>
                         <div class="column32">
-                            <span>R {{DrC_Other.DrC_OtherExistingShortfallSurplus}}</span>
+                            <span>R {{DrC_Other.DrC_OtherTotalNeed|subtract:DrC_Other.DrC_OtherExistingProvisions}}</span>
                         </div>
                         <div class="column32">
                             <span>R {{DrC_Other.DrC_OtherInvestments}}</span>

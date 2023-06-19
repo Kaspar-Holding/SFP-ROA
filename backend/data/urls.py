@@ -134,4 +134,5 @@ urlpatterns = [
     path('update_AR_BusOvProt_Others_Data/' , views.update_AR_BusOvProt_Others_Data, name="AR_BusOvProt_Others Data"),
     path('update_AR_CLARedm_Others_Data/' , views.update_AR_CLARedm_Others_Data, name="AR_CLARedm_Others Data"),
     path('update_AR_DLARedm_Others_Data/' , views.update_AR_DLARedm_Others_Data, name="AR_DLARedm_Others Data"),
+    path('update_AI_Others_Data/' , views.update_AI_Others_Data, name="AI_Others Data"),
 ]

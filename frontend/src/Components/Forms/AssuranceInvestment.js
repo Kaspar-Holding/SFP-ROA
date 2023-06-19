@@ -457,6 +457,7 @@ const AssuranceInvestment = ({user, LogOut}) =>
                 setFormData(response.data['formData'])
             }
             setProductTaken(response.data['ProductTaken'])
+            setAI_Others_Data(response.data['AI_Others_Data'])
             // if (response.data['ProductTaken'].length > 0) {
             // } else {
             //     setProductTaken([{
@@ -548,56 +549,72 @@ const AssuranceInvestment = ({user, LogOut}) =>
       const [SuccessMessage, setSuccessMessage] = useState("")
       const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
       const updateAIForm = async() => {
-          const config = {
-              headers: {
-                  'Content-Type' : 'application/json',
-                  'Accept' : 'application/json',
-                  'Authorization' : `JWT ${localStorage.getItem('access')}`
-              }
-          }
-          const Body = JSON.stringify(FormData)
-          try {
-              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_assurance_investment_data/`, Body ,config)
-              // console.log(response.data['formData'])
-            //   setFormData(response.data['formData'])
-              setSuccessMessage("BA Investment data is successfully updated")
-              setSuccessMessageVisibility("block")
-              setTimeout(() => {
-                setSuccessMessageVisibility("none")
-              }, 5000)
-              // setSubmissionMessageVisibility("block")
-          } catch (error) {
-              console.log(error)
-              if (error.response.status === 401){
-                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+            const config = {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Accept' : 'application/json',
+                    'Authorization' : `JWT ${localStorage.getItem('access')}`
+                }
+            }
+            const Body = JSON.stringify(FormData)
+            try {
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_assurance_investment_data/`, Body ,config)
+                // console.log(response.data['formData'])
+                //   setFormData(response.data['formData'])
+                setSuccessMessage("BA Investment data is successfully updated")
                 setSuccessMessageVisibility("block")
                 setTimeout(() => {
-                  setSuccessMessageVisibility("none")
-                  LogOut()
+                    setSuccessMessageVisibility("none")
                 }, 5000)
-              }
-              setUpdateErrorData({
-                status: error.response.status,
-                message: error.response.statusText
-              })
-              setUpdateErrorVisibility("block")
-          }
-          const ProductTaken_Body = JSON.stringify({
-            "formId" : state['formId'],
-            "ai_data" : ProductTaken
-          })
-          try {
-              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_ai_ProductTaken_Data/`, ProductTaken_Body ,config) 
-          } catch (error) {
-            if (error.response.status === 401){
-                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
-                setSuccessMessageVisibility("block")
-                setTimeout(() => {
-                  setSuccessMessageVisibility("none")
-                  LogOut()
-                }, 5000)
-              }
-          }
+                // setSubmissionMessageVisibility("block")
+            } catch (error) {
+                console.log(error)
+                if (error.response.status === 401){
+                    setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                    setSuccessMessageVisibility("block")
+                    setTimeout(() => {
+                    setSuccessMessageVisibility("none")
+                    LogOut()
+                    }, 5000)
+                }
+                setUpdateErrorData({
+                    status: error.response.status,
+                    message: error.response.statusText
+                })
+                setUpdateErrorVisibility("block")
+            }
+            const ProductTaken_Body = JSON.stringify({
+                "formId" : state['formId'],
+                "ai_data" : ProductTaken
+            })
+            try {
+                await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_ai_ProductTaken_Data/`, ProductTaken_Body ,config) 
+            } catch (error) {
+                if (error.response.status === 401){
+                    setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                    setSuccessMessageVisibility("block")
+                    setTimeout(() => {
+                    setSuccessMessageVisibility("none")
+                    LogOut()
+                    }, 5000)
+                }
+            }
+            const AI_other_Body = JSON.stringify({
+                "formId" : state['formId'],
+                "AI_Others_data" : AI_Others_Data
+            })
+            try {
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_AI_Others_Data/`, AI_other_Body ,config) 
+            } catch (error) {
+                if (error.response.status === 401){
+                    setSuccessMessage("Login time out, You will be logged out in 5 seconds")
+                    setSuccessMessageVisibility("block")
+                    setTimeout(() => {
+                    setSuccessMessageVisibility("none")
+                    LogOut()
+                    }, 5000)
+                }
+            }
       }
       const onSubmit = e => {
           e.preventDefault()
@@ -608,6 +625,36 @@ const AssuranceInvestment = ({user, LogOut}) =>
           updateAIForm()
           // window.location.reload();
       }
+
+      // Add New BnS Other
+        const [AI_Others_Data, setAI_Others_Data] = useState([])
+        const AddNewAI_Others_Data = (e) => {
+            const current = [...AI_Others_Data]
+            current.push({
+                advisorId : state['advisor']['id'],  
+                formId : state['formId'],  
+                
+                
+                AI_Other : "",    
+                AI_Other_TotalNeed : "",    
+                AI_Other_ExistingProvisions : "",    
+                AI_Other_ExistingShortfallSurplus : "",    
+                AI_Other_ExistingInvestments : "",        
+            })
+            setAI_Others_Data(current)
+        }
+        const RemoveNewAI_Others_Data = (e) => {
+            const current = [...AI_Others_Data]
+            current.pop()
+            setAI_Others_Data(current)
+        }
+        const on_AI_Others_Data_Change = (e, i) => {
+            let newAI_Others_Data = [...AI_Others_Data]
+            newAI_Others_Data[i][e.target.name] = e.target.value
+            setAI_Others_Data(newAI_Others_Data)
+        }
+        // End New BnS Other
+
       useEffect(() => {
         if (state['formId']){
             createAIForm(FormData)
@@ -1063,7 +1110,7 @@ const AssuranceInvestment = ({user, LogOut}) =>
 
       <td>
         <div className="form-group">
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="AI_TRP_ExistingShortfallSurplus" name='AI_TRP_ExistingShortfallSurplus' value={FormData['AI_TRP_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="AI_TRP_ExistingShortfallSurplus" name='AI_TRP_ExistingShortfallSurplus' value={FormData['AI_TRP_TotalNeed'] - FormData['AI_TRP_ExistingProvisions']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
@@ -1090,7 +1137,7 @@ const AssuranceInvestment = ({user, LogOut}) =>
 
       <td>
         <div className="form-group">
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="AI_RA_ExistingShortfallSurplus" name='AI_RA_ExistingShortfallSurplus' value={FormData['AI_RA_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="AI_RA_ExistingShortfallSurplus" name='AI_RA_ExistingShortfallSurplus' value={FormData['AI_RA_TotalNeed'] - FormData['AI_RA_ExistingProvisions']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
@@ -1117,7 +1164,7 @@ const AssuranceInvestment = ({user, LogOut}) =>
 
       <td>
         <div className="form-group">
-            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="AI_CR_ExistingShortfallSurplus" name='AI_CR_ExistingShortfallSurplus' value={FormData['AI_CR_ExistingShortfallSurplus']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
+            <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="AI_CR_ExistingShortfallSurplus" name='AI_CR_ExistingShortfallSurplus' value={FormData['AI_CR_TotalNeed'] - FormData['AI_CR_ExistingProvisions']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
 
@@ -1128,7 +1175,7 @@ const AssuranceInvestment = ({user, LogOut}) =>
       </td>
     </tr>
 
-    <tr>
+    {/* <tr>
       <td style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
         <div className="form-group">
               <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='AI_Other' value={FormData['AI_Other']} onChange={(e) => {onChange(e)}} placeholder="Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -1157,10 +1204,98 @@ const AssuranceInvestment = ({user, LogOut}) =>
             <input onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="AI_Other_ExistingInvestments" name='AI_Other_ExistingInvestments' value={FormData['AI_Other_ExistingInvestments']} onChange={(e) => {onChange(e)}} aria-describedby="emailHelp" placeholder="R 0.0"/>
         </div>
       </td>
-    </tr>
+    </tr> */}
     </tbody>
-</table>
+    </table>
+    {
+  AI_Others_Data.length === 0 ?
+    <div className="col-6">
+      <button className= { 
+            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+            : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+            : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+            : "btn btn-primary sfp "
+        } type='button' onClick={(e)=>{AddNewAI_Others_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+    </div>
+  :<></>
+}
+    <p><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+<table className="table">
+  <tbody>
+{
+  AI_Others_Data.length > 0 ?
+  AI_Others_Data.map((key,i) => {
+    // console.log(i+1)
+      return (
+        <>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              {
+                AI_Others_Data.length === i + 1?
+                <button className= { 
+                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp " 
+                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p " 
+                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam " 
+                    : "btn btn-primary sfp "
+                } type='button' onClick={(e)=>{AddNewAI_Others_Data(e)}}><FontAwesomeIcon icon={faPlus} /> Add Other</button>
+                : <></>
+              }
+            </td>
+            <td className="col"></td>
 
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <button className= { 
+                  user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-danger sfp " 
+                  : user['email'].includes('fs4p') ? "btn btn-danger fs4p " 
+                  : user['email'].includes('sanlam') ? "btn btn-danger sanlam " 
+                  : "btn btn-danger sfp "
+              } type='button' onClick={(e)=>{RemoveNewAI_Others_Data(e)}}><FontAwesomeIcon icon={faMinus} /> Remove Other Cover</button>
+
+            </td>
+            <td className="col"></td>
+            <td className="col"></td>
+          </tr>
+          <tr>
+            <td className="col" style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">
+              <div className="form-group">
+                  <input onBlur={(e)=>{onFieldBlur(e)}} type="text"  name='AI_Other' value={key['AI_Other']} maxLength={500} onChange={(e) => {on_AI_Others_Data_Change(e, i)}} placeholder="AI_Other" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              </div>
+            </td>
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['AI_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='AI_Other_TotalNeed' value={key['AI_Other_TotalNeed']} onChange={(e) => {on_AI_Others_Data_Change(e, i)}} placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['AI_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='AI_Other_ExistingProvisions' value={key['AI_Other_ExistingProvisions']} onChange={(e) => {on_AI_Others_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['AI_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='AI_Other_ExistingShortfallSurplus' value={key['AI_Other_TotalNeed'] - key['AI_Other_ExistingProvisions']} onChange={(e) => {on_AI_Others_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+
+            <td className="col">
+              <div className="input-group">
+                <span className="input-group-text">R</span>
+                <input disabled={key['AI_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='AI_Other_ExistingInvestments' value={key['AI_Other_ExistingInvestments']} onChange={(e) => {on_AI_Others_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+              </div>
+            </td>
+          </tr>
+        </>
+      )
+  })
+  :<></>
+}
+  </tbody>
+</table>
 <br/>
 <h5 className="section_class"><b>SECTION C:</b></h5>
     <div className={

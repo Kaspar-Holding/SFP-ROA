@@ -12,6 +12,10 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 09 June 2023:
+- 2273: (Medical) Financial Advisor field is disabled is now in Ready for QA 
+- 2274: (Medical) The medical form does not appear in the PDF form is now in Ready for QA 
+
 ### 08 June 2023:
 - 2305: Bugs are now completed 
 

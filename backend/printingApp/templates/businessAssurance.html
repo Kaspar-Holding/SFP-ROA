@@ -171,7 +171,7 @@
                 <span>R {{BA_Investment.AI_TRP_ExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Investment.AI_TRP_ExistingShortfallSurplus}}</span>
+                <span>R {{BA_Investment.AI_TRP_TotalNeed|subtract:BA_Investment.AI_TRP_ExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Investment.AI_TRP_ExistingInvestments}}</span>
@@ -189,7 +189,7 @@
                 <span>R {{BA_Investment.AI_RA_ExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Investment.AI_RA_ExistingShortfallSurplus}}</span>
+                <span>R {{BA_Investment.AI_RA_TotalNeed|subtract:BA_Investment.AI_RA_ExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Investment.AI_RA_ExistingInvestments}}</span>
@@ -207,14 +207,14 @@
                 <span>R {{BA_Investment.AI_CR_ExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Investment.AI_CR_ExistingShortfallSurplus}}</span>
+                <span>R {{BA_Investment.AI_CR_TotalNeed|subtract:BA_Investment.AI_CR_ExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Investment.AI_CR_ExistingInvestments}}</span>
             </div>                                    
         </div>
         <hr/>
-        {% if BA_Investment.AI_Other %}
+        {% comment %} {% if BA_Investment.AI_Other %}
             <div class='row1 div'>
                 <div class="column31">
                     <b>Other: {{BA_Investment.AI_Other}}</b>
@@ -232,6 +232,28 @@
                     <span>R {{BA_Investment.AI_Other_ExistingInvestments}}</span>
                 </div>                                    
             </div>
+        {% endif %} {% endcomment %}
+        {% if BA_Investment.AI_Others_Data %}
+            {% for AI_Others in BA_Investment.AI_Others_Data %}
+                <div class='row1 div'>
+                    <div class="column31">
+                        <b>Other: {{AI_Others.AI_Other}}</b>
+                    </div>
+                    <div class="column32">
+                        <span>R {{AI_Others.AI_Other_TotalNeed}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{AI_Others.AI_Other_ExistingProvisions}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{AI_Others.AI_Other_TotalNeed|subtract:AI_Others.AI_Other_ExistingProvisions}}</span>
+                    </div>
+                    <div class="column32">
+                        <span>R {{AI_Others.AI_Other_ExistingInvestments}}</span>
+                    </div>                                    
+                </div>
+                <hr/>            
+            {% endfor %}
         {% endif %}
         <hr/>            
         <b style='font-size: 18px'>SECTION C:</b>
@@ -909,7 +931,7 @@
 
                     <p>
                         <b>Liquidity:</b><br/> 
-                        In the first five years of this investment your access to your funds are restricted. During this period access is limited to one partial withdrawal or a full surrender or a loan subject to penalties.
+                        In the first five years of this investment your access to your funds are restricted. During this period access is limited to one partial withdrawal or a full surrender or a loan subtract to penalties.
                     </p>
 
                     <p>
@@ -928,7 +950,7 @@
 
                     <p>
                         <b>Gurantees:</b><br/>
-                        The product does not offer any guarantees. Invested funds will be subject to market fluctuations and may be exposed to capital losses 
+                        The product does not offer any guarantees. Invested funds will be subtract to market fluctuations and may be exposed to capital losses 
                     </p>
 
                     <p>
@@ -958,16 +980,16 @@
                     
                     
                         <p><b>Tax Implications:</b><br/>
-                        There are significant tax benefits afforded to RA investors. You are permitted to deduct up to 27.5% of your annual taxable incomes (subject to  R350 000 per year maximum). Contributions in excess of this amount may deducted in the following tax year or at retirement. In addition to this, no income tax or capital gain tax is charged on the investment returns within an RA. Also, the funds housed in your RA do not form part of your estate, which means that this money will not be subject to executors fees or estate duty (except the excess contributions made). At retirement, you will be permitted to withdraw up to 1/3 of the value of the retirement annuity(s) of which the first R500 000 of the total withdrawal is tax-free subject to there being no previous withdrawals from any retirement fund.</p>
+                        There are significant tax benefits afforded to RA investors. You are permitted to deduct up to 27.5% of your annual taxable incomes (subtract to  R350 000 per year maximum). Contributions in excess of this amount may deducted in the following tax year or at retirement. In addition to this, no income tax or capital gain tax is charged on the investment returns within an RA. Also, the funds housed in your RA do not form part of your estate, which means that this money will not be subtract to executors fees or estate duty (except the excess contributions made). At retirement, you will be permitted to withdraw up to 1/3 of the value of the retirement annuity(s) of which the first R500 000 of the total withdrawal is tax-free subtract to there being no previous withdrawals from any retirement fund.</p>
                         
                         <p><b>Liquidity:</b><br/>
-                        You will only be able to access the funds from age 55 onwards, subject to formal emigration from South Africa after a period of 3 years or at early retirement due to permanent disability.</p>
+                        You will only be able to access the funds from age 55 onwards, subtract to formal emigration from South Africa after a period of 3 years or at early retirement due to permanent disability.</p>
 
                         <p><b>Termination Penalties:</b><br/>
                         Planner disclose as per the product</p>
                         
                         <p><b>Gurantees:</b><br/>
-                        The product does not offer any guarantees. Invested funds will be subject to market fluctuations and may be exposed to capital losses.</p>
+                        The product does not offer any guarantees. Invested funds will be subtract to market fluctuations and may be exposed to capital losses.</p>
 
                         <p><b>Legislative Restrictions:</b><br/>
                         At retirement you have the option to withdraw 1/3 of the investment in cash. The remaining two-thirds must be used to purchase a pension income to sustain you during retirement. Alternatively you may choose to purchase an income with the full amount. Retirement annuity withdrawals are taxed according to the retirement lumpsum tax tables</p>
@@ -1001,7 +1023,7 @@
 
                     <p>
                         <b>Gurantees:</b><br/>
-                        The product does not offer any guarantees. Invested funds will be subject to market fluctuations and may be exposed to capital losses.
+                        The product does not offer any guarantees. Invested funds will be subtract to market fluctuations and may be exposed to capital losses.
                     </p>
 
                     <p>
@@ -1038,7 +1060,7 @@
     
                     <p>
                         <b>Gurantees:</b><br/>
-                        The product does not offer any guarantees. Invested funds will be subject to market fluctuations and may be exposed to capital losses.
+                        The product does not offer any guarantees. Invested funds will be subtract to market fluctuations and may be exposed to capital losses.
                     </p>
                     
                     <p>
@@ -1085,7 +1107,7 @@
                     <p>
                         <b>At Death</b><br/>
                         Single Life: If you have selecetd the single life option the income paid out on this investment will cease in the event of your death, the product does not have a death benefit this means no funds will be paid out.<br/><br/>
-                        Joint Life : If you have selected the joint life option it means you have elecetd to have two life assured on the product. In the event of the 1st life assureds death the income will continue paying out to the second life assured, the income paid out to the second life assured maybe reduced subject to the option you have selected. At the death of the second life assured income will cease and no death benefit will be paid out.<br/><br/>
+                        Joint Life : If you have selected the joint life option it means you have elecetd to have two life assured on the product. In the event of the 1st life assureds death the income will continue paying out to the second life assured, the income paid out to the second life assured maybe reduced subtract to the option you have selected. At the death of the second life assured income will cease and no death benefit will be paid out.<br/><br/>
                         Guarantee Period : In the event that you have seleceted a guarantee period this means that in the event of your death or the death of both life assured in the case of a joint life within the guarantee period the income on this investment will continue to pay to your nominated beneficiary until the end of the guarantee period.
 
                     </p>
@@ -1112,7 +1134,7 @@
 
                     <p>
                         <b>Gurantees:</b><br/>
-                        The product does not offer any guarantees, invested funds will be subject to markert fluctuations and pontential capital losses
+                        The product does not offer any guarantees, invested funds will be subtract to markert fluctuations and pontential capital losses
                     </p>
 
                     <p>

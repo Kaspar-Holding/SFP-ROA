@@ -1983,7 +1983,7 @@ const AssuranceRisk = ({user, LogOut}) =>
             <td className="col">
               <div className="input-group">
                 <span className="input-group-text">R</span>
-                <input disabled={FormData['BnS_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BnS_OtherInvestments' value={key['BnS_OtherInvestments']} onChange={(e) => {on_AR_BnS_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                <input disabled={key['BnS_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BnS_OtherInvestments' value={key['BnS_OtherInvestments']} onChange={(e) => {on_AR_BnS_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
               </div>
             </td>
           </tr>
@@ -2286,7 +2286,7 @@ const AssuranceRisk = ({user, LogOut}) =>
             <td className="col">
               <div className="input-group">
                 <span className="input-group-text">R</span>
-                <input disabled={FormData['KeyP_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='KeyP_OtherInvestments' value={key['KeyP_OtherInvestments']} onChange={(e) => {on_AR_KeyP_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                <input disabled={key['KeyP_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='KeyP_OtherInvestments' value={key['KeyP_OtherInvestments']} onChange={(e) => {on_AR_KeyP_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
               </div>
             </td>
           </tr>
@@ -2524,7 +2524,7 @@ const AssuranceRisk = ({user, LogOut}) =>
             <td className="col">
               <div className="input-group">
                 <span className="input-group-text">R</span>
-                <input disabled={FormData['SureNLia_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='SureNLia_OtherInvestments' value={key['SureNLia_OtherInvestments']} onChange={(e) => {on_AR_SureNLia_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                <input disabled={key['SureNLia_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='SureNLia_OtherInvestments' value={key['SureNLia_OtherInvestments']} onChange={(e) => {on_AR_SureNLia_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
               </div>
             </td>
           </tr>
@@ -2764,7 +2764,7 @@ const AssuranceRisk = ({user, LogOut}) =>
             <td className="col">
               <div className="input-group">
                 <span className="input-group-text">R</span>
-                <input disabled={FormData['BusOvProt_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BusOvProt_OtherInvestments' value={key['BusOvProt_OtherInvestments']} onChange={(e) => {on_AR_BusOvProt_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                <input disabled={key['BusOvProt_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='BusOvProt_OtherInvestments' value={key['BusOvProt_OtherInvestments']} onChange={(e) => {on_AR_BusOvProt_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
               </div>
             </td>
           </tr>
@@ -3003,7 +3003,7 @@ const AssuranceRisk = ({user, LogOut}) =>
             <td className="col">
               <div className="input-group">
                 <span className="input-group-text">R</span>
-                <input disabled={FormData['CLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='CLARedm_OtherInvestments' value={key['CLARedm_OtherInvestments']} onChange={(e) => {on_AR_CLARedm_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                <input disabled={key['CLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='CLARedm_OtherInvestments' value={key['CLARedm_OtherInvestments']} onChange={(e) => {on_AR_CLARedm_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
               </div>
             </td>
           </tr>
@@ -3210,7 +3210,7 @@ const AssuranceRisk = ({user, LogOut}) =>
             <td className="col">
               <div className="input-group">
                 <span className="input-group-text">R</span>
-                <input disabled={FormData['DLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DLARedm_OtherInvestments' value={key['DLARedm_OtherInvestments']} onChange={(e) => {on_AR_DLARedm_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
+                <input disabled={key['DLARedm_Other'] === ""} onBlur={(e)=>{onFieldBlur(e)}} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='DLARedm_OtherInvestments' value={key['DLARedm_OtherInvestments']} onChange={(e) => {on_AR_DLARedm_Data_Change(e, i)}}  placeholder='0.00' aria-label="" />
               </div>
             </td>
           </tr>

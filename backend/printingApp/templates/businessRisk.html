@@ -1,4 +1,4 @@
-
+{% load intlib %}
 <b class="header">BUSINESS ASSURANCE</b>
 <hr/>
 <div style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 15px;;  '>
@@ -587,7 +587,7 @@
                 <span>R {{BA_Risk.AR_BnS_DC_Provisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_BnS_DC_ShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_BnS_DC_TotalNeed|subtract:BA_Risk.AR_BnS_DC_Provisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_BnS_DC_Investments}}</span>
@@ -605,7 +605,7 @@
                 <span>R {{BA_Risk.AR_BnS_DiC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_BnS_DiC_ExistingShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_BnS_DiC_TotalNeed|subtract:BA_Risk.AR_BnS_DiC_Provisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_BnS_DiC_Investments}}</span>
@@ -626,7 +626,7 @@
                         <span>R {{BnS_Other.BnS_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
-                        <span>R {{BnS_Other.BnS_OtherExistingShortfallSurplus}}</span>
+                        <span>R {{BnS_Other.BnS_OtherTotalNeed|subtract:BnS_Other.BnS_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
                         <span>R {{BnS_Other.BnS_OtherInvestments}}</span>
@@ -668,7 +668,7 @@
                 <span>R {{BA_Risk.AR_KeyP_DC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_KeyP_DC_ExistingShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_KeyP_DC_TotalNeed|subtract:BA_Risk.AR_KeyP_DC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_KeyP_DC_Investments}}</span>
@@ -686,7 +686,7 @@
                 <span>R {{BA_Risk.AR_KeyP_DiC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_KeyP_DiC_ExistingShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_KeyP_DiC_TotalNeed|subtract:BA_Risk.AR_KeyP_DiC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_KeyP_DiC_Investments}}</span>
@@ -704,7 +704,7 @@
                 <span>R {{BA_Risk.AR_KeyP_TI_CoverExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_KeyP_TI_CoverExistingShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_KeyP_TI_CoverTotalNeed|subtract:BA_Risk.AR_KeyP_TI_CoverExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_KeyP_TI_CoverInvestments}}</span>
@@ -722,7 +722,7 @@
                 <span>R {{BA_Risk.AR_KeyP_PI_CoverExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_KeyP_PI_CoverExistingShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_KeyP_PI_CoverTotalNeed|subtract:BA_Risk.AR_KeyP_PI_CoverExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_KeyP_PI_CoverInvestments}}</span>
@@ -743,7 +743,7 @@
                         <span>R {{KeyP_Other.KeyP_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
-                        <span>R {{KeyP_Other.KeyP_OtherExistingShortfallSurplus}}</span>
+                        <span>R {{KeyP_Other.KeyP_OtherTotalNeed|subtract:KeyP_Other.KeyP_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
                         <span>R {{KeyP_Other.KeyP_OtherInvestments}}</span>
@@ -784,7 +784,7 @@
                 <span>R {{BA_Risk.AR_SureNLia_DC_Provisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_SureNLia_DC_ShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_SureNLia_DC_TotalNeed|subtract:BA_Risk.AR_SureNLia_DC_Provisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_SureNLia_DC_Investments}}</span>
@@ -802,7 +802,7 @@
                 <span>R {{BA_Risk.AR_SureNLia_DiC_Provisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_SureNLia_DiC_ShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_SureNLia_DiC_TotalNeed|subtract:BA_Risk.AR_SureNLia_DiC_Provisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_SureNLia_DiC_Investments}}</span>
@@ -823,7 +823,7 @@
                         <span>R {{SureNLia_Other.SureNLia_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
-                        <span>R {{SureNLia_Other.SureNLia_OtherExistingShortfallSurplus}}</span>
+                        <span>R {{SureNLia_Other.SureNLia_OtherTotalNeed|subtract:SureNLia_Other.SureNLia_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
                         <span>R {{SureNLia_Other.SureNLia_OtherInvestments}}</span>
@@ -864,7 +864,7 @@
                 <span>R {{BA_Risk.AR_BusOvProt_TI_CoverExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_BusOvProt_TI_CoverExistingShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_BusOvProt_TI_CoverTotalNeed|subtract:BA_Risk.AR_BusOvProt_TI_CoverExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_BusOvProt_TI_CoverInvestments}}</span>
@@ -882,7 +882,7 @@
                 <span>R {{BA_Risk.AR_BusOvProt_PI_CoverExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_BusOvProt_PI_CoverExistingShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_BusOvProt_PI_CoverTotalNeed|subtract:BA_Risk.AR_BusOvProt_PI_CoverExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_BusOvProt_PI_CoverInvestments}}</span>
@@ -902,7 +902,7 @@
                         <span>R {{BusOvProt_Other.BusOvProt_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
-                        <span>R {{BusOvProt_Other.BusOvProt_OtherExistingShortfallSurplus}}</span>
+                        <span>R {{BusOvProt_Other.BusOvProt_OtherTotalNeed|subtract:BusOvProt_Other.BusOvProt_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
                         <span>R {{BusOvProt_Other.BusOvProt_OtherInvestments}}</span>
@@ -945,7 +945,7 @@
                 <span>R {{BA_Risk.AR_CLARedm_DC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_CLARedm_DC_ExistingShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_CLARedm_DC_TotalNeed|subtract:BA_Risk.AR_CLARedm_DC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_CLARedm_DC_Investments}}</span>
@@ -963,7 +963,7 @@
                 <span>R {{BA_Risk.AR_CLARedm_DiC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_CLARedm_DiC_ExistingShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_CLARedm_DiC_TotalNeed|subtract:BA_Risk.AR_CLARedm_DiC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_CLARedm_DiC_Investments}}</span>
@@ -984,7 +984,7 @@
                         <span>R {{CLARedm_Other.CLARedm_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
-                        <span>R {{CLARedm_Other.CLARedm_OtherExistingShortfallSurplus}}</span>
+                        <span>R {{CLARedm_Other.CLARedm_OtherTotalNeed|subtract:CLARedm_Other.CLARedm_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
                         <span>R {{CLARedm_Other.CLARedm_OtherInvestments}}</span>
@@ -1013,7 +1013,7 @@
                 <span>R {{BA_Risk.AR_DLARedm_DC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_DLARedm_DC_ExistingShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_DLARedm_DC_TotalNeed|subtract:BA_Risk.AR_DLARedm_DC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_DLARedm_DC_Investments}}</span>
@@ -1031,7 +1031,7 @@
                 <span>R {{BA_Risk.AR_DLARedm_DiC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
-                <span>R {{BA_Risk.AR_DLARedm_DiC_ExistingShortfallSurplus}}</span>
+                <span>R {{BA_Risk.AR_DLARedm_DiC_TotalNeed|subtract:BA_Risk.AR_DLARedm_DiC_ExistingProvisions}}</span>
             </div>
             <div class="column32">
                 <span>R {{BA_Risk.AR_DLARedm_DiC_Investments}}</span>
@@ -1051,7 +1051,7 @@
                         <span>R {{DLARedm_Other.DLARedm_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
-                        <span>R {{DLARedm_Other.DLARedm_OtherExistingShortfallSurplus}}</span>
+                        <span>R {{DLARedm_Other.DLARedm_OtherTotalNeed|subtract:DLARedm_Other.DLARedm_OtherExistingProvisions}}</span>
                     </div>
                     <div class="column32">
                         <span>R {{DLARedm_Other.DLARedm_OtherInvestments}}</span>

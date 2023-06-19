@@ -1,7 +1,7 @@
 
 from datetime import datetime, timezone
 from rest_framework import serializers
-from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, Risk_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, STIC_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
+from .models import AI_Others, AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, Risk_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, STIC_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
 from .models import Medical, STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
 from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_PersonalLL, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
 from .models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others
@@ -1728,6 +1728,7 @@ class MedicalSerializers(serializers.ModelSerializer):
         instance.MSA_ClientIdNumber = validated_data.get("MSA_ClientIdNumber", instance.MSA_ClientIdNumber)
         instance.MSA_ClientAddress = validated_data.get("MSA_ClientAddress", instance.MSA_ClientAddress)
         instance.MSA_ClientEmail = validated_data.get("MSA_ClientEmail", instance.MSA_ClientEmail)
+        instance.MSA_Advisor = validated_data.get("MSA_Advisor", instance.MSA_Advisor)
         instance.MSA_ClientPhone = validated_data.get("MSA_ClientPhone", instance.MSA_ClientPhone)
         instance.MSA_ClientDate = validated_data.get("MSA_ClientDate", instance.MSA_ClientDate)
 
@@ -4416,3 +4417,11 @@ class AR_DLARedm_Others_Serializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return AR_DLARedm_Others.objects.create(**validated_data)
+
+class AI_Others_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = AI_Others
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return AI_Others.objects.create(**validated_data)

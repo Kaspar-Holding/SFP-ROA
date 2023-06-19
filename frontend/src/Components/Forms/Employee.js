@@ -530,7 +530,7 @@ const Employee = ({user, LogOut}) =>
                                   <label htmlFor="advisor" className="col-form-label"><b>Financial Advisor:</b></label>
                                   </div>
                                   <div className="col-6">
-                                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="EB_ClientFinancialAdvisor" name="EB_ClientFinancialAdvisor" onChange={(e)=>{onChange(e)}} value={FormData['EB_ClientFinancialAdvisor']} className="form-control" placeholder="Primary Intermediary’s name"  aria-describedby="" />
+                                  <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="EB_ClientFinancialAdvisor" name="EB_ClientFinancialAdvisor" disabled onChange={(e)=>{onChange(e)}} value={FormData['EB_ClientFinancialAdvisor']} className="form-control" placeholder="Primary Intermediary’s name"  aria-describedby="" />
                                   </div>
                               </div>
                           </div>

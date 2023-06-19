@@ -7,7 +7,7 @@ from data.models import STIC_Sec_Fire, STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_
 from data.models import STIP_Loss, STIC_Loss, EB_Cover, IP_ProductTaken, AR_ProductTaken, AI_ProductTaken, RP_ProductTaken, RF_LinkedParty, RiskFactors, Form, UserAccount, AssuranceRisk, RiskPlanning, GapCover, Medical, Fiduciary, InvestmentPlanning, EmployeeBenefits, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, AssuranceInvestment
 from data.models import STIP_Sec_HC, STIP_Sec_Build, STIP_Sec_AddProp, STIP_Sec_PersonalLL, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
 from django.shortcuts import render, redirect, get_object_or_404
-from data.models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others
+from data.models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others, AI_Others
 
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -689,7 +689,7 @@ def wkhtmltopdfapi(request):
                 data['BA_Risk']['AR_BusinessTradeName'] == "" and   
                 data['BA_Risk']['AR_BusinessRegisteredName'] == "" and   
                 data['BA_Risk']['AR_BusinessAuthorisedPersons'] == "" and   
-                data['BA_Risk']['AR_BusinessFinancialAdvisor'] == "" and   
+                # data['BA_Risk']['AR_BusinessFinancialAdvisor'] == "" and   
                 data['BA_Risk']['AR_BusinessAddress'] == "" and   
                 data['BA_Risk']['AR_BusinessEmail'] == "" and   
                 data['BA_Risk']['AR_BusinessPhoneNumber'] == "" and   
@@ -883,6 +883,8 @@ def wkhtmltopdfapi(request):
                 data['BA_Investment_status'] = False
             else: 
                 data['BA_Investment_status'] = True
+                if AI_Others.objects.filter(formId = data['id']).exists():
+                    data['BA_Investment']['AI_Others_Data'] = AI_Others.objects.filter(formId = data['id']).values()
                 if AI_ProductTaken.objects.filter(formId = data['id']).exists():
                     data['BA_Investment']['AI_ProductTaken_Data'] = AI_ProductTaken.objects.filter(formId = data['id']).values()
                     for row in data['BA_Investment']['AI_ProductTaken_Data']:
@@ -904,7 +906,7 @@ def wkhtmltopdfapi(request):
                 data['EB']['EB_ClientCellNumber'] == "" and
                 data['EB']['EB_ClientEmail'] == "" and
                 data['EB']['EB_ClientDate'] == "" and
-                data['EB']['EB_ClientFinancialAdvisor'] == "" and
+                # data['EB']['EB_ClientFinancialAdvisor'] == "" and
                 data['EB']['EB_ClientFeeDetails'] == "" and
                 data['EB']['EB_BusinessName'] == "" and
                 data['EB']['EB_BusinessAddress'] == "" and
