@@ -2983,7 +2983,7 @@ def wkhtmltopdfapi(request):
     template = get_template('pdfForm.html')
     cmd_options = {
       'page-size': 'A4',
-      'zoom': '0.78',
+      'zoom': '0.8',
       'viewport-size' : '1920x1080',
       'footer-center' : '[page]/[topage]',
       'dpi' : '600'
