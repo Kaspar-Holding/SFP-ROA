@@ -1880,7 +1880,7 @@ const Risk = ({user, LogOut}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Escalation in<br/>cover/premium</td>
                 <td>  
                   <div className="form-group">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_Escalation" name='Product_Escalation' value={key.Product_Escalation}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="Product_Escalation" name='Product_Escalation' value={key.Product_Escalation}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                   </div>
                 </td> 
                   <td></td> 
@@ -1900,7 +1900,7 @@ const Risk = ({user, LogOut}) =>
                 <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Life/Lives<br/>covered</td>
                 <td>  
                   <div className="form-group">
-                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_LivesAssured" name='Product_LivesAssured' value={key.Product_LivesAssured}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
+                      <input onBlur={(e)=>{onFieldBlur(e)}} type="text" className="form-control" id="Product_LivesAssured" name='Product_LivesAssured' value={key.Product_LivesAssured}  onChange={(e) => {on_ProductTaken_Change(e, i)}} aria-describedby="emailHelp" placeholder=""/>
                   </div>
                 </td> 
                   <td></td> 
