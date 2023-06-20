@@ -1689,7 +1689,7 @@ const Invest = ({user, LogOut}) =>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div className="row col-2 align-items-center">
                                 <div className="col-2">
-                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["SFPSolutionFunds"] == 0 ? true : false} onChange={(e) => {on_ProductTaken_Change(e, i)}} type="radio" value="0" id="SFPSolutionFunds" name="SFPSolutionFunds"/>
+                                    <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key.SFPSolutionFunds == 0 ? true : false} onChange={(e) => {on_ProductTaken_Change(e, i)}} type="radio" value="0" id="SFPSolutionFunds" name="SFPSolutionFunds"/>
                                 </div>
                                 <div className="col-2">
                                     <label className="form-check-label" htmlFor="provided_identity_radio_btn2" >
