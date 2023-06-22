@@ -1157,7 +1157,7 @@
                     </p>
                         
                 {% endif %}
-                {% if productTaken.Pr_Taken_id|to_int == 7 %}
+                {% if productTaken.Pr_Taken_id|to_int == 7 or productTaken.Pr_Taken_id|to_int == 0 %}
                     {% if productTaken.PF_MaterialAspects %}
                         <hr/>
                         <div class='row div'>          

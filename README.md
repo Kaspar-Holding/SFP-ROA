@@ -12,6 +12,10 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 22 June 2023:
+- Adivsor Field is now flexible and added in PDF as well
+- Section E of Investment Planning and BA Investment Bug is now resolved
+
 ### 09 June 2023:
 - 2273: (Medical) Financial Advisor field is disabled is now in Ready for QA 
 - 2274: (Medical) The medical form does not appear in the PDF form is now in Ready for QA 
