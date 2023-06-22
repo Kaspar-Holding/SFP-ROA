@@ -15,6 +15,8 @@ Deployed using Nginx and Gunicorn
 ### 22 June 2023:
 - Adivsor Field is now flexible and added in PDF as well
 - Section E of Investment Planning and BA Investment Bug is now resolved
+- 3.99% + VAT was changed to 3.5% + VAT
+- Helping material in Risk for Dread and Disability Cover had life instead of their respective name. It was updated as well.
 
 ### 09 June 2023:
 - 2273: (Medical) Financial Advisor field is disabled is now in Ready for QA 

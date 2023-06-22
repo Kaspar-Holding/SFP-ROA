@@ -1447,7 +1447,7 @@ const Risk = ({user, LogOut}) =>
         <p className="text-start"> No cash values are payable/accessible unless a specified event has occurred, i.e., the life event for which cover is taken; in which case the proceeds are payable tax-free. The premiums are not tax-deductible according to current legislation and loans against the policy are not permitted.</p>    
         <p className="text-start">Should the policy have an accelerator benefit attached, it means that upon a claim of that benefit the life cover amount will reduce by the claim amount. Standalone benefits are independent of the life cover, and you may claim without affecting the life cover amounts.</p>
         <p className="text-start"><u>Life Cover:</u></p>
-        <p className="text-start">Policies payable to the estate will attract executors’ fees at a maximum of 3.99% + VAT. Where there is a beneficiary the executors fees will not be levied. Executors’ fees are applicable to all assets in the estate of a client and the exemption only applies to policies with beneficiaries. </p>
+        <p className="text-start">Policies payable to the estate will attract executors’ fees at a maximum of 3.5% + VAT. Where there is a beneficiary the executors fees will not be levied. Executors’ fees are applicable to all assets in the estate of a client and the exemption only applies to policies with beneficiaries. </p>
         <p className="text-start">Death benefits will not be paid where the life insured commits suicide within 2 years of commencement or reinstatement of the cover.</p>
 
 
@@ -1505,7 +1505,7 @@ const Risk = ({user, LogOut}) =>
             {/* <p>Discuss the outcome of the FNA</p><br /> */}
                 <ul>
                     <li>
-                    Explain the reasons why life cover benefits were recommended to satisfy this need.<br/>
+                    Explain the reasons why disability cover benefits were recommended to satisfy this need.<br/>
                     </li>
                     <li>
                     Record the client's instructions, deviations and implications thereof.
@@ -1552,7 +1552,7 @@ const Risk = ({user, LogOut}) =>
             {/* <p>Discuss the outcome of the FNA</p><br /> */}
                 <ul>
                     <li>
-                    Explain the reasons why life cover benefits were recommended to satisfy this need.<br/>
+                    Explain the reasons why dread disease cover benefits were recommended to satisfy this need.<br/>
                     </li>
                     <li>
                     Record the client's instructions, deviations and implications thereof.
