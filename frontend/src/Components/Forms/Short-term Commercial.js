@@ -1163,7 +1163,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
 
       });
       const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
-
+      
       const createSTICForm = async(data) => {
         const config = {
             headers: {
@@ -13899,7 +13899,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
       <td>
       <div className="row col-6 align-items-center">
           <div className="col-3">
-              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["Sec8_Extension_Included1"] == 1 ? true : false} onChange={(e) => {on_Section_8_Change(e, i)}} type="radio" value="1" id="Sec8_Extension_Included1" name="Sec8_Extension_Included1" />
+              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key["Sec8_Extension_Included1"] == 1 ? true : false} onChange={(e) => {on_Section_8_Change(e, i)}} type="radio" value="1" id="Sec8_Extension_Included1" name="Sec8_Extension_Included1" />
           </div>
           <div className="col-3">
               <label className="form-check-label"  >
@@ -13907,7 +13907,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </label>
           </div>
           <div className="col-3">
-              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["Sec8_Extension_Included1"] == 0 ? true : false} onChange={(e) => {on_Section_8_Change(e, i)}} type="radio" value="0" id="Sec8_Extension_Included1" name="Sec8_Extension_Included1" />
+              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key["Sec8_Extension_Included1"] == 0 ? true : false} onChange={(e) => {on_Section_8_Change(e, i)}} type="radio" value="0" id="Sec8_Extension_Included1" name="Sec8_Extension_Included1" />
           </div>
           <div className="col-3">
               <label className="form-check-label"  >
@@ -13927,7 +13927,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
       <td>
       <div className="row col-6 align-items-center">
           <div className="col-3">
-              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["Sec8_Extension_Included2"] == 1 ? true : false} onChange={(e) => {on_Section_8_Change(e, i)}} type="radio" value="1" id="Sec8_Extension_Included2" name="Sec8_Extension_Included2" />
+              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key["Sec8_Extension_Included2"] == 1 ? true : false} onChange={(e) => {on_Section_8_Change(e, i)}} type="radio" value="1" id="Sec8_Extension_Included2" name="Sec8_Extension_Included2" />
           </div>
           <div className="col-3">
               <label className="form-check-label"  >
@@ -13935,7 +13935,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </label>
           </div>
           <div className="col-3">
-              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={FormData["Sec8_Extension_Included2"] == 0 ? true : false} onChange={(e) => {on_Section_8_Change(e, i)}} type="radio" value="0" id="Sec8_Extension_Included2" name="Sec8_Extension_Included2" />
+              <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" checked={key["Sec8_Extension_Included2"] == 0 ? true : false} onChange={(e) => {on_Section_8_Change(e, i)}} type="radio" value="0" id="Sec8_Extension_Included2" name="Sec8_Extension_Included2" />
           </div>
           <div className="col-3">
               <label className="form-check-label"  >
