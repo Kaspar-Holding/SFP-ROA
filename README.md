@@ -12,6 +12,9 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 26 June 2023:
+- Updated Logic for Short Term Personal and Commercial sections for PDF
+
 ### 22 June 2023:
 - Adivsor Field is now flexible and added in PDF as well
 - Section E of Investment Planning and BA Investment Bug is now resolved

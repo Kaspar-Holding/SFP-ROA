@@ -1642,127 +1642,594 @@ def wkhtmltopdfapi(request):
                 data['STIC']['STIC_ProdComp_RecommP_Excess44'] == "" and
                 data['STIC']['STIC_ProdComp_FeeNCharges'] == "" and
                 data['STIC']['STIC_ProdComp_Commission'] == "" and
-                data['STIC']['STIC_ProdComp_TotalPremium'] == "" # and        
-                # data['STIC']['STIC_Fire_Limit'] == "" and
-                # data['STIC']['STIC_Fire_ItemNumber'] == "" and
-                # data['STIC']['STIC_Fire_Premium'] == "" and
-                # data['STIC']['STIC_Fire_PremNumber'] == "" and
-                # data['STIC']['STIC_Buildings_Insured'] == "" and
-                # data['STIC']['STIC_Rental_Insured'] == "" and
-                # data['STIC']['STIC_Others_Insured'] == "" and
-                # data['STIC']['STIC_Stocks_Insured'] == "" and
-                # data['STIC']['STIC_Miscellaneous1_Insured'] == "" and
-                # data['STIC']['STIC_Miscellaneous2_Insured'] == "" and
-                # data['STIC']['STIC_Earthquake_Insured'] == 2 and
-                # data['STIC']['STIC_Malicious_Damage_Insured'] == 2 and
-                # data['STIC']['STIC_Special_Insured'] == 2 and
-                # data['STIC']['STIC_LeakFull_Insured'] == 2 and
-                # data['STIC']['STIC_LeakFirst_Insured'] == 2 and
-                # data['STIC']['STIC_SnLLimited_Insured'] == 2 and
-                # data['STIC']['STIC_SnLComprehensive_Insured'] == 2 and
-                # data['STIC']['STIC_RnS_Insured'] == 2 and
-                # data['STIC']['STIC_SDC_Insured'] == 2 and
-                # data['STIC']['STIC_BuildCombined_Limit'] == "" and
-                # data['STIC']['STIC_BuildCombined_ItemNumber'] == "" and
-                # data['STIC']['STIC_BuildCombined_Premium'] == "" and
-                # data['STIC']['STIC_BuildCombined_PremNumber'] == "" and
-                # data['STIC']['STIC_BuildCombined_ColumnRef'] == "" and
-                # data['STIC']['STIC_BuildCombined_Sum'] == "" and
-                # data['STIC']['STIC_BuildCombined_Construct'] == 2 and
-                # data['STIC']['STIC_BuildCombined_Desc'] == "" and
-                # int(data['STIC']['STIC_Extensions_RnS']) == 2 and
-                # int(data['STIC']['STIC_Extensions_Geysers']) == 2 and
-                # int(data['STIC']['STIC_Extensions_SnL']) == 2 and
-                # int(data['STIC']['STIC_Extensions_PoA']) == 2 and
-                # int(data['STIC']['STIC_Extensions_IorE']) == 2 and
-                # data['STIC']['STIC_OC_Limit'] == "" and
-                # data['STIC']['STIC_OC_ItemNumber'] == "" and
-                # data['STIC']['STIC_OC_Premium'] == "" and
-                # data['STIC']['STIC_OC_PremNumber'] == "" and
-                # data['STIC']['STIC_OC_PremisesNum'] == "" and
-                # data['STIC']['STIC_OC_Sum'] == "" and
-                # data['STIC']['STIC_OC_Construct'] == 2 and
-                # data['STIC']['STIC_OC_Desc'] == "" and
-                # data['STIC']['STIC_OC_Doc_Sum'] == "" and
-                # data['STIC']['STIC_OC_Doc_Premium'] == "" and
-                # data['STIC']['STIC_OC_LLDoc_Sum'] == "" and
-                # data['STIC']['STIC_OC_LLDoc_Premium'] == "" and
-                # data['STIC']['STIC_OC_RnS_Sum'] == "" and
-                # data['STIC']['STIC_OC_RnS_Premium'] == "" and
-                # data['STIC']['STIC_OC_TheftF_Sum'] == "" and
-                # data['STIC']['STIC_OC_TheftF_Premium'] == "" and
-                # data['STIC']['STIC_OC_Theft_Sum'] == "" and
-                # data['STIC']['STIC_OC_Theft_Premium'] == "" and
-                # data['STIC']['STIC_OC_Total_Premium'] == "" and
-                # data['STIC']['STIC_BusInt_Limit'] == "" and
-                # data['STIC']['STIC_BusInt_Premium'] == "" 
+                data['STIC']['STIC_ProdComp_TotalPremium'] == "" and        
+                data['STIC']['STIC_Fire_Limit'] == "" and
+                data['STIC']['STIC_Fire_ItemNumber'] == "" and
+                data['STIC']['STIC_Fire_Premium'] == "" and
+                data['STIC']['STIC_Fire_PremNumber'] == "" and
+                data['STIC']['STIC_Buildings_Insured'] == "" and
+                data['STIC']['STIC_Rental_Insured'] == "" and
+                data['STIC']['STIC_Others_Insured'] == "" and
+                data['STIC']['STIC_Stocks_Insured'] == "" and
+                data['STIC']['STIC_Miscellaneous1_Insured'] == "" and
+                data['STIC']['STIC_Miscellaneous2_Insured'] == "" and
+                data['STIC']['STIC_Earthquake_Insured'] == 2 and
+                data['STIC']['STIC_Malicious_Damage_Insured'] == 2 and
+                data['STIC']['STIC_Special_Insured'] == 2 and
+                data['STIC']['STIC_LeakFull_Insured'] == 2 and
+                data['STIC']['STIC_LeakFirst_Insured'] == 2 and
+                data['STIC']['STIC_SnLLimited_Insured'] == 2 and
+                data['STIC']['STIC_SnLComprehensive_Insured'] == 2 and
+                data['STIC']['STIC_RnS_Insured'] == 2 and
+                data['STIC']['STIC_SDC_Insured'] == 2 and
+                data['STIC']['STIC_BuildCombined_Limit'] == "" and
+                data['STIC']['STIC_BuildCombined_ItemNumber'] == "" and
+                data['STIC']['STIC_BuildCombined_Premium'] == "" and
+                data['STIC']['STIC_BuildCombined_PremNumber'] == "" and
+                data['STIC']['STIC_BuildCombined_ColumnRef'] == "" and
+                data['STIC']['STIC_BuildCombined_Sum'] == "" and
+                data['STIC']['STIC_BuildCombined_Construct'] == 2 and
+                data['STIC']['STIC_BuildCombined_Desc'] == "" and
+                int(data['STIC']['STIC_Extensions_RnS']) == 2 and
+                int(data['STIC']['STIC_Extensions_Geysers']) == 2 and
+                int(data['STIC']['STIC_Extensions_SnL']) == 2 and
+                int(data['STIC']['STIC_Extensions_PoA']) == 2 and
+                int(data['STIC']['STIC_Extensions_IorE']) == 2 and
+                data['STIC']['STIC_OC_Limit'] == "" and
+                data['STIC']['STIC_OC_ItemNumber'] == "" and
+                data['STIC']['STIC_OC_Premium'] == "" and
+                data['STIC']['STIC_OC_PremNumber'] == "" and
+                data['STIC']['STIC_OC_PremisesNum'] == "" and
+                data['STIC']['STIC_OC_Sum'] == "" and
+                data['STIC']['STIC_OC_Construct'] == 2 and
+                data['STIC']['STIC_OC_Desc'] == "" and
+                data['STIC']['STIC_OC_Doc_Sum'] == "" and
+                data['STIC']['STIC_OC_Doc_Premium'] == "" and
+                data['STIC']['STIC_OC_LLDoc_Sum'] == "" and
+                data['STIC']['STIC_OC_LLDoc_Premium'] == "" and
+                data['STIC']['STIC_OC_RnS_Sum'] == "" and
+                data['STIC']['STIC_OC_RnS_Premium'] == "" and
+                data['STIC']['STIC_OC_TheftF_Sum'] == "" and
+                data['STIC']['STIC_OC_TheftF_Premium'] == "" and
+                data['STIC']['STIC_OC_Theft_Sum'] == "" and
+                data['STIC']['STIC_OC_Theft_Premium'] == "" and
+                data['STIC']['STIC_OC_Total_Premium'] == "" and
+                data['STIC']['STIC_BusInt_Limit'] == "" and
+                data['STIC']['STIC_BusInt_Premium'] == "" 
             ) :
                 stic_status3 = True
             else:
                 stic_status3 = False
             if (
                 
-                # data['STIC']['STIC_Sec19_Limit'] == "" and
-                # data['STIC']['STIC_Sec19_Premium'] == "" and
-                # data['STIC']['STIC_Sec19_ItemNumber'] == "" and
-                # data['STIC']['STIC_Sec19_PremNumber'] == "" and
-                # data['STIC']['STIC_Sec19_Part1_1'] == "" and
-                # data['STIC']['STIC_Sec19_Part1_2'] == "" and
-                # data['STIC']['STIC_Sec19_Part1_3'] == "" and
-                # data['STIC']['STIC_Sec19_Part1_4'] == "" and
-                # data['STIC']['STIC_Sec19_Part1_5'] == "" and
-                # data['STIC']['STIC_Sec19_Part1_6'] == "" and
-                # data['STIC']['STIC_Sec19_Part1_7'] == "" and
-                # data['STIC']['STIC_Sec19_Part1_8'] == "" and
-                # data['STIC']['STIC_Sec19_Part1_9'] == "" and
-                # data['STIC']['STIC_Sec19_Part2_1'] == "" and
-                # data['STIC']['STIC_Sec19_Part2_2'] == "" and
-                # data['STIC']['STIC_Sec19_Part2_3'] == "" and
-                # data['STIC']['STIC_Sec19_Part2_4'] == "" and
-                # data['STIC']['STIC_Sec19_Part2_5'] == "" and
-                # data['STIC']['STIC_Sec19_Extension1'] == 2 and
-                # data['STIC']['STIC_Sec19_Extension_Premium1'] == "" and
-                # data['STIC']['STIC_Sec19_Extension2'] == 2 and
-                # data['STIC']['STIC_Sec19_Extension_Premium2'] == "" and
-                # data['STIC']['STIC_Sec19_RoD_1'] == "" and
-                # data['STIC']['STIC_Sec19_RoD_2'] == "" and
-                # data['STIC']['STIC_Sec19_RoD_3'] == "" and
-                # data['STIC']['STIC_Sec19_RoD_4'] == "" and
-                # data['STIC']['STIC_Sec19_RoD_5'] == "" and
-                # data['STIC']['STIC_Sec19_AnnualPremium'] == "" and
-                # data['STIC']['STIC_Sec19_Comments'] == "" and
-                # data['STIC']['STIC_Sec20_Limit'] == "" and
-                # data['STIC']['STIC_Sec20_Premium'] == "" and
-                # data['STIC']['STIC_Sec20_ItemNumber'] == "" and
-                # data['STIC']['STIC_Sec20_PremNumber'] == "" and
-                # data['STIC']['STIC_Sec20_1'] == "" and
-                # data['STIC']['STIC_Sec20_2'] == "" and
-                # data['STIC']['STIC_Sec20_3'] == "" and
-                # data['STIC']['STIC_Sec20_4'] == "" and
-                # data['STIC']['STIC_Sec20_5'] == "" and
-                # data['STIC']['STIC_Sec20_6'] == "" and
-                # data['STIC']['STIC_Sec20_Extension1'] == 2 and
-                # data['STIC']['STIC_Sec20_Extension_Premium1'] == "" and
-                # data['STIC']['STIC_Sec20_Extension2'] == 2 and
-                # data['STIC']['STIC_Sec20_Extension_Premium2'] == "" and
-                # data['STIC']['STIC_Sec20_AnnualPremium'] == "" and
-                # data['STIC']['STIC_Sec20_Comments'] == "" and
-                # data['STIC']['STIC_Sec21_Limit'] == "" and
-                # data['STIC']['STIC_Sec21_Premium'] == "" and
-                # data['STIC']['STIC_Sec21_ItemNumber'] == "" and
-                # data['STIC']['STIC_Sec21_PremNumber'] == "" and
-                # data['STIC']['STIC_Sec21_1'] == "" and
-                # data['STIC']['STIC_Sec21_2'] == "" and
-                # data['STIC']['STIC_Sec21_3'] == "" and
-                # data['STIC']['STIC_Sec21_4'] == "" and
-                # data['STIC']['STIC_Sec21_5'] == "" and
-                # data['STIC']['STIC_Sec21_6'] == "" and
-                # data['STIC']['STIC_Sec21_Extension1'] == 2 and
-                # data['STIC']['STIC_Sec21_Extension_Premium1'] == "" and
-                # data['STIC']['STIC_Sec21_Extension2'] == 2 and
-                # data['STIC']['STIC_Sec21_Extension_Premium2'] == "" and
-                # data['STIC']['STIC_Sec21_AnnualPremium'] == "" and
-                # data['STIC']['STIC_Sec21_Comments'] == "" and        
+                data['STIC']['STIC_BusInt_ItemNumber'] == "" and
+                data['STIC']['STIC_BusInt_PremNumber'] == "" and
+                data['STIC']['STIC_BusInt_Basis'] == "" and
+                data['STIC']['STIC_BusInt_Indemnity'] == "" and
+                data['STIC']['STIC_BusInt_Type1'] == 2 and
+                data['STIC']['STIC_BusInt_Type2'] == 2 and
+                data['STIC']['STIC_BusInt_Type3'] == 2 and
+                data['STIC']['STIC_BusInt_Type4'] == 2 and
+                data['STIC']['STIC_BusInt_Type5'] == 2 and
+                data['STIC']['STIC_BusInt_Type6'] == 2 and
+                data['STIC']['STIC_BusInt_Type7'] == 2 and
+                data['STIC']['STIC_BusInt_Type8'] == 2 and        
+                data['STIC']['STIC_BusInt_Type9'] == "" and
+                data['STIC']['STIC_BusInt_Type9_1'] == "" and
+                data['STIC']['STIC_BusInt_Type10'] == "" and
+                data['STIC']['STIC_BusInt_Type11'] == 2 and
+                data['STIC']['STIC_BusInt_Type11_1'] == "" and
+                data['STIC']['STIC_BusInt_Type12'] == "" and
+                data['STIC']['STIC_BusInt_Type13'] == "" and
+                data['STIC']['STIC_BusInt_Type14'] == 2 and
+                data['STIC']['STIC_BusInt_Type14_1'] == "" and
+                data['STIC']['STIC_BusInt_Type15'] == 2 and
+                data['STIC']['STIC_BusInt_Type15_1'] == "" and
+                data['STIC']['STIC_BusInt_Type16'] == 2 and
+                data['STIC']['STIC_BusInt_Type16_1'] == "" and
+                data['STIC']['STIC_BusInt_Type17'] == "" and
+                data['STIC']['STIC_BusInt_Type18'] == "" and
+                data['STIC']['STIC_BusInt_Type19'] == 2 and
+                data['STIC']['STIC_BusInt_Type19_1'] == "" and
+                data['STIC']['STIC_BusInt_Type20'] == 2 and
+                data['STIC']['STIC_BusInt_Type20_1'] == "" and
+                data['STIC']['STIC_BusInt_Type21'] == 2 and
+                data['STIC']['STIC_BusInt_Type21_1'] == "" and
+                data['STIC']['STIC_BusInt_Type22'] == 2 and
+                data['STIC']['STIC_BusInt_Type22_1'] == "" and
+                data['STIC']['STIC_BusInt_Type23'] == 2 and
+                data['STIC']['STIC_BusInt_Type23_1'] == "" and
+                data['STIC']['STIC_BusInt_TotalPremium'] == "" and
+                data['STIC']['STIC_BusInt_PremisesNumber'] == "" and
+                data['STIC']['STIC_BusInt_Basis'] == "" and
+                data['STIC']['STIC_BusInt_IndemPer'] == "" and
+                data['STIC']['STIC_BusInt_Suppliers'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_1'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_2'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_3'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_4'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_5'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_6'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_7'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_8'] == 2 and        
+                data['STIC']['STIC_BusInt_Type2_9'] == "" and
+                data['STIC']['STIC_BusInt_Type2_9_1'] == "" and
+                data['STIC']['STIC_BusInt_Type2_10'] == "" and
+                data['STIC']['STIC_BusInt_Type2_11'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_11_1'] == "" and
+                data['STIC']['STIC_BusInt_Type2_12'] == "" and
+                data['STIC']['STIC_BusInt_Type2_13'] == "" and
+                data['STIC']['STIC_BusInt_Type2_14'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_14_1'] == "" and
+                data['STIC']['STIC_BusInt_Type2_15'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_15_1'] == "" and
+                data['STIC']['STIC_BusInt_Type2_16'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_16_1'] == "" and
+                data['STIC']['STIC_BusInt_Type2_17'] == "" and
+                data['STIC']['STIC_BusInt_Type2_18'] == "" and
+                data['STIC']['STIC_BusInt_Type2_19'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_19_1'] == "" and
+                data['STIC']['STIC_BusInt_Type2_20'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_20_1'] == "" and
+                data['STIC']['STIC_BusInt_Type2_21'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_21_1'] == "" and
+                data['STIC']['STIC_BusInt_Type2_22'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_22_1'] == "" and
+                data['STIC']['STIC_BusInt_Type2_23'] == 2 and
+                data['STIC']['STIC_BusInt_Type2_23_1'] == "" and
+                data['STIC']['STIC_BusInt2_TotalPremium'] == "" and
+                data['STIC']['STIC_BusInt2_Comments'] == "" and        
+                data['STIC']['STIC_Sec5_Limit'] == "" and
+                data['STIC']['STIC_Sec5_Premium'] == "" and
+                data['STIC']['STIC_Sec5_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec5_PremNumber'] == "" and
+                data['STIC']['STIC_Sec5_1'] == "" and
+                data['STIC']['STIC_Sec5_2'] == "" and
+                data['STIC']['STIC_Sec5_Extension_1'] == 2 and
+                data['STIC']['STIC_Sec5_Extension_2'] == 2 and
+                data['STIC']['STIC_Sec5_Extension_3'] == 2 and
+                data['STIC']['STIC_Sec5_Extension_4'] == 2 and
+                data['STIC']['STIC_Sec5_Extension_5'] == 2 and
+                data['STIC']['STIC_Sec5_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec5_Comments'] == "" and
+                data['STIC']['STIC_Sec6_Limit'] == "" and
+                data['STIC']['STIC_Sec6_Premium'] == "" and
+                data['STIC']['STIC_Sec6_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec6_PremNumber'] == "" and
+                data['STIC']['STIC_Sec6_1'] == "" and
+                data['STIC']['STIC_Sec6_2'] == "" and
+                data['STIC']['STIC_Sec6_3'] == "" and
+                data['STIC']['STIC_Sec6_4'] == "" and
+                data['STIC']['STIC_Sec6_5'] == "" and
+                data['STIC']['STIC_Sec6_6'] == "" and
+                data['STIC']['STIC_Sec6_Comments'] == "" and
+                data['STIC']['STIC_Sec7_Limit'] == "" and
+                data['STIC']['STIC_Sec7_Premium'] == "" and
+                data['STIC']['STIC_Sec7_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec7_PremNumber'] == "" and
+                data['STIC']['STIC_Sec7_1'] == "" and
+                data['STIC']['STIC_Sec7_2'] == "" and
+                data['STIC']['STIC_Sec7_3'] == 2 and
+                data['STIC']['STIC_Sec7_4'] == 2 and
+                data['STIC']['STIC_Sec7_5'] == "" and
+                data['STIC']['STIC_Sec7_6'] == "" and
+                data['STIC']['STIC_Sec7_7'] == "" and
+                data['STIC']['STIC_Sec7_8'] == "" and
+                data['STIC']['STIC_Sec7_9'] == "" and
+                data['STIC']['STIC_Sec7_Extension_Included1'] == 2 and
+                data['STIC']['STIC_Sec7_Extension_Limit1'] == "" and
+                data['STIC']['STIC_Sec7_Extension_Premium1'] == "" and
+                data['STIC']['STIC_Sec7_Extension_Included2'] == 2 and
+                data['STIC']['STIC_Sec7_Extension_Limit2'] == "" and
+                data['STIC']['STIC_Sec7_Extension_Premium2'] == "" and
+                data['STIC']['STIC_Sec7_Extension_Included3'] == 2 and
+                data['STIC']['STIC_Sec7_Extension_Limit3'] == "" and
+                data['STIC']['STIC_Sec7_Extension_Premium3'] == "" and
+                data['STIC']['STIC_Sec7_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec7_Comments'] == "" and
+                data['STIC']['STIC_Sec8_Limit'] == "" and
+                data['STIC']['STIC_Sec8_Premium'] == "" and
+                data['STIC']['STIC_Sec8_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec8_PremNumber'] == "" and
+                data['STIC']['STIC_Sec8_1'] == "" and
+                data['STIC']['STIC_Sec8_2'] == "" and
+                data['STIC']['STIC_Sec8_Extension_Included1'] == 2 and
+                data['STIC']['STIC_Sec8_Extension_Included2'] == 2 and
+                data['STIC']['STIC_Sec8_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec8_Comments'] == "" and
+                data['STIC']['STIC_Sec9_Limit'] == "" and
+                data['STIC']['STIC_Sec9_Premium'] == "" and
+                data['STIC']['STIC_Sec9_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec9_PremNumber'] == "" and
+                data['STIC']['STIC_Sec9_1'] == "" and
+                data['STIC']['STIC_Sec9_2'] == "" and
+                data['STIC']['STIC_Sec9_3'] == "" and
+                data['STIC']['STIC_Sec9_4'] == "" and
+                data['STIC']['STIC_Sec9_5'] == "" and
+                data['STIC']['STIC_Sec9_6'] == "" and
+                data['STIC']['STIC_Sec9_Extension_Included1'] == 2 and
+                data['STIC']['STIC_Sec9_Extension_Limit1'] == "" and
+                data['STIC']['STIC_Sec9_Extension_Premium1'] == "" and
+                data['STIC']['STIC_Sec9_Extension_Included2'] == 2 and
+                data['STIC']['STIC_Sec9_Extension_Limit2'] == "" and
+                data['STIC']['STIC_Sec9_Extension_Premium2'] == "" and
+                data['STIC']['STIC_Sec9_Extension_Included3'] == 2 and
+                data['STIC']['STIC_Sec9_Extension_Limit3'] == "" and
+                data['STIC']['STIC_Sec9_Extension_Premium3'] == "" and
+                data['STIC']['STIC_Sec9_Extension_Included4'] == 2 and
+                data['STIC']['STIC_Sec9_Extension_Limit4'] == "" 
+            ) :
+                stic_status4 = True
+            else:
+                stic_status4 = False
+            if (
+                data['STIC']['STIC_Sec9_Extension_Premium4'] == "" and
+                data['STIC']['STIC_Sec9_Extension_Included5'] == 2 and
+                data['STIC']['STIC_Sec9_Extension_Limit5'] == "" and
+                data['STIC']['STIC_Sec9_Extension_Premium5'] == "" and
+                data['STIC']['STIC_Sec9_Extension_Included6'] == 2 and
+                data['STIC']['STIC_Sec9_Extension_Limit6'] == "" and
+                data['STIC']['STIC_Sec9_Extension_Premium6'] == "" and
+                data['STIC']['STIC_Sec9_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec9_Comments'] == "" and
+                data['STIC']['STIC_Sec10_Limit'] == "" and
+                data['STIC']['STIC_Sec10_Premium'] == "" and
+                data['STIC']['STIC_Sec10_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec10_PremNumber'] == "" and
+                data['STIC']['STIC_Sec10_1'] == "" and
+                data['STIC']['STIC_Sec10_2'] == "" and
+                data['STIC']['STIC_Sec10_3'] == "" and
+                data['STIC']['STIC_Sec10_4'] == "" and
+                data['STIC']['STIC_Sec10_5'] == "" and
+                data['STIC']['STIC_Sec10_6'] == "" and
+                data['STIC']['STIC_Sec10_7'] == "" and
+                data['STIC']['STIC_Sec10_Extension_Included1'] == 2 and
+                data['STIC']['STIC_Sec10_Extension_Limit1'] == "" and
+                data['STIC']['STIC_Sec10_Extension_Premium1'] == "" and
+                data['STIC']['STIC_Sec10_Extension_Included2'] == 2 and
+                data['STIC']['STIC_Sec10_Extension_Limit2'] == "" and
+                data['STIC']['STIC_Sec10_Extension_Premium2'] == "" and
+                data['STIC']['STIC_Sec10_Extension_Included3'] == 2 and
+                data['STIC']['STIC_Sec10_Extension_Limit3'] == "" and
+                data['STIC']['STIC_Sec10_Extension_Premium3'] == "" and
+                data['STIC']['STIC_Sec10_Extension_Included4'] == 2 and
+                data['STIC']['STIC_Sec10_Extension_Limit4'] == "" and
+                data['STIC']['STIC_Sec10_Extension_Premium4'] == "" and
+                data['STIC']['STIC_Sec10_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec10_Comments'] == "" and
+                data['STIC']['STIC_Sec11_Limit'] == "" and
+                data['STIC']['STIC_Sec11_Premium'] == "" and
+                data['STIC']['STIC_Sec11_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec11_PremNumber'] == "" and
+                data['STIC']['STIC_Sec11_1'] == 2 and
+                data['STIC']['STIC_Sec11_2'] == "" and
+                data['STIC']['STIC_Sec11_3'] == "" and
+                data['STIC']['STIC_Sec11_4'] == "" and
+                data['STIC']['STIC_Sec11_5'] == "" and
+                data['STIC']['STIC_Sec11_6'] == "" and
+                data['STIC']['STIC_Sec11_7'] == "" and
+                data['STIC']['STIC_Sec11_8'] == "" and
+                data['STIC']['STIC_Sec11_9'] == "" and
+                data['STIC']['STIC_Sec11_10'] == "" and
+                data['STIC']['STIC_Sec11_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec11_Comments'] == "" and
+                data['STIC']['STIC_Sec12_Limit'] == "" and
+                data['STIC']['STIC_Sec12_Premium'] == "" and
+                data['STIC']['STIC_Sec12_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec12_PremNumber'] == "" and
+                data['STIC']['STIC_Sec12_1'] == "" and
+                data['STIC']['STIC_Sec12_2'] == "" and
+                data['STIC']['STIC_Sec12_3'] == "" and
+                data['STIC']['STIC_Sec12_4'] == "" and
+                data['STIC']['STIC_Sec12_5'] == "" and
+                data['STIC']['STIC_Sec12_6'] == "" and
+                data['STIC']['STIC_Sec12_Extension_Included1'] == 2 and
+                data['STIC']['STIC_Sec12_Extension_Included2'] == 2 and
+                data['STIC']['STIC_Sec12_Extension_Included3'] == 2 and
+                data['STIC']['STIC_Sec12_Extension_Included4'] == 2 and
+                data['STIC']['STIC_Sec12_Extension_Included5'] == 2 and
+                data['STIC']['STIC_Sec12_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec12_Comments'] == "" and
+                data['STIC']['STIC_Sec13_Limit'] == "" and
+                data['STIC']['STIC_Sec13_Premium'] == "" and
+                data['STIC']['STIC_Sec13_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec13_PremNumber'] == "" and
+                data['STIC']['STIC_Sec13_1'] == "" and
+                data['STIC']['STIC_Sec13_2'] == "" and
+                data['STIC']['STIC_Sec13_3'] == "" and
+                data['STIC']['STIC_Sec13_4'] == "" and
+                data['STIC']['STIC_Sec13_5'] == "" and
+                data['STIC']['STIC_Sec13_6'] == "" and
+                data['STIC']['STIC_Sec13_7'] == 2 and
+                data['STIC']['STIC_Sec13_8'] == "" and
+                data['STIC']['STIC_Sec13_9'] == "" and
+                data['STIC']['STIC_Sec13_10'] == "" and
+                data['STIC']['STIC_Sec13_11'] == "" and
+                data['STIC']['STIC_Sec13_12'] == 2 and
+                data['STIC']['STIC_Sec13_13'] == "" and
+                data['STIC']['STIC_Sec13_14'] == "" and
+                data['STIC']['STIC_Sec13_15'] == "" and
+                data['STIC']['STIC_Sec13_16'] == 2 and
+                data['STIC']['STIC_Sec13_17'] == "" and
+                data['STIC']['STIC_Sec13_18'] == "" and
+                data['STIC']['STIC_Sec13_19'] == "" and
+                data['STIC']['STIC_Sec13_20'] == 2 and
+                data['STIC']['STIC_Sec13_21'] == "" and
+                data['STIC']['STIC_Sec13_22'] == "" and
+                data['STIC']['STIC_Sec13_23'] == "" and
+                data['STIC']['STIC_Sec13_24'] == 2 and
+                data['STIC']['STIC_Sec13_25'] == "" and
+                data['STIC']['STIC_Sec13_26'] == "" and
+                data['STIC']['STIC_Sec13_27'] == "" and
+                data['STIC']['STIC_Sec13_28'] == 2 and
+                data['STIC']['STIC_Sec13_29'] == "" and
+                data['STIC']['STIC_Sec13_30'] == 2 and
+                data['STIC']['STIC_Sec13_31'] == 2 and
+                data['STIC']['STIC_Sec13_32'] == 2 and
+                data['STIC']['STIC_Sec13_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec13_Comments'] == "" and
+                data['STIC']['STIC_Sec14_Limit'] == "" and
+                data['STIC']['STIC_Sec14_Premium'] == "" and
+                data['STIC']['STIC_Sec14_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec14_PremNumber'] == "" and
+                data['STIC']['STIC_Sec14_1'] == "" and
+                data['STIC']['STIC_Sec14_2'] == "" and
+                data['STIC']['STIC_Sec14_3'] == "" and
+                data['STIC']['STIC_Sec14_4'] == "" and
+                data['STIC']['STIC_Sec14_5'] == "" and
+                data['STIC']['STIC_Sec14_6'] == "" and
+                data['STIC']['STIC_Sec14_Recommended1'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted1'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount1'] == "" and
+                data['STIC']['STIC_Sec14_Recommended2'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted2'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount2'] == "" and
+                data['STIC']['STIC_Sec14_Recommended3'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted3'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount3'] == "" and
+                data['STIC']['STIC_Sec14_Recommended4'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted4'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount4'] == "" and
+                data['STIC']['STIC_Sec14_Recommended5'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted5'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount5'] == "" and
+                data['STIC']['STIC_Sec14_Recommended6'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted6'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount6'] == "" and
+                data['STIC']['STIC_Sec14_Recommended7'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted7'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount7'] == "" and
+                data['STIC']['STIC_Sec14_Recommended8'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted8'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount8'] == "" and
+                data['STIC']['STIC_Sec14_Recommended9'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted9'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount9'] == "" and
+                data['STIC']['STIC_Sec14_Recommended10'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted10'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount10'] == "" and
+                data['STIC']['STIC_Sec14_Recommended11'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted11'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount11'] == "" and
+                data['STIC']['STIC_Sec14_Recommended12'] == 0 and
+                data['STIC']['STIC_Sec14_Accepted12'] == 0 and
+                data['STIC']['STIC_Sec14_CoverAmount12'] == "" and
+                data['STIC']['STIC_Sec15_Limit'] == "" and
+                data['STIC']['STIC_Sec15_Premium'] == "" and
+                data['STIC']['STIC_Sec15_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec15_PremNumber'] == "" and
+                data['STIC']['STIC_Sec15_1'] == "" and
+                data['STIC']['STIC_Sec15_1_1'] == "" and
+                data['STIC']['STIC_Sec15_2'] == "" and
+                data['STIC']['STIC_Sec15_2_1'] == "" and
+                data['STIC']['STIC_Sec15_3'] == "" and
+                data['STIC']['STIC_Sec15_3_1'] == "" and
+                data['STIC']['STIC_Sec15_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec15_Comments'] == "" and
+                data['STIC']['STIC_Sec16_Limit'] == "" and
+                data['STIC']['STIC_Sec16_Premium'] == "" and
+                data['STIC']['STIC_Sec16_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec16_PremNumber'] == "" and
+                data['STIC']['STIC_Sec16_1'] == "" and
+                data['STIC']['STIC_Sec16_2'] == "" and
+                data['STIC']['STIC_Sec16_3'] == "" and
+                data['STIC']['STIC_Sec16_4'] == "" and
+                data['STIC']['STIC_Sec16_5'] == "" and
+                data['STIC']['STIC_Sec16_6'] == "" and
+                data['STIC']['STIC_Sec16_7'] == "" and
+                data['STIC']['STIC_Sec16_8'] == "" and
+                data['STIC']['STIC_Sec16_9'] == "" and
+                data['STIC']['STIC_Sec16_10'] == 2 and
+                data['STIC']['STIC_Sec16_Extension1'] == 2 and
+                data['STIC']['STIC_Sec16_Extension2'] == 2 and
+                data['STIC']['STIC_Sec16_Extension3'] == 2 and
+                data['STIC']['STIC_Sec16_Extension4'] == 2 and
+                data['STIC']['STIC_Sec16_Extension5'] == 2 and
+                data['STIC']['STIC_Sec16_Extension6'] == 2 and
+                data['STIC']['STIC_Sec16_Extension7'] == 2 and
+                data['STIC']['STIC_Sec16_Extension8'] == 2 and
+                data['STIC']['STIC_Sec16_Extension9'] == 2 and
+                data['STIC']['STIC_Sec16_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec16_Comments'] == "" and
+                data['STIC']['STIC_Sec17_Limit'] == "" and
+                data['STIC']['STIC_Sec17_Premium'] == "" and
+                data['STIC']['STIC_Sec17_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec17_PremNumber'] == "" and
+                data['STIC']['STIC_Sec17_1'] == "" and
+                data['STIC']['STIC_Sec17_2'] == "" and
+                data['STIC']['STIC_Sec17_3'] == "" and
+                data['STIC']['STIC_Sec17_4'] == "" and
+                data['STIC']['STIC_Sec17_5'] == "" and
+                data['STIC']['STIC_Sec17_6'] == 2 and
+                data['STIC']['STIC_Sec17_7'] == "" and
+                data['STIC']['STIC_Sec17_8'] == "" and
+                data['STIC']['STIC_Sec17_9'] =="" and
+                int(data['STIC']['STIC_Sec17_10']) == 2 and
+                data['STIC']['STIC_Sec17_Extension1'] == 2 and
+                data['STIC']['STIC_Sec17_ExtensionLimit1'] == "" and
+                data['STIC']['STIC_Sec17_ExtensionPremium1'] == "" and
+                data['STIC']['STIC_Sec17_Extension2'] == 2 and
+                data['STIC']['STIC_Sec17_ExtensionLimit2'] == "" and
+                data['STIC']['STIC_Sec17_ExtensionPremium2'] == "" and
+                data['STIC']['STIC_Sec17_Extension3'] == 2 and
+                data['STIC']['STIC_Sec17_ExtensionLimit3'] == "" and
+                data['STIC']['STIC_Sec17_ExtensionPremium3'] == "" and
+                data['STIC']['STIC_Sec17_Extension4'] == 2 and
+                data['STIC']['STIC_Sec17_ExtensionLimit4'] == "" and
+                data['STIC']['STIC_Sec17_ExtensionPremium4'] == "" and
+                data['STIC']['STIC_Sec17_Extension5'] == 2 and
+                data['STIC']['STIC_Sec17_ExtensionLimit5'] == "" and
+                data['STIC']['STIC_Sec17_ExtensionPremium5'] == "" and
+                data['STIC']['STIC_Sec17_Extension6'] == 2 and
+                data['STIC']['STIC_Sec17_ExtensionLimit6'] == "" and
+                data['STIC']['STIC_Sec17_ExtensionPremium6'] == "" and
+                data['STIC']['STIC_Sec17_Extension7'] == 2 and
+                data['STIC']['STIC_Sec17_ExtensionLimit7'] == "" and
+                data['STIC']['STIC_Sec17_ExtensionPremium7'] == "" and
+                data['STIC']['STIC_Sec17_Extension8'] == 2 and
+                data['STIC']['STIC_Sec17_ExtensionLimit8'] == "" and
+                data['STIC']['STIC_Sec17_ExtensionPremium8'] == "" and
+                data['STIC']['STIC_Sec17_Extension9'] == 2 and
+                data['STIC']['STIC_Sec17_ExtensionLimit9'] == "" and
+                data['STIC']['STIC_Sec17_ExtensionPremium9'] == "" and
+                data['STIC']['STIC_Sec17_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec17_Comments'] == "" 
+            ) :
+                stic_status5 = True
+            else:
+                stic_status5 = False
+            if (
+                data['STIC']['STIC_Sec18_Limit'] == "" and
+                data['STIC']['STIC_Sec18_Premium'] == "" and
+                data['STIC']['STIC_Sec18_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec18_PremNumber'] == "" and
+                data['STIC']['STIC_Sec18_1'] == "" and
+                data['STIC']['STIC_Sec18_2'] == "" and
+                data['STIC']['STIC_Sec18_3'] == "" and
+                data['STIC']['STIC_Sec18_4'] == "" and
+                data['STIC']['STIC_Sec18_5'] == "" and
+                data['STIC']['STIC_Sec18_6'] == "" and
+                data['STIC']['STIC_Sec18_7'] == "" and
+                data['STIC']['STIC_Sec18_8'] == "" and
+                data['STIC']['STIC_Sec18_9'] == "" and
+                data['STIC']['STIC_Sec18_10'] == "" and
+                data['STIC']['STIC_Sec18_11'] == "" and
+                data['STIC']['STIC_Sec18_12'] == "" and
+                data['STIC']['STIC_Sec18_13'] == "" and
+                data['STIC']['STIC_Sec18_14'] == "" and
+                data['STIC']['STIC_Sec18_15'] == "" and
+                data['STIC']['STIC_Sec18_16'] == "" and
+                data['STIC']['STIC_Sec18_17'] == "" and
+                data['STIC']['STIC_Sec18_18'] == "" and
+                data['STIC']['STIC_Sec18_19'] == "" and
+                data['STIC']['STIC_Sec18_20'] == 2 and
+                data['STIC']['STIC_Sec18_21'] == "" and
+                data['STIC']['STIC_Sec18_22'] == "" and
+                data['STIC']['STIC_Sec18_23'] == "" and
+                data['STIC']['STIC_Sec18_24'] == "" and
+                data['STIC']['STIC_Sec18_25'] == "" and
+                data['STIC']['STIC_Sec18_26'] == "" and
+                data['STIC']['STIC_Sec18_27'] == "" and
+                data['STIC']['STIC_Sec18_27'] == "" and
+                data['STIC']['STIC_Sec18_FaP1'] == 0 and
+                data['STIC']['STIC_Sec18_FaP1_1'] == "" and
+                data['STIC']['STIC_Sec18_FaP1_2'] == "" and
+                data['STIC']['STIC_Sec18_FaP2'] == 0 and
+                data['STIC']['STIC_Sec18_FaP2_1'] == "" and
+                data['STIC']['STIC_Sec18_FaP2_2'] == "" and
+                data['STIC']['STIC_Sec18_FaP3'] == 0 and
+                data['STIC']['STIC_Sec18_FaP3_1'] == "" and
+                data['STIC']['STIC_Sec18_FaP3_2'] == "" and
+                data['STIC']['STIC_Sec18_FaP4'] == 0 and
+                data['STIC']['STIC_Sec18_FaP4_1'] == "" and
+                data['STIC']['STIC_Sec18_FaP4_2'] == "" and
+                data['STIC']['STIC_Sec18_FaP5'] == 0 and
+                data['STIC']['STIC_Sec18_FaP5_1'] == "" and
+                data['STIC']['STIC_Sec18_FaP5_2'] == "" and
+                data['STIC']['STIC_Sec18_FaP6'] == 0 and
+                data['STIC']['STIC_Sec18_FaP6_1'] == "" and
+                data['STIC']['STIC_Sec18_FaP6_2'] == "" and
+                data['STIC']['STIC_Sec18_Extension1'] == 0 and
+                data['STIC']['STIC_Sec18_Extension1_1'] == "" and
+                data['STIC']['STIC_Sec18_Extension1_2'] == "" and
+                data['STIC']['STIC_Sec18_Extension2'] == 0 and
+                data['STIC']['STIC_Sec18_Extension2_1'] == "" and
+                data['STIC']['STIC_Sec18_Extension3'] == 0 and
+                data['STIC']['STIC_Sec18_Extension3_1'] == "" and
+                data['STIC']['STIC_Sec18_Extension4'] == 0 and
+                data['STIC']['STIC_Sec18_Extension4_1'] == "" and
+                data['STIC']['STIC_Sec18_Extension5'] == 0 and
+                data['STIC']['STIC_Sec18_Extension5_1'] == "" and
+                data['STIC']['STIC_Sec18_Extension6'] == 0 and
+                data['STIC']['STIC_Sec18_Extension6_1'] == "" and
+                data['STIC']['STIC_Sec18_Comments'] == "" 
+            ) :
+                stic_status6 = True
+            else:
+                stic_status6 = False
+            if (
+                
+                data['STIC']['STIC_Sec19_Limit'] == "" and
+                data['STIC']['STIC_Sec19_Premium'] == "" and
+                data['STIC']['STIC_Sec19_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec19_PremNumber'] == "" and
+                data['STIC']['STIC_Sec19_Part1_1'] == "" and
+                data['STIC']['STIC_Sec19_Part1_2'] == "" and
+                data['STIC']['STIC_Sec19_Part1_3'] == "" and
+                data['STIC']['STIC_Sec19_Part1_4'] == "" and
+                data['STIC']['STIC_Sec19_Part1_5'] == "" and
+                data['STIC']['STIC_Sec19_Part1_6'] == "" and
+                data['STIC']['STIC_Sec19_Part1_7'] == "" and
+                data['STIC']['STIC_Sec19_Part1_8'] == "" and
+                data['STIC']['STIC_Sec19_Part1_9'] == "" and
+                data['STIC']['STIC_Sec19_Part2_1'] == "" and
+                data['STIC']['STIC_Sec19_Part2_2'] == "" and
+                data['STIC']['STIC_Sec19_Part2_3'] == "" and
+                data['STIC']['STIC_Sec19_Part2_4'] == "" and
+                data['STIC']['STIC_Sec19_Part2_5'] == "" and
+                data['STIC']['STIC_Sec19_Extension1'] == 2 and
+                data['STIC']['STIC_Sec19_Extension_Premium1'] == "" and
+                data['STIC']['STIC_Sec19_Extension2'] == 2 and
+                data['STIC']['STIC_Sec19_Extension_Premium2'] == "" and
+                data['STIC']['STIC_Sec19_RoD_1'] == "" and
+                data['STIC']['STIC_Sec19_RoD_2'] == "" and
+                data['STIC']['STIC_Sec19_RoD_3'] == "" and
+                data['STIC']['STIC_Sec19_RoD_4'] == "" and
+                data['STIC']['STIC_Sec19_RoD_5'] == "" and
+                data['STIC']['STIC_Sec19_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec19_Comments'] == "" and
+                data['STIC']['STIC_Sec20_Limit'] == "" and
+                data['STIC']['STIC_Sec20_Premium'] == "" and
+                data['STIC']['STIC_Sec20_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec20_PremNumber'] == "" and
+                data['STIC']['STIC_Sec20_1'] == "" and
+                data['STIC']['STIC_Sec20_2'] == "" and
+                data['STIC']['STIC_Sec20_3'] == "" and
+                data['STIC']['STIC_Sec20_4'] == "" and
+                data['STIC']['STIC_Sec20_5'] == "" and
+                data['STIC']['STIC_Sec20_6'] == "" and
+                data['STIC']['STIC_Sec20_Extension1'] == 2 and
+                data['STIC']['STIC_Sec20_Extension_Premium1'] == "" and
+                data['STIC']['STIC_Sec20_Extension2'] == 2 and
+                data['STIC']['STIC_Sec20_Extension_Premium2'] == "" and
+                data['STIC']['STIC_Sec20_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec20_Comments'] == "" and
+                data['STIC']['STIC_Sec21_Limit'] == "" and
+                data['STIC']['STIC_Sec21_Premium'] == "" and
+                data['STIC']['STIC_Sec21_ItemNumber'] == "" and
+                data['STIC']['STIC_Sec21_PremNumber'] == "" and
+                data['STIC']['STIC_Sec21_1'] == "" and
+                data['STIC']['STIC_Sec21_2'] == "" and
+                data['STIC']['STIC_Sec21_3'] == "" and
+                data['STIC']['STIC_Sec21_4'] == "" and
+                data['STIC']['STIC_Sec21_5'] == "" and
+                data['STIC']['STIC_Sec21_6'] == "" and
+                data['STIC']['STIC_Sec21_Extension1'] == 2 and
+                data['STIC']['STIC_Sec21_Extension_Premium1'] == "" and
+                data['STIC']['STIC_Sec21_Extension2'] == 2 and
+                data['STIC']['STIC_Sec21_Extension_Premium2'] == "" and
+                data['STIC']['STIC_Sec21_AnnualPremium'] == "" and
+                data['STIC']['STIC_Sec21_Comments'] == "" and        
                 data['STIC']['STIC_SecD_1'] == "" and
                 data['STIC']['STIC_SecD_2'] == "" and
                 data['STIC']['STIC_SecD_3'] == "" and
@@ -1783,10 +2250,10 @@ def wkhtmltopdfapi(request):
                 data['STIC']['STIC_SecG_2'] == "" and
                 data['STIC']['STIC_SecG_3'] == "" 
             ) :
-                stic_status4 = True
+                stic_status7 = True
             else:
-                stic_status4 = False
-            if stic_status1 == True and stic_status2 == True and stic_status3 == True and stic_status4 == True:
+                stic_status7 = False
+            if stic_status1 == True and stic_status2 == True and stic_status3 == True and stic_status4 == True and stic_status5 == True and stic_status6 == True and stic_status7 == True:
                 data['STIC_status'] = False
             else:
                 data['STIC_status'] = True
@@ -2293,171 +2760,171 @@ def wkhtmltopdfapi(request):
                 data["STIP"]['STIP_CnRI_AdviseGiven'] == 2 and
                 data["STIP"]['STIP_CnRI_ReplacePurpose'] == "" and
                 data["STIP"]['STIP_CnRI_ReplaceReason'] == "" and
-                data["STIP"]['STIP_CnRI_ReplaceSupplier'] == "" #and
-                # data["STIP"]['STIP_HC_ResidentialArea'] == "" and
-                # data["STIP"]['STIP_HC_StreetNumber'] == "" and
-                # data["STIP"]['STIP_HC_PostalCode'] == "" and
-                # data["STIP"]['STIP_HC_ResidenceType'] == "" and
-                # data["STIP"]['STIP_HC_Flat_GroundLevel'] == 2 and
-                # data["STIP"]['STIP_HC_WallConstruction'] == 2 and
-                # data["STIP"]['STIP_HC_RoofConstruction'] == 2 and
-                # data["STIP"]['STIP_HC_SM_BurglarBar'] == 2 and
-                # data["STIP"]['STIP_HC_SM_SecurityGate'] == 2 and
-                # data["STIP"]['STIP_HC_SM_AlarmSystem'] == 2 and
-                # data["STIP"]['STIP_HC_SM_SecurityArea'] == 2 and
-                # data["STIP"]['STIP_HC_NoClaimBonus'] == "" and
-                # data["STIP"]['STIP_HC_SumInsured'] == "" and
-                # data["STIP"]['STIP_HCEx_BusinessType'] == "" and
-                # data["STIP"]['STIP_HCEx_InsuredAmount'] == "" and
-                # int(data["STIP"]['STIP_HC_ADI_General1']) == 2 and
-                # int(data["STIP"]['STIP_HC_ADI_General2']) == 2 and
-                # int(data["STIP"]['STIP_HC_ADI_MechElecBreakdown']) == 2 and
-                # int(data["STIP"]['STIP_HC_ADI_ElectronicalBreakdown']) == 2 and
-                # int(data["STIP"]['STIP_HC_ADI_PowerSurgeCover1']) == 2 and
-                # int(data["STIP"]['STIP_HC_ADI_PowerSurgeCover2']) == 2 and
-                # int(data["STIP"]['STIP_HC_ADI_PowerSurgeCover3']) == 2 and
-                # data["STIP"]['STIP_HC_Fee'] == "" and
-                # data["STIP"]['STIP_HC_Commission'] == "" and
-                # data["STIP"]['STIP_HC_TotalPremium'] == "" and
-                # data["STIP"]['STIP_Build_ResidentialArea'] == "" and
-                # data["STIP"]['STIP_Build_StreetNumber'] == "" and
-                # data["STIP"]['STIP_Build_PostalCode'] == "" and
-                # data["STIP"]['STIP_Build_ResidenceType'] == "" and
-                # data["STIP"]['STIP_Build_Type'] == "" and
-                # data["STIP"]['STIP_Build_Voluntary'] == 2 and
-                # data["STIP"]['STIP_Build_SnL'] == 2 and
-                # data["STIP"]['STIP_Build_ADI'] == 2 and
-                # data["STIP"]['STIP_Build_WallConstruction'] == 2 and
-                # data["STIP"]['STIP_Build_RoofConstruction'] == 2 and
-                # data["STIP"]['STIP_Build_Fee'] == "" and
-                # data["STIP"]['STIP_Build_Commission'] == "" and
-                # data["STIP"]['STIP_Build_TotalPremium'] == "" and
-                # data["STIP"]['STIP_Build_AdditionalAdvise'] == "" and
-                # data["STIP"]['STIP_AddProp_ResidentialArea'] == "" and
-                # data["STIP"]['STIP_AddProp_StreetNumber'] == "" and
-                # data["STIP"]['STIP_AddProp_PostalCode'] == "" and
-                # data["STIP"]['STIP_AddProp_ResidenceType'] == "" and
-                # data["STIP"]['STIP_AddProp_Type'] == "" and
-                # data["STIP"]['STIP_AddProp_Voluntary'] == 2 and
-                # data["STIP"]['STIP_AddProp_SnL'] == 2 and
-                # data["STIP"]['STIP_AddProp_ADI'] == 2 and
-                # data["STIP"]['STIP_AddProp_WallConstruction'] == 2 and
-                # data["STIP"]['STIP_AddProp_RoofConstruction'] == 2 and
-                # data["STIP"]['STIP_AddProp_Fee'] == "" and
-                # data["STIP"]['STIP_AddProp_Commission'] == "" and
-                # data["STIP"]['STIP_AddProp_TotalPremium'] == "" and
-                # data["STIP"]['STIP_AddProp_AdditionalAdvise'] == "" and
-                # data["STIP"]['STIP_Vehicle_Owner'] == "" and
-                # data["STIP"]['STIP_Vehicle_RegOwner'] == "" and
-                # data["STIP"]['STIP_Vehicle_Usage'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_ONParkingOptions']) == 0 and
-                # data["STIP"]['STIP_Vehicle_ONParking'] == "" and
-                # data["STIP"]['STIP_Vehicle_ONOtherParking'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_CoverType']) == 0 and
-                # int(data["STIP"]['STIP_Vehicle_SM1']) == 2 and
-                # int(data["STIP"]['STIP_Vehicle_SM2']) == 2 and
-                # int(data["STIP"]['STIP_Vehicle_SM3']) == 2 and
-                # int(data["STIP"]['STIP_Vehicle_SM4']) == 2 and
-                # data["STIP"]['STIP_Vehicle_Driver'] == "" and
-                # data["STIP"]['STIP_Vehicle_DriverLicIssDate'] == "" and
-                # data["STIP"]['STIP_Vehicle_LicCode'] == "" and
-                # data["STIP"]['STIP_Vehicle_SumInsured'] == "" and
-                # data["STIP"]['STIP_Vehicle_ClaimBonus'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_VoluntaryExcess']) == 2 and
-                # int(data["STIP"]['STIP_Vehicle_Extras1']) == 2 and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount1'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras2'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount2'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras3'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount3'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras4'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount4'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras5'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount5'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras6'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount6'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras7'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount7'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras8'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount8'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras9'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount9'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras10'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount10'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras11'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount11'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras12'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount12'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_Extras13'] == 2) and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount13'] == "" and
-                # data["STIP"]['STIP_Vehicle_Extras14'] == "" and
-                # data["STIP"]['STIP_Vehicle_ExtrasAmount14'] == "" and
-                # int(data["STIP"]['STIP_Vehicle_AC1']) == 2 and
-                # int(data["STIP"]['STIP_Vehicle_AC2']) == 2 and
-                # int(data["STIP"]['STIP_Vehicle_AC3']) == 2 and
-                # int(data["STIP"]['STIP_Vehicle_AC4']) == 2 and
-                # int(data["STIP"]['STIP_Vehicle_AC5']) == 2 and
-                # data["STIP"]['STIP_Vehicle_Fees'] == "" and
-                # data["STIP"]['STIP_Vehicle_Commission'] == "" and
-                # data["STIP"]['STIP_Vehicle_TotalPremium'] == "" and
-                # data["STIP"]['STIP_Vehicle_Comments'] == "" and        
-                # data["STIP"]['STIP_MotorC_RegOwner'] == "" and
-                # data["STIP"]['STIP_MotorC_Usage'] == "" and
-                # int(data["STIP"]['STIP_MotorC_ONParkingOptions']) == 0 and
-                # data["STIP"]['STIP_MotorC_ONParking'] == "" and
-                # data["STIP"]['STIP_MotorC_ONOtherParking'] == "" and
-                # int(data["STIP"]['STIP_MotorC_CoverType']) == 0 and
-                # int(data["STIP"]['STIP_MotorC_Driver']) == 0 and
-                # data["STIP"]['STIP_MotorC_Driver1'] == "" and
-                # data["STIP"]['STIP_MotorC_DriverLicIssDate'] == "" and
-                # data["STIP"]['STIP_MotorC_LicCode'] == "" and
-                # data["STIP"]['STIP_MotorC_SumInsured'] == "" and
-                # data["STIP"]['STIP_MotorC_ClaimBonus'] == "" and
-                # data["STIP"]['STIP_MotorC_Fees'] == "" and
-                # data["STIP"]['STIP_MotorC_Commission'] == "" and
-                # data["STIP"]['STIP_MotorC_TotalPremium'] == "" and
-                # data["STIP"]['STIP_MotorC_Comments'] == ""
+                data["STIP"]['STIP_CnRI_ReplaceSupplier'] == "" and
+                data["STIP"]['STIP_HC_ResidentialArea'] == "" and
+                data["STIP"]['STIP_HC_StreetNumber'] == "" and
+                data["STIP"]['STIP_HC_PostalCode'] == "" and
+                data["STIP"]['STIP_HC_ResidenceType'] == "" and
+                data["STIP"]['STIP_HC_Flat_GroundLevel'] == 2 and
+                data["STIP"]['STIP_HC_WallConstruction'] == 2 and
+                data["STIP"]['STIP_HC_RoofConstruction'] == 2 and
+                data["STIP"]['STIP_HC_SM_BurglarBar'] == 2 and
+                data["STIP"]['STIP_HC_SM_SecurityGate'] == 2 and
+                data["STIP"]['STIP_HC_SM_AlarmSystem'] == 2 and
+                data["STIP"]['STIP_HC_SM_SecurityArea'] == 2 and
+                data["STIP"]['STIP_HC_NoClaimBonus'] == "" and
+                data["STIP"]['STIP_HC_SumInsured'] == "" and
+                data["STIP"]['STIP_HCEx_BusinessType'] == "" and
+                data["STIP"]['STIP_HCEx_InsuredAmount'] == "" and
+                int(data["STIP"]['STIP_HC_ADI_General1']) == 2 and
+                int(data["STIP"]['STIP_HC_ADI_General2']) == 2 and
+                int(data["STIP"]['STIP_HC_ADI_MechElecBreakdown']) == 2 and
+                int(data["STIP"]['STIP_HC_ADI_ElectronicalBreakdown']) == 2 and
+                int(data["STIP"]['STIP_HC_ADI_PowerSurgeCover1']) == 2 and
+                int(data["STIP"]['STIP_HC_ADI_PowerSurgeCover2']) == 2 and
+                int(data["STIP"]['STIP_HC_ADI_PowerSurgeCover3']) == 2 and
+                data["STIP"]['STIP_HC_Fee'] == "" and
+                data["STIP"]['STIP_HC_Commission'] == "" and
+                data["STIP"]['STIP_HC_TotalPremium'] == "" and
+                data["STIP"]['STIP_Build_ResidentialArea'] == "" and
+                data["STIP"]['STIP_Build_StreetNumber'] == "" and
+                data["STIP"]['STIP_Build_PostalCode'] == "" and
+                data["STIP"]['STIP_Build_ResidenceType'] == "" and
+                data["STIP"]['STIP_Build_Type'] == "" and
+                data["STIP"]['STIP_Build_Voluntary'] == 2 and
+                data["STIP"]['STIP_Build_SnL'] == 2 and
+                data["STIP"]['STIP_Build_ADI'] == 2 and
+                data["STIP"]['STIP_Build_WallConstruction'] == 2 and
+                data["STIP"]['STIP_Build_RoofConstruction'] == 2 and
+                data["STIP"]['STIP_Build_Fee'] == "" and
+                data["STIP"]['STIP_Build_Commission'] == "" and
+                data["STIP"]['STIP_Build_TotalPremium'] == "" and
+                data["STIP"]['STIP_Build_AdditionalAdvise'] == "" and
+                data["STIP"]['STIP_AddProp_ResidentialArea'] == "" and
+                data["STIP"]['STIP_AddProp_StreetNumber'] == "" and
+                data["STIP"]['STIP_AddProp_PostalCode'] == "" and
+                data["STIP"]['STIP_AddProp_ResidenceType'] == "" and
+                data["STIP"]['STIP_AddProp_Type'] == "" and
+                data["STIP"]['STIP_AddProp_Voluntary'] == 2 and
+                data["STIP"]['STIP_AddProp_SnL'] == 2 and
+                data["STIP"]['STIP_AddProp_ADI'] == 2 and
+                data["STIP"]['STIP_AddProp_WallConstruction'] == 2 and
+                data["STIP"]['STIP_AddProp_RoofConstruction'] == 2 and
+                data["STIP"]['STIP_AddProp_Fee'] == "" and
+                data["STIP"]['STIP_AddProp_Commission'] == "" and
+                data["STIP"]['STIP_AddProp_TotalPremium'] == "" and
+                data["STIP"]['STIP_AddProp_AdditionalAdvise'] == "" and
+                data["STIP"]['STIP_Vehicle_Owner'] == "" and
+                data["STIP"]['STIP_Vehicle_RegOwner'] == "" and
+                data["STIP"]['STIP_Vehicle_Usage'] == "" and
+                int(data["STIP"]['STIP_Vehicle_ONParkingOptions']) == 0 and
+                data["STIP"]['STIP_Vehicle_ONParking'] == "" and
+                data["STIP"]['STIP_Vehicle_ONOtherParking'] == "" and
+                int(data["STIP"]['STIP_Vehicle_CoverType']) == 0 and
+                int(data["STIP"]['STIP_Vehicle_SM1']) == 2 and
+                int(data["STIP"]['STIP_Vehicle_SM2']) == 2 and
+                int(data["STIP"]['STIP_Vehicle_SM3']) == 2 and
+                int(data["STIP"]['STIP_Vehicle_SM4']) == 2 and
+                data["STIP"]['STIP_Vehicle_Driver'] == "" and
+                data["STIP"]['STIP_Vehicle_DriverLicIssDate'] == "" and
+                data["STIP"]['STIP_Vehicle_LicCode'] == "" and
+                data["STIP"]['STIP_Vehicle_SumInsured'] == "" and
+                data["STIP"]['STIP_Vehicle_ClaimBonus'] == "" and
+                int(data["STIP"]['STIP_Vehicle_VoluntaryExcess']) == 2 and
+                int(data["STIP"]['STIP_Vehicle_Extras1']) == 2 and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount1'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras2'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount2'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras3'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount3'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras4'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount4'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras5'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount5'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras6'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount6'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras7'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount7'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras8'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount8'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras9'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount9'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras10'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount10'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras11'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount11'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras12'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount12'] == "" and
+                int(data["STIP"]['STIP_Vehicle_Extras13'] == 2) and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount13'] == "" and
+                data["STIP"]['STIP_Vehicle_Extras14'] == "" and
+                data["STIP"]['STIP_Vehicle_ExtrasAmount14'] == "" and
+                int(data["STIP"]['STIP_Vehicle_AC1']) == 2 and
+                int(data["STIP"]['STIP_Vehicle_AC2']) == 2 and
+                int(data["STIP"]['STIP_Vehicle_AC3']) == 2 and
+                int(data["STIP"]['STIP_Vehicle_AC4']) == 2 and
+                int(data["STIP"]['STIP_Vehicle_AC5']) == 2 and
+                data["STIP"]['STIP_Vehicle_Fees'] == "" and
+                data["STIP"]['STIP_Vehicle_Commission'] == "" and
+                data["STIP"]['STIP_Vehicle_TotalPremium'] == "" and
+                data["STIP"]['STIP_Vehicle_Comments'] == "" and        
+                data["STIP"]['STIP_MotorC_RegOwner'] == "" and
+                data["STIP"]['STIP_MotorC_Usage'] == "" and
+                int(data["STIP"]['STIP_MotorC_ONParkingOptions']) == 0 and
+                data["STIP"]['STIP_MotorC_ONParking'] == "" and
+                data["STIP"]['STIP_MotorC_ONOtherParking'] == "" and
+                int(data["STIP"]['STIP_MotorC_CoverType']) == 0 and
+                int(data["STIP"]['STIP_MotorC_Driver']) == 0 and
+                data["STIP"]['STIP_MotorC_Driver1'] == "" and
+                data["STIP"]['STIP_MotorC_DriverLicIssDate'] == "" and
+                data["STIP"]['STIP_MotorC_LicCode'] == "" and
+                data["STIP"]['STIP_MotorC_SumInsured'] == "" and
+                data["STIP"]['STIP_MotorC_ClaimBonus'] == "" and
+                data["STIP"]['STIP_MotorC_Fees'] == "" and
+                data["STIP"]['STIP_MotorC_Commission'] == "" and
+                data["STIP"]['STIP_MotorC_TotalPremium'] == "" and
+                data["STIP"]['STIP_MotorC_Comments'] == ""
             ):
                 stip_status3 = True
             else:
                 stip_status3 = False
             if (
-                # data["STIP"]['STIP_Trailer_RegOwner'] == "" and
-                # data["STIP"]['STIP_Trailer_Type'] == "" and
-                # data["STIP"]['STIP_Trailer_ONParkingOptions'] == 0 and
-                # data["STIP"]['STIP_Trailer_ONOtherParking'] == "" and
-                # data["STIP"]['STIP_Trailer_SumInsured'] == "" and
-                # data["STIP"]['STIP_Trailer_ClaimBonus'] == "" and
-                # data["STIP"]['STIP_Trailer_Fees'] == "" and
-                # data["STIP"]['STIP_Trailer_Commission'] == "" and
-                # data["STIP"]['STIP_Trailer_TotalPremium'] == "" and
-                # data["STIP"]['STIP_Trailer_Comments'] == "" and
-                # data["STIP"]['STIP_WaterC_RegOwner'] == "" and
-                # data["STIP"]['STIP_WaterC_Type'] == "" and
-                # data["STIP"]['STIP_WaterC_Hull'] == "" and
-                # data["STIP"]['STIP_WaterC_SumInsured'] == "" and
-                # data["STIP"]['STIP_WaterC_VIN'] == "" and
-                # data["STIP"]['STIP_WaterC_EngineNumber'] == "" and
-                # data["STIP"]['STIP_WaterC_OC_Glitter'] == "" and
-                # data["STIP"]['STIP_WaterC_OC_SpecifiedAccessories'] == "" and
-                # data["STIP"]['STIP_WaterC_OC_MotorType'] == "" and
-                # data["STIP"]['STIP_WaterC_OC_Output'] == "" and
-                # data["STIP"]['STIP_WaterC_Fees'] == "" and
-                # data["STIP"]['STIP_WaterC_Commission'] == "" and
-                # data["STIP"]['STIP_WaterC_TotalPremium'] == "" and
-                # data["STIP"]['STIP_WaterC_Comments'] == "" and
-                # data["STIP"]['STIP_PersonalLL_IndemnityLimit'] == 2 and
-                # data["STIP"]['STIP_PersonalLL_IndemnityLimitDetail'] == "" and
-                # data["STIP"]['STIP_PersonalLL_Fees'] == "" and
-                # data["STIP"]['STIP_PersonalLL_Commission'] == "" and
-                # data["STIP"]['STIP_PersonalLL_TotalPremium'] == "" and
-                # data["STIP"]['STIP_PersonalLL_Comments'] == "" and
-                # data["STIP"]['STIP_LegalA_IndemnityLimit'] == 2 and
-                # data["STIP"]['STIP_LegalA_IndemnityLimitDetail'] == "" and
-                # data["STIP"]['STIP_LegalA_Fees'] == "" and
-                # data["STIP"]['STIP_LegalA_Commission'] == "" and
-                # data["STIP"]['STIP_LegalA_TotalPremium'] == "" and
-                # data["STIP"]['STIP_LegalA_Comments'] == "" and
+                data["STIP"]['STIP_Trailer_RegOwner'] == "" and
+                data["STIP"]['STIP_Trailer_Type'] == "" and
+                data["STIP"]['STIP_Trailer_ONParkingOptions'] == 0 and
+                data["STIP"]['STIP_Trailer_ONOtherParking'] == "" and
+                data["STIP"]['STIP_Trailer_SumInsured'] == "" and
+                data["STIP"]['STIP_Trailer_ClaimBonus'] == "" and
+                data["STIP"]['STIP_Trailer_Fees'] == "" and
+                data["STIP"]['STIP_Trailer_Commission'] == "" and
+                data["STIP"]['STIP_Trailer_TotalPremium'] == "" and
+                data["STIP"]['STIP_Trailer_Comments'] == "" and
+                data["STIP"]['STIP_WaterC_RegOwner'] == "" and
+                data["STIP"]['STIP_WaterC_Type'] == "" and
+                data["STIP"]['STIP_WaterC_Hull'] == "" and
+                data["STIP"]['STIP_WaterC_SumInsured'] == "" and
+                data["STIP"]['STIP_WaterC_VIN'] == "" and
+                data["STIP"]['STIP_WaterC_EngineNumber'] == "" and
+                data["STIP"]['STIP_WaterC_OC_Glitter'] == "" and
+                data["STIP"]['STIP_WaterC_OC_SpecifiedAccessories'] == "" and
+                data["STIP"]['STIP_WaterC_OC_MotorType'] == "" and
+                data["STIP"]['STIP_WaterC_OC_Output'] == "" and
+                data["STIP"]['STIP_WaterC_Fees'] == "" and
+                data["STIP"]['STIP_WaterC_Commission'] == "" and
+                data["STIP"]['STIP_WaterC_TotalPremium'] == "" and
+                data["STIP"]['STIP_WaterC_Comments'] == "" and
+                data["STIP"]['STIP_PersonalLL_IndemnityLimit'] == 2 and
+                data["STIP"]['STIP_PersonalLL_IndemnityLimitDetail'] == "" and
+                data["STIP"]['STIP_PersonalLL_Fees'] == "" and
+                data["STIP"]['STIP_PersonalLL_Commission'] == "" and
+                data["STIP"]['STIP_PersonalLL_TotalPremium'] == "" and
+                data["STIP"]['STIP_PersonalLL_Comments'] == "" and
+                data["STIP"]['STIP_LegalA_IndemnityLimit'] == 2 and
+                data["STIP"]['STIP_LegalA_IndemnityLimitDetail'] == "" and
+                data["STIP"]['STIP_LegalA_Fees'] == "" and
+                data["STIP"]['STIP_LegalA_Commission'] == "" and
+                data["STIP"]['STIP_LegalA_TotalPremium'] == "" and
+                data["STIP"]['STIP_LegalA_Comments'] == "" and
                 data["STIP"]['STIP_ProductConsidered'] == "" and
                 data["STIP"]['STIP_ProductRecommended'] == "" and
                 data["STIP"]['STIP_ProductReasons'] == "" and
