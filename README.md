@@ -14,6 +14,8 @@ Deployed using Nginx and Gunicorn
 
 ### 26 June 2023:
 - Updated Logic for Short Term Personal and Commercial sections for PDF
+- New Development Build
+- New Production Build
 
 ### 22 June 2023:
 - Adivsor Field is now flexible and added in PDF as well

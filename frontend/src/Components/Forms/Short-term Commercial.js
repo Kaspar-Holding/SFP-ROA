@@ -5019,7 +5019,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
 
                                       <tr class="d-flex">
                                           
-                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Employer practices  Liability</td>
+                                          <td class="col-2" style={{width:"170px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>&nbsp;Employer practices Liability</td>
                                           <td class="col-2" style={{width:"100px"}}>
                                               <input type="checkbox" onMouseLeave={(e)=>{onFieldBlur(e)}} checked={FormData["STIC_ProdComp_Recommended22"] === 1 ? true : false} name="STIC_ProdComp_Recommended22" onChange={(e)=>{FormData["STIC_ProdComp_Recommended22"] === 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}} align="center"/>
                                           </td>
@@ -12350,7 +12350,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
         <></>
     }
     {
-        FormData['STIC_ProdComp_Accepted6'] === 1 ?
+        FormData['STIC_ProdComp_Accepted9'] === 1 ?
                 <>
                 <div className='row'>
                   <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -12737,7 +12737,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                 </>
 }
     {
-            FormData['STIC_ProdComp_Accepted7'] === 1 ?
+            FormData['STIC_ProdComp_Accepted10'] === 1 ?
                     <>
                       <div className='row'>
                         <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -13528,7 +13528,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                               </>
                     }
     {
-        FormData['STIC_ProdComp_Accepted8'] === 1 ?
+        FormData['STIC_ProdComp_Accepted11'] === 1 ?
                 <>
                 <div className='row'>
                         <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -14009,7 +14009,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                 </>
     }
     {
-        FormData['STIC_ProdComp_Accepted9'] === 1 ?
+        FormData['STIC_ProdComp_Accepted12'] === 1 ?
               <>
               <div className='row'>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -14820,7 +14820,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     }
     
     {
-        FormData['STIC_ProdComp_Accepted10'] === 1 ?
+        FormData['STIC_ProdComp_Accepted13'] === 1 ?
               <>
               <div className='row'>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -15529,7 +15529,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </>
     }
     {
-        FormData['STIC_ProdComp_Accepted11'] === 1 ?
+        FormData['STIC_ProdComp_Accepted14'] === 1 ?
               <>
               <div className='row'>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -16036,7 +16036,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </>
     }
     {
-        FormData['STIC_ProdComp_Accepted12'] === 1 ?
+        FormData['STIC_ProdComp_Accepted15'] === 1 ?
           <>
           <div className='row'>
             <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -16730,7 +16730,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </>
     }
     {
-        FormData['STIC_ProdComp_Accepted13'] === 1 ?
+        FormData['STIC_ProdComp_Accepted16'] === 1 ?
               <>
     <div className='row'>
       <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -18638,7 +18638,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </>
     }
     {
-        FormData['STIC_ProdComp_Accepted15'] === 1 ?
+        FormData['STIC_ProdComp_Accepted26'] === 1 ?
               <>
   <div className='row'>
       <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -19059,7 +19059,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </>
     }
     {
-        FormData['STIC_ProdComp_Accepted16'] === 1 ?
+        FormData['STIC_ProdComp_Accepted27'] === 1 ?
               <>
     <div className='row'>
       <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -20115,7 +20115,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </>
     }
     {
-        FormData['STIC_ProdComp_Accepted17'] === 1 ?
+        FormData['STIC_ProdComp_Accepted29'] === 1 ?
               <>
     <div className='row'>
       <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -22471,7 +22471,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </>
     }
     {
-        FormData['STIC_ProdComp_Accepted19'] === 1 ?
+        FormData['STIC_ProdComp_Accepted34'] === 1 ?
               <>
     <div className='row'>
       <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -23536,7 +23536,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               </>
     }
     {
-      FormData['STIC_ProdComp_Accepted20'] === 1 ?
+      FormData['STIC_ProdComp_Accepted35'] === 1 ?
               <>
     <div className='row'>
       <div className='col-lg-6 col-md-6 col-sm-12'>
