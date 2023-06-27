@@ -201,19 +201,19 @@ const Risk = ({user, LogOut}) =>
           Product_OngoingFeesFrequency1 : "0",    
           TotalFees_n_Commissions : "",        
           BenDesc_1 : "",
-          BenDesc_CoverAmount1 : "",
+          BenDesc_CoverAmount_1 : "",
           BenDesc_2 : "",
-          BenDesc_CoverAmount2 : "",
+          BenDesc_CoverAmount_2 : "",
           BenDesc_3 : "",
-          BenDesc_CoverAmount3 : "",
+          BenDesc_CoverAmount_3 : "",
           BenDesc_4 : "",
-          BenDesc_CoverAmount4 : "",
+          BenDesc_CoverAmount_4 : "",
           BenDesc_5 : "",
-          BenDesc_CoverAmount5 : "",
+          BenDesc_CoverAmount_5 : "",
           BenDesc_6 : "",
-          BenDesc_CoverAmount6 : "",
+          BenDesc_CoverAmount_6 : "",
           BenDesc_7 : "",
-          BenDesc_CoverAmount7 : "",        
+          BenDesc_CoverAmount_7 : "",        
           ProductReasons : "",
           ProductMaterialAspects : "",
           ProductDetails : "",
@@ -373,19 +373,19 @@ const Risk = ({user, LogOut}) =>
                 //     Product_OngoingFeesFrequency1 : "0",    
                 //     TotalFees_n_Commissions : "",        
                 //     BenDesc_1 : "",
-                //     BenDesc_CoverAmount1 : "",
+                //     BenDesc_CoverAmount_1 : "",
                 //     BenDesc_2 : "",
-                //     BenDesc_CoverAmount2 : "",
+                //     BenDesc_CoverAmount_2 : "",
                 //     BenDesc_3 : "",
-                //     BenDesc_CoverAmount3 : "",
+                //     BenDesc_CoverAmount_3 : "",
                 //     BenDesc_4 : "",
-                //     BenDesc_CoverAmount4 : "",
+                //     BenDesc_CoverAmount_4 : "",
                 //     BenDesc_5 : "",
-                //     BenDesc_CoverAmount5 : "",
+                //     BenDesc_CoverAmount_5 : "",
                 //     BenDesc_6 : "",
-                //     BenDesc_CoverAmount6 : "",
+                //     BenDesc_CoverAmount_6 : "",
                 //     BenDesc_7 : "",
-                //     BenDesc_CoverAmount7 : "",        
+                //     BenDesc_CoverAmount_7 : "",        
                 //     ProductReasons : "",
                 //     ProductMaterialAspects : "",
                 //     ProductDetails : "",
@@ -2038,7 +2038,7 @@ const Risk = ({user, LogOut}) =>
                               <div className="col-6">
                                   <div className="input-group">
                                     <span className="input-group-text">R</span>
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_1 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount1" name='BenDesc_CoverAmount1' value={key.BenDesc_CoverAmount1} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_1 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_1" name='BenDesc_CoverAmount_1' value={key.BenDesc_CoverAmount_1} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
                                   </div>
                               </div> 
                           </div>
@@ -2060,7 +2060,7 @@ const Risk = ({user, LogOut}) =>
                               <div className="col-6">
                                   <div className="input-group">
                                     <span className="input-group-text">R</span>
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_2 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount2" name='BenDesc_CoverAmount2' value={key.BenDesc_CoverAmount2} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_2 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_2" name='BenDesc_CoverAmount_2' value={key.BenDesc_CoverAmount_2} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
                                   </div>
                               </div> 
                           </div>
@@ -2082,7 +2082,7 @@ const Risk = ({user, LogOut}) =>
                               <div className="col-6">
                                   <div className="input-group">
                                     <span className="input-group-text">R</span>
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_3 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount3" name='BenDesc_CoverAmount3' value={key.BenDesc_CoverAmount3} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_3 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_3" name='BenDesc_CoverAmount_3' value={key.BenDesc_CoverAmount_3} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
                                   </div>
                               </div> 
                           </div>
@@ -2104,7 +2104,7 @@ const Risk = ({user, LogOut}) =>
                               <div className="col-6">
                                   <div className="input-group">
                                     <span className="input-group-text">R</span>
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_4 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount4" name='BenDesc_CoverAmount4' value={key.BenDesc_CoverAmount4} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_4 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_4" name='BenDesc_CoverAmount_4' value={key.BenDesc_CoverAmount_4} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
                                   </div>
                               </div> 
                           </div>
@@ -2126,7 +2126,7 @@ const Risk = ({user, LogOut}) =>
                               <div className="col-6">
                                   <div className="input-group">
                                     <span className="input-group-text">R</span>
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_5 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount5" name='BenDesc_CoverAmount5' value={key.BenDesc_CoverAmount5} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_5 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_5" name='BenDesc_CoverAmount_5' value={key.BenDesc_CoverAmount_5} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
                                   </div>
                               </div> 
                           </div>
@@ -2148,7 +2148,7 @@ const Risk = ({user, LogOut}) =>
                               <div className="col-6">
                                   <div className="input-group">
                                     <span className="input-group-text">R</span>
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_6 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount6" name='BenDesc_CoverAmount6' value={key.BenDesc_CoverAmount6} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_6 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_6" name='BenDesc_CoverAmount_6' value={key.BenDesc_CoverAmount_6} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
                                   </div>
                               </div> 
                           </div>
@@ -2170,7 +2170,7 @@ const Risk = ({user, LogOut}) =>
                               <div className="col-6">
                                   <div className="input-group">
                                     <span className="input-group-text">R</span>
-                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_7 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount7" name='BenDesc_CoverAmount7' value={key.BenDesc_CoverAmount7} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
+                                    <input onBlur={(e)=>{onFieldBlur(e)}} disabled={key.BenDesc_7 === ""} type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_7" name='BenDesc_CoverAmount_7' value={key.BenDesc_CoverAmount_7} onChange={(e) => {on_ProductTaken_Change(e, i)}} placeholder='0.00' aria-label="" />
                                   </div>
                               </div> 
                           </div>
