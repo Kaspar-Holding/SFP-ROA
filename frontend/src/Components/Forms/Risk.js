@@ -444,6 +444,7 @@ const Risk = ({user, LogOut}) =>
         })
         try {
             await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_rp_ProductTaken_Data/`, ProductTaken_Body ,config) 
+            
         } catch (error) {
           if (error.response.status === 401){
             setSuccessMessage("Login time out, You will be logged out in 5 seconds")

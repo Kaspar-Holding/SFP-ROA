@@ -12,6 +12,9 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 27 June 2023:
+- Updated the charfield with 20000 limit to limitless textfields
+
 ### 26 June 2023:
 - Updated Logic for Short Term Personal and Commercial sections for PDF
 - Fixed Short Term Sections mismatching bugs
