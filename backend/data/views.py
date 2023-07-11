@@ -1444,24 +1444,28 @@ def insertRiskFactorsData(request):
     else:
         if not user.is_superuser:
             scores = request.data['Score_Data']
-            if int(rf_data['RF_ClientType']) == 1:
-                if int(rf_data['RF_Transaction_Flow']) == 1:
-                    if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] >= 3:
-                        rf_data['status'] = 2
-                        status = 2
-                if int(rf_data['RF_Transaction_Flow']) == 2:
-                    if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] >= 3:
-                        rf_data['status'] = 2
-                        status = 2
-            if int(rf_data['RF_ClientType']) == 2:
-                if int(rf_data['RF_Transaction_Flow']) == 1:
-                    if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] >= 3:
-                        rf_data['status'] = 2
-                        status = 2
-                if int(rf_data['RF_Transaction_Flow']) == 2:
-                    if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] >= 3:
-                        rf_data['status'] = 2
-                        status = 2
+            if int(scores['Reputation_Risk']) == 4:
+                rf_data['status'] = 2
+                status = 2
+            else:
+                if int(rf_data['RF_ClientType']) == 1:
+                    if int(rf_data['RF_Transaction_Flow']) == 1:
+                        if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                            rf_data['status'] = 2
+                            status = 2
+                    if int(rf_data['RF_Transaction_Flow']) == 2:
+                        if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                            rf_data['status'] = 2
+                            status = 2
+                if int(rf_data['RF_ClientType']) == 2:
+                    if int(rf_data['RF_Transaction_Flow']) == 1:
+                        if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                            rf_data['status'] = 2
+                            status = 2
+                    if int(rf_data['RF_Transaction_Flow']) == 2:
+                        if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                            rf_data['status'] = 2
+                            status = 2
         serializer = RiskFactorsSerializers(data=rf_data, many=False)
         if serializer.is_valid():
         
