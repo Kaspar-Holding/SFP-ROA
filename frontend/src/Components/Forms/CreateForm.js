@@ -7765,11 +7765,6 @@ const CreateForm = ({user}) => {
 
                     <hr/>
                     {(() => {
-                        if(user['is_superuser'])
-                            {
-                                return (<>
-                                     {(() => { 
-                        
                         if(parseInt(FormData['RF_Transaction_Geography'])===1)
                         {
                             return (<>
@@ -8220,11 +8215,7 @@ const CreateForm = ({user}) => {
                                 
                                 
                             </>);
-                        } 
-                                            
-                        })()}
-                                    </>)
-                            }    
+                        }    
                     })()}
                        
                     
