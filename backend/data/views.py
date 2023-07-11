@@ -1427,18 +1427,44 @@ def updateShortTermInsuranceCommericalData(request):
 @api_view(['POST'])
 def insertRiskFactorsData(request):
     rf_data = request.data['RF_Data']
+    rf_data['Client_Individual_Risk'] = request.data['Scores']['Client_Individual_Risk']
+    rf_data['Transaction_Inflow_Risk'] = request.data['Scores']['Client_Legal_Risk']
+    rf_data['Client_Legal_Risk'] = request.data['Scores']['Transaction_Inflow_Risk']
+    rf_data['Transaction_Inflow_Risk'] = request.data['Scores']['Transaction_Outflow_Risk']
+    rf_data['Reputation_Risk'] = request.data['Scores']['Reputation_Risk']
     status = 1
-    advisor_admin = UserAccount.objects.filter(id=request.data['RF_Data']['advisorId']).values('is_superuser').first()['is_superuser']
-    if not advisor_admin:
-        if int(request.data['RF_Data']['RF_Client_Match']) == 2 or int(request.data['RF_Data']['RF_Client_Match']) == 5 or int(request.data['RF_Data']['RF_Client_Match']) == 8 or int(request.data['RF_Data']['RF_Client_Match']) == 11 :
-            rf_data['status'] = 2
-            status = 2
-    serializer = RiskFactorsSerializers(data=rf_data, many=False)
-    if serializer.is_valid():
-        old_form = RiskFactors.objects.filter(advisorId = rf_data['advisorId'],RF_ClientId = rf_data['RF_ClientId']).first()
-        serializer1 = RiskFactorsSerializers(old_form, many=False)
-        # return Response({"data":serializer1.data, "length": len(serializer1.data['client_id'])})
-        if len(serializer1.data['RF_ClientId']) == 0:
+    user = request.user
+    old = RiskFactors.objects.filter(advisorId = rf_data['advisorId'],RF_ClientId = rf_data['RF_ClientId'])
+    if old.exists():
+        oldData = old.values().first()
+        if oldData['status'] == 2:
+            return Response({"message": "This form is rated HIGH and awaiting for approval","formId":oldData['id'],"code":406,},406)
+        else:
+            return Response({'message': "Form Already Exists","code": "200", "formId" : oldData['id']},200)
+    else:
+        if not user.is_superuser:
+            scores = request.data['Score_Data']
+            if int(rf_data['RF_ClientType']) == 1:
+                if int(rf_data['RF_Transaction_Flow']) == 1:
+                    if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] >= 3:
+                        rf_data['status'] = 2
+                        status = 2
+                if int(rf_data['RF_Transaction_Flow']) == 2:
+                    if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] >= 3:
+                        rf_data['status'] = 2
+                        status = 2
+            if int(rf_data['RF_ClientType']) == 2:
+                if int(rf_data['RF_Transaction_Flow']) == 1:
+                    if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] >= 3:
+                        rf_data['status'] = 2
+                        status = 2
+                if int(rf_data['RF_Transaction_Flow']) == 2:
+                    if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] >= 3:
+                        rf_data['status'] = 2
+                        status = 2
+        serializer = RiskFactorsSerializers(data=rf_data, many=False)
+        if serializer.is_valid():
+        
             saved_data = serializer.create(serializer.validated_data)
             formId = saved_data.pk
             lp_data = request.data['LP_Data']
@@ -1447,14 +1473,14 @@ def insertRiskFactorsData(request):
             lp_serializer = RF_LinkedPartySerializers(data=lp_data, many=True)
             if lp_serializer.is_valid():
                 lp_serializer.create(lp_serializer.validated_data)
-            if not advisor_admin and status == 2:
+            if status == 2:
                 sendAlertEmail(request=request, formId=formId, advisorId=request.data['RF_Data']['advisorId'])
-                return Response({"message": "Data is inserted","formId":formId,"code":200,},200)
+                return Response({"message": "This form is rated HIGH and awaiting for approval","formId":formId,"code":406,},406)
             return Response({"message": "Data is inserted","formId":formId,"data":request.data,"code":201,},201)
-        else :
-            return Response({'message': "Form Already Exists","code": "200", "formId" : serializer1.data['id']},200)
-        #     serializer.update(instance=serializer1.data['id'] , validated_data=serializer.validated_data)
-    return Response({"message": "Error 404","code":404,"Errors": serializer.errors},404)
+        else:
+            return Response({"errors": serializer.errors},404)
+
+                
 
 # @api_view(['POST'])
 # def insertRiskFactorsData(request):

@@ -12,6 +12,9 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 10 July 2023:
+- Risk Factors Scores data redeveloped
+
 ### 27 June 2023:
 - Updated the charfield with 20000 limit to limitless textfields
 

@@ -1,7 +1,7 @@
 
 from datetime import datetime, timezone
 from rest_framework import serializers
-from .models import AI_Others, AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RP_ProductTaken_BenDesc, Risk_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, STIC_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
+from .models import AI_Others, AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RF_Scores, RP_ProductTaken, RP_ProductTaken_BenDesc, Risk_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, STIC_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
 from .models import Medical, STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
 from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_PersonalLL, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
 from .models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others
@@ -2911,6 +2911,7 @@ class RiskFactorsSerializers(serializers.ModelSerializer):
         instance.RF_Transaction_Geography = validated_data.get('RF_Transaction_Geography', instance.RF_Transaction_Geography)
         instance.RF_Funds_Jurisdiction = validated_data.get('RF_Funds_Jurisdiction', instance.RF_Funds_Jurisdiction)
         instance.RF_Delivery_Channel = validated_data.get('RF_Delivery_Channel', instance.RF_Delivery_Channel)
+        instance.RF_Inception_Timeframe = validated_data.get('RF_Inception_Timeframe', instance.RF_Inception_Timeframe)
         instance.RF_Linked_Party_Acting = validated_data.get('RF_Linked_Party_Acting', instance.RF_Linked_Party_Acting)
         instance.RF_Linked_Party_Paying = validated_data.get('RF_Linked_Party_Paying', instance.RF_Linked_Party_Paying)
         instance.RF_Client_Match = validated_data.get('RF_Client_Match', instance.RF_Client_Match)
@@ -2928,6 +2929,11 @@ class RiskFactorsSerializers(serializers.ModelSerializer):
         # instance.RF_Control3 = validated_data.get('RF_Control3', instance.RF_Control3)
         # instance.RF_Another_Control1 = validated_data.get('RF_Another_Control1', instance.RF_Another_Control1)
         # instance.RF_Another_Control2 = validated_data.get('RF_Another_Control2', instance.RF_Another_Control2)
+        instance.Client_Individual_Risk = validated_data.get("Client_Individual_Risk", instance.Client_Individual_Risk)
+        instance.Transaction_Inflow_Risk = validated_data.get("Transaction_Inflow_Risk", instance.Transaction_Inflow_Risk)
+        instance.Client_Legal_Risk = validated_data.get("Client_Legal_Risk", instance.Client_Legal_Risk)
+        instance.Transaction_Inflow_Risk = validated_data.get("Transaction_Inflow_Risk", instance.Transaction_Inflow_Risk)
+        instance.Reputation_Risk = validated_data.get("Reputation_Risk", instance.Reputation_Risk)
         instance.status = validated_data.get("status", instance.status)
         
         instance.updated_at = datetime.now(timezone.utc)
@@ -4426,3 +4432,11 @@ class AI_Others_Serializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return AI_Others.objects.create(**validated_data)
+
+class RF_Scores_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = RF_Scores
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return RF_Scores.objects.create(**validated_data)

@@ -2843,6 +2843,7 @@ class RiskFactors(models.Model):
     RF_Transaction_Geography = models.CharField(max_length=250, default="", blank=True) 
     RF_Funds_Jurisdiction = models.CharField(max_length=250, default="", blank=True) 
     RF_Delivery_Channel = models.CharField(max_length=250, default="", blank=True) 
+    RF_Inception_Timeframe = models.CharField(max_length=250, default="", blank=True) 
     RF_Linked_Party_Acting = models.CharField(max_length=250, default="", blank=True) 
     RF_Linked_Party_Paying = models.CharField(max_length=250, default="", blank=True) 
     RF_Client_Match = models.CharField(max_length=250, default="", blank=True) 
@@ -2860,6 +2861,12 @@ class RiskFactors(models.Model):
     # RF_Control3 = models.CharField(max_length=250, default="", blank=True)
     # RF_Another_Control1 = models.CharField(max_length=250, default="", blank=True) 
     # RF_Another_Control2 = models.CharField(max_length=250, default="", blank=True) 
+    
+    Client_Individual_Risk = models.IntegerField(default=0)    
+    Transaction_Inflow_Risk = models.IntegerField(default=0)    
+    Client_Legal_Risk = models.IntegerField(default=0)    
+    Transaction_Inflow_Risk = models.IntegerField(default=0)    
+    Reputation_Risk = models.IntegerField(default=0)  
 
     status = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -4293,4 +4300,14 @@ class AI_Others(models.Model):
     AI_Other_ExistingProvisions = models.TextField( default="", blank=True)    
     AI_Other_ExistingShortfallSurplus = models.TextField( default="", blank=True)    
     AI_Other_ExistingInvestments = models.TextField( default="", blank=True)   
+
+class RF_Scores(models.Model):
+    
+    form = models.ForeignKey(RiskFactors, on_delete=models.CASCADE)
+    
+    Client_Individual_Risk = models.IntegerField(default=0)    
+    Transaction_Inflow_Risk = models.IntegerField(default=0)    
+    Client_Legal_Risk = models.IntegerField(default=0)    
+    Transaction_Inflow_Risk = models.IntegerField(default=0)    
+    Reputation_Risk = models.IntegerField(default=0)   
 

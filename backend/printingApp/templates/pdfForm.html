@@ -1650,6 +1650,51 @@
                         {% if advisor.is_superuser %}
                     </div>
                     <hr />
+                    {% if RF_Transaction_Flow_id == 2 %}
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Inception Timeframe?</span>
+                            </div>
+                            <div class="column2">       
+                                {% if RF_Inception_Timeframe %}
+                                    <span>
+                                        {{RF_Inception_Timeframe}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %} 
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div>       
+                            {% if advisor.is_superuser %}
+                                <div class="column3">                        
+                                    <span>
+                                        {% if RF_Inception_Timeframe_id == 1 or RF_Inception_Timeframe_id == 2 %}
+                                            1
+                                        {% else %}
+                                            3
+                                        {% endif %}
+                                    </span>
+                                </div>                     
+                                <div class="column3">                        
+                                    <span>1</span>
+                                </div>                     
+                                <div class="column3">                        
+                                    <span>
+                                        {% if RF_Inception_Timeframe_id == 1 or RF_Inception_Timeframe_id == 2 %}
+                                            1
+                                        {% else %}
+                                            3
+                                        {% endif %}
+                                    </span>
+                                </div>                     
+                            {% endif %}               
+                        </div>
+                        <hr />
+                    {% endif %}
                     <div class='row div'>
                         <div class="column2">
                             <span>Linked Party acting on behalf of Client?</span>

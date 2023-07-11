@@ -4086,17 +4086,6 @@ Record the client's instructions, deviations and implications thereof.
                             </>: 
                             null
                         }
-                        <textarea maxLength={500} className="form-control"  style={{height: '200px'}} 
-                            id="InformationExplained" name='InformationExplained' value={key.InformationExplained} onChange={(e) => {on_ProductTaken_Change(e, i)}} 
-                            onFocus={backgroundInfo_onFocus13}
-                            onBlur={backgroundInfo_onBlur13}
-                            placeholder={
-                    `Discuss the following information which has been explained to client:
-                    General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.)
-                    Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
-                    Waiting periods
-                    Cooling off period
-                    Other relevant information.`}  aria-describedby=""  ></textarea>
                         <Editor
                           value={key.InformationExplained}
                           onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("InformationExplained", i, newText)}}
