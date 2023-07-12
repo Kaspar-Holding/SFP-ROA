@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.core.files.base import ContentFile
-from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, AssuranceInvestmentSerializers, AssuranceRiskSerializers, EB_CoverSerializer, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, STIC_Loss_Serializer, STIC_Sec_Fire_Serializer, STIP_Loss_Serializer, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
-from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RP_ProductTaken, RiskFactors, RiskPlanning, STIC_Loss, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
+from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, AssuranceInvestmentSerializers, AssuranceRiskSerializers, EB_CoverSerializer, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RF_Scores_Serializer, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, STIC_Loss_Serializer, STIC_Sec_Fire_Serializer, STIP_Loss_Serializer, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
+from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RF_Scores, RP_ProductTaken, RiskFactors, RiskPlanning, STIC_Loss, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
 from .models import STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
 from .models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others, AI_Others
 from .serializers import Risk_DC_Others_Serializer, Risk_DiC_Others_Serializer, Risk_DrC_Others_Serializer, AR_BnS_Others_Serializer, AR_KeyP_Others_Serializer, AR_SureNLia_Others_Serializer, AR_BusOvProt_Others_Serializer, AR_CLARedm_Others_Serializer, AR_DLARedm_Others_Serializer, AI_Others_Serializer
@@ -463,7 +463,7 @@ def formStats(request):
     complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
     incomplete_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 0)
     incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
-    blocked_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 3)
+    blocked_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId']).filter(Q(status = 3) | Q(status = 4))
     blocked_serializer = RiskFactorsSerializers(blocked_forms, many=True)
     yet_to_approved_forms = RiskFactors.objects.filter(advisorId = request.data['advisorId'],status = 2)
     yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
@@ -530,7 +530,7 @@ def adminformStats(request):
     complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
     incomplete_forms = RiskFactors.objects.filter(status = 0)
     incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
-    blocked_forms = RiskFactors.objects.filter(status = 3)
+    blocked_forms = RiskFactors.objects.filter(Q(status = 3) | Q(status = 4))
     blocked_serializer = RiskFactorsSerializers(blocked_forms, many=True)
     yet_to_approved_forms = RiskFactors.objects.filter(status = 2)
     yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
@@ -1427,11 +1427,6 @@ def updateShortTermInsuranceCommericalData(request):
 @api_view(['POST'])
 def insertRiskFactorsData(request):
     rf_data = request.data['RF_Data']
-    rf_data['Client_Individual_Risk'] = request.data['Scores']['Client_Individual_Risk']
-    rf_data['Transaction_Inflow_Risk'] = request.data['Scores']['Client_Legal_Risk']
-    rf_data['Client_Legal_Risk'] = request.data['Scores']['Transaction_Inflow_Risk']
-    rf_data['Transaction_Inflow_Risk'] = request.data['Scores']['Transaction_Outflow_Risk']
-    rf_data['Reputation_Risk'] = request.data['Scores']['Reputation_Risk']
     status = 1
     user = request.user
     old = RiskFactors.objects.filter(advisorId = rf_data['advisorId'],RF_ClientId = rf_data['RF_ClientId'])
@@ -1439,47 +1434,60 @@ def insertRiskFactorsData(request):
         oldData = old.values().first()
         if oldData['status'] == 2:
             return Response({"message": "This form is rated HIGH and awaiting for approval","formId":oldData['id'],"code":406,},406)
+        if oldData['status'] == 3:
+            return Response({"message": "This form is rated Intolerable the client has been blocked","formId":oldData['id'],"code":406,},406)
         else:
             return Response({'message': "Form Already Exists","code": "200", "formId" : oldData['id']},200)
     else:
+        scores = request.data['Score_Data']            
+        if int(scores['Reputation_Risk']) == 4:
+            rf_data['status'] = 4
+            status = 4
         if not user.is_superuser:
-            scores = request.data['Score_Data']
-            if int(scores['Reputation_Risk']) == 4:
-                rf_data['status'] = 2
-                status = 2
-            else:
-                if int(rf_data['RF_ClientType']) == 1:
-                    if int(rf_data['RF_Transaction_Flow']) == 1:
-                        if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
-                            rf_data['status'] = 2
-                            status = 2
-                    if int(rf_data['RF_Transaction_Flow']) == 2:
-                        if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
-                            rf_data['status'] = 2
-                            status = 2
-                if int(rf_data['RF_ClientType']) == 2:
-                    if int(rf_data['RF_Transaction_Flow']) == 1:
-                        if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
-                            rf_data['status'] = 2
-                            status = 2
-                    if int(rf_data['RF_Transaction_Flow']) == 2:
-                        if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
-                            rf_data['status'] = 2
-                            status = 2
+            if int(rf_data['RF_ClientType']) == 1:
+                if int(rf_data['RF_Transaction_Flow']) == 1:
+                    if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                        rf_data['status'] = 2
+                        status = 2
+                if int(rf_data['RF_Transaction_Flow']) == 2:
+                    if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                        rf_data['status'] = 2
+                        status = 2
+            if int(rf_data['RF_ClientType']) == 2:
+                if int(rf_data['RF_Transaction_Flow']) == 1:
+                    if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                        rf_data['status'] = 2
+                        status = 2
+                if int(rf_data['RF_Transaction_Flow']) == 2:
+                    if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                        rf_data['status'] = 2
+                        status = 2
         serializer = RiskFactorsSerializers(data=rf_data, many=False)
         if serializer.is_valid():
-        
             saved_data = serializer.create(serializer.validated_data)
             formId = saved_data.pk
+            riskScoreData = request.data['RF_Risk_Data']
+            riskScoreData['form'] = formId
+            riskScoreData['form_id'] = formId
+            riskSerializer = RF_Scores_Serializer(data=riskScoreData, many=False)
+            if riskSerializer.is_valid():
+                riskSerializer.create(riskSerializer.validated_data)
+            else:
+                print(riskSerializer.errors)
             lp_data = request.data['LP_Data']
             for row in lp_data:
                 row['formId'] = formId
             lp_serializer = RF_LinkedPartySerializers(data=lp_data, many=True)
             if lp_serializer.is_valid():
                 lp_serializer.create(lp_serializer.validated_data)
+            else:
+                print(lp_serializer.errors)
             if status == 2:
                 sendAlertEmail(request=request, formId=formId, advisorId=request.data['RF_Data']['advisorId'])
                 return Response({"message": "This form is rated HIGH and awaiting for approval","formId":formId,"code":406,},406)
+            if status == 4:
+                # sendAlertEmail(request=request, formId=formId, advisorId=request.data['RF_Data']['advisorId'])
+                return Response({"message": "This form is rated Intolerable thus the client has been blocked.","formId":formId,"code":406,},406)
             return Response({"message": "Data is inserted","formId":formId,"data":request.data,"code":201,},201)
         else:
             return Response({"errors": serializer.errors},404)
@@ -1522,6 +1530,56 @@ def viewRiskFactorsData(request):
     
     formData = formSerializer.data
     lp_data = RF_LinkedParty.objects.filter(formId=request.data['formId']).values()
+    riskScoreData = RF_Scores.objects.filter(form=request.data['formId'])
+    if riskScoreData.exists():
+        riskScoreData = riskScoreData.values().first()
+    else:
+        riskScoreData = {
+            "ClientOccupation" : 1,
+            "ClientOccupationWeight" : 1,
+            "RF_CountryOfBirth_Score" : 2,
+            "RF_Country_Weight" : 3,
+            "RF_CountryOfResidence_Score" : 2,
+            "RF_Nationality_Score" : 2,
+            "RF_CountryOfTax_Score" : 0,
+            "RF_Industry_Score" : 0,
+            "RF_Industry_Weight" : 1,
+            "RF_SourceOfFunds_Score" : 3,
+            "RF_SourceOfFunds_Weight" : 1,
+            "RF_RelationshipToClient_Score" : 1,
+            "RF_RelationshipToClient_Weight" : 1,
+            "RF_CountryOfRegistration_Score" : 2,
+            "RF_CountryOfOperation_Score" : 2,
+            "RF_Type_Legal_Entity_Score" : 2,
+            "RF_Type_Legal_Entity_Weight" : 1,
+            "RF_Transaction_Method_Score" : 0,
+            "RF_Transaction_Method_Weight" : 2,
+            "RF_Transaction_Reason_Score" : 0,
+            "RF_Transaction_Reason_Weight" : 2,
+            "RF_High_Transaction_Reason_Score" : 0,
+            "RF_High_Transaction_Reason_Weight" : 2,
+            "RF_Transaction_Frequency_Score" : 0,
+            "RF_Transaction_Frequency_Weight" : 1,
+            "RF_Transaction_Geography_Score" : 0,
+            "RF_Transaction_Geography_Weight" : 1,
+            "RF_Funds_Jurisdiction_Score" : 0,
+            "RF_Funds_Jurisdiction_Weight" : 3,
+            "RF_Linked_Party_Acting_Score" : 0,
+            "RF_Linked_Party_Acting_Weight" : 1,
+            "RF_Linked_Party_Paying_Score" : 0,
+            "RF_Linked_Party_Paying_Weight" : 1,
+            "RF_Inception_Timeframe_Score" : 0,
+            "RF_Inception_Timeframe_Weight" : 1,
+            "ClientIndividualRiskScore" : 0,
+            "ClientIndividualRiskLevel" : 0,
+            "ClientLegalRiskLevelScore" : 0,
+            "ClientLegalRiskLevel" : 0,
+            "TransactionInFlowRiskScore" : 0,
+            "TransactionInFlowRiskLevel" : 0,
+            "TransactionOutFlowRiskScore" : 0,
+            "TransactionOutFlowRiskLevel" : 0,
+            "DReputationRiskLevel" : 0,
+        }
     # lp_data_serializer = RF_LinkedPartySerializers(lp_data, many = True)
     # lp_data = lp_data_serializer.data
     # advisorName = RiskFactors.objects.get(id=formData.data['advisorId'])
@@ -1529,7 +1587,7 @@ def viewRiskFactorsData(request):
 
     # formData['advisorName'] = advisorNameSerializer.data['first_name'] + " " + advisorNameSerializer.data['last_name']
     # if serializer.is_valid():
-    return Response({"message": "Found","code":200,"formData": formData, 'LP_Data': lp_data},200)
+    return Response({"message": "Found","code":200,"formData": formData, 'LP_Data': lp_data, 'RF_Risk_Data' : riskScoreData},200)
     # else:
     #     return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
 
@@ -1585,13 +1643,55 @@ def approveDenyFormData(request):
 
 @api_view(['POST'])
 def updateRiskFactorsData(request):
-    form = RiskFactors.objects.get(id=request.data['id'])
-    serializer = RiskFactorsSerializers(instance=form, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+    user = request.user
+    formData = request.data['RF_Data']
+    form = RiskFactors.objects.filter(id=formData['id'])
+    if form.exists():
+        scores = request.data['Score_Data']            
+        if int(scores['Reputation_Risk']) == 4:
+            formData['status'] = 4
+            status = 4
+        if not user.is_superuser:
+            if int(formData['RF_ClientType']) == 1:
+                if int(formData['RF_Transaction_Flow']) == 1:
+                    if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                        formData['status'] = 2
+                        status = 2
+                if int(formData['RF_Transaction_Flow']) == 2:
+                    if scores['Client_Individual_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                        formData['status'] = 2
+                        status = 2
+            if int(formData['RF_ClientType']) == 2:
+                if int(formData['RF_Transaction_Flow']) == 1:
+                    if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Inflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                        formData['status'] = 2
+                        status = 2
+                if int(formData['RF_Transaction_Flow']) == 2:
+                    if scores['Client_Legal_Risk'] > 65 and scores['Transaction_Outflow_Risk'] > 65 and scores['Reputation_Risk'] == 3:
+                        formData['status'] = 2
+                        status = 2
+        form = RiskFactors.objects.get(id=formData['id'])
+        serializer = RiskFactorsSerializers(instance=form, data=formData, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            riskScoreData = request.data['RF_Risk_Data']
+            oldRiskScoreData = RF_Scores.objects.get(form=riskScoreData['form'])
+            riskSerializer = RF_Scores_Serializer(instance=oldRiskScoreData, data=riskScoreData, many=False)
+            if riskSerializer.is_valid():
+                riskSerializer.save()
+            else:
+                print(riskSerializer.errors)
+            if status == 2:
+                sendAlertEmail(request=request, formId=formData['id'], advisorId=request.data['RF_Data']['advisorId'])
+                return Response({"message": "This form is rated HIGH and awaiting for approval","formId":formData['id'],"code":406,},406)
+            if status == 4:
+                # sendAlertEmail(request=request, formId=formId, advisorId=request.data['RF_Data']['advisorId'])
+                return Response({"message": "This form is rated Intolerable thus the client has been blocked.","formId":formData['id'],"code":406,},406)
+            return Response({"message": "Updated","code":200,"formData": serializer.data},200)
+        else:
+            return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
     else:
-        return Response({"message": "Error 404, Not found","code":404,"Errors": serializer.errors},404)
+        return Response({"message": "Error 404, Not found","code":404},404)
 
 
 @api_view(['POST'])

@@ -906,8 +906,18 @@ const Short_term_Personal = ({user}) => {
          <br/>
         <div className="text-start "style={{ color: "#14848A" ,fontSize:'30px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>SHORT-TERM INSURANCE: PERSONAL LINES</b></div>
        <hr/>
-       
-       <form>
+       <div className="notification_container">
+          <div className={
+              state['advisor']['email'].includes('sfp') ? "alert alert-sfp-success fade show" 
+              : state['advisor']['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
+              : state['advisor']['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
+              : "alert alert-sfp-success fade show"
+          } style={{display: SuccessMessageVisibility}} role="alert">
+          {SuccessMessage}
+          {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
+          </div>
+        </div>
+       <form onSubmit={e => onSubmit(e)}>
        <p>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence and storage of your personal information relating to your financial matters. Ts&Cs on  <a href="https://www.sfpadvice.co.za">https://www.sfpadvice.co.za</a>  </p>
        <hr/>
        <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>

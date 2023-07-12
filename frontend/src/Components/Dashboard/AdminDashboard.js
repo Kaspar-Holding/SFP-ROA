@@ -200,19 +200,19 @@ const Dashboard = ({user, LogOut}) => {
                             <tbody>
                                 {
                                     TotalForms > 0 ?
-                                    Object.keys(formList).map((keyName, i) => (
-                                        // console.log(formList[i]['advisorData'])
+                                    formList.map((row, keyItem) => (
+                                        // console.log(row['advisorData'])
                                         
-                                        <tr>
-                                            <th scope="row">{i+1}</th>
-                                            <td>{formList[i]['RF_ClientName']}</td>
-                                            {/* <td>{formList[i]['clientEmail']}</td> */}
-                                            <td>{formList[i]['advisorName']}</td>
-                                            <td>{formList[i]['RF_ClientId']}</td>
+                                        <tr key={keyItem}>
+                                            <th scope="row">{keyItem+1}</th>
+                                            <td>{row['RF_ClientName']}</td>
+                                            {/* <td>{row['clientEmail']}</td> */}
+                                            <td>{row['advisorName']}</td>
+                                            <td>{row['RF_ClientId']}</td>
                                         
                                             
                                             {(() => { 
-                                                if(parseInt(formList[i]['RF_Client_Match'])===1)
+                                                if(parseInt(row['RF_Client_Match'])===1)
                                                 {
                                                     return (<>
                                                         <td>Medium</td>
@@ -220,7 +220,7 @@ const Dashboard = ({user, LogOut}) => {
                                                     </>);
                                                 }
 
-                                                if(parseInt(formList[i]['RF_Client_Match'])===2 || parseInt(formList[i]['RF_Client_Match'])===5 || parseInt(formList[i]['RF_Client_Match'])===8 || parseInt(formList[i]['RF_Client_Match'])===11)
+                                                if(parseInt(row['RF_Client_Match'])===2 || parseInt(row['RF_Client_Match'])===5 || parseInt(row['RF_Client_Match'])===8 || parseInt(row['RF_Client_Match'])===11)
                                                 {
                                                     return (<>
                                                         <td>High</td>
@@ -228,7 +228,7 @@ const Dashboard = ({user, LogOut}) => {
                                                     </>);
                                                 }
 
-                                                if(parseInt(formList[i]['RF_Client_Match'])===3 || parseInt(formList[i]['RF_Client_Match'])===6)
+                                                if(parseInt(row['RF_Client_Match'])===3 || parseInt(row['RF_Client_Match'])===6)
                                                 {
                                                     return (<>
                                                         <td>Low</td>
@@ -236,14 +236,14 @@ const Dashboard = ({user, LogOut}) => {
                                                     </>);
                                                 }
 
-                                                if(parseInt(formList[i]['RF_Client_Match'])===4 || parseInt(formList[i]['RF_Client_Match'])===7)
+                                                if(parseInt(row['RF_Client_Match'])===4 || parseInt(row['RF_Client_Match'])===7)
                                                 {
                                                     return (<>
                                                         <td>Medium</td>
                                                     </>);
                                                 }
 
-                                                if(parseInt(formList[i]['RF_Client_Match'])===9 || parseInt(formList[i]['RF_Client_Match'])===10) 
+                                                if(parseInt(row['RF_Client_Match'])===9 || parseInt(row['RF_Client_Match'])===10) 
                                                 {
                                                     return (<>
                                                         <td>Intolerable</td>
@@ -259,29 +259,31 @@ const Dashboard = ({user, LogOut}) => {
                                                 }
                                                 })()}
                                             
-                                            <td>{formList[i]['status'] === 3 ? "Blocked" : formList[i]['status'] === 0 ? "Incomplete" : formList[i]['status'] === 1 ? "Completed" : formList[i]['status'] === 2 ? "Waiting Approval" : "" }</td>
-                                            {
-                                                user['is_superuser'] ?
+                                            <td>{row['status'] === 3 ? "Blocked" : row['status'] === 0 ? "Incomplete" : row['status'] === 1 ? "Completed" : row['status'] === 2 ? "Waiting Approval" : "Blocked" }</td>
+                                            <td>
+                                                {
+                                                    row['status'] == 1 && row['status'] == 2 ?
+                                                    <NavLink type="button" to={{pathname:"/viewForm"}} state={{formId : row['id'], advisor: row['advisorData'],formStatus : row['status'], clientName : row['RF_ClientName'], clientId: row['RF_ClientId']}} className="btn btn-sm btn-outline-primary">View</NavLink>
+                                                    : row['status'] == 4 ?
+                                                    <NavLink type="button" to={{pathname:"/viewForm"}} state={{formId : row['id'], advisor: row['advisorData'],formStatus : row['status'], clientName : row['RF_ClientName'], clientId: row['RF_ClientId']}} className="btn btn-sm btn-outline-danger">View (Blocked)</NavLink>
+                                                    : 
+                                                    <NavLink type="button" to={{pathname:row['url']}} state={{formId : row['id'],formStatus : row['status'], clientName : row['RF_ClientName'], clientId: row['RF_ClientId']}} className="btn btn-sm btn btn-sm btn-outline-warning">Approve/Deny</NavLink>
+                                                    // <button className="btn btn-sm btn-outline-warning" type='button'>Approve/Deny</button>
+                                                }
+                                            </td>
+                                            {/* {
+                                                user.is_superuser ?
                                                 <>
-                                                    <td>
-                                                        {
-                                                            formList[i]['status'] != 2 && formList[i]['status'] != 3 ?
-                                                            <NavLink type="button" to={{pathname:"/viewForm"}} state={{formId : formList[i]['id'], advisor: formList[i]['advisorData'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn-outline-primary">View</NavLink>
-                                                            : 
-                                                            <NavLink type="button" to={{pathname:formList[i]['url']}} state={{formId : formList[i]['id'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} className="btn btn-sm btn btn-sm btn-outline-warning">Approve/Deny</NavLink>
-                                                            // <button className="btn btn-sm btn-outline-warning" type='button'>Approve/Deny</button>
-                                                        }
-                                                    </td>
                                                 </>
                                                 :
                                                 <>
                                                     <td>
                                                         {
-                                                            formList[i]['status'] != 2 && formList[i]['status'] != 3 ?
+                                                            row['status'] == 1 && row['status'] == 2 ?
                                                             <NavLink 
                                                                 type="button" 
                                                                 to={{pathname:"/viewForm"}} 
-                                                                state={{formId : formList[i]['id'], advisor: formList[i]['advisorData'],formStatus : formList[i]['status'], clientName : formList[i]['RF_ClientName'], clientId: formList[i]['RF_ClientId']}} 
+                                                                state={{formId : row['id'], advisor: row['advisorData'],formStatus : row['status'], clientName : row['RF_ClientName'], clientId: row['RF_ClientId']}} 
                                                                 className={
                                                                     user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-sm sfp-outline-primary" 
                                                                     : user['email'].includes('fs4p') ? "btn btn-sm fs4p-outline-primary" 
@@ -291,12 +293,26 @@ const Dashboard = ({user, LogOut}) => {
                                                             >
                                                                 View
                                                             </NavLink>
-                                                            : 
+                                                            : row['status'] == 4 ?
+                                                            <NavLink 
+                                                                type="button" 
+                                                                to={{pathname:"/viewForm"}} 
+                                                                state={{formId : row['id'], advisor: row['advisorData'],formStatus : row['status'], clientName : row['RF_ClientName'], clientId: row['RF_ClientId']}} 
+                                                                className={
+                                                                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-sm sfp-outline-danger" 
+                                                                    : user['email'].includes('fs4p') ? "btn btn-sm fs4p-outline-danger" 
+                                                                    : user['email'].includes('sanlam') ? "btn btn-sm sanlam-outline-danger" 
+                                                                    : "btn btn-sm btn-outline-danger"
+                                                                }
+                                                            >
+                                                                View
+                                                            </NavLink>
+                                                            :
                                                             <button className="btn btn-sm btn-outline-danger" type='button'>Can't Edit</button>
                                                         }
                                                     </td>
                                                 </>
-                                            }
+                                            } */}
                                         </tr>
                                     )) 
                                     : <></>

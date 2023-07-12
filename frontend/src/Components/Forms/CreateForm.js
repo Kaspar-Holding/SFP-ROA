@@ -686,6 +686,17 @@ const CreateForm = ({user}) => {
                 )
             }
             
+            else
+            {
+                setRF_Industry_Score(0)
+                setClientIndividualRiskScore(ClientOccupation  + RF_CountryOfBirth_Score * RF_Country_Weight + RF_CountryOfResidence_Score * RF_Country_Weight + RF_Nationality_Score * RF_Country_Weight + RF_CountryOfTax_Score * RF_Country_Weight + (0 * RF_Industry_Weight) + (RF_SourceOfFunds_Score * RF_SourceOfFunds_Weight))
+                setClientIndividualRiskLevel(Math.round(
+                    (ClientOccupation  + RF_CountryOfBirth_Score * RF_Country_Weight + RF_CountryOfResidence_Score * RF_Country_Weight + RF_Nationality_Score * RF_Country_Weight + RF_CountryOfTax_Score * RF_Country_Weight + (0 * RF_Industry_Weight) + (RF_SourceOfFunds_Score * RF_SourceOfFunds_Weight))
+                    / 
+                    ClientIndividualRiskLevelScore * 100, 2)
+                )
+            }
+            
         }
         
         if (inputName == 'RF_SourceOfFunds'){
@@ -1407,7 +1418,7 @@ const CreateForm = ({user}) => {
     // Country Score
     const navigate = useNavigate()
     
-    const createRFForm = async(data, lp_data, clientindividualRisk, clientlegalRisk, transactionInflowRisk, transactionOutflowRisk, dReputationRisk, clientindividualRiskLabel, clientlegalRiskLabel, transactionInflowRiskLabel, transactionOutflowRiskLabel, dReputationRiskLabel, ciRisk, clRisk, tInRisk, tOutRisk, rRisk) => {
+    const createRFForm = async(data, lp_data, clientindividualRisk, clientlegalRisk, transactionInflowRisk, transactionOutflowRisk, dReputationRisk, clientindividualRiskLabel, clientlegalRiskLabel, transactionInflowRiskLabel, transactionOutflowRiskLabel, dReputationRiskLabel, riskScoreData) => {
         setSuccessMessageVisibility("none")
         const config = {
             headers: {
@@ -1418,13 +1429,7 @@ const CreateForm = ({user}) => {
         }
         const Body = JSON.stringify({
             'RF_Data' : data,
-            'Scores' : {
-                Client_Individual_Risk : ciRisk,
-                Client_Legal_Risk : clRisk,
-                Transaction_Inflow_Risk : tInRisk,
-                Transaction_Outflow_Risk : tOutRisk,
-                Reputation_Risk : rRisk,
-            },
+            'RF_Risk_Data' : riskScoreData,
             'Score_Data' : {
                 Client_Individual_Risk : clientindividualRisk,
                 Client_Legal_Risk : clientlegalRisk,
@@ -1456,7 +1461,7 @@ const CreateForm = ({user}) => {
                     title: "Success",
                     html: `${response?.data?.message}`,
                     showConfirmButton: !1,
-                    timer: 1500,
+                    timer: 5000,
                     confirmButtonClass: "btn btn-primary",
                     buttonsStyling: !1,
                 })
@@ -1480,10 +1485,10 @@ const CreateForm = ({user}) => {
                 Swal.fire({
                     position: "bottom-end",
                     type: "error",
-                    title: "Error",
+                    title: "FORM RATING WARNING",
                     html: `${error?.response?.data?.message}`,
                     showConfirmButton: !1,
-                    timer: 1500,
+                    timer: 10000,
                     confirmButtonClass: "btn btn-primary",
                     buttonsStyling: !1,
                 })
@@ -1507,13 +1512,147 @@ const CreateForm = ({user}) => {
     const [Advisor, setAdvisor] = useState("")
     const onSubmit = e => {
         e.preventDefault()
-        createRFForm(
-            FormData, 
-            LP_Data, ClientIndividualRiskLevel, ClientLegalRiskLevel, TransactionInFlowRiskLevel, TransactionOutFlowRiskLevel, DReputationRiskLevel, 
-            ClientIndividualRiskLevelLabel, ClientLegalRiskLevelLabel, TransactionInFlowRiskLevelLabel, TransactionOutFlowRiskLevelLabel, DReputationRiskLevelLabel,
-            ClientIndividualRiskScore, ClientLegalRiskScore, TransactionInFlowRiskScore, TransactionOutFlowRiskScore, DReputationRiskLevel,
-        )
+        const riskData = {
+            "ClientOccupation" : ClientOccupation,
+            "ClientOccupationWeight" : ClientOccupationWeight,
+            "RF_CountryOfBirth_Score" : RF_CountryOfBirth_Score,
+            "RF_Country_Weight" : RF_Country_Weight,
+            "RF_CountryOfResidence_Score" : RF_CountryOfResidence_Score,
+            "RF_Nationality_Score" : RF_Nationality_Score,
+            "RF_CountryOfTax_Score" : RF_CountryOfTax_Score,
+            "RF_Industry_Score" : RF_Industry_Score,
+            "RF_Industry_Weight" : RF_Industry_Weight,
+            "RF_SourceOfFunds_Score" : RF_SourceOfFunds_Score,
+            "RF_SourceOfFunds_Weight" : RF_SourceOfFunds_Weight,
+            "RF_RelationshipToClient_Score" : RF_RelationshipToClient_Score,
+            "RF_RelationshipToClient_Weight" : RF_RelationshipToClient_Weight,
             
+            "RF_CountryOfRegistration_Score" : RF_CountryOfRegistration_Score,
+            "RF_CountryOfOperation_Score" : RF_CountryOfOperation_Score,
+            "RF_Type_Legal_Entity_Score" : RF_Type_Legal_Entity_Score,
+            "RF_Type_Legal_Entity_Weight" : RF_Type_Legal_Entity_Weight,
+            
+            "RF_Transaction_Method_Score" : RF_Transaction_Method_Score,
+            "RF_Transaction_Method_Weight" : RF_Transaction_Method_Weight,
+            "RF_Transaction_Reason_Score" : RF_Transaction_Reason_Score,
+            "RF_Transaction_Reason_Weight" : RF_Transaction_Reason_Weight,
+            "RF_High_Transaction_Reason_Score" : RF_High_Transaction_Reason_Score,
+            "RF_High_Transaction_Reason_Weight" : RF_High_Transaction_Reason_Weight,
+            "RF_Transaction_Frequency_Score" : RF_Transaction_Frequency_Score,
+            "RF_Transaction_Frequency_Weight" : RF_Transaction_Frequency_Weight,
+            "RF_Transaction_Geography_Score" : RF_Transaction_Geography_Score,
+            "RF_Transaction_Geography_Weight" : RF_Transaction_Geography_Weight,
+            "RF_Funds_Jurisdiction_Score" : RF_Funds_Jurisdiction_Score,
+            "RF_Funds_Jurisdiction_Weight" : RF_Funds_Jurisdiction_Weight,
+            "RF_Linked_Party_Acting_Score" : RF_Linked_Party_Acting_Score,
+            "RF_Linked_Party_Acting_Weight" : RF_Linked_Party_Acting_Weight,
+            "RF_Linked_Party_Paying_Score" : RF_Linked_Party_Paying_Score,
+            "RF_Linked_Party_Paying_Weight" : RF_Linked_Party_Paying_Weight,
+
+            "RF_Inception_Timeframe_Score" : RF_Inception_Timeframe_Score,
+            "RF_Inception_Timeframe_Weight" : RF_Inception_Timeframe_Weight,
+
+            "ClientIndividualRiskScore" : ClientIndividualRiskScore,
+            "ClientIndividualRiskLevel" : ClientIndividualRiskLevel,
+            "ClientLegalRiskLevelScore" : ClientLegalRiskLevelScore,
+            "ClientLegalRiskLevel" : ClientLegalRiskLevel,
+            "TransactionInFlowRiskScore" : TransactionInFlowRiskScore,
+            "TransactionInFlowRiskLevel" : TransactionInFlowRiskLevel,
+            "TransactionOutFlowRiskScore" : TransactionOutFlowRiskScore,
+            "TransactionOutFlowRiskLevel" : TransactionOutFlowRiskLevel,
+            "DReputationRiskLevel" : DReputationRiskLevel,
+        }
+        if (user['email'].includes('sfp') || user['email'].includes('succession') || user['email'].includes('kasparholdings')){
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Have you filled the whole form?",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#00788b",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, submit it!",
+                confirmButtonClass: "btn btn-primary",
+                cancelButtonClass: "btn btn-danger ml-1",
+                buttonsStyling: !1,
+            }).then(function (t) {
+                t.value
+                ? 
+                createRFForm(
+                    FormData, 
+                    LP_Data, ClientIndividualRiskLevel, ClientLegalRiskLevel, TransactionInFlowRiskLevel, TransactionOutFlowRiskLevel, DReputationRiskLevel, 
+                    ClientIndividualRiskLevelLabel, ClientLegalRiskLevelLabel, TransactionInFlowRiskLevelLabel, TransactionOutFlowRiskLevelLabel, DReputationRiskLevelLabel,
+                    riskData
+                )
+                : t.dismiss === Swal.DismissReason.cancel &&
+                    Swal.fire({
+                        title: "Cancelled",
+                        text: "Your form is still open.",
+                        type: "error",
+                        confirmButtonClass: "btn btn-success",
+                    });
+            });
+        }
+        
+        if (user['email'].includes('f4sp') || user['email'].includes('succession')){
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Have you filled the whole form?",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#6AC7D2",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, submit it!",
+                confirmButtonClass: "btn btn-primary",
+                cancelButtonClass: "btn btn-danger ml-1",
+                buttonsStyling: !1,
+            }).then(function (t) {
+                t.value
+                ? 
+                createRFForm(
+                    FormData, 
+                    LP_Data, ClientIndividualRiskLevel, ClientLegalRiskLevel, TransactionInFlowRiskLevel, TransactionOutFlowRiskLevel, DReputationRiskLevel, 
+                    ClientIndividualRiskLevelLabel, ClientLegalRiskLevelLabel, TransactionInFlowRiskLevelLabel, TransactionOutFlowRiskLevelLabel, DReputationRiskLevelLabel,
+                    riskData
+                )
+                : t.dismiss === Swal.DismissReason.cancel &&
+                    Swal.fire({
+                        title: "Cancelled",
+                        text: "Your form is still open.",
+                        type: "error",
+                        confirmButtonClass: "btn btn-success",
+                    });
+            });
+        }           
+        if (user['email'].includes('sanlam') || user['email'].includes('succession')){
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Have you filled the whole form?",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#0074C9",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, submit it!",
+                confirmButtonClass: "btn btn-primary",
+                cancelButtonClass: "btn btn-danger ml-1",
+                buttonsStyling: !1,
+            }).then(function (t) {
+                t.value
+                ? 
+                createRFForm(
+                    FormData, 
+                    LP_Data, ClientIndividualRiskLevel, ClientLegalRiskLevel, TransactionInFlowRiskLevel, TransactionOutFlowRiskLevel, DReputationRiskLevel, 
+                    ClientIndividualRiskLevelLabel, ClientLegalRiskLevelLabel, TransactionInFlowRiskLevelLabel, TransactionOutFlowRiskLevelLabel, DReputationRiskLevelLabel,
+                    riskData
+                )
+                : t.dismiss === Swal.DismissReason.cancel &&
+                    Swal.fire({
+                        title: "Cancelled",
+                        text: "Your form is still open.",
+                        type: "error",
+                        confirmButtonClass: "btn btn-success",
+                    });
+            });
+        }           
         // window.location.reload();
     }
     if (FormCreatedStatus) {
@@ -8783,7 +8922,7 @@ const CreateForm = ({user}) => {
                         <option value="7">PEP-Domestic</option>
                         <option value="8">PEP-Foreign</option>
                         <option value="9">Sanction</option>
-                        <option value="10">Sanlam Do not Trnsact List</option>
+                        <option value="10">Sanlam Do not Transact List</option>
                         <option value="11">SOE</option>
 
                     </select>  

@@ -1,5 +1,5 @@
 
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import './RiskFactors.css';
@@ -10,7 +10,9 @@ import Loader from '../Loader/Loader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import {LogOut} from '../../Actions/Auth'
+import Swal from 'sweetalert2';
 const RiskFactors = ({user, LogOut}) => {
+    const navigate = useNavigate()
     // Section A
     // Individual
     const [ClientOccupation, setClientOccupation] = useState(1)
@@ -1428,7 +1430,51 @@ const RiskFactors = ({user, LogOut}) => {
                         // console.log(results[key])
                         UpdateScore(key, results[key])
                     ))
-
+                    let scoreResult = response?.data?.RF_Risk_Data
+                    setClientOccupation(scoreResult['ClientOccupation'])
+                    setClientOccupationWeight(scoreResult['ClientOccupationWeight'])
+                    setRF_CountryOfBirth_Score(scoreResult['RF_CountryOfBirth_Score'])
+                    setRF_Country_Weight(scoreResult['RF_Country_Weight'])
+                    setRF_CountryOfResidence_Score(scoreResult['RF_CountryOfResidence_Score'])
+                    setRF_Nationality_Score(scoreResult['RF_Nationality_Score'])
+                    setRF_CountryOfTax_Score(scoreResult['RF_CountryOfTax_Score'])
+                    setRF_Industry_Score(scoreResult['RF_Industry_Score'])
+                    setRF_Industry_Weight(scoreResult['RF_Industry_Weight'])
+                    setRF_SourceOfFunds_Score(scoreResult['RF_SourceOfFunds_Score'])
+                    setRF_SourceOfFunds_Weight(scoreResult['RF_SourceOfFunds_Weight'])
+                    setRF_RelationshipToClient_Score(scoreResult['RF_RelationshipToClient_Score'])
+                    setRF_RelationshipToClient_Weight(scoreResult['RF_RelationshipToClient_Weight'])
+                    setRF_CountryOfRegistration_Score(scoreResult['RF_CountryOfRegistration_Score'])
+                    setRF_CountryOfOperation_Score(scoreResult['RF_CountryOfOperation_Score'])
+                    setRF_Type_Legal_Entity_Score(scoreResult['RF_Type_Legal_Entity_Score'])
+                    setRF_Type_Legal_Entity_Weight(scoreResult['RF_Type_Legal_Entity_Weight'])
+                    setRF_Transaction_Method_Score(scoreResult['RF_Transaction_Method_Score'])
+                    setRF_Transaction_Method_Weight(scoreResult['RF_Transaction_Method_Weight'])
+                    setRF_Transaction_Reason_Score(scoreResult['RF_Transaction_Reason_Score'])
+                    setRF_Transaction_Reason_Weight(scoreResult['RF_Transaction_Reason_Weight'])
+                    setRF_High_Transaction_Reason_Score(scoreResult['RF_High_Transaction_Reason_Score'])
+                    setRF_High_Transaction_Reason_Weight(scoreResult['RF_High_Transaction_Reason_Weight'])
+                    setRF_Transaction_Frequency_Score(scoreResult['RF_Transaction_Frequency_Score'])
+                    setRF_Transaction_Frequency_Weight(scoreResult['RF_Transaction_Frequency_Weight'])
+                    setRF_Transaction_Geography_Score(scoreResult['RF_Transaction_Geography_Score'])
+                    setRF_Transaction_Geography_Weight(scoreResult['RF_Transaction_Geography_Weight'])
+                    setRF_Funds_Jurisdiction_Score(scoreResult['RF_Funds_Jurisdiction_Score'])
+                    setRF_Funds_Jurisdiction_Weight(scoreResult['RF_Funds_Jurisdiction_Weight'])
+                    setRF_Linked_Party_Acting_Score(scoreResult['RF_Linked_Party_Acting_Score'])
+                    setRF_Linked_Party_Acting_Weight(scoreResult['RF_Linked_Party_Acting_Weight'])
+                    setRF_Linked_Party_Paying_Score(scoreResult['RF_Linked_Party_Paying_Score'])
+                    setRF_Linked_Party_Paying_Weight(scoreResult['RF_Linked_Party_Paying_Weight'])
+                    setRF_Inception_Timeframe_Score(scoreResult['RF_Inception_Timeframe_Score'])
+                    setRF_Inception_Timeframe_Weight(scoreResult['RF_Inception_Timeframe_Weight'])
+                    setClientIndividualRiskScore(scoreResult['ClientIndividualRiskScore'])
+                    setClientIndividualRiskLevel(scoreResult['ClientIndividualRiskLevel'])
+                    setClientLegalRiskLevelScore(scoreResult['ClientLegalRiskLevelScore'])
+                    setClientLegalRiskLevel(scoreResult['ClientLegalRiskLevel'])
+                    setTransactionInFlowRiskScore(scoreResult['TransactionInFlowRiskScore'])
+                    setTransactionInFlowRiskLevel(scoreResult['TransactionInFlowRiskLevel'])
+                    setTransactionOutFlowRiskScore(scoreResult['TransactionOutFlowRiskScore'])
+                    setTransactionOutFlowRiskLevel(scoreResult['TransactionOutFlowRiskLevel'])
+                    setDReputationRiskLevel(scoreResult['DReputationRiskLevel'])
                     setLP_Data(response.data['LP_Data'])
                     // if (response.data['LP_Data'].length > 0) {
                     // } else {
@@ -1468,7 +1514,7 @@ const RiskFactors = ({user, LogOut}) => {
         }
         const [SuccessMessage, setSuccessMessage] = useState("")
         const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
-        const updateRFForm = async() => {
+        const updateRFForm = async(data, lp_data, clientindividualRisk, clientlegalRisk, transactionInflowRisk, transactionOutflowRisk, dReputationRisk, clientindividualRiskLabel, clientlegalRiskLabel, transactionInflowRiskLabel, transactionOutflowRiskLabel, dReputationRiskLabel, riskScoreData) => {
             setSuccessMessageVisibility("none")
             const config = {
                 headers: {
@@ -1477,7 +1523,24 @@ const RiskFactors = ({user, LogOut}) => {
                     'Authorization' : `JWT ${localStorage.getItem('access')}`
                 }
             }
-            const Body = JSON.stringify(FormData)
+            const Body = JSON.stringify({
+                'RF_Data' : data,
+                'RF_Risk_Data' : riskScoreData,
+                'Score_Data' : {
+                    Client_Individual_Risk : clientindividualRisk,
+                    Client_Legal_Risk : clientlegalRisk,
+                    Transaction_Inflow_Risk : transactionInflowRisk,
+                    Transaction_Outflow_Risk : transactionOutflowRisk,
+                    Reputation_Risk : dReputationRisk,
+                },
+                'Score_Label' : {
+                    Client_Individual_Risk : clientindividualRiskLabel,
+                    Client_Legal_Risk : clientlegalRiskLabel,
+                    Transaction_Inflow_Risk : transactionInflowRiskLabel,
+                    Transaction_Outflow_Risk : transactionOutflowRiskLabel,
+                    Reputation_Risk : dReputationRiskLabel,
+                }
+            })
             try {
                 const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/update_risk_factors_data/`, Body ,config)
                 // console.log(response.data['formData'])
@@ -1488,6 +1551,7 @@ const RiskFactors = ({user, LogOut}) => {
                 setTimeout(() => {
                     setSuccessMessageVisibility("none")
                 }, 5000)
+                updateLPDATA(config)
                 // setSubmissionMessageVisibility("block")
             } catch (error) {
                 if (error.response.status === 401){
@@ -1502,8 +1566,26 @@ const RiskFactors = ({user, LogOut}) => {
                     status: error.response.status,
                     message: error.response.statusText
                 })
+                if (error?.response?.status == 406) {
+                    Swal.fire({
+                        position: "bottom-end",
+                        type: "error",
+                        title: "FORM RATING WARNING",
+                        html: `${error?.response?.data?.message}`,
+                        showConfirmButton: !1,
+                        timer: 10000,
+                        confirmButtonClass: "btn btn-primary",
+                        buttonsStyling: !1,
+                    })
+                    setTimeout(() => {
+                        navigate("/")
+                    }, 5000)
+                }
                 setUpdateErrorVisibility("block")
             }
+        }
+        // Update LP_Data
+        const updateLPDATA = async(config) => {
             const LP_Body = JSON.stringify({
                 "formId":state['formId'],
                 "lp_data":LP_Data
@@ -1526,12 +1608,125 @@ const RiskFactors = ({user, LogOut}) => {
         const [Advisor, setAdvisor] = useState("")
         const onUpdateSubmit = e => {
             e.preventDefault()
-            updateRFForm()
+            const riskData = {
+                "form_id" : state['formId'],
+                "form" : state['formId'],
+                "ClientOccupation" : ClientOccupation,
+                "ClientOccupationWeight" : ClientOccupationWeight,
+                "RF_CountryOfBirth_Score" : RF_CountryOfBirth_Score,
+                "RF_Country_Weight" : RF_Country_Weight,
+                "RF_CountryOfResidence_Score" : RF_CountryOfResidence_Score,
+                "RF_Nationality_Score" : RF_Nationality_Score,
+                "RF_CountryOfTax_Score" : RF_CountryOfTax_Score,
+                "RF_Industry_Score" : RF_Industry_Score,
+                "RF_Industry_Weight" : RF_Industry_Weight,
+                "RF_SourceOfFunds_Score" : RF_SourceOfFunds_Score,
+                "RF_SourceOfFunds_Weight" : RF_SourceOfFunds_Weight,
+                "RF_RelationshipToClient_Score" : RF_RelationshipToClient_Score,
+                "RF_RelationshipToClient_Weight" : RF_RelationshipToClient_Weight,
+                
+                "RF_CountryOfRegistration_Score" : RF_CountryOfRegistration_Score,
+                "RF_CountryOfOperation_Score" : RF_CountryOfOperation_Score,
+                "RF_Type_Legal_Entity_Score" : RF_Type_Legal_Entity_Score,
+                "RF_Type_Legal_Entity_Weight" : RF_Type_Legal_Entity_Weight,
+                
+                "RF_Transaction_Method_Score" : RF_Transaction_Method_Score,
+                "RF_Transaction_Method_Weight" : RF_Transaction_Method_Weight,
+                "RF_Transaction_Reason_Score" : RF_Transaction_Reason_Score,
+                "RF_Transaction_Reason_Weight" : RF_Transaction_Reason_Weight,
+                "RF_High_Transaction_Reason_Score" : RF_High_Transaction_Reason_Score,
+                "RF_High_Transaction_Reason_Weight" : RF_High_Transaction_Reason_Weight,
+                "RF_Transaction_Frequency_Score" : RF_Transaction_Frequency_Score,
+                "RF_Transaction_Frequency_Weight" : RF_Transaction_Frequency_Weight,
+                "RF_Transaction_Geography_Score" : RF_Transaction_Geography_Score,
+                "RF_Transaction_Geography_Weight" : RF_Transaction_Geography_Weight,
+                "RF_Funds_Jurisdiction_Score" : RF_Funds_Jurisdiction_Score,
+                "RF_Funds_Jurisdiction_Weight" : RF_Funds_Jurisdiction_Weight,
+                "RF_Linked_Party_Acting_Score" : RF_Linked_Party_Acting_Score,
+                "RF_Linked_Party_Acting_Weight" : RF_Linked_Party_Acting_Weight,
+                "RF_Linked_Party_Paying_Score" : RF_Linked_Party_Paying_Score,
+                "RF_Linked_Party_Paying_Weight" : RF_Linked_Party_Paying_Weight,
+    
+                "RF_Inception_Timeframe_Score" : RF_Inception_Timeframe_Score,
+                "RF_Inception_Timeframe_Weight" : RF_Inception_Timeframe_Weight,
+    
+                "ClientIndividualRiskScore" : ClientIndividualRiskScore,
+                "ClientIndividualRiskLevel" : ClientIndividualRiskLevel,
+                "ClientLegalRiskLevelScore" : ClientLegalRiskLevelScore,
+                "ClientLegalRiskLevel" : ClientLegalRiskLevel,
+                "TransactionInFlowRiskScore" : TransactionInFlowRiskScore,
+                "TransactionInFlowRiskLevel" : TransactionInFlowRiskLevel,
+                "TransactionOutFlowRiskScore" : TransactionOutFlowRiskScore,
+                "TransactionOutFlowRiskLevel" : TransactionOutFlowRiskLevel,
+                "DReputationRiskLevel" : DReputationRiskLevel,
+            }
+            updateRFForm(      
+                FormData, 
+                LP_Data, ClientIndividualRiskLevel, ClientLegalRiskLevel, TransactionInFlowRiskLevel, TransactionOutFlowRiskLevel, DReputationRiskLevel, 
+                ClientIndividualRiskLevelLabel, ClientLegalRiskLevelLabel, TransactionInFlowRiskLevelLabel, TransactionOutFlowRiskLevelLabel, DReputationRiskLevelLabel,
+                riskData
+            )
             // window.location.reload();
         }
         const onFieldBlur = e => {
             e.preventDefault()
-            updateRFForm()
+            
+            const riskData = {
+                "ClientOccupation" : ClientOccupation,
+                "ClientOccupationWeight" : ClientOccupationWeight,
+                "RF_CountryOfBirth_Score" : RF_CountryOfBirth_Score,
+                "RF_Country_Weight" : RF_Country_Weight,
+                "RF_CountryOfResidence_Score" : RF_CountryOfResidence_Score,
+                "RF_Nationality_Score" : RF_Nationality_Score,
+                "RF_CountryOfTax_Score" : RF_CountryOfTax_Score,
+                "RF_Industry_Score" : RF_Industry_Score,
+                "RF_Industry_Weight" : RF_Industry_Weight,
+                "RF_SourceOfFunds_Score" : RF_SourceOfFunds_Score,
+                "RF_SourceOfFunds_Weight" : RF_SourceOfFunds_Weight,
+                "RF_RelationshipToClient_Score" : RF_RelationshipToClient_Score,
+                "RF_RelationshipToClient_Weight" : RF_RelationshipToClient_Weight,
+                
+                "RF_CountryOfRegistration_Score" : RF_CountryOfRegistration_Score,
+                "RF_CountryOfOperation_Score" : RF_CountryOfOperation_Score,
+                "RF_Type_Legal_Entity_Score" : RF_Type_Legal_Entity_Score,
+                "RF_Type_Legal_Entity_Weight" : RF_Type_Legal_Entity_Weight,
+                
+                "RF_Transaction_Method_Score" : RF_Transaction_Method_Score,
+                "RF_Transaction_Method_Weight" : RF_Transaction_Method_Weight,
+                "RF_Transaction_Reason_Score" : RF_Transaction_Reason_Score,
+                "RF_Transaction_Reason_Weight" : RF_Transaction_Reason_Weight,
+                "RF_High_Transaction_Reason_Score" : RF_High_Transaction_Reason_Score,
+                "RF_High_Transaction_Reason_Weight" : RF_High_Transaction_Reason_Weight,
+                "RF_Transaction_Frequency_Score" : RF_Transaction_Frequency_Score,
+                "RF_Transaction_Frequency_Weight" : RF_Transaction_Frequency_Weight,
+                "RF_Transaction_Geography_Score" : RF_Transaction_Geography_Score,
+                "RF_Transaction_Geography_Weight" : RF_Transaction_Geography_Weight,
+                "RF_Funds_Jurisdiction_Score" : RF_Funds_Jurisdiction_Score,
+                "RF_Funds_Jurisdiction_Weight" : RF_Funds_Jurisdiction_Weight,
+                "RF_Linked_Party_Acting_Score" : RF_Linked_Party_Acting_Score,
+                "RF_Linked_Party_Acting_Weight" : RF_Linked_Party_Acting_Weight,
+                "RF_Linked_Party_Paying_Score" : RF_Linked_Party_Paying_Score,
+                "RF_Linked_Party_Paying_Weight" : RF_Linked_Party_Paying_Weight,
+    
+                "RF_Inception_Timeframe_Score" : RF_Inception_Timeframe_Score,
+                "RF_Inception_Timeframe_Weight" : RF_Inception_Timeframe_Weight,
+    
+                "ClientIndividualRiskScore" : ClientIndividualRiskScore,
+                "ClientIndividualRiskLevel" : ClientIndividualRiskLevel,
+                "ClientLegalRiskLevelScore" : ClientLegalRiskLevelScore,
+                "ClientLegalRiskLevel" : ClientLegalRiskLevel,
+                "TransactionInFlowRiskScore" : TransactionInFlowRiskScore,
+                "TransactionInFlowRiskLevel" : TransactionInFlowRiskLevel,
+                "TransactionOutFlowRiskScore" : TransactionOutFlowRiskScore,
+                "TransactionOutFlowRiskLevel" : TransactionOutFlowRiskLevel,
+                "DReputationRiskLevel" : DReputationRiskLevel,
+            }
+            updateRFForm(      
+                FormData, 
+                LP_Data, ClientIndividualRiskLevel, ClientLegalRiskLevel, TransactionInFlowRiskLevel, TransactionOutFlowRiskLevel, DReputationRiskLevel, 
+                ClientIndividualRiskLevelLabel, ClientLegalRiskLevelLabel, TransactionInFlowRiskLevelLabel, TransactionOutFlowRiskLevelLabel, DReputationRiskLevelLabel,
+                riskData
+            )
             // window.location.reload();
         }
         
@@ -8989,7 +9184,7 @@ const RiskFactors = ({user, LogOut}) => {
                         <option value="7">PEP-Domestic</option>
                         <option value="8">PEP-Foreign</option>
                         <option value="9">Sanction</option>
-                        <option value="10">Sanlam Do not Trnsact List</option>
+                        <option value="10">Sanlam Do not Transact List</option>
                         <option value="11">SOE</option>
 
                     </select>  
@@ -10822,7 +11017,7 @@ const RiskFactors = ({user, LogOut}) => {
                         : "btn btn-success"
                     }
                 >
-                    Create Form
+                    Update Form
                 </button>
             </div>
             <br/><br/>

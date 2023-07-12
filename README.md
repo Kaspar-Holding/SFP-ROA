@@ -12,7 +12,13 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
-### 10 July 2023:
+### 12 July 2023:
+- Risk Factors Scores data completed
+- Admin View updated as per latest updates
+- Added Risk Factors Scores functionality in PDF
+- Deployment
+
+### 11 July 2023:
 - Risk Factors Scores data redeveloped
 
 ### 27 June 2023:
