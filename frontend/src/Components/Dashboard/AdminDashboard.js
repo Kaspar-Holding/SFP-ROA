@@ -262,7 +262,7 @@ const Dashboard = ({user, LogOut}) => {
                                             <td>{row['status'] === 3 ? "Blocked" : row['status'] === 0 ? "Incomplete" : row['status'] === 1 ? "Completed" : row['status'] === 2 ? "Waiting Approval" : "Blocked" }</td>
                                             <td>
                                                 {
-                                                    row['status'] == 1 && row['status'] == 2 ?
+                                                    row['status'] != 2 && row['status'] != 3 ?
                                                     <NavLink type="button" to={{pathname:"/viewForm"}} state={{formId : row['id'], advisor: row['advisorData'],formStatus : row['status'], clientName : row['RF_ClientName'], clientId: row['RF_ClientId']}} className="btn btn-sm btn-outline-primary">View</NavLink>
                                                     : row['status'] == 4 ?
                                                     <NavLink type="button" to={{pathname:"/viewForm"}} state={{formId : row['id'], advisor: row['advisorData'],formStatus : row['status'], clientName : row['RF_ClientName'], clientId: row['RF_ClientId']}} className="btn btn-sm btn-outline-danger">View (Blocked)</NavLink>

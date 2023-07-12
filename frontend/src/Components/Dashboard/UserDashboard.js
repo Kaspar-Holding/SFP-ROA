@@ -268,7 +268,7 @@ const Dashboard = ({user, LogOut}) => {
                                                 <>
                                                     <td>
                                                         {
-                                                            row['status'] == 1 || row['status'] == 2 ?
+                                                            row['status'] != 2 && row['status'] != 3 ?
                                                             <NavLink 
                                                                 type="button" 
                                                                 to={{pathname:"/completeform"}} 
@@ -302,6 +302,8 @@ const Dashboard = ({user, LogOut}) => {
                                                             //     } 
                                                             //     className="btn btn-sm btn btn-sm btn-outline-warning">Approve/Deny</NavLink>
                                                             <button className="btn btn-sm btn-outline-warning" type='button'>Denied</button>
+                                                            : row['status'] == 4 ?
+                                                            <button className="btn btn-sm btn-outline-danger" type='button'>Blocked</button>
                                                             : 
                                                             <button className="btn btn-sm btn-outline-danger" type='button'>Blocked</button>
                                                         }
