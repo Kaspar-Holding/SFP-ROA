@@ -495,7 +495,7 @@ def formStats(request):
     riskFactors = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
     forms_data = []
     search_query = SearchQuery(request.data['search_query'], search_type='phrase')
-    search_vector = SearchVector('RF_ClientName', 'RF_ClientId', 'email')
+    search_vector = SearchVector('RF_ClientName', 'RF_ClientId')
     if request.data['search_query'] != "":
         # forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
         forms_data = riskFactors.annotate(search=search_vector).filter(search=search_query).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
@@ -563,7 +563,7 @@ def adminformStats(request):
         riskFactors = RiskFactors.objects.all()
         forms_data = []
         search_query = SearchQuery(request.data['search_query'], search_type='phrase')
-        search_vector = SearchVector('RF_ClientName', 'RF_ClientId', 'email')
+        search_vector = SearchVector('RF_ClientName', 'RF_ClientId')
         if request.data['search_query'] != "":
             # forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
             forms_data = riskFactors.annotate(search=search_vector).filter(search=search_query).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
