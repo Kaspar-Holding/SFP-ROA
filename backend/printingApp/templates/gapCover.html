@@ -159,15 +159,12 @@
         <b style='font-size: 18px; color: #14848A;'>NEED</b>
         <br/>
         <b>Gap cover benefits are only available as an add-on to the members belonging to a registered medical aid.</b>
-        <div class="row div">
-            <div class="column6">
-                <b>Details:</b>
-            </div>
-            <div class="column5">
-                {% autoescape off %}
-                    <span>{{GP.GP_Benefits}}</span>
-                {% endautoescape %}
-            </div>
+        <br/>
+        <b>Details:</b>
+        <div class="column12">
+            {% autoescape off %}
+                <span>{{GP.GP_Benefits}}</span>
+            {% endautoescape %}
         </div>
         <hr/>
         <b style='font-size: 18px'>SECTION B:</b>
