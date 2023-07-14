@@ -1563,7 +1563,7 @@ def insertRiskFactorsData(request):
 
 @api_view(['POST'])
 def viewRiskFactorsData(request):
-    advisorAccessLevel = UserAccount.objects.filter(id=request.data['advisorId']).values('is_superuser').first()['is_superuser']
+    advisorAccessLevel = request.user.is_superuser
     if (advisorAccessLevel):
         form = RiskFactors.objects.get(id=request.data['formId'], advisorId=request.data['advisorId'])
     else:
