@@ -12,6 +12,11 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 14 July 2023:
+- Search Updated
+- Automated Database dump
+- Deployment
+
 ### 12 July 2023:
 - Risk Factors Scores data completed
 - Admin View updated as per latest updates

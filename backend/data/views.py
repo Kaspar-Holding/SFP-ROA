@@ -11,6 +11,7 @@ from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_Lega
 from .serializers import STIP_Sec_AddProp_Serializer, STIP_Sec_Build_Serializer, STIP_Sec_HC_Serializer, STIP_Sec_LegalA_Serializer, STIP_Sec_MotorC_Serializer, STIP_Sec_PersonalLL_Serializer, STIP_Sec_Trailer_Serializer, STIP_Sec_Vehicle_Serializer, STIP_Sec_WaterC_Serializer
 from django.http import HttpResponse
 from django.core.paginator import Paginator
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.db.models import Q
 import pandas as pd
 import uuid
@@ -240,50 +241,70 @@ def importCSV(request):
 
 def getData(request):
     limit = 10
-    orderBy = request.data['order_by']
-    searchQuery = request.data['search_query']
-    if searchQuery != "":
-        users = UserAccount.objects.filter(Q(first_name__icontains=searchQuery) | Q(last_name__icontains=searchQuery) | Q(email__icontains=searchQuery)).order_by('id').values('id','email','first_name', 'last_name','is_superuser','is_active')
+    user = request.user
+    if user.is_superuser:
+        users = UserAccount.objects.filter(~Q(id=user.pk))
+        orderBy = request.data['order_by']
+        searchQuery = request.data['search_query']
+        search_query = SearchQuery(request.data['search_query'], search_type='phrase')
+        search_vector = SearchVector('first_name', 'last_name', 'email')
+        if request.data['search_query'] != "":
+            # users = UserAccount.objects.filter(Q(first_name__icontains=searchQuery) | Q(last_name__icontains=searchQuery) | Q(email__icontains=searchQuery)).order_by('id').values('id','email','first_name', 'last_name','is_superuser','is_active')
+            users = users.annotate(search=search_vector).filter(search=search_query)
+        else:
+            users = users
+        users = users.values('id','email','first_name', 'last_name','is_superuser','is_active').order_by('id')
+        if orderBy[0] == "-":
+            users = sorted(users, key=lambda d: d[orderBy[1:]], reverse=True) 
+        else:
+            users = sorted(users, key=lambda d: d[orderBy]) 
+        p = Paginator(users, limit)
+        # print(p.num_pages)
+        if request.data['page_number'] <= p.num_pages:
+                
+            return Response(
+                {
+                    "total_pages" : p.num_pages,
+                    "has_pages" : p.num_pages,
+                    "total_records" : len(users),
+                    "pagelimit" : limit,
+                    "next" : p.page(request.data['page_number']).has_next(),
+                    "results" : p.page(request.data['page_number']).object_list
+                }
+            )
+        else:
+            return Response(
+                {
+                    "total_pages" : p.num_pages,
+                    "next" : None,
+                    "has_pages" : p.num_pages,
+                    "total_records" : len(users),
+                    "pagelimit" : limit,
+                    "results" : None
+                }
+            )
     else:
-        users = UserAccount.objects.values('id','email','first_name', 'last_name','is_superuser','is_active').order_by('id')
-
-    if orderBy[0] == "-":
-        users = sorted(users, key=lambda d: d[orderBy[1:]], reverse=True) 
-    else:
-        users = sorted(users, key=lambda d: d[orderBy]) 
-    p = Paginator(users, limit)
-    # print(p.num_pages)
-    if request.data['page_number'] <= p.num_pages:
-            
         return Response(
             {
-                "total_pages" : p.num_pages,
-                "has_pages" : p.num_pages,
-                "total_records" : len(users),
-                "pagelimit" : limit,
-                "next" : p.page(request.data['page_number']).has_next(),
-                "results" : p.page(request.data['page_number']).object_list
-            }
-        )
-    else:
-        return Response(
-            {
-                "total_pages" : p.num_pages,
+                "total_pages" : 0,
                 "next" : None,
-                "has_pages" : p.num_pages,
-                "total_records" : len(users),
+                "has_pages" : 0,
+                "total_records" : 0,
                 "pagelimit" : limit,
                 "results" : None
-            }
+            }, 404
         )
-
 @api_view(['POST'])
 def deleteUser(request):
-    if UserAccount.objects.filter(id=request.data['id']).exists():
-        UserAccount.objects.filter(id=request.data['id']).delete()
-        return Response({"message":"Delete"})
+    user = request.user
+    if user.is_superuser:
+        if UserAccount.objects.filter(id=request.data['id']).exists():
+            UserAccount.objects.filter(id=request.data['id']).delete()
+            return Response({"message":"Delete"})
+        else:
+            return Response({"message":"User Not found"})
     else:
-        return Response({"message":"User Not found"})
+        return Response({"message":"User Not found"}, 404)
 
 
 @api_view(['GET'])
@@ -473,8 +494,11 @@ def formStats(request):
     # else:
     riskFactors = RiskFactors.objects.filter(advisorId = request.data['advisorId'])
     forms_data = []
-    if searchQuery != "":
-        forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
+    search_query = SearchQuery(request.data['search_query'], search_type='phrase')
+    search_vector = SearchVector('RF_ClientName', 'RF_ClientId', 'email')
+    if request.data['search_query'] != "":
+        # forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
+        forms_data = riskFactors.annotate(search=search_vector).filter(search=search_query).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
     else:
         forms_data = riskFactors.order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
     orderBy = request.data['order_by']
@@ -526,50 +550,68 @@ def formStats(request):
 
 @api_view(['POST'])
 def adminformStats(request):
-    complete_forms = RiskFactors.objects.filter(status = 1)
-    complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
-    incomplete_forms = RiskFactors.objects.filter(status = 0)
-    incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
-    blocked_forms = RiskFactors.objects.filter(Q(status = 3) | Q(status = 4))
-    blocked_serializer = RiskFactorsSerializers(blocked_forms, many=True)
-    yet_to_approved_forms = RiskFactors.objects.filter(status = 2)
-    yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
-    searchQuery = request.data['search_query']
-    riskFactors = RiskFactors.objects.all()
-    forms_data = []
-    if searchQuery != "":
-        forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
-    else:
-        forms_data = riskFactors.order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
-    orderBy = request.data['order_by']
-    p = Paginator(forms_data, 10)
-    data = p.page(request.data['page_number']).object_list
-    for row in data:
-        advisorData = UserAccount.objects.filter(id=row['advisorId']).values('first_name', 'last_name', 'email').first()
-        row['advisorData'] = advisorData
-        row['advisorName'] = advisorData['first_name'] + " " + advisorData['last_name']
-        if row['status'] == 2:
-            userId = urlsafe_base64_encode(str(request.data['advisorId']).encode('utf-8'))
-            formIdEncoded = urlsafe_base64_encode(str(row['id']).encode('utf-8'))
-            row['url'] = "/alertForm?userId=" + userId + "&formId=" + formIdEncoded
+    user = request.user
+    if user.is_superuser:
+        complete_forms = RiskFactors.objects.filter(status = 1)
+        complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
+        incomplete_forms = RiskFactors.objects.filter(status = 0)
+        incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
+        blocked_forms = RiskFactors.objects.filter(Q(status = 3) | Q(status = 4))
+        blocked_serializer = RiskFactorsSerializers(blocked_forms, many=True)
+        yet_to_approved_forms = RiskFactors.objects.filter(status = 2)
+        yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
+        riskFactors = RiskFactors.objects.all()
+        forms_data = []
+        search_query = SearchQuery(request.data['search_query'], search_type='phrase')
+        search_vector = SearchVector('RF_ClientName', 'RF_ClientId', 'email')
+        if request.data['search_query'] != "":
+            # forms_data = riskFactors.filter(Q(RF_ClientName__icontains=searchQuery) | Q(RF_ClientId__icontains=searchQuery)).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
+            forms_data = riskFactors.annotate(search=search_vector).filter(search=search_query).order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
         else:
-            row['url'] = ""
-    if request.data['page_number'] <= p.num_pages:
-            
-        return Response(
-            {
-                "completed_forms": len(complete_serializer.data),
-                "incompleted_forms": len(incomplete_serializer.data),
-                "yet_to_approved_forms": len(yet_to_approved_serializer.data),
-                "blocked_forms": len(blocked_serializer.data),
-                "total_pages" : p.num_pages,
-                "has_pages" : p.num_pages,
-                "total_records" : len(forms_data),
-                "pagelimit" : 10,
-                "next" : p.page(request.data['page_number']).has_next(),
-                "results" : data
-            }
-        )
+            forms_data = riskFactors.order_by('RF_ClientName').values("id","advisorId","RF_ClientName","RF_ClientId","RF_Client_Match","status")
+        p = Paginator(forms_data, 10)
+        data = p.page(request.data['page_number']).object_list
+        for row in data:
+            advisorData = UserAccount.objects.filter(id=row['advisorId']).values('first_name', 'last_name', 'email').first()
+            row['advisorData'] = advisorData
+            row['advisorName'] = advisorData['first_name'] + " " + advisorData['last_name']
+            if row['status'] == 2:
+                userId = urlsafe_base64_encode(str(request.data['advisorId']).encode('utf-8'))
+                formIdEncoded = urlsafe_base64_encode(str(row['id']).encode('utf-8'))
+                row['url'] = "/alertForm?userId=" + userId + "&formId=" + formIdEncoded
+            else:
+                row['url'] = ""
+        if request.data['page_number'] <= p.num_pages:
+                
+            return Response(
+                {
+                    "completed_forms": len(complete_serializer.data),
+                    "incompleted_forms": len(incomplete_serializer.data),
+                    "yet_to_approved_forms": len(yet_to_approved_serializer.data),
+                    "blocked_forms": len(blocked_serializer.data),
+                    "total_pages" : p.num_pages,
+                    "has_pages" : p.num_pages,
+                    "total_records" : len(forms_data),
+                    "pagelimit" : 10,
+                    "next" : p.page(request.data['page_number']).has_next(),
+                    "results" : data
+                }
+            )
+        else:
+            return Response(
+                {
+                    "completed_forms": len(complete_serializer.data),
+                    "incompleted_forms": len(incomplete_serializer.data),
+                    "yet_to_approved_forms": len(yet_to_approved_serializer.data),
+                    "blocked_forms": len(blocked_serializer.data),
+                    "total_pages" : p.num_pages,
+                    "next" : None,
+                    "has_pages" : p.num_pages,
+                    "total_records" : len(forms_data),
+                    "pagelimit" : 10,
+                    "results" : {}
+                }
+            )
     else:
         return Response(
             {
@@ -583,7 +625,7 @@ def adminformStats(request):
                 "total_records" : len(forms_data),
                 "pagelimit" : 10,
                 "results" : {}
-            }
+            }, 404
         )
     # return Response({
     #         "completed_forms": len(complete_serializer.data),
