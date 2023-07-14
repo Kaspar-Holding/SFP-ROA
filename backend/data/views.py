@@ -572,7 +572,7 @@ def adminformStats(request):
         p = Paginator(forms_data, 10)
         data = p.page(request.data['page_number']).object_list
         for row in data:
-            advisorData = UserAccount.objects.filter(id=row['advisorId']).values('first_name', 'last_name', 'email').first()
+            advisorData = UserAccount.objects.filter(id=row['advisorId']).values('id','first_name', 'last_name', 'email').first()
             row['advisorData'] = advisorData
             row['advisorName'] = advisorData['first_name'] + " " + advisorData['last_name']
             if row['status'] == 2:

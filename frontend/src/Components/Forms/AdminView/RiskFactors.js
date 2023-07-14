@@ -397,7 +397,7 @@ const RiskFactors = ({user, LogOut}) => {
         const location = useLocation();
         const { state } = location;
         const advisorDetails = state['advisor']
-
+        console.log(state['advisor'])
         const [errorData, setErrorData] = useState({
             status: "",
             message: ""
