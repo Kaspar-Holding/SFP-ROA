@@ -167,6 +167,16 @@
             {% endautoescape %}
         </div>
         <hr/>
+        {% if GP.GP_Benefits %}
+            <div class="row div">
+                <div class="column12">
+                    {% autoescape off %}
+                        {{GP.GP_Benefits}}
+                    {% endautoescape %}
+                </div>
+            </div>
+            <hr/>
+        {% endif %}
         <b style='font-size: 18px'>SECTION B:</b>
         <br/>
         <b style='font-size: 18px; color: #14848A;'>DEPENDENTS COVERED</b>
