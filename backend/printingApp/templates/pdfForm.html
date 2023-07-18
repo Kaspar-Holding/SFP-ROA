@@ -1429,44 +1429,46 @@
                         {% endif %}         
                     </div>
                     <hr />
-                    <div class='row div'>
-                        <div class="column2">
-                            <span>Jurisdiction of funds</span>
+                    {% if RF_Transaction_Geography == 1 %}
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Jurisdiction of funds</span>
+                            </div>
+                            <div class="column2">      
+                                {% if RF_Funds_Jurisdiction %}
+                                    <span>
+                                        {{RF_Funds_Jurisdiction}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %}  
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div>         
+                            {% if advisor.is_superuser %}
+                                <div class="column3">             
+                                    <span>                                        
+                                        {{RF_Scores.RF_Funds_Jurisdiction_Score}}    
+                                    </span>
+                                </div>                     
+                                <div class="column3">    
+                                    <span>
+                                        {{RF_Scores.RF_Funds_Jurisdiction_Weight}}
+                                    </span>
+                                </div>                     
+                                <div class="column3">          
+                                    <span>                                        
+                                        {% comment %} {{RF_Scores.RF_Funds_Jurisdiction_Score * RF_Scores.RF_Funds_Jurisdiction_Weight}}   {% endcomment %}
+                                        {% widthratio RF_Scores.RF_Funds_Jurisdiction_Score 1 RF_Scores.RF_Funds_Jurisdiction_Weight %} 
+                                    </span>
+                                </div>                     
+                            {% endif %}                
                         </div>
-                        <div class="column2">      
-                            {% if RF_Funds_Jurisdiction %}
-                                <span>
-                                    {{RF_Funds_Jurisdiction}}
-                                </span>
-                            {% else %}
-                                <span class="white">
-                                    0
-                                </span>
-                            {% endif %}  
-                        </div>                     
-                        <div class="column4">                        
-                            <b style="color: white">0</b>
-                        </div>         
-                        {% if advisor.is_superuser %}
-                            <div class="column3">             
-                                <span>                                        
-                                    {{RF_Scores.RF_Funds_Jurisdiction_Score}}    
-                                </span>
-                            </div>                     
-                            <div class="column3">    
-                                <span>
-                                    {{RF_Scores.RF_Funds_Jurisdiction_Weight}}
-                                </span>
-                            </div>                     
-                            <div class="column3">          
-                                <span>                                        
-                                    {% comment %} {{RF_Scores.RF_Funds_Jurisdiction_Score * RF_Scores.RF_Funds_Jurisdiction_Weight}}   {% endcomment %}
-                                    {% widthratio RF_Scores.RF_Funds_Jurisdiction_Score 1 RF_Scores.RF_Funds_Jurisdiction_Weight %} 
-                                </span>
-                            </div>                     
-                        {% endif %}                
-                    </div>
-                    <hr />
+                        <hr />
+                    {% endif %}
                     <div class='row div'>
                         <div class="column2">
                             <span>Delivery channel</span>

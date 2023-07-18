@@ -1968,9 +1968,9 @@ const CreateForm = ({user}) => {
             <div className="col-2">
                 <label className="col-form-label"><b>A. Client Risk</b></label>
             </div>
-            {
-                
-                user['is_superuser'] ?<>
+            {                
+                user['is_superuser'] ?
+                    <>
                         <div className="col-2">
                             {
                                 FormData['RF_ClientType'] == 1 ?
@@ -2049,13 +2049,20 @@ const CreateForm = ({user}) => {
             </div>
             
             <div className="col-2">
-                {
-                    FormData['RF_ClientType'] == 1 ?
-                    <label className="col-form-label">{ClientIndividualRiskScore}</label>
-                    : FormData['RF_ClientType'] == 2 ?
-                    <label className="col-form-label">{ClientLegalRiskScore}</label>
-                    : <></>
-                }
+            {                
+                user['is_superuser'] ?
+                    <>
+                        {
+                            FormData['RF_ClientType'] == 1 ?
+                            <label className="col-form-label">{ClientIndividualRiskScore}</label>
+                            : FormData['RF_ClientType'] == 2 ?
+                            <label className="col-form-label">{ClientLegalRiskScore}</label>
+                            : <></>
+                        }
+                    </>
+                :
+                <></>
+            }
 
             {/* {(() => {
                 if(user['is_superuser'])
@@ -6913,13 +6920,22 @@ const CreateForm = ({user}) => {
             </div>
 
             <div className="col-2">
-                {
-                    FormData['RF_Transaction_Flow'] == 1 ?
-                    <label className="col-form-label">{TransactionInFlowRiskScore}</label>
-                    : FormData['RF_Transaction_Flow'] == 2 ?
-                    <label className="col-form-label">{TransactionOutFlowRiskScore}</label>
-                    : 
-                    <label className="col-form-label">{0}</label>
+                {                
+                    user['is_superuser'] ?
+                        <>
+                                
+                    {
+                        FormData['RF_Transaction_Flow'] == 1 ?
+                        <label className="col-form-label">{TransactionInFlowRiskScore}</label>
+                        : FormData['RF_Transaction_Flow'] == 2 ?
+                        <label className="col-form-label">{TransactionOutFlowRiskScore}</label>
+                        : 
+                        <label className="col-form-label">{0}</label>
+                    }
+                
+                    </>
+                    :
+                    <></>
                 }
                 <label className="col-form-label"></label>
             </div>
@@ -8846,7 +8862,16 @@ const CreateForm = ({user}) => {
                 </div>
 
                 <div className="col-2">
-                    <label className="col-form-label">{DReputationRiskLevel}</label>
+                    {                
+                        user['is_superuser'] ?
+                            <>
+                                
+                            <label className="col-form-label">{DReputationRiskLevel}</label>
+
+                            </>
+                        :
+                        <></>
+                    }
                 {/* {(() => {
                         if(user['is_superuser'])
                             {
