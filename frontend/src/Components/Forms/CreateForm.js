@@ -460,9 +460,9 @@ const CreateForm = ({user}) => {
         RF_LP_ID : "",
         RF_LP_Linked_Party : 0,
         RF_LP_RCA : 0,
-        RF_LP_Birth_Country : 206,
-        RF_LP_Residence_Country : 206,
-        RF_LP_Nationality : 206,
+        RF_LP_Birth_Country : 207,
+        RF_LP_Residence_Country : 207,
+        RF_LP_Nationality : 207,
     }])
     const AddNewLP_Data = (e) => {
         const current = [...LP_Data]
@@ -475,9 +475,9 @@ const CreateForm = ({user}) => {
             RF_LP_ID : "",
             RF_LP_Linked_Party : 0,
             RF_LP_RCA : 0,
-            RF_LP_Birth_Country : 206,
-            RF_LP_Residence_Country : 206,
-            RF_LP_Nationality : 206,
+            RF_LP_Birth_Country : 207,
+            RF_LP_Residence_Country : 207,
+            RF_LP_Nationality : 207,
         })
         setLP_Data(current)
     }
@@ -1562,97 +1562,34 @@ const CreateForm = ({user}) => {
             "TransactionOutFlowRiskLevel" : TransactionOutFlowRiskLevel,
             "DReputationRiskLevel" : DReputationRiskLevel,
         }
-        if (user['email'].includes('sfp') || user['email'].includes('succession') || user['email'].includes('kasparholdings')){
-            Swal.fire({
-                title: "Are you sure?",
-                text: "Have you filled the whole form?",
-                type: "warning",
-                showCancelButton: !0,
-                confirmButtonColor: "#00788b",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, submit it!",
-                confirmButtonClass: "btn btn-primary",
-                cancelButtonClass: "btn btn-danger ml-1",
-                buttonsStyling: !1,
-            }).then(function (t) {
-                t.value
-                ? 
-                createRFForm(
-                    FormData, 
-                    LP_Data, ClientIndividualRiskLevel, ClientLegalRiskLevel, TransactionInFlowRiskLevel, TransactionOutFlowRiskLevel, DReputationRiskLevel, 
-                    ClientIndividualRiskLevelLabel, ClientLegalRiskLevelLabel, TransactionInFlowRiskLevelLabel, TransactionOutFlowRiskLevelLabel, DReputationRiskLevelLabel,
-                    riskData
-                )
-                : t.dismiss === Swal.DismissReason.cancel &&
-                    Swal.fire({
-                        title: "Cancelled",
-                        text: "Your form is still open.",
-                        type: "error",
-                        confirmButtonClass: "btn btn-success",
-                    });
-            });
-        }
-        
-        if (user['email'].includes('f4sp') || user['email'].includes('succession')){
-            Swal.fire({
-                title: "Are you sure?",
-                text: "Have you filled the whole form?",
-                type: "warning",
-                showCancelButton: !0,
-                confirmButtonColor: "#6AC7D2",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, submit it!",
-                confirmButtonClass: "btn btn-primary",
-                cancelButtonClass: "btn btn-danger ml-1",
-                buttonsStyling: !1,
-            }).then(function (t) {
-                t.value
-                ? 
-                createRFForm(
-                    FormData, 
-                    LP_Data, ClientIndividualRiskLevel, ClientLegalRiskLevel, TransactionInFlowRiskLevel, TransactionOutFlowRiskLevel, DReputationRiskLevel, 
-                    ClientIndividualRiskLevelLabel, ClientLegalRiskLevelLabel, TransactionInFlowRiskLevelLabel, TransactionOutFlowRiskLevelLabel, DReputationRiskLevelLabel,
-                    riskData
-                )
-                : t.dismiss === Swal.DismissReason.cancel &&
-                    Swal.fire({
-                        title: "Cancelled",
-                        text: "Your form is still open.",
-                        type: "error",
-                        confirmButtonClass: "btn btn-success",
-                    });
-            });
-        }           
-        if (user['email'].includes('sanlam') || user['email'].includes('succession')){
-            Swal.fire({
-                title: "Are you sure?",
-                text: "Have you filled the whole form?",
-                type: "warning",
-                showCancelButton: !0,
-                confirmButtonColor: "#0074C9",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, submit it!",
-                confirmButtonClass: "btn btn-primary",
-                cancelButtonClass: "btn btn-danger ml-1",
-                buttonsStyling: !1,
-            }).then(function (t) {
-                t.value
-                ? 
-                createRFForm(
-                    FormData, 
-                    LP_Data, ClientIndividualRiskLevel, ClientLegalRiskLevel, TransactionInFlowRiskLevel, TransactionOutFlowRiskLevel, DReputationRiskLevel, 
-                    ClientIndividualRiskLevelLabel, ClientLegalRiskLevelLabel, TransactionInFlowRiskLevelLabel, TransactionOutFlowRiskLevelLabel, DReputationRiskLevelLabel,
-                    riskData
-                )
-                : t.dismiss === Swal.DismissReason.cancel &&
-                    Swal.fire({
-                        title: "Cancelled",
-                        text: "Your form is still open.",
-                        type: "error",
-                        confirmButtonClass: "btn btn-success",
-                    });
-            });
-        }           
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Have you filled the whole form?",
+            type: "warning",
+            showCancelButton: !0,
+            confirmButtonColor: "#00788b",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, submit it!",
+            confirmButtonClass: "btn btn-primary",
+            cancelButtonClass: "btn btn-danger ml-1",
+            buttonsStyling: !1,
+        }).then(function (t) {
+            t.value
+            ? 
+            createRFForm(
+                FormData, 
+                LP_Data, ClientIndividualRiskLevel, ClientLegalRiskLevel, TransactionInFlowRiskLevel, TransactionOutFlowRiskLevel, DReputationRiskLevel, 
+                ClientIndividualRiskLevelLabel, ClientLegalRiskLevelLabel, TransactionInFlowRiskLevelLabel, TransactionOutFlowRiskLevelLabel, DReputationRiskLevelLabel,
+                riskData
+            )
+            : t.dismiss === Swal.DismissReason.cancel &&
+                Swal.fire({
+                    title: "Cancelled",
+                    text: "Your form is still open.",
+                    type: "error",
+                    confirmButtonClass: "btn btn-success",
+                });
+        });      
         // window.location.reload();
     }
     if (FormCreatedStatus) {
