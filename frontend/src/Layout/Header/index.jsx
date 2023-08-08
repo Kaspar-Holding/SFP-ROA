@@ -15,7 +15,8 @@ const Header = (props) => {
     },[userName, isAuthenticated, user])
     return (
         <header className="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a href="#" className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+            {/* <NavLink to="/" className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop"> */}
+            <NavLink to="/" className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white">
                 {
                     user ?
                         user['email'].includes('sfp') || user['email'].includes('succession')? <span>Succession Financial Planning</span>
@@ -27,7 +28,7 @@ const Header = (props) => {
                         <span>Web ROA</span>
                     </>
                 }
-            </a>
+            </NavLink>
             {/* <div className="offcanvas offcanvas-start offcanvas-size-xxl" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
                 <div className="offcanvas-header">
                     <h5 className="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
