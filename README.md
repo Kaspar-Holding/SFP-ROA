@@ -12,6 +12,10 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 08 August 2023:
+- 2345: 08 August 2023 Bugs:: Resolved
+- Deployment
+
 ### 18 July 2023:
 - 2343: 18 July 2023 Bugs:: Resolved
 - Deployment
