@@ -1,21 +1,22 @@
 import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
-import Sidebar from './Sidebar';
-
+import Sidebar from './Sidebar'
 const SidebarLayout = ({isAuthenticated, user}) => {
   if(isAuthenticated === false || isAuthenticated === null){
     return <Navigate to="/signin" />
   }
   return (
     <>
-    <Sidebar />
     <div className="container-fluid">
-          <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            {/* {props.children} */}
-            <Outlet />
-          </main>
-        </div>
+      <div className='row'>
+        <Sidebar />
+        <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <Outlet />
+        </main>
+
+      </div>
+    </div>
   </>
   )
 }

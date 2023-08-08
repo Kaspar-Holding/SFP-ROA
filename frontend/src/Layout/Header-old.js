@@ -61,6 +61,7 @@ const Header = ({isAuthenticated, user}) => {
              <NavLink className="nav-link px-3" to="/profile">{userName}</NavLink>
             : <NavLink className="nav-link px-3" to="/signin">Login</NavLink>
           }
+          
         </div>
       </div>
     </header>

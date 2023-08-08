@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import Header from './Header'
-import { Navigate, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { checkAuthenticated, LoadUser, checkGoogleAuthenticated, checkMicrosoftAuthenticated } from '../Actions/Auth'
+import Header from './Header'
 
 const Layout = (props) => {
   const [searchParams, setSearchParams] = useSearchParams()

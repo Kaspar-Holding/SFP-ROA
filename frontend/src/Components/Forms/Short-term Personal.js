@@ -3273,7 +3273,7 @@ const Short_term_Personal = ({user, LogOut}) => {
               
               <td className="col-2" style={{width:"170px"}}>Total premium</td>
               <td className="col-10">
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_TotalPremium" name='STIP_CnRI_TotalPremium' value={FormData['STIP_CnRen_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRI_TotalPremium" name='STIP_CnRI_TotalPremium' value={FormData['STIP_CnRI_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
               </td>
             
           </tr>
@@ -4383,7 +4383,7 @@ const Short_term_Personal = ({user, LogOut}) => {
               
               <td className="col-2" style={{width:"170px"}}>Total premium</td>
               <td className="col-10">
-                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_TotalPremium" name='STIP_CnRen_TotalPremium' value={FormData['STIP_CnRI_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
+                <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_CnRen_TotalPremium" name='STIP_CnRen_TotalPremium' value={FormData['STIP_CnRen_TotalPremium']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="R 0.00"  aria-describedby="" />
               </td>
             
           </tr>
@@ -7311,7 +7311,7 @@ const Short_term_Personal = ({user, LogOut}) => {
               <>
         <div className="row">
                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                  <h6 align="left" style={{ color: "#14848A"}}><b>VEHCILE</b></h6>
+                  <h6 align="left" style={{ color: "#14848A"}}><b>VEHICLE</b></h6>
                 </div>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                 {
@@ -7382,7 +7382,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                   <div className="col-4">
                       <label htmlFor="id_number" className="col-form-label"><b>Overnight parking</b></label>
                   </div>
-                  <div className="col-6">
+                  <div className="col-4">
                     <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select"  name='STIP_Vehicle_ONParkingOptions' value={FormData['STIP_Vehicle_ONParkingOptions']} onChange={(e) => {onChange(e)}}
                     aria-label="Default select example">
                         <option value="0" selected>Select the type of Overnight Parking</option>
@@ -7393,6 +7393,8 @@ const Short_term_Personal = ({user, LogOut}) => {
                         <option value="5">Behind Gates</option>
                         <option value="6">Others</option>
                     </select>
+                  </div>
+                  <div className="col-4">
                     <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_Vehicle_ONParking" name='STIP_Vehicle_ONParking' value={FormData['STIP_Vehicle_ONParking']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
                   </div>
               </div>
@@ -8089,7 +8091,7 @@ const Short_term_Personal = ({user, LogOut}) => {
              
 <div className="row">
   <div className='col-lg-6 col-md-6 col-sm-12'>
-    <h6 align="left" style={{ color: "#14848A"}}><b>VEHCILE (#{i+2})</b></h6>
+    <h6 align="left" style={{ color: "#14848A"}}><b>VEHICLE (#{i+2})</b></h6>
   </div>
   <div className='col-lg-6 col-md-6 col-sm-12'>
     <div className='row'>

@@ -7,7 +7,7 @@ import { Content } from './Components/Content'
 // import { Layout } from './Components/Layout'
 import CreateForm from './Components/Forms/CreateForm'
 import ViewDRAForm from './Components/Forms/AttentionForm/ViewDRAForm'
-
+import Apps from './Components/Apps'
 import {
   BrowserRouter as Router,
   Routes, 
@@ -81,6 +81,7 @@ function App() {
                     {/* <Route exact path="/printform" element={<PrintForm name="" /> } /> */}
                   </Route>
                   <Route  element={<NoHead /> }>
+                    <Route exact path="/apps" element={<Apps /> } siteName={"Apps"} />
                     <Route exact path="/updateFirstPassword" element={<UpdatePassword /> } siteName={"SignIn"} />
                     <Route exact path="/printform" element={<PrintForm name="" /> } />
                     <Route exact path="/printformclient" element={<PrintFormClient name="" /> } />

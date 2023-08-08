@@ -7136,7 +7136,7 @@ const Short_term_Personal = ({user, LogOut}) => {
               <>
         <div className="row">
                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                  <h6 align="left" style={{ color: "#14848A"}}><b>VEHCILE</b></h6>
+                  <h6 align="left" style={{ color: "#14848A"}}><b>VEHICLE</b></h6>
                 </div>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                 {
@@ -7914,7 +7914,7 @@ const Short_term_Personal = ({user, LogOut}) => {
              
 <div className="row">
   <div className='col-lg-6 col-md-6 col-sm-12'>
-    <h6 align="left" style={{ color: "#14848A"}}><b>VEHCILE (#{i+2})</b></h6>
+    <h6 align="left" style={{ color: "#14848A"}}><b>VEHICLE (#{i+2})</b></h6>
   </div>
   <div className='col-lg-6 col-md-6 col-sm-12'>
     <div className='row'>
@@ -7992,12 +7992,12 @@ const Short_term_Personal = ({user, LogOut}) => {
           </div>
           <hr/>
 
-          <div className="col-6" style={{paddingBottom: "0.5%"}}>
+          <div className="col-lg-6 col-md-6 col-sm-12" style={{paddingBottom: "0.5%"}}>
               <div className="row g-3 align-items-center">
-                  <div className="col-4">
+                  <div className="col-lg-4 col-md-4 col-sm-12">
                       <label htmlFor="id_number" className="col-form-label"><b>Overnight parking</b></label>
                   </div>
-                  <div className="col-6">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <select onBlur={(e)=>{onFieldBlur(e)}} className="text-start form-select"  name='Vehicle_ONParkingOptions' value={key['Vehicle_ONParkingOptions']} onChange={(e) => {on_Section_Vehicle_Change(e, i)}}
                     aria-label="Default select example">
                         <option value="0" selected>Select the type of Overnight Parking</option>
@@ -8008,6 +8008,8 @@ const Short_term_Personal = ({user, LogOut}) => {
                         <option value="5">Behind Gates</option>
                         <option value="6">Others</option>
                     </select>
+                  </div>
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="Vehicle_ONParking" name='Vehicle_ONParking' value={key['Vehicle_ONParking']} onChange={(e) => {on_Section_Vehicle_Change(e, i)}} className="form-control" placeholder="Other type of overnight parking."  aria-describedby="" />
                   </div>
               </div>
