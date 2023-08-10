@@ -381,6 +381,9 @@ const Dashboard = ({user, LogOut}) => {
                     monthStats={LoadMonthlyStats}
                     annualStats={LoadAnnualStats}
                     customStats={LoadCustomStats}
+                    default={loadFormsStats}
+                    OrderBy={OrderBy}
+                    SearchQuery={SearchQuery}
                     MonthProfile={MonthProfile}
                     YearProfile={YearProfile}
                 />
@@ -429,7 +432,7 @@ const Dashboard = ({user, LogOut}) => {
                     <br />
                     <div className="card flex-fill">
                         <div className="card-header pb-0 d-flex justify-content-between align-items-center">
-                            <h5 className="card-title mb-0">Forms Trending Data (last 15 days)</h5>       
+                            <h5 className="card-title mb-0">Forms Trending Data { FilterType == 0 ? "(last 15 days)" : ""}</h5>       
                         </div>
                         <div className="card-body">
                             {

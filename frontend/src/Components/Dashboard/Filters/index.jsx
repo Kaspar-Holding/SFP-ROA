@@ -71,6 +71,7 @@ const FilterComponent = (props) => {
                     <div className='row'>
                         <div className="col-md-4  col-sm-6">
                             <select className="form-select" value={props.filterType} onChange={(e) => {ChangeFilter(e)}}  aria-label="Range">
+                                <option value="0">Overall</option>
                                 <option value="1">Year</option>
                                 <option value="2">Month</option>
                                 <option value="3">Day</option>
