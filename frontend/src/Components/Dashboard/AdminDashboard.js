@@ -1,13 +1,156 @@
-import axios from 'axios';
+import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import Loader from '../Loader/Loader';
-import Pagination from '../Pagination/Pagination';
+import Loader from '../Loader/Loader'
+import FilterComponent from './Filters/index'
+import Pagination from '../Pagination/Pagination'
 import {LogOut} from '../../Actions/Auth'
 import Chart from "react-apexcharts"
+import Moment from 'moment'
 const Dashboard = ({user, LogOut}) => {
+    // Filters
+	const [PageSize, setPageSize] = useState(10)
+	const [YearProfile, setYearProfile] = useState({"revenue_change" : "+"})
+	const [MonthProfile, setMonthProfile] = useState({"revenue":0,"revenue_change" : "+0"})
+	const [ProductsData, setProductsData] = useState([])
+	const [TotalProducts, setTotalProducts] = useState(0)
+	const [FilterType, setFilterType] = useState(2)
+    const Date_Var = new Date()
+    const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
+    const currentYear = Date_Var.getFullYear()
+    const [Month, setMonth] = useState(("0" + (Date_Var.getMonth() + 1)).slice(-2))
+    const [Year, setYear] = useState(currentYear)
+    const [MonthYear, setMonthYear] = useState(currentYear)
+    const [CurrentDate, setCurrentDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
+    const [FromDate, setFromDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
+    const [ToDate, setToDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
+    const year = 2023
+    const years = Array.from(new Array(currentYear - year + 1),( val, index) => index + year)
 
+    const LoadDayStats = async(inputDate) => {
+        setLoader("block")
+        setDashboardVisibility("none")
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`,
+                'Accept' : 'application/json'
+            }
+        }
+        const Body = JSON.stringify(
+            {
+                "date" : inputDate
+            }
+        )
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/admin_form_stats/day/`, Body,config)
+            setFormStats(response.data)
+            setTrendingData(response.data['data'])
+            //   console.log('Users', JSON.stringify(response.data.Data))
+        } catch (error) {
+            console.log('first', error.response.statusText)
+            if (error.response.status === 401){
+                LogOut()
+		}
+          //   setResponseError(error.response.statusText)
+        }
+        setLoader("none")
+        setDashboardVisibility("block")
+    }
+    const LoadMonthlyStats = async(inputDate) => {
+        setLoader("block")
+        setDashboardVisibility("none")
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`,
+                'Accept' : 'application/json'
+            }
+        }
+        const Body = JSON.stringify(
+            {
+                "date" : inputDate
+            }
+        )
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/admin_form_stats/month/`, Body,config)
+            setFormStats(response.data)
+            setTrendingData(response.data['data'])
+            //   console.log('Users', JSON.stringify(response.data.Data))
+        } catch (error) {
+            console.log('first', error.response.statusText)
+            if (error.response.status === 401){
+                LogOut()
+		}
+          //   setResponseError(error.response.statusText)
+        }
+        setLoader("none")
+        setDashboardVisibility("block")
+    }
+    const LoadAnnualStats = async(inputDate) => {
+        setLoader("block")
+        setDashboardVisibility("none")
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`,
+                'Accept' : 'application/json'
+            }
+        }
+        const Body = JSON.stringify(
+            {
+                "year" : inputDate
+            }
+        )
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/admin_form_stats/annual/`, Body,config)
+            setFormStats(response.data)
+            setTrendingData(response.data['data'])
+            //   console.log('Users', JSON.stringify(response.data.Data))
+        } catch (error) {
+            console.log('first', error.response.statusText)
+            if (error.response.status === 401){
+                LogOut()
+		}
+          //   setResponseError(error.response.statusText)
+        }
+        setLoader("none")
+        setDashboardVisibility("block")
+    }
+    const LoadCustomStats = async(toDate, fromDate) => {
+        setLoader("block")
+        setDashboardVisibility("none")
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`,
+                'Accept' : 'application/json'
+            }
+        }
+        const Body = JSON.stringify(
+            {
+                "to_date" : toDate,
+                "from_date" : fromDate,
+            }
+        )
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/admin_form_stats/custom/`, Body,config)
+            setFormStats(response.data)
+            setTrendingData(response.data['data'])
+            //   console.log('Users', JSON.stringify(response.data.Data))
+        } catch (error) {
+            console.log('first', error.response.statusText)
+            if (error.response.status === 401){
+                LogOut()
+		}
+          //   setResponseError(error.response.statusText)
+        }
+        setLoader("none")
+        setDashboardVisibility("block")
+    }
+	
+    
     const [formStats, setFormStats] = useState([])
     const [TrendingData, setTrendingData] = useState([])
     const [SearchQuery, setSearchQuery] = useState("")
@@ -95,35 +238,46 @@ const Dashboard = ({user, LogOut}) => {
         }
     )
     // console.log(user)
-    const loadFormsStats = async(page_number, order_by, search_query) => {
+    const loadFormsStats = async(page_number, order_by, search_query, date) => {
         setLoader("block")
         setDashboardVisibility("none")
         const config = {
-          headers: {
-              'Content-Type' : 'application/json',
-              'Authorization' : `JWT ${localStorage.getItem('access')}`,
-              'Accept' : 'application/json'
-          }
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization' : `JWT ${localStorage.getItem('access')}`,
+                'Accept' : 'application/json'
+            }
         }
         const Body = JSON.stringify(
             {
                 "advisorId" : user['id'],
                 "page_number" : page_number,
                 "order_by" : order_by,
-                "search_query" : search_query
+                "search_query" : search_query,
+                "date" : date
             }
         )
         try {
-          const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/admin_forms_stats/`, Body,config)
-          setFormStats(response.data)
-          setFormList(response.data['results'])
-          setTotalForms(response.data['total_records'])
-          setPageLimit(response.data['pagelimit'])
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/admin_form_list/`, Body,config)
+            setFormList(response.data['results'])
+            setTotalForms(response.data['total_records'])
+            setPageLimit(response.data['pagelimit'])
           //   console.log('Users', JSON.stringify(response.data.Data))
         } catch (error) {
-          console.log('first', error.response.statusText)
-          if (error.response.status === 401){
-			LogOut()
+            console.log('first', error.response.statusText)
+            if (error.response.status === 401){
+                LogOut()
+		    }
+          //   setResponseError(error.response.statusText)
+        }
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/admin_form_stats/month/`, Body,config)
+            setFormStats(response.data)
+            //   console.log('Users', JSON.stringify(response.data.Data))
+        } catch (error) {
+            console.log('first', error.response.statusText)
+            if (error.response.status === 401){
+                LogOut()
 		}
           //   setResponseError(error.response.statusText)
         }
@@ -187,15 +341,9 @@ const Dashboard = ({user, LogOut}) => {
         setSearchQuery(e.target.value)
         onLoadFormsStats(1, OrderBy, e.target.value)    
     }
-    const resetForm = (e) => {
-        e.preventDefault()
-        setOrderBy("")
-        setSearchQuery("")
-        onLoadFormsStats(1,"","")
-    }
     // console.log(formStats)
     useEffect(() => {
-        loadFormsStats(1,OrderBy, SearchQuery)
+        loadFormsStats(1,OrderBy, SearchQuery, MonthYear + "-" + Month)
         if (user){
             setAdvisor(user["first_name"] + " " + user["last_name"])
         }
@@ -209,15 +357,44 @@ const Dashboard = ({user, LogOut}) => {
             <div style={{display: Loader}}>
                 <Loader />
             </div>
+            <div className='container'>
+                <h5 className="h3">Stats</h5>
+                <FilterComponent 
+                    storeId={1}
+                    pageSize={PageSize}
+                    filterType={FilterType} 
+                    updateFilter={setFilterType} 
+                    Month={Month} 
+                    updateMonth={setMonth} 
+                    Year={Year} 
+                    updateYear={setYear} 
+                    MonthYear={MonthYear} 
+                    updateMonthYear={setMonthYear} 
+                    CurrentDate={CurrentDate} 
+                    updateCurrentDate={setCurrentDate} 
+                    FromDate={FromDate} 
+                    updateFromDate={setFromDate} 
+                    ToDate={ToDate} 
+                    updateToDate={setToDate} 
+                    years={years}
+                    dayStats={LoadDayStats}
+                    monthStats={LoadMonthlyStats}
+                    annualStats={LoadAnnualStats}
+                    customStats={LoadCustomStats}
+                    MonthProfile={MonthProfile}
+                    YearProfile={YearProfile}
+                />
+            </div>
             <div style={{display: dashboardVisibility}}>
                 <div className='container'>
-                    <h5 className="h3">Stats</h5>
+                    <br/>
                     <div className='row'>
                         <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
                             <div className="card">
                                 <h5 className="card-header">Completed</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['completed_forms']}</h5>
+                                    <p className="card-text">Forms completed by all.</p>
                                 </div>
                             </div>
                         </div>
@@ -226,6 +403,7 @@ const Dashboard = ({user, LogOut}) => {
                                 <h5 className="card-header">Incompleted</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['incompleted_forms']}</h5>
+                                    <p className="card-text">Incompleted forms filled by all.</p>
                                 </div>
                             </div>
                         </div>
@@ -234,6 +412,7 @@ const Dashboard = ({user, LogOut}) => {
                                 <h5 className="card-header">Awaiting Approval</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['yet_to_approved_forms']}</h5>
+                                    <p className="card-text">Awaiting by all.</p>
                                 </div>
                             </div>
                         </div>
@@ -242,6 +421,7 @@ const Dashboard = ({user, LogOut}) => {
                                 <h5 className="card-header">Blocked</h5>
                                 <div className="card-body">
                                     <h5 className="card-title">{formStats['blocked_forms']}</h5>
+                                    <p className="card-text">Blocked by all.</p>
                                 </div>
                             </div>
                         </div>
@@ -349,7 +529,7 @@ const Dashboard = ({user, LogOut}) => {
                                                     return (<>
                                                         <td>Medium</td>
 
-                                                    </>);
+                                                    </>)
                                                 }
 
                                                 if(parseInt(row['RF_Client_Match'])===2 || parseInt(row['RF_Client_Match'])===5 || parseInt(row['RF_Client_Match'])===8 || parseInt(row['RF_Client_Match'])===11)
@@ -357,7 +537,7 @@ const Dashboard = ({user, LogOut}) => {
                                                     return (<>
                                                         <td>High</td>
 
-                                                    </>);
+                                                    </>)
                                                 }
 
                                                 if(parseInt(row['RF_Client_Match'])===3 || parseInt(row['RF_Client_Match'])===6)
@@ -365,14 +545,14 @@ const Dashboard = ({user, LogOut}) => {
                                                     return (<>
                                                         <td>Low</td>
 
-                                                    </>);
+                                                    </>)
                                                 }
 
                                                 if(parseInt(row['RF_Client_Match'])===4 || parseInt(row['RF_Client_Match'])===7)
                                                 {
                                                     return (<>
                                                         <td>Medium</td>
-                                                    </>);
+                                                    </>)
                                                 }
 
                                                 if(parseInt(row['RF_Client_Match'])===9 || parseInt(row['RF_Client_Match'])===10) 
@@ -380,14 +560,14 @@ const Dashboard = ({user, LogOut}) => {
                                                     return (<>
                                                         <td>Intolerable</td>
 
-                                                    </>);
+                                                    </>)
                                                 }
 
                                                 else
                                                 {
                                                     return (<>
                                                         <td>Undetermined</td>
-                                                    </>);
+                                                    </>)
                                                 }
                                                 })()}
                                             

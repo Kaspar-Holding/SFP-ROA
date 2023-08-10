@@ -11,6 +11,7 @@ from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_Lega
 from .serializers import STIP_Sec_AddProp_Serializer, STIP_Sec_Build_Serializer, STIP_Sec_HC_Serializer, STIP_Sec_LegalA_Serializer, STIP_Sec_MotorC_Serializer, STIP_Sec_PersonalLL_Serializer, STIP_Sec_Trailer_Serializer, STIP_Sec_Vehicle_Serializer, STIP_Sec_WaterC_Serializer
 from django.http import HttpResponse
 import pytz
+import calendar
 from django.db.models import Count, Sum, Q
 from django.core.paginator import Paginator
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
@@ -18,7 +19,7 @@ import pandas as pd
 import uuid
 import numpy as np
 import base64
-from datetime import datetime
+from datetime import datetime, timedelta
 from dateutil import parser as datetimeparser
 from dateutil.relativedelta import relativedelta
 import numpy as np
@@ -604,17 +605,9 @@ def formStats(request):
     #     },200)
 
 @api_view(['POST'])
-def adminformStats(request):
+def adminFormList(request):
     user = request.user
     if user.is_superuser:
-        complete_forms = RiskFactors.objects.filter(status = 1)
-        complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
-        incomplete_forms = RiskFactors.objects.filter(status = 0)
-        incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
-        blocked_forms = RiskFactors.objects.filter(Q(status = 3) | Q(status = 4))
-        blocked_serializer = RiskFactorsSerializers(blocked_forms, many=True)
-        yet_to_approved_forms = RiskFactors.objects.filter(status = 2)
-        yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
         riskFactors = RiskFactors.objects.all()
         forms_data = []
         search_query = SearchQuery(request.data['search_query'], search_type='phrase')
@@ -640,10 +633,6 @@ def adminformStats(request):
                 
             return Response(
                 {
-                    "completed_forms": len(complete_serializer.data),
-                    "incompleted_forms": len(incomplete_serializer.data),
-                    "yet_to_approved_forms": len(yet_to_approved_serializer.data),
-                    "blocked_forms": len(blocked_serializer.data),
                     "total_pages" : p.num_pages,
                     "has_pages" : p.num_pages,
                     "total_records" : len(forms_data),
@@ -655,10 +644,6 @@ def adminformStats(request):
         else:
             return Response(
                 {
-                    "completed_forms": len(complete_serializer.data),
-                    "incompleted_forms": len(incomplete_serializer.data),
-                    "yet_to_approved_forms": len(yet_to_approved_serializer.data),
-                    "blocked_forms": len(blocked_serializer.data),
                     "total_pages" : p.num_pages,
                     "next" : None,
                     "has_pages" : p.num_pages,
@@ -670,10 +655,6 @@ def adminformStats(request):
     else:
         return Response(
             {
-                "completed_forms": len(complete_serializer.data),
-                "incompleted_forms": len(incomplete_serializer.data),
-                "yet_to_approved_forms": len(yet_to_approved_serializer.data),
-                "blocked_forms": len(blocked_serializer.data),
                 "total_pages" : p.num_pages,
                 "next" : None,
                 "has_pages" : p.num_pages,
@@ -682,11 +663,137 @@ def adminformStats(request):
                 "results" : {}
             }, 404
         )
-    # return Response({
-    #         "completed_forms": len(complete_serializer.data),
-    #         "incompleted_forms": len(incomplete_serializer.data),
-    #         "forms" : formSerializer.data
-    #     },200)
+
+@api_view(['POST'])
+def dayAdminStats(request):
+    user = request.user
+    if user.is_superuser:
+        date_range = datetime.strptime(request.data['date'],"%Y-%m-%d")
+        riskFactors = RiskFactors.objects.filter(created_at__date=date_range)
+        complete_forms = riskFactors.filter(status = 1)
+        complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
+        incomplete_forms = riskFactors.filter(status = 0)
+        incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
+        blocked_forms = riskFactors.filter(Q(status = 3) | Q(status = 4))
+        blocked_serializer = RiskFactorsSerializers(blocked_forms, many=True)
+        yet_to_approved_forms = riskFactors.filter(status = 2)
+        yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
+
+        filtered_data = RiskFactors.objects.filter(created_at__date=date_range)
+        total_records = filtered_data.aggregate(Count("advisorId"))
+        trending_data = []
+        if (total_records['advisorId__count']) is not None and (total_records['advisorId__count']) != 0:
+            form_trending_data = filtered_data.values("created_at__hour").order_by("created_at__hour").annotate(total=Count("advisorId"))
+            trending_data = [[datetime.strftime(datetime.strptime(f"{str(row['created_at__hour'])}:00","%H:%M"),'%I:%M %p'),row['total']] for row in form_trending_data]
+        
+            
+        return Response(
+            {
+                "completed_forms": len(complete_serializer.data),
+                "incompleted_forms": len(incomplete_serializer.data),
+                "yet_to_approved_forms": len(yet_to_approved_serializer.data),
+                "blocked_forms": len(blocked_serializer.data),
+                "data" : trending_data
+            }
+        )
+
+@api_view(['POST'])
+def monthlyAdminStats(request):
+    user = request.user
+    if user.is_superuser:
+        lastDate = str(calendar.monthrange(int(request.data['date'].split('-')[0]), int(request.data['date'].split('-')[1]))[1])
+        date_range = (datetime.strptime(request.data['date']+"-01", '%Y-%m-%d') , datetime.strptime(request.data['date']+"-"+lastDate, '%Y-%m-%d') + timedelta(days=1))
+
+        riskFactors = RiskFactors.objects.filter(created_at__range=date_range)
+        complete_forms = riskFactors.filter(status = 1)
+        complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
+        incomplete_forms = riskFactors.filter(status = 0)
+        incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
+        blocked_forms = riskFactors.filter(Q(status = 3) | Q(status = 4))
+        blocked_serializer = RiskFactorsSerializers(blocked_forms, many=True)
+        yet_to_approved_forms = riskFactors.filter(status = 2)
+        yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
+    
+        filtered_data = RiskFactors.objects.filter(created_at__range=date_range)
+        total_records = filtered_data.aggregate(Count("advisorId"))
+        trending_data = []
+        if (total_records['advisorId__count']) is not None and (total_records['advisorId__count']) != 0:
+            form_trending_data = filtered_data.values("created_at__date").order_by("created_at__date").annotate(total=Count("advisorId"))
+            trending_data = [[datetime.strftime(row['created_at__date'],'%d'),row['total']] for row in form_trending_data]
+        return Response(
+            {
+                "completed_forms": len(complete_serializer.data),
+                "incompleted_forms": len(incomplete_serializer.data),
+                "yet_to_approved_forms": len(yet_to_approved_serializer.data),
+                "blocked_forms": len(blocked_serializer.data),
+                "data" : trending_data
+            }
+        )
+    
+@api_view(['POST'])
+def annualAdminStats(request):
+    user = request.user
+    if user.is_superuser:
+        date_range = (datetime.strptime(str(request.data['year']) + "-01-01", '%Y-%m-%d') , datetime.strptime(str(request.data['year']) + "-12-31", '%Y-%m-%d'))
+        riskFactors = RiskFactors.objects.filter(created_at__range=date_range)
+        complete_forms = riskFactors.filter(status = 1)
+        complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
+        incomplete_forms = riskFactors.filter(status = 0)
+        incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
+        blocked_forms = riskFactors.filter(Q(status = 3) | Q(status = 4))
+        blocked_serializer = RiskFactorsSerializers(blocked_forms, many=True)
+        yet_to_approved_forms = riskFactors.filter(status = 2)
+        yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
+
+        filtered_data = RiskFactors.objects.filter(created_at__range=date_range)
+        total_records = filtered_data.aggregate(Count("advisorId"))
+        trending_data = []
+        if (total_records['advisorId__count']) is not None and (total_records['advisorId__count']) != 0:
+            form_trending_data = filtered_data.values("created_at__month").order_by("created_at__month").annotate(total=Count("advisorId"))
+            trending_data = [[datetime.strftime(datetime.strptime(f"{request.data['year']}-{row['created_at__month']}-01","%Y-%m-%d"),'%b'),row['total']] for row in form_trending_data]
+        
+            
+        return Response(
+            {
+                "completed_forms": len(complete_serializer.data),
+                "incompleted_forms": len(incomplete_serializer.data),
+                "yet_to_approved_forms": len(yet_to_approved_serializer.data),
+                "blocked_forms": len(blocked_serializer.data),
+                "data" : trending_data
+            }
+        )
+    
+@api_view(['POST'])
+def customAdminStats(request):
+    user = request.user
+    if user.is_superuser:
+        date_range = (datetime.strptime(request.data['fromDate'], '%Y-%m-%d') , datetime.strptime(request.data['toDate'], '%Y-%m-%d') + timedelta(days=1))
+        riskFactors = RiskFactors.objects.filter(created_at__range=date_range)
+        complete_forms = riskFactors.filter(status = 1)
+        complete_serializer = RiskFactorsSerializers(complete_forms, many=True)
+        incomplete_forms = riskFactors.filter(status = 0)
+        incomplete_serializer = RiskFactorsSerializers(incomplete_forms, many=True)
+        blocked_forms = riskFactors.filter(Q(status = 3) | Q(status = 4))
+        blocked_serializer = RiskFactorsSerializers(blocked_forms, many=True)
+        yet_to_approved_forms = riskFactors.filter(status = 2)
+        yet_to_approved_serializer = RiskFactorsSerializers(yet_to_approved_forms, many=True)
+
+        filtered_data = RiskFactors.objects.filter(created_at__range=date_range)
+        total_records = filtered_data.aggregate(Count("advisorId"))
+        trending_data = []
+        if (total_records['advisorId__count']) is not None and (total_records['advisorId__count']) != 0:
+            form_trending_data = filtered_data.values("created_at__date").order_by("created_at__date").annotate(total=Count("advisorId"))
+            trending_data = [[datetime.strftime(f"{row['created_at__date']}",'%d %b %y'),row['total']] for row in form_trending_data]
+        
+        return Response(
+            {
+                "completed_forms": len(complete_serializer.data),
+                "incompleted_forms": len(incomplete_serializer.data),
+                "yet_to_approved_forms": len(yet_to_approved_serializer.data),
+                "blocked_forms": len(blocked_serializer.data),
+                "data" : trending_data
+            }
+        )
 
 # Fiduciary
 @api_view(['POST'])

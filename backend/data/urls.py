@@ -20,7 +20,11 @@ urlpatterns = [
     path('deleteformdata/' , views.deleteFormData, name="Delete form data details"),
     path('forms_stats/trending_data/' , views.userTrendingData.as_view(), name="Forms Data"),
     path('forms_stats/' , views.formStats, name="Forms Data"),
-    path('admin_forms_stats/' , views.adminformStats, name="Forms Data"),
+    path('admin_form_list/' , views.adminFormList, name="Forms Data"),
+    path('admin_form_stats/day/' , views.dayAdminStats, name="Forms Data"),
+    path('admin_form_stats/custom/' , views.customAdminStats, name="Forms Data"),
+    path('admin_form_stats/annual/' , views.annualAdminStats, name="Forms Data"),
+    path('admin_form_stats/month/' , views.monthlyAdminStats, name="Forms Data"),
     path('admin_forms_stats/trending_data/' , views.adminTrendingData.as_view(), name="Forms Data"),
     path('update_form_status/' , views.changeFormStatus, name="Completed Form"),
     # Fiduciary Form Data

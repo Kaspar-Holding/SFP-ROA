@@ -208,6 +208,26 @@ const Dashboard = ({user, LogOut}) => {
             </div>
             <div style={{display: dashboardVisibility}}>
                 <div className='container'>
+                    <div className="card">
+                        <div className="card-header">
+                            New ROA Form
+                        </div>
+                        <div className="card-body">
+                            <h5 className="card-title">Create a new ROA Form</h5>
+                            <p className="card-text">You can create a new web based ROA Form from here</p>
+                            <NavLink 
+                                to="/createform" 
+                                className= { 
+                                    user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp" 
+                                    : user['email'].includes('fs4p') ? "btn btn-primary fs4p" 
+                                    : user['email'].includes('sanlam') ? "btn btn-primary sanlam" 
+                                    : "btn btn-primary "
+                                }
+                            >Create</NavLink>
+
+                        </div>
+                    </div>
+                    <hr/>
                     <h5 className="h3">Stats</h5>
                     <div className='row'>
                         <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
