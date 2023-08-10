@@ -5,9 +5,11 @@ import { NavLink } from 'react-router-dom'
 import Loader from '../Loader/Loader';
 import Pagination from '../Pagination/Pagination';
 import {LogOut} from '../../Actions/Auth'
+import Chart from "react-apexcharts"
 const Dashboard = ({user, LogOut}) => {
 
     const [formStats, setFormStats] = useState([])
+    const [TrendingData, setTrendingData] = useState([])
     const [SearchQuery, setSearchQuery] = useState("")
     const [formList, setFormList] = useState([])
     const [OrderBy, setOrderBy] = useState("name")
@@ -16,6 +18,82 @@ const Dashboard = ({user, LogOut}) => {
     const [PageLimit, setPageLimit] = useState(0)
     const [Advisor, setAdvisor] = useState("")
     const [dashboardVisibility, setDashboardVisibility] = useState("none")
+    // Apex Charts 
+    const apexChartSeries = (seriesName, seriesData, seriesName1, seriesData1) => 
+    (
+        [
+            {
+                name: seriesName,
+                data: seriesData,
+                type: 'line'
+            },
+            {
+                name: seriesName1,
+                data: seriesData1,
+                type: 'column'
+            }
+        ]
+    )
+    const apexChartDualOptions = (chartId, xaxis, seriesA, color) =>
+    (
+        {
+            chart: {
+                id: chartId,
+                width: "100%"
+            },
+            dataLabels: {
+                enabled: true,
+            },
+            stroke: {
+                width: [0, 4]
+            },
+            markers: {
+                size: 1
+            },
+            xaxis: {
+                categories: xaxis
+            },
+            yaxis: [
+                {
+                    title: {
+                        text: seriesA
+                    },
+                }
+            ],
+            colors: [color],
+            stroke: {
+                curve: 'smooth'
+            },
+            dataLabels: {
+                enabled: false, 
+                style: {
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                    color: 'black'
+                },
+                background: {
+                    enabled: true,
+                    foreColor: 'black',
+                    borderRadius: 2,
+                    padding: 4,
+                    opacity: 0.9,
+                    borderWidth: 1,
+                    borderColor: '#fff',
+                },
+            },
+            plotOptions: {
+                pie: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            },
+            grid: {
+                show: false
+            }
+
+        }
+    )
     // console.log(user)
     const loadFormsStats = async(page_number, order_by, search_query) => {
         setLoader("block")
@@ -48,6 +126,18 @@ const Dashboard = ({user, LogOut}) => {
 			LogOut()
 		}
           //   setResponseError(error.response.statusText)
+        }
+        
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/admin_forms_stats/trending_data/`, config)
+            setTrendingData(response.data['data'])
+        //   console.log('Users', JSON.stringify(response.data.Data))
+        } catch (error) {
+            console.log('first', error.response.statusText)
+            if (error.response.status === 401){
+                LogOut()
+		    }
+        //   setResponseError(error.response.statusText)
         }
         setLoader("none")
         setDashboardVisibility("block")
@@ -154,6 +244,48 @@ const Dashboard = ({user, LogOut}) => {
                                     <h5 className="card-title">{formStats['blocked_forms']}</h5>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div className="card flex-fill">
+                        <div className="card-header pb-0 d-flex justify-content-between align-items-center">
+                            <h5 className="card-title mb-0">Forms Trending Data (last 15 days)</h5>       
+                        </div>
+                        <div className="card-body">
+                            {
+                                user['email'].includes('sfp') || user['email'].includes('succession') ?
+                                <Chart
+                                    options={apexChartDualOptions('trending-data',[TrendingData].map(x => x.map(a => (a[0]))).flat(2), 'Forms Created', '#14848A')}
+                                    series={apexChartSeries('Form Created',  [TrendingData].map(x => x.map(a => (a[1]))).flat(2))}
+                                    type="line"
+                                    width="100%"
+                                    height="100%"
+                                />
+                                : user['email'].includes('fs4p') ? 
+                                <Chart
+                                    options={apexChartDualOptions('trending-data',[TrendingData].map(x => x.map(a => (a[0]))).flat(2), 'Forms Created', '#6AC7D2')}
+                                    series={apexChartSeries('Form Created',  [TrendingData].map(x => x.map(a => (a[1]))).flat(2))}
+                                    type="line"
+                                    width="100%"
+                                    height="100%"
+                                />
+                                : user['email'].includes('sanlam') ? 
+                                <Chart
+                                    options={apexChartDualOptions('trending-data',[TrendingData].map(x => x.map(a => (a[0]))).flat(2), 'Completed', '#0074C9')}
+                                    series={apexChartSeries('Form Created',  [TrendingData].map(x => x.map(a => (a[1]))).flat(2))}
+                                    type="line"
+                                    width="100%"
+                                    height="100%"
+                                />
+                                :
+                                <Chart
+                                    options={apexChartDualOptions('trending-data',[TrendingData].map(x => x.map(a => (a[0]))).flat(2), 'Forms Created', '#14848A')}
+                                    series={apexChartSeries('Form Created',  [TrendingData].map(x => x.map(a => (a[1]))).flat(2))}
+                                    type="line"
+                                    width="100%"
+                                    height="100%"
+                                />
+                            }
                         </div>
                     </div>
                     <hr />

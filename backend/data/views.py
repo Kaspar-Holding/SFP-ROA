@@ -1,5 +1,5 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, APIView
 from django.core.files.base import ContentFile
 from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, AssuranceInvestmentSerializers, AssuranceRiskSerializers, EB_CoverSerializer, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RF_Scores_Serializer, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, STIC_Loss_Serializer, STIC_Sec_Fire_Serializer, STIP_Loss_Serializer, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
 from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RF_Scores, RP_ProductTaken, RiskFactors, RiskPlanning, STIC_Loss, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
@@ -10,15 +10,17 @@ from .serializers import STIC_Sec_2_Serializer, STIC_Sec_3_Serializer, STIC_Sec_
 from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_PersonalLL, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
 from .serializers import STIP_Sec_AddProp_Serializer, STIP_Sec_Build_Serializer, STIP_Sec_HC_Serializer, STIP_Sec_LegalA_Serializer, STIP_Sec_MotorC_Serializer, STIP_Sec_PersonalLL_Serializer, STIP_Sec_Trailer_Serializer, STIP_Sec_Vehicle_Serializer, STIP_Sec_WaterC_Serializer
 from django.http import HttpResponse
+import pytz
+from django.db.models import Count, Sum, Q
 from django.core.paginator import Paginator
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
-from django.db.models import Q
 import pandas as pd
 import uuid
 import numpy as np
 import base64
 from datetime import datetime
 from dateutil import parser as datetimeparser
+from dateutil.relativedelta import relativedelta
 import numpy as np
 from emailApp.views import approveDenyEmail, sendAlertEmail
 from django.utils.http import urlsafe_base64_encode
@@ -474,6 +476,59 @@ def sampleFile(request):
     response['Content-Disposition'] = 'attachment; filename=download.docx'
     doc.save(response)
     return response
+
+class userTrendingData(APIView):
+
+    def get(self, request):
+        userId = request.user.pk
+
+        date_range = (datetime.now(pytz.timezone('Africa/Johannesburg'))  + relativedelta(days=-15) , datetime.now(pytz.timezone('Africa/Johannesburg')) )
+        filtered_data = RiskFactors.objects.filter(created_at__range=date_range,advisorId = userId)
+        total_records = filtered_data.aggregate(Count("advisorId"))
+        if (total_records['advisorId__count']) is not None and (total_records['advisorId__count']) != 0:
+            form_trending_data = filtered_data.values("created_at__date").order_by("created_at__date").annotate(total=Count("advisorId"))
+            trending_data = [[datetime.strftime(datetime.strptime(str(row['created_at__date']),"%Y-%m-%d"),'%d %b %Y'),row['total']] for row in form_trending_data]
+            return Response({
+                "message": "Success",
+                "data" : trending_data
+            }, 200)
+        
+        else:
+            return Response({
+                "message": "Not Found",
+                "data" : []
+            }, 404)
+
+class adminTrendingData(APIView):
+
+    def get(self, request):
+        user = request.user
+        if user.is_superuser:
+            date_range = (datetime.now(pytz.timezone('Africa/Johannesburg'))  + relativedelta(days=-15) , datetime.now(pytz.timezone('Africa/Johannesburg')) )
+            filtered_data = RiskFactors.objects.filter(created_at__range=date_range)
+            total_records = filtered_data.aggregate(Count("advisorId"))
+            if (total_records['advisorId__count']) is not None and (total_records['advisorId__count']) != 0:
+                form_trending_data = filtered_data.values("created_at__date").order_by("created_at__date").annotate(total=Count("advisorId"))
+                trending_data = [[datetime.strftime(datetime.strptime(str(row['created_at__date']),"%Y-%m-%d"),'%d %b %Y'),row['total']] for row in form_trending_data]
+                return Response({
+                    "message": "Success",
+                    "data" : trending_data
+                }, 200)
+            
+            else:
+                return Response({
+                    "message": "Not Found",
+                    "data" : []
+                }, 404)
+            
+        else:
+            return Response({
+                "message": "Not Found",
+                "data" : []
+            }, 404)
+        
+
+ 
 
 @api_view(['POST'])
 def formStats(request):
