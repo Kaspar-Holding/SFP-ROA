@@ -18,8 +18,8 @@ const Header = (props) => {
             <header className="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow">
                 {
                     user ?
-                    <NavLink to="/" className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-                    {/* <NavLink to="/" className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white"> */}
+                    // <NavLink to="/" className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+                    <NavLink to="/" className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white">
                         {
                             user ?
                                 user['email'].includes('sfp') || user['email'].includes('succession')? <span>Succession Financial Planning</span>
