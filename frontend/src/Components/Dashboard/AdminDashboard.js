@@ -313,7 +313,7 @@ const Dashboard = ({user, LogOut}) => {
         }
         )
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/admin_forms_stats/`, Body,config)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/admin_form_list/`, Body,config)
             // console.log(response.data)
             setFormStats(response.data)
             setFormList(response.data['results'])
