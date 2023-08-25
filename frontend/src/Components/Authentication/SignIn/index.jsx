@@ -111,10 +111,7 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
         return <Navigate to='/' />
     }
     return (
-        <div className="updated-body"> 
-            <div>
-                <img className='updated-logo' src={`${process.env.REACT_APP_BACKEND_URL}/media/logo.png`}/>
-            </div>
+        <>
             <div style={{display: LoadingVisibility}}>
                 <Loader />
             </div> 
@@ -144,11 +141,8 @@ const SignIn = ({LoginUser, isAuthenticated}) => {
                         </div>
                     </div>
                 </form>
-            </div>          
-            <div className="updated-footer position-absolute bottom-0 start-50 translate-middle">
-                &copy; SFP by KCS 2022 – {(new Date()).getFullYear()}
-            </div>
-        </div>
+            </div>      
+        </>
     )
 }
 

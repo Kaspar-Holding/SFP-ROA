@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+}
+.updated-body {
+    background: #023E47;
+    height: 100vh;
+}
+
+.updated-logo {
+    position: relative;
+    width: 100%;
+    top: 3px;
+    left: 1%;
+}
+
+.updated-form {
+    width: 30%;
+    top: 50%;
+    left: 674px;
+}
+
+.updated-form .card {
+    padding: 5%;
+}
+
+.updated-dashboard {
+    width: 60%;
+    top: 50%;
+    left: 674px;
+}
+
+.updated-dashboard .card {
+    padding: 5%;
+}
+
+.form-control {
+    background-color: #F5F5F5;
+}
+
+.updated-header { 
+    font-family: "Open Sans";
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 33px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.updated-subtitle { 
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.updated-text { 
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0em;
+    color: black;
+}
+
+.updated-body a:link {
+    text-decoration: none;
+}
+
+.updated-email { 
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;    
+}
+
+.updated-form .btn-primary {
+    background-color: #007A8D;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+}
+
+.updated-dashboard .btn-primary {
+    background-color: #007A8D;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+}
+
+.updated-footer {
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #ffffff;
+}
+
+.updated-dashboard .app{
+    margin-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    width: 20%;
+}
+
+.updated-dashboard a{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+.updated-body .btn-primary {
+    margin-top: 10%;
+    background: #007A8D;
+    color: #ffffff;
+    border-color: #007A8D;
+}
+
+.updated-body .row2 {
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 420px) {
+    .updated-form {
+        width: 90%;
+        top: 50%;
+    }
+    .updated-form .card {
+        padding: 0%;
+    }
+    .updated-dashboard {
+        width: 90%;
+        top: 50%;
+    }
+    .updated-dashboard .card {
+        padding: 0%;
+    }
+    
+    .updated-dashboard .app{
+        margin-right: 2%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        margin-left: 2%;
+        width: 45%;
+    }
+}

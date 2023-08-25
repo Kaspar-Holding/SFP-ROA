@@ -5,23 +5,25 @@ import Footer from './Components/Footer'
 import { Content } from './Components/Content'
 // import { About } from './Components/About'
 // import { Layout } from './Components/Layout'
-import CreateForm from './Components/Forms/CreateForm'
+import CreateForm from './Components/updatedComponents/Forms/CreateForm'
 import ViewDRAForm from './Components/Forms/AttentionForm/ViewDRAForm'
 import Apps from './Components/Apps'
 import {
   BrowserRouter as Router,
   Routes, 
   Route,
-  Link,
-  Outlet
 } from "react-router-dom"
 import Layout from './Layout/Layout'
-import CompleteForm from './Components/Forms/CompleteForm'
+import CompleteForm from './Components/updatedComponents/Forms/CompleteForm'
 import CompleteViewForm from './Components/Forms/AdminView/CompleteForm'
 import Dashboard from './Components/Dashboard/Dashboard'
+import WebROA from './Components/updatedComponents/WebROA'
+import Compliance from './Components/updatedComponents/Compliance'
+import Users from './Components/updatedComponents/Users'
 import SignIn from './Components/Authentication/SignIn'
-import SidebarLayout from './Layout/SidebarLayout'
-import NonSidebarLayout from './Layout/NonSidebarLayout'
+import AuthenticatedLayout from './Layout/AuthenticatedLayout'
+import FormLayout from './Layout/FormLayout'
+import LayoutUpdated from './Layout/LayoutUpdated'
 import AccountDashboard from './Components/Accounts/AccountDashboard'
 import CreateNewAccount from './Components/Accounts/CreateNewAccount'
 import AccountDetails from './Components/Accounts/AccountDetails'
@@ -61,15 +63,19 @@ function App() {
           
               <Layout>
                 <Routes>
-                  <Route element={<SidebarLayout /> }>
-                    <Route exact path="/" element={<Dashboard name="" /> } />
-                    <Route exact path="/createform" element={<CreateForm name="" /> } />
+                  <Route element={<AuthenticatedLayout /> }>
+                    <Route exact path="/" element={<Apps name="" /> } />
+                    <Route exact path="/web-roa" element={<WebROA name="" /> } />
+                    <Route exact path="/compliance" element={<Compliance name="" /> } />
+                    <Route element={<FormLayout /> }>
+                      <Route exact path="/createform" element={<CreateForm name="Create Form" /> } />
+                      <Route exact path="/completeform" element={<CompleteForm name="Complete Form" /> } />
+                    </Route>
                     <Route exact path="/importexport" element={<ImportExport name="" /> } />
-                    <Route exact path="/completeform" element={<CompleteForm name="" /> } />
                     <Route exact path="/form" element={<Form name="" /> } />
                     <Route element={<SuperUserLayout /> }>
                       {/* <Route exact path="/printform" element={<PrintForm name="" /> } /> */}
-                      <Route exact path="/users" element={<AccountDashboard name="" /> } />
+                      <Route exact path="/users" element={<Users name="" /> } />
                       <Route exact path="/newuser" element={<CreateNewAccount name="" /> } />
                       <Route exact path="/userdetails" element={<AccountDetails name="" /> } />
                       <Route exact path="/alertForm" element={<ViewDRAForm /> } />
@@ -81,12 +87,11 @@ function App() {
                     {/* <Route exact path="/printform" element={<PrintForm name="" /> } /> */}
                   </Route>
                   <Route  element={<NoHead /> }>
-                    <Route exact path="/apps" element={<Apps /> } siteName={"Apps"} />
                     <Route exact path="/updateFirstPassword" element={<UpdatePassword /> } siteName={"SignIn"} />
                     <Route exact path="/printform" element={<PrintForm name="" /> } />
                     <Route exact path="/printformclient" element={<PrintFormClient name="" /> } />
                   </Route>
-                  <Route element={<NonSidebarLayout /> }>
+                  <Route element={<LayoutUpdated /> }>
                     <Route exact path="/home" element={<Home /> } siteName={"Home"} />
                     <Route exact path="/reset-password-confirm" element={<ResetPasswordConfirm /> } siteName={"Home"} />
                     <Route exact path="/reset-password" element={<ForgetPassword /> } siteName={"Home"} />

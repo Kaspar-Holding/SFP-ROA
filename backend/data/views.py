@@ -483,7 +483,7 @@ class userTrendingData(APIView):
     def get(self, request):
         userId = request.user.pk
 
-        date_range = (datetime.now(pytz.timezone('Africa/Johannesburg'))  + relativedelta(days=-15) , datetime.now(pytz.timezone('Africa/Johannesburg')) )
+        date_range = (datetime.now(pytz.timezone('Africa/Johannesburg'))  + relativedelta(days=-30) , datetime.now(pytz.timezone('Africa/Johannesburg')) )
         filtered_data = RiskFactors.objects.filter(created_at__range=date_range,advisorId = userId)
         total_records = filtered_data.aggregate(Count("advisorId"))
         if (total_records['advisorId__count']) is not None and (total_records['advisorId__count']) != 0:

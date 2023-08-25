@@ -1,0 +1,368 @@
+body {
+    margin: 0;
+}
+.updated-body {
+    background: #023E47;
+    height: 100vh;
+}
+
+.updated-logo {
+    position: relative;
+    width: 100%;
+    top: 3px;
+    left: 1%;
+}
+
+.updated-body .form{
+    padding: 0%;
+}
+.updated-body .row{
+    margin-right: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.updated-form {
+    width: 30%;
+    top: 50%;
+    left: 674px;
+}
+
+.updated-form .card {
+    padding: 5%;
+}
+
+.updated-dashboard {
+    width: 60%;
+    top: 50%;
+}
+
+.updated-dashboard .card {
+    padding: 5%;
+}
+
+.updated-app-dashboard {
+    width: 80%;
+    top: 50%;
+}
+
+.updated-app-dashboard .card {
+    padding: 1%;
+}
+
+.updated-app-dashboard .row {
+    margin-top: 1%;
+}
+
+.updated-header { 
+    font-family: "Open Sans";
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 33px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.updated-app-dashboard .card-title { 
+    font-family: "Open Sans";
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 33px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.updated-app-dashboard .card-text { 
+    font-family: "Open Sans";
+}
+
+.updated-subtitle { 
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.updated-text { 
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0em;
+    color: black;
+}
+
+.updated-body a:link {
+    text-decoration: none;
+}
+
+.updated-email { 
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;    
+}
+
+.updated-form .btn-primary {
+    background-color: #007A8D;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+}
+
+.updated-dashboard .btn-primary {
+    background-color: #007A8D;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+}
+
+.updated-footer {
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #ffffff;
+}
+
+.updated-dashboard .app{
+    margin-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    width: 20%;
+}
+
+.updated-dashboard a{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+.updated-body .btn-primary {
+    margin-top: 10%;
+    background: #007A8D;
+    color: #ffffff;
+    border-color: #007A8D;
+}
+
+.updated-body .row2 {
+    margin: 0;
+    padding: 0;
+}
+
+.back-btn {
+    left: 20%;
+}
+
+.back-btn-app {
+    left: 10%;
+    top: 12%;
+}
+
+.updated-app-dashboard .btn-primary {
+    color: #FFF;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.updated-app-dashboard .scroll {
+    max-height: 175px;
+    overflow-y: auto;
+}
+
+.updated-app-dashboard .btn-sm {
+    margin: 0%;
+    color: #FFF;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.back-text {
+    top: 1%;
+    color: #FFF;
+    font-family: 'Open Sans';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.updated-app-dashboard .kpi{
+    height: 130px;
+    margin-top: 5%;
+}
+
+.back-btn-app {
+    left: 10%;
+    top: 12%;
+    color: #007A8D;
+}
+
+.back-form-btn {
+    width: 59px;
+    height: 59px;
+}
+
+
+.back-text {
+    top: 1%;
+    color: #FFF;
+    font-family: 'Open Sans';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.form-header {
+    color: #007A8D;
+    font-family: Open Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.form-user {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.updated-body .footer {
+    margin-top: 100%;
+}
+
+.updated-body .card1 {
+    width: 100%;
+    height: 90vh;
+    background-color: #ffffff;
+}
+
+.updated-body .card1 .text {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.updated-body .card1 .value {
+    padding-left: 5%;
+    color: #000;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.updated-body .card2 {
+    width: 99%;
+    height: 90vh;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: #ffffff;    
+}
+
+
+.tabbable .nav-pills {
+    font-family: Open Sans;
+    overflow-x: auto;
+    overflow: hidden;
+    flex-wrap: nowrap;
+}
+.tabbable .nav-pills .nav-link {
+    white-space: nowrap;
+    color: #007A8D;
+}
+
+.updated-body .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+    background-color: #007A8D !important;
+    color: #FFF;
+}
+
+.btn-primary {
+    font-family: Open Sans;
+}
+
+.updated-body .nav-pills .nav-link:active{
+    background-color: #007A8D !important;
+    color: #FFF;
+}
+
+.updated-body .nav-link:hover {
+    background-color: #007A8D;
+    color: #FFF;
+}
+
+.updated-body .table {
+    background-color: transparent;
+}
+
+.updated-dashboard .userprofile {
+    width: 99%;
+    height: 55vh;
+    max-height: 55vh;
+    overflow-y: auto;
+}
+
+.users .card1 {
+    height: 37vh;
+}
+
+@media screen and (max-width: 420px) {
+    .updated-form {
+        width: 90%;
+        top: 50%;
+    }
+    .updated-form .card {
+        padding: 0%;
+    }
+    .updated-dashboard {
+        width: 90%;
+        top: 50%;
+    }
+    .updated-dashboard .card {
+        padding: 0%;
+    }
+    
+    .updated-dashboard .app{
+        margin-right: 2%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        margin-left: 2%;
+        width: 45%;
+    }
+
+    .back-btn {
+        left: 5%;
+    }
+
+    
+    .updated-body .card1 {
+        width: 100%;
+        height: 50vh;
+    }
+}
