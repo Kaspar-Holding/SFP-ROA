@@ -12,7 +12,7 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
-### 22 August 2023:
+### 25 August 2023:
 - 2347: Working on Web ROA frontend implementation completed
 - 2347: Working on Complaince frontend implementation in underway
 - Sign In, Forgot Password, Reset Password Pages Completed
