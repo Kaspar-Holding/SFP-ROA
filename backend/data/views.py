@@ -1855,6 +1855,8 @@ def updateRiskFactorsData(request):
         if int(scores['Reputation_Risk']) == 4:
             formData['status'] = 4
             status = 4
+        else:
+            status = 0
         if not user.is_superuser:
             if int(formData['RF_ClientType']) == 1:
                 if int(formData['RF_Transaction_Flow']) == 1:

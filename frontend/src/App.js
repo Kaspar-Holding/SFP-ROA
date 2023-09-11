@@ -52,6 +52,8 @@ import NoHead from './Layout/NoHead'
 import UpdatePassword from './Components/Accounts/UpdatePassword'
 import ForgetPassword from './Components/Authentication/ForgetPassword'
 import ResetPasswordConfirm from './Components/Authentication/ResetPasswordConfirm'
+import ComplianceFormLayout from './Layout/ComplianceFormLayout'
+import CreateNewComplianceDocument from './Components/updatedComponents/Compliance/Forms/CreateNewComplianceDocument'
 
 
 function App() {
@@ -70,6 +72,10 @@ function App() {
                     <Route element={<FormLayout /> }>
                       <Route exact path="/createform" element={<CreateForm name="Create Form" /> } />
                       <Route exact path="/completeform" element={<CompleteForm name="Complete Form" /> } />
+                    </Route>
+                    <Route element={<ComplianceFormLayout /> }>
+                      <Route exact path="/create-compliance-document" element={<CreateNewComplianceDocument name="Create Form" /> } />
+                      <Route exact path="/complete-compliance-document" element={<CompleteForm name="Complete Form" /> } />
                     </Route>
                     <Route exact path="/importexport" element={<ImportExport name="" /> } />
                     <Route exact path="/form" element={<Form name="" /> } />

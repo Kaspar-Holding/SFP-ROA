@@ -3,10 +3,11 @@ import axios from 'axios'
 import { Helmet } from 'react-helmet'
 import Pagination from '../../Pagination/Pagination'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Navigate } from 'react-router-dom'
 import Loader from '../../Loader/Loader'
 import {LogOut} from '../../../Actions/Auth'
 import Chart from "react-apexcharts"
+import Swal from 'sweetalert2'
 
 const Compliance = (props) => {
     const user = props.user
@@ -20,6 +21,75 @@ const Compliance = (props) => {
     const [PageLimit, setPageLimit] = useState(0)
     const [Advisor, setAdvisor] = useState("")
     const [dashboardVisibility, setDashboardVisibility] = useState("none")
+    // header
+    
+    const config = {
+        headers: {
+            'Content-Type' : 'application/json',
+            'Authorization' : `JWT ${localStorage.getItem('access')}`,
+            'Accept' : 'application/json'
+        }
+    }
+    // New Compliance Document
+    const [ComplianceDocument, setComplianceDocument] = useState({
+        user: user.id,
+        policy_number: ""
+    })
+
+    const onChange = (e) => {
+        setComplianceDocument({
+            ...ComplianceDocument,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    const createGKFDocumentBtn = (e) => {
+        e.preventDefault()
+        createGKFDocument()
+    }
+
+    
+    const [DocumentCreatedStatus, setDocumentCreatedStatus] = useState(false)
+    const [DocumentResponse, setDocumentResponse] = useState({})
+
+    const createGKFDocument = async() => {
+        const Body = JSON.stringify(ComplianceDocument)
+
+        try {
+            const response = await axios.post(
+                `${process.env.REACT_APP_BACKEND_URL}/api/compliance/document/`,
+                Body,
+                config
+            )
+            
+            setDocumentCreatedStatus(true)
+            setDocumentResponse(response.data)
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Success",
+                html: `Proceed to next level.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `${error?.response?.data?.errors}`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    }
+
     // Apex Charts 
     const apexChartSeries = (seriesName, seriesData, seriesName1, seriesData1) => 
     (
@@ -100,13 +170,6 @@ const Compliance = (props) => {
     const loadCasesStats = async(page_number, order_by, search_query) => {
         setLoader("block")
         setDashboardVisibility("none")
-        const config = {
-          headers: {
-              'Content-Type' : 'application/json',
-              'Authorization' : `JWT ${localStorage.getItem('access')}`,
-              'Accept' : 'application/json'
-          }
-        }
         const Body = JSON.stringify(
             {
                 "advisorId" : user['id'],
@@ -199,6 +262,22 @@ const Compliance = (props) => {
             setAdvisor(user["first_name"] + " " + user["last_name"])
         }
     }, [Advisor,user])
+
+    
+    if (DocumentCreatedStatus) {
+        return (
+            <Navigate 
+                type="button" 
+                to={{pathname:"/create-compliance-document"}} 
+                state={
+                    {
+                        data: DocumentResponse
+                    }
+                } 
+            />
+        )
+    }
+    
     return (
         <div className=''>
             <Helmet>
@@ -252,20 +331,22 @@ const Compliance = (props) => {
                                 <p className="card-text updated-subtitle">Compliance Management</p>
                                 <hr/>
                                 <h5 className="card-title text-center ">Create a new Case</h5>
-                                <input spellCheck="true" type="text" id="Polic_Number" name="Polic_Number" className="form-control" placeholder="Enter Policy Number"  aria-describedby="" />
-                                <div className="d-grid gap-1">
-                                    <NavLink 
-                                        to="/createform" 
-                                        className= { 
-                                            user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp" 
-                                            : user['email'].includes('fs4p') ? "btn btn-primary fs4p" 
-                                            : user['email'].includes('sanlam') ? "btn btn-primary sanlam" 
-                                            : "btn btn-primary "
-                                        }
-                                    >
-                                        Create New Case
-                                    </NavLink>
-                                </div>
+                                <form onSubmit={(e)=>{createGKFDocumentBtn(e)}}>
+                                    <input spellCheck="true" required type="text" value={ComplianceDocument?.policy_number} onChange={(e)=>{onChange(e)}} id="Polic_Number" name="policy_number" className="form-control" placeholder="Enter Policy Number"  aria-describedby="" />
+                                    <div className="d-grid gap-1">
+                                        <button 
+                                            type='submit' 
+                                            className= { 
+                                                user['email'].includes('sfp') || user['email'].includes('succession')? "btn btn-primary sfp" 
+                                                : user['email'].includes('fs4p') ? "btn btn-primary fs4p" 
+                                                : user['email'].includes('sanlam') ? "btn btn-primary sanlam" 
+                                                : "btn btn-primary "
+                                            }
+                                        >
+                                            Create New Case
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

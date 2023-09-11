@@ -12,6 +12,11 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 11 September 2023:
+- 2347: Basic Working on Compliance Review Management is completed
+- Sign In, Forgot Password, Reset Password Pages Completed
+- Deployment
+
 ### 25 August 2023:
 - 2347: Working on Web ROA frontend implementation completed
 - 2347: Working on Complaince frontend implementation in underway

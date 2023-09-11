@@ -15,7 +15,7 @@ const AuthenticatedLayout = (props) => {
         <>
             <div className="updated-body">    
                 {
-                    location.pathname != "/createform" && location.pathname != "/completeform" ?
+                    location.pathname != "/createform" && location.pathname != "/completeform" && location.pathname != "/create-compliance-document"&& location.pathname != "/complete-compliance-document"  ?
                     <>
                         <div className="row row2">
                             <div className="col-lg-6 col-md-12 col-sm-12">
@@ -87,7 +87,7 @@ const AuthenticatedLayout = (props) => {
                 <br/>
                 <Outlet />
                 {
-                    location.pathname != "/createform" && location.pathname != "/completeform" ?
+                    location.pathname != "/createform" && location.pathname != "/completeform" && location.pathname != "/create-compliance-document"&& location.pathname != "/complete-compliance-document" ?
                     <div className="updated-footer position-absolute bottom-0 start-50 translate-middle">
                         © SFP by KCS 2023
                     </div>

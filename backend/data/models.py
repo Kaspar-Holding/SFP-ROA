@@ -48,7 +48,20 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_active = models.IntegerField(default=1)
     is_staff = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
-    role = models.IntegerField(default=1)
+    
+    ARC = 1
+    GK = 2
+    MANAGER = 3
+    BAC = 5
+    ADVISOR = 4
+    ROLE_CHOICES = (
+        (ARC, 'arc'),
+        (GK, 'gk'),
+        (MANAGER, 'manager'),
+        (ADVISOR, 'advisor'),
+    )
+
+    userType = models.IntegerField(default=0)
 
     objects = UserAccountManager()
 
@@ -57,6 +70,31 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
 
     def get_full_name(self):
         return self.name
+
+class bac_model(models.Model):
+    value = models.TextField( default="")
+    status = models.BooleanField(default=True)
+
+class regions(models.Model):
+    region = models.TextField( default="")
+
+class user_profile(models.Model):
+    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="advisor_id")
+    manager = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="manager_id")
+    bac = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="bac_id")
+    supervision = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="supervision_id")
+    region = models.ForeignKey(regions, on_delete=models.CASCADE)
+    id_number = models.TextField( default="")
+    initials = models.TextField( default="")
+    full_name = models.TextField( default="")
+    nick_name = models.TextField( default="")
+    contact_number = models.TextField( default="")    
+    address_physical_1 = models.TextField( default="")    
+    address_physical_2 = models.TextField( default="")    
+    address_physical_3 = models.TextField( default="")    
+    address_postal_code = models.TextField( default="")    
+  
+
 
 import datetime
 # Create your models here.
@@ -2848,6 +2886,8 @@ class RiskFactors(models.Model):
     RF_Linked_Party_Paying = models.CharField(max_length=250, default="", blank=True) 
     RF_Client_Match = models.CharField(max_length=250, default="", blank=True) 
     RF_Client_Beneficiaries = models.CharField(max_length=250, default="", blank=True) 
+    Policy_Number = models.CharField(max_length=250, default="", blank=True) 
+    Commission = models.CharField(max_length=250, default="", blank=True) 
     # RF_Adjust_Risk1 = models.CharField(max_length=250, default="", blank=True) 
     # RF_Name = models.CharField(max_length=250, default="", blank=True)
     # RF_ID = models.CharField(max_length=250, default="", blank=True)
@@ -4348,3 +4388,4 @@ class RF_Scores(models.Model):
     TransactionOutFlowRiskScore = models.IntegerField(default=0)    
     TransactionOutFlowRiskLevel = models.FloatField(default=0)    
     DReputationRiskLevel = models.IntegerField(default=0)  
+

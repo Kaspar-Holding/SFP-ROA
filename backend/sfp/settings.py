@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'wkhtmltopdf',
     'data',
+    'compliance',
     'printingApp',
     'emailApp',
     'rest_framework',
@@ -68,6 +69,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'social_django',
     'frontend',
+    'users',
 ]
 
 MIDDLEWARE = [

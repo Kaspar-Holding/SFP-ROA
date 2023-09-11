@@ -1546,6 +1546,16 @@ const RiskFactors = ({user, LogOut}) => {
                 // console.log(response.data['formData'])
                 // setFormData(response.data['formData'])
                 
+                Swal.fire({
+                    position: "bottom-end",
+                    type: "success",
+                    title: "Updated",
+                    html: `Risk Factors data is successfully updated`,
+                    showConfirmButton: !1,
+                    timer: 1000,
+                    confirmButtonClass: "btn btn-primary",
+                    buttonsStyling: !1,
+                })
                 setSuccessMessage("Risk Factors data is successfully updated")
                 setSuccessMessageVisibility("block")
                 setTimeout(() => {
@@ -1555,6 +1565,17 @@ const RiskFactors = ({user, LogOut}) => {
                 // setSubmissionMessageVisibility("block")
             } catch (error) {
                 if (error.response.status === 401){
+                    
+                    Swal.fire({
+                        position: "bottom-end",
+                        type: "success",
+                        title: "Timed out",
+                        html: `Login time out, You will be logged out in 5 seconds`,
+                        showConfirmButton: !1,
+                        timer: 1000,
+                        confirmButtonClass: "btn btn-primary",
+                        buttonsStyling: !1,
+                    })
                     setSuccessMessage("Login time out, You will be logged out in 5 seconds")
                     setSuccessMessageVisibility("block")
                     setTimeout(() => {
@@ -1815,6 +1836,7 @@ const RiskFactors = ({user, LogOut}) => {
             // console.log('first', error)
             }
         }
+
         
         useEffect(() => {
             if (user){  
@@ -1836,30 +1858,36 @@ const RiskFactors = ({user, LogOut}) => {
         </div>
         <div style={{display: dataVisibility}}>          
             <form onSubmit={e => onUpdateSubmit(e)}>
-            
-                <div className="notification_container">
-                    <div 
-                    className={
-                        user['email'].includes('sfp') || user['email'].includes('succession')? "alert alert-sfp-success fade show" 
-                        : user['email'].includes('fs4p') ? "alert alert-fs4p-success fade show" 
-                        : user['email'].includes('sanlam') ? "alert alert-sanlam-success fade show" 
-                        : "alert alert-sfp-success fade show"
-                    } style={{display: SuccessMessageVisibility}} role="alert">
-                    {SuccessMessage}
-                    {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
-                    </div>
-                </div>
-                <div 
-                    className={
-                        user['email'].includes('sfp') || user['email'].includes('succession')? "sfp-text" 
-                        : user['email'].includes('fs4p') ? "fs4p-text" 
-                        : user['email'].includes('sanlam') ? "sanlam-text" 
-                        : "sfp-text"
-                    }
-                    style={{fontSize:'30px',fontWeight:'bold'}} 
-                >
-                </div>
-                <hr/>
+                {
+                    FormData?.status == 1 ?
+                        <>
+                            <div className='row'>
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label htmlFor="address" className="col-form-label"><b>SFP Policy Number</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true" required id="Policy_Number" name="Policy_Number" value={FormData['Policy_Number']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Policy Number"  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-6" style={{paddingBottom: "0.5%"}}>
+                                    <div className="row g-3 align-items-center">
+                                        <div className="col-4">
+                                            <label htmlFor="address" className="col-form-label"><b>Commission</b></label>
+                                        </div>
+                                        <div className="col-6">
+                                            <input spellCheck="true" required id="Commission" name="Commission" value={FormData['Commission']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Commission"  aria-describedby="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>   
+                        </>
+                    : 
+                    <></>
+                }
 
                 <div style={{fontFamily: 'Arial Narrow',fontSize: '9'}}>
                     <div className="row">

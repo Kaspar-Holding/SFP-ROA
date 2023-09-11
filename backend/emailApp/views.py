@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.template.loader import get_template
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, APIView
 from django.core.mail import send_mail, EmailMultiAlternatives
 from rest_framework.response import Response
 from data.models import UserAccount, RiskFactors, RF_LinkedParty
@@ -627,6 +627,29 @@ def validateUid(request):
         return Response(
             {"message": "Invalid"}
         )
+    
+class validateUidTokenView(APIView):
+    permission_classes = []
+    authentication_classes = []
+    
+    def post(self, request):
+        uid = utils.decode_uid(request.data['uid'])
+        user = UserAccount.objects.get(pk=uid)
+        if UserAccount.objects.filter(pk=uid).exists():
+            token_generator = default_token_generator
+            is_token_valid = token_generator.check_token(user, request.data['token'])
+            if is_token_valid:
+                return Response(
+                    {"message": "Valid Uid and Token"}, 200
+                )
+            else:
+                return Response(
+                    {"message": "Token has expired"}, 404
+                )
+        else:
+            return Response(
+                {"message": "Invalid Uid and Token"}, 400
+            )
     
 @api_view(['POST'])
 def validateUidToken(request):

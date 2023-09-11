@@ -12,6 +12,8 @@ const FormLayout = (props) => {
 	const location = useLocation()
     const { state } = location
     const navigate = useNavigate()
+    const [Loaded, setLoaded] = useState(false)
+    const [Content, setContent] = useState(true)
 
     // Load Data
     const [FormData, setFormData] = useState({
@@ -95,6 +97,7 @@ const FormLayout = (props) => {
     // Update Form Status
     
     const updateFromStatus = async(status) => {
+        setLoaded(true)
         const config = {
             headers: {
                 'Content-Type' : 'application/json',
@@ -131,6 +134,7 @@ const FormLayout = (props) => {
               }
             // setSubmissionErrorVisibilty("block")
         }
+        setLoaded(false)
     }
     
     const onFormStatusUpdateSubmit = (e,formStatus) => {
@@ -193,7 +197,6 @@ const FormLayout = (props) => {
 
     useEffect(() => {
         if (state && state['formId']){
-            console.log(state)
             LoadRFForm(state['advisor']['id'],state['formId'])
         }
         // setInterval(updateIPForm, 20000);
@@ -378,7 +381,11 @@ const FormLayout = (props) => {
                     <div className="col-lg-9 col-md-6 col-sm-12">
                         <div className="bg-white rounded-5 p-2">
                             <div className="card2 container">
-                                <Outlet />
+                                {
+                                    !Loaded ?
+                                        <Outlet />
+                                    : <></>
+                                }
                             </div>
                         </div>
                     </div>

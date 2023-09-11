@@ -4,6 +4,7 @@ from rest_framework import serializers
 from .models import AI_Others, AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RF_Scores, RP_ProductTaken, RP_ProductTaken_BenDesc, Risk_BenDesc, RiskFactors, RiskPlanning, STIC_Sec_Fire, STIP_Loss, STIC_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Fiduciary, GapCover
 from .models import Medical, STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
 from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_PersonalLL, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
+from .models import user_profile, bac_model, regions
 from .models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
@@ -2916,6 +2917,8 @@ class RiskFactorsSerializers(serializers.ModelSerializer):
         instance.RF_Linked_Party_Paying = validated_data.get('RF_Linked_Party_Paying', instance.RF_Linked_Party_Paying)
         instance.RF_Client_Match = validated_data.get('RF_Client_Match', instance.RF_Client_Match)
         instance.RF_Client_Beneficiaries = validated_data.get('RF_Client_Beneficiaries', instance.RF_Client_Beneficiaries)
+        instance.Policy_Number = validated_data.get('Policy_Number', instance.Policy_Number)
+        instance.Commission = validated_data.get('Commission', instance.Commission)
         # instance.RF_Adjust_Risk1 = validated_data.get('RF_Adjust_Risk1', instance.RF_Adjust_Risk1)
         # instance.RF_Name = validated_data.get('RF_Name', instance.RF_Name)
         # instance.RF_ID = validated_data.get('RF_ID', instance.RF_ID)
@@ -4444,3 +4447,27 @@ class RF_Scores_Serializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return RF_Scores.objects.create(**validated_data)
+
+class user_profile_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = user_profile
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return user_profile.objects.create(**validated_data)
+
+class bac_model_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = bac_model
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return bac_model.objects.create(**validated_data)
+
+class regions_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = regions
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return regions.objects.create(**validated_data)

@@ -134,19 +134,19 @@ const CompleteForm = ({user}) => {
                                 <Employee  />
                             </div>
                             <div class="tab-pane fade" id="pills-short-term-commerical" role="tabpanel" aria-labelledby="pills-short-term-commerical-tab" tabCompleteForm="0">
-                                <Fiduciary />
-                            </div>
-                            <div class="tab-pane fade" id="pills-short-term-personal" role="tabpanel" aria-labelledby="pills-short-term-personal-tab" tabCompleteForm="0">
                                 <Short_term_Commercial />
                             </div>
-                            <div class="tab-pane fade" id="pills-fiduciary" role="tabpanel" aria-labelledby="pills-fiduciary-tab" tabCompleteForm="0">
-                                <GapCover />
-                            </div>
-                            <div class="tab-pane fade" id="pills-medical" role="tabpanel" aria-labelledby="pills-medical-tab" tabCompleteForm="0">
+                            <div class="tab-pane fade" id="pills-short-term-personal" role="tabpanel" aria-labelledby="pills-short-term-personal-tab" tabCompleteForm="0">
                                 <Short_term_Personal />
                             </div>
-                            <div class="tab-pane fade" id="pills-gap-cover" role="tabpanel" aria-labelledby="pills-gap-cover-tab" tabCompleteForm="0">
+                            <div class="tab-pane fade" id="pills-fiduciary" role="tabpanel" aria-labelledby="pills-fiduciary-tab" tabCompleteForm="0">
+                                <Fiduciary />
+                            </div>
+                            <div class="tab-pane fade" id="pills-medical" role="tabpanel" aria-labelledby="pills-medical-tab" tabCompleteForm="0">
                                 <Medical />
+                            </div>
+                            <div class="tab-pane fade" id="pills-gap-cover" role="tabpanel" aria-labelledby="pills-gap-cover-tab" tabCompleteForm="0">
+                                <GapCover />
                             </div>
                         </div>
                     </div>
