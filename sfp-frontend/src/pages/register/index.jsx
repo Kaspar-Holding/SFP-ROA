@@ -52,7 +52,7 @@ const RegisterPage = () => {
     if (typeof window != 'undefined' && isAuthenticated) {
         router.push('/dashboard')
     }
-    if (register_success) {
+    else {
         router.push('/login')
     }
 
@@ -89,12 +89,12 @@ const RegisterPage = () => {
                         {
                             loading ?
                             <div className='d-flex justify-content-center align-items-center mt-5'>
-                                <Loader
+                                {/* <Loader
                                     type="Oval"
                                     color="#00bbff"
                                     width={50}
                                     height={50}  
-                                />
+                                /> */}
                             </div>
                             : 
                             <button type="submit" class="btn btn-primary">Register</button>
