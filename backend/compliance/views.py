@@ -54,7 +54,13 @@ class ComplainceDocumentList(APIView):
 
             return Response({"data":data, "kpis": kpis})
         else:
-            raise Http404
+            kpis = {
+                "total" : 0,
+                "approved" : 0,
+                "rejected" : 0,
+                "referred" : 0,
+            }
+            raise Response({"data":[], "kpis": kpis})
 
     def post(self, request, format=None):
         newData = request.data

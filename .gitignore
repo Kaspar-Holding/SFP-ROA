@@ -4,3 +4,6 @@ sfp_roa
 /sfp_venv
 prodEnv
 /venv
+*.ipynb
+*.xlsx
+*.csv
