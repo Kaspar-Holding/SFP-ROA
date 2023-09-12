@@ -268,7 +268,7 @@ const Compliance = () => {
                                             Reviews.map(
                                                 (review, i) => {
                                                     return(
-                                                        <tr>
+                                                        <tr key={i}>
                                                             <th scope="row">1</th>
                                                             <td>
                                                                 {
