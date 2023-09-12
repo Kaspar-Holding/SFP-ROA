@@ -52,8 +52,8 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     ARC = 1
     GK = 2
     MANAGER = 3
-    BAC = 5
-    ADVISOR = 4
+    BAC = 4
+    ADVISOR = 5
     ROLE_CHOICES = (
         (ARC, 'arc'),
         (GK, 'gk'),

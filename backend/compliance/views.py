@@ -60,7 +60,7 @@ class ComplainceDocumentList(APIView):
                 "rejected" : 0,
                 "referred" : 0,
             }
-            raise Response({"data":[], "kpis": kpis})
+            return Response({"data":[], "kpis": kpis})
 
     def post(self, request, format=None):
         newData = request.data
