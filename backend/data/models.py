@@ -52,8 +52,9 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     ARC = 1
     GK = 2
     MANAGER = 3
-    BAC = 4
-    ADVISOR = 5
+    REGIONAL_MANAGER = 4
+    BAC = 5
+    ADVISOR = 6
     ROLE_CHOICES = (
         (ARC, 'arc'),
         (GK, 'gk'),
@@ -84,15 +85,15 @@ class user_profile(models.Model):
     bac = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="bac_id")
     supervision = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="supervision_id")
     region = models.ForeignKey(regions, on_delete=models.CASCADE)
-    id_number = models.TextField( default="")
-    initials = models.TextField( default="")
+    id_number = models.TextField( default="", null=True, blank=True)
+    initials = models.TextField( default="", null=True, blank=True)
     full_name = models.TextField( default="")
-    nick_name = models.TextField( default="")
-    contact_number = models.TextField( default="")    
-    address_physical_1 = models.TextField( default="")    
-    address_physical_2 = models.TextField( default="")    
-    address_physical_3 = models.TextField( default="")    
-    address_postal_code = models.TextField( default="")    
+    nick_name = models.TextField( default="", null=True, blank=True)
+    contact_number = models.TextField( default="", null=True, blank=True)    
+    address_physical_1 = models.TextField( default="", null=True, blank=True)    
+    address_physical_2 = models.TextField( default="", null=True, blank=True)    
+    address_physical_3 = models.TextField( default="", null=True, blank=True)    
+    address_postal_code = models.TextField( default="", null=True, blank=True)    
   
 
 

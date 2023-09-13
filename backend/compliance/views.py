@@ -24,7 +24,7 @@ class updateDocumentStatus(APIView):
 
 class ComplainceDocumentList(APIView):
 
-    def get(self, request, format=None):
+    def get(self, request, formatNone):
         data = ComplianceDocument.objects.filter(user=request.user.pk)
         if data.exists():
             kpis = {
@@ -864,7 +864,7 @@ class loadagents(APIView):
     def get(self, request):
         user = request.user
         if user.is_superuser or user.userType == 1 or user.userType == 2:
-            advisors = UserAccount.objects.filter(userType = 5)
+            advisors = UserAccount.objects.filter(userType = 6)
             if advisors.exists():
                 advisors = advisors.values()
                 data = []
