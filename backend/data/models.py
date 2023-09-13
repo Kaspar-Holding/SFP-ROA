@@ -80,7 +80,7 @@ class regions(models.Model):
     region = models.TextField( default="")
 
 class user_profile(models.Model):
-    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="advisor_id")
+    user = models.OneToOneField(UserAccount, on_delete=models.CASCADE, primary_key=True)
     manager = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="manager_id")
     bac = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="bac_id")
     supervision = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="supervision_id")
