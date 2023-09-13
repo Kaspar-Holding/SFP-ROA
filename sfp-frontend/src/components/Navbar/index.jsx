@@ -1,12 +1,10 @@
 import { logout } from '@/actions/auth'
 import { API_URL } from '@/config'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Navbar = () => {
-    const router = useRouter()
     const loading = useSelector(state=>state.auth.loading)
     const dispatch = useDispatch()  
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
@@ -19,9 +17,6 @@ const Navbar = () => {
                 logout()
             )
         }
-    }
-    if (isAuthenticated == false) {
-        router.push('/auth/login')
     }
     return (
         <>

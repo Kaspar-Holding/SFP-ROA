@@ -20,7 +20,7 @@ const AppPage = () => {
 			clearInterval(interval);
 		}
     }, [])
-    
+       
 
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
