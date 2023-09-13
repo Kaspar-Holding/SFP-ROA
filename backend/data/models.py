@@ -83,7 +83,7 @@ class user_profile(models.Model):
     user = models.OneToOneField(UserAccount, on_delete=models.CASCADE)
     manager = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="manager_id")
     bac = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="bac_id")
-    supervision = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="supervision_id")
+    # supervision = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="supervision_id")
     region = models.ForeignKey(regions, on_delete=models.CASCADE)
     id_number = models.TextField( default="", null=True, blank=True)
     initials = models.TextField( default="", null=True, blank=True)

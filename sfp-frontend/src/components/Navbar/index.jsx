@@ -20,6 +20,9 @@ const Navbar = () => {
             )
         }
     }
+    if (isAuthenticated == false) {
+        router.push('/auth/login')
+    }
     return (
         <>
             <header className="p-3 mb-3 border-bottom">
@@ -36,10 +39,9 @@ const Navbar = () => {
                         <div className="dropdown text-end">
                             <a href="#" className="d-block link-body-emphasis text-decoration-none dropdown-toggle mx-2" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle mx-2"/>
-                                {`${user?.first_name} ${user?.last_name}`}
+                                {`${user?.first_name ? user?.first_name : ""} ${user?.last_name ? user?.last_name : ""}`}
                             </a>
                             <ul className="dropdown-menu text-small">
-                                <li><a className="dropdown-item" href="#">New project...</a></li>
                                 <li><a className="dropdown-item" href="#">Settings</a></li>
                                 <li><a className="dropdown-item" href="#">Profile</a></li>
                                 <li><hr className="dropdown-divider"/></li>

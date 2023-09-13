@@ -15,6 +15,7 @@ class ComplianceDocument(models.Model):
     supplier = models.TextField( default="", blank=True)
     product = models.TextField( default="", blank=True)
     businessType = models.IntegerField( default=0)
+    otherBusinessType = models.TextField( default="", blank=True)
     # businessUnit = models.IntegerField(default = 1)
     categorisation = models.TextField( default="", blank=True)
     advisorEmail = models.TextField( default="", blank=True)

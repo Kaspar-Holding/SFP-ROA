@@ -24,7 +24,7 @@ class updateDocumentStatus(APIView):
 
 class ComplainceDocumentList(APIView):
 
-    def get(self, request, formatNone):
+    def get(self, request, format=None):
         data = ComplianceDocument.objects.filter(user=request.user.pk)
         if data.exists():
             kpis = {
@@ -89,6 +89,30 @@ class ComplainceDocumentDetails(APIView):
         # advisor_profile = user_profile.objects.filter(user=document['advisor']).values().first()
         document['advisor_name'] = f"{advisor['first_name']} {advisor['last_name']}"
         document['advisor_email'] = advisor['email']
+        profile = user_profile.objects.filter(user=advisor['id'])
+        # advisor['email'] = advisor['email']
+        document['IdNumber'] = ""
+        document['advisorEmail'] = advisor['email']
+        document['bac'] = ""
+        document['bac_name'] = ""
+        document['supervisor'] = ""
+        document['supervisor_name'] = ""
+        document['region'] = ""
+        if profile.exists():
+            profile = user_profile.objects.filter(user=advisor['id']).values().first()
+            document['IdNumber'] = profile['id_number']
+            user_region = regions.objects.filter(pk=profile['region_id'])
+            document['region'] = ""
+            if user_region.exists():
+                user_region = user_region.values().first()
+                document['region'] = user_region['region']
+            user_bac = UserAccount.objects.filter(pk=profile['bac_id'])
+            document['bac'] = ""
+            document['bac_name'] = ""
+            if user_bac.exists():
+                user_bac = user_bac.values().first()
+                document['bac'] = f"{user_bac['id']}"
+                document['bac_name'] = f"{user_bac['first_name']} {user_bac['last_name']}"
         # document['bac'] = advisor_profile['bac']
         # document['advisor_region'] = advisor_profile['region']
         
@@ -896,7 +920,7 @@ class loadagentsDetail(APIView):
         if user.is_superuser or user.userType == 1 or user.userType == 2:
             data = request.data['data']
             
-            advisor = UserAccount.objects.filter(userType = 5, pk=request.data['advisorId'])
+            advisor = UserAccount.objects.filter(userType = 6, pk=request.data['advisorId'])
             if advisor.exists():
                 advisor = advisor.values().first()
                 profile = user_profile.objects.filter(user=advisor['id'])
@@ -923,13 +947,14 @@ class loadagentsDetail(APIView):
                         user_bac = user_bac.values().first()
                         data['bac'] = f"{user_bac['id']}"
                         data['bac_name'] = f"{user_bac['first_name']} {user_bac['last_name']}"
-                    user_supervision = UserAccount.objects.filter(pk=profile['supervision_id'])
-                    data['supervisor'] = ""
-                    data['supervisor_name'] = ""
-                    if user_supervision.exists():
-                        user_supervision = user_supervision.values().first()
-                        data['supervisor'] = f"{user_supervision['id']}"
-                        data['supervisor_name'] = f"{user_supervision['first_name']} {user_supervision['last_name']}"
+                    # user_supervision = UserAccount.objects.filter(pk=profile['supervision_id'])
+                    # data['supervisor'] = ""
+                    # data['supervisor_name'] = ""
+                    # if user_supervision.exists():
+                    #     user_supervision = user_supervision.values().first()
+                    #     data['supervisor'] = f"{user_supervision['id']}"
+                    #     data['supervisor_name'] = f"{user_supervision['first_name']} {user_supervision['last_name']}"
+                    data['supervisor_name'] = f"N.A."
 
                 
                 return Response({

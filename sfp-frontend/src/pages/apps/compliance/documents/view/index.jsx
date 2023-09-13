@@ -21,6 +21,7 @@ const EditDocument = () => {
         clientName: "",
         advisor: "",
         businessUnit: "",
+        otherBusinessUnit: "",
         region: "",
         bac: "",
         IdNumber: "",
@@ -179,35 +180,8 @@ const EditDocument = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">BAC</label>
-                                        <select disabled className="form-select" name="BAC" value={DocumentInitalData?.BAC} aria-label="Default select example">
-                                            <option value={0}>Select Business Type</option>
-                                            <option value="1">Elrike</option>
-                                            <option value="2">Prajay</option>
-                                            <option value="3">Ruallen</option>
-                                            <option value="4">Elrike</option>
-                                            <option value="5">Chaneekah</option>
-                                            <option value="6">Evelyn</option>
-                                            <option value="7">Robyn</option>
-                                            <option value="8">Tumiso</option>
-                                            <option value="9">Gizelle</option>
-                                            <option value="10">Selvie</option>
-                                            <option value="11">STAFF</option>
-                                            <option value="12">Megan</option>
-                                            <option value="13">Nicole</option>
-                                            <option value="14">Nomsa</option>
-                                            <option value="15">Colett</option>
-                                            <option value="16">Nicole Randall</option>
-                                            <option value="17">Jental</option>
-                                            <option value="18">Rajeshrie</option>
-                                            <option value="19">Sadha</option>
-                                            <option value="20">Tumi</option>
-                                            <option value="21">Colette</option>
-                                            <option value="22">Elrike / Amy-Lee</option>
-                                            <option value="23">Evelyn / Azuke</option>
-                                            <option value="24">Paris</option>
-                                            <option value="25">EB*</option>
-                                            <option value="26">St John</option>
-                                        </select>
+                                        <input disabled onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        
                                         
                                     </div>
                                     <div className="mb-3">
@@ -246,9 +220,9 @@ const EditDocument = () => {
                                 <div className='col-lg-2'>   
                                 </div>         
                                 <div className='col-lg-8 col-md-12 col-sm-12'> 
-                                    <div className="mb-3">
+                                <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
-                                        <select className="form-select" name="businessType" value={DocumentInitalData?.businessType} aria-label="Default select example">
+                                        <select required className="form-select" name="businessType" value={DocumentInitalData?.businessType} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
                                             <option value={0}>Select Business Type</option>
                                             <option value="1">Business Assurance</option>
                                             <option value="2">Comm release</option>
@@ -259,7 +233,7 @@ const EditDocument = () => {
                                             <option value="7">Lumpsum - Investment</option>
                                             <option value="8">Investment- Both</option>
                                             <option value="9">Medical Aid</option>
-                                            <option value="10">Other (Text box to specify)</option>
+                                            <option value="10">Other</option>
                                             <option value="11">Will</option>
                                             <option value="12">Risk</option>
                                             <option value="13">ST Re-issued/instated</option>
@@ -267,6 +241,14 @@ const EditDocument = () => {
                                             <option value="15">Short Term Personal</option>
                                         </select>
                                     </div>
+                                    {
+                                        DocumentInitalData?.businessType == 10 ?
+                                        <div>
+                                            <input required onChange={(e)=>{onChange(e)}} placeholder='Specify the other business type' type="text" value={DocumentInitalData?.otherBusinessType} name="otherBusinessType" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <br/>
+                                        </div>
+                                        : <></>
+                                    }
                                 </div>         
                                 <div className='col-lg-2'>   
                                 </div>         

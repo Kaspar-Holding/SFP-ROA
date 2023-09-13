@@ -7,3 +7,4 @@ prodEnv
 *.ipynb
 *.xlsx
 *.csv
+*.json

@@ -18,6 +18,7 @@ const CreateDocument = () => {
         clientName: "",
         advisor: "",
         businessUnit: "",
+        otherBusinessType: "",
         region: "",
         bac: "",
         bac_name: "",
@@ -229,11 +230,11 @@ const CreateDocument = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Region</label>
-                                        <input disabled onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.region} name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        <input disabled type="text" value={DocumentInitalData?.region} name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">BAC</label>
-                                        <input disabled onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        <input disabled type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                         {/* <select className="form-select" name="BAC" value={DocumentInitalData?.bac} aria-label="Default select example">
                                             <option value={0}>Select Business Type</option>
                                             <option value="1">Elrike</option>
@@ -314,7 +315,7 @@ const CreateDocument = () => {
                                             <option value="7">Lumpsum - Investment</option>
                                             <option value="8">Investment- Both</option>
                                             <option value="9">Medical Aid</option>
-                                            <option value="10">Other (Text box to specify)</option>
+                                            <option value="10">Other</option>
                                             <option value="11">Will</option>
                                             <option value="12">Risk</option>
                                             <option value="13">ST Re-issued/instated</option>
@@ -322,6 +323,14 @@ const CreateDocument = () => {
                                             <option value="15">Short Term Personal</option>
                                         </select>
                                     </div>
+                                    {
+                                        DocumentInitalData?.businessType == 10 ?
+                                        <div>
+                                            <input required onChange={(e)=>{onChange(e)}} placeholder='Specify the other business type' type="text" value={DocumentInitalData?.otherBusinessType} name="otherBusinessType" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <br/>
+                                        </div>
+                                        : <></>
+                                    }
                                 </div>         
                                 <div className='col-lg-2'>   
                                 </div>         
