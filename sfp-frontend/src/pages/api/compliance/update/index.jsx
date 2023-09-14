@@ -4,7 +4,6 @@ import cookie from 'cookie'
 
 export default async (req, res ) => {
     if (req.method === "POST") {
-
         const cookies = cookie.parse(req.headers.cookie ?? '')
 
         const access = cookies.access ?? false
@@ -24,17 +23,20 @@ export default async (req, res ) => {
             }
         }
 
+
+        const Body = JSON.stringify(req.body)
         try {
-            const apiResponse = await axios.get(
-                `${API_URL}/api/compliance/document/arc/${req?.body?.dId}/`,
+            const apiResponse = await axios.post(
+                `${API_URL}/api/compliance/document/${req.body['id']}/`,
+                Body,
                 config
             )
             
             if (apiResponse?.status === 200) {
+                
                 return res.status(apiResponse.status).json(
                     {
-                        success: "Found.",
-                        data: apiResponse?.data,
+                        success: "Successfully updated, you can proceed to next level."
                     }
                 )
 
@@ -45,6 +47,7 @@ export default async (req, res ) => {
             }
 
         } catch (error) {
+            console.log(error)
             return res.status(error?.response?.status).json({
                 error: error?.response?.data
             })

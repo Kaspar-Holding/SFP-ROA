@@ -56,7 +56,7 @@ const DocumentSideBar = ({appTitle, app}) => {
                         </Link>
                     </li>
                     <li>
-                        <Link href={`/apps/${app}/trends`} className={ router.pathname === `/apps/${app}/trends` ? "nav-link active" :"nav-link link-body-emphasis" }>
+                        <Link href={`/apps/${app}`} className={ router.pathname === `/apps/${app}/trends` ? "nav-link active" :"nav-link link-body-emphasis" }>
                             <i className='bi pe-none me-2 fa-solid fa-line-chart' />
                             Trends
                         </Link>

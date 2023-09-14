@@ -85,19 +85,31 @@ const CompleteDocumentSidebar = ({appTitle}) => {
                 {
                     dId ?
                     <div >
-                        <h6 className='text'>
-                            Client Name
-                        </h6>
-                        <span className='value mx-3'>
-                            {DocumentInitalData?.clientName}
-                        </span>
-                        <h6 className='text'>
-                            Policy No#
-                        </h6>
+                        <div className="row">
+                            <div className='col-lg-5'>
+                                <h6 className='text'>
+                                    Client Name
+                                </h6>
+                            </div>
+                            <div className='col-lg-6'>
+                                <span className=''>
+                                    {DocumentInitalData?.clientName}
+                                </span>
+                            </div>
+                        </div>
+                        <div className='row'>
+                            <div className='col-lg-5'>
+                                <h6 className='text'>
+                                    Policy No#
+                                </h6>
+                            </div>
+                            <div className='col-lg-6'>
+                                <span className=''>
+                                    {DocumentInitalData?.policy_number}
+                                </span>
+                            </div>
+                        </div>
                         <p className='value mx-3 my-0 py-0'>
-                            <span className=''>
-                                {DocumentInitalData?.policy_number}
-                            </span>
                             <div className='row'>
                                 <div className='col-lg-5 my-0 py-0'>
                                     <h6 className='text'>
@@ -109,16 +121,26 @@ const CompleteDocumentSidebar = ({appTitle}) => {
                                         {DocumentInitalData?.product}
                                     </span>
                                 </div>
-                                {/* <div className='col-lg-5 my-0 py-0'>
+                                <div className='col-lg-5 my-0 py-0'>
                                     <h6 className='text'>
-                                        Advisor Email
+                                        BAC
                                     </h6>
                                 </div>
                                 <div className='col-lg-7 my-0 py-0'>
                                     <span className='value'>
-                                        {DocumentInitalData?.advisor_email}
+                                        {DocumentInitalData?.bac_name}
                                     </span>
-                                </div> */}
+                                </div>
+                                <div className='col-lg-5 my-0 py-0'>
+                                    <h6 className='text'>
+                                        ID Number
+                                    </h6>
+                                </div>
+                                <div className='col-lg-7 my-0 py-0'>
+                                    <span className='value'>
+                                        {DocumentInitalData?.IdNumber}
+                                    </span>
+                                </div>
                                 <div className='col-lg-5'>
                                     <h6 className='text'>
                                         Region
@@ -131,23 +153,32 @@ const CompleteDocumentSidebar = ({appTitle}) => {
                                 </div>
                             </div>
                         </p>
-                        <h6 className='text'>
-                            Advisor
-                        </h6>
-                        <span className='value mx-3'>
-                            {
-                                DocumentInitalData?.advisor_name
-                            }
-                        </span>
-                        <h6 className='text'>
-                            Supplier
-                        </h6>
-                        <span className='value mx-3'>
-                            {
-                                DocumentInitalData?.supplier 
-                            }
-                        </span>
-                        <br/>
+                        
+                        <div className="row">
+                            <div className='col-lg-5'>
+                                <h6 className='text'>
+                                    Advisor
+                                </h6>
+                            </div>
+                            <div className='col-lg-6'>
+                                <span className=''>
+                                    {DocumentInitalData?.advisor_name}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div className="row">
+                            <div className='col-lg-5'>
+                                <h6 className='text'>
+                                    Supplier
+                                </h6>
+                            </div>
+                            <div className='col-lg-6'>
+                                <span className=''>
+                                    {DocumentInitalData?.supplier}
+                                </span>
+                            </div>
+                        </div>
                         <h6 className='text'>
                             Business Type
                         </h6>

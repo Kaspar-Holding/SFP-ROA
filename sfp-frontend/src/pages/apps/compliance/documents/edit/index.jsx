@@ -14,6 +14,8 @@ import CompleteDocumentLayout from '@/hocs/Compliance/CompleteDocumentLayout'
 const EditDocument = () => {
     
     const router = useRouter()
+    
+    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
 
     const dId = router?.query?.dId
 
@@ -57,22 +59,22 @@ const EditDocument = () => {
         })
     }
 
-    const createInitialDocumentBtn = (e) => {
+    const updateDocumentBtn = (e) => {
         e.preventDefault()
         // createInitialDocument(DocumentInitalData?.id)
         // router.push(`/apps/compliance/documents/complete/${dId}`)
-        router.push({
-            pathname: "/apps/compliance/documents/gatekeeping",
-            query: {dId : dId}
-        })
+        // router.push({
+        //     pathname: "/apps/compliance/documents/gatekeeping",
+        //     query: {dId : dId}
+        // })
+        updateInitialDocument()
     }
     
-    const createInitialDocument = async() => {
+    const updateInitialDocument = async() => {
         const Body = JSON.stringify(DocumentInitalData)
-
         try {
             const response = await axios.post(
-                `/api/compliance/create/`,
+                `/api/compliance/update`,
                 Body,
                 config
             )
@@ -92,7 +94,7 @@ const EditDocument = () => {
             // router.push(`/apps/compliance/documents/complete/${response?.data?.data?.id}`)
             router.push({
                 pathname: "/apps/compliance/documents/gatekeeping",
-                query: {dId : response?.data?.data?.id}
+                query: {dId : dId}
             })
         } catch (error) {
             console.log(error?.response?.data)
@@ -146,6 +148,11 @@ const EditDocument = () => {
         LoadData(dId)
     }, [])
     
+    if (typeof window != 'undefined' && !isAuthenticated) {
+        router.push('/auth/login')
+    }
+
+    
 
     return (
         <Layout
@@ -165,7 +172,7 @@ const EditDocument = () => {
                         </div>
                     </div>
                     <div className='compliance-inital-content'>
-                        <form onSubmit={(e)=>{createInitialDocumentBtn(e)}}>
+                        <form onSubmit={(e)=>{updateDocumentBtn(e)}}>
                             <div className='row'>
                                 <div className='col-lg-2'>   
                                 </div>                     

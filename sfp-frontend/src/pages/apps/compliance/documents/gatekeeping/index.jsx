@@ -9,6 +9,8 @@ import { useRouter } from 'next/router'
 
 const CompleteDocument = () => {
     const router = useRouter()
+    
+    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
 
     const dId = router?.query?.dId
 
@@ -227,6 +229,11 @@ const CompleteDocument = () => {
 
     }, [])
     
+    if (typeof window != 'undefined' && !isAuthenticated) {
+        router.push('/auth/login')
+    }
+
+    
     
 
     return (
@@ -268,7 +275,7 @@ const CompleteDocument = () => {
                                                                     onClick={(e)=>{loadVersion(e, version?.id)}}
                                                                     href="#"
                                                                 >
-                                                                    {version?.id}
+                                                                    {version?.version}
                                                                 </a>
                                                             </li>
                                                         </>
@@ -471,7 +478,7 @@ const CompleteDocument = () => {
                                                 </>
                                             }                                            
                                             {
-                                                DocumentInitalData?.businessType != 2 || DocumentInitalData?.businessType != 13 ?
+                                                DocumentInitalData?.businessType != 2 && DocumentInitalData?.businessType != 13 ?
                                                 <>
                                                     <div className='col py-3 border-bottom'>
                                                         <h6 className='gatekeeping-question'>
@@ -510,7 +517,7 @@ const CompleteDocument = () => {
                                                 </>
                                             }                                            
                                             {
-                                                DocumentInitalData?.businessType != 2 || DocumentInitalData?.businessType != 13 ?
+                                                DocumentInitalData?.businessType != 2 && DocumentInitalData?.businessType != 13 ?
                                                 <>
                                                     <div className='col py-3 border-bottom'>
                                                         <h6 className='gatekeeping-question'>
@@ -549,11 +556,11 @@ const CompleteDocument = () => {
                                                 </>
                                             }
                                             {
-                                                DocumentInitalData?.businessType != 2 || DocumentInitalData?.businessType != 11 || DocumentInitalData?.businessType >= 13 ?
+                                                DocumentInitalData?.businessType != 2 && DocumentInitalData?.businessType != 11 && DocumentInitalData?.businessType != 13 && DocumentInitalData?.businessType != 14 && DocumentInitalData?.businessType != 15 ?
                                                 <>
                                                     <div className='col py-3 border-bottom'>
                                                         <h6 className='gatekeeping-question'>
-                                                            ROA Type
+                                                            ROA Type 
                                                         </h6>
                                                         <div className='row'>
                                                             <div className='col-lg-4'>
@@ -588,7 +595,7 @@ const CompleteDocument = () => {
                                                 </>
                                             }
                                             {
-                                                DocumentInitalData?.businessType != 2 || DocumentInitalData?.businessType != 11 || DocumentInitalData?.businessType != 13 ?
+                                                DocumentInitalData?.businessType != 2 && DocumentInitalData?.businessType != 11 && DocumentInitalData?.businessType != 13 ?
                                                 <>
                                                     <div className='col py-3 border-bottom'>
                                                         <h6 className='gatekeeping-question'>
@@ -627,7 +634,7 @@ const CompleteDocument = () => {
                                                 </>
                                             }
                                             {
-                                                DocumentInitalData?.businessType != 2 || DocumentInitalData?.businessType != 10 || DocumentInitalData?.businessType != 11 || DocumentInitalData?.businessType != 13 ?
+                                                DocumentInitalData?.businessType != 2 && DocumentInitalData?.businessType != 10 && DocumentInitalData?.businessType != 11 && DocumentInitalData?.businessType != 13 ?
                                                 <>
                                                     <div className='col py-3 border-bottom'>
                                                         <h6 className='gatekeeping-question'>
@@ -666,7 +673,7 @@ const CompleteDocument = () => {
                                                 </>
                                             }
                                             {
-                                                DocumentInitalData?.businessType != 2 || DocumentInitalData?.businessType != 10 || DocumentInitalData?.businessType != 13 ?
+                                                DocumentInitalData?.businessType != 2 && DocumentInitalData?.businessType != 10 && DocumentInitalData?.businessType != 13 ?
                                                 <>
                                                     <div className='col py-3 border-bottom'>
                                                         <h6 className='gatekeeping-question'>
@@ -705,7 +712,7 @@ const CompleteDocument = () => {
                                                 </>
                                             }
                                             {
-                                                DocumentInitalData?.businessType != 2 || DocumentInitalData?.businessType != 10 || DocumentInitalData?.businessType != 11 || DocumentInitalData?.businessType != 13 ?
+                                                DocumentInitalData?.businessType != 2 && DocumentInitalData?.businessType != 10 && DocumentInitalData?.businessType != 11 && DocumentInitalData?.businessType != 13 ?
                                                 <>
                                                     <div className='col py-3 border-bottom'>
                                                         <h6 className='gatekeeping-question'>
@@ -822,7 +829,7 @@ const CompleteDocument = () => {
                                                 </>
                                             }
                                             {
-                                                DocumentInitalData?.businessType != 2 || DocumentInitalData?.businessType != 4 || (DocumentInitalData?.businessType > 5 && DocumentInitalData?.businessType < 9) || DocumentInitalData?.businessType != 13 ?
+                                                (DocumentInitalData?.businessType != 2 && DocumentInitalData?.businessType != 4 && DocumentInitalData?.businessType != 13) || (DocumentInitalData?.businessType > 5 && DocumentInitalData?.businessType < 9) ?
                                                 <>
                                                     <div className='col py-3 border-bottom'>
                                                         <h6 className='gatekeeping-question'>
@@ -861,7 +868,7 @@ const CompleteDocument = () => {
                                                 </>
                                             }
                                             {
-                                                DocumentInitalData?.businessType != 2 || DocumentInitalData?.businessType != 4 || (DocumentInitalData?.businessType > 5 && DocumentInitalData?.businessType < 9) || DocumentInitalData?.businessType != 13 ?
+                                                (DocumentInitalData?.businessType != 2 && DocumentInitalData?.businessType != 4 && DocumentInitalData?.businessType != 13) || (DocumentInitalData?.businessType > 5 && DocumentInitalData?.businessType < 9) ?
                                                 <>
                                                     <div className='col py-3 border-bottom'>
                                                         <h6 className='gatekeeping-question'>
@@ -983,7 +990,7 @@ const CompleteDocument = () => {
                                     :<></>
                                 }
                                 {
-                                    Versions >= 1 ?
+                                    Versions.length >= 1 ?
                                     <div className='col-lg-6'>
                                         <button 
                                             className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"

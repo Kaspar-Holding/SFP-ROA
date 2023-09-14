@@ -35,7 +35,7 @@ export default async (req, res ) => {
                 
                 return res.status(apiResponse.status).json(
                     {
-                        success: "Successfully created, you can proceed to summary.",
+                        success: "Successfully updated, you can proceed to summary.",
                         data: apiResponse?.data,
                     }
                 )

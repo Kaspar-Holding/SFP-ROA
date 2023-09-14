@@ -14,6 +14,8 @@ import CompleteDocumentLayout from '@/hocs/Compliance/CompleteDocumentLayout'
 const EditDocument = () => {
     
     const router = useRouter()
+    
+    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
 
     const dId = router?.query?.dId
 
@@ -131,6 +133,11 @@ const EditDocument = () => {
     useEffect(() => {
         LoadData(dId)
     }, [])
+    
+    if (typeof window != 'undefined' && !isAuthenticated) {
+        router.push('/auth/login')
+    }
+
     
 
     return (

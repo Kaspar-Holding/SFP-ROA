@@ -5,11 +5,21 @@ import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import Moment from 'moment'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
 // import Chart from "react-apexcharts"
 
 
 const Compliance = () => {
     const router = useRouter()
+    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
+
+    const [SearchQuery, setSearchQuery] = useState("")
+
+    const onSearchQueryChange = (e) => {
+        setSearchQuery(e.target.value)
+
+    }
+
     const lineSeries = [
         {
           name: "High - 2013",
@@ -139,12 +149,16 @@ const Compliance = () => {
         }
 
     }
+    
 
     useEffect(() => {
         loadReviews()
     }, [])
 
-
+    
+    if (typeof window != 'undefined' && !isAuthenticated) {
+        router.push('/auth/login')
+    }
 
     return (
         <Layout
@@ -240,7 +254,7 @@ const Compliance = () => {
                                         <span class="input-group-text" id="basic-addon1">
                                             <i className='fa-solid fa-search' />
                                         </span>
-                                        <input type="text" class="form-control" placeholder="Search Policy No# here" />
+                                        <input type="text"  class="form-control" value={SearchQuery} onChange={(e)=>{onSearchQueryChange(e)}} placeholder="Search Policy No# here" />
                                     </div>
                                 </div>
                                 <div className='col-lg-3'>
@@ -269,7 +283,7 @@ const Compliance = () => {
                                                 (review, i) => {
                                                     return(
                                                         <tr key={i}>
-                                                            <th scope="row">1</th>
+                                                            <th scope="row">{i+1}</th>
                                                             <td>
                                                                 {
                                                                     review?.policy_number

@@ -13,6 +13,7 @@ import CreateDocumentLayout from '@/hocs/Compliance/CreateDocumentLayout'
 const CreateDocument = () => {
     
     const router = useRouter()
+    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
 
     const [DocumentInitalData, setDocumentInitalData] = useState({
         clientName: "",
@@ -172,6 +173,10 @@ const CreateDocument = () => {
         LoadAdvisors()
     }, [])
     
+
+    if (typeof window != 'undefined' && !isAuthenticated) {
+        router.push('/auth/login')
+    }
 
 
     return (

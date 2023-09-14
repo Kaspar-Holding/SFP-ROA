@@ -10,6 +10,8 @@ import { useRouter } from 'next/router'
 const CompleteDocument = () => {
     
     const router = useRouter()
+    
+    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
         
     const config = {
         headers: {
@@ -160,6 +162,11 @@ const CompleteDocument = () => {
         }
 
     }, [])
+
+    if (typeof window != 'undefined' && !isAuthenticated) {
+        router.push('/auth/login')
+    }
+
     
 
     return (
