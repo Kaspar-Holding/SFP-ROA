@@ -294,46 +294,53 @@ const CompleteDocument = () => {
                                             <div className='col-lg-4'>
                                                 <div className="mb-3">
                                                     <label for="basic-url" className="form-label compliance-inital-card-text">Lump Sum</label>
-                                                    <input 
-                                                        required 
-                                                        
-                                                        type="text" 
-                                                        value={Data?.lump_sum} 
-                                                        name="lump_sum" 
-                                                        className="form-control" 
-                                                        id="basic-url" 
-                                                        aria-describedby="basic-addon3 basic-addon4" 
-                                                    />
+                                                    <div className="input-group mb-3">
+                                                        <span class="input-group-text" id="basic-addon1">R</span>
+                                                        <input 
+                                                            required 
+                                                            type="text" 
+                                                            value={Data?.lump_sum} 
+                                                            name="lump_sum" 
+                                                            className="form-control" 
+                                                            id="basic-url" 
+                                                            aria-describedby="basic-addon3 basic-addon4" 
+                                                        />                                                    
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className='col-lg-4'>
                                                 <div className="mb-3">
                                                     <label for="basic-url" className="form-label compliance-inital-card-text">Monthly Premium</label>
-                                                    <input 
-                                                        required 
-                                                        
-                                                        type="text" 
-                                                        value={Data?.monthly_premium} 
-                                                        name="monthly_premium" 
-                                                        className="form-control" 
-                                                        id="basic-url" 
-                                                        aria-describedby="basic-addon3 basic-addon4" 
-                                                    />
+                                                    <div className="input-group mb-3">
+                                                        <span class="input-group-text" id="basic-addon1">R</span>
+                                                        <input 
+                                                            required 
+                                                            
+                                                            type="text" 
+                                                            value={Data?.monthly_premium} 
+                                                            name="monthly_premium" 
+                                                            className="form-control" 
+                                                            id="basic-url" 
+                                                            aria-describedby="basic-addon3 basic-addon4" 
+                                                        />                                                    
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className='col-lg-4'>
                                                 <div className="mb-3">
                                                     <label for="basic-url" className="form-label compliance-inital-card-text">Commission</label>
-                                                    <input 
-                                                        required 
-                                                        
-                                                        type="text" 
-                                                        value={Data?.commission} 
-                                                        name="commission" 
-                                                        className="form-control" 
-                                                        id="basic-url" 
-                                                        aria-describedby="basic-addon3 basic-addon4" 
-                                                    />
+                                                    <div className="input-group mb-3">
+                                                        <span class="input-group-text" id="basic-addon1">R</span>
+                                                        <input 
+                                                            required                                                         
+                                                            type="text" 
+                                                            value={Data?.commission} 
+                                                            name="commission" 
+                                                            className="form-control" 
+                                                            id="basic-url" 
+                                                            aria-describedby="basic-addon3 basic-addon4" 
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
