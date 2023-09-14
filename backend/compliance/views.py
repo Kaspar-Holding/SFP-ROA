@@ -640,12 +640,12 @@ class ComplianceDocumentSummary(APIView):
                         if aDocument[key] == 15:
                             arc_score += aDocument[key]
                     arc_score = round(arc_score/arc_total *100)
-                comments = DocumentComments.objects.filter(document=pk).values().order_by('-created_at')
-                for comment in comments:
-                    user = UserAccount.objects.filter(id=comment['user_id'])
-                    if user.exists():
-                        user = user.values().first()
-                        comment['commenting_user'] = f"{user['first_name']} ({user['email']})"  
+            comments = DocumentComments.objects.filter(document=pk).values().order_by('-created_at')
+            for comment in comments:
+                user = UserAccount.objects.filter(id=comment['user_id'])
+                if user.exists():
+                    user = user.values().first()
+                    comment['commenting_user'] = f"{user['first_name']} ({user['email']})"  
             return Response({
                 "score" : score,
                 "arc_score" : arc_score,
