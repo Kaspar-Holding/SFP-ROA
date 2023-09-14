@@ -12,6 +12,17 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 15 September 2023:
+- 2355: GK Questions not as per Business Type - Resolved
+- 2354: An Error has occurred - resolved
+- 2353: 404 Page Error - resolved
+- 2351: Gatekeeping Check List does not change - resolved
+- 2350: Review Number appearing wrong - resolved
+- 2349: Search Button for searching policy Number is not working - Not a bug, has yet to develop it
+- 2348: Log out button - resolved
+- Sign In, Forgot Password, Reset Password Pages Completed
+- Deployment
+
 ### 11 September 2023:
 - 2347: Basic Working on Compliance Review Management is completed
 - Sign In, Forgot Password, Reset Password Pages Completed

@@ -214,101 +214,100 @@ const SummaryDocument = () => {
                         <br/>
                         <div className='row'>
                             <div className='col-lg-6'>
-                                {
-                                    Comments.length > 0 ? 
-                                    <>
-                                        
-                                        <div className="card">
-                                            <div className="card-header d-flex justify-content-between align-items-center p-3"
-                                                style={{borderTop: "4px solid #ffa900"}}>
-                                                <h5 className="mb-0">Comments</h5>
-                                            </div>
-                                            <div className="card-body" data-mdb-perfect-scrollbar="true" style={{position: "relative", height: "200px", overflowY: 'auto'}}>
-                                                {
-                                                    Comments.map(
-                                                        (comment, i) => {
-                                                            return(
-                                                                <>
-                                                                    {
-                                                                        comment?.type === 2 ?
-                                                                        <>                                                                            
-                                                                            <div className="d-flex justify-content-between">
-                                                                                <p className="small mb-1 text-muted">{Moment(comment?.created_at).format('hh:mmA, DD MMM YY')}</p>
-                                                                                <p className="small mb-1">{comment?.commenting_user}</p>
-                                                                            </div>
-                                                                            <div className="d-flex flex-row justify-content-end mb-4 pt-1">
-                                                                                <div>
-                                                                                    <p className="small p-2 me-3 mb-3 text-white rounded-3 bg-warning">
-                                                                                    {comment?.comment}
-                                                                                    </p>
-                                                                                </div>
-                                                                                
-                                                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                                                                                alt="avatar 1" style={{width: "45px",height: "100%"}} />
-                                                                            </div>
-                                                                        </>
-                                                                        :
-                                                                        <>
-                                                                            <div className="d-flex justify-content-between">
-                                                                                <p className="small mb-1">{comment?.commenting_user}</p>
-                                                                                <p className="small mb-1 text-muted">{Moment(comment?.created_at).format('hh:mmA, DD MMM YY')}</p>
-                                                                            </div>
-                                                                            <div className="d-flex flex-row justify-content-start">
-                                                                                {
-                                                                                    comment?.type === 1 ?
-                                                                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp"
-                                                                                    alt="avatar 1" style={{width: "45px",height: "100%"}} />
-                                                                                    : 
-                                                                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                                                                                    alt="avatar 1" style={{width: "45px",height: "100%"}} />
-                                                                                }
-                                                                                <div>
-                                                                                    <p className="small p-2 ms-3 mb-3 rounded-3" style={{backgroundColor: "#f5f6f7"}}>
-                                                                                        {comment?.comment}
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </>
-
-                                                                    }
-                                                                </>
-                                                            )
-                                                        }
-                                                    )
-                                                }
-
-                                                
-
-                                            </div>
-                                            {
-                                                DocumentInitalData?.status != 1 && DocumentInitalData?.status != 2?
-                                                <div className="card-footer text-muted d-flex justify-content-start align-items-center p-3">
-                                                    <div className="input-group mb-0">
-                                                    <input 
-                                                        type="text" 
-                                                        onKeyDown={
-                                                            (e)=>{
-                                                                if (e.key === 'Enter') {
-                                                                    DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)
-                                                                }
-                                                            }
-                                                        } value={Comment} onChange={(e)=>{setComment(e.target.value)}} 
-                                                        className="form-control" placeholder="Type message"
-                                                        aria-label="Recipient's username" aria-describedby="button-addon2" />
-                                                    <button className="btn btn-warning" type="button" onClick={(e)=>{DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)}} id="button-addon2" style={{paddingTop: ".55rem"}}>
-                                                        Button
-                                                    </button>
-                                                    </div>
-                                                </div>
-                                                :<></>
-                                            }
-                                        </div>
-                                    </>
-                                    :
-                                    <div>
-                                        <p>No Comments were posted</p>
+                                <div className="card">
+                                    <div className="card-header d-flex justify-content-between align-items-center p-3"
+                                        style={{borderTop: "4px solid #ffa900"}}>
+                                        <h5 className="mb-0">Comments</h5>
                                     </div>
-                                }
+                                    <div className="card-body" data-mdb-perfect-scrollbar="true" style={{position: "relative", height: "200px", overflowY: 'auto'}}>
+                                        {
+                                            Comments.length > 0?
+                                                Comments.map(
+                                                    (comment, i) => {
+                                                        return(
+                                                            <>
+                                                                {
+                                                                    comment?.type === 2 ?
+                                                                    <>                                                                            
+                                                                        <div className="d-flex justify-content-between">
+                                                                            <p className="small mb-1 text-muted">{Moment(comment?.created_at).format('hh:mmA, DD MMM YY')}</p>
+                                                                            <p className="small mb-1">{comment?.commenting_user}</p>
+                                                                        </div>
+                                                                        <div className="d-flex flex-row justify-content-end mb-4 pt-1">
+                                                                            <div>
+                                                                                <p className="small p-2 me-3 mb-3 text-white rounded-3 bg-warning">
+                                                                                {comment?.comment}
+                                                                                </p>
+                                                                            </div>
+                                                                            
+                                                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                                                                            alt="avatar 1" style={{width: "45px",height: "100%"}} />
+                                                                        </div>
+                                                                    </>
+                                                                    :
+                                                                    <>
+                                                                        <div className="d-flex justify-content-between">
+                                                                            <p className="small mb-1">{comment?.commenting_user}</p>
+                                                                            <p className="small mb-1 text-muted">{Moment(comment?.created_at).format('hh:mmA, DD MMM YY')}</p>
+                                                                        </div>
+                                                                        <div className="d-flex flex-row justify-content-start">
+                                                                            {
+                                                                                comment?.type === 1 ?
+                                                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp"
+                                                                                alt="avatar 1" style={{width: "45px",height: "100%"}} />
+                                                                                : 
+                                                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                                                                alt="avatar 1" style={{width: "45px",height: "100%"}} />
+                                                                            }
+                                                                            <div>
+                                                                                <p className="small p-2 ms-3 mb-3 rounded-3" style={{backgroundColor: "#f5f6f7"}}>
+                                                                                    {comment?.comment}
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </>
+
+                                                                }
+                                                            </>
+                                                        )
+                                                    }
+                                                )
+                                            :
+                                            <>
+                                                <div className="d-flex justify-content-between">
+                                                    <p className="small mb-1">No Comments</p>
+                                                </div>
+                                            </>
+                                        }
+
+                                        
+
+                                    </div>
+                                    {
+                                        DocumentInitalData?.status != 1 && DocumentInitalData?.status != 2?
+                                        <div className="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                                            <div className="input-group mb-0">
+                                            <input 
+                                                type="text" 
+                                                onKeyDown={
+                                                    (e)=>{
+                                                        if (e.key === 'Enter') {
+                                                            DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)
+                                                        }
+                                                    }
+                                                } value={Comment} onChange={(e)=>{setComment(e.target.value)}} 
+                                                className="form-control" placeholder="Type message"
+                                                aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                            <button className="btn btn-warning" type="button" onClick={(e)=>{DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)}} id="button-addon2" style={{paddingTop: ".55rem"}}>
+                                                Button
+                                            </button>
+                                            </div>
+                                        </div>
+                                        :<></>
+                                    }
+                                </div>
+                            
+                            
                             </div>
                             <div className='col-lg-6'>
                                 <div className="form-floating">
