@@ -326,7 +326,7 @@ const SummaryDocument = () => {
                                     className="btn btn-primary compliance-inital-card-button-text btn-sfp" 
                                     onClick={()=>{
                                         // router.push(`/apps/compliance/documents/complete/${dId}`)
-                                        DocumentInitalData?.status != 0 || DocumentInitalData?.status > 2 ?
+                                        DocumentInitalData?.status == 0 || DocumentInitalData?.status > 2 ?
                                         router.push({
                                             pathname: "/apps/compliance/documents/gatekeeping",
                                             query: {dId : dId}
@@ -349,7 +349,7 @@ const SummaryDocument = () => {
                                         className="btn btn-primary compliance-inital-card-button-text btn-sfp" 
                                         onClick={()=>{
                                             // router.push(`/apps/compliance/documents/complete/${dId}`)
-                                            DocumentInitalData?.status != 0 || DocumentInitalData?.status > 2 ?
+                                            DocumentInitalData?.status == 0 || DocumentInitalData?.status > 2 ?
                                             router.push({
                                                 pathname: "/apps/compliance/documents/arc",
                                                 query: {dId : dId}
