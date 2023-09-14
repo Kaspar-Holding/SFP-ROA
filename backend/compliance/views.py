@@ -84,7 +84,7 @@ class ComplainceDocumentDetails(APIView):
 
     def get(self, request, pk, format=None):
         document = self.get_object(pk)
-        document = document.values().first()
+        document = document.values().latest('created_at')
         advisor = UserAccount.objects.filter(pk=document['advisor']).values().first()
         # advisor_profile = user_profile.objects.filter(user=document['advisor']).values().first()
         document['advisor_name'] = f"{advisor['first_name']} {advisor['last_name']}"
@@ -923,6 +923,7 @@ class loadagentsDetail(APIView):
             advisor = UserAccount.objects.filter(userType = 6, pk=request.data['advisorId'])
             if advisor.exists():
                 advisor = advisor.values().first()
+                data['advisor'] = request.data['advisorId']
                 profile = user_profile.objects.filter(user=advisor['id'])
                 # advisor['email'] = advisor['email']
                 data['IdNumber'] = ""

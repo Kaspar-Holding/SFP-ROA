@@ -49,12 +49,12 @@ const CreateDocument = () => {
         })
     }
 
-    const onSelectChange = async(e) => {
+    const onSelectChange = (e) => {
         setDocumentInitalData({
             ...DocumentInitalData,
             [e.name] : e.id
         })
-        await LoadAdvisorDetail(DocumentInitalData, e.id)
+        LoadAdvisorDetail(DocumentInitalData, e.id)
     }
 
     const createInitialDocumentBtn = (e) => {
@@ -151,7 +151,7 @@ const CreateDocument = () => {
 
         try {
             const response = await axios.post('/api/account/agents/info', Body, config)
-            
+            console.log(response?.data?.data?.data)
             setDocumentInitalData(response?.data?.data?.data)
         } catch (error) {
             Swal.fire({
