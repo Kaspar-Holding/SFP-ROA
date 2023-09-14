@@ -277,7 +277,7 @@ const SummaryDocument = () => {
                             <button 
                                 className="btn btn-primary compliance-inital-card-button-text btn-sfp" 
                                 onClick={()=>{
-                                    router.push(`/apps/compliance/documents/complete/${dId}`)
+                                    // router.push(`/apps/compliance/documents/complete/${dId}`)
                                     router.push({
                                         pathname: "/apps/compliance/documents/gatekeeping",
                                         query: {dId : dId}
