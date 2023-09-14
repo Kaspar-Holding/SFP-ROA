@@ -616,6 +616,7 @@ class ComplianceDocumentSummary(APIView):
                 
             arcDocument = arc.objects.filter(document=pk)
             arcStatus = False
+            arc_score = 0
             if arcDocument.exists():
                 arcStatus = True
                 aDoc = arcDocument
@@ -645,15 +646,15 @@ class ComplianceDocumentSummary(APIView):
                     if user.exists():
                         user = user.values().first()
                         comment['commenting_user'] = f"{user['first_name']} ({user['email']})"  
-                return Response({
-                    "score" : score,
-                    "arc_score" : arc_score,
-                    "arc_status" : arcStatus,
-                    "comments" : comments,
-                    "missing": missing
-                })
-            else:
-                raise Http404
+            return Response({
+                "score" : score,
+                "arc_score" : arc_score,
+                "arc_status" : arcStatus,
+                "comments" : comments,
+                "missing": missing
+            })
+            # else:
+            #     raise Http404
         else:
             raise Http404
         
