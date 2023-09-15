@@ -25,6 +25,14 @@ class ComplianceDocument(models.Model):
     status = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+
+class review_status(models.Model):
+    document = models.ForeignKey(ComplianceDocument, on_delete=models.CASCADE)
+    
+    status = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
     
 class GateKeeping(models.Model):
     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)

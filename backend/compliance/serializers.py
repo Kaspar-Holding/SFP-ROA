@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import ComplianceDocument, GateKeeping, DocumentComments, arc_question_header, arc_questions, arc
+from .models import ComplianceDocument, GateKeeping, DocumentComments, arc_question_header, arc_questions, arc, review_status
 
 
 class ComplianceDocument_Serializer(serializers.ModelSerializer):
@@ -50,3 +50,11 @@ class arc_question_header_Serializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return arc_question_header.objects.create(**validated_data)
+
+class review_status_Serializer(serializers.ModelSerializer):
+    class Meta():
+        model = review_status
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return review_status.objects.create(**validated_data)

@@ -2,27 +2,107 @@ from django.shortcuts import render
 from rest_framework.decorators import APIView, api_view
 from rest_framework.response import Response
 from data.models import UserAccount, user_profile, regions
-from .models import ComplianceDocument, GateKeeping, DocumentComments, arc_questions, arc, arc_question_header
-from .serializers import ComplianceDocument_Serializer, GateKeeping_Serializer, DocumentComments_Serializer, arc_questions_Serializer, arc_Serializer, arc_question_header_Serializer
+from .models import ComplianceDocument, GateKeeping, DocumentComments, arc_questions, arc, arc_question_header, review_status
+from .serializers import ComplianceDocument_Serializer, review_status_Serializer, GateKeeping_Serializer, DocumentComments_Serializer, arc_questions_Serializer, arc_Serializer, arc_question_header_Serializer
 from rest_framework import status
+from django.core.paginator import Paginator
 from django.http import Http404
-
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from datetime import datetime
 # Create your views here.
 
 class updateDocumentStatus(APIView):
 
     def post(self, request, format=None):
         document = ComplianceDocument.objects.filter(id=request.data['dId'])
-
+        user = request.user
         if document.exists():
             document.update(status=request.data['status'])
+            data = {"document" : request.data['dId'], "status" : request.data['status']}
+            status_serializer = review_status_Serializer(data=data)
+            if status_serializer.is_valid():
+                status_serializer.save()
+            else:
+                print(status_serializer.errors)
+            if request.data['status'] == 1:
+                reviewStatus = "approved"
+            if request.data['status'] == 2:
+                reviewStatus = "not approved"
+            if request.data['status'] == 3:
+                reviewStatus = "referred"
+            if request.data['status'] == 4:
+                reviewStatus = "partially approved"
+            comment = {
+                    "user" : 0,
+                    "type" : 3,
+                    "title" : "",
+                    "comment" : f"Review was {reviewStatus} by {user.first_name} {user.last_name} ({user.email})",  
+                    "document" : request.data['dId']
+                }
+            documentCommentSerializer = DocumentComments_Serializer(data=comment)
+            if documentCommentSerializer.is_valid():
+                documentCommentSerializer.save()
+            else:
+                print(documentCommentSerializer.errors)
             return Response(200)
         else:
             raise Http404
         
-        
+# class Compl        
+@api_view(['POST'])
+def searchComplianceDocument(request):
+    data = ComplianceDocument.objects.filter(user=request.user.pk)
+    if data.exists():
+        search_query = SearchQuery(request.data['search_query'], search_type='websearch')
+        search_vector = SearchVector('policy_number')
+        if request.data['search_query'] != "":
+            # data = data.annotate(search=search_vector).filter(search=search_query).values().order_by('-created_at')
+            data = data.filter(policy_number__icontains=request.data['search_query']).values().order_by('-created_at')
+        else:
+            data = data.values().order_by('-created_at')
+        p = Paginator(data, request.data['page_size'])
+        data = p.page(request.data['page_number']).object_list
+        for row in data:
+            advisor = UserAccount.objects.filter(pk=row['advisor'])
+            if advisor.exists():
+                advisor = advisor.values().first()
+                row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+            else:
+                raise Http404
+            dId = row['id']
+            if row['status'] == 0:
+                gatekeeping = GateKeeping.objects.filter(document=dId)
+                if gatekeeping.exists():
+                    gatekeeping = gatekeeping.values().latest('id')
+                    row['last_review_date'] = gatekeeping['created_at']
+                else:
+                    row['last_review_date'] = row['created_at']
+            else:
+                row['last_review_date'] = row['created_at']
 
-class ComplainceDocumentList(APIView):
+        # print(p.num_pages)
+        if request.data['page_number'] <= p.num_pages:
+                
+            return Response(
+                {
+                    "total_pages" : p.num_pages,
+                    "has_pages" : p.num_pages,
+                    "total_records" : len(data),
+                    "next" : p.page(request.data['page_number']).has_next(),
+                    "results" : data
+                }
+            )
+        else:
+            return Response(
+                {
+                    "total_pages" : p.num_pages,
+                    "has_pages" : p.num_pages,
+                    "total_records" : len(data),
+                    "next" : p.page(request.data['page_number']).has_next(),
+                    "results" : data
+                }
+            )
+class ComplianceDocumentList(APIView):
 
     def get(self, request, format=None):
         data = ComplianceDocument.objects.filter(user=request.user.pk).order_by('-created_at')
@@ -42,15 +122,11 @@ class ComplainceDocumentList(APIView):
                 else:
                     raise Http404
                 dId = row['id']
-                if row['status'] == 0:
-                    gatekeeping = GateKeeping.objects.filter(document=dId)
-                    if gatekeeping.exists():
-                        gatekeeping = gatekeeping.values().latest('id')
-                        row['last_review_date'] = gatekeeping['created_at']
-                    else:
-                        row['last_review_date'] = row['created_at']
-                else:
-                    row['last_review_date'] = row['created_at']
+                arc_status = False
+                if arc.objects.filter(document=row['id']).exists():
+                    arc_status = True
+                row['arc_status'] = arc_status
+                row['last_review_date'] = row['updated_at']
 
             return Response({"data":data, "kpis": kpis})
         else:
@@ -68,13 +144,19 @@ class ComplainceDocumentList(APIView):
         newData['user'] = user.pk
         serializer = ComplianceDocument_Serializer(data=newData)
         if serializer.is_valid():
-            serializer.save()
+            document = serializer.save()
+            data = {"document" : document.pk, "status" : 0}
+            status_serializer = review_status_Serializer(data=data)
+            if status_serializer.is_valid():
+                status_serializer.save()
+            else:
+                print(status_serializer.errors)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             print(serializer.errors)
         return Response({"errors":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
-class ComplainceDocumentDetails(APIView):
+class ComplianceDocumentDetails(APIView):
 
     def get_object(self, pk):
         try:
@@ -158,6 +240,7 @@ class GateKeepingList(APIView):
             version = 1
         serializer = GateKeeping_Serializer(data=newData)
         if serializer.is_valid():
+            ComplianceDocument.objects.filter(id=newData['document']).update(updated_at=datetime.now())
             dId = serializer.save()
             gatekeepingDocument = GateKeeping.objects.filter(pk=dId.pk).values().first()
             gk = GateKeeping.objects.filter(pk=dId.pk)
@@ -1206,7 +1289,9 @@ class arcList(APIView):
         newData = request.data
         user = request.user
         newData['user'] = user.pk
-        newData['document'] = newData['document_id']
+        newData['document'] = newData['document_id'] if "document" not in request.data else newData['document']
+        
+        ComplianceDocument.objects.filter(id=newData['document']).update(updated_at=datetime.now())
         arcdata = arc.objects.filter(document=newData['document'])
         if arcdata.exists():
             version = arcdata.values().latest('created_at')['version']
