@@ -192,6 +192,29 @@ const ARCDocument = () => {
         }
     }
 
+    const loadVersion = async (e, vId, vNum) => {
+        e.preventDefault()
+        setCurrentVersion(vNum)
+        const Body = JSON.stringify({
+            vId: vId
+        })
+        
+        try {
+            const response = await axios.post(
+                `/api/compliance/arc/version`,
+                Body,
+                config
+            )
+
+            setData(response?.data?.data)
+            
+        } catch (error) {
+            
+            
+        }
+    }
+
+    
 
     useEffect(() => {
         // getCategories()
@@ -244,7 +267,7 @@ const ARCDocument = () => {
                                                                         "page-link active":
                                                                         "page-link"
                                                                     } 
-                                                                    onClick={(e)=>{loadVersion(e, version?.id)}}
+                                                                    onClick={(e)=>{loadVersion(e, version?.id, version?.version)}}
                                                                     href="#"
                                                                 >
                                                                     {version?.version}

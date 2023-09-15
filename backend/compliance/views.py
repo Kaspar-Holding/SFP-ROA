@@ -1207,6 +1207,14 @@ class arcList(APIView):
         user = request.user
         newData['user'] = user.pk
         newData['document'] = newData['document_id']
+        arcdata = arc.objects.filter(document=newData['document'])
+        if arcdata.exists():
+            version = arcdata.values().latest('created_at')['version']
+            version += 1
+            newData['version'] = version
+        else:
+            newData['version'] = 1
+            version = 1
         serializer = arc_Serializer(data=newData)
         if serializer.is_valid():
             serializer.save()

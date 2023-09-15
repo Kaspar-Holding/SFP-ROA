@@ -185,7 +185,7 @@ const CreateDocument = () => {
             content={"Create Compliance"}
         >
             <CreateDocumentLayout
-                appTitle={'Create Compliance Document'}
+                appTitle={'Create Compliance Review'}
                 app={'compliance'}
                 dId={undefined}
             >
