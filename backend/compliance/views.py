@@ -141,7 +141,7 @@ class ComplianceDocumentList(APIView):
                 return Response({"data":[], "kpis": kpis})
         else:
             if user.userType == 1:            
-                data = ComplianceDocument.objects.all()
+                data = ComplianceDocument.objects.all().order_by('-created_at')
                 records = []
                 if data.exists():
                     kpis = {
@@ -152,7 +152,7 @@ class ComplianceDocumentList(APIView):
                     }
                     data = data.values()
                     for row in data:
-                        advisor = UserAccount.objects.filter(pk=row['advisor']).order_by('-created_at')
+                        advisor = UserAccount.objects.filter(pk=row['advisor'])
                         if advisor.exists():
                             advisor = advisor.values().first()
                             row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"

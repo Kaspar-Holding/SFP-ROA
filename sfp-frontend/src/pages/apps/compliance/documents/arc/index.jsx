@@ -1360,7 +1360,6 @@ const ARCDocument = () => {
                                     </div>
                                     :<></>
                                 }
-                                {user?.userType}
                             </div>
                         </div>
                     </div>
