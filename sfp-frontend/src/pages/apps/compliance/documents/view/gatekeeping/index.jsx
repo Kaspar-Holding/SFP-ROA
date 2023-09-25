@@ -12,6 +12,7 @@ const CompleteDocument = () => {
     const router = useRouter()
     
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
+    const user = useSelector(state=>state.auth.user)
 
     const dId = router?.query?.dId
 
@@ -933,9 +934,12 @@ const CompleteDocument = () => {
                                 className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
                                 type='button'
                                 onClick={()=>{
-                                    DocumentInitalData?.status == 3 ?
-                                    router.push({pathname: "/apps/compliance/documents", query: {'dId': dId}})
+                                    DocumentInitalData?.status == 3 && user?.userType === 1  ?
+                                    router.push({pathname: "/apps/compliance/documents/view", query: {'dId': dId}})
                                     :
+                                    DocumentInitalData?.status != 3 && user?.id === DocumentInitalData?.user ?
+                                    router.push({pathname: "/apps/compliance/documents/edit", query: {'dId': dId}})
+                                    : 
                                     router.push({pathname: "/apps/compliance/documents/view", query: {'dId': dId}})
                                 }}
                             >

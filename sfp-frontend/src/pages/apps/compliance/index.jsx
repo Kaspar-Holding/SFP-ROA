@@ -301,8 +301,8 @@ const Compliance = () => {
                                         <th scope="col">Policy Number</th>
                                         <th scope="col">Advisor</th>
                                         {
-                                            user?.userType === 2?
-                                                <th scope="col">Advisor</th>
+                                            user?.userType === 1?
+                                                <th scope="col">Gatekeeper</th>
                                             : ""
                                         }
                                         <th scope="col">Last Review Date</th>
@@ -329,7 +329,7 @@ const Compliance = () => {
                                                                 }
                                                             </td>
                                                             {
-                                                                user?.userType === 2?
+                                                                user?.userType === 1?
                                                                 <td>
                                                                     {review?.gatekeeper}
                                                                 </td>
