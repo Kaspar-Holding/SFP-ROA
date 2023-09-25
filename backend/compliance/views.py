@@ -105,38 +105,114 @@ def searchComplianceDocument(request):
 class ComplianceDocumentList(APIView):
 
     def get(self, request, format=None):
-        data = ComplianceDocument.objects.filter(user=request.user.pk).order_by('-created_at')
-        if data.exists():
-            kpis = {
-                "total" : data.count(),
-                "approved" : data.filter(status=1).count(),
-                "rejected" : data.filter(status=2).count(),
-                "referred" : data.filter(status=3).count(),
-            }
-            data = data.values()
-            for row in data:
-                advisor = UserAccount.objects.filter(pk=row['advisor'])
-                if advisor.exists():
-                    advisor = advisor.values().first()
-                    row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
-                else:
-                    raise Http404
-                dId = row['id']
-                arc_status = False
-                if arc.objects.filter(document=row['id']).exists():
-                    arc_status = True
-                row['arc_status'] = arc_status
-                row['last_review_date'] = row['updated_at']
+        user = request.user
+        if user.is_superuser:
+            data = ComplianceDocument.objects.all().order_by('-created_at')
+            if data.exists():
+                kpis = {
+                    "total" : data.count(),
+                    "approved" : data.filter(status=1).count(),
+                    "rejected" : data.filter(status=2).count(),
+                    "referred" : data.filter(status=3).count(),
+                }
+                data = data.values()
+                for row in data:
+                    advisor = UserAccount.objects.filter(pk=row['advisor'])
+                    if advisor.exists():
+                        advisor = advisor.values().first()
+                        row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                    else:
+                        raise Http404
+                    dId = row['id']
+                    arc_status = False
+                    if arc.objects.filter(document=row['id']).exists():
+                        arc_status = True
+                    row['arc_status'] = arc_status
+                    row['last_review_date'] = row['updated_at']
 
-            return Response({"data":data, "kpis": kpis})
+                return Response({"data":data, "kpis": kpis})
+            else:
+                kpis = {
+                    "total" : 0,
+                    "approved" : 0,
+                    "rejected" : 0,
+                    "referred" : 0,
+                }
+                return Response({"data":[], "kpis": kpis})
         else:
-            kpis = {
-                "total" : 0,
-                "approved" : 0,
-                "rejected" : 0,
-                "referred" : 0,
-            }
-            return Response({"data":[], "kpis": kpis})
+            if user.userType == 1:            
+                data = ComplianceDocument.objects.all()
+                records = []
+                if data.exists():
+                    kpis = {
+                        "total" : data.count(),
+                        "approved" : data.filter(status=1).count(),
+                        "rejected" : data.filter(status=2).count(),
+                        "referred" : data.filter(status=3).count(),
+                    }
+                    data = data.values()
+                    for row in data:
+                        advisor = UserAccount.objects.filter(pk=row['advisor']).order_by('-created_at')
+                        if advisor.exists():
+                            advisor = advisor.values().first()
+                            row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                        else:
+                            raise Http404
+                        arc_status = False
+                        if row['status'] == 3 and not arc.objects.filter(document=row['id']).exists():
+                            records.append(row)
+                        if arc.objects.filter(document=row['id']).exists():
+                            arc_record = arc.objects.filter(document=row['id']).values().first()
+                            if arc_record['user_id'] == user.pk:
+                                records.append(row)
+                                arc_status = True
+                        row['arc_status'] = arc_status
+                        row['last_review_date'] = row['updated_at']
+
+                    return Response({"data":records, "kpis": kpis})
+                else:
+                    kpis = {
+                        "total" : 0,
+                        "approved" : 0,
+                        "rejected" : 0,
+                        "referred" : 0,
+                    }
+                    return Response({"data":[], "kpis": kpis})
+            if user.userType == 2:            
+                data = ComplianceDocument.objects.filter(user=user.pk).order_by('-created_at')
+                if data.exists():
+                    kpis = {
+                        "total" : data.count(),
+                        "approved" : data.filter(status=1).count(),
+                        "rejected" : data.filter(status=2).count(),
+                        "referred" : data.filter(status=3).count(),
+                    }
+                    data = data.values()
+                    for row in data:
+                        advisor = UserAccount.objects.filter(pk=row['advisor'])
+                        if advisor.exists():
+                            advisor = advisor.values().first()
+                            row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                        else:
+                            raise Http404
+                        dId = row['id']
+                        arc_status = False
+                        if arc.objects.filter(document=row['id']).exists():
+                            arc_status = True
+                        row['arc_status'] = arc_status
+                        row['last_review_date'] = row['updated_at']
+
+                    return Response({"data":data, "kpis": kpis})
+                else:
+                    kpis = {
+                        "total" : 0,
+                        "approved" : 0,
+                        "rejected" : 0,
+                        "referred" : 0,
+                    }
+                    return Response({"data":[], "kpis": kpis})
+            else:
+                raise Http404
 
     def post(self, request, format=None):
         newData = request.data

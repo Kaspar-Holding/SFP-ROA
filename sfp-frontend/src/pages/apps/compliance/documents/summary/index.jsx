@@ -216,7 +216,7 @@ const SummaryDocument = () => {
                             <div className='col-lg-6'>
                                 <div className="card">
                                     <div className="card-header d-flex justify-content-between align-items-center p-3"
-                                        style={{borderTop: "4px solid #ffa900"}}>
+                                        style={{borderTop: "4px solid #007A8D"}}>
                                         <h5 className="mb-0">Comments</h5>
                                     </div>
                                     <div className="card-body" data-mdb-perfect-scrollbar="true" style={{position: "relative", height: "200px", overflowY: 'auto'}}>
@@ -235,13 +235,35 @@ const SummaryDocument = () => {
                                                                         </div>
                                                                         <div className="d-flex flex-row justify-content-end mb-4 pt-1">
                                                                             <div>
-                                                                                <p className="small p-2 me-3 mb-3 text-white rounded-3 bg-warning">
+                                                                                <p className="small p-2 me-3 mb-3 text-white rounded-3" style={{backgroundColor: '#007A8D'}}>
                                                                                 {comment?.comment}
                                                                                 </p>
                                                                             </div>
                                                                             
                                                                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
                                                                             alt="avatar 1" style={{width: "45px",height: "100%"}} />
+                                                                        </div>
+                                                                    </>
+                                                                    :comment?.type === 3 ?
+                                                                    <>
+                                                                        <div className="d-flex justify-content-between">
+                                                                            <p className="small mb-1">{comment?.commenting_user}</p>
+                                                                            <p className="small mb-1 text-muted">{Moment(comment?.created_at).format('hh:mmA, DD MMM YY')}</p>
+                                                                        </div>
+                                                                        <div className="d-flex flex-row justify-content-start">
+                                                                            {
+                                                                                comment?.type === 1 ?
+                                                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp"
+                                                                                alt="avatar 1" style={{width: "45px",height: "100%"}} />
+                                                                                : 
+                                                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                                                                alt="avatar 1" style={{width: "45px",height: "100%"}} />
+                                                                            }
+                                                                            <div>
+                                                                                <p className="small p-2 ms-3 mb-3 rounded-3" style={{backgroundColor: "#F6E4FF"}}>
+                                                                                    {comment?.comment}
+                                                                                </p>
+                                                                            </div>
                                                                         </div>
                                                                     </>
                                                                     :
@@ -284,23 +306,23 @@ const SummaryDocument = () => {
 
                                     </div>
                                     {
-                                        DocumentInitalData?.status != 1 && DocumentInitalData?.status != 2?
+                                        DocumentInitalData?.status != 1?
                                         <div className="card-footer text-muted d-flex justify-content-start align-items-center p-3">
                                             <div className="input-group mb-0">
-                                            <input 
-                                                type="text" 
-                                                onKeyDown={
-                                                    (e)=>{
-                                                        if (e.key === 'Enter') {
-                                                            DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)
+                                                <input 
+                                                    type="text" 
+                                                    onKeyDown={
+                                                        (e)=>{
+                                                            if (e.key === 'Enter') {
+                                                                DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)
+                                                            }
                                                         }
-                                                    }
-                                                } value={Comment} onChange={(e)=>{setComment(e.target.value)}} 
-                                                className="form-control" placeholder="Type message"
-                                                aria-label="Recipient's username" aria-describedby="button-addon2" />
-                                            <button className="btn btn-warning" type="button" onClick={(e)=>{DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)}} id="button-addon2" style={{paddingTop: ".55rem"}}>
-                                                Button
-                                            </button>
+                                                    } value={Comment} onChange={(e)=>{setComment(e.target.value)}} 
+                                                    className="form-control" placeholder="Type message"
+                                                    aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                                <button className="btn btn-sfp" type="button" onClick={(e)=>{DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)}} id="button-addon2" style={{paddingTop: ".55rem"}}>
+                                                    Post Comment
+                                                </button>
                                             </div>
                                         </div>
                                         :<></>
@@ -326,7 +348,7 @@ const SummaryDocument = () => {
                                     className="btn btn-primary compliance-inital-card-button-text btn-sfp" 
                                     onClick={()=>{
                                         // router.push(`/apps/compliance/documents/complete/${dId}`)
-                                        DocumentInitalData?.status == 0 || DocumentInitalData?.status > 2 ?
+                                        DocumentInitalData?.status != 0 && DocumentInitalData?.status != 2 ?
                                         router.push({
                                             pathname: "/apps/compliance/documents/gatekeeping",
                                             query: {dId : dId}
@@ -338,18 +360,18 @@ const SummaryDocument = () => {
                                         })
                                     }}
                                 >
-                                    Back to Gatekeeping Questions 
+                                    Back to Gatekeeping Questions
                                     <i className='bi pe-none mx-2 me-2 fa-solid fa-check'/>
                                 </button>
                             </div>
                             <div className="col">
                             {
-                                DocumentInitalData?.status >= 3 ?
+                                DocumentInitalData?.status >= 3 || Summary?.arc_status ?
                                     <button 
                                         className="btn btn-primary compliance-inital-card-button-text btn-sfp" 
                                         onClick={()=>{
                                             // router.push(`/apps/compliance/documents/complete/${dId}`)
-                                            DocumentInitalData?.status == 0 || DocumentInitalData?.status > 2 ?
+                                            DocumentInitalData?.status == 0 || DocumentInitalData?.status == 2 ?
                                             router.push({
                                                 pathname: "/apps/compliance/documents/arc",
                                                 query: {dId : dId}
@@ -396,7 +418,7 @@ const SummaryDocument = () => {
                                     </div>
                                 </div>
                                 {
-                                    DocumentInitalData?.status >= 3 ? 
+                                    Summary?.arc_status ? 
                                     <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
                                         <p className='calculated_score'>
                                             Calculated Score (ARC)
@@ -418,19 +440,19 @@ const SummaryDocument = () => {
                                     : <></>
                                 }
                                 {
-                                    DocumentInitalData?.status == 0 || DocumentInitalData?.status == 3  ? 
+                                    DocumentInitalData?.status != 1 ? 
                                     <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
                                         <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 1)}} className="btn btn-primary btn-lg btn-summary-2">
-                                            Approved
+                                            Approve
                                         </button>
                                     </div>
                                     : <></>
                                 }
                                 {
-                                    DocumentInitalData?.status == 0 || DocumentInitalData?.status == 3  ? 
+                                    DocumentInitalData?.status != 1 && DocumentInitalData?.status != 2 ? 
                                     <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
                                         <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 2)}} className="btn btn-primary btn-lg btn-summary-3">
-                                            Not Approved
+                                            Not Approve
                                         </button>
                                     </div>
                                     : <></>
@@ -439,16 +461,16 @@ const SummaryDocument = () => {
                                     DocumentInitalData?.status == 3 ? 
                                     <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
                                         <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 4)}} className="btn btn-primary btn-lg btn-summary-4">
-                                            Partially Approved
+                                            Partially Approve
                                         </button>
                                     </div>
                                     : <></>
                                 }
                                 {
-                                    DocumentInitalData?.status == 0 ? 
+                                    DocumentInitalData?.status != 1 && !Summary?.arc_status ? 
                                     <div className='col-lg-3'>
                                         <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 3)}} className="btn btn-primary btn-lg btn-summary-5">
-                                            Referred
+                                            Refer
                                         </button>
                                     </div>
                                     : <></>

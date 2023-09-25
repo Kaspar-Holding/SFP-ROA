@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
+import { currencyFormatter } from '@/modules/formatter'
 
 const CompleteDocument = () => {
     const router = useRouter()
@@ -251,12 +252,12 @@ const CompleteDocument = () => {
                                                 <div className="mb-3">
                                                     <label for="basic-url" className="form-label compliance-inital-card-text">Lump Sum</label>
                                                     <div className="input-group mb-3">
-                                                        <span class="input-group-text" id="basic-addon1">R</span>
+                                                        {/* <span class="input-group-text" id="basic-addon1">R</span> */}
                                                         <input 
                                                             required 
                                                              
                                                             type="text" 
-                                                            value={Data?.lump_sum} 
+                                                            value={currencyFormatter('en-ZA', 'ZAR').format(Data?.lump_sum)} 
                                                             name="lump_sum" 
                                                             className="form-control" 
                                                             id="basic-url" 
@@ -269,12 +270,12 @@ const CompleteDocument = () => {
                                                 <div className="mb-3">
                                                     <label for="basic-url" className="form-label compliance-inital-card-text">Monthly Premium</label>
                                                     <div className="input-group mb-3">
-                                                        <span class="input-group-text" id="basic-addon2">R</span>
+                                                        {/* <span class="input-group-text" id="basic-addon2">R</span> */}
                                                         <input 
                                                             required 
                                                              
                                                             type="text" 
-                                                            value={Data?.monthly_premium} 
+                                                            value={currencyFormatter('en-ZA', 'ZAR').format(Data?.monthly_premium)} 
                                                             name="monthly_premium" 
                                                             className="form-control" 
                                                             id="basic-url" 
@@ -287,12 +288,12 @@ const CompleteDocument = () => {
                                                 <div className="mb-3">
                                                     <label for="basic-url" className="form-label compliance-inital-card-text">Commission</label>
                                                     <div className="input-group mb-3">
-                                                        <span class="input-group-text" id="basic-addon3">R</span>
+                                                        {/* <span class="input-group-text" id="basic-addon3">R</span> */}
                                                         <input 
                                                             required 
                                                              
                                                             type="text" 
-                                                            value={Data?.commission} 
+                                                            value={currencyFormatter('en-ZA', 'ZAR').format(Data?.commission)} 
                                                             name="commission" 
                                                             className="form-control" 
                                                             id="basic-url" 
@@ -926,41 +927,38 @@ const CompleteDocument = () => {
                         }
                     </div>
                     <br/>
-                    <div className=''>
-                        {
-                            DocumentInitalData?.status > 2 ?
-                            <div className='col-lg-12'>
-                                <button 
-                                    className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
-                                    type='button'
-                                    onClick={()=>{
-                                        DocumentInitalData?.status == 3 ?
-                                        router.push({pathname: "/apps/compliance/documents/arc", query: {'dId': dId}})
-                                        :
-                                        router.push({pathname: "/apps/compliance/documents/view/arc", query: {'dId': dId}})
-                                    }}
-                                >
-                                    Continue to ARC
-                                    <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-right'/>
-                                </button>
-                            </div>
-                            :
-                            <div className="mx-auto">
-                                <div className='row'>
-                                    <div className='col-lg-6'>
-                                        <button 
-                                            className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
-                                            type='button'
-                                            onClick={()=>{router.push({pathname: "/apps/compliance/documents/summary", query: {'dId': dId}})}}
-                                        >
-                                            Continue to Summary
-                                            <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-right'/>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        }
+                    <div className='row'>
+                        <div className='col-lg-6'>
+                            <button 
+                                className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
+                                type='button'
+                                onClick={()=>{
+                                    DocumentInitalData?.status == 3 ?
+                                    router.push({pathname: "/apps/compliance/documents", query: {'dId': dId}})
+                                    :
+                                    router.push({pathname: "/apps/compliance/documents/view", query: {'dId': dId}})
+                                }}
+                            >
+                                <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-left'/>
+                                Back to Inital Data
+                            </button>
+                        </div>
+                        <div className='col-lg-6'>
+                            <button 
+                                className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
+                                type='button'
+                                onClick={()=>{
+                                    DocumentInitalData?.status == 0 || DocumentInitalData?.status == 2 || DocumentInitalData?.status == 3 ?
+                                    router.push({pathname: "/apps/compliance/documents/arc", query: {'dId': dId}}) :
+                                    router.push({pathname: "/apps/compliance/documents/view/arc", query: {'dId': dId}})
+                                }}
+                            >
+                                Continue to ARC
+                                <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-right'/>
+                            </button>
+                        </div>
                     </div>
+
 
 
                 </div>

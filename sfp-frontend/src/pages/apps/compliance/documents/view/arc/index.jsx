@@ -1257,14 +1257,33 @@ const CompleteDocument = () => {
                         </div> */}
                     </div>
                     <br/>
-                    <div className=''>
-                        <div className="d-grid col-4 mx-auto">
-                            <button className="btn btn-primary compliance-inital-card-button-text btn-sfp" onClick={(e)=>{router.push({pathname:`/apps/compliance/documents/view/summary`, query: {dId: dId}})}} type="button">
-                                Summary
+                    <div className='row'>
+                        <div className='col-lg-6'>
+                            <button 
+                                className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
+                                type='button'
+                                onClick={()=>{
+                                    DocumentInitalData?.status == 3 ?
+                                    router.push({pathname: "/apps/compliance/documents/arc", query: {'dId': dId}})
+                                    :
+                                    router.push({pathname: "/apps/compliance/documents/view/gatekeeping", query: {'dId': dId}})
+                                }}
+                            >
+                                <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-left'/>
+                                Back to Gatekeeping
+                            </button>
+                        </div>
+                        <div className='col-lg-6'>
+                            <button 
+                                className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
+                                type='button'
+                                onClick={()=>{router.push({pathname: "/apps/compliance/documents/summary", query: {'dId': dId}})}}
+                            >
+                                Continue to Summary
                                 <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-right'/>
                             </button>
                         </div>
-                    </div> 
+                    </div>
 
 
                 </form>

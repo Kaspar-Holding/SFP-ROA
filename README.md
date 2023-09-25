@@ -12,7 +12,21 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 25 September 2023:
+- 2372: No Document is visible for ARC - Debugged and Deployed
+- 2373: Abbreviations to be used in Business Unit Name in Initial Information - Updated and Deployed
+- 2374: Date & Time Format to be changed in Summary View - Updated and Deployed
+- Deployment
+
 ### 15 September 2023:
+- 2349: Search Button for searching policy Number is not working - Developed
+- Deployment
+
+### 14 September 2023:
+- 2349: Search Button for searching policy Number is not working - Developed
+- Deployment
+
+### 13 September 2023:
 - 2355: GK Questions not as per Business Type - Resolved
 - 2354: An Error has occurred - resolved
 - 2353: 404 Page Error - resolved

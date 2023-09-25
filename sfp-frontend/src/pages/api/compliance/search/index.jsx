@@ -27,12 +27,12 @@ export default async (req, res ) => {
         const Body = JSON.stringify(req.body)
         try {
             const apiResponse = await axios.post(
-                `${API_URL}/api/compliance/document/`,
+                `${API_URL}/api/compliance/document/search/`,
                 Body,
                 config
             )
             
-            if (apiResponse?.status === 201) {
+            if (apiResponse?.status === 200) {
                 
                 return res.status(apiResponse.status).json(
                     {

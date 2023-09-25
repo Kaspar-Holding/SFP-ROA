@@ -96,11 +96,13 @@ const CreateDocument = () => {
                 })
     
             } catch (error) {
+                // console.log(error?.response?.data?.error)
+                let errors = error?.response?.data?.error?.errors
                 Swal.fire({
                     position: "bottom-end",
                     type: "success",
                     title: "Error",
-                    html: `An error has occured.`,
+                    html: Object.entries(errors).map( ([key, value]) => `${(key[0].toUpperCase() + key.slice(1)).replace('_',' ')}: ${value}` ),
                     showConfirmButton: !1,
                     timer: 5000,
                     confirmButtonClass: "btn btn-primary",
@@ -118,9 +120,9 @@ const CreateDocument = () => {
     ])
 
     const [businessUnit, setBuisnessUnit] = useState([
-        { value: 'sfp', label: 'Succession Finance Planning', id:"1" ,name: "businessUnit" },
-        { value: 'fs4p', label: 'Financial Solutions 4 Professionals', id:"2" ,name: "businessUnit" },
-        { value: 'afp', label: 'Affiliated Finance Planning', id:"3" ,name: "businessUnit" }
+        { value: 'sfp', label: 'SFP', id:"1" ,name: "businessUnit" },
+        { value: 'fs4p', label: 'FS4P', id:"2" ,name: "businessUnit" },
+        { value: 'afp', label: 'AFP', id:"3" ,name: "businessUnit" }
     ])
 
     const [Advisors, setAdvisors] = useState([])
@@ -222,13 +224,13 @@ const CreateDocument = () => {
                                         <br/>
                                         <input type="text" value={
                                                 DocumentInitalData?.advisorEmail.includes('sfp') || DocumentInitalData?.advisorEmail.includes('succession') ?
-                                                "Succession Finance Planning" :
+                                                "SFP" :
                                                 DocumentInitalData?.advisorEmail.includes('fs4p') ?
-                                                "Financial Solutions 4 Professionals" :
+                                                "FS4P" :
                                                 DocumentInitalData?.advisorEmail.includes('kaspar') ?
-                                                "Succession Finance Planning" :
+                                                "SFP" :
                                                 DocumentInitalData?.advisorEmail.includes('sanlam') ?
-                                                "Aligned Financial Planning" : "Select the advisor first"
+                                                "AFP" : "Select the advisor first"
                                             }
                                             name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" 
                                         />                                       

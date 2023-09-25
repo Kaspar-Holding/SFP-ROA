@@ -792,6 +792,9 @@ header {
     line-height: normal;
 }
 
+.card {
+    font-family: 'Open Sans';
+}
 .app-dashboard-records {
     background-color: #ffffff;
     margin-top: 1%;

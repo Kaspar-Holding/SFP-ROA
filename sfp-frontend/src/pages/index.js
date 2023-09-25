@@ -11,6 +11,7 @@ const AppPage = () => {
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
     const user = useSelector(state=>state.auth.user)
     const [CurrentDate, setCurrentDate] = useState(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A') )
+    
     useEffect(() => {
         const interval = setInterval(() => {
                 setCurrentDate(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A') )

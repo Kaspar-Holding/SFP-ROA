@@ -980,7 +980,7 @@ const CompleteDocument = () => {
                         <div className="mx-auto">
                             <div className='row'>
                                 {
-                                    DocumentInitalData?.status == 0 ?
+                                    DocumentInitalData?.status === 0 || DocumentInitalData?.status === 2   ?
                                     <div className='col-lg-6'>
                                         <button className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100" type="submit">
                                             Save & Continue to Summary

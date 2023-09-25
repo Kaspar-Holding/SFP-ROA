@@ -17,7 +17,7 @@ const Compliance = () => {
 
     const onSearchQueryChange = (e) => {
         setSearchQuery(e.target.value)
-
+        searchReviews(e.target.value, 10, 1)
     }
 
     const lineSeries = [
@@ -124,6 +124,34 @@ const Compliance = () => {
     const [Reviews, setReviews] = useState([])
 
     const [KPIs, setKPIs] = useState({})
+
+    const searchReviews = async (search_query, page_size, page_number) => {
+
+        const Body = JSON.stringify({search_query, page_size, page_number})
+
+        try {
+            const response = await axios.post(
+                '/api/compliance/search',
+                Body,
+                config
+            )
+            setReviews(response?.data?.data?.results)
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "error",
+                title: "Error",
+                html: `${error?.response?.data?.error}`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+
+    }
+
 
     const loadReviews = async () => {
 
@@ -296,7 +324,7 @@ const Compliance = () => {
                                                             </td>
                                                             <td>
                                                                 {
-                                                                    Moment(review?.last_review_date).format('hh:mm A, DD MMMM YYYY')
+                                                                    Moment(review?.last_review_date).format('DD MMMM YYYY, hh:mm A')
                                                                 }
                                                             </td>
                                                             <td>
@@ -312,7 +340,7 @@ const Compliance = () => {
                                                                 <div className="btn-group" role="group" aria-label="Basic mixed styles example">
                                                                     {
                                                                         
-                                                                        review?.status == 0 ?
+                                                                        review?.status === 0 || review?.status === 2 ?
                                                                         <button 
                                                                             type="button" 
                                                                             className={"btn btn-secondary"}

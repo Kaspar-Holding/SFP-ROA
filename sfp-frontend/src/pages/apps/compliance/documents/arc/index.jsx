@@ -1324,18 +1324,31 @@ const ARCDocument = () => {
                         <div className="mx-auto">
                             <div className='row'>
                                 {
-                                    user?.is_superuser || user?.userType == 1 ?
-                                    <div className='col-lg-6'>
-                                        <button className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100" type="submit">
-                                            Save & Continue to Summary
-                                            <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-right'/>
+                                    user?.is_superuser || user?.userType === 1 ?
+                                    <div className={ DocumentInitalData?.status == 2 ? 'col-lg-4' : "col-lg-6"}>
+                                        <button 
+                                            className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
+                                            type='button'
+                                            onClick={()=>{router.push({pathname: "/apps/compliance/documents/view/gatekeeping", query: {'dId': dId}})}}
+                                        >
+                                            <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-left'/>
+                                            Back to Gatekeeping
                                         </button>
                                     </div>
                                     :<></>
                                 }
                                 {
-                                    Versions.length >= 1 ?
-                                    <div className='col-lg-6'>
+                                    (user?.is_superuser || user?.userType === 1 ) && DocumentInitalData?.status != 1 ?
+                                    <div className={ DocumentInitalData?.status == 2 ? 'col-lg-4' : "col-lg-6"}>
+                                        <button className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100" type="submit">
+                                            Save & Continue to Summary
+                                        </button>
+                                    </div>
+                                    :<></>
+                                }
+                                {
+                                    Versions.length >= 1 || user?.userType == 2 ?
+                                    <div className={ DocumentInitalData?.status == 1 ? 'col-lg-12' : DocumentInitalData?.status == 2 ? 'col-lg-4' : "col-lg-6"}>
                                         <button 
                                             className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
                                             type='button'
