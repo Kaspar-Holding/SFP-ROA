@@ -210,7 +210,7 @@ const CompleteDocument = () => {
                                             <a className="page-link disabled" href="#" aria-label="Previous">
                                                 <span aria-hidden="true">Review(s) :</span>
                                             </a>
-                                        </li>
+                                        </li> 
                                         {
                                             Versions.map(
                                                 (version, i) => {

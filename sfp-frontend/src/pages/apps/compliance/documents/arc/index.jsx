@@ -27,7 +27,7 @@ const ARCDocument = () => {
     const dId = router?.query?.dId
     
     const user = useSelector(state=>state.auth.user)
-
+    
     const [ARCAnswers, setARCAnswers] = useState({
 
         document: dId,
@@ -1347,7 +1347,7 @@ const ARCDocument = () => {
                                     :<></>
                                 }
                                 {
-                                    Versions.length >= 1 || user?.userType == 2 ?
+                                    Versions.length >= 1 || user?.userType === 2 ?
                                     <div className={ DocumentInitalData?.status == 1 ? 'col-lg-12' : DocumentInitalData?.status == 2 ? 'col-lg-4' : "col-lg-6"}>
                                         <button 
                                             className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
