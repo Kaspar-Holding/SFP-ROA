@@ -159,7 +159,7 @@ class ComplianceDocumentList(APIView):
                         else:
                             raise Http404
                         arc_status = False
-                        gatekeeper = UserAccount.objects.filter(pk=row['user']).values().first()
+                        gatekeeper = UserAccount.objects.filter(pk=row['user_id']).values().first()
                         row['gatekeeper'] = f"{gatekeeper['first_name']} {gatekeeper['last_name']} ({gatekeeper['email']})"
                         if row['status'] == 3 and not arc.objects.filter(document=row['id']).exists():
                             records.append(row)

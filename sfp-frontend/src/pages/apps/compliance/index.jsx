@@ -13,6 +13,7 @@ const Compliance = () => {
     const router = useRouter()
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
 
+    const user = useSelector(state=>state.auth.user)
     const [SearchQuery, setSearchQuery] = useState("")
 
     const onSearchQueryChange = (e) => {
@@ -299,6 +300,11 @@ const Compliance = () => {
                                         <th scope="col">#</th>
                                         <th scope="col">Policy Number</th>
                                         <th scope="col">Advisor</th>
+                                        {
+                                            user?.userType === 2?
+                                                <th scope="col">Advisor</th>
+                                            : ""
+                                        }
                                         <th scope="col">Last Review Date</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
@@ -322,6 +328,13 @@ const Compliance = () => {
                                                                     review?.advisor
                                                                 }
                                                             </td>
+                                                            {
+                                                                user?.userType === 2?
+                                                                <td>
+                                                                    {review?.gatekeeper}
+                                                                </td>
+                                                                : ""
+                                                            }
                                                             <td>
                                                                 {
                                                                     Moment(review?.last_review_date).format('DD MMMM YYYY, hh:mm A')
