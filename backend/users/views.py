@@ -9,7 +9,7 @@ def getUserInfo(request):
 
     user = request.user
 
-    userData = UserAccount.objects.filter(id=user.pk).values('id','email', 'first_name', 'last_name', 'is_superuser').first()
+    userData = UserAccount.objects.filter(id=user.pk).values('id','email', 'first_name', 'last_name', 'is_superuser', 'userType').first()
 
     return Response({"user" : userData}, 200)
 
