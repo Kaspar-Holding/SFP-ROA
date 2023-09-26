@@ -10,6 +10,8 @@ This project is built on the following Stack
 
 Deployed using Nginx and Gunicorn
 
+
+
 ## Updates
 
 ### 26 September 2023:
