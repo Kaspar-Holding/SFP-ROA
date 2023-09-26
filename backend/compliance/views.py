@@ -273,6 +273,10 @@ class ComplianceDocumentDetails(APIView):
                 user_bac = user_bac.values().first()
                 document['bac'] = f"{user_bac['id']}"
                 document['bac_name'] = f"{user_bac['first_name']} {user_bac['last_name']}"
+            arc_status = False
+            if arc.objects.filter(document=document['id']).exists():
+                arc_status = True
+            document['arc_status'] = arc_status
         # document['bac'] = advisor_profile['bac']
         # document['advisor_region'] = advisor_profile['region']
         

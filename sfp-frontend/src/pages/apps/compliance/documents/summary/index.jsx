@@ -308,7 +308,7 @@ const SummaryDocument = () => {
 
                                     </div>
                                     {
-                                        DocumentInitalData?.status != 1?
+                                        DocumentInitalData?.status != 1 && (user?.userType === 1 && !Summary?.arc_status)?
                                         <div className="card-footer text-muted d-flex justify-content-start align-items-center p-3">
                                             <div className="input-group mb-0">
                                                 <input 
@@ -350,7 +350,7 @@ const SummaryDocument = () => {
                                     className="btn btn-primary compliance-inital-card-button-text btn-sfp" 
                                     onClick={()=>{
                                         // router.push(`/apps/compliance/documents/complete/${dId}`)
-                                        DocumentInitalData?.status != 0 && DocumentInitalData?.status != 2 ?
+                                        DocumentInitalData?.status != 0 && DocumentInitalData?.status != 2 && (user?.userType !== 2 && !Summary?.arc_status) ?
                                         router.push({
                                             pathname: "/apps/compliance/documents/gatekeeping",
                                             query: {dId : dId}
@@ -373,7 +373,12 @@ const SummaryDocument = () => {
                                         className="btn btn-primary compliance-inital-card-button-text btn-sfp" 
                                         onClick={()=>{
                                             // router.push(`/apps/compliance/documents/complete/${dId}`)
-                                            DocumentInitalData?.status == 0 || DocumentInitalData?.status == 2 ?
+                                            user?.userType === 2?
+                                            router.push({
+                                                pathname: "/apps/compliance/documents/view/arc",
+                                                query: {dId : dId}
+                                            }) :
+                                            DocumentInitalData?.status == 0 || DocumentInitalData?.status >= 2 ?
                                             router.push({
                                                 pathname: "/apps/compliance/documents/arc",
                                                 query: {dId : dId}
@@ -445,7 +450,7 @@ const SummaryDocument = () => {
                                     DocumentInitalData?.status != 1 && user?.userType !== 2 ? 
                                     <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
                                         <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 1)}} className="btn btn-primary btn-lg btn-summary-2">
-                                            Approve {user?.userType}
+                                            Approve
                                         </button>
                                     </div>
                                     : <></>

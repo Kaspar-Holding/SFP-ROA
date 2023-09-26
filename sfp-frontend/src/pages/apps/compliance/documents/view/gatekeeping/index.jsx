@@ -118,7 +118,7 @@ const CompleteDocument = () => {
             )
 
             setDocumentInitalData(response?.data?.data)
-
+            
         } catch (error) {
             
         }
@@ -947,12 +947,15 @@ const CompleteDocument = () => {
                                 Back to Inital Data
                             </button>
                         </div>
+                        {
+                            console.log(DocumentInitalData?.arc_status)
+                        }
                         <div className='col-lg-6'>
                             <button 
                                 className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
                                 type='button'
                                 onClick={()=>{
-                                    DocumentInitalData?.status == 0 || DocumentInitalData?.status == 2 || DocumentInitalData?.status == 3 ?
+                                    user?.userType === 1 && (DocumentInitalData?.status == 0 || DocumentInitalData?.status == 2 || DocumentInitalData?.status == 3) ?
                                     router.push({pathname: "/apps/compliance/documents/arc", query: {'dId': dId}}) :
                                     router.push({pathname: "/apps/compliance/documents/view/arc", query: {'dId': dId}})
                                 }}
