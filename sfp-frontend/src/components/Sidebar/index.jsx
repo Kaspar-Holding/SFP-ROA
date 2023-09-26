@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Moment from 'moment'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { logout } from '@/actions/auth'
 const SideBar = ({appTitle, app}) => {
     
-    const user = useSelector(state=>state.auth.user)
 
     const router = useRouter()
+
+    const dispatch = useDispatch()  
+    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
+    const user = useSelector(state=>state.auth.user)
+
+    const logOutBtn = (e) => {
+        e.preventDefault()
+        if (dispatch && dispatch != null && dispatch != undefined) {
+            dispatch(
+                logout()
+            )
+        }
+    }
 
     const [CurrentDate, setCurrentDate] = useState(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A') )
     useEffect(() => {
@@ -91,7 +104,7 @@ const SideBar = ({appTitle, app}) => {
                 <div className='d-flex align-items-end flex-column px-auto'>
                     <div className="container sidebar-footer">
                         <div className="d-grid gap-2">
-                            <button className="btn btn-primary btn-sfp" type="button">
+                            <button onClick={(e)=>{logOutBtn(e)}} className="btn btn-primary btn-sfp" type="button">
                                 <i className='bi pe-none me-2 fa-solid fa-arrow-right-from-bracket'></i>
                                 Logout
                             </button>

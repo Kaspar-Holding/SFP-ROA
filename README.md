@@ -12,6 +12,14 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 26 September 2023:
+- 2358: Log Out Button in Left Panel is not operational - Debugged and Deployed
+- Tested UX for Superuser, ARC and GK and debugged all the picked up issues.
+- Approved is not getting selected for "client needs" question in ARC portion, rest all radio buttons are fine and getting selected - Debugged and Deployed
+- Change Approve to "Approved", "Not Approve to "Not Approved" and "Partially Approve" to "Partially Approved" in ARC - Updated and Deployed
+- All ARC questions are reset to "Not Approved" state if I go back from Summary screen using "Back to ARC questions" however ARC score remains intact. - Debugged and Deployed
+- Deployment
+
 ### 25 September 2023:
 - 2372: No Document is visible for ARC - Debugged and Deployed
 - 2373: Abbreviations to be used in Business Unit Name in Initial Information - Updated and Deployed

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Moment from 'moment'
 import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { logout } from '@/actions/auth'
 const DocumentSideBar = ({appTitle, app}) => {
     
     const user = useSelector(state=>state.auth.user)
@@ -11,6 +12,17 @@ const DocumentSideBar = ({appTitle, app}) => {
     const [CurrentDate, setCurrentDate] = useState(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A') )
 
     const [DocumentInitalData, setDocumentInitalData] = useState({})
+
+    const dispatch = useDispatch()  
+
+    const logOutBtn = (e) => {
+        e.preventDefault()
+        if (dispatch && dispatch != null && dispatch != undefined) {
+            dispatch(
+                logout()
+            )
+        }
+    }
 
     const router = useRouter()
    
@@ -90,7 +102,7 @@ const DocumentSideBar = ({appTitle, app}) => {
                 <div className='d-flex align-items-end flex-column px-auto'>
                     <div className="container sidebar-footer">
                         <div className="d-grid gap-2">
-                            <button className="btn btn-primary btn-sfp" type="button">
+                            <button onClick={(e)=>{logOutBtn(e)}} className="btn btn-primary btn-sfp" type="button">
                                 <i className='bi pe-none me-2 fa-solid fa-arrow-right-from-bracket'></i>
                                 Logout
                             </button>

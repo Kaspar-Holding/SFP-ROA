@@ -450,7 +450,7 @@ const SummaryDocument = () => {
                                     DocumentInitalData?.status != 1 && user?.userType !== 2 ? 
                                     <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
                                         <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 1)}} className="btn btn-primary btn-lg btn-summary-2">
-                                            Approve
+                                            {Summary?.arc_status ? "Approved" : "Approve"}
                                         </button>
                                     </div>
                                     : <></>
@@ -459,7 +459,7 @@ const SummaryDocument = () => {
                                     DocumentInitalData?.status != 1 && DocumentInitalData?.status != 2 && user?.userType !== 2 ? 
                                     <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
                                         <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 2)}} className="btn btn-primary btn-lg btn-summary-3">
-                                            Not Approve
+                                            {Summary?.arc_status ? "Not Approved" : "Not Approve"}
                                         </button>
                                     </div>
                                     : <></>
@@ -468,7 +468,7 @@ const SummaryDocument = () => {
                                     DocumentInitalData?.status == 3 && user?.userType !== 2 ? 
                                     <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
                                         <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 4)}} className="btn btn-primary btn-lg btn-summary-4">
-                                            Partially Approve
+                                            {Summary?.arc_status ? "Partially Approved" : "Partially Approve"}
                                         </button>
                                     </div>
                                     : <></>
