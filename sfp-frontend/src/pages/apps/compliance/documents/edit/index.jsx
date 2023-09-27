@@ -143,6 +143,8 @@ const EditDocument = () => {
             
         }
     }
+    
+    const user = useSelector(state=>state.auth.user)
 
     useEffect(() => {
         LoadData(dId)
@@ -152,6 +154,9 @@ const EditDocument = () => {
         router.push('/auth/login')
     }
 
+    if (user?.userType === 6) {
+        router.push('/')
+    }
     
 
     return (

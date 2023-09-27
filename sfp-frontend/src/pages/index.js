@@ -76,20 +76,24 @@ const AppPage = () => {
                                             </div>
                                         </Link>
                                     </div>
-                                    <div class="col">
-                                        <Link href="/apps/compliance" style={{textDecoration: "none"}}>
-                                            <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
-                                                <div className="card-body">
-                                                    <br/>
-                                                    <h5 className="card-title text-center"><i className="fa-solid fa-check-double"></i></h5>
-                                                    <br/>
-                                                    <p className="card-text text-center">
-                                                        <Link href="/apps/compliance" className="appLabel">Compliance</Link>
-                                                    </p>
+                                    {
+                                        user?.userType === 1 || user?.userType === 2 ?
+                                        <div class="col">
+                                            <Link href="/apps/compliance" style={{textDecoration: "none"}}>
+                                                <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
+                                                    <div className="card-body">
+                                                        <br/>
+                                                        <h5 className="card-title text-center"><i className="fa-solid fa-check-double"></i></h5>
+                                                        <br/>
+                                                        <p className="card-text text-center">
+                                                            <Link href="/apps/compliance" className="appLabel">Compliance</Link>
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </Link>
-                                    </div>
+                                            </Link>
+                                        </div>
+                                        : <></>
+                                    }
                                     <div class="col">
                                         <Link href="/" style={{textDecoration: "none"}}>
                                             <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">

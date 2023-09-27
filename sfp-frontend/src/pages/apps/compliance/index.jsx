@@ -188,6 +188,10 @@ const Compliance = () => {
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
     }
+    
+    if (user?.userType === 6) {
+        router.push('/')
+    }
 
     return (
         <Layout
@@ -353,7 +357,7 @@ const Compliance = () => {
                                                                 <div className="btn-group" role="group" aria-label="Basic mixed styles example">
                                                                     {
                                                                         
-                                                                        review?.status === 0 || review?.status === 2 ?
+                                                                        !user?.is_superuser && (review?.status === 0 || review?.status === 2) ?
                                                                         <button 
                                                                             type="button" 
                                                                             className={"btn btn-secondary"}

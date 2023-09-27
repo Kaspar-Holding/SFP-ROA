@@ -168,6 +168,9 @@ const CompleteDocument = () => {
         router.push('/auth/login')
     }
 
+    if (user?.userType === 6) {
+        router.push('/')
+    }
     
 
     return (

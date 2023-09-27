@@ -14,6 +14,16 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 27 September 2023:
+- Updated Superuser view user experience. Can only edit now.
+- Type of Replacement is only applicable if Replacement is selected in Gatekeeping - Debugged and Deployed
+- 2375: Make Radio Buttons a bit bold and closer - Updated and Deployed
+- 2362: Not Approved Form should remain Editable - Debugged and Deployed
+- 2361: Purposeless button - Not a bug.
+- Added redirect for Advisors.
+- Super users/Admin should be able to see all compliance documents in their login. currently they are only able to see referred cases - Debugged and Deployed
+- Deployment
+
 ### 26 September 2023:
 - 2358: Log Out Button in Left Panel is not operational - Debugged and Deployed
 - Tested UX for Superuser, ARC and GK and debugged all the picked up issues.

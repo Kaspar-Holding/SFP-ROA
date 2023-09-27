@@ -125,6 +125,8 @@ class ComplianceDocumentList(APIView):
                         raise Http404
                     dId = row['id']
                     arc_status = False
+                    gatekeeper = UserAccount.objects.filter(pk=row['user_id']).values().first()
+                    row['gatekeeper'] = f"{gatekeeper['first_name']} {gatekeeper['last_name']} ({gatekeeper['email']})"
                     if arc.objects.filter(document=row['id']).exists():
                         arc_status = True
                     row['arc_status'] = arc_status

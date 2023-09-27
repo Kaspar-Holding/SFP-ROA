@@ -48,10 +48,18 @@ const EditDocument = () => {
         e.preventDefault()
         // createInitialDocument(DocumentInitalData?.id)
         // router.push(`/apps/compliance/documents/view/gatekeeping/${dId}`)
-        router.push({
-            pathname: "/apps/compliance/documents/view/gatekeeping",
-            query: {dId : dId}
-        })
+        if (!DocumentInitalData?.arc_status || DocumentInitalData?.status === 2) {
+            router.push({
+                pathname: "/apps/compliance/documents/gatekeeping",
+                query: {dId : dId}
+            })
+
+        }else {
+            router.push({
+                pathname: "/apps/compliance/documents/view/gatekeeping",
+                query: {dId : dId}
+            })
+        }
     }
     
     const createInitialDocument = async() => {
@@ -138,6 +146,9 @@ const EditDocument = () => {
         router.push('/auth/login')
     }
 
+    if (user?.userType === 6) {
+        router.push('/')
+    }
     
 
     return (

@@ -220,6 +220,7 @@ const CompleteDocument = () => {
     }
 
 
+    const user = useSelector(state=>state.auth.user)
     useEffect(() => {
 
         if (dId) {
@@ -231,6 +232,9 @@ const CompleteDocument = () => {
     
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
+    }
+    if (user?.userType === 6) {
+        router.push('/')
     }
 
     
@@ -868,41 +872,44 @@ const CompleteDocument = () => {
                                                 </>
                                             }
                                             {
-                                                (DocumentInitalData?.businessType != 2 && DocumentInitalData?.businessType != 4 && DocumentInitalData?.businessType != 11 && DocumentInitalData?.businessType != 13) || (DocumentInitalData?.businessType > 5 && DocumentInitalData?.businessType < 9) ?
-                                                <>
-                                                    <div className='col py-3 border-bottom'>
-                                                        <h6 className='gatekeeping-question'>
-                                                            Type of Replacement
-                                                        </h6>
-                                                        <div className='row'>
-                                                            <div className='col-lg-4'>
-                                                                <div className="form-check">
-                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{onFormUpdate(e)}} value={100} checked={Data?.replacement_type == Number("100") ? true : false} name="replacement_type" id="replacement_type"/>
-                                                                    <label className="form-check-label" for="replacement_type">
-                                                                        Yes
-                                                                    </label>
+                                                Data?.replacement == Number("100") ?
+                                                    (DocumentInitalData?.businessType != 2 && DocumentInitalData?.businessType != 4 && DocumentInitalData?.businessType != 11 && DocumentInitalData?.businessType != 13) || (DocumentInitalData?.businessType > 5 && DocumentInitalData?.businessType < 9) ?
+                                                    <>
+                                                        <div className='col py-3 border-bottom'>
+                                                            <h6 className='gatekeeping-question'>
+                                                                Type of Replacement
+                                                            </h6>
+                                                            <div className='row'>
+                                                                <div className='col-lg-4'>
+                                                                    <div className="form-check">
+                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{onFormUpdate(e)}} value={100} checked={Data?.replacement_type == Number("100") ? true : false} name="replacement_type" id="replacement_type"/>
+                                                                        <label className="form-check-label" for="replacement_type">
+                                                                            Yes
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div className='col-lg-4'>
-                                                                <div className="form-check">
-                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{onFormUpdate(e)}} value={0} checked={Data?.replacement_type == Number("0") ? true : false} name="replacement_type" id="replacement_type"/>
-                                                                    <label className="form-check-label" for="replacement_type">
-                                                                        No
-                                                                    </label>
+                                                                <div className='col-lg-4'>
+                                                                    <div className="form-check">
+                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{onFormUpdate(e)}} value={0} checked={Data?.replacement_type == Number("0") ? true : false} name="replacement_type" id="replacement_type"/>
+                                                                        <label className="form-check-label" for="replacement_type">
+                                                                            No
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div className='col-lg-4'>
-                                                                <div className="form-check">
-                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{onFormUpdate(e)}} value={1} checked={Data?.replacement_type == Number("1") ? true : false} name="replacement_type" id="replacement_type"/>
-                                                                    <label className="form-check-label" for="replacement_type">
-                                                                        N/A
-                                                                    </label>
+                                                                <div className='col-lg-4'>
+                                                                    <div className="form-check">
+                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{onFormUpdate(e)}} value={1} checked={Data?.replacement_type == Number("1") ? true : false} name="replacement_type" id="replacement_type"/>
+                                                                        <label className="form-check-label" for="replacement_type">
+                                                                            N/A
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <br/>
-                                                </>
+                                                        <br/>
+                                                    </>
+                                                    :<>
+                                                    </>
                                                 :<>
                                                 </>
                                             }
