@@ -138,6 +138,7 @@ const EditDocument = () => {
         }
     }
 
+    const user = useSelector(state=>state.auth.user)
     useEffect(() => {
         LoadData(dId)
     }, [])

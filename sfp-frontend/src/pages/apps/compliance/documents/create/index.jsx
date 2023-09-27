@@ -171,6 +171,7 @@ const CreateDocument = () => {
         }
     }   
     
+    const user = useSelector(state=>state.auth.user)
     useEffect(() => {
         LoadAdvisors()
     }, [])
