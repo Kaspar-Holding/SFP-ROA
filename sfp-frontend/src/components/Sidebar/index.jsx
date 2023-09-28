@@ -54,15 +54,15 @@ const SideBar = ({appTitle, app}) => {
                         {CurrentDate}
                     </p>
                 </div>
+                <div className="d-grid gap-2">
+                    <Link href={`/apps/${app}/documents/create`} className="btn btn-primary btn-sfp" >
+                        <i className='bi pe-none me-2 fa-solid fa-file'></i>
+                        Create new Form
+                    </Link>
+                </div>
                 {
                     app === 'compliance' && user?.userType === 2 ?
                     <>
-                        <div className="d-grid gap-2">
-                            <Link href={`/apps/${app}/documents/create`} className="btn btn-primary btn-sfp" >
-                                <i className='bi pe-none me-2 fa-solid fa-file'></i>
-                                Create new Form
-                            </Link>
-                        </div>
                     </>
                     : <></>
                 }

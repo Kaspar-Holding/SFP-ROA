@@ -14,6 +14,13 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 28 September 2023:
+- The ROA type should include radio buttons to indicate different types of ROA’s we use (SanFin ROA, SFP ROA, Glacier Ice), also type of replacement should include radio buttons to indicate whether its (“Rule 19”, “Non-Rule 19”). Updated and Deployed
+- The reject (Not approved) button does not appear - Debugged and Deployed
+- ROA Type and Replacement Type were removed from scoring system.
+- ARCs can create the form again.
+- Deployment on Production / Staging 
+
 ### 27 September 2023:
 - Updated Superuser view user experience. Can only edit now.
 - Type of Replacement is only applicable if Replacement is selected in Gatekeeping - Debugged and Deployed
