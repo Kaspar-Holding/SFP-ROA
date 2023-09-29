@@ -253,13 +253,13 @@ class ComplianceDocumentDetails(APIView):
         document['advisor_email'] = advisor['email']
         profile = user_profile.objects.filter(user=advisor['id'])
         # advisor['email'] = advisor['email']
-        document['IdNumber'] = ""
-        document['advisorEmail'] = advisor['email']
-        document['bac'] = ""
-        document['bac_name'] = ""
-        document['supervisor'] = ""
-        document['supervisor_name'] = ""
-        document['region'] = ""
+        # document['IdNumber'] = ""
+        # document['advisorEmail'] = advisor['email']
+        # document['bac'] = ""
+        # document['bac_name'] = ""
+        # document['supervisor'] = ""
+        # document['supervisor_name'] = ""
+        # document['region'] = ""
         if profile.exists():
             profile = user_profile.objects.filter(user=advisor['id']).values().first()
             document['IdNumber'] = profile['id_number']
@@ -279,6 +279,12 @@ class ComplianceDocumentDetails(APIView):
             if arc.objects.filter(document=document['id']).exists():
                 arc_status = True
             document['arc_status'] = arc_status
+        else:
+            user_bac = UserAccount.objects.filter(pk=document['BAC'])
+            if user_bac.exists():
+                user_bac = user_bac.values().first()
+                document['bac'] = f"{user_bac['id']}"
+                document['bac_name'] = f"{user_bac['first_name']} {user_bac['last_name']}"
         # document['bac'] = advisor_profile['bac']
         # document['advisor_region'] = advisor_profile['region']
         
@@ -1391,6 +1397,30 @@ class arcList(APIView):
         return Response({"errors":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class loadRegions(APIView):
+
+    def get(self, request):
+        user = request.user
+        if user.is_superuser or user.userType == 1 or user.userType == 2:
+            regionsData = regions.objects.all()
+            if regionsData.exists():
+                regionsData = regionsData.values()
+                data = []
+                for region in regionsData:
+                    data.append({
+                        "value" : region['id'],
+                        "label" : f"{region['region']}",
+                        "name" : "region",
+                        "id" : f"{region['region']}",
+                    })
+                return Response({
+                    "regions" : data
+                })
+            else:
+                raise Http404
+        else:
+            return Response(status.HTTP_401_UNAUTHORIZED)
+        
 class loadagents(APIView):
 
     def get(self, request):
@@ -1414,6 +1444,32 @@ class loadagents(APIView):
                     })
                 return Response({
                     "advisors" : data
+                })
+            else:
+                raise Http404
+        else:
+            return Response(status.HTTP_401_UNAUTHORIZED)
+
+class loadbacs(APIView):
+
+    def get(self, request):
+        user = request.user
+        if user.is_superuser or user.userType == 1 or user.userType == 2:
+            bacs = UserAccount.objects.filter(userType = 5)
+            if bacs.exists():
+                bacs = bacs.values()
+                data = []
+                for advisor in bacs:
+                    profile = user_profile.objects.filter(user=advisor['id'])
+                    id_number = ""
+                    data.append({
+                        "value" : advisor['id'],
+                        "label" : f"{advisor['first_name']} {advisor['last_name']}",
+                        "name" : "BAC",
+                        "id" : advisor['id'],
+                    })
+                return Response({
+                    "bacs" : data
                 })
             else:
                 raise Http404

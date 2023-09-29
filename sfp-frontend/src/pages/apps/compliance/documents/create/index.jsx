@@ -55,7 +55,9 @@ const CreateDocument = () => {
             ...DocumentInitalData,
             [e.name] : e.id
         })
-        LoadAdvisorDetail(DocumentInitalData, e.id)
+        if (e.name === "advisor"){
+            LoadAdvisorDetail(DocumentInitalData, e.id)
+        }
     }
 
     const createInitialDocumentBtn = (e) => {
@@ -113,19 +115,9 @@ const CreateDocument = () => {
 
     }
 
-    const [options, setoptions] = useState([
-        { name: "advisor", id:"1", value: 'armughan', label: 'Armughan' },
-        { name: "advisor", id:"2", value: 'ali', label: 'Ali' },
-        { name: "advisor", id:"3", value: 'areeb', label: 'Areeb' }
-    ])
-
-    const [businessUnit, setBuisnessUnit] = useState([
-        { value: 'sfp', label: 'SFP', id:"1" ,name: "businessUnit" },
-        { value: 'fs4p', label: 'FS4P', id:"2" ,name: "businessUnit" },
-        { value: 'afp', label: 'AFP', id:"3" ,name: "businessUnit" }
-    ])
-
     const [Advisors, setAdvisors] = useState([])
+    const [BACs, setBACs] = useState([])
+    const [Regions, setRegions] = useState([])
 
     const LoadAdvisors = async () => {
         try {
@@ -148,13 +140,55 @@ const CreateDocument = () => {
         }
     }   
 
+    const LoadBACs = async () => {
+        try {
+            const response = await axios.get('/api/account/bacs', config)
+            
+            setBACs(response?.data?.data?.bacs)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    }   
+    
+    const LoadRegionss = async () => {
+        try {
+            const response = await axios.get('/api/account/regions', config)
+            // console.log(first)
+            setRegions(response?.data?.data?.regions)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    }   
+
     const LoadAdvisorDetail = async (inputData, uId) => {
 
         const Body = JSON.stringify({data: inputData, advisorId: uId})
 
         try {
             const response = await axios.post('/api/account/agents/info', Body, config)
-            console.log(response?.data?.data?.data)
+
             setDocumentInitalData(response?.data?.data?.data)
         } catch (error) {
             Swal.fire({
@@ -174,6 +208,8 @@ const CreateDocument = () => {
     const user = useSelector(state=>state.auth.user)
     useEffect(() => {
         LoadAdvisors()
+        LoadBACs()
+        LoadRegionss()
     }, [])
     
 
@@ -243,11 +279,22 @@ const CreateDocument = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Region</label>
-                                        <input disabled type="text" value={DocumentInitalData?.region} name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        {
+                                            DocumentInitalData?.region === "" ?
+                                            <Select options={Regions} onChange={(e)=>{onSelectChange(e)}} className="searchSelect" placeholder="Search the Region"/>
+                                            :
+                                            // <input disabled type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input disable={DocumentInitalData?.region === ""} required={DocumentInitalData?.region === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.region} name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        }
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">BAC</label>
-                                        <input disabled type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        {
+                                            DocumentInitalData?.bac_name === "" ?
+                                            <Select options={BACs} onChange={(e)=>{onSelectChange(e)}} className="searchSelect" placeholder="Search the BAC"/>
+                                            :
+                                            <input disable={DocumentInitalData?.bac_name === ""} required={DocumentInitalData?.bac_name === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        }
                                         {/* <select className="form-select" name="BAC" value={DocumentInitalData?.bac} aria-label="Default select example">
                                             <option value={0}>Select Business Type</option>
                                             <option value="1">Elrike</option>
@@ -281,7 +328,7 @@ const CreateDocument = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">ID Number</label>
-                                        <input disabled onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.IdNumber} name="IdNumber" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        <input disable={DocumentInitalData?.IdNumber === ""} required={DocumentInitalData?.IdNumber === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.IdNumber} name="IdNumber" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                     </div>
                                 </div>
                                 <div className='col-lg-4 col-md-6 col-sm-12'>                     
@@ -295,7 +342,7 @@ const CreateDocument = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Supervision</label>
-                                        <input disabled onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.supervisor_name} name="supervisor_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        <input disable={DocumentInitalData?.supervisor_name === ""} required={DocumentInitalData?.supervisor_name === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.supervisor_name} name="supervisor_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Policy Number</label>

@@ -77,7 +77,7 @@ const AppPage = () => {
                                         </Link>
                                     </div>
                                     {
-                                        user?.userType === 1 || user?.userType === 2 ?
+                                        user?.is_superuser || user?.userType === 1 || user?.userType === 2 ?
                                         <div class="col">
                                             <Link href="/apps/compliance" style={{textDecoration: "none"}}>
                                                 <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">

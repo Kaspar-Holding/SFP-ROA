@@ -14,6 +14,10 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 29 September 2023:
+- Added Custom User Profile filling in case of missing data. Developed and Deployed
+- Deployment on Production / Staging 
+
 ### 28 September 2023:
 - The ROA type should include radio buttons to indicate different types of ROA’s we use (SanFin ROA, SFP ROA, Glacier Ice), also type of replacement should include radio buttons to indicate whether its (“Rule 19”, “Non-Rule 19”). Updated and Deployed
 - The reject (Not approved) button does not appear - Debugged and Deployed

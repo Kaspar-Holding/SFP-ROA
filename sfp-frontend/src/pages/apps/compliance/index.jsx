@@ -188,7 +188,7 @@ const Compliance = () => {
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
     }
-    
+
     if (user?.userType === 6) {
         router.push('/')
     }
