@@ -57,7 +57,7 @@ const SideBar = ({appTitle, app}) => {
                 <div className="d-grid gap-2">
                     <Link href={`/apps/${app}/documents/create`} className="btn btn-primary btn-sfp" >
                         <i className='bi pe-none me-2 fa-solid fa-file'></i>
-                        Create new Form
+                        Create new Document
                     </Link>
                 </div>
                 {

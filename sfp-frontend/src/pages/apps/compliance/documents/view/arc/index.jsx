@@ -152,6 +152,29 @@ const CompleteDocument = () => {
         }
     }
 
+    
+    const loadVersion = async (e, vId, vNum) => {
+        e.preventDefault()
+        setCurrentVersion(vNum)
+        const Body = JSON.stringify({
+            vId: vId
+        })
+        
+        try {
+            const response = await axios.post(
+                `/api/compliance/arc/version`,
+                Body,
+                config
+            )
+
+            setARCAnswers(response?.data?.data)
+            
+        } catch (error) {
+            
+            
+        }
+    }
+
 
 
     useEffect(() => {
@@ -208,7 +231,7 @@ const CompleteDocument = () => {
                                                                         "page-link active":
                                                                         "page-link"
                                                                     } 
-                                                                    onClick={(e)=>{loadVersion(e, version?.id)}}
+                                                                    onClick={(e)=>{loadVersion(e, version?.id, version?.version)}}
                                                                     href="#"
                                                                 >
                                                                     {version?.version}

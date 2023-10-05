@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 import Moment from 'moment'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-// import Chart from "react-apexcharts"
+import Chart from "react-apexcharts"
 
 
 const Compliance = () => {
@@ -15,7 +15,8 @@ const Compliance = () => {
 
     const user = useSelector(state=>state.auth.user)
     const [SearchQuery, setSearchQuery] = useState("")
-
+    const [KPITrend, setKPITrend] = useState([])
+    console.log(KPITrend)
     const onSearchQueryChange = (e) => {
         setSearchQuery(e.target.value)
         searchReviews(e.target.value, 10, 1)
@@ -91,10 +92,9 @@ const Compliance = () => {
     const pieChartOptions = {
         // colors: ["#FEEAE5", "#FFE5E9", "#FFFAE4", "#F6E4FF"],
         chart: {
-            width: 380,
             type: 'pie',
         },
-        labels: ['Total', 'Approved', 'Not Approved', 'Referred'],
+        labels: ['Created', 'Approved', 'Not Approved', 'Referred'],
         responsive: [
             {
                 breakpoint: 480,
@@ -103,7 +103,7 @@ const Compliance = () => {
                     width: 200
                 },
                 legend: {
-                    show: false
+                    show: false 
                 }
             }
         }],
@@ -162,7 +162,8 @@ const Compliance = () => {
                 config
             )
             setReviews(response?.data?.data?.data)
-            setKPIs(response?.data?.data?.kpis)
+            setKPIs(response?.data?.data?.trend)
+            setKPITrend(response?.data?.data?.trend)
         } catch (error) {
             Swal.fire({
                 position: "bottom-end",
@@ -213,7 +214,7 @@ const Compliance = () => {
                                         <div className="card-body">
                                             <h1 className='kpi-number'>
                                                 {
-                                                    KPIs?.total
+                                                    KPIs?.created ? KPIs?.created : 0 
                                                 }
                                             </h1>
                                             <p className='kpi-title'>
@@ -227,7 +228,7 @@ const Compliance = () => {
                                         <div className="card-body">
                                             <h1 className='kpi-number'>
                                                 {
-                                                    KPIs?.approved
+                                                    KPIs?.approved ? KPIs?.approved : 0 
                                                 }
                                             </h1>
                                             <p className='kpi-title'>
@@ -241,7 +242,7 @@ const Compliance = () => {
                                         <div className="card-body">
                                             <h1 className='kpi-number'>
                                                 {
-                                                    KPIs?.rejected
+                                                    KPIs?.rejected ? KPIs?.rejected : 0 
                                                 }
                                             </h1>
                                             <p className='kpi-title'>
@@ -255,7 +256,7 @@ const Compliance = () => {
                                         <div className="card-body">
                                             <h1 className='kpi-number'>
                                                 {
-                                                    KPIs?.referred
+                                                    KPIs?.referred ? KPIs?.referred : 0 
                                                 }
                                             </h1>
                                             <p className='kpi-title'>
@@ -269,7 +270,7 @@ const Compliance = () => {
                         <div className='col-lg-3 app-dashboard-progress'>
                             <h1 className='app-dashboard-header'>Progress</h1>
                             <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
-                            {/* <Chart options={pieChartOptions} series={series} type="pie" width={250} /> */}
+                            <Chart options={pieChartOptions} series={KPITrend ? Object.values(KPITrend) : [0, 0, 0, 0]} type="pie" width={'100%'} />
                         </div>
                         <div className='col-lg-4 app-dashboard-trend'>
                             <h1 className='app-dashboard-header'>Trending Data</h1>
@@ -306,7 +307,7 @@ const Compliance = () => {
                                         <th scope="col">Advisor</th>
                                         {
                                             user?.userType === 1?
-                                                <th scope="col">Gatekeeper</th>
+                                                <th scope="col">Gatekeeper / ARC</th>
                                             : ""
                                         }
                                         <th scope="col">Last Review Date</th>
@@ -350,7 +351,8 @@ const Compliance = () => {
                                                                     review?.status === 1 ? "Approved" :
                                                                     review?.status === 2 ? "Not Approved" :
                                                                     review?.status === 3 ? "Referred" :
-                                                                    review?.status === 4 ? "Partial Approved" : ""
+                                                                    review?.status === 4 ? "Partial Approved" : 
+                                                                    review?.status === 5 ? "Picked Up" : ""
                                                                 }
                                                             </td>
                                                             <td>

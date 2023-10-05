@@ -21,6 +21,7 @@ class ComplianceDocument(models.Model):
     advisorEmail = models.TextField( default="", blank=True)
     supervisor = models.TextField( default="", blank=True)
     region = models.TextField( default="", blank=True)
+    starting_point = models.IntegerField( default=2)
     
     status = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)

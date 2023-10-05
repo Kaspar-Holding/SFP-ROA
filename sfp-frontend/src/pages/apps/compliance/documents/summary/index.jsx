@@ -321,7 +321,7 @@ const SummaryDocument = () => {
 
                                             </div>
                                             {
-                                                DocumentInitalData?.status >= 2 || (user?.userType === 1 && !Summary?.arc_status)?
+                                                DocumentInitalData?.status >= 2 || (user?.userType === 1 && !Summary?.arc_status) || (user?.userType === 1 && DocumentInitalData?.starting_point == 1)?
                                                 <div className="card-footer text-muted d-flex justify-content-start align-items-center p-3">
                                                     <div className="input-group mb-0">
                                                         <input 
@@ -358,27 +358,37 @@ const SummaryDocument = () => {
                                 </div>
                                 <br/>
                                 <div className='row row-cols-2'>
-                                    <div className="col">
-                                        <button 
-                                            className="btn btn-primary compliance-inital-card-button-text btn-sfp" 
-                                            onClick={()=>{
-                                                // router.push(`/apps/compliance/documents/complete/${dId}`)
-                                                DocumentInitalData?.status != 0 || DocumentInitalData?.status != 2 || (user?.userType !== 2 && !Summary?.arc_status) ?
-                                                router.push({
-                                                    pathname: "/apps/compliance/documents/gatekeeping",
-                                                    query: {dId : dId}
-                                                })
-                                                :
-                                                router.push({
-                                                    pathname: "/apps/compliance/documents/view/gatekeeping",
-                                                    query: {dId : dId}
-                                                })
-                                            }}
-                                        >
-                                            Back to Gatekeeping Questions
-                                            <i className='bi pe-none mx-2 me-2 fa-solid fa-check'/>
-                                        </button>
-                                    </div>
+                                    {
+                                        DocumentInitalData?.starting_point == 2 ?
+                                        <div className="col">
+                                            <button 
+                                                className="btn btn-primary compliance-inital-card-button-text btn-sfp" 
+                                                onClick={()=>{
+                                                    // router.push(`/apps/compliance/documents/complete/${dId}`)
+                                                    user?.userType == 1 && Summary?.arc_status && (DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5) ?
+                                                    router.push({
+                                                        pathname: "/apps/compliance/documents/view/gatekeeping",
+                                                        query: {dId : dId}
+                                                    })
+                                                    :
+                                                    DocumentInitalData?.status != 0 || DocumentInitalData?.status != 2 || (user?.userType == 1 && Summary?.arc_status) ?
+                                                    router.push({
+                                                        pathname: "/apps/compliance/documents/gatekeeping",
+                                                        query: {dId : dId}
+                                                    })
+                                                    :
+                                                    router.push({
+                                                        pathname: "/apps/compliance/documents/view/gatekeeping",
+                                                        query: {dId : dId}
+                                                    })
+                                                }}
+                                            >
+                                                Back to Gatekeeping Questions
+                                                <i className='bi pe-none mx-2 me-2 fa-solid fa-check'/>
+                                            </button>
+                                        </div>
+                                        : <></>
+                                    }
                                     <div className="col">
                                     {
                                         DocumentInitalData?.status >= 3 || Summary?.arc_status ?
@@ -419,27 +429,31 @@ const SummaryDocument = () => {
                             <div className='position-absolute bottom-0 start-0 w-100'>
                                 <div className="container">
                                     <div className={DocumentInitalData?.status == 3 ? 'row row-cols-5' : 'row'}>
-                                        <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
-                                            <p className='calculated_score'>
-                                                Calculated Score (Gatekeeping)
-                                            </p>
-                                            <div className='row'>
-                                                <div className='col-lg-4'>
-                                                    <button type="button" className={Summary?.score < 80 ? "btn btn-primary btn-lg btn-summary-danger" : "btn btn-primary btn-lg btn-summary-1"}>
-                                                        <Image src={graphImage} width={30} height={30} />
-                                                    </button>
-                                                </div>
-                                                <div className={Summary?.score < 80 ? "col-lg-6 compliance-score-div-danger text-center" : "col-lg-6 compliance-score-div text-center"}>
-                                                    <span className={Summary?.score < 80 ? 'compliance-score-danger' : "compliance-score"}>
-                                                        {Summary?.score} 
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </div>
                                         {
-                                            Summary?.arc_status ? 
-                                            <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
+                                            DocumentInitalData?.starting_point == 2 ?
+                                            <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
+                                                <p className='calculated_score'>
+                                                    Calculated Score {DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? "(GK)" : "(Gatekeeping)"}
+                                                </p>
+                                                <div className='row'>
+                                                    <div className='col-lg-4'>
+                                                        <button type="button" className={Summary?.score < 80 ? "btn btn-primary btn-lg btn-summary-danger" : "btn btn-primary btn-lg btn-summary-1"}>
+                                                            <Image src={graphImage} width={30} height={30} />
+                                                        </button>
+                                                    </div>
+                                                    <div className={Summary?.score < 80 ? "col-lg-6 compliance-score-div-danger text-center" : "col-lg-6 compliance-score-div text-center"}>
+                                                        <span className={Summary?.score < 80 ? 'compliance-score-danger' : "compliance-score"}>
+                                                            {Summary?.score} 
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            : <></>
+                                        }
+                                        {
+                                            Summary?.arc_status || DocumentInitalData?.starting_point == 1 ? 
+                                            <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                 <p className='calculated_score'>
                                                     Calculated Score (ARC)
                                                 </p>
@@ -462,7 +476,7 @@ const SummaryDocument = () => {
                                         {
                                             !user?.is_superuser ? 
                                                 DocumentInitalData?.status != 1 || (user?.userType !== 2 && !DocumentInitalData?.arc_status) ? 
-                                                <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
+                                                <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                     <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 1)}} className="btn btn-primary btn-lg btn-summary-2">
                                                         {Summary?.arc_status ? "Approved" : "Approve"}
                                                     </button>
@@ -473,7 +487,7 @@ const SummaryDocument = () => {
                                         {
                                             !user?.is_superuser ?
                                                 (DocumentInitalData?.status != 1 && DocumentInitalData?.status != 2) || (user?.userType !== 2 && !DocumentInitalData?.arc_status) ? 
-                                                <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
+                                                <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                     <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 2)}} className="btn btn-primary btn-lg btn-summary-3">
                                                         {Summary?.arc_status ? "Not Approved" : "Not Approve"}
                                                     </button>
@@ -483,8 +497,8 @@ const SummaryDocument = () => {
                                         }
                                         {
                                             !user?.is_superuser ? 
-                                                DocumentInitalData?.status == 3 || (user?.userType !== 2 && !DocumentInitalData?.arc_status) ? 
-                                                <div className={DocumentInitalData?.status == 3 ? 'col' : 'col-lg-3'}>
+                                                DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 || (user?.userType !== 2 && !DocumentInitalData?.arc_status) ? 
+                                                <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                     <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 4)}} className="btn btn-primary btn-lg btn-summary-4">
                                                         {Summary?.arc_status ? "Partially Approved" : "Partially Approve"}
                                                     </button>

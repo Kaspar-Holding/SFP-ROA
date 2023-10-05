@@ -78,8 +78,8 @@ const CreateDocument = () => {
                     Body,
                     config
                 )
-    
-    
+                
+                
                 Swal.fire({
                     position: "bottom-end",
                     type: "success",
@@ -90,12 +90,21 @@ const CreateDocument = () => {
                     confirmButtonClass: "btn btn-primary",
                     buttonsStyling: !1,
                 })
-    
+                
                 // router.push(`/apps/compliance/documents/complete/${response?.data?.data?.id}`)
-                router.push({
-                    pathname: "/apps/compliance/documents/gatekeeping",
-                    query: {dId : response?.data?.data?.id}
-                })
+                if (response?.data?.data?.starting_point == 1){
+                    router.push({
+                        pathname: "/apps/compliance/documents/arc",
+                        query: {dId : response?.data?.data?.id}
+                    })
+                    
+                }
+                else{
+                    router.push({
+                        pathname: "/apps/compliance/documents/gatekeeping",
+                        query: {dId : response?.data?.data?.id}
+                    })
+                }
     
             } catch (error) {
                 // console.log(error?.response?.data?.error)
@@ -206,6 +215,7 @@ const CreateDocument = () => {
     }   
     
     const user = useSelector(state=>state.auth.user)
+
     useEffect(() => {
         LoadAdvisors()
         LoadBACs()
@@ -221,7 +231,9 @@ const CreateDocument = () => {
     if (user?.userType === 6) {
         router.push('/')
     }
+    
 
+    
 
     return (
         <Layout

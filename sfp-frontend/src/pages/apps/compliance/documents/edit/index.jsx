@@ -92,10 +92,17 @@ const EditDocument = () => {
             })
 
             // router.push(`/apps/compliance/documents/complete/${response?.data?.data?.id}`)
-            router.push({
-                pathname: "/apps/compliance/documents/gatekeeping",
-                query: {dId : dId}
-            })
+            if (DocumentInitalData?.starting_point == 1) {
+                router.push({
+                    pathname: "/apps/compliance/documents/arc",
+                    query: {dId : dId}
+                })
+            } else {
+                router.push({
+                    pathname: "/apps/compliance/documents/gatekeeping",
+                    query: {dId : dId}
+                })
+            }
         } catch (error) {
             console.log(error?.response?.data)
             Swal.fire({

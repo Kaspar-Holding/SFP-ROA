@@ -14,6 +14,28 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 05 September 2023:
+- ARCs can now create the document and go directly to ARC questions by passing Gatekeepers
+- ARCs document list API is updated
+- Progress is added now
+- ROA Type updated in Gatekeepering Questions
+- 2371: Disappearance of Question "ROA Type" - Debugged and deployed
+- 2370: Comments added twice - Debugged and deployed
+- 2369: Questions Against Business Type "Gap Cover" - Debugged and deployed
+- 2368: Alignment of left pane - part of the design
+- 2367: Questions Against Business Type "Funeral" - Debugged and deployed
+- 2366: Type of Business is editable in View Form - Debugged and deployed
+- 2365: "Commission Release Form " is also a multi choice Question - Debugged and deployed
+- 2364: Earlier versions should not be editable - Debugged and deployed
+- 2363: Wording if no Document is missing - Debugged and deployed
+- 2362: Not Approved Form should remain Editable - Debugged and deployed
+- 2360: "Back to Gatekeeping Questions" button is not aligned - Debugged and deployed
+- 2359: Make Zero Greyed out - Debugged and deployed
+- 2357: Compliance App should not be visible to Advisor - Debugged and deployed
+- 2356: Rejected GK & ARC case should be editable in next review - Debugged and deployed
+- 2356: Rejected GK & ARC case should be editable in next review - Debugged and deployed
+- Deployment on Staging 
+
 ### 29 September 2023:
 - Added Custom User Profile filling in case of missing data. Developed and Deployed
 - Deployment on Production / Staging 

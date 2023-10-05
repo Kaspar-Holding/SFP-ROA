@@ -247,6 +247,36 @@ SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = env('SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET')
 SOCIAL_AUTH_AZUREAD_OAUTH2_SCOPE = ['https://graph.microsoft.com/User.Read','openid']
 SOCIAL_AUTH_AZUREAD_OAUTH2_EXTRA_DATA = ['first_name','last_name']
 
+SOCIAL_AUTH_SAML_SP_ENTITY_ID = "https://saml.kasparholdings.com/saml2_auth/acs/"
+SOCIAL_AUTH_SAML_SP_PUBLIC_CERT = "MIIDqjCCApKgAwIBAgIGAYr59OhEMA0GCSqGSIb3DQEBCwUAMIGVMQswCQYDVQQGEwJVUzETMBEG A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU MBIGA1UECwwLU1NPUHJvdmlkZXIxFjAUBgNVBAMMDXRyaWFsLTg2OTEyMDcxHDAaBgkqhkiG9w0B CQEWDWluZm9Ab2t0YS5jb20wHhcNMjMxMDA0MDkxMDMxWhcNMzMxMDA0MDkxMTMxWjCBlTELMAkG A1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTAL BgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRYwFAYDVQQDDA10cmlhbC04NjkxMjA3 MRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB CgKCAQEAuvGYcWh0H3Y8oMPPtokAfJYPgW0uWlTbcbRJHCX8ZzVGVb8Uykf02WjqW0jXZA7z1oZc QJDZkltd/JTLxEqETQfvq60FrsGHgMMNDNfoWY4461yflo/NxZyROwUdRDnVpxxWRamSQqujxRlP pXhM742gFtxplEtahqBpH/p3eIDbLTroTdrO1kkgfjv9tWC4IWvjMomlLJE9jhEp3wAgIVQ+Epjf 09hjuIZ+Zv4tYI02ntS8OiCPZOk3AzKV7tXoIXn6YKVK1PGjtWNEk/0inSjACKMUDAyBJjL/8OaU gwxjjtcWQf0MbyLwPecjAU5o6zdDcrBuy1tlOSjqlFfBlwIDAQABMA0GCSqGSIb3DQEBCwUAA4IB AQBX1jKoBjCnJXOb3NcoS+oBrRbEb/VZpoKJnfGRb5qyiljPElo8nQMcHYWYpKwFqpqNaTpwNHox sfT/Jm+dETMsrPMmC9cysV/8WeP5rIDpNMWh7qZX/m15b81pq5B/ZpsMI1qSBu5UBvVDlfHFF5wT 4jpZfXQUMyNGSbjX7WC8/wF3nARrheTr0JF80lpzN//9hctIOnFv18mGN0PXWtnFKgneH/CtU1mc txxqogs7n2aQIhApYDrIRGKefoLVTxCVTLGHXbkK8IJxEHsKfAU6nAIfgCn2YcXpBf1OXfN6Hj4f u0AnhRIdhp32B9sDbnRZfbEWk0Kgd3DxtpDyIIhZ"
+SOCIAL_AUTH_SAML_ORG_INFO = {
+    "en-US": {
+        "name": "KASPAR",
+        "displayname": "KASPAR",
+        "url": "https://kasparholdings.com"
+    }
+}
+SOCIAL_AUTH_SAML_TECHNICAL_CONTACT = {
+    "givenName": "Armughan",
+    "emailAddress": "armughan.ahmad@kasparholdings.com"
+}
+SOCIAL_AUTH_SAML_SUPPORT_CONTACT = {
+    "givenName": "Armughan",
+    "emailAddress": "armughan.ahmad@kasparholdings.com"
+}
+SOCIAL_AUTH_SAML_ENABLED_IDPS = {
+    "okta": {
+        "entity_id": "http://www.okta.com/exk8kh9g2gFSsEB0u697",
+        "url": "https://trial-8691207.okta.com/app/trial-8691207_djangosso_1/exk8kh9g2gFSsEB0u697/sso/saml",
+        "x509cert": "MIIDqjCCApKgAwIBAgIGAYr59OhEMA0GCSqGSIb3DQEBCwUAMIGVMQswCQYDVQQGEwJVUzETMBEG A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU MBIGA1UECwwLU1NPUHJvdmlkZXIxFjAUBgNVBAMMDXRyaWFsLTg2OTEyMDcxHDAaBgkqhkiG9w0B CQEWDWluZm9Ab2t0YS5jb20wHhcNMjMxMDA0MDkxMDMxWhcNMzMxMDA0MDkxMTMxWjCBlTELMAkG A1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTAL BgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRYwFAYDVQQDDA10cmlhbC04NjkxMjA3 MRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB CgKCAQEAuvGYcWh0H3Y8oMPPtokAfJYPgW0uWlTbcbRJHCX8ZzVGVb8Uykf02WjqW0jXZA7z1oZc QJDZkltd/JTLxEqETQfvq60FrsGHgMMNDNfoWY4461yflo/NxZyROwUdRDnVpxxWRamSQqujxRlP pXhM742gFtxplEtahqBpH/p3eIDbLTroTdrO1kkgfjv9tWC4IWvjMomlLJE9jhEp3wAgIVQ+Epjf 09hjuIZ+Zv4tYI02ntS8OiCPZOk3AzKV7tXoIXn6YKVK1PGjtWNEk/0inSjACKMUDAyBJjL/8OaU gwxjjtcWQf0MbyLwPecjAU5o6zdDcrBuy1tlOSjqlFfBlwIDAQABMA0GCSqGSIb3DQEBCwUAA4IB AQBX1jKoBjCnJXOb3NcoS+oBrRbEb/VZpoKJnfGRb5qyiljPElo8nQMcHYWYpKwFqpqNaTpwNHox sfT/Jm+dETMsrPMmC9cysV/8WeP5rIDpNMWh7qZX/m15b81pq5B/ZpsMI1qSBu5UBvVDlfHFF5wT 4jpZfXQUMyNGSbjX7WC8/wF3nARrheTr0JF80lpzN//9hctIOnFv18mGN0PXWtnFKgneH/CtU1mc txxqogs7n2aQIhApYDrIRGKefoLVTxCVTLGHXbkK8IJxEHsKfAU6nAIfgCn2YcXpBf1OXfN6Hj4f u0AnhRIdhp32B9sDbnRZfbEWk0Kgd3DxtpDyIIhZ",
+        "attr_user_permanent_id": "Email",
+        "attr_first_name": "FirstName",
+        "attr_last_name": "LastName",
+        "attr_username": "Email",
+        "attr_email": "Email",
+    }
+}
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
