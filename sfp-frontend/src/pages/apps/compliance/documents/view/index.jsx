@@ -206,7 +206,7 @@ const EditDocument = () => {
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">BAC</label>
-                                            <input disabled onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input disabled  type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             
                                             
                                         </div>
@@ -248,7 +248,7 @@ const EditDocument = () => {
                                     <div className='col-lg-8 col-md-12 col-sm-12'> 
                                     <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
-                                            <select required className="form-select" name="businessType" value={DocumentInitalData?.businessType} onChange={(e)=>{onChange(e)}} aria-label="Default select example">
+                                            <select required className="form-select" name="businessType" value={DocumentInitalData?.businessType}  aria-label="Default select example">
                                                 <option value={0}>Select Business Type</option>
                                                 <option value="1">Business Assurance</option>
                                                 <option value="2">Comm release</option>
@@ -270,7 +270,7 @@ const EditDocument = () => {
                                         {
                                             DocumentInitalData?.businessType == 10 ?
                                             <div>
-                                                <input required onChange={(e)=>{onChange(e)}} placeholder='Specify the other business type' type="text" value={DocumentInitalData?.otherBusinessType} name="otherBusinessType" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                                <input required  placeholder='Specify the other business type' type="text" value={DocumentInitalData?.otherBusinessType} name="otherBusinessType" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                                 <br/>
                                             </div>
                                             : <></>
