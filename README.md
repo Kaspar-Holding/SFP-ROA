@@ -18,6 +18,7 @@ Deployed using Nginx and Gunicorn
 - ARCs can now create the document and go directly to ARC questions by passing Gatekeepers
 - ARCs document list API is updated
 - Progress is added now
+- Added a new status called Picked up
 - ROA Type updated in Gatekeepering Questions
 - 2371: Disappearance of Question "ROA Type" - Debugged and deployed
 - 2370: Comments added twice - Debugged and deployed
