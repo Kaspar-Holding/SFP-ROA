@@ -17,6 +17,7 @@ Deployed using Nginx and Gunicorn
 ### 05 September 2023:
 - ARCs can now create the document and go directly to ARC questions by passing Gatekeepers
 - ARCs document list API is updated
+- Inital Version not updating the values - debugged and deployed
 - Progress is under progress
 - Added a new status called Picked up
 - ROA Type updated in Gatekeepering Questions

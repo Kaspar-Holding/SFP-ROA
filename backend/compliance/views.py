@@ -206,7 +206,7 @@ class ComplianceDocumentList(APIView):
                 data = ComplianceDocument.objects.filter(user=user.pk).order_by('-created_at')
                 if data.exists():
                     kpis = {
-                        "total" : data.count(),
+                        "created" : data.count(),
                         "approved" : data.filter(status=1).count(),
                         "rejected" : data.filter(status=2).count(),
                         "referred" : data.filter(status=3).count(),
@@ -226,7 +226,7 @@ class ComplianceDocumentList(APIView):
                         row['arc_status'] = arc_status
                         row['last_review_date'] = row['updated_at']
 
-                    return Response({"data":data, "kpis": kpis})
+                    return Response({"data":data, "trend": kpis})
                 else:
                     kpis = {
                         "total" : 0,
