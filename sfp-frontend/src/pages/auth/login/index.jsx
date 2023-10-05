@@ -72,8 +72,6 @@ const LoginPage = () => {
         router.push('/')
     }
 
-    
-
     return (
         <>
             <Layout

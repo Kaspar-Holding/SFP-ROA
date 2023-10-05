@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 import Moment from 'moment'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-import Chart from "react-apexcharts"
+// import Chart from "react-apexcharts"
 
 
 const Compliance = () => {
@@ -15,8 +15,7 @@ const Compliance = () => {
 
     const user = useSelector(state=>state.auth.user)
     const [SearchQuery, setSearchQuery] = useState("")
-    const [KPITrend, setKPITrend] = useState([])
-    console.log(KPITrend)
+    const [KPITrend, setKPITrend] = useState({})
     const onSearchQueryChange = (e) => {
         setSearchQuery(e.target.value)
         searchReviews(e.target.value, 10, 1)
@@ -270,7 +269,11 @@ const Compliance = () => {
                         <div className='col-lg-3 app-dashboard-progress'>
                             <h1 className='app-dashboard-header'>Progress</h1>
                             <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
-                            <Chart options={pieChartOptions} series={KPITrend ? Object.values(KPITrend) : [0, 0, 0, 0]} type="pie" width={'100%'} />
+                            {/* {
+                                KPITrend ?
+                                    <Chart options={pieChartOptions} series={KPITrend ? Object.values(KPITrend) : [0, 0, 0, 0]} type="pie" width={'100%'} />
+                                : <></>
+                            } */}
                         </div>
                         <div className='col-lg-4 app-dashboard-trend'>
                             <h1 className='app-dashboard-header'>Trending Data</h1>
