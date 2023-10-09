@@ -79,12 +79,17 @@ class bac_model(models.Model):
 class regions(models.Model):
     region = models.TextField( default="")
 
+class categorisation(models.Model):
+    categorisation = models.TextField( default="")
+
 class user_profile(models.Model):
-    user = models.OneToOneField(UserAccount, on_delete=models.CASCADE)
-    manager = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="manager_id")
-    bac = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="bac_id")
-    # supervision = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="supervision_id")
-    region = models.ForeignKey(regions, on_delete=models.CASCADE)
+    user = models.OneToOneField(UserAccount, on_delete=models.SET_NULL, null=True)
+    manager = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True, related_name="manager_id")
+    bac = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True, related_name="bac_id")
+    # supervision = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, related_name="supervision_id")
+    supervision = models.TextField(default="N/A")
+    categorisation = models.ForeignKey(categorisation, on_delete=models.SET_NULL, null=True)
+    region = models.ForeignKey(regions, on_delete=models.SET_NULL, null=True)
     id_number = models.TextField( default="", null=True, blank=True)
     initials = models.TextField( default="", null=True, blank=True)
     full_name = models.TextField( default="")
@@ -4339,7 +4344,7 @@ class AI_Others(models.Model):
 
 class RF_Scores(models.Model):
     
-    form = models.ForeignKey(RiskFactors, on_delete=models.CASCADE)
+    form = models.ForeignKey(RiskFactors, on_delete=models.SET_NULL, null=True)
 
     ClientOccupation = models.IntegerField(default=1)
     ClientOccupationWeight = models.IntegerField(default=1)
