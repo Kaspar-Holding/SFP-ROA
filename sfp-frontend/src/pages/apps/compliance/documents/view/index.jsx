@@ -245,37 +245,98 @@ const EditDocument = () => {
                                     </div>         
                                     <div className='col-lg-2'>   
                                     </div>         
-                                    <div className='col-lg-8 col-md-12 col-sm-12'> 
-                                    <div className="mb-3">
-                                            <label for="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
-                                            <select required className="form-select" name="businessType" value={DocumentInitalData?.businessType}  aria-label="Default select example">
-                                                <option value={0}>Select Business Type</option>
-                                                <option value="1">Business Assurance</option>
-                                                <option value="2">Comm release</option>
-                                                <option value="3">Employee Benefits</option>
-                                                <option value="4">Funeral</option>
-                                                <option value="5">GAP Cover</option>
-                                                <option value="6">Recurring - Investment</option>
-                                                <option value="7">Lumpsum - Investment</option>
-                                                <option value="8">Investment- Both</option>
-                                                <option value="9">Medical Aid</option>
-                                                <option value="10">Other</option>
-                                                <option value="11">Will</option>
-                                                <option value="12">Risk</option>
-                                                <option value="13">ST Re-issued/instated</option>
-                                                <option value="14">Short Term Commercial</option>
-                                                <option value="15">Short Term Personal</option>
-                                            </select>
-                                        </div>
-                                        {
-                                            DocumentInitalData?.businessType == 10 ?
-                                            <div>
-                                                <input required  placeholder='Specify the other business type' type="text" value={DocumentInitalData?.otherBusinessType} name="otherBusinessType" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
-                                                <br/>
+                                    {
+                                        user?.userType === 1 ?
+                                        <>
+                                            <div className='col-lg-4 col-md-12 col-sm-12'> 
+                                                <div className="mb-3">
+                                                    <label for="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
+                                                    <select required className="form-select" name="businessType" value={DocumentInitalData?.businessType} aria-label="Default select example">
+                                                        <option value={0}>Select Business Type</option>
+                                                        <option value="1">Business Assurance</option>
+                                                        <option value="2">Comm release</option>
+                                                        <option value="3">Employee Benefits</option>
+                                                        <option value="4">Funeral</option>
+                                                        <option value="5">GAP Cover</option>
+                                                        <option value="6">Recurring - Investment</option>
+                                                        <option value="7">Lumpsum - Investment</option>
+                                                        <option value="8">Investment- Both</option>
+                                                        <option value="9">Medical Aid</option>
+                                                        <option value="10">Other</option>
+                                                        <option value="11">Will</option>
+                                                        <option value="12">Risk</option>
+                                                        <option value="13">ST Re-issued/instated</option>
+                                                        <option value="14">Short Term Commercial</option>
+                                                        <option value="15">Short Term Personal</option>
+                                                    </select>
+                                                </div>
+                                                {
+                                                    DocumentInitalData?.businessType == 10 ?
+                                                    <div>
+                                                        <input required placeholder='Specify the other business type' type="text" value={DocumentInitalData?.otherBusinessType} name="otherBusinessType" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                                        <br/>
+                                                    </div>
+                                                    : <></>
+                                                }
                                             </div>
-                                            : <></>
-                                        }
-                                    </div>         
+                                            <div className='col-lg-4 col-md-12 col-sm-12'> 
+                                                <h6 className='gatekeeping-question'>
+                                                    Starting Point
+                                                </h6>
+                                                <div className='row'>
+                                                    <div className='col-lg-6'>
+                                                        <div className="form-check">
+                                                            <input className="form-check-input" type="radio" value={1} checked={DocumentInitalData?.starting_point == Number("1") ? true : false} name="starting_point" id="starting_point"/>
+                                                            <label className="form-check-label" for="fica">
+                                                                ARC
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div className='col-lg-6'>
+                                                        <div className="form-check">
+                                                            <input className="form-check-input" type="radio" value={2} checked={DocumentInitalData?.starting_point == Number("2") ? true : false} name="starting_point" id="starting_point"/>
+                                                            <label className="form-check-label" for="fica">
+                                                                Gatekeeper
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </>
+                                        :         
+                                        <div className='col-lg-8 col-md-12 col-sm-12'> 
+                                            <div className="mb-3">
+                                                <label for="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
+                                                <select required className="form-select" name="businessType" value={DocumentInitalData?.businessType} aria-label="Default select example">
+                                                    <option value={0}>Select Business Type</option>
+                                                    <option value="1">Business Assurance</option>
+                                                    <option value="2">Comm release</option>
+                                                    <option value="3">Employee Benefits</option>
+                                                    <option value="4">Funeral</option>
+                                                    <option value="5">GAP Cover</option>
+                                                    <option value="6">Recurring - Investment</option>
+                                                    <option value="7">Lumpsum - Investment</option>
+                                                    <option value="8">Investment- Both</option>
+                                                    <option value="9">Medical Aid</option>
+                                                    <option value="10">Other</option>
+                                                    <option value="11">Will</option>
+                                                    <option value="12">Risk</option>
+                                                    <option value="13">ST Re-issued/instated</option>
+                                                    <option value="14">Short Term Commercial</option>
+                                                    <option value="15">Short Term Personal</option>
+                                                </select>
+                                            </div>
+                                            {
+                                                DocumentInitalData?.businessType == 10 ?
+                                                <div>
+                                                    <input required placeholder='Specify the other business type' type="text" value={DocumentInitalData?.otherBusinessType} name="otherBusinessType" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                                    <br/>
+                                                </div>
+                                                : <></>
+                                            }
+                                        </div>
+
+                                    }       
                                     <div className='col-lg-2'>   
                                     </div>         
                                 </div>

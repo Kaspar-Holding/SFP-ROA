@@ -6,11 +6,17 @@ import Swal from 'sweetalert2'
 import Moment from 'moment'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
+import dynamic from 'next/dynamic'
+import Loader from '@/hocs/Loader'
+
 // import Chart from "react-apexcharts"
 
 
 const Compliance = () => {
+    const Chart = dynamic(() => import('react-apexcharts'), {})
     const router = useRouter()
+    
+    const [Loaded, setLoaded] = useState(false)
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
 
     const user = useSelector(state=>state.auth.user)
@@ -154,7 +160,7 @@ const Compliance = () => {
 
 
     const loadReviews = async () => {
-
+        setLoaded(true)
         try {
             const response = await axios.get(
                 '/api/compliance',
@@ -176,6 +182,7 @@ const Compliance = () => {
             })
             
         }
+        setLoaded(false)
 
     }
     
@@ -202,221 +209,226 @@ const Compliance = () => {
                 appTitle={'Compliance'}
                 app={'compliance'}
             >
-                <div className='col-lg-9'>
-                    <div className='row'>
-                        <div className='col-lg-5 app-dashboard-kpi'>
-                            <h1 className='app-dashboard-header'>Total Summary</h1>
-                            <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
-                            <div className='row'>
-                                <div className='col-lg-3 p-0 m-0'>
-                                    <div className="card kpi-card-1">
-                                        <div className="card-body">
-                                            <h1 className='kpi-number'>
-                                                {
-                                                    KPIs?.created ? KPIs?.created : 0 
-                                                }
-                                            </h1>
-                                            <p className='kpi-title'>
-                                                Total
-                                            </p>
+                {
+                    Loaded ?
+                    <Loader />
+                    :
+                    <div className='col-lg-9'>
+                        <div className='row'>
+                            <div className='col-lg-5 app-dashboard-kpi'>
+                                <h1 className='app-dashboard-header'>Total Summary</h1>
+                                <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
+                                <div className='row'>
+                                    <div className='col-lg-3 p-0 m-0'>
+                                        <div className="card kpi-card-1">
+                                            <div className="card-body">
+                                                <h1 className='kpi-number'>
+                                                    {
+                                                        KPIs?.created ? KPIs?.created : 0 
+                                                    }
+                                                </h1>
+                                                <p className='kpi-title'>
+                                                    Total
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className='col-lg-3 p-0 m-0'>
-                                    <div className="card kpi-card-2">
-                                        <div className="card-body">
-                                            <h1 className='kpi-number'>
-                                                {
-                                                    KPIs?.approved ? KPIs?.approved : 0 
-                                                }
-                                            </h1>
-                                            <p className='kpi-title'>
-                                                Approved
-                                            </p>
+                                    <div className='col-lg-3 p-0 m-0'>
+                                        <div className="card kpi-card-2">
+                                            <div className="card-body">
+                                                <h1 className='kpi-number'>
+                                                    {
+                                                        KPIs?.approved ? KPIs?.approved : 0 
+                                                    }
+                                                </h1>
+                                                <p className='kpi-title'>
+                                                    Approved
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className='col-lg-3 p-0 m-0'>
-                                    <div className="card kpi-card-3">
-                                        <div className="card-body">
-                                            <h1 className='kpi-number'>
-                                                {
-                                                    KPIs?.rejected ? KPIs?.rejected : 0 
-                                                }
-                                            </h1>
-                                            <p className='kpi-title'>
-                                                Rejected
-                                            </p>
+                                    <div className='col-lg-3 p-0 m-0'>
+                                        <div className="card kpi-card-3">
+                                            <div className="card-body">
+                                                <h1 className='kpi-number'>
+                                                    {
+                                                        KPIs?.rejected ? KPIs?.rejected : 0 
+                                                    }
+                                                </h1>
+                                                <p className='kpi-title'>
+                                                    Rejected
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className='col-lg-3 p-0 m-0'>
-                                    <div className="card kpi-card-4">
-                                        <div className="card-body">
-                                            <h1 className='kpi-number'>
-                                                {
-                                                    KPIs?.referred ? KPIs?.referred : 0 
-                                                }
-                                            </h1>
-                                            <p className='kpi-title'>
-                                                Referred
-                                            </p>
+                                    <div className='col-lg-3 p-0 m-0'>
+                                        <div className="card kpi-card-4">
+                                            <div className="card-body">
+                                                <h1 className='kpi-number'>
+                                                    {
+                                                        KPIs?.referred ? KPIs?.referred : 0 
+                                                    }
+                                                </h1>
+                                                <p className='kpi-title'>
+                                                    Referred
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className='col-lg-3 app-dashboard-progress'>
-                            <h1 className='app-dashboard-header'>Progress</h1>
-                            <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
-                            {/* {
-                                KPITrend ?
-                                    <Chart options={pieChartOptions} series={KPITrend ? Object.values(KPITrend) : [0, 0, 0, 0]} type="pie" width={'100%'} />
-                                : <></>
-                            } */}
-                        </div>
-                        <div className='col-lg-4 app-dashboard-trend'>
-                            <h1 className='app-dashboard-header'>Trending Data</h1>
-                            <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
-                            {/* <Chart options={lineOptions} series={lineSeries} type="line" height={210} /> */}
-                        </div>
-                        <div className='col-lg-12 app-dashboard-records'>
-                            <div className='row'>
-                                <div className='col-lg-3'>
-                                    <h1 className='app-dashboard-header'>Recent Cases</h1>
+                            <div className='col-lg-3 app-dashboard-progress'>
+                                <h1 className='app-dashboard-header'>Progress</h1>
+                                <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
+                                {
+                                    KPITrend ?
+                                        <Chart options={pieChartOptions} series={KPITrend ? Object.values(KPITrend) : [0, 0, 0, 0]} type="pie" width={'100%'} />
+                                    : <></>
+                                }
+                            </div>
+                            <div className='col-lg-4 app-dashboard-trend'>
+                                <h1 className='app-dashboard-header'>Trending Data</h1>
+                                <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
+                                {/* <Chart options={lineOptions} series={lineSeries} type="line" height={210} /> */}
+                            </div>
+                            <div className='col-lg-12 app-dashboard-records'>
+                                <div className='row'>
+                                    <div className='col-lg-3'>
+                                        <h1 className='app-dashboard-header'>Recent Cases</h1>
 
-                                </div>
-                                <div className='col-lg-3'>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <i className='fa-solid fa-search' />
-                                        </span>
-                                        <input type="text"  class="form-control" value={SearchQuery} onChange={(e)=>{onSearchQueryChange(e)}} placeholder="Search Policy No# here" />
                                     </div>
+                                    <div className='col-lg-3'>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i className='fa-solid fa-search' />
+                                            </span>
+                                            <input type="text"  class="form-control" value={SearchQuery} onChange={(e)=>{onSearchQueryChange(e)}} placeholder="Search Policy No# here" />
+                                        </div>
+                                    </div>
+                                    <div className='col-lg-3'>
+                                    </div>
+                                    <div className='col-lg-3'>
+                                        <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
+                                    </div>
+                                    
                                 </div>
-                                <div className='col-lg-3'>
-                                </div>
-                                <div className='col-lg-3'>
-                                    <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
-                                </div>
-                                
-                            </div>
-                            <hr/>
-                            <table className="table">
-                                <thead className='tableHead'>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Policy Number</th>
-                                        <th scope="col">Advisor</th>
+                                <hr/>
+                                <table className="table">
+                                    <thead className='tableHead'>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Policy Number</th>
+                                            <th scope="col">Advisor</th>
+                                            {
+                                                user?.userType === 1?
+                                                    <th scope="col">Gatekeeper / ARC</th>
+                                                : ""
+                                            }
+                                            <th scope="col">Last Review Date</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className='tableContent'>
                                         {
-                                            user?.userType === 1?
-                                                <th scope="col">Gatekeeper / ARC</th>
-                                            : ""
-                                        }
-                                        <th scope="col">Last Review Date</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody className='tableContent'>
-                                    {
-                                        Reviews ?
-                                            Reviews.map(
-                                                (review, i) => {
-                                                    return(
-                                                        <tr key={i}>
-                                                            <th scope="row">{i+1}</th>
-                                                            <td>
-                                                                {
-                                                                    review?.policy_number
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                {
-                                                                    review?.advisor
-                                                                }
-                                                            </td>
-                                                            {
-                                                                user?.userType === 1?
+                                            Reviews ?
+                                                Reviews.map(
+                                                    (review, i) => {
+                                                        return(
+                                                            <tr key={i}>
+                                                                <th scope="row">{i+1}</th>
                                                                 <td>
-                                                                    {review?.gatekeeper}
-                                                                </td>
-                                                                : ""
-                                                            }
-                                                            <td>
-                                                                {
-                                                                    Moment(review?.last_review_date).format('DD MMMM YYYY, hh:mm A')
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                {
-                                                                    review?.status === 0 ? "New Case" :
-                                                                    review?.status === 1 ? "Approved" :
-                                                                    review?.status === 2 ? "Not Approved" :
-                                                                    review?.status === 3 ? "Referred" :
-                                                                    review?.status === 4 ? "Partial Approved" : 
-                                                                    review?.status === 5 ? "Picked Up" : ""
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                <div className="btn-group" role="group" aria-label="Basic mixed styles example">
                                                                     {
-                                                                        
-                                                                        !user?.is_superuser && (review?.status === 0 || review?.status === 2) ?
-                                                                        <button 
-                                                                            type="button" 
-                                                                            className={"btn btn-secondary"}
-                                                                            onClick={()=> {
-                                                                                router.push({
-                                                                                    pathname: "/apps/compliance/documents/edit",
-                                                                                    query: { dId: review?.id }
-                                                                                })
-                                                                            }}
-                                                                        >
-                                                                            <i className='bi pe-none me-2 fa-solid fa-pen-to-square' />
-                                                                            Edit
-                                                                        </button>
-                                                                        :
-                                                                        <button 
-                                                                            type="button" 
-                                                                            className={
-                                                                                "btn btn-success"                                                                          
-                                                                            }
-                                                                            onClick={()=> {
-                                                                                router.push({
-                                                                                    pathname: "/apps/compliance/documents/view",
-                                                                                    query: { dId: review?.id }
-                                                                                })
-                                                                            }}
-                                                                        >
-                                                                            <i className='bi pe-none me-2 fa-solid fa-pen-to-square' />
-                                                                            View
-                                                                        </button>
+                                                                        review?.policy_number
                                                                     }
-                                                                    
-                                                                    {/* <button 
-                                                                        type="button" 
-                                                                        className="btn btn-danger"
-                                                                        onClick={(e)=>{deleteQuestionBtn(e, row?.id)}}
-                                                                    >
-                                                                        <i className='bi pe-none me-2 fa-solid fa-trash' />
-                                                                        Delete
-                                                                    </button> */}
-                                                                </div>
-                                                            </td>
-                                                            
-                                                        </tr>
-                                                    )
-                                                }
-                                            )
-                                        : <></>
-                                    }
-                                </tbody>
-                            </table>
+                                                                </td>
+                                                                <td>
+                                                                    {
+                                                                        review?.advisor
+                                                                    }
+                                                                </td>
+                                                                {
+                                                                    user?.userType === 1?
+                                                                    <td>
+                                                                        {review?.gatekeeper}
+                                                                    </td>
+                                                                    : ""
+                                                                }
+                                                                <td>
+                                                                    {
+                                                                        Moment(review?.last_review_date).format('DD MMMM YYYY, hh:mm A')
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    {
+                                                                        review?.status === 0 ? "New Case" :
+                                                                        review?.status === 1 ? "Approved" :
+                                                                        review?.status === 2 ? "Not Approved" :
+                                                                        review?.status === 3 ? "Referred" :
+                                                                        review?.status === 4 ? "Partial Approved" : 
+                                                                        review?.status === 5 ? "Picked Up" : ""
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    <div className="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                                        {
+                                                                            
+                                                                            !user?.is_superuser && (review?.status === 0 || review?.status === 2) ?
+                                                                            <button 
+                                                                                type="button" 
+                                                                                className={"btn btn-secondary"}
+                                                                                onClick={()=> {
+                                                                                    router.push({
+                                                                                        pathname: "/apps/compliance/documents/edit",
+                                                                                        query: { dId: review?.id }
+                                                                                    })
+                                                                                }}
+                                                                            >
+                                                                                <i className='bi pe-none me-2 fa-solid fa-pen-to-square' />
+                                                                                Edit
+                                                                            </button>
+                                                                            :
+                                                                            <button 
+                                                                                type="button" 
+                                                                                className={
+                                                                                    "btn btn-success"                                                                          
+                                                                                }
+                                                                                onClick={()=> {
+                                                                                    router.push({
+                                                                                        pathname: "/apps/compliance/documents/view",
+                                                                                        query: { dId: review?.id }
+                                                                                    })
+                                                                                }}
+                                                                            >
+                                                                                <i class="fa-solid fa-eye"></i>
+                                                                                View
+                                                                            </button>
+                                                                        }
+                                                                        
+                                                                        {/* <button 
+                                                                            type="button" 
+                                                                            className="btn btn-danger"
+                                                                            onClick={(e)=>{deleteQuestionBtn(e, row?.id)}}
+                                                                        >
+                                                                            <i className='bi pe-none me-2 fa-solid fa-trash' />
+                                                                            Delete
+                                                                        </button> */}
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                        )
+                                                    }
+                                                )
+                                            : <></>
+                                        }
+                                    </tbody>
+                                </table>
 
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             </DashboardLayout>
         </Layout>
     )

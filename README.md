@@ -14,6 +14,15 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 09 September 2023:
+- ARCs can now create the document and go furthur by selecting their Start Point
+- Progress is now integrated
+- 2382: "Policy Schedule" is also a scorable Question - Updated and deployed
+- 2381: Keep Not Approve Button available - Debugged and deployed
+- 2380: Apply Loader Animation - Debugged and deployed
+- 2379: Text Box for manual comments is not displayed - Debugged and deployed
+- Deployment on Staging 
+
 ### 05 September 2023:
 - ARCs can now create the document and go directly to ARC questions by passing Gatekeepers
 - ARCs document list API is updated

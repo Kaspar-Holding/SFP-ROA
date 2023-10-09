@@ -320,28 +320,28 @@ const SummaryDocument = () => {
                                                 
 
                                             </div>
-                                            {
-                                                DocumentInitalData?.status >= 2 || (user?.userType === 1 && !Summary?.arc_status) || (user?.userType === 1 && DocumentInitalData?.starting_point == 1)?
-                                                <div className="card-footer text-muted d-flex justify-content-start align-items-center p-3">
-                                                    <div className="input-group mb-0">
-                                                        <input 
-                                                            type="text" 
-                                                            onKeyDown={
-                                                                (e)=>{
-                                                                    if (e.key === 'Enter') {
-                                                                        DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)
-                                                                    }
+                                            <div className="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                                                <div className="input-group mb-0">
+                                                    <input 
+                                                        type="text" 
+                                                        onKeyDown={
+                                                            (e)=>{
+                                                                if (e.key === 'Enter') {
+                                                                    DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)
                                                                 }
-                                                            } value={Comment} onChange={(e)=>{setComment(e.target.value)}} 
-                                                            className="form-control" placeholder="Type message"
-                                                            aria-label="Recipient's username" aria-describedby="button-addon2" />
-                                                        <button className="btn btn-sfp" type="button" onClick={(e)=>{DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)}} id="button-addon2" style={{paddingTop: ".55rem"}}>
-                                                            Post Comment
-                                                        </button>
-                                                    </div>
+                                                            }
+                                                        } value={Comment} onChange={(e)=>{setComment(e.target.value)}} 
+                                                        className="form-control" placeholder="Type message"
+                                                        aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                                    <button className="btn btn-sfp" type="button" onClick={(e)=>{DocumentInitalData?.status == 3 ? addComment(e, dId, 2) : addComment(e, dId, 1)}} id="button-addon2" style={{paddingTop: ".55rem"}}>
+                                                        Post Comment
+                                                    </button>
                                                 </div>
+                                            </div>
+                                            {/* {
+                                                DocumentInitalData?.status >= 2 || (user?.userType === 1 && !Summary?.arc_status) || (user?.userType === 1 && DocumentInitalData?.starting_point == 1)?
                                                 :<></>
-                                            }
+                                            } */}
                                         </div>
                                     
                                     
@@ -486,7 +486,7 @@ const SummaryDocument = () => {
                                         }
                                         {
                                             !user?.is_superuser ?
-                                                (DocumentInitalData?.status != 1 && DocumentInitalData?.status != 2) || (user?.userType !== 2 && !DocumentInitalData?.arc_status) ? 
+                                                (DocumentInitalData?.status != 1) || (user?.userType !== 2 && !DocumentInitalData?.arc_status) ? 
                                                 <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                     <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 2)}} className="btn btn-primary btn-lg btn-summary-3">
                                                         {Summary?.arc_status ? "Not Approved" : "Not Approve"}

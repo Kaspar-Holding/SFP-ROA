@@ -925,7 +925,7 @@ const CompleteDocument = () => {
                                                             <div className='col'>
                                                                 <div className="mb-3">
                                                                     <label for="basic-url" className="form-label compliance-inital-card-text">Policy Schedule</label>
-                                                                    <input 
+                                                                    {/* <input 
                                                                         required 
                                                                         
                                                                         type="text" 
@@ -934,7 +934,33 @@ const CompleteDocument = () => {
                                                                         className="form-control" 
                                                                         id="basic-url" 
                                                                         aria-describedby="basic-addon3 basic-addon4" 
-                                                                    />
+                                                                    /> */}
+                                                                    <div className='row'>
+                                                                        <div className='col-lg-4'>
+                                                                            <div className="form-check">
+                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.policy_schedule == Number("100") ? true : false} name="policy_schedule" id="policy_schedule"/>
+                                                                                <label className="form-check-label" for="policy_schedule">
+                                                                                    Yes
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className='col-lg-4'>
+                                                                            <div className="form-check">
+                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.policy_schedule == Number("0") ? true : false} name="policy_schedule" id="policy_schedule"/>
+                                                                                <label className="form-check-label" for="policy_schedule">
+                                                                                    No
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className='col-lg-4'>
+                                                                            <div className="form-check">
+                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.policy_schedule == Number("1") ? true : false} name="policy_schedule" id="policy_schedule"/>
+                                                                                <label className="form-check-label" for="policy_schedule">
+                                                                                    N/A
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             : <></>

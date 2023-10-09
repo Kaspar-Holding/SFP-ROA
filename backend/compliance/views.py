@@ -242,9 +242,9 @@ class ComplianceDocumentList(APIView):
         newData = request.data
         user = request.user
         newData['user'] = user.pk
-        newData['starting_point'] = 2
-        if user.userType == 1:
-            newData['starting_point'] = 1        
+        # newData['starting_point'] = 2
+        # if user.userType == 1:
+        #     newData['starting_point'] = 1        
         serializer = ComplianceDocument_Serializer(data=newData)
         if serializer.is_valid():
             document = serializer.save()
