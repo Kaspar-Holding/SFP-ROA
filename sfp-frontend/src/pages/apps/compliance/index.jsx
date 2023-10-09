@@ -282,7 +282,7 @@ const Compliance = () => {
                                 <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
                                 {
                                     KPITrend ?
-                                        <Chart options={pieChartOptions} series={KPITrend ? Object.values(KPITrend) : [0, 0, 0, 0]} type="pie" width={'100%'} />
+                                        (typeof window !== 'undefined') && <Chart options={pieChartOptions} series={KPITrend ? Object.values(KPITrend) : [0, 0, 0, 0]} type="pie" width={'100%'} />
                                     : <></>
                                 }
                             </div>
