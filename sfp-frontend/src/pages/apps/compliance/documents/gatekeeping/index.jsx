@@ -206,10 +206,19 @@ const CompleteDocument = () => {
                 buttonsStyling: !1,
             })
 
-            router.push({
-                pathname: `/apps/compliance/documents/summary`,
-                query: {dId: dId}
-            })
+            if (DocumentInitalData?.user_id === user?.id && user?.userType === 1) {
+                router.push({
+                    pathname: `/apps/compliance/documents/arc`,
+                    query: {dId: dId}
+                })
+            } else {
+                router.push({
+                    pathname: `/apps/compliance/documents/summary`,
+                    query: {dId: dId}
+                })
+
+            }
+            
 
         } catch (error) {
             Swal.fire({
@@ -1068,9 +1077,19 @@ const CompleteDocument = () => {
                                 <div className='row'>
                                     {
                                         DocumentInitalData?.status === 0 || DocumentInitalData?.status === 2   ?
-                                        <div className='col-lg-6'>
+                                        <div className={
+                                            Versions.length >= 1 ? 
+                                                'col-lg-6' 
+                                            :
+                                                'col-lg-12'
+                                            }
+                                        >
                                             <button className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100" type="submit">
-                                                Save & Continue to Summary
+                                                {
+                                                    DocumentInitalData?.user_id === user?.id && user?.userType === 1 ?
+                                                    "Save & Continue to ARC" :
+                                                    "Save & Continue to Summary"
+                                                }
                                                 <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-right'/>
                                             </button>
                                         </div>
@@ -1082,9 +1101,18 @@ const CompleteDocument = () => {
                                             <button 
                                                 className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
                                                 type='button'
-                                                onClick={()=>{router.push({pathname: "/apps/compliance/documents/summary", query: {'dId': dId}})}}
+                                                onClick={()=>{
+                                                    DocumentInitalData?.user_id === user?.id && user?.userType === 1 ?
+                                                    router.push({pathname: "/apps/compliance/documents/arc", query: {'dId': dId}})
+                                                    :
+                                                    router.push({pathname: "/apps/compliance/documents/summary", query: {'dId': dId}})
+                                                }}
                                             >
-                                                Continue to Summary
+                                                {
+                                                    DocumentInitalData?.user_id === user?.id && user?.userType === 1 ?
+                                                    "Continue to ARC" :
+                                                    "Continue to Summary"
+                                                }
                                                 <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-right'/>
                                             </button>
                                         </div>

@@ -15,7 +15,9 @@ Deployed using Nginx and Gunicorn
 ## Updates
 
 ### 10 September 2023:
-- Managers are removed from Profile now. Managers are now linked to Regions=ed
+- Managers are removed from Profile now. Managers are now linked to Regions
+- ARC formula re-evaluated
+- ARC can now continue to ARC questions if they start their journey at Gatekeeper without Referring it
 - Deployment on Staging 
 
 ### 09 September 2023:

@@ -598,7 +598,7 @@ class PasswordResetEmail(BaseEmailMessage):
 
         user = context.get("user")
         context["site"] = "SFP Web ROA"
-        context["URL"] = env('FRONTEND_URL') +"/reset-password-confirm"
+        context["URL"] = env('FRONTEND_URL') +"/auth/reset-password-confirm"
         context["uid"] = utils.encode_uid(user.pk)
         context["token"] = default_token_generator.make_token(user)
         context["url"] = settings.PASSWORD_RESET_CONFIRM_URL.format(**context)

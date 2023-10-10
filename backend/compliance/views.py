@@ -251,7 +251,38 @@ class ComplianceDocumentList(APIView):
             data = {"document" : document.pk, "status" : 0}
             status_serializer = review_status_Serializer(data=data)
             if status_serializer.is_valid():
-                status_serializer.save()
+                review = status_serializer.save()
+                if newData['starting_point'] == 2 and user.userType == 1:
+                    comment = {
+                        "user" : 0,
+                        "type" : 3,
+                        "title" : "",
+                        "comment" : f"This review document was initiated by an ARC {user.first_name} ({user.email}) with Gatekeeping questionaire as starting point.",  
+                        "document" : review.pk
+                    }
+                if newData['starting_point'] == 1 and user.userType == 1:
+                    comment = {
+                        "user" : 0,
+                        "type" : 3,
+                        "title" : "",
+                        "comment" : f"This review document was initiated by an ARC {user.first_name} ({user.email}) with ARC questionaire as starting point.",  
+                        "document" : review.pk
+                    }
+                else:
+                    if user.userType == 1:
+                        reviewerType = "ARC"
+                    if user.userType == 2: 
+                        reviewerType = "Gatekeeper" 
+                    comment = {
+                        "user" : 0,
+                        "type" : 3,
+                        "title" : "",
+                        "comment" : f"This review document was initiated by an {reviewerType} {user.first_name} ({user.email}).",  
+                        "document" : review.pk
+                    }
+                documentCommentSerializer = DocumentComments_Serializer(data=comment)
+                if documentCommentSerializer.is_valid():
+                    documentCommentSerializer.save()
             else:
                 print(status_serializer.errors)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -1190,13 +1221,9 @@ class ComplianceDocumentSummary(APIView):
                 arc_score = 0
                 if businessType < 14 :
                     aDocument = aDoc.values("client_needs","appropriate_fna","fna_outcome","product_suitability","alternative_solutions","material_aspects","special_terms","replacement_terms").latest('id')
-                    arc_total = 0
+                    arc_total = 120
                     for key in aDocument:
-                        if aDocument[key] == 15:
-                            arc_total += 15
-                            arc_score += aDocument[key]
-                        if aDocument[key] == 0:
-                            arc_total += 15
+                        arc_score += aDocument[key]
                     arc_score = round(arc_score/arc_total *100)
                 if businessType >= 14 :
                     aDocument = aDoc.values("disclosure_a", "disclosure_b", "personal_details_a", "personal_details_b", "general_a", "general_b", "general_c", "general_d", "risk_classes_a", "risk_classes_b", "fna_a", "fna_b", "recommended_products_a", "recommended_products_b", "recommended_products_c", "replacements_a", "replacements_b", "replacements_c", "replacements_d", "client_consent_a", "client_consent_b", ).latest('id')
@@ -1418,32 +1445,39 @@ class arcList(APIView):
         user = request.user
         newData['user'] = user.pk
         newData['document'] = newData['document_id'] if "document" not in request.data else newData['document']
-
-        ComplianceDocument.objects.filter(id=newData['document']).update(updated_at=datetime.now())
-        arcdata = arc.objects.filter(document=newData['document'])
-        if arcdata.exists():
-            version = arcdata.values().latest('created_at')['version']
-            version += 1
-            newData['version'] = version
+        reviewDoc = ComplianceDocument.objects.filter(id=newData['document'])
+        if user.userType != 1:
+            return Response({"message": "You don't have access to perform this."}, 401)
+        if reviewDoc.exists():
+            reviewDoc = reviewDoc.values().filter()
+            ComplianceDocument.objects.filter(id=newData['document']).update(updated_at=datetime.now())
+            arcdata = arc.objects.filter(document=newData['document'])
+            if arcdata.exists():
+                version = arcdata.values().latest('created_at')['version']
+                version += 1
+                newData['version'] = version
+            else:
+                if reviewDoc['user_id'] != user.pk:
+                    ComplianceDocument.objects.filter(id=newData['document']).update(status = 5)
+                newData['version'] = 1
+                version = 1
+            serializer = arc_Serializer(data=newData)
+            if serializer.is_valid():
+                serializer.save()
+                comment = {
+                    "user" : 0,
+                    "type" : 3,
+                    "title" : "",
+                    "comment" : f"Review was picked up by an ARC, {user.first_name} {user.last_name} ({user.email})",  
+                    "document" : newData['document']
+                }
+                documentCommentSerializer = DocumentComments_Serializer(data=comment)
+                if documentCommentSerializer.is_valid():
+                    documentCommentSerializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response({"errors":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         else:
-            ComplianceDocument.objects.filter(id=newData['document']).update(status = 5)
-            newData['version'] = 1
-            version = 1
-        serializer = arc_Serializer(data=newData)
-        if serializer.is_valid():
-            serializer.save()
-            comment = {
-                "user" : 0,
-                "type" : 3,
-                "title" : "",
-                "comment" : f"Review was picked up by an ARC, {user.first_name} {user.last_name} ({user.email})",  
-                "document" : newData['document']
-            }
-            documentCommentSerializer = DocumentComments_Serializer(data=comment)
-            if documentCommentSerializer.is_valid():
-                documentCommentSerializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response({"errors":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            raise Http404
 
 
 class loadRegions(APIView):

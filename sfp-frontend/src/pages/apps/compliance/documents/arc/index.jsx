@@ -34,35 +34,35 @@ const ARCDocument = () => {
 
         document: dId,
 
-        client_needs : 1,
-        appropriate_fna : 1,
-        fna_outcome : 1,
-        product_suitability : 1,
-        alternative_solutions : 1,
-        material_aspects : 1,
-        special_terms : 1,
-        replacement_terms : 1,
-        disclosure_a: 1,
-        disclosure_b: 1,
-        personal_details_a: 1,
-        personal_details_b: 1,
-        general_a: 1,
-        general_b: 1,
-        general_c: 1,
-        general_d: 1,
-        risk_classes_a: 1,
-        risk_classes_b: 1,
-        fna_a: 1,
-        fna_b: 1,
-        recommended_products_a: 1,
-        recommended_products_b: 1,
-        recommended_products_c: 1,
-        replacements_a: 1,
-        replacements_b: 1,
-        replacements_c: 1,
-        replacements_d: 1,
-        client_consent_a: 1,
-        client_consent_b: 1,
+        client_needs :0,
+        appropriate_fna :0,
+        fna_outcome :0,
+        product_suitability :0,
+        alternative_solutions :0,
+        material_aspects :0,
+        special_terms :0,
+        replacement_terms :0,
+        disclosure_a: 0,
+        disclosure_b: 0,
+        personal_details_a: 0,
+        personal_details_b: 0,
+        general_a: 0,
+        general_b: 0,
+        general_c: 0,
+        general_d: 0,
+        risk_classes_a: 0,
+        risk_classes_b: 0,
+        fna_a: 0,
+        fna_b: 0,
+        recommended_products_a: 0,
+        recommended_products_b: 0,
+        recommended_products_c: 0,
+        replacements_a: 0,
+        replacements_b: 0,
+        replacements_c: 0,
+        replacements_d: 0,
+        client_consent_a: 0,
+        client_consent_b: 0,
     })
 
     const onChange = (e) => {
@@ -324,7 +324,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.client_needs == Number("0") ? true : false} name="client_needs" id="client_needs"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={10} checked={ARCAnswers?.client_needs == Number("10") ? true : false} name="client_needs" id="client_needs"/>
                                                                     <label className="form-check-label" for="client_needs">
                                                                         <strong>Partially</strong> <strong>Approved</strong>
                                                                     </label>
@@ -332,7 +332,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={1} checked={ARCAnswers?.client_needs == Number("1") ? true : false} name="client_needs" id="client_needs"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.client_needs == Number("0") ? true : false} name="client_needs" id="client_needs"/>
                                                                     <label className="form-check-label" for="client_needs">
                                                                         <strong>Not</strong> <strong>Approved</strong>
                                                                     </label>
@@ -347,7 +347,7 @@ const ARCDocument = () => {
                                                         <div className='row'>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={15} checked={ARCAnswers?.appropriate_fna == Number("15") ? true : false} name="appropriate_fna" id="appropriate_fna"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={20} checked={ARCAnswers?.appropriate_fna == Number("20") ? true : false} name="appropriate_fna" id="appropriate_fna"/>
                                                                     <label className="form-check-label" for="appropriate_fna">
                                                                         <strong>Approved</strong>
                                                                     </label>
@@ -355,7 +355,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.appropriate_fna == Number("0") ? true : false} name="appropriate_fna" id="appropriate_fna"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={15} checked={ARCAnswers?.appropriate_fna == Number("15") ? true : false} name="appropriate_fna" id="appropriate_fna"/>
                                                                     <label className="form-check-label" for="appropriate_fna">
                                                                         <strong>Partially</strong> <strong>Approved</strong>
                                                                     </label>
@@ -363,7 +363,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={1} checked={ARCAnswers?.appropriate_fna == Number("1") ? true : false} name="appropriate_fna" id="appropriate_fna"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.appropriate_fna == Number("0") ? true : false} name="appropriate_fna" id="appropriate_fna"/>
                                                                     <label className="form-check-label" for="appropriate_fna">
                                                                         <strong>Not</strong> <strong>Approved</strong>
                                                                     </label>
@@ -386,7 +386,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.fna_outcome == Number("0") ? true : false} name="fna_outcome" id="fna_outcome"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={10} checked={ARCAnswers?.fna_outcome == Number("10") ? true : false} name="fna_outcome" id="fna_outcome"/>
                                                                     <label className="form-check-label" for="fna_outcome">
                                                                         <strong>Partially</strong> <strong>Approved</strong>
                                                                     </label>
@@ -394,7 +394,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={1} checked={ARCAnswers?.fna_outcome == Number("1") ? true : false} name="fna_outcome" id="fna_outcome"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.fna_outcome == Number("0") ? true : false} name="fna_outcome" id="fna_outcome"/>
                                                                     <label className="form-check-label" for="fna_outcome">
                                                                         <strong>Not</strong> <strong>Approved</strong>
                                                                     </label>
@@ -409,7 +409,7 @@ const ARCDocument = () => {
                                                         <div className='row'>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={15} checked={ARCAnswers?.product_suitability == Number("15") ? true : false} name="product_suitability" id="product_suitability"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={10} checked={ARCAnswers?.product_suitability == Number("10") ? true : false} name="product_suitability" id="product_suitability"/>
                                                                     <label className="form-check-label" for="product_suitability">
                                                                         <strong>Approved</strong>
                                                                     </label>
@@ -417,7 +417,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.product_suitability == Number("0") ? true : false} name="product_suitability" id="product_suitability"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={5} checked={ARCAnswers?.product_suitability == Number("5") ? true : false} name="product_suitability" id="product_suitability"/>
                                                                     <label className="form-check-label" for="product_suitability">
                                                                         <strong>Partially</strong> <strong>Approved</strong>
                                                                     </label>
@@ -425,7 +425,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={1} checked={ARCAnswers?.product_suitability == Number("1") ? true : false} name="product_suitability" id="product_suitability"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.product_suitability == Number("0") ? true : false} name="product_suitability" id="product_suitability"/>
                                                                     <label className="form-check-label" for="product_suitability">
                                                                         <strong>Not</strong> <strong>Approved</strong>
                                                                     </label>
@@ -440,7 +440,7 @@ const ARCDocument = () => {
                                                         <div className='row'>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={15} checked={ARCAnswers?.alternative_solutions == Number("15") ? true : false} name="alternative_solutions" id="alternative_solutions"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={10} checked={ARCAnswers?.alternative_solutions == Number("10") ? true : false} name="alternative_solutions" id="alternative_solutions"/>
                                                                     <label className="form-check-label" for="alternative_solutions">
                                                                         <strong>Approved</strong>
                                                                     </label>
@@ -448,7 +448,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.alternative_solutions == Number("0") ? true : false} name="alternative_solutions" id="alternative_solutions"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={5} checked={ARCAnswers?.alternative_solutions == Number("5") ? true : false} name="alternative_solutions" id="alternative_solutions"/>
                                                                     <label className="form-check-label" for="alternative_solutions">
                                                                         <strong>Partially</strong> <strong>Approved</strong>
                                                                     </label>
@@ -456,7 +456,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={1} checked={ARCAnswers?.alternative_solutions == Number("1") ? true : false} name="alternative_solutions" id="alternative_solutions"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.alternative_solutions == Number("0") ? true : false} name="alternative_solutions" id="alternative_solutions"/>
                                                                     <label className="form-check-label" for="alternative_solutions">
                                                                         <strong>Not</strong> <strong>Approved</strong>
                                                                     </label>
@@ -471,7 +471,7 @@ const ARCDocument = () => {
                                                         <div className='row'>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={15} checked={ARCAnswers?.material_aspects == Number("15") ? true : false} name="material_aspects" id="material_aspects"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={20} checked={ARCAnswers?.material_aspects == Number("20") ? true : false} name="material_aspects" id="material_aspects"/>
                                                                     <label className="form-check-label" for="material_aspects">
                                                                         <strong>Approved</strong>
                                                                     </label>
@@ -479,7 +479,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.material_aspects == Number("0") ? true : false} name="material_aspects" id="material_aspects"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={10} checked={ARCAnswers?.material_aspects == Number("10") ? true : false} name="material_aspects" id="material_aspects"/>
                                                                     <label className="form-check-label" for="material_aspects">
                                                                         <strong>Partially</strong> <strong>Approved</strong>
                                                                     </label>
@@ -487,7 +487,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={1} checked={ARCAnswers?.material_aspects == Number("1") ? true : false} name="material_aspects" id="material_aspects"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.material_aspects == Number("0") ? true : false} name="material_aspects" id="material_aspects"/>
                                                                     <label className="form-check-label" for="material_aspects">
                                                                         <strong>Not</strong> <strong>Approved</strong>
                                                                     </label>
@@ -502,7 +502,7 @@ const ARCDocument = () => {
                                                         <div className='row'>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={15} checked={ARCAnswers?.special_terms == Number("15") ? true : false} name="special_terms" id="special_terms"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={10} checked={ARCAnswers?.special_terms == Number("10") ? true : false} name="special_terms" id="special_terms"/>
                                                                     <label className="form-check-label" for="special_terms">
                                                                         <strong>Approved</strong>
                                                                     </label>
@@ -510,7 +510,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.special_terms == Number("0") ? true : false} name="special_terms" id="special_terms"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={5} checked={ARCAnswers?.special_terms == Number("5") ? true : false} name="special_terms" id="special_terms"/>
                                                                     <label className="form-check-label" for="special_terms">
                                                                         <strong>Partially</strong> <strong>Approved</strong>
                                                                     </label>
@@ -518,7 +518,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={1} checked={ARCAnswers?.special_terms == Number("1") ? true : false} name="special_terms" id="special_terms"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.special_terms == Number("0") ? true : false} name="special_terms" id="special_terms"/>
                                                                     <label className="form-check-label" for="special_terms">
                                                                         <strong>Not</strong> <strong>Approved</strong>
                                                                     </label>
@@ -541,7 +541,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.replacement_terms == Number("0") ? true : false} name="replacement_terms" id="replacement_terms"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={10} checked={ARCAnswers?.replacement_terms == Number("10") ? true : false} name="replacement_terms" id="replacement_terms"/>
                                                                     <label className="form-check-label" for="replacement_terms">
                                                                         <strong>Partially</strong> <strong>Approved</strong>
                                                                     </label>
@@ -549,7 +549,7 @@ const ARCDocument = () => {
                                                             </div>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={1} checked={ARCAnswers?.replacement_terms == Number("1") ? true : false} name="replacement_terms" id="replacement_terms"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.replacement_terms == Number("0") ? true : false} name="replacement_terms" id="replacement_terms"/>
                                                                     <label className="form-check-label" for="replacement_terms">
                                                                         <strong>Not</strong> <strong>Approved</strong>
                                                                     </label>
@@ -1336,12 +1336,24 @@ const ARCDocument = () => {
                                 <div className='row'>
                                     {
                                         DocumentInitalData?.starting_point == 2 ?
-                                            user?.is_superuser || user?.userType === 1 ?
+                                            user?.is_superuser || (DocumentInitalData?.user_id !== user?.id && user?.userType === 1) ?
                                             <div className={ DocumentInitalData?.status == 2 ? 'col-lg-4' : "col-lg-6"}>
                                                 <button 
                                                     className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
                                                     type='button'
                                                     onClick={()=>{router.push({pathname: "/apps/compliance/documents/view/gatekeeping", query: {'dId': dId}})}}
+                                                >
+                                                    <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-left'/>
+                                                    Back to Gatekeeping
+                                                </button>
+                                            </div>
+                                            :
+                                            user?.is_superuser || (DocumentInitalData?.user_id === user?.id && user?.userType === 1) ?
+                                            <div className={ DocumentInitalData?.status == 2 ? 'col-lg-4' : "col-lg-6"}>
+                                                <button 
+                                                    className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
+                                                    type='button'
+                                                    onClick={()=>{router.push({pathname: "/apps/compliance/documents/gatekeeping", query: {'dId': dId}})}}
                                                 >
                                                     <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-left'/>
                                                     Back to Gatekeeping
