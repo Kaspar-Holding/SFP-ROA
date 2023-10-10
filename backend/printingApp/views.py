@@ -2546,10 +2546,10 @@ def wkhtmltopdfapi(request):
         response =  PDFTemplateResponse(request=request, template=template,context=data, cmd_options=cmd_options)
         if request.data['dra_status']:
             # fileName = "Sample.pdf"
-            fileName = "Dynamic Risk Assessment for %s Filled by %s %s" %(data['RF_ClientName'], data['advisor']['first_name'] + " " + data['advisor']['last_name'] ,uuid.uuid4())
+            fileName = "Dynamic Risk Assessment for %s Filled by %s %s" %(str(data['RF_ClientName']).replace('/','_'), data['advisor']['first_name'] + " " + data['advisor']['last_name'] ,uuid.uuid4())
         else:
             # fileName = "Sample.pdf"
-            fileName = "Client Record of Advice for %s Filled by %s %s" %(data['RF_ClientName'], data['advisor']['first_name'] + " " + data['advisor']['last_name'] ,uuid.uuid4())
+            fileName = "Client Record of Advice for %s Filled by %s %s" %(str(data['RF_ClientName']).replace('/','_'), data['advisor']['first_name'] + " " + data['advisor']['last_name'] ,uuid.uuid4())
         with open("static/pdf/%s.pdf"%(fileName), "wb") as f:
             f.write(response.rendered_content)
         return Response({"file":"static/pdf/%s.pdf"%(fileName)})

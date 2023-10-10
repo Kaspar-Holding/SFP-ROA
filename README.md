@@ -12,6 +12,10 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 10 Ocotober 2023:
+- DRA Linked Party not updating bug resolved
+- Deployment
+
 ### 08 August 2023:
 - 2345: 08 August 2023 Bugs:: Resolved
 - Deployment
