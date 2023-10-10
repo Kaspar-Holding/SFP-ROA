@@ -79,12 +79,20 @@ class bac_model(models.Model):
 class regions(models.Model):
     region = models.TextField( default="")
 
+class region_manager(models.Model):
+    region = models.ForeignKey(regions, on_delete=models.SET_NULL, null=True)
+    manager = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    
+    status = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
 class categorisation(models.Model):
     categorisation = models.TextField( default="")
 
 class user_profile(models.Model):
     user = models.OneToOneField(UserAccount, on_delete=models.SET_NULL, null=True)
-    manager = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True, related_name="manager_id")
+    # manager = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True, related_name="manager_id")
     bac = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True, related_name="bac_id")
     # supervision = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, related_name="supervision_id")
     supervision = models.TextField(default="N/A")

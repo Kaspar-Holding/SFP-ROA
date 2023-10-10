@@ -597,7 +597,7 @@ class GateKeepingList(APIView):
                 score = round(score/total *100)
             if businessType == 13 :
                 # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
-                gkDocument = gk.values("fica","proof_of_screening","dra").latest('created_at')
+                gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra").latest('created_at')
                 for key in gkDocument:
                     if gkDocument[key] == 100:
                         total += 100
@@ -630,12 +630,14 @@ class GateKeepingList(APIView):
                             missing += "Mandate, \n"
                         if key == "replacement":
                             missing += "Replacement?, \n"
+                        if key == "policy_schedule":
+                            missing += "Policy Schedule, \n"
                         # if key == "replacement_type":
                         #     missing += "Type of Replacement, \n"
                 score = round(score/total *100)
             if businessType == 14 or businessType == 15 :
                 # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
-                gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
+                gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
                 for key in gkDocument:
                     if gkDocument[key] == 100:
                         total += 100
@@ -668,6 +670,8 @@ class GateKeepingList(APIView):
                             missing += "Mandate, \n"
                         if key == "replacement":
                             missing += "Replacement?, \n"
+                        if key == "policy_schedule":
+                            missing += "Policy Schedule, \n"
                         # if key == "replacement_type":
                         #     missing += "Type of Replacement, \n"
                 score = round(score/total *100)
@@ -1083,7 +1087,7 @@ class ComplianceDocumentSummary(APIView):
                         score = round(score/total *100)
                     if businessType == 13 :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
-                        gkDocument = gk.values("fica","proof_of_screening","dra").latest('id')
+                        gkDocument = gk.values("fica","proof_of_screening","dra","policy_schedule").latest('id')
                         for key in gkDocument:
                             if gkDocument[key] == 100:
                                 total += 100
@@ -1116,12 +1120,14 @@ class ComplianceDocumentSummary(APIView):
                                     missing += "Mandate, \n"
                                 if key == "replacement":
                                     missing += "Replacement?, \n"
+                                if key == "policy_schedule":
+                                    missing += "Policy Schedule?, \n"
                                 # if key == "replacement_type":
                                 #     missing += "Type of Replacement, \n"
                         score = round(score/total *100)
                     if businessType == 14 or businessType == 15 :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
-                        gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('id')
+                        gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('id')
                         for key in gkDocument:
                             if gkDocument[key] == 100:
                                 total += 100
@@ -1154,6 +1160,8 @@ class ComplianceDocumentSummary(APIView):
                                     missing += "Mandate, \n"
                                 if key == "replacement":
                                     missing += "Replacement?, \n"
+                                if key == "policy_schedule":
+                                    missing += "Policy Schedule?, \n"
                                 # if key == "replacement_type":
                                 #     missing += "Type of Replacement, \n"
                         score = round(score/total *100)

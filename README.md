@@ -14,6 +14,10 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 10 September 2023:
+- Managers are removed from Profile now. Managers are now linked to Regions=ed
+- Deployment on Staging 
+
 ### 09 September 2023:
 - ARCs can now create the document and go furthur by selecting their Start Point
 - Progress is now integrated
