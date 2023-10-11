@@ -1584,6 +1584,7 @@ class loadagentsDetail(APIView):
                 if profile.exists():
                     profile = user_profile.objects.filter(user=advisor['id']).values().first()
                     data['IdNumber'] = profile['id_number']
+                    data['supervision'] = profile['supervision']
                     user_region = regions.objects.filter(pk=profile['region_id'])
                     data['region'] = ""
                     if user_region.exists():
