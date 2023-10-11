@@ -1485,7 +1485,7 @@ class loadRegions(APIView):
     def get(self, request):
         user = request.user
         if user.is_superuser or user.userType == 1 or user.userType == 2:
-            regionsData = regions.objects.all()
+            regionsData = regions.objects.all().order_by('region')
             if regionsData.exists():
                 regionsData = regionsData.values()
                 data = []
@@ -1567,7 +1567,7 @@ class loadagentsDetail(APIView):
         if user.is_superuser or user.userType == 1 or user.userType == 2:
             data = request.data['data']
             
-            advisor = UserAccount.objects.filter(userType = 6, pk=request.data['advisorId'])
+            advisor = UserAccount.objects.filter(userType = 6, pk=request.data['advisorId']).order_by('first_name')
             if advisor.exists():
                 advisor = advisor.values().first()
                 data['advisor'] = request.data['advisorId']
