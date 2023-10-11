@@ -1449,7 +1449,7 @@ class arcList(APIView):
         if user.userType != 1:
             return Response({"message": "You don't have access to perform this."}, 401)
         if reviewDoc.exists():
-            reviewDoc = reviewDoc.values().filter()
+            reviewDoc = reviewDoc.values().first()
             ComplianceDocument.objects.filter(id=newData['document']).update(updated_at=datetime.now())
             arcdata = arc.objects.filter(document=newData['document'])
             if arcdata.exists():
