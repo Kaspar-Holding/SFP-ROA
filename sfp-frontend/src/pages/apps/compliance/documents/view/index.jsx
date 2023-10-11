@@ -31,7 +31,7 @@ const EditDocument = () => {
         IdNumber: "",
         categorisation: "",
         advisorEmail: "",
-        supervisor: "",
+        supervision: "",
         policy_number: "",
         supplier: "",
         product: "",
@@ -226,7 +226,7 @@ const EditDocument = () => {
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Supervision</label>
-                                            <input disabled required type="text" value={DocumentInitalData?.supervisor} name="supervisor" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input disabled required type="text" value={DocumentInitalData?.supervision} name="supervision" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Policy Number</label>

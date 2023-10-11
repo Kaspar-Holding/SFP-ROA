@@ -14,6 +14,10 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 11 September 2023:
+- Data is linked successfully
+- Deployment on Staging 
+
 ### 10 September 2023:
 - Managers are removed from Profile now. Managers are now linked to Regions
 - ARC formula re-evaluated

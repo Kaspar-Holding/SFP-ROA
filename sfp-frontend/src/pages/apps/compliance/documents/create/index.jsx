@@ -27,7 +27,7 @@ const CreateDocument = () => {
         categorisation: "",
         advisorEmail: "",
         supervisor: "",
-        supervisor_name: "",
+        supervision: "",
         policy_number: "",
         supplier: "",
         product: "",
@@ -355,7 +355,7 @@ const CreateDocument = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Supervision</label>
-                                        <input disable={DocumentInitalData?.supervisor_name === ""} required={DocumentInitalData?.supervisor_name === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.supervisor_name} name="supervisor_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        <input disable={DocumentInitalData?.supervision === ""} required={DocumentInitalData?.supervision === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.supervision ? DocumentInitalData?.supervision : "N/A"} name="supervision" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Policy Number</label>

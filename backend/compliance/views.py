@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.decorators import APIView, api_view
 from rest_framework.response import Response
-from data.models import UserAccount, user_profile, regions
+from data.models import UserAccount, categorisation, user_profile, regions
 from .models import ComplianceDocument, GateKeeping, DocumentComments, arc_questions, arc, arc_question_header, review_status
 from .serializers import ComplianceDocument_Serializer, review_status_Serializer, GateKeeping_Serializer, DocumentComments_Serializer, arc_questions_Serializer, arc_Serializer, arc_question_header_Serializer
 from rest_framework import status
@@ -1580,6 +1580,7 @@ class loadagentsDetail(APIView):
                 data['supervisor'] = ""
                 data['supervisor_name'] = ""
                 data['region'] = ""
+                data['categorisation'] = ""
                 if profile.exists():
                     profile = user_profile.objects.filter(user=advisor['id']).values().first()
                     data['IdNumber'] = profile['id_number']
@@ -1588,6 +1589,11 @@ class loadagentsDetail(APIView):
                     if user_region.exists():
                         user_region = user_region.values().first()
                         data['region'] = user_region['region']
+                    user_categorisation = categorisation.objects.filter(pk=profile['categorisation_id'])
+                    data['categorisation'] = ""
+                    if user_categorisation.exists():
+                        user_categorisation = user_categorisation.values().first()
+                        data['categorisation'] = user_categorisation['categorisation']
                     user_bac = UserAccount.objects.filter(pk=profile['bac_id'])
                     data['bac'] = ""
                     data['bac_name'] = ""
