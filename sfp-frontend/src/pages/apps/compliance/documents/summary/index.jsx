@@ -347,13 +347,20 @@ const SummaryDocument = () => {
                                     
                                     </div>
                                     <div className='col-lg-6'>
-                                        <div className="form-floating">
-                                            <textarea 
+                                        <div style={{height: "300px", overflowY: 'auto'}} dangerouslySetInnerHTML={{__html: MissingDocuments}}></div>
+                                        {/* <div className="form-floating">
+                                            <textarea                                                
                                                 className="form-control" 
-                                                value={MissingDocuments} 
+                                                value={
+                                                    `Dear Advisor\n\nThank you for submitting the case ${DocumentInitalData?.policy_number} for compliance review. ${MissingDocuments}\n\nPlease provide these outstanding requirements:
+                                                    \nOnce you have met these requirements, please upload the updated documents to Sanfin and resubmit the case for a second review by completing the task: "Gatekeeper Requires More Compliance Documents"/ "ARC Requires More Compliance Documents" on Sanfin. Please notify me once you have done this.
+                                                    \nLet me know if you have any other questions.
+                                                    \nKind Regards
+                                                    `
+                                                    } 
                                                 placeholder="Leave a comment here" id="summaryComment" style={{height: "300px"}}></textarea>
                                             <label for="summaryComment">Email Response</label>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                                 <br/>

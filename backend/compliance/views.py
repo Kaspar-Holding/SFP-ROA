@@ -404,7 +404,7 @@ class GateKeepingList(APIView):
                 document = document.values().first()
                 businessType = document['businessType']
                 score = 0
-                missing = f"Following documents are missing as per assessment in version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}):\n"
+                missing = f"This case has some outstanding requirements in review version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n<ul>"
                 total = 0
                 if businessType == 1 or (businessType > 4 and businessType < 9) :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -416,33 +416,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 3 or businessType == 4:
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -454,33 +454,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 5 or businessType == 9:
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation']
@@ -492,33 +492,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 12:
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -530,33 +530,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 10 :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa']
@@ -568,33 +568,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 11 :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['application']
@@ -606,33 +606,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 13 :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
@@ -644,35 +644,35 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             if key == "policy_schedule":
-                                missing += "Policy Schedule, \n"
+                                missing += "<li>Policy Schedule</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 14 or businessType == 15 :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
@@ -684,35 +684,35 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             if key == "policy_schedule":
-                                missing += "Policy Schedule, \n"
+                                missing += "<li>Policy Schedule</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 2 :
                     # score = gatekeepingDocument['proof_of_screening']
@@ -724,14 +724,15 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                         if gkDocument[key] == 100:
                             total += 100
                             score += gkDocument[key]
                         if gkDocument[key] == 0:
                             total += 100
                 
-                if missing != f"Following documents are missing as per assessment in version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}):\n":
+                missing += "</ul>"
+                if missing != f"This case has some outstanding requirements in review version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n<ul></ul>":
                     comment = {
                         "user" : 0,
                         "type" : 3,
@@ -770,7 +771,7 @@ class GateKeepingList(APIView):
                 document = document.values().first()
                 businessType = document['businessType']
                 score = 0
-                missing = f"Following documents are missing as per assessment in version {version}:\n"
+                missing = f"This case has some outstanding requirements in review version {version} before it can be approved for the release of commission:\n<ul>"
                 total = 0
                 if businessType == 1 or (businessType > 4 and businessType < 9) :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -782,33 +783,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 3 or businessType == 4:
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -820,33 +821,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 5 or businessType == 9:
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation']
@@ -858,33 +859,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 12:
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -896,33 +897,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 10 :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa']
@@ -934,33 +935,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 11 :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['application']
@@ -972,33 +973,33 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 13 :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
@@ -1010,35 +1011,35 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             if key == "policy_schedule":
-                                missing += "Policy Schedule, \n"
+                                missing += "<li>Policy Schedule</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 14 or businessType == 15 :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
@@ -1050,35 +1051,35 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "fica":
-                                missing += "FICA (Clear ID), \n"
+                                missing += "<li>FICA (Clear ID)</li>"
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                             if key == "dra":
-                                missing += "DRA, \n"
+                                missing += "<li>DRA</li>"
                             if key == "letter_of_intro":
-                                missing += "Introduction letter, \n"
+                                missing += "<li>Introduction letter</li>"
                             if key == "authorisation_letter":
-                                missing += "Authorisation letter, \n"
+                                missing += "<li>Authorisation letter</li>"
                             # if key == "roa_type":
-                            #     missing += "ROA Type, \n"
+                            #     missing += "<li>ROA Type</li>"
                             if key == "roa":
-                                missing += "ROA (All sections completed), \n"
+                                missing += "<li>ROA (All sections completed)</li>"
                             if key == "fna":
-                                missing += "FNA (Appropriate FNA filed), \n"
+                                missing += "<li>FNA (Appropriate FNA filed)</li>"
                             if key == "application":
-                                missing += "Application, \n"
+                                missing += "<li>Application</li>"
                             if key == "quotation":
-                                missing += "Quotation, \n"
+                                missing += "<li>Quotation</li>"
                             if key == "risk_portfolio":
-                                missing += "Risk Portfolio, \n"
+                                missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
-                                missing += "Mandate, \n"
+                                missing += "<li>Mandate</li>"
                             if key == "replacement":
-                                missing += "Replacement?, \n"
+                                missing += "<li>Replacement?</li>"
                             if key == "policy_schedule":
-                                missing += "Policy Schedule, \n"
+                                missing += "<li>Policy Schedule</li>"
                             # if key == "replacement_type":
-                            #     missing += "Type of Replacement, \n"
+                            #     missing += "<li>Type of Replacement</li>"
                     score = round(score/total *100)
                 if businessType == 2 :
                     # score = gatekeepingDocument['proof_of_screening']
@@ -1090,14 +1091,15 @@ class GateKeepingList(APIView):
                         if gkDocument[key] == 0:
                             total += 100
                             if key == "proof_of_screening":
-                                missing += "Proof of Screening, \n"
+                                missing += "<li>Proof of Screening</li>"
                         if gkDocument[key] == 100:
                             total += 100
                             score += gkDocument[key]
                         if gkDocument[key] == 0:
                             total += 100
                 
-                if missing != f"Following documents are missing as per assessment in version {version}:\n":
+                missing += "</ul>"
+                if missing != f"This case has some outstanding requirements in review version {version} before it can be approved for the release of commission:\n<ul></ul>":
                     comment = {
                         "user" : 0,
                         "type" : 3,
@@ -1119,7 +1121,7 @@ class GateKeepingList(APIView):
                     documentCommentSerializer.save()
                 else:
                     print(documentCommentSerializer.errors)
-                print(missing)
+                
 
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             else:
@@ -1259,8 +1261,9 @@ class ComplianceDocumentSummary(APIView):
                 if gatekeepingDocument.exists():
                     gk = gatekeepingDocument
                     gatekeepingDocument = gatekeepingDocument.values().latest('id')
+                    version = gatekeepingDocument['version']
                     businessType = document['businessType']
-                    missing = "Following documents are missing as per assessment in latest version:\n"
+                    missing = f"This case has some outstanding requirements in review version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n<ul>"
                     total = 0
                     if businessType == 1 or (businessType > 4 and businessType < 9) :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -1272,33 +1275,33 @@ class ComplianceDocumentSummary(APIView):
                             if gkDocument[key] == 0:
                                 total += 100
                                 if key == "fica":
-                                    missing += "FICA (Clear ID), \n"
+                                    missing += "<li>FICA (Clear ID)</li>"
                                 if key == "proof_of_screening":
-                                    missing += "Proof of Screening, \n"
+                                    missing += "<li>Proof of Screening</li>"
                                 if key == "dra":
-                                    missing += "DRA, \n"
+                                    missing += "<li>DRA</li>"
                                 if key == "letter_of_intro":
-                                    missing += "Introduction letter, \n"
+                                    missing += "<li>Introduction letter</li>"
                                 if key == "authorisation_letter":
-                                    missing += "Authorisation letter, \n"
+                                    missing += "<li>Authorisation letter</li>"
                                 # if key == "roa_type":
-                                #     missing += "ROA Type, \n"
+                                #     missing += "<li>ROA Type</li>"
                                 if key == "roa":
-                                    missing += "ROA (All sections completed), \n"
+                                    missing += "<li>ROA (All sections completed)</li>"
                                 if key == "fna":
-                                    missing += "FNA (Appropriate FNA filed), \n"
+                                    missing += "<li>FNA (Appropriate FNA filed)</li>"
                                 if key == "application":
-                                    missing += "Application, \n"
+                                    missing += "<li>Application</li>"
                                 if key == "quotation":
-                                    missing += "Quotation, \n"
+                                    missing += "<li>Quotation</li>"
                                 if key == "risk_portfolio":
-                                    missing += "Risk Portfolio, \n"
+                                    missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
-                                    missing += "Mandate, \n"
+                                    missing += "<li>Mandate</li>"
                                 if key == "replacement":
-                                    missing += "Replacement?, \n"
+                                    missing += "<li>Replacement?</li>"
                                 # if key == "replacement_type":
-                                #     missing += "Type of Replacement, \n"
+                                #     missing += "<li>Type of Replacement</li>"
                         score = round(score/total *100)
                     if businessType == 3 or businessType == 4:
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -1310,33 +1313,33 @@ class ComplianceDocumentSummary(APIView):
                             if gkDocument[key] == 0:
                                 total += 100
                                 if key == "fica":
-                                    missing += "FICA (Clear ID), \n"
+                                    missing += "<li>FICA (Clear ID)</li>"
                                 if key == "proof_of_screening":
-                                    missing += "Proof of Screening, \n"
+                                    missing += "<li>Proof of Screening</li>"
                                 if key == "dra":
-                                    missing += "DRA, \n"
+                                    missing += "<li>DRA</li>"
                                 if key == "letter_of_intro":
-                                    missing += "Introduction letter, \n"
+                                    missing += "<li>Introduction letter</li>"
                                 if key == "authorisation_letter":
-                                    missing += "Authorisation letter, \n"
+                                    missing += "<li>Authorisation letter</li>"
                                 # if key == "roa_type":
-                                #     missing += "ROA Type, \n"
+                                #     missing += "<li>ROA Type</li>"
                                 if key == "roa":
-                                    missing += "ROA (All sections completed), \n"
+                                    missing += "<li>ROA (All sections completed)</li>"
                                 if key == "fna":
-                                    missing += "FNA (Appropriate FNA filed), \n"
+                                    missing += "<li>FNA (Appropriate FNA filed)</li>"
                                 if key == "application":
-                                    missing += "Application, \n"
+                                    missing += "<li>Application</li>"
                                 if key == "quotation":
-                                    missing += "Quotation, \n"
+                                    missing += "<li>Quotation</li>"
                                 if key == "risk_portfolio":
-                                    missing += "Risk Portfolio, \n"
+                                    missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
-                                    missing += "Mandate, \n"
+                                    missing += "<li>Mandate</li>"
                                 if key == "replacement":
-                                    missing += "Replacement?, \n"
+                                    missing += "<li>Replacement?</li>"
                                 # if key == "replacement_type":
-                                #     missing += "Type of Replacement, \n"
+                                #     missing += "<li>Type of Replacement</li>"
                         score = round(score/total *100)
                     if businessType == 5 or businessType == 9:
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation']
@@ -1348,33 +1351,33 @@ class ComplianceDocumentSummary(APIView):
                             if gkDocument[key] == 0:
                                 total += 100
                                 if key == "fica":
-                                    missing += "FICA (Clear ID), \n"
+                                    missing += "<li>FICA (Clear ID)</li>"
                                 if key == "proof_of_screening":
-                                    missing += "Proof of Screening, \n"
+                                    missing += "<li>Proof of Screening</li>"
                                 if key == "dra":
-                                    missing += "DRA, \n"
+                                    missing += "<li>DRA</li>"
                                 if key == "letter_of_intro":
-                                    missing += "Introduction letter, \n"
+                                    missing += "<li>Introduction letter</li>"
                                 if key == "authorisation_letter":
-                                    missing += "Authorisation letter, \n"
+                                    missing += "<li>Authorisation letter</li>"
                                 # if key == "roa_type":
-                                #     missing += "ROA Type, \n"
+                                #     missing += "<li>ROA Type</li>"
                                 if key == "roa":
-                                    missing += "ROA (All sections completed), \n"
+                                    missing += "<li>ROA (All sections completed)</li>"
                                 if key == "fna":
-                                    missing += "FNA (Appropriate FNA filed), \n"
+                                    missing += "<li>FNA (Appropriate FNA filed)</li>"
                                 if key == "application":
-                                    missing += "Application, \n"
+                                    missing += "<li>Application</li>"
                                 if key == "quotation":
-                                    missing += "Quotation, \n"
+                                    missing += "<li>Quotation</li>"
                                 if key == "risk_portfolio":
-                                    missing += "Risk Portfolio, \n"
+                                    missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
-                                    missing += "Mandate, \n"
+                                    missing += "<li>Mandate</li>"
                                 if key == "replacement":
-                                    missing += "Replacement?, \n"
+                                    missing += "<li>Replacement?</li>"
                                 # if key == "replacement_type":
-                                #     missing += "Type of Replacement, \n"
+                                #     missing += "<li>Type of Replacement</li>"
                         score = round(score/total *100)
                     if businessType == 12:
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -1386,33 +1389,33 @@ class ComplianceDocumentSummary(APIView):
                             if gkDocument[key] == 0:
                                 total += 100
                                 if key == "fica":
-                                    missing += "FICA (Clear ID), \n"
+                                    missing += "<li>FICA (Clear ID)</li>"
                                 if key == "proof_of_screening":
-                                    missing += "Proof of Screening, \n"
+                                    missing += "<li>Proof of Screening</li>"
                                 if key == "dra":
-                                    missing += "DRA, \n"
+                                    missing += "<li>DRA</li>"
                                 if key == "letter_of_intro":
-                                    missing += "Introduction letter, \n"
+                                    missing += "<li>Introduction letter</li>"
                                 if key == "authorisation_letter":
-                                    missing += "Authorisation letter, \n"
+                                    missing += "<li>Authorisation letter</li>"
                                 # if key == "roa_type":
-                                #     missing += "ROA Type, \n"
+                                #     missing += "<li>ROA Type</li>"
                                 if key == "roa":
-                                    missing += "ROA (All sections completed), \n"
+                                    missing += "<li>ROA (All sections completed)</li>"
                                 if key == "fna":
-                                    missing += "FNA (Appropriate FNA filed), \n"
+                                    missing += "<li>FNA (Appropriate FNA filed)</li>"
                                 if key == "application":
-                                    missing += "Application, \n"
+                                    missing += "<li>Application</li>"
                                 if key == "quotation":
-                                    missing += "Quotation, \n"
+                                    missing += "<li>Quotation</li>"
                                 if key == "risk_portfolio":
-                                    missing += "Risk Portfolio, \n"
+                                    missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
-                                    missing += "Mandate, \n"
+                                    missing += "<li>Mandate</li>"
                                 if key == "replacement":
-                                    missing += "Replacement?, \n"
+                                    missing += "<li>Replacement?</li>"
                                 # if key == "replacement_type":
-                                #     missing += "Type of Replacement, \n"
+                                #     missing += "<li>Type of Replacement</li>"
                         score = round(score/total *100)
                     if businessType == 10 :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa']
@@ -1424,33 +1427,33 @@ class ComplianceDocumentSummary(APIView):
                             if gkDocument[key] == 0:
                                 total += 100
                                 if key == "fica":
-                                    missing += "FICA (Clear ID), \n"
+                                    missing += "<li>FICA (Clear ID)</li>"
                                 if key == "proof_of_screening":
-                                    missing += "Proof of Screening, \n"
+                                    missing += "<li>Proof of Screening</li>"
                                 if key == "dra":
-                                    missing += "DRA, \n"
+                                    missing += "<li>DRA</li>"
                                 if key == "letter_of_intro":
-                                    missing += "Introduction letter, \n"
+                                    missing += "<li>Introduction letter</li>"
                                 if key == "authorisation_letter":
-                                    missing += "Authorisation letter, \n"
+                                    missing += "<li>Authorisation letter</li>"
                                 # if key == "roa_type":
-                                #     missing += "ROA Type, \n"
+                                #     missing += "<li>ROA Type</li>"
                                 if key == "roa":
-                                    missing += "ROA (All sections completed), \n"
+                                    missing += "<li>ROA (All sections completed)</li>"
                                 if key == "fna":
-                                    missing += "FNA (Appropriate FNA filed), \n"
+                                    missing += "<li>FNA (Appropriate FNA filed)</li>"
                                 if key == "application":
-                                    missing += "Application, \n"
+                                    missing += "<li>Application</li>"
                                 if key == "quotation":
-                                    missing += "Quotation, \n"
+                                    missing += "<li>Quotation</li>"
                                 if key == "risk_portfolio":
-                                    missing += "Risk Portfolio, \n"
+                                    missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
-                                    missing += "Mandate, \n"
+                                    missing += "<li>Mandate</li>"
                                 if key == "replacement":
-                                    missing += "Replacement?, \n"
+                                    missing += "<li>Replacement?</li>"
                                 # if key == "replacement_type":
-                                #     missing += "Type of Replacement, \n"
+                                #     missing += "<li>Type of Replacement</li>"
                         score = round(score/total *100)
                     if businessType == 11 :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['application']
@@ -1462,33 +1465,33 @@ class ComplianceDocumentSummary(APIView):
                             if gkDocument[key] == 0:
                                 total += 100
                                 if key == "fica":
-                                    missing += "FICA (Clear ID), \n"
+                                    missing += "<li>FICA (Clear ID)</li>"
                                 if key == "proof_of_screening":
-                                    missing += "Proof of Screening, \n"
+                                    missing += "<li>Proof of Screening</li>"
                                 if key == "dra":
-                                    missing += "DRA, \n"
+                                    missing += "<li>DRA</li>"
                                 if key == "letter_of_intro":
-                                    missing += "Introduction letter, \n"
+                                    missing += "<li>Introduction letter</li>"
                                 if key == "authorisation_letter":
-                                    missing += "Authorisation letter, \n"
+                                    missing += "<li>Authorisation letter</li>"
                                 # if key == "roa_type":
-                                #     missing += "ROA Type, \n"
+                                #     missing += "<li>ROA Type</li>"
                                 if key == "roa":
-                                    missing += "ROA (All sections completed), \n"
+                                    missing += "<li>ROA (All sections completed)</li>"
                                 if key == "fna":
-                                    missing += "FNA (Appropriate FNA filed), \n"
+                                    missing += "<li>FNA (Appropriate FNA filed)</li>"
                                 if key == "application":
-                                    missing += "Application, \n"
+                                    missing += "<li>Application</li>"
                                 if key == "quotation":
-                                    missing += "Quotation, \n"
+                                    missing += "<li>Quotation</li>"
                                 if key == "risk_portfolio":
-                                    missing += "Risk Portfolio, \n"
+                                    missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
-                                    missing += "Mandate, \n"
+                                    missing += "<li>Mandate</li>"
                                 if key == "replacement":
-                                    missing += "Replacement?, \n"
+                                    missing += "<li>Replacement?</li>"
                                 # if key == "replacement_type":
-                                #     missing += "Type of Replacement, \n"
+                                #     missing += "<li>Type of Replacement</li>"
                         score = round(score/total *100)
                     if businessType == 13 :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
@@ -1500,35 +1503,35 @@ class ComplianceDocumentSummary(APIView):
                             if gkDocument[key] == 0:
                                 total += 100
                                 if key == "fica":
-                                    missing += "FICA (Clear ID), \n"
+                                    missing += "<li>FICA (Clear ID)</li>"
                                 if key == "proof_of_screening":
-                                    missing += "Proof of Screening, \n"
+                                    missing += "<li>Proof of Screening</li>"
                                 if key == "dra":
-                                    missing += "DRA, \n"
+                                    missing += "<li>DRA</li>"
                                 if key == "letter_of_intro":
-                                    missing += "Introduction letter, \n"
+                                    missing += "<li>Introduction letter</li>"
                                 if key == "authorisation_letter":
-                                    missing += "Authorisation letter, \n"
+                                    missing += "<li>Authorisation letter</li>"
                                 # if key == "roa_type":
-                                #     missing += "ROA Type, \n"
+                                #     missing += "<li>ROA Type</li>"
                                 if key == "roa":
-                                    missing += "ROA (All sections completed), \n"
+                                    missing += "<li>ROA (All sections completed)</li>"
                                 if key == "fna":
-                                    missing += "FNA (Appropriate FNA filed), \n"
+                                    missing += "<li>FNA (Appropriate FNA filed)</li>"
                                 if key == "application":
-                                    missing += "Application, \n"
+                                    missing += "<li>Application</li>"
                                 if key == "quotation":
-                                    missing += "Quotation, \n"
+                                    missing += "<li>Quotation</li>"
                                 if key == "risk_portfolio":
-                                    missing += "Risk Portfolio, \n"
+                                    missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
-                                    missing += "Mandate, \n"
+                                    missing += "<li>Mandate</li>"
                                 if key == "replacement":
-                                    missing += "Replacement?, \n"
+                                    missing += "<li>Replacement?</li>"
                                 if key == "policy_schedule":
-                                    missing += "Policy Schedule?, \n"
+                                    missing += "<li>Policy Schedule?</li>"
                                 # if key == "replacement_type":
-                                #     missing += "Type of Replacement, \n"
+                                #     missing += "<li>Type of Replacement</li>"
                         score = round(score/total *100)
                     if businessType == 14 or businessType == 15 :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
@@ -1540,35 +1543,35 @@ class ComplianceDocumentSummary(APIView):
                             if gkDocument[key] == 0:
                                 total += 100
                                 if key == "fica":
-                                    missing += "FICA (Clear ID), \n"
+                                    missing += "<li>FICA (Clear ID)</li>"
                                 if key == "proof_of_screening":
-                                    missing += "Proof of Screening, \n"
+                                    missing += "<li>Proof of Screening</li>"
                                 if key == "dra":
-                                    missing += "DRA, \n"
+                                    missing += "<li>DRA</li>"
                                 if key == "letter_of_intro":
-                                    missing += "Introduction letter, \n"
+                                    missing += "<li>Introduction letter</li>"
                                 if key == "authorisation_letter":
-                                    missing += "Authorisation letter, \n"
+                                    missing += "<li>Authorisation letter</li>"
                                 # if key == "roa_type":
-                                #     missing += "ROA Type, \n"
+                                #     missing += "<li>ROA Type</li>"
                                 if key == "roa":
-                                    missing += "ROA (All sections completed), \n"
+                                    missing += "<li>ROA (All sections completed)</li>"
                                 if key == "fna":
-                                    missing += "FNA (Appropriate FNA filed), \n"
+                                    missing += "<li>FNA (Appropriate FNA filed)</li>"
                                 if key == "application":
-                                    missing += "Application, \n"
+                                    missing += "<li>Application</li>"
                                 if key == "quotation":
-                                    missing += "Quotation, \n"
+                                    missing += "<li>Quotation</li>"
                                 if key == "risk_portfolio":
-                                    missing += "Risk Portfolio, \n"
+                                    missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
-                                    missing += "Mandate, \n"
+                                    missing += "<li>Mandate</li>"
                                 if key == "replacement":
-                                    missing += "Replacement?, \n"
+                                    missing += "<li>Replacement?</li>"
                                 if key == "policy_schedule":
-                                    missing += "Policy Schedule?, \n"
+                                    missing += "<li>Policy Schedule?</li>"
                                 # if key == "replacement_type":
-                                #     missing += "Type of Replacement, \n"
+                                #     missing += "<li>Type of Replacement</li>"
                         score = round(score/total *100)
                     if businessType == 2 :
                         # score = gatekeepingDocument['proof_of_screening']
@@ -1580,10 +1583,11 @@ class ComplianceDocumentSummary(APIView):
                             if gkDocument[key] == 0:
                                 total += 100
                                 if key == "proof_of_screening":
-                                    missing += "Proof of Screening, \n"
+                                    missing += "<li>Proof of Screening</li>"
                             if gkDocument[key] == 0:
                                 total += 100
-                
+
+                    missing += "</ul>"
             arcDocument = arc.objects.filter(document=pk)
             arcStatus = False
             arc_score = 0
@@ -1613,12 +1617,18 @@ class ComplianceDocumentSummary(APIView):
                 if user.exists():
                     user = user.values().first()
                     comment['commenting_user'] = f"{user['first_name']} {user['last_name']}"  
+            emailResponse = f"""
+                    Dear Advisor<br/><br/>Thank you for submitting the case {document['policy_number']} for compliance review. {missing}<br/>Please provide these outstanding requirements:
+                    <br/>Once you have met these requirements, please upload the updated documents to Sanfin and resubmit the case for a second review by completing the task: "Gatekeeper Requires More Compliance Documents"/ "ARC Requires More Compliance Documents" on Sanfin. Please notify me once you have done this.
+                    <br/><br/>Let me know if you have any other questions.
+                    <br/><br/>Kind Regards
+                """
             return Response({
                 "score" : score,
                 "arc_score" : arc_score,
                 "arc_status" : arcStatus,
                 "comments" : comments,
-                "missing": missing
+                "missing": emailResponse
             })
             # else:
             #     raise Http404
