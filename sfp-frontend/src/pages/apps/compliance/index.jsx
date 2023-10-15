@@ -364,6 +364,7 @@ const Compliance = () => {
                                                                         review?.status === 0 ? "New Case" :
                                                                         review?.status === 1 ? "Approved" :
                                                                         review?.status === 2 ? "Not Approved" :
+                                                                        review?.status === 7 ? "Not Approved & Editing" :
                                                                         review?.status === 3 ? "Referred" :
                                                                         review?.status === 4 ? "Partial Approved" : 
                                                                         review?.status === 5 ? "Picked Up" : ""
@@ -373,7 +374,7 @@ const Compliance = () => {
                                                                     <div className="btn-group" role="group" aria-label="Basic mixed styles example">
                                                                         {
                                                                             
-                                                                            !user?.is_superuser && (review?.status === 0 || review?.status === 2) ?
+                                                                            !user?.is_superuser && (review?.status === 0 || review?.status === 2 || review?.status === 7) ?
                                                                             <button 
                                                                                 type="button" 
                                                                                 className={"btn btn-secondary"}

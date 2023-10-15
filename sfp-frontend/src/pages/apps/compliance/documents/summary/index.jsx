@@ -371,7 +371,7 @@ const SummaryDocument = () => {
                                                         query: {dId : dId}
                                                     })
                                                     :
-                                                    DocumentInitalData?.status != 0 || DocumentInitalData?.status != 2 || (user?.userType == 1 && Summary?.arc_status) ?
+                                                    DocumentInitalData?.status != 0 || DocumentInitalData?.status != 2 || DocumentInitalData?.status == 7 || (user?.userType == 1 && Summary?.arc_status) ?
                                                     router.push({
                                                         pathname: "/apps/compliance/documents/gatekeeping",
                                                         query: {dId : dId}
@@ -391,7 +391,7 @@ const SummaryDocument = () => {
                                     }
                                     <div className="col">
                                     {
-                                        DocumentInitalData?.status >= 3 || Summary?.arc_status ?
+                                        (DocumentInitalData?.status >= 3 && DocumentInitalData?.status != 7) || Summary?.arc_status ?
                                             <button 
                                                 className="btn btn-primary compliance-inital-card-button-text btn-sfp" 
                                                 onClick={()=>{

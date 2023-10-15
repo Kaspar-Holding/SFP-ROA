@@ -1851,7 +1851,8 @@ def updateRiskFactorsData(request):
     formData = request.data['RF_Data']
     form = RiskFactors.objects.filter(id=formData['id'])
     if form.exists():
-        scores = request.data['Score_Data']            
+        scores = request.data['Score_Data']  
+        status = form.values().first()['status']          
         if int(scores['Reputation_Risk']) == 4:
             formData['status'] = 4
             status = 4

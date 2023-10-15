@@ -880,7 +880,7 @@ const CompleteDocument = () => {
                                                     </>
                                                 }
                                                 {
-                                                    (DocumentInitalData?.businessType == 3 || DocumentInitalData?.businessType == 4 || DocumentInitalData?.businessType == 6 || DocumentInitalData?.businessType == 7 | DocumentInitalData?.businessType == 8 || DocumentInitalData?.businessType == 12 || DocumentInitalData?.businessType == 14 || DocumentInitalData?.businessType == 15) ?
+                                                    (DocumentInitalData?.businessType == 1 || DocumentInitalData?.businessType == 3 || DocumentInitalData?.businessType == 4 || DocumentInitalData?.businessType == 6 || DocumentInitalData?.businessType == 7 | DocumentInitalData?.businessType == 8 || DocumentInitalData?.businessType == 12 || DocumentInitalData?.businessType == 14 || DocumentInitalData?.businessType == 15) ?
                                                     <>
                                                         <div className='col py-3 border-bottom'>
                                                             <h6 className='gatekeeping-question'>
@@ -920,7 +920,7 @@ const CompleteDocument = () => {
                                                 }
                                                 {
                                                     Data?.replacement == Number("100") ?
-                                                    (DocumentInitalData?.businessType == 3 || DocumentInitalData?.businessType == 4 || DocumentInitalData?.businessType == 6 || DocumentInitalData?.businessType == 7 | DocumentInitalData?.businessType == 8 || DocumentInitalData?.businessType == 12) ?
+                                                    (DocumentInitalData?.businessType == 1 || DocumentInitalData?.businessType == 3 || DocumentInitalData?.businessType == 4 || DocumentInitalData?.businessType == 6 || DocumentInitalData?.businessType == 7 | DocumentInitalData?.businessType == 8 || DocumentInitalData?.businessType == 12) ?
                                                         <>
                                                             <div className='col py-3 border-bottom'>
                                                                 <h6 className='gatekeeping-question'>
@@ -1076,7 +1076,7 @@ const CompleteDocument = () => {
                             <div className="mx-auto">
                                 <div className='row'>
                                     {
-                                        DocumentInitalData?.status === 0 || DocumentInitalData?.status === 2   ?
+                                        DocumentInitalData?.status === 0 || DocumentInitalData?.status === 2 || DocumentInitalData?.status === 7   ?
                                         <div className={
                                             Versions.length >= 1 ? 
                                                 'col-lg-6' 

@@ -379,378 +379,752 @@ class GateKeepingList(APIView):
         if "document_id" in newData:
             newData['document'] = newData['document_id']
         gatekeepingdata = GateKeeping.objects.filter(document=newData['document'])
+        document = ComplianceDocument.objects.filter(id=newData['document']).values().first()
         if gatekeepingdata.exists():
-            version = gatekeepingdata.values().latest('created_at')['version']
-            version += 1
-            newData['version'] = version
+            old_version = gatekeepingdata.values().latest('created_at')['version']
+            if document['status'] == 2:
+                ComplianceDocument.objects.filter(id=newData['document']).update(status=7)
+                version = old_version + 1
+                newData['version'] = version
+            else:
+                newData['version'] = old_version
         else:
             newData['version'] = 1
             version = 1
-        serializer = GateKeeping_Serializer(data=newData)
-        if serializer.is_valid():
-            ComplianceDocument.objects.filter(id=newData['document']).update(updated_at=datetime.now())
-            dId = serializer.save()
-            gatekeepingDocument = GateKeeping.objects.filter(pk=dId.pk).values().first()
-            gk = GateKeeping.objects.filter(pk=dId.pk)
-            document = ComplianceDocument.objects.filter(pk=gatekeepingDocument['document_id'])
-            document = document.values().first()
-            businessType = document['businessType']
-            score = 0
-            missing = f"Following documents are missing as per assessment in version {version}:\n"
-            total = 0
-            if businessType == 1 or (businessType > 4 and businessType < 9) :
-                # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
-                gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","risk_portfolio","mandate","replacement").latest('created_at')
-                for key in gkDocument:
-                    if gkDocument[key] == 100:
-                        total += 100
-                        score += gkDocument[key]
-                    if gkDocument[key] == 0:
-                        total += 100
-                        if key == "fica":
-                            missing += "FICA (Clear ID), \n"
-                        if key == "proof_of_screening":
-                            missing += "Proof of Screening, \n"
-                        if key == "dra":
-                            missing += "DRA, \n"
-                        if key == "letter_of_intro":
-                            missing += "Introduction letter, \n"
-                        if key == "authorisation_letter":
-                            missing += "Authorisation letter, \n"
-                        # if key == "roa_type":
-                        #     missing += "ROA Type, \n"
-                        if key == "roa":
-                            missing += "ROA (All sections completed), \n"
-                        if key == "fna":
-                            missing += "FNA (Appropriate FNA filed), \n"
-                        if key == "application":
-                            missing += "Application, \n"
-                        if key == "quotation":
-                            missing += "Quotation, \n"
-                        if key == "risk_portfolio":
-                            missing += "Risk Portfolio, \n"
-                        if key == "mandate":
-                            missing += "Mandate, \n"
-                        if key == "replacement":
-                            missing += "Replacement?, \n"
-                        # if key == "replacement_type":
-                        #     missing += "Type of Replacement, \n"
-                score = round(score/total *100)
-            if businessType == 3 or businessType == 4:
-                # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
-                gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
-                for key in gkDocument:
-                    if gkDocument[key] == 100:
-                        total += 100
-                        score += gkDocument[key]
-                    if gkDocument[key] == 0:
-                        total += 100
-                        if key == "fica":
-                            missing += "FICA (Clear ID), \n"
-                        if key == "proof_of_screening":
-                            missing += "Proof of Screening, \n"
-                        if key == "dra":
-                            missing += "DRA, \n"
-                        if key == "letter_of_intro":
-                            missing += "Introduction letter, \n"
-                        if key == "authorisation_letter":
-                            missing += "Authorisation letter, \n"
-                        # if key == "roa_type":
-                        #     missing += "ROA Type, \n"
-                        if key == "roa":
-                            missing += "ROA (All sections completed), \n"
-                        if key == "fna":
-                            missing += "FNA (Appropriate FNA filed), \n"
-                        if key == "application":
-                            missing += "Application, \n"
-                        if key == "quotation":
-                            missing += "Quotation, \n"
-                        if key == "risk_portfolio":
-                            missing += "Risk Portfolio, \n"
-                        if key == "mandate":
-                            missing += "Mandate, \n"
-                        if key == "replacement":
-                            missing += "Replacement?, \n"
-                        # if key == "replacement_type":
-                        #     missing += "Type of Replacement, \n"
-                score = round(score/total *100)
-            if businessType == 5 or businessType == 9:
-                # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation']
-                gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation").latest('created_at')
-                for key in gkDocument:
-                    if gkDocument[key] == 100:
-                        total += 100
-                        score += gkDocument[key]
-                    if gkDocument[key] == 0:
-                        total += 100
-                        if key == "fica":
-                            missing += "FICA (Clear ID), \n"
-                        if key == "proof_of_screening":
-                            missing += "Proof of Screening, \n"
-                        if key == "dra":
-                            missing += "DRA, \n"
-                        if key == "letter_of_intro":
-                            missing += "Introduction letter, \n"
-                        if key == "authorisation_letter":
-                            missing += "Authorisation letter, \n"
-                        # if key == "roa_type":
-                        #     missing += "ROA Type, \n"
-                        if key == "roa":
-                            missing += "ROA (All sections completed), \n"
-                        if key == "fna":
-                            missing += "FNA (Appropriate FNA filed), \n"
-                        if key == "application":
-                            missing += "Application, \n"
-                        if key == "quotation":
-                            missing += "Quotation, \n"
-                        if key == "risk_portfolio":
-                            missing += "Risk Portfolio, \n"
-                        if key == "mandate":
-                            missing += "Mandate, \n"
-                        if key == "replacement":
-                            missing += "Replacement?, \n"
-                        # if key == "replacement_type":
-                        #     missing += "Type of Replacement, \n"
-                score = round(score/total *100)
-            if businessType == 12:
-                # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
-                gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
-                for key in gkDocument:
-                    if gkDocument[key] == 100:
-                        total += 100
-                        score += gkDocument[key]
-                    if gkDocument[key] == 0:
-                        total += 100
-                        if key == "fica":
-                            missing += "FICA (Clear ID), \n"
-                        if key == "proof_of_screening":
-                            missing += "Proof of Screening, \n"
-                        if key == "dra":
-                            missing += "DRA, \n"
-                        if key == "letter_of_intro":
-                            missing += "Introduction letter, \n"
-                        if key == "authorisation_letter":
-                            missing += "Authorisation letter, \n"
-                        # if key == "roa_type":
-                        #     missing += "ROA Type, \n"
-                        if key == "roa":
-                            missing += "ROA (All sections completed), \n"
-                        if key == "fna":
-                            missing += "FNA (Appropriate FNA filed), \n"
-                        if key == "application":
-                            missing += "Application, \n"
-                        if key == "quotation":
-                            missing += "Quotation, \n"
-                        if key == "risk_portfolio":
-                            missing += "Risk Portfolio, \n"
-                        if key == "mandate":
-                            missing += "Mandate, \n"
-                        if key == "replacement":
-                            missing += "Replacement?, \n"
-                        # if key == "replacement_type":
-                        #     missing += "Type of Replacement, \n"
-                score = round(score/total *100)
-            if businessType == 10 :
-                # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa']
-                gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa").latest('created_at')
-                for key in gkDocument:
-                    if gkDocument[key] == 100:
-                        total += 100
-                        score += gkDocument[key]
-                    if gkDocument[key] == 0:
-                        total += 100
-                        if key == "fica":
-                            missing += "FICA (Clear ID), \n"
-                        if key == "proof_of_screening":
-                            missing += "Proof of Screening, \n"
-                        if key == "dra":
-                            missing += "DRA, \n"
-                        if key == "letter_of_intro":
-                            missing += "Introduction letter, \n"
-                        if key == "authorisation_letter":
-                            missing += "Authorisation letter, \n"
-                        # if key == "roa_type":
-                        #     missing += "ROA Type, \n"
-                        if key == "roa":
-                            missing += "ROA (All sections completed), \n"
-                        if key == "fna":
-                            missing += "FNA (Appropriate FNA filed), \n"
-                        if key == "application":
-                            missing += "Application, \n"
-                        if key == "quotation":
-                            missing += "Quotation, \n"
-                        if key == "risk_portfolio":
-                            missing += "Risk Portfolio, \n"
-                        if key == "mandate":
-                            missing += "Mandate, \n"
-                        if key == "replacement":
-                            missing += "Replacement?, \n"
-                        # if key == "replacement_type":
-                        #     missing += "Type of Replacement, \n"
-                score = round(score/total *100)
-            if businessType == 11 :
-                # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['application']
-                gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","application").latest('created_at')
-                for key in gkDocument:
-                    if gkDocument[key] == 100:
-                        total += 100
-                        score += gkDocument[key]
-                    if gkDocument[key] == 0:
-                        total += 100
-                        if key == "fica":
-                            missing += "FICA (Clear ID), \n"
-                        if key == "proof_of_screening":
-                            missing += "Proof of Screening, \n"
-                        if key == "dra":
-                            missing += "DRA, \n"
-                        if key == "letter_of_intro":
-                            missing += "Introduction letter, \n"
-                        if key == "authorisation_letter":
-                            missing += "Authorisation letter, \n"
-                        # if key == "roa_type":
-                        #     missing += "ROA Type, \n"
-                        if key == "roa":
-                            missing += "ROA (All sections completed), \n"
-                        if key == "fna":
-                            missing += "FNA (Appropriate FNA filed), \n"
-                        if key == "application":
-                            missing += "Application, \n"
-                        if key == "quotation":
-                            missing += "Quotation, \n"
-                        if key == "risk_portfolio":
-                            missing += "Risk Portfolio, \n"
-                        if key == "mandate":
-                            missing += "Mandate, \n"
-                        if key == "replacement":
-                            missing += "Replacement?, \n"
-                        # if key == "replacement_type":
-                        #     missing += "Type of Replacement, \n"
-                score = round(score/total *100)
-            if businessType == 13 :
-                # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
-                gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra").latest('created_at')
-                for key in gkDocument:
-                    if gkDocument[key] == 100:
-                        total += 100
-                        score += gkDocument[key]
-                    if gkDocument[key] == 0:
-                        total += 100
-                        if key == "fica":
-                            missing += "FICA (Clear ID), \n"
-                        if key == "proof_of_screening":
-                            missing += "Proof of Screening, \n"
-                        if key == "dra":
-                            missing += "DRA, \n"
-                        if key == "letter_of_intro":
-                            missing += "Introduction letter, \n"
-                        if key == "authorisation_letter":
-                            missing += "Authorisation letter, \n"
-                        # if key == "roa_type":
-                        #     missing += "ROA Type, \n"
-                        if key == "roa":
-                            missing += "ROA (All sections completed), \n"
-                        if key == "fna":
-                            missing += "FNA (Appropriate FNA filed), \n"
-                        if key == "application":
-                            missing += "Application, \n"
-                        if key == "quotation":
-                            missing += "Quotation, \n"
-                        if key == "risk_portfolio":
-                            missing += "Risk Portfolio, \n"
-                        if key == "mandate":
-                            missing += "Mandate, \n"
-                        if key == "replacement":
-                            missing += "Replacement?, \n"
-                        if key == "policy_schedule":
-                            missing += "Policy Schedule, \n"
-                        # if key == "replacement_type":
-                        #     missing += "Type of Replacement, \n"
-                score = round(score/total *100)
-            if businessType == 14 or businessType == 15 :
-                # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
-                gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
-                for key in gkDocument:
-                    if gkDocument[key] == 100:
-                        total += 100
-                        score += gkDocument[key]
-                    if gkDocument[key] == 0:
-                        total += 100
-                        if key == "fica":
-                            missing += "FICA (Clear ID), \n"
-                        if key == "proof_of_screening":
-                            missing += "Proof of Screening, \n"
-                        if key == "dra":
-                            missing += "DRA, \n"
-                        if key == "letter_of_intro":
-                            missing += "Introduction letter, \n"
-                        if key == "authorisation_letter":
-                            missing += "Authorisation letter, \n"
-                        # if key == "roa_type":
-                        #     missing += "ROA Type, \n"
-                        if key == "roa":
-                            missing += "ROA (All sections completed), \n"
-                        if key == "fna":
-                            missing += "FNA (Appropriate FNA filed), \n"
-                        if key == "application":
-                            missing += "Application, \n"
-                        if key == "quotation":
-                            missing += "Quotation, \n"
-                        if key == "risk_portfolio":
-                            missing += "Risk Portfolio, \n"
-                        if key == "mandate":
-                            missing += "Mandate, \n"
-                        if key == "replacement":
-                            missing += "Replacement?, \n"
-                        if key == "policy_schedule":
-                            missing += "Policy Schedule, \n"
-                        # if key == "replacement_type":
-                        #     missing += "Type of Replacement, \n"
-                score = round(score/total *100)
-            if businessType == 2 :
-                # score = gatekeepingDocument['proof_of_screening']
-                gkDocument = gk.values("proof_of_screening").latest('created_at')
-                for key in gkDocument:
-                    if gkDocument[key] == 100:
-                        total += 100
-                        score += gkDocument[key]
-                    if gkDocument[key] == 0:
-                        total += 100
-                        if key == "proof_of_screening":
-                            missing += "Proof of Screening, \n"
-                    if gkDocument[key] == 100:
-                        total += 100
-                        score += gkDocument[key]
-                    if gkDocument[key] == 0:
-                        total += 100
-            
-            if missing != f"Following documents are missing as per assessment in version {version}:\n":
-                comment = {
-                    "user" : 0,
-                    "type" : 3,
-                    "title" : "",
-                    "comment" : missing,  
-                    "document" : gatekeepingDocument['document_id']
-                }
-            else:
-                comment = {
-                    "user" : 0,
-                    "type" : 3,
-                    "title" : "",
-                    "comment" : f"No documents are missing in this version {version}",  
-                    "document" : gatekeepingDocument['document_id']
-                }
-                missing = f"No documents are missing in this version {version}"
-            documentCommentSerializer = DocumentComments_Serializer(data=comment)
-            if documentCommentSerializer.is_valid():
-                documentCommentSerializer.save()
-            else:
-                print(documentCommentSerializer.errors)
-            print(missing)
+        if gatekeepingdata.exists() and old_version == newData['version']:
+            version = newData['version']
+            oldReview = GateKeeping.objects.get(id=gatekeepingdata.values().latest('created_at')['id'])
+            serializer = GateKeeping_Serializer(instance=oldReview,data=newData)
+            if serializer.is_valid():
+                ComplianceDocument.objects.filter(id=newData['document']).update(updated_at=datetime.now())
+                dId = serializer.save()
+                gatekeepingDocument = GateKeeping.objects.filter(pk=dId.pk).values().first()
+                gk = GateKeeping.objects.filter(pk=dId.pk)
+                document = ComplianceDocument.objects.filter(pk=gatekeepingDocument['document_id'])
+                document = document.values().first()
+                businessType = document['businessType']
+                score = 0
+                missing = f"Following documents are missing as per assessment in version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}):\n"
+                total = 0
+                if businessType == 1 or (businessType > 4 and businessType < 9) :
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","risk_portfolio","mandate","replacement").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 3 or businessType == 4:
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 5 or businessType == 9:
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 12:
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 10 :
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 11 :
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['application']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","application").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 13 :
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
+                    gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            if key == "policy_schedule":
+                                missing += "Policy Schedule, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 14 or businessType == 15 :
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
+                    gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            if key == "policy_schedule":
+                                missing += "Policy Schedule, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 2 :
+                    # score = gatekeepingDocument['proof_of_screening']
+                    gkDocument = gk.values("proof_of_screening").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                
+                if missing != f"Following documents are missing as per assessment in version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}):\n":
+                    comment = {
+                        "user" : 0,
+                        "type" : 3,
+                        "title" : "",
+                        "comment" : missing,  
+                        "document" : gatekeepingDocument['document_id']
+                    }
+                else:
+                    comment = {
+                        "user" : 0,
+                        "type" : 3,
+                        "title" : "",
+                        "comment" : f"No documents are missing in this version {version}",  
+                        "document" : gatekeepingDocument['document_id']
+                    }
+                    missing = f"No documents are missing in this version {version}"
+                documentCommentSerializer = DocumentComments_Serializer(data=comment)
+                if documentCommentSerializer.is_valid():
+                    documentCommentSerializer.save()
+                else:
+                    print(documentCommentSerializer.errors)
+                print(missing)
 
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                print(serializer.errors)
+            return Response({"errors":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         else:
-            print(serializer.errors)
-        return Response({"errors":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            serializer = GateKeeping_Serializer(data=newData)
+            if serializer.is_valid():
+                ComplianceDocument.objects.filter(id=newData['document']).update(updated_at=datetime.now())
+                dId = serializer.create(serializer.validated_data)
+                gatekeepingDocument = GateKeeping.objects.filter(pk=dId.pk).values().first()
+                gk = GateKeeping.objects.filter(pk=dId.pk)
+                document = ComplianceDocument.objects.filter(pk=gatekeepingDocument['document_id'])
+                document = document.values().first()
+                businessType = document['businessType']
+                score = 0
+                missing = f"Following documents are missing as per assessment in version {version}:\n"
+                total = 0
+                if businessType == 1 or (businessType > 4 and businessType < 9) :
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","risk_portfolio","mandate","replacement").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 3 or businessType == 4:
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 5 or businessType == 9:
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 12:
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 10 :
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 11 :
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['application']
+                    gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","application").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 13 :
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
+                    gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            if key == "policy_schedule":
+                                missing += "Policy Schedule, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 14 or businessType == 15 :
+                    # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
+                    gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "fica":
+                                missing += "FICA (Clear ID), \n"
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                            if key == "dra":
+                                missing += "DRA, \n"
+                            if key == "letter_of_intro":
+                                missing += "Introduction letter, \n"
+                            if key == "authorisation_letter":
+                                missing += "Authorisation letter, \n"
+                            # if key == "roa_type":
+                            #     missing += "ROA Type, \n"
+                            if key == "roa":
+                                missing += "ROA (All sections completed), \n"
+                            if key == "fna":
+                                missing += "FNA (Appropriate FNA filed), \n"
+                            if key == "application":
+                                missing += "Application, \n"
+                            if key == "quotation":
+                                missing += "Quotation, \n"
+                            if key == "risk_portfolio":
+                                missing += "Risk Portfolio, \n"
+                            if key == "mandate":
+                                missing += "Mandate, \n"
+                            if key == "replacement":
+                                missing += "Replacement?, \n"
+                            if key == "policy_schedule":
+                                missing += "Policy Schedule, \n"
+                            # if key == "replacement_type":
+                            #     missing += "Type of Replacement, \n"
+                    score = round(score/total *100)
+                if businessType == 2 :
+                    # score = gatekeepingDocument['proof_of_screening']
+                    gkDocument = gk.values("proof_of_screening").latest('created_at')
+                    for key in gkDocument:
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                            if key == "proof_of_screening":
+                                missing += "Proof of Screening, \n"
+                        if gkDocument[key] == 100:
+                            total += 100
+                            score += gkDocument[key]
+                        if gkDocument[key] == 0:
+                            total += 100
+                
+                if missing != f"Following documents are missing as per assessment in version {version}:\n":
+                    comment = {
+                        "user" : 0,
+                        "type" : 3,
+                        "title" : "",
+                        "comment" : missing,  
+                        "document" : gatekeepingDocument['document_id']
+                    }
+                else:
+                    comment = {
+                        "user" : 0,
+                        "type" : 3,
+                        "title" : "",
+                        "comment" : f"No documents are missing in this version {version}",  
+                        "document" : gatekeepingDocument['document_id']
+                    }
+                    missing = f"No documents are missing in this version {version}"
+                documentCommentSerializer = DocumentComments_Serializer(data=comment)
+                if documentCommentSerializer.is_valid():
+                    documentCommentSerializer.save()
+                else:
+                    print(documentCommentSerializer.errors)
+                print(missing)
+
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                print(serializer.errors)
+            return Response({"errors":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 class GateKeepingDetails(APIView):
 
@@ -1452,30 +1826,65 @@ class arcList(APIView):
             reviewDoc = reviewDoc.values().first()
             ComplianceDocument.objects.filter(id=newData['document']).update(updated_at=datetime.now())
             arcdata = arc.objects.filter(document=newData['document'])
+            old_version = arcdata.values().latest('created_at')['version']
+            version = 0
             if arcdata.exists():
-                version = arcdata.values().latest('created_at')['version']
-                version += 1
-                newData['version'] = version
+                if reviewDoc['status'] == 2:
+                    ComplianceDocument.objects.filter(id=newData['document']).update(status=7)
+                    version = old_version + 1
+                else:
+                    version = old_version
             else:
                 if reviewDoc['user_id'] != user.pk:
                     ComplianceDocument.objects.filter(id=newData['document']).update(status = 5)
-                newData['version'] = 1
                 version = 1
-            serializer = arc_Serializer(data=newData)
-            if serializer.is_valid():
-                serializer.save()
-                comment = {
-                    "user" : 0,
-                    "type" : 3,
-                    "title" : "",
-                    "comment" : f"Review was picked up by an ARC, {user.first_name} {user.last_name} ({user.email})",  
-                    "document" : newData['document']
-                }
+                old_version = 1
+            newData['version'] = version
+            if arcdata.exists() and old_version == newData['version']:
+                oldReview = arc.objects.get(id=arcdata.values().latest('created_at')['id'])
+                serializer = arc_Serializer(instance=oldReview, data=newData)
+                if serializer.is_valid():
+                    serializer.save()
+                    comment = {
+                        "user" : 0,
+                        "type" : 3,
+                        "title" : "",
+                        "comment" : f"Review was picked up by an ARC, {user.first_name} {user.last_name} ({user.email})",  
+                        "document" : newData['document']
+                    }
+                    documentCommentSerializer = DocumentComments_Serializer(data=comment)
+                    if documentCommentSerializer.is_valid():
+                        documentCommentSerializer.save()
+                    return Response(serializer.data, status=status.HTTP_201_CREATED)
+                else:
+                    print(serializer.errors)
+                    return Response({"errors":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                serializer = arc_Serializer(data=newData)
+                if serializer.is_valid():
+                    serializer.create(serializer.validated_data)
+                else:
+                    return Response({"errors":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+                if arcdata.exists() and reviewDoc['status'] == 2:
+                    comment = {
+                        "user" : 0,
+                        "type" : 3,
+                        "title" : "",
+                        "comment" : f"Review was updated to Not Aproved and edited, {user.first_name} {user.last_name} ({user.email})",  
+                        "document" : newData['document']
+                    }
+                else:                    
+                    comment = {
+                        "user" : 0,
+                        "type" : 3,
+                        "title" : "",
+                        "comment" : f"Review was picked up by an ARC, {user.first_name} {user.last_name} ({user.email})",  
+                        "document" : newData['document']
+                    }
                 documentCommentSerializer = DocumentComments_Serializer(data=comment)
                 if documentCommentSerializer.is_valid():
                     documentCommentSerializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
-            return Response({"errors":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         else:
             raise Http404
 

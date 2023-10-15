@@ -14,17 +14,18 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
-### 11 September 2023:
+### 11 October 2023:
 - Data is linked successfully
+- Version creation was overhauled for both GK and ARCs
 - Deployment on Staging 
 
-### 10 September 2023:
+### 10 October 2023:
 - Managers are removed from Profile now. Managers are now linked to Regions
 - ARC formula re-evaluated
 - ARC can now continue to ARC questions if they start their journey at Gatekeeper without Referring it
 - Deployment on Staging 
 
-### 09 September 2023:
+### 09 October 2023:
 - ARCs can now create the document and go furthur by selecting their Start Point
 - Progress is now integrated
 - 2382: "Policy Schedule" is also a scorable Question - Updated and deployed
@@ -33,7 +34,7 @@ Deployed using Nginx and Gunicorn
 - 2379: Text Box for manual comments is not displayed - Debugged and deployed
 - Deployment on Staging 
 
-### 05 September 2023:
+### 05 October 2023:
 - ARCs can now create the document and go directly to ARC questions by passing Gatekeepers
 - ARCs document list API is updated
 - Inital Version not updating the values - debugged and deployed
