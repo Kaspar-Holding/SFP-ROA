@@ -1141,7 +1141,7 @@ class GateKeepingDetails(APIView):
         if ComplianceDocument.objects.filter(pk=pk).exists():
             data = GateKeeping.objects.filter(document=pk)
             if data.exists():
-                versions = data.values()
+                versions = data.values().order_by('version')
                 data = data.values().latest('id')
                 return Response({"data": data, "versions" : versions}, status=status.HTTP_200_OK)
             else:
@@ -1215,7 +1215,7 @@ class arcDetails(APIView):
         if ComplianceDocument.objects.filter(pk=pk).exists():
             data = arc.objects.filter(document=pk)
             if data.exists():
-                versions = data.values()
+                versions = data.values().order_by('version')
                 data = data.values().latest('id')
                 return Response({"data": data, "versions" : versions}, status=status.HTTP_200_OK)
             else:
