@@ -123,8 +123,9 @@ class ComplianceDocumentList(APIView):
                     "rejected" : data.filter(status=2).count(),
                     "referred" : data.filter(status=3).count(),
                 }
-                
                 data = data.values()
+                p = Paginator(data, request.data['page_size'])
+                data = p.page(request.data['page_number']).object_list
                 for row in data:
                     advisor = UserAccount.objects.filter(pk=row['advisor'])
                     if advisor.exists():
@@ -737,7 +738,7 @@ class GateKeepingList(APIView):
                         "user" : 0,
                         "type" : 3,
                         "title" : "",
-                        "comment" : missing,  
+                        "comment" : missing.replace('<ul>','').replace('</ul>','').replace('<li>','').replace('</li>',', '),  
                         "document" : gatekeepingDocument['document_id']
                     }
                 else:
@@ -1587,7 +1588,7 @@ class ComplianceDocumentSummary(APIView):
                             if gkDocument[key] == 0:
                                 total += 100
 
-                    missing += "</ul>"
+                    # missing += "</ul>"
             arcDocument = arc.objects.filter(document=pk)
             arcStatus = False
             arc_score = 0
@@ -1602,15 +1603,78 @@ class ComplianceDocumentSummary(APIView):
                     arc_total = 120
                     for key in aDocument:
                         arc_score += aDocument[key]
+                        if aDocument[key] == 0:
+                            if key == "client_needs":
+                                missing += "<li>Client Needs</li>"
+                            if key == "appropriate_fna":
+                                missing += "<li>Appropriate FNA</li>"
+                            if key == "fna_outcome":
+                                missing += "<li>FNA Outcome</li>"
+                            if key == "product_suitability":
+                                missing += "<li>Product Suitability</li>"
+                            if key == "alternative_solutions":
+                                missing += "<li>Alternative Solutions</li>"
+                            if key == "material_aspects":
+                                missing += "<li>Material Aspects</li>"
+                            if key == "special_terms":
+                                missing += "<li>Special Terms</li>"
+                            if key == "replacement_terms":
+                                missing += "<li>Replacement Terms</li>"
                     arc_score = round(arc_score/arc_total *100)
                 if businessType >= 14 :
                     aDocument = aDoc.values("disclosure_a", "disclosure_b", "personal_details_a", "personal_details_b", "general_a", "general_b", "general_c", "general_d", "risk_classes_a", "risk_classes_b", "fna_a", "fna_b", "recommended_products_a", "recommended_products_b", "recommended_products_c", "replacements_a", "replacements_b", "replacements_c", "replacements_d", "client_consent_a", "client_consent_b", ).latest('id')
+                    for key in aDocument:
+                        arc_score += aDocument[key]
+                        if aDocument[key] == 0:
+                            if key == "disclosure_a":
+                                missing += "<li>Disclosure A</li>"
+                            if key == "disclosure_b":
+                                missing += "<li>Disclosure B</li>"
+                            if key == "personal_details_a":
+                                missing += "<li>Personal Details A</li>"
+                            if key == "personal_details_b":
+                                missing += "<li>Personal Details B</li>"
+                            if key == "general_a":
+                                missing += "<li>General A</li>"
+                            if key == "general_b":
+                                missing += "<li>General B</li>"
+                            if key == "general_c":
+                                missing += "<li>General C</li>"
+                            if key == "general_d":
+                                missing += "<li>General D</li>"
+                            if key == "risk_classes_a":
+                                missing += "<li>Risk Classes A</li>"
+                            if key == "risk_classes_b":
+                                missing += "<li>Risk Classes B</li>"
+                            if key == "fna_a":
+                                missing += "<li>Financial Needs Analysis A</li>"
+                            if key == "fna_b":
+                                missing += "<li>Financial Needs Analysis B</li>"
+                            if key == "recommended_products_a":
+                                missing += "<li>Recommended Products A</li>"
+                            if key == "recommended_products_b":
+                                missing += "<li>Recommended Products B</li>"
+                            if key == "recommended_products_c":
+                                missing += "<li>Recommended Products C</li>"
+                            if key == "replacements_a":
+                                missing += "<li>Replacements A</li>"
+                            if key == "replacements_b":
+                                missing += "<li>Replacements B</li>"
+                            if key == "replacements_c":
+                                missing += "<li>Replacements C</li>"
+                            if key == "replacements_d":
+                                missing += "<li>Replacements D</li>"
+                            if key == "client_consent_a":
+                                missing += "<li>Client Consent A</li>"
+                            if key == "client_consent_b":
+                                missing += "<li>Client Consent B</li>"
                     arc_total = 100
                     for key in aDocument:
                         if aDocument[key] == 5:
                             arc_score += aDocument[key]
                     arc_score = round(arc_score/arc_total *100)
-                    
+            
+            missing += "</ul>"
             comments = DocumentComments.objects.filter(document=pk).values().order_by('-created_at')
             for comment in comments:
                 user = UserAccount.objects.filter(id=comment['user_id'])
@@ -1623,6 +1687,13 @@ class ComplianceDocumentSummary(APIView):
                     <br/><br/>Let me know if you have any other questions.
                     <br/><br/>Kind Regards
                 """
+            if missing == f"This case has some outstanding requirements in review version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n<ul></ul>":
+                emailResponse = f"""
+                        Dear Advisor<br/><br/>Thank you for submitting the case {document['policy_number']} for compliance review. No documents were missing.
+                        <br/><br/>Kind Regards
+                    """
+
+            
             return Response({
                 "score" : score,
                 "arc_score" : arc_score,
@@ -1836,7 +1907,7 @@ class arcList(APIView):
             reviewDoc = reviewDoc.values().first()
             ComplianceDocument.objects.filter(id=newData['document']).update(updated_at=datetime.now())
             arcdata = arc.objects.filter(document=newData['document'])
-            old_version = arcdata.values().latest('created_at')['version']
+            old_version = arcdata.values().latest('created_at')['version'] if arcdata.exists() else 0
             version = 0
             if arcdata.exists():
                 if reviewDoc['status'] == 2:
@@ -1855,13 +1926,91 @@ class arcList(APIView):
                 serializer = arc_Serializer(instance=oldReview, data=newData)
                 if serializer.is_valid():
                     serializer.save()
-                    comment = {
-                        "user" : 0,
-                        "type" : 3,
-                        "title" : "",
-                        "comment" : f"Review was picked up by an ARC, {user.first_name} {user.last_name} ({user.email})",  
-                        "document" : newData['document']
-                    }
+                    missing = f"This case has some outstanding requirements in ARC review version {version} (updated on {arcdata.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n"
+                    businessType = reviewDoc['businessType']
+                    if businessType < 14 :
+                        aDocument = arcdata.values("client_needs","appropriate_fna","fna_outcome","product_suitability","alternative_solutions","material_aspects","special_terms","replacement_terms").latest('id')
+                        for key in aDocument:
+                            if aDocument[key] == 0:
+                                if key == "client_needs":
+                                    missing += "Client Needs, "
+                                if key == "appropriate_fna":
+                                    missing += "Appropriate FNA, "
+                                if key == "fna_outcome":
+                                    missing += "FNA Outcome"
+                                if key == "product_suitability":
+                                    missing += "Product Suitability, "
+                                if key == "alternative_solutions":
+                                    missing += "Alternative Solutions, "
+                                if key == "material_aspects":
+                                    missing += "Material Aspects, "
+                                if key == "special_terms":
+                                    missing += "Special Terms, "
+                                if key == "replacement_terms":
+                                    missing += "Replacement Terms"
+                    if businessType >= 14 :
+                        aDocument = arcdata.values("disclosure_a", "disclosure_b", "personal_details_a", "personal_details_b", "general_a", "general_b", "general_c", "general_d", "risk_classes_a", "risk_classes_b", "fna_a", "fna_b", "recommended_products_a", "recommended_products_b", "recommended_products_c", "replacements_a", "replacements_b", "replacements_c", "replacements_d", "client_consent_a", "client_consent_b", ).latest('id')
+                        for key in aDocument:
+                            if aDocument[key] == 0:
+                                if key == "disclosure_a":
+                                    missing += "<li>Disclosure A</li>"
+                                if key == "disclosure_b":
+                                    missing += "<li>Disclosure B</li>"
+                                if key == "personal_details_a":
+                                    missing += "<li>Personal Details A</li>"
+                                if key == "personal_details_b":
+                                    missing += "<li>Personal Details B</li>"
+                                if key == "general_a":
+                                    missing += "<li>General A</li>"
+                                if key == "general_b":
+                                    missing += "<li>General B</li>"
+                                if key == "general_c":
+                                    missing += "<li>General C</li>"
+                                if key == "general_d":
+                                    missing += "<li>General D</li>"
+                                if key == "risk_classes_a":
+                                    missing += "<li>Risk Classes A</li>"
+                                if key == "risk_classes_b":
+                                    missing += "<li>Risk Classes B</li>"
+                                if key == "fna_a":
+                                    missing += "<li>Financial Needs Analysis A</li>"
+                                if key == "fna_b":
+                                    missing += "<li>Financial Needs Analysis B</li>"
+                                if key == "recommended_products_a":
+                                    missing += "<li>Recommended Products A</li>"
+                                if key == "recommended_products_b":
+                                    missing += "<li>Recommended Products B</li>"
+                                if key == "recommended_products_c":
+                                    missing += "<li>Recommended Products C</li>"
+                                if key == "replacements_a":
+                                    missing += "<li>Replacements A</li>"
+                                if key == "replacements_b":
+                                    missing += "<li>Replacements B</li>"
+                                if key == "replacements_c":
+                                    missing += "<li>Replacements C</li>"
+                                if key == "replacements_d":
+                                    missing += "<li>Replacements D</li>"
+                                if key == "client_consent_a":
+                                    missing += "<li>Client Consent A</li>"
+                                if key == "client_consent_b":
+                                    missing += "<li>Client Consent B</li>"
+                    
+                    if missing != f"This case has some outstanding requirements in ARC review version {version} (updated on {arcdata.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n":
+                        comment = {
+                            "user" : 0,
+                            "type" : 3,
+                            "title" : "",
+                            "comment" : missing,  
+                            "document" : newData['document']
+                        }
+                    else:
+                        comment = {
+                            "user" : 0,
+                            "type" : 3,
+                            "title" : "",
+                            "comment" : f"No documents were missing.",  
+                            "document" : newData['document']
+                        }
                     documentCommentSerializer = DocumentComments_Serializer(data=comment)
                     if documentCommentSerializer.is_valid():
                         documentCommentSerializer.save()
@@ -1872,7 +2021,47 @@ class arcList(APIView):
             else:
                 serializer = arc_Serializer(data=newData)
                 if serializer.is_valid():
-                    serializer.create(serializer.validated_data)
+                    newARC_id = serializer.create(serializer.validated_data)
+                    arcdata = arc.objects.filter(id=newARC_id.pk)
+                    missing = f"This case has some outstanding requirements in ARC review version {version} before it can be approved for the release of commission:\n"
+                    aDocument = arcdata.values("client_needs","appropriate_fna","fna_outcome","product_suitability","alternative_solutions","material_aspects","special_terms","replacement_terms").latest('id')
+                    for key in aDocument:
+                        if aDocument[key] == 0:
+                            if key == "client_needs":
+                                missing += "Client Needs, "
+                            if key == "appropriate_fna":
+                                missing += "Appropriate FNA, "
+                            if key == "fna_outcome":
+                                missing += "FNA Outcome"
+                            if key == "product_suitability":
+                                missing += "Product Suitability, "
+                            if key == "alternative_solutions":
+                                missing += "Alternative Solutions, "
+                            if key == "material_aspects":
+                                missing += "Material Aspects, "
+                            if key == "special_terms":
+                                missing += "Special Terms, "
+                            if key == "replacement_terms":
+                                missing += "Replacement Terms"
+                    if missing == f"This case has some outstanding requirements in ARC review version {version} before it can be approved for the release of commission:\n":
+                        comment = {
+                            "user" : 0,
+                            "type" : 3,
+                            "title" : "",
+                            "comment" : f"Review was picked up by an ARC, {user.first_name} {user.last_name} ({user.email}). {missing}",  
+                            "document" : newData['document']
+                        }
+                    else:
+                        comment = {
+                            "user" : 0,
+                            "type" : 3,
+                            "title" : "",
+                            "comment" : f"No documents were missing.",  
+                            "document" : newData['document']
+                        }
+                    documentCommentSerializer = DocumentComments_Serializer(data=comment)
+                    if documentCommentSerializer.is_valid():
+                        documentCommentSerializer.save()
                 else:
                     return Response({"errors":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
                 if arcdata.exists() and reviewDoc['status'] == 2:

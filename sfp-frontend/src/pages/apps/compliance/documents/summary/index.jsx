@@ -250,9 +250,8 @@ const SummaryDocument = () => {
                                                                                 </div>
                                                                                 <div className="d-flex flex-row justify-content-end mb-4 pt-1">
                                                                                     <div>
-                                                                                        <p className="small p-2 me-3 mb-3 text-white rounded-3" style={{backgroundColor: '#007A8D'}}>
-                                                                                        {comment?.comment}
-                                                                                        </p>
+                                                                                        <div dangerouslySetInnerHTML={{__html: comment?.comment}} className="small p-2 me-3 mb-3 text-white rounded-3" style={{backgroundColor: '#007A8D'}}>
+                                                                                        </div>
                                                                                     </div>
                                                                                     
                                                                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
@@ -347,7 +346,15 @@ const SummaryDocument = () => {
                                     
                                     </div>
                                     <div className='col-lg-6'>
-                                        <div style={{height: "300px", overflowY: 'auto'}} dangerouslySetInnerHTML={{__html: MissingDocuments}}></div>
+                                        <div className="card">
+                                            <div className="card-header d-flex justify-content-between align-items-center p-3"
+                                                style={{borderTop: "4px solid #007A8D"}}>
+                                                <h5 className="mb-0">Email Response</h5>
+                                            </div>
+                                            <div className="card-body" data-mdb-perfect-scrollbar="true" style={{position: "relative", height: "280px", overflowY: 'auto'}}>
+                                                <div dangerouslySetInnerHTML={{__html: MissingDocuments}}></div>
+                                            </div>
+                                        </div>
                                         {/* <div className="form-floating">
                                             <textarea                                                
                                                 className="form-control" 

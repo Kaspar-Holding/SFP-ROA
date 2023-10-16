@@ -14,9 +14,14 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
-### 11 October 2023:
+### 16 October 2023:
+- ARC added into comments and Email Template
+- Deployment on Staging 
+
+### 13 October 2023:
 - Data is linked successfully
 - Version creation was overhauled for both GK and ARCs
+- Email Template updated
 - Deployment on Staging 
 
 ### 10 October 2023:
