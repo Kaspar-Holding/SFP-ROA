@@ -16,6 +16,8 @@ Deployed using Nginx and Gunicorn
 
 ### 16 October 2023:
 - ARC added into comments and Email Template
+- Timezone bug resolved
+- 
 - Deployment on Staging 
 
 ### 13 October 2023:
