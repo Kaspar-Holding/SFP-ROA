@@ -489,29 +489,50 @@ const SummaryDocument = () => {
                                         }
                                         {
                                             !user?.is_superuser ? 
-                                                DocumentInitalData?.status != 1 || (user?.userType !== 2 && !DocumentInitalData?.arc_status) ? 
-                                                <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
-                                                    <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 1)}} className="btn btn-primary btn-lg btn-summary-2">
-                                                        {Summary?.arc_status ? "Approved" : "Approve"}
-                                                    </button>
-                                                </div>
+                                                user?.userType === 1 ?
+                                                    DocumentInitalData?.status != 1  ? 
+                                                        <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
+                                                            <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 1)}} className="btn btn-primary btn-lg btn-summary-2">
+                                                                {Summary?.arc_status ? "Approved" : "Approve"}
+                                                            </button>
+                                                        </div>
+                                                    :<></>
+                                                : user?.userType === 2 ?
+                                                    DocumentInitalData?.status != 1 && !DocumentInitalData?.arc_status ? 
+                                                        <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
+                                                            <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 1)}} className="btn btn-primary btn-lg btn-summary-2">
+                                                                {Summary?.arc_status ? "Approved" : "Approve"}
+                                                            </button>
+                                                        </div>
+                                                    : <></>
                                                 : <></>
                                             : <></>
                                         }
                                         {
                                             !user?.is_superuser ?
-                                                (DocumentInitalData?.status != 1) || (user?.userType !== 2 && !DocumentInitalData?.arc_status) ? 
+                                                user?.userType === 1 ?
+                                                (DocumentInitalData?.status != 1) ? 
                                                 <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
-                                                    <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 2)}} className="btn btn-primary btn-lg btn-summary-3">
-                                                        {Summary?.arc_status ? "Not Approved" : "Not Approve"}
-                                                    </button>
-                                                </div>
+                                                            <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 2)}} className="btn btn-primary btn-lg btn-summary-3">
+                                                                {Summary?.arc_status ? "Not Approved" : "Not Approve"}
+                                                            </button>
+                                                        </div>
+                                                    : <></>
+                                                : 
+                                                user?.userType === 2 ?
+                                                    (DocumentInitalData?.status != 1) && !DocumentInitalData?.arc_status  ? 
+                                                        <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
+                                                            <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 2)}} className="btn btn-primary btn-lg btn-summary-3">
+                                                                {Summary?.arc_status ? "Not Approved" : "Not Approve"}
+                                                            </button>
+                                                        </div>
+                                                    : <></>
                                                 : <></>
                                             : <></>
                                         }
                                         {
                                             !user?.is_superuser ? 
-                                                DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 || (user?.userType !== 2 && !DocumentInitalData?.arc_status) ? 
+                                                (user?.userType === 1 && (DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5)) || (user?.userType !== 2 && !DocumentInitalData?.arc_status) ? 
                                                 <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                     <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 4)}} className="btn btn-primary btn-lg btn-summary-4">
                                                         {Summary?.arc_status ? "Partially Approved" : "Partially Approve"}
@@ -522,8 +543,8 @@ const SummaryDocument = () => {
                                         }
                                         {
                                             !user?.is_superuser ? 
-                                                user?.userType !== 1 ?
-                                                    (DocumentInitalData?.status != 1 || (user?.userType !== 2 && !DocumentInitalData?.arc_status)) ? 
+                                                user?.userType === 2 ?
+                                                    ((DocumentInitalData?.status != 1 && DocumentInitalData?.status != 3 && DocumentInitalData?.status != 5) || (user?.userType !== 2 && !DocumentInitalData?.arc_status)) ? 
                                                     <div className='col-lg-3'>
                                                         <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 3)}} className="btn btn-primary btn-lg btn-summary-5">
                                                             Refer

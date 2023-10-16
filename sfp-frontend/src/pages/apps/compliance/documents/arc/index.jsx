@@ -79,37 +79,40 @@ const ARCDocument = () => {
 
     const updateARCForm = async() => {
         const Body = JSON.stringify(ARCAnswers)
-
-        try {
-            const response = await axios.post(
-                '/api/compliance/arc/update',
-                Body,
-                config
-            )
-            Swal.fire({
-                position: "bottom-end",
-                type: "success",
-                title: "Success",
-                html: `${response?.data?.success}`,
-                showConfirmButton: !1,
-                timer: 5000,
-                confirmButtonClass: "btn btn-primary",
-                buttonsStyling: !1,
-            })
+        if (Versions.length > 0 && CurrentVersion !== Versions[Versions.length-1]['version']) {
             router.push({pathname: "/apps/compliance/documents/summary", query: {'dId': dId}})
-        } catch (error) {
-            console.log(error?.response?.data?.error)
-            Swal.fire({
-                position: "bottom-end",
-                type: "success",
-                title: "Error",
-                html: `${error?.response?.data?.error}`,
-                showConfirmButton: !1,
-                timer: 5000,
-                confirmButtonClass: "btn btn-primary",
-                buttonsStyling: !1,
-            })
-            
+        } else{
+            try {
+                const response = await axios.post(
+                    '/api/compliance/arc/update',
+                    Body,
+                    config
+                )
+                Swal.fire({
+                    position: "bottom-end",
+                    type: "success",
+                    title: "Success",
+                    html: `${response?.data?.success}`,
+                    showConfirmButton: !1,
+                    timer: 5000,
+                    confirmButtonClass: "btn btn-primary",
+                    buttonsStyling: !1,
+                })
+                router.push({pathname: "/apps/compliance/documents/summary", query: {'dId': dId}})
+            } catch (error) {
+                console.log(error?.response?.data?.error)
+                Swal.fire({
+                    position: "bottom-end",
+                    type: "success",
+                    title: "Error",
+                    html: `${error?.response?.data?.error}`,
+                    showConfirmButton: !1,
+                    timer: 5000,
+                    confirmButtonClass: "btn btn-primary",
+                    buttonsStyling: !1,
+                })
+                
+            }
         }
     }
     
@@ -1337,7 +1340,7 @@ const ARCDocument = () => {
                                     {
                                         DocumentInitalData?.starting_point == 2 ?
                                             user?.is_superuser || (DocumentInitalData?.user_id !== user?.id && user?.userType === 1) ?
-                                            <div className={ DocumentInitalData?.status == 2 ? 'col-lg-4' : "col-lg-6"}>
+                                            <div className={ DocumentInitalData?.status == 2 || DocumentInitalData?.status == 7 ? 'col-lg-4' : "col-lg-6"}>
                                                 <button 
                                                     className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
                                                     type='button'
@@ -1349,7 +1352,7 @@ const ARCDocument = () => {
                                             </div>
                                             :
                                             user?.is_superuser || (DocumentInitalData?.user_id === user?.id && user?.userType === 1) ?
-                                            <div className={ DocumentInitalData?.status == 2 ? 'col-lg-4' : "col-lg-6"}>
+                                            <div className={ DocumentInitalData?.status == 2 || DocumentInitalData?.status == 7 ? 'col-lg-4' : "col-lg-6"}>
                                                 <button 
                                                     className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
                                                     type='button'
@@ -1364,7 +1367,7 @@ const ARCDocument = () => {
                                     }
                                     {
                                         (user?.is_superuser || user?.userType === 1 ) && DocumentInitalData?.status != 1 ?
-                                        <div className={ DocumentInitalData?.status == 2 ? 'col-lg-4' : "col-lg-6"}>
+                                        <div className={ DocumentInitalData?.status == 2 || DocumentInitalData?.status == 7 ? 'col-lg-4' : "col-lg-6"}>
                                             <button className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100" type="submit">
                                                 Save & Continue to Summary
                                             </button>
@@ -1373,7 +1376,7 @@ const ARCDocument = () => {
                                     }
                                     {
                                         Versions.length >= 1 || user?.userType === 2 ?
-                                        <div className={ DocumentInitalData?.status == 1 || DocumentInitalData?.status == 3  || DocumentInitalData?.status == 5 ? 'my-2 col-lg-12' : DocumentInitalData?.status == 2 ? 'col-lg-4' : "col-lg-6"}>
+                                        <div className={ DocumentInitalData?.status == 1 || DocumentInitalData?.status == 3  || DocumentInitalData?.status == 5 ? 'my-2 col-lg-12' : DocumentInitalData?.status == 2 || DocumentInitalData?.status == 7 ? 'col-lg-4' : "col-lg-6"}>
                                             <button 
                                                 className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
                                                 type='button'

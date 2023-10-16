@@ -261,7 +261,7 @@ const EditDocument = () => {
                                     <div className='col-lg-2'>   
                                     </div>         
                                     {
-                                        user?.userType === 1 ?
+                                        user?.userType === 1 && DocumentInitalData?.user_id == user?.id  ?
                                         <>
                                             <div className='col-lg-4 col-md-12 col-sm-12'> 
                                                 <div className="mb-3">
@@ -296,7 +296,7 @@ const EditDocument = () => {
                                             </div>
                                             <div className='col-lg-4 col-md-12 col-sm-12'> 
                                                 <h6 className='gatekeeping-question'>
-                                                    Starting Point
+                                                    Starting Point 
                                                 </h6>
                                                 <div className='row'>
                                                     <div className='col-lg-6'>

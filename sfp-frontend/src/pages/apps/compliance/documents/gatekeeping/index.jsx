@@ -185,53 +185,57 @@ const CompleteDocument = () => {
         e.preventDefault()
         onFormSubmit()
     }
-
     const onFormSubmit = async () => {
-        const Body = JSON.stringify(Data)
+        if (Versions.length > 0 && CurrentVersion !== Versions[Versions.length-1]['version']) {
+            router.push({pathname: "/apps/compliance/documents/summary", query: {'dId': dId}})
+        }else {
 
-        try {
-            const response = await axios.post(
-                '/api/compliance/complete',
-                Body,
-                config
-            )
-            Swal.fire({
-                position: "bottom-end",
-                type: "success",
-                title: "Success",
-                html: `${response?.data?.success}`,
-                showConfirmButton: !1,
-                timer: 5000,
-                confirmButtonClass: "btn btn-primary",
-                buttonsStyling: !1,
-            })
-
-            if (DocumentInitalData?.user_id === user?.id && user?.userType === 1) {
-                router.push({
-                    pathname: `/apps/compliance/documents/arc`,
-                    query: {dId: dId}
+            const Body = JSON.stringify(Data)
+    
+            try {
+                const response = await axios.post(
+                    '/api/compliance/complete',
+                    Body,
+                    config
+                )
+                Swal.fire({
+                    position: "bottom-end",
+                    type: "success",
+                    title: "Success",
+                    html: `${response?.data?.success}`,
+                    showConfirmButton: !1,
+                    timer: 5000,
+                    confirmButtonClass: "btn btn-primary",
+                    buttonsStyling: !1,
                 })
-            } else {
-                router.push({
-                    pathname: `/apps/compliance/documents/summary`,
-                    query: {dId: dId}
+    
+                if (DocumentInitalData?.user_id === user?.id && user?.userType === 1) {
+                    router.push({
+                        pathname: `/apps/compliance/documents/arc`,
+                        query: {dId: dId}
+                    })
+                } else {
+                    router.push({
+                        pathname: `/apps/compliance/documents/summary`,
+                        query: {dId: dId}
+                    })
+    
+                }
+                
+    
+            } catch (error) {
+                Swal.fire({
+                    position: "bottom-end",
+                    type: "error",
+                    title: "Error",
+                    html: `${error?.response?.data?.success}`,
+                    showConfirmButton: !1,
+                    timer: 5000,
+                    confirmButtonClass: "btn btn-primary",
+                    buttonsStyling: !1,
                 })
-
+                
             }
-            
-
-        } catch (error) {
-            Swal.fire({
-                position: "bottom-end",
-                type: "error",
-                title: "Error",
-                html: `${error?.response?.data?.success}`,
-                showConfirmButton: !1,
-                timer: 5000,
-                confirmButtonClass: "btn btn-primary",
-                buttonsStyling: !1,
-            })
-            
         }
     }
 
@@ -1102,14 +1106,14 @@ const CompleteDocument = () => {
                                                 className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
                                                 type='button'
                                                 onClick={()=>{
-                                                    DocumentInitalData?.user_id === user?.id && user?.userType === 1 ?
+                                                    (DocumentInitalData?.user_id === user?.id && user?.userType === 1) || (user?.userType === 1 && DocumentInitalData?.arc_status) ?
                                                     router.push({pathname: "/apps/compliance/documents/arc", query: {'dId': dId}})
                                                     :
                                                     router.push({pathname: "/apps/compliance/documents/summary", query: {'dId': dId}})
                                                 }}
                                             >
                                                 {
-                                                    DocumentInitalData?.user_id === user?.id && user?.userType === 1 ?
+                                                    (DocumentInitalData?.user_id === user?.id && user?.userType === 1) || (user?.userType === 1 && DocumentInitalData?.arc_status) ?
                                                     "Continue to ARC" :
                                                     "Continue to Summary"
                                                 }

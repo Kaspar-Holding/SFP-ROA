@@ -9,6 +9,7 @@ from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from datetime import datetime, timedelta
+import pytz
 # Create your views here.
 
 class updateDocumentStatus(APIView):
@@ -376,6 +377,7 @@ class GateKeepingList(APIView):
     def post(self, request, format=None):
         newData = request.data
         user = request.user
+        currenttime = datetime.now(pytz.timezone('Africa/Johannesburg')).strftime('%I:%m %p %d %b %Y')
         newData['user'] = user.pk
         if "document_id" in newData:
             newData['document'] = newData['document_id']
@@ -405,7 +407,7 @@ class GateKeepingList(APIView):
                 document = document.values().first()
                 businessType = document['businessType']
                 score = 0
-                missing = f"This case has some outstanding requirements in review version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n<ul>"
+                missing = f"This case has some outstanding requirements in review version {version} (updated on {currenttime}) before it can be approved for the release of commission:\n<ul>"
                 total = 0
                 if businessType == 1 or (businessType > 4 and businessType < 9) :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -733,7 +735,7 @@ class GateKeepingList(APIView):
                             total += 100
                 
                 missing += "</ul>"
-                if missing != f"This case has some outstanding requirements in review version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n<ul></ul>":
+                if missing != f"This case has some outstanding requirements in review version {version} (updated on {currenttime}) before it can be approved for the release of commission:\n<ul></ul>":
                     comment = {
                         "user" : 0,
                         "type" : 3,
@@ -746,10 +748,10 @@ class GateKeepingList(APIView):
                         "user" : 0,
                         "type" : 3,
                         "title" : "",
-                        "comment" : f"No documents are missing in this version {version}",  
+                        "comment" : f"No GK documents are missing as of {currenttime}",  
                         "document" : gatekeepingDocument['document_id']
                     }
-                    missing = f"No documents are missing in this version {version}"
+                    missing = f"No GK documents are missing as of {currenttime}"
                 documentCommentSerializer = DocumentComments_Serializer(data=comment)
                 if documentCommentSerializer.is_valid():
                     documentCommentSerializer.save()
@@ -1113,10 +1115,10 @@ class GateKeepingList(APIView):
                         "user" : 0,
                         "type" : 3,
                         "title" : "",
-                        "comment" : f"No documents are missing in this version {version}",  
+                        "comment" : f"No GK documents are missing as of {currenttime}",  
                         "document" : gatekeepingDocument['document_id']
                     }
-                    missing = f"No documents are missing in this version {version}"
+                    missing = f"No GK documents are missing as of {currenttime}"
                 documentCommentSerializer = DocumentComments_Serializer(data=comment)
                 if documentCommentSerializer.is_valid():
                     documentCommentSerializer.save()
@@ -1252,6 +1254,7 @@ class arcVersionDetail(APIView):
 class ComplianceDocumentSummary(APIView):
     def get(self, request, pk, format=None):
         user = request.user
+        currenttime = datetime.now(pytz.timezone('Africa/Johannesburg')).strftime('%I:%m %p %d %b %Y')
         document = ComplianceDocument.objects.filter(pk=pk)
         if document.exists():
             document = document.values().first()
@@ -1264,7 +1267,7 @@ class ComplianceDocumentSummary(APIView):
                     gatekeepingDocument = gatekeepingDocument.values().latest('id')
                     version = gatekeepingDocument['version']
                     businessType = document['businessType']
-                    missing = f"This case has some outstanding requirements in review version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n<ul>"
+                    missing = f"This case has some outstanding requirements in review version {version} (updated on {currenttime}) before it can be approved for the release of commission:\n<ul>"
                     total = 0
                     if businessType == 1 or (businessType > 4 and businessType < 9) :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -1687,7 +1690,7 @@ class ComplianceDocumentSummary(APIView):
                     <br/><br/>Let me know if you have any other questions.
                     <br/><br/>Kind Regards
                 """
-            if missing == f"This case has some outstanding requirements in review version {version} (updated on {gk.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n<ul></ul>":
+            if missing == f"This case has some outstanding requirements in review version {version} (updated on {currenttime}) before it can be approved for the release of commission:\n<ul></ul>":
                 emailResponse = f"""
                         Dear Advisor<br/><br/>Thank you for submitting the case {document['policy_number']} for compliance review. No documents were missing.
                         <br/><br/>Kind Regards
@@ -1921,12 +1924,13 @@ class arcList(APIView):
                 version = 1
                 old_version = 1
             newData['version'] = version
+            currenttime = datetime.now(pytz.timezone('Africa/Johannesburg')).strftime('%I:%m %p %d %b %Y')
             if arcdata.exists() and old_version == newData['version']:
                 oldReview = arc.objects.get(id=arcdata.values().latest('created_at')['id'])
                 serializer = arc_Serializer(instance=oldReview, data=newData)
                 if serializer.is_valid():
                     serializer.save()
-                    missing = f"This case has some outstanding requirements in ARC review version {version} (updated on {arcdata.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n"
+                    missing = f"This case has some outstanding requirements in ARC review version {version} (updated on {currenttime}) before it can be approved for the release of commission:\n"
                     businessType = reviewDoc['businessType']
                     if businessType < 14 :
                         aDocument = arcdata.values("client_needs","appropriate_fna","fna_outcome","product_suitability","alternative_solutions","material_aspects","special_terms","replacement_terms").latest('id')
@@ -1995,7 +1999,7 @@ class arcList(APIView):
                                 if key == "client_consent_b":
                                     missing += "<li>Client Consent B</li>"
                     
-                    if missing != f"This case has some outstanding requirements in ARC review version {version} (updated on {arcdata.values('updated_at').first()['updated_at'].strftime('%I:%m %p %d %b %Y')}) before it can be approved for the release of commission:\n":
+                    if missing != f"This case has some outstanding requirements in ARC review version {version} (updated on {currenttime}) before it can be approved for the release of commission:\n":
                         comment = {
                             "user" : 0,
                             "type" : 3,
@@ -2008,7 +2012,7 @@ class arcList(APIView):
                             "user" : 0,
                             "type" : 3,
                             "title" : "",
-                            "comment" : f"No documents were missing.",  
+                            "comment" : f"No ARC documents are missing as of {currenttime}",  
                             "document" : newData['document']
                         }
                     documentCommentSerializer = DocumentComments_Serializer(data=comment)
@@ -2056,7 +2060,7 @@ class arcList(APIView):
                             "user" : 0,
                             "type" : 3,
                             "title" : "",
-                            "comment" : f"No documents were missing.",  
+                            "comment" : f"No ARC documents are missing as of {currenttime}",  
                             "document" : newData['document']
                         }
                     documentCommentSerializer = DocumentComments_Serializer(data=comment)
