@@ -10,7 +10,7 @@ import dynamic from 'next/dynamic'
 import Loader from '@/hocs/Loader'
 
 // import Chart from "react-apexcharts"
-
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
 const Compliance = () => {
     // const Chart = dynamic(() => import('react-apexcharts'), {})
@@ -280,11 +280,11 @@ const Compliance = () => {
                             <div className='col-lg-3 app-dashboard-progress'>
                                 <h1 className='app-dashboard-header'>Progress</h1>
                                 <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
-                                {/* {
+                                {
                                     KPITrend ?
                                         (typeof window !== 'undefined') && <Chart options={pieChartOptions} series={KPITrend ? Object.values(KPITrend) : [0, 0, 0, 0]} type="pie" width={'100%'} />
                                     : <></>
-                                } */}
+                                }
                             </div>
                             <div className='col-lg-4 app-dashboard-trend'>
                                 <h1 className='app-dashboard-header'>Trending Data</h1>

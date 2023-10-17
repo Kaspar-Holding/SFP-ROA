@@ -17,7 +17,7 @@ Deployed using Nginx and Gunicorn
 ### 17 October 2023:
 - ARC and GK Comment Template bug resolved
 - GKs and superusers will now be redirected to Summary View Page in case of Reffered cases
-- Added two new columns referred and pickuped to make things better
+- Added two new columns referred and picked up (ARC who picks up the document) to make things easier for KPIs
 - Updated the counts too
 - Deployment on Staging 
 
