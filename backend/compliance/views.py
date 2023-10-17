@@ -142,7 +142,7 @@ class complainceDocumentsInfo(APIView):
                     "rejected" : data.filter(status=2).count(),
                     "referred" : data.filter(referred=True).count(),
                 }
-                time_trend = data.values('created_at__date').annotate(total=Count('id'))
+                time_trend = ComplianceDocument.objects.filter(created_at__range=date_range).order_by('created_at__date').values('created_at__date').annotate(total=Count('id'))
                 trend_data = []
                 for i in range(len(time_trend)):
                     trend_data.append([
@@ -231,7 +231,7 @@ class complainceDocumentsInfo(APIView):
                         "rejected" : data.filter(created_at__range=date_range,status=2).count(),
                         "referred" : data.filter(created_at__range=date_range,referred=True).count(),
                     }  
-                    time_trend = data.values('created_at__date').annotate(total=Count('id'))
+                    time_trend = ComplianceDocument.objects.filter(user=user.pk,created_at__range=date_range).order_by('created_at__date').values('created_at__date').annotate(total=Count('id'))
                     trend_data = []
                     for i in range(len(time_trend)):
                         trend_data.append([
@@ -326,7 +326,7 @@ class complainceDocumentsInfo(APIView):
                         "rejected" : data.filter(created_at__range=date_range,status=2).count(),
                         "referred" : data.filter(created_at__range=date_range,referred=True).count(),
                     } 
-                    time_trend = data.values('created_at__date').annotate(total=Count('id'))
+                    time_trend = ComplianceDocument.objects.filter(user=user.pk,created_at__range=date_range).order_by('created_at__date').values('created_at__date').annotate(total=Count('id'))
                     trend_data = []
                     for i in range(len(time_trend)):
                         trend_data.append([
