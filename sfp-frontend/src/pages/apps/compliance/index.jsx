@@ -374,11 +374,17 @@ const Compliance = () => {
                                                                     <div className="btn-group" role="group" aria-label="Basic mixed styles example">
                                                                         {
                                                                             
-                                                                            !user?.is_superuser && (review?.status === 0 || review?.status === 2 || review?.status === 7) ?
+                                                                            !user?.is_superuser && (review?.status != 1) && (review?.user_id !== user?.id && review?.referred) ?
                                                                             <button 
                                                                                 type="button" 
                                                                                 className={"btn btn-secondary"}
                                                                                 onClick={()=> {
+                                                                                    review?.user_id !== user?.id ?
+                                                                                    router.push({
+                                                                                        pathname: "/apps/compliance/documents/view",
+                                                                                        query: { dId: review?.id }
+                                                                                    })
+                                                                                    :
                                                                                     router.push({
                                                                                         pathname: "/apps/compliance/documents/edit",
                                                                                         query: { dId: review?.id }

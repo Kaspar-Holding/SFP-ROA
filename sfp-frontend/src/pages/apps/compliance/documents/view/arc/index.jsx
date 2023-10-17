@@ -1304,7 +1304,7 @@ const CompleteDocument = () => {
                             <button 
                                 className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
                                 type='button'
-                                onClick={()=>{router.push({pathname: "/apps/compliance/documents/summary", query: {'dId': dId}})}}
+                                onClick={()=>{router.push({pathname: "/apps/compliance/documents/view/summary", query: {'dId': dId}})}}
                             >
                                 Continue to Summary
                                 <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-right'/>

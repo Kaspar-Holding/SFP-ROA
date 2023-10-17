@@ -5,6 +5,7 @@ from data.models import UserAccount, categorisation, user_profile, regions
 from .models import ComplianceDocument, GateKeeping, DocumentComments, arc_questions, arc, arc_question_header, review_status
 from .serializers import ComplianceDocument_Serializer, review_status_Serializer, GateKeeping_Serializer, DocumentComments_Serializer, arc_questions_Serializer, arc_Serializer, arc_question_header_Serializer
 from rest_framework import status
+from django.db.models import Q
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
@@ -20,6 +21,8 @@ class updateDocumentStatus(APIView):
         if document.exists():
             document.update(status=request.data['status'])
             data = {"document" : request.data['dId'], "status" : request.data['status']}
+            if request.data['status'] == 3:
+                document.update(status=request.data['status'], referred=True)
             status_serializer = review_status_Serializer(data=data)
             if status_serializer.is_valid():
                 status_serializer.save()
@@ -31,6 +34,7 @@ class updateDocumentStatus(APIView):
                 reviewStatus = "not approved"
             if request.data['status'] == 3:
                 reviewStatus = "referred"
+                
             if request.data['status'] == 4:
                 reviewStatus = "partially approved"
             comment = {
@@ -154,7 +158,7 @@ class ComplianceDocumentList(APIView):
                 return Response({"data":[], "kpis": kpis, "trend": trend})
         else:
             if user.userType == 1:  
-                data = ComplianceDocument.objects.all().order_by('-created_at')
+                data = ComplianceDocument.objects.filter(Q(user=user.pk) | Q(picked_up=user.pk)).order_by('-created_at')
                 records = []
                 if data.exists():
                     created = 0
@@ -162,7 +166,7 @@ class ComplianceDocumentList(APIView):
                         "total" : data.count(),
                         "approved" : data.filter(status=1).count(),
                         "rejected" : data.filter(status=2).count(),
-                        "referred" : data.filter(status=3).count(),
+                        "referred" : data.filter(referred=True).count(),
                     }
                     data = data.values()
                     for row in data:
@@ -193,7 +197,7 @@ class ComplianceDocumentList(APIView):
                         "created" : created,
                         "approved" : data.filter(created_at__range=date_range,status=1).count(),
                         "rejected" : data.filter(created_at__range=date_range,status=2).count(),
-                        "referred" : data.filter(created_at__range=date_range,status=3).count(),
+                        "referred" : data.filter(created_at__range=date_range,referred=True).count(),
                     }          
                     return Response({"data":records, "kpis": kpis, "trend": trend})
                 else:
@@ -211,7 +215,7 @@ class ComplianceDocumentList(APIView):
                         "created" : data.count(),
                         "approved" : data.filter(status=1).count(),
                         "rejected" : data.filter(status=2).count(),
-                        "referred" : data.filter(status=3).count(),
+                        "referred" : data.filter(referred=True).count(),
                     }
                     data = data.values()
                     for row in data:
@@ -245,7 +249,9 @@ class ComplianceDocumentList(APIView):
         user = request.user
         newData['user'] = user.pk
         # newData['starting_point'] = 2
-        # if user.userType == 1:
+        if user.userType == 1:
+            newData['referred'] = True
+            newData['picked_up'] = user.pk
         #     newData['starting_point'] = 1        
         serializer = ComplianceDocument_Serializer(data=newData)
         if serializer.is_valid():
@@ -377,7 +383,7 @@ class GateKeepingList(APIView):
     def post(self, request, format=None):
         newData = request.data
         user = request.user
-        currenttime = datetime.now(pytz.timezone('Africa/Johannesburg')).strftime('%I:%m %p %d %b %Y')
+        currenttime = datetime.now(pytz.timezone('Africa/Johannesburg')).strftime('%I:%M %p %d %b %Y')
         newData['user'] = user.pk
         if "document_id" in newData:
             newData['document'] = newData['document_id']
@@ -1107,7 +1113,7 @@ class GateKeepingList(APIView):
                         "user" : 0,
                         "type" : 3,
                         "title" : "",
-                        "comment" : missing,  
+                        "comment" : missing.replace('<ul>','').replace('</ul>','').replace('<li>','').replace('</li>',', '),  
                         "document" : gatekeepingDocument['document_id']
                     }
                 else:
@@ -1254,7 +1260,7 @@ class arcVersionDetail(APIView):
 class ComplianceDocumentSummary(APIView):
     def get(self, request, pk, format=None):
         user = request.user
-        currenttime = datetime.now(pytz.timezone('Africa/Johannesburg')).strftime('%I:%m %p %d %b %Y')
+        currenttime = datetime.now(pytz.timezone('Africa/Johannesburg')).strftime('%I:%M %p %d %b %Y')
         document = ComplianceDocument.objects.filter(pk=pk)
         if document.exists():
             document = document.values().first()
@@ -1623,6 +1629,7 @@ class ComplianceDocumentSummary(APIView):
                                 missing += "<li>Special Terms</li>"
                             if key == "replacement_terms":
                                 missing += "<li>Replacement Terms</li>"
+                    print(arc_score)
                     arc_score = round(arc_score/arc_total *100)
                 if businessType >= 14 :
                     aDocument = aDoc.values("disclosure_a", "disclosure_b", "personal_details_a", "personal_details_b", "general_a", "general_b", "general_c", "general_d", "risk_classes_a", "risk_classes_b", "fna_a", "fna_b", "recommended_products_a", "recommended_products_b", "recommended_products_c", "replacements_a", "replacements_b", "replacements_c", "replacements_d", "client_consent_a", "client_consent_b", ).latest('id')
@@ -1908,6 +1915,8 @@ class arcList(APIView):
             return Response({"message": "You don't have access to perform this."}, 401)
         if reviewDoc.exists():
             reviewDoc = reviewDoc.values().first()
+            if reviewDoc['status'] == 3:
+                ComplianceDocument.objects.filter(id=newData['document']).update(picked_up = user.pk)
             ComplianceDocument.objects.filter(id=newData['document']).update(updated_at=datetime.now())
             arcdata = arc.objects.filter(document=newData['document'])
             old_version = arcdata.values().latest('created_at')['version'] if arcdata.exists() else 0
@@ -1924,7 +1933,7 @@ class arcList(APIView):
                 version = 1
                 old_version = 1
             newData['version'] = version
-            currenttime = datetime.now(pytz.timezone('Africa/Johannesburg')).strftime('%I:%m %p %d %b %Y')
+            currenttime = datetime.now(pytz.timezone('Africa/Johannesburg')).strftime('%I:%M %p %d %b %Y')
             if arcdata.exists() and old_version == newData['version']:
                 oldReview = arc.objects.get(id=arcdata.values().latest('created_at')['id'])
                 serializer = arc_Serializer(instance=oldReview, data=newData)
@@ -2004,7 +2013,7 @@ class arcList(APIView):
                             "user" : 0,
                             "type" : 3,
                             "title" : "",
-                            "comment" : missing,  
+                            "comment" : missing.replace('<ul>','').replace('</ul>','').replace('<li>','').replace('</li>',', '),  
                             "document" : newData['document']
                         }
                     else:

@@ -536,7 +536,7 @@ const ARCDocument = () => {
                                                         <div className='row'>
                                                             <div className='col-lg-4'>
                                                                 <div className="form-check">
-                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={15} checked={ARCAnswers?.replacement_terms == Number("15") ? true : false} name="replacement_terms" id="replacement_terms"/>
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={20} checked={ARCAnswers?.replacement_terms == Number("20") ? true : false} name="replacement_terms" id="replacement_terms"/>
                                                                     <label className="form-check-label" for="replacement_terms">
                                                                         <strong>Approved</strong>
                                                                     </label>

@@ -14,10 +14,19 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 17 October 2023:
+- ARC and GK Comment Template bug resolved
+- GKs and superusers will now be redirected to Summary View Page in case of Reffered cases
+- Added two new columns referred and pickuped to make things better
+- Updated the counts too
+- Deployment on Staging 
+
 ### 16 October 2023:
 - ARC added into comments and Email Template
 - Timezone bug resolved
-- 
+- Summary Bugs resolved
+- Versions Order Bug Resolved
+- Old Versions overwriting new bug resolved
 - Deployment on Staging 
 
 ### 13 October 2023:

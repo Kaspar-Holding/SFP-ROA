@@ -23,6 +23,9 @@ class ComplianceDocument(models.Model):
     region = models.TextField( default="", blank=True)
     starting_point = models.IntegerField( default=2)
     
+    referred = models.BooleanField(default=False)
+    picked_up = models.IntegerField(default=0)
+
     status = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
