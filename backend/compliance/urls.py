@@ -7,6 +7,7 @@ urlpatterns = [
     path('agents/', views.loadagents.as_view()),
     path('bacs/', views.loadbacs.as_view()),
     path('agent/info/', views.loadagentsDetail.as_view()),
+    path('document/info/', views.complainceDocumentsInfo.as_view()),
     path('document/', views.ComplianceDocumentList.as_view()),
     path('document/search/', views.searchComplianceDocument),
     path('document/<int:pk>/', views.ComplianceDocumentDetails.as_view()),

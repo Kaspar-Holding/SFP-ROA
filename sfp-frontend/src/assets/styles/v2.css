@@ -801,8 +801,39 @@ header {
     height: 40vh;
     margin-right: 0.5%;
     padding: 2%;
+}
+.app-dashboard-records-table {
+    height: 24vh;
     overflow-y: auto;
 }
+
+
+@media (max-width: 991.98px) {
+    .graph-sets > ul {
+      display: none;
+    }
+  }
+  .graph-sets > ul li {
+    margin-right: 35px;
+  }
+  .graph-sets > ul li span {
+    color: #637381;
+    font-weight: 400;
+    position: relative;
+  }
+  .graph-sets > ul li span:after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: #28C76F;
+    border-radius: 50px;
+    position: absolute;
+    top: 3px;
+    left: -20px;
+  }
+  .graph-sets > ul li:last-child span:after {
+    background-color: #EA5455;
+  }
 
 .app-dashboard-kpi {
     background-color: #ffffff;

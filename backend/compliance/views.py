@@ -5,7 +5,7 @@ from data.models import UserAccount, categorisation, user_profile, regions
 from .models import ComplianceDocument, GateKeeping, DocumentComments, arc_questions, arc, arc_question_header, review_status
 from .serializers import ComplianceDocument_Serializer, review_status_Serializer, GateKeeping_Serializer, DocumentComments_Serializer, arc_questions_Serializer, arc_Serializer, arc_question_header_Serializer
 from rest_framework import status
-from django.db.models import Q
+from django.db.models import Q, Sum, Count
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
@@ -56,7 +56,7 @@ class updateDocumentStatus(APIView):
 # class Compl        
 @api_view(['POST'])
 def searchComplianceDocument(request):
-    data = ComplianceDocument.objects.filter(user=request.user.pk)
+    data = ComplianceDocument.objects.filter(Q(user=request.user.pk)|Q(picked_up=request.user.pk))
     if data.exists():
         search_query = SearchQuery(request.data['search_query'], search_type='websearch')
         search_vector = SearchVector('policy_number')
@@ -107,6 +107,298 @@ def searchComplianceDocument(request):
                     "results" : data
                 }
             )
+        
+class complainceDocumentsInfo(APIView):
+
+    def post(self, request):
+        if "page_size" not in request.data:
+            return Response({"message": "Page Size was not passed"}, 400)
+        if "sort_by" not in request.data:
+            return Response({"message": "Sort By was not passed"}, 400)
+        if "sort_direction" not in request.data:
+            return Response({"message": "Sort Direction was not passed"}, 400)
+        
+        user = request.user
+        orderBy = request.data['sort_by']
+        orderDirection = request.data['sort_direction']
+        if orderDirection == "up":
+            orderBy = orderBy
+        if orderDirection == "down":
+            orderBy = f"-{orderBy}"
+        today = datetime.today().strftime('%Y-%m-%d')
+        date_range = (datetime.strptime(today,'%Y-%m-%d') - timedelta(days=15) , datetime.strptime(today,'%Y-%m-%d') + timedelta(days=1))
+        if user.is_superuser:
+            data = ComplianceDocument.objects.all().order_by('-created_at')
+            if data.exists():
+                trend = {
+                    "created" : data.filter(created_at__range=date_range).count(),
+                    "approved" : data.filter(created_at__range=date_range,status=1).count(),
+                    "rejected" : data.filter(created_at__range=date_range,status=2).count(),
+                    "referred" : data.filter(created_at__range=date_range,referred=True).count(),
+                }
+                kpis = {
+                    "total" : data.count(),
+                    "approved" : data.filter(status=1).count(),
+                    "rejected" : data.filter(status=2).count(),
+                    "referred" : data.filter(referred=True).count(),
+                }
+                time_trend = data.values('created_at__date').annotate(total=Count('id'))
+                trend_data = []
+                for i in range(len(time_trend)):
+                    trend_data.append([
+                        time_trend[i]['created_at__date'].strftime('%d %b %y'),
+                        time_trend[i]['total']
+                    ])
+                total = data.count()
+                data = data.values()
+                p = Paginator(data, request.data['page_size'])
+                data = p.page(request.data['page_number']).object_list
+                for row in data:
+                    advisor = UserAccount.objects.filter(pk=row['advisor'])
+                    if advisor.exists():
+                        advisor = advisor.values().first()
+                        row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                    else:
+                        raise Http404
+                    dId = row['id']
+                    arc_status = False
+                    gatekeeper = UserAccount.objects.filter(pk=row['user_id']).values().first()
+                    row['gatekeeper'] = f"{gatekeeper['first_name']} {gatekeeper['last_name']} ({gatekeeper['email']})"
+                    if arc.objects.filter(document=row['id']).exists():
+                        arc_status = True
+                    row['arc_status'] = arc_status
+                    row['last_review_date'] = row['updated_at']
+                
+                if orderBy[0] == "-":
+                    data = sorted(data, key=lambda d: d[orderBy[1:]], reverse=True) 
+                else:
+                    data = sorted(data, key=lambda d: d[orderBy])  
+
+                return Response(
+                    {
+                        "total_pages" : p.num_pages,
+                        "has_pages" : p.num_pages,
+                        "total_records" : total,
+                        "pagelimit" : request.data['page_size'],
+                        "next" : p.page(request.data['page_number']).has_next(),
+                        "results" : data ,
+                        "trend_data": trend_data, 
+                        "kpis": kpis, 
+                        "trend" : trend
+                    }
+                )
+            else:
+                kpis = {
+                    "total" : 0,
+                    "approved" : 0,
+                    "rejected" : 0,
+                    "referred" : 0,
+                }
+                trend = {
+                    "created" : 0,
+                    "approved" : 0,
+                    "rejected" : 0,
+                    "referred" : 0,
+                }
+                return Response(
+                    {
+                        "total_pages" : 0,
+                        "has_pages" : 0,
+                        "total_records" : 0,
+                        "pagelimit" : request.data['page_size'],
+                        "next" : None,
+                        "results" : [],
+                        "trend_data": [], 
+                        "kpis": kpis, 
+                        "trend" : trend
+                    }
+                )
+        else:
+            if user.userType == 1:  
+                data = ComplianceDocument.objects.filter(Q(user=user.pk) | Q(picked_up=user.pk)).order_by('-created_at')
+                records = []
+                if data.exists():
+                    created = 0
+                    kpis = {
+                        "total" : data.count(),
+                        "approved" : data.filter(status=1).count(),
+                        "rejected" : data.filter(status=2).count(),
+                        "referred" : data.filter(referred=True).count(),
+                    }
+                    trend = {
+                        "created" : data.filter(created_at__range=date_range).count(),
+                        "approved" : data.filter(created_at__range=date_range,status=1).count(),
+                        "rejected" : data.filter(created_at__range=date_range,status=2).count(),
+                        "referred" : data.filter(created_at__range=date_range,referred=True).count(),
+                    }  
+                    time_trend = data.values('created_at__date').annotate(total=Count('id'))
+                    trend_data = []
+                    for i in range(len(time_trend)):
+                        trend_data.append([
+                            time_trend[i]['created_at__date'].strftime('%d %b %y'),
+                            time_trend[i]['total']
+                        ])
+                    total = data.count()
+                    data = data.values()
+                    p = Paginator(data, request.data['page_size'])
+                    data = p.page(request.data['page_number']).object_list
+                    for row in data:
+                        advisor = UserAccount.objects.filter(pk=row['advisor'])
+                        if advisor.exists():
+                            advisor = advisor.values().first()
+                            row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                        else:
+                            raise Http404
+                        arc_status = False
+                        gatekeeper = UserAccount.objects.filter(pk=row['user_id']).values().first()
+                        row['gatekeeper'] = f"{gatekeeper['first_name']} {gatekeeper['last_name']} ({gatekeeper['email']})"
+                        if row['status'] == 3 and not arc.objects.filter(document=row['id']).exists():
+                            records.append(row)
+                        if row['user_id'] == user.pk:
+                            records.append(row)
+                            created += 1
+                        elif arc.objects.filter(document=row['id']).exists():
+                            arc_record = arc.objects.filter(document=row['id']).values().first()
+                            if arc_record['user_id'] == user.pk:
+                                records.append(row)
+                                arc_status = True
+                                created += 1
+                        row['arc_status'] = arc_status
+                        row['last_review_date'] = row['updated_at']    
+                    
+                    if orderBy[0] == "-":
+                        data = sorted(data, key=lambda d: d[orderBy[1:]], reverse=True) 
+                    else:
+                        data = sorted(data, key=lambda d: d[orderBy])                 
+                    
+                            
+                    return Response(
+                        {
+                            "total_pages" : p.num_pages,
+                            "has_pages" : p.num_pages,
+                            "total_records" : total,
+                            "pagelimit" : request.data['page_size'],
+                            "next" : p.page(request.data['page_number']).has_next(),
+                            "results" : data ,
+                            "trend_data": trend_data, 
+                            "kpis": kpis, 
+                            "trend" : trend
+                        }
+                    )
+                else:
+                    kpis = {
+                        "total" : 0,
+                        "approved" : 0,
+                        "rejected" : 0,
+                        "referred" : 0,
+                    }
+                    trend = {
+                        "created" : 0,
+                        "approved" : 0,
+                        "rejected" : 0,
+                        "referred" : 0,
+                    }
+                    return Response(
+                        {
+                            "total_pages" : 0,
+                            "has_pages" : 0,
+                            "total_records" : 0,
+                            "pagelimit" : request.data['page_size'],
+                            "next" : None,
+                            "trend_data": [], 
+                            "results" : [],
+                            "kpis": kpis, 
+                            "trend" : trend
+                        }
+                    )
+            if user.userType == 2:            
+                data = ComplianceDocument.objects.filter(user=user.pk).order_by('-created_at')
+                if data.exists():
+                    kpis = {
+                        "created" : data.count(),
+                        "approved" : data.filter(status=1).count(),
+                        "rejected" : data.filter(status=2).count(),
+                        "referred" : data.filter(referred=True).count(),
+                    }
+                    trend = {
+                        "created" : data.filter(created_at__range=date_range).count(),
+                        "approved" : data.filter(created_at__range=date_range,status=1).count(),
+                        "rejected" : data.filter(created_at__range=date_range,status=2).count(),
+                        "referred" : data.filter(created_at__range=date_range,referred=True).count(),
+                    } 
+                    time_trend = data.values('created_at__date').annotate(total=Count('id'))
+                    trend_data = []
+                    for i in range(len(time_trend)):
+                        trend_data.append([
+                            time_trend[i]['created_at__date'].strftime('%d %b %y'),
+                            time_trend[i]['total']
+                        ])
+                    total = data.count()
+                    data = data.values()
+                    p = Paginator(data, request.data['page_size'])
+                    data = p.page(request.data['page_number']).object_list
+                    for row in data:
+                        advisor = UserAccount.objects.filter(pk=row['advisor'])
+                        if advisor.exists():
+                            advisor = advisor.values().first()
+                            row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                        else:
+                            raise Http404
+                        dId = row['id']
+                        arc_status = False
+                        if arc.objects.filter(document=row['id']).exists():
+                            arc_status = True
+                        row['arc_status'] = arc_status
+                        row['last_review_date'] = row['updated_at'] 
+                    
+                    if orderBy[0] == "-":
+                        data = sorted(data, key=lambda d: d[orderBy[1:]], reverse=True) 
+                    else:
+                        data = sorted(data, key=lambda d: d[orderBy])  
+                    return Response(
+                        {
+                            "total_pages" : p.num_pages,
+                            "has_pages" : p.num_pages,
+                            "total_records" : total,
+                            "pagelimit" : request.data['page_size'],
+                            "next" : p.page(request.data['page_number']).has_next(),
+                            "results" : data ,
+                            "kpis": kpis, 
+                            "trend_data": trend_data, 
+                            "trend" : trend
+                        }
+                    )
+                else:
+                    kpis = {
+                        "total" : 0,
+                        "approved" : 0,
+                        "rejected" : 0,
+                        "referred" : 0,
+                    }
+                    trend = {
+                        "created" : 0,
+                        "approved" : 0,
+                        "rejected" : 0,
+                        "referred" : 0,
+                    }
+                    return Response(
+                        {
+                            "total_pages" : 0,
+                            "has_pages" : 0,
+                            "total_records" : 0,
+                            "pagelimit" : request.data['page_size'],
+                            "next" : None,
+                            "results" : [],
+                            "trend_data": [], 
+                            "kpis": kpis, 
+                            "trend" : trend
+                        }
+                    )
+            else:
+                raise Http404
+
+
+        
 class ComplianceDocumentList(APIView):
 
     def get(self, request, format=None):
@@ -120,13 +412,13 @@ class ComplianceDocumentList(APIView):
                     "created" : data.filter(created_at__range=date_range).count(),
                     "approved" : data.filter(created_at__range=date_range,status=1).count(),
                     "rejected" : data.filter(created_at__range=date_range,status=2).count(),
-                    "referred" : data.filter(created_at__range=date_range,status=3).count(),
+                    "referred" : data.filter(created_at__range=date_range,referred=True).count(),
                 }
                 kpis = {
                     "total" : data.count(),
                     "approved" : data.filter(status=1).count(),
                     "rejected" : data.filter(status=2).count(),
-                    "referred" : data.filter(status=3).count(),
+                    "referred" : data.filter(referred=True).count(),
                 }
                 data = data.values()
                 p = Paginator(data, request.data['page_size'])

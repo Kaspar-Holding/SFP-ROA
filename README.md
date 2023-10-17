@@ -19,6 +19,9 @@ Deployed using Nginx and Gunicorn
 - GKs and superusers will now be redirected to Summary View Page in case of Reffered cases
 - Added two new columns referred and picked up (ARC who picks up the document) to make things easier for KPIs
 - Updated the counts too
+- ApexCharts added successfully
+- Progress is also available now
+- Date trend is also added
 - Deployment on Staging 
 
 ### 16 October 2023:
