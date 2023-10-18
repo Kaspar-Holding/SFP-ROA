@@ -1376,7 +1376,7 @@ const ARCDocument = () => {
                                     }
                                     {
                                         Versions.length >= 1 || user?.userType === 2 ?
-                                        <div className={ DocumentInitalData?.status == 1 || DocumentInitalData?.status == 3  || DocumentInitalData?.status == 5 ? 'my-2 col-lg-12' : DocumentInitalData?.status == 2 || DocumentInitalData?.status == 7 ? 'col-lg-4' : "col-lg-6"}>
+                                        <div className={ (DocumentInitalData?.status == 0 && DocumentInitalData?.picked_up === user?.id) || DocumentInitalData?.status == 1 || DocumentInitalData?.status == 3  || DocumentInitalData?.status == 5 ? 'my-2 col-lg-12' : DocumentInitalData?.status == 2 || DocumentInitalData?.status == 7 ? 'col-lg-4' : "col-lg-6"}>
                                             <button 
                                                 className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
                                                 type='button'

@@ -442,10 +442,10 @@ const SummaryDocument = () => {
                         <div className='position-relative'>
                             <div className='position-absolute bottom-0 start-0 w-100'>
                                 <div className="container">
-                                    <div className={DocumentInitalData?.status == 3 ? 'row row-cols-5' : 'row'}>
+                                    <div className={(DocumentInitalData?.status == 0 && DocumentInitalData?.picked_up === user?.id) || DocumentInitalData?.status == 3 ? 'row row-cols-5' : 'row'}>
                                         {
                                             DocumentInitalData?.starting_point == 2 ?
-                                            <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
+                                            <div className={(DocumentInitalData?.status == 0 && DocumentInitalData?.picked_up === user?.id) || DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                 <p className='calculated_score'>
                                                     Calculated Score {DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? "(GK)" : "(Gatekeeping)"}
                                                 </p>
@@ -467,7 +467,7 @@ const SummaryDocument = () => {
                                         }
                                         {
                                             Summary?.arc_status || DocumentInitalData?.starting_point == 1 ? 
-                                            <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
+                                            <div className={(DocumentInitalData?.status == 0 && DocumentInitalData?.picked_up === user?.id) || DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                 <p className='calculated_score'>
                                                     Calculated Score (ARC)
                                                 </p>
@@ -491,7 +491,7 @@ const SummaryDocument = () => {
                                             !user?.is_superuser ? 
                                                 user?.userType === 1 ?
                                                     DocumentInitalData?.status != 1  ? 
-                                                        <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
+                                                        <div className={(DocumentInitalData?.status == 0 && DocumentInitalData?.picked_up === user?.id) || DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                             <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 1)}} className="btn btn-primary btn-lg btn-summary-2">
                                                                 {Summary?.arc_status ? "Approved" : "Approve"}
                                                             </button>
@@ -512,7 +512,7 @@ const SummaryDocument = () => {
                                             !user?.is_superuser ?
                                                 user?.userType === 1 ?
                                                 (DocumentInitalData?.status != 1) ? 
-                                                <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
+                                                <div className={(DocumentInitalData?.status == 0 && DocumentInitalData?.picked_up === user?.id) || DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                             <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 2)}} className="btn btn-primary btn-lg btn-summary-3">
                                                                 {Summary?.arc_status ? "Not Approved" : "Not Approve"}
                                                             </button>
@@ -521,7 +521,7 @@ const SummaryDocument = () => {
                                                 : 
                                                 user?.userType === 2 ?
                                                     (DocumentInitalData?.status != 1) && !DocumentInitalData?.arc_status  ? 
-                                                        <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
+                                                        <div className={(DocumentInitalData?.status == 0 && DocumentInitalData?.picked_up === user?.id) || DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                             <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 2)}} className="btn btn-primary btn-lg btn-summary-3">
                                                                 {Summary?.arc_status ? "Not Approved" : "Not Approve"}
                                                             </button>
@@ -532,8 +532,8 @@ const SummaryDocument = () => {
                                         }
                                         {
                                             !user?.is_superuser ? 
-                                                (user?.userType === 1 && (DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5)) || (user?.userType !== 2 && !DocumentInitalData?.arc_status) ? 
-                                                <div className={DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
+                                                (user?.userType === 1 && ((DocumentInitalData?.status == 0 && DocumentInitalData?.picked_up === user?.id) || DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5)) ? 
+                                                <div className={(DocumentInitalData?.status == 0 && DocumentInitalData?.picked_up === user?.id) || DocumentInitalData?.status == 3 || DocumentInitalData?.status == 5 ? 'col' : 'col-lg-3'}>
                                                     <button type="button" onClick={(e)=>{updateDocumentStatus(e, dId, 4)}} className="btn btn-primary btn-lg btn-summary-4">
                                                         {Summary?.arc_status ? "Partially Approved" : "Partially Approve"}
                                                     </button>

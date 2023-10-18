@@ -239,6 +239,7 @@ class complainceDocumentsInfo(APIView):
                             time_trend[i]['total']
                         ])
                     total = data.count()
+                    data = ComplianceDocument.objects.filter(Q(user=user.pk) | Q(picked_up=user.pk) | Q(status=3)).order_by('-created_at')
                     data = data.values()
                     p = Paginator(data, request.data['page_size'])
                     data = p.page(request.data['page_number']).object_list

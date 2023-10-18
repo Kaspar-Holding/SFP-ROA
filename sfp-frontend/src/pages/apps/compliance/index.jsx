@@ -22,7 +22,7 @@ const Compliance = () => {
     const [PageSize, setPageSize] = useState(5)
     const [TotalRecords, setTotalRecords] = useState(0)
     const [TrendData, setTrendData] = useState([])
-    const [Sortby, setSortby] = useState('policy_number')
+    const [Sortby, setSortby] = useState('created_at')
     const [SortDirection, setSortDirection] = useState("down")
     const user = useSelector(state=>state.auth.user)
     const [SearchQuery, setSearchQuery] = useState("")
@@ -451,42 +451,93 @@ const Compliance = () => {
                                                                         <div className="btn-group" role="group" aria-label="Basic mixed styles example">
                                                                             {
                                                                                 
-                                                                                !user?.is_superuser && (review?.status != 1) && (review?.user_id !== user?.id && review?.referred) ?
-                                                                                <button 
-                                                                                    type="button" 
-                                                                                    className={"btn btn-sm btn-secondary"}
-                                                                                    onClick={()=> {
-                                                                                        review?.user_id !== user?.id ?
-                                                                                        router.push({
-                                                                                            pathname: "/apps/compliance/documents/view",
-                                                                                            query: { dId: review?.id }
-                                                                                        })
-                                                                                        :
-                                                                                        router.push({
-                                                                                            pathname: "/apps/compliance/documents/edit",
-                                                                                            query: { dId: review?.id }
-                                                                                        })
-                                                                                    }}
-                                                                                >
-                                                                                    <i className='bi pe-none me-2 fa-solid fa-pen-to-square' />
-                                                                                    Edit
-                                                                                </button>
-                                                                                :
-                                                                                <button 
-                                                                                    type="button" 
-                                                                                    className={
-                                                                                        "btn btn-sm btn-success"                                                                          
-                                                                                    }
-                                                                                    onClick={()=> {
-                                                                                        router.push({
-                                                                                            pathname: "/apps/compliance/documents/view",
-                                                                                            query: { dId: review?.id }
-                                                                                        })
-                                                                                    }}
-                                                                                >
-                                                                                    <i className="fa-solid fa-eye"></i>
-                                                                                    View
-                                                                                </button>
+                                                                                user?.is_superuser ?
+                                                                                    <button 
+                                                                                        type="button" 
+                                                                                        className={
+                                                                                            "btn btn-sm btn-success"                                                                          
+                                                                                        }
+                                                                                        onClick={()=> {
+                                                                                            router.push({
+                                                                                                pathname: "/apps/compliance/documents/view",
+                                                                                                query: { dId: review?.id }
+                                                                                            })
+                                                                                        }}
+                                                                                    >
+                                                                                        <i className="fa-solid fa-eye"></i>
+                                                                                        View
+                                                                                    </button>
+                                                                                :<></>
+                                                                            }
+                                                                            {
+                                                                                !user?.is_superuser && user?.userType === 1 ?
+                                                                                    review?.status === 1 ?
+                                                                                        <button 
+                                                                                            type="button" 
+                                                                                            className={
+                                                                                                "btn btn-sm btn-success"                                                                          
+                                                                                            }
+                                                                                            onClick={()=> {
+                                                                                                router.push({
+                                                                                                    pathname: "/apps/compliance/documents/view",
+                                                                                                    query: { dId: review?.id }
+                                                                                                })
+                                                                                            }}
+                                                                                        >
+                                                                                            <i className="fa-solid fa-eye"></i>
+                                                                                            View
+                                                                                        </button>
+                                                                                    :
+                                                                                        <button 
+                                                                                            type="button" 
+                                                                                            className={"btn btn-sm btn-secondary"}
+                                                                                            onClick={()=> {
+                                                                                                router.push({
+                                                                                                    pathname: "/apps/compliance/documents/edit",
+                                                                                                    query: { dId: review?.id }
+                                                                                                })
+                                                                                            }}
+                                                                                        >
+                                                                                            <i className='bi pe-none me-2 fa-solid fa-pen-to-square' />
+                                                                                            Edit
+                                                                                        </button>
+                                                                                    :
+                                                                                <></>
+                                                                            }
+                                                                            {
+                                                                                !user?.is_superuser && user?.userType === 2 ?
+                                                                                    review?.status === 1 || review?.status === 3 || review?.status === 5 || review?.referred ?
+                                                                                        <button 
+                                                                                            type="button" 
+                                                                                            className={
+                                                                                                "btn btn-sm btn-success"                                                                          
+                                                                                            }
+                                                                                            onClick={()=> {
+                                                                                                router.push({
+                                                                                                    pathname: "/apps/compliance/documents/view",
+                                                                                                    query: { dId: review?.id }
+                                                                                                })
+                                                                                            }}
+                                                                                        >
+                                                                                            <i className="fa-solid fa-eye"></i>
+                                                                                            View
+                                                                                        </button>
+                                                                                    :
+                                                                                        <button 
+                                                                                            type="button" 
+                                                                                            className={"btn btn-sm btn-secondary"}
+                                                                                            onClick={()=> {
+                                                                                                router.push({
+                                                                                                    pathname: "/apps/compliance/documents/edit",
+                                                                                                    query: { dId: review?.id }
+                                                                                                })
+                                                                                            }}
+                                                                                        >
+                                                                                            <i className='bi pe-none me-2 fa-solid fa-pen-to-square' />
+                                                                                            Edit
+                                                                                        </button>
+                                                                                    :
+                                                                                <></>
                                                                             }
                                                                             
                                                                             {/* <button 

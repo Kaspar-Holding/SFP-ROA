@@ -14,6 +14,11 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 18 October 2023:
+- ARC created Documents not having Partial Approval
+- Referred Cases not visible in ARC bug resolved
+- Deployment on Staging & Production
+
 ### 17 October 2023:
 - ARC and GK Comment Template bug resolved
 - GKs and superusers will now be redirected to Summary View Page in case of Reffered cases
@@ -22,7 +27,7 @@ Deployed using Nginx and Gunicorn
 - ApexCharts added successfully
 - Progress is also available now
 - Date trend is also added
-- Deployment on Staging 
+- Deployment on Staging & Production
 
 ### 16 October 2023:
 - ARC added into comments and Email Template
