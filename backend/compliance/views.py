@@ -131,7 +131,7 @@ class complainceDocumentsInfo(APIView):
             data = ComplianceDocument.objects.all().order_by('-created_at')
             if data.exists():
                 trend = {
-                    "created" : data.filter(created_at__range=date_range).count(),
+                    # "created" : data.filter(created_at__range=date_range).count(),
                     "approved" : data.filter(created_at__range=date_range,status=1).count(),
                     "rejected" : data.filter(created_at__range=date_range,status=2).count(),
                     "referred" : data.filter(created_at__range=date_range,referred=True).count(),
@@ -226,7 +226,7 @@ class complainceDocumentsInfo(APIView):
                         "referred" : data.filter(referred=True).count(),
                     }
                     trend = {
-                        "created" : data.filter(created_at__range=date_range).count(),
+                        # "created" : data.filter(created_at__range=date_range).count(),
                         "approved" : data.filter(created_at__range=date_range,status=1).count(),
                         "rejected" : data.filter(created_at__range=date_range,status=2).count(),
                         "referred" : data.filter(created_at__range=date_range,referred=True).count(),
@@ -322,7 +322,7 @@ class complainceDocumentsInfo(APIView):
                         "referred" : data.filter(referred=True).count(),
                     }
                     trend = {
-                        "created" : data.filter(created_at__range=date_range).count(),
+                        # "created" : data.filter(created_at__range=date_range).count(),
                         "approved" : data.filter(created_at__range=date_range,status=1).count(),
                         "rejected" : data.filter(created_at__range=date_range,status=2).count(),
                         "referred" : data.filter(created_at__range=date_range,referred=True).count(),
@@ -410,7 +410,7 @@ class ComplianceDocumentList(APIView):
             data = ComplianceDocument.objects.all().order_by('-created_at')
             if data.exists():
                 trend = {
-                    "created" : data.filter(created_at__range=date_range).count(),
+                    # "created" : data.filter(created_at__range=date_range).count(),
                     "approved" : data.filter(created_at__range=date_range,status=1).count(),
                     "rejected" : data.filter(created_at__range=date_range,status=2).count(),
                     "referred" : data.filter(created_at__range=date_range,referred=True).count(),
@@ -706,7 +706,7 @@ class GateKeepingList(APIView):
                 document = document.values().first()
                 businessType = document['businessType']
                 score = 0
-                missing = f"This case has some outstanding requirements in review version {version} (updated on {currenttime}) before it can be approved for the release of commission:\n<ul>"
+                missing = f"This case has some outstanding requirements before it can be approved for the release of commission:\n<ul>"
                 total = 0
                 if businessType == 1 or (businessType > 4 and businessType < 9) :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -1034,7 +1034,7 @@ class GateKeepingList(APIView):
                             total += 100
                 
                 missing += "</ul>"
-                if missing != f"This case has some outstanding requirements in review version {version} (updated on {currenttime}) before it can be approved for the release of commission:\n<ul></ul>":
+                if missing != f"This case has some outstanding requirements before it can be approved for the release of commission:\n<ul></ul>":
                     comment = {
                         "user" : 0,
                         "type" : 3,
@@ -1566,7 +1566,7 @@ class ComplianceDocumentSummary(APIView):
                     gatekeepingDocument = gatekeepingDocument.values().latest('id')
                     version = gatekeepingDocument['version']
                     businessType = document['businessType']
-                    missing = f"This case has some outstanding requirements in review version {version} (updated on {currenttime}) before it can be approved for the release of commission:\n<ul>"
+                    missing = f"This case has some outstanding requirements before it can be approved for the release of commission:\n<ul>"
                     total = 0
                     if businessType == 1 or (businessType > 4 and businessType < 9) :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
@@ -1990,7 +1990,7 @@ class ComplianceDocumentSummary(APIView):
                     <br/><br/>Let me know if you have any other questions.
                     <br/><br/>Kind Regards
                 """
-            if missing == f"This case has some outstanding requirements in review version {version} (updated on {currenttime}) before it can be approved for the release of commission:\n<ul></ul>":
+            if missing == f"This case has some outstanding requirements before it can be approved for the release of commission:\n<ul></ul>":
                 emailResponse = f"""
                         Dear Advisor<br/><br/>Thank you for submitting the case {document['policy_number']} for compliance review. No documents were missing.
                         <br/><br/>Kind Regards

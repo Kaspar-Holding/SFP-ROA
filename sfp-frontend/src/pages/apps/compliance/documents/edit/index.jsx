@@ -74,50 +74,59 @@ const EditDocument = () => {
     }
     
     const updateInitialDocument = async() => {
-        const Body = JSON.stringify(DocumentInitalData)
-        try {
-            const response = await axios.post(
-                `/api/compliance/update`,
-                Body,
-                config
-            )
-
-
-            Swal.fire({
-                position: "bottom-end",
-                type: "success",
-                title: "Success",
-                html: `${response?.data?.success}`,
-                showConfirmButton: !1,
-                timer: 5000,
-                confirmButtonClass: "btn btn-primary",
-                buttonsStyling: !1,
+        if (DocumentInitalData?.referred) {
+            router.push({
+                pathname: "/apps/compliance/documents/view/gatekeeping",
+                query: {dId : dId}
             })
+        } 
+        else{
 
-            // router.push(`/apps/compliance/documents/complete/${response?.data?.data?.id}`)
-            if (DocumentInitalData?.starting_point == 1) {
-                router.push({
-                    pathname: "/apps/compliance/documents/arc",
-                    query: {dId : dId}
+            const Body = JSON.stringify(DocumentInitalData)
+            try {
+                const response = await axios.post(
+                    `/api/compliance/update`,
+                    Body,
+                    config
+                )
+    
+    
+                Swal.fire({
+                    position: "bottom-end",
+                    type: "success",
+                    title: "Success",
+                    html: `${response?.data?.success}`,
+                    showConfirmButton: !1,
+                    timer: 5000,
+                    confirmButtonClass: "btn btn-primary",
+                    buttonsStyling: !1,
                 })
-            } else {
-                router.push({
-                    pathname: "/apps/compliance/documents/gatekeeping",
-                    query: {dId : dId}
+    
+                // router.push(`/apps/compliance/documents/complete/${response?.data?.data?.id}`)
+                if (DocumentInitalData?.starting_point == 1) {
+                    router.push({
+                        pathname: "/apps/compliance/documents/arc",
+                        query: {dId : dId}
+                    })
+                } else {
+                    router.push({
+                        pathname: "/apps/compliance/documents/gatekeeping",
+                        query: {dId : dId}
+                    })
+                }
+            } catch (error) {
+                console.log(error?.response?.data)
+                Swal.fire({
+                    position: "bottom-end",
+                    type: "success",
+                    title: "Error",
+                    html: `An error has occured.`,
+                    showConfirmButton: !1,
+                    timer: 5000,
+                    confirmButtonClass: "btn btn-primary",
+                    buttonsStyling: !1,
                 })
             }
-        } catch (error) {
-            console.log(error?.response?.data)
-            Swal.fire({
-                position: "bottom-end",
-                type: "success",
-                title: "Error",
-                html: `An error has occured.`,
-                showConfirmButton: !1,
-                timer: 5000,
-                confirmButtonClass: "btn btn-primary",
-                buttonsStyling: !1,
-            })
         }
     }
 

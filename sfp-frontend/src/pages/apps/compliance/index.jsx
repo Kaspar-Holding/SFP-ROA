@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux'
 import dynamic from 'next/dynamic'
 import Loader from '@/hocs/Loader'
 import CompliancePagination from '@/modules/CompliancePagination'
+import FilterComponent from './Filters'
 
 // import Chart from "react-apexcharts"
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
@@ -19,6 +20,30 @@ const Compliance = () => {
     
     const [Loaded, setLoaded] = useState(false)
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
+	const [FilterType, setFilterType] = useState(2)
+
+    const Date_Var = new Date()
+    const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
+    const currentYear = Date_Var.getFullYear()
+    const [Month, setMonth] = useState(("0" + (Date_Var.getMonth() + 1)).slice(-2))
+    const [Year, setYear] = useState(currentYear)
+    const [MonthYear, setMonthYear] = useState(currentYear)
+    const [CurrentDate, setCurrentDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
+    const [FromDate, setFromDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
+    const [ToDate, setToDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
+    const year = 2023
+    const years = Array.from(new Array(currentYear - year + 1),( val, index) => index + year)
+
+    
+    const LoadDayStats = async(inputDate) => {
+    }
+    const LoadMonthlyStats = async(inputDate) => {
+    }
+    const LoadAnnualStats = async(inputDate) => {
+    }
+    const LoadCustomStats = async(toDate, fromDate) => {
+    }
+
     const [PageSize, setPageSize] = useState(5)
     const [TotalRecords, setTotalRecords] = useState(0)
     const [TrendData, setTrendData] = useState([])
@@ -113,7 +138,7 @@ const Compliance = () => {
         chart: {
             type: 'pie',
         },
-        labels: ['Created', 'Approved', 'Not Approved', 'Referred'],
+        labels: ['Approved', 'Not Approved', 'Referred'],
         responsive: [
             {
                 breakpoint: 480,
@@ -190,7 +215,7 @@ const Compliance = () => {
             setReviews(response?.data?.data?.results)
             setTotalRecords(response?.data?.data?.total_records)
             setTrendData(response?.data?.data?.trend_data)
-            setKPIs(response?.data?.data?.trend)
+            setKPIs(response?.data?.data?.kpis)
             setKPITrend(response?.data?.data?.trend)
             
         } catch (error) {
@@ -239,7 +264,37 @@ const Compliance = () => {
                     <div className='col-lg-9'>
                         <div className='row'>
                             <div className='col-lg-5 app-dashboard-kpi'>
-                                <h1 className='app-dashboard-header'>Total Summary</h1>
+                                <div className='row'>
+                                    <div className='col-8'>
+                                        <h1 className='app-dashboard-header'>Total Summary</h1>
+                                    </div>
+                                        
+                                    <div className='col-4'>
+                                        <FilterComponent
+                                            pageSize={PageSize}
+                                            filterType={FilterType} 
+                                            updateFilter={setFilterType} 
+                                            Month={Month} 
+                                            updateMonth={setMonth} 
+                                            Year={Year} 
+                                            updateYear={setYear} 
+                                            MonthYear={MonthYear} 
+                                            updateMonthYear={setMonthYear} 
+                                            CurrentDate={CurrentDate} 
+                                            updateCurrentDate={setCurrentDate} 
+                                            FromDate={FromDate} 
+                                            updateFromDate={setFromDate} 
+                                            ToDate={ToDate} 
+                                            updateToDate={setToDate} 
+                                            years={years}
+                                            dayStats={LoadDayStats}
+                                            monthStats={LoadMonthlyStats}
+                                            annualStats={LoadAnnualStats}
+                                            customStats={LoadCustomStats}
+                                            SearchQuery={SearchQuery}
+                                        />
+                                    </div>
+                                </div>
                                 <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
                                 <div className='row'>
                                     <div className='col-lg-3 p-0 m-0'>
@@ -247,7 +302,7 @@ const Compliance = () => {
                                             <div className="card-body">
                                                 <h1 className='kpi-number'>
                                                     {
-                                                        KPIs?.created ? KPIs?.created : 0 
+                                                        KPIs?.total ? KPIs?.total : 0 
                                                     }
                                                 </h1>
                                                 <p className='kpi-title'>
