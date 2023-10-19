@@ -14,6 +14,12 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 19 October 2023:
+- Summary API not working bug resolved
+- Removed version and update time from Email reponse
+- Partial Approved not visible for ARC bug resolved
+- Deployment on Staging & Production
+
 ### 18 October 2023:
 - ARC created Documents not having Partial Approval
 - Referred Cases not visible in ARC bug resolved
