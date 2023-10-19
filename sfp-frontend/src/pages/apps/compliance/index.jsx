@@ -269,7 +269,7 @@ const Compliance = () => {
                                         <h1 className='app-dashboard-header'>Total Summary</h1>
                                     </div>
                                         
-                                    <div className='col-4'>
+                                    {/* <div className='col-4'>
                                         <FilterComponent
                                             pageSize={PageSize}
                                             filterType={FilterType} 
@@ -293,7 +293,7 @@ const Compliance = () => {
                                             customStats={LoadCustomStats}
                                             SearchQuery={SearchQuery}
                                         />
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
                                 <div className='row'>
