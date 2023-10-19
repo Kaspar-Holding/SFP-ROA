@@ -1557,7 +1557,7 @@ class ComplianceDocumentSummary(APIView):
         document = ComplianceDocument.objects.filter(pk=pk)
         if document.exists():
             document = document.values().first()
-            missing = ""
+            missing = f"This case has some outstanding requirements before it can be approved for the release of commission:\n<ul>"
             score = 0
             if document['starting_point'] == 2:
                 gatekeepingDocument = GateKeeping.objects.filter(document=pk)
@@ -1566,7 +1566,6 @@ class ComplianceDocumentSummary(APIView):
                     gatekeepingDocument = gatekeepingDocument.values().latest('id')
                     version = gatekeepingDocument['version']
                     businessType = document['businessType']
-                    missing = f"This case has some outstanding requirements before it can be approved for the release of commission:\n<ul>"
                     total = 0
                     if businessType == 1 or (businessType > 4 and businessType < 9) :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
