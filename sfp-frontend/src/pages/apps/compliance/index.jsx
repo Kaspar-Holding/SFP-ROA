@@ -302,7 +302,7 @@ const Compliance = () => {
                                             <div className="card-body">
                                                 <h1 className='kpi-number'>
                                                     {
-                                                        KPIs?.total ? KPIs?.total : 0 
+                                                        KPIs?.created ? KPIs?.created : 0 
                                                     }
                                                 </h1>
                                                 <p className='kpi-title'>

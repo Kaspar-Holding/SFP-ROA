@@ -137,10 +137,10 @@ class complainceDocumentsInfo(APIView):
                     "referred" : data.filter(created_at__range=date_range,referred=True).count(),
                 }
                 kpis = {
-                    "total" : data.count(),
-                    "approved" : data.filter(status=1).count(),
-                    "rejected" : data.filter(status=2).count(),
-                    "referred" : data.filter(referred=True).count(),
+                    "created" : data.filter(created_at__range=date_range).count(),
+                    "approved" : data.filter(created_at__range=date_range,status=1).count(),
+                    "rejected" : data.filter(created_at__range=date_range,status=2).count(),
+                    "referred" : data.filter(created_at__range=date_range,referred=True).count(),
                 }
                 time_trend = ComplianceDocument.objects.filter(created_at__range=date_range).order_by('created_at__date').values('created_at__date').annotate(total=Count('id'))
                 trend_data = []
@@ -189,7 +189,7 @@ class complainceDocumentsInfo(APIView):
                 )
             else:
                 kpis = {
-                    "total" : 0,
+                    "created" : 0,
                     "approved" : 0,
                     "rejected" : 0,
                     "referred" : 0,
@@ -220,10 +220,10 @@ class complainceDocumentsInfo(APIView):
                 if data.exists():
                     created = 0
                     kpis = {
-                        "total" : data.count(),
-                        "approved" : data.filter(status=1).count(),
-                        "rejected" : data.filter(status=2).count(),
-                        "referred" : data.filter(referred=True).count(),
+                        "created" : data.filter(created_at__range=date_range).count(),
+                        "approved" : data.filter(created_at__range=date_range,status=1).count(),
+                        "rejected" : data.filter(created_at__range=date_range,status=2).count(),
+                        "referred" : data.filter(created_at__range=date_range,referred=True).count(),
                     }
                     trend = {
                         # "created" : data.filter(created_at__range=date_range).count(),
@@ -288,7 +288,7 @@ class complainceDocumentsInfo(APIView):
                     )
                 else:
                     kpis = {
-                        "total" : 0,
+                        "created" : 0,
                         "approved" : 0,
                         "rejected" : 0,
                         "referred" : 0,
@@ -316,10 +316,10 @@ class complainceDocumentsInfo(APIView):
                 data = ComplianceDocument.objects.filter(user=user.pk).order_by('-created_at')
                 if data.exists():
                     kpis = {
-                        "created" : data.count(),
-                        "approved" : data.filter(status=1).count(),
-                        "rejected" : data.filter(status=2).count(),
-                        "referred" : data.filter(referred=True).count(),
+                        "created" : data.filter(created_at__range=date_range).count(),
+                        "approved" : data.filter(created_at__range=date_range,status=1).count(),
+                        "rejected" : data.filter(created_at__range=date_range,status=2).count(),
+                        "referred" : data.filter(created_at__range=date_range,referred=True).count(),
                     }
                     trend = {
                         # "created" : data.filter(created_at__range=date_range).count(),
@@ -371,7 +371,7 @@ class complainceDocumentsInfo(APIView):
                     )
                 else:
                     kpis = {
-                        "total" : 0,
+                        "created" : 0,
                         "approved" : 0,
                         "rejected" : 0,
                         "referred" : 0,

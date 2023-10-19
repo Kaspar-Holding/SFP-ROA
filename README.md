@@ -18,11 +18,13 @@ Deployed using Nginx and Gunicorn
 - Summary API not working bug resolved
 - Removed version and update time from Email reponse
 - Partial Approved not visible for ARC bug resolved
+- Total reviews created KPI bug resolved
 - Deployment on Staging & Production
 
 ### 18 October 2023:
 - ARC created Documents not having Partial Approval
 - Referred Cases not visible in ARC bug resolved
+- Total created was removed from pie chart
 - Deployment on Staging & Production
 
 ### 17 October 2023:
