@@ -427,6 +427,7 @@ const Insights = () => {
                 Body,
                 config
             )
+            console.log(response?.data?.data)
             setKPIs(response?.data?.data)
             setCommissionTrend(response?.data?.data?.commission_trend)
             setRegions(response?.data?.data?.top_regions)
@@ -556,7 +557,7 @@ const Insights = () => {
                                         <tbody>
                                             {
                                                 Regions.map(
-                                                    (row, i) => {
+                                                    (row, key) => {
                                                         return(
                                                             <tr key={key}>
                                                                 <th scope="row">{key+1}</th>

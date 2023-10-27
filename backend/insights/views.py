@@ -11,6 +11,7 @@ from django.db.models.functions import (
 )
 import re
 
+
 class commissionInsights(APIView):
 
     def post(self, request):
@@ -23,7 +24,7 @@ class commissionInsights(APIView):
             gk = GateKeeping.objects.filter(document=review_document['id'])
             if gk.exists():
                 gk = gk.values().latest('version')
-                total_commission += float(str(gk['commission']).replace(',','.')) if re.match(r'^-?\d+(?:\.\d+)$', str(gk['commission']).replace(',','.')) != None else 0
+                total_commission += float(gk['commission'].replace(',', '.'))
         # Date wise Trend
         datewise_data = ComplianceDocument.objects.all().values('updated_at__date').distinct().order_by('updated_at__date')
         commission_trend = []
@@ -34,8 +35,8 @@ class commissionInsights(APIView):
                 gk = GateKeeping.objects.filter(document=reviewId)
                 if gk.exists():
                     gk = gk.values().latest('version')
-                    commission += float(str(gk['commission']).replace(',','.')) if re.match(r'^-?\d+(?:\.\d+)$', str(gk['commission']).replace(',','.')) != None else 0
-                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(str(gk['commission']).replace(',','.')) if re.match(r'^-?\d+(?:\.\d+)$', str(gk['commission']).replace(',','.')) != None else 0})
+                    commission += float(gk['commission'].replace(',', '.'))
+                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
             commission_trend.append([date['updated_at__date'].strftime('%d %b %Y'), commission])
             # Regions
         available_regions = regions.objects.all().values('region')
@@ -50,9 +51,9 @@ class commissionInsights(APIView):
                 gk = GateKeeping.objects.filter(document=reviewId)
                 if gk.exists():
                     gk = gk.values().latest('version')
-                    commission += float(str(gk['commission']).replace(',','.')) if re.match(r'^-?\d+(?:\.\d+)$', str(gk['commission']).replace(',','.')) != None else 0
+                    commission += float(gk['commission'].replace(',', '.'))
 
-                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(str(gk['commission']).replace(',','.')) if re.match(r'^-?\d+(?:\.\d+)$', str(gk['commission']).replace(',','.')) != None else 0})
+                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
             if commission != 0:
                 region_commission_trend.append([region['region'], commission])
                 top_regions.append({"region": region['region'], "commission": commission})
@@ -70,9 +71,9 @@ class commissionInsights(APIView):
                 gk = GateKeeping.objects.filter(document=reviewId)
                 if gk.exists():
                     gk = gk.values().latest('version')
-                    commission += float(str(gk['commission']).replace(',','.')) if re.match(r'^-?\d+(?:\.\d+)$', str(gk['commission']).replace(',','.')) != None else 0
+                    commission += float(gk['commission'].replace(',', '.'))
 
-                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(str(gk['commission']).replace(',','.')) if re.match(r'^-?\d+(?:\.\d+)$', str(gk['commission']).replace(',','.')) != None else 0})
+                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
             if commission != 0:
                 top_advisors.append({"advisor": f"{advisor['first_name']} {advisor['last_name']}", "email": advisor['email'], "commission": commission})
         top_advisors = sorted(top_advisors, key=lambda d: d['commission'], reverse=True)[:10]
@@ -85,9 +86,9 @@ class commissionInsights(APIView):
                 gk = GateKeeping.objects.filter(document=reviewId)
                 if gk.exists():
                     gk = gk.values().latest('version')
-                    commission += float(str(gk['commission']).replace(',','.')) if re.match(r'^-?\d+(?:\.\d+)$', str(gk['commission']).replace(',','.')) != None else 0
+                    commission += float(gk['commission'].replace(',', '.'))
 
-                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(str(gk['commission']).replace(',','.')) if re.match(r'^-?\d+(?:\.\d+)$', str(gk['commission']).replace(',','.')) != None else 0})
+                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
             if i == 1:
                 businessType = "Business Assurance"
             if i == 2:
