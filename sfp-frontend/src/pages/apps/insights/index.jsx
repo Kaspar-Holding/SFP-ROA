@@ -16,7 +16,7 @@ import FilterComponent from './Filters'
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
-const insights = () => {
+const Insights = () => {
     // const Chart = dynamic(() => import('react-apexcharts'), {})
     const router = useRouter()
     const [Loaded, setLoaded] = useState(false)
@@ -556,10 +556,10 @@ const insights = () => {
                                         <tbody>
                                             {
                                                 Regions.map(
-                                                    (row, key) => {
+                                                    (row, i) => {
                                                         return(
-                                                            <tr>
-                                                                <th scope="row" key={key}>{key+1}</th>
+                                                            <tr key={key}>
+                                                                <th scope="row">{key+1}</th>
                                                                 <td>{row?.region}</td>
                                                                 <td>{currencyFormatter('en-ZA','ZAR').format(row?.commission)}</td>
                                                             </tr>
@@ -587,8 +587,8 @@ const insights = () => {
                                                 Advisors.map(
                                                     (row, key) => {
                                                         return(
-                                                            <tr>
-                                                                <th scope="row" key={key}>{key+1}</th>
+                                                            <tr key={key}>
+                                                                <th scope="row">{key+1}</th>
                                                                 <td>{row?.advisor}</td>
                                                                 <td>{row?.email}</td>
                                                                 <td>{currencyFormatter('en-ZA','ZAR').format(row?.commission)}</td>
@@ -612,4 +612,4 @@ const insights = () => {
     )
 }
 
-export default insights
+export default Insights

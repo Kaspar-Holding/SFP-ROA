@@ -10,7 +10,7 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import CreateDocumentLayout from '@/hocs/Compliance/CreateDocumentLayout'
-
+import { FontAwesomeIcon } from '@fontawesome/react-fontawesome'
 
 const CreateROADocument = () => {
     
@@ -2651,7 +2651,7 @@ const CreateROADocument = () => {
                             <option value="52">Congo (Republic)</option>
                             <option value="53">Cook Islands</option>
                             <option value="54">Costa Rica</option>
-                            <option value="55">Côte D'Ivoire (Ivory Coast)</option>
+                            <option value="55">Côte D&apos;Ivoire (Ivory Coast)</option>
                             <option value="56">Croatia</option>
                             <option value="57">Cuba</option>
                             <option value="58">Curacao</option>
@@ -2715,7 +2715,7 @@ const CreateROADocument = () => {
                             <option value="116">Kazakhstan</option>
                             <option value="117">Kenya</option>
                             <option value="118">Kiribati</option>
-                            <option value="119">Korea ((North) Democratic People's Republic)</option>
+                            <option value="119">Korea ((North) Democratic People&apos;s Republic)</option>
                             <option value="120">Korea ((South) Republic)</option>
                             <option value="121">Kosovo</option>
                             <option value="122">Kuwait</option>
@@ -3105,7 +3105,7 @@ const CreateROADocument = () => {
                             <option value="52">Congo (Republic)</option>
                             <option value="53">Cook Islands</option>
                             <option value="54">Costa Rica</option>
-                            <option value="55">Côte D'Ivoire (Ivory Coast)</option>
+                            <option value="55">Côte D&apos;Ivoire (Ivory Coast)</option>
                             <option value="56">Croatia</option>
                             <option value="57">Cuba</option>
                             <option value="58">Curacao</option>
@@ -3169,7 +3169,7 @@ const CreateROADocument = () => {
                             <option value="116">Kazakhstan</option>
                             <option value="117">Kenya</option>
                             <option value="118">Kiribati</option>
-                            <option value="119">Korea ((North) Democratic People's Republic)</option>
+                            <option value="119">Korea ((North) Democratic People&apos;s Republic)</option>
                             <option value="120">Korea ((South) Republic)</option>
                             <option value="121">Kosovo</option>
                             <option value="122">Kuwait</option>
@@ -3557,7 +3557,7 @@ const CreateROADocument = () => {
                             <option value="52">Congo (Republic)</option>
                             <option value="53">Cook Islands</option>
                             <option value="54">Costa Rica</option>
-                            <option value="55">Côte D'Ivoire (Ivory Coast)</option>
+                            <option value="55">Côte D&apos;Ivoire (Ivory Coast)</option>
                             <option value="56">Croatia</option>
                             <option value="57">Cuba</option>
                             <option value="58">Curacao</option>
@@ -3621,7 +3621,7 @@ const CreateROADocument = () => {
                             <option value="116">Kazakhstan</option>
                             <option value="117">Kenya</option>
                             <option value="118">Kiribati</option>
-                            <option value="119">Korea ((North) Democratic People's Republic)</option>
+                            <option value="119">Korea ((North) Democratic People&apos;s Republic)</option>
                             <option value="120">Korea ((South) Republic)</option>
                             <option value="121">Kosovo</option>
                             <option value="122">Kuwait</option>
@@ -4034,7 +4034,7 @@ const CreateROADocument = () => {
                                         <option value="52">Congo (Republic)</option>
                                         <option value="53">Cook Islands</option>
                                         <option value="54">Costa Rica</option>
-                                        <option value="55">Côte D'Ivoire (Ivory Coast)</option>
+                                        <option value="55">Côte D&apos;Ivoire (Ivory Coast)</option>
                                         <option value="56">Croatia</option>
                                         <option value="57">Cuba</option>
                                         <option value="58">Curacao</option>
@@ -4098,7 +4098,7 @@ const CreateROADocument = () => {
                                         <option value="116">Kazakhstan</option>
                                         <option value="117">Kenya</option>
                                         <option value="118">Kiribati</option>
-                                        <option value="119">Korea ((North) Democratic People's Republic)</option>
+                                        <option value="119">Korea ((North) Democratic People&apos;s Republic)</option>
                                         <option value="120">Korea ((South) Republic)</option>
                                         <option value="121">Kosovo</option>
                                         <option value="122">Kuwait</option>
@@ -5001,7 +5001,7 @@ const CreateROADocument = () => {
                             <option value="52">Congo (Republic)</option>
                             <option value="53">Cook Islands</option>
                             <option value="54">Costa Rica</option>
-                            <option value="55">Côte D'Ivoire (Ivory Coast)</option>
+                            <option value="55">Côte D&apos;Ivoire (Ivory Coast)</option>
                             <option value="56">Croatia</option>
                             <option value="57">Cuba</option>
                             <option value="58">Curacao</option>
@@ -5065,7 +5065,7 @@ const CreateROADocument = () => {
                             <option value="116">Kazakhstan</option>
                             <option value="117">Kenya</option>
                             <option value="118">Kiribati</option>
-                            <option value="119">Korea ((North) Democratic People's Republic)</option>
+                            <option value="119">Korea ((North) Democratic People&apos;s Republic)</option>
                             <option value="120">Korea ((South) Republic)</option>
                             <option value="121">Kosovo</option>
                             <option value="122">Kuwait</option>
@@ -5451,7 +5451,7 @@ const CreateROADocument = () => {
                             <option value="52">Congo (Republic)</option>
                             <option value="53">Cook Islands</option>
                             <option value="54">Costa Rica</option>
-                            <option value="55">Côte D'Ivoire (Ivory Coast)</option>
+                            <option value="55">Côte D&apos;Ivoire (Ivory Coast)</option>
                             <option value="56">Croatia</option>
                             <option value="57">Cuba</option>
                             <option value="58">Curacao</option>
@@ -5515,7 +5515,7 @@ const CreateROADocument = () => {
                             <option value="116">Kazakhstan</option>
                             <option value="117">Kenya</option>
                             <option value="118">Kiribati</option>
-                            <option value="119">Korea ((North) Democratic People's Republic)</option>
+                            <option value="119">Korea ((North) Democratic People&apos;s Republic)</option>
                             <option value="120">Korea ((South) Republic)</option>
                             <option value="121">Kosovo</option>
                             <option value="122">Kuwait</option>
@@ -7869,7 +7869,7 @@ const CreateROADocument = () => {
                                     <option value="52">Congo (Republic)</option>
                                     <option value="53">Cook Islands</option>
                                     <option value="54">Costa Rica</option>
-                                    <option value="55">Côte D'Ivoire (Ivory Coast)</option>
+                                    <option value="55">Côte D&apos;Ivoire (Ivory Coast)</option>
                                     <option value="56">Croatia</option>
                                     <option value="57">Cuba</option>
                                     <option value="58">Curacao</option>
@@ -7933,7 +7933,7 @@ const CreateROADocument = () => {
                                     <option value="116">Kazakhstan</option>
                                     <option value="117">Kenya</option>
                                     <option value="118">Kiribati</option>
-                                    <option value="119">Korea ((North) Democratic People's Republic)</option>
+                                    <option value="119">Korea ((North) Democratic People&apos;s Republic)</option>
                                     <option value="120">Korea ((South) Republic)</option>
                                     <option value="121">Kosovo</option>
                                     <option value="122">Kuwait</option>
@@ -9397,7 +9397,7 @@ const CreateROADocument = () => {
                                     <option value="52">Congo (Republic)</option>
                                     <option value="53">Cook Islands</option>
                                     <option value="54">Costa Rica</option>
-                                    <option value="55">Côte D'Ivoire (Ivory Coast)</option>
+                                    <option value="55">Côte D&apos;Ivoire (Ivory Coast)</option>
                                     <option value="56">Croatia</option>
                                     <option value="57">Cuba</option>
                                     <option value="58">Curacao</option>
@@ -9461,7 +9461,7 @@ const CreateROADocument = () => {
                                     <option value="116">Kazakhstan</option>
                                     <option value="117">Kenya</option>
                                     <option value="118">Kiribati</option>
-                                    <option value="119">Korea ((North) Democratic People's Republic)</option>
+                                    <option value="119">Korea ((North) Democratic People&apos;s Republic)</option>
                                     <option value="120">Korea ((South) Republic)</option>
                                     <option value="121">Kosovo</option>
                                     <option value="122">Kuwait</option>
@@ -9832,7 +9832,7 @@ const CreateROADocument = () => {
                                     <option value="52">Congo (Republic)</option>
                                     <option value="53">Cook Islands</option>
                                     <option value="54">Costa Rica</option>
-                                    <option value="55">Côte D'Ivoire (Ivory Coast)</option>
+                                    <option value="55">Côte D&apos;Ivoire (Ivory Coast)</option>
                                     <option value="56">Croatia</option>
                                     <option value="57">Cuba</option>
                                     <option value="58">Curacao</option>
@@ -9896,7 +9896,7 @@ const CreateROADocument = () => {
                                     <option value="116">Kazakhstan</option>
                                     <option value="117">Kenya</option>
                                     <option value="118">Kiribati</option>
-                                    <option value="119">Korea ((North) Democratic People's Republic)</option>
+                                    <option value="119">Korea ((North) Democratic People&apos;s Republic)</option>
                                     <option value="120">Korea ((South) Republic)</option>
                                     <option value="121">Kosovo</option>
                                     <option value="122">Kuwait</option>
@@ -10269,7 +10269,7 @@ const CreateROADocument = () => {
                                     <option value="52">Congo (Republic)</option>
                                     <option value="53">Cook Islands</option>
                                     <option value="54">Costa Rica</option>
-                                    <option value="55">Côte D'Ivoire (Ivory Coast)</option>
+                                    <option value="55">Côte D&apos;Ivoire (Ivory Coast)</option>
                                     <option value="56">Croatia</option>
                                     <option value="57">Cuba</option>
                                     <option value="58">Curacao</option>
@@ -10333,7 +10333,7 @@ const CreateROADocument = () => {
                                     <option value="116">Kazakhstan</option>
                                     <option value="117">Kenya</option>
                                     <option value="118">Kiribati</option>
-                                    <option value="119">Korea ((North) Democratic People's Republic)</option>
+                                    <option value="119">Korea ((North) Democratic People&apos;s Republic)</option>
                                     <option value="120">Korea ((South) Republic)</option>
                                     <option value="121">Kosovo</option>
                                     <option value="122">Kuwait</option>
