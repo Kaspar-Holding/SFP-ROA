@@ -10,7 +10,8 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import CreateDocumentLayout from '@/hocs/Compliance/CreateDocumentLayout'
-import { FontAwesomeIcon } from '@fontawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 const CreateROADocument = () => {
     
