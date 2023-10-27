@@ -21,6 +21,7 @@ Deployed using Nginx and Gunicorn
 - Insights Commission API was created in NextJS too.
 - Insights Commission data was populated
 - Insights Commission data was populated
+- Added Regex on Commission
 - 2405: additional options to add for the comm release type of business - added
 - 2403: Remove “created” from Pie chart - added
 - 2402: If a referred case add status as referred – Approved, Referred-Not Approved - debugged and updated
