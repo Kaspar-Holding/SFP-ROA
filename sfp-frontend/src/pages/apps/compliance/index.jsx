@@ -424,7 +424,7 @@ const Compliance = () => {
                                                             'btn btn-sm btn-outline-secondary'
                                                     }
                                                     >
-                                                    <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                                    <i className="fa-solid fa-arrow-up-wide-short"></i>
                                                 </button>
                                             </div>
                                             <div className='col-1'>
@@ -437,7 +437,7 @@ const Compliance = () => {
                                                             'btn btn-sm btn-outline-secondary'
                                                     }
                                                 >
-                                                    <i class="fa-solid fa-arrow-down-wide-short"></i>
+                                                    <i className="fa-solid fa-arrow-down-wide-short"></i>
                                                 </button>
                                             </div>
                                         </div>

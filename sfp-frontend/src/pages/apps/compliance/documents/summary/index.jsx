@@ -397,7 +397,7 @@ const SummaryDocument = () => {
                                                     })
                                                 }}
                                             >
-                                                Back to Gatekeeping Questions
+                                                Gatekeeping Questions
                                                 <i className='bi pe-none mx-2 me-2 fa-solid fa-check'/>
                                             </button>
                                         </div>
@@ -427,7 +427,7 @@ const SummaryDocument = () => {
                                                     })
                                                 }}
                                             >
-                                                Back to ARC Questions 
+                                                ARC Questions 
                                                 <i className='bi pe-none mx-2 me-2 fa-solid fa-check'/>
                                             </button>
                                         : <></>

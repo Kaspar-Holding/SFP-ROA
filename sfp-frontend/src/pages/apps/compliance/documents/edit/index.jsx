@@ -74,7 +74,7 @@ const EditDocument = () => {
     }
     
     const updateInitialDocument = async() => {
-        if (DocumentInitalData?.referred) {
+        if (DocumentInitalData?.referred && user?.id !== DocumentInitalData?.user_id) {
             router.push({
                 pathname: "/apps/compliance/documents/view/gatekeeping",
                 query: {dId : dId}

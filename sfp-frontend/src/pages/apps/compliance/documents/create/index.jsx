@@ -243,6 +243,8 @@ const CreateDocument = () => {
         >
             <CreateDocumentLayout
                 appTitle={'Create Compliance Review'}
+                pageTitle={'Create Compliance Document'}
+                appName={'Compliance'}
                 app={'compliance'}
                 dId={undefined}
             >

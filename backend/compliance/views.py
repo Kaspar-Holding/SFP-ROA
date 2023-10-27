@@ -712,10 +712,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","risk_portfolio","mandate","replacement").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -750,10 +750,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -788,10 +788,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -826,10 +826,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -864,10 +864,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -902,10 +902,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['application']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","application").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -940,10 +940,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
                     gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -980,10 +980,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
                     gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -1018,20 +1018,22 @@ class GateKeepingList(APIView):
                     score = round(score/total *100)
                 if businessType == 2 :
                     # score = gatekeepingDocument['proof_of_screening']
-                    gkDocument = gk.values("proof_of_screening").latest('created_at')
+                    gkDocument = gk.values("proof_of_screening", "commission_release_form" , "identity", "disclosure").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
-                            total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "proof_of_screening":
-                                missing += "<li>Proof of Screening</li>"
-                        if gkDocument[key] == 100:
+                                missing += "<li>Proof of Screening</li>"                                
+                            if key == "commission_release_form":
+                                missing += "<li>Commission Release Form</li>"
+                            if key == "identity":
+                                missing += "<li>Identity</li>"
+                            if key == "disclosure":
+                                missing += "<li>Disclosure</li>"
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
-                            total += 100
+                            score += int(gkDocument[key])
+                    score = round(score/total *100)
                 
                 missing += "</ul>"
                 if missing != f"This case has some outstanding requirements before it can be approved for the release of commission:\n<ul></ul>":
@@ -1079,10 +1081,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","risk_portfolio","mandate","replacement").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -1117,10 +1119,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -1155,10 +1157,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -1193,10 +1195,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -1231,10 +1233,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -1269,10 +1271,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['application']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","application").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -1307,10 +1309,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
                     gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -1347,10 +1349,10 @@ class GateKeepingList(APIView):
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
                     gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                            score += int(gkDocument[key])
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "fica":
                                 missing += "<li>FICA (Clear ID)</li>"
@@ -1385,20 +1387,22 @@ class GateKeepingList(APIView):
                     score = round(score/total *100)
                 if businessType == 2 :
                     # score = gatekeepingDocument['proof_of_screening']
-                    gkDocument = gk.values("proof_of_screening").latest('created_at')
+                    gkDocument = gk.values("proof_of_screening", "commission_release_form" , "identity", "disclosure").latest('created_at')
                     for key in gkDocument:
-                        if gkDocument[key] == 100:
-                            total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
+                        if int(gkDocument[key]) == 0:
                             total += 100
                             if key == "proof_of_screening":
                                 missing += "<li>Proof of Screening</li>"
-                        if gkDocument[key] == 100:
+                            if key == "commission_release_form":
+                                missing += "<li>Commission Release Form</li>"
+                            if key == "identity":
+                                missing += "<li>Identity</li>"
+                            if key == "disclosure":
+                                missing += "<li>Disclosure</li>"
+                        if int(gkDocument[key]) == 100:
                             total += 100
-                            score += gkDocument[key]
-                        if gkDocument[key] == 0:
-                            total += 100
+                            score += int(gkDocument[key])
+                    score = round(score/total *100)
                 
                 missing += "</ul>"
                 if missing != f"This case has some outstanding requirements in review version {version} before it can be approved for the release of commission:\n<ul></ul>":
@@ -1571,10 +1575,10 @@ class ComplianceDocumentSummary(APIView):
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                         gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","risk_portfolio","mandate","replacement").latest('id')
                         for key in gkDocument:
-                            if gkDocument[key] == 100:
+                            if int(gkDocument[key]) == 100:
                                 total += 100
-                                score += gkDocument[key]
-                            if gkDocument[key] == 0:
+                                score += int(gkDocument[key])
+                            if int(gkDocument[key]) == 0:
                                 total += 100
                                 if key == "fica":
                                     missing += "<li>FICA (Clear ID)</li>"
@@ -1609,10 +1613,10 @@ class ComplianceDocumentSummary(APIView):
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                         gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('id')
                         for key in gkDocument:
-                            if gkDocument[key] == 100:
+                            if int(gkDocument[key]) == 100:
                                 total += 100
-                                score += gkDocument[key]
-                            if gkDocument[key] == 0:
+                                score += int(gkDocument[key])
+                            if int(gkDocument[key]) == 0:
                                 total += 100
                                 if key == "fica":
                                     missing += "<li>FICA (Clear ID)</li>"
@@ -1647,10 +1651,10 @@ class ComplianceDocumentSummary(APIView):
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation']
                         gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation").latest('id')
                         for key in gkDocument:
-                            if gkDocument[key] == 100:
+                            if int(gkDocument[key]) == 100:
                                 total += 100
-                                score += gkDocument[key]
-                            if gkDocument[key] == 0:
+                                score += int(gkDocument[key])
+                            if int(gkDocument[key]) == 0:
                                 total += 100
                                 if key == "fica":
                                     missing += "<li>FICA (Clear ID)</li>"
@@ -1685,10 +1689,10 @@ class ComplianceDocumentSummary(APIView):
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                         gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('id')
                         for key in gkDocument:
-                            if gkDocument[key] == 100:
+                            if int(gkDocument[key]) == 100:
                                 total += 100
-                                score += gkDocument[key]
-                            if gkDocument[key] == 0:
+                                score += int(gkDocument[key])
+                            if int(gkDocument[key]) == 0:
                                 total += 100
                                 if key == "fica":
                                     missing += "<li>FICA (Clear ID)</li>"
@@ -1723,10 +1727,10 @@ class ComplianceDocumentSummary(APIView):
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa']
                         gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa").latest('id')
                         for key in gkDocument:
-                            if gkDocument[key] == 100:
+                            if int(gkDocument[key]) == 100:
                                 total += 100
-                                score += gkDocument[key]
-                            if gkDocument[key] == 0:
+                                score += int(gkDocument[key])
+                            if int(gkDocument[key]) == 0:
                                 total += 100
                                 if key == "fica":
                                     missing += "<li>FICA (Clear ID)</li>"
@@ -1761,10 +1765,10 @@ class ComplianceDocumentSummary(APIView):
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['application']
                         gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","application").latest('id')
                         for key in gkDocument:
-                            if gkDocument[key] == 100:
+                            if int(gkDocument[key]) == 100:
                                 total += 100
-                                score += gkDocument[key]
-                            if gkDocument[key] == 0:
+                                score += int(gkDocument[key])
+                            if int(gkDocument[key]) == 0:
                                 total += 100
                                 if key == "fica":
                                     missing += "<li>FICA (Clear ID)</li>"
@@ -1799,10 +1803,10 @@ class ComplianceDocumentSummary(APIView):
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
                         gkDocument = gk.values("fica","proof_of_screening","dra","policy_schedule").latest('id')
                         for key in gkDocument:
-                            if gkDocument[key] == 100:
+                            if int(gkDocument[key]) == 100:
                                 total += 100
-                                score += gkDocument[key]
-                            if gkDocument[key] == 0:
+                                score += int(gkDocument[key])
+                            if int(gkDocument[key]) == 0:
                                 total += 100
                                 if key == "fica":
                                     missing += "<li>FICA (Clear ID)</li>"
@@ -1839,10 +1843,10 @@ class ComplianceDocumentSummary(APIView):
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
                         gkDocument = gk.values("fica","policy_schedule","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('id')
                         for key in gkDocument:
-                            if gkDocument[key] == 100:
+                            if int(gkDocument[key]) == 100:
                                 total += 100
-                                score += gkDocument[key]
-                            if gkDocument[key] == 0:
+                                score += int(gkDocument[key])
+                            if int(gkDocument[key]) == 0:
                                 total += 100
                                 if key == "fica":
                                     missing += "<li>FICA (Clear ID)</li>"
@@ -1877,17 +1881,22 @@ class ComplianceDocumentSummary(APIView):
                         score = round(score/total *100)
                     if businessType == 2 :
                         # score = gatekeepingDocument['proof_of_screening']
-                        gkDocument = gk.values("proof_of_screening").latest('id')
+                        gkDocument = gk.values("proof_of_screening", "commission_release_form" , "identity", "disclosure").latest('created_at')
                         for key in gkDocument:
-                            if gkDocument[key] == 100:
+                            if int(gkDocument[key]) == 100:
                                 total += 100
-                                score += gkDocument[key]
-                            if gkDocument[key] == 0:
+                                score += int(gkDocument[key])
+                            if int(gkDocument[key]) == 0:
                                 total += 100
                                 if key == "proof_of_screening":
                                     missing += "<li>Proof of Screening</li>"
-                            if gkDocument[key] == 0:
-                                total += 100
+                                if key == "commission_release_form":
+                                    missing += "<li>Commission Release Form</li>"
+                                if key == "identity":
+                                    missing += "<li>Identity</li>"
+                                if key == "disclosure":
+                                    missing += "<li>Disclosure</li>"
+                        score = round(score/total *100)
 
                     # missing += "</ul>"
             arcDocument = arc.objects.filter(document=pk)
@@ -1921,7 +1930,6 @@ class ComplianceDocumentSummary(APIView):
                                 missing += "<li>Special Terms</li>"
                             if key == "replacement_terms":
                                 missing += "<li>Replacement Terms</li>"
-                    print(arc_score)
                     arc_score = round(arc_score/arc_total *100)
                 if businessType >= 14 :
                     aDocument = aDoc.values("disclosure_a", "disclosure_b", "personal_details_a", "personal_details_b", "general_a", "general_b", "general_c", "general_d", "risk_classes_a", "risk_classes_b", "fna_a", "fna_b", "recommended_products_a", "recommended_products_b", "recommended_products_c", "replacements_a", "replacements_b", "replacements_c", "replacements_d", "client_consent_a", "client_consent_b", ).latest('id')

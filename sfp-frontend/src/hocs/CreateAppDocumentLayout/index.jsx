@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar'
 import Head from 'next/head'
 import React, { useEffect } from 'react'
 
-const CreateDocumentLayout = ({appTitle, app, pageTitle ,appName , dId, children}) => {
+const CreateAppDocumentLayout = ({appTitle, app, pageTitle, dId, children}) => {
     
     return (
         <>
@@ -14,8 +14,6 @@ const CreateDocumentLayout = ({appTitle, app, pageTitle ,appName , dId, children
                     <div className='col-lg-3'>
                         <DocumentSideBar
                             appTitle={appTitle} 
-                            pageTitle={pageTitle} 
-                            appName={appName} 
                             app={app} 
                         />
                     </div>
@@ -29,4 +27,4 @@ const CreateDocumentLayout = ({appTitle, app, pageTitle ,appName , dId, children
         </>
     )
 }
-export default CreateDocumentLayout
+export default CreateAppDocumentLayout

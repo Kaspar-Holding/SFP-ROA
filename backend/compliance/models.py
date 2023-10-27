@@ -23,6 +23,10 @@ class ComplianceDocument(models.Model):
     region = models.TextField( default="", blank=True)
     starting_point = models.IntegerField( default=2)
     
+    lump_sum = models.TextField( default="", blank=True)
+    monthly_premium = models.TextField( default="", blank=True)
+    commission = models.TextField( default="", blank=True)
+    
     referred = models.BooleanField(default=False)
     picked_up = models.IntegerField(default=0)
 
@@ -61,6 +65,9 @@ class GateKeeping(models.Model):
     mandate = models.IntegerField(default=0, blank=True)
     replacement = models.IntegerField(default=0, blank=True)
     replacement_type = models.IntegerField(default=0, blank=True)
+
+    identity = models.IntegerField(default=0, blank=True)
+    disclosure = models.IntegerField(default=0, blank=True)
 
     # fica = models.IntegerField(choices=(('100','Yes'),('0','No'), ('-1','N/A')), default=0, blank=True)
     # proof_of_screening = models.IntegerField(choices=(('100','Yes'),('0','No'), ('-1','N/A')), default=0, blank=True)

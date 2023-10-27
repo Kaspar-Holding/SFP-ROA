@@ -45,6 +45,9 @@ const CompleteDocument = () => {
         replacement: 0,
         replacement_type: 0,
 
+        identity: 0,
+        disclosure: 0,
+
         policy_schedule: 0,
         commission_release_form: 0
 
@@ -400,6 +403,74 @@ const CompleteDocument = () => {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {
+                                                    DocumentInitalData?.businessType === 2 ?
+                                                    <>
+                                                        <div className='col py-3 border-bottom'>
+                                                            <h6 className='gatekeeping-question'>
+                                                                Identity
+                                                            </h6>
+                                                            <div className='row'>
+                                                                <div className='col-lg-4'>
+                                                                    <div className="form-check">
+                                                                        <input className="form-check-input" type="radio" value={100} checked={Data?.identity == Number("100") ? true : false} name="identity" id="identity"/>
+                                                                        <label className="form-check-label" for="identity">
+                                                                            Yes
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div className='col-lg-4'>
+                                                                    <div className="form-check">
+                                                                        <input className="form-check-input" type="radio" value={0} checked={Data?.identity == Number("0") ? true : false} name="identity" id="identity"/>
+                                                                        <label className="form-check-label" for="identity">
+                                                                            No
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div className='col-lg-4'>
+                                                                    <div className="form-check">
+                                                                        <input className="form-check-input" type="radio" value={1} checked={Data?.identity == Number("1") ? true : false} name="identity" id="identity"/>
+                                                                        <label className="form-check-label" for="identity">
+                                                                            N/A
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className='col py-3 border-bottom'>
+                                                            <h6 className='gatekeeping-question'>
+                                                                Disclosure
+                                                            </h6>
+                                                            <div className='row'>
+                                                                <div className='col-lg-4'>
+                                                                    <div className="form-check">
+                                                                        <input className="form-check-input" type="radio" value={100} checked={Data?.disclosure == Number("100") ? true : false} name="disclosure" id="disclosure"/>
+                                                                        <label className="form-check-label" for="disclosure">
+                                                                            Yes
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div className='col-lg-4'>
+                                                                    <div className="form-check">
+                                                                        <input className="form-check-input" type="radio" value={0} checked={Data?.disclosure == Number("0") ? true : false} name="disclosure" id="disclosure"/>
+                                                                        <label className="form-check-label" for="disclosure">
+                                                                            No
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div className='col-lg-4'>
+                                                                    <div className="form-check">
+                                                                        <input className="form-check-input" type="radio" value={1} checked={Data?.disclosure == Number("1") ? true : false} name="disclosure" id="disclosure"/>
+                                                                        <label className="form-check-label" for="disclosure">
+                                                                            N/A
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                    :<></>
+                                                }
                                                 <br/>
                                                 {
                                                     DocumentInitalData?.businessType != 2 ?
@@ -938,7 +1009,7 @@ const CompleteDocument = () => {
                                                                     <div className='row'>
                                                                         <div className='col-lg-4'>
                                                                             <div className="form-check">
-                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.policy_schedule == Number("100") ? true : false} name="policy_schedule" id="policy_schedule"/>
+                                                                                <input className="form-check-input" type="radio" value={100} checked={Data?.policy_schedule == Number("100") ? true : false} name="policy_schedule" id="policy_schedule"/>
                                                                                 <label className="form-check-label" for="policy_schedule">
                                                                                     Yes
                                                                                 </label>
@@ -946,7 +1017,7 @@ const CompleteDocument = () => {
                                                                         </div>
                                                                         <div className='col-lg-4'>
                                                                             <div className="form-check">
-                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.policy_schedule == Number("0") ? true : false} name="policy_schedule" id="policy_schedule"/>
+                                                                                <input className="form-check-input" type="radio" value={0} checked={Data?.policy_schedule == Number("0") ? true : false} name="policy_schedule" id="policy_schedule"/>
                                                                                 <label className="form-check-label" for="policy_schedule">
                                                                                     No
                                                                                 </label>
@@ -954,7 +1025,7 @@ const CompleteDocument = () => {
                                                                         </div>
                                                                         <div className='col-lg-4'>
                                                                             <div className="form-check">
-                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.policy_schedule == Number("1") ? true : false} name="policy_schedule" id="policy_schedule"/>
+                                                                                <input className="form-check-input" type="radio" value={1} checked={Data?.policy_schedule == Number("1") ? true : false} name="policy_schedule" id="policy_schedule"/>
                                                                                 <label className="form-check-label" for="policy_schedule">
                                                                                     N/A
                                                                                 </label>

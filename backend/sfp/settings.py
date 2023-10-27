@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'social_django',
     'frontend',
     'users',
+    'insights',
 ]
 
 MIDDLEWARE = [

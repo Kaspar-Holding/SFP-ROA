@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Moment from 'moment'
 import Link from 'next/link'
+import axios from 'axios'
 import { useRouter } from 'next/router'
 import { logout } from '@/actions/auth'
-const SideBar = ({appTitle, app}) => {
+const AppDocumentSideBar = ({appTitle, app, pageTitle}) => {
     
+    const user = useSelector(state=>state.auth.user)
 
-    const router = useRouter()
+    const [CurrentDate, setCurrentDate] = useState(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A') )
+
+    const [DocumentInitalData, setDocumentInitalData] = useState({})
 
     const dispatch = useDispatch()  
-    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
-    const user = useSelector(state=>state.auth.user)
 
     const logOutBtn = (e) => {
         e.preventDefault()
@@ -22,8 +24,11 @@ const SideBar = ({appTitle, app}) => {
         }
     }
 
-    const [CurrentDate, setCurrentDate] = useState(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A') )
+    const router = useRouter()
+   
     useEffect(() => {
+
+
         const interval = setInterval(() => {
                 setCurrentDate(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A') )
             }, 6000
@@ -33,19 +38,19 @@ const SideBar = ({appTitle, app}) => {
 		}
     }, [])
     
-
     return (
         <>
-            <div class="d-flex flex-column flex-shrink-0 p-3 py-5" style={{height: '85vh', backgroundColor: 'white'}}>
-                <div className='text-center'>    
-                    <nav aria-label="breadcrumb">
+            <div className="d-flex flex-column flex-shrink-0 p-3 py-5" style={{height: '85vh', backgroundColor: 'white'}}>
+                <div className='text-center'>  
+                    <nav className='text-center' aria-label="breadcrumb">
                         <ol className="breadcrumb justify-content-center">
                             <li className="breadcrumb-item"><Link href="/">Apps</Link></li>
-                            <li className="breadcrumb-item active">{appTitle}</li>
+                            <li className="breadcrumb-item"><Link href={`/apps/${app}`}>{appTitle}</Link></li>
+                            <li className="breadcrumb-item active" aria-current="page">{pageTitle}</li>
                         </ol>
                     </nav> 
                     <p className='sidebar-welcome'>
-                        Welcome to {appTitle}
+                       {appTitle}
                     </p>
                     <p className='sidebar-user'>
                         {user ? `${user?.first_name} ${user?.last_name}` : ""}
@@ -54,18 +59,6 @@ const SideBar = ({appTitle, app}) => {
                         {CurrentDate}
                     </p>
                 </div>
-                <div className="d-grid gap-2">
-                    <Link href={`/apps/${app}/documents/create`} className="btn btn-primary btn-sfp" >
-                        <i className='bi pe-none me-2 fa-solid fa-file'></i>
-                        Create new Document
-                    </Link>
-                </div>
-                {
-                    app === 'compliance' && user?.userType === 2 ?
-                    <>
-                    </>
-                    : <></>
-                }
                 <hr/>
                 <ul className="nav nav-pills flex-column mb-auto">
                     <li className="nav-item">
@@ -75,13 +68,13 @@ const SideBar = ({appTitle, app}) => {
                         </Link>
                     </li>
                     <li>
-                        <Link href={`/apps/${app}/trends`} className={ router.pathname === `/apps/${app}/trends` ? "nav-link active" :"nav-link link-body-emphasis" }>
+                        <Link href={`/apps/${app}`} className={ router.pathname === `/apps/${app}/trends` ? "nav-link active" :"nav-link link-body-emphasis" }>
                             <i className='bi pe-none me-2 fa-solid fa-line-chart' />
                             Trends
                         </Link>
                     </li>
                     
-                    {/* {
+                    {
                         app === "compliance" && user?.is_superuser ?
                         <li>
                             <Link href={`/apps/${app}/questions`} className={router.pathname === `/apps/${app}/questions` ? "nav-link active" :"nav-link link-body-emphasis"}>
@@ -90,7 +83,7 @@ const SideBar = ({appTitle, app}) => {
                             </Link>
                         </li>
                         : <></>
-                    } */}
+                    }
                     <li>
                         <Link href="#" className={ router.pathname === `/apps/${app}/data` ? "nav-link active" :"nav-link link-body-emphasis" }>
                             <i className='bi pe-none me-2 fa-solid fa-list' />
@@ -125,4 +118,4 @@ const SideBar = ({appTitle, app}) => {
     )
 }
 
-export default SideBar
+export default AppDocumentSideBar

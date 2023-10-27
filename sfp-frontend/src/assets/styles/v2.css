@@ -292,9 +292,23 @@ header {
 }
 
 .updated-body .card2 {
-    width: 99%;
     height: 90vh;
     max-height: 90vh;
+    overflow-y: auto;
+    background-color: #ffffff;    
+}
+
+.insight-commission-card {
+    background-color: #ffffff;
+    margin-top: 1%;
+    height: 40vh;
+    margin-right: 1%;
+    padding: 1%;
+}
+
+.insight-table {
+    height: 40vh;
+    max-height: 40vh;
     overflow-y: auto;
     background-color: #ffffff;    
 }
@@ -534,6 +548,30 @@ header {
     font-family: Open Sans;
 }
 
+.inital-card-header {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.main-font {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 14px;
+}
+
+.compliance-inital-card-header {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
 .compliance-inital-card-header {
     color: #000;
     font-family: Open Sans;
@@ -643,6 +681,17 @@ header {
 }
   
 .btn-sfp {
+    background-color: #00788b;
+    border-color: #00788b;
+    color: white;
+}
+  
+.btn-outline-sfp {
+    border-color: #00788b;
+    color: #00788b;
+}
+  
+.btn-outline-sfp:hover {
     background-color: #00788b;
     border-color: #00788b;
     color: white;

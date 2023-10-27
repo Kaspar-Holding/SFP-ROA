@@ -28,6 +28,7 @@ urlpatterns = [
     path('auth/', include('djoser.social.urls')),
     path('api/', include('data.urls')),
     path('api/compliance/', include('compliance.urls')),
+    path('api/insights/', include('insights.urls')),
     path('api/printing/', include('printingApp.urls')),
     path('api/email/', include('emailApp.urls')),
     path('api/user/', include('users.urls')),

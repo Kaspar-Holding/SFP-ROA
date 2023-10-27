@@ -14,6 +14,23 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 27 October 2023:
+- Insights App was created in backend.
+- Insights App APIs and views were created.
+- Insights Commission Dashboard fronted was developed
+- Insights Commission API was created in NextJS too.
+- Insights Commission data was populated
+- Insights Commission data was populated
+- 2405: additional options to add for the comm release type of business - added
+- 2403: Remove “created” from Pie chart - added
+- 2402: If a referred case add status as referred – Approved, Referred-Not Approved - debugged and updated
+- 2401: Remove version number and date/time from email response - updated
+- 2399: Change Button Text in ARC Summary for referred case - debugged and updated
+- 2398: if ARC has rejected a form once then "Partial Approve" is not available in next version - debugged and updated
+- Working on the Pagination
+- Working Filters for Insights and Compliance Management
+- Deployment on Staging
+
 ### 19 October 2023:
 - Summary API not working bug resolved
 - Removed version and update time from Email reponse

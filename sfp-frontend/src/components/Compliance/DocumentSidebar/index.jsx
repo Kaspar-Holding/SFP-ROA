@@ -5,7 +5,7 @@ import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { logout } from '@/actions/auth'
-const DocumentSideBar = ({appTitle, app}) => {
+const DocumentSideBar = ({appTitle, app, pageTitle ,appName}) => {
     
     const user = useSelector(state=>state.auth.user)
 
@@ -45,7 +45,7 @@ const DocumentSideBar = ({appTitle, app}) => {
                     <nav className='text-center' aria-label="breadcrumb">
                         <ol className="breadcrumb justify-content-center">
                             <li className="breadcrumb-item"><Link href="/">Apps</Link></li>
-                            <li className="breadcrumb-item"><Link href="/apps/compliance">Compliance</Link></li>
+                            <li className="breadcrumb-item"><Link href={`/apps/${app}`}>{appName}</Link></li>
                             <li className="breadcrumb-item active" aria-current="page">Review Document</li>
                         </ol>
                     </nav> 
