@@ -427,7 +427,7 @@ const Insights = () => {
                 Body,
                 config
             )
-            console.log(response?.data?.data)
+            
             setKPIs(response?.data?.data)
             setCommissionTrend(response?.data?.data?.commission_trend)
             setRegions(response?.data?.data?.top_regions)
