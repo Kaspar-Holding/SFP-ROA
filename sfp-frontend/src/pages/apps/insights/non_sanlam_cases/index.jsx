@@ -15,7 +15,7 @@ import InsightsLayout from '@/hocs/InsightsLayout'
 // import Chart from "react-apexcharts"
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
-const non_sanlam_cases = () => {
+const NonSanlamCases = () => {
     // const Chart = dynamic(() => import('react-apexcharts'), {})
     const router = useRouter()
     
@@ -160,4 +160,4 @@ const non_sanlam_cases = () => {
     )
 }
 
-export default non_sanlam_cases
+export default NonSanlamCases

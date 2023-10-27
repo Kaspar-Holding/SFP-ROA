@@ -15,7 +15,7 @@ import InsightsLayout from '@/hocs/InsightsLayout'
 // import Chart from "react-apexcharts"
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
-const monitoring = () => {
+const Monitoring = () => {
     // const Chart = dynamic(() => import('react-apexcharts'), {})
     const router = useRouter()
     
@@ -160,4 +160,4 @@ const monitoring = () => {
     )
 }
 
-export default monitoring
+export default Monitoring

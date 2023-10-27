@@ -15,7 +15,7 @@ import InsightsLayout from '@/hocs/InsightsLayout'
 // import Chart from "react-apexcharts"
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
-const investment = () => {
+const Investment = () => {
     // const Chart = dynamic(() => import('react-apexcharts'), {})
     const router = useRouter()
     
@@ -160,4 +160,4 @@ const investment = () => {
     )
 }
 
-export default investment
+export default Investment
