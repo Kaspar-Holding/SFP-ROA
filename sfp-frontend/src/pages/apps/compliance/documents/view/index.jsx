@@ -194,7 +194,7 @@ const EditDocument = () => {
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Business Unit</label>
                                             {/* <Select options={businessUnit} onChange={(e)=>{onSelectChange(e)}} className="searchSelect" placeholder="Business Unit"/> */}
-                                            <select disabled className="form-select" name="businessUnit" value={DocumentInitalData?.businessUnit} aria-label="Default select example">
+                                            <select style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} }  disabled className="form-select" name="businessUnit" value={DocumentInitalData?.businessUnit} aria-label="Default select example">
                                                 <option value="1">SFP</option>
                                                 <option value="2">FS4P</option>
                                                 <option value="3">AFP</option>
@@ -202,23 +202,23 @@ const EditDocument = () => {
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Region</label>
-                                            <input disabled required type="text" value={DocumentInitalData?.region} name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} }  disabled required type="text" value={DocumentInitalData?.region} name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">BAC</label>
-                                            <input disabled  type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} }  disabled  type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             
                                             
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">ID Number</label>
-                                            <input disabled required type="text" value={DocumentInitalData?.IdNumber} name="IdNumber" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} }  disabled required type="text" value={DocumentInitalData?.IdNumber} name="IdNumber" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                         </div>
                                     </div>
                                     <div className='col-lg-4 col-md-6 col-sm-12'>                     
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Categorisation</label>
-                                            <input required type="text" value={DocumentInitalData?.categorisation} name="categorisation" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} }  required type="text" value={DocumentInitalData?.categorisation} name="categorisation" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Advisor Email</label>
@@ -226,7 +226,7 @@ const EditDocument = () => {
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Supervision</label>
-                                            <input disabled required type="text" value={DocumentInitalData?.supervision} name="supervision" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} }  disabled required type="text" value={DocumentInitalData?.supervision} name="supervision" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Policy Number</label>

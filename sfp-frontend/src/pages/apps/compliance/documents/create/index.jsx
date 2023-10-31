@@ -283,7 +283,9 @@ const CreateDocument = () => {
                                             <option value="3">AFP</option>
                                         </select>                                 */}
                                         <br/>
-                                        <input type="text" value={
+                                        <input type="text"
+                                            style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} } 
+                                            value={
                                                 DocumentInitalData?.advisorEmail.includes('sfp') || DocumentInitalData?.advisorEmail.includes('succession') ?
                                                 "SFP" :
                                                 DocumentInitalData?.advisorEmail.includes('fs4p') ?
@@ -303,7 +305,7 @@ const CreateDocument = () => {
                                             <Select options={Regions} onChange={(e)=>{onSelectChange(e)}} className="searchSelect" placeholder="Search the Region"/>
                                             :
                                             // <input disabled type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
-                                            <input disable={DocumentInitalData?.region === ""} required={DocumentInitalData?.region === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.region} name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} }  disable={DocumentInitalData?.region === ""} required={DocumentInitalData?.region === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.region} name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                         }
                                     </div>
                                     <div className="mb-3">
@@ -312,7 +314,7 @@ const CreateDocument = () => {
                                             DocumentInitalData?.bac_name === "" ?
                                             <Select options={BACs} onChange={(e)=>{onSelectChange(e)}} className="searchSelect" placeholder="Search the BAC"/>
                                             :
-                                            <input disable={DocumentInitalData?.bac_name === ""} required={DocumentInitalData?.bac_name === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} }  disable={DocumentInitalData?.bac_name === ""} required={DocumentInitalData?.bac_name === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.bac_name} name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                         }
                                         {/* <select className="form-select" name="BAC" value={DocumentInitalData?.bac} aria-label="Default select example">
                                             <option value={0}>Select Business Type</option>
@@ -347,13 +349,13 @@ const CreateDocument = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">ID Number</label>
-                                        <input disable={DocumentInitalData?.IdNumber === ""} required={DocumentInitalData?.IdNumber === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.IdNumber} name="IdNumber" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        <input disable={DocumentInitalData?.IdNumber === ""} style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} }  required={DocumentInitalData?.IdNumber === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.IdNumber} name="IdNumber" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                     </div>
                                 </div>
                                 <div className='col-lg-4 col-md-6 col-sm-12'>                     
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Categorisation</label>
-                                        <input required onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.categorisation} name="categorisation" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        <input required onChange={(e)=>{onChange(e)}} style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} }  type="text" value={DocumentInitalData?.categorisation} name="categorisation" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Advisor Email</label>
@@ -361,7 +363,7 @@ const CreateDocument = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Supervision</label>
-                                        <input disable={DocumentInitalData?.supervision === ""} required={DocumentInitalData?.supervision === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.supervision ? DocumentInitalData?.supervision : "N/A"} name="supervision" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        <input disable={DocumentInitalData?.supervision === ""} style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} }  required={DocumentInitalData?.supervision === ""} onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.supervision ? DocumentInitalData?.supervision : "N/A"} name="supervision" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Policy Number</label>
