@@ -18,6 +18,7 @@ Deployed using Nginx and Gunicorn
 - Pagination was implemented.
 - Colors assignment was done.
 - Lump Sum, Commission and Monthly Premium were moved to Review Document
+- Referred Cases Statuses were updated on Dashboard
 - Working Filters for Insights and Compliance Management
 - Deployment on Staging
 
