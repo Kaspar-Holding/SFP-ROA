@@ -532,13 +532,21 @@ const Compliance = () => {
                                                                     </td>
                                                                     <td>
                                                                         {
-                                                                            review?.status === 0 ? "New Case" :
-                                                                            review?.status === 1 ? "Approved" :
-                                                                            review?.status === 2 ? "Not Approved" :
-                                                                            review?.status === 7 ? "Not Approved & Editing" :
-                                                                            review?.status === 3 ? "Referred" :
-                                                                            review?.status === 4 ? "Partial Approved" : 
-                                                                            review?.status === 5 ? "Picked Up" : ""
+                                                                            review?.referred ?
+                                                                                review?.status === 1 ? "Reffered - Approved" :
+                                                                                review?.status === 2 ? "Reffered - Not Approved" :
+                                                                                review?.status === 7 ? "Reffered - Not Approved & Editing" :
+                                                                                review?.status === 3 ? "Reffered - Referred" :
+                                                                                review?.status === 4 ? "Reffered - Partial Approved" : 
+                                                                                review?.status === 5 ? "Reffered - Picked Up" : ""
+                                                                            :
+                                                                                review?.status === 0 ? "New Case" :
+                                                                                review?.status === 1 ? "Approved" :
+                                                                                review?.status === 2 ? "Not Approved" :
+                                                                                review?.status === 7 ? "Not Approved & Editing" :
+                                                                                review?.status === 3 ? "Referred" :
+                                                                                review?.status === 4 ? "Partial Approved" : 
+                                                                                review?.status === 5 ? "Picked Up" : ""
                                                                         }
                                                                     </td>
                                                                     <td>
