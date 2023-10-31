@@ -188,7 +188,7 @@ const EditDocument = () => {
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Advisor</label>
-                                            <input disabled onChange={(e)=>{onChange(e)}} style={DocumentInitalData?.flag !== "" ? {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} } type="email" value={DocumentInitalData?.advisorEmail} name="advisorEmail" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input disabled style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} } type="email" value={DocumentInitalData?.advisorEmail} name="advisorEmail" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             {/* <Select defaultInputValue={options[DocumentInitalData?.advisor]} options={options} onChange={(e)=>{onSelectChange(e)}} className="searchSelect" placeholder="Search the advisor"/> */}
                                         </div>
                                         <div className="mb-3">

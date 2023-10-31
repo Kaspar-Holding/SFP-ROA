@@ -357,7 +357,7 @@ const CreateDocument = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Advisor Email</label>
-                                        <input disabled onChange={(e)=>{onChange(e)}} style={DocumentInitalData?.flag !== "" ? {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} } type="email" value={DocumentInitalData?.advisorEmail} name="advisorEmail" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                        <input disabled onChange={(e)=>{onChange(e)}} style={DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" ? {backgroundColor: DocumentInitalData?.flag, color: 'white'} :  {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: "white"} } type="email" value={DocumentInitalData?.advisorEmail} name="advisorEmail" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                     </div>
                                     <div className="mb-3">
                                         <label for="basic-url" className="form-label compliance-inital-card-text">Supervision</label>
