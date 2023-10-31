@@ -487,7 +487,7 @@ const CreateDocument = () => {
                                                     <span class="input-group-text" id="basic-addon1">R</span>
                                                     <input 
                                                         required 
-                                                        onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onFormUpdate(e)}} 
+                                                        onChange={(e)=>{onChange(e)}} 
                                                         type="text" 
                                                         value={DocumentInitalData?.lump_sum} 
                                                         name="lump_sum" 
@@ -505,7 +505,7 @@ const CreateDocument = () => {
                                                     <span class="input-group-text" id="basic-addon2">R</span>
                                                     <input 
                                                         required 
-                                                        onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onFormUpdate(e)}} 
+                                                        onChange={(e)=>{onChange(e)}} 
                                                         type="text" 
                                                         value={DocumentInitalData?.monthly_premium} 
                                                         name="monthly_premium" 
@@ -523,7 +523,7 @@ const CreateDocument = () => {
                                                     <span class="input-group-text" id="basic-addon3">R</span>
                                                     <input 
                                                         required 
-                                                        onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onFormUpdate(e)}} 
+                                                        onChange={(e)=>{onChange(e)}} 
                                                         type="text" 
                                                         value={DocumentInitalData?.commission} 
                                                         name="commission" 

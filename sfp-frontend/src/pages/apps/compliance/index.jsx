@@ -419,15 +419,15 @@ const Compliance = () => {
                                         <h1 className='app-dashboard-header'>Recent Cases</h1>
 
                                     </div>
-                                    <div className='col-lg-3'>
+                                    <div className='col-lg-4'>
                                         <div className="input-group mb-3">
                                             <span className="input-group-text" id="basic-addon1">
                                                 <i className='fa-solid fa-search' />
                                             </span>
-                                            <input type="text"  className="form-control" value={SearchQuery} onChange={(e)=>{onSearchQueryChange(e)}} placeholder="Search Policy No# here" />
+                                            <input type="text"  className="form-control" value={SearchQuery} onChange={(e)=>{onSearchQueryChange(e)}} placeholder="Search Advisor / Policy No# or Client" />
                                         </div>
                                     </div>
-                                    <div className='col-lg-2'>
+                                    <div className='col-lg-1'>
                                     </div>
                                     <div className='col-lg-4'>
                                         {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */}
@@ -490,6 +490,7 @@ const Compliance = () => {
                                                 <th scope="col">#</th>
                                                 <th scope="col">Policy Number</th>
                                                 <th scope="col">Advisor</th>
+                                                <th scope="col">Client Name</th>
                                                 {
                                                     user?.userType === 1?
                                                         <th scope="col">Gatekeeper / ARC</th>
@@ -518,10 +519,15 @@ const Compliance = () => {
                                                                             review?.advisor
                                                                         }
                                                                     </td>
+                                                                    <td>
+                                                                        {
+                                                                            review?.clientName
+                                                                        }
+                                                                    </td>
                                                                     {
                                                                         user?.userType === 1?
                                                                         <td>
-                                                                            {review?.gatekeeper}
+                                                                            {review?.review_user}
                                                                         </td>
                                                                         : ""
                                                                     }

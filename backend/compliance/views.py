@@ -63,7 +63,7 @@ def searchComplianceDocument(request):
         search_vector = SearchVector('policy_number')
         if request.data['search_query'] != "":
             # data = data.annotate(search=search_vector).filter(search=search_query).values().order_by('-created_at')
-            data = data.filter(policy_number__icontains=request.data['search_query']).values().order_by('-created_at')
+            data = data.filter(Q(policy_number__icontains=request.data['search_query'])|Q(clientName__icontains=request.data['search_query'])).values().order_by('-created_at')
         else:
             data = data.values().order_by('-created_at')
         p = Paginator(data, request.data['page_size'])
@@ -73,6 +73,12 @@ def searchComplianceDocument(request):
             if advisor.exists():
                 advisor = advisor.values().first()
                 row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+            else:
+                raise Http404
+            userData = UserAccount.objects.filter(pk=row['user_id'])
+            if userData.exists():
+                userData = userData.values().first()
+                row['review_user'] = f"{userData['first_name']} {userData['last_name']} ({userData['email']})"
             else:
                 raise Http404
             dId = row['id']
@@ -252,8 +258,9 @@ class complainceDocumentsInfo(APIView):
                         else:
                             raise Http404
                         arc_status = False
-                        gatekeeper = UserAccount.objects.filter(pk=row['user_id']).values().first()
-                        row['gatekeeper'] = f"{gatekeeper['first_name']} {gatekeeper['last_name']} ({gatekeeper['email']})"
+                        
+                        userData = UserAccount.objects.filter(pk=row['user_id']).values().first()
+                        row['review_user'] = f"{userData['first_name']} {userData['last_name']} ({userData['email']})"
                         if row['status'] == 3 and not arc.objects.filter(document=row['id']).exists():
                             records.append(row)
                         if row['user_id'] == user.pk:
@@ -434,8 +441,9 @@ class ComplianceDocumentList(APIView):
                         raise Http404
                     dId = row['id']
                     arc_status = False
-                    gatekeeper = UserAccount.objects.filter(pk=row['user_id']).values().first()
-                    row['gatekeeper'] = f"{gatekeeper['first_name']} {gatekeeper['last_name']} ({gatekeeper['email']})"
+                    userData = UserAccount.objects.filter(pk=row['user_id']).values().first()
+                    print(f"{userData['first_name']} {userData['last_name']} ({userData['email']})")
+                    row['review_user'] = f"{userData['first_name']} {userData['last_name']} ({userData['email']})"
                     if arc.objects.filter(document=row['id']).exists():
                         arc_status = True
                     row['arc_status'] = arc_status
@@ -471,8 +479,8 @@ class ComplianceDocumentList(APIView):
                         else:
                             raise Http404
                         arc_status = False
-                        gatekeeper = UserAccount.objects.filter(pk=row['user_id']).values().first()
-                        row['gatekeeper'] = f"{gatekeeper['first_name']} {gatekeeper['last_name']} ({gatekeeper['email']})"
+                        userData = UserAccount.objects.filter(pk=row['user_id']).values().first()
+                        row['review_user'] = f"{userData['first_name']} {userData['last_name']} ({userData['email']})"
                         if row['status'] == 3 and not arc.objects.filter(document=row['id']).exists():
                             records.append(row)
                         if row['user_id'] == user.pk:
