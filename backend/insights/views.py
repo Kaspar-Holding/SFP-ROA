@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
-from django.db.models import Sum, Count
+from django.db.models import Sum, Count, FloatField
+from django.db.models.functions import Cast
 # Create your views here.
 from compliance.models import ComplianceDocument, GateKeeping, arc
 from data.models import regions, UserAccount
@@ -29,13 +30,17 @@ class commissionInsights(APIView):
         datewise_data = ComplianceDocument.objects.all().values('updated_at__date').distinct().order_by('updated_at__date')
         commission_trend = []
         for date in datewise_data:
-            reviewIds = ComplianceDocument.objects.filter(updated_at__date=date['updated_at__date']).values_list('id', flat=True)
-            commission = 0
-            for reviewId in reviewIds:
-                gk = GateKeeping.objects.filter(document=reviewId)
-                if gk.exists():
-                    gk = gk.values().latest('version')
-                    commission += float(gk['commission'].replace(',', '.'))
+            # reviewIds = ComplianceDocument.objects.filter(updated_at__date=date['updated_at__date']).values_list('id', flat=True)
+            # commission = 0
+            # for reviewId in reviewIds:
+            #     gk = GateKeeping.objects.filter(document=reviewId)
+            #     if gk.exists():
+            #         gk = gk.values().latest('version')
+            commission = ComplianceDocument.objects.filter(updated_at__date=date['updated_at__date'])
+            if commission.exists():
+                commission = commission.values('updated_at__date').annotate(total_commission=Sum(Cast('commission', output_field=FloatField())))[0]['total_commission']
+            else:
+                commission = 0
                     # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
             commission_trend.append([date['updated_at__date'].strftime('%d %b %Y'), commission])
             # Regions
@@ -45,14 +50,18 @@ class commissionInsights(APIView):
         regionsData = []
         top_regions = []
         for region in available_regions:
-            reviewIds = ComplianceDocument.objects.filter(region=region['region']).values_list('id', flat=True)
-            commission = 0
-            for reviewId in reviewIds:
-                gk = GateKeeping.objects.filter(document=reviewId)
-                if gk.exists():
-                    gk = gk.values().latest('version')
-                    commission += float(gk['commission'].replace(',', '.'))
-
+            # reviewIds = ComplianceDocument.objects.filter(region=region['region']).values_list('id', flat=True)
+            # commission = 0
+            # for reviewId in reviewIds:
+            #     gk = GateKeeping.objects.filter(document=reviewId)
+            #     if gk.exists():
+            #         gk = gk.values().latest('version')
+            #         commission += float(gk['commission'].replace(',', '.'))
+            commission = ComplianceDocument.objects.filter(region=region['region'])
+            if commission.exists():
+                commission = commission.values('region').annotate(total_commission=Sum(Cast('commission', output_field=FloatField())))[0]['total_commission']
+            else:
+                commission = 0
                     # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
             if commission != 0:
                 region_commission_trend.append([region['region'], commission])
@@ -65,13 +74,18 @@ class commissionInsights(APIView):
         advisorsData = []
         top_advisors = []
         for advisor in available_advisors:
-            reviewIds = ComplianceDocument.objects.filter(advisor=advisor['id']).values_list('id', flat=True)
-            commission = 0
-            for reviewId in reviewIds:
-                gk = GateKeeping.objects.filter(document=reviewId)
-                if gk.exists():
-                    gk = gk.values().latest('version')
-                    commission += float(gk['commission'].replace(',', '.'))
+            # reviewIds = ComplianceDocument.objects.filter(advisor=advisor['id']).values_list('id', flat=True)
+            # commission = 0
+            # for reviewId in reviewIds:
+            #     gk = GateKeeping.objects.filter(document=reviewId)
+            #     if gk.exists():
+            #         gk = gk.values().latest('version')
+            #         commission += float(gk['commission'].replace(',', '.'))
+            commission = ComplianceDocument.objects.filter(advisor=advisor['id'])
+            if commission.exists():
+                commission = commission.values('advisor').annotate(total_commission=Sum(Cast('commission', output_field=FloatField())))[0]['total_commission']
+            else:
+                commission = 0
 
                     # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
             if commission != 0:
@@ -80,13 +94,19 @@ class commissionInsights(APIView):
         # Business Type wise Trend
         businessType_commission_trend = []
         for i in range(1,16):
-            reviewIds = ComplianceDocument.objects.filter(businessType=i).values_list('id', flat=True)
-            commission = 0
-            for reviewId in reviewIds:
-                gk = GateKeeping.objects.filter(document=reviewId)
-                if gk.exists():
-                    gk = gk.values().latest('version')
-                    commission += float(gk['commission'].replace(',', '.'))
+            commission = ComplianceDocument.objects.filter(businessType=i)
+            if commission.exists():
+                commission = commission.values('businessType').annotate(total_commission=Sum(Cast('commission', output_field=FloatField())))[0]['total_commission']
+            else:
+                commission = 0
+
+            # reviewIds = ComplianceDocument.objects.filter(businessType=i).values_list('id', flat=True)
+            # commission = 0
+            # for reviewId in reviewIds:
+            #     gk = GateKeeping.objects.filter(document=reviewId)
+            #     if gk.exists():
+            #         gk = gk.values().latest('version')
+            #         commission += float(gk['commission'].replace(',', '.'))
 
                     # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
             if i == 1:

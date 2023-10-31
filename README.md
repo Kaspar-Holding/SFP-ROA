@@ -14,6 +14,13 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 31 October 2023:
+- Pagination was implemented.
+- Colors assignment was done.
+- Lump Sum, Commission and Monthly Premium were moved to Review Document
+- Working Filters for Insights and Compliance Management
+- Deployment on Staging
+
 ### 27 October 2023:
 - Insights App was created in backend.
 - Insights App APIs and views were created.

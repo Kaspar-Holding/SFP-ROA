@@ -317,7 +317,7 @@ const CompleteDocument = () => {
                                     </nav>
                                 : <></>
                             }
-                            <div className='accordion' id="commissionQuestions">
+                            {/* <div className='accordion' id="commissionQuestions">
                                 <div className="accordion-item">
                                     <h2 className="accordion-header">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCommissionQuestions" aria-expanded="true" aria-controls="collapseCommissionQuestions">
@@ -386,7 +386,7 @@ const CompleteDocument = () => {
                                     </div>
                                 </div>
                             </div>
-                            <br/>
+                            <br/> */}
                             <div className="accordion" id="gatekeepingChecklist">
                                 <div className="accordion-item">
                                     <h2 className="accordion-header">

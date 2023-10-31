@@ -246,7 +246,7 @@ const EditDocument = () => {
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Advisor Email</label>
-                                            <input disabled required onChange={(e)=>{onChange(e)}} type="email" value={DocumentInitalData?.advisorEmail} name="advisorEmail" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                            <input disabled onChange={(e)=>{onChange(e)}} style={DocumentInitalData?.flag !== "" ? {backgroundColor: DocumentInitalData?.flag} : {backgroundColor: ""} } type="email" value={DocumentInitalData?.advisorEmail} name="advisorEmail" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                         </div>
                                         <div className="mb-3">
                                             <label for="basic-url" className="form-label compliance-inital-card-text">Supervision</label>
@@ -363,6 +363,68 @@ const EditDocument = () => {
                                     }          
                                     <div className='col-lg-2'>   
                                     </div>         
+                                <div className='col-lg-2'>   
+                                </div>
+                                <div className='col-lg-8'>
+                                    <div className='row'>
+                                        <div className='col-lg-4'>
+                                            <div className="mb-3">
+                                                <label for="basic-url" className="form-label compliance-inital-card-text">Lump Sum</label>
+                                                <div className="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon1">R</span>
+                                                    <input 
+                                                        required 
+                                                        onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onFormUpdate(e)}} 
+                                                        type="text" 
+                                                        value={DocumentInitalData?.lump_sum} 
+                                                        name="lump_sum" 
+                                                        className="form-control" 
+                                                        id="basic-url" 
+                                                        aria-describedby="basic-addon3 basic-addon4" 
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='col-lg-4'>
+                                            <div className="mb-3">
+                                                <label for="basic-url" className="form-label compliance-inital-card-text">Monthly Premium</label>
+                                                <div className="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon2">R</span>
+                                                    <input 
+                                                        required 
+                                                        onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onFormUpdate(e)}} 
+                                                        type="text" 
+                                                        value={DocumentInitalData?.monthly_premium} 
+                                                        name="monthly_premium" 
+                                                        className="form-control" 
+                                                        id="basic-url" 
+                                                        aria-describedby="basic-addon3 basic-addon4" 
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='col-lg-4'>
+                                            <div className="mb-3">
+                                                <label for="basic-url" className="form-label compliance-inital-card-text">Commission</label>
+                                                <div className="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon3">R</span>
+                                                    <input 
+                                                        required 
+                                                        onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onFormUpdate(e)}} 
+                                                        type="text" 
+                                                        value={DocumentInitalData?.commission} 
+                                                        name="commission" 
+                                                        className="form-control" 
+                                                        id="basic-url" 
+                                                        aria-describedby="basic-addon3 basic-addon4" 
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div className='col-lg-2'>   
+                                </div>  
                                 </div>
                                 <div className="d-grid col-4 mx-auto">
                                     <button className="btn btn-primary compliance-inital-card-button-text btn-sfp" type="submit">Continue</button>

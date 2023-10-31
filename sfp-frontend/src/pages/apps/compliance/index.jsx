@@ -21,7 +21,7 @@ const Compliance = () => {
     const [Loaded, setLoaded] = useState(false)
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
 	const [FilterType, setFilterType] = useState(2)
-
+    const [currentPage, setCurrentPage] = useState(1)
     const Date_Var = new Date()
     const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
     const currentYear = Date_Var.getFullYear()
@@ -46,6 +46,7 @@ const Compliance = () => {
 
     const [PageSize, setPageSize] = useState(5)
     const [TotalRecords, setTotalRecords] = useState(0)
+    const [TotalPages, setTotalPages] = useState(2)
     const [TrendData, setTrendData] = useState([])
     const [Sortby, setSortby] = useState('created_at')
     const [SortDirection, setSortDirection] = useState("down")
@@ -197,6 +198,7 @@ const Compliance = () => {
 
     }
 
+
     const loadReviews = async (pNumber, pSize, sBy, sDirection) => {
         setLoaded(true)
         try {
@@ -211,7 +213,7 @@ const Compliance = () => {
                 Body,
                 config
             )
-            
+            setTotalPages(response?.data?.data?.total_pages)
             setReviews(response?.data?.data?.results)
             setTotalRecords(response?.data?.data?.total_records)
             setTrendData(response?.data?.data?.trend_data)
@@ -232,6 +234,43 @@ const Compliance = () => {
             
         }
         setLoaded(false)
+
+    }
+
+    const loadPaginatedData = async (pNumber, pSize, sBy, sDirection) => {
+        setCurrentPage(pNumber)
+        try {
+            const Body = JSON.stringify({
+                "page_number" : pNumber,
+                "page_size" : pSize,
+                "sort_by" : sBy,
+                "sort_direction" : sDirection,
+            })
+            const response = await axios.post(
+                '/api/compliance',
+                Body,
+                config
+            )
+            setTotalPages(response?.data?.data?.total_pages)
+            setReviews(response?.data?.data?.results)
+            setTotalRecords(response?.data?.data?.total_records)
+            setTrendData(response?.data?.data?.trend_data)
+            setKPIs(response?.data?.data?.kpis)
+            setKPITrend(response?.data?.data?.trend)
+            
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "error",
+                title: "Error",
+                html: `${error?.response?.data?.error}`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
 
     }
     
@@ -618,6 +657,20 @@ const Compliance = () => {
                                 <br/>
                                 <div className='d-flex justify-content-center'>
                                     {/* <CompliancePagination totalRecords={TotalRecords} pageLimit={PageSize} paginationSearchQuery={SearchQuery} paginationOrderBy={Sortby} paginationOrderDirection={SortDirection} onPageChanged={loadReviews} /> */}
+                                    {
+                                        TotalRecords !== 0 && TotalPages != 1 ?
+                                        <CompliancePagination 
+                                            currentPage={currentPage}
+                                            setPage={setCurrentPage}
+                                            totalPages={TotalPages}
+                                            pageSize={PageSize}
+                                            sBy={Sortby}
+                                            sDirection={SortDirection}
+                                            onPageChange={loadPaginatedData}
+                                        />
+                                        :
+                                        <></>
+                                    }
                                     
                                 </div>
 

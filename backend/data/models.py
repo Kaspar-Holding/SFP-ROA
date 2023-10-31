@@ -48,6 +48,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_active = models.IntegerField(default=1)
     is_staff = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
+    is_advisor = models.BooleanField(default=False)
     
     ARC = 1
     GK = 2
@@ -106,8 +107,7 @@ class user_profile(models.Model):
     address_physical_1 = models.TextField( default="", null=True, blank=True)    
     address_physical_2 = models.TextField( default="", null=True, blank=True)    
     address_physical_3 = models.TextField( default="", null=True, blank=True)    
-    address_postal_code = models.TextField( default="", null=True, blank=True)    
-  
+    address_postal_code = models.TextField( default="", null=True, blank=True)     
 
 
 import datetime

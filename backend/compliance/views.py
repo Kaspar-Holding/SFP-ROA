@@ -11,6 +11,7 @@ from django.http import Http404
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from datetime import datetime, timedelta
 import pytz
+from users.models import flag_colors, flagged_users
 # Create your views here.
 
 class updateDocumentStatus(APIView):
@@ -2531,7 +2532,15 @@ class loadagentsDetail(APIView):
                     #     data['supervisor'] = f"{user_supervision['id']}"
                     #     data['supervisor_name'] = f"{user_supervision['first_name']} {user_supervision['last_name']}"
                     data['supervisor_name'] = f"N.A."
-
+                flaggedData = flagged_users.objects.filter(user=request.data['advisorId'])
+                flag_color = ""
+                if flaggedData.exists():
+                    flaggedData = flaggedData.values().first()
+                    flag_color_data = flag_colors.objects.filter(id=flaggedData['color_id'])
+                    if flag_color_data.exists():
+                        flag_color_data = flag_color_data.values().first()
+                        flag_color = flag_color_data['color']
+                data['flag'] = flag_color
                 
                 return Response({
                     "data" : data
