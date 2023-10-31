@@ -405,11 +405,15 @@ const CompleteDocument = () => {
                                                                 FICA (Clear ID)
                                                             </h6>
                                                             <div className='row'>
+                                                                
+                                                            <div className='col-lg-2'>
+                                                            </div>
+                                                            <div className='col-lg-8 row'>
                                                                 <div className='col-lg-4'>
                                                                     <div className="form-check">
                                                                         <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.fica == Number("100") ? true : false} name="fica" id="fica"/>
                                                                         <label className="form-check-label" for="fica">
-                                                                            Yes
+                                                                            <strong>Yes</strong>
                                                                         </label>
                                                                     </div>
                                                                 </div>
@@ -417,7 +421,7 @@ const CompleteDocument = () => {
                                                                     <div className="form-check">
                                                                         <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.fica == Number("0") ? true : false} name="fica" id="fica"/>
                                                                         <label className="form-check-label" for="fica">
-                                                                            No
+                                                                            <strong>No</strong>
                                                                         </label>
                                                                     </div>
                                                                 </div>
@@ -425,10 +429,14 @@ const CompleteDocument = () => {
                                                                     <div className="form-check">
                                                                         <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.fica == Number("1") ? true : false} name="fica" id="fica"/>
                                                                         <label className="form-check-label" for="fica">
-                                                                            N/A
+                                                                            <strong>N/A</strong>
                                                                         </label>
                                                                     </div>
                                                                 </div>
+                                                                
+                                                            </div>
+                                                            <div className='col-lg-2'>
+                                                            </div>
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -441,29 +449,35 @@ const CompleteDocument = () => {
                                                         Proof of Screening
                                                     </h6>
                                                     <div className='row'>
-                                                        <div className='col-lg-4'>
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.proof_of_screening == Number("100") ? true : false} name="proof_of_screening" id="proof_of_screening"/>
-                                                                <label className="form-check-label" for="proof_of_screening">
-                                                                    Yes
-                                                                </label>
+                                                        <div className='col-lg-2'>
+                                                        </div>
+                                                        <div className='col-lg-8 row'>
+                                                            <div className='col-lg-4'>
+                                                                <div className="form-check">
+                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.proof_of_screening == Number("100") ? true : false} name="proof_of_screening" id="proof_of_screening"/>
+                                                                    <label className="form-check-label" for="proof_of_screening">
+                                                                        <strong>Yes</strong>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div className='col-lg-4'>
+                                                                <div className="form-check">
+                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.proof_of_screening == Number("0") ? true : false} name="proof_of_screening" id="proof_of_screening"/>
+                                                                    <label className="form-check-label" for="proof_of_screening">
+                                                                        <strong>No</strong>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div className='col-lg-4'>
+                                                                <div className="form-check">
+                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.proof_of_screening == Number("1") ? true : false} name="proof_of_screening" id="proof_of_screening"/>
+                                                                    <label className="form-check-label" for="proof_of_screening">
+                                                                        <strong>N/A</strong>
+                                                                    </label>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div className='col-lg-4'>
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.proof_of_screening == Number("0") ? true : false} name="proof_of_screening" id="proof_of_screening"/>
-                                                                <label className="form-check-label" for="proof_of_screening">
-                                                                    No
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div className='col-lg-4'>
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.proof_of_screening == Number("1") ? true : false} name="proof_of_screening" id="proof_of_screening"/>
-                                                                <label className="form-check-label" for="proof_of_screening">
-                                                                    N/A
-                                                                </label>
-                                                            </div>
+                                                        <div className='col-lg-2'>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -474,30 +488,36 @@ const CompleteDocument = () => {
                                                             <h6 className='gatekeeping-question'>
                                                                 Identity
                                                             </h6>
-                                                            <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.identity == Number("100") ? true : false} name="identity" id="identity"/>
-                                                                        <label className="form-check-label" for="identity">
-                                                                            Yes
-                                                                        </label>
+                                                            <div className='row'>                                                                
+                                                                <div className='col-lg-2'>
+                                                                </div>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.identity == Number("100") ? true : false} name="identity" id="identity"/>
+                                                                            <label className="form-check-label" for="identity">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.identity == Number("0") ? true : false} name="identity" id="identity"/>
+                                                                            <label className="form-check-label" for="identity">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.identity == Number("1") ? true : false} name="identity" id="identity"/>
+                                                                            <label className="form-check-label" for="identity">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.identity == Number("0") ? true : false} name="identity" id="identity"/>
-                                                                        <label className="form-check-label" for="identity">
-                                                                            No
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.identity == Number("1") ? true : false} name="identity" id="identity"/>
-                                                                        <label className="form-check-label" for="identity">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -506,29 +526,36 @@ const CompleteDocument = () => {
                                                                 Disclosure
                                                             </h6>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.disclosure == Number("100") ? true : false} name="disclosure" id="disclosure"/>
-                                                                        <label className="form-check-label" for="disclosure">
-                                                                            Yes
-                                                                        </label>
+                                                                                                                                
+                                                                <div className='col-lg-2'>
+                                                                </div>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.disclosure == Number("100") ? true : false} name="disclosure" id="disclosure"/>
+                                                                            <label className="form-check-label" for="disclosure">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.disclosure == Number("0") ? true : false} name="disclosure" id="disclosure"/>
+                                                                            <label className="form-check-label" for="disclosure">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.disclosure == Number("1") ? true : false} name="disclosure" id="disclosure"/>
+                                                                            <label className="form-check-label" for="disclosure">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.disclosure == Number("0") ? true : false} name="disclosure" id="disclosure"/>
-                                                                        <label className="form-check-label" for="disclosure">
-                                                                            No
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.disclosure == Number("1") ? true : false} name="disclosure" id="disclosure"/>
-                                                                        <label className="form-check-label" for="disclosure">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -544,29 +571,36 @@ const CompleteDocument = () => {
                                                                 DRA
                                                             </h6>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.dra == Number("100") ? true : false} name="dra" id="dra"/>
-                                                                        <label className="form-check-label" for="dra">
-                                                                            Yes
-                                                                        </label>
+                                                                                                                                
+                                                                <div className='col-lg-2'>
+                                                                </div>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.dra == Number("100") ? true : false} name="dra" id="dra"/>
+                                                                            <label className="form-check-label" for="dra">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.dra == Number("0") ? true : false} name="dra" id="dra"/>
+                                                                            <label className="form-check-label" for="dra">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.dra == Number("1") ? true : false} name="dra" id="dra"/>
+                                                                            <label className="form-check-label" for="dra">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.dra == Number("0") ? true : false} name="dra" id="dra"/>
-                                                                        <label className="form-check-label" for="dra">
-                                                                            No
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.dra == Number("1") ? true : false} name="dra" id="dra"/>
-                                                                        <label className="form-check-label" for="dra">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -583,29 +617,35 @@ const CompleteDocument = () => {
                                                                 Letter of Introduction
                                                             </h6>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.letter_of_intro == Number("100") ? true : false} name="letter_of_intro" id="letter_of_intro"/>
-                                                                        <label className="form-check-label" for="letter_of_intro">
-                                                                            Yes
-                                                                        </label>
+                                                                <div className='col-lg-2'>
+                                                                </div>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.letter_of_intro == Number("100") ? true : false} name="letter_of_intro" id="letter_of_intro"/>
+                                                                            <label className="form-check-label" for="letter_of_intro">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.letter_of_intro == Number("0") ? true : false} name="letter_of_intro" id="letter_of_intro"/>
+                                                                            <label className="form-check-label" for="letter_of_intro">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.letter_of_intro == Number("1") ? true : false} name="letter_of_intro" id="letter_of_intro"/>
+                                                                            <label className="form-check-label" for="letter_of_intro">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.letter_of_intro == Number("0") ? true : false} name="letter_of_intro" id="letter_of_intro"/>
-                                                                        <label className="form-check-label" for="letter_of_intro">
-                                                                            No
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.letter_of_intro == Number("1") ? true : false} name="letter_of_intro" id="letter_of_intro"/>
-                                                                        <label className="form-check-label" for="letter_of_intro">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -622,29 +662,36 @@ const CompleteDocument = () => {
                                                                 Authorisation letter
                                                             </h6>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.authorisation_letter == Number("100") ? true : false} name="authorisation_letter" id="authorisation_letter"/>
-                                                                        <label className="form-check-label" for="authorisation_letter">
-                                                                            Yes
-                                                                        </label>
+                                                                                                                                
+                                                                <div className='col-lg-2'>
+                                                                </div>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.authorisation_letter == Number("100") ? true : false} name="authorisation_letter" id="authorisation_letter"/>
+                                                                            <label className="form-check-label" for="authorisation_letter">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.authorisation_letter == Number("0") ? true : false} name="authorisation_letter" id="authorisation_letter"/>
+                                                                            <label className="form-check-label" for="authorisation_letter">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.authorisation_letter == Number("1") ? true : false} name="authorisation_letter" id="authorisation_letter"/>
+                                                                            <label className="form-check-label" for="authorisation_letter">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.authorisation_letter == Number("0") ? true : false} name="authorisation_letter" id="authorisation_letter"/>
-                                                                        <label className="form-check-label" for="authorisation_letter">
-                                                                            No
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.authorisation_letter == Number("1") ? true : false} name="authorisation_letter" id="authorisation_letter"/>
-                                                                        <label className="form-check-label" for="authorisation_letter">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -661,56 +708,71 @@ const CompleteDocument = () => {
                                                                 ROA Type 
                                                             </h6>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.roa_type == Number("100") ? true : false} name="roa_type" id="roa_type"/>
-                                                                        <label className="form-check-label" for="roa_type">
-                                                                            SanFin ROA
-                                                                        </label>
+                                                                                                                                
+                                                                <div className='col-lg-2'>
+                                                                </div>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.roa_type == Number("100") ? true : false} name="roa_type" id="roa_type"/>
+                                                                            <label className="form-check-label" for="roa_type">
+                                                                                <strong>SanFin ROA</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.roa_type == Number("0") ? true : false} name="roa_type" id="roa_type"/>
+                                                                            <label className="form-check-label" for="roa_type">
+                                                                                <strong>SFP ROA</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.roa_type == Number("1") ? true : false} name="roa_type" id="roa_type"/>
+                                                                            <label className="form-check-label" for="roa_type">
+                                                                                <strong>Glacier Ice</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.roa_type == Number("0") ? true : false} name="roa_type" id="roa_type"/>
-                                                                        <label className="form-check-label" for="roa_type">
-                                                                            SFP ROA
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.roa_type == Number("1") ? true : false} name="roa_type" id="roa_type"/>
-                                                                        <label className="form-check-label" for="roa_type">
-                                                                            Glacier Ice
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                             <br/>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={2} checked={Data?.roa_type == Number("2") ? true : false} name="roa_type" id="roa_type"/>
-                                                                        <label className="form-check-label" for="roa_type">
-                                                                            Compare Med
-                                                                        </label>
-                                                                    </div>
+                                                                                                                                
+                                                                <div className='col-lg-2'>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={3} checked={Data?.roa_type == Number("3") ? true : false} name="roa_type" id="roa_type"/>
-                                                                        <label className="form-check-label" for="roa_type">
-                                                                            Get Quote
-                                                                        </label>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={2} checked={Data?.roa_type == Number("2") ? true : false} name="roa_type" id="roa_type"/>
+                                                                            <label className="form-check-label" for="roa_type">
+                                                                                <strong>Compare Med</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={3} checked={Data?.roa_type == Number("3") ? true : false} name="roa_type" id="roa_type"/>
+                                                                            <label className="form-check-label" for="roa_type">
+                                                                                <strong>Get Quote</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={4} checked={Data?.roa_type == Number("4") ? true : false} name="roa_type" id="roa_type"/>
+                                                                            <label className="form-check-label" for="roa_type">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={4} checked={Data?.roa_type == Number("4") ? true : false} name="roa_type" id="roa_type"/>
-                                                                        <label className="form-check-label" for="roa_type">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -727,29 +789,37 @@ const CompleteDocument = () => {
                                                                 ROA (All sections completed)
                                                             </h6>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.roa == Number("100") ? true : false} name="roa" id="roa"/>
-                                                                        <label className="form-check-label" for="roa">
-                                                                            Yes
-                                                                        </label>
-                                                                    </div>
+                                                                                                                                
+                                                                <div className='col-lg-2'>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.roa == Number("0") ? true : false} name="roa" id="roa"/>
-                                                                        <label className="form-check-label" for="roa">
-                                                                            No
-                                                                        </label>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.roa == Number("100") ? true : false} name="roa" id="roa"/>
+                                                                            <label className="form-check-label" for="roa">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.roa == Number("0") ? true : false} name="roa" id="roa"/>
+                                                                            <label className="form-check-label" for="roa">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.roa == Number("1") ? true : false} name="roa" id="roa"/>
+                                                                            <label className="form-check-label" for="roa">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.roa == Number("1") ? true : false} name="roa" id="roa"/>
-                                                                        <label className="form-check-label" for="roa">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -765,30 +835,36 @@ const CompleteDocument = () => {
                                                             <h6 className='gatekeeping-question'>
                                                                 FNA (Appropriate FNA filed)
                                                             </h6>
-                                                            <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.fna == Number("100") ? true : false} name="fna" id="fna"/>
-                                                                        <label className="form-check-label" for="fna">
-                                                                            Yes
-                                                                        </label>
+                                                            <div className='row'>                                            
+                                                                <div className='col-lg-2'>
+                                                                </div>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.fna == Number("100") ? true : false} name="fna" id="fna"/>
+                                                                            <label className="form-check-label" for="fna">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.fna == Number("0") ? true : false} name="fna" id="fna"/>
+                                                                            <label className="form-check-label" for="fna">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.fna == Number("1") ? true : false} name="fna" id="fna"/>
+                                                                            <label className="form-check-label" for="fna">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.fna == Number("0") ? true : false} name="fna" id="fna"/>
-                                                                        <label className="form-check-label" for="fna">
-                                                                            No
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.fna == Number("1") ? true : false} name="fna" id="fna"/>
-                                                                        <label className="form-check-label" for="fna">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -805,29 +881,35 @@ const CompleteDocument = () => {
                                                                 Application
                                                             </h6>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.application == Number("100") ? true : false} name="application" id="application"/>
-                                                                        <label className="form-check-label" for="application">
-                                                                            Yes
-                                                                        </label>
+                                                                <div className='col-lg-2'>
+                                                                </div>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.application == Number("100") ? true : false} name="application" id="application"/>
+                                                                            <label className="form-check-label" for="application">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.application == Number("0") ? true : false} name="application" id="application"/>
+                                                                            <label className="form-check-label" for="application">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.application == Number("1") ? true : false} name="application" id="application"/>
+                                                                            <label className="form-check-label" for="application">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.application == Number("0") ? true : false} name="application" id="application"/>
-                                                                        <label className="form-check-label" for="application">
-                                                                            No
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.application == Number("1") ? true : false} name="application" id="application"/>
-                                                                        <label className="form-check-label" for="application">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -844,29 +926,36 @@ const CompleteDocument = () => {
                                                                 Quotation
                                                             </h6>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.quotation == Number("100") ? true : false} name="quotation" id="quotation"/>
-                                                                        <label className="form-check-label" for="quotation">
-                                                                            Yes
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.quotation == Number("0") ? true : false} name="quotation" id="quotation"/>
-                                                                        <label className="form-check-label" for="quotation">
-                                                                            No
-                                                                        </label>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.quotation == Number("100") ? true : false} name="quotation" id="quotation"/>
+                                                                            <label className="form-check-label" for="quotation">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.quotation == Number("0") ? true : false} name="quotation" id="quotation"/>
+                                                                            <label className="form-check-label" for="quotation">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.quotation == Number("1") ? true : false} name="quotation" id="quotation"/>
+                                                                            <label className="form-check-label" for="quotation">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.quotation == Number("1") ? true : false} name="quotation" id="quotation"/>
-                                                                        <label className="form-check-label" for="quotation">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -883,29 +972,35 @@ const CompleteDocument = () => {
                                                                 Risk Portfolio
                                                             </h6>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.risk_portfolio == Number("100") ? true : false} name="risk_portfolio" id="risk_portfolio"/>
-                                                                        <label className="form-check-label" for="risk_portfolio">
-                                                                            Yes
-                                                                        </label>
+                                                                <div className='col-lg-2'>
+                                                                </div>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.risk_portfolio == Number("100") ? true : false} name="risk_portfolio" id="risk_portfolio"/>
+                                                                            <label className="form-check-label" for="risk_portfolio">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.risk_portfolio == Number("0") ? true : false} name="risk_portfolio" id="risk_portfolio"/>
+                                                                            <label className="form-check-label" for="risk_portfolio">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.risk_portfolio == Number("1") ? true : false} name="risk_portfolio" id="risk_portfolio"/>
+                                                                            <label className="form-check-label" for="risk_portfolio">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.risk_portfolio == Number("0") ? true : false} name="risk_portfolio" id="risk_portfolio"/>
-                                                                        <label className="form-check-label" for="risk_portfolio">
-                                                                            No
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.risk_portfolio == Number("1") ? true : false} name="risk_portfolio" id="risk_portfolio"/>
-                                                                        <label className="form-check-label" for="risk_portfolio">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -922,29 +1017,35 @@ const CompleteDocument = () => {
                                                                 Mandate
                                                             </h6>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.mandate == Number("100") ? true : false} name="mandate" id="mandate"/>
-                                                                        <label className="form-check-label" for="mandate">
-                                                                            Yes
-                                                                        </label>
+                                                                <div className='col-lg-2'>
+                                                                </div>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.mandate == Number("100") ? true : false} name="mandate" id="mandate"/>
+                                                                            <label className="form-check-label" for="mandate">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.mandate == Number("0") ? true : false} name="mandate" id="mandate"/>
+                                                                            <label className="form-check-label" for="mandate">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.mandate == Number("1") ? true : false} name="mandate" id="mandate"/>
+                                                                            <label className="form-check-label" for="mandate">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.mandate == Number("0") ? true : false} name="mandate" id="mandate"/>
-                                                                        <label className="form-check-label" for="mandate">
-                                                                            No
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.mandate == Number("1") ? true : false} name="mandate" id="mandate"/>
-                                                                        <label className="form-check-label" for="mandate">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -961,29 +1062,35 @@ const CompleteDocument = () => {
                                                                 Replacement?
                                                             </h6>
                                                             <div className='row'>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.replacement == Number("100") ? true : false} name="replacement" id="replacement"/>
-                                                                        <label className="form-check-label" for="replacement">
-                                                                            Yes
-                                                                        </label>
+                                                                <div className='col-lg-2'>
+                                                                </div>
+                                                                <div className='col-lg-8 row'>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.replacement == Number("100") ? true : false} name="replacement" id="replacement"/>
+                                                                            <label className="form-check-label" for="replacement">
+                                                                                <strong>Yes</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.replacement == Number("0") ? true : false} name="replacement" id="replacement"/>
+                                                                            <label className="form-check-label" for="replacement">
+                                                                                <strong>No</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-lg-4'>
+                                                                        <div className="form-check">
+                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.replacement == Number("1") ? true : false} name="replacement" id="replacement"/>
+                                                                            <label className="form-check-label" for="replacement">
+                                                                                <strong>N/A</strong>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.replacement == Number("0") ? true : false} name="replacement" id="replacement"/>
-                                                                        <label className="form-check-label" for="replacement">
-                                                                            No
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='col-lg-4'>
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.replacement == Number("1") ? true : false} name="replacement" id="replacement"/>
-                                                                        <label className="form-check-label" for="replacement">
-                                                                            N/A
-                                                                        </label>
-                                                                    </div>
+                                                                <div className='col-lg-2'>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1001,29 +1108,35 @@ const CompleteDocument = () => {
                                                                     Type of Replacement
                                                                 </h6>
                                                                 <div className='row'>
-                                                                    <div className='col-lg-4'>
-                                                                        <div className="form-check">
-                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.replacement_type == Number("100") ? true : false} name="replacement_type" id="replacement_type"/>
-                                                                            <label className="form-check-label" for="replacement_type">
-                                                                                Rule 19
-                                                                            </label>
+                                                                    <div className='col-lg-2'>
+                                                                    </div>
+                                                                    <div className='col-lg-8 row'>
+                                                                        <div className='col-lg-4'>
+                                                                            <div className="form-check">
+                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.replacement_type == Number("100") ? true : false} name="replacement_type" id="replacement_type"/>
+                                                                                <label className="form-check-label" for="replacement_type">
+                                                                                    Rule 19
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className='col-lg-4'>
+                                                                            <div className="form-check">
+                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.replacement_type == Number("0") ? true : false} name="replacement_type" id="replacement_type"/>
+                                                                                <label className="form-check-label" for="replacement_type">
+                                                                                    <strong>No</strong>n-Rule 19
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className='col-lg-4'>
+                                                                            <div className="form-check">
+                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.replacement_type == Number("1") ? true : false} name="replacement_type" id="replacement_type"/>
+                                                                                <label className="form-check-label" for="replacement_type">
+                                                                                    <strong>N/A</strong>
+                                                                                </label>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div className='col-lg-4'>
-                                                                        <div className="form-check">
-                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.replacement_type == Number("0") ? true : false} name="replacement_type" id="replacement_type"/>
-                                                                            <label className="form-check-label" for="replacement_type">
-                                                                                Non-Rule 19
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='col-lg-4'>
-                                                                        <div className="form-check">
-                                                                            <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.replacement_type == Number("1") ? true : false} name="replacement_type" id="replacement_type"/>
-                                                                            <label className="form-check-label" for="replacement_type">
-                                                                                N/A
-                                                                            </label>
-                                                                        </div>
+                                                                    <div className='col-lg-2'>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1070,29 +1183,35 @@ const CompleteDocument = () => {
                                                                         aria-describedby="basic-addon3 basic-addon4" 
                                                                     /> */}
                                                                     <div className='row'>
-                                                                        <div className='col-lg-4'>
-                                                                            <div className="form-check">
-                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.policy_schedule == Number("100") ? true : false} name="policy_schedule" id="policy_schedule"/>
-                                                                                <label className="form-check-label" for="policy_schedule">
-                                                                                    Yes
-                                                                                </label>
+                                                                        <div className='col-lg-2'>
+                                                                        </div>
+                                                                        <div className='col-lg-8 row'>
+                                                                            <div className='col-lg-4'>
+                                                                                <div className="form-check">
+                                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.policy_schedule == Number("100") ? true : false} name="policy_schedule" id="policy_schedule"/>
+                                                                                    <label className="form-check-label" for="policy_schedule">
+                                                                                        <strong>Yes</strong>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col-lg-4'>
+                                                                                <div className="form-check">
+                                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.policy_schedule == Number("0") ? true : false} name="policy_schedule" id="policy_schedule"/>
+                                                                                    <label className="form-check-label" for="policy_schedule">
+                                                                                        <strong>No</strong>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col-lg-4'>
+                                                                                <div className="form-check">
+                                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.policy_schedule == Number("1") ? true : false} name="policy_schedule" id="policy_schedule"/>
+                                                                                    <label className="form-check-label" for="policy_schedule">
+                                                                                        <strong>N/A</strong>
+                                                                                    </label>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div className='col-lg-4'>
-                                                                            <div className="form-check">
-                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.policy_schedule == Number("0") ? true : false} name="policy_schedule" id="policy_schedule"/>
-                                                                                <label className="form-check-label" for="policy_schedule">
-                                                                                    No
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className='col-lg-4'>
-                                                                            <div className="form-check">
-                                                                                <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.policy_schedule == Number("1") ? true : false} name="policy_schedule" id="policy_schedule"/>
-                                                                                <label className="form-check-label" for="policy_schedule">
-                                                                                    N/A
-                                                                                </label>
-                                                                            </div>
+                                                                        <div className='col-lg-2'>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1106,29 +1225,35 @@ const CompleteDocument = () => {
                                                                     <div className="mb-3">
                                                                         <label for="basic-url" className="form-label compliance-inital-card-text">Commission Release Form</label>
                                                                         <div className='row'>
-                                                                            <div className='col-lg-4'>
-                                                                                <div className="form-check">
-                                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.commission_release_form == Number("100") ? true : false} name="commission_release_form" id="commission_release_form"/>
-                                                                                    <label className="form-check-label" for="fica">
-                                                                                        Yes
-                                                                                    </label>
+                                                                        <div className='col-lg-2'>
+                                                                            </div>
+                                                                            <div className='col-lg-8 row'>
+                                                                                <div className='col-lg-4'>
+                                                                                    <div className="form-check">
+                                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={100} checked={Data?.commission_release_form == Number("100") ? true : false} name="commission_release_form" id="commission_release_form"/>
+                                                                                        <label className="form-check-label" for="fica">
+                                                                                            <strong>Yes</strong>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div className='col-lg-4'>
+                                                                                    <div className="form-check">
+                                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.commission_release_form == Number("0") ? true : false} name="commission_release_form" id="commission_release_form"/>
+                                                                                        <label className="form-check-label" for="fica">
+                                                                                            <strong>No</strong>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div className='col-lg-4'>
+                                                                                    <div className="form-check">
+                                                                                        <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.commission_release_form == Number("1") ? true : false} name="commission_release_form" id="commission_release_form"/>
+                                                                                        <label className="form-check-label" for="fica">
+                                                                                            <strong>N/A</strong>
+                                                                                        </label>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div className='col-lg-4'>
-                                                                                <div className="form-check">
-                                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={0} checked={Data?.commission_release_form == Number("0") ? true : false} name="commission_release_form" id="commission_release_form"/>
-                                                                                    <label className="form-check-label" for="fica">
-                                                                                        No
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div className='col-lg-4'>
-                                                                                <div className="form-check">
-                                                                                    <input className="form-check-input" type="radio" onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onFormUpdate(e) : "" : onFormUpdate(e)}} value={1} checked={Data?.commission_release_form == Number("1") ? true : false} name="commission_release_form" id="commission_release_form"/>
-                                                                                    <label className="form-check-label" for="fica">
-                                                                                        N/A
-                                                                                    </label>
-                                                                                </div>
+                                                                            <div className='col-lg-2'>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1164,7 +1289,7 @@ const CompleteDocument = () => {
                                                     "Save & Continue to ARC" :
                                                     "Save & Continue to Summary"
                                                 }
-                                                <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-right'/>
+                                                <i className='bi pe-<strong>No</strong>ne mx-2 me-2 fa-solid fa-arrow-right'/>
                                             </button>
                                         </div>
                                         :<></>
@@ -1187,7 +1312,7 @@ const CompleteDocument = () => {
                                                     "Continue to ARC" :
                                                     "Continue to Summary"
                                                 }
-                                                <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-right'/>
+                                                <i className='bi pe-<strong>No</strong>ne mx-2 me-2 fa-solid fa-arrow-right'/>
                                             </button>
                                         </div>
                                         :<></>

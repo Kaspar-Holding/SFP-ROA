@@ -533,6 +533,7 @@ const Compliance = () => {
                                                                     <td>
                                                                         {
                                                                             review?.referred ?
+                                                                                review?.status === 0 ? "New Case" :
                                                                                 review?.status === 1 ? "Reffered - Approved" :
                                                                                 review?.status === 2 ? "Reffered - Not Approved" :
                                                                                 review?.status === 7 ? "Reffered - Not Approved & Editing" :
