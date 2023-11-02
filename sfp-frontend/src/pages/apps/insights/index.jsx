@@ -168,7 +168,10 @@ const Insights = () => {
             {
                 opposite: true,
                 title: {
-                    text: y_title1
+                    text: y_title1,
+                    formatter: function (val) {
+                        return val + " %"
+                    }
                 }
             }
         ],
@@ -538,7 +541,7 @@ const Insights = () => {
                                 </div>
                                 <div className='col-lg-4 col-md-6 col-sm-12 bg-white'>
                                     {
-                                        (typeof window !== 'undefined') && <Chart options={mixOptions([BusinessTypeCommissionTrend].map(x => x.map(a => (a[0]))).flat(2),'Business Type based Trend', "Total Commission", "Percentage of Commission")} series={mixSeries("Total Commission", [BusinessTypeCommissionTrend].map(x => x.map(a => (a[1]))).flat(2), 'column', "Total Commission", [BusinessTypeCommissionTrend].map(x => x.map(a => (a[2]))).flat(2), 'line')} type="line" height={350} />
+                                        (typeof window !== 'undefined') && <Chart options={mixOptions([BusinessTypeCommissionTrend].map(x => x.map(a => (a[0]))).flat(2),'Business Type based Trend', "Total Commission", "Percentage of Commission")} series={mixSeries("Total Commission", [BusinessTypeCommissionTrend].map(x => x.map(a => (a[1]))).flat(2), 'column', "Percentage of Commission", [BusinessTypeCommissionTrend].map(x => x.map(a => (a[2]))).flat(2), 'line')} type="line" height={350} />
                                     }
                                 </div>
                             </div>

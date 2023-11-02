@@ -49,14 +49,14 @@ const AppPage = () => {
                             <div class="container text-center">
                                 <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
                                 <div class="col">
-                                        <Link href="/apps/insights" style={{textDecoration: "none"}}>                                        
+                                        <Link href="/apps" style={{textDecoration: "none"}}>                                        
                                             <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
                                                 <div className="card-body">
                                                     <br/>
                                                     <h5 className="card-title text-center"><i className="fa-solid fa-chart-simple"></i></h5>
                                                     <br/>
                                                     <p className="card-text text-center">
-                                                        <Link href="/apps/insights" className="appLabel">Insights</Link>
+                                                        <Link href="/apps" className="appLabel">Insights</Link>
                                                     </p>
                                                 </div>
                                             </div>

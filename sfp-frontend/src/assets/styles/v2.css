@@ -302,8 +302,21 @@ header {
     background-color: #ffffff;
     margin-top: 1%;
     height: 40vh;
-    margin-right: 1%;
+    margin-left: 1%;
     padding: 1%;
+    font-family: 'Open Sans';
+    font-size: 12px;
+}
+
+.insight-investment-card {
+    background-color: #ffffff;
+    margin-top: 1%;
+    height: 40vh;
+    width: 24%;
+    margin-left: 1%;
+    padding: 1%;
+    font-family: 'Open Sans';
+    font-size: 12px;
 }
 
 .insight-table {

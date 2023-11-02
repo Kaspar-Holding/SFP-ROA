@@ -11,14 +11,14 @@ import Loader from '@/hocs/Loader'
 import CompliancePagination from '@/modules/CompliancePagination'
 import AppLayout from '@/hocs/AppLayout'
 import InsightsLayout from '@/hocs/InsightsLayout'
+import { currencyFormatter, numberFormatter } from '@/modules/formatter'
+// import FilterComponent from './Filters'
 
-// import Chart from "react-apexcharts"
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
-const Investment = () => {
+const InvestmentInsights = () => {
     // const Chart = dynamic(() => import('react-apexcharts'), {})
     const router = useRouter()
-    
     const [Loaded, setLoaded] = useState(false)
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
     const user = useSelector(state=>state.auth.user)
@@ -36,6 +36,300 @@ const Investment = () => {
     const year = 2023
     const years = Array.from(new Array(currentYear - year + 1),( val, index) => index + year)
 
+
+    const chart1Series = [
+        {
+            name: "Session Duration",
+            data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
+        },
+        {
+            name: "Page Views",
+            data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+        },
+        {
+            name: 'Total Visits',
+            data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
+        }
+    ]
+
+    const chart1Options = {
+        chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: false
+            },
+            fontFamily: "Open Sans",
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [2, 2, 2],
+            curve: 'smooth',
+            dashArray: [0, 0, 0]
+        },
+        title: {
+            text: 'Page Statistics',
+            fontFamily: "Open Sans",
+            align: 'left'
+        },
+        legend: {
+            tooltipHoverFormatter: function(val, opts) {
+                return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
+        xaxis: {
+            categories: [
+                '01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan', '10 Jan', '11 Jan', '12 Jan'
+            ],
+        },
+        tooltip: {
+            y: [
+                {
+                    title: {
+                        formatter: function (val) {
+                            return val + " (mins)"
+                        }
+                    }
+                },
+                {
+                    title: {
+                        formatter: function (val) {
+                            return val + " per session"
+                        }
+                    }
+                },
+                {
+                    title: {
+                        formatter: function (val) {
+                            return val;
+                        }
+                    }
+                }
+            ]
+        },
+        grid: {
+            borderColor: '#f1f1f1',
+        }
+    }
+
+    const totalInvestmentSeries = (name, data, type, name_1, data_1, type_1) => [
+        {
+            name: name,
+            data: data,
+            color: '#007A8D',
+            type: type ? type : "line"
+        },
+        {
+            name: name_1,
+            data: data_1,
+            color: '#00FF00',
+            type: type ? type_1 : "line"
+        }
+    ]
+
+    const mixSeries = (series_1_name, series_1_data, series_1_type, series_2_name, series_2_data, series_2_type, ) => [
+        {
+            name: series_1_name,
+            data: series_1_data,
+            type: series_1_type,
+        },
+        {
+            name: series_2_name,
+            data: series_2_data,
+            type: series_2_type,
+        },
+    ]
+    
+    const mixOptions = (categories, title, y_title, y_title1) => ({
+        chart: {
+            height: 350,
+            type: 'line',
+            fontFamily: "Open Sans",
+        },
+        stroke: {
+            width: [0, 4],
+            curve: 'smooth',
+        },
+        title: {
+            text: title
+        },
+        dataLabels: {
+            enabled: false
+        },
+        xaxis: {
+            categories: categories
+        },
+        yaxis: [{
+            title: {
+                text: y_title
+            },
+          
+            }, 
+            {
+                opposite: true,
+                title: {
+                    text: y_title1,
+                    formatter: function (val) {
+                        return val + " %"
+                    }
+                }
+            }
+        ],
+        legend: {
+            show: false
+        }
+        
+    })
+    
+    const totalInvestmentOptions = (categories, title, y_title, y_title1) => ({
+        chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: false
+            },
+            fontFamily: "Open Sans",
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [2, 2, 2],
+            curve: 'smooth',
+            dashArray: [0, 0, 0]
+        },
+        title: {
+            text: title,
+            fontFamily: "Open Sans",
+            align: 'left'
+        },
+        legend: {
+            tooltipHoverFormatter: function(val, opts) {
+                return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
+        xaxis: {
+            categories: categories,
+        },
+        tooltip: {
+            y: [
+                {
+                    title: {
+                        formatter: function (val) {
+                            return val;
+                        }
+                    }
+                }
+            ]
+        },
+        grid: {
+            borderColor: '#f1f1f1',
+        }
+    })
+
+    const columnChartOptions = (categories, title) => ({
+        chart: {
+            type: 'bar',
+            fontFamily: "Open Sans",
+            zoom: {
+                enabled: false
+            },
+            height: 350
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded'
+            },
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+        },
+        xaxis: {
+            categories: categories,
+        },
+        yaxis: {
+            title: {
+                text: 'Total Investment'
+            }
+        },
+        title: {
+            text: title,
+            fontFamily: "Open Sans",
+            align: 'left'
+        },
+        fill: {
+            opacity: 1
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                return "R " + val + " "
+                }
+            }
+        }
+    })
+    
+    const totalRegionInvestmentOptions = (categories, title) => ({
+        chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: false
+            },
+            fontFamily: "Open Sans",
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [2, 2, 2],
+            curve: 'smooth',
+            dashArray: [0, 0, 0]
+        },
+        title: {
+            text: title,
+            fontFamily: "Open Sans",
+            align: 'left'
+        },
+        legend: {
+            tooltipHoverFormatter: function(val, opts) {
+                return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
+        xaxis: {
+            categories: categories,
+        },
+        grid: {
+            borderColor: '#f1f1f1',
+        }
+    })
 
     const lineSeries = (data) => [
         {
@@ -127,32 +421,269 @@ const Investment = () => {
         }
     }
 
-    const [Reviews, setReviews] = useState([])
-
     const [KPIs, setKPIs] = useState({})
+    const [InvestmentTrend, setInvestmentTrend] = useState([])
+    const [RegionInvestmentTrend, setRegionInvestmentTrend] = useState([])
+    const [BusinessTypeInvestmentTrend, setBusinessTypeInvestmentTrend] = useState([])
+    const [RegionsLumpSum, setRegionsLumpSum] = useState([])
+    const [RegionsRecurring, setRegionsRecurring] = useState([])
+    const [Advisors, setAdvisors] = useState([])
+    const [AdvisorsLumpSum, setAdvisorsLumpSum] = useState([])
+    const [AdvisorsRecurring, setAdvisorsRecurring] = useState([])
 
-    
+    const LoadData = async() => {
+        setLoaded(true)
+        const Body = JSON.stringify()
+
+        try {
+            const response = await axios.post(
+                '/api/insights/investment',
+                Body,
+                config
+            )
+            
+            setKPIs(response?.data?.data)
+            setInvestmentTrend(response?.data?.data?.investment_trend)
+            setRegionsLumpSum(response?.data?.data?.top_regions)
+            setRegionsRecurring(response?.data?.data?.top_regions)
+            setAdvisorsLumpSum(response?.data?.data?.top_advisors_lump_sum)
+            setAdvisorsRecurring(response?.data?.data?.top_advisors_recurring)
+            setRegionInvestmentTrend(response?.data?.data?.region_investment_trend)
+            setBusinessTypeInvestmentTrend(response?.data?.data?.businessType_investment_trend)
+
+        } catch (error) {
+            
+        }
+        setLoaded(false)
+    }
+
     useEffect(() => {
-        
+        LoadData()
     }, [])
 
     
-    // if (typeof window != 'undefined' && !isAuthenticated) {
-    //     router.push('/auth/login')
-    // }
+    if (typeof window != 'undefined' && !isAuthenticated) {
+        router.push('/auth/login')
+    }
 
-    // if (user?.userType === 6) {
-    //     router.push('/')
-    // }
+    if (user?.userType === 6) {
+        router.push('/')
+    }
 
     return (
         <Layout
-            title={"Investment Insights"}
-            content={"Investment Insights"}
+            title={"Insights"}
+            content={"Insights"}
         >
             <InsightsLayout>
-                <div className='row'>
-                    hi
+                <div className='container-fluid'>
+                    {/* <FilterComponent
+                        filterType={FilterType} 
+                        updateFilter={setFilterType} 
+                        Month={Month} 
+                        updateMonth={setMonth} 
+                        Year={Year} 
+                        updateYear={setYear} 
+                        MonthYear={MonthYear} 
+                        updateMonthYear={setMonthYear} 
+                        CurrentDate={CurrentDate} 
+                        updateCurrentDate={setCurrentDate} 
+                        FromDate={FromDate} 
+                        updateFromDate={setFromDate} 
+                        ToDate={ToDate} 
+                        updateToDate={setToDate} 
+                        years={years}
+                        dayStats={()=>{}}
+                        monthStats={()=>{}}
+                        annualStats={()=>{}}
+                        customStats={()=>{}}
+                    /> */}
+                    {
+                        Loaded ?
+                            <Loader />
+                        :
+                        <>
+                            <div className='row row-cols-5'>
+                                <div className='col'>
+                                    <div className="card text-center">
+                                        <div className="card-body">
+                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
+                                            <hr/>
+                                            <span>Total Reviews</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='col'>
+                                    <div className="card text-center">
+                                        <div className="card-body">
+                                            <h5 className="card-title">{currencyFormatter('en-ZA','ZAR').format(KPIs?.total_investment_lump_sum)}</h5>
+                                            <hr/>
+                                            <span>Total Lump Sum</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='col'>
+                                    <div className="card text-center">
+                                        <div className="card-body">
+                                            <h5 className="card-title">{currencyFormatter('en-ZA','ZAR').format(KPIs?.total_investment_recurring)}</h5>
+                                            <hr/>
+                                            <span>Total Recurring</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='col'>
+                                    <div className="card text-center">
+                                        <div className="card-body">
+                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_regions)}</h5>
+                                            <hr/>
+                                            <span>Total Regions</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='col'>
+                                    <div className="card text-center">
+                                        <div className="card-body">
+                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_advisors)}</h5>
+                                            <hr/>
+                                            <span>Total Advisors</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div className='row'>
+                                <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
+                                    {
+                                        (typeof window !== 'undefined') && <Chart options={totalInvestmentOptions([InvestmentTrend].map(x => x.map(a => (a[0]))).flat(2),"Investment Lump Sum vs Recurring", "Lump Sum", "Recurring")} series={totalInvestmentSeries("Investment",[InvestmentTrend].map(x => x.map(a => (a[1]))).flat(2), "line", "Recurring",[InvestmentTrend].map(x => x.map(a => (a[2]))).flat(2), "line")} type="line" height={350} />
+                                    }
+                                </div>
+                                <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
+                                    {
+                                        (typeof window !== 'undefined') && <Chart options={totalInvestmentOptions([RegionInvestmentTrend].map(x => x.map(a => (a[0]))).flat(2),"Region Investment Lump Sum vs Recurring", "Lump Sum", "Recurring")} series={totalInvestmentSeries("Investment",[RegionInvestmentTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "Recurring",[RegionInvestmentTrend].map(x => x.map(a => (a[2]))).flat(2), "bar")} type="line" height={350} />
+                                    }
+                                </div>
+                                <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
+                                    {
+                                        (typeof window !== 'undefined') && <Chart options={totalInvestmentOptions([BusinessTypeInvestmentTrend].map(x => x.map(a => (a[0]))).flat(2),"Business Type wise Investment Lump Sum vs Recurring", "Lump Sum", "Recurring")} series={totalInvestmentSeries("Investment",[BusinessTypeInvestmentTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "Recurring",[BusinessTypeInvestmentTrend].map(x => x.map(a => (a[2]))).flat(2), "bar")} type="line" height={350} />
+                                    }
+                                </div>
+                            </div>
+                            <br/>
+                            <div className='row'>
+                                <div className='col-lg-3 col-md-6 col-sm-12 bg-white insight-investment-card'>
+                                    <h5 class="app-dashboard-header">Top 5 Regions (Lump Sum)</h5>
+                                    <table className="table mx-1">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Region</th>
+                                            <th scope="col">Lump Sum</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                RegionsLumpSum.map(
+                                                    (row, key) => {
+                                                        return(
+                                                            <tr key={key}>
+                                                                <th scope="row">{key+1}</th>
+                                                                <td>{row?.region}</td>
+                                                                <td>{currencyFormatter('en-ZA','ZAR').format(row?.lump_sum)}</td>
+                                                            </tr>
+                                                        )
+                                                    }
+                                                )
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div className='col-lg-3 col-md-6 col-sm-12 bg-white insight-investment-card'>
+                                    <h5 class="app-dashboard-header">Top 5 Regions (Recurring)</h5>
+                                    <table className="table mx-1">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Region</th>
+                                            <th scope="col">Recurring</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                RegionsRecurring.map(
+                                                    (row, key) => {
+                                                        return(
+                                                            <tr key={key}>
+                                                                <th scope="row">{key+1}</th>
+                                                                <td>{row?.region}</td>
+                                                                <td>{currencyFormatter('en-ZA','ZAR').format(row?.recurring)}</td>
+                                                            </tr>
+                                                        )
+                                                    }
+                                                )
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div className='col-lg-3 col-md-6 col-sm-12 bg-white insight-investment-card'>
+                                    <h5 class="app-dashboard-header">Top 10 Advisors (Lump Sum)</h5>
+                                    <table className="table">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col" className='col-1'>#</th>
+                                            <th scope="col" className='col-3'>Advisor</th>
+                                            <th scope="col" className='col-3'>Lump Sum</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>                                            
+                                            {
+                                                AdvisorsLumpSum.map(
+                                                    (row, key) => {
+                                                        return(
+                                                            <tr key={key}>
+                                                                <th className='' scope="row">{key+1}</th>
+                                                                <td className=''>{row?.advisor} ({row?.email})</td>
+                                                                <td className=''>{currencyFormatter('en-ZA','ZAR').format(row?.lump_sum)}</td>
+                                                            </tr>
+                                                        )
+                                                    }
+                                                )
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div className='col-lg-3 col-md-6 col-sm-12 bg-white insight-investment-card'>
+                                    <h5 class="app-dashboard-header">Top 10 Advisors (Recurring)</h5>
+                                    <table className="table">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col" className='col-1'>#</th>
+                                            <th scope="col" className='col-3'>Advisor</th>
+                                            <th scope="col" className='col-3'>Recurring</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>                                            
+                                            {
+                                                AdvisorsRecurring.map(
+                                                    (row, key) => {
+                                                        return(
+                                                            <tr key={key}>
+                                                                <th className='' scope="row">{key+1}</th>
+                                                                <td className=''>{row?.advisor} ({row?.email})</td>
+                                                                <td className=''>{currencyFormatter('en-ZA','ZAR').format(row?.recurring)}</td>
+                                                            </tr>
+                                                        )
+                                                    }
+                                                )
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                        </>
+                    }
                 </div>
                 
             </InsightsLayout>
@@ -160,4 +691,4 @@ const Investment = () => {
     )
 }
 
-export default Investment
+export default InvestmentInsights
