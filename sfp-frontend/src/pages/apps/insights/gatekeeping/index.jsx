@@ -460,6 +460,7 @@ const GatekeepingInsights = () => {
             // setAdvisors(response?.data?.data?.top_advisors)
             // setRegionGatekeepingTrend(response?.data?.data?.region_gatekeeping_trend)
             setBusinessTypeGatekeepingTrend(response?.data?.data?.date_businesstype_trend)
+            setRejectionGatekeepingTrend(response?.data?.data?.businessType_rejection_trend)
         } catch (error) {
             
         }
