@@ -498,13 +498,13 @@ class gatekeeperInsights(APIView):
                                 if versions == 1:
                                     if reviewData['status'] == 1:
                                         first_approval += 1
-                rejected_reviews = ComplianceDocument.objects.filter(user__in=gatekeeperIds,businessType=i,status=2)
+                rejected_reviews = ComplianceDocument.objects.filter(user__in=gatekeeperIds,businessType=i,status=2).count()
                 business_total_first_approvals += first_approval
                 # Rejected
-                if rejected_reviews.exists():
-                    rejected_reviews = rejected_reviews.aggregate(total_reviews=Count('id'))['total_reviews']
-                else:
-                    rejected_reviews = 0
+                # if rejected_reviews.exists():
+                #     rejected_reviews = rejected_reviews.aggregate(total_reviews=Count('id'))['total_reviews']
+                # else:
+                #     rejected_reviews = 0
                 business_total_rejected_reviews += rejected_reviews
                 if i == 1:
                     businessType = "Business Assurance"
