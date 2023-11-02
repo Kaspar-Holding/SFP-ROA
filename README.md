@@ -14,6 +14,15 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 02 October 2023:
+- Deployment on Production without Insights
+- Insights Commission dashboard is completed without filters
+- Insights Investment dashboard is completed without filters
+- Insights Monitoring dashboard is completed without filters
+- Insights Gatekeeping dashboard is pending with some questions without filters
+- Insights Advisor dashboard is pending without filters
+- Deployment on Staging
+
 ### 31 October 2023:
 - Pagination was implemented.
 - Colors assignment was done.
