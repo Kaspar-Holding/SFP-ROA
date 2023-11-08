@@ -13,7 +13,6 @@ import AppLayout from '@/hocs/AppLayout'
 import InsightsLayout from '@/hocs/InsightsLayout'
 import { currencyFormatter, numberFormatter } from '@/modules/formatter'
 import FilterComponent from './Filters'
-import Loading from './loading'
 import Filters from './Filters'
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
