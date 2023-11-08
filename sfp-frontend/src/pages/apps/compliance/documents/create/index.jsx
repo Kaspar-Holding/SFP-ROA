@@ -198,7 +198,7 @@ const CreateDocument = () => {
     }   
 
     const LoadAdvisorDetail = async (inputData, uId) => {
-        setLoaded(true)
+        // setLoaded(true)
         const Body = JSON.stringify({data: inputData, advisorId: uId})
 
         try {
@@ -218,7 +218,7 @@ const CreateDocument = () => {
             })
             
         }
-        setLoaded(false)
+        // setLoaded(false)
     }   
     
     const user = useSelector(state=>state.auth.user)

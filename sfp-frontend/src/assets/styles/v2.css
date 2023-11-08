@@ -319,6 +319,16 @@ header {
     font-size: 12px;
 }
 
+.insight-monitoring-card {
+    font-family: 'Open Sans';
+    font-size: 12px;
+}
+
+.insight-gatekeeping-card {
+    font-family: 'Open Sans';
+    font-size: 12px;
+}
+
 .insight-table {
     height: 40vh;
     max-height: 40vh;
