@@ -13,6 +13,7 @@ import AppLayout from '@/hocs/AppLayout'
 import InsightsLayout from '@/hocs/InsightsLayout'
 import { currencyFormatter, numberFormatter } from '@/modules/formatter'
 import FilterComponent from '../Filters'
+import Filters from './Filters'
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
@@ -23,6 +24,7 @@ const GatekeepingInsights = () => {
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
     const user = useSelector(state=>state.auth.user)
 	const [FilterType, setFilterType] = useState(2)
+	const [CustomFilterType, setCustomFilterType] = useState(1)
 
     const Date_Var = new Date()
     const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
@@ -439,13 +441,11 @@ const GatekeepingInsights = () => {
     const [RegionGatekeepingTrend, setRegionGatekeepingTrend] = useState([])
     const [BusinessTypeGatekeepingTrend, setBusinessTypeGatekeepingTrend] = useState([])
     // console.log(BusinessTypeGatekeepingTrend)
-    const [Regions, setRegions] = useState([])
-    const [Advisors, setAdvisors] = useState([])
 
-    const LoadData = async() => {
+    const LoadData = async(filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, gatekeeper, businessType) => {
         setLoaded(true)
-        const Body = JSON.stringify()
-
+        const Body = JSON.stringify({filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, gatekeeper, businessType})
+    
         try {
             const response = await axios.post(
                 '/api/insights/gatekeeping',
@@ -467,8 +467,57 @@ const GatekeepingInsights = () => {
         setLoaded(false)
     }
 
+    // Filter Data
+    const [Regions, setRegions] = useState([])
+    const [Gatekeepers, setGatekeepers] = useState([])
+    const [SelectedRegions, setSelectedRegions] = useState("all")
+    const [SelectedGatekeepers, setSelectedGatekeepers] = useState("all")
+    const [BusinessType, setBusinessType] = useState("all")
+    // Load Regions
+    const LoadRegions = async () => {
+        try {
+            const response = await axios.get('/api/account/regions', config)
+            // console.log(first)
+            setRegions(response?.data?.data?.regions)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    } 
+    // Load Advisors
+    const LoadGatekeepers = async () => {
+        try {
+            const response = await axios.get('/api/account/gatekeepers', config)
+            setGatekeepers(response?.data?.data?.gatekeepers)
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    } 
+
     useEffect(() => {
-        LoadData()
+        LoadData(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate, SelectedRegions, SelectedGatekeepers, BusinessType)
+        LoadGatekeepers()
+        LoadRegions()
     }, [])
 
     
@@ -487,7 +536,7 @@ const GatekeepingInsights = () => {
         >
             <InsightsLayout>
                 <div className='container-fluid'>
-                    {/* <FilterComponent
+                    <Filters
                         filterType={FilterType} 
                         updateFilter={setFilterType} 
                         Month={Month} 
@@ -503,11 +552,18 @@ const GatekeepingInsights = () => {
                         ToDate={ToDate} 
                         updateToDate={setToDate} 
                         years={years}
-                        dayStats={()=>{}}
-                        monthStats={()=>{}}
-                        annualStats={()=>{}}
-                        customStats={()=>{}}
-                    /> */}
+                        loadData={LoadData}
+                        CustomFilterType={CustomFilterType}
+                        setCustomFilterType={setCustomFilterType}
+                        Regions={Regions}
+                        gatekeepers={Gatekeepers}
+                        SelectedRegions={SelectedRegions}
+                        SelectedGatekeepers={SelectedGatekeepers}
+                        setSelectedRegions={setSelectedRegions}
+                        setSelectedGatekeepers={setSelectedGatekeepers}
+                        BusinessType={BusinessType}
+                        setBusinessType={setBusinessType}
+                    />
                     {
                         Loaded ?
                             <Loader />
@@ -517,36 +573,32 @@ const GatekeepingInsights = () => {
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
-                                            <hr/>
-                                            <span>Total Reviews</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
+                                            <span className='scoreCard-title'>Total Reviews</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_approvals)}</h5>
-                                            <hr/>
-                                            <span>Total Approvals</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_approvals)}</h5>
+                                            <span className='scoreCard-title'>Total Approvals</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_denied)}</h5>
-                                            <hr/>
-                                            <span>Total Denied</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_denied)}</h5>
+                                            <span className='scoreCard-title'>Total Denied</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_partial_approvals)}</h5>
-                                            <hr/>
-                                            <span>Total Partial Approvals</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_partial_approvals)}</h5>
+                                            <span className='scoreCard-title'>Total Partial Approvals</span>
                                         </div>
                                     </div>
                                 </div>

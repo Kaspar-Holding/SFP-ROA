@@ -176,7 +176,7 @@ const CreateDocument = () => {
         }
     }   
     
-    const LoadRegionss = async () => {
+    const LoadRegions = async () => {
         try {
             const response = await axios.get('/api/account/regions', config)
             // console.log(first)
@@ -226,7 +226,7 @@ const CreateDocument = () => {
     useEffect(() => {
         LoadAdvisors()
         LoadBACs()
-        LoadRegionss()
+        LoadRegions()
     }, [])
     
 

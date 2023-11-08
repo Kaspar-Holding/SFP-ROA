@@ -1,7 +1,7 @@
 import DashboardLayout from '@/hocs/DashboardLayout'
 import Layout from '@/hocs/Layout'
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import Moment from 'moment'
 import { useRouter } from 'next/router'
@@ -13,6 +13,8 @@ import AppLayout from '@/hocs/AppLayout'
 import InsightsLayout from '@/hocs/InsightsLayout'
 import { currencyFormatter, numberFormatter } from '@/modules/formatter'
 import FilterComponent from './Filters'
+import Loading from './loading'
+import Filters from './Filters'
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
@@ -23,6 +25,7 @@ const Insights = () => {
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
     const user = useSelector(state=>state.auth.user)
 	const [FilterType, setFilterType] = useState(2)
+	const [CustomFilterType, setCustomFilterType] = useState(1)
 
     const Date_Var = new Date()
     const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
@@ -35,6 +38,58 @@ const Insights = () => {
     const [ToDate, setToDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
     const year = 2023
     const years = Array.from(new Array(currentYear - year + 1),( val, index) => index + year)
+    const [RegionsData, setRegionsData] = useState([])
+    const [AdvisorsData, setAdvisorsData] = useState([])
+
+    // Filter Data
+    const [Regions, setRegions] = useState([])
+    const [Advisors, setAdvisors] = useState([])
+    const [SelectedRegions, setSelectedRegions] = useState("all")
+    const [SelectedAdvisors, setSelectedAdvisors] = useState("all")
+    const [BusinessType, setBusinessType] = useState("all")
+    // Load Regions
+    const LoadRegions = async () => {
+        try {
+            const response = await axios.get('/api/account/regions', config)
+            // console.log(first)
+            setRegions(response?.data?.data?.regions)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    } 
+    // Load Advisors
+    const LoadAdvisors = async () => {
+        try {
+            const response = await axios.get('/api/account/agents', config)
+            setAdvisors(response?.data?.data?.advisors)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    } 
+    
+    
 
 
     const chart1Series = [
@@ -417,13 +472,10 @@ const Insights = () => {
     const [CommissionTrend, setCommissionTrend] = useState([])
     const [RegionCommissionTrend, setRegionCommissionTrend] = useState([])
     const [BusinessTypeCommissionTrend, setBusinessTypeCommissionTrend] = useState([])
-    const [Regions, setRegions] = useState([])
-    const [Advisors, setAdvisors] = useState([])
 
-    const LoadData = async() => {
+    const LoadData = async(filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType) => {
         setLoaded(true)
-        const Body = JSON.stringify()
-
+        const Body = JSON.stringify({filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType})
         try {
             const response = await axios.post(
                 '/api/insights/commission',
@@ -433,8 +485,8 @@ const Insights = () => {
             
             setKPIs(response?.data?.data)
             setCommissionTrend(response?.data?.data?.commission_trend)
-            setRegions(response?.data?.data?.top_regions)
-            setAdvisors(response?.data?.data?.top_advisors)
+            setRegionsData(response?.data?.data?.top_regions)
+            setAdvisorsData(response?.data?.data?.top_advisors)
             setRegionCommissionTrend(response?.data?.data?.region_commission_trend)
             setBusinessTypeCommissionTrend(response?.data?.data?.businessType_commission_trend)
         } catch (error) {
@@ -444,7 +496,9 @@ const Insights = () => {
     }
 
     useEffect(() => {
-        LoadData()
+        LoadData(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate, SelectedRegions, SelectedAdvisors, BusinessType)
+        LoadAdvisors()
+        LoadRegions()
     }, [])
 
     
@@ -463,7 +517,7 @@ const Insights = () => {
         >
             <InsightsLayout>
                 <div className='container-fluid'>
-                    {/* <FilterComponent
+                    <Filters
                         filterType={FilterType} 
                         updateFilter={setFilterType} 
                         Month={Month} 
@@ -479,11 +533,18 @@ const Insights = () => {
                         ToDate={ToDate} 
                         updateToDate={setToDate} 
                         years={years}
-                        dayStats={()=>{}}
-                        monthStats={()=>{}}
-                        annualStats={()=>{}}
-                        customStats={()=>{}}
-                    /> */}
+                        loadData={LoadData}
+                        CustomFilterType={CustomFilterType}
+                        setCustomFilterType={setCustomFilterType}
+                        Regions={Regions}
+                        advisors={Advisors}
+                        SelectedRegions={SelectedRegions}
+                        SelectedAdvisors={SelectedAdvisors}
+                        setSelectedRegions={setSelectedRegions}
+                        setSelectedAdvisors={setSelectedAdvisors}
+                        BusinessType={BusinessType}
+                        setBusinessType={setBusinessType}
+                    />
                     {
                         Loaded ?
                             <Loader />
@@ -493,36 +554,32 @@ const Insights = () => {
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
-                                            <hr/>
-                                            <span>Total Reviews</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
+                                            <span className='scoreCard-title'>Total Reviews</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{currencyFormatter('en-ZA','ZAR').format(KPIs?.total_commission)}</h5>
-                                            <hr/>
-                                            <span>Total Commission</span>
+                                            <h5 className="scoreCard">{currencyFormatter('en-ZA','ZAR').format(KPIs?.total_commission)}</h5>
+                                            <span className='scoreCard-title'>Total Commission</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_regions)}</h5>
-                                            <hr/>
-                                            <span>Total Regions</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_regions)}</h5>
+                                            <span className='scoreCard-title'>Total Regions</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_advisors)}</h5>
-                                            <hr/>
-                                            <span>Total Advisors</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_advisors)}</h5>
+                                            <span className='scoreCard-title'>Total Advisors</span>
                                         </div>
                                     </div>
                                 </div>
@@ -559,7 +616,7 @@ const Insights = () => {
                                         </thead>
                                         <tbody>
                                             {
-                                                Regions.map(
+                                                RegionsData.map(
                                                     (row, key) => {
                                                         return(
                                                             <tr key={key}>
@@ -588,7 +645,7 @@ const Insights = () => {
                                         </thead>
                                         <tbody>                                            
                                             {
-                                                Advisors.map(
+                                                AdvisorsData.map(
                                                     (row, key) => {
                                                         return(
                                                             <tr key={key}>
@@ -609,7 +666,7 @@ const Insights = () => {
                             <br/>
                         </>
                     }
-                </div>
+                </div>  
                 
             </InsightsLayout>
         </Layout>

@@ -869,7 +869,7 @@ const CompleteDocument = () => {
                                                         </>
                                                     }
                                                     {
-                                                        DocumentInitalData?.businessType == 1 || DocumentInitalData?.businessType == 4 || (DocumentInitalData?.businessType > 5 && DocumentInitalData?.businessType < 9) ?
+                                                        DocumentInitalData?.businessType == 1 || (DocumentInitalData?.businessType > 5 && DocumentInitalData?.businessType < 9) ?
                                                         <>
                                                             <div className='col py-3 border-bottom'>
                                                                 <h6 className='gatekeeping-question'>

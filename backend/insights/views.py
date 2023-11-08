@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from django.shortcuts import render
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
@@ -17,34 +18,140 @@ import re
 class commissionInsights(APIView):
 
     def post(self, request):
-        total_reviews = ComplianceDocument.objects.all().count()
-        total_documents = ComplianceDocument.objects.all().values()
-        total_regions = ComplianceDocument.objects.all().values('region').distinct().count()
-        total_advisors = ComplianceDocument.objects.all().values('advisor').distinct().count()
-        total_commission = ComplianceDocument.objects.all().aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+        user = request.user
+        filterType = int(request.data['filterType'])
+        year = request.data['year']
+        monthyear = request.data['monthyear']
+        month = request.data['month']
+        date = request.data['date']
+        fromdate = request.data['fromdate']
+        todate = request.data['todate']
+        customFilterType = int(request.data['customFilterType'])
+        region = (request.data['region'])
+        advisor = (request.data['advisor'])
+        businessType = (request.data['businessType'])
+        # Annual Data
+        reviewsData = ComplianceDocument.objects.all()
+        if filterType == 1:
+            reviewsData = reviewsData.filter(updated_at__year=year)
+        if filterType == 2:
+            reviewsData = reviewsData.filter(updated_at__year=monthyear, updated_at__month=month)
+        if filterType == 3:
+            reviewsData = reviewsData.filter(updated_at__date=date)
+        if filterType == 4:
+            date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
+            reviewsData = reviewsData.filter(updated_at__range=date_range)
+        if region != "all":
+            reviewsData = reviewsData.filter(region=region)
+        if advisor != "all":
+            reviewsData = reviewsData.filter(advisor=int(advisor))
+        if businessType != "all":
+            reviewsData = reviewsData.filter(businessType=int(businessType))
+        
+        total_reviews = reviewsData.count()
+        total_documents = reviewsData.values()
+        total_regions = reviewsData.values('region').distinct().count()
+        total_advisors = reviewsData.values('advisor').distinct().count()
+        total_commission = reviewsData.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
         # for review_document in total_documents:
         #     gk = GateKeeping.objects.filter(document=review_document['id'])
         #     if gk.exists():
         #         gk = gk.values().latest('version')
         #         total_commission += float(gk['commission'].replace(',', '.'))
         # Date wise Trend
-        datewise_data = ComplianceDocument.objects.all().values('updated_at__date').distinct().order_by('updated_at__date')
         commission_trend = []
-        for date in datewise_data:
-            # reviewIds = ComplianceDocument.objects.filter(updated_at__date=date['updated_at__date']).values_list('id', flat=True)
-            # commission = 0
-            # for reviewId in reviewIds:
-            #     gk = GateKeeping.objects.filter(document=reviewId)
-            #     if gk.exists():
-            #         gk = gk.values().latest('version')
-            commission = ComplianceDocument.objects.filter(updated_at__date=date['updated_at__date'])
-            if commission.exists():
-                commission = commission.values('updated_at__date').aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
-            else:
-                commission = 0
-                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
-            commission_trend.append([date['updated_at__date'].strftime('%d %b %Y'), commission])
-            # Regions
+        if filterType == 1:
+            datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+            for date in datewise_data:
+                commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                if commission.exists():
+                    commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                else:
+                    commission = 0
+                        # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), commission])
+        if filterType == 2:
+            datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+            for date in datewise_data:
+                commission = reviewsData.filter(updated_at__date=date['updated_at__date'])
+                if commission.exists():
+                    commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                else:
+                    commission = 0
+                        # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                commission_trend.append([date['updated_at__date'].strftime('%d %b %Y'), commission])
+        if filterType == 3:
+            datewise_data = reviewsData.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
+            for date in datewise_data:
+                commission = reviewsData.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour'])
+                if commission.exists():
+                    commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                else:
+                    commission = 0
+                        # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), commission])
+        if filterType == 4:
+            if customFilterType == 1:
+                if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
+                    datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                    for date in datewise_data:
+                        commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                        if commission.exists():
+                            commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                        else:
+                            commission = 0
+                                # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                        commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), commission])
+                else:
+                    datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+                    for date in datewise_data:
+                        commission = reviewsData.filter(updated_at__date=date['updated_at__date'])
+                        if commission.exists():
+                            commission = commission.values('updated_at__date').aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                        else:
+                            commission = 0
+                                # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                        commission_trend.append([date['updated_at__date'].strftime('%d %b %Y'), commission])
+            if customFilterType == 2:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__week').distinct().order_by('updated_at__year','updated_at__week')
+                for date in datewise_data:
+                    commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week'])
+                    if commission.exists():
+                        commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                    else:
+                        commission = 0
+                            # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                    commission_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", commission])
+            if customFilterType == 3:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                for date in datewise_data:
+                    commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                    if commission.exists():
+                        commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                    else:
+                        commission = 0
+                            # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                    commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), commission])
+            if customFilterType == 4:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__quarter').distinct().order_by('updated_at__year','updated_at__quarter')
+                for date in datewise_data:
+                    commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter'])
+                    if commission.exists():
+                        commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                    else:
+                        commission = 0
+                            # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                    commission_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", commission])
+            if customFilterType == 5:
+                datewise_data = reviewsData.values('updated_at__year').distinct().order_by('updated_at__year')
+                for date in datewise_data:
+                    commission = reviewsData.filter(updated_at__year=date['updated_at__year'])
+                    if commission.exists():
+                        commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                    else:
+                        commission = 0
+                    commission_trend.append([f"{date['updated_at__year']}", commission])
+        # Regions
         available_regions = regions.objects.all().values('region')
         # Region wise Trend
         region_commission_trend = []
@@ -58,7 +165,7 @@ class commissionInsights(APIView):
             #     if gk.exists():
             #         gk = gk.values().latest('version')
             #         commission += float(gk['commission'].replace(',', '.'))
-            commission = ComplianceDocument.objects.filter(region=region['region'])
+            commission = reviewsData.filter(region=region['region'])
             if commission.exists():
                 commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
             else:
@@ -82,7 +189,7 @@ class commissionInsights(APIView):
             #     if gk.exists():
             #         gk = gk.values().latest('version')
             #         commission += float(gk['commission'].replace(',', '.'))
-            commission = ComplianceDocument.objects.filter(advisor=advisor['id'])
+            commission = reviewsData.filter(advisor=advisor['id'])
             if commission.exists():
                 commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
             else:
@@ -96,7 +203,7 @@ class commissionInsights(APIView):
         businessType_commission_trend = []
         business_total_commission = 0
         for i in range(1,16):
-            commission = ComplianceDocument.objects.filter(businessType=i)
+            commission = reviewsData.filter(businessType=i)
             if commission.exists():
                 commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
             else:
@@ -165,25 +272,147 @@ class commissionInsights(APIView):
 class investmentInsights(APIView):
 
     def post(self, request):
-        total_reviews = ComplianceDocument.objects.all().count()
-        total_documents = ComplianceDocument.objects.all().values()
-        total_regions = ComplianceDocument.objects.all().values('region').distinct().count()
-        total_advisors = ComplianceDocument.objects.all().values('advisor').distinct().count()
-        total_investment_lump_sum = ComplianceDocument.objects.all().aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
-        total_investment_recurring = ComplianceDocument.objects.all().aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
+        user = request.user
+        filterType = int(request.data['filterType'])
+        year = request.data['year']
+        monthyear = request.data['monthyear']
+        month = request.data['month']
+        date = request.data['date']
+        fromdate = request.data['fromdate']
+        todate = request.data['todate']
+        customFilterType = int(request.data['customFilterType'])
+        region = (request.data['region'])
+        advisor = (request.data['advisor'])
+        businessType = (request.data['businessType'])
+        # Annual Data
+        reviewsData = ComplianceDocument.objects.all()
+        if filterType == 1:
+            reviewsData = reviewsData.filter(updated_at__year=year)
+        if filterType == 2:
+            reviewsData = reviewsData.filter(updated_at__year=monthyear, updated_at__month=month)
+        if filterType == 3:
+            reviewsData = reviewsData.filter(updated_at__date=date)
+        if filterType == 4:
+            date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
+            reviewsData = reviewsData.filter(updated_at__range=date_range)
+        if region != "all":
+            reviewsData = reviewsData.filter(region=region)
+        if advisor != "all":
+            reviewsData = reviewsData.filter(advisor=int(advisor))
+        if businessType != "all":
+            reviewsData = reviewsData.filter(businessType=int(businessType))
+
+        total_reviews = reviewsData.count()
+        total_documents = reviewsData.values()
+        total_regions = reviewsData.values('region').distinct().count()
+        total_advisors = reviewsData.values('advisor').distinct().count()
+        total_investment_lump_sum = reviewsData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
+        total_investment_recurring = reviewsData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
         
-        datewise_data = ComplianceDocument.objects.all().values('updated_at__date').distinct().order_by('updated_at__date')
         lump_sum_trend = []
-        for date in datewise_data:
-            investmentData = ComplianceDocument.objects.filter(updated_at__date=date['updated_at__date'])
-            if investmentData.exists():
-                lump_sum = investmentData.values('updated_at__date').aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
-                recurring = investmentData.values('updated_at__date').aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
-            else:
-                lump_sum = 0
-                recurring = 0
-                    # lump_sum_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "lump_sum": float(gk['lump_sum'].replace(',', '.'))})
-            lump_sum_trend.append([date['updated_at__date'].strftime('%d %b %Y'), lump_sum, recurring])
+        
+        if filterType == 1:
+            datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+            for date in datewise_data:
+                investmentData = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                if investmentData.exists():
+                    lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
+                    recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
+                else:
+                    lump_sum = 0
+                    recurring = 0
+                    
+                lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), lump_sum, recurring])
+        if filterType == 2:
+            datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+            for date in datewise_data:
+                investmentData = reviewsData.filter(updated_at__date=date['updated_at__date'])
+                if investmentData.exists():
+                    lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
+                    recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
+                else:
+                    lump_sum = 0
+                    recurring = 0
+                lump_sum_trend.append([date['updated_at__date'].strftime('%d %b %Y'), lump_sum, recurring])
+        if filterType == 3:
+            datewise_data = reviewsData.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
+            for date in datewise_data:
+                investmentData = reviewsData.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour'])
+                if investmentData.exists():
+                    lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
+                    recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
+                else:
+                    lump_sum = 0
+                    recurring = 0                    
+                lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), lump_sum, recurring])
+        if filterType == 4:
+            if customFilterType == 1:
+                if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
+                    datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                    for date in datewise_data:
+                        investmentData = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                        if investmentData.exists():
+                            lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
+                            recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
+                        else:
+                            lump_sum = 0
+                            recurring = 0    
+                        lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), lump_sum, recurring])
+                else:
+                    datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+                    for date in datewise_data:
+                        investmentData = reviewsData.filter(updated_at__date=date['updated_at__date'])
+                        if investmentData.exists():
+                            lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
+                            recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
+                        else:
+                            lump_sum = 0
+                            recurring = 0   
+                        lump_sum_trend.append([date['updated_at__date'].strftime('%d %b %Y'), lump_sum, recurring])
+            if customFilterType == 2:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__week').distinct().order_by('updated_at__year','updated_at__week')
+                for date in datewise_data:
+                    investmentData = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week'])
+                    if investmentData.exists():
+                        lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
+                        recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
+                    else:
+                        lump_sum = 0
+                        recurring = 0   
+                    lump_sum_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", lump_sum, recurring])
+            if customFilterType == 3:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                for date in datewise_data:
+                    investmentData = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                    if investmentData.exists():
+                        lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
+                        recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
+                    else:
+                        lump_sum = 0
+                        recurring = 0   
+                    lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), lump_sum, recurring])
+            if customFilterType == 4:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__quarter').distinct().order_by('updated_at__year','updated_at__quarter')
+                for date in datewise_data:
+                    investmentData = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter'])
+                    if investmentData.exists():
+                        lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
+                        recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
+                    else:
+                        lump_sum = 0
+                        recurring = 0   
+                    lump_sum_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", lump_sum, recurring])
+            if customFilterType == 5:
+                datewise_data = reviewsData.values('updated_at__year').distinct().order_by('updated_at__year')
+                for date in datewise_data:
+                    investmentData = reviewsData.filter(updated_at__year=date['updated_at__year'])
+                    if investmentData.exists():
+                        lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
+                        recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
+                    else:
+                        lump_sum = 0
+                        recurring = 0   
+                    lump_sum_trend.append([f"{date['updated_at__year']}", lump_sum, recurring])
             # Regions
         available_regions = regions.objects.all().values('region')
         # Region wise Trend
@@ -191,14 +420,7 @@ class investmentInsights(APIView):
         regionsData = []
         top_regions = []
         for region in available_regions:
-            # reviewIds = ComplianceDocument.objects.filter(region=region['region']).values_list('id', flat=True)
-            # lump_sum = 0
-            # for reviewId in reviewIds:
-            #     gk = GateKeeping.objects.filter(document=reviewId)
-            #     if gk.exists():
-            #         gk = gk.values().latest('version')
-            #         lump_sum += float(gk['lump_sum'].replace(',', '.'))
-            investmentData = ComplianceDocument.objects.filter(region=region['region'])
+            investmentData = reviewsData.filter(region=region['region'])
             if investmentData.exists():
                 lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
                 recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
@@ -218,14 +440,14 @@ class investmentInsights(APIView):
         advisorsData = []
         top_advisors = []
         for advisor in available_advisors:
-            # reviewIds = ComplianceDocument.objects.filter(advisor=advisor['id']).values_list('id', flat=True)
+            # reviewIds = reviewsData.filter(advisor=advisor['id']).values_list('id', flat=True)
             # lump_sum = 0
             # for reviewId in reviewIds:
             #     gk = GateKeeping.objects.filter(document=reviewId)
             #     if gk.exists():
             #         gk = gk.values().latest('version')
             #         lump_sum += float(gk['lump_sum'].replace(',', '.'))
-            investmentData = ComplianceDocument.objects.filter(advisor=advisor['id'])
+            investmentData = reviewsData.filter(advisor=advisor['id'])
             if investmentData.exists():
                 lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
                 recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
@@ -243,7 +465,7 @@ class investmentInsights(APIView):
         business_total_investment_lump_sum = 0
         business_total_investment_recurring = 0
         for i in range(1,16):
-            investmentData = ComplianceDocument.objects.filter(businessType=i)
+            investmentData = reviewsData.filter(businessType=i)
             if investmentData.exists():
                 lump_sum = investmentData.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
                 recurring = investmentData.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
@@ -253,7 +475,7 @@ class investmentInsights(APIView):
             business_total_investment_lump_sum += lump_sum
             business_total_investment_recurring += recurring
 
-            # reviewIds = ComplianceDocument.objects.filter(businessType=i).values_list('id', flat=True)
+            # reviewIds = reviewsData.filter(businessType=i).values_list('id', flat=True)
             # lump_sum = 0
             # for reviewId in reviewIds:
             #     gk = GateKeeping.objects.filter(document=reviewId)
@@ -303,6 +525,7 @@ class investmentInsights(APIView):
         lump_sumdata = {
             "total_reviews" : total_reviews,
             "total_documents" : total_documents,
+            "total_regions" : total_regions,
             "total_investment_lump_sum" : total_investment_lump_sum,
             "total_investment_recurring" : total_investment_recurring,
             "top_regions_lump_sum" : top_regions_lump_sum,
@@ -320,13 +543,42 @@ class investmentInsights(APIView):
 class monitoringInsights(APIView):
 
     def post(self, request):
-        reviews = ComplianceDocument.objects.all()
-        total_cases = reviews.count()
+        user = request.user
+        filterType = int(request.data['filterType'])
+        year = request.data['year']
+        monthyear = request.data['monthyear']
+        month = request.data['month']
+        date = request.data['date']
+        fromdate = request.data['fromdate']
+        todate = request.data['todate']
+        customFilterType = int(request.data['customFilterType'])
+        region = (request.data['region'])
+        advisor = (request.data['advisor'])
+        businessType = (request.data['businessType'])
+        # Annual Data
+        reviewsData = ComplianceDocument.objects.all()
+        if filterType == 1:
+            reviewsData = reviewsData.filter(updated_at__year=year)
+        if filterType == 2:
+            reviewsData = reviewsData.filter(updated_at__year=monthyear, updated_at__month=month)
+        if filterType == 3:
+            reviewsData = reviewsData.filter(updated_at__date=date)
+        if filterType == 4:
+            date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
+            reviewsData = reviewsData.filter(updated_at__range=date_range)
+        if region != "all":
+            reviewsData = reviewsData.filter(region=region)
+        if advisor != "all":
+            reviewsData = reviewsData.filter(advisor=int(advisor))
+        print(reviewsData)
+        if businessType != "all":
+            reviewsData = reviewsData.filter(businessType=int(businessType))
+        total_cases = reviewsData.count()
         first_approval = 0
         first_partial_approval = 0
         first_not_approved = 0
         # Normal Trend
-        reviews = reviews.values()
+        reviews = reviewsData.values()
         for review in reviews:
             if review['referred'] == False:
                 gk = GateKeeping.objects.filter(document=review['id'])
@@ -350,41 +602,309 @@ class monitoringInsights(APIView):
                             first_not_approved += 1
                         if review['status'] == 4:
                             first_partial_approval += 1
-        # Datewise Data
-        datewise_data = ComplianceDocument.objects.all().values('updated_at__date').distinct().order_by('updated_at__date')
-        date_monitoring_trend = []
-        for date in datewise_data:
-            reviewIds = ComplianceDocument.objects.filter(updated_at__date=date['updated_at__date']).values_list('id', flat=True)
-            review_first_approval = 0
-            review_first_partial_approval = 0
-            review_first_not_approved = 0
-            for reviewId in reviewIds:
-                reviewData = ComplianceDocument.objects.filter(id=reviewId).values().first()
-                if reviewData['referred'] == False:
-                    gk = GateKeeping.objects.filter(document=reviewId)
-                    if gk.exists():
-                        versions = gk.count()
-                        if versions == 1:
-                            if reviewData['status'] == 1:
-                                review_first_approval += 1
-                            if reviewData['status'] == 2:
-                                review_first_not_approved += 1
-                            if reviewData['status'] == 4:
-                                review_first_partial_approval += 1
+        print(first_approval)
+        # Trend
+        monitoring_trend = []
+        
+        if filterType == 1:
+            datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+            for date in datewise_data:
+                reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).values_list('id', flat=True)
+                review_first_approval = 0
+                review_first_partial_approval = 0
+                review_first_not_approved = 0
+                for reviewId in reviewIds:
+                    reviewData = reviewsData.filter(id=reviewId).values().first()
+                    if reviewData['referred'] == False:
+                        gk = GateKeeping.objects.filter(document=reviewId)
+                        if gk.exists():
+                            versions = gk.count()
+                            if versions == 1:
+                                if reviewData['status'] == 1:
+                                    review_first_approval += 1
+                                if reviewData['status'] == 2:
+                                    review_first_not_approved += 1
+                                if reviewData['status'] == 4:
+                                    review_first_partial_approval += 1
+                    else:
+                        arcdata = arc.objects.filter(document=reviewId)
+                        if arcdata.exists():
+                            versions = arcdata.count()
+                            if versions == 1:
+                                if reviewData['status'] == 1:
+                                    review_first_approval += 1
+                                if reviewData['status'] == 2:
+                                    review_first_not_approved += 1
+                                if reviewData['status'] == 4:
+                                    review_first_partial_approval += 1
+                if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:
+                    monitoring_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), review_first_approval, review_first_not_approved, review_first_partial_approval])
+        if filterType == 2:
+            datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+            for date in datewise_data:
+                reviewIds = reviewsData.filter(updated_at__date=date['updated_at__date']).values_list('id', flat=True)
+                review_first_approval = 0
+                review_first_partial_approval = 0
+                review_first_not_approved = 0
+                for reviewId in reviewIds:
+                    reviewData = reviewsData.filter(id=reviewId).values().first()
+                    if reviewData['referred'] == False:
+                        gk = GateKeeping.objects.filter(document=reviewId)
+                        if gk.exists():
+                            versions = gk.count()
+                            if versions == 1:
+                                if reviewData['status'] == 1:
+                                    review_first_approval += 1
+                                if reviewData['status'] == 2:
+                                    review_first_not_approved += 1
+                                if reviewData['status'] == 4:
+                                    review_first_partial_approval += 1
+                    else:
+                        arcdata = arc.objects.filter(document=reviewId)
+                        if arcdata.exists():
+                            versions = arcdata.count()
+                            if versions == 1:
+                                if reviewData['status'] == 1:
+                                    review_first_approval += 1
+                                if reviewData['status'] == 2:
+                                    review_first_not_approved += 1
+                                if reviewData['status'] == 4:
+                                    review_first_partial_approval += 1
+                if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:
+                    monitoring_trend.append([date['updated_at__date'].strftime('%d %b %Y'), review_first_approval, review_first_not_approved, review_first_partial_approval])
+        if filterType == 3:
+            datewise_data = reviewsData.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
+            for date in datewise_data:
+                reviewIds = reviewsData.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour']).values_list('id', flat=True)
+                review_first_approval = 0
+                review_first_partial_approval = 0
+                review_first_not_approved = 0
+                for reviewId in reviewIds:
+                    reviewData = reviewsData.filter(id=reviewId).values().first()
+                    if reviewData['referred'] == False:
+                        gk = GateKeeping.objects.filter(document=reviewId)
+                        if gk.exists():
+                            versions = gk.count()
+                            if versions == 1:
+                                if reviewData['status'] == 1:
+                                    review_first_approval += 1
+                                if reviewData['status'] == 2:
+                                    review_first_not_approved += 1
+                                if reviewData['status'] == 4:
+                                    review_first_partial_approval += 1
+                    else:
+                        arcdata = arc.objects.filter(document=reviewId)
+                        if arcdata.exists():
+                            versions = arcdata.count()
+                            if versions == 1:
+                                if reviewData['status'] == 1:
+                                    review_first_approval += 1
+                                if reviewData['status'] == 2:
+                                    review_first_not_approved += 1
+                                if reviewData['status'] == 4:
+                                    review_first_partial_approval += 1
+                if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:               
+                    monitoring_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), review_first_approval, review_first_not_approved, review_first_partial_approval])
+        if filterType == 4:
+            if customFilterType == 1:
+                if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
+                    datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                    for date in datewise_data:
+                        reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).values_list('id', flat=True)
+                        review_first_approval = 0
+                        review_first_partial_approval = 0
+                        review_first_not_approved = 0
+                        for reviewId in reviewIds:
+                            reviewData = reviewsData.filter(id=reviewId).values().first()
+                            if reviewData['referred'] == False:
+                                gk = GateKeeping.objects.filter(document=reviewId)
+                                if gk.exists():
+                                    versions = gk.count()
+                                    if versions == 1:
+                                        if reviewData['status'] == 1:
+                                            review_first_approval += 1
+                                        if reviewData['status'] == 2:
+                                            review_first_not_approved += 1
+                                        if reviewData['status'] == 4:
+                                            review_first_partial_approval += 1
+                            else:
+                                arcdata = arc.objects.filter(document=reviewId)
+                                if arcdata.exists():
+                                    versions = arcdata.count()
+                                    if versions == 1:
+                                        if reviewData['status'] == 1:
+                                            review_first_approval += 1
+                                        if reviewData['status'] == 2:
+                                            review_first_not_approved += 1
+                                        if reviewData['status'] == 4:
+                                            review_first_partial_approval += 1
+                        if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:       
+                            monitoring_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), review_first_approval, review_first_not_approved, review_first_partial_approval])
                 else:
-                    arcdata = arc.objects.filter(document=reviewId)
-                    if arcdata.exists():
-                        versions = arcdata.count()
-                        if versions == 1:
-                            if reviewData['status'] == 1:
-                                review_first_approval += 1
-                            if reviewData['status'] == 2:
-                                review_first_not_approved += 1
-                            if reviewData['status'] == 4:
-                                review_first_partial_approval += 1
-            if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:
-                date_monitoring_trend.append([date['updated_at__date'].strftime('%d %b %Y'), review_first_approval, review_first_not_approved, review_first_partial_approval])
-
+                    datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+                    for date in datewise_data:
+                        reviewIds = reviewsData.filter(updated_at__date=date['updated_at__date']).values_list('id', flat=True)
+                        review_first_approval = 0
+                        review_first_partial_approval = 0
+                        review_first_not_approved = 0
+                        for reviewId in reviewIds:
+                            reviewData = reviewsData.filter(id=reviewId).values().first()
+                            if reviewData['referred'] == False:
+                                gk = GateKeeping.objects.filter(document=reviewId)
+                                if gk.exists():
+                                    versions = gk.count()
+                                    if versions == 1:
+                                        if reviewData['status'] == 1:
+                                            review_first_approval += 1
+                                        if reviewData['status'] == 2:
+                                            review_first_not_approved += 1
+                                        if reviewData['status'] == 4:
+                                            review_first_partial_approval += 1
+                            else:
+                                arcdata = arc.objects.filter(document=reviewId)
+                                if arcdata.exists():
+                                    versions = arcdata.count()
+                                    if versions == 1:
+                                        if reviewData['status'] == 1:
+                                            review_first_approval += 1
+                                        if reviewData['status'] == 2:
+                                            review_first_not_approved += 1
+                                        if reviewData['status'] == 4:
+                                            review_first_partial_approval += 1
+                        if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:      
+                            monitoring_trend.append([date['updated_at__date'].strftime('%d %b %Y'), review_first_approval, review_first_not_approved, review_first_partial_approval])
+            if customFilterType == 2:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__week').distinct().order_by('updated_at__year','updated_at__week')
+                for date in datewise_data:
+                    reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week']).values_list('id', flat=True)
+                    review_first_approval = 0
+                    review_first_partial_approval = 0
+                    review_first_not_approved = 0
+                    for reviewId in reviewIds:
+                        reviewData = reviewsData.filter(id=reviewId).values().first()
+                        if reviewData['referred'] == False:
+                            gk = GateKeeping.objects.filter(document=reviewId)
+                            if gk.exists():
+                                versions = gk.count()
+                                if versions == 1:
+                                    if reviewData['status'] == 1:
+                                        review_first_approval += 1
+                                    if reviewData['status'] == 2:
+                                        review_first_not_approved += 1
+                                    if reviewData['status'] == 4:
+                                        review_first_partial_approval += 1
+                        else:
+                            arcdata = arc.objects.filter(document=reviewId)
+                            if arcdata.exists():
+                                versions = arcdata.count()
+                                if versions == 1:
+                                    if reviewData['status'] == 1:
+                                        review_first_approval += 1
+                                    if reviewData['status'] == 2:
+                                        review_first_not_approved += 1
+                                    if reviewData['status'] == 4:
+                                        review_first_partial_approval += 1
+                    if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:      
+                        monitoring_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", review_first_approval, review_first_not_approved, review_first_partial_approval])
+            if customFilterType == 3:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                for date in datewise_data:
+                    reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).values_list('id', flat=True)
+                    review_first_approval = 0
+                    review_first_partial_approval = 0
+                    review_first_not_approved = 0
+                    for reviewId in reviewIds:
+                        reviewData = reviewsData.filter(id=reviewId).values().first()
+                        if reviewData['referred'] == False:
+                            gk = GateKeeping.objects.filter(document=reviewId)
+                            if gk.exists():
+                                versions = gk.count()
+                                if versions == 1:
+                                    if reviewData['status'] == 1:
+                                        review_first_approval += 1
+                                    if reviewData['status'] == 2:
+                                        review_first_not_approved += 1
+                                    if reviewData['status'] == 4:
+                                        review_first_partial_approval += 1
+                        else:
+                            arcdata = arc.objects.filter(document=reviewId)
+                            if arcdata.exists():
+                                versions = arcdata.count()
+                                if versions == 1:
+                                    if reviewData['status'] == 1:
+                                        review_first_approval += 1
+                                    if reviewData['status'] == 2:
+                                        review_first_not_approved += 1
+                                    if reviewData['status'] == 4:
+                                        review_first_partial_approval += 1
+                    if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:      
+                        monitoring_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), review_first_approval, review_first_not_approved, review_first_partial_approval])
+            if customFilterType == 4:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__quarter').distinct().order_by('updated_at__year','updated_at__quarter')
+                for date in datewise_data:
+                    reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter']).values_list('id', flat=True)
+                    review_first_approval = 0
+                    review_first_partial_approval = 0
+                    review_first_not_approved = 0
+                    for reviewId in reviewIds:
+                        reviewData = reviewsData.filter(id=reviewId).values().first()
+                        if reviewData['referred'] == False:
+                            gk = GateKeeping.objects.filter(document=reviewId)
+                            if gk.exists():
+                                versions = gk.count()
+                                if versions == 1:
+                                    if reviewData['status'] == 1:
+                                        review_first_approval += 1
+                                    if reviewData['status'] == 2:
+                                        review_first_not_approved += 1
+                                    if reviewData['status'] == 4:
+                                        review_first_partial_approval += 1
+                        else:
+                            arcdata = arc.objects.filter(document=reviewId)
+                            if arcdata.exists():
+                                versions = arcdata.count()
+                                if versions == 1:
+                                    if reviewData['status'] == 1:
+                                        review_first_approval += 1
+                                    if reviewData['status'] == 2:
+                                        review_first_not_approved += 1
+                                    if reviewData['status'] == 4:
+                                        review_first_partial_approval += 1
+                    if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:      
+                        monitoring_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", review_first_approval, review_first_not_approved, review_first_partial_approval])
+            if customFilterType == 5:
+                datewise_data = reviewsData.values('updated_at__year').distinct().order_by('updated_at__year')
+                for date in datewise_data:
+                    reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year']).values_list('id', flat=True)
+                    review_first_approval = 0
+                    review_first_partial_approval = 0
+                    review_first_not_approved = 0
+                    for reviewId in reviewIds:
+                        reviewData = reviewsData.filter(id=reviewId).values().first()
+                        if reviewData['referred'] == False:
+                            gk = GateKeeping.objects.filter(document=reviewId)
+                            if gk.exists():
+                                versions = gk.count()
+                                if versions == 1:
+                                    if reviewData['status'] == 1:
+                                        review_first_approval += 1
+                                    if reviewData['status'] == 2:
+                                        review_first_not_approved += 1
+                                    if reviewData['status'] == 4:
+                                        review_first_partial_approval += 1
+                        else:
+                            arcdata = arc.objects.filter(document=reviewId)
+                            if arcdata.exists():
+                                versions = arcdata.count()
+                                if versions == 1:
+                                    if reviewData['status'] == 1:
+                                        review_first_approval += 1
+                                    if reviewData['status'] == 2:
+                                        review_first_not_approved += 1
+                                    if reviewData['status'] == 4:
+                                        review_first_partial_approval += 1
+                    if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:      
+                        monitoring_trend.append([f"{date['updated_at__year']}", review_first_approval, review_first_not_approved, review_first_partial_approval])
         # Top Regions
         available_regions = regions.objects.all().values('region')
         top_regions = []
@@ -454,7 +974,7 @@ class monitoringInsights(APIView):
                 "first_not_approved": first_not_approved,
                 "first_partial_approval": first_partial_approval,
             },
-            "date_monitoring_trend" : date_monitoring_trend,
+            "date_monitoring_trend" : monitoring_trend,
             "top_regions" : top_regions,
             "top_advisors" : top_advisors,
         }
@@ -463,10 +983,40 @@ class monitoringInsights(APIView):
 class gatekeeperInsights(APIView):
 
     def post(self, request):
+        user = request.user
+        filterType = int(request.data['filterType'])
+        year = request.data['year']
+        monthyear = request.data['monthyear']
+        month = request.data['month']
+        date = request.data['date']
+        fromdate = request.data['fromdate']
+        todate = request.data['todate']
+        customFilterType = int(request.data['customFilterType'])
+        region = (request.data['region'])
+        gatekeeper = (request.data['gatekeeper'])
+        businessType = (request.data['businessType'])
+        # Annual Data
+        reviewsData = ComplianceDocument.objects.all()
+        if filterType == 1:
+            reviewsData = reviewsData.filter(updated_at__year=year)
+        if filterType == 2:
+            reviewsData = reviewsData.filter(updated_at__year=monthyear, updated_at__month=month)
+        if filterType == 3:
+            reviewsData = reviewsData.filter(updated_at__date=date)
+        if filterType == 4:
+            date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
+            reviewsData = reviewsData.filter(updated_at__range=date_range)
+        if region != "all":
+            reviewsData = reviewsData.filter(region=region)
+        if gatekeeper != "all":
+            reviewsData = reviewsData.filter(user=int(gatekeeper))
+        if businessType != "all":
+            reviewsData = reviewsData.filter(businessType=int(businessType))
+
         gatekeepers = UserAccount.objects.filter(userType=2)
         if gatekeepers.exists():
             gatekeeperIds = gatekeepers.values_list('id', flat=True)
-            kpisData = ComplianceDocument.objects.filter(user__in=gatekeeperIds)
+            kpisData = reviewsData.filter(user__in=gatekeeperIds)
             total_reviews = kpisData.count()
             total_approvals = kpisData.filter(status=1).count()
             total_denied = kpisData.filter(status=2).count()
@@ -478,7 +1028,7 @@ class gatekeeperInsights(APIView):
             business_total_rejected_reviews = 0
             business_total_first_approvals = 0
             for i in range(1,16):
-                reviews = ComplianceDocument.objects.filter(user__in=gatekeeperIds,businessType=i)
+                reviews = reviewsData.filter(user__in=gatekeeperIds,businessType=i)
                 if reviews.exists():
                     reviews = reviews.aggregate(total_reviews=Count('id'))['total_reviews']
                 else:
@@ -486,11 +1036,11 @@ class gatekeeperInsights(APIView):
                 business_total_reviews += reviews
                 # Approved
                 first_approval = 0
-                approved_reviewsData = ComplianceDocument.objects.filter(user__in=gatekeeperIds,businessType=i,status=1)
+                approved_reviewsData = reviewsData.filter(user__in=gatekeeperIds,businessType=i,status=1)
                 if approved_reviewsData.exists():
                     reviewIds = approved_reviewsData.values_list('id', flat=True)
                     for reviewId in reviewIds:
-                        reviewData = ComplianceDocument.objects.filter(id=reviewId).values().first()
+                        reviewData = reviewsData.filter(id=reviewId).values().first()
                         gk = GateKeeping.objects.filter(document=reviewId)
                         if reviewData['referred'] == False:
                             if gk.exists():
@@ -498,7 +1048,7 @@ class gatekeeperInsights(APIView):
                                 if versions == 1:
                                     if reviewData['status'] == 1:
                                         first_approval += 1
-                rejected_reviews = ComplianceDocument.objects.filter(user__in=gatekeeperIds,businessType=i,status=2).count()
+                rejected_reviews = reviewsData.filter(user__in=gatekeeperIds,businessType=i,status=2).count()
                 business_total_first_approvals += first_approval
                 # Rejected
                 # if rejected_reviews.exists():
@@ -548,36 +1098,16 @@ class gatekeeperInsights(APIView):
                 row.append(percentage)
 
             # Datewise Data
-            datewise_data = ComplianceDocument.objects.filter(user__in=gatekeeperIds).values('updated_at__date').distinct().order_by('updated_at__date')
             date_gatekeeping_trend = []
             date_businesstype_trend = []
-            for date in datewise_data:
-                total_reviews = ComplianceDocument.objects.filter(updated_at__date=date['updated_at__date']).count()
-                review_first_approval = 0
-                reviewIds = ComplianceDocument.objects.filter(updated_at__date=date['updated_at__date']).values_list('id', flat=True)
-                for reviewId in reviewIds:
-                    reviewData = ComplianceDocument.objects.filter(id=reviewId).values().first()
-                    gk = GateKeeping.objects.filter(document=reviewId)
-                    if reviewData['referred'] == False:
-                        if gk.exists():
-                            versions = gk.count()
-                            if versions == 1:
-                                if reviewData['status'] == 1:
-                                    review_first_approval += 1
-                if total_reviews != 0 :
-                    date_gatekeeping_trend.append([date['updated_at__date'].strftime('%d %b %Y'), total_reviews, review_first_approval])
-                # Business Type
-                review_first_approval = 0
-                bt_data = []
-                for i in range(1,16):
-                    reviews = ComplianceDocument.objects.filter(updated_at__date=date['updated_at__date'],user__in=gatekeeperIds,businessType=i)
-                    if reviews.exists():
-                        total_reviews = reviews.aggregate(total_reviews=Count('id'))['total_reviews']
-                    else:
-                        total_reviews = 0
-                    reviewIds = reviews.values_list('id', flat=True)
+            if filterType == 1:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                for date in datewise_data:
+                    gk_total_reviews = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).count()
+                    review_first_approval = 0
+                    reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).values_list('id', flat=True)
                     for reviewId in reviewIds:
-                        reviewData = ComplianceDocument.objects.filter(id=reviewId).values().first()
+                        reviewData = reviewsData.filter(id=reviewId).values().first()
                         gk = GateKeeping.objects.filter(document=reviewId)
                         if reviewData['referred'] == False:
                             if gk.exists():
@@ -585,39 +1115,201 @@ class gatekeeperInsights(APIView):
                                 if versions == 1:
                                     if reviewData['status'] == 1:
                                         review_first_approval += 1
-                    if i == 1:
-                        businessType = "Business Assurance"
-                    if i == 2:
-                        businessType = "Comm release"
-                    if i == 3:
-                        businessType = "Employee Benefits"
-                    if i == 4:
-                        businessType = "Funeral"
-                    if i == 5:
-                        businessType = "GAP Cover"
-                    if i == 6:
-                        businessType = "Recurring - Investment"
-                    if i == 7:
-                        businessType = "Lumpsum - Investment"
-                    if i == 8:
-                        businessType = "Investment- Both"
-                    if i == 9:
-                        businessType = "Medical Aid"
-                    if i == 10:
-                        businessType = "Other"
-                    if i == 11:
-                        businessType = "Will"
-                    if i == 12:
-                        businessType = "Risk"
-                    if i == 13:
-                        businessType = "ST Re-issued/instated"
-                    if i == 14:
-                        businessType = "Short Term Commercial"
-                    if i == 15:
-                        businessType = "Short Term Personal"  
-                    if total_reviews != 0 :
-                        bt_data.append({"name": businessType, "data":""})
-                date_businesstype_trend.append([date['updated_at__date'].strftime('%d %b %Y'), total_reviews, review_first_approval])
+                    if gk_total_reviews != 0 :
+                        date_gatekeeping_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), gk_total_reviews, review_first_approval])
+            if filterType == 2:
+                datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+                for date in datewise_data:
+                    gk_total_reviews = reviewsData.filter(updated_at__date=date['updated_at__date']).count()
+                    review_first_approval = 0
+                    reviewIds = reviewsData.filter(updated_at__date=date['updated_at__date']).values_list('id', flat=True)
+                    for reviewId in reviewIds:
+                        reviewData = reviewsData.filter(id=reviewId).values().first()
+                        gk = GateKeeping.objects.filter(document=reviewId)
+                        if reviewData['referred'] == False:
+                            if gk.exists():
+                                versions = gk.count()
+                                if versions == 1:
+                                    if reviewData['status'] == 1:
+                                        review_first_approval += 1
+                    if gk_total_reviews != 0 :
+                        date_gatekeeping_trend.append([date['updated_at__date'].strftime('%d %b %Y'), gk_total_reviews, review_first_approval])
+            if filterType == 3:
+                datewise_data = reviewsData.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
+                for date in datewise_data:
+                    gk_total_reviews = reviewsData.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour']).count()
+                    review_first_approval = 0
+                    reviewIds = reviewsData.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour']).values_list('id', flat=True)
+                    for reviewId in reviewIds:
+                        reviewData = reviewsData.filter(id=reviewId).values().first()
+                        gk = GateKeeping.objects.filter(document=reviewId)
+                        if reviewData['referred'] == False:
+                            if gk.exists():
+                                versions = gk.count()
+                                if versions == 1:
+                                    if reviewData['status'] == 1:
+                                        review_first_approval += 1
+                    if gk_total_reviews != 0 :
+                        date_gatekeeping_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), gk_total_reviews, review_first_approval])
+            if filterType == 4:
+                if customFilterType == 1:
+                    if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
+                        datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                        for date in datewise_data:
+                            gk_total_reviews = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).count()
+                            review_first_approval = 0
+                            reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).values_list('id', flat=True)
+                            for reviewId in reviewIds:
+                                reviewData = reviewsData.filter(id=reviewId).values().first()
+                                gk = GateKeeping.objects.filter(document=reviewId)
+                                if reviewData['referred'] == False:
+                                    if gk.exists():
+                                        versions = gk.count()
+                                        if versions == 1:
+                                            if reviewData['status'] == 1:
+                                                review_first_approval += 1
+                            if gk_total_reviews != 0 :
+                                date_gatekeeping_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), gk_total_reviews, review_first_approval])
+                    else:
+                        datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+                        for date in datewise_data:
+                            gk_total_reviews = reviewsData.filter(updated_at__date=date['updated_at__date']).count()
+                            review_first_approval = 0
+                            reviewIds = reviewsData.filter(updated_at__date=date['updated_at__date']).values_list('id', flat=True)
+                            for reviewId in reviewIds:
+                                reviewData = reviewsData.filter(id=reviewId).values().first()
+                                gk = GateKeeping.objects.filter(document=reviewId)
+                                if reviewData['referred'] == False:
+                                    if gk.exists():
+                                        versions = gk.count()
+                                        if versions == 1:
+                                            if reviewData['status'] == 1:
+                                                review_first_approval += 1
+                            if gk_total_reviews != 0 :
+                                date_gatekeeping_trend.append([date['updated_at__date'].strftime('%d %b %Y'), gk_total_reviews, review_first_approval])
+                if customFilterType == 2:
+                    datewise_data = reviewsData.values('updated_at__year','updated_at__week').distinct().order_by('updated_at__year','updated_at__week')
+                    for date in datewise_data:
+                        gk_total_reviews = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week']).count()
+                        review_first_approval = 0
+                        reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week']).values_list('id', flat=True)
+                        for reviewId in reviewIds:
+                            reviewData = reviewsData.filter(id=reviewId).values().first()
+                            gk = GateKeeping.objects.filter(document=reviewId)
+                            if reviewData['referred'] == False:
+                                if gk.exists():
+                                    versions = gk.count()
+                                    if versions == 1:
+                                        if reviewData['status'] == 1:
+                                            review_first_approval += 1
+                        if gk_total_reviews != 0 :
+                            date_gatekeeping_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", gk_total_reviews, review_first_approval])
+                if customFilterType == 3:
+                    datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                    for date in datewise_data:
+                        gk_total_reviews = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).count()
+                        review_first_approval = 0
+                        reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).values_list('id', flat=True)
+                        for reviewId in reviewIds:
+                            reviewData = reviewsData.filter(id=reviewId).values().first()
+                            gk = GateKeeping.objects.filter(document=reviewId)
+                            if reviewData['referred'] == False:
+                                if gk.exists():
+                                    versions = gk.count()
+                                    if versions == 1:
+                                        if reviewData['status'] == 1:
+                                            review_first_approval += 1
+                        if gk_total_reviews != 0 :
+                            date_gatekeeping_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), gk_total_reviews, review_first_approval])
+                if customFilterType == 4:
+                    datewise_data = reviewsData.values('updated_at__year','updated_at__quarter').distinct().order_by('updated_at__year','updated_at__quarter')
+                    for date in datewise_data:
+                        gk_total_reviews = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter']).count()
+                        review_first_approval = 0
+                        reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter']).values_list('id', flat=True)
+                        for reviewId in reviewIds:
+                            reviewData = reviewsData.filter(id=reviewId).values().first()
+                            gk = GateKeeping.objects.filter(document=reviewId)
+                            if reviewData['referred'] == False:
+                                if gk.exists():
+                                    versions = gk.count()
+                                    if versions == 1:
+                                        if reviewData['status'] == 1:
+                                            review_first_approval += 1
+                        if gk_total_reviews != 0 :
+                            date_gatekeeping_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", gk_total_reviews, review_first_approval])
+                if customFilterType == 5:
+                    datewise_data = reviewsData.values('updated_at__year').distinct().order_by('updated_at__year')
+                    for date in datewise_data:
+                        gk_total_reviews = reviewsData.filter(updated_at__year=date['updated_at__year']).count()
+                        review_first_approval = 0
+                        reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year']).values_list('id', flat=True)
+                        for reviewId in reviewIds:
+                            reviewData = reviewsData.filter(id=reviewId).values().first()
+                            gk = GateKeeping.objects.filter(document=reviewId)
+                            if reviewData['referred'] == False:
+                                if gk.exists():
+                                    versions = gk.count()
+                                    if versions == 1:
+                                        if reviewData['status'] == 1:
+                                            review_first_approval += 1
+                        if gk_total_reviews != 0 :
+                            date_gatekeeping_trend.append([f"{date['updated_at__year']}", gk_total_reviews, review_first_approval])    
+                
+                
+                
+                # # Business Type
+                # review_first_approval = 0
+                # bt_data = []
+                # for i in range(1,16):
+                #     reviews = reviewsData.filter(updated_at__date=date['updated_at__date'],user__in=gatekeeperIds,businessType=i)
+                #     if reviews.exists():
+                #         bt_total_reviews = reviews.aggregate(total_reviews=Count('id'))['total_reviews']
+                #     else:
+                #         bt_total_reviews = 0
+                #     reviewIds = reviews.values_list('id', flat=True)
+                #     for reviewId in reviewIds:
+                #         reviewData = reviewsData.filter(id=reviewId).values().first()
+                #         gk = GateKeeping.objects.filter(document=reviewId)
+                #         if reviewData['referred'] == False:
+                #             if gk.exists():
+                #                 versions = gk.count()
+                #                 if versions == 1:
+                #                     if reviewData['status'] == 1:
+                #                         review_first_approval += 1
+                #     if i == 1:
+                #         businessType = "Business Assurance"
+                #     if i == 2:
+                #         businessType = "Comm release"
+                #     if i == 3:
+                #         businessType = "Employee Benefits"
+                #     if i == 4:
+                #         businessType = "Funeral"
+                #     if i == 5:
+                #         businessType = "GAP Cover"
+                #     if i == 6:
+                #         businessType = "Recurring - Investment"
+                #     if i == 7:
+                #         businessType = "Lumpsum - Investment"
+                #     if i == 8:
+                #         businessType = "Investment- Both"
+                #     if i == 9:
+                #         businessType = "Medical Aid"
+                #     if i == 10:
+                #         businessType = "Other"
+                #     if i == 11:
+                #         businessType = "Will"
+                #     if i == 12:
+                #         businessType = "Risk"
+                #     if i == 13:
+                #         businessType = "ST Re-issued/instated"
+                #     if i == 14:
+                #         businessType = "Short Term Commercial"
+                #     if i == 15:
+                #         businessType = "Short Term Personal"  
+                #     if bt_total_reviews != 0 :
+                #         bt_data.append({"name": businessType, "data":""})
+                # date_businesstype_trend.append([date['updated_at__date'].strftime('%d %b %Y'), bt_total_reviews, review_first_approval])
                 
 
             gatekeeperData = {

@@ -23,12 +23,12 @@ export default async (req, res ) => {
                 'Authorization' : `JWT ${access}`,
             }
         }
-        
-        const Body = JSON.stringify(req.body)
 
+        const Body = JSON.stringify(req.body)
+        
         try {
             const apiResponse = await axios.post(
-                `${API_URL}/api/insights/investment/`,
+                `${API_URL}/api/compliance/agent/info/`,
                 Body,
                 config
             )

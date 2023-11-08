@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import Moment from 'moment'
 
-const Filters = (props) => {
+const Filter = (props) => {
     const storeId = props.storeId
     const [FilterVisibility, setFilterVisibility] = useState(true)
     const Date_Var = new Date()
@@ -12,70 +12,60 @@ const Filters = (props) => {
     const CustomFilterType = props.CustomFilterType
     const Regions = props.Regions
     const advisors = props.advisors
-    
     const OnMonthChange = async (e) => {
         localStorage.setItem(`month-dashboard-${storeId}`, e.target.value)
         e.preventDefault()
         props.updateMonth(e.target.value) 
-        props.loadData(props.filterType, props.Year, props.MonthYear, e.target.value, props.CurrentDate, props.CustomFilterType, props.FromDate, props.ToDate, props.SelectedRegions, props.SelectedAdvisors, props.BusinessType)
-        // props.loadData(props.filterType, props.Year, props.MonthYear, props.Month, props.CurrentDate, props.CustomFilterType, props.FromDate, props.ToDate, props.SelectedRegions, props.SelectedAdvisors, props.BusinessType)
+        props.monthStats(props.MonthYear+"-"+e.target.value, Sortby, SortDirection)   
     }
     const OnMonthYearChange = async (e) => {
         localStorage.setItem(`monthyear-dashboard-${storeId}`, e.target.value)
         e.preventDefault()
         props.updateMonthYear(e.target.value)
-        props.loadData(props.filterType, props.Year, e.target.value, props.Month, props.CurrentDate, props.CustomFilterType, props.FromDate, props.ToDate, props.SelectedRegions, props.SelectedAdvisors, props.BusinessType)
+        props.monthStats(e.target.value+"-"+props.Month, Sortby, SortDirection)   
     }
     const OnDayChange = async (e) => {
         localStorage.setItem(`date-dashboard-${storeId}`, e.target.value)
         e.preventDefault()
         props.updateCurrentDate(e.target.value)
-        props.loadData(props.filterType, props.Year, props.MonthYear, props.Month, e.target.value, props.CustomFilterType, props.FromDate, props.ToDate, props.SelectedRegions, props.SelectedAdvisors, props.BusinessType)
+        props.dayStats(e.target.value, Sortby, SortDirection)
     }
     const onFromDateChange = async (e) => {
         localStorage.setItem(`fromdate-dashboard-${storeId}`, e.target.value)
         e.preventDefault()
         props.updateFromDate(e.target.value)
-        props.loadData(props.filterType, props.Year, props.MonthYear, props.Month, props.CurrentDate, props.CustomFilterType, e.target.value, props.ToDate, props.SelectedRegions, props.SelectedAdvisors, props.BusinessType)
+        props.customStats(e.target.value, props.ToDate, Sortby, SortDirection)
     }
     const onToDateChange = async (e) => {
         localStorage.setItem(`todate-dashboard-${storeId}`, e.target.value)
         e.preventDefault()
         props.updateToDate(e.target.value)
-        props.loadData(props.filterType, props.Year, props.MonthYear, props.Month, props.CurrentDate, props.CustomFilterType, props.FromDate, e.target.value, props.SelectedRegions, props.SelectedAdvisors, props.BusinessType)
+        props.customStats(props.FromDate,e.target.value, Sortby, SortDirection)
     }
     const OnYearChange = async (e) => {
         localStorage.setItem(`year-dashboard-${storeId}`, e.target.value)
         e.preventDefault()
+        props.annualStats(e.target.value, Sortby, SortDirection)
         props.updateYear(e.target.value)
-        props.loadData(props.filterType, e.target.value, props.MonthYear, props.Month, props.CurrentDate, props.CustomFilterType, props.FromDate, props.ToDate, props.SelectedRegions, props.SelectedAdvisors, props.BusinessType)
         // await delay(2000)
     }
     const ChangeFilter = async(e) => {
         localStorage.setItem(`filterType-dashboard-${storeId}`, e.target.value)
         props.updateFilter(e.target.value)
-        // filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType
-        props.loadData(e.target.value, props.Year, props.MonthYear, props.Month, props.CurrentDate, props.CustomFilterType, props.FromDate, props.ToDate, props.SelectedRegions, props.SelectedAdvisors, props.BusinessType)
-    }
-    const onRegionUpdate = async(e) => {
-        localStorage.setItem(`filterType-dashboard-${storeId}`, e.target.value)
-        props.setSelectedRegions(e.target.value)
-        props.loadData(props.filterType, props.Year, props.MonthYear, props.Month, props.CurrentDate, props.CustomFilterType, props.FromDate, props.ToDate, e.target.value, props.SelectedAdvisors, props.BusinessType)
-    }
-    const onAdvisorUpdate = async(e) => {
-        localStorage.setItem(`filterType-dashboard-${storeId}`, e.target.value)
-        props.setSelectedAdvisors(e.target.value)
-        props.loadData(props.filterType, props.Year, props.MonthYear, props.Month, props.CurrentDate, props.CustomFilterType, props.FromDate, props.ToDate, props.SelectedRegions, e.target.value, props.BusinessType)
-    }
-    const onBTUpdate = async(e) => {
-        localStorage.setItem(`filterType-dashboard-${storeId}`, e.target.value)
-        props.setBusinessType(e.target.value)
-        props.loadData(props.filterType, props.Year, props.MonthYear, props.Month, props.CurrentDate, props.CustomFilterType, props.FromDate, props.ToDate, props.SelectedRegions, props.SelectedAdvisors, e.target.value)
-    }
-    const onCustomerFilterChange = async(e) => {
-        localStorage.setItem(`filterType-dashboard-${storeId}`, e.target.value)
-        props.setCustomFilterType(e.target.value)
-        props.loadData(props.filterType, props.Year, props.MonthYear, props.Month, props.CurrentDate, e.target.value, props.FromDate, props.ToDate, props.SelectedRegions, props.SelectedAdvisors, props.BusinessType)
+        if (e.target.value == 5){
+            props.dayStats(yesterday, Sortby, SortDirection)
+            // LoadMonthlyProfile(Moment(yesterday).format('YYYY-MM'))
+        }
+        if (e.target.value == 1){
+            props.annualStats(props.Year, Sortby, SortDirection)
+        } else if (e.target.value == 2){
+            
+            props.monthStats(props.MonthYear+"-"+props.Month, Sortby, SortDirection)
+        } else if (e.target.value == 3){
+            props.dayStats(props.CurrentDate, Sortby, SortDirection)
+        } else if (e.target.value == 4){
+            props.customStats(props.FromDate, props.ToDate, Sortby, SortDirection)
+        }
     }
     return (
         <>
@@ -190,8 +180,8 @@ const Filters = (props) => {
                     'col'
                 }>
                     <label className='filter-label'>Region</label>
-                    <select className="form-select" value={props.SelectedRegions} onChange={(e) => {onRegionUpdate(e)}}  aria-label="Regions">
-                        <option value="all">All</option>
+                    <select className="form-select" value={props.SelectedRegions} onChange={(e) => {props.setSelectedRegions(e.target.value)}}  aria-label="Regions">
+                        <option value={0}>Select Region</option>
                         {
                             Regions.map(
                                 (row, key) => {
@@ -210,8 +200,8 @@ const Filters = (props) => {
                     'col'
                 }>
                     <label className='filter-label'>Advisor</label>
-                    <select className="form-select" value={props.SelectedAdvisors} onChange={(e) => {onAdvisorUpdate(e)}}  aria-label="Advisors">
-                        <option value={"all"}>All</option>
+                    <select className="form-select" value={props.SelectedAdvisors} onChange={(e) => {props.setSelectedAdvisors(e.target.value)}}  aria-label="Advisors">
+                        <option value={0}>Select Advisor</option>
                         {
                             advisors.map(
                                 (row, key) => {
@@ -230,8 +220,8 @@ const Filters = (props) => {
                     'col'
                 }>
                     <label className='filter-label'>Business Type</label>
-                    <select className="form-select" value={props.BusinessType} onChange={(e) => {onBTUpdate(e)}}  aria-label="Range">
-                        <option value={"all"}>All</option>
+                    <select className="form-select" value={props.BusinessType} onChange={(e) => {props.setBusinessType(e.target.value)}}  aria-label="Range">
+                        <option value={0}>Select Business Type</option>
                         <option value="1">Business Assurance</option>
                         <option value="2">Comm release</option>
                         <option value="3">Employee Benefits</option>
@@ -255,4 +245,4 @@ const Filters = (props) => {
     )
 }
 
-export default Filters
+export default Filter

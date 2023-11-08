@@ -12,6 +12,7 @@ import CompliancePagination from '@/modules/CompliancePagination'
 import AppLayout from '@/hocs/AppLayout'
 import InsightsLayout from '@/hocs/InsightsLayout'
 import { currencyFormatter, numberFormatter } from '@/modules/formatter'
+import Filters from '../Filters'
 // import FilterComponent from './Filters'
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
@@ -23,6 +24,7 @@ const MonitoringInsights = () => {
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
     const user = useSelector(state=>state.auth.user)
 	const [FilterType, setFilterType] = useState(2)
+	const [CustomFilterType, setCustomFilterType] = useState(1)
 
     const Date_Var = new Date()
     const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
@@ -438,16 +440,15 @@ const MonitoringInsights = () => {
     const [DateMonitoringTrend, setDateMonitoringTrend] = useState([])
     const [RegionMonitoringTrend, setRegionMonitoringTrend] = useState([])
     const [BusinessTypeMonitoringTrend, setBusinessTypeMonitoringTrend] = useState([])
-    const [Regions, setRegions] = useState([])
+    const [RegionsData, setRegionsData] = useState([])
     const [RegionsRecurring, setRegionsRecurring] = useState([])
-    const [Advisors, setAdvisors] = useState([])
     const [AdvisorsData, setAdvisorsData] = useState([])
     const [AdvisorsRecurring, setAdvisorsRecurring] = useState([])
 
-    const LoadData = async() => {
+    const LoadData = async(filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType) => {
         setLoaded(true)
-        const Body = JSON.stringify()
-
+        const Body = JSON.stringify({filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType})
+    
         try {
             const response = await axios.post(
                 '/api/insights/monitoring',
@@ -458,7 +459,7 @@ const MonitoringInsights = () => {
             setKPIs(response?.data?.data?.kpis)
             setMonitoringTrend(response?.data?.data?.trend)
             setDateMonitoringTrend(response?.data?.data?.date_monitoring_trend)
-            setRegions(response?.data?.data?.top_regions)
+            setRegionsData(response?.data?.data?.top_regions)
             // setRegionsRecurring(response?.data?.data?.top_regions)
             setAdvisorsData(response?.data?.data?.top_advisors)
             // setAdvisorsRecurring(response?.data?.data?.top_advisors_recurring)
@@ -470,9 +471,61 @@ const MonitoringInsights = () => {
         }
         setLoaded(false)
     }
+    
+
+    // Filter Data
+    const [Regions, setRegions] = useState([])
+    const [Advisors, setAdvisors] = useState([])
+    const [SelectedRegions, setSelectedRegions] = useState("all")
+    const [SelectedAdvisors, setSelectedAdvisors] = useState("all")
+    const [BusinessType, setBusinessType] = useState("all")
+    // Load Regions
+    const LoadRegions = async () => {
+        try {
+            const response = await axios.get('/api/account/regions', config)
+            // console.log(first)
+            setRegions(response?.data?.data?.regions)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    } 
+    // Load Advisors
+    const LoadAdvisors = async () => {
+        try {
+            const response = await axios.get('/api/account/agents', config)
+
+            setAdvisors(response?.data?.data?.advisors)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    } 
 
     useEffect(() => {
-        LoadData()
+        LoadData(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate, SelectedRegions, SelectedAdvisors, BusinessType)
+        LoadAdvisors()
+        LoadRegions()
     }, [])
 
     
@@ -491,7 +544,7 @@ const MonitoringInsights = () => {
         >
             <InsightsLayout>
                 <div className='container-fluid'>
-                    {/* <FilterComponent
+                    <Filters
                         filterType={FilterType} 
                         updateFilter={setFilterType} 
                         Month={Month} 
@@ -507,11 +560,18 @@ const MonitoringInsights = () => {
                         ToDate={ToDate} 
                         updateToDate={setToDate} 
                         years={years}
-                        dayStats={()=>{}}
-                        monthStats={()=>{}}
-                        annualStats={()=>{}}
-                        customStats={()=>{}}
-                    /> */}
+                        loadData={LoadData}
+                        CustomFilterType={CustomFilterType}
+                        setCustomFilterType={setCustomFilterType}
+                        Regions={Regions}
+                        advisors={Advisors}
+                        SelectedRegions={SelectedRegions}
+                        SelectedAdvisors={SelectedAdvisors}
+                        setSelectedRegions={setSelectedRegions}
+                        setSelectedAdvisors={setSelectedAdvisors}
+                        BusinessType={BusinessType}
+                        setBusinessType={setBusinessType}
+                    />
                     {
                         Loaded ?
                             <Loader />
@@ -521,36 +581,32 @@ const MonitoringInsights = () => {
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
-                                            <hr/>
-                                            <span>Total Reviews</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
+                                            <span className='scoreCard-title'>Total Reviews</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{currencyFormatter('en-ZA','ZAR').format(KPIs?.first_approval)}</h5>
-                                            <hr/>
-                                            <span>1st Review Approvals</span>
+                                            <h5 className="scoreCard">{currencyFormatter('en-ZA','ZAR').format(KPIs?.first_approval)}</h5>
+                                            <span className='scoreCard-title'>1st Review Approvals</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{currencyFormatter('en-ZA','ZAR').format(KPIs?.first_partial_approval)}</h5>
-                                            <hr/>
-                                            <span>1st Review Partial Approvals</span>
+                                            <h5 className="scoreCard">{currencyFormatter('en-ZA','ZAR').format(KPIs?.first_partial_approval)}</h5>
+                                            <span className='scoreCard-title'>1st Review Partial Approvals</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.first_not_approved)}</h5>
-                                            <hr/>
-                                            <span>1st Review Not Approvals</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.first_not_approved)}</h5>
+                                            <span className='scoreCard-title'>1st Review Not Approvals</span>
                                         </div>
                                     </div>
                                 </div>
@@ -582,7 +638,7 @@ const MonitoringInsights = () => {
                                         </thead>
                                         <tbody>
                                             {
-                                                Regions.map(
+                                                RegionsData.map(
                                                     (row, key) => {
                                                         return(
                                                             <tr key={key}>

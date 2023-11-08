@@ -12,6 +12,7 @@ import CompliancePagination from '@/modules/CompliancePagination'
 import AppLayout from '@/hocs/AppLayout'
 import InsightsLayout from '@/hocs/InsightsLayout'
 import { currencyFormatter, numberFormatter } from '@/modules/formatter'
+import Filters from '../Filters'
 // import FilterComponent from './Filters'
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
@@ -23,6 +24,7 @@ const InvestmentInsights = () => {
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
     const user = useSelector(state=>state.auth.user)
 	const [FilterType, setFilterType] = useState(2)
+	const [CustomFilterType, setCustomFilterType] = useState(1)
 
     const Date_Var = new Date()
     const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
@@ -427,14 +429,13 @@ const InvestmentInsights = () => {
     const [BusinessTypeInvestmentTrend, setBusinessTypeInvestmentTrend] = useState([])
     const [RegionsLumpSum, setRegionsLumpSum] = useState([])
     const [RegionsRecurring, setRegionsRecurring] = useState([])
-    const [Advisors, setAdvisors] = useState([])
     const [AdvisorsLumpSum, setAdvisorsLumpSum] = useState([])
     const [AdvisorsRecurring, setAdvisorsRecurring] = useState([])
 
-    const LoadData = async() => {
+    const LoadData = async(filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType) => {
         setLoaded(true)
-        const Body = JSON.stringify()
-
+        const Body = JSON.stringify({filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType})
+    
         try {
             const response = await axios.post(
                 '/api/insights/investment',
@@ -457,8 +458,59 @@ const InvestmentInsights = () => {
         setLoaded(false)
     }
 
+    // Filter Data
+    const [Regions, setRegions] = useState([])
+    const [Advisors, setAdvisors] = useState([])
+    const [SelectedRegions, setSelectedRegions] = useState("all")
+    const [SelectedAdvisors, setSelectedAdvisors] = useState("all")
+    const [BusinessType, setBusinessType] = useState("all")
+    // Load Regions
+    const LoadRegions = async () => {
+        try {
+            const response = await axios.get('/api/account/regions', config)
+            // console.log(first)
+            setRegions(response?.data?.data?.regions)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    } 
+    // Load Advisors
+    const LoadAdvisors = async () => {
+        try {
+            const response = await axios.get('/api/account/agents', config)
+            console.log(response?.data?.data?.advisors)
+            setAdvisors(response?.data?.data?.advisors)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    } 
+
     useEffect(() => {
-        LoadData()
+        LoadData(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate, SelectedRegions, SelectedAdvisors, BusinessType)
+        LoadAdvisors()
+        LoadRegions()
     }, [])
 
     
@@ -477,7 +529,7 @@ const InvestmentInsights = () => {
         >
             <InsightsLayout>
                 <div className='container-fluid'>
-                    {/* <FilterComponent
+                    <Filters
                         filterType={FilterType} 
                         updateFilter={setFilterType} 
                         Month={Month} 
@@ -493,11 +545,18 @@ const InvestmentInsights = () => {
                         ToDate={ToDate} 
                         updateToDate={setToDate} 
                         years={years}
-                        dayStats={()=>{}}
-                        monthStats={()=>{}}
-                        annualStats={()=>{}}
-                        customStats={()=>{}}
-                    /> */}
+                        loadData={LoadData}
+                        CustomFilterType={CustomFilterType}
+                        setCustomFilterType={setCustomFilterType}
+                        Regions={Regions}
+                        advisors={Advisors}
+                        SelectedRegions={SelectedRegions}
+                        SelectedAdvisors={SelectedAdvisors}
+                        setSelectedRegions={setSelectedRegions}
+                        setSelectedAdvisors={setSelectedAdvisors}
+                        BusinessType={BusinessType}
+                        setBusinessType={setBusinessType}
+                    />
                     {
                         Loaded ?
                             <Loader />
@@ -507,45 +566,40 @@ const InvestmentInsights = () => {
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
-                                            <hr/>
-                                            <span>Total Reviews</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
+                                            <span className='scoreCard-title'>Total Reviews</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{currencyFormatter('en-ZA','ZAR').format(KPIs?.total_investment_lump_sum)}</h5>
-                                            <hr/>
-                                            <span>Total Lump Sum</span>
+                                            <h5 className="scoreCard">{currencyFormatter('en-ZA','ZAR').format(KPIs?.total_investment_lump_sum)}</h5>
+                                            <span className='scoreCard-title'>Total Lump Sum</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{currencyFormatter('en-ZA','ZAR').format(KPIs?.total_investment_recurring)}</h5>
-                                            <hr/>
-                                            <span>Total Recurring</span>
+                                            <h5 className="scoreCard">{currencyFormatter('en-ZA','ZAR').format(KPIs?.total_investment_recurring)}</h5>
+                                            <span className='scoreCard-title'>Total Recurring</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_regions)}</h5>
-                                            <hr/>
-                                            <span>Total Regions</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_regions)}</h5>
+                                            <span className='scoreCard-title'>Total Regions</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col'>
                                     <div className="card text-center">
                                         <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_advisors)}</h5>
-                                            <hr/>
-                                            <span>Total Advisors</span>
+                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_advisors)}</h5>
+                                            <span className='scoreCard-title'>Total Advisors</span>
                                         </div>
                                     </div>
                                 </div>

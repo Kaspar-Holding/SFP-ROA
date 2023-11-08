@@ -2527,6 +2527,35 @@ class loadagents(APIView):
                 raise Http404
         else:
             return Response(status.HTTP_401_UNAUTHORIZED)
+        
+class loadgatekeepers(APIView):
+
+    def get(self, request):
+        user = request.user
+        if user.is_superuser or user.userType == 1 or user.userType == 2:
+            gatekeepers = UserAccount.objects.filter(userType = 2)
+            if gatekeepers.exists():
+                gatekeepers = gatekeepers.values()
+                data = []
+                for gatekeeper in gatekeepers:
+                    profile = user_profile.objects.filter(user=gatekeeper['id'])
+                    id_number = ""
+                    if profile.exists():
+                        profile = user_profile.objects.filter(user=gatekeeper['id']).values().first()
+                        id_number = profile['id_number']
+                    data.append({
+                        "value" : gatekeeper['id'],
+                        "label" : f"{gatekeeper['first_name']} {gatekeeper['last_name']} ({id_number})",
+                        "name" : "gatekeeper",
+                        "id" : gatekeeper['id'],
+                    })
+                return Response({
+                    "gatekeepers" : data
+                })
+            else:
+                raise Http404
+        else:
+            return Response(status.HTTP_401_UNAUTHORIZED)
 
 class loadbacs(APIView):
 

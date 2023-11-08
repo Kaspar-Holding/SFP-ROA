@@ -324,6 +324,22 @@ header {
     font-size: 12px;
 }
 
+.scoreCard {
+    font-family: Open Sans;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 65px;
+    text-align: center;
+}
+
+.scoreCard-title {
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19px;
+    text-align: center;
+}
+
 .insight-gatekeeping-card {
     font-family: 'Open Sans';
     font-size: 12px;
@@ -334,6 +350,22 @@ header {
     max-height: 40vh;
     overflow-y: auto;
     background-color: #ffffff;    
+}
+
+.filterButton {
+    position: fixed;
+    top: 50%;
+    right: 0px; /* Adjust this value to control horizontal position */
+    transform: translateY(-50%);
+}
+
+.filter-label{
+    font-family: Open Sans;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
 }
 
 
