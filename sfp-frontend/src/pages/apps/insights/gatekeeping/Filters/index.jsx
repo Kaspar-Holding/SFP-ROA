@@ -193,7 +193,7 @@ const Filters = (props) => {
                     <select className="form-select" value={props.SelectedRegions} onChange={(e) => {onRegionUpdate(e)}}  aria-label="Regions">
                         <option value="all">All</option>
                         {
-                            Regions.map(
+                            Regions?.map(
                                 (row, key) => {
                                     return(
                                         <option key={key} value={row?.label}>{row?.label}</option>
@@ -213,7 +213,7 @@ const Filters = (props) => {
                     <select className="form-select" value={props.SelectedGatekeepers} onChange={(e) => {onAdvisorUpdate(e)}}  aria-label="Advisors">
                         <option value={"all"}>All</option>
                         {
-                            gatekeepers.map(
+                            gatekeepers?.map(
                                 (row, key) => {
                                     return(
                                         <option key={key} value={row?.id}>{row?.label}</option>
