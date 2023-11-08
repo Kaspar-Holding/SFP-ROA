@@ -14,6 +14,10 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 09 October 2023:
+- Updated fields
+- Deployment on Staging
+
 ### 02 October 2023:
 - Deployment on Production without Insights
 - Insights Commission dashboard is completed without filters

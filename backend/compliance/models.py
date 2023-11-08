@@ -66,8 +66,8 @@ class GateKeeping(models.Model):
     replacement = models.IntegerField(default=0, blank=True)
     replacement_type = models.IntegerField(default=0, blank=True)
 
-    identity = models.IntegerField(default=0, blank=True)
-    disclosure = models.IntegerField(default=0, blank=True)
+    date_of_screening = models.IntegerField(default=0, blank=True)
+    timeously = models.IntegerField(default=0, blank=True)
 
     # fica = models.IntegerField(choices=(('100','Yes'),('0','No'), ('-1','N/A')), default=0, blank=True)
     # proof_of_screening = models.IntegerField(choices=(('100','Yes'),('0','No'), ('-1','N/A')), default=0, blank=True)
