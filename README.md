@@ -14,7 +14,7 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
-### 09 October 2023:
+### 08 October 2023:
 - Updated fields
 - Mandate is removed from Funeral
 - Filters are now implemented in Commission, Investment, Monitoring and Gatekeeping Insights
