@@ -280,9 +280,6 @@ const Compliance = () => {
             setTotalPages(response?.data?.data?.total_pages)
             setReviews(response?.data?.data?.results)
             setTotalRecords(response?.data?.data?.total_records)
-            setTrendData(response?.data?.data?.trend_data)
-            setKPIs(response?.data?.data?.kpis)
-            setKPITrend(response?.data?.data?.trend)
             
         } catch (error) {
             Swal.fire({
