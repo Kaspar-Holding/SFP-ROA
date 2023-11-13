@@ -911,8 +911,83 @@ header {
     overflow-y: auto;
 }
 
+@media screen and (min-width: 1000px) {
+    
+    .kpi-card-1 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FEEAE5;
+        border-color: #FEEAE5;
+        height: 180px;
+        flex-shrink: 0;
+    }
 
-@media (max-width: 991.98px) {
+    .kpi-card-2 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFE5E9;
+        border-color: #FFE5E9;
+        height: 180px;
+        flex-shrink: 0;
+    }
+
+    .kpi-card-3 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFFAE4;
+        border-color: #FFFAE4;
+        height: 180px;
+        flex-shrink: 0;
+    }
+
+    .kpi-card-4 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #F6E4FF;
+        border-color: #F6E4FF;
+        height: 180px;
+        flex-shrink: 0;
+    }
+
+}
+@media screen and (min-width: 998px) {
+    
+    
+    .kpi-card-1 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FEEAE5;
+        border-color: #FEEAE5;
+        height: 160pxpx;
+        flex-shrink: 0;
+    }
+
+    .kpi-card-2 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFE5E9;
+        border-color: #FFE5E9;
+        height: 160pxpx;
+        flex-shrink: 0;
+    }
+
+    .kpi-card-3 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFFAE4;
+        border-color: #FFFAE4;
+        height: 160pxpx;
+        flex-shrink: 0;
+    }
+
+    .kpi-card-4 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #F6E4FF;
+        border-color: #F6E4FF;
+        height: 160pxpx;
+        flex-shrink: 0;
+    }
     .graph-sets > ul {
       display: none;
     }
@@ -990,41 +1065,6 @@ header {
     line-height: normal;
 }
 
-.kpi-card-1 {
-    border-radius: 30px;
-    margin-right: 5%;
-    background: #FEEAE5;
-    border-color: #FEEAE5;
-    height: 180px;
-    flex-shrink: 0;
-}
-
-.kpi-card-2 {
-    border-radius: 30px;
-    margin-right: 5%;
-    background: #FFE5E9;
-    border-color: #FFE5E9;
-    height: 180px;
-    flex-shrink: 0;
-}
-
-.kpi-card-3 {
-    border-radius: 30px;
-    margin-right: 5%;
-    background: #FFFAE4;
-    border-color: #FFFAE4;
-    height: 180px;
-    flex-shrink: 0;
-}
-
-.kpi-card-4 {
-    border-radius: 30px;
-    margin-right: 5%;
-    background: #F6E4FF;
-    border-color: #F6E4FF;
-    height: 180px;
-    flex-shrink: 0;
-}
 
 .kpi-number {
     padding-top: 50%;
@@ -1055,6 +1095,43 @@ header {
 }
 
 @media screen and (max-width: 420px) {
+    
+    
+    .kpi-card-1 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FEEAE5;
+        border-color: #FEEAE5;
+        height: 90px;
+        flex-shrink: 0;
+    }
+
+    .kpi-card-2 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFE5E9;
+        border-color: #FFE5E9;
+        height: 90px;
+        flex-shrink: 0;
+    }
+
+    .kpi-card-3 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFFAE4;
+        border-color: #FFFAE4;
+        height: 90px;
+        flex-shrink: 0;
+    }
+
+    .kpi-card-4 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #F6E4FF;
+        border-color: #F6E4FF;
+        height: 90px;
+        flex-shrink: 0;
+    }
     .updated-form {
         width: 90%;
         top: 50%;

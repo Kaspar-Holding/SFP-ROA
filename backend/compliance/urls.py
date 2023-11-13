@@ -8,6 +8,7 @@ urlpatterns = [
     path('gatekeepers/', views.loadgatekeepers.as_view()),
     path('bacs/', views.loadbacs.as_view()),
     path('agent/info/', views.loadagentsDetail.as_view()),
+    path('document/kpis-and-trends/', views.complainceKPISnTrends.as_view()),
     path('document/info/', views.complainceDocumentsInfo.as_view()),
     path('document/', views.ComplianceDocumentList.as_view()),
     path('document/search/', views.searchComplianceDocument),

@@ -1023,6 +1023,7 @@ class gatekeeperInsights(APIView):
             total_partial_approvals = kpisData.filter(status=4).count()
 
             businessType_trend = []
+            businessType_trend_list = []
             businessType_rejection_trend = []
             business_total_reviews = 0
             business_total_rejected_reviews = 0
@@ -1088,6 +1089,7 @@ class gatekeeperInsights(APIView):
                     businessType = "Short Term Personal"  
                 if reviews != 0:
                     businessType_trend.append([businessType, reviews, rejected_reviews])
+                    businessType_trend_list.append({"businessType":businessType, "reviews": reviews,"rejected_reviews" : rejected_reviews})
                 if rejected_reviews != 0:
                     businessType_rejection_trend.append([businessType, rejected_reviews, first_approval])
             for row in businessType_trend:
@@ -1096,7 +1098,7 @@ class gatekeeperInsights(APIView):
             for row in businessType_rejection_trend:
                 percentage = round(row[1]/business_total_rejected_reviews * 100,2) if business_total_rejected_reviews != 0 else 0
                 row.append(percentage)
-
+            businessType_trend_list = sorted(businessType_trend_list, key=lambda d: d["reviews"], reverse=True) 
             # Datewise Data
             date_gatekeeping_trend = []
             date_businesstype_trend = []
@@ -1320,6 +1322,7 @@ class gatekeeperInsights(APIView):
                     "total_partial_approvals" : total_partial_approvals,
                 },
                 "businessType_trend": businessType_trend,
+                "businessType_trend_list": businessType_trend_list,
                 "businessType_rejection_trend": businessType_rejection_trend,
                 "date_gatekeeping_trend": date_gatekeeping_trend,
                 "date_businesstype_trend": date_businesstype_trend,

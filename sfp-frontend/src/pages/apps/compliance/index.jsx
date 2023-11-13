@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic'
 import Loader from '@/hocs/Loader'
 import CompliancePagination from '@/modules/CompliancePagination'
 import FilterComponent from './Filters'
+import Filters from './Filters'
 
 // import Chart from "react-apexcharts"
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
@@ -21,6 +22,7 @@ const Compliance = () => {
     const [Loaded, setLoaded] = useState(false)
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
 	const [FilterType, setFilterType] = useState(2)
+	const [CustomFilterType, setCustomFilterType] = useState(1)
     const [currentPage, setCurrentPage] = useState(1)
     const Date_Var = new Date()
     const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
@@ -79,7 +81,7 @@ const Compliance = () => {
 
     const lineSeries = (data) => [
         {
-          name: "Trend of last 15 days",
+          name: "Total Forms",
           data: data
         }
     ]
@@ -215,6 +217,32 @@ const Compliance = () => {
             )
             setTotalPages(response?.data?.data?.total_pages)
             setReviews(response?.data?.data?.results)
+            
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "error",
+                title: "Error",
+                html: `${error?.response?.data?.error}`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+        setLoaded(false)
+
+    }
+
+    const loadKPIsandTrends = async (filterType, year, monthyear, month, date, customFilterType, fromdate, todate) => {
+        try {
+            const Body = JSON.stringify({filterType, year, monthyear, month, date, customFilterType, fromdate, todate})
+            const response = await axios.post(
+                '/api/compliance/kpisntrend',
+                Body,
+                config
+            )
             setTotalRecords(response?.data?.data?.total_records)
             setTrendData(response?.data?.data?.trend_data)
             setKPIs(response?.data?.data?.kpis)
@@ -233,8 +261,6 @@ const Compliance = () => {
             })
             
         }
-        setLoaded(false)
-
     }
 
     const loadPaginatedData = async (pNumber, pSize, sBy, sDirection) => {
@@ -275,6 +301,7 @@ const Compliance = () => {
     }
     
     useEffect(() => {
+        loadKPIsandTrends(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate)
         loadReviews(1, PageSize, Sortby, SortDirection)
     }, [])
 
@@ -307,34 +334,28 @@ const Compliance = () => {
                                     <div className='col-8'>
                                         <h1 className='app-dashboard-header'>Total Summary</h1>
                                     </div>
-                                        
-                                    {/* <div className='col-4'>
-                                        <FilterComponent
-                                            pageSize={PageSize}
-                                            filterType={FilterType} 
-                                            updateFilter={setFilterType} 
-                                            Month={Month} 
-                                            updateMonth={setMonth} 
-                                            Year={Year} 
-                                            updateYear={setYear} 
-                                            MonthYear={MonthYear} 
-                                            updateMonthYear={setMonthYear} 
-                                            CurrentDate={CurrentDate} 
-                                            updateCurrentDate={setCurrentDate} 
-                                            FromDate={FromDate} 
-                                            updateFromDate={setFromDate} 
-                                            ToDate={ToDate} 
-                                            updateToDate={setToDate} 
-                                            years={years}
-                                            dayStats={LoadDayStats}
-                                            monthStats={LoadMonthlyStats}
-                                            annualStats={LoadAnnualStats}
-                                            customStats={LoadCustomStats}
-                                            SearchQuery={SearchQuery}
-                                        />
-                                    </div> */}
                                 </div>
-                                <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
+                                <p className='app-dashboard-subheader'>Compliance KPIs</p>
+                                <Filters
+                                    filterType={FilterType} 
+                                    updateFilter={setFilterType} 
+                                    Month={Month} 
+                                    updateMonth={setMonth} 
+                                    Year={Year} 
+                                    updateYear={setYear} 
+                                    MonthYear={MonthYear} 
+                                    updateMonthYear={setMonthYear} 
+                                    CurrentDate={CurrentDate} 
+                                    updateCurrentDate={setCurrentDate} 
+                                    FromDate={FromDate} 
+                                    updateFromDate={setFromDate} 
+                                    ToDate={ToDate} 
+                                    updateToDate={setToDate} 
+                                    years={years}
+                                    loadData={loadKPIsandTrends}
+                                    CustomFilterType={CustomFilterType}
+                                    setCustomFilterType={setCustomFilterType}
+                                />
                                 <div className='row'>
                                     <div className='col-lg-3 p-0 m-0'>
                                         <div className="card kpi-card-1">

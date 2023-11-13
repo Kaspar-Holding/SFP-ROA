@@ -436,6 +436,7 @@ const GatekeepingInsights = () => {
 
     const [KPIs, setKPIs] = useState({})
     const [GatekeepingTrend, setGatekeepingTrend] = useState([])
+    const [GatekeepingTrendList, setGatekeepingTrendList] = useState([])
     const [RejectionGatekeepingTrend, setRejectionGatekeepingTrend] = useState([])
     const [DatewiseGatekeepingTrend, setDatewiseGatekeepingTrend] = useState([])
     const [RegionGatekeepingTrend, setRegionGatekeepingTrend] = useState([])
@@ -455,6 +456,7 @@ const GatekeepingInsights = () => {
             
             setKPIs(response?.data?.data?.kpis)
             setGatekeepingTrend(response?.data?.data?.businessType_trend)
+            setGatekeepingTrendList(response?.data?.data?.businessType_trend_list)
             setDatewiseGatekeepingTrend(response?.data?.data?.date_gatekeeping_trend)
             // setRegions(response?.data?.data?.top_regions)
             // setAdvisors(response?.data?.data?.top_advisors)
@@ -645,13 +647,13 @@ const GatekeepingInsights = () => {
                                         </thead>
                                         <tbody>
                                             {
-                                                GatekeepingTrend.map(
+                                                GatekeepingTrendList.map(
                                                     (row, key) => {
                                                         return(
                                                             <tr key={key}>
                                                                 <th scope="row">{key+1}</th>
-                                                                <td>{row[0]}</td>
-                                                                <td>{numberFormatter('en-ZA',0).format(row[1])}</td>
+                                                                <td>{row?.businessType}</td>
+                                                                <td>{numberFormatter('en-ZA',0).format(row?.reviews)}</td>
                                                             </tr>
                                                         )
                                                     }
@@ -672,13 +674,13 @@ const GatekeepingInsights = () => {
                                         </thead>
                                         <tbody>
                                             {
-                                                GatekeepingTrend.map(
+                                                GatekeepingTrendList.map(
                                                     (row, key) => {
                                                         return(
                                                             <tr key={key}>
                                                                 <th scope="row">{key+1}</th>
-                                                                <td>{row[0]}</td>
-                                                                <td>{numberFormatter('en-ZA',0).format(row[2])}</td>
+                                                                <td>{row?.businessType}</td>
+                                                                <td>{numberFormatter('en-ZA',0).format(row?.rejected_reviews)}</td>
                                                             </tr>
                                                         )
                                                     }

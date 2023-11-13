@@ -149,7 +149,7 @@ class complainceDocumentsInfo(APIView):
                     "rejected" : data.filter(created_at__range=date_range,status=2).count(),
                     "referred" : data.filter(created_at__range=date_range,referred=True).count(),
                 }
-                time_trend = ComplianceDocument.objects.filter(created_at__range=date_range).order_by('created_at__date').values('created_at__date').annotate(total=Count('id'))
+                time_trend = ComplianceDocument.objects.filter(created_at__range=date_range).order_by('created_at__date').values('created_at__date')
                 trend_data = []
                 for i in range(len(time_trend)):
                     trend_data.append([
@@ -238,7 +238,7 @@ class complainceDocumentsInfo(APIView):
                         "rejected" : data.filter(created_at__range=date_range,status=2).count(),
                         "referred" : data.filter(created_at__range=date_range,referred=True).count(),
                     }  
-                    time_trend = ComplianceDocument.objects.filter(user=user.pk,created_at__range=date_range).order_by('created_at__date').values('created_at__date').annotate(total=Count('id'))
+                    time_trend = ComplianceDocument.objects.filter(user=user.pk,created_at__range=date_range).order_by('created_at__date').values('created_at__date')
                     trend_data = []
                     for i in range(len(time_trend)):
                         trend_data.append([
@@ -335,7 +335,7 @@ class complainceDocumentsInfo(APIView):
                         "rejected" : data.filter(created_at__range=date_range,status=2).count(),
                         "referred" : data.filter(created_at__range=date_range,referred=True).count(),
                     } 
-                    time_trend = ComplianceDocument.objects.filter(user=user.pk,created_at__range=date_range).order_by('created_at__date').values('created_at__date').annotate(total=Count('id'))
+                    time_trend = ComplianceDocument.objects.filter(user=user.pk,created_at__range=date_range).order_by('created_at__date').values('created_at__date')
                     trend_data = []
                     for i in range(len(time_trend)):
                         trend_data.append([
@@ -398,6 +398,517 @@ class complainceDocumentsInfo(APIView):
                             "pagelimit" : request.data['page_size'],
                             "next" : None,
                             "results" : [],
+                            "trend_data": [], 
+                            "kpis": kpis, 
+                            "trend" : trend
+                        }
+                    )
+            else:
+                raise Http404
+
+        
+class complainceKPISnTrends(APIView):
+
+    def post(self, request):
+        if "filterType" not in request.data:
+            return Response({"message": "Filter Type was not passed"}, 400)
+        if "year" not in request.data:
+            return Response({"message": "Year was not passed"}, 400)
+        if "monthyear" not in request.data:
+            return Response({"message": "Month Year was not passed"}, 400)
+        if "month" not in request.data:
+            return Response({"message": "Month was not passed"}, 400)
+        if "date" not in request.data:
+            return Response({"message": "Date was not passed"}, 400)
+        if "fromdate" not in request.data:
+            return Response({"message": "From Date was not passed"}, 400)
+        if "todate" not in request.data:
+            return Response({"message": "To Date was not passed"}, 400)
+        if "customFilterType" not in request.data:
+            return Response({"message": "Custom Filter Type was not passed"}, 400)
+        
+        user = request.user
+        filterType = int(request.data['filterType'])
+        year = request.data['year']
+        monthyear = request.data['monthyear']
+        month = request.data['month']
+        date = request.data['date']
+        fromdate = request.data['fromdate']
+        todate = request.data['todate']
+        customFilterType = int(request.data['customFilterType'])
+        if user.is_superuser:
+            data = ComplianceDocument.objects.all().order_by('-created_at')
+            if data.exists():                
+                trend_data = []
+                if filterType == 1:
+                    data = data.filter(created_at__year=year)
+                    trend = {
+                        # "created" : data.filter(created_at__range=date_range).count(),
+                        "approved" : data.filter(status=1).count(),
+                        "rejected" : data.filter(status=2).count(),
+                        "referred" : data.filter(referred=True).count(),
+                    }
+                    kpis = {
+                        "created" : data.count(),
+                        "approved" : data.filter(status=1).count(),
+                        "rejected" : data.filter(status=2).count(),
+                        "referred" : data.filter(referred=True).count(),
+                    }
+                    # Trending
+                    datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
+                    for date in datewise_data:
+                        total_reviews = 0
+                        review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
+                        if review_data.exists():
+                            total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                        trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
+                if filterType == 2:
+                    data = data.filter(created_at__year=monthyear, created_at__month=month)
+                    trend = {
+                        # "created" : data.filter(created_at__range=date_range).count(),
+                        "approved" : data.filter(created_at__month=month,status=1).count(),
+                        "rejected" : data.filter(created_at__month=month,status=2).count(),
+                        "referred" : data.filter(created_at__month=month,referred=True).count(),
+                    }
+                    kpis = {
+                        "created" : data.count(),
+                        "approved" : data.filter(status=1).count(),
+                        "rejected" : data.filter(status=2).count(),
+                        "referred" : data.filter(referred=True).count(),
+                    }
+                    # Trending
+                    datewise_data = data.values('created_at__date').distinct().order_by('created_at__date')
+                    for date in datewise_data:
+                        total_reviews = 0
+                        review_data = data.filter(created_at__date=date['created_at__date'])
+                        if review_data.exists():
+                            total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                        trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
+                if filterType == 3:
+                    data = data.filter(created_at__date=date)
+                    trend = {
+                        # "created" : data.filter(created_at__range=date_range).count(),
+                        "approved" : data.filter(status=1).count(),
+                        "rejected" : data.filter(status=2).count(),
+                        "referred" : data.filter(referred=True).count(),
+                    }
+                    kpis = {
+                        "created" : data.count(),
+                        "approved" : data.filter(status=1).count(),
+                        "rejected" : data.filter(status=2).count(),
+                        "referred" : data.filter(referred=True).count(),
+                    }
+                    # Trending
+                    datewise_data = data.values('created_at__date', 'created_at__hour').distinct().order_by('created_at__date', 'created_at__hour')
+                    for date in datewise_data:
+                        total_reviews = 0
+                        review_data = data.filter(created_at__date=date['created_at__date'],created_at__hour=date['created_at__hour'])
+                        if review_data.exists():
+                            total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                        trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__date']} {date['created_at__hour']}", '%Y-%m-%d %H'), "%I %p"), total_reviews])
+                if filterType == 4:
+                    date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
+                    data = data.filter(created_at__range=date_range)
+                    trend = {
+                        # "created" : data.filter(created_at__range=date_range).count(),
+                        "approved" : data.filter(status=1).count(),
+                        "rejected" : data.filter(status=2).count(),
+                        "referred" : data.filter(referred=True).count(),
+                    }
+                    kpis = {
+                        "created" : data.count(),
+                        "approved" : data.filter(status=1).count(),
+                        "rejected" : data.filter(status=2).count(),
+                        "referred" : data.filter(referred=True).count(),
+                    }
+                    # Trending
+                    if customFilterType == 1:
+                        if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
+                            datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
+                            for date in datewise_data:
+                                total_reviews = 0
+                                review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
+                                if review_data.exists():
+                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
+                        else:
+                            datewise_data = data.values('created_at__date').distinct().order_by('created_at__date')
+                            for date in datewise_data:
+                                total_reviews = 0
+                                review_data = data.filter(created_at__date=date['created_at__date'])
+                                if review_data.exists():
+                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
+                    if customFilterType == 2:
+                        datewise_data = data.values('created_at__year','created_at__week').distinct().order_by('created_at__year','created_at__week')
+                        for date in datewise_data:
+                            total_reviews = 0
+                            review_data = data.filter(created_at__date=date['created_at__date'])
+                            if review_data.exists():
+                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            trend_data.append([f"{date['created_at__year']} Week {date['created_at__week']}", total_reviews])
+                    if customFilterType == 3:
+                        datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
+                        for date in datewise_data:
+                            total_reviews = 0
+                            review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
+                            if review_data.exists():
+                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
+                    if customFilterType == 4:
+                        datewise_data = data.values('created_at__year','created_at__quarter').distinct().order_by('created_at__year','created_at__quarter')
+                        for date in datewise_data:
+                            total_reviews = 0
+                            review_data = data.filter(created_at__year=date['created_at__year'],created_at__quarter=date['created_at__quarter'])
+                            if review_data.exists():
+                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            trend_data.append([f"{date['created_at__year']} Quarter {date['created_at__quarter']}", total_reviews])
+                    if customFilterType == 5:
+                        datewise_data = data.values('created_at__year').distinct().order_by('created_at__year')
+                        for date in datewise_data:
+                            total_reviews = 0
+                            review_data = data.filter(created_at__year=date['created_at__year'])
+                            if review_data.exists():
+                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            trend_data.append([f"{date['created_at__year']}", total_reviews])  
+            
+            else:
+                kpis = {
+                    "created" : 0,
+                    "approved" : 0,
+                    "rejected" : 0,
+                    "referred" : 0,
+                }
+                trend = {
+                    "created" : 0,
+                    "approved" : 0,
+                    "rejected" : 0,
+                    "referred" : 0,
+                }
+                return Response(
+                    {
+                        "trend_data": [], 
+                        "kpis": kpis, 
+                        "trend" : trend
+                    }
+                )
+        else:
+            if user.userType == 1:  
+                data = ComplianceDocument.objects.filter(Q(user=user.pk) | Q(picked_up=user.pk)).order_by('-created_at')
+                if data.exists():
+                    trend_data = []
+                    if filterType == 1:
+                        data = data.filter(created_at__year=year)
+                        trend = {
+                            # "created" : data.filter(created_at__range=date_range).count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        kpis = {
+                            "created" : data.count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        # Trending
+                        datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
+                        for date in datewise_data:
+                            total_reviews = 0
+                            review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
+                            if review_data.exists():
+                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
+                    if filterType == 2:
+                        data = data.filter(created_at__year=monthyear, created_at__month=month)
+                        trend = {
+                            # "created" : data.filter(created_at__range=date_range).count(),
+                            "approved" : data.filter(created_at__month=month,status=1).count(),
+                            "rejected" : data.filter(created_at__month=month,status=2).count(),
+                            "referred" : data.filter(created_at__month=month,referred=True).count(),
+                        }
+                        kpis = {
+                            "created" : data.count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        # Trending
+                        datewise_data = data.values('created_at__date').distinct().order_by('created_at__date')
+                        for date in datewise_data:
+                            total_reviews = 0
+                            review_data = data.filter(created_at__date=date['created_at__date'])
+                            if review_data.exists():
+                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
+                    if filterType == 3:
+                        data = data.filter(created_at__date=date)
+                        trend = {
+                            # "created" : data.filter(created_at__range=date_range).count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        kpis = {
+                            "created" : data.count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        # Trending
+                        datewise_data = data.values('created_at__date', 'created_at__hour').distinct().order_by('created_at__date', 'created_at__hour')
+                        for date in datewise_data:
+                            total_reviews = 0
+                            review_data = data.filter(created_at__date=date['created_at__date'],created_at__hour=date['created_at__hour'])
+                            if review_data.exists():
+                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__date']} {date['created_at__hour']}", '%Y-%m-%d %H'), "%I %p"), total_reviews])
+                    if filterType == 4:
+                        date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
+                        data = data.filter(created_at__range=date_range)
+                        trend = {
+                            # "created" : data.filter(created_at__range=date_range).count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        kpis = {
+                            "created" : data.count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        # Trending
+                        if customFilterType == 1:
+                            if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
+                                datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
+                                for date in datewise_data:
+                                    total_reviews = 0
+                                    review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
+                                    if review_data.exists():
+                                        total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
+                            else:
+                                datewise_data = data.values('created_at__date').distinct().order_by('created_at__date')
+                                for date in datewise_data:
+                                    total_reviews = 0
+                                    review_data = data.filter(created_at__date=date['created_at__date'])
+                                    if review_data.exists():
+                                        total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
+                        if customFilterType == 2:
+                            datewise_data = data.values('created_at__year','created_at__week').distinct().order_by('created_at__year','created_at__week')
+                            for date in datewise_data:
+                                total_reviews = 0
+                                review_data = data.filter(created_at__date=date['created_at__date'])
+                                if review_data.exists():
+                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                trend_data.append([f"{date['created_at__year']} Week {date['created_at__week']}", total_reviews])
+                        if customFilterType == 3:
+                            datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
+                            for date in datewise_data:
+                                total_reviews = 0
+                                review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
+                                if review_data.exists():
+                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
+                        if customFilterType == 4:
+                            datewise_data = data.values('created_at__year','created_at__quarter').distinct().order_by('created_at__year','created_at__quarter')
+                            for date in datewise_data:
+                                total_reviews = 0
+                                review_data = data.filter(created_at__year=date['created_at__year'],created_at__quarter=date['created_at__quarter'])
+                                if review_data.exists():
+                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                trend_data.append([f"{date['created_at__year']} Quarter {date['created_at__quarter']}", total_reviews])
+                        if customFilterType == 5:
+                            datewise_data = data.values('created_at__year').distinct().order_by('created_at__year')
+                            for date in datewise_data:
+                                total_reviews = 0
+                                review_data = data.filter(created_at__year=date['created_at__year'])
+                                if review_data.exists():
+                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                trend_data.append([f"{date['created_at__year']}", total_reviews])               
+                        
+                            
+                    return Response(
+                        {
+                            "trend_data": trend_data, 
+                            "kpis": kpis, 
+                            "trend" : trend
+                        }
+                    )
+                else:
+                    kpis = {
+                        "created" : 0,
+                        "approved" : 0,
+                        "rejected" : 0,
+                        "referred" : 0,
+                    }
+                    trend = {
+                        "created" : 0,
+                        "approved" : 0,
+                        "rejected" : 0,
+                        "referred" : 0,
+                    }
+                    return Response(
+                        {
+                            "trend_data": [], 
+                            "kpis": kpis, 
+                            "trend" : trend
+                        }
+                    )
+            if user.userType == 2:            
+                data = ComplianceDocument.objects.filter(user=user.pk).order_by('-created_at')
+                if data.exists():
+                    trend_data = []
+                    
+                    trend_data = []
+                    if filterType == 1:
+                        data = data.filter(created_at__year=year)
+                        trend = {
+                            # "created" : data.filter(created_at__range=date_range).count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        kpis = {
+                            "created" : data.count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        # Trending
+                        datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
+                        for date in datewise_data:
+                            total_reviews = 0
+                            review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
+                            if review_data.exists():
+                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
+                    if filterType == 2:
+                        data = data.filter(created_at__year=monthyear, created_at__month=month)
+                        trend = {
+                            # "created" : data.filter(created_at__range=date_range).count(),
+                            "approved" : data.filter(created_at__month=month,status=1).count(),
+                            "rejected" : data.filter(created_at__month=month,status=2).count(),
+                            "referred" : data.filter(created_at__month=month,referred=True).count(),
+                        }
+                        kpis = {
+                            "created" : data.count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        # Trending
+                        datewise_data = data.values('created_at__date').distinct().order_by('created_at__date')
+                        for date in datewise_data:
+                            total_reviews = 0
+                            review_data = data.filter(created_at__date=date['created_at__date'])
+                            if review_data.exists():
+                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
+                    if filterType == 3:
+                        data = data.filter(created_at__date=date)
+                        trend = {
+                            # "created" : data.filter(created_at__range=date_range).count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        kpis = {
+                            "created" : data.count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        # Trending
+                        datewise_data = data.values('created_at__date', 'created_at__hour').distinct().order_by('created_at__date', 'created_at__hour')
+                        for date in datewise_data:
+                            total_reviews = 0
+                            review_data = data.filter(created_at__date=date['created_at__date'],created_at__hour=date['created_at__hour'])
+                            if review_data.exists():
+                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__date']} {date['created_at__hour']}", '%Y-%m-%d %H'), "%I %p"), total_reviews])
+                    if filterType == 4:
+                        date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
+                        data = data.filter(created_at__range=date_range)
+                        trend = {
+                            # "created" : data.filter(created_at__range=date_range).count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        kpis = {
+                            "created" : data.count(),
+                            "approved" : data.filter(status=1).count(),
+                            "rejected" : data.filter(status=2).count(),
+                            "referred" : data.filter(referred=True).count(),
+                        }
+                        # Trending
+                        if customFilterType == 1:
+                            if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
+                                datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
+                                for date in datewise_data:
+                                    total_reviews = 0
+                                    review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
+                                    if review_data.exists():
+                                        total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
+                            else:
+                                datewise_data = data.values('created_at__date').distinct().order_by('created_at__date')
+                                for date in datewise_data:
+                                    total_reviews = 0
+                                    review_data = data.filter(created_at__date=date['created_at__date'])
+                                    if review_data.exists():
+                                        total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
+                        if customFilterType == 2:
+                            datewise_data = data.values('created_at__year','created_at__week').distinct().order_by('created_at__year','created_at__week')
+                            for date in datewise_data:
+                                total_reviews = 0
+                                review_data = data.filter(created_at__date=date['created_at__date'])
+                                if review_data.exists():
+                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                trend_data.append([f"{date['created_at__year']} Week {date['created_at__week']}", total_reviews])
+                        if customFilterType == 3:
+                            datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
+                            for date in datewise_data:
+                                total_reviews = 0
+                                review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
+                                if review_data.exists():
+                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
+                        if customFilterType == 4:
+                            datewise_data = data.values('created_at__year','created_at__quarter').distinct().order_by('created_at__year','created_at__quarter')
+                            for date in datewise_data:
+                                total_reviews = 0
+                                review_data = data.filter(created_at__year=date['created_at__year'],created_at__quarter=date['created_at__quarter'])
+                                if review_data.exists():
+                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                trend_data.append([f"{date['created_at__year']} Quarter {date['created_at__quarter']}", total_reviews])
+                        if customFilterType == 5:
+                            datewise_data = data.values('created_at__year').distinct().order_by('created_at__year')
+                            for date in datewise_data:
+                                total_reviews = 0
+                                review_data = data.filter(created_at__year=date['created_at__year'])
+                                if review_data.exists():
+                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                trend_data.append([f"{date['created_at__year']}", total_reviews])  
+                else:
+                    kpis = {
+                        "created" : 0,
+                        "approved" : 0,
+                        "rejected" : 0,
+                        "referred" : 0,
+                    }
+                    trend = {
+                        "created" : 0,
+                        "approved" : 0,
+                        "rejected" : 0,
+                        "referred" : 0,
+                    }
+                    return Response(
+                        {
                             "trend_data": [], 
                             "kpis": kpis, 
                             "trend" : trend

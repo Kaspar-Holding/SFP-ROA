@@ -14,6 +14,11 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 13 October 2023:
+- Added Date Filters in Compliance App 
+- Deployment on Staging 
+- Deployment on Production without Insights
+
 ### 08 October 2023:
 - Updated fields
 - Mandate is removed from Funeral
