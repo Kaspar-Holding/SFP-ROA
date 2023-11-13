@@ -477,7 +477,7 @@ class complainceKPISnTrends(APIView):
                             trend_data.append([f"{date['created_at__year']}", total_reviews])  
                 return Response(
                     {
-                        "trend_data": [], 
+                        "trend_data": trend_data, 
                         "kpis": kpis, 
                         "trend" : trend
                     }
