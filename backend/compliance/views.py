@@ -137,25 +137,6 @@ class complainceDocumentsInfo(APIView):
         if user.is_superuser:
             data = ComplianceDocument.objects.all().order_by('-created_at')
             if data.exists():
-                trend = {
-                    # "created" : data.filter(created_at__range=date_range).count(),
-                    "approved" : data.filter(created_at__range=date_range,status=1).count(),
-                    "rejected" : data.filter(created_at__range=date_range,status=2).count(),
-                    "referred" : data.filter(created_at__range=date_range,referred=True).count(),
-                }
-                kpis = {
-                    "created" : data.filter(created_at__range=date_range).count(),
-                    "approved" : data.filter(created_at__range=date_range,status=1).count(),
-                    "rejected" : data.filter(created_at__range=date_range,status=2).count(),
-                    "referred" : data.filter(created_at__range=date_range,referred=True).count(),
-                }
-                time_trend = ComplianceDocument.objects.filter(created_at__range=date_range).order_by('created_at__date').values('created_at__date')
-                trend_data = []
-                for i in range(len(time_trend)):
-                    trend_data.append([
-                        time_trend[i]['created_at__date'].strftime('%d %b %y'),
-                        time_trend[i]['total']
-                    ])
                 total = data.count()
                 data = data.values()
                 p = Paginator(data, request.data['page_size'])
@@ -189,24 +170,9 @@ class complainceDocumentsInfo(APIView):
                         "pagelimit" : request.data['page_size'],
                         "next" : p.page(request.data['page_number']).has_next(),
                         "results" : data ,
-                        "trend_data": trend_data, 
-                        "kpis": kpis, 
-                        "trend" : trend
                     }
                 )
             else:
-                kpis = {
-                    "created" : 0,
-                    "approved" : 0,
-                    "rejected" : 0,
-                    "referred" : 0,
-                }
-                trend = {
-                    "created" : 0,
-                    "approved" : 0,
-                    "rejected" : 0,
-                    "referred" : 0,
-                }
                 return Response(
                     {
                         "total_pages" : 0,
@@ -215,9 +181,6 @@ class complainceDocumentsInfo(APIView):
                         "pagelimit" : request.data['page_size'],
                         "next" : None,
                         "results" : [],
-                        "trend_data": [], 
-                        "kpis": kpis, 
-                        "trend" : trend
                     }
                 )
         else:
@@ -226,25 +189,6 @@ class complainceDocumentsInfo(APIView):
                 records = []
                 if data.exists():
                     created = 0
-                    kpis = {
-                        "created" : data.filter(created_at__range=date_range).count(),
-                        "approved" : data.filter(created_at__range=date_range,status=1).count(),
-                        "rejected" : data.filter(created_at__range=date_range,status=2).count(),
-                        "referred" : data.filter(created_at__range=date_range,referred=True).count(),
-                    }
-                    trend = {
-                        # "created" : data.filter(created_at__range=date_range).count(),
-                        "approved" : data.filter(created_at__range=date_range,status=1).count(),
-                        "rejected" : data.filter(created_at__range=date_range,status=2).count(),
-                        "referred" : data.filter(created_at__range=date_range,referred=True).count(),
-                    }  
-                    time_trend = ComplianceDocument.objects.filter(user=user.pk,created_at__range=date_range).order_by('created_at__date').values('created_at__date')
-                    trend_data = []
-                    for i in range(len(time_trend)):
-                        trend_data.append([
-                            time_trend[i]['created_at__date'].strftime('%d %b %y'),
-                            time_trend[i]['total']
-                        ])
                     total = data.count()
                     data = ComplianceDocument.objects.filter(Q(user=user.pk) | Q(picked_up=user.pk) | Q(status=3)).order_by('-created_at')
                     data = data.values()
@@ -289,24 +233,9 @@ class complainceDocumentsInfo(APIView):
                             "pagelimit" : request.data['page_size'],
                             "next" : p.page(request.data['page_number']).has_next(),
                             "results" : data ,
-                            "trend_data": trend_data, 
-                            "kpis": kpis, 
-                            "trend" : trend
                         }
                     )
                 else:
-                    kpis = {
-                        "created" : 0,
-                        "approved" : 0,
-                        "rejected" : 0,
-                        "referred" : 0,
-                    }
-                    trend = {
-                        "created" : 0,
-                        "approved" : 0,
-                        "rejected" : 0,
-                        "referred" : 0,
-                    }
                     return Response(
                         {
                             "total_pages" : 0,
@@ -314,34 +243,13 @@ class complainceDocumentsInfo(APIView):
                             "total_records" : 0,
                             "pagelimit" : request.data['page_size'],
                             "next" : None,
-                            "trend_data": [], 
                             "results" : [],
-                            "kpis": kpis, 
-                            "trend" : trend
                         }
                     )
             if user.userType == 2:            
                 data = ComplianceDocument.objects.filter(user=user.pk).order_by('-created_at')
                 if data.exists():
-                    kpis = {
-                        "created" : data.filter(created_at__range=date_range).count(),
-                        "approved" : data.filter(created_at__range=date_range,status=1).count(),
-                        "rejected" : data.filter(created_at__range=date_range,status=2).count(),
-                        "referred" : data.filter(created_at__range=date_range,referred=True).count(),
-                    }
-                    trend = {
-                        # "created" : data.filter(created_at__range=date_range).count(),
-                        "approved" : data.filter(created_at__range=date_range,status=1).count(),
-                        "rejected" : data.filter(created_at__range=date_range,status=2).count(),
-                        "referred" : data.filter(created_at__range=date_range,referred=True).count(),
-                    } 
-                    time_trend = ComplianceDocument.objects.filter(user=user.pk,created_at__range=date_range).order_by('created_at__date').values('created_at__date')
-                    trend_data = []
-                    for i in range(len(time_trend)):
-                        trend_data.append([
-                            time_trend[i]['created_at__date'].strftime('%d %b %y'),
-                            time_trend[i]['total']
-                        ])
+                    
                     total = data.count()
                     data = data.values()
                     p = Paginator(data, request.data['page_size'])
@@ -371,10 +279,6 @@ class complainceDocumentsInfo(APIView):
                             "total_records" : total,
                             "pagelimit" : request.data['page_size'],
                             "next" : p.page(request.data['page_number']).has_next(),
-                            "results" : data ,
-                            "kpis": kpis, 
-                            "trend_data": trend_data, 
-                            "trend" : trend
                         }
                     )
                 else:
