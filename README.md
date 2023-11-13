@@ -14,19 +14,19 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
-### 13 October 2023:
+### 13 November 2023:
 - Added Date Filters in Compliance App 
 - Deployment on Staging 
 - Deployment on Production without Insights
 
-### 08 October 2023:
+### 08 November 2023:
 - Updated fields
 - Mandate is removed from Funeral
 - Filters are now implemented in Commission, Investment, Monitoring and Gatekeeping Insights
 - Deployment on Staging 
 - Deployment on Production without Insights
 
-### 02 October 2023:
+### 02 November 2023:
 - Deployment on Production without Insights
 - Insights Commission dashboard is completed without filters
 - Insights Investment dashboard is completed without filters
