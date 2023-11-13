@@ -611,7 +611,7 @@ class complainceKPISnTrends(APIView):
                             datewise_data = data.values('created_at__year','created_at__week').distinct().order_by('created_at__year','created_at__week')
                             for date in datewise_data:
                                 total_reviews = 0
-                                review_data = data.filter(created_at__date=date['created_at__date'])
+                                review_data = data.filter(created_at__year=date['created_at__week'],created_at__week=date['created_at__week'])
                                 if review_data.exists():
                                     total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
                                 trend_data.append([f"{date['created_at__year']} Week {date['created_at__week']}", total_reviews])
@@ -777,7 +777,7 @@ class complainceKPISnTrends(APIView):
                             datewise_data = data.values('created_at__year','created_at__week').distinct().order_by('created_at__year','created_at__week')
                             for date in datewise_data:
                                 total_reviews = 0
-                                review_data = data.filter(created_at__date=date['created_at__date'])
+                                review_data = data.filter(created_at__year=date['created_at__week'],created_at__week=date['created_at__week'])
                                 if review_data.exists():
                                     total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
                                 trend_data.append([f"{date['created_at__year']} Week {date['created_at__week']}", total_reviews])
