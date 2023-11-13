@@ -805,6 +805,13 @@ class complainceKPISnTrends(APIView):
                                 if review_data.exists():
                                     total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
                                 trend_data.append([f"{date['created_at__year']}", total_reviews])  
+                    return Response(
+                        {
+                            "trend_data": trend_data, 
+                            "kpis": kpis, 
+                            "trend" : trend
+                        }
+                    )
                 else:
                     kpis = {
                         "created" : 0,
