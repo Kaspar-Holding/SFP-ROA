@@ -315,7 +315,7 @@ class complainceKPISnTrends(APIView):
             return Response({"message": "To Date was not passed"}, 400)
         if "customFilterType" not in request.data:
             return Response({"message": "Custom Filter Type was not passed"}, 400)
-        print(user.userType)
+
         user = request.user
         filterType = int(request.data['filterType'])
         year = request.data['year']
