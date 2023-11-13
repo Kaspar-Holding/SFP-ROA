@@ -670,9 +670,7 @@ class complainceKPISnTrends(APIView):
                     )
             if user.userType == 2:            
                 data = ComplianceDocument.objects.filter(user=user.pk).order_by('-created_at')
-                if data.exists():
-                    trend_data = []
-                    
+                if data.exists():                    
                     trend_data = []
                     if filterType == 1:
                         data = data.filter(created_at__year=year)
