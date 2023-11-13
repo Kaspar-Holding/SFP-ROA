@@ -261,7 +261,6 @@ class complainceDocumentsInfo(APIView):
                             row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
                         else:
                             raise Http404
-                        dId = row['id']
                         arc_status = False
                         if arc.objects.filter(document=row['id']).exists():
                             arc_status = True
@@ -279,21 +278,10 @@ class complainceDocumentsInfo(APIView):
                             "total_records" : total,
                             "pagelimit" : request.data['page_size'],
                             "next" : p.page(request.data['page_number']).has_next(),
+                            "results" : data , 
                         }
                     )
                 else:
-                    kpis = {
-                        "created" : 0,
-                        "approved" : 0,
-                        "rejected" : 0,
-                        "referred" : 0,
-                    }
-                    trend = {
-                        "created" : 0,
-                        "approved" : 0,
-                        "rejected" : 0,
-                        "referred" : 0,
-                    }
                     return Response(
                         {
                             "total_pages" : 0,
@@ -302,9 +290,6 @@ class complainceDocumentsInfo(APIView):
                             "pagelimit" : request.data['page_size'],
                             "next" : None,
                             "results" : [],
-                            "trend_data": [], 
-                            "kpis": kpis, 
-                            "trend" : trend
                         }
                     )
             else:
