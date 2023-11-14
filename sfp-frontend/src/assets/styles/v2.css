@@ -958,7 +958,7 @@ header {
         margin-right: 5%;
         background: #FEEAE5;
         border-color: #FEEAE5;
-        height: 160pxpx;
+        height: 160px;
         flex-shrink: 0;
     }
 
@@ -967,7 +967,7 @@ header {
         margin-right: 5%;
         background: #FFE5E9;
         border-color: #FFE5E9;
-        height: 160pxpx;
+        height: 160px;
         flex-shrink: 0;
     }
 
@@ -976,7 +976,7 @@ header {
         margin-right: 5%;
         background: #FFFAE4;
         border-color: #FFFAE4;
-        height: 160pxpx;
+        height: 160px;
         flex-shrink: 0;
     }
 
@@ -985,7 +985,7 @@ header {
         margin-right: 5%;
         background: #F6E4FF;
         border-color: #F6E4FF;
-        height: 160pxpx;
+        height: 160px;
         flex-shrink: 0;
     }
     .graph-sets > ul {

@@ -14,6 +14,13 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 14 November 2023:
+- ARC and GK Filters bug resolved 
+- Responsiveness issues resolved 
+- Pages blocks issues resolved
+- Deployment on Staging 
+- Deployment on Production without Insights
+
 ### 13 November 2023:
 - Added Date Filters in Compliance App 
 - Deployment on Staging 

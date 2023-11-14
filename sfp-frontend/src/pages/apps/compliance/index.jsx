@@ -63,19 +63,16 @@ const Compliance = () => {
     const onPageSizeChange = (e, value) => {
         e.preventDefault()
         setPageSize(value)
-        setTotalRecords(0)
         loadReviews(1, value, Sortby, SortDirection)
     }
     const onSortChange = (e, value) => {
         e.preventDefault()
         setSortby(value)
-        setTotalRecords(0)
         loadReviews(1, PageSize, value, SortDirection)
     }
     const onSortDirectionChange = (e, value) => {
         e.preventDefault()
         setSortDirection(value)
-        setTotalRecords(0)
         loadReviews(1, PageSize, Sortby, value)
     }
 
@@ -200,7 +197,6 @@ const Compliance = () => {
 
     }
 
-
     const loadReviews = async (pNumber, pSize, sBy, sDirection) => {
         setLoaded(true)
         try {
@@ -217,6 +213,7 @@ const Compliance = () => {
             )
             setTotalPages(response?.data?.data?.total_pages)
             setReviews(response?.data?.data?.results)
+            setTotalRecords(response?.data?.data?.total_records)
             
         } catch (error) {
             Swal.fire({
@@ -243,7 +240,6 @@ const Compliance = () => {
                 Body,
                 config
             )
-            setTotalRecords(response?.data?.data?.total_records)
             setTrendData(response?.data?.data?.trend_data)
             setKPIs(response?.data?.data?.kpis)
             setKPITrend(response?.data?.data?.trend)
@@ -427,7 +423,7 @@ const Compliance = () => {
                                 {/* <Chart options={lineOptions} series={lineSeries} type="line" height={210} /> */}
                                 {
                                     TrendData.length > 0 ?
-                                        (typeof window !== 'undefined') && <Chart options={lineOptions([TrendData].map(x => x.map(a => (a[0]))).flat(2), 2)} series={lineSeries([TrendData].map(x => x.map(a => (a[1]))).flat(2))} type="line" height={210} />
+                                        (typeof window !== 'undefined') && <Chart options={lineOptions([TrendData].map(x => x.map(a => (a[0]))).flat(2), 2)} series={lineSeries([TrendData].map(x => x.map(a => (a[1]))).flat(2))} type="bar" height={210} />
                                     : <></>
                                 }
                             </div>
