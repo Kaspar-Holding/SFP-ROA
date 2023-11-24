@@ -58,7 +58,7 @@ const SectionAReplacements = ({ user, FormData, setFormData, onChange, nextStep,
                 </div>
                 <Editor
                     onInit={(evt, editor) => FICAEditorRef.current = editor}
-                    value={FormData['clientReplacementReason']}
+                    value={FormData?.clientReplacementReason}
                     onEditorChange={(e)=>{ setFormData({...FormData, ['clientReplacementReason']: FICAEditorRef.current.getContent() }) }}
                     name="clientBackgroundInfo"
                     init={{

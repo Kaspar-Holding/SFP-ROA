@@ -28,7 +28,7 @@ const SectionB = ({ user, FormData, setFormData, onChange, prevStep, FICAEditorR
                 </div>
                 <Editor
                     onInit={(evt, editor) => FICAEditorRef.current = editor}
-                    value={FormData['clientBackgroundInfo']}
+                    value={FormData?.clientBackgroundInfo}
                     onEditorChange={(e)=>{ setFormData({...FormData, ['clientBackgroundInfo']: FICAEditorRef.current.getContent() }) }}
                     name="clientBackgroundInfo"
                     init={{

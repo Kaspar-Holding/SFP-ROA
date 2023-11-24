@@ -58,7 +58,7 @@ const SectionAAInfo = ({ user, FormData, setFormData, onChange, nextStep, prevSt
                 </div>
                 <Editor
                     onInit={(evt, editor) => compulsoryAEditorRef.current = editor}
-                    value={FormData['clientLetterOfIntroductionAccessReason']}
+                    value={FormData?.clientLetterOfIntroductionAccessReason}
                     onEditorChange={(e)=>{ setFormData({...FormData, ['clientLetterOfIntroductionAccessReason']: compulsoryAEditorRef.current.getContent() }) }}
                     name="clientBackgroundInfo"
                     init={{

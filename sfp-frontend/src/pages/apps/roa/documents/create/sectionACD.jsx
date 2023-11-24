@@ -58,7 +58,7 @@ const SectionACD = ({ user, FormData, setFormData, onChange, nextStep, prevStep,
                 </div>
                 <Editor
                     onInit={(evt, editor) => compulsoryAEditorRef.current = editor}
-                    value={FormData['clientLetterOfIntroductionReason']}
+                    value={FormData?.clientLetterOfIntroductionReason}
                     onEditorChange={(e)=>{ setFormData({...FormData, ['clientLetterOfIntroductionReason']: compulsoryAEditorRef.current.getContent() }) }}
                     name="clientBackgroundInfo"
                     init={{

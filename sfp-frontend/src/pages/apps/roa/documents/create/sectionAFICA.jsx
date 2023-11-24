@@ -58,7 +58,7 @@ const SectionAFICA = ({ user, FormData, setFormData, onChange, nextStep, prevSte
                 </div>
                 <Editor
                     onInit={(evt, editor) => FICAEditorRef.current = editor}
-                    value={FormData['clientFicaReason']}
+                    value={FormData?.clientFicaReason}
                     onEditorChange={(e)=>{ setFormData({...FormData, ['clientFicaReason']: FICAEditorRef.current.getContent() }) }}
                     name="clientBackgroundInfo"
                     init={{
