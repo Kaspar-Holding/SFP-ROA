@@ -24,31 +24,31 @@ const InitialInfo = ({ user, FormData, onChange, nextStep }) => {
                     <div className='row'>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Client Name</label>
-                            <input spellCheck="true" required minLength="3" and maxLength="45" id="clientName" name="clientName" value={FormData['clientName']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Name"  aria-describedby="" />
+                            <input spellCheck="true" required minLength="3" and maxLength="45" id="clientName" name="clientName" value={FormData?.clientName} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Name"  aria-describedby="" />
                         </div>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Client ID number</label>
-                            <input spellCheck="true" required id="clientIdNumber" name="clientIdNumber" value={FormData['clientIdNumber']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client ID"  aria-describedby="" />
+                            <input spellCheck="true" required id="clientIdNumber" name="clientIdNumber" value={FormData?.clientIdNumber} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client ID"  aria-describedby="" />
                         </div>
                         <div className="col-lg-12 mb-3">
                             <label className="form-label compliance-inital-card-text">Client Address</label>
-                            <input spellCheck="true" required id="clientAddress" name="clientAddress" value={FormData['clientAddress']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Address"  aria-describedby="" />
+                            <input spellCheck="true" required id="clientAddress" name="clientAddress" value={FormData?.clientAddress} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Address"  aria-describedby="" />
                         </div>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Client Email</label>
-                            <input spellCheck="true" type='email' required id="clientEmail" name="clientEmail" value={FormData['clientEmail']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Email"  aria-describedby="" />
+                            <input spellCheck="true" type='email' required id="clientEmail" name="clientEmail" value={FormData?.clientEmail} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Email"  aria-describedby="" />
                         </div>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Client Phone</label>
-                            <input spellCheck="true" required id="clientPhoneNumber" name="clientPhoneNumber" value={FormData['clientPhoneNumber']} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Phone Number"  aria-describedby="" />
+                            <input spellCheck="true" required id="clientPhoneNumber" name="clientPhoneNumber" value={FormData?.clientPhoneNumber} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Phone Number"  aria-describedby="" />
                         </div>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Financial Advisor:</label>
-                            <input spellCheck="true" disabled value={`${user['first_name']} ${user['last_name']}`} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Name"  aria-describedby="" />
+                            <input spellCheck="true" disabled value={`${user?.first_name} ${user?.last_name}`} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Name"  aria-describedby="" />
                         </div>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Date:</label>
-                            <input required spellCheck="true"  type="date"  id="clientDateOfBirth" value={FormData['clientDateOfBirth']} onChange={e => onChange(e)} name="clientDateOfBirth" className="form-control" placeholder="date_of_birth"  aria-describedby="" />
+                            <input required spellCheck="true"  type="date"  id="clientDateOfBirth" value={FormData?.clientDateOfBirth} onChange={e => onChange(e)} name="clientDateOfBirth" className="form-control" placeholder="date_of_birth"  aria-describedby="" />
                         </div>
                         <div className="col-lg-12">
                             <p className='roa-disclaimer'>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP) 

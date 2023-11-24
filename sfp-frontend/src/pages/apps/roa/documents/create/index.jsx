@@ -82,7 +82,7 @@ const CreateROA = () => {
     // console.log(localStorage.getItem('access'))
     const emailValidation = () =>{
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        if (regex.test(FormData['clientEmail']) === false){
+        if (regex.test(FormData?.clientEmail) === false){
           setErrorData({
             status: "Email Validity",
             message: "Email is not valid, Please enter a valid email",
@@ -99,40 +99,7 @@ const CreateROA = () => {
     const [SubmissionErrorVisibilty, setSubmissionErrorVisibilty] = useState("none")
     
     const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
-    const createRecordOfAdviceForm = async(formData) => {
-        const config = {
-            headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json',
-                'Authorization' : `JWT `
-            }
-        }
-        const Body = JSON.stringify(formData)
-        try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/addformdata/`, Body ,config)
-            setFormData(response.data['formData'])
-            // setSubmissionMessageVisibility("block")
-        } catch (error) {
-            if (error.response.status === 401){
-                setSuccessMessage("Login time out, You will be logged out in 5 seconds")
-                setSuccessMessageVisibility("block")
-                setTimeout(() => {
-                  setSuccessMessageVisibility("none")
-                  LogOut()
-                }, 5000)
-              }
-            setErrorData({
-                status: error.response.status,
-                message: error.response.statusText,
-                errors: error.response.errors
-            })
-            setSubmissionErrorVisibilty("block")
-            setTimeout(() => {
-                setSubmissionErrorVisibilty("none")
-            }, 5000)
-        }
-    }
-
+   
     const [SuccessMessage, setSuccessMessage] = useState("")
     const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
     const createROAForm= async(data) => {
@@ -145,8 +112,6 @@ const CreateROA = () => {
         const Body = JSON.stringify(data)
         try {
             const response = await axios.post(`/api/roa/create/`, Body ,config)
-            // console.log(response.data['code'])
-            // setFormData(response.data['Data'])
             
             Swal.fire({
                 position: "bottom-end",
