@@ -950,6 +950,34 @@ header {
     }
 
 }
+.roa-font {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 600;
+}
+.roa-tippy {
+    color: #fff;
+    background-color: #000;
+    font-family: Open Sans;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.roa-label {
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.roa-disclaimer {
+    font-family: Open Sans;
+    font-size: 12px;
+    font-weight: 600;
+    padding-bottom: 0.5%;
+    text-align: justify;
+}
 @media screen and (min-width: 998px) {
     
     

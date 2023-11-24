@@ -1,5 +1,5 @@
-import DashboardLayout from '@/hocs/DashboardLayout'
-import Layout from '@/hocs/Layout'
+import DashboardLayout from '../../../hocs/DashboardLayout'
+import Layout from '../../../hocs/Layout'
 import React from 'react'
 
 const ROA = () => {

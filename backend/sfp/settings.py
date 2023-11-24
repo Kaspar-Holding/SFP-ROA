@@ -71,6 +71,8 @@ INSTALLED_APPS = [
     'frontend',
     'users',
     'insights',
+    'roa',
+    'scim',
 ]
 
 MIDDLEWARE = [

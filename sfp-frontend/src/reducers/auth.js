@@ -19,7 +19,7 @@ import {
     PASSWORD_RESET_REQUEST_FAILED,
     PASSWORD_RESET_CONFIRM_FAILED,
     PASSWORD_RESET_CONFIRM_SUCCESS
-} from "@/actions/types"
+} from "../actions/types"
 
 const initialState = {
     user: null,

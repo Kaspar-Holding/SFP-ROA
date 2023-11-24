@@ -328,7 +328,7 @@ const Compliance = () => {
                                         <h1 className='app-dashboard-header'>Total Summary</h1>
                                     </div>
                                 </div>
-                                <p className='app-dashboard-subheader'>Compliance KPIs</p>
+                                {/* <p className='app-dashboard-subheader'>Compliance KPIs</p> */}
                                 <Filters
                                     filterType={FilterType} 
                                     updateFilter={setFilterType} 
@@ -410,7 +410,7 @@ const Compliance = () => {
                             </div>
                             <div className='col-lg-3 app-dashboard-progress'>
                                 <h1 className='app-dashboard-header'>Progress</h1>
-                                <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
+                                {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */}
                                 {
                                     KPITrend ?
                                         (typeof window !== 'undefined') && <Chart options={pieChartOptions} series={KPITrend ? Object.values(KPITrend) : [0, 0, 0, 0]} type="pie" width={'100%'} />
@@ -419,7 +419,7 @@ const Compliance = () => {
                             </div>
                             <div className='col-lg-4 app-dashboard-trend'>
                                 <h1 className='app-dashboard-header'>Trending Data</h1>
-                                <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p>
+                                {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */}
                                 {/* <Chart options={lineOptions} series={lineSeries} type="line" height={210} /> */}
                                 {
                                     TrendData.length > 0 ?

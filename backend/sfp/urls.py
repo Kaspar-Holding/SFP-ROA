@@ -32,6 +32,8 @@ urlpatterns = [
     path('api/printing/', include('printingApp.urls')),
     path('api/email/', include('emailApp.urls')),
     path('api/user/', include('users.urls')),
+    path('api/scim/', include('scim.urls')),
+    path('api/roa/', include('roa.urls')),
     # re_path(r"^$", render_react),
     # re_path(r"^(?:.*)/?$", render_react),
     

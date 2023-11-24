@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Moment from 'moment'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { logout } from '@/actions/auth'
+import { logout } from '../../actions/auth'
 const SideBar = ({appTitle, app}) => {
     
 

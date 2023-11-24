@@ -1,5 +1,5 @@
-import { logout } from '@/actions/auth'
-import { API_URL } from '@/config'
+import { logout } from '../../actions/auth'
+import { API_URL } from '../../config'
 import Link from 'next/link'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'

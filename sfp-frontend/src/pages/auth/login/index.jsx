@@ -1,10 +1,10 @@
 
-import { login, reset_register_success } from '@/actions/auth'
-import Layout from '@/hocs/Layout'
+import { login, reset_register_success } from '../../../actions/auth'
+import Layout from '../../../hocs/Layout'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Loader from '@/hocs/Loader'
+import Loader from '../../../hocs/Loader'
 import Link from 'next/link'
 import Swal from 'sweetalert2'
 const LoginPage = () => {

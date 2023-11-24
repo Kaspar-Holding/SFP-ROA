@@ -4,7 +4,7 @@ import Moment from 'moment'
 import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import { logout } from '@/actions/auth'
+import { logout } from '../../../actions/auth'
 const DocumentSideBar = ({appTitle, app, pageTitle ,appName}) => {
     
     const user = useSelector(state=>state.auth.user)

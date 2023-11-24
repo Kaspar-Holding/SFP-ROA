@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { Provider } from 'react-redux'
 import { useStore } from '../store'
 import "../assets/styles/v2.css"
-import "@/assets/styles/Loader.css"
+import "../assets/styles/Loader.css"
 import Script from 'next/script'
 
 const App = ({ Component, pageProps }) => {

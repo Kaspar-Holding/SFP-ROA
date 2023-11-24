@@ -49,6 +49,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     is_advisor = models.BooleanField(default=False)
+    sanport_id = models.BigIntegerField(default=0)
     
     ARC = 1
     GK = 2

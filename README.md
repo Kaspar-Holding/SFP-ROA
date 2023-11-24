@@ -14,10 +14,20 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 24 November 2023:
+- ARC and GK Count in Trend is fixed
+- SAML SSO testing completed
+- Web ROA integration started
+- SCIM Provisioning APIs developed
+- Record of Advice is now integrated successfully
+- Deployment on Staging 
+- Deployment on Production without Insights
+
 ### 14 November 2023:
 - ARC and GK Filters bug resolved 
 - Responsiveness issues resolved 
 - Pages blocks issues resolved
+- Working on SFP Web ROA Integration in SFP Online
 - Deployment on Staging 
 - Deployment on Production without Insights
 

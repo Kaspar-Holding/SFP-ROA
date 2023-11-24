@@ -349,7 +349,7 @@ class complainceKPISnTrends(APIView):
                         total_reviews = 0
                         review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
                         if review_data.exists():
-                            total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                         trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
                 if filterType == 2:
                     data = data.filter(created_at__year=monthyear, created_at__month=month)
@@ -371,7 +371,7 @@ class complainceKPISnTrends(APIView):
                         total_reviews = 0
                         review_data = data.filter(created_at__date=date['created_at__date'])
                         if review_data.exists():
-                            total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                         trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
                 if filterType == 3:
                     data = data.filter(created_at__date=date)
@@ -393,7 +393,7 @@ class complainceKPISnTrends(APIView):
                         total_reviews = 0
                         review_data = data.filter(created_at__date=date['created_at__date'],created_at__hour=date['created_at__hour'])
                         if review_data.exists():
-                            total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                            total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                         trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__date']} {date['created_at__hour']}", '%Y-%m-%d %H'), "%I %p"), total_reviews])
                 if filterType == 4:
                     date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
@@ -418,7 +418,7 @@ class complainceKPISnTrends(APIView):
                                 total_reviews = 0
                                 review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
                                 if review_data.exists():
-                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                 trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
                         else:
                             datewise_data = data.values('created_at__date').distinct().order_by('created_at__date')
@@ -426,7 +426,7 @@ class complainceKPISnTrends(APIView):
                                 total_reviews = 0
                                 review_data = data.filter(created_at__date=date['created_at__date'])
                                 if review_data.exists():
-                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                 trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
                     if customFilterType == 2:
                         datewise_data = data.values('created_at__year','created_at__week').distinct().order_by('created_at__year','created_at__week')
@@ -434,7 +434,7 @@ class complainceKPISnTrends(APIView):
                             total_reviews = 0
                             review_data = data.filter(created_at__year=date['created_at__year'],created_at__week=date['created_at__week'])
                             if review_data.exists():
-                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                             trend_data.append([f"{date['created_at__year']} Week {date['created_at__week']}", total_reviews])
                     if customFilterType == 3:
                         datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
@@ -442,7 +442,7 @@ class complainceKPISnTrends(APIView):
                             total_reviews = 0
                             review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
                             if review_data.exists():
-                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                             trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
                     if customFilterType == 4:
                         datewise_data = data.values('created_at__year','created_at__quarter').distinct().order_by('created_at__year','created_at__quarter')
@@ -450,7 +450,7 @@ class complainceKPISnTrends(APIView):
                             total_reviews = 0
                             review_data = data.filter(created_at__year=date['created_at__year'],created_at__quarter=date['created_at__quarter'])
                             if review_data.exists():
-                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                             trend_data.append([f"{date['created_at__year']} Quarter {date['created_at__quarter']}", total_reviews])
                     if customFilterType == 5:
                         datewise_data = data.values('created_at__year').distinct().order_by('created_at__year')
@@ -458,7 +458,7 @@ class complainceKPISnTrends(APIView):
                             total_reviews = 0
                             review_data = data.filter(created_at__year=date['created_at__year'])
                             if review_data.exists():
-                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                             trend_data.append([f"{date['created_at__year']}", total_reviews])  
                 return Response(
                     {
@@ -513,7 +513,7 @@ class complainceKPISnTrends(APIView):
                             total_reviews = 0
                             review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
                             if review_data.exists():
-                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                             trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
                     if filterType == 2:
                         data = data.filter(created_at__year=monthyear, created_at__month=month)
@@ -535,7 +535,7 @@ class complainceKPISnTrends(APIView):
                             total_reviews = 0
                             review_data = data.filter(created_at__date=date['created_at__date'])
                             if review_data.exists():
-                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                             trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
                     if filterType == 3:
                         data = data.filter(created_at__date=date)
@@ -557,7 +557,7 @@ class complainceKPISnTrends(APIView):
                             total_reviews = 0
                             review_data = data.filter(created_at__date=date['created_at__date'],created_at__hour=date['created_at__hour'])
                             if review_data.exists():
-                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                             trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__date']} {date['created_at__hour']}", '%Y-%m-%d %H'), "%I %p"), total_reviews])
                     if filterType == 4:
                         date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
@@ -582,7 +582,7 @@ class complainceKPISnTrends(APIView):
                                     total_reviews = 0
                                     review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
                                     if review_data.exists():
-                                        total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                        total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                     trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
                             else:
                                 datewise_data = data.values('created_at__date').distinct().order_by('created_at__date')
@@ -590,7 +590,7 @@ class complainceKPISnTrends(APIView):
                                     total_reviews = 0
                                     review_data = data.filter(created_at__date=date['created_at__date'])
                                     if review_data.exists():
-                                        total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                        total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                     trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
                         if customFilterType == 2:
                             datewise_data = data.values('created_at__year','created_at__week').distinct().order_by('created_at__year','created_at__week')
@@ -598,7 +598,7 @@ class complainceKPISnTrends(APIView):
                                 total_reviews = 0
                                 review_data = data.filter(created_at__year=date['created_at__year'],created_at__week=date['created_at__week'])
                                 if review_data.exists():
-                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                 trend_data.append([f"{date['created_at__year']} Week {date['created_at__week']}", total_reviews])
                         if customFilterType == 3:
                             datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
@@ -606,7 +606,7 @@ class complainceKPISnTrends(APIView):
                                 total_reviews = 0
                                 review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
                                 if review_data.exists():
-                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                 trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
                         if customFilterType == 4:
                             datewise_data = data.values('created_at__year','created_at__quarter').distinct().order_by('created_at__year','created_at__quarter')
@@ -614,7 +614,7 @@ class complainceKPISnTrends(APIView):
                                 total_reviews = 0
                                 review_data = data.filter(created_at__year=date['created_at__year'],created_at__quarter=date['created_at__quarter'])
                                 if review_data.exists():
-                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                 trend_data.append([f"{date['created_at__year']} Quarter {date['created_at__quarter']}", total_reviews])
                         if customFilterType == 5:
                             datewise_data = data.values('created_at__year').distinct().order_by('created_at__year')
@@ -622,7 +622,7 @@ class complainceKPISnTrends(APIView):
                                 total_reviews = 0
                                 review_data = data.filter(created_at__year=date['created_at__year'])
                                 if review_data.exists():
-                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                 trend_data.append([f"{date['created_at__year']}", total_reviews])               
                         
                             
@@ -677,7 +677,7 @@ class complainceKPISnTrends(APIView):
                             total_reviews = 0
                             review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
                             if review_data.exists():
-                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                             trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
                     if filterType == 2:
                         data = data.filter(created_at__year=monthyear, created_at__month=month)
@@ -699,7 +699,7 @@ class complainceKPISnTrends(APIView):
                             total_reviews = 0
                             review_data = data.filter(created_at__date=date['created_at__date'])
                             if review_data.exists():
-                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                             trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
                     if filterType == 3:
                         data = data.filter(created_at__date=date)
@@ -721,7 +721,7 @@ class complainceKPISnTrends(APIView):
                             total_reviews = 0
                             review_data = data.filter(created_at__date=date['created_at__date'],created_at__hour=date['created_at__hour'])
                             if review_data.exists():
-                                total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                             trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__date']} {date['created_at__hour']}", '%Y-%m-%d %H'), "%I %p"), total_reviews])
                     if filterType == 4:
                         date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
@@ -746,7 +746,7 @@ class complainceKPISnTrends(APIView):
                                     total_reviews = 0
                                     review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
                                     if review_data.exists():
-                                        total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                        total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                     trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
                             else:
                                 datewise_data = data.values('created_at__date').distinct().order_by('created_at__date')
@@ -754,7 +754,7 @@ class complainceKPISnTrends(APIView):
                                     total_reviews = 0
                                     review_data = data.filter(created_at__date=date['created_at__date'])
                                     if review_data.exists():
-                                        total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                        total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                     trend_data.append([date['created_at__date'].strftime('%d %b %Y'), total_reviews])
                         if customFilterType == 2:
                             datewise_data = data.values('created_at__year','created_at__week').distinct().order_by('created_at__year','created_at__week')
@@ -762,7 +762,7 @@ class complainceKPISnTrends(APIView):
                                 total_reviews = 0
                                 review_data = data.filter(created_at__year=date['created_at__year'],created_at__week=date['created_at__week'])
                                 if review_data.exists():
-                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                 trend_data.append([f"{date['created_at__year']} Week {date['created_at__week']}", total_reviews])
                         if customFilterType == 3:
                             datewise_data = data.values('created_at__year','created_at__month').distinct().order_by('created_at__year','created_at__month')
@@ -770,7 +770,7 @@ class complainceKPISnTrends(APIView):
                                 total_reviews = 0
                                 review_data = data.filter(created_at__year=date['created_at__year'],created_at__month=date['created_at__month'])
                                 if review_data.exists():
-                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                 trend_data.append([datetime.strftime(datetime.strptime(f"{date['created_at__year']}-{date['created_at__month']}", '%Y-%m') , '%b %Y'), total_reviews])
                         if customFilterType == 4:
                             datewise_data = data.values('created_at__year','created_at__quarter').distinct().order_by('created_at__year','created_at__quarter')
@@ -778,7 +778,7 @@ class complainceKPISnTrends(APIView):
                                 total_reviews = 0
                                 review_data = data.filter(created_at__year=date['created_at__year'],created_at__quarter=date['created_at__quarter'])
                                 if review_data.exists():
-                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                 trend_data.append([f"{date['created_at__year']} Quarter {date['created_at__quarter']}", total_reviews])
                         if customFilterType == 5:
                             datewise_data = data.values('created_at__year').distinct().order_by('created_at__year')
@@ -786,7 +786,7 @@ class complainceKPISnTrends(APIView):
                                 total_reviews = 0
                                 review_data = data.filter(created_at__year=date['created_at__year'])
                                 if review_data.exists():
-                                    total_reviews = review_data.aggregate(total_reviews=Sum('id'))['total_reviews']
+                                    total_reviews = review_data.aggregate(total_reviews=Count('id'))['total_reviews']
                                 trend_data.append([f"{date['created_at__year']}", total_reviews])  
                     return Response(
                         {

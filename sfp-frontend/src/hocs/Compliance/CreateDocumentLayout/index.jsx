@@ -1,6 +1,6 @@
-import { verifyUser, refreshUser } from '@/actions/auth'
-import DocumentSideBar from '@/components/Compliance/DocumentSidebar'
-import Navbar from '@/components/Navbar'
+// import { verifyUser, refreshUser } from '@/actions/auth'
+import DocumentSideBar from '../../../components/Compliance/DocumentSidebar'
+import Navbar from '../../../components/Navbar'
 import Head from 'next/head'
 import React, { useEffect } from 'react'
 
