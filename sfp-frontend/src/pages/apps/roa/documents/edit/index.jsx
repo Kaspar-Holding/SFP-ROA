@@ -17,13 +17,17 @@ import SectionAAInfo from './sectionAAInfo'
 import SectionAFICA from './sectionAFICA'
 import SectionAReplacements from './sectionAReplacements'
 import SectionB from './sectionB'
+import Loader from '../../../../../hocs/Loader'
+import EditROALayout from '../../../../../hocs/EditROALayout'
 
-const CreateROA = () => {
+const EditROA = () => {
     
     const router = useRouter()
     const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
     const user = useSelector(state=>state.auth.user)
-    
+    const formId = router?.query?.fId
+    const [Loaded, setLoaded] = useState(false)
+
     const Date_Var = new Date()
     const CurrentData = Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + (Date_Var.getDate())).slice(-2)
     const [FormData, setFormData] = useState({
@@ -44,16 +48,7 @@ const CreateROA = () => {
         clientBackgroundInfo : ""
     })
     // console.log(FormData)
-    const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
-    const [letterOfIntroductionAccessVisibility, setletterOfIntroductionAccessVisibility] = useState(false)
-    const [FicaVisibility, setFicaVisibility] = useState(false)
-    const [backgroundInfoVisibility, setbackgroundInfoVisibility] = useState(false)
     
-    const [errorData, setErrorData] = useState({
-        status: "",
-        message: "",
-        errors: []
-    })
     // console.log(localStorage.getItem('access'))
     const emailValidation = () =>{
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -71,19 +66,17 @@ const CreateROA = () => {
         }
         return true
     }
-    const [SubmissionErrorVisibilty, setSubmissionErrorVisibilty] = useState("none")
     
     const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
-   
-    const [SuccessMessage, setSuccessMessage] = useState("")
-    const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
-    const createROAForm= async(data) => {
-        const config = {
-            headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json',
-            }
+    // API Config
+    const config = {
+        headers: {
+            'Content-Type' : 'application/json',
+            'Accept' : 'application/json',
         }
+    }
+
+    const updateROAForm= async(data) => {
         const Body = JSON.stringify(data)
         try {
             const response = await axios.post(`/api/roa/create/`, Body ,config)
@@ -199,7 +192,7 @@ const CreateROA = () => {
         } else {
 
             if (emailValidation()){
-                createROAForm(FormData)
+                updateROAForm(FormData)
             }else{
                 if (step != 0 ){ 
                     setStep(0)
@@ -219,12 +212,34 @@ const CreateROA = () => {
         }
     }
     
-    const backgroundEditorRef = useRef(null);
     const compulsoryAEditorRef = useRef(null);
-    const compulsoryBEditorRef = useRef(null);
     const FICAEditorRef = useRef(null);
     
+    
+    const LoadData = async (formId) => {
+        
+        setLoaded(true)
+        const Body = JSON.stringify({
+            fId: formId
+        })
+        try {
+            const response = await axios.post(
+                `/api/roa/form`,
+                Body,
+                config
+            )
+            setFormData(response?.data?.data)
 
+
+        } catch (error) {
+            
+        }
+        setLoaded(false)
+    }
+
+    useEffect(() => {
+        LoadData(formId)
+    }, []) 
 
     const [step, setStep] = useState(0);
 
@@ -238,72 +253,70 @@ const CreateROA = () => {
     return (
         <div>
             <Layout
-                title={"Create ROA Document"}
-                content={"Create ROA Document"}
+                title={"Edit ROA Document"}
+                content={"Edit ROA Document"}
             >
-                <CreateDocumentLayout
-                    appTitle={'Create ROA Document'}
-                    pageTitle={'Create ROA Document'}
+                <EditROALayout
+                    appTitle={'Edit ROA Document'}
+                    pageTitle={'Edit ROA Document'}
                     appName={'ROA'}
                     app={'roa'}
-                    dId={undefined}
                 >
-                    <div className='compliance-inital-card'>
-                        <div className='position-relative'>
-                            <div className='position-absolute top-0 start-50 translate-middle'>
-                                <p className='compliance-inital-card-header'>Create new Record of Advice Form</p>
-                            </div>
+                    <div className='roa-edit-card'>
+                        <div className='inital-card-header mx-5 text-center'>
+                            <b>Record of Advice</b>
+                        </div> 
+                        <div className=''>
                             <form onSubmit={e => onSubmit(e)}>
-                                <br/>
-                                <div className={'inital-card-header mx-5'}>     
-                                    <div className='row'>
-                                        <div className='col-lg-1'>   
-                                        </div> 
-                                        <div className='col-lg-10'>   
-                                            <hr/>
-                                            <div className='row'>
-                                                <div className='col-lg-2'>
-                                                    <button type='button'
-                                                        className={step === 0 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
-                                                        onClick={()=>{setStep(0)}}
-                                                    >Inital Information</button>
-                                                </div>
-                                                <div className='col-lg-2'>
-                                                    <button type='button'
-                                                        className={step === 1 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
-                                                        onClick={()=>{setStep(1)}}
-                                                    >Section A Part 1</button>
-                                                </div>
-                                                <div className='col-lg-2'>
-                                                    <button type='button'
-                                                        className={step === 2 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
-                                                        onClick={()=>{setStep(2)}}
-                                                    >Section A: Part 2</button>
-                                                </div>
-                                                <div className='col-lg-2'>
-                                                    <button type='button'
-                                                        className={step === 3 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
-                                                        onClick={()=>{setStep(3)}}
-                                                    >Replacements</button>
-                                                </div>
-                                                <div className='col-lg-2'>
-                                                    <button type='button'
-                                                        className={step === 4 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
-                                                        onClick={()=>{setStep(4)}}
-                                                    >FICA</button>
-                                                </div>
-                                                <div className='col-lg-2'>
-                                                    <button type='button'
-                                                        className={step === 5 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
-                                                        onClick={()=>{setStep(5)}}
-                                                    >Section B</button>
-                                                </div>
-                                            </div>
-                                            <hr/>
-                                        </div> 
-                                        <div className='col-lg-1'>   
-                                        </div> 
+                                <div className='row'>
+                                    <div className='col-lg-1'>   
                                     </div> 
+                                    <div className='col-lg-10'> 
+                                        <hr/>
+                                        <div className='row'>
+                                            <div className='col-lg-2'>
+                                                <button type='button'
+                                                    className={step === 0 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
+                                                    onClick={()=>{setStep(0)}}
+                                                >Inital Information</button>
+                                            </div>
+                                            <div className='col-lg-2'>
+                                                <button type='button'
+                                                    className={step === 1 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
+                                                    onClick={()=>{setStep(1)}}
+                                                >Section A Part 1</button>
+                                            </div>
+                                            <div className='col-lg-2'>
+                                                <button type='button'
+                                                    className={step === 2 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
+                                                    onClick={()=>{setStep(2)}}
+                                                >Section A: Part 2</button>
+                                            </div>
+                                            <div className='col-lg-2'>
+                                                <button type='button'
+                                                    className={step === 3 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
+                                                    onClick={()=>{setStep(3)}}
+                                                >Replacements</button>
+                                            </div>
+                                            <div className='col-lg-2'>
+                                                <button type='button'
+                                                    className={step === 4 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
+                                                    onClick={()=>{setStep(4)}}
+                                                >FICA</button>
+                                            </div>
+                                            <div className='col-lg-2'>
+                                                <button type='button'
+                                                    className={step === 5 ? "btn btn-primary btn-sfp w-100" : "btn btn-outline-primary btn-outline-sfp w-100"}
+                                                    onClick={()=>{setStep(5)}}
+                                                >Section B</button>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                    </div> 
+                                    <div className='col-lg-1'>   
+                                    </div> 
+                                </div> 
+                                <div className={'inital-card-header mx-5'}>     
                                     {step === 0 && <InitialInfo user={user} FormData={FormData} onChange={onChange} nextStep={nextStep} />}
                                     <div className='row'>
                                         <div className='col-lg-1'>   
@@ -312,49 +325,6 @@ const CreateROA = () => {
                                             {
                                                 step != 0 ?
                                                 <>
-                                                    <div className='row'>
-                                                        <div className="col-lg-6 mb-3">
-                                                            <div className='row'>
-                                                                <div className='col-4'>
-                                                                    <label className="form-label roa-label"><strong>Client Name:</strong></label>
-                                                                </div>
-                                                                <div className='col-8'>
-                                                                    <label className="form-label roa-label">{FormData?.clientName}</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-lg-6 mb-3">
-                                                            <div className='row'>
-                                                                <div className='col-4'>
-                                                                    <label className="form-label roa-label"><strong>Client ID:</strong></label>
-                                                                </div>
-                                                                <div className='col-8'>
-                                                                    <label className="form-label roa-label">{FormData?.clientIdNumber}</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-lg-6 mb-3">
-                                                            <div className='row'>
-                                                                <div className='col-4'>
-                                                                    <label className="form-label roa-label"><strong>Client Email:</strong></label>
-                                                                </div>
-                                                                <div className='col-8'>
-                                                                    <label className="form-label roa-label">{FormData?.clientEmail}</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-lg-6 mb-3">
-                                                            <div className='row'>
-                                                                <div className='col-4'>
-                                                                    <label className="form-label roa-label"><strong>Client Phone:</strong></label>
-                                                                </div>
-                                                                <div className='col-8'>
-                                                                    <label className="form-label roa-label">{FormData?.clientPhoneNumber}</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr/>
                                                 </>
                                                 :<></>
                                             }  
@@ -372,7 +342,7 @@ const CreateROA = () => {
                                             {step === 4 && <SectionAReplacements user={user} FormData={FormData} setFormData={setFormData} onChange={onChange} nextStep={nextStep}  prevStep={prevStep} FICAEditorRef={FICAEditorRef} />}
                                             {step === 5 && <SectionB user={user} FormData={FormData} setFormData={setFormData} onChange={onChange} prevStep={prevStep} FICAEditorRef={FICAEditorRef} />}
                                             <hr/>
-                                            <button className='btn btn-primary btn-sfp w-100' type="submit">Create Form <span><FontAwesomeIcon width={"20px"} icon={faCheck} /></span></button>
+                                            <button className='btn btn-primary btn-sfp w-100' type="submit">Update Form <span><FontAwesomeIcon width={"20px"} icon={faCheck} /></span></button>
 
                                         </div> 
                                         <div className='col-lg-1'>   
@@ -383,10 +353,10 @@ const CreateROA = () => {
                         </div>
                     </div>
 
-                </CreateDocumentLayout>
+                </EditROALayout>
             </Layout>
         </div>
     )
 }
 
-export default CreateROA
+export default EditROA

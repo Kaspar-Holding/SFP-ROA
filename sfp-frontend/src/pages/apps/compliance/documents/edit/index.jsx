@@ -1,6 +1,4 @@
-import DashboardLayout from '@/hocs/DashboardLayout'
-import DocumentLayout from '@/hocs/Compliance/CreateDocumentLayout'
-import Layout from '@/hocs/Layout'
+import Layout from '../../../../../hocs/Layout'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import AsyncSelect from 'react-select'
@@ -8,9 +6,9 @@ import Select from 'react-select'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
-import CompleteDocumentLayout from '@/hocs/Compliance/CompleteDocumentLayout'
+import CompleteDocumentLayout from '../../../../../hocs/Compliance/CompleteDocumentLayout'
 
-import Loader from '@/hocs/Loader'
+import Loader from '../../../../../hocs/Loader'
 
 const EditDocument = () => {
     
