@@ -4,10 +4,38 @@ import { useLocation } from 'react-router-dom';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
 import axios from 'axios';
-import { Editor } from '@tinymce/tinymce-react'
+// import { Editor } from '@tinymce/tinymce-react'
 import { connect } from 'react-redux'
 import {LogOut} from '../../Actions/Auth'
+
+import ReactQuill from 'react-quill';
+import "react-quill/dist/quill.snow.css"
 const GapCover = ({user, LogOut}) => {
+
+    
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+  
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+  
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+  
+  
+            ['clean']  
+        ],
+    };
+
+    const formats = [];
     const location = useLocation();
     const { state } = location;
 
@@ -337,7 +365,19 @@ const GapCover = ({user, LogOut}) => {
                         </div>
                         <div className="col-12">
                             {/* <textarea maxLength={1000} spellCheck="true" id="GP_Benefits" onChange={(e) => {onChange(e)}} value={FormData['GP_Benefits']}  name="GP_Benefits"  className="form-control" placeholder="Details"  aria-describedby="" style={{width:"900px",height:"80px"}} /> */}
-                            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                            <ReactQuill
+                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                value={FormData?.GP_Benefits}
+                                onChange={(value)=>{ setFormData({...FormData, ['GP_Benefits']: value })}}
+                                onBlur={(e)=>{onFieldBlur(e)}}
+                                modules={modules}
+                                formats={formats}
+                                style={{
+                                    height: '200px', // Set the desired height here
+                                }}
+                                placeholder='Details'
+                            />
+                            {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                 value={FormData['GP_Benefits']}
                                 // setFormData({...FormData, [e.target.name]: e.target.value})
                                 onEditorChange={(e)=>{ setFormData({...FormData, ["GP_Benefits"]: e}) }}
@@ -362,7 +402,7 @@ const GapCover = ({user, LogOut}) => {
                                     freeTiny.style.display = 'none';
                                     }
                                 }}
-                            />
+                            /> */}
                         </div>
                     </div>
                 </div>
@@ -769,7 +809,19 @@ const GapCover = ({user, LogOut}) => {
                         </div>
                         <div className="col-12">
                             {/* <textarea maxLength={1000} spellCheck="true"  id="GP_Other_Exclusions" onChange={(e) => {onChange(e)}} value={FormData['GP_Other_Exclusions']}  name="GP_Other_Exclusions" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  /> */}
-                            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                            <ReactQuill
+                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                value={FormData?.GP_Other_Exclusions}
+                                onChange={(value)=>{ setFormData({...FormData, ['GP_Other_Exclusions']: value })}}
+                                onBlur={(e)=>{onFieldBlur(e)}}
+                                modules={modules}
+                                formats={formats}
+                                style={{
+                                    height: '200px', // Set the desired height here
+                                }}
+                                placeholder='Discuss other exclusions'
+                            />
+                            {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                 value={FormData['GP_Other_Exclusions']}
                                 // setFormData({...FormData, [e.target.name]: e.target.value})
                                 onEditorChange={(e)=>{ setFormData({...FormData, ["GP_Other_Exclusions"]: e}) }}
@@ -794,7 +846,7 @@ const GapCover = ({user, LogOut}) => {
                                     freeTiny.style.display = 'none';
                                     }
                                 }}
-                            />
+                            /> */}
                         </div>
                     </div>
                     <hr/>
@@ -805,7 +857,19 @@ const GapCover = ({user, LogOut}) => {
                         </div>
                         <div className="col-12">
                             {/* <textarea maxLength={1000} spellCheck="true"  id="GP_GeneralComments" onChange={(e) => {onChange(e)}} value={FormData['GP_GeneralComments']}  name="GP_GeneralComments" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  /> */}
-                            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                            <ReactQuill
+                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                value={FormData?.GP_GeneralComments}
+                                onChange={(value)=>{ setFormData({...FormData, ['GP_GeneralComments']: value })}}
+                                onBlur={(e)=>{onFieldBlur(e)}}
+                                modules={modules}
+                                formats={formats}
+                                style={{
+                                    height: '200px', // Set the desired height here
+                                }}
+                                placeholder="Discuss other exclusions"
+                            />
+                            {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                 value={FormData['GP_GeneralComments']}
                                 // setFormData({...FormData, [e.target.name]: e.target.value})
                                 onEditorChange={(e)=>{ setFormData({...FormData, ["GP_GeneralComments"]: e}) }}
@@ -830,7 +894,7 @@ const GapCover = ({user, LogOut}) => {
                                     freeTiny.style.display = 'none';
                                     }
                                 }}
-                            />
+                            /> */}
                         </div>
                     </div>
                     <hr/>

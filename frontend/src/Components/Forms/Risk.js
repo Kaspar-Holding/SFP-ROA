@@ -8,10 +8,38 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 // import './Header.css';
-import { Editor, tinyMCE } from '@tinymce/tinymce-react'
+// import { Editor, tinyMCE } from '@tinymce/tinymce-react'
+
+import ReactQuill from 'react-quill';
+import "react-quill/dist/quill.snow.css"
 import {LogOut} from '../../Actions/Auth'
-const Risk = ({user, LogOut}) =>
-{
+const Risk = ({user, LogOut}) => {
+  
+  
+    const modules = {
+      toolbar: [
+          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+          [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+          [{ 'font': [] }],
+          [{ 'align': [] }],
+
+          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['blockquote', 'code-block'],
+
+          [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+          [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+          [{ 'direction': 'rtl' }],                         // text direction
+
+
+          ['clean']  
+      ],
+    };
+
+    const formats = [
+    ];
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
     const [backgroundInfoVisibility2, setbackgroundInfoVisibility2] = useState(false)
     const [backgroundInfoVisibility3, setbackgroundInfoVisibility3] = useState(false)
@@ -799,7 +827,19 @@ const Risk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.RP_DC_Comments}
+            onChange={(value)=>{ setFormData({...FormData, ['RP_DC_Comments']: value })}}
+            onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '200px', // Set the desired height here
+            }}
+        />
+        {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           onInit={(evt, editor) => RP_DC_CommentsRef.current = editor}
           value={FormData['RP_DC_Comments']}
           onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DC_Comments']: RP_DC_CommentsRef.current.getContent() }) }}
@@ -820,7 +860,7 @@ const Risk = ({user, LogOut}) =>
               'removeformat',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-      />
+      /> */}
       </div>
 
     </div>  
@@ -1135,7 +1175,19 @@ const Risk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.RP_DiC_Comments}
+            onChange={(value)=>{ setFormData({...FormData, ['RP_DiC_Comments']: value })}}
+            onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '200px', // Set the desired height here
+            }}
+        />
+        {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           onInit={(evt, editor) => RP_DiC_CommentsRef.current = editor}
           value={FormData['RP_DiC_Comments']}
           onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DiC_Comments']: RP_DiC_CommentsRef.current.getContent() }) }}
@@ -1156,7 +1208,7 @@ const Risk = ({user, LogOut}) =>
               'removeformat',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-      />
+      /> */}
       </div>
 
     </div>  
@@ -1407,7 +1459,19 @@ const Risk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.RP_DrC_Comments}
+            onChange={(value)=>{ setFormData({...FormData, ['RP_DrC_Comments']: value })}}
+            onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '200px', // Set the desired height here
+            }}
+        />
+        {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           onInit={(evt, editor) => RP_DrC_CommentsRef.current = editor}
           value={FormData['RP_DrC_Comments']}
           onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DrC_Comments']: RP_DrC_CommentsRef.current.getContent() }) }}
@@ -1428,7 +1492,7 @@ const Risk = ({user, LogOut}) =>
               'removeformat',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
       </div>
 
     </div>  
@@ -1471,7 +1535,21 @@ const Risk = ({user, LogOut}) =>
         </>: 
          null
     }
-    <Editor
+    
+    <ReactQuill
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.RP_LC_FinancialSolutions}
+        onChange={(value)=>{ setFormData({...FormData, ['RP_LC_FinancialSolutions']: value })}}
+        onFocus={(e)=>{backgroundInfo_onFocus1()}}
+        onBlur={(e)=>{backgroundInfo_onBlur1();onFieldBlur(e)}}                      
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '200px', // Set the desired height here
+        }}
+        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
+    />
+    {/* <Editor
           onInit={(evt, editor) => RP_LC_FinancialSolutionsRef.current = editor}
           value={FormData['RP_LC_FinancialSolutions']}
           onEditorChange={(e)=>{ setFormData({...FormData, ['RP_LC_FinancialSolutions']: RP_LC_FinancialSolutionsRef.current.getContent() }) }}
@@ -1495,7 +1573,7 @@ const Risk = ({user, LogOut}) =>
               'removeformat',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
 
 
 <p className="text-start"><u>Disability Cover:</u></p>
@@ -1518,7 +1596,21 @@ const Risk = ({user, LogOut}) =>
         </>: 
          null
     }
-    <Editor
+    
+    <ReactQuill
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.RP_DiC_FinancialSolutions}
+        onChange={(value)=>{ setFormData({...FormData, ['RPDiCC_FinancialSolutions']: value })}}
+        onFocus={(e)=>{backgroundInfo_onFocus2()}}
+        onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}                      
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '200px', // Set the desired height here
+        }}
+        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
+    />
+    {/* <Editor
           onInit={(evt, editor) => RP_DiC_FinancialSolutionsRef.current = editor}
           value={FormData['RP_DiC_FinancialSolutions']}
           onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DiC_FinancialSolutions']: RP_DiC_FinancialSolutionsRef.current.getContent() }) }}
@@ -1542,7 +1634,7 @@ const Risk = ({user, LogOut}) =>
               'removeformat',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
 
 
 <p className="text-start"><u>Dread Disease Cover:</u></p>
@@ -1566,7 +1658,21 @@ const Risk = ({user, LogOut}) =>
         </>: 
          null
     }
-    <Editor
+    
+    <ReactQuill
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.RP_DrC_FinancialSolutionsRef}
+        onChange={(value)=>{ setFormData({...FormData, ['RP_DrC_FinancialSolutionsRef']: value })}}
+        onFocus={(e)=>{backgroundInfo_onFocus3()}}
+        onBlur={(e)=>{backgroundInfo_onBlur3();onFieldBlur(e)}}                      
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '200px', // Set the desired height here
+        }}
+        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
+    />
+    {/* <Editor
       onInit={(evt, editor) => RP_DrC_FinancialSolutionsRef.current = editor}
       value={FormData['RP_DrC_FinancialSolutions']}
       onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DrC_FinancialSolutions']: RP_DrC_FinancialSolutionsRef.current.getContent() }) }}
@@ -1590,7 +1696,7 @@ const Risk = ({user, LogOut}) =>
           'removeformat',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
 
 
 <h5 className="text-start " ><b>SECTION D:</b></h5> 
@@ -1620,7 +1726,21 @@ const Risk = ({user, LogOut}) =>
         </>: 
          null
     }
-    <Editor 
+    
+    <ReactQuill
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.RP_AltS_1}
+        onChange={(value)=>{ setFormData({...FormData, ['RP_AltS_1']: value })}}
+        onFocus={(e)=>{backgroundInfo_onFocus4()}}
+        onBlur={(e)=>{backgroundInfo_onBlur4();onFieldBlur(e)}}                      
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '200px', // Set the desired height here
+        }}
+        placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.`}
+    />
+    {/* <Editor 
       onInit={(evt, editor) => RP_AltS_1Ref.current = editor}
       value={FormData['RP_AltS_1']}
       onEditorChange={(e)=>{ setFormData({...FormData, ['RP_AltS_1']: RP_AltS_1Ref.current.getContent() }) }}
@@ -1644,7 +1764,7 @@ const Risk = ({user, LogOut}) =>
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     
 <br/>
 
@@ -1666,7 +1786,21 @@ const Risk = ({user, LogOut}) =>
          null
     }
     
-    <Editor 
+    <ReactQuill
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.RP_AltS_2}
+        onChange={(value)=>{ setFormData({...FormData, ['RP_AltS_2']: value })}}
+        onFocus={(e)=>{backgroundInfo_onFocus5();onFieldBlur(e)}}
+        onBlur={(e)=>{backgroundInfo_onBlur5();onFieldBlur(e)}}
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '200px', // Set the desired height here
+        }}
+        placeholder={'2. Identify the type of product or product provider which was considered but not selected and motivate.'}
+    />
+    
+    {/* <Editor 
       onInit={(evt, editor) => RP_AltS_2Ref.current = editor}
       value={FormData['RP_AltS_2']}
       onEditorChange={(e)=>{ setFormData({...FormData, ['RP_AltS_2']: RP_AltS_2Ref.current.getContent() }) }}
@@ -1690,7 +1824,7 @@ const Risk = ({user, LogOut}) =>
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
 
     <br/>
     {
@@ -1710,8 +1844,20 @@ const Risk = ({user, LogOut}) =>
         </>: 
          null
     }
-    
-    <Editor 
+    <ReactQuill
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.RP_AltS_3}
+        onChange={(value)=>{ setFormData({...FormData, ['RP_AltS_3']: value })}}                
+        onFocus={(e)=>{backgroundInfo_onFocus6()}}
+        onBlur={(e)=>{backgroundInfo_onBlur6();onFieldBlur(e)}}                      
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '200px', // Set the desired height here
+        }}
+        placeholder='3. Identify the type of product or product provider which was considered but not selected and motivate.'
+    />
+    {/* <Editor 
       onInit={(evt, editor) => RP_AltS_3Ref.current = editor}
       value={FormData['RP_AltS_3']}
       onEditorChange={(e)=>{ setFormData({...FormData, ['RP_AltS_3']: RP_AltS_3Ref.current.getContent() }) }}
@@ -1735,7 +1881,7 @@ const Risk = ({user, LogOut}) =>
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <h5 className="text-start " ><b>SECTION E:</b></h5> 
     {
       ProductTaken.length === 0 ?
@@ -2203,7 +2349,20 @@ const Risk = ({user, LogOut}) =>
                   </>: 
                   null
               }
-              <Editor
+              <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={key?.ProductReasons}
+                  onChange={(value)=>{ on_ProductTaken_Value_Change("ProductReasons", i, value)}}             
+                  onFocus={(e)=>{backgroundInfo_onFocus7()}}
+                  onBlur={(e)=>{backgroundInfo_onBlur7();onFieldBlur(e)}} 
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '200px', // Set the desired height here
+                  }}
+                  placeholder= 'Motivate why the chosen product was recommended to best suit your client’s needs.'
+              />
+              {/* <Editor
                   onInit={(evt, editor) => ProductReasonsRef.current = editor}
                   value={key.ProductReasons}
                   id={"productTaken"+i}
@@ -2228,7 +2387,7 @@ const Risk = ({user, LogOut}) =>
                       'removeformat | wordcount ',
                       content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                   }}
-                />
+                /> */}
             <hr/>
             <p className="text-start">The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
               
@@ -2248,7 +2407,21 @@ const Risk = ({user, LogOut}) =>
                   </>: 
                   null
               }              
-              <Editor 
+              
+              <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={key?.ProductMaterialAspects}
+                  onChange={(value)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, value)}}    
+                  onFocus={(e)=>{backgroundInfo_onFocus8()}}
+                  onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}}                      
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '200px', // Set the desired height here
+                  }}
+                  placeholder= 'Explain any deviations from your recommendation and the implications thereof.'
+              />
+              {/* <Editor 
                   onInit={(evt, editor) => productProductMaterialAspectsRef.current = editor}
                   value={key.ProductMaterialAspects}
                   onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, newText)}}
@@ -2271,7 +2444,7 @@ const Risk = ({user, LogOut}) =>
                       'removeformat | wordcount ',
                       content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                   }}
-                />
+                /> */}
             <br/>
               {
                   backgroundInfoVisibility9 ? 
@@ -2288,8 +2461,22 @@ const Risk = ({user, LogOut}) =>
                   </div>
                   </>: 
                   null
-              }                          
-              <Editor 
+              }     
+              
+              <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={key?.ProductDetails}
+                  onChange={(value)=>{ on_ProductTaken_Value_Change("ProductDetails", i, value)}}             
+                  onFocus={(e)=>{backgroundInfo_onFocus9()}}
+                  onBlur={(e)=>{backgroundInfo_onBlur9();onFieldBlur(e)}} 
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '200px', // Set the desired height here
+                  }}
+                  placeholder= 'The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?'
+              />                     
+              {/* <Editor 
                 onInit={(evt, editor) => productProductDetailsRef.current = editor}
                 value={key.ProductDetails}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ProductDetails", i, e)}}
@@ -2312,7 +2499,7 @@ const Risk = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                   }}
-                />
+                /> */}
 
               <br/>
               {
@@ -2336,8 +2523,20 @@ const Risk = ({user, LogOut}) =>
                   </>: 
                   null
               }
-                          
-              <Editor
+              <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.ExecutorFee}
+                onChange={(value)=>{ on_ProductTaken_Value_Change("ExecutorFee", i, value )}}
+                onFocus={(e)=>{backgroundInfo_onFocus10()}}
+                onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}}        
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '200px', // Set the desired height here
+                  }}
+                placeholder={`Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n`}               
+              />     
+              {/* <Editor
                 onInit={(evt, editor) => productExecutorFeeRef.current = editor}
                 value={key.ExecutorFee}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ExecutorFee", i, e)}}
@@ -2360,7 +2559,7 @@ const Risk = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
 
             <br/>
               {
@@ -2380,7 +2579,21 @@ const Risk = ({user, LogOut}) =>
                   </>: 
                   null
               }
-              <Editor 
+              
+              <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={key?.NominationOfBeneficiaries}
+                  onChange={(value)=>{ on_ProductTaken_Value_Change("NominationOfBeneficiaries", i, value)}}             
+                  onFocus={(e)=>{backgroundInfo_onFocus11()}}
+                  onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}} 
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '200px', // Set the desired height here
+                  }}
+                  placeholder= 'Record discussion with regard to nomination of beneficiaries or cessionaries'
+              />  
+              {/* <Editor 
                 onInit={(evt, editor) => productNominationOfBeneficiariesRef.current = editor}
                 value={key.NominationOfBeneficiaries}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("NominationOfBeneficiaries", i, e)}}
@@ -2403,7 +2616,7 @@ const Risk = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
 
             <br/>
               {
@@ -2427,7 +2640,26 @@ const Risk = ({user, LogOut}) =>
                   </>: 
                   null
               }
-             <Editor 
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.InformationExplained}
+                onChange={(value)=>{ on_ProductTaken_Value_Change("InformationExplained", i, value)}}             
+                onFocus={(e)=>{backgroundInfo_onFocus12()}}
+                onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}} 
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '200px', // Set the desired height here
+                }}
+                placeholder={
+                  `Discuss the following information which has been explained to client. \n
+                  General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.) \n
+                  Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings) \n
+                  Waiting periods \n
+                  Cooling off period`
+                }
+            />  
+             {/* <Editor 
                 onInit={(evt, editor) => productInformationExplainedRef.current = editor}
                 value={key.InformationExplained}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("InformationExplained", i, e)}}
@@ -2454,7 +2686,7 @@ const Risk = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
                   <hr/>
               
             </>

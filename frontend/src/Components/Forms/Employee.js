@@ -6,10 +6,34 @@ import './Styles/CustomButton.css';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-import { Editor } from '@tinymce/tinymce-react'
+// import { Editor } from '@tinymce/tinymce-react'
 import {LogOut} from '../../Actions/Auth'
-const Employee = ({user, LogOut}) =>
-{
+import ReactQuill from 'react-quill';
+import "react-quill/dist/quill.snow.css"
+const Employee = ({user, LogOut}) =>{
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+  
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+  
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+  
+  
+            ['clean']  
+        ],
+    };
+
+    const formats = [];
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
     const [backgroundInfoVisibility2, setbackgroundInfoVisibility2] = useState(false)
     const [backgroundInfoVisibility3, setbackgroundInfoVisibility3] = useState(false)
@@ -938,7 +962,20 @@ const Employee = ({user, LogOut}) =>
                                     </>: 
                                     null
                                 }
-                                <Editor
+                                <ReactQuill
+                                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                                    value={FormData?.EB_BusB_CoverDetails}
+                                    onChange={(value)=>{ setFormData({...FormData, ['EB_BusB_CoverDetails']: value })}}
+                                    onFocus={(e)=>{backgroundInfo_onFocus1()}}
+                                    onBlur={(e)=>{backgroundInfo_onBlur1();onFieldBlur(e)}}
+                                    modules={modules}
+                                    formats={formats}
+                                    style={{
+                                        height: '200px', // Set the desired height here
+                                    }}
+                                    placeholder="Please enter the details here"
+                                />
+                                {/* <Editor
                                     value={FormData['EB_BusB_CoverDetails']}
                                     // setFormData({...FormData, [e.target.name]: e.target.value})
                                     onEditorChange={(e)=>{ setFormData({...FormData, ["EB_BusB_CoverDetails"]: e}) }}
@@ -964,7 +1001,7 @@ const Employee = ({user, LogOut}) =>
                                         freeTiny.style.display = 'none';
                                         }
                                     }}
-                                />
+                                /> */}
     <h5 className={
         state['advisor']['email'].includes('sfp') ? "text-start sfp-text" 
         : state['advisor']['email'].includes('fs4p') ? "text-start fs4p-text" 
@@ -1974,7 +2011,21 @@ Record the client's instructions, deviations and implications thereof.
         
         
         `}  aria-describedby=""  ></textarea> */}
-    <Editor
+        
+    <ReactQuill
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.EB_BusRB_AccidentBenefitReason}
+        onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_AccidentBenefitReason']: value })}}
+        onFocus={(e)=>{backgroundInfo_onFocus2()}}
+        onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '200px', // Set the desired height here
+        }}
+        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. \nRecord the client's instructions, deviations and implications thereof.`}
+    />
+    {/* <Editor
         value={FormData['EB_BusRB_AccidentBenefitReason']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_AccidentBenefitReason']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus2()}}
@@ -1997,7 +2048,7 @@ Record the client's instructions, deviations and implications thereof.
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-    />
+    /> */}
             <hr/>
             <p>Disability Cover:</p>
             <hr/>
@@ -2030,7 +2081,21 @@ Record the client's instructions, deviations and implications thereof.
         
         
         `}  aria-describedby=""  ></textarea> */}
-    <Editor
+      
+    <ReactQuill
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.EB_BusRB_DiC_Reason}
+        onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_DiC_Reason']: value })}}
+        onFocus={(e)=>{backgroundInfo_onFocus4()}}
+        onBlur={(e)=>{backgroundInfo_onBlur4();onFieldBlur(e)}}
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '200px', // Set the desired height here
+        }}
+        placeholder={`Explain the reasons why disability benefits were recommended to satisfy this need. \nRecord the client's instructions, deviations and implications thereof.`}
+    />
+    {/* <Editor
         value={FormData['EB_BusRB_DiC_Reason']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DiC_Reason']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus2()}}
@@ -2039,9 +2104,7 @@ Record the client's instructions, deviations and implications thereof.
         init={{
             selector: "textarea",
             browser_spellcheck : true,
-            placeholder: `
-                Explain the reasons why disability benefits were recommended to satisfy this need. 
-                Record the client's instructions, deviations and implications thereof.` ,
+            placeholder: `Explain the reasons why disability benefits were recommended to satisfy this need. \nRecord the client's instructions, deviations and implications thereof.` ,
             height: 300,
             menu: true,
             plugins: [
@@ -2055,7 +2118,7 @@ Record the client's instructions, deviations and implications thereof.
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-    />
+    /> */}
     <hr/>
     <p>Dread Disease Cover:</p>
     <hr/>
@@ -2090,7 +2153,21 @@ Record the client's instructions, deviations and implications thereof.
             
         
         `}  aria-describedby=""  ></textarea> */}
-    <Editor
+    <ReactQuill
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.EB_BusRB_DrC_Reason}
+        onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Reason']: value })}}
+        onFocus={(e)=>{backgroundInfo_onFocus3()}}
+        onBlur={(e)=>{backgroundInfo_onBlur3();onFieldBlur(e)}}
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '200px', // Set the desired height here
+        }}
+        placeholder={`Explain the reasons why dread disease cover was recommended to satisfy this need. 
+        Record the client's instructions, deviations and implications thereof.`}
+    />
+    {/* <Editor
         value={FormData['EB_BusRB_DrC_Reason']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Reason']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus3()}}
@@ -2114,7 +2191,7 @@ Record the client's instructions, deviations and implications thereof.
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-    />
+    /> */}
 <hr/>
 
         {
@@ -2142,7 +2219,20 @@ Record the client's instructions, deviations and implications thereof.
 
 
         `}  aria-describedby=""  ></textarea> */}
-        <Editor
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.EB_BusRB_DrC_Summary}
+            onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Summary']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus5()}}
+            onBlur={(e)=>{backgroundInfo_onBlur5();onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '200px', // Set the desired height here
+            }}
+            placeholder={`Summary of recommendations to address your identified needs.`}
+        />
+        {/* <Editor
         value={FormData['EB_BusRB_DrC_Summary']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Summary']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus5()}}
@@ -2165,7 +2255,7 @@ Record the client's instructions, deviations and implications thereof.
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-    />
+    /> */}
 
         <hr/>
 

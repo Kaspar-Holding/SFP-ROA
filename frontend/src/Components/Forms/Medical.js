@@ -5,9 +5,34 @@ import React, {useEffect, useState} from 'react';
 import './Styles/CustomNotification.css'
 import './Styles/CustomButton.css'
 import { connect } from 'react-redux';
-import { Editor, tinyMCE } from '@tinymce/tinymce-react'
+import ReactQuill from 'react-quill';
+import "react-quill/dist/quill.snow.css"
 import {LogOut} from '../../Actions/Auth'
 const Medical = ({user, LogOut}) => {
+
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+
+
+            ['clean']  
+        ],
+    };
+
+    const formats = [];
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionReason, setletterOfIntroductionReason] = useState("")
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -627,7 +652,26 @@ const Medical = ({user, LogOut}) => {
           •	needs that have been identified, 
           •	and relevant information 
       that formed the basis for the financial solution recommended`}  aria-describedby=""  ></textarea> */}
-      <Editor
+      
+      
+      <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.BackInfo}
+          onChange={(value)=>{ setFormData({...FormData, ['BackInfo']: value })}}
+          onFocus={(e)=>{backgroundInfo_onFocus()}}
+          onBlur={(e)=>{backgroundInfo_onBlur();onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '200px', // Set the desired height here
+          }}
+          placeholder={`Provide a detailed description of the client’s:
+              •	current personal circumstances,
+              •	needs that have been identified, 
+              •	and relevant information 
+          that formed the basis for the financial solution recommended`}
+      />
+      {/* <Editor
           value={FormData['BackInfo']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['BackInfo']: newText }) }}
           onFocus={(e)=>{backgroundInfo_onFocus()}}
@@ -654,7 +698,7 @@ const Medical = ({user, LogOut}) => {
               'removeformat | wordcount ',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-      />
+      /> */}
 
 <br/>
 <div className={
@@ -1240,7 +1284,20 @@ const Medical = ({user, LogOut}) => {
               </div>
               <div className="col-12">
                 {/* <textarea maxLength={1000} spellCheck="true"  id="SectionD_SnF" name='SectionD_SnF' value={FormData['SectionD_SnF']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Motivation for recommendations – State why the product purchased will suit the client"  aria-describedby="" style={{height:"150px"}}/> */}
-                <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                
+                <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.SectionD_SnF}
+                    onChange={(value)=>{ setFormData({...FormData, ['SectionD_SnF']: value })}}
+                    onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '200px', // Set the desired height here
+                    }}
+                    placeholder={`Motivation for recommendations – State why the product purchased will suit the client`}
+                />
+                {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['SectionD_SnF']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['SectionD_SnF']: newText }) }}
                 // onFocus={(e)=>{backgroundInfo_onFocus10()}}
@@ -1262,7 +1319,7 @@ const Medical = ({user, LogOut}) => {
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
               </div>
             </div>
         </div>
@@ -1282,7 +1339,20 @@ const Medical = ({user, LogOut}) => {
       } style={{fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>IMPORTANT INFORMATION HIGHLIGHTED TO YOU</b></div>
     <hr/>
     {/* <textarea maxLength={1000} spellCheck="true"  id="SectionE_PMB" name='SectionE_PMB' value={FormData['SectionE_PMB']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc."  aria-describedby="" style={{height:"80px"}}/> */}
-    <Editor
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.SectionE_PMB}
+          onChange={(value)=>{ setFormData({...FormData, ['SectionE_PMB']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '200px', // Set the desired height here
+          }}
+          placeholder={`PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc.`}
+    />
+    {/* <Editor
         value={FormData['SectionE_PMB']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['SectionE_PMB']: newText }) }}
         name="SectionE_PMB"
@@ -1303,7 +1373,7 @@ const Medical = ({user, LogOut}) => {
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-    />      
+    />       */}
     <hr/>
 
     
