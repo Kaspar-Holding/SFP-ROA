@@ -2302,7 +2302,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['AR_KeyP_Comments']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_KeyP_Comments']: newText }) }}
           name="AR_KeyP_Comments"
@@ -2540,7 +2540,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['AR_SureNLia_Comments']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_SureNLia_Comments']: newText }) }}
           name="AR_SureNLia_Comments"
@@ -2780,7 +2780,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['AR_BusOvProt_Comments']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_BusOvProt_Comments']: newText }) }}
           name="AR_BusOvProt_Comments"

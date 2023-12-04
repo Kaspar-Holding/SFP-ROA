@@ -2385,7 +2385,7 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }              
-              <Editor 
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                   value={key.ItP_FundsMaterialAspects}
                   onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP_FundsMaterialAspects", i, newText)}}
                   onFocus={(e)=>{backgroundInfo_onFocus8()}}
@@ -2425,7 +2425,7 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }                          
-              <Editor 
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={key.ItP_ProductDetails}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_ProductDetails", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus9()}}
@@ -2514,7 +2514,7 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }
-              <Editor 
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={key.ItP_NominationOfBeneficiaries}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_NominationOfBeneficiaries", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus11()}}
@@ -2560,7 +2560,7 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }
-             <Editor 
+             <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={key.ItP_InformationExplained}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_InformationExplained", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus12()}}

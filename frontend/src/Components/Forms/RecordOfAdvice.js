@@ -456,6 +456,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                         }
                                         {/* <textarea id="letter_of_introduction" required={FormData['clientLetterOfIntroduction'] === 0 ? true : false} value={FormData['clientLetterOfIntroductionReason']} maxLength={256} name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
                                         <Editor
+                                            apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'
                                             onInit={(evt, editor) => compulsoryAEditorRef.current = editor}
                                             value={FormData['clientLetterOfIntroductionReason']}
                                             onEditorChange={(e)=>{ setFormData({...FormData, ['clientLetterOfIntroductionReason']: compulsoryAEditorRef.current.getContent() }) }}
@@ -545,6 +546,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                         }
                                         {/* <textarea id="authority_access" required={FormData['clientLetterOfIntroductionAccess'] === 0 ? true : false}  maxLength={256} name="clientLetterOfIntroductionAccessReasonReason" value={FormData['clientLetterOfIntroductionAccessReason']}  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocusReason} onBlur={letter_of_introduction_access_onBlurReason} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
                                         <Editor
+                                            apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'
                                             onInit={(evt, editor) => compulsoryBEditorRef.current = editor}
                                             value={FormData['clientLetterOfIntroductionAccessReason']}
                                             onEditorChange={(e)=>{ setFormData({...FormData, ['clientLetterOfIntroductionAccessReason']: compulsoryBEditorRef.current.getContent() }) }}
@@ -654,6 +656,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                         {/* <textarea  id="provided_identity" required={FormData['clientFica'] === 0 ? true : false} value={FormData['clientFicaReason']}  maxLength={256} name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
                                         <Editor
                                             onInit={(evt, editor) => FICAEditorRef.current = editor}
+                                            apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'
                                             value={FormData['clientFicaReason']}
                                             onEditorChange={(e)=>{ setFormData({...FormData, ['clientFicaReason']: FICAEditorRef.current.getContent() }) }}
                                             onFocus={(e)=>{fica_onFocus(); onFieldBlur(e)}}
@@ -747,6 +750,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                         {/* <textarea  id="provided_identity" required={FormData['clientReplacement'] === 0 ? true : false} value={FormData['clientReplacementReason']}  maxLength={256} name="clientReplacementReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
                                         <Editor
                                             onInit={(evt, editor) => FICAEditorRef.current = editor}
+                                            apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'
                                             value={FormData['clientReplacementReason']}
                                             onEditorChange={(e)=>{ setFormData({...FormData, ['clientReplacementReason']: FICAEditorRef.current.getContent() }) }}
                                             onFocus={(e)=>{fica_onFocus(); onFieldBlur(e)}}
@@ -843,6 +847,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                             <br />
                             <Editor
                                 onInit={(evt, editor) => backgroundEditorRef.current = editor}
+                                apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'
                                 value={FormData['clientBackgroundInfo']}
                                 onEditorChange={(e)=>{ setFormData({...FormData, ['clientBackgroundInfo']: backgroundEditorRef.current.getContent() }) }}
                                 onFocus={(e)=>{backgroundInfo_onFocus();onFieldBlur(e)}}

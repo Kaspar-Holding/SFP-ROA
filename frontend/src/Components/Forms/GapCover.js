@@ -337,7 +337,7 @@ const GapCover = ({user, LogOut}) => {
                         </div>
                         <div className="col-12">
                             {/* <textarea maxLength={1000} spellCheck="true" id="GP_Benefits" onChange={(e) => {onChange(e)}} value={FormData['GP_Benefits']}  name="GP_Benefits"  className="form-control" placeholder="Details"  aria-describedby="" style={{width:"900px",height:"80px"}} /> */}
-                            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                                 value={FormData['GP_Benefits']}
                                 // setFormData({...FormData, [e.target.name]: e.target.value})
                                 onEditorChange={(e)=>{ setFormData({...FormData, ["GP_Benefits"]: e}) }}
@@ -769,7 +769,7 @@ const GapCover = ({user, LogOut}) => {
                         </div>
                         <div className="col-12">
                             {/* <textarea maxLength={1000} spellCheck="true"  id="GP_Other_Exclusions" onChange={(e) => {onChange(e)}} value={FormData['GP_Other_Exclusions']}  name="GP_Other_Exclusions" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  /> */}
-                            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                                 value={FormData['GP_Other_Exclusions']}
                                 // setFormData({...FormData, [e.target.name]: e.target.value})
                                 onEditorChange={(e)=>{ setFormData({...FormData, ["GP_Other_Exclusions"]: e}) }}
@@ -805,7 +805,7 @@ const GapCover = ({user, LogOut}) => {
                         </div>
                         <div className="col-12">
                             {/* <textarea maxLength={1000} spellCheck="true"  id="GP_GeneralComments" onChange={(e) => {onChange(e)}} value={FormData['GP_GeneralComments']}  name="GP_GeneralComments" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  /> */}
-                            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                                 value={FormData['GP_GeneralComments']}
                                 // setFormData({...FormData, [e.target.name]: e.target.value})
                                 onEditorChange={(e)=>{ setFormData({...FormData, ["GP_GeneralComments"]: e}) }}

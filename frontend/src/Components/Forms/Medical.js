@@ -1240,7 +1240,7 @@ const Medical = ({user, LogOut}) => {
               </div>
               <div className="col-12">
                 {/* <textarea maxLength={1000} spellCheck="true"  id="SectionD_SnF" name='SectionD_SnF' value={FormData['SectionD_SnF']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Motivation for recommendations – State why the product purchased will suit the client"  aria-describedby="" style={{height:"150px"}}/> */}
-                <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['SectionD_SnF']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['SectionD_SnF']: newText }) }}
                 // onFocus={(e)=>{backgroundInfo_onFocus10()}}

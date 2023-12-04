@@ -2426,7 +2426,7 @@ o	meeting the investment objectives of the clients
                 </>: 
                 null
             }              
-            <Editor 
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={key.PF_MaterialAspects}
                 onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_MaterialAspects", i, newText)}}
                 onFocus={(e)=>{backgroundInfo_onFocus8()}}
@@ -2466,7 +2466,7 @@ o	meeting the investment objectives of the clients
                 </>: 
                 null
             }                          
-            <Editor 
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
             value={key.PF_Pr_Details}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_Pr_Details", i, e)}}
             onFocus={(e)=>{backgroundInfo_onFocus9()}}
@@ -2555,7 +2555,7 @@ o	meeting the investment objectives of the clients
                 </>: 
                 null
             }
-            <Editor 
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
             value={key.PF_NominationOfBeneficiaries}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_NominationOfBeneficiaries", i, e)}}
             onFocus={(e)=>{backgroundInfo_onFocus11()}}
@@ -2601,7 +2601,7 @@ o	meeting the investment objectives of the clients
                 </>: 
                 null
             }
-        <Editor 
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
             value={key.PF_InformationExplained}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_InformationExplained", i, e)}}
             onFocus={(e)=>{backgroundInfo_onFocus12()}}
@@ -2635,7 +2635,7 @@ o	meeting the investment objectives of the clients
                 parseInt(key.Pr_Taken)!=7 ?
                 <>
                     <strong>Additional Comments</strong>
-                    <Editor                        
+                    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'                        
                         value={key.PF_AdditionComments}
                         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_AdditionComments", i, newText)}}
                         name="PF_AdditionComments"      

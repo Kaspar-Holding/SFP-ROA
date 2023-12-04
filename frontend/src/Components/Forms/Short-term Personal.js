@@ -4439,7 +4439,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <p>If yes,answer the following:</p>
         <p>What is the purpose of this replacement?</p>
         {/* <textarea name='STIP_CnRI_ReplacePurpose' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplacePurpose']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_CnRI_ReplacePurpose']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplacePurpose']: newText }) }}
           name="STIP_CnRI_ReplacePurpose"
@@ -4463,7 +4463,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <hr/>
         <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
         {/* <textarea name='STIP_CnRI_ReplaceReason' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceReason']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_CnRI_ReplaceReason']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceReason']: newText }) }}                     
           name="STIP_CnRI_ReplaceReason"
@@ -4487,7 +4487,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <hr/>
         <p>Suppliers of the product(s) to be replaced:</p>
         {/* <textarea name='STIP_CnRI_ReplaceSupplier' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceSupplier']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_CnRI_ReplaceSupplier']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceSupplier']: newText }) }}
           name="STIP_CnRI_ReplaceSupplier"
@@ -4560,7 +4560,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                             </div>
                             <div className="col-8">
                                 {/* <textarea maxLength={500} spellCheck="true"  id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                                <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                                   value={FormData['STIP_HC_StreetNumber']}
                                   onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_HC_StreetNumber']: newText }) }}
                                   name="STIP_HC_StreetNumber"
@@ -5162,7 +5162,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                       
                       <b className="col-form-label">Additional Comments</b>
                       <br/>
-                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                      <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                         value={FormData['STIP_HC_AddComments']}
                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_HC_AddComments']: newText }) }}                  
                         name="STIP_HC_AddComments"
@@ -5245,7 +5245,7 @@ const Short_term_Personal = ({user, LogOut}) => {
             </div>
             <div className="col-8">
                 {/* <textarea maxLength={500} spellCheck="true"  id="HC_StreetNumber" name='HC_StreetNumber' value={key['HC_StreetNumber']} onChange={(e) => {on_Section_HC_Change(e, i)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                   value={key['HC_StreetNumber']}
                   onEditorChange={(newText)=>{ on_Section_HC_Value_Change("HC_StreetNumber", i, newText) }}
                   name="HC_StreetNumber"
@@ -5847,7 +5847,7 @@ const Short_term_Personal = ({user, LogOut}) => {
       
       <b className="col-key-label">Additional Comments</b>
       <br/>
-      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
         value={key['HC_AddComments']}
         onEditorChange={(newText)=>{ on_Section_HC_Value_Change("HC_AddComments", i, newText) }}                  
         name="HC_AddComments"
@@ -5926,7 +5926,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                                 </div>
                                 <div className="col-8">
                                     {/* <textarea maxLength={500} spellCheck="true"  id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                                    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                                       value={FormData['STIP_Build_StreetNumber']}
                                       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Build_StreetNumber']: newText }) }}
                                       name="STIP_Build_StreetNumber"
@@ -6200,7 +6200,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                       <b className="col-form-label">Additional Comments</b>
                       <div>Additional notes on buildings that may affect cover/advice to the client: </div>
                       <br/>
-                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                      <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                         value={FormData['STIP_Build_AddComments']}
                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Build_AddComments']: newText }) }}                  
                         name="STIP_Build_AddComments"
@@ -6282,7 +6282,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                                                       </div>
                                                       <div className="col-8">
                                                           {/* <textarea maxLength={500} spellCheck="true"  id="Build_StreetNumber" name='Build_StreetNumber' value={key['Build_StreetNumber']} onChange={(e) => {on_Section_Build_Change(e, i)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                                                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                                          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                                                             value={key['Build_StreetNumber']}
                                                             onEditorChange={(newText)=>{ on_Section_Build_Value_Change("Build_StreetNumber", i, newText) }}
                                                             name="Build_StreetNumber"
@@ -6556,7 +6556,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                                             <b className="col-form-label">Additional Comments</b>
                                             <div>Additional notes on buildings that may affect cover/advice to the client: </div>
                                             <br/>
-                                            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                                               value={key['Build_AddComments']}
                                               onEditorChange={(newText)=>{ on_Section_Build_Value_Change("Build_AddComments", i, newText) }}                  
                                               name="Build_AddComments"
@@ -6631,7 +6631,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                                       </div>
                                       <div className="col-8">
                                           {/* <textarea maxLength={500} spellCheck="true"  id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                                             value={FormData['STIP_AddProp_StreetNumber']}
                                             onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_AddProp_StreetNumber']: newText }) }}
                                             name="STIP_AddProp_StreetNumber"
@@ -6912,7 +6912,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                       <b className="col-form-label">Additional Comments</b>
                       <div>Additional notes on additional properties that may affect cover/advice to the client: </div>
                       <br/>
-                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                      <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                         value={FormData['STIP_AddProp_AddComments']}
                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_AddProp_AddComments']: newText }) }}                  
                         name="STIP_AddProp_AddComments"
@@ -6993,7 +6993,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                                       </div>
                                       <div className="col-8">
                                           {/* <textarea maxLength={500} spellCheck="true"  id="AddProp_StreetNumber" name='AddProp_StreetNumber' value={key['AddProp_StreetNumber']} onChange={(e) => {on_Section_AddProp_Change(e, i)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                                             value={key['AddProp_StreetNumber']}
                                             onEditorChange={(newText)=>{ on_Section_AddProp_Value_Change("AddProp_StreetNumber", i, newText) }}
                                             name="AddProp_StreetNumber"
@@ -7274,7 +7274,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                       <b className="col-form-label">Additional Comments</b>
                       <div>Additional notes on additional properties that may affect cover/advice to the client: </div>
                       <br/>
-                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                      <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                         value={key['AddProp_AddComments']}
                         onEditorChange={(newText)=>{ on_Section_Build_Value_Change("AddProp_AddComments", i, newText) }}                  
                         name="AddProp_AddComments"
@@ -8055,7 +8055,7 @@ const Short_term_Personal = ({user, LogOut}) => {
               <b className="col-form-label">Additional Comments</b>
               <div>Additional notes on vehicles that may affect cover/advice to the client:</div>
               <br/>
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['STIP_Vehicle_AddComments']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Vehicle_AddComments']: newText }) }}                  
                 init={{
@@ -8845,7 +8845,7 @@ const Short_term_Personal = ({user, LogOut}) => {
               <b className="col-form-label">Additional Comments</b>
               <div>Additional notes on vehicles that may affect cover/advice to the client:</div>
               <br/>
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                 value={key['Vehicle_AddComments']}
                 onEditorChange={(newText)=>{ on_Section_Vehicle_Value_Change("Vehicle_AddComments", i, newText) }}                  
                 init={{
@@ -9199,7 +9199,7 @@ const Short_term_Personal = ({user, LogOut}) => {
       <b className="col-form-label">Additional Comments</b>
       <div>Additional notes on motorcycles that may affect cover/advice to the client:</div>
       <br/>
-      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
         value={FormData['STIP_MotorC_AddComments']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_MotorC_AddComments']: newText }) }}                  
         init={{
@@ -9555,7 +9555,7 @@ const Short_term_Personal = ({user, LogOut}) => {
       <b className="col-form-label">Additional Comments</b>
       <div>Additional notes on motorcycles that may affect cover/advice to the client:</div>
       <br/>
-      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
         value={key['MotorC_AddComments']}
         onEditorChange={(newText)=>{ on_Section_MotorC_Value_Change("MotorC_AddComments", i, newText) }}                  
         init={{
@@ -9769,7 +9769,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <b className="col-form-label">Additional Comments</b>
           <div>Additional notes on trailer that may affect cover/advice to the client:</div>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
             value={FormData['STIP_Trailer_AddComments']}
             onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Trailer_AddComments']: newText }) }}                  
             name="STIP_Trailer_AddComments"
@@ -9995,7 +9995,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <b className="col-form-label">Additional Comments</b>
           <div>Additional notes on trailer that may affect cover/advice to the client:</div>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
             value={key['Trailer_AddComments']}
             onEditorChange={(newText)=>{ on_Section_Trailer_Value_Change("Trailer_AddComments", i, newText) }}                  
             name="Trailer_AddComments"
@@ -10248,7 +10248,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <b className="col-form-label">Additional Comments</b>
       <div>Additional notes on watercraft that may affect cover/advice to the client:</div>
         <br/>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_WaterC_AddComments']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_WaterC_AddComments']: newText }) }}                  
           init={{
@@ -10508,7 +10508,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <b className="col-form-label">Additional Comments</b>
       <div>Additional notes on watercraft that may affect cover/advice to the client:</div>
         <br/>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={key['WaterC_AddComments']}
           onEditorChange={(newText)=>{ on_Section_WaterC_Value_Change("WaterC_AddComments", i, newText) }}                  
           init={{
@@ -10671,7 +10671,7 @@ const Short_term_Personal = ({user, LogOut}) => {
       <br/>
         
         {/* <textare maxLength={500} spellCheck="true"  id="STIP_PersonalLL_Comments" name='STIP_PersonalLL_Comments' value={FormData['STIP_PersonalLL_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        {/* <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_PersonalLL_Comments']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_PersonalLL_Comments']: newText }) }}
           name="STIP_PersonalLL_Comments"
@@ -10697,7 +10697,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <b className="col-form-label">Additional Comments</b>
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
               <br/>
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['STIP_PersonalLL_AddComments']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_PersonalLL_AddComments']: newText }) }}                  
                 init={{
@@ -10864,7 +10864,7 @@ const Short_term_Personal = ({user, LogOut}) => {
       <br/>
         
         {/* <textare maxLength={500} spellCheck="true"  id="PersonalLL_Comments" name='PersonalLL_Comments' value={key['PersonalLL_Comments']} onChange={(e) => {on_Section_PersonalLL_Change(e, i)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        {/* <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={key['PersonalLL_Comments']}
           onEditorChange={(newText)=>{ setkey({...key, ['PersonalLL_Comments']: newText }) }}
           name="PersonalLL_Comments"
@@ -10890,7 +10890,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <b className="col-form-label">Additional Comments</b>
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
               <br/>
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                 value={key['PersonalLL_AddComments']}
                 onEditorChange={(newText)=>{ on_Section_HC_Value_Change("PersonalLL_AddComments", i, newText)  }}                  
                 init={{
@@ -11054,7 +11054,7 @@ const Short_term_Personal = ({user, LogOut}) => {
             <b className="col-form-label">Additional Comments</b>
             <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
             <br/>
-            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
               value={FormData['STIP_LegalA_AddComments']}
               onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_LegalA_AddComments']: newText }) }}                  
               init={{
@@ -11222,7 +11222,7 @@ const Short_term_Personal = ({user, LogOut}) => {
           <b className="col-form-label">Additional Comments</b>
           <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
             value={key['LegalA_AddComments']}
             onEditorChange={(newText)=>{ on_Section_LegalA_Value_Change("LegalA_AddComments", i, newText) }}                  
             init={{
@@ -11277,7 +11277,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <h6 align="left" style={{ color: "#14848A"}}><b>RECORD OF ADVICE</b></h6>
         <div>Products considered appropriate to address the needs of the client:</div>
         {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductConsidered" name='STIP_ProductConsidered' value={FormData['STIP_ProductConsidered']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_ProductConsidered']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductConsidered']: newText }) }}
           name="STIP_ProductConsidered"
@@ -11301,7 +11301,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <hr/>
         <div>Recommended product:</div>
         {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductRecommended" name='STIP_ProductRecommended' value={FormData['STIP_ProductRecommended']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_ProductRecommended']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductRecommended']: newText }) }}
           name="STIP_ProductRecommended"
@@ -11325,7 +11325,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         <hr/>
         <div>Reasons why the recommended product is considered the most suitable for the needs of the client:</div>
         {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductReasons" name='STIP_ProductReasons' value={FormData['STIP_ProductReasons']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_ProductReasons']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductReasons']: newText }) }}
           name="STIP_ProductReasons"

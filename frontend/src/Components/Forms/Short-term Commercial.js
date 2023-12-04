@@ -3293,7 +3293,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                 </div>
                                 <div className="col-4">
                                   {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Applicable_Option" onChange={(e) => {onChange(e)}} value={FormData['STIC_Applicable_Option']}  name="STIC_Applicable_Option"  className="form-control" placeholder=""  aria-describedby="" style={{width:"600px",height:"100px"}} /> */}
-                                  <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                  <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                                     value={FormData['STIC_Applicable_Option']}
                                     onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Applicable_Option']: newText }) }}
                                     name="STIC_Applicable_Option"
@@ -6954,7 +6954,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <hr/>
               <b className="col-form-label">Additional Comments</b>
               <br/>
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['STIC_Fire_AddComments']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Fire_AddComments']: newText }) }}                  
                 name="STIC_Fire_AddComments"
@@ -7443,7 +7443,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           <hr/>
                           <b className="col-form-label">Additional Comments</b>
                           <br/>
-                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                             value={key.Fire_AddComments}
                             onEditorChange={(newText)=>{ on_Section_1_Value_Change("Fire_AddComments", i, newText) }}                  
                             name="Fire_AddComments"
@@ -7811,7 +7811,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           </div>
           <b className="col-form-label">Additional Comments</b>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
             value={FormData['STIC_BuildCombined_AddComments']}
             onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_BuildCombined_AddComments']: newText }) }}                  
             name="STIC_BuildCombined_AddComments"
@@ -8185,7 +8185,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                     </div>
                     <b className="col-form-label">Additional Comments</b>
                     <br/>
-                    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                       value={key.BuildCombined_AddComments}
                       onEditorChange={(newText)=>{ on_Section_2_Value_Change("BuildCombined_AddComments", i, newText)  }}                  
                       init={{
@@ -8485,7 +8485,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
             </div>
             <b className="col-form-label">Additional Comments</b>
             <br/>
-            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
               value={FormData['STIC_OC_AddComments']}
               onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_OC_AddComments']: newText }) }}                  
               name="STIC_OC_AddComments"
@@ -8787,7 +8787,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
             </div>
             <b className="col-form-label">Additional Comments</b>
             <br/>
-            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
               value={key.OC_AddComments}
               onEditorChange={(newText)=>{ on_Section_3_Value_Change("OC_AddComments", i, newText) }}                  
               name="OC_AddComments"
@@ -10227,7 +10227,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_BusInt_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_BusInt_AddComments']: newText }) }}                  
       name="STIC_BusInt_AddComments"
@@ -11675,7 +11675,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key.BusInt_AddComments}
       onEditorChange={(newText)=>{ on_Section_4_Value_Change('BusInt_AddComments', i, newText) }}                  
       name="BusInt_AddComments"
@@ -11993,7 +11993,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec5_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec5_AddComments']: newText }) }}                  
       name="STIC_Sec5_AddComments"
@@ -12317,7 +12317,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key.Sec5_AddComments}
       onEditorChange={(newText)=>{ on_Section_5_Value_Change('Sec5_AddComments', i, newText) }}                  
       name="Sec5_AddComments"
@@ -12506,7 +12506,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec6_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec6_AddComments']: newText }) }}                  
       name="STIC_Sec6_AddComments"
@@ -12702,7 +12702,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key.Sec6_AddComments}
       onEditorChange={(newText)=>{ on_Section_6_Value_Change('Sec6_AddComments', i, newText) }}                  
       name="Sec6_AddComments"
@@ -13097,7 +13097,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                       <b className="col-form-label">Additional Comments</b>
                       <br/>
                       
-                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                      <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                         value={FormData['STIC_Sec7_AddComments']}
                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec7_AddComments']: newText }) }}                  
                         name="STIC_Sec7_AddComments"
@@ -13495,7 +13495,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           <b className="col-form-label">Additional Comments</b>
                           <br/>
                           
-                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                             value={key.Sec7_AddComments}
                             onEditorChange={(newText)=>{ on_Section_7_Value_Change("Sec7_AddComments", i , newText) }}                  
                             name="Sec7_AddComments"
@@ -13732,7 +13732,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec8_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec8_AddComments']: newText }) }}                  
       name="STIC_Sec8_AddComments"
@@ -13975,7 +13975,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
 
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key.Sec8_AddComments}
       onEditorChange={(newText)=>{ on_Section_8_Value_Change("Sec8_AddComments", i , newText)  }}                  
       name="Sec8_AddComments"
@@ -14377,7 +14377,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec9_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec9_AddComments']: newText }) }}                  
       name="STIC_Sec9_AddComments"
@@ -14784,7 +14784,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key.Sec9_AddComments}
       onEditorChange={(newText)=>{ on_Section_9_Value_Change('Sec9_AddComments', i, newText) }}                  
       name="Sec9_AddComments"
@@ -15138,7 +15138,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <b className="col-form-label">Additional Comments</b>
               <br/>
               
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['STIC_Sec10_AddComments']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec10_AddComments']: newText }) }}                  
                 name="STIC_Sec10_AddComments"
@@ -15494,7 +15494,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <b className="col-form-label">Additional Comments</b>
               <br/>
               
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
                 value={key['Sec10_AddComments']}
                 onEditorChange={(newText)=>{ on_Section_10_Value_Change('Sec10_AddComments', i, newText) }}                  
                 name="Sec10_AddComments"
@@ -15746,7 +15746,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec11_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec11_AddComments']: newText }) }}                  
       name="STIC_Sec11_AddComments"
@@ -16001,7 +16001,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec11_AddComments']}
       onEditorChange={(newText)=>{ on_Section_11_Value_Change('Sec11_AddComments', i, newText) }}                  
       name="Sec11_AddComments"
@@ -16346,7 +16346,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
 <b className="col-form-label">Additional Comments</b>
 <br/>
 
-<Editor onBlur={(e)=>{onFieldBlur(e)}}
+<Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
   value={FormData['STIC_Sec12_AddComments']}
   onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec12_AddComments']: newText }) }}                  
   name="STIC_Sec12_AddComments"
@@ -16695,7 +16695,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec12_AddComments']}
       onEditorChange={(newText)=>{ on_Section_12_Value_Change('Sec12_AddComments', i, newText) }}                  
       name="Sec12_AddComments"
@@ -17327,7 +17327,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec13_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec13_AddComments']: newText }) }}                  
       name="STIC_Sec13_AddComments"
@@ -17964,7 +17964,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec13_AddComments']}
       onEditorChange={(newText)=>{ on_Section_13_Value_Change('Sec13_AddComments', i, newText) }}                  
       name="Sec13_AddComments"
@@ -18287,7 +18287,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec14_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec14_AddComments']: newText }) }}                  
       name="STIC_Sec14_AddComments"
@@ -18603,7 +18603,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key.Sec14_AddComments}
       onEditorChange={(newText)=>{ on_Section_14_Value_Change('Sec14_AddComments', i, newText) }}                  
       name="Sec14_AddComments"
@@ -18810,7 +18810,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec15_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec15_AddComments']: newText }) }}                  
       name="STIC_Sec15_AddComments"
@@ -19024,7 +19024,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec15_AddComments']}
       onEditorChange={(newText)=>{ on_Section_15_Value_Change('Sec15_AddComments', i, newText) }}                  
       name="Sec15_AddComments"
@@ -19549,7 +19549,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec16_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec16_AddComments']: newText }) }}                  
       name="STIC_Sec16_AddComments"
@@ -20080,7 +20080,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec16_AddComments']}
       onEditorChange={(newText)=>{ on_Section_16_Value_Change('Sec16_AddComments', i, newText) }}                  
       name="Sec16_AddComments"
@@ -20644,7 +20644,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec17_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec17_AddComments']: newText }) }}                  
       name="STIC_Sec17_AddComments"
@@ -21214,7 +21214,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec17_AddComments']}
       onEditorChange={(newText)=>{ on_Section_17_Value_Change('Sec17_AddComments', i, newText) }}                  
       name="Sec17_AddComments"
@@ -21822,7 +21822,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec18_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec18_AddComments']: newText }) }}                  
       name="STIC_Sec18_AddComments"
@@ -22436,7 +22436,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec18_AddComments']}
       onEditorChange={(newText)=>{ on_Section_18_Value_Change('Sec18_AddComments', i, newText) }}                  
       name="Sec18_AddComments"
@@ -22966,7 +22966,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
      */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec19_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec19_AddComments']: newText }) }}                  
       name="STIC_Sec19_AddComments"
@@ -23501,7 +23501,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
      */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec19_AddComments']}
       onEditorChange={(newText)=>{ on_Section_19_Value_Change('Sec19_AddComments', i, newText) }}                  
       name="Sec19_AddComments"
@@ -23810,7 +23810,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec20_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec20_AddComments']: newText }) }}                  
       init={{
@@ -24123,7 +24123,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec20_AddComments']}
       onEditorChange={(newText)=>{ on_Section_20_Value_Change('Sec20_AddComments', i, newText) }}                  
       init={{
@@ -24433,7 +24433,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec21_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec21_AddComments']: newText }) }}                  
       name="STIC_Sec21_AddComments"
@@ -24751,7 +24751,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec21_AddComments']}
       onEditorChange={(newText)=>{ on_Section_21_Value_Change('Sec21_AddComments', i, newText) }}                  
       name="Sec21_AddComments"
@@ -24969,7 +24969,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           </div>
           <b className="col-form-label">Additional Comments</b>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
             value={FormData['STIC_SecD_AddComments']}
             onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecD_AddComments']: newText }) }}                  
             name="STIC_SecD_AddComments"
@@ -25008,7 +25008,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
 
     <p>Products considered appropriate to address the needs of the client</p>
     {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_1" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_1']}  name="STIC_SecE_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_SecE_1']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_1']: newText }) }}                  
       name="STIC_SecE_1"
@@ -25034,7 +25034,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
 
     <p>Recommended product</p>
     {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_2" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_2']}  name="STIC_SecE_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_SecE_2']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_2']: newText }) }}                   
       name="STIC_SecE_2"
@@ -25060,7 +25060,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
 
     <p>Reasons why the recommended product is considered the most suitable for the needs of the client:</p>
     {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_3" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_3']}  name="STIC_SecE_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_SecE_3']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_3']: newText }) }}                 
       name="STIC_SecE_3"
@@ -25085,7 +25085,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <hr/>
     <b className="col-form-label">Additional Comments</b>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
             value={FormData['STIC_SecE_AddComments']}
             onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_AddComments']: newText }) }}                  
             name="STIC_SecE_AddComments"
@@ -25143,7 +25143,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
       </div>
       <b className="col-form-label">Additional Comments</b>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
             value={FormData['STIC_SecG_AddComments']}
             onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecG_AddComments']: newText }) }}                  
             name="STIC_SecG_AddComments"
