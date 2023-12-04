@@ -799,7 +799,7 @@ const Risk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           onInit={(evt, editor) => RP_DC_CommentsRef.current = editor}
           value={FormData['RP_DC_Comments']}
           onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DC_Comments']: RP_DC_CommentsRef.current.getContent() }) }}
@@ -1135,7 +1135,7 @@ const Risk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           onInit={(evt, editor) => RP_DiC_CommentsRef.current = editor}
           value={FormData['RP_DiC_Comments']}
           onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DiC_Comments']: RP_DiC_CommentsRef.current.getContent() }) }}
@@ -1407,7 +1407,7 @@ const Risk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           onInit={(evt, editor) => RP_DrC_CommentsRef.current = editor}
           value={FormData['RP_DrC_Comments']}
           onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DrC_Comments']: RP_DrC_CommentsRef.current.getContent() }) }}
@@ -1471,7 +1471,7 @@ const Risk = ({user, LogOut}) =>
         </>: 
          null
     }
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+    <Editor
           onInit={(evt, editor) => RP_LC_FinancialSolutionsRef.current = editor}
           value={FormData['RP_LC_FinancialSolutions']}
           onEditorChange={(e)=>{ setFormData({...FormData, ['RP_LC_FinancialSolutions']: RP_LC_FinancialSolutionsRef.current.getContent() }) }}
@@ -1518,7 +1518,7 @@ const Risk = ({user, LogOut}) =>
         </>: 
          null
     }
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+    <Editor
           onInit={(evt, editor) => RP_DiC_FinancialSolutionsRef.current = editor}
           value={FormData['RP_DiC_FinancialSolutions']}
           onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DiC_FinancialSolutions']: RP_DiC_FinancialSolutionsRef.current.getContent() }) }}
@@ -1566,7 +1566,7 @@ const Risk = ({user, LogOut}) =>
         </>: 
          null
     }
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+    <Editor
       onInit={(evt, editor) => RP_DrC_FinancialSolutionsRef.current = editor}
       value={FormData['RP_DrC_FinancialSolutions']}
       onEditorChange={(e)=>{ setFormData({...FormData, ['RP_DrC_FinancialSolutions']: RP_DrC_FinancialSolutionsRef.current.getContent() }) }}
@@ -1620,7 +1620,7 @@ const Risk = ({user, LogOut}) =>
         </>: 
          null
     }
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
+    <Editor 
       onInit={(evt, editor) => RP_AltS_1Ref.current = editor}
       value={FormData['RP_AltS_1']}
       onEditorChange={(e)=>{ setFormData({...FormData, ['RP_AltS_1']: RP_AltS_1Ref.current.getContent() }) }}
@@ -1666,7 +1666,7 @@ const Risk = ({user, LogOut}) =>
          null
     }
     
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
+    <Editor 
       onInit={(evt, editor) => RP_AltS_2Ref.current = editor}
       value={FormData['RP_AltS_2']}
       onEditorChange={(e)=>{ setFormData({...FormData, ['RP_AltS_2']: RP_AltS_2Ref.current.getContent() }) }}
@@ -1711,7 +1711,7 @@ const Risk = ({user, LogOut}) =>
          null
     }
     
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
+    <Editor 
       onInit={(evt, editor) => RP_AltS_3Ref.current = editor}
       value={FormData['RP_AltS_3']}
       onEditorChange={(e)=>{ setFormData({...FormData, ['RP_AltS_3']: RP_AltS_3Ref.current.getContent() }) }}
@@ -2203,7 +2203,7 @@ const Risk = ({user, LogOut}) =>
                   </>: 
                   null
               }
-              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+              <Editor
                   onInit={(evt, editor) => ProductReasonsRef.current = editor}
                   value={key.ProductReasons}
                   id={"productTaken"+i}
@@ -2248,7 +2248,7 @@ const Risk = ({user, LogOut}) =>
                   </>: 
                   null
               }              
-              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
+              <Editor 
                   onInit={(evt, editor) => productProductMaterialAspectsRef.current = editor}
                   value={key.ProductMaterialAspects}
                   onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, newText)}}
@@ -2289,7 +2289,7 @@ const Risk = ({user, LogOut}) =>
                   </>: 
                   null
               }                          
-              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
+              <Editor 
                 onInit={(evt, editor) => productProductDetailsRef.current = editor}
                 value={key.ProductDetails}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ProductDetails", i, e)}}
@@ -2337,7 +2337,7 @@ const Risk = ({user, LogOut}) =>
                   null
               }
                           
-              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+              <Editor
                 onInit={(evt, editor) => productExecutorFeeRef.current = editor}
                 value={key.ExecutorFee}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ExecutorFee", i, e)}}
@@ -2380,7 +2380,7 @@ const Risk = ({user, LogOut}) =>
                   </>: 
                   null
               }
-              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
+              <Editor 
                 onInit={(evt, editor) => productNominationOfBeneficiariesRef.current = editor}
                 value={key.NominationOfBeneficiaries}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("NominationOfBeneficiaries", i, e)}}
@@ -2427,7 +2427,7 @@ const Risk = ({user, LogOut}) =>
                   </>: 
                   null
               }
-             <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
+             <Editor 
                 onInit={(evt, editor) => productInformationExplainedRef.current = editor}
                 value={key.InformationExplained}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("InformationExplained", i, e)}}

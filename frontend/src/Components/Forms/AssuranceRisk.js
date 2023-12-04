@@ -1118,7 +1118,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                         null
                     }
                     {/* <textarea maxLength={500}  id="AR_ComDisc_AuthorizedPersonDetail" name="AR_ComDisc_AuthorizedPersonDetail" value={FormData['AR_ComDisc_AuthorizedPersonDetail']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                    <Editor
                       value={FormData['AR_ComDisc_AuthorizedPersonDetail']}
                       onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_ComDisc_AuthorizedPersonDetail']: newText }) }}
                       onFocus={(e)=>{letter_of_introduction_onFocus()}}
@@ -1189,7 +1189,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                     value={FormData['AR_ComDisc_AuthorityDetail']} onChange={(e) => {onChange(e)}} 
                     onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} 
                     className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                    <Editor
                       value={FormData['AR_ComDisc_AuthorityDetail']}
                       onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_ComDisc_AuthorityDetail']: newText }) }}
                       onFocus={(e)=>{letter_of_introduction_access_onFocus()}}
@@ -1264,7 +1264,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                 {/* <textarea maxLength={500}  id="AR_FICADetail" name="AR_FICADetail" value={FormData['AR_FICADetail']} 
                   onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} 
                   className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                <Editor
                     value={FormData['AR_FICADetail']}
                     onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_FICADetail']: newText }) }}
                     onFocus={(e)=>{fica_onFocus()}}
@@ -1340,7 +1340,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                 {/* <textarea maxLength={500}  id="AR_RepPrs_TakenDetail" name="AR_RepPrs_TakenDetail" 
                   value={FormData['AR_RepPrs_TakenDetail']} onChange={(e) => {onChange(e)}} 
                   onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                <Editor
                     value={FormData['AR_RepPrs_TakenDetail']}
                     onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_RepPrs_TakenDetail']: newText }) }}
                     onFocus={(e)=>{rica_onFocus()}}
@@ -1409,7 +1409,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                 {/* <textarea maxLength={500}  id="AR_RepPrs_ExplainedDetail" name="AR_RepPrs_ExplainedDetail" 
                 value={FormData["AR_RepPrs_ExplainedDetail"]} onChange={(e) => {onChange(e)}} 
                 onFocus={rica1_onFocus} onBlur={rica1_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                <Editor
                     value={FormData['AR_RepPrs_ExplainedDetail']}
                     onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_RepPrs_ExplainedDetail']: newText }) }}
                     onFocus={(e)=>{rica1_onFocus()}}
@@ -1478,7 +1478,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                 {/* <textarea maxLength={500}  id="AR_RepPrs_CancelledDetail" name="AR_RepPrs_CancelledDetail" value={FormData["AR_RepPrs_CancelledDetail"]} 
                   onChange={(e) => {onChange(e)}} onFocus={rica2_onFocus} onBlur={rica2_onBlur} className="form-control" 
                   placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                <Editor
                     value={FormData['AR_RepPrs_CancelledDetail']}
                     onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_RepPrs_CancelledDetail']: newText }) }}
                     onFocus={(e)=>{rica2_onFocus()}}
@@ -1587,7 +1587,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         onFocus={backgroundInfo_onFocus1}
         onBlur={backgroundInfo_onBlur1}
         placeholder={`.`}  aria-describedby=""  ></textarea> */}
-        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+        <Editor
             value={FormData['AR_ReplacementBackInfo']}
             onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_ReplacementBackInfo']: newText }) }}
             onFocus={(e)=>{backgroundInfo_onFocus1()}}
@@ -1729,7 +1729,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         onFocus={backgroundInfo_onFocus2}
         onBlur={backgroundInfo_onBlur2}
         placeholder={`Provide description and motivation of the description of the needs identified.`}  aria-describedby=""  ></textarea> */}
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+    <Editor
       value={FormData['AR_BusA_Details']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_BusA_Details']: newText }) }}
       onFocus={(e)=>{backgroundInfo_onFocus2()}}
@@ -2000,7 +2000,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+        <Editor
           onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['AR_BnS_Comments']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_BnS_Comments']: newText }) }}
@@ -2302,7 +2302,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['AR_KeyP_Comments']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_KeyP_Comments']: newText }) }}
           name="AR_KeyP_Comments"
@@ -2540,7 +2540,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['AR_SureNLia_Comments']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_SureNLia_Comments']: newText }) }}
           name="AR_SureNLia_Comments"
@@ -2780,7 +2780,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  onBlur={(e)=>{onFieldBlur(e)}}
+        <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['AR_BusOvProt_Comments']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_BusOvProt_Comments']: newText }) }}
           name="AR_BusOvProt_Comments"
@@ -3258,7 +3258,7 @@ const AssuranceRisk = ({user, LogOut}) =>
         placeholder={
 `Explain the reasons why Life cover benefits were recommended to satisfy this need.
 Record the client's instructions, deviations and implications thereof..`}  aria-describedby=""  ></textarea> */}
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+    <Editor
         value={FormData['AR_LifeCoverFinancialSolutions']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_LifeCoverFinancialSolutions']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus3()}}
@@ -3313,7 +3313,7 @@ Record the client's instructions, deviations and implications thereof..`}  aria-
 `Explain the reasons why Disability cover benefits were recommended to satisfy this need.
 Record the client's instructions, deviations and implications thereof.
 `}  aria-describedby=""  ></textarea> */}
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+    <Editor
         value={FormData['AR_DiC_FinancialSolutions']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_DiC_FinancialSolutions']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus4()}}
@@ -3372,7 +3372,7 @@ Record the client's instructions, deviations and implications thereof.
         onBlur={backgroundInfo_onBlur5}
         placeholder={
 `1. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+    <Editor
         value={FormData['AR_AltS_1']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_AltS_1']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus5()}}
@@ -3420,7 +3420,7 @@ Record the client's instructions, deviations and implications thereof.
         onBlur={backgroundInfo_onBlur6}
         placeholder={
 `2. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+    <Editor
         value={FormData['AR_AltS_2']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_AltS_2']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus6()}}
@@ -3468,7 +3468,7 @@ Record the client's instructions, deviations and implications thereof.
         onBlur={backgroundInfo_onBlur7}
         placeholder={
 `3. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+    <Editor
         value={FormData['AR_AltS_3']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_AltS_3']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus7()}}
@@ -3830,7 +3830,7 @@ Record the client's instructions, deviations and implications thereof.
                             onBlur={backgroundInfo_onBlur8}
                             placeholder={
                     `Motivate why the chosen product was recommended to best suit your client's needs. `}  aria-describedby=""  ></textarea> */}
-                        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                        <Editor
                           value={key.ProductReasons}
                           onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductReasons", i, newText)}}
                           onFocus={(e)=>{backgroundInfo_onFocus8()}}
@@ -3880,7 +3880,7 @@ Record the client's instructions, deviations and implications thereof.
                             onBlur={backgroundInfo_onBlur9}
                             placeholder={
                     `Explain any deviations from your recommendation and the implications thereof.`}  aria-describedby=""  ></textarea> */}
-                        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                        <Editor
                           value={key.ProductMaterialAspects}
                           onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, newText)}}
                           onFocus={(e)=>{backgroundInfo_onFocus9()}}
@@ -3935,7 +3935,7 @@ Record the client's instructions, deviations and implications thereof.
                     The tax implications for the company, e.g., income tax
                     The tax implications for the lives covered, e.g., estate duty, income tax, CGT
                     Executor’s fees?`}  aria-describedby=""  ></textarea> */}
-                        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                        <Editor
                           value={key.ProductDetails}
                           onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductDetails", i, newText)}}
                           onFocus={(e)=>{backgroundInfo_onFocus10()}}
@@ -3989,7 +3989,7 @@ Record the client's instructions, deviations and implications thereof.
                     `Provide a brief summary of the contents of the quote with regard to the following:
                     Benefit terms (cease ages, cover periods etc.)
                     Details of premium and cover pattern structure, frequency etc.`}  aria-describedby=""  ></textarea> */}
-                        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                        <Editor
                           value={key.ProductBriefSummary}
                           onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductBriefSummary", i, newText)}}
                           onFocus={(e)=>{backgroundInfo_onFocus11()}}
@@ -4038,7 +4038,7 @@ Record the client's instructions, deviations and implications thereof.
                             onBlur={backgroundInfo_onBlur12}
                             placeholder={
                     `Record discussion with regard to cessionaries, if applicable.`}  aria-describedby=""  ></textarea> */}
-                        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                        <Editor
                           value={key.Cessionaries}
                           onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("Cessionaries", i, newText)}}
                           onFocus={(e)=>{backgroundInfo_onFocus12()}}
@@ -4086,7 +4086,7 @@ Record the client's instructions, deviations and implications thereof.
                             </>: 
                             null
                         }
-                        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+                        <Editor
                           value={key.InformationExplained}
                           onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("InformationExplained", i, newText)}}
                           onFocus={(e)=>{backgroundInfo_onFocus12()}}
