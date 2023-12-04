@@ -38,7 +38,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && rm -r /home/KASPAR/sfp/production/SFP-ROA/backend/build && mv build /home/KASPAR/sfp/production/SFP-ROA/backend/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
